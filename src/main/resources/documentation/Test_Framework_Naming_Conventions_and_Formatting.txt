@@ -1,0 +1,24 @@
+Test Framework Conventions
+
+Test framework uses standard Java naming conventions and formatting.
+
+Naming:
+1. Variables, methods, objects: first word not capitalized, all others are capitalized (myStringVariable)
+2. Class names: all words capitalized (MyTestClass)
+3. Package names: all words in lowercase.  Use underscore if necessary (testpackage or test_package)
+
+Page Layout:
+1. Variable and object declarations and initializations (immediately under class name)
+2. Class constructor methods (if applicable)
+3. @Before method
+3. @Test method
+4. Private and public local methods
+
+Framework Component Naming Conventions:
+1-Overall, the goal of the naming conventions is to be able to identify a component without referring to a page in the application.
+
+2-When naming components across the framework, naming should be general on the left and become more specific when moving to the right.  
+So a locator method on a page map might take the general form:  someTabPageSectionElementTypeElementText();
+
+3-Helper methods should start with the class name of the containing class.  
+So a wait helper method that is in the Wait class should start with wait as in waitForElement().
