@@ -53,8 +53,11 @@ public class CostMgrXCostAnalystBubbleNavigationStaticAds1466
       int index = 1;
       while (index < 4) {
         System.out.println(index);
-        WebElement link = driver.findElement(By.xpath("//*[@class='bubbleContent' and @id='costing']" +
-                "/following-sibling::div/descendant::ul/li[" + index + "]/a"));
+        //Shilpa updated xpath 24.08.2022 
+//        WebElement link = driver.findElement(By.xpath("//*[@class='bubbleContent' and @id='costing']" +
+//                "/following-sibling::div/descendant::ul/li[" + index + "]/a"));
+      WebElement link = driver.findElement(By.xpath("//*[@class='bubbleContent' and @id='costing-bubble-content1']" +
+      "/following-sibling::div/descendant::ul/li[" + index + "]/a"));
         assertElementText(link, expectedLinks[index - 1], printout);
         index++;
       }

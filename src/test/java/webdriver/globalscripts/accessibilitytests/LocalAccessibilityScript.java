@@ -28,9 +28,9 @@ public class LocalAccessibilityScript {
 
     @Before
     public void setupScript() throws InterruptedException {
-        System.setProperty("webdriver.chrome.driver", "C:/ads/apps/Selenium/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+"//src//main//resources//drivers//chromedriver.exe");
         driver = new ChromeDriver();
-        driver.get("file:///C:/Users/eo89116/Desktop/Test Web Page.html");
+        driver.get(System.getProperty("user.dir")+"//TestFiles//Test Web Page.html");
         Thread.sleep(500);
     }
 

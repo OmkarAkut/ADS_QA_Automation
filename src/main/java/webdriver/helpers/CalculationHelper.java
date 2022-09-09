@@ -22,7 +22,8 @@ public class CalculationHelper extends GoHelper {
   private static JavaDataBaseConnectivity jdbc;
   static DataMaintenanceMap dmMap;
   private static ModelLibraryMap modelMap;
-  private static EditContractingModelMap editModelMap;
+  @SuppressWarnings("unused")
+private static EditContractingModelMap editModelMap;
   public String calculationStatusDeleteFirstRowDeleteButtonXpath =
           "//table/tbody/tr[2]/td[21]/div/div/em/button/span[2]";
 
@@ -303,6 +304,9 @@ public class CalculationHelper extends GoHelper {
   }
 
   public void confirmCalculationStatusDetailsContains(String expectedDetail) {
+	 //Shilpa 07.09.2022 added wait for element
+	 
+	 //waitUntilElementIsClickable(driver.findElement(By.xpath("//*[text()='" + expectedDetail + "']")));
     assertThatElementIsDisplayed(driver.findElement(By.xpath("//*[text()='" + expectedDetail + "']")));
   }
 

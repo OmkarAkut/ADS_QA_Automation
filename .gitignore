@@ -4,6 +4,7 @@
 .settings/
 bin/
 tmp/
+Results/
 .metadata
 .classpath
 .project

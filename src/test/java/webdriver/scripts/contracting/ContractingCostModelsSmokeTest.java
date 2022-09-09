@@ -1,15 +1,21 @@
 package webdriver.scripts.contracting;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.util.List;
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.model.Media;
+import ExtentReport.ExtentReport;
 import webdriver.core.Login;
+import webdriver.corehelpers.AssertHelper;
 import webdriver.helpers.ContractModelsHelper;
 import webdriver.maps.EditContractingModelMap;
 import webdriver.maps.mapbuilder.BuildMap;
@@ -17,93 +23,134 @@ import webdriver.maps.mapbuilder.BuildMap;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ContractingCostModelsSmokeTest extends ContractModelsHelper {
 
-  private static EditContractingModelMap editModelMap;
-  private static final String contractModel = "AFT IPPS 2020 - Criteria Text";
-  private static final String serviceModel = "OPPS 2019";
-  private static List<WebElement> costMethods;
+	private static EditContractingModelMap editModelMap;
+	private static final String contractModel = "AFT IPPS 2020 - Criteria Text";
+	private static final String serviceModel = "OPPS 2019";
+	private static final Media Exception = null;
+	private static List<WebElement> costMethods;
 
-  /**
-   * Automates test ticket ADS-1207-General Section. Dev Story ADS-1405.
-   * Verifies text in Criteria box displays proper data for Medicare years 2020 (new ui)
-   * and 2019 and before (previous ui) after changing the year.
-   **/
-  @BeforeClass
-  public static void setupScript() throws Exception {
-    editModelMap = BuildMap.getInstance(driver, EditContractingModelMap.class);
-    System.out.println("Test Class: " + ContractingCostModelsSmokeTest.class.getSimpleName());
-    Login.loginUser("ContractAnalyst1");
-    navigateToContractModelsPageFeeForServicePaymentTermsPage(contractModel);
-    navigateFeeForServicePaymentTermsPagePricingMethodSectionSelectServiceModel(serviceModel);
-  }
+	// static ExtentTest test1 ;
+	// static ExtentReports report=new ExtentReports();
+	/**
+	 * Automates test ticket ADS-1207-General Section. Dev Story ADS-1405. Verifies
+	 * text in Criteria box displays proper data for Medicare years 2020 (new ui)
+	 * and 2019 and before (previous ui) after changing the year.
+	 * @throws Throwable 
+	 **/
+	@BeforeClass
+	public static void setupScript() throws Throwable {
+		//Shilpa 10.08.2022 added report 
+		ExtentReport.reportCreate("ContractingCostModelsSmokeTest", "webdriver.scripts.contracting","ContractingCostModelsSmokeTest");
+		try {
+			editModelMap = BuildMap.getInstance(driver, EditContractingModelMap.class);
+			System.out.println("Test Class: " + ContractingCostModelsSmokeTest.class.getSimpleName());
+			Login.loginUser("ContractAnalyst1");
+			navigateToContractModelsPageFeeForServicePaymentTermsPage(contractModel);
+			navigateFeeForServicePaymentTermsPagePricingMethodSectionSelectServiceModel(serviceModel);
+			ExtentReport.logPass("PASS", "setupScript");
+		} catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "setupScript", driver, e);
+		fail(e.getMessage());
+		}
+	}
 
-  @Test
-  public void test01Verify() throws InterruptedException {
+	@Test
+	public void test01Verify() throws InterruptedException,Throwable {
+		try {
+			waitForAjaxExtJs();
+			// Shilpa : 29.07.2022 updated list and xpath's , exceptions handled
+			String optionUI;
+			waitForPresenceOfElement("//*[@name = 'pricemethodoption']");
+			waitForAjaxExtJs();
+			webdriverClick(driver.findElement(By.name("pricemethodoption")));
+			waitForAjaxExtJs();
+			List<WebElement> costMethods = driver.findElements(By.xpath("//div[@class='x-boundlist-list-ct']/ul/li"));
+			for (int i = 1; i <= costMethods.size(); i++) {
+				Thread.sleep(300);
+				waitForElementToBeVisible(
+						driver.findElement(By.xpath("//div[@class='x-boundlist-list-ct']/ul/li[" + i + "]")));
+				optionUI = driver.findElement(By.xpath("//div[@class='x-boundlist-list-ct']/ul/li[" + i + "]")).getText();
+				if (optionUI.equals("<None>")) {
+					continue;
+				}
+				webdriverClick(driver.findElement(By.xpath("//div[@class='x-boundlist-list-ct']/ul/li[" + i + "]")));
+				Thread.sleep(300);
+				webdriverClick(driver.findElement(By.xpath("//input[@name='pricemethodoption']//following::span[1]")));
+				Thread.sleep(500);
+				System.out.println(optionUI);
 
-    waitForAjaxExtJs();
-    //navigateFeeForServicePaymentTermsPagePricingMethodSectionSelectServiceModel(serviceModel);
-    costMethods = getCostMethodList();
+				waitForElementToBeVisible(driver
+						.findElement(By.xpath("//span[contains(@id, 'header') and contains(text(), '" + optionUI + "')]")));
 
-    for (WebElement costMethod : costMethods) {
-      System.out.println("1Cost Method: " + costMethod.getText());
-      if (costMethod.getText().equals("<None>")) {
-        continue;
-      }
-      System.out.println("2Cost Method: " + costMethod.getText());
-      //waitForPresenceOfElement("//*[@name = 'pricemethodoption']");
-      //webdriverClick(driver.findElement(By.name("pricemethodoption")));
-      //waitForAjaxExtJs();
-      ////costMethod.click();
-      System.out.println("3Cost Method: " + costMethod.getText());
-      //driver.findElement(By.xpath("//*[text()='Edit']")).click();
-      //navigateFeeForServicePaymentTermsPagePricingMethodSectionClickEditButtonToOpenEditDialog();
-      System.out.println("4Cost Method: " + costMethod.getText());
-      assertTrue(driver.findElement(By.xpath("//span[contains(@id, 'header') and contains(text(), '" + costMethod.getText() + "')]")).isDisplayed());
-      driver.findElement(By.xpath("//*[contains(@id, 'feeschedule') and contains(@id, 'header-inner')]/descendant::*[@class = 'x-tool-close']")).click();
-    }
-  }
-    //    setDropdownMenuValue(
-//            driver.findElement(By.name("pricemethodoption")),
-//            driver.findElement(By.xpath("//body/div[18]/div/ul")),
-//            "AP DRG Fee Schedule",
-//            true
-//    );
+				AssertHelper.assertElementIsDisplayed(driver
+						.findElement(By.xpath("//span[contains(@id, 'header') and contains(text(), '" + optionUI + "')]")));
+				try {
+					webdriverClick(driver.findElement(By.xpath(
+							"//*[contains(@id, 'feeschedule') and contains(@id, 'header-inner')]/descendant::*[@class = 'x-tool-close']")));
+					try {
+						if (driver.findElement(By.xpath(
+								"((//div[contains(@id,'messagebox')]//following::div[contains(@class,'x-box-item')]//following::span[contains(@id,'button')][contains(text(),'Cancel & Close')]//parent::button))[1]"))
+								.isDisplayed()) {
+							webdriverClick(driver.findElement(By.xpath(
+									"((//div[contains(@id,'messagebox')]//following::div[contains(@class,'x-box-item')]//following::span[contains(@id,'button')][contains(text(),'Cancel & Close')]//parent::button))[1]")));
+							Thread.sleep(200);
+						}
+					} catch (Exception e) {
+						
+					}
+				} catch (Exception e) {
+					webdriverClick(driver.findElement(
+							By.xpath("(//div[contains(@class,'helplnk')])[2]//following::img[@class='x-tool-close']")));
+					Thread.sleep(200);
+					try {
+						webdriverClick(driver.findElement(By.xpath(
+								"((//div[contains(@id,'messagebox')]//following::div[contains(@class,'x-box-item')]//following::span[contains(@id,'button')][contains(text(),'Cancel & Close')]//parent::button))[1]")));
+						Thread.sleep(300);
+					} catch (Exception e1) {
+						System.out.println("Message not shown!!");
+					}
+				}
+				waitUntilElementIsClickable(driver.findElement(By.name("pricemethodoption")));
+				webdriverClick(driver.findElement(By.name("pricemethodoption")));
+				Thread.sleep(400);
+				waitForAjaxExtJs();
+				ExtentReport.logPass("PASS", "test01Verify");
+			}
+		} catch (Exception|AssertionError e) {
+			ExtentReport.logFail("FAIL", "test01Verify", driver, e);
+			fail(e.getMessage());
+		}
+	}
 
-  private List<WebElement> getCostMethodList() throws InterruptedException {
-    waitForPresenceOfElement("//*[@name = 'pricemethodoption']");
-    waitForAjaxExtJs();
-    webdriverClick(driver.findElement(By.name("pricemethodoption")));
-    waitForAjaxExtJs();
-    WebElement optionsUl;
-    if (driver.findElement(By.xpath("//ul/descendant::li[text()='AP DRG Fee Schedule']/..")) != null) {
-      optionsUl = driver.findElement(By.xpath("//ul/descendant::li[text()='AP DRG Fee Schedule']/.."));
-    } else {
-      optionsUl = driver.findElement(By.xpath("//div[contains(@class,'floating')]/div[contains(@id,'listEl')]/ul"));
-    }
-    return optionsUl.findElements(By.tagName("li"));
-  }
+	public void setDropdownMenuValue(WebElement triggerDropdown, WebElement menuOptionsUl, String value,
+			boolean printout) throws InterruptedException {
+		waitForAjaxExtJs();
+		webdriverClick(triggerDropdown);
+		waitForAjaxExtJs();
+		WebElement optionsUl;
+		if (menuOptionsUl != null) {
+			optionsUl = menuOptionsUl;
+		} else {
+			optionsUl = driver
+					.findElement(By.xpath("//div[contains(@class,'floating')]/div[contains(@id,'listEl')]/ul"));
+		}
+		if (printout) {
+			System.out.println("menuOptionsUl: " + menuOptionsUl);
+		}
+		List<WebElement> options = optionsUl.findElements(By.tagName("li"));
+		for (WebElement option : options) {
+			if (option.getText().equals(value)) {
+				if (printout) {
+					System.out.println("Menu option set to: " + option);
+				}
+				option.click();
+				break;
+			}
+		}
+	}
 
-  public void setDropdownMenuValue(WebElement triggerDropdown, WebElement menuOptionsUl, String value, boolean printout) throws InterruptedException {
-    waitForAjaxExtJs();
-    webdriverClick(triggerDropdown);
-    waitForAjaxExtJs();
-    WebElement optionsUl;
-    if (menuOptionsUl != null) {
-      optionsUl = menuOptionsUl;
-    } else {
-      optionsUl = driver.findElement(By.xpath("//div[contains(@class,'floating')]/div[contains(@id,'listEl')]/ul"));
-    }
-    if (printout) {
-      System.out.println("menuOptionsUl: " + menuOptionsUl);
-    }
-    List<WebElement> options = optionsUl.findElements(By.tagName("li"));
-    for(WebElement option : options) {
-      if(option.getText().equals(value)) {
-        if (printout) {
-          System.out.println("Menu option set to: " + option);
-        }
-        option.click();
-        break;
-      }
-    }
-  }
+	@AfterClass
+	public static void endtest() {
+		ExtentReport.report.flush();
+	}
 }

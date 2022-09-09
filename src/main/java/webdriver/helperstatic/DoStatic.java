@@ -4,9 +4,19 @@ import java.util.List;
 import java.util.Set;
 import org.junit.BeforeClass;
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementClickInterceptedException;
+import org.openqa.selenium.ElementNotInteractableException;
+import org.openqa.selenium.ElementNotVisibleException;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import com.aventstack.extentreports.Status;
+
+import ExtentReport.ExtentReport;
 import webdriver.maps.DataMaintenanceMap;
 import webdriver.maps.ModelLibraryMap;
 import webdriver.maps.mapbuilder.BuildMap;
@@ -114,11 +124,15 @@ public class DoStatic extends GetStatic {
     public void doSearchForModel(String contractModel) throws InterruptedException {
         waitForSpinnerToEnd();
         waitUntilElementIsClickable(modelMap.getModelLibraryFieldSearch());
+        modelMap.getModelLibraryFieldSearch().click();
+      
+        modelMap.getModelLibraryFieldSearch().sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        modelMap.getModelLibraryFieldSearch().clear();;
         modelMap.getModelLibraryFieldSearch().sendKeys(contractModel);
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         modelMap.getModelLibraryButtonSearch().click();
         waitForSpinnerToEnd();
-        Thread.sleep(1000);
+        Thread.sleep(3000);
     }
 
 //    public void doFilter(String[][] filterStatements, WebElement fieldOptionsUl) throws InterruptedException {
@@ -173,12 +187,24 @@ public class DoStatic extends GetStatic {
 
     public static void doClickButton(String buttonText) throws InterruptedException {
         waitForAjaxExtJs();
-        doClick(driver.findElement(By.xpath("//button/span[text()='"+buttonText+"']")));
+        try {
+			doClick(driver.findElement(By.xpath("//button/span[text()='"+buttonText+"']")));
+		} catch (TimeoutException|NoSuchElementException|StaleElementReferenceException e){
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
-    public static void doClick(WebElement element) {
-        waitUntilElementIsClickable(element);
-        element.click();
+    public static void doClick(WebElement element)  {
+        try {
+			waitUntilElementIsClickable(element);
+			element.click();
+		} catch (TimeoutException|NoSuchElementException|StaleElementReferenceException|ElementNotInteractableException e) {
+			ExtentReport.extenttest.log(Status.FAIL, "Element is not clickable : FAIL"+ " "+element);
+
+			ExtentReport.extenttest.log(Status.INFO, e);
+			
+		}
     }
 
     public static void doClick(String elementXpath) throws InterruptedException {
@@ -188,18 +214,23 @@ public class DoStatic extends GetStatic {
     }
 
     public static void doDropdownSelectUsingOptionText(WebElement elementTriggerList, WebElement elementList, String optionText) throws InterruptedException {
-        waitForSpinnerToEnd();
-        waitForAjaxExtJs();
-        doClick(elementTriggerList);
-        waitForSpinnerToEnd();
-        waitForAjaxExtJs();
-        List<WebElement> menu = elementList.findElements(By.tagName("li"));
-        for(WebElement option : menu) {
-            if(option.getText().equals(optionText)) {
-                option.click();
-                break;
-            }
-        }
+        try {
+			waitForSpinnerToEnd();
+			waitForAjaxExtJs();
+			doClick(elementTriggerList);
+			waitForSpinnerToEnd();
+			waitForAjaxExtJs();
+			List<WebElement> menu = elementList.findElements(By.tagName("li"));
+			for(WebElement option : menu) {
+			    if(option.getText().equals(optionText)) {
+			        option.click();
+			        break;
+			    }
+			}
+		} catch (NoSuchElementException e) {
+			ExtentReport.extenttest.log(Status.FAIL, e.getMessage());
+
+		}
       
     }
 

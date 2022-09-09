@@ -47,7 +47,8 @@ public class GeneralElementsMap extends MapConfig {
     @FindBy(xpath = "//*[contains(@src,'Harris_Affinity_Logo.png')]")
     private WebElement globalHeaderLogo;
     public WebElement getGlobalHeaderLogo() {return globalHeaderLogo;}
-    @FindBy(xpath = "//*[contains(@class,'help')]")
+   // @FindBy(xpath = "//*[contains(@class,'help')]")
+    @FindBy(xpath = "//*[contains(@class,'help')]/a")//Shilpa 09.09.2022 updated Xpath
     private WebElement globalHeaderButtonHelp;
     public WebElement getGlobalHeaderButtonHelp() {return globalHeaderButtonHelp;}
     @FindBy(xpath = "//*[contains(@class,'contactUs')]")

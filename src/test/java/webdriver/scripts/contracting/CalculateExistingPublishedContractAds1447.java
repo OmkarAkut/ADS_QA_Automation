@@ -1,11 +1,16 @@
 package webdriver.scripts.contracting;
 
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
+import org.openqa.selenium.By;
+
+import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.helpers.CalculationHelper;
 import webdriver.maps.ModelLibraryMap;
@@ -31,50 +36,87 @@ public class CalculateExistingPublishedContractAds1447 extends CalculationHelper
 
   /** Regression: Automated test script for ADS-1447 */
   @BeforeClass
-  public static void setupScript() throws Exception {
-    modelMap = BuildMap.getInstance(driver, ModelLibraryMap.class);
-    System.out.println("Test Class: " + CalculateExistingPublishedContractAds1447.class.getSimpleName());
-    Login.loginUser("ContractAnalyst1");
-    goToPage("Contract Models");
-    waitForSpinnerToEnd();
-    filterAndSelectContractModelFromContractModelLibrary(modelName);
+  public static void setupScript() throws Exception,Throwable {
+	  ExtentReport.reportCreate("CalculateExistingPublishedContractAds1447", "webdriver.scripts.contracting", "CalculateExistingPublishedContractAds1447");
+    try {
+		modelMap = BuildMap.getInstance(driver, ModelLibraryMap.class);
+		System.out.println("Test Class: " + CalculateExistingPublishedContractAds1447.class.getSimpleName());
+		Login.loginUser("ContractAnalyst1");
+		goToPage("Contract Models");
+		waitForSpinnerToEnd();
+		filterAndSelectContractModelFromContractModelLibrary(modelName);
+		ExtentReport.logPass("PASS", "setupScript");
+	} catch (Exception|AssertionError e) {
+	ExtentReport.logFail("FAIL", "setupScript", driver, e);
+	fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test01RunPublishedContractAndVerifyStatusPageDetailsAfterCompleted() throws InterruptedException {
-    waitForSpinnerToEnd();
-    waitForAjaxExtJs();
-    modelMap.getModelLibraryContractingButtonCalculate().click();
-    waitForCalculationToEnd(90);
-    waitForPresenceOfElement("//div[2]/div/div[4]/div/table/tbody/tr[2]/td[17]/div");  //total records xpath
-    assertTrue(getCalculationStatusMyStatusFirstRowStatusCellText().contains(status));
-    assertTrue(getCalculationStatusMyStatusFirstRowLogStatusCellText().contains(logStatus));
-    assertTrue(getCalculationStatusMyStatusFirstRowRecordsProcessedCellText().contains(recordsProcessed));
-    assertTrue(getCalculationStatusMyStatusFirstRowRecordsPendingCellText().contains(recordsPending));
-    assertTrue(getCalculationStatusMyStatusFirstRowTotalRecordsCellText().contains(totalRecords));
+  public void test01RunPublishedContractAndVerifyStatusPageDetailsAfterCompleted() throws Throwable, InterruptedException {
+    try {
+		waitForSpinnerToEnd();
+		waitForAjaxExtJs();
+		modelMap.getModelLibraryContractingButtonCalculate().click();
+		waitForCalculationToEnd(90);
+		waitForPresenceOfElement("//div[2]/div/div[4]/div/table/tbody/tr[2]/td[17]/div");  //total records xpath
+		assertTrue(getCalculationStatusMyStatusFirstRowStatusCellText().contains(status));
+		assertTrue(getCalculationStatusMyStatusFirstRowLogStatusCellText().contains(logStatus));
+		assertTrue(getCalculationStatusMyStatusFirstRowRecordsProcessedCellText().contains(recordsProcessed));
+		assertTrue(getCalculationStatusMyStatusFirstRowRecordsPendingCellText().contains(recordsPending));
+		assertTrue(getCalculationStatusMyStatusFirstRowTotalRecordsCellText().contains(totalRecords));
+		ExtentReport.logPass("PASS", "test01RunPublishedContractAndVerifyStatusPageDetailsAfterCompleted");
+    	} catch (Exception|AssertionError e) {
+	ExtentReport.logFail("FAIL", "test01RunPublishedContractAndVerifyStatusPageDetailsAfterCompleted", driver, e);
+		fail(e.getMessage());
+    	}
   }
 
   @Test
-  public void test02OpenViewDialogAndAssertTotalEfrs() throws InterruptedException {
-	Thread.sleep(2000);
-    calculationStatusPageOpenViewDialog();
-    waitForPresenceOfElement("//div[4]/div/div/div[2]/div/div/div[4][contains(@id, 'tbtext')]");
-    assertViewLogTitle(expectedLogViewTitle);
-    confirmCalculationStatusDetailsContains(logDetailTotalEfrs);
+  public void test02OpenViewDialogAndAssertTotalEfrs() throws InterruptedException,Throwable {
+	try {
+		Thread.sleep(2000);
+		calculationStatusPageOpenViewDialog();
+		waitForPresenceOfElement("//div[4]/div/div/div[2]/div/div/div[4][contains(@id, 'tbtext')]");
+		assertViewLogTitle(expectedLogViewTitle);
+   waitForAjaxExtJs();//Shilpa 07.09.2022 method added to wait loading
+		confirmCalculationStatusDetailsContains(logDetailTotalEfrs);
+		ExtentReport.logPass("PASS", "test02OpenViewDialogAndAssertTotalEfrs");
+	} catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test02OpenViewDialogAndAssertTotalEfrs", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test03OnLastPageOfViewDialogAssertLogDetails() {
-    clickLastPageIconOnCalculationStatusViewLog();
-    waitForSpinnerToEnd();
-    waitForPresenceOfElement("//*[text() = 'CALCULATION SUMMARY']");
-    confirmCalculationStatusDetailsContains(logViewDetails);
-    closeViewDialog();
+  public void test03OnLastPageOfViewDialogAssertLogDetails() throws Throwable {
+    try {
+		clickLastPageIconOnCalculationStatusViewLog();
+		waitForSpinnerToEnd();
+		waitForPresenceOfElement("//*[text() = 'CALCULATION SUMMARY']");
+		confirmCalculationStatusDetailsContains(logViewDetails);
+		closeViewDialog();
+		ExtentReport.logPass("PADD", "test03OnLastPageOfViewDialogAssertLogDetails");
+	} catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test03OnLastPageOfViewDialogAssertLogDetails", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test04DeleteCalculationStatusPageF() throws InterruptedException {
-    deleteCalculationStatusMyStatusPageFirstRow();
+  public void test04DeleteCalculationStatusPageF() throws InterruptedException,Throwable {
+    try {
+		deleteCalculationStatusMyStatusPageFirstRow();
+		ExtentReport.logPass("PASS", "test03OnLastPageOfViewDialogAssertLogDetails");
+	} catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test03OnLastPageOfViewDialogAssertLogDetails", driver, e);
+		fail(e.getMessage());
+	}
   }
+  @AfterClass
+	public static void endtest() throws Exception {
 
+		ExtentReport.report.flush();
+
+	}
 }

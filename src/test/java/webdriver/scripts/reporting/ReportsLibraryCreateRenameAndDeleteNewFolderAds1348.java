@@ -36,8 +36,6 @@ public class ReportsLibraryCreateRenameAndDeleteNewFolderAds1348 extends LoginSt
     driver.findElement(By.xpath("//div[@role='treeitem']/div[contains(text(),'Folders')]")).click();
     driver.findElement(By.xpath("//div/button[text()='New Folder']")).click();
     driver.findElement(By.xpath("//td[@style='vertical-align: middle;']//div[@class='gwt-TreeItem']//div[@class='gwtQuery-droppable']//img")).click();
-    
-    @SuppressWarnings("unused")
 	Boolean isEnabled = driver.findElement(By.xpath("//div/button[text()='Rename Folder']")).isEnabled();
     Assert.assertTrue("Rename button is enabled", isEnabled);
     //assertElementIsEnabled(driver.findElement(By.xpath("//div/button[text()='Rename Folder']")), printout);

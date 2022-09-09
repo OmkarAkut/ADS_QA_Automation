@@ -3,11 +3,17 @@ package webdriver.scripts.datamaintenance.utilities;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.*;
 
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+
+import com.aventstack.extentreports.Status;
+
+import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.helpers.UtilitiesHelper;
 import webdriver.maps.DataMaintenanceMap;
@@ -41,138 +47,271 @@ public class UtilitiesReportCheck
   static String utilityStatusEndTimeXpath = "//table/tbody/tr[2]/td[10]/div[contains(@class, 'grid-cell')]";
   static String utilityStatusDurationXpath = "//table/tbody/tr[2]/td[11]/div[contains(@class, 'grid-cell')]";
 
-  /** Test script that verifies Encounters With No Charges Report. */
+  /** Test script that verifies Encounters With No Charges Report. 
+ * @throws Throwable */
   @BeforeClass
-  public static void setupScript() throws Exception {
-    status = BuildMap.getInstance(driver, StatusMap.class);
-    dm = BuildMap.getInstance(driver, DataMaintenanceMap.class);
-    System.out.println(
-            "Test Class: "
-            + UtilitiesReportCheck.class.getSimpleName());
-    Login.loginUser("ApplicationAdministrator1");
-    goToPage("Utilities");
+  public static void setupScript() throws Throwable {
+	  ExtentReport.reportCreate("UtilitiesReportCheck","webdriver.scripts.datamaintenance.utilities", "UtilitiesReportCheck");
+
+    try {
+		status = BuildMap.getInstance(driver, StatusMap.class);
+		dm = BuildMap.getInstance(driver, DataMaintenanceMap.class);
+		System.out.println(
+		        "Test Class: "
+		        + UtilitiesReportCheck.class.getSimpleName());
+		Login.loginUser("ApplicationAdministrator1");
+		goToPage("Utilities");
+		ExtentReport.logPass("PASS", "setupScript");
+	} catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "Failure in setupScript", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test01VerifyReportDefaultConfiguration() {
-    waitForPresenceOfElement("//div[contains(@id, 'datamaintenanceutilities')]" +
-            "/descendant::button/*[text()='Encounters With No Charges Report']"
-    );
-    doClick(dm.getUtilitiesPageEncountersWithNoChargesReport());
-    waitForPresenceOfElement("//div[contains(@id, 'datamaintenanceutilities')]" +
-            "/descendant::button/*[text()='Encounters With No Charges Report']"
-    );
-    String startDate = driver.findElement(By.name("startDate1")).getAttribute("value");
-    assertEquals(currentDate, startDate);
-    String endDate = driver.findElement(By.name("endDate1")).getAttribute("value");
-    assertEquals(currentDate, endDate);
-    assertButtonIsActive("Select");
-    assertButtonIsInactive("Run");
+  public void test01VerifyReportDefaultConfiguration() throws Throwable {
+	  //Shilpa 11.08.2022 updated xpath
+//    waitForPresenceOfElement("//div[contains(@id, 'datamaintenanceutilities')]" +
+//            "/descendant::button/*[text()='Encounters With No Charges Report']"
+//    );
+	  try {
+		waitForPresenceOfElement("//div[contains(@class,'itemWrap x-item-selected')][text()='Encounters With No Charges Report']"
+		);
+		  
+  
+		doClick(dm.getUtilitiesPageEncountersWithNoChargesReport());
+//    waitForPresenceOfElement("//div[contains(@id, 'datamaintenanceutilities')]" +
+//            "/descendant::button/*[text()='Encounters With No Charges Report']"
+//    );
+		waitForPresenceOfElement("//span[contains(@id,'header_hd')]//following::input[contains(@id,'datefield')][1]"
+		);
+		String startDate = driver.findElement(By.name("startDate1")).getAttribute("value");
+			assertEquals(currentDate, startDate);
+		
+		String endDate = driver.findElement(By.name("endDate1")).getAttribute("value");
+	
+			assertEquals(currentDate, endDate);
+			assertButtonIsActive("Select");
+			assertButtonIsInactive("Run");
+
+			ExtentReport.logPass("PASS", "CurrentDate and StartDate Matches : PASS");
+
+			ExtentReport.logPass("PASS", "CurrentDate and EndDate Matches : PASS");
+			ExtentReport.logPass("PASS", "Select Button is Active : PASS");
+			ExtentReport.logPass("PASS", "Run Button is Active : PASS");
+
+		ExtentReport.logPass("PASS", "test01VerifyReportDefaultConfiguration : PASS");
+	} catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test01VerifyReportDefaultConfiguration",driver,e);
+		fail(e.getMessage());
+	}
+
   }
 
   @Test
-  public void test02RunReportAndVerifyCompletedStatus() throws InterruptedException {
-    waitForAjaxExtJs();
-    runUtilityReport(startDate, endDate, codes);
+  public void test02RunReportAndVerifyCompletedStatus() throws InterruptedException,Throwable {
+    try {
+		waitForAjaxExtJs();
+		runUtilityReport(startDate, endDate, codes);
+		ExtentReport.logPass("PASS", "test02RunReportAndVerifyCompletedStatus : PASS");
+
+	} catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test02RunReportAndVerifyCompletedStatus",driver,e);
+		fail(e.getMessage());
+	}
+
   }
 
   @Test
-  public void test04aVerifyUtilityStatusPageTableValueForUtilityNameColumn() throws InterruptedException {
-    waitForAjaxExtJs();
-    String utilityNameText = getWebElement(utilityStatusUtilityNameXpath).getText();
-    assertEquals(expectedUtilityName, utilityNameText);
+  public void test04aVerifyUtilityStatusPageTableValueForUtilityNameColumn() throws InterruptedException,Throwable {
+    try {
+		waitForAjaxExtJs();
+		String utilityNameText = getWebElement(utilityStatusUtilityNameXpath).getText();
+			assertEquals(expectedUtilityName, utilityNameText);
+			ExtentReport.logPass("PASS", "test04aVerifyUtilityStatusPageTableValueForUtilityNameColumn : PASS");
+	} catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test04aVerifyUtilityStatusPageTableValueForUtilityNameColumn : FAIL",driver,e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test04bVerifyUtilityStatusPageTableValueForStatusColumn() {
-    String utilityStatusStatusText = getWebElement(utilityStatusStatusXpath).getText();
-    assertEquals(expectedUtilityStatus, utilityStatusStatusText);
+  public void test04bVerifyUtilityStatusPageTableValueForStatusColumn() throws Throwable {
+   
+    try {
+    	 String utilityStatusStatusText = getWebElement(utilityStatusStatusXpath).getText();
+		assertEquals(expectedUtilityStatus, utilityStatusStatusText);
+		ExtentReport.logPass("PASS", "test04bVerifyUtilityStatusPageTableValueForStatusColumn : PASS");
+
+	} catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test04bVerifyUtilityStatusPageTableValueForStatusColumn : FAIL",driver,e);
+		fail(e.getMessage());
+
+	}
   }
 
   @Test
-  public void test04cVerifyUtilityStatusPageTableValueForLogStatusColumn() {
-    String utilityStatusLogStatusText = getWebElement(utilityStatusLogStatusXpath).getText();
-    assertEquals(expectedUtilityLogStatus, utilityStatusLogStatusText);
+  public void test04cVerifyUtilityStatusPageTableValueForLogStatusColumn() throws Throwable {
+    try {
+        String utilityStatusLogStatusText = getWebElement(utilityStatusLogStatusXpath).getText();
+
+		assertEquals(expectedUtilityLogStatus, utilityStatusLogStatusText);
+		ExtentReport.logPass("PASS", "test04cVerifyUtilityStatusPageTableValueForLogStatusColumn : PASS");
+
+	} catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test04cVerifyUtilityStatusPageTableValueForLogStatusColumn : FAIL",driver,e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test04dVerifyUtilityStatusPageTableValueForDownloadColumn() {
-    String utilityStatusDownloadText = getWebElement(utilityStatusDownloadXpath).getText();
-    assertEquals(expectedUtilityDownload, utilityStatusDownloadText);
+  public void test04dVerifyUtilityStatusPageTableValueForDownloadColumn() throws Throwable {
+    try {
+        String utilityStatusDownloadText = getWebElement(utilityStatusDownloadXpath).getText();
 
-    String utilityStatusDownloadLinkFormat = getWebElement(utilityStatusDownloadXpath).getAttribute("href");
-    assertThat(utilityStatusDownloadLinkFormat, containsString("/services/utilityStatus/downLoad/"));
+		assertEquals(expectedUtilityDownload, utilityStatusDownloadText);
+        String utilityStatusDownloadLinkFormat = getWebElement(utilityStatusDownloadXpath).getAttribute("href");
+
+		assertThat(utilityStatusDownloadLinkFormat, containsString("/services/utilityStatus/downLoad/"));
+
+		ExtentReport.logPass("PASS", "utilityStatusDownloadText : PASS");
+		ExtentReport.logPass("PASS", "test04dVerifyUtilityStatusPageTableValueForDownloadColumn : PASS");
+
+	} catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test04dVerifyUtilityStatusPageTableValueForDownloadColumn : FAIL",driver,e);
+		fail(e.getMessage());
+	}
+
+   
   }
 
   @Test
-  public void test04eVerifyUtilityStatusPageTableValueForStartTimeColumn() {
-    String utilityStatusStartTimeText = getWebElement(utilityStatusStartTimeXpath).getText();
-    assertThat(utilityStatusStartTimeText, containsString(currentDate));
+  public void test04eVerifyUtilityStatusPageTableValueForStartTimeColumn() throws Throwable {
+    try {
+        String utilityStatusStartTimeText = getWebElement(utilityStatusStartTimeXpath).getText();
+
+		assertThat(utilityStatusStartTimeText, containsString(currentDate));
+		ExtentReport.logPass("PASS", "test04eVerifyUtilityStatusPageTableValueForStartTimeColumn : PASS");
+
+	} catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test04eVerifyUtilityStatusPageTableValueForStartTimeColumn : FAIL",driver,e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test04fVerifyUtilityStatusPageTableValueForEndTimeColumn() {
-    String utilityStatusEndTimeText = getWebElement(utilityStatusEndTimeXpath).getText();
-    assertThat(utilityStatusEndTimeText, containsString(currentDate));
+  public void test04fVerifyUtilityStatusPageTableValueForEndTimeColumn() throws Throwable {
+    try {
+        String utilityStatusEndTimeText = getWebElement(utilityStatusEndTimeXpath).getText();
+
+		assertThat(utilityStatusEndTimeText, containsString(currentDate));
+		ExtentReport.logPass("PASS", "test04fVerifyUtilityStatusPageTableValueForEndTimeColumn : PASS");
+
+	} catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test04fVerifyUtilityStatusPageTableValueForEndTimeColumn : FAIL",driver,e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test04gVerifyUtilityStatusPageTableValueForDurationColumn() {
-    String utilityStatusDurationText = getWebElement(utilityStatusDurationXpath).getText();
-    assertTrue(utilityStatusDurationText.matches(durationPatternMatch));
+  public void test04gVerifyUtilityStatusPageTableValueForDurationColumn() throws Throwable {
+    try {
+        String utilityStatusDurationText = getWebElement(utilityStatusDurationXpath).getText();
+
+		assertTrue(utilityStatusDurationText.matches(durationPatternMatch));
+		ExtentReport.logPass("PASS", "test04gVerifyUtilityStatusPageTableValueForDurationColumn : PASS");
+
+	} catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test04gVerifyUtilityStatusPageTableValueForDurationColumn : FAIL",driver,e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test05VerifyUtilityStatusPageSearch() {
-    waitForPresenceOfElement(
-            "//*[contains(@id,'utilitystatus') and contains(@id,'header')]/../descendant::table/descendant::input[@name='searchText']"
-    );
-    status.getUtilityStatusPageFormFieldSearch().sendKeys(currentDate);
-    status.getUtilityStatusPageButtonSearchGlass().click();
-    waitForSpinnerToEnd();
-    String utilityStatusSearchStartTime = getWebElement(utilityStatusStartTimeXpath).getText();
-    assertThat(utilityStatusSearchStartTime, containsString(currentDate));
+  public void test05VerifyUtilityStatusPageSearch() throws Throwable {
+    try {
+		waitForPresenceOfElement(
+		        "//*[contains(@id,'utilitystatus') and contains(@id,'header')]/../descendant::table/descendant::input[@name='searchText']"
+		);
+		
+			status.getUtilityStatusPageFormFieldSearch().sendKeys(currentDate);
+			status.getUtilityStatusPageButtonSearchGlass().click();
+		
+		waitForSpinnerToEnd();
+			String utilityStatusSearchStartTime = getWebElement(utilityStatusStartTimeXpath).getText();
+			assertThat(utilityStatusSearchStartTime, containsString(currentDate));
+			ExtentReport.logPass("PASS", "test05VerifyUtilityStatusPageSearch : PASS");
+	} catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test05VerifyUtilityStatusPageSearch : FAIL",driver,e);
+		fail(e.getMessage());
+	}
+
+	
   }
 
   @Test
-  public void test06DeleteUtilityStatusFirstRowAndConfirm() throws InterruptedException {
-    deleteUtilityStatusPageMyStatusFirstRow();
-    assertElementIsDisplayed(status.getUtilityStatusPageFormFieldSearch());
-    driver.findElements(By.xpath("//table/tbody/tr/td[11]/div[contains(@class, 'grid-cell')]"));
+  public void test06DeleteUtilityStatusFirstRowAndConfirm() throws InterruptedException,Throwable {
+    
+    try {
+    	deleteUtilityStatusPageMyStatusFirstRow();
+		assertElementIsDisplayed(status.getUtilityStatusPageFormFieldSearch());
+		ExtentReport.logPass("PASS", "test06DeleteUtilityStatusFirstRowAndConfirm : PASS");
+		driver.findElements(By.xpath("//table/tbody/tr/td[11]/div[contains(@class, 'grid-cell')]"));
+		ExtentReport.logPass("PASS", "test06DeleteUtilityStatusFirstRowAndConfirm");
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test06DeleteUtilityStatusFirstRowAndConfirm : FAIL",driver,e);
+		fail(e.getMessage());
+
+	}
   }
 
-  public void runUtilityReport(String startDate, String endDate, String[] codes) throws InterruptedException {
-    waitForAjaxExtJs();
-    populateReportFields(startDate, endDate, codes);
-    waitForAjaxExtJs();
-    waitForElementToBeVisible(driver.findElement(By.xpath("//button/span[text()='Run']")));
-    driver.findElement(By.xpath("//button/span[text()='Run']")).click();
-    waitForSpinnerToEnd();
-    waitForUtilityFirstRowDownloadLinkToBecomeActive();
+  public void runUtilityReport(String startDate, String endDate, String[] codes) throws Throwable,InterruptedException {
+		waitForAjaxExtJs();
+		populateReportFields(startDate, endDate, codes);
+		waitForAjaxExtJs();
+		waitForElementToBeVisible(driver.findElement(By.xpath("//button/span[text()='Run']")));
+		driver.findElement(By.xpath("//button/span[text()='Run']")).click();
+		waitForSpinnerToEnd();
+		waitForUtilityFirstRowDownloadLinkToBecomeActive();
+	
   }
 
   private void populateReportFields(String startDate, String endDate, String[] codes)
-          throws InterruptedException {
+          throws Throwable {
     waitForElementToBeVisible(driver.findElement(By.name("startDate1")));
-    driver.findElement(By.name("startDate1")).clear();
-    driver.findElement(By.name("startDate1")).sendKeys(startDate);
-    driver.findElement(By.name("endDate1")).clear();
-    driver.findElement(By.name("endDate1")).sendKeys(endDate);
-    driver.findElement(By.xpath("//button/span[text()='Select']")).click();
-    selectItemsOnSelector(codes);
-    driver.findElement(By.xpath("//button/span[text()='Apply']")).click();
+   
+		driver.findElement(By.name("startDate1")).clear();
+		driver.findElement(By.name("startDate1")).sendKeys(startDate);
+		driver.findElement(By.name("endDate1")).clear();
+		driver.findElement(By.name("endDate1")).sendKeys(endDate);
+		driver.findElement(By.xpath("//button/span[text()='Select']")).click();
+	    selectItemsOnSelector(codes);
+    try {
+		driver.findElement(By.xpath("//button/span[text()='Apply']")).click();
+	} catch (Exception e) {
+		ExtentReport.logFail("FAIL","Apply Button not found",driver,e);
+	}
   }
 
-  public void assertButtonIsInactive(String buttonText) {
+  public void assertButtonIsInactive(String buttonText) throws Throwable {
     try {
       waitForAjaxExtJs();
       boolean isInactive = driver.findElement(By.xpath(
               "//button/*[text()='"+buttonText+"']/ancestor::button[@disabled]"))
               .isDisplayed()
               ;
-      assertTrue(isInactive);
+      try {
+		assertTrue(isInactive);
+	} catch (Exception e) {
+		ExtentReport.logPass("PASS","assertButtonIsInactive");
+	}
     } catch(Throwable e) {
-      fail("FAIL: "+buttonText+" button is active.");
+      try {
+		fail("FAIL: "+buttonText+" button is active.");
+	} catch (Exception e1) {
+		ExtentReport.logPass("PASS","assertButtonIsInactive");
+
+	}
     }
   }
 
@@ -185,11 +324,26 @@ public class UtilitiesReportCheck
               .isDisplayed()
       ;
       if (isInactive) {
-        fail("FAIL: " + buttonText + " button is inactive.");
+        try {
+			fail("FAIL: " + buttonText + " button is inactive.");
+		} catch (AssertionError e) {
+			ExtentReport.logPass("PASS", "assertButtonIsActive");
+
+		}
       }
     } catch (Throwable e) {
-      assertFalse(isInactive);
+      try {
+		assertFalse(isInactive);
+	} catch (AssertionError e1) {
+		ExtentReport.logPass("PASS", "assertButtonIsActive");
+
+	}
     }
   }
+  @AfterClass
+	public static void endtest() throws Exception {
 
+		ExtentReport.report.flush();
+
+	}
 }

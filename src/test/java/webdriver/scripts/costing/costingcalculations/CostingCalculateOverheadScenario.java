@@ -2,28 +2,41 @@ package webdriver.scripts.costing.costingcalculations;
 
 import static org.junit.Assert.fail;
 
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+
+import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.helpers.CalculationHelper;
 
 public class CostingCalculateOverheadScenario extends CalculationHelper {
+	JavascriptExecutor executor = (JavascriptExecutor)driver;
 
   @BeforeClass
-    public static void setupScript() throws Exception {
-    System.out.println("Test Class: " + CostingCalculateOverheadScenario.class.getSimpleName());
-    Login.loginUser("AutomationTester1");
-    goToPage("Costing Models");
+    public static void setupScript() throws Exception,Throwable{
+	  ExtentReport.reportCreate("CostingCalculateOverheadScenario", "webdriver.scripts.costing.costingcalculations", "CostingCalculateOverheadScenario");
+    try {
+		System.out.println("Test Class: " + CostingCalculateOverheadScenario.class.getSimpleName());
+		Login.loginUser("AutomationTester1");
+		goToPage("Costing Models");
+		ExtentReport.logPass("PASS", "setupScript");
+	}  catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "Failure in setupScript", driver, e);
+		fail(e.getMessage());
+	}
   }
 
-  @Test 
-    public void testAdsLoginLogout() {
+  @Test
+    public void testAdsLoginLogout() throws Throwable {
     try {
       doSearchForModel("v102 REGRESSION Overhead Model");
       tableDoubleClickCellFirstColumn("v102 REGRESSION Overhead Model");
+      Thread.sleep(2000);
       doClickTreeItem("Allocate Overhead");
-      Thread.sleep(500);
+      Thread.sleep(2000);
       doClickTreeItem("Overhead Model Calculation Scenarios");
       //Omkar (19/7/2022) : value v102 REGRESSION OH Scenario is not found hence changing it to v102 REGRESSION OH Calc Scenario
       //tableDoubleClickCellFirstColumn("v102 REGRESSION OH Scenario");
@@ -53,20 +66,45 @@ public class CostingCalculateOverheadScenario extends CalculationHelper {
 
 
       waitForAjaxExtJs();
-    } catch (Throwable e) {
+      ExtentReport.logPass("PASS", "testAdsLoginLogout");
+    } catch (Exception|AssertionError e) {
+      ExtentReport.logFail("FAIL", "testAdsLoginLogout", driver, e);
       fail(e.getMessage());
+
     }
   }
 
+    //Shilpa 27.07.2022, some wait is added and updated to click element inside frame
   @Test //(Omkar 24/5/22 : Need to review which objectr needs to be clicked in tree in step 2.The test is failing saying that object is not clickable)
-  public void testAssertReportLibrary() throws InterruptedException {
-    goToPage("Report Library");
-    doClickTreeItem("Costing");
-    doClick(driver.findElement(By.xpath("//*[@title='Overhead Received']")));
+  public void testAssertReportLibrary() throws InterruptedException,Throwable {
+    try {
+		goToPage("Report Library");
+waitForSpinnerToEnd();
+		Thread.sleep(9000);
+		doClickTreeItem("Costing");
+		Thread.sleep(3000);
+		executor.executeScript("arguments[0].click();", driver.findElement(By.xpath("//*[@title='Overhead Received']")));
 
-    //enter criteria
-    doClick("//div[@class='gwt-Hyperlink']/a/u[text()='* TB MH FY05 Overhead']");
+//    doClick(driver.findElement(By.xpath("//*[@title='Overhead Received']")));
+
+		//enter criteria
+		//Shilpa: 27.07.2022 , added some wait
+		Thread.sleep(5000);
+		doClick(driver.findElement(By.xpath("//div[@class='gwt-Hyperlink']/a/u[text()='* TB MH FY05 Overhead']")));
+		ExtentReport.logPass("PASS", "testAssertReportLibrary");
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "testAssertReportLibrary", driver, e);
+		fail(e.getMessage());
+	}
+  //  Thread.sleep(4000);
+    //doClick("//div[@class='gwt-Hyperlink']/a/u[text()='* TB MH FY05 Overhead']");
 
 
   }
+  @AfterClass
+	public static void endtest() throws Exception {
+
+		ExtentReport.report.flush();
+
+	}
 }

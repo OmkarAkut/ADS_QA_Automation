@@ -31,7 +31,7 @@ public class CalculationStatusPageSmokeTest extends CalculationHelper {
   final String expectedEstCalcEndTime = currentDate;
   static final String expectedCalcStatus = "Completed";
   static final String expectedLogStatus = "Completed";
-  static final String expectedSharedLocationA = "/PATH/TO/CALC_LOGS_SHARED_DIRECTORY2//eolheiser_" + currentDateForPath;
+  static final String expectedSharedLocationA = "/PATH/TO/CALC_LOGS_SHARED_DIRECTORY2//automationcontraanalyst1_" + currentDateForPath;//Shilpa 29.08.2022 updated name from eolheiser_ to automationcontraanalyst1 
   static final String expectedSharedLocationB = "_v102 REGRESSION OPPS 2020 J Packaging C_V102 REGRESSION 2020 OPPS J Packaging C.zip";
   static final String expectedView = "View";
   static final String expectedDownload = "Download";
@@ -79,6 +79,7 @@ public class CalculationStatusPageSmokeTest extends CalculationHelper {
       confirmCalculationStatusDetailsContains("Total EFRs to be processed: " + numberOfEfrs);
       confirmCalculationStatusDetailsContains("Errors: 0");
       confirmCalculationStatusDetailsContains("Process Completed");
+      Thread.sleep(2000);
     } catch(Throwable e) {
       fail(e.getMessage());
     } finally {

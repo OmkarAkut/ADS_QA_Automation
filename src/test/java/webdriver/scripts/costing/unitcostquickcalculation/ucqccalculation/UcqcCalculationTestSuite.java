@@ -1,0 +1,24 @@
+package webdriver.scripts.costing.unitcostquickcalculation.ucqccalculation;
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+
+@RunWith(Suite.class)
+@Suite.SuiteClasses({
+		CostChangeColumnsPopulateAfterCalculateAds1230.class,
+		LoadingSpinnerDisplaysWhileCalculationIsRunningAds1231.class,
+		QuickCcCostColumnsForEachCostComponentPopulateAfterCalculateAds1229.class,
+		RunCalculationAndAssertTotalChangeColumnCalculatesProperlyAds1278.class,
+		TotalQuickCostColumnPopulatesAfterCalculateDatabaseChecks.class,
+		TotalQuickCostColumnPopulatesAfterCalculateStaticAds1228.class,
+		UcqcCalculateButtonDisabledIfAttemptToCalculateWithUnsavedQuickRvusAds1233.class,
+		UcqcCalculateButtonEnableAndDisableAds1152.class,
+		UcqcCalculateUcqcWithPublishedCmsAds1384.class,
+		UcqcCalculateUcqcWithSixDigitQuickRvusAds1377.class,
+		UcqcCalculationFailsWhenDeptSelectedNoLongerExistsInSelectedCms.class,
+		UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds1378.class,
+		ValidateTotalChangeValueCalculationStaticAds1278.class,
+
+})
+public class UcqcCalculationTestSuite {
+
+}

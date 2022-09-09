@@ -3,11 +3,14 @@ package webdriver.globalscripts.help;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.WebElement;
+
+import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.helpers.PageTestHelper;
 import webdriver.maps.*;
@@ -28,36 +31,44 @@ public class HelpLinksMainPagesAds2524 extends PageTestHelper {
 
   /** Automates ADS-2524. Verifies that the help link on each page of the application links to the
    * user help guide and the appropriate help page in the guide displays correctly.
+ * @throws Throwable 
    */
   @BeforeClass
-  public static void setupScript() throws Exception {
-    analyticsMap = BuildMap.getInstance(driver, AnalyticsMap.class);
-    contractingMap = BuildMap.getInstance(driver, ContractingMap.class);
-    costingMap = BuildMap.getInstance(driver, CostingMap.class);
-    reportingMap = BuildMap.getInstance(driver, ReportingMap.class);
-    statusMap = BuildMap.getInstance(driver, StatusMap.class);
-    sysmaint = BuildMap.getInstance(driver, SystemMaintenanceMap.class);
-    dialogsMap = BuildMap.getInstance(driver, DialogsMap.class);
-    generalElement = BuildMap.getInstance(driver, GeneralElementsMap.class);
-    modelLibrary = BuildMap.getInstance(driver, ModelLibraryMap.class);
-    System.out.println("TEST CLASS: " + HelpLinksMainPagesAds2524.class.getSimpleName());
-    Login.loginUser("ApplicationAdministrator1");
+  public static void setupScript() throws Throwable {
+	  ExtentReport.reportCreate("HelpLinksMainPagesAds2524", "webdriver.globalscripts.help", "HelpLinksMainPagesAds2524");
+    try {
+		analyticsMap = BuildMap.getInstance(driver, AnalyticsMap.class);
+		contractingMap = BuildMap.getInstance(driver, ContractingMap.class);
+		costingMap = BuildMap.getInstance(driver, CostingMap.class);
+		reportingMap = BuildMap.getInstance(driver, ReportingMap.class);
+		statusMap = BuildMap.getInstance(driver, StatusMap.class);
+		sysmaint = BuildMap.getInstance(driver, SystemMaintenanceMap.class);
+		dialogsMap = BuildMap.getInstance(driver, DialogsMap.class);
+		generalElement = BuildMap.getInstance(driver, GeneralElementsMap.class);
+		modelLibrary = BuildMap.getInstance(driver, ModelLibraryMap.class);
+		System.out.println("TEST CLASS: " + HelpLinksMainPagesAds2524.class.getSimpleName());
+		Login.loginUser("ApplicationAdministrator1");
+		ExtentReport.logPass("PASS", "setupScript");
+	} catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "setupScript", driver, e);
+	}
   }
 
 
   @Test
-  public void test01GlobalHeaderPageTest() {
+  public void test01GlobalHeaderPageTest() throws Throwable {
     try {
       //waitForAjaxExtJs();
       testHelpLink(generalElement.getGlobalHeaderButtonHelp(), "Decision Support", printout);
-    } catch (Throwable e) {
-      e.printStackTrace();
+      ExtentReport.logPass("PASS", "test01GlobalHeaderPageTest");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "test01GlobalHeaderPageTest", driver, e);
       fail("Global Header Page Test Failed");
     }
   }
 
   @Test
-  public void test02FilterDialogPageTest() {
+  public void test02FilterDialogPageTest() throws Throwable {
     try {
       goToPage("Users");
       waitForAjaxExtJs();
@@ -70,28 +81,31 @@ public class HelpLinksMainPagesAds2524 extends PageTestHelper {
       testHelpLink(dialogsMap.getFilterDialogHelpLink(), "Filter", printout);
       doClick(dialogsMap.getFilterDialogButtonCancelAndClose());
       doClosePageOnLowerBar("Users");
-    } catch (Throwable e) {
-      e.printStackTrace();
-      fail("Filter Dialog Test Failed - Users Page");
+      ExtentReport.logPass("PASS", "test02FilterDialogPageTest");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "test02FilterDialogPageTest", driver, e);
+    	fail("Filter Dialog Test Failed - Users Page");
     }
   }
 
   @Test
-  public void testStatusTabCalculationStatusPageTest() {
+  public void testStatusTabCalculationStatusPageTest() throws Throwable {
     try {
       goToPage("Calculation Status");
       //waitForAjaxExtJs();
       statusMap.getCalculationStatusPageFormFieldSearch().click();
       testHelpLink(statusMap.getCalculationStatusPageHelpLink(), "Calculation Status", printout);
       doClosePageOnLowerBar("Calculation Status");
-    } catch (Throwable e) {
-      e.printStackTrace();
+      ExtentReport.logPass("PASS", "testStatusTabCalculationStatusPageTest");
+
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "test02FilterDialogPageTest", driver, e);
       fail("Calculation Status Page Test Failed");
     }
   }
 
   @Test
-  public void testStatusTabImportExportStatusPageTest() {
+  public void testStatusTabImportExportStatusPageTest() throws Throwable {
     try {
       goToPage("Import/Export Status");
       //waitForAjaxExtJs();
@@ -99,22 +113,29 @@ public class HelpLinksMainPagesAds2524 extends PageTestHelper {
       testHelpLink(statusMap.getImportExportStatusPageHelpLink(),
           "Import/Export Status", printout);
       doClosePageOnLowerBar("Import/Export Status");
-    } catch (Throwable e) {
+      ExtentReport.logPass("PASS", "testStatusTabImportExportStatusPageTest");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "testStatusTabImportExportStatusPageTest", driver, e);
+
       fail(e.getMessage());
     }
   }
 
   @Test
-  public void testStatusTabUtilityStatusPageTest() {
+  public void testStatusTabUtilityStatusPageTest() throws Throwable {
     try {
       goToPage("Utility Status");
       //waitForAjaxExtJs();
       statusMap.getUtilityStatusPageFormFieldSearch().click();
       testHelpLink(statusMap.getUtilityStatusPageHelpLink(), "Utility Status", printout);
       doClosePageOnLowerBar("Utility Status");
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "testStatusTabUtilityStatusPageTest");
+
+    }catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "testStatusTabUtilityStatusPageTest", driver, e);
+
+        fail(e.getMessage());
+      }
   }
 // The BELOW COMMENTED TESTS are no longer relevant, so leaving them in for historic purposes
 //  @Test
@@ -157,28 +178,35 @@ public class HelpLinksMainPagesAds2524 extends PageTestHelper {
 //  }
 
   @Test
-  public void testReportingTabReportDateMaintenancePageTest() {
+  public void testReportingTabReportDateMaintenancePageTest() throws Throwable {
     try {
       goToPage("Report Date Maintenance");
       //waitForAjaxExtJs();
       testHelpLink(reportingMap.getReportingTabReportDateMaintenancePageHelpLink(), "Report Date Maintenance", printout);
       doClosePageOnLowerBar("Report Date...");
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "testReportingTabReportDateMaintenancePageTest");
+    } catch(Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "testStatusTabUtilityStatusPageTest", driver, e);
+
+        fail(e.getMessage());
+      }
   }
 
   @Test
-  public void testReportingTabReportMenuMaintenancePageTest() {
+  public void testReportingTabReportMenuMaintenancePageTest() throws Throwable {
     try {
       goToPage("Report Menu Maintenance");
       //waitForAjaxExtJs();
       testHelpLink(reportingMap.getReportingTabReportMenuMaintenancePageHelpLink(), "Report Menu Item List", printout);
       //assertTableColumnHeaders(reportingMap.getReportingTabReportMenuMaintenancePageTableCornerCell(), headers.expectedReportingTabReportMenuMaintenancePageTableHeaders, printout);
       doClosePageOnLowerBar("Report Menu...");
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "testReportingTabReportMenuMaintenancePageTest");
+
+    } catch(Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "testReportingTabReportMenuMaintenancePageTest", driver, e);
+
+        fail(e.getMessage());
+      }
   }
 
   //The below test is now obsolete and won't be fixed - so leaving for historic purposes only
@@ -252,92 +280,116 @@ public class HelpLinksMainPagesAds2524 extends PageTestHelper {
 //  }
 
   @Test
-  public void testAnalyticsRefreshScenariosPageTest() {
+  public void testAnalyticsRefreshScenariosPageTest() throws Throwable {
     try {
       goToPage("Analytic Refresh Scenarios");
       //waitForAjaxExtJs();
       testHelpLink(analyticsMap.getAnalyticsRefreshScenariosPageHelpLink(), "Analytics Refresh Scenarios", printout);
       doClosePageOnLowerBar("Analytic Refresh...");
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "testAnalyticsRefreshScenariosPageTest");
+    } catch(Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "testAnalyticsRefreshScenariosPageTest", driver, e);
+
+        fail(e.getMessage());
+      }
   }
 
   @Test
-  public void testContractingTabApcAllocationPageTest() {
+  public void testContractingTabApcAllocationPageTest() throws Throwable {
     try {
       goToPage("APC Allocation");
       //waitForAjaxExtJs();
       testHelpLink(contractingMap.getApcAllocationPageHelpLink(), "Utility Manager", printout);
       doClosePageOnLowerBar("APC Allocation");
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "testContractingTabApcAllocationPageTest");
+
+    } catch(Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "testContractingTabApcAllocationPageTest", driver, e);
+
+        fail(e.getMessage());
+      }
   }
 
   @Test
-  public void testContractingTabContractualAllowanceExportPageTest() {
+  public void testContractingTabContractualAllowanceExportPageTest() throws Throwable {
     try {
       goToPage("Contractual Allowance Export");
       //waitForAjaxExtJs();
       testHelpLink(contractingMap.getContractualAllowanceExportPageHelpLink(), "Contractual Allowances List", printout);
       doClosePageOnLowerBar("Contractual...");
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "testContractingTabContractualAllowanceExportPageTest");
+    } catch(Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "testContractingTabContractualAllowanceExportPageTest", driver, e);
+
+        fail(e.getMessage());
+      }
   }
 
   @Test
-  public void testCostingTabCostingModelsPageTest() {
+  public void testCostingTabCostingModelsPageTest() throws Throwable {
     try {
       goToPage("Costing Models");
       //waitForAjaxExtJs();
       testHelpLink(modelLibrary.getModelLibraryPageHelpLink(), "Model Library", printout);
       doClosePageOnLowerBar("Model Library");
-    } catch (Throwable e) {
+      ExtentReport.logPass("PASS", "testCostingTabCostingModelsPageTest");
+      
+    } catch (Exception|AssertionError e) {
+    ExtentReport.logFail("FAIL", "testCostingTabCostingModelsPageTest", driver, e);
+
       fail("Costing Models page test failed");
     }
   }
 
   @Test
-  public void testCostingTabCostModelScenarioCalculationPageTest() {
+  public void testCostingTabCostModelScenarioCalculationPageTest() throws Throwable {
     try {
       goToPage("Cost Model Scenario Calculation");
       //waitForAjaxExtJs();
       testHelpLink(costingMap.getCostModelScenarioCalculationPageHelpLink(), "Cost Model Calculation Scenario List", printout);
       doClosePageOnLowerBar("Cost Model...");
-    } catch (Throwable e) {
+      ExtentReport.logPass("PASS", "testCostingTabCostModelScenarioCalculationPageTest");
+    } catch (Exception|AssertionError e) {
+        ExtentReport.logFail("FAIL", "testCostingTabCostModelScenarioCalculationPageTest", driver, e);
+
       fail(e.getMessage());
     }
   }
 
   @Test
-  public void testCostingTabRvuMaintenancePageTest() {
+  public void testCostingTabRvuMaintenancePageTest() throws Throwable {
     try {
       goToPage("RVU Maintenance");
       //waitForAjaxExtJs();
       testHelpLink(costingMap.getRvuMaintenancePageHelpLink(), "RVU Maintenance List", printout);
       doClosePageOnLowerBar("RVU Maintenance");
-    } catch (Throwable e) {
+      ExtentReport.logPass("PASS", "testCostingTabRvuMaintenancePageTest");
+
+    } catch (Exception|AssertionError e) {
+        ExtentReport.logFail("FAIL", "testCostingTabRvuMaintenancePageTest", driver, e);
+
       fail(e.getMessage());
     }
   }
 
   @Test
-  public void testCostingTabUnitCostQuickCalculationPageTest() {
+  public void testCostingTabUnitCostQuickCalculationPageTest() throws Throwable {
     try {
       //doMaximizeWindow();
       goToPage("Unit Cost Quick Calculation");
       //waitForAjaxExtJs();
       testHelpLink(costingMap.getUnitCostQuickCalculationPageHelpLink(), "Unit Cost Quick Calculation", printout);
       doClosePageOnLowerBar("Unit Cost Quick...");
-    } catch (Throwable e) {
+      ExtentReport.logPass("PASS", "testCostingTabUnitCostQuickCalculationPageTest");
+    } catch (Exception|AssertionError e) {
+        ExtentReport.logFail("FAIL", "testCostingTabUnitCostQuickCalculationPageTest", driver, e);
+
       fail(e.getMessage());
     }
   }
 
   @Test
-  public void testSystemMaintenanceTabTerminalServerSessionsPageTest() {
+  public void testSystemMaintenanceTabTerminalServerSessionsPageTest() throws Throwable {
     try {
       goToPage("Terminal Server Sessions");
       waitForAjaxExtJs();
@@ -345,13 +397,16 @@ public class HelpLinksMainPagesAds2524 extends PageTestHelper {
       doClick(getPageHeaderPath("Terminal Server Sessions"));
       testHelpLink(sysmaint.getTerminalServerSessionsPageLinkHelp(), "Sessions", printout);
       doClosePageOnLowerBar("Terminal Server...");
-    } catch (Throwable e) {
+      ExtentReport.logPass("PASS", "testSystemMaintenanceTabTerminalServerSessionsPageTest");
+    } catch (Exception|AssertionError e) {
+        ExtentReport.logFail("FAIL", "testSystemMaintenanceTabTerminalServerSessionsPageTest", driver, e);
+
       fail(e.getMessage());
     }
   }
 
   @Test
-  public void testSystemMaintenanceTabCustomizeTaskListsPageTest() {
+  public void testSystemMaintenanceTabCustomizeTaskListsPageTest() throws Throwable {
     try {
       goToPage("Customize Task Lists");
       //waitForAjaxExtJs();
@@ -359,13 +414,17 @@ public class HelpLinksMainPagesAds2524 extends PageTestHelper {
       doClick(getPageHeaderPath("Customize Task Lists"));
       testHelpLink(sysmaint.getCustomizeTaskListsPageLinkHelp(), "Customize Task Lists", printout);
       doClosePageOnLowerBar("Customize Task Lists");
-    } catch (Throwable e) {
+      ExtentReport.logPass("PASS", "testSystemMaintenanceTabCustomizeTaskListsPageTest");
+
+    } catch (Exception|AssertionError e) {
+        ExtentReport.logFail("FAIL", "testSystemMaintenanceTabCustomizeTaskListsPageTest", driver, e);
+
       fail(e.getMessage());
     }
   }
 
   @Test
-  public void testSystemMaintenanceTabCustomizeMaintainDataPageTest() {
+  public void testSystemMaintenanceTabCustomizeMaintainDataPageTest() throws Throwable {
     try {
       goToPage("Customize Maintain Data");
       waitForSpinnerToEnd();
@@ -374,58 +433,80 @@ public class HelpLinksMainPagesAds2524 extends PageTestHelper {
       doClick(getPageHeaderPath("Customize Maintain Data"));
       testHelpLink(sysmaint.getCustomizeMaintainDataPageLinkHelp(),"Customize Maintain Data", printout);
       doClosePageOnLowerBar("Customize Maintain Data");
-    } catch (Throwable e) {
+      ExtentReport.logPass("PASS", "testSystemMaintenanceTabCustomizeMaintainDataPageTest");
+    }  catch (Exception|AssertionError e) {
+        ExtentReport.logFail("FAIL", "testSystemMaintenanceTabCustomizeMaintainDataPageTest", driver, e);
+
       fail(e.getMessage());
     }
   }
 
   @Test
-  public void testSystemMaintenanceTabGeneralSettingsPageTest() {
+  public void testSystemMaintenanceTabGeneralSettingsPageTest() throws Throwable {
     try {
       goToPage("General Settings");
       //waitForAjaxExtJs();
       testHelpLink(sysmaint.getGeneralSettingsPageHelpLink(),"General Settings", printout);
       doClosePageOnLowerBar("General Settings");
-    } catch (Throwable e) {
+      ExtentReport.logPass("PASS", "testSystemMaintenanceTabGeneralSettingsPageTest");
+    }  catch (Exception|AssertionError e) {
+        ExtentReport.logFail("FAIL", "testSystemMaintenanceTabGeneralSettingsPageTest", driver, e);
+
       fail(e.getMessage());
     }
   }
 
   @Test
-  public void testSystemMaintenanceTabSecuritySettingsPageTest() {
+  public void testSystemMaintenanceTabSecuritySettingsPageTest() throws Throwable {
     try {
       goToPage("Security Settings");
       //waitForAjaxExtJs();
       testHelpLink(sysmaint.getSecuritySettingsPageHelpLink(),"Security Settings", printout);
       doClosePageOnLowerBar("Security Settings");
-    } catch (Throwable e) {
+      ExtentReport.logPass("PASS", "testSystemMaintenanceTabSecuritySettingsPageTest");
+    }  catch (Exception|AssertionError e) {
+        ExtentReport.logFail("FAIL", "testSystemMaintenanceTabSecuritySettingsPageTest", driver, e);
+
       fail(e.getMessage());
     }
   }
 
   @Test
-  public void testSystemMaintenanceTabRolesPageTest() {
+  public void testSystemMaintenanceTabRolesPageTest() throws Throwable {
     try {
       goToPage("Roles");
       //waitForAjaxExtJs();
       testHelpLink(sysmaint.getRolesPageHelpLink(),"Role List", printout);
       //assertTableColumnHeaders(sysmaint.getRolesPageTableCornerCell(), headers.expectedSystemMaintenanceTabRolesPageTableHeaders, printout);
       doClosePageOnLowerBar("Roles");
-    } catch (Throwable e) {
+      ExtentReport.logPass("PASS", "testSystemMaintenanceTabRolesPageTest");
+    }  catch (Exception|AssertionError e) {
+        ExtentReport.logFail("FAIL", "testSystemMaintenanceTabRolesPageTest", driver, e);
+
       fail(e.getMessage());
     }
   }
 
   @Test
-  public void testSystemMaintenanceTabUsersPageTest() {
+  public void testSystemMaintenanceTabUsersPageTest() throws Throwable {
     try {
       goToPage("Users");
       //waitForAjaxExtJs();
       testHelpLink(sysmaint.getUsersPageHelpLink(),"User List", printout);
       //assertTableColumnHeaders(sysmaint.getUsersPageTableCornerCell(), headers.expectedSystemMaintenanceTabUsersPageTableHeaders, printout);
       doClosePageOnLowerBar("Users");
-    } catch (Throwable e) {
+      ExtentReport.logPass("PASS", "testSystemMaintenanceTabUsersPageTest");
+    }  catch (Exception|AssertionError e) {
+        ExtentReport.logFail("FAIL", "testSystemMaintenanceTabUsersPageTest", driver, e);
+
       fail(e.getMessage());
     }
   }
+  @AfterClass
+  public static void endtest() throws Exception {
+
+		ExtentReport.report.flush();
+
+	}
+
 }

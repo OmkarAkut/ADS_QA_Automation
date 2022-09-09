@@ -105,7 +105,8 @@ public class JavaListStatic extends JavaStatic {
         ArrayList<String> actualList = new ArrayList<>();
         WebElement optionsContainer = null;
         try {
-            optionsContainer = driver.findElement(By.xpath("//div/div[text()='" + firstOptionText + "']/.."));
+        	//Shilpa 22.08.2022 updated xpath
+            optionsContainer = driver.findElement(By.xpath("//div[text()='" + firstOptionText + "']/.."));
         } catch (Exception e) {
             fail("Options container element not found");
         }
@@ -139,7 +140,7 @@ public class JavaListStatic extends JavaStatic {
                 loop = false;
             } catch (Throwable e) {
                 if (counter < 30) {
-                    Thread.sleep(1000);
+                    Thread.sleep(4000);
                     counter++;
                 } else {
                     fail("Options container element not found");

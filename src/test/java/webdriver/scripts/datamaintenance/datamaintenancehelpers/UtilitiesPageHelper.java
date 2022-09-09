@@ -3,8 +3,15 @@ package webdriver.scripts.datamaintenance.datamaintenancehelpers;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import com.aventstack.extentreports.Status;
+
+import ExtentReport.ExtentReport;
 import org.junit.BeforeClass;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import webdriver.globalstatic.LoginStatic;
 import webdriver.maps.EditContractingModelMap;
@@ -13,93 +20,129 @@ import webdriver.maps.mapbuilder.BuildMap;
 
 public class UtilitiesPageHelper extends LoginStatic {
 
-  private static ModelLibraryMap modelMap;
-  private static EditContractingModelMap editModelMap;
+	private static ModelLibraryMap modelMap;
+	private static EditContractingModelMap editModelMap;
+	JavascriptExecutor jscript = (JavascriptExecutor) driver;
 
-  /** Helper Class for Contract Models pages - individual test scripts should extend this one to use it.
-   */
-  @BeforeClass
-  public static void setupHelper() {
-    modelMap = BuildMap.getInstance(driver, ModelLibraryMap.class);
-    editModelMap = BuildMap.getInstance(driver, EditContractingModelMap.class);
-  }
+	/**
+	 * Helper Class for Contract Models pages - individual test scripts should
+	 * extend this one to use it.
+	 */
+	@BeforeClass
+	public static void setupHelper() {
+		modelMap = BuildMap.getInstance(driver, ModelLibraryMap.class);
+		editModelMap = BuildMap.getInstance(driver, EditContractingModelMap.class);
+	}
 
-  public void runReport(String startDate, String endDate, String[] codes) throws InterruptedException {
-    waitForAjaxExtJs();
-    waitForElementToBeVisible(driver.findElement(By.name("startDate1")));
-    driver.findElement(By.name("startDate1")).clear();
-    driver.findElement(By.name("startDate1")).sendKeys(startDate);
-    driver.findElement(By.name("endDate1")).clear();
-    driver.findElement(By.name("endDate1")).sendKeys(endDate);
-    driver.findElement(By.xpath("//button/span[text()='Select']")).click();
-    selectItemsOnSelector(codes);
-    driver.findElement(By.xpath("//button/span[text()='Apply']")).click();
-    waitForAjaxExtJs();
-    waitForElementToBeVisible(driver.findElement(By.xpath("//button/span[text()='Run']")));
-    driver.findElement(By.xpath("//button/span[text()='Run']")).click();
-    waitForSpinnerToEnd();
-    waitForUtilityFirstRowDownloadLinkToBecomeActive();
-    driver.findElement(
-            By.xpath("//tbody/tr[2]/td/div/a[@class='stLinks' and text()='Download']"))
-            .click();
-    Thread.sleep(5000);
-    deleteUtilityStatusPageMyStatusFirstRow();
-  }
+	public void runReport(String startDate, String endDate, String[] codes) throws InterruptedException {
+		waitForAjaxExtJs();
+		waitForElementToBeVisible(driver.findElement(By.name("startDate1")));
+		// jscript.executeScript("document.getElementsByName('startDate1')[0].value=
+		// 'startDate'");
 
-  public static void failIfHeadless(String browser) {
-   if (browser.toLowerCase().contains("headless")) {
-     fail("Headless browser does not currently support file downloading - run test in regular mode");
-    }
-  }
+		try {
+			driver.findElement(By.name("startDate1")).click();
+			Thread.sleep(200);
+			driver.findElement(By.name("startDate1")).clear();
+			Thread.sleep(200);
+			driver.findElement(By.name("startDate1")).sendKeys(Keys.chord(Keys.CONTROL, "a"));
+			driver.findElement(By.name("startDate1")).sendKeys(startDate);
+			Thread.sleep(200);
+			driver.findElement(By.name("endDate1")).click();
+			driver.findElement(By.name("endDate1")).clear();
+			driver.findElement(By.name("endDate1")).sendKeys(endDate);
+			driver.findElement(By.xpath("//button/span[text()='Select']")).click();
+			selectItemsOnSelector(codes);
+			driver.findElement(By.xpath("//button/span[text()='Apply']")).click();
+		} catch (Exception e) {
+			ExtentReport.extenttest.log(Status.FAIL, "Element not Found");
 
-  public void selectItemsOnSelector(String[] items) throws InterruptedException {
-    waitForSpinnerToEnd();
-    for (String item : items) {
-      driver.findElement(By.xpath("//tr/td/div[text()='" + item +"']")).click();
-      Thread.sleep(500);
-      driver.findElement(By.xpath("//button[not(@disabled)]/span[text()='Select']")).click();
-      waitForSpinnerToEnd();
-    }
-  }
+			ExtentReport.extenttest.log(Status.INFO, e);
+		}
+		waitForAjaxExtJs();
+		waitForElementToBeVisible(driver.findElement(By.xpath("//button/span[text()='Run']")));
+		try {
+			driver.findElement(By.xpath("//button/span[text()='Run']")).click();
+		}catch (Exception e) {
+			ExtentReport.extenttest.log(Status.FAIL, "Element not Found");
 
-  public static void waitForUtilityFirstRowDownloadLinkToBecomeActive() throws InterruptedException {
-    boolean calculate = true;
-    String download;
-    byte counter = 0;
-    while (calculate) {
-      try {
-        driver.findElement(By.xpath("//button/span[text()='Refresh']")).click();
-        waitForSpinnerToEnd();
-        download = driver.findElement(
-                By.xpath("//tbody/tr[2]/td/div/a[@class='stLinks' and text()='Download']"))
-                .getAttribute("class")
-        ;
-        System.out.println("Download: " + download);
-        assertTrue(download.contains("stLinks"));
-        break;
-      } catch (Throwable e) {
-        System.out.println("Utility not complete");
-        Thread.sleep(5000);
-        if (counter == 30) {
-          fail("Utility did not finish in allotted time");
-        }
-        counter++;
-      }
-    }
-    Thread.sleep(1000);
-  }
+			ExtentReport.extenttest.log(Status.INFO, e);
+		}
+		waitForSpinnerToEnd();
+		waitForUtilityFirstRowDownloadLinkToBecomeActive();
+		driver.findElement(By.xpath("//tbody/tr[2]/td/div/a[@class='stLinks' and text()='Download']")).click();
+		Thread.sleep(7000);
+		deleteUtilityStatusPageMyStatusFirstRow();
+	}
 
-  public void deleteUtilityStatusPageMyStatusFirstRow() throws InterruptedException {
-    waitForSpinnerToEnd();
-    waitForAjaxExtJs();
-    Thread.sleep(1000);
-    WebElement firstRowDeleteIcon = driver.findElement(By.xpath("//table/tbody/tr[2]/td[12]/descendant::button/span[@class='x-btn-icon ']"));
-    firstRowDeleteIcon.click();
-    waitForAjaxExtJs();
-    driver.findElement(By.xpath("//div[contains(@class,'windowbtn')]/descendant::button/span[text()='Delete']")).click();
-    waitForSpinnerToEnd();
-    waitForAjaxExtJs();
-  }
+	public static void failIfHeadless(String browser) {
+		if (browser.toLowerCase().contains("headless")) {
+			fail("Headless browser does not currently support file downloading - run test in regular mode");
+		}
+	}
 
+	public void selectItemsOnSelector(String[] items) throws InterruptedException {
+		waitForSpinnerToEnd();
+		for (String item : items) {
+			driver.findElement(By.xpath("//tr/td/div[text()='" + item + "']")).click();
+			Thread.sleep(2000);
+			driver.findElement(By.xpath("//button[not(@disabled)]/span[text()='Select']")).click();
+			waitForSpinnerToEnd();
+			Thread.sleep(900);
+		}
+	}
+
+	public static void waitForUtilityFirstRowDownloadLinkToBecomeActive() throws InterruptedException {
+		boolean calculate = true;
+		String download;
+		byte counter = 0;
+		while (calculate) {
+			try {
+				driver.findElement(By.xpath("//button/span[text()='Refresh']")).click();
+				waitForSpinnerToEnd();
+				download = driver
+						.findElement(By.xpath("//tbody/tr[2]/td/div/a[@class='stLinks' and text()='Download']"))
+						.getAttribute("class");
+				System.out.println("Download: " + download);
+				try {
+					assertTrue(download.contains("stLinks"));
+				} catch (AssertionError e) {
+					ExtentReport.extenttest.log(Status.FAIL, e.getMessage());
+
+					ExtentReport.extenttest.log(Status.INFO, e);
+				}
+				break;
+			} catch (Throwable e) {
+				System.out.println("Utility not complete");
+			//	ExtentReport.extenttest.log(Status.INFO, e);
+				Thread.sleep(5000);
+				if (counter == 30) {
+					try {
+						fail("Utility did not finish in allotted time");
+					} catch (AssertionError e1) {
+						ExtentReport.extenttest.log(Status.FAIL, "Utility did not finish in allotted time");
+
+						ExtentReport.extenttest.log(Status.INFO, e1);
+					}
+				}
+				counter++;
+			}
+		}
+		Thread.sleep(1000);
+	}
+
+	public void deleteUtilityStatusPageMyStatusFirstRow() throws InterruptedException {
+		waitForSpinnerToEnd();
+		waitForAjaxExtJs();
+		Thread.sleep(1000);
+		WebElement firstRowDeleteIcon = driver
+				.findElement(By.xpath("//table/tbody/tr[2]/td[12]/descendant::button/span[@class='x-btn-icon ']"));
+		firstRowDeleteIcon.click();
+		waitForAjaxExtJs();
+		driver.findElement(By.xpath("//div[contains(@class,'windowbtn')]/descendant::button/span[text()='Delete']"))
+				.click();
+		waitForSpinnerToEnd();
+		waitForAjaxExtJs();
+	}
 
 }

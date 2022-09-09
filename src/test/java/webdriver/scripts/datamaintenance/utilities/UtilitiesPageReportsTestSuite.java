@@ -25,6 +25,7 @@ public class UtilitiesPageReportsTestSuite extends SetupStatic {
 
   @BeforeClass
   public static void browserChecker() throws IOException {
+	  
     if ((setBrowser().toLowerCase().contains("headless"))) {
       System.out.println("NOTICE: Headless browser does not currently support file downloading "
               + "- run test in regular mode");

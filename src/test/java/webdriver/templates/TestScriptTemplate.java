@@ -10,14 +10,14 @@ import webdriver.corehelpers.GoHelper;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestScriptTemplate extends GoHelper {
 
-  @BeforeClass
+//  @BeforeClass
   public static void setupScript() throws Exception {
     System.out.println("Test Class: " + TestScriptTemplate.class.getSimpleName());
     System.out.println("Test Class: Test Push Imran");
     Login.loginUser("AutomationTester1");
   }
 
-  @Test
+//  @Test
   public void testAdsLoginLogout() {
     waitForPresenceOfElement("//img[@alt='Harris Affinity Logo']");
     assertThatElementIsDisplayed(getWebElement("//img[@alt='Harris Affinity Logo']"));

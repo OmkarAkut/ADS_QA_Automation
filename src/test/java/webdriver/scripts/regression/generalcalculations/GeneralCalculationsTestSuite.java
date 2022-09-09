@@ -11,8 +11,8 @@ import org.junit.runners.Suite;
         GeneralCalculationsChargeItemServiceClassificationSchemeAds2342.class,
         GeneralCalculationsRunMedicalServiceAssignmentAds2343.class,
         GeneralCalculationsRunPriceListEncounterAssignmentAds2344.class,
-        //GeneralCalculationsRunPriceListCalculationScenarioAds2274.class
-
+        GeneralCalculationsRunPriceListCalculationScenarioAds2274.class,
+        GeneralCalculationsRunContractualAllowancesScenarioAds2163.class,
 })
 
 public class GeneralCalculationsTestSuite {

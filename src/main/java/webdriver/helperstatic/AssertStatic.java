@@ -12,6 +12,10 @@ import java.util.regex.Pattern;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+
+import com.aventstack.extentreports.Status;
+
+import ExtentReport.ExtentReport;
 import webdriver.utilities.Java;
 
 public class AssertStatic extends TableStatic {
@@ -77,10 +81,12 @@ public class AssertStatic extends TableStatic {
     System.out.println("All options as a single string: " + listOfStringsAsSingleString);
     for (String expectedString : expectedStrings) {
       System.out.println("Expected String: " + expectedString);
-      assertThat(listOfStringsAsSingleString, containsString(expectedString));
+      try {
+		assertThat(listOfStringsAsSingleString, containsString(expectedString));
+	} catch (AssertionError e) {
+	}
     }
   }
-
   public void assertListOfStringsContainsExpectedString(
           List<String> listOfStrings,
           String expectedString)

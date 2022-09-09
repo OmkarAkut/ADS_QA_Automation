@@ -38,8 +38,9 @@ public class ReportsLibraryRunCostingReportFromTemplate extends GoHelper {
   }
 
   @Test
-  public void test00VerifyReportTemplatesDirectoryReportsCount() {
+  public void test00VerifyReportTemplatesDirectoryReportsCount() throws Throwable {
     waitForPresenceOfElement(reportsDirectoryXpath("Templates"));
+    driverDelay(5000);//Shilpa 29.08.2022 added
     //assertEquals(expectedTemplatesReportsListSize, getListSize("80/20 Charge Analysis"));
     assertEquals(expectedTemplatesReportsListSize, getReportsListSize());
   }
@@ -69,7 +70,7 @@ public class ReportsLibraryRunCostingReportFromTemplate extends GoHelper {
   public void test04VerifyReportTemplatesFlexibleReportsDirectoryReportsCount() {
     waitForPresenceOfElement(reportsSubDirectoryXpath("Templates", "Flexible Reports"));
     driver.findElement(By.xpath(reportsSubDirectoryXpath("Templates", "Flexible Reports"))).click();
-    assertEquals(expectedFlexibleReportsTemplateReportsListSize, getListSize("Contract Comparison "));
+    assertEquals(expectedFlexibleReportsTemplateReportsListSize, getListSize("Contract Comparison"));//Shilpa 29.08.2022 removed extra space after "Contract Comparison "
   }
 
   @Test

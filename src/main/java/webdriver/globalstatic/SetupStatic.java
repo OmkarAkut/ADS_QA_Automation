@@ -12,10 +12,17 @@ import java.util.Properties;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import com.aventstack.extentreports.Status;
+
+import ExtentReport.ExtentReport;
+
+
+
 //Defines core framework variables, objects, and methods and pulls from driver.properties
 public class SetupStatic {
 
-  public static List dbCredentials;
+  @SuppressWarnings("rawtypes")
+public static List dbCredentials;
 
   public static String releaseVersion = null;
   protected static String testEnvironment;
@@ -31,14 +38,16 @@ public class SetupStatic {
   //Setup test run parameters printout
   protected static String printTestParameters;
   protected static String PRINT_TEST_PARAMETERS = "parameters";
-
   //Setup screen resolution
   //protected static String screenResolution;
   //protected static String SCREEN_RESOLUTION = "resolution";
 
   //Setup savedFilesDirectoryPath
   protected static String savedFilesDirectoryPath;
-  protected static String SAVED_FILES_PATH = "path_to_saved_files_directory";
+  //Shilpa 11.08.2022 updated the path
+  protected static String SAVED_FILES_PATH=System.getProperty("user.home")+ "\\Downloads";;
+
+ // protected static String SAVED_FILES_PATH = "path_to_saved_files_directory";
 
   //Setup properties file
   protected static String PROPERTIES = "driver.properties";
@@ -51,11 +60,25 @@ public class SetupStatic {
   //Establishes properties object and returns browser from driver.properties
   public static String setupSavedFilesDirectoryPath() throws IOException {
     properties.load(Thread.currentThread().getContextClassLoader().getResourceAsStream(PROPERTIES));
+    //Shilpa 11
+    /*
     if (properties.getProperty(SAVED_FILES_PATH) != null) {
       savedFilesDirectoryPath = properties.getProperty(SAVED_FILES_PATH);
     } else {
       fail("Path to Saved Files directory not set in driver.properties");
     }
+    */
+	if (SAVED_FILES_PATH != null) {
+		savedFilesDirectoryPath = SAVED_FILES_PATH;
+	} else {
+		try {
+			fail("Path to Saved Files directory not set in driver.properties");
+		} catch (AssertionError e) {
+			ExtentReport.extenttest.log(Status.FAIL, "Path to Saved Files directory not set in driver.properties : FAIL");
+
+			ExtentReport.extenttest.log(Status.INFO, e);
+		}
+	}
     return savedFilesDirectoryPath;
   }
 
@@ -175,17 +198,26 @@ public class SetupStatic {
     return url;
   }
 
-  public static List<String> setupDb(String testEnvironment) {
+  @SuppressWarnings("unchecked")
+public static List<String> setupDb(String testEnvironment) {
     String dbUrl;
     if (testEnvironment.equals("evolve")) {
-      dbUrl = "jdbc:oracle:thin:@192.168.210.100:1543:qacurr1";
+      dbUrl = "jdbc:oracle:thin:@10.204.20.101:1522:qacurr1";
     } else if (testEnvironment.equals("echelon")) {
       dbUrl = "jdbc:oracle:thin:@192.168.210.100:1623:echelon";
+      System.out.println(dbUrl);
     } else if (testEnvironment.equals("appsupport")) {
       dbUrl = "jdbc:oracle:thin:@192.168.210.100:1623:echelon"; //"jdbc:oracle:thin:@192.168.210.100:1540:qav8";
   }
+    else if (testEnvironment.equals("qa3")) {
+        dbUrl = "jdbc:oracle:thin:@10.204.20.101:1522:qacurr1"; //"jdbc:oracle:thin:@192.168.210.100:1540:qav8";
+      	System.out.println(dbUrl);
+
+    }
     else {
       dbUrl = "jdbc:oracle:thin:@192.168.210.100:1525:qaauto";
+  	System.out.println(dbUrl);
+
     }
     dbCredentials = Arrays.asList(
             dbUrl,

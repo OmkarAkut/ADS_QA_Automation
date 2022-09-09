@@ -3,16 +3,21 @@ package webdriver.globalscripts.securitytests;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+
+import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebElement;
+
+import ExtentReport.ExtentReport;
 import webdriver.globalstatic.LoginRolesTesting;
 import webdriver.maps.GeneralElementsMap;
 import webdriver.maps.mapbuilder.BuildMap;
@@ -30,7 +35,7 @@ public class SecurityRolesTestMainPageLevelStatic extends LoginRolesTesting {
   boolean printout = false;
   GeneralElementsMap generalElement;
   private String userRole;
-
+ 
   public SecurityRolesTestMainPageLevelStatic(Roles role) throws Exception {
     super(role);
     System.out.println("Role in constructor: " + role);
@@ -38,23 +43,36 @@ public class SecurityRolesTestMainPageLevelStatic extends LoginRolesTesting {
   }
 
   @Before
-  public void setupScript() {
-    generalElement = BuildMap.getInstance(driver, GeneralElementsMap.class);
+  public void setupScript() throws Exception,Throwable {
+	  	ExtentReport.reportCreate("SecurityRolesTestMainPageLevelStatic", "webdriver.globalscripts.securitytests", "SecurityRolesTestMainPageLevelStatic");
+	     try {
+			generalElement = BuildMap.getInstance(driver, GeneralElementsMap.class);
+			ExtentReport.logPass("PASS", "setupScript");
+	     } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "setupScript", driver, e);
+		fail(e.getMessage());
+		}
   }
 
   @Test
-  public void testSecurityRolesTest() throws InterruptedException {
-    System.out.println("Testing User Role: " + userRole);
-    testMainTabs();
-    testAnalyticsTab();
-    testReportingTab();
-    testCostingTab();
-    testContractingTab();
-    testEpisodesTab();
-    testBudgetingTab();
-    testDataMaintenanceTab();
-    testSystemMaintenanceTab();
-    testStatusTab();
+  public void testSecurityRolesTest() throws InterruptedException,Throwable {
+    try {
+		System.out.println("Testing User Role: " + userRole);
+		testMainTabs();
+		testAnalyticsTab();
+		testReportingTab();
+		testCostingTab();
+		testContractingTab();
+		testEpisodesTab();
+		testBudgetingTab();
+		testDataMaintenanceTab();
+		testSystemMaintenanceTab();
+		testStatusTab();
+		ExtentReport.logPass("PASS", "testSecurityRolesTest");
+	} catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "testSecurityRolesTest", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   //TO RUN SELECTIVELY, comment out the roles to ignore below
@@ -107,6 +125,7 @@ public class SecurityRolesTestMainPageLevelStatic extends LoginRolesTesting {
     };
     List<Integer> roleExpectedPages = new ArrayList<>(Arrays.asList(SecurityRolesTestDataSets.setExpectedTabResult(userRole)));
     assertPagesRolesTest(roleExpectedPages, mainTabs, userRole, "Main Tabs", printout);
+   
   }
 
   public void testStatusTab() throws InterruptedException {
@@ -380,6 +399,12 @@ public class SecurityRolesTestMainPageLevelStatic extends LoginRolesTesting {
     assertThat(actualList, equalTo(expectedList));
   }
 
+  @AfterClass
+	public static void endtest() throws Exception {
+
+		ExtentReport.report.flush();
+
+	}
 //  public void assertPagesRolesTest(List expectedList, WebElement[] elements, String userRole, boolean printout) throws InterruptedException {
 //    ArrayList<Integer> actualList = new ArrayList<>();  //create actual list object
 //    waitForAjaxExtJs();
@@ -534,3 +559,4 @@ public class SecurityRolesTestMainPageLevelStatic extends LoginRolesTesting {
 //    };
 //    assertElementsAreDisplayed(landingPageAnalyticsElements,printout);
 //  }
+

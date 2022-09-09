@@ -4,7 +4,6 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import webdriver.helperstatic.AssertStatic;
 import webdriver.helperstatic.CalculationsHelper;
 
 public class BeforeAfterStatic extends CalculationsHelper {

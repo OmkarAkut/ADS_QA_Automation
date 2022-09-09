@@ -2,7 +2,7 @@ package webdriver.core;
 
 import static org.junit.Assert.*;
 import static webdriver.helperstatic.WaitStatic.waitForSpinnerToEnd;
-
+//import java.lang.Enum;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;

@@ -3,7 +3,6 @@ package webdriver.corehelpers;
 import static org.junit.Assert.fail;
 
 import java.time.Duration;
-
 import junit.framework.TestCase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -127,11 +126,18 @@ public class WaitHelper extends JavaHelper {
 
 	public static void waitForDisplayedSpinnerToEnd() {
 		boolean spinner = true;
+		int count=0;
 		while(spinner){
 			try {
 				spinner = driver.findElement(By.xpath("//div[not(contains(@style, 'display: none'))]/div[contains(text(),'Loading...')]")).isDisplayed();
 				if (spinner) {
+					
+					count++;
+					if(count==10) {
+						break;
+					}
 					continue;
+					
 				} else {
 					break;
 				}
@@ -145,8 +151,10 @@ public class WaitHelper extends JavaHelper {
 	public static void waitForElementToBeVisible(WebElement element){
 		//Edited by Omkar on 22/6/22 as the old wait is depreciated
 		//WebDriverWait wait = new WebDriverWait(driver, 30);
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30,0));
-		wait.until(ExpectedConditions.visibilityOf(element));
+
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30,0));
+			wait.until(ExpectedConditions.visibilityOf(element));
+
 	}
 
 	/** Uses WebDriverWait ExpectedConditions.elementToBeClickable but does not click. Timeout is 30s. */
@@ -192,8 +200,11 @@ public class WaitHelper extends JavaHelper {
 	/**  */
 	public static void waitForPresenceOfElement(String xpath) {
 		//WebDriverWait wait = new WebDriverWait(driver, 30);
-		WebDriverWait webdriverWait = new WebDriverWait(driver, Duration.ofSeconds(30,0));;
-		webdriverWait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(""+xpath+"")));
+		
+			WebDriverWait webdriverWait = new WebDriverWait(driver, Duration.ofSeconds(30,0));;
+			webdriverWait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(""+xpath+"")));
+			
+
 	}
 
 	public static void waitForPresenceOfElementText(String text) {

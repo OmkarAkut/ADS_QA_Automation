@@ -5,13 +5,19 @@ import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+
+import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.helpers.UcqcHelper;
 import webdriver.maps.CostingMap;
@@ -33,42 +39,53 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
    ADS-1390 (Dev Story ADS-740) - Updated 7/11/19 to include additional steps.
    This script confirms the ability to open the Select Columns popup when you click Select for Columns to Display
    as well as being able to view a subset of columns once the selection is applied
+ * @throws Throwable 
    */
   @BeforeClass
-  public static void setupScript() throws Exception {
-    selectColumn = BuildMap.getInstance(driver, CostingMap.class);
-    System.out.println("Test Class: " + LoadingSpinnerDisplaysWhileCalculationIsRunningAds1231.class.getSimpleName());
-    Login.loginUser("CostingDepartmentManager1");
-    doMaximizeWindow();
-    goToPage("Unit Cost Quick Calculation");
-    waitForAjaxExtJs();
+  public static void setupScript() throws Throwable {
+	  ExtentReport.reportCreate("SelectColumnsPopupForColumnsToDisplayAds1083", "webdriver.scripts.costing.unitcostquickcalculation.ucqcmainpage", "SelectColumnsPopupForColumnsToDisplayAds1083");
+    try {
+		selectColumn = BuildMap.getInstance(driver, CostingMap.class);
+		System.out.println("Test Class: " + LoadingSpinnerDisplaysWhileCalculationIsRunningAds1231.class.getSimpleName());
+		Login.loginUser("CostingDepartmentManager1");
+		doMaximizeWindow();
+		goToPage("Unit Cost Quick Calculation");
+		waitForAjaxExtJs();
+	} catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "Failure in setupScript", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test01OnPageLoadAssertColumnToDisplayAllCheckBoxCheckedDisabledAndSelectButtonDisabled() {
+  public void test01OnPageLoadAssertColumnToDisplayAllCheckBoxCheckedDisabledAndSelectButtonDisabled() throws Throwable {
     try {
       assertElementIsDisabled(selectColumn.getUnitCostQuickCalculationButtonColumnsToDisplaySelect(),printout);
       assertColumnsToDisplayAllCheckBoxIsDisabled();
       assertColumnsToDisplayAllCheckBoxIsChecked();
-    } catch (Throwable e) {
+      ExtentReport.logPass("PASS", "test01OnPageLoadAssertColumnToDisplayAllCheckBoxCheckedDisabledAndSelectButtonDisabled");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "test01OnPageLoadAssertColumnToDisplayAllCheckBoxCheckedDisabledAndSelectButtonDisabled", driver, e);
       fail(e.getMessage());
     }
   }
 
   @Test
-  public void test02SetCostModelAndAssertSelectButtonEnabledWhenAllIsUnchecked() {
+  public void test02SetCostModelAndAssertSelectButtonEnabledWhenAllIsUnchecked() throws Throwable {
     try {
       doDropdownSelectUsingOptionText(selectColumn.getUnitCostQuickCalculationDropdownCostModel(),selectColumn.getUnitCostQuickCalculationDropdownCostModelMenuList(),"Marina");
       doClick(selectColumn.getUnitCostQuickCalculationCheckBoxColumnsToDisplayAll());
       assertColumnsToDisplayAllCheckBoxIsNotChecked();
       assertElementIsEnabled(selectColumn.getUnitCostQuickCalculationButtonColumnsToDisplaySelect(),printout);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test02SetCostModelAndAssertSelectButtonEnabledWhenAllIsUnchecked");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "test02SetCostModelAndAssertSelectButtonEnabledWhenAllIsUnchecked", driver, e);
+        fail(e.getMessage());
+      }
   }
 
   @Test
-  public void test03OpenSelectColumnsModalAssertAvailableColumnsIsEmptyAndRespectiveButtonsAreEnabledDisabled() {
+  public void test03OpenSelectColumnsModalAssertAvailableColumnsIsEmptyAndRespectiveButtonsAreEnabledDisabled() throws Throwable {
     try {
       doClick(selectColumn.getUnitCostQuickCalculationButtonColumnsToDisplaySelect());
       waitForAjaxExtJs();
@@ -76,14 +93,18 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
       assertElementIsDisabled(selectColumn.getUnitCostQuickCalculationButtonColumnsToDisplayModalRemove(),printout);
       assertElementIsDisabled(selectColumn.getUnitCostQuickCalculationButtonColumnsToDisplayModalSelect(),printout);
       assertElementIsEnabled(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalApply(),printout);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test03OpenSelectColumnsModalAssertAvailableColumnsIsEmptyAndRespectiveButtonsAreEnabledDisabled");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "test03OpenSelectColumnsModalAssertAvailableColumnsIsEmptyAndRespectiveButtonsAreEnabledDisabled", driver, e);
+        fail(e.getMessage());
+      }
   }
 
   @Test
-  public void test04AssertColumnsInAvailableBoxAreStillAppliedIfSelectButtonIsClickedASubsequentTime() {
+  public void test04AssertColumnsInAvailableBoxAreStillAppliedIfSelectButtonIsClickedASubsequentTime() throws Throwable {
     try {
+    	
+    
       highlightColumnsToDisplayColumn("Charge Code Name");
       assertColumnsToDisplayColumnIsSelected();
       doClick(selectColumn.getUnitCostQuickCalculationButtonColumnsToDisplayModalRemove());
@@ -91,13 +112,16 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
       waitForAjaxExtJs();
       doClick(selectColumn.getUnitCostQuickCalculationButtonColumnsToDisplaySelect());
       assertAvailableColumnIsNotEmpty();
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "highlightColumnsToDisplayColumn");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "highlightColumnsToDisplayColumn", driver, e);
+        fail(e.getMessage());
+      }
+   
   }
-
+  
   @Test
-  public void test05AssertAvailableBoxIsEmptyIfAllCheckboxIsReChecked() {
+  public void test05AssertAvailableBoxIsEmptyIfAllCheckboxIsReChecked() throws Throwable {
     try {
       doClick(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalCancel());
       waitForAjaxExtJs();
@@ -105,224 +129,266 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
       waitForAjaxExtJs();
       doClick(selectColumn.getUnitCostQuickCalculationCheckBoxColumnsToDisplayAll());
       doClick(selectColumn.getUnitCostQuickCalculationButtonColumnsToDisplaySelect());
+      Thread.sleep(1000);
       assertAvailableColumnIsEmpty();
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test05AssertAvailableBoxIsEmptyIfAllCheckboxIsReChecked");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "test05AssertAvailableBoxIsEmptyIfAllCheckboxIsReChecked", driver, e);
+        fail(e.getMessage());
+      }
   }
 
   @Test
-  public void test06AssertChargeCodeIsNotInTheSelector() {
+  public void test06AssertChargeCodeIsNotInTheSelector() throws Throwable {
     try {
       assertColumnsToDisplayColumn("Charge Code");
       waitForAjaxExtJs();
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test06AssertChargeCodeIsNotInTheSelector");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "test06AssertChargeCodeIsNotInTheSelector", driver, e);
+        fail(e.getMessage());
+      }
   }
 
   @Test
-  public void test07AssertColumnOrder() {
+  public void test07AssertColumnOrder() throws Throwable {
     try {
       assertColumnsToDisplayColumnOrder();
       waitForAjaxExtJs();
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test07AssertColumnOrder");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "test07AssertColumnOrder", driver, e);
+        fail(e.getMessage());
+      }
   }
 
   @Test
-  public void test08AssertCostComponentOrder() {
+  public void test08AssertCostComponentOrder() throws Throwable {
     try {
       assertFiveColumnsForEachCostComponent();
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test08AssertCostComponentOrder");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "test08AssertCostComponentOrder", driver, e);
+        fail(e.getMessage());
+      }
   }
 
   @Test
-  public void test09HighlightColumnInSelectBoxAndAssertRemoveButtonIsEnabled() {
+  public void test09HighlightColumnInSelectBoxAndAssertRemoveButtonIsEnabled() throws Throwable {
     try {
       highlightColumnsToDisplayColumn("Charge Code Name");
       waitForAjaxExtJs();
       assertElementIsEnabled(selectColumn.getUnitCostQuickCalculationButtonColumnsToDisplayModalRemove(),printout);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test09HighlightColumnInSelectBoxAndAssertRemoveButtonIsEnabled");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "test09HighlightColumnInSelectBoxAndAssertRemoveButtonIsEnabled", driver, e);
+        fail(e.getMessage());
+      }
   }
 
   @Test
-  public void test10AssertColumnIsHighlighted() {
+  public void test10AssertColumnIsHighlighted() throws Throwable {
     try {
       assertColumnsToDisplayColumnIsSelected();
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test10AssertColumnIsHighlighted");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "test10AssertColumnIsHighlighted", driver, e);
+        fail(e.getMessage());
+      }
   }
 
   @Test
-  public void test11MoveColumnsFromSelectBoxToAvailableBoxAndAssertAvailableBoxIsNotEmpty() {
+  public void test11MoveColumnsFromSelectBoxToAvailableBoxAndAssertAvailableBoxIsNotEmpty() throws Throwable {
     try {
       highlightColumnsToDisplayColumn("Charge Code Name");
       assertColumnsToDisplayColumnIsSelected();
       doClick(selectColumn.getUnitCostQuickCalculationButtonColumnsToDisplayModalRemove());
       waitForAjaxExtJs();
       assertAvailableColumnIsNotEmpty();
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test11MoveColumnsFromSelectBoxToAvailableBoxAndAssertAvailableBoxIsNotEmpty");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "test11MoveColumnsFromSelectBoxToAvailableBoxAndAssertAvailableBoxIsNotEmpty", driver, e);
+        fail(e.getMessage());
+      }
   }
 
   @Test
-  public void test12CompareAvailableBoxToSelectedBoxAndAssertCancelButtonIsEnabled() {
+  public void test12CompareAvailableBoxToSelectedBoxAndAssertCancelButtonIsEnabled() throws Throwable {
     try {
       compareAvailableColumnToSelectedColumn();
       assertElementIsEnabled(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalCancel(),printout);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test12CompareAvailableBoxToSelectedBoxAndAssertCancelButtonIsEnabled");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "test12CompareAvailableBoxToSelectedBoxAndAssertCancelButtonIsEnabled", driver, e);
+        fail(e.getMessage());
+      }
   }
 
   @Test
-  public void test13AssertSelectButtonDisabledIfNoColumnHighlightedInAvailableBox() {
+  public void test13AssertSelectButtonDisabledIfNoColumnHighlightedInAvailableBox() throws Throwable {
     try {
       assertElementIsDisabled(selectColumn.getUnitCostQuickCalculationButtonColumnsToDisplayModalSelect(),printout);
       assertElementIsEnabled(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalCancel(),printout);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test13AssertSelectButtonDisabledIfNoColumnHighlightedInAvailableBox");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "test13AssertSelectButtonDisabledIfNoColumnHighlightedInAvailableBox", driver, e);
+        fail(e.getMessage());
+      }
   }
 
   @Test
-  public void test14ConfirmColumnsCanBeHighlightedInAvailableAndSelectedBoxesAndAssertRemoveSelctonCancelButtonsEnabled() {
+  public void test14ConfirmColumnsCanBeHighlightedInAvailableAndSelectedBoxesAndAssertRemoveSelctonCancelButtonsEnabled() throws Throwable {
     try {
       highlightColumnsToDisplayColumn("Charge Code Name");
       highlightColumnsToDisplayColumn("Modifier");
       assertElementIsEnabled(selectColumn.getUnitCostQuickCalculationButtonColumnsToDisplayModalRemove(),printout);
       assertElementIsEnabled(selectColumn.getUnitCostQuickCalculationButtonColumnsToDisplayModalSelect(),printout);
       assertElementIsEnabled(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalCancel(),printout);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test14ConfirmColumnsCanBeHighlightedInAvailableAndSelectedBoxesAndAssertRemoveSelctonCancelButtonsEnabled");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "test14ConfirmColumnsCanBeHighlightedInAvailableAndSelectedBoxesAndAssertRemoveSelctonCancelButtonsEnabled", driver, e);
+        fail(e.getMessage());
+      }
   }
 
   @Test
-  public void test15RemoveAllColumnsFromSelectedBoxAndAssertApplyButtonIsDisabled() {
+  public void test15RemoveAllColumnsFromSelectedBoxAndAssertApplyButtonIsDisabled() throws Throwable {
     try {
       removeAllColumnsToDisplayColumns();
       assertElementIsDisabled(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalApply(),printout);
       assertElementIsEnabled(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalCancel(),printout);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test15RemoveAllColumnsFromSelectedBoxAndAssertApplyButtonIsDisabled");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "test15RemoveAllColumnsFromSelectedBoxAndAssertApplyButtonIsDisabled", driver, e);
+        fail(e.getMessage());
+      }
   }
 
   @Test
-  public void test16AssertApplyButtonDisabledWhenNoQuickRvusAreSelected() {
+  public void test16AssertApplyButtonDisabledWhenNoQuickRvusAreSelected() throws Throwable {
     try {
       selectMultipleColumnsToDisplay(columnHeaderSubset);
       assertElementIsDisabled(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalApply(),printout);
       assertElementIsEnabled(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalCancel(),printout);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test16AssertApplyButtonDisabledWhenNoQuickRvusAreSelected");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "test16AssertApplyButtonDisabledWhenNoQuickRvusAreSelected", driver, e);
+        fail(e.getMessage());
+      }
   }
 
   @Test
-  public void test17AssertApplyButtonDisabledWhenOnlyChargeCodeNameIsSelected() {
+  public void test17AssertApplyButtonDisabledWhenOnlyChargeCodeNameIsSelected() throws Throwable {
     try {
       removeMultipleColumnsToDisplay(columnsChargeCodeNameOnly);
       assertElementIsDisabled(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalApply(),printout);
       assertElementIsEnabled(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalCancel(),printout);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test17AssertApplyButtonDisabledWhenOnlyChargeCodeNameIsSelected");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "test17AssertApplyButtonDisabledWhenOnlyChargeCodeNameIsSelected", driver, e);
+        fail(e.getMessage());
+      }
   }
 
   @Test
-  public void test18AssertApplyButtonDisabledWhenOnlyModifierSelected() {
+  public void test18AssertApplyButtonDisabledWhenOnlyModifierSelected() throws Throwable {
     try {
       highlightColumnsToDisplayColumn("Modifier");
       assertElementIsDisabled(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalApply(),printout);
       assertElementIsEnabled(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalCancel(),printout);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test18AssertApplyButtonDisabledWhenOnlyModifierSelected");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "test18AssertApplyButtonDisabledWhenOnlyModifierSelected", driver, e);
+        fail(e.getMessage());
+      }
   }
 
   @Test
-  public void test19AssertSelectedColumnMovesFromAvailableBoxToSelectedBox() {
+  public void test19AssertSelectedColumnMovesFromAvailableBoxToSelectedBox() throws Throwable {
     try {
       highlightColumnsToDisplayColumn("Salaries and Wages RVU");
       doClick(selectColumn.getUnitCostQuickCalculationButtonColumnsToDisplayModalSelect());
       getSelectedColumnList();
       assertIfColumnIsInAvailableOrSelectedBox("Salaries and Wages RVU");
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test19AssertSelectedColumnMovesFromAvailableBoxToSelectedBox");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "test19AssertSelectedColumnMovesFromAvailableBoxToSelectedBox", driver, e);
+        fail(e.getMessage());
+      }
   }
 
   @Test
-  public void test20AssertApplyButtonDisabledWhenChargeCodeNameAndModifierSelected() {
+  public void test20AssertApplyButtonDisabledWhenChargeCodeNameAndModifierSelected() throws Throwable {
     try {
+    driver.manage().window().maximize();
       removeAllColumnsToDisplayColumns(); //redo to just remove only the Selected items, not all of them
       selectMultipleColumnsToDisplay(columns);
       assertElementIsDisabled(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalApply(),printout);
       assertElementIsEnabled(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalCancel(),printout);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test20AssertApplyButtonDisabledWhenChargeCodeNameAndModifierSelected");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "test20AssertApplyButtonDisabledWhenChargeCodeNameAndModifierSelected", driver, e);
+        fail(e.getMessage());
+      }
   }
 
   @Test
-  public void test21AssertApplyButtonIsEnabledWhenAtLeastOneQuickRvuColumnIsMovedToSelectedSide() {
+  public void test21AssertApplyButtonIsEnabledWhenAtLeastOneQuickRvuColumnIsMovedToSelectedSide() throws Throwable {
     try {
       highlightColumnsToDisplayColumn("Quick Salaries and Wages RVU");
       doClick(selectColumn.getUnitCostQuickCalculationButtonColumnsToDisplayModalSelect());
       assertElementIsEnabled(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalApply(),printout);
       assertElementIsEnabled(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalCancel(),printout);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test21AssertApplyButtonIsEnabledWhenAtLeastOneQuickRvuColumnIsMovedToSelectedSide");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "test21AssertApplyButtonIsEnabledWhenAtLeastOneQuickRvuColumnIsMovedToSelectedSide", driver, e);
+        fail(e.getMessage());
+      }
   }
 
   @Test
-  public void test22AssertApplyButtonEnabledWhenAllColumnsMovedToSelectedSide() {
+  public void test22AssertApplyButtonEnabledWhenAllColumnsMovedToSelectedSide() throws Throwable {
     try {
       selectAllColumnsToDisplayColumns();
       assertElementIsEnabled(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalApply(),printout);
       assertElementIsEnabled(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalCancel(),printout);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test22AssertApplyButtonEnabledWhenAllColumnsMovedToSelectedSide");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "test22AssertApplyButtonEnabledWhenAllColumnsMovedToSelectedSide", driver, e);
+        fail(e.getMessage());
+      }
   }
 
   @Test
-  public void test23AssertApplyButtonEnabledWhenAllColumnsOnSelectedSideExceptChargeCodeNameAndModifier() {
+  public void test23AssertApplyButtonEnabledWhenAllColumnsOnSelectedSideExceptChargeCodeNameAndModifier() throws Throwable {
     try {
       removeMultipleColumnsToDisplay(columns);
       assertElementIsEnabled(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalApply(),printout);
       assertElementIsEnabled(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalCancel(),printout);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test23AssertApplyButtonEnabledWhenAllColumnsOnSelectedSideExceptChargeCodeNameAndModifier");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "test23AssertApplyButtonEnabledWhenAllColumnsOnSelectedSideExceptChargeCodeNameAndModifier", driver, e);
+        fail(e.getMessage());
+      }
   }
 
   @Test
-  public void test24AssertApplyButtonEnabledWhenAllColumnsOnSelectedSideExceptModifier() {
+  public void test24AssertApplyButtonEnabledWhenAllColumnsOnSelectedSideExceptModifier() throws Throwable {
     try {
       highlightColumnsToDisplayColumn("Charge Code Name");
       doClick(selectColumn.getUnitCostQuickCalculationButtonColumnsToDisplayModalSelect());
       assertElementIsEnabled(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalApply(),printout);
       assertElementIsEnabled(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalCancel(),printout);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test24AssertApplyButtonEnabledWhenAllColumnsOnSelectedSideExceptModifier");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "test24AssertApplyButtonEnabledWhenAllColumnsOnSelectedSideExceptModifier", driver, e);
+        fail(e.getMessage());
+      }
   }
 
   @Ignore
   @Test
-  public void test25ChangeUcqcSelectionAndAssertSubsetOfColumnsDoNotChange() {
+  public void test25ChangeUcqcSelectionAndAssertSubsetOfColumnsDoNotChange() throws Throwable {
     try {
       /**NOTE: FAILING WHILE ATTEMPTING TO SET UCQC CRITERIA, this portion has been commented out*/
       removeAllColumnsToDisplayColumns();
@@ -347,27 +413,31 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
           System.out.println("The column selections are not still available after changing CMS, Entity, Dept, and Results Stored For.");
         }
       }
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test25ChangeUcqcSelectionAndAssertSubsetOfColumnsDoNotChange");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "test25ChangeUcqcSelectionAndAssertSubsetOfColumnsDoNotChange", driver, e);
+        fail(e.getMessage());
+      }
   }
 
   @Ignore
   @Test
-  public void test26CloseTheUcqcSessionAndAssertColumnSelectionDoesNotSaveUponReopen() {
+  public void test26CloseTheUcqcSessionAndAssertColumnSelectionDoesNotSaveUponReopen() throws Throwable {
     try {
       doClick(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalCancel());
       doClosePageOnLowerBar("Unit Cost Quick...");
       goToPage("Unit Cost Quick Calculation");
       assertColumnHeaderSubsetDisplays(defaultColumnHeaderSubset);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test26CloseTheUcqcSessionAndAssertColumnSelectionDoesNotSaveUponReopen");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "test26CloseTheUcqcSessionAndAssertColumnSelectionDoesNotSaveUponReopen", driver, e);
+        fail(e.getMessage());
+      }
   }
 
   @Ignore
   @Test
-  public void test27SaveUndoAnEditAndAssertColumnSelectionDoesNotChange() {
+  public void test27SaveUndoAnEditAndAssertColumnSelectionDoesNotChange() throws Throwable {
     try {
       waitForAjaxExtJs();
       //setUCQCCriteria("Marina", "*CM1 TB MHFY05 After Vol Change", "150 Marina Medical Center", "2130  PED ICU", "Jan 2005 to Jan 2005");            doClick(selectColumn.getUnitCostQuickCalculationCheckBoxColumnsToDisplayAll());
@@ -393,67 +463,77 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
       doClick(selectColumn.getUnitCostQuickCalculationButtonSaveQuickRVUs());
       waitForAjaxExtJs();
       assertColumnHeaderSubsetDisplays(columnsHeaderSubsetRvu);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test27SaveUndoAnEditAndAssertColumnSelectionDoesNotChange");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "test27SaveUndoAnEditAndAssertColumnSelectionDoesNotChange", driver, e);
+        fail(e.getMessage());
+      }
   }
 
   @Ignore
   @Test
-  public void test28AssertPreviousColumnSubsetPersistsAfterCopyToQuickRvusIsSelected() {
+  public void test28AssertPreviousColumnSubsetPersistsAfterCopyToQuickRvusIsSelected() throws Throwable {
     try {
       /**DO NOT RUN IN EVOLVE: This should be run in a dedicated environment with a Cost Model Scenario specific to this test case*/
             /*doClick(selectColumn.getUnitCostQuickCalculationButtonCopyToQuickRVUs());
             ucqcWaitForSpinnerToEnd();
             assertColumnHeaderSubsetDisplays(columnsSubset);*/
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+    	  ExtentReport.logPass("PASS", "test28AssertPreviousColumnSubsetPersistsAfterCopyToQuickRvusIsSelected");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "test28AssertPreviousColumnSubsetPersistsAfterCopyToQuickRvusIsSelected", driver, e);
+        fail(e.getMessage());
+      }
   }
 
   @Ignore
   @Test
-  public void test29AssertPreviousColumnSubsetPersistsAfterClearRvusAndSaveIsSelected() {
+  public void test29AssertPreviousColumnSubsetPersistsAfterClearRvusAndSaveIsSelected() throws Throwable {
     try {
       ucqcGridClickInCell("1100171","Quick Salaries and Wages RVU",printout);
       doClick(selectColumn.getUnitCostQuickCalculationButtonClearQuickRVUsAndSave());
       waitForAjaxExtJs();
       doClick(selectColumn.getUnitCostQuickCalculationButtonClearAndSave());
       assertColumnHeaderSubsetDisplays(columnsHeaderSubsetRvu);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test29AssertPreviousColumnSubsetPersistsAfterClearRvusAndSaveIsSelected");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "test29AssertPreviousColumnSubsetPersistsAfterClearRvusAndSaveIsSelected", driver, e);
+        fail(e.getMessage());
+      }
   }
 
   @Ignore
   @Test
-  public void test30AssertPreviousColumnSubsetPersistsAfterOverwriteRvuMaintenanceIsSelected() {
+  public void test30AssertPreviousColumnSubsetPersistsAfterOverwriteRvuMaintenanceIsSelected() throws Throwable {
     try {
       doClick(selectColumn.getUnitCostQuickCalculationButtonOverwriteRVUMaintenance());
       waitForAjaxExtJs();
       doClick(selectColumn.getUnitCostQuickCalculationOverwriteRVUMaintenanceModalButtonCancelAndClose());
       waitForAjaxExtJs();
       assertColumnHeaderSubsetDisplays(columnsHeaderSubsetRvu);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test30AssertPreviousColumnSubsetPersistsAfterOverwriteRvuMaintenanceIsSelected");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "test30AssertPreviousColumnSubsetPersistsAfterOverwriteRvuMaintenanceIsSelected", driver, e);
+        fail(e.getMessage());
+      }
   }
 
   @Ignore
   @Test
-  public void test31AssertPreviousColumnSubsetPersistsAfterCalculationIsRun() {
+  public void test31AssertPreviousColumnSubsetPersistsAfterCalculationIsRun() throws Throwable {
     try {
       doClick(selectColumn.getUnitCostQuickCalculationButtonCalculate());
       ucqcWaitForSpinnerToEnd();
       assertColumnHeaderSubsetDisplays(columnsHeaderSubsetRvu);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test31AssertPreviousColumnSubsetPersistsAfterCalculationIsRun");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "test31AssertPreviousColumnSubsetPersistsAfterCalculationIsRun", driver, e);
+        fail(e.getMessage());
+      }
   }
 
   @Ignore
   @Test
-  public void test32AssertApplySelectionsButtonIsEnabledWhenUcqcCriteriaIsSetAllCheckboxIsUncheckedAndAtLeastOneColumnIsSelectedInSelectColumnsPopUp() {
+  public void test32AssertApplySelectionsButtonIsEnabledWhenUcqcCriteriaIsSetAllCheckboxIsUncheckedAndAtLeastOneColumnIsSelectedInSelectColumnsPopUp() throws Throwable {
     try {
       waitForAjaxExtJs();
       doClick(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalCancel());
@@ -464,14 +544,16 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
       doClick(selectColumn.getUnitCostQuickCalculationCheckBoxColumnsToDisplayAll());
       waitForAjaxExtJs();
       assertElementIsEnabled(selectColumn.getUnitCostQuickCalculationButtonApplySelections(),printout);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test32AssertApplySelectionsButtonIsEnabledWhenUcqcCriteriaIsSetAllCheckboxIsUncheckedAndAtLeastOneColumnIsSelectedInSelectColumnsPopUp");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "test32AssertApplySelectionsButtonIsEnabledWhenUcqcCriteriaIsSetAllCheckboxIsUncheckedAndAtLeastOneColumnIsSelectedInSelectColumnsPopUp", driver, e);
+        fail(e.getMessage());
+      }
   }
 
   @Ignore
   @Test
-  public void test33AssertChargeCodeChargeCodeNameAndModifierGridColumnsAreLocked() {
+  public void test33AssertChargeCodeChargeCodeNameAndModifierGridColumnsAreLocked() throws Throwable {
     try {
       doClick(selectColumn.getUnitCostQuickCalculationButtonApplySelections());
       waitForSpinnerToEnd();
@@ -489,14 +571,16 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
         System.out.println("TEST FAILED: Element is Enabled");
         throw new Exception();
       }
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test33AssertChargeCodeChargeCodeNameAndModifierGridColumnsAreLocked");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "test33AssertChargeCodeChargeCodeNameAndModifierGridColumnsAreLocked", driver, e);
+        fail(e.getMessage());
+      }
   }
 
   @Ignore
   @Test
-  public void test34AssertChargeCodeIsDisplayedAndNotAvailableInSelectColumnWindow() {
+  public void test34AssertChargeCodeIsDisplayedAndNotAvailableInSelectColumnWindow() throws Throwable {
     try {
       assertColumnHeaderIsDisplayed("Charge Code");
       /*doDropdownSelectUsingOptionText(selectColumn.getUnitCostQuickCalculationDropdownCostModel(),selectColumn.getUnitCostQuickCalculationDropdownCostModelMenuList(),"Marina");
@@ -505,23 +589,27 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
       doClick(selectColumn.getUnitCostQuickCalculationButtonColumnsToDisplaySelect());
       waitForAjaxExtJs();
       assertColumnIsNotDisplayedInSelectBox("Charge Code");
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test34AssertChargeCodeIsDisplayedAndNotAvailableInSelectColumnWindow");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "test34AssertChargeCodeIsDisplayedAndNotAvailableInSelectColumnWindow", driver, e);
+        fail(e.getMessage());
+      }
   }
 
   @Ignore
   @Test
-  public void test35ChangeCostModelAndAssertAllCheckBoxIsCheckedAndSelectButtonIsDisabled() {
+  public void test35ChangeCostModelAndAssertAllCheckBoxIsCheckedAndSelectButtonIsDisabled() throws Throwable {
     try {
       doClick(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalCancel());
       doDropdownSelectUsingOptionText(selectColumn.getUnitCostQuickCalculationDropdownCostModel(),selectColumn.getUnitCostQuickCalculationDropdownCostModelMenuList(),"QA Cost Model");
       assertElementIsDisabled(selectColumn.getUnitCostQuickCalculationButtonColumnsToDisplaySelect(),printout);
       assertElementIsEnabled(selectColumn.getUnitCostQuickCalculationCheckBoxColumnsToDisplayAll(),printout);
       assertColumnsToDisplayAllCheckBoxIsChecked();
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test35ChangeCostModelAndAssertAllCheckBoxIsCheckedAndSelectButtonIsDisabled");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "test35ChangeCostModelAndAssertAllCheckBoxIsCheckedAndSelectButtonIsDisabled", driver, e);
+        fail(e.getMessage());
+      }
   }
 
   public void assertColumnIsNotDisplayedInSelectBox(String column) {
@@ -584,13 +672,20 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
     }
   }
 
-  public void highlightColumnsToDisplayColumn(String column) throws InterruptedException {
-    String columnPath = "//*[contains(@class,'glAccountsGrid')]/descendant::*[text()='" + column + "']";
-    doClick(driver.findElement(By.xpath(columnPath)));
+  public void highlightColumnsToDisplayColumn(String column) throws InterruptedException,Throwable {
+    String columnPath = "//*[contains(@class,'glAccountsGrid')]/descendant::*[text()='"+column+"']";
+   //Shilpa 02.09.2022 added dimension , scroll to element 
+    addDimension(1000,1000);
+    WebElement element = driver.findElement(By.xpath(columnPath));
+    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+    Thread.sleep(500); 
+	doClick(columnPath);
+	driver.manage().window().maximize();
+	Thread.sleep(2000);
     waitForAjaxExtJs();
   }
 
-  public void selectAllColumnsToDisplayColumns() throws InterruptedException {
+  public void selectAllColumnsToDisplayColumns() throws InterruptedException,Throwable {
     String[] columns = {"Charge Code Name","Modifier","Total Unit Cost","Total Quick Cost","Total Change","Salaries and Wages RVU","Quick Salaries and Wages RVU","Salaries and Wages Cost","Quick Salaries and Wages Cost","Salaries and Wages Change","Employee Benefits RVU","Quick Employee Benefits RVU","Employee Benefits Cost","Quick Employee Benefits Cost","Employee Benefits Change","Medical Supplies RVU","Quick Medical Supplies RVU","Medical Supplies Cost","Quick Medical Supplies Cost","Medical Supplies Change","Non-Medical Supplies RVU","Quick Non-Medical Supplies RVU","Non-Medical Supplies Cost","Quick Non-Medical Supplies Cost","Non-Medical Supplies Change","Equip Repair & Maint RVU","Quick Equip Repair & Maint RVU","Equip Repair & Maint Cost","Quick Equip Repair & Maint Cost","Equip Repair & Maint Change","Direct Depreciation RVU","Quick Direct Depreciation RVU","Direct Depreciation Cost","Quick Direct Depreciation Cost","Direct Depreciation Change","Purchased Services RVU","Quick Purchased Services RVU","Purchased Services Cost","Quick Purchased Services Cost","Purchased Services Change","Professional Fees RVU","Quick Professional Fees RVU","Professional Fees Cost","Quick Professional Fees Cost","Professional Fees Change","Other Expenses RVU","Quick Other Expenses RVU","Other Expenses Cost","Quick Other Expenses Cost","Other Expenses Change","Direct Overhead RVU","Quick Direct Overhead RVU","Direct Overhead Cost","Quick Direct Overhead Cost","Direct Overhead Change","Hospital Overhead RVU","Quick Hospital Overhead RVU","Hospital Overhead Cost","Quick Hospital Overhead Cost","Hospital Overhead Change","Corporate Overhead RVU","Quick Corporate Overhead RVU","Corporate Overhead Cost","Quick Corporate Overhead Cost","Corporate Overhead Change","Depreciation RVU","Quick Depreciation RVU","Depreciation Cost","Quick Depreciation Cost","Depreciation Change","Tech RVU","Quick Tech RVU","Tech Cost","Quick Tech Cost","Tech Change"};
     for (String selectedColumns: columns) {
       highlightColumnsToDisplayColumn(selectedColumns);
@@ -598,14 +693,14 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
     }
   }
 
-  public void selectMultipleColumnsToDisplay(String[] columnsToSelect) throws InterruptedException {
+  public void selectMultipleColumnsToDisplay(String[] columnsToSelect) throws InterruptedException,Throwable{
     for (String selectedColumns: columnsToSelect) {
       highlightColumnsToDisplayColumn(selectedColumns);
       doClick(selectColumn.getUnitCostQuickCalculationButtonColumnsToDisplayModalSelect());
     }
   }
 
-  public String[] removeAllColumnsToDisplayColumns() throws InterruptedException {
+  public String[] removeAllColumnsToDisplayColumns() throws InterruptedException,Throwable {
     String[] columns = {"Charge Code Name","Modifier","Total Unit Cost","Total Quick Cost","Total Change","Salaries and Wages RVU","Quick Salaries and Wages RVU","Salaries and Wages Cost","Quick Salaries and Wages Cost","Salaries and Wages Change","Employee Benefits RVU","Quick Employee Benefits RVU","Employee Benefits Cost","Quick Employee Benefits Cost","Employee Benefits Change","Medical Supplies RVU","Quick Medical Supplies RVU","Medical Supplies Cost","Quick Medical Supplies Cost","Medical Supplies Change","Non-Medical Supplies RVU","Quick Non-Medical Supplies RVU","Non-Medical Supplies Cost","Quick Non-Medical Supplies Cost","Non-Medical Supplies Change","Equip Repair & Maint RVU","Quick Equip Repair & Maint RVU","Equip Repair & Maint Cost","Quick Equip Repair & Maint Cost","Equip Repair & Maint Change","Direct Depreciation RVU","Quick Direct Depreciation RVU","Direct Depreciation Cost","Quick Direct Depreciation Cost","Direct Depreciation Change","Purchased Services RVU","Quick Purchased Services RVU","Purchased Services Cost","Quick Purchased Services Cost","Purchased Services Change","Professional Fees RVU","Quick Professional Fees RVU","Professional Fees Cost","Quick Professional Fees Cost","Professional Fees Change","Other Expenses RVU","Quick Other Expenses RVU","Other Expenses Cost","Quick Other Expenses Cost","Other Expenses Change","Direct Overhead RVU","Quick Direct Overhead RVU","Direct Overhead Cost","Quick Direct Overhead Cost","Direct Overhead Change","Hospital Overhead RVU","Quick Hospital Overhead RVU","Hospital Overhead Cost","Quick Hospital Overhead Cost","Hospital Overhead Change","Corporate Overhead RVU","Quick Corporate Overhead RVU","Corporate Overhead Cost","Quick Corporate Overhead Cost","Corporate Overhead Change","Depreciation RVU","Quick Depreciation RVU","Depreciation Cost","Quick Depreciation Cost","Depreciation Change","Tech RVU","Quick Tech RVU","Tech Cost","Quick Tech Cost","Tech Change"};
     for (String selectedColumns: columns) {
       highlightColumnsToDisplayColumn(selectedColumns);
@@ -614,7 +709,7 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
     return columns;
   }
 
-  public void removeMultipleColumnsToDisplay(String[] columnsToRemove) throws InterruptedException {
+  public void removeMultipleColumnsToDisplay(String[] columnsToRemove) throws InterruptedException,Throwable {
     for (String selectedColumns: columnsToRemove) {
       highlightColumnsToDisplayColumn(selectedColumns);
       doClick(selectColumn.getUnitCostQuickCalculationButtonColumnsToDisplayModalRemove());
@@ -881,6 +976,13 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
     }
     actualAvailableColumnNames.remove(0);
   }
+  
+  @AfterClass
+  public static void endtest() throws Exception {
+
+		ExtentReport.report.flush();
+
+	}
 }
 
 

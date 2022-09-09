@@ -14,7 +14,7 @@ import webdriver.utilities.JavaDataBaseConnectivity;
 public class GetHelper extends DoHelper {
 
     private static JavaDataBaseConnectivity jdbc = new JavaDataBaseConnectivity(setupDb(testEnvironment));
-
+    
     public void getStringDataFromDatabaseAndAssertExpectedValues(
             String sqlQuery, int datasetColumn, List<String> expectedValues)
             throws ClassNotFoundException {

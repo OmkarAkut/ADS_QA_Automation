@@ -79,7 +79,7 @@ public class JavaDataBaseConnectivity {
      * Connects to database, passes SQL statement and gets a ResultSet from database
      */
     public int jdbcGetResultSetFirstRowValueAsInt(String sqlQuery, int column) throws  ClassNotFoundException {
-        System.out.println("Db Name: " + getDbName());
+       // System.out.println("Db Name: " + getDbName());
         ResultSet resultSet;
         int resultSetFirstCellValueInt = 0;
         Class.forName("oracle.jdbc.driver.OracleDriver");

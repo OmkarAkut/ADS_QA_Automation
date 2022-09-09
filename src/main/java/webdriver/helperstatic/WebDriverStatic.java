@@ -39,11 +39,11 @@ public class WebDriverStatic extends WaitStatic {
   }
 
   public void driverWait() throws InterruptedException {
-    Thread.sleep(1000);
+    Thread.sleep(7000);
   }
 
   public void driverDelay() throws InterruptedException {
-    Thread.sleep(2000);
+    Thread.sleep(5000);
   }
 
   public void driverDelay(int milliseconds) throws InterruptedException {

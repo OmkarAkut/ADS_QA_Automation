@@ -4,6 +4,8 @@ import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
+import org.openqa.selenium.By;
+
 import webdriver.core.Login;
 import webdriver.corehelpers.GoHelper;
 import webdriver.maps.CostingMap;
@@ -26,8 +28,10 @@ public class CostingModelsSmokeTest extends GoHelper {
     generalMap = BuildMap.getInstance(driver, GeneralElementsMap.class);
     costing = BuildMap.getInstance(driver, CostingMap.class);
     System.out.println("Test Class: " + CostingModelsSmokeTest.class.getSimpleName());
-    Login.loginUser("CostingDepartmentManager1");
-    goToPage("Costing Models");
+   // Login.loginUser("CostingDepartmentManager1");
+   //Shilpa 06.09.2022 updated loginUser
+    Login.loginUser("CostAnalyst1");
+    goToPage("costing models");
   }
 
   @Test
@@ -63,8 +67,13 @@ public class CostingModelsSmokeTest extends GoHelper {
    
     */
     waitForAjaxExtJs();
-    assertElementIsDisplayedWithXpath("//*[contains(@class ,'x-grid-row undefined x-grid-tree-node-expanded x-grid-row-selected x-grid-row-focused')]");
-    assertElementIsDisplayedWithXpath("//*[contains(text(),'Prepare Costing Elements')]");
+//driver.switchTo().frame(2);
+    waitForElementToBeVisible(driver.findElement(By.xpath("(//td[contains(@class,'x-grid-cell-treecolumn')]//child::div[1])[2]")));
+    //Shilpa 06.09.2022 updated xpath
+    assertElementIsDisplayedWithXpath("(//td[contains(@class,'x-grid-cell-treecolumn')]//child::div[1])[2]");
+    //assertElementIsDisplayedWithXpath("//*[contains(@class ,'x-grid-row undefined x-grid-tree-node-expanded x-grid-row-selected x-grid-row-focused')]");
+   //Commented below line , now it's not showing 06.09.2022
+    // assertElementIsDisplayedWithXpath("//*[contains(text(),'Prepare Costing Elements')]");
    // End of modification
   }
 

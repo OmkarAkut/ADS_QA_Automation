@@ -2,9 +2,12 @@ package webdriver.helpers;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
+import com.aventstack.extentreports.Status;
 
+import ExtentReport.ExtentReport;
 import org.junit.BeforeClass;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import webdriver.corehelpers.GoHelper;
 import webdriver.maps.EditContractingModelMap;
@@ -54,12 +57,18 @@ public class UtilitiesHelper extends GoHelper {
 
   public void selectItemsOnSelector(String[] items) throws InterruptedException {
     waitForSpinnerToEnd();
-    for (String item : items) {
-      driver.findElement(By.xpath("//tr/td/div[text()='" + item +"']")).click();
-      Thread.sleep(500);
-      driver.findElement(By.xpath("//button[not(@disabled)]/span[text()='Select']")).click();
-      waitForSpinnerToEnd();
-    }
+    try {
+		for (String item : items) {
+		  driver.findElement(By.xpath("//tr/td/div[text()='" + item +"']")).click();
+		  Thread.sleep(500);
+		  driver.findElement(By.xpath("//button[not(@disabled)]/span[text()='Select']")).click();
+		  waitForSpinnerToEnd();
+		}
+	} catch (Exception e) {
+		ExtentReport.extenttest.log(Status.FAIL, e.getMessage());
+		ExtentReport.extenttest.log(Status.INFO, e);
+	}
+
   }
 
   public static void waitForUtilityFirstRowDownloadLinkToBecomeActive() throws InterruptedException {

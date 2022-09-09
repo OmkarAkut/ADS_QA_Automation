@@ -17,7 +17,7 @@ import webdriver.scripts.regression.ipps2021calculations.Ipps2021Data;
 public class IppsAndOppsCalculations extends CalculationHelper {
 
   static DataMaintenanceMap dmMap;
-  static final String batchName = "v103 REGRESSION 2021 IPPS Transfers";
+  static final String batchName = "v104 REGRESSION 2021 IPPS: Transfers";//Shilpa. 19.08.2022 updated the name from v104 REGRESSION 2021 IPPS Transfers to v104 REGRESSION 2021 IPPS: Transfers 
   final String expectedLogView = batchName + "\\Contracting\\Contract Batch";
   private Ipps2021Data data = new Ipps2021Data();
 
@@ -34,8 +34,8 @@ public class IppsAndOppsCalculations extends CalculationHelper {
   @Test
   public void test01ClickResetAndVerifyDatabaseValuesAreNull() throws ClassNotFoundException, InterruptedException {
     waitForAjaxExtJs();
-    waitForPresenceOfElement("//*[text()='Reset']");
-    doClick(driver.findElement(By.xpath("//*[text()='Reset']")));
+    waitForPresenceOfElement("//*[text()='Refresh']");
+    doClick(driver.findElement(By.xpath("//*[text()='Refresh']")));
     waitForSpinnerToEnd();
     waitForFirstRowCalculationBarToReach100Percent(2000);
     deleteMyCalculationStatusFirstRow();

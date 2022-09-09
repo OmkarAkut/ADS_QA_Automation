@@ -13,7 +13,12 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
+
+import com.aventstack.extentreports.Status;
+
+import ExtentReport.ExtentReport;
 import webdriver.globalstatic.LoginStatic;
 import webdriver.maps.EditContractingModelMap;
 import webdriver.maps.ModelLibraryMap;
@@ -168,9 +173,14 @@ public class ContractModelsHelper extends LoginStatic {
   }
 
   public void doClickCloseAndContinueButtonOnEditDialog() throws InterruptedException {
-    editModelMap.getEditContractMainPageContinueAndCloseButton().click();
-    waitForAjaxExtJs();
-    Thread.sleep(1000);
+    try {
+		editModelMap.getEditContractMainPageContinueAndCloseButton().click();
+		waitForAjaxExtJs();
+		Thread.sleep(1000);
+	} catch (NoSuchElementException e) {
+		ExtentReport.extenttest.log(Status.FAIL, e.getMessage());
+
+	}
   }
 
   public void assertThatDropdownSelectedValue(WebElement dropdownTriggerElement, WebElement dropdownMenu, String expectedValue) throws InterruptedException {

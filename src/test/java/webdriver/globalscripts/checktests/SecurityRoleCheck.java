@@ -3,11 +3,16 @@ package webdriver.globalscripts.checktests;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
+
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.WebElement;
+
+import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.corehelpers.WaitHelper;
 import webdriver.maps.GeneralElementsMap;
@@ -30,15 +35,29 @@ public class SecurityRoleCheck extends WaitHelper {
   };
 
   @BeforeClass
-  public static void setupScript() throws Exception {
-    System.out.println("Test Class: " + SecurityRoleCheck.class.getSimpleName());
-    mainMap = BuildMap.getInstance(driver, GeneralElementsMap.class);
-    Login.loginUser("ContractReviewer1");
+  public static void setupScript() throws Exception,Throwable {
+	  ExtentReport.reportCreate("SecurityRoleCheck", "webdriver.globalscripts.checktests","SecurityRoleCheck");
+
+    try {
+		System.out.println("Test Class: " + SecurityRoleCheck.class.getSimpleName());
+		mainMap = BuildMap.getInstance(driver, GeneralElementsMap.class);
+		Login.loginUser("ContractReviewer1");
+		ExtentReport.logPass("PASS", "setupScript");
+	} catch (Exception|AssertionError e) {
+	ExtentReport.logFail("FAIL", "setupScript", driver, e);
+	fail(e.getMessage());
+	}
   }
 
   @Test
-  public void testSecurityRolesTest() throws InterruptedException {
-    assertMainTabsRolesTest(expectedTabs, mainTabs, printout);
+  public void testSecurityRolesTest() throws InterruptedException,Throwable{
+    try {
+		assertMainTabsRolesTest(expectedTabs, mainTabs, printout);
+		ExtentReport.logPass("PASS", "testSecurityRolesTest");
+	} catch (Exception|AssertionError e) {
+	ExtentReport.logFail("FAIL", "testSecurityRolesTest", driver, e);
+	fail(e.getMessage());
+	}
   }
 
   public void assertMainTabsRolesTest(Integer[] expectedTabs, WebElement[] elements, boolean printout)
@@ -56,5 +75,10 @@ public class SecurityRoleCheck extends WaitHelper {
     }
     assertThat(resultsList.toArray(), equalTo(expectedTabs));
   }
+  @AfterClass
+	public static void endtest() throws Exception {
 
+		ExtentReport.report.flush();
+
+	}
 }

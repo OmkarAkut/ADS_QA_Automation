@@ -34,7 +34,7 @@ public class Driver {
   protected static String downloads;
   protected static String drivers;
   protected static String version;
-
+//below line is commented by Omkar as there are isues while running on Jenkins
   protected static final String chromeDriver = "chromedriver";
  // protected static final String chromeDriver = "C:/ADS_automation/AffinityDecisionSupport/src/selenium/chromedriver";
   protected static final String ieDriverServer = "IEDriverServer32";
@@ -265,7 +265,13 @@ public class Driver {
       dbUrl = "jdbc:oracle:thin:@192.168.210.100:1525:qaauto";
     } else if (testEnvironment.contains("edge")) {
       dbUrl = "jdbc:oracle:thin:@192.168.210.100:1524:qarpt12";
-    } else {
+    } 
+    //Shilpa 09.09.2022 added dbURL for testEnvironment 
+    else if (testEnvironment.equals("qa3")) {
+        dbUrl = "jdbc:oracle:thin:@10.204.20.101:1522:qacurr1"; //"jdbc:oracle:thin:@192.168.210.100:1540:qav8";
+      	System.out.println(dbUrl);
+
+    }else {
       dbUrl = null;
       System.out.println("dbUrl not set");
     }

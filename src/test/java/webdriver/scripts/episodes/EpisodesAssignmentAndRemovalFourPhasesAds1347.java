@@ -1,52 +1,71 @@
 package webdriver.scripts.episodes;
 
+import static org.junit.Assert.fail;
+
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+
+import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.helpers.CalculationHelper;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class EpisodesAssignmentAndRemovalFourPhasesAds1347 extends CalculationHelper {
 
-  static final String episodeName1 = "v103 REGRESSION Post Discharge 1";
+  static final String episodeName1 = "2015 BPCI Renal Failure";//Shilpa 24.08.2022 updated episode name
   //static final String episodeName2 = "v103 REGRESSION Post Discharge 2";
   final byte numberOfEfrs = 51;
   String episodeName = "name delete";
   String preAdmitDays = "3";
   String postDischargeDays = "90";
 
-  /** Regression: Automated test script for ADS-2579 */
+  /** Regression: Automated test script for ADS-2579 
+ * @throws Throwable */
   @BeforeClass
-  public static void setupScript() throws Exception {
-    System.out.println("Test Class: " + EpisodesAssignmentAndRemovalFourPhasesAds1347.class.getSimpleName());
-    /* modified by Omkar as only aadmin user is available for qa3 env
-     * 
-    Login.loginUser("EpisodeAnalyst1");
-    */
-    Login.loginUser("AutomationTesterAdmin");
-    // End of modification
-    goToPage("Episode Models");
+  public static void setupScript() throws Throwable {
+	  ExtentReport.reportCreate("EpisodesAssignmentAndRemovalFourPhasesAds1347", "webdriver.scripts.episodes","EpisodesAssignmentAndRemovalFourPhasesAds1347");
+    try {
+		System.out.println("Test Class: " + EpisodesAssignmentAndRemovalFourPhasesAds1347.class.getSimpleName());
+		Login.loginUser("EpisodeAnalyst1");
+ 
+		goToPage("Episode Models");
+		ExtentReport.logPass("PASS", "setupScript");
+	} catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "Failure in setupScript", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test00Setup() throws InterruptedException {
-    filterAndSelectContractModelFromContractModelLibrary(episodeName1);
-    doClickButton("Open Task List");
-    doClickTree("Model Episode");
-    doClickCheckboxTree("General Information - Episode");
-    driver.findElement(By.xpath("//input[@name = 'name']")).sendKeys(episodeName);
-    driver.findElement(By.xpath("//input[@name = 'preAdmitDays']")).sendKeys(preAdmitDays);
-    driver.findElement(By.xpath("//input[@name = 'postDischargeDays']")).sendKeys(postDischargeDays);
+  public void test00Setup() throws InterruptedException,Throwable{
+    try {
+		filterAndSelectContractModelFromContractModelLibrary(episodeName1);
+		doClickButton("Open Task List");
+		doClickTree("Model Episode");
+		doClickCheckboxTree("General Information - Episode");
+		driver.findElement(By.xpath("//input[@name = 'name']")).sendKeys(Keys.chord(Keys.CONTROL, "a"));
+		driver.findElement(By.xpath("//input[@name = 'name']")).sendKeys(episodeName);
+		driver.findElement(By.xpath("//input[@name = 'preAdmitDays']")).sendKeys(Keys.chord(Keys.CONTROL, "a"));
 
-    webdriverClick(getWebElement("//span[text()='Triggers']"));
-    webdriverClick(getWebElement("//div[2]/div[2]/div/div/div[2]/em/button/span[text()='Add']"));
+		driver.findElement(By.xpath("//input[@name = 'preAdmitDays']")).sendKeys(preAdmitDays);
+		driver.findElement(By.xpath("//input[@name = 'postDischargeDays']")).sendKeys(Keys.chord(Keys.CONTROL, "a"));
 
-
-
-    doClickCheckboxTree("Assign Episode to Encounters");
+		driver.findElement(By.xpath("//input[@name = 'postDischargeDays']")).sendKeys(postDischargeDays);
+		//Thread.sleep(2000);
+		//webdriverClick(getWebElement("//span[text()='Triggers']"));
+		//Shilpa 24.08.2022 updated xpath
+		webdriverClick(getWebElement("//span[text()='Triggers']//parent::div"));
+		ExtentReport.logPass("PASS", "test00Setup");
+	} catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test00Setup", driver, e);
+		fail(e.getMessage());
+	}
+//    doClickCheckboxTree("Assign Episode to Encounters");
   }
 
 //  @Ignore
@@ -145,6 +164,7 @@ public class EpisodesAssignmentAndRemovalFourPhasesAds1347 extends CalculationHe
     waitForSpinnerToEnd();
     waitForAjaxExtJs();
     waitForSpinnerToEnd();
+    Thread.sleep(1000);
   }
 
   public void doClickCheckboxTree(String name) throws InterruptedException {
@@ -173,5 +193,11 @@ public class EpisodesAssignmentAndRemovalFourPhasesAds1347 extends CalculationHe
     driver.findElement(By.xpath("//button/span[text()='Cancel']")).click();
     waitForSpinnerToEnd();
   }
+  @AfterClass
+	public static void endtest() throws Exception {
+
+		ExtentReport.report.flush();
+
+	}
 
 }

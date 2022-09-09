@@ -70,7 +70,7 @@ public class PageTestHelper extends GoHelper {
 //    }
 
   public void testHelpLink(WebElement helpLinkElement, String expectedHeader, boolean printout) throws InterruptedException {
-    Thread.sleep(500);
+    Thread.sleep(1000);
     waitForAjaxExtJs();
     String firstHandle = webSwitchToNewWindow(helpLinkElement, printout);
     assertHelpPageHeader(expectedHeader, printout);

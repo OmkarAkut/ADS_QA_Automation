@@ -6,7 +6,9 @@ import org.junit.Test;
 
 public class ReportingAdHocReportDesignIsManualTest {
 
-  @Test
+	
+	//Omkar : This test can be removed
+	//@Test
   public void testAdHocReportDesignServerTerminalManualTest() {
         fail("Ad Hoc Report Design opens a server terminal - Run test manually.");
      }

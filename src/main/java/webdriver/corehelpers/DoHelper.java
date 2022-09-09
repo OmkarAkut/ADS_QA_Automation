@@ -3,10 +3,13 @@ package webdriver.corehelpers;
 import java.util.List;
 import java.util.Set;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import webdriver.maps.DataMaintenanceMap;
 import webdriver.maps.ModelLibraryMap;
 import webdriver.maps.mapbuilder.BuildMap;
+
 
 public class DoHelper extends DriverHelper {
 
@@ -80,14 +83,43 @@ public class DoHelper extends DriverHelper {
     }
 
 
+	/*
+	 * public void doClickTreeItem(String name) throws InterruptedException {
+	 * waitUntilElementIsClickable(driver.findElement(By.xpath(
+	 * "//td[contains(@class,'x-grid-cell-treecolumn')]/div[text()='" + name +
+	 * "']"))); driver.findElement(By.xpath(
+	 * "//td[contains(@class,'x-grid-cell-treecolumn')]/div[text()='" + name +
+	 * "']")).click(); waitForSpinnerToEnd(); waitForAjaxExtJs();
+	 * waitForSpinnerToEnd(); }
+	 */
     public void doClickTreeItem(String name) throws InterruptedException {
-        waitUntilElementIsClickable(driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]/div[text()='" + name + "']")));
-        driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]/div[text()='" + name + "']")).click();
-        waitForSpinnerToEnd();
-        waitForAjaxExtJs();
-        waitForSpinnerToEnd();
-    }
-
+    //Shilpa.27.07.2022 , some elements are inside frame 
+//    	boolean element = false;
+//		
+//    	waitForElementToBeVisible(driver.findElement(By.tagName("iframe")));
+		List<WebElement> iframes=driver.findElements(By.tagName("iframe"));
+		if(iframes.size()>2) {
+			driver.switchTo().frame(0);
+			Thread.sleep(2000);
+			waitUntilElementIsClickable(
+					driver.findElement(By.xpath("(//div[@class='gwt-HTML'][contains(text(),'" + name + "')])[1]")));
+			driver.findElement(By.xpath("(//div[@class='gwt-HTML'][contains(text(),'" + name + "')])[1]")).click();
+			waitForSpinnerToEnd(); 
+//			 waitForAjaxExtJs();
+			waitForSpinnerToEnd();
+		}
+		else {
+			waitUntilElementIsClickable(driver
+					.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]/div[text()='" + name + "']")));
+			driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]/div[text()='" + name + "']"))
+					.click();
+			waitForSpinnerToEnd();
+			waitForAjaxExtJs();
+			waitForSpinnerToEnd();
+		}
+				 
+	}
+    	
     public void doClickTreeItemWithCheckbox(String name) throws InterruptedException {
         waitUntilElementIsClickable(driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]/div[text()='" + name + "']")));
     driver
@@ -172,11 +204,14 @@ public class DoHelper extends DriverHelper {
     	Thread.sleep(2000);
         waitForAjaxExtJs();
         doClick(driver.findElement(By.xpath("//button/span[text()='"+buttonText+"']")));
+        Thread.sleep(3000);
     }
 
     public static void doClick(WebElement element) {
-        waitUntilElementIsClickable(element);
-        element.click();
+    	JavascriptExecutor executor = (JavascriptExecutor)driver;
+    	executor.executeScript("arguments[0].click();", element);
+//        waitUntilElementIsClickable(element);
+//        element.click();
     }
 
     public static void doClick(String elementXpath) throws InterruptedException {
@@ -298,6 +333,13 @@ public class DoHelper extends DriverHelper {
     public void doSelectOneOfValueField(String valueText) {
         doClick(driver.findElement(By.xpath("//input[@name='valueoneof']")));
         driver.findElement(By.xpath("//input[@name='valueoneof']")).sendKeys(valueText);
+    }
+    
+    //Add dimension Shilpa 02.09.2022 , required in some cases SelectColumnsPopupForColumnsToDisplayAds1083
+    public static void addDimension(int width,int height) throws Exception {
+    	 Dimension dimension = new Dimension(width, height);
+    	    driver.manage().window().setSize(dimension);
+    	    Thread.sleep(3000);
     }
 }
 

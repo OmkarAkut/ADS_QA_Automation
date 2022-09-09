@@ -101,9 +101,13 @@ public class TableStatic extends FilterStatic {
 
     public void tableDoubleClickCellFirstColumn(String cellValue) throws InterruptedException {
         Actions act = new Actions(driver);
+        //Shilpa updated xpath 22.08.2022
         WebElement element = driver.findElement(By.xpath(
-           "//td[contains(@class,'x-grid-cell x-grid-cell-gridcolumn')]/*[text()='" + cellValue + "']"))
-        ;
+                "(//td[contains(@class,'x-grid-cell x-grid-cell-gridcolumn')]/*[text()='" + cellValue + "'])[1]"))
+             ;
+//        WebElement element = driver.findElement(By.xpath(
+//           "//td[contains(@class,'x-grid-cell x-grid-cell-gridcolumn')]/*[text()='" + cellValue + "']"))
+//        ;
         act.doubleClick(element).perform();
         waitForSpinnerToEnd();
         waitForAjaxExtJs();

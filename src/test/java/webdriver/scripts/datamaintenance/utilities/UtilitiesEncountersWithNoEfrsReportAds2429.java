@@ -7,10 +7,16 @@ import static org.junit.Assert.fail;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
+
+import com.aventstack.extentreports.Status;
+
+import ExtentReport.ExtentReport;
 import webdriver.maps.DataMaintenanceMap;
 import webdriver.maps.mapbuilder.BuildMap;
 import webdriver.scripts.datamaintenance.datamaintenancehelpers.UtilitiesPageHelper;
@@ -33,73 +39,109 @@ public class UtilitiesEncountersWithNoEfrsReportAds2429 extends UtilitiesPageHel
   String currentDate = javaGetCurrentDate("MM/dd/yyyy");
   String nameDate = javaGetCurrentDate("MMddyyyy");
   List<String> expectedZipDirectoryName = Arrays.asList(
-      "automationappadmin1_" + reportName + "_" + nameDate,
+      "eolheiser_" + reportName + "_" + nameDate,
       ".zip"
   );
 
-  /** Test script that verifies Encounters With Zero Charge Balance Report. */
+  /** Test script that verifies Encounters With Zero Charge Balance Report. 
+ * @throws Throwable */
   @BeforeClass
-  public static void setupScript() throws InterruptedException, IOException {
-    System.out.println(browser);
-    failIfHeadless(browser);
-    directoryPath = setupSavedFilesDirectoryPath();
-    dm = BuildMap.getInstance(driver, DataMaintenanceMap.class);
-    System.out.println(
-            "Test Class: "
-            + UtilitiesEncountersWithNoEfrsReportAds2429.class.getSimpleName());
-    loginUser(Users.ApplicationAdministrator1);
-    goToPage("Utilities");
+  public static void setupScript() throws Throwable {
+	  ExtentReport.reportCreate("UtilitiesEncountersWithNoEfrsReportAds2429","webdriver.scripts.datamaintenance.utilities" ,"UtilitiesEncountersWithNoEfrsReportAds2429");
+    try {
+		System.out.println(browser);
+		failIfHeadless(browser);
+		directoryPath = setupSavedFilesDirectoryPath();
+		dm = BuildMap.getInstance(driver, DataMaintenanceMap.class);
+		System.out.println(
+		        "Test Class: "
+		        + UtilitiesEncountersWithNoEfrsReportAds2429.class.getSimpleName());
+		loginUser(Users.ApplicationAdministrator1);
+		goToPage("Utilities");
+		ExtentReport.logPass("PASS", "setupScript");
+	} catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "setupScript", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test01SetParametersAndRunReport() {
+  public void test01SetParametersAndRunReport() throws Throwable {
     try {
       waitForAjaxExtJs();
       Thread.sleep(1000);
       doClick(dm.getUtilitiesPageEncountersWithNoEfrsReport());
       runReport(startDate, endDate, codes);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+		ExtentReport.logPass("PASS", "test01SetParametersAndRunReport : PASS");
+
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test01SetParametersAndRunReport",driver,e);
+		fail(e.getMessage());
+    		
+	} 
+    
   }
 
   @Test
   public void test02VerifyEncountersWithNoChargesReportSummaryVersion()
-          throws IOException {
-    zipPath = filer.getFilesFromDirectoryAndReturnTargetFilePath(
-            directoryPath,
-            expectedZipDirectoryName.get(0),
-            "zip"
-    );
-    System.out.println("Zip Path: " + zipPath);
-    List<String> report = filer.convertFileInZipDirectoryToList(
-            zipPath,
-            "summary"
-    );
-    for (String line : report) {
-      System.out.println(line);
-    }
-    assertThat(report.size(), equalTo(24));
-    assertListOfStringsContainsExpectedStrings(report, encountersWithNoChargesReport);
+          throws Throwable {
+    try {
+		zipPath = filer.getFilesFromDirectoryAndReturnTargetFilePath(
+		        directoryPath,
+		        expectedZipDirectoryName.get(0),
+		        "zip"
+		);
+		System.out.println("Zip Path: " + zipPath);
+		List<String> report = filer.convertFileInZipDirectoryToList(
+		        zipPath,
+		        "summary"
+		);
+		for (String line : report) {
+		  System.out.println(line);
+		}
+			assertThat(report.size(), equalTo(24));
+			assertListOfStringsContainsExpectedStrings(report, encountersWithNoChargesReport);
+			ExtentReport.logPass("PASS", "Report Size : PASS");
+			ExtentReport.logPass("PASS", "test02VerifyEncountersWithNoChargesReportSummaryVersion : PASS");
+
+	} catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test02VerifyEncountersWithNoChargesReportSummaryVersion",driver,e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test03VerifyZipDirectoryName() {
-    List<String> zipName = Arrays.asList(zipPath);
-    assertListOfStringsContainsExpectedStrings(zipName, expectedZipDirectoryName);
+  public void test03VerifyZipDirectoryName() throws Throwable {
+   
+    try {
+    	 List<String> zipName = Arrays.asList(zipPath);
+		assertListOfStringsContainsExpectedStrings(zipName, expectedZipDirectoryName);
+		ExtentReport.logPass("PASS", "test03VerifyZipDirectoryName : PASS");
+	} catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test03VerifyZipDirectoryName",driver,e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test04VerifyEncountersWithNoChargesReportDetailVersion() throws IOException {
-    List<String> report = filer.convertFileInZipDirectoryToList(
-            zipPath,
-            "detail"
-    );
-    for (String line : report) {
-      System.out.println(line);
-    }
-    assertThat(report.size(), equalTo(26));
-    assertListOfStringsContainsExpectedStrings(report, encountersWithNoChargesReport);
+  public void test04VerifyEncountersWithNoChargesReportDetailVersion() throws IOException,Throwable {
+    try {
+		List<String> report = filer.convertFileInZipDirectoryToList(
+		        zipPath,
+		        "detail"
+		);
+		for (String line : report) {
+		  System.out.println(line);
+		}
+			assertThat(report.size(), equalTo(26));
+			assertListOfStringsContainsExpectedStrings(report, encountersWithNoChargesReport);
+			ExtentReport.logPass("PASS", "Report size : PASS");
+			ExtentReport.logPass("PASS", "test04VerifyEncountersWithNoChargesReportDetailVersion : PASS");
+		
+	} catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test04VerifyEncountersWithNoChargesReportDetailVersion",driver,e);
+		fail(e.getMessage());
+	}
   }
 
   List<String> encountersWithNoChargesReport = Arrays.asList(
@@ -136,5 +178,10 @@ public class UtilitiesEncountersWithNoEfrsReportAds2429 extends UtilitiesPageHel
           nameDate,
           "_detail.log"
   );
+  @AfterClass
+ 	public static void endtest() throws Exception {
 
+ 		ExtentReport.report.flush();
+
+ 	}
 }

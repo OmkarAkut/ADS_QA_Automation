@@ -2,17 +2,24 @@ package webdriver.scripts.costing.unitcostquickcalculation.ucqcmainpage;
 
 import static org.junit.Assert.*;
 
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+
+import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.helpers.UcqcHelper;
 import webdriver.maps.CostingMap;
@@ -35,6 +42,7 @@ public class UcqcColumnsToDisplaySelectColumnsPopupAds1156 extends UcqcHelper {
 
     @BeforeClass
     public static void setupScript() throws Exception {
+    	 ExtentReport.reportCreate("UcqcColumnsToDisplaySelectColumnsPopupAds1156","webdriver.scripts.costing.unitcostquickcalculation.ucqcmainpage", "UcqcColumnsToDisplaySelectColumnsPopupAds1156");
         costingMap = BuildMap.getInstance(driver, CostingMap.class);
         System.out.println("Test Class: " + UcqcColumnsToDisplaySelectColumnsPopupAds1156.class.getSimpleName());
         Login.loginUser("CostingDepartmentManager1");
@@ -43,19 +51,26 @@ public class UcqcColumnsToDisplaySelectColumnsPopupAds1156 extends UcqcHelper {
     }
 
     @Test
-    public void test02aVerifyDefaultStatusOfAllCheckboxAndSelectButtonOnUcqcPage() {
+    public void test02aVerifyDefaultStatusOfAllCheckboxAndSelectButtonOnUcqcPage() throws Throwable {
         try {
+        	
+        	//Venkat 05-09-2022 Add Robot class in zoom in chrome browser
+        	Robot robot = new Robot();
+        	robot.keyPress(KeyEvent.VK_CONTROL);
+			robot.keyPress(KeyEvent.VK_SUBTRACT);
             waitForAjaxExtJs();
             assertElementIsDisabled(costingMap.getUnitCostQuickCalculationButtonColumnsToDisplaySelect(), printout);
             assertAllCheckboxIsDisabled(printout);
             assertColumnsToDisplayAllCheckBoxIsChecked();
-        } catch (Throwable e) {
+            ExtentReport.logPass("PASS", "test02aVerifyDefaultStatusOfAllCheckboxAndSelectButtonOnUcqcPage");
+        } catch (Exception|AssertionError e) {
+        	ExtentReport.logFail("FAIL","test02aVerifyDefaultStatusOfAllCheckboxAndSelectButtonOnUcqcPage", driver,e);
             fail(e.getMessage());
         }
     }
 
     @Test
-    public void test02bConfirmThatSelectButtonOnUcqcPageBecomesActiveAndClickableAfterSelectingCostModel() {
+    public void test02bConfirmThatSelectButtonOnUcqcPageBecomesActiveAndClickableAfterSelectingCostModel() throws Throwable {
         try {
             doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationDropdownCostModel(), costingMap.getUnitCostQuickCalculationDropdownCostModelMenuList(), costModel);
             waitForAjaxExtJs();
@@ -63,48 +78,56 @@ public class UcqcColumnsToDisplaySelectColumnsPopupAds1156 extends UcqcHelper {
             doClick(costingMap.getUnitCostQuickCalculationCheckBoxColumnsToDisplayAll());
             assertColumnsToDisplayAllCheckBoxIsNotChecked();
             assertElementIsEnabled(costingMap.getUnitCostQuickCalculationButtonColumnsToDisplaySelect(), printout);
-        } catch (Throwable e) {
+            ExtentReport.logPass("PASS", "test02bConfirmThatSelectButtonOnUcqcPageBecomesActiveAndClickableAfterSelectingCostModel");
+        } catch (Exception| AssertionError e) {
+        	ExtentReport.logFail("FAIL","test02bConfirmThatSelectButtonOnUcqcPageBecomesActiveAndClickableAfterSelectingCostModel", driver,e);
             fail(e.getMessage());
         }
     }
 
-    @Test
-    public void test03aAccessColumnsToDisplayDialogAndConfirmAvailableBoxOnSelectDialogIsNotPopulatedByDefault() {
+@Test
+    public void test03aAccessColumnsToDisplayDialogAndConfirmAvailableBoxOnSelectDialogIsNotPopulatedByDefault() throws Throwable {
         try {
             doClick(costingMap.getUnitCostQuickCalculationButtonColumnsToDisplaySelect());
             waitForAjaxExtJs();
             assertEquals(0, getSelectDialogAvailableListSize(printout));
-        } catch (Throwable e) {
+            ExtentReport.logPass("PASS", "test03aAccessColumnsToDisplayDialogAndConfirmAvailableBoxOnSelectDialogIsNotPopulatedByDefault");
+        } catch (Exception|AssertionError e) {
+        	ExtentReport.logFail("FAIL","test03aAccessColumnsToDisplayDialogAndConfirmAvailableBoxOnSelectDialogIsNotPopulatedByDefault", driver,e);
             fail(e.getMessage());
         }
     }
 
-    @Test
-    public void test03bConfirmRemoveAndSelectButtonsAreDisabledAndApplyAndCancelButtonsAreEnabledByDefault() {
+   @Test
+    public void test03bConfirmRemoveAndSelectButtonsAreDisabledAndApplyAndCancelButtonsAreEnabledByDefault() throws Throwable {
         try {
             assertElementIsDisabled(costingMap.getUnitCostQuickCalculationButtonColumnsToDisplayModalRemove(),printout);
             assertElementIsDisabled(costingMap.getUnitCostQuickCalculationButtonColumnsToDisplayModalSelect(),printout);
             assertElementIsEnabled(costingMap.getUnitCostQuickCalculationColumnsToDisplayModalApply(),printout);
             assertElementIsEnabled(costingMap.getUnitCostQuickCalculationColumnsToDisplayModalCancel(),printout);
-        } catch (Throwable e) {
+            ExtentReport.logPass("PASS", "test03bConfirmRemoveAndSelectButtonsAreDisabledAndApplyAndCancelButtonsAreEnabledByDefault");
+        } catch (Exception|AssertionError e) {
+        	ExtentReport.logFail("FAIL","test03bConfirmRemoveAndSelectButtonsAreDisabledAndApplyAndCancelButtonsAreEnabledByDefault", driver,e);
             fail(e.getMessage());
         }
     }
 
-    @Test
-    public void test03cConfirmChargeCodeIsNotInSelectedList() {
+@Test
+    public void test03cConfirmChargeCodeIsNotInSelectedList() throws Throwable {
         try {
             waitForAjaxExtJs();
             initialSelectedList = getSelectDialogSelectedList();
             selectedListStrings = javaListConvertListOfWebElementsToStrings(initialSelectedList, printout);
             assertFalse(selectedListStrings.contains("Charge Code"));
-        } catch (Throwable e) {
+            ExtentReport.logPass("PASS", "test03cConfirmChargeCodeIsNotInSelectedList");
+        } catch (Exception|AssertionError e) {
+        	ExtentReport.logFail("FAIL","test03cConfirmChargeCodeIsNotInSelectedList", driver,e);
             fail(e.getMessage());
         }
     }
 
-    @Test
-    public void test03dVerifyOrderOfListItemsInSelectedList() {
+@Test
+    public void test03dVerifyOrderOfListItemsInSelectedList() throws Throwable {
         try {
             assertEquals("Charge Code Name", selectedListStrings.get(1));
             assertEquals("Modifier", selectedListStrings.get(2));
@@ -112,18 +135,22 @@ public class UcqcColumnsToDisplaySelectColumnsPopupAds1156 extends UcqcHelper {
             assertEquals("Total Quick Cost", selectedListStrings.get(4));
             assertEquals("Total Change", selectedListStrings.get(5));
             verifyFiveItemsEachCostComponent(selectedListStrings, printout);
-        } catch (Throwable e) {
+            ExtentReport.logPass("PASS", "test03dVerifyOrderOfListItemsInSelectedList");
+        } catch (Exception|AssertionError e) {
+        	ExtentReport.logFail("FAIL","test03dVerifyOrderOfListItemsInSelectedList", driver,e);
             fail(e.getMessage());
         }
     }
 
     @Test
-    public void test04aSelectItemFromSelectedListAndConfirmRemoveButtonIsEnabled() {
+    public void test04aSelectItemFromSelectedListAndConfirmRemoveButtonIsEnabled() throws Throwable {
         try {
             doClick(driver.findElement(By.xpath("//div[contains(@class,'x-panel x-box-item x-panel-default')]/following-sibling::div/descendant::tbody[2]/tr/*[contains(@class,'x-grid-cell-first')]")));
             waitForAjaxExtJs();
             assertElementIsEnabled(costingMap.getUnitCostQuickCalculationButtonColumnsToDisplayModalRemove(),printout);
-        } catch (Throwable e) {
+            ExtentReport.logPass("PASS", "test04aSelectItemFromSelectedListAndConfirmRemoveButtonIsEnabled");
+        } catch (Exception|AssertionError e) {
+        	ExtentReport.logFail("FAIL","test04aSelectItemFromSelectedListAndConfirmRemoveButtonIsEnabled", driver,e);
             fail(e.getMessage());
         }
     }
@@ -141,13 +168,16 @@ public class UcqcColumnsToDisplaySelectColumnsPopupAds1156 extends UcqcHelper {
     }
 
     @Test
-    public void test04cMoveItemFromSelectedListToAvailableList() {
+    public void test04cMoveItemFromSelectedListToAvailableList() throws Throwable {
         try {
             doClick(driver.findElement(By.xpath("//div[contains(@class,'x-panel x-box-item x-panel-default')]/following-sibling::div/descendant::tbody[2]/tr/*[contains(@class,'x-grid-cell-first')]")));
             waitForAjaxExtJs();
             doClick(costingMap.getUnitCostQuickCalculationButtonColumnsToDisplayModalRemove());
             assertEquals(1, getSelectDialogAvailableListSize(printout));
-        } catch (Throwable e) {
+            ExtentReport.logPass("PASS", "ttest04cMoveItemFromSelectedListToAvailableList");
+            
+        } catch (Exception|AssertionError e) {
+        	ExtentReport.logFail("FAIL","test04cMoveItemFromSelectedListToAvailableList", driver,e);
             fail(e.getMessage());
         }
     }
@@ -157,50 +187,57 @@ public class UcqcColumnsToDisplaySelectColumnsPopupAds1156 extends UcqcHelper {
         try {
             assertEquals(1, getSelectDialogAvailableListSize(printout));
             assertElementIsDisabled(costingMap.getUnitCostQuickCalculationButtonColumnsToDisplayModalSelect(),printout);
+            ExtentReport.logPass("PASS", "ttest04cMoveItemFromSelectedListToAvailableList");
         } catch (Throwable e) {
             fail(e.getMessage());
         }
     }
 
     @Test
-    public void test04eVerifyItemInAvailableListIsNotAlsoInSelectedList() {
+    public void test04eVerifyItemInAvailableListIsNotAlsoInSelectedList() throws Throwable {
         try {
             String availableListItem = getSelectDialogAvailableList().get(1).getText();
             List<WebElement> selectedList = getSelectDialogSelectedList();
             assertTrue(!selectedList.contains(availableListItem));
-        } catch (Throwable e) {
+            ExtentReport.logPass("PASS", "test04eVerifyItemInAvailableListIsNotAlsoInSelectedList");
+        } catch (Exception|AssertionError e) {
+        	ExtentReport.logFail("FAIL","test04eVerifyItemInAvailableListIsNotAlsoInSelectedList", driver,e);
             fail(e.getMessage());
         }
     }
 
     @Test
-    public void test05CloseAndReopenDialogAndVerifyAvailableListItemsPersist() {
+    public void test05CloseAndReopenDialogAndVerifyAvailableListItemsPersist() throws Throwable {
         try {
             waitForAjaxExtJs();
             doClick(costingMap.getUnitCostQuickCalculationColumnsToDisplayModalApply()); //close dialog
             waitForAjaxExtJs();
             doClick(costingMap.getUnitCostQuickCalculationButtonColumnsToDisplaySelect()); //reopen dialog
             assertEquals(1, getSelectDialogAvailableListSize(printout));
-        } catch (Throwable e) {
+            ExtentReport.logPass("PASS", "test05CloseAndReopenDialogAndVerifyAvailableListItemsPersist");
+        } catch (Exception|AssertionError e) {
+        	ExtentReport.logFail("FAIL","test05CloseAndReopenDialogAndVerifyAvailableListItemsPersist", driver,e);
             fail(e.getMessage());
         }
     }
 
     @Test
-    public void test06HighlightAnItemInBothListsAndVerifyRemoveAndSelectButtonsAreActive() {
+    public void test06HighlightAnItemInBothListsAndVerifyRemoveAndSelectButtonsAreActive() throws Throwable {
         try {
             waitForAjaxExtJs();
             doClick(driver.findElement(By.xpath("//div[contains(@class,'x-panel x-box-item x-panel-default')]/following-sibling::div/descendant::tbody[1]/tr/*[contains(@class,'x-grid-cell-first')]")));
             doClick(driver.findElement(By.xpath("//div[contains(@class,'x-panel x-box-item x-panel-default')]/following-sibling::div/descendant::tbody[2]/tr/*[contains(@class,'x-grid-cell-first')]")));
             assertElementIsEnabled(costingMap.getUnitCostQuickCalculationButtonColumnsToDisplayModalSelect(),printout);
             assertElementIsEnabled(costingMap.getUnitCostQuickCalculationButtonColumnsToDisplayModalRemove(),printout);
-        } catch (Throwable e) {
+            ExtentReport.logPass("PASS", "test06HighlightAnItemInBothListsAndVerifyRemoveAndSelectButtonsAreActive");
+        } catch (Exception|AssertionError e) {
+        	ExtentReport.logFail("FAIL","test06HighlightAnItemInBothListsAndVerifyRemoveAndSelectButtonsAreActive", driver,e);
             fail(e.getMessage());
         }
     }
 
     @Test
-    public void test07CloseDialogAndRecheckAllCheckboxAndThenUncheckItAndVerifyAvailableListIsResetToDefaultEmptyStatus() {
+    public void test07CloseDialogAndRecheckAllCheckboxAndThenUncheckItAndVerifyAvailableListIsResetToDefaultEmptyStatus() throws Throwable {
         try {
             doClick(costingMap.getUnitCostQuickCalculationColumnsToDisplayModalCancel());
             waitForAjaxExtJs();
@@ -211,7 +248,9 @@ public class UcqcColumnsToDisplaySelectColumnsPopupAds1156 extends UcqcHelper {
             assertColumnsToDisplayAllCheckBoxIsNotChecked();
             doClick(costingMap.getUnitCostQuickCalculationButtonColumnsToDisplaySelect());
             assertEquals(0, getSelectDialogAvailableListSize(printout));
-        } catch (Throwable e) {
+            ExtentReport.logPass("PASS", "test07CloseDialogAndRecheckAllCheckboxAndThenUncheckItAndVerifyAvailableListIsResetToDefaultEmptyStatus");
+        } catch (Exception|AssertionError e) {
+        	ExtentReport.logFail("FAIL","test07CloseDialogAndRecheckAllCheckboxAndThenUncheckItAndVerifyAvailableListIsResetToDefaultEmptyStatus", driver,e);
             fail(e.getMessage());
         }
     }
@@ -269,18 +308,20 @@ public class UcqcColumnsToDisplaySelectColumnsPopupAds1156 extends UcqcHelper {
     }
 
     @Test
-    public void test08eConfirmApplyButtonIsEnabledWhenASingleItemIsSelectedOnSelectedList() {
+    public void test08eConfirmApplyButtonIsEnabledWhenASingleItemIsSelectedOnSelectedList() throws Throwable {
         try {
             driver.findElement(By.xpath("//div[contains(@class,'x-panel x-box-item x-panel-default')]/following-sibling::div/descendant::tbody[2]/tr/td/*[contains(text(),'RVU')]")).click();
             waitForAjaxExtJs();
             assertElementIsEnabled(costingMap.getUnitCostQuickCalculationColumnsToDisplayModalApply(), printout);
-        } catch (Throwable e) {
+            ExtentReport.logPass("PASS", "test08eConfirmApplyButtonIsEnabledWhenASingleItemIsSelectedOnSelectedList");
+        } catch (Exception|AssertionError e) {
+        	ExtentReport.logFail("FAIL","test08eConfirmApplyButtonIsEnabledWhenASingleItemIsSelectedOnSelectedList", driver,e);
             fail(e.getMessage());
         }
     }
 
     @Test
-    public void test20MoveItemFromAvailableListToSelectedList() {
+    public void test20MoveItemFromAvailableListToSelectedList() throws Throwable {
         try {
             waitForAjaxExtJs();
             doClick(driver.findElement(By.xpath("//div[contains(@class,'x-panel x-box-item x-panel-default')]/following-sibling::div/descendant::tbody[2]/tr/*[contains(@class,'x-grid-cell-first')]")));
@@ -291,7 +332,10 @@ public class UcqcColumnsToDisplaySelectColumnsPopupAds1156 extends UcqcHelper {
             waitForAjaxExtJs();
             doClick(costingMap.getUnitCostQuickCalculationButtonColumnsToDisplayModalSelect());
             assertEquals(0, getSelectDialogAvailableListSize(printout));
-        } catch (Throwable e) {
+            ExtentReport.logPass("PASS", "test20MoveItemFromAvailableListToSelectedList");
+            
+        } catch (Exception|AssertionError e) {
+        	ExtentReport.logFail("FAIL","test20MoveItemFromAvailableListToSelectedList", driver,e);
             fail(e.getMessage());
         }
     }
@@ -436,6 +480,14 @@ public class UcqcColumnsToDisplaySelectColumnsPopupAds1156 extends UcqcHelper {
             assertTrue(five.contains("Change"));
         }
     }
+    
+    
+    @AfterClass
+   	public static void endtest() throws Exception {
+
+   		ExtentReport.report.flush();
+
+   	}
 }
 
 

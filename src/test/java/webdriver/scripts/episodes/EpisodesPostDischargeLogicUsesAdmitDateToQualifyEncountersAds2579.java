@@ -1,34 +1,53 @@
 package webdriver.scripts.episodes;
 
+import static org.junit.Assert.fail;
+
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
+
+import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.helpers.CalculationHelper;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class EpisodesPostDischargeLogicUsesAdmitDateToQualifyEncountersAds2579 extends CalculationHelper {
 
-  static final String episodeName1 = "v103 REGRESSION Post Discharge 1";
+  static final String episodeName1 = "2015 BPCI Renal Failure";//Shilpa 05.09.2022 updated from v103 REGRESSION Post Discharge 2
   //static final String episodeName2 = "v103 REGRESSION Post Discharge 2";
   final byte numberOfEfrs = 51;
 
-  /** Regression: Automated test script for ADS-2579 */
+  /** Regression: Automated test script for ADS-2579 
+ * @throws Throwable */
   @BeforeClass
-  public static void setupScript() throws Exception {
-    System.out.println("Test Class: " + EpisodesPostDischargeLogicUsesAdmitDateToQualifyEncountersAds2579.class.getSimpleName());
-    Login.loginUser("EpisodeAnalyst1");
-    goToPage("Episode Models");
+  public static void setupScript() throws Throwable {
+	  ExtentReport.reportCreate("EpisodesPostDischargeLogicUsesAdmitDateToQualifyEncountersAds2579", "webdriver.scripts.episodes", "EpisodesPostDischargeLogicUsesAdmitDateToQualifyEncountersAds2579");
+    try {
+		System.out.println("Test Class: " + EpisodesPostDischargeLogicUsesAdmitDateToQualifyEncountersAds2579.class.getSimpleName());
+		Login.loginUser("EpisodeAnalyst1");
+		goToPage("Episode Models");
+		ExtentReport.logPass("PASS", "setupScript");
+	}  catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "setupScript", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test00Setup() throws InterruptedException {
-    filterAndSelectContractModelFromContractModelLibrary(episodeName1);
-    doClickButton("Open Task List");
-    doClickTree("Model Episode");
-    doClickCheckboxTree("Assign Episode to Encounters");
+  public void test00Setup() throws InterruptedException,Throwable {
+    try {
+		filterAndSelectContractModelFromContractModelLibrary(episodeName1);
+		doClickButton("Open Task List");
+		doClickTree("Model Episode");
+		ExtentReport.logPass("PASS", "test00Setup");
+	} catch (Exception e) {
+		ExtentReport.logFail("FAIL", "test00Setup", driver, e);
+		fail(e.getMessage());
+	}
+    //doClickCheckboxTree("Assign Episode to Encounters");
   }
 
 //  @Ignore
@@ -155,5 +174,10 @@ public class EpisodesPostDischargeLogicUsesAdmitDateToQualifyEncountersAds2579 e
     driver.findElement(By.xpath("//button/span[text()='Cancel']")).click();
     waitForSpinnerToEnd();
   }
+  @AfterClass
+	public static void endtest() throws Exception {
 
+		ExtentReport.report.flush();
+
+	}
 }

@@ -3,11 +3,18 @@ package webdriver.scripts.costing.unitcostquickcalculation.ucqcmainpage;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
+
+import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.helpers.UcqcHelper;
 import webdriver.maps.CostingMap;
@@ -27,6 +34,9 @@ public class UcqcColumnsToDisplaySectionAppearsAds1154 extends UcqcHelper {
 
     @BeforeClass
     public static void setupScript() throws Exception {
+    	
+    	 ExtentReport.reportCreate("UcqcColumnsToDisplaySectionAppearsAds1154","webdriver.scripts.costing.unitcostquickcalculation.ucqcmainpage", "UcqcColumnsToDisplaySectionAppearsAds1154");
+    	    
         costingMap = BuildMap.getInstance(driver, CostingMap.class);
         System.out.println("Test Class: " + UcqcColumnsToDisplaySectionAppearsAds1154.class.getSimpleName());
         Login.loginUser("CostingDepartmentManager1");
@@ -34,158 +44,204 @@ public class UcqcColumnsToDisplaySectionAppearsAds1154 extends UcqcHelper {
         goToPage("Unit Cost Quick Calculation");
     }
 
-    @Test
-    public void test01VerifyColumnsToDisplayIsRequired() {
+  @Test
+    public void test01VerifyColumnsToDisplayIsRequired() throws Throwable {
         try {
             waitForAjaxExtJs();
             Thread.sleep(1000);
+           
+            
             assertAsteriskIsDisplayed("Columns to Display");
-        } catch (Throwable e) {
+            
+            ExtentReport.logPass("PASS", "test01VerifyColumnsToDisplayIsRequired");
+            
+        } catch (Exception|AssertionError e) {
+        	ExtentReport.logFail("FAIL","test01VerifyColumnsToDisplayIsRequired", driver,e);
             fail(e.getMessage());
         }
     }
 
     @Test
-    public void test02VerifyDefaultStatusOfAllCheckboxAndSelectButton() {
+    public void test02VerifyDefaultStatusOfAllCheckboxAndSelectButton() throws Throwable {
         try {
             waitForAjaxExtJs();
             assertElementIsDisabled(costingMap.getUnitCostQuickCalculationButtonColumnsToDisplaySelect(), printout);
             assertAllCheckboxIsDisabled(printout);
             assertColumnsToDisplayAllCheckBoxIsChecked();
-        } catch (Throwable e) {
+            ExtentReport.logPass("PASS", "test02VerifyDefaultStatusOfAllCheckboxAndSelectButton");
+        } catch (Exception|AssertionError e) {
+        	ExtentReport.logFail("FAIL","test02VerifyDefaultStatusOfAllCheckboxAndSelectButton", driver,e);
             fail(e.getMessage());
         }
     }
 
     @Test
-    public void test03aSetCostModelAndVerifyAllCheckboxIsSelectedAndEnabled() {
+    public void test03aSetCostModelAndVerifyAllCheckboxIsSelectedAndEnabled() throws Throwable {
         try {
             doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationDropdownCostModel(), costingMap.getUnitCostQuickCalculationDropdownCostModelMenuList(), costModel);
             waitForAjaxExtJs();
             assertAllCheckboxIsEnabled(printout);
             assertColumnsToDisplayAllCheckBoxIsChecked();
-        } catch (Throwable e) {
+            ExtentReport.logPass("PASS", "test03aSetCostModelAndVerifyAllCheckboxIsSelectedAndEnabled");
+        } catch (Exception|AssertionError e) {
+        	ExtentReport.logFail("FAIL","test03aSetCostModelAndVerifyAllCheckboxIsSelectedAndEnabled", driver,e);
             fail(e.getMessage());
         }
     }
 
     @Test
-    public void test03bSetCostModelToNoneAndVerifyAllCheckboxIsSelectedAndDisabled() {
+    public void test03bSetCostModelToNoneAndVerifyAllCheckboxIsSelectedAndDisabled() throws Throwable {
         try {
             doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationDropdownCostModel(), costingMap.getUnitCostQuickCalculationDropdownCostModelMenuList(), "<None>");
             waitForAjaxExtJs();
             assertAllCheckboxIsDisabled(printout);
             assertColumnsToDisplayAllCheckBoxIsChecked();
-        } catch (Throwable e) {
+            ExtentReport.logPass("PASS", "test03bSetCostModelToNoneAndVerifyAllCheckboxIsSelectedAndDisabled");
+        } catch (Exception|AssertionError e) {
+        	ExtentReport.logFail("FAIL","test03bSetCostModelToNoneAndVerifyAllCheckboxIsSelectedAndDisabled", driver,e);
             fail(e.getMessage());
         }
     }
 
     @Test
-    public void test03cSetNewCostModelAndVerifyAllCheckboxIsSelectedAndEnabled() {
+    public void test03cSetNewCostModelAndVerifyAllCheckboxIsSelectedAndEnabled() throws Throwable {
         try {
             doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationDropdownCostModel(), costingMap.getUnitCostQuickCalculationDropdownCostModelMenuList(), "QA Marina");
             waitForAjaxExtJs();
             assertAllCheckboxIsEnabled(printout);
             assertColumnsToDisplayAllCheckBoxIsChecked();
-        } catch (Throwable e) {
+            ExtentReport.logPass("PASS", "test03cSetNewCostModelAndVerifyAllCheckboxIsSelectedAndEnabled");
+        } catch (Exception|AssertionError e) {
+        	ExtentReport.logFail("FAIL","test03cSetNewCostModelAndVerifyAllCheckboxIsSelectedAndEnabled", driver,e);
             fail(e.getMessage());
         }
     }
 
     @Test
-    public void test04UncheckAllCheckboxAndVerifySelectedButtonIsEnabled() {
+    public void test04UncheckAllCheckboxAndVerifySelectedButtonIsEnabled() throws Throwable {
         try {
+        	
+        	//Venkat 05-09-2022 Add Robot class in zoom in chrome browser
+        	Robot robot = new Robot();
+        	robot.keyPress(KeyEvent.VK_CONTROL);
+			robot.keyPress(KeyEvent.VK_SUBTRACT);
+			
+			
+			waitForAjaxExtJs();
             doClick(driver.findElement(By.xpath("//label[text()='All']/preceding-sibling::input")));
+            System.out.println("ENter");
             waitForAjaxExtJs();
             assertAllCheckboxIsEnabled(printout);
             assertColumnsToDisplayAllCheckBoxIsNotChecked();
-        } catch (Throwable e) {
+            ExtentReport.logPass("PASS", "test04UncheckAllCheckboxAndVerifySelectedButtonIsEnabled");
+        } catch (Exception|AssertionError e) {
+        	ExtentReport.logFail("FAIL","test04UncheckAllCheckboxAndVerifySelectedButtonIsEnabled", driver,e);
             fail(e.getMessage());
         }
+        
+        driver.manage().window().maximize();
     }
 
     @Test
-    public void test05CheckAllCheckboxAndVerifySelectedButtonIsDisabled() {
+    public void test05CheckAllCheckboxAndVerifySelectedButtonIsDisabled() throws Throwable {
         try {
+        	//Venkat 05-09-2022 Add Robot class in zoom in chrome browser
+        	Robot robot = new Robot();
+        	robot.keyPress(KeyEvent.VK_CONTROL);
+			robot.keyPress(KeyEvent.VK_SUBTRACT);
+			
             waitForAjaxExtJs();
             doClick(driver.findElement(By.xpath("//label[text()='All']/preceding-sibling::input")));
             waitForAjaxExtJs();
             assertColumnsToDisplayAllCheckBoxIsChecked();
             assertAllCheckboxIsEnabled(printout);
             assertElementIsDisabled(costingMap.getUnitCostQuickCalculationButtonApplySelections(), printout);
-        } catch (Throwable e) {
+            ExtentReport.logPass("PASS", "test05CheckAllCheckboxAndVerifySelectedButtonIsDisabled");
+        } catch (Exception|AssertionError e) {
+        	ExtentReport.logFail("FAIL","test05CheckAllCheckboxAndVerifySelectedButtonIsDisabled", driver,e);
             fail(e.getMessage());
         }
     }
 
     @Test
-    public void test06SetRequiredFieldsAndEnsureAllCheckboxIsCheckedAndVerifyApplySelectionsButtonIsEnabled() {
+    public void test06SetRequiredFieldsAndEnsureAllCheckboxIsCheckedAndVerifyApplySelectionsButtonIsEnabled() throws Throwable {
         try {
             resetRequiredFields();
             assertColumnsToDisplayAllCheckBoxIsChecked();
             assertElementIsEnabled(costingMap.getUnitCostQuickCalculationButtonApplySelections(), printout);
-        } catch (Throwable e) {
+            ExtentReport.logPass("PASS", "test06SetRequiredFieldsAndEnsureAllCheckboxIsCheckedAndVerifyApplySelectionsButtonIsEnabled");
+        } catch (Exception|AssertionError e) {
+        	ExtentReport.logFail("FAIL","test06SetRequiredFieldsAndEnsureAllCheckboxIsCheckedAndVerifyApplySelectionsButtonIsEnabled", driver,e);
             fail(e.getMessage());
         }
     }
 
     @Test
-    public void test07SetCostModelToNoneAndEnsureAllCheckboxIsUnchanged() {
+    public void test07SetCostModelToNoneAndEnsureAllCheckboxIsUnchanged() throws Throwable {
         try {
             resetRequiredFields();
             doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationDropdownCostModel(), costingMap.getUnitCostQuickCalculationDropdownCostModelMenuList(), "<None>");
             waitForAjaxExtJs();
             assertColumnsToDisplayAllCheckBoxIsChecked();
-        } catch (Throwable e) {
+            ExtentReport.logPass("PASS", "test07SetCostModelToNoneAndEnsureAllCheckboxIsUnchanged");
+        } catch (Exception|AssertionError e) {
+        	ExtentReport.logFail("FAIL","test07SetCostModelToNoneAndEnsureAllCheckboxIsUnchanged", driver,e);
             fail(e.getMessage());
         }
     }
 
     @Test
-    public void test08SetCostModelScenarioToNoneAndEnsureAllCheckboxIsUnchanged() {
+    public void test08SetCostModelScenarioToNoneAndEnsureAllCheckboxIsUnchanged() throws Throwable {
         try {
             resetRequiredFields();
             doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationDropdownCostModelScenario(), costingMap.getUnitCostQuickCalculationDropdownCostModelScenarioMenuList(), "<None>");
             waitForAjaxExtJs();
             assertColumnsToDisplayAllCheckBoxIsChecked();
-        } catch (Throwable e) {
+            ExtentReport.logPass("PASS", "test08SetCostModelScenarioToNoneAndEnsureAllCheckboxIsUnchanged");
+        } catch (Exception|AssertionError e) {
+        	ExtentReport.logFail("FAIL","test08SetCostModelScenarioToNoneAndEnsureAllCheckboxIsUnchanged", driver,e);
             fail(e.getMessage());
         }
     }
 
     @Test
-    public void test09SetEntityToNoneAndEnsureAllCheckboxIsUnchanged() {
+    public void test09SetEntityToNoneAndEnsureAllCheckboxIsUnchanged() throws Throwable {
         try {
             resetRequiredFields();
             doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationDropdownEntity(), costingMap.getUnitCostQuickCalculationDropdownEntityMenuList(), "<None>");
             waitForAjaxExtJs();
             assertColumnsToDisplayAllCheckBoxIsChecked();
-        } catch (Throwable e) {
+            ExtentReport.logPass("PASS", "test09SetEntityToNoneAndEnsureAllCheckboxIsUnchanged");
+        } catch (Exception|AssertionError e) {
+        	ExtentReport.logFail("FAIL","test09SetEntityToNoneAndEnsureAllCheckboxIsUnchanged", driver,e);
             fail(e.getMessage());
         }
     }
 
     @Test
-    public void test10SetDepartmentToNoneAndEnsureAllCheckboxIsUnchanged() {
+    public void test10SetDepartmentToNoneAndEnsureAllCheckboxIsUnchanged() throws Throwable {
         try {
             resetRequiredFields();
             updateDepartment("<None>");
             waitForAjaxExtJs();
             assertColumnsToDisplayAllCheckBoxIsChecked();
-        } catch (Throwable e) {
+            ExtentReport.logPass("PASS", "test10SetDepartmentToNoneAndEnsureAllCheckboxIsUnchanged");
+        } catch (Exception|AssertionError e) {
+        	ExtentReport.logFail("FAIL","test10SetDepartmentToNoneAndEnsureAllCheckboxIsUnchanged", driver,e);
             fail(e.getMessage());
         }
     }
 
     @Test
-    public void test11SetResultsStoredForToNoneAndEnsureAllCheckboxIsUnchanged() {
+    public void test11SetResultsStoredForToNoneAndEnsureAllCheckboxIsUnchanged() throws Throwable {
         try {
             resetRequiredFields();
             doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationFieldResultsStoredFor(), costingMap.getUnitCostQuickCalculationDropdownResultsStoredForMenuList(), "<None>");
             waitForAjaxExtJs();
             assertColumnsToDisplayAllCheckBoxIsChecked();
-        } catch (Throwable e) {
+            ExtentReport.logPass("PASS", "test11SetResultsStoredForToNoneAndEnsureAllCheckboxIsUnchanged");
+        } catch (Exception|AssertionError e) {
+        	ExtentReport.logFail("FAIL","test11SetResultsStoredForToNoneAndEnsureAllCheckboxIsUnchanged", driver,e);
             fail(e.getMessage());
         }
     }
@@ -199,6 +255,7 @@ public class UcqcColumnsToDisplaySectionAppearsAds1154 extends UcqcHelper {
 
     private void assertAllCheckboxIsEnabled(boolean printout) throws Exception {
         String classText;
+        
         try {
             waitForAjaxExtJs();
             classText = driver.findElement(By.xpath("//label[text()='All']/ancestor::*[contains(@class,'x-form-cb')]")).getAttribute("class");
@@ -272,6 +329,13 @@ public class UcqcColumnsToDisplaySectionAppearsAds1154 extends UcqcHelper {
             throw new Exception();
         }
     }
+    
+    @AfterClass
+   	public static void endtest() throws Exception {
+
+   		ExtentReport.report.flush();
+
+   	}
 }
 
 

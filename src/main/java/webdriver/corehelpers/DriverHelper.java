@@ -11,7 +11,8 @@ public class DriverHelper extends WaitHelper {
 
   public static void checkForModelLibraryUserLock() {
     try {
-      String lockText = driver.findElement(By.xpath("//*[contains(text(),'currently locked by client')] ")).getText();
+      @SuppressWarnings("unused")
+	String lockText = driver.findElement(By.xpath("//*[contains(text(),'currently locked by client')] ")).getText();
       //assertTrue(lockText.contains("locked"));
       fail();
     } catch (Throwable e) {
@@ -26,6 +27,7 @@ public class DriverHelper extends WaitHelper {
   public static void webdriverClick(WebElement element) {
     waitUntilElementIsClickable(element);
     element.click();
+   
   }
 
   public void driverDoubleClick(WebElement element) {

@@ -31,9 +31,9 @@ public class AdsAccessibilityCostingSuite extends LoginStatic {
     dm = BuildMap.getInstance(driver, DataMaintenanceMap.class);
     logger.info(AdsAccessibilityCostingSuite.class.getSimpleName());
     
-    /*modified by Omkar on 26/5/22 as only aadmin user is available for qa3 env
-    loginUser(Users.AutomationTester1);
-    */
+    //modified by Omkar on 26/5/22 as only aadmin user is available for qa3 env
+    //loginUser(Users.AutomationTester1);
+    
     loginUser(Users.AutomationTesterAdmin);
  // End of modification
   }

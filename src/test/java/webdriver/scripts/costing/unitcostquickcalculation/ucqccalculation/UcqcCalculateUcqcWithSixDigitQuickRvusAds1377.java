@@ -6,6 +6,8 @@ import static org.junit.Assert.fail;
 
 import org.junit.*;
 import org.junit.runners.MethodSorters;
+
+import ExtentReport.ExtentReport;
 import webdriver.scripts.costing.unitcostquickcalculation.UnitCostQuickCalculationHelperStatic;
 import webdriver.maps.CostingMap;
 import webdriver.maps.StatusMap;
@@ -27,41 +29,63 @@ public class UcqcCalculateUcqcWithSixDigitQuickRvusAds1377 extends UnitCostQuick
 
   /**Test ticket ADS-1377.  Dev Story ADS-873.
    * This scripts verifies successful calculations involving quick rvus with values
-   * up to 9,999,999.000000.  Note that 9,999,999,999.000000 is specifically excluded.*/
+   * up to 9,999,999.000000.  Note that 9,999,999,999.000000 is specifically excluded.
+ * @throws Throwable */
+  
   @BeforeClass
-  public static void setupScript() throws InterruptedException {
-    costingMap = BuildMap.getInstance(driver, CostingMap.class);
-    statusMap = BuildMap.getInstance(driver, StatusMap.class);
-    System.out.println("Test Class: " + UcqcCalculateUcqcWithSixDigitQuickRvusAds1377.class.getSimpleName());
-    evolveLoginStaticUser(Users.CostingDepartmentManager1);
-    goToPage("Unit Cost Quick Calculation");
-    doMaximizeWindow();
-    ucqcDisplayChargeCodeGrid(requiredFields);
+  public static void setupScript() throws Throwable {
+	  ExtentReport.reportCreate("UcqcCalculateUcqcWithSixDigitQuickRvusAds1377","webdriver.scripts.costing.unitcostquickcalculation.ucqccalculation", "UcqcCalculateUcqcWithSixDigitQuickRvusAds1377");
+    
+	try {
+		costingMap = BuildMap.getInstance(driver, CostingMap.class);
+		statusMap = BuildMap.getInstance(driver, StatusMap.class);
+		System.out.println("Test Class: " + UcqcCalculateUcqcWithSixDigitQuickRvusAds1377.class.getSimpleName());
+		evolveLoginStaticUser(Users.CostingDepartmentManager1);
+		goToPage("Unit Cost Quick Calculation");
+		doMaximizeWindow();
+		ucqcDisplayChargeCodeGrid(requiredFields);
+	} catch (Exception | AssertionError e) {
+		ExtentReport.logFail("FAIL","Beforeclassmethod", driver,e);
+		fail(e.getMessage());
+		
+	}
+
   }
 
   @AfterClass
   public static void teardownScript() throws InterruptedException {
     doClosePageOnLowerBar("Calculation Status");
     doClosePageOnLowerBar("Unit Cost Quick...");
+    ExtentReport.report.flush();
   }
 
   @Test
-  public void test01UpdateQuickSalariesAndWagesValueAndAssertCalculateButtonIsDisabled() {
+  public void test01UpdateQuickSalariesAndWagesValueAndAssertCalculateButtonIsDisabled() throws Throwable {
     //the charge code below isn't on the page.  Need to use a different one.
-    try {
-      ucqcUpdateGridCellValue("3350022","Quick Salaries and Wages RVU","15",printout);
-      assertElementIsDisabled(costingMap.getUnitCostQuickCalculationButtonCalculate(),printout);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+    
+		try {
+		  //ucqcUpdateGridCellValue("3350022","Quick Salaries and Wages RVU","15",printout);
+		  ucqcUpdateGridCellValue("8396087","Quick Salaries and Wages RVU","15",printout); //venkat update test data 07-09-2022
+		  assertElementIsDisabled(costingMap.getUnitCostQuickCalculationButtonCalculate(),printout);
+		  ExtentReport.logPass("PASS", "test01UpdateQuickSalariesAndWagesValueAndAssertCalculateButtonIsDisabled");
+		  
+		} catch (Exception |AssertionError e) {
+			ExtentReport.logFail("FAIL","test01UpdateQuickSalariesAndWagesValueAndAssertCalculateButtonIsDisabled", driver,e);
+			fail(e.getMessage());
+		}
+	
+    
+    
+    
   }
 
   @Test
-  public void test02UpdateQuickSalariesAndWagesValueAndAssertCalculationEnds() {
+  public void test02UpdateQuickSalariesAndWagesValueAndAssertCalculationEnds() throws Throwable {
     try {
       String[][] pairs = {
         {"8195307", "0.000000"},
-        {"8399370", "2.00000"},
+       // {"8399370", "2.00000"},
+        {"8195307", "2.00000"},//venkat update value 8195307 from 8399370 07-09-2022
         {"8301392", "999.000000"},
         {"8301707", "9,999.00000"},
 
@@ -83,29 +107,58 @@ public class UcqcCalculateUcqcWithSixDigitQuickRvusAds1377 extends UnitCostQuick
 
       for (String[] pair : pairs) {
         try {
-          String header = "Salaries & Wages Quick RVUs";
+         // String header = "Salaries & Wages Quick RVUs";
+          String header = "Quick Salaries and Wages RVU";//venkat update text 07-09-2022
+         
           ucqcUpdateGridCellValue(pair[0], header, pair[1], printout);
-        } catch (Throwable e) {
+        } catch (Exception |AssertionError e) {
+          
+          ExtentReport.logFail("FAIL","test02UpdateQuickSalariesAndWagesValueAndAssertCalculationEnds", driver,e);
           fail(e.getMessage());
         }
       }
       doClick(costingMap.getUnitCostQuickCalculationButtonSaveQuickRVUs());
       doClick(costingMap.getUnitCostQuickCalculationButtonCalculate());
       ucqcWaitForSpinnerToEnd();
-    } catch (Throwable e) {
-      fail(e.getMessage());
+      ExtentReport.logPass("PASS", "test02UpdateQuickSalariesAndWagesValueAndAssertCalculationEnds");
+      
+    } catch (Exception| AssertionError e) {
+    	
+    	ExtentReport.logFail("FAIL","test02UpdateQuickSalariesAndWagesValueAndAssertCalculationEnds", driver,e);
+    	 fail(e.getMessage());
+     
     }
   }
 
-  @Test
-  public void test03GoToCalculationStatusPageAndAssertCalculationCompletedToOneHundredPercent() {
-    try {
-      goToPage("Calculation Status");
-      waitForSpinnerToEnd();
-      String statusPercentage = statusMap.getCalculationStatusPageMyStatusFirstRowStatusBarPercentage().getText();
-      assertThat(statusPercentage, equalTo("100"));
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+ @Test
+  public void test03GoToCalculationStatusPageAndAssertCalculationCompletedToOneHundredPercent() throws Throwable {
+	
+    
+		try {
+		  goToPage("Calculation Status");
+		  waitForSpinnerToEnd();
+		  waitForAjaxExtJs();
+		  String statusPercentage = statusMap.getCalculationStatusPageMyStatusFirstRowStatusBarPercentage().getText();
+		  System.out.println(statusPercentage);
+		 // assertThat(statusPercentage, equalTo("100"));
+		  assertThat(statusPercentage, equalTo("100%")); //venkat update 100% from 100 07-09-2022
+		  ExtentReport.logPass("PASS", "test03GoToCalculationStatusPageAndAssertCalculationCompletedToOneHundredPercent");
+		  
+		} catch (Exception |AssertionError e) {
+		 
+		  ExtentReport.logFail("FAIL","test03GoToCalculationStatusPageAndAssertCalculationCompletedToOneHundredPercent", driver,e);
+		  fail(e.getMessage());
+		}
+	
   }
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 }

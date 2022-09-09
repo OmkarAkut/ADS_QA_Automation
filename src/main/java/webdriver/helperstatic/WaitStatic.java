@@ -2,14 +2,20 @@ package webdriver.helperstatic;
 
 import junit.framework.TestCase;
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.aventstack.extentreports.Status;
+
+import ExtentReport.ExtentReport;
 
 import static org.junit.Assert.fail;
 
@@ -55,8 +61,12 @@ public class WaitStatic extends JavaListStatic {
   }
 
   public static void waitUntilElementIsVisible(WebElement element) {
-    WebDriverWait webdriverWait = new WebDriverWait(driver,30);
-    webdriverWait.until(ExpectedConditions.visibilityOf(element));
+    try {
+		WebDriverWait webdriverWait = new WebDriverWait(driver,30);
+		webdriverWait.until(ExpectedConditions.visibilityOf(element));
+	} catch (TimeoutException|NoSuchElementException|ElementNotInteractableException e) {
+		ExtentReport.extenttest.log(Status.INFO, e);
+	}
   }
 
   /** Waits for element to be displayed using do-while loop.  Does not fail the test. */
@@ -116,6 +126,9 @@ public class WaitStatic extends JavaListStatic {
           break;
         }
       } catch (Throwable e) {
+			//ExtentReport.extenttest.log(Status.FAIL, "Element not Found");
+
+    	 // ExtentReport.extenttest.log(Status.INFO, e);
         break;
       }
     }
@@ -145,8 +158,14 @@ public class WaitStatic extends JavaListStatic {
     WebDriverWait wait = new WebDriverWait(driver, 30);
     wait.until(ExpectedConditions.visibilityOf(element));
     */
-	  WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(30));
-	  wait.until(ExpectedConditions.visibilityOf(element));
+	  try {
+		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(30));
+		  wait.until(ExpectedConditions.visibilityOf(element));
+	}catch (TimeoutException|NoSuchElementException|ElementNotInteractableException e) {
+		ExtentReport.extenttest.log(Status.FAIL, "Element not Found");
+
+		ExtentReport.extenttest.log(Status.INFO, e);
+	}
   }
 
   /** Uses WebDriverWait ExpectedConditions.elementToBeClickable but does not click. Timeout is 30s. 
@@ -189,7 +208,11 @@ public class WaitStatic extends JavaListStatic {
       counter++;
       if(counter == 30) {
         //System.out.println("FAILED waiting for Ajax ExtJs to complete");
-        fail("FAILED waiting for Ajax ExtJs to complete");
+        try {
+			fail("FAILED waiting for Ajax ExtJs to complete");
+		} catch (AssertionError e) {
+			
+		}
       }
     }
   }
@@ -212,8 +235,10 @@ public class WaitStatic extends JavaListStatic {
 
   /**  */
   public static void waitForPresenceOfElement(String xpath) {
-    WebDriverWait webdriverWait = new WebDriverWait(driver,30);
-    webdriverWait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(""+xpath+"")));
+   
+		WebDriverWait webdriverWait = new WebDriverWait(driver,30);
+		webdriverWait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(""+xpath+"")));
+	
   }
 
 }

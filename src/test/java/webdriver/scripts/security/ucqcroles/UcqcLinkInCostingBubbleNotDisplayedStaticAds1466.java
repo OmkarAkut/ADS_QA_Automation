@@ -44,7 +44,11 @@ public class UcqcLinkInCostingBubbleNotDisplayedStaticAds1466 extends LoginStati
   public void testUcqcLinkInCostingBubbleNotDisplayed() {
     try {
       waitForAjaxExtJs();
-      assertElementIsNotDisplayed(By.xpath("//*[@class='bubbleContent' and @id='costing']"
+      //Shilpa updated xpath 24.08.2022 
+//      assertElementIsNotDisplayed(By.xpath("//*[@class='bubbleContent' and @id='costing']"
+//              + "/following-sibling::div/descendant::ul/li/a[text()='Unit Cost Quick Calculation']"
+//      ));
+      assertElementIsNotDisplayed(By.xpath("//*[@class='bubbleContent' and @id='costing-bubble-content1']"
               + "/following-sibling::div/descendant::ul/li/a[text()='Unit Cost Quick Calculation']"
       ));
     } catch (Throwable e) {

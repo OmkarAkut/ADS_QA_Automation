@@ -190,7 +190,8 @@ public class AdsHelper extends GetHelper {
     }
   }
 
-  private WebElement tableGetTableContainerElementWithTableHeading(String tableHeading) {
+  @SuppressWarnings("unused")
+private WebElement tableGetTableContainerElementWithTableHeading(String tableHeading) {
     return driver.findElement(By.xpath(
             "//div[text()='"+tableHeading+"']/ancestor::div[contains(@class,'x-panel commonTBar')]"
                     + "/following-sibling::div/descendant::table/tbody"));

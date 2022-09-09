@@ -46,7 +46,9 @@ public class DataMaintenanceHelper extends GoHelper {
       waitForSpinnerToEnd();
       if (expectedText.equals("Activity Volume Data Scenarios")
               //actualText = getElementText(driver.findElement(By.xpath("//span[contains(@id,'activityvolumedatalist')]")), false);
-              || expectedText.equals("Charge Item Service Classification Schemes")
+//              Omkar 16/8/2022 : below value has been added as it needs to be set as the first value in the list
+    		 // || expectedText.equals("Activity Statistic Masters")
+    		  || expectedText.equals("Charge Item Service Classification Schemes")
               || expectedText.equals("Consumers")
               || expectedText.equals("Encounter Service Classification Schemes")
               || expectedText.equals("Encounters")
@@ -65,6 +67,8 @@ public class DataMaintenanceHelper extends GoHelper {
         String formattedExpectedText = expectedText.toLowerCase().replaceAll("\\s+", "");
         actualText = getElementText(driver.findElement(By.xpath("//span[contains(@id,'"+formattedExpectedText+"maingrid')]")), false);
       } else {
+    	  waitForAjaxExtJs();
+          waitForSpinnerToEnd(); 
         actualText = getElementText(driver.findElement(By.xpath("//div[contains(@class,'areaTitle')]")), false);
       }
       assertThat("< FAILED > on: " + expectedText, actualText, CoreMatchers.equalTo(expectedText));
@@ -73,6 +77,7 @@ public class DataMaintenanceHelper extends GoHelper {
       counter++;
       String rowNumber;
       try {
+    	 Thread.sleep(1000);
         rowNumber = driver.findElement(By.xpath("//*[contains(@class,'rownumberer')]/div")).getText();
         ////td[contains(@class,'rownumberer')]/div[text()='1']
         if (printout) {

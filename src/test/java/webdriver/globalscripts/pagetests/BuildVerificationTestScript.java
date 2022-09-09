@@ -62,6 +62,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
     System.out.println("Testing Login Page");
     try {
       waitForSpinnerToEnd();
+      Thread.sleep(1000);
       wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//img[@alt = 'Harris Affinity Logo']")));
     } catch (Throwable e) {
       fail("LOGIN PAGE NOT DISPLAYED");
@@ -603,7 +604,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 		  Thread.sleep(3000);
 		  waitForAjaxExtJs();
       String firstHandle = webSwitchToNewWindow(generalElement.getGlobalHeaderButtonHelp(), printout);
-      Thread.sleep(3000);
+      Thread.sleep(5000);
       assertHelpPageHeader("Decision Support", printout);
       driver.close();
       driver.switchTo().window(firstHandle);
@@ -644,6 +645,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
         analyticsMap.getAnalyticsRefreshScenariosButtonCopy(),
         analyticsMap.getAnalyticsRefreshScenariosButtonDelete()
       };
+      Thread.sleep(1000);
       assertElementsAreDisplayed(analyticsRefreshScenariosElements, printout);
     } catch (Throwable e) {
       fail(e.getMessage());
@@ -921,6 +923,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
               costingMap.getCostingMapTableButtonNext(),
               costingMap.getCostingMapTableButtonLast()
       };
+      Thread.sleep(1000);
       assertElementsAreDisplayed(costModelScenarioCalculationElements, printout);
     } catch (Throwable e) {
       fail(e.getMessage());

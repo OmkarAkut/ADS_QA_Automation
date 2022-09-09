@@ -323,7 +323,8 @@ public class GoHelper extends AssertHelper {
       driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]/*[text()='Define Payment Terms']")).click();
       waitForAjaxExtJs();
       Thread.sleep(5000);
-      String feeCheckbox = driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]/*[text()='Fee For Service Payment Terms']/input")).getAttribute("class");
+      @SuppressWarnings("unused")
+	String feeCheckbox = driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]/*[text()='Fee For Service Payment Terms']/input")).getAttribute("class");
       //assertTrue(feeCheckbox.contains("checked"));
       driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]/*[text()='Fee For Service Payment Terms']")).click();
       waitForSpinnerToEnd();
@@ -334,7 +335,8 @@ public class GoHelper extends AssertHelper {
     }
   }
 
-  private static void checkForDomainLock() {
+  @SuppressWarnings("unused")
+private static void checkForDomainLock() {
     try {
       String lockText = driver.findElement(By.xpath("//*[contains(text(),'currently locked by client')] ")).getText();
       System.out.println("Domain Lock is Blocking Test Run: " + lockText);
@@ -362,7 +364,7 @@ public class GoHelper extends AssertHelper {
       System.out.println(2000);
       driver.findElement(By.xpath("//span[contains(@class,'x-panel-header-text')][text()='Pricing Method']/../following-sibling::div")).click();
       waitForAjaxExtJs();
-      System.out.println(1000);
+      System.out.println(2000);
       driver.findElement(By.xpath("//label[text()='Service Model']/ancestor::div/descendant::div[text() = '" + serviceModel + "'][2]")).click();
     } catch (Throwable e) {
       e.getMessage();

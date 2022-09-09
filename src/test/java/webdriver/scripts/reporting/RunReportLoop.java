@@ -13,7 +13,9 @@ import webdriver.corehelpers.GoHelper;
 public class RunReportLoop extends GoHelper {
 
   static String folder = "Charles";  //Auto
-  static String reportName = "CM Profit and Loss Statement";  //Auto
+  //Omkar 18/8/222 : Commenting the below report name as it is no more available and adding the new available report
+  //static String reportName = "CM Profit and Loss Statement";  //Auto
+  static String reportName = "Cost Model Scenario Reconciliation Report";
 
   //int runs = 1;
   //int runs = 300;  //Run at 300 to create 10 server log archive directories
@@ -43,8 +45,11 @@ public class RunReportLoop extends GoHelper {
       waitForPresenceOfElement("//*[@title = '"+reportName+"']");
       driver.findElement(By.xpath("//*[@title = '"+reportName+"']")).click();
 
-      waitForPresenceOfElement("//button[not(@disabled) and @class= 'GJT013UBM2B' and text()='Run']");
-      driver.findElement(By.xpath("//button[@class= 'GJT013UBM2B' and text()='Run']")).click();
+//      waitForPresenceOfElement("//button[not(@disabled) and @class= 'GJT013UBM2B' and text()='Run']");
+//      driver.findElement(By.xpath("//button[@class= 'GJT013UBM2B' and text()='Run']")).click();
+      
+      waitForPresenceOfElement("//button[not(@disabled) and @class= 'GJT013UBIBC' and text()='Run']");
+      driver.findElement(By.xpath("//button[@class= 'GJT013UBIBC' and text()='Run']")).click();
       waitForPresenceOfElement("//table/tbody/tr[1]/td/div/*[@title='"+reportName+"']");
 
       waitForPresenceOfElement("//a[text()='Report Library']");
