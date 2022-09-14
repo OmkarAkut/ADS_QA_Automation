@@ -2,6 +2,7 @@ pipeline {
     agent { label '10.204.20.105' }
     stages {
         stage('Checkout code') {
+            agent { label '10.204.20.105' }
             steps {
                 checkout([$class: 'GitSCM',
                 branches: [[name: '*/main' ]],
@@ -14,7 +15,7 @@ pipeline {
             }
         }
          stage('Clone code into tmp folder') {
-            agent { label '10.204.20.105' }
+            
             steps {
                 bat 'start cmd.exe /c E:\\tmp\\testcase.bat'
             }
