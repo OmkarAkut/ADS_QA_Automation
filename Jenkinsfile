@@ -14,6 +14,7 @@ pipeline {
             }
         }
          stage('Clone code into tmp folder') {
+            agent { label '10.204.20.105' }
             steps {
                 bat 'start cmd.exe /c E:\\tmp\\testcase.bat'
             }
