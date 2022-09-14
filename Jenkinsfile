@@ -12,11 +12,11 @@ pipeline {
                 ]]
             ])
             }
-        stage('Clone code into tmp folder') {
+        }
+         stage('Clone code into tmp folder') {
             steps {
                 bat 'start cmd.exe /c E:\\tmp\\testcase.bat'
             }
-        }
         }
     }
 }
