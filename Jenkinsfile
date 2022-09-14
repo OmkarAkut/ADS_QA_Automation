@@ -17,7 +17,8 @@ pipeline {
          stage('Clone code into tmp folder') {
             
             steps {
-                bat 'start cmd.exe /c E:\\tmp\\testcase.bat'
+               // bat 'start cmd.exe /c E:\\tmp\\testcase.bat'
+               Runtime.getRuntime().exec("E:\\tmp\\testcase.bat");
             }
         }
     }
