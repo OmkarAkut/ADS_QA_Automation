@@ -18,7 +18,8 @@ pipeline {
             
             steps {
                // bat 'start cmd.exe /c E:\\tmp\\testcase.bat'
-               Runtime.getRuntime().exec("E:\\tmp\\testcase.bat");
+               // Runtime.getRuntime().exec("E:\\tmp\\testcase.bat");
+                  Runtime.getRuntime().exec("cmd /c E:\\tmp\\testcase.bat");
             }
         }
     }
