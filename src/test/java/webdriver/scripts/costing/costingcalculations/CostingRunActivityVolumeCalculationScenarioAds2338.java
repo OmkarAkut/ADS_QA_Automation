@@ -32,7 +32,7 @@ public class CostingRunActivityVolumeCalculationScenarioAds2338 extends Calculat
 		goToPage("Costing Models");
 		ExtentReport.logPass("PASS", "setupScript");
 	}  catch (Exception e) {
-		ExtentReport.logFail("FAIL", PROPS, driver, e);
+		ExtentReport.logFail("FAIL", "Failure in setupScript", driver, e);
 		fail(e.getMessage());
 	}
   }
@@ -43,8 +43,11 @@ public class CostingRunActivityVolumeCalculationScenarioAds2338 extends Calculat
 		doClosePageOnLowerBar("QA Marina");
 		waitForAjaxExtJs();
 		
-	} catch (InterruptedException e) {
+	} catch (Exception|AssertionError e) {
+		
 		ExtentReport.logFail("FAIL", "Failure in teardownScript", driver, e);
+	    ExtentReport.report.flush();
+
 		fail(e.getMessage());
 	}
     ExtentReport.report.flush();

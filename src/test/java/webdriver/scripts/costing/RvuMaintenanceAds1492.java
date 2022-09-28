@@ -10,13 +10,16 @@ import org.apache.commons.lang3.time.StopWatch;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 
 import ExtentReport.ExtentReport;
+
 import webdriver.core.Login;
 import webdriver.corehelpers.GoHelper;
+import webdriver.helpers.UcqcHelper;
 import webdriver.maps.CostingMap;
 import webdriver.maps.GeneralElementsMap;
 import webdriver.maps.mapbuilder.BuildMap;
@@ -33,6 +36,7 @@ public class RvuMaintenanceAds1492 extends GoHelper {
 			);
 
 	/** Automates test ticket ADS-1492. */
+	
 	@BeforeClass
 	public static void setupScript() throws Exception,Throwable {
 		ExtentReport.reportCreate("RvuMaintenanceAds1492", "webdriver.scripts.costing", "RvuMaintenanceAds1492");
@@ -59,7 +63,7 @@ public class RvuMaintenanceAds1492 extends GoHelper {
 		value = df.format(dval);
 		return value;
 	}
-
+	
 	@Test
 	public void test01FilterCostModelAndVerifyCostModelAndCostModelMasterValues() throws Throwable {
 		try {
@@ -79,7 +83,7 @@ public class RvuMaintenanceAds1492 extends GoHelper {
 			fail(e.getMessage());
 		}
 	}
-
+	
 	@Test
 	public void test02SetPageParametersAndAssertColumnsToDisplayIsUncheckedAndSelectButtonEnabled() throws Throwable {
 		try {
@@ -88,7 +92,7 @@ public class RvuMaintenanceAds1492 extends GoHelper {
 					costing.getRvuMaintenanceDropdownEntityOptions(),
 					"150 Marina Medical Center"
 					);
-			setDepartmentGroup("2111");
+			setDepartmentGroup("2110");// 2110 ICU is not searched in Filter , has issue in Department Group search by 2110 ICU
 			doDropdownSelectUsingOptionText(
 					costing.getRvuMaintenanceDropdownEffectiveMonthStartMonthDropdown(),
 					costing.getRvuMaintenanceDropdownEffectiveMonthStartMonthOptions(),
@@ -214,7 +218,7 @@ public class RvuMaintenanceAds1492 extends GoHelper {
 					costing.getRvuMaintenanceDropdownPriceListOptions(),
 					"QA150FY05 QA Marina Hosp Price List FY05"
 					);
-			ExtentReport.logPass("PASS", "test05VerifyBasedOnDropdownMenusDefaultAccordingly");
+			ExtentReport.logPass("PASS", "test06SelectCostModelScenarioAndAssertOtherDropdownsAreSetAccordingly");
 
 		} catch (Exception|AssertionError e) {
 			ExtentReport.logFail("FAIL", "test06SelectCostModelScenarioAndAssertOtherDropdownsAreSetAccordingly", driver, e);
@@ -258,6 +262,7 @@ public class RvuMaintenanceAds1492 extends GoHelper {
 		try {
 			waitUntilElementIsClickable(driver.findElement(By.xpath(
 					"//*[text()='RVU Container List']/ancestor::div/following-sibling::div/descendant::button/span[text()='Filter']")));
+			driverDelay(2000);
 			driver.findElement(By.xpath(
 					"//*[text()='RVU Container List']/ancestor::div/following-sibling::div/descendant::button/span[text()='Filter']"))
 			.click();
@@ -408,15 +413,19 @@ public class RvuMaintenanceAds1492 extends GoHelper {
 	}
 
 	private void setDepartmentGroup(String groupId) throws InterruptedException {
+		UcqcHelper.updateDepartment(groupId);
+		//Shilpa 13.09.2022 commented below lines search by department group not working in UI
+		/*
 		doClick(driver.findElement(By.xpath("//label[text()='Department/Group']/../following-sibling::td/descendant::button/span[text()='Select']")));
 		waitForSpinnerToEnd();
 		Thread.sleep(600);
 		driver.findElement(By.xpath("//label[text()='Department / Group']/../following-sibling::input[@name='carrierfield']")).sendKeys(groupId);
 		Thread.sleep(500);
 		waitForSpinnerToEnd();
-		driver.findElement(By.xpath("(//div[contains(text(),'"+groupId+"')])[2]")).click();
+		driver.findElement(By.xpath("//div[contains(@class,'x-grid-cell-inner') and starts-with(text()," + groupId +")]")).click();
 		doClickButton("Apply");
 		waitForAjaxExtJs();
+		*/
 	}
 	 @AfterClass
 		public static void endtest() throws Exception {

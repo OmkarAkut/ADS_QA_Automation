@@ -5,10 +5,13 @@ import static org.junit.Assert.fail;
 import java.util.Arrays;
 import java.util.Collection;
 
+import org.junit.AfterClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.By;
+
+import ExtentReport.ExtentReport;
 import webdriver.globalstatic.LoginStatic;
 import webdriver.users.Users;
 
@@ -41,7 +44,9 @@ public class UcqcLinkInCostingBubbleNotDisplayedStaticAds1466 extends LoginStati
   }
 
   @Test
-  public void testUcqcLinkInCostingBubbleNotDisplayed() {
+  public void testUcqcLinkInCostingBubbleNotDisplayed() throws Throwable {
+	  ExtentReport.reportCreate("UcqcLinkInCostingBubbleNotDisplayedStaticAds1466", "webdriver.scripts.security.ucqcroles","UcqcLinkInCostingBubbleNotDisplayedStaticAds1466");
+	   
     try {
       waitForAjaxExtJs();
       //Shilpa updated xpath 24.08.2022 
@@ -51,8 +56,33 @@ public class UcqcLinkInCostingBubbleNotDisplayedStaticAds1466 extends LoginStati
       assertElementIsNotDisplayed(By.xpath("//*[@class='bubbleContent' and @id='costing-bubble-content1']"
               + "/following-sibling::div/descendant::ul/li/a[text()='Unit Cost Quick Calculation']"
       ));
-    } catch (Throwable e) {
-      fail(e.getMessage());
+      
+      ExtentReport.logPass("PASS", "testUcqcLinkInCostingBubbleNotDisplayed");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "testUcqcLinkInCostingBubbleNotDisplayed", driver, e);
+		fail(e.getMessage());
+      
     }
   }
+  
+  @AfterClass
+ 	public static void endtest() throws Exception {
+
+ 		ExtentReport.report.flush();
+
+ 	}
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 }

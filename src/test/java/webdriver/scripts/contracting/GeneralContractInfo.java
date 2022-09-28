@@ -219,7 +219,7 @@ public class GeneralContractInfo extends ContractModelsHelper {
 					"test05GeneralSectionReadAlternativeDrgCheckboxIsUncheckedByDefault PASS");
 
 		} catch (Exception e) {
-			ExtentReport.logFail("FAIL", "test04GeneralSectionAssertIndustryClassificationSchemeFieldDefaultValueIsMsdrg1", driver, e);
+			ExtentReport.logFail("FAIL", "test05GeneralSectionReadAlternativeDrgCheckboxIsUncheckedByDefault", driver, e);
 			fail(e.getMessage());
 		}
 
@@ -350,7 +350,7 @@ public class GeneralContractInfo extends ContractModelsHelper {
 			ExtentReport.logPass("PASS", "test12GeneralSectionCapitalDshAdjustmentFactorField PASS");
 
 		} catch (Exception|AssertionError e) {
-			ExtentReport.logFail("FAIL", "test11GeneralSectionOperatingDshAdjustmentFactorField", driver, e);
+			ExtentReport.logFail("FAIL", "test12GeneralSectionCapitalDshAdjustmentFactorField", driver, e);
 			fail(e.getMessage());
 
 		}
@@ -403,7 +403,7 @@ public class GeneralContractInfo extends ContractModelsHelper {
 	public void test23OperatingPaymentHospitalReadmissionFactorField() throws Throwable {
 		try {
 			assertFieldValue("//*[@name='hospitalReadmAdjFactor']", "1.0");
-			ExtentReport.logPass("PASS", "test22OperatingPaymentAreaWageIndexField PASS");
+			ExtentReport.logPass("PASS", "test23OperatingPaymentHospitalReadmissionFactorField PASS");
 
 		} catch (Exception|AssertionError e) {
 			ExtentReport.logFail("FAIL", "test23OperatingPaymentHospitalReadmissionFactorField", driver, e);
@@ -465,7 +465,7 @@ public class GeneralContractInfo extends ContractModelsHelper {
 					"test30CapitalPaymentSectionAssertCapitalGeographicAdjustmentFactor PASS");
 
 		} catch (Exception|AssertionError e) {
-			ExtentReport.logFail("FAIL", CostOutlierPaymentSectionThresholdLaborPortion, driver, e);
+			ExtentReport.logFail("FAIL", "test30CapitalPaymentSectionAssertCapitalGeographicAdjustmentFactor", driver, e);
 			fail(e.getMessage());
 
 		}
@@ -592,6 +592,7 @@ public class GeneralContractInfo extends ContractModelsHelper {
 			doClickCloseAndContinueButtonOnEditDialog();
 
 			editModelMap.getEditContractMainPageCriteriaTextArea().click();
+			
 		} catch (Exception|AssertionError e1) {
 			ExtentReport.logFail("FAIL", "test52CloseDialogAndVerifyDefaultCriteriaText", driver, e1);
 			fail(e1.getMessage());

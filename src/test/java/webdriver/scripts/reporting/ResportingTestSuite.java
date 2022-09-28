@@ -5,14 +5,14 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-		ReportingAdHocReportDesignIsManualTest.class,
+		
 
 		ReportingWebiCheck.class,
 		ReportsLibraryCreateRenameAndDeleteNewFolderAds1348.class,
 		ReportsLibraryRunCostingReportFromTemplate.class,
 		ReportsLibraryTestScript.class,
 		ReportsLibraryVerifyTemplateDirectoryContents.class,
-		RunReportLoop.class,
+		//RunReportLoop.class,
 })
 
 

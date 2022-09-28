@@ -7,6 +7,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -185,10 +186,16 @@ public class JavaListStatic extends JavaStatic {
 
     public ArrayList<String> javaListConvertListOfWebElementsToStrings(List<WebElement> list, boolean printout) throws InterruptedException {
         ArrayList<String> availableListStrings = new ArrayList();
+        
+       
         for(WebElement webelement : list){
             if(printout){
                 System.out.println(webelement.getText() + ",");
             }
+            
+           //venkat Adding javascript 15.09.2022
+            ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);", webelement);
+            Thread.sleep(500);
             availableListStrings.add(webelement.getText());
         }
         return availableListStrings;

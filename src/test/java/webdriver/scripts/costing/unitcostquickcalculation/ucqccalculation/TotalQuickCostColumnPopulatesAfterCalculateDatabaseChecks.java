@@ -1,12 +1,15 @@
 package webdriver.scripts.costing.unitcostquickcalculation.ucqccalculation;
 
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
+
+import ExtentReport.ExtentReport;
 import webdriver.scripts.costing.unitcostquickcalculation.UnitCostQuickCalculationHelperStatic;
 import webdriver.maps.CostingMap;
 import webdriver.maps.mapbuilder.BuildMap;
@@ -24,7 +27,9 @@ public class TotalQuickCostColumnPopulatesAfterCalculateDatabaseChecks extends U
     "Marina",
     "*CM3 TB MHFY05 Before Vol Change",
     "150 Marina Medical Center",
-    "2130  PED ICU",
+//    "2130  PED ICU",
+    //Shilpa 15.09.2022 updated to 2130
+    "2130",
     "Apr 2004 to Mar 2005"
   };
 
@@ -51,52 +56,87 @@ public class TotalQuickCostColumnPopulatesAfterCalculateDatabaseChecks extends U
   This script confirms that the Total Quick Cost column populates after Calculate.  This script is an extension of
   TotalQuickCostColumnPopulatesAfterCalculateStatic and includes checks against the database values, which were not
   part of the acceptance criteria.  Incomplete - the sql query needs to be updated.
-  Last Updated: 09-13-19 */
+  Last Updated: 09-13-19 
+ * @throws Throwable */
   @BeforeClass
-  public static void setupScript() throws InterruptedException {
-    costingMap = BuildMap.getInstance(driver, CostingMap.class);
-    System.out.println("Test Class: " + TotalQuickCostColumnPopulatesAfterCalculateDatabaseChecks.class.getSimpleName());
-    evolveLoginStaticUser(Users.CostingDepartmentManager1);
-    doMaximizeWindow();
-    goToPage("Unit Cost Quick Calculation");
-    waitForAjaxExtJs();
-    ucqcDisplayChargeCodeGrid(requiredFields);
+  public static void setupScript() throws Throwable {
+	  
+	  ExtentReport.reportCreate("TotalQuickCostColumnPopulatesAfterCalculateDatabaseChecks","webdriver.scripts.costing.unitcostquickcalculation.ucqccalculation", "TotalQuickCostColumnPopulatesAfterCalculateDatabaseChecks");
+	  
+    try {
+		costingMap = BuildMap.getInstance(driver, CostingMap.class);
+		System.out.println("Test Class: " + TotalQuickCostColumnPopulatesAfterCalculateDatabaseChecks.class.getSimpleName());
+		evolveLoginStaticUser(Users.CostingDepartmentManager1);
+		doMaximizeWindow();
+		goToPage("Unit Cost Quick Calculation");
+		waitForAjaxExtJs();
+		ucqcDisplayChargeCodeGrid(requiredFields);
+		ExtentReport.logPass("PASS", "setupScript");
+	} catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL","setupScript", driver,e);
+    	fail(e.getMessage());
+		
+	}
   }
 
   @AfterClass
   public static void teardownScript() throws InterruptedException {
     doClosePageOnLowerBar("Unit Cost Quick...");
+	ExtentReport.report.flush();
   }
 
   @Test (timeout = 300000)
-  public void test01GetDefaultTotalQuickCostColumnValueAndCompareToDatabaseValue() throws InterruptedException, ClassNotFoundException {
-    initialTotalQuickCostCellValue = ucqcGetChargeCodeGridCellValue(chargeCode, headerName, printout);
-    if (printout) {
-      System.out.println("Initial Total Quick Cost cell value: " + initialTotalQuickCostCellValue);
-    }
-    assertThatValueHasRequiredDecimalPlaces(initialTotalQuickCostCellValue,2, printout);
-    //compareActualToDatabaseTotalQuickCostValues(chargeCode, headerName);
+  public void test01GetDefaultTotalQuickCostColumnValueAndCompareToDatabaseValue() throws Throwable {
+	  
+    try {
+		initialTotalQuickCostCellValue = ucqcGetChargeCodeGridCellValue(chargeCode, headerName, printout);
+		if (printout) {
+		  System.out.println("Initial Total Quick Cost cell value: " + initialTotalQuickCostCellValue);
+		}
+		assertThatValueHasRequiredDecimalPlaces(initialTotalQuickCostCellValue,2, printout);
+		
+		//compareActualToDatabaseTotalQuickCostValues(chargeCode, headerName);
+		ExtentReport.logPass("PASS", "test01GetDefaultTotalQuickCostColumnValueAndCompareToDatabaseValue");
+	} catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL","test01GetDefaultTotalQuickCostColumnValueAndCompareToDatabaseValue", driver,e);
+    	fail(e.getMessage());
+	}
+    
+    
+    
+    
+    
   }
 
   @Test (timeout = 300000)
-  public void test02UpdateCellValueAndClickCalculateWaitForSpinnerToEndAndCompareUpdatedValueToDatabaseValue() throws InterruptedException, ClassNotFoundException {
-    ucqcGetChargeCodeGridCellValue(chargeCode, columnToUpdate, printout);
-    ucqcUpdateGridCellValue(chargeCode, columnToUpdate,
-        String.valueOf(javaGetRandomNumber(100, printout)), printout);
-    doClick(costingMap.getUnitCostQuickCalculationButtonSaveQuickRVUs());
-    waitForSpinnerToEnd();
-    waitForAjaxExtJs();
-    doClick(costingMap.getUnitCostQuickCalculationButtonCalculate());
-    ucqcWaitForSpinnerToEndNoHardStop();
-    waitForAjaxExtJs();
-    String finalTotalQuickCostCellValue = ucqcGetChargeCodeGridCellValue(chargeCode, headerName, printout);
-    assertThatValueHasRequiredDecimalPlaces(finalTotalQuickCostCellValue,2, printout);
-    if (printout) {
-      System.out.println("Initial Total Quick Cost cell value: " + initialTotalQuickCostCellValue);
-      System.out.println("Final Total Quick Cost cell value: " + finalTotalQuickCostCellValue);
-    }
-    assertTrue(initialTotalQuickCostCellValue != finalTotalQuickCostCellValue);
-    //compareActualToDatabaseTotalQuickCostValues(chargeCode, headerName);
+  public void test02UpdateCellValueAndClickCalculateWaitForSpinnerToEndAndCompareUpdatedValueToDatabaseValue() throws Throwable {
+	  
+    try {
+		ucqcGetChargeCodeGridCellValue(chargeCode, columnToUpdate, printout);
+		ucqcUpdateGridCellValue(chargeCode, columnToUpdate,
+		    String.valueOf(javaGetRandomNumber(100, printout)), printout);
+		doClick(costingMap.getUnitCostQuickCalculationButtonSaveQuickRVUs());
+		waitForSpinnerToEnd();
+		waitForAjaxExtJs();
+		doClick(costingMap.getUnitCostQuickCalculationButtonCalculate());
+		ucqcWaitForSpinnerToEndNoHardStop();
+		waitForAjaxExtJs();
+		String finalTotalQuickCostCellValue = ucqcGetChargeCodeGridCellValue(chargeCode, headerName, printout);
+		assertThatValueHasRequiredDecimalPlaces(finalTotalQuickCostCellValue,2, printout);
+		if (printout) {
+		  System.out.println("Initial Total Quick Cost cell value: " + initialTotalQuickCostCellValue);
+		  System.out.println("Final Total Quick Cost cell value: " + finalTotalQuickCostCellValue);
+		}
+		assertTrue(initialTotalQuickCostCellValue != finalTotalQuickCostCellValue);
+		//compareActualToDatabaseTotalQuickCostValues(chargeCode, headerName);
+		ExtentReport.logPass("PASS", "test02UpdateCellValueAndClickCalculateWaitForSpinnerToEndAndCompareUpdatedValueToDatabaseValue");
+	} catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL","test02UpdateCellValueAndClickCalculateWaitForSpinnerToEndAndCompareUpdatedValueToDatabaseValue", driver,e);
+    	fail(e.getMessage());
+		
+		
+	}
+    
   }
 
 //  private void compareActualToDatabaseTotalQuickCostValues(String chargeCode, String headerName) throws InterruptedException, ClassNotFoundException {

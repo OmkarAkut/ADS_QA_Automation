@@ -107,9 +107,9 @@ public class CalculateExistingPublishedContractAds1447 extends CalculationHelper
   public void test04DeleteCalculationStatusPageF() throws InterruptedException,Throwable {
     try {
 		deleteCalculationStatusMyStatusPageFirstRow();
-		ExtentReport.logPass("PASS", "test03OnLastPageOfViewDialogAssertLogDetails");
+		ExtentReport.logPass("PASS", "test04DeleteCalculationStatusPageF");
 	} catch (Exception|AssertionError e) {
-		ExtentReport.logFail("FAIL", "test03OnLastPageOfViewDialogAssertLogDetails", driver, e);
+		ExtentReport.logFail("FAIL", "test04DeleteCalculationStatusPageF", driver, e);
 		fail(e.getMessage());
 	}
   }

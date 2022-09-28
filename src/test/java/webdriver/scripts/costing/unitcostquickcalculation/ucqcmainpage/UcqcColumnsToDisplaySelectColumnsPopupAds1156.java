@@ -41,13 +41,19 @@ public class UcqcColumnsToDisplaySelectColumnsPopupAds1156 extends UcqcHelper {
     private static List<WebElement> initialSelectedList;
 
     @BeforeClass
-    public static void setupScript() throws Exception {
+    public static void setupScript() throws Throwable {
     	 ExtentReport.reportCreate("UcqcColumnsToDisplaySelectColumnsPopupAds1156","webdriver.scripts.costing.unitcostquickcalculation.ucqcmainpage", "UcqcColumnsToDisplaySelectColumnsPopupAds1156");
-        costingMap = BuildMap.getInstance(driver, CostingMap.class);
-        System.out.println("Test Class: " + UcqcColumnsToDisplaySelectColumnsPopupAds1156.class.getSimpleName());
-        Login.loginUser("CostingDepartmentManager1");
-        doMaximizeWindow();
-        goToPage("Unit Cost Quick Calculation");
+        try {
+			costingMap = BuildMap.getInstance(driver, CostingMap.class);
+			System.out.println("Test Class: " + UcqcColumnsToDisplaySelectColumnsPopupAds1156.class.getSimpleName());
+			Login.loginUser("CostingDepartmentManager1");
+			doMaximizeWindow();
+			goToPage("Unit Cost Quick Calculation");
+			ExtentReport.logPass("PASS", "setupScript");
+		} catch (Exception|AssertionError e) {
+			ExtentReport.logFail("FAIL","setupScript", driver,e);
+            fail(e.getMessage());
+		}
     }
 
     @Test
@@ -55,18 +61,43 @@ public class UcqcColumnsToDisplaySelectColumnsPopupAds1156 extends UcqcHelper {
         try {
         	
         	//Venkat 05-09-2022 Add Robot class in zoom in chrome browser
+        	Thread.sleep(2000);
         	Robot robot = new Robot();
         	robot.keyPress(KeyEvent.VK_CONTROL);
 			robot.keyPress(KeyEvent.VK_SUBTRACT);
+			Thread.sleep(500);//venkat adding key release function 23.09.2022
+			robot.keyRelease(KeyEvent.VK_CONTROL);
+			robot.keyRelease(KeyEvent.VK_SUBTRACT);
+			Thread.sleep(500);
+        	robot.keyPress(KeyEvent.VK_CONTROL);
+			robot.keyPress(KeyEvent.VK_SUBTRACT);
+			Thread.sleep(500);
+			robot.keyRelease(KeyEvent.VK_CONTROL);
+			robot.keyRelease(KeyEvent.VK_SUBTRACT);
+			Thread.sleep(1000);
             waitForAjaxExtJs();
             assertElementIsDisabled(costingMap.getUnitCostQuickCalculationButtonColumnsToDisplaySelect(), printout);
             assertAllCheckboxIsDisabled(printout);
             assertColumnsToDisplayAllCheckBoxIsChecked();
             ExtentReport.logPass("PASS", "test02aVerifyDefaultStatusOfAllCheckboxAndSelectButtonOnUcqcPage");
+            //Robot robot = new Robot();
+            robot.keyPress(KeyEvent.VK_CONTROL);
+        	robot.keyPress(KeyEvent.VK_ADD);
+        	Thread.sleep(500);//venkat adding key release function 23.09.2022
+        	robot.keyRelease(KeyEvent.VK_CONTROL);
+        	robot.keyRelease(KeyEvent.VK_ADD);
+        	Thread.sleep(500);
+        	robot.keyPress(KeyEvent.VK_CONTROL);
+        	robot.keyPress(KeyEvent.VK_ADD);
+        	Thread.sleep(500);
+        	robot.keyRelease(KeyEvent.VK_CONTROL);
+        	robot.keyRelease(KeyEvent.VK_ADD);
+        	Thread.sleep(2000);
         } catch (Exception|AssertionError e) {
         	ExtentReport.logFail("FAIL","test02aVerifyDefaultStatusOfAllCheckboxAndSelectButtonOnUcqcPage", driver,e);
             fail(e.getMessage());
         }
+       
     }
 
     @Test

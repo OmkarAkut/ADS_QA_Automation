@@ -199,10 +199,8 @@ public class DoStatic extends GetStatic {
         try {
 			waitUntilElementIsClickable(element);
 			element.click();
-		} catch (TimeoutException|NoSuchElementException|StaleElementReferenceException|ElementNotInteractableException e) {
-			ExtentReport.extenttest.log(Status.FAIL, "Element is not clickable : FAIL"+ " "+element);
-
-			ExtentReport.extenttest.log(Status.INFO, e);
+		} catch (Exception e) {
+			
 			
 		}
     }

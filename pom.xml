@@ -33,6 +33,7 @@ under the License.
 		<scala.binary.version>2.11</scala.binary.version>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
+		<surefire.rerunFailingTestsCount>1</surefire.rerunFailingTestsCount>
 	</properties>
 
 	<repositories>
@@ -186,8 +187,8 @@ under the License.
 					<artifactId>maven-surefire-report-plugin</artifactId>
 					<version>3.0.0-M3</version>
 					<configuration>
-						<outputName>ADS Functional Test Report ${maven.build.timestamp}</outputName>
-						<title>ADS Functional Test Report (Hdls Chrome) ${maven.build.timestamp}</title>
+						<outputName>ADS_Functional_Test_Report</outputName>
+						<title>ADS_Functional_Test_Report</title>
 					</configuration>
 				</plugin>
 				<plugin>
@@ -231,11 +232,12 @@ under the License.
 				<version>3.0.0-M3</version>
 			</plugin>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-site-plugin</artifactId>
-				<version>3.3</version>
+				 <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-site-plugin</artifactId>
+      <version>3.3</version>
 			</plugin>
 		</plugins>
+		
 	</reporting>
 
 </project>

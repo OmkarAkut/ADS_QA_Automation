@@ -114,7 +114,7 @@ public class ContractingCostModelsSmokeTest extends ContractModelsHelper {
 				webdriverClick(driver.findElement(By.name("pricemethodoption")));
 				Thread.sleep(400);
 				waitForAjaxExtJs();
-				ExtentReport.logPass("PASS", "test01Verify");
+				ExtentReport.logPass("PASS", "test01Verify for : "+optionUI+"");
 			}
 		} catch (Exception|AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01Verify", driver, e);

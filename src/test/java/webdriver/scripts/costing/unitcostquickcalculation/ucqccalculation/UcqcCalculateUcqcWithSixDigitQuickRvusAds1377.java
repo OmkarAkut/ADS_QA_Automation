@@ -23,7 +23,8 @@ public class UcqcCalculateUcqcWithSixDigitQuickRvusAds1377 extends UnitCostQuick
     "QA Cost Model",
     "ADS-1377 A By Month",
     "150 Marina Medical Center",
-    "2016  CHILDREN'S DIABETES UNIT12345678901234567890123456789646596846516544351686565454",
+   // "2016  CHILDREN'S DIABETES UNIT12345678901234567890123456789646596846516544351686565454",
+     "2016", //venkat update value 14.09.2022
     "Jul 2004 to Jul 2004"
   };
 
@@ -44,8 +45,9 @@ public class UcqcCalculateUcqcWithSixDigitQuickRvusAds1377 extends UnitCostQuick
 		goToPage("Unit Cost Quick Calculation");
 		doMaximizeWindow();
 		ucqcDisplayChargeCodeGrid(requiredFields);
+		ExtentReport.logPass("PASS", "setupScript");
 	} catch (Exception | AssertionError e) {
-		ExtentReport.logFail("FAIL","Beforeclassmethod", driver,e);
+		ExtentReport.logFail("FAIL","setupScript", driver,e);
 		fail(e.getMessage());
 		
 	}

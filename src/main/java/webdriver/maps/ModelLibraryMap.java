@@ -19,7 +19,8 @@ public class ModelLibraryMap extends MapConfig {
     private WebElement modelLibraryPageHelpLink;
     public WebElement getModelLibraryPageHelpLink() {return modelLibraryPageHelpLink;}
 
-    @FindBy(xpath = "(//input[contains(@id,'textfield')])[2]")
+    //@FindBy(xpath = "(//input[contains(@id,'textfield')])[1]") 
+    @FindBy(xpath = "//*[@name='searchText']") //venkat update xpath
     private WebElement modelLibraryFieldSearch;
     public WebElement getModelLibraryFieldSearch() {return modelLibraryFieldSearch;}
 

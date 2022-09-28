@@ -8,7 +8,8 @@ public class StatusMap extends MapConfig {
 
     // ===== Status Tab > Calculation Status Page ===== //
 
-    @FindBy(xpath = "//*[contains(@id,'progressbar')]/div")
+   // @FindBy(xpath = "//*[contains(@id,'progressbar')]/div")
+    @FindBy(xpath = "//div[@class='x-progress-text x-progress-text-back']")// venkat update xpath
     private WebElement calculationStatusPageFirstRowStatusBar;
     public WebElement getCalculationStatusPageMyStatusFirstRowStatusBarPercentage() {return calculationStatusPageFirstRowStatusBar;}
 

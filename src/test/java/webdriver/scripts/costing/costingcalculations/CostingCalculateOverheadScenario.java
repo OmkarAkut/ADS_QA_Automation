@@ -34,9 +34,9 @@ public class CostingCalculateOverheadScenario extends CalculationHelper {
     try {
       doSearchForModel("v102 REGRESSION Overhead Model");
       tableDoubleClickCellFirstColumn("v102 REGRESSION Overhead Model");
-      Thread.sleep(2000);
+     driverDelay(4000);
       doClickTreeItem("Allocate Overhead");
-      Thread.sleep(2000);
+      driverDelay(4000);
       doClickTreeItem("Overhead Model Calculation Scenarios");
       //Omkar (19/7/2022) : value v102 REGRESSION OH Scenario is not found hence changing it to v102 REGRESSION OH Calc Scenario
       //tableDoubleClickCellFirstColumn("v102 REGRESSION OH Scenario");

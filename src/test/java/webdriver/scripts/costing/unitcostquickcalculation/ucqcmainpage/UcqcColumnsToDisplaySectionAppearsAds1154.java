@@ -30,18 +30,27 @@ public class UcqcColumnsToDisplaySectionAppearsAds1154 extends UcqcHelper {
 
     static CostingMap costingMap;
     String costModel = "QA Cost Model";
-    String[] setRequiredFields = {"Marina", "*CM1 TB MHFY05 After Vol Change", "150 Marina Medical Center", "2130  PED ICU", "Jan 2005 to Jan 2005"};
+    String[] setRequiredFields = {"Marina", "*CM1 TB MHFY05 After Vol Change", "150 Marina Medical Center",
+    	//	"2130  PED ICU",
+    		"2130", //venkata update Text data 13.09.2022
+    		"Jan 2005 to Jan 2005"};
 
     @BeforeClass
-    public static void setupScript() throws Exception {
+    public static void setupScript() throws Throwable {
     	
     	 ExtentReport.reportCreate("UcqcColumnsToDisplaySectionAppearsAds1154","webdriver.scripts.costing.unitcostquickcalculation.ucqcmainpage", "UcqcColumnsToDisplaySectionAppearsAds1154");
     	    
-        costingMap = BuildMap.getInstance(driver, CostingMap.class);
-        System.out.println("Test Class: " + UcqcColumnsToDisplaySectionAppearsAds1154.class.getSimpleName());
-        Login.loginUser("CostingDepartmentManager1");
-        doMaximizeWindow();
-        goToPage("Unit Cost Quick Calculation");
+        try {
+			costingMap = BuildMap.getInstance(driver, CostingMap.class);
+			System.out.println("Test Class: " + UcqcColumnsToDisplaySectionAppearsAds1154.class.getSimpleName());
+			Login.loginUser("CostingDepartmentManager1");
+			doMaximizeWindow();
+			goToPage("Unit Cost Quick Calculation");
+			ExtentReport.logPass("PASS", "setupScript");
+		} catch (Exception|AssertionError e) {
+			ExtentReport.logFail("FAIL","setupScript", driver,e);
+            fail(e.getMessage());
+		}
     }
 
   @Test
@@ -59,6 +68,7 @@ public class UcqcColumnsToDisplaySectionAppearsAds1154 extends UcqcHelper {
         	ExtentReport.logFail("FAIL","test01VerifyColumnsToDisplayIsRequired", driver,e);
             fail(e.getMessage());
         }
+        driver.manage().window().maximize();
     }
 
     @Test
@@ -125,6 +135,15 @@ public class UcqcColumnsToDisplaySectionAppearsAds1154 extends UcqcHelper {
         	Robot robot = new Robot();
         	robot.keyPress(KeyEvent.VK_CONTROL);
 			robot.keyPress(KeyEvent.VK_SUBTRACT);
+			Thread.sleep(500);//venkat adding key release function 23.09.2022
+			robot.keyRelease(KeyEvent.VK_CONTROL);
+			robot.keyRelease(KeyEvent.VK_SUBTRACT);
+			Thread.sleep(500);
+        	robot.keyPress(KeyEvent.VK_CONTROL);
+			robot.keyPress(KeyEvent.VK_SUBTRACT);
+			Thread.sleep(500);
+			robot.keyRelease(KeyEvent.VK_CONTROL);
+			robot.keyRelease(KeyEvent.VK_SUBTRACT);
 			
 			
 			waitForAjaxExtJs();
@@ -138,8 +157,19 @@ public class UcqcColumnsToDisplaySectionAppearsAds1154 extends UcqcHelper {
         	ExtentReport.logFail("FAIL","test04UncheckAllCheckboxAndVerifySelectedButtonIsEnabled", driver,e);
             fail(e.getMessage());
         }
+        Robot robot = new Robot();
+        robot.keyPress(KeyEvent.VK_CONTROL);
+    	robot.keyPress(KeyEvent.VK_ADD);
+    	Thread.sleep(500);//venkat adding key release function 23.09.2022
+    	robot.keyRelease(KeyEvent.VK_CONTROL);
+    	robot.keyRelease(KeyEvent.VK_ADD);
+    	Thread.sleep(500);
+    	robot.keyPress(KeyEvent.VK_CONTROL);
+    	robot.keyPress(KeyEvent.VK_ADD);
+    	Thread.sleep(500);
+    	robot.keyRelease(KeyEvent.VK_CONTROL);
+    	robot.keyRelease(KeyEvent.VK_ADD);
         
-        driver.manage().window().maximize();
     }
 
     @Test
@@ -149,6 +179,15 @@ public class UcqcColumnsToDisplaySectionAppearsAds1154 extends UcqcHelper {
         	Robot robot = new Robot();
         	robot.keyPress(KeyEvent.VK_CONTROL);
 			robot.keyPress(KeyEvent.VK_SUBTRACT);
+			Thread.sleep(500);//venkat adding key release function 23.09.2022
+			robot.keyRelease(KeyEvent.VK_CONTROL);
+			robot.keyRelease(KeyEvent.VK_SUBTRACT);
+			Thread.sleep(500);
+        	robot.keyPress(KeyEvent.VK_CONTROL);
+			robot.keyPress(KeyEvent.VK_SUBTRACT);
+			Thread.sleep(500);
+			robot.keyRelease(KeyEvent.VK_CONTROL);
+			robot.keyRelease(KeyEvent.VK_SUBTRACT);
 			
             waitForAjaxExtJs();
             doClick(driver.findElement(By.xpath("//label[text()='All']/preceding-sibling::input")));
@@ -161,6 +200,18 @@ public class UcqcColumnsToDisplaySectionAppearsAds1154 extends UcqcHelper {
         	ExtentReport.logFail("FAIL","test05CheckAllCheckboxAndVerifySelectedButtonIsDisabled", driver,e);
             fail(e.getMessage());
         }
+        Robot robot = new Robot();
+        robot.keyPress(KeyEvent.VK_CONTROL);
+    	robot.keyPress(KeyEvent.VK_ADD);
+    	Thread.sleep(500);//venkat adding key release function 23.09.2022
+    	robot.keyRelease(KeyEvent.VK_CONTROL);
+    	robot.keyRelease(KeyEvent.VK_ADD);
+    	Thread.sleep(500);
+    	robot.keyPress(KeyEvent.VK_CONTROL);
+    	robot.keyPress(KeyEvent.VK_ADD);
+    	Thread.sleep(500);
+    	robot.keyRelease(KeyEvent.VK_CONTROL);
+    	robot.keyRelease(KeyEvent.VK_ADD);
     }
 
     @Test
@@ -244,6 +295,7 @@ public class UcqcColumnsToDisplaySectionAppearsAds1154 extends UcqcHelper {
         	ExtentReport.logFail("FAIL","test11SetResultsStoredForToNoneAndEnsureAllCheckboxIsUnchanged", driver,e);
             fail(e.getMessage());
         }
+        
     }
 
 

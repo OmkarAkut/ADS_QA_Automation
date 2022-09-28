@@ -2,11 +2,14 @@ package webdriver.scripts.costing.unitcostquickcalculation;
 
 import static org.junit.Assert.fail;
 
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
+
+import ExtentReport.ExtentReport;
 import webdriver.maps.CostingMap;
 import webdriver.maps.mapbuilder.BuildMap;
 import webdriver.users.Users;
@@ -22,42 +25,62 @@ public class UcqcScriptTemplate extends UnitCostQuickCalculationHelperStatic {
     */
     "ADS-1377 A By Month",
     "150 Marina Medical Center",
-    "2016  CHILDREN'S DIABETES UNIT",
+//    "2016 CHILDREN'S  DIABETES UNIT",
+    //Shilpa 15.09.2022 updated data from 2016 CHILDREN'S  DIABETES UNIT
+    "2016",
     "Jul 2004 to Jul 2004"
   };
 
-  /**Test ticket ADS-.  Dev Story ADS-. */
+  /**Test ticket ADS-.  Dev Story ADS-. 
+ * @throws Throwable */
   @BeforeClass
-  public static void setupScript() throws InterruptedException {
-    costingMap = BuildMap.getInstance(driver, CostingMap.class);
-    System.out.println("Test Class: " + UcqcScriptTemplate.class.getSimpleName());
-    evolveLoginStaticUser(Users.CostingDepartmentManager1);
-    goToPage("Unit Cost Quick Calculation");
-    doMaximizeWindow();
-    ucqcDisplayChargeCodeGrid(requiredFields);
+  public static void setupScript() throws Throwable {
+	  ExtentReport.reportCreate("UcqcScriptTemplate","webdriver.scripts.costing.unitcostquickcalculation", "UcqcScriptTemplate");
+	  
+    try {
+		costingMap = BuildMap.getInstance(driver, CostingMap.class);
+		System.out.println("Test Class: " + UcqcScriptTemplate.class.getSimpleName());
+		evolveLoginStaticUser(Users.CostingDepartmentManager1);
+		goToPage("Unit Cost Quick Calculation");
+		doMaximizeWindow();
+		ucqcDisplayChargeCodeGrid(requiredFields);
+		ExtentReport.logPass("PASS", "setupScript");
+	} catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "setupScript", driver, e);
+		fail(e.getMessage());
+		
+	}
   }
 
   @Test
-  public void test01UpdateQuickSalariesAndWagesValueAndAssertCalculateButtonIsDisabled() {
+  public void test01UpdateQuickSalariesAndWagesValueAndAssertCalculateButtonIsDisabled() throws Throwable {
     try {
-      ucqcUpdateGridCellValue("3350022","Quick Salaries and Wages RVU","15",printout);
+    	//Shilpa 15.09.2022, 3350022 not available
+     // ucqcUpdateGridCellValue("3350022","Quick Salaries and Wages RVU","15",printout);
+    	ucqcUpdateGridCellValue("8195307","Quick Salaries and Wages RVU","15",printout);
       assertElementIsDisabled(costingMap.getUnitCostQuickCalculationButtonCalculate(),printout);
-    } catch (Throwable e) {
+      ExtentReport.logPass("PASS", "test01UpdateQuickSalariesAndWagesValueAndAssertCalculateButtonIsDisabled");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "test01UpdateQuickSalariesAndWagesValueAndAssertCalculateButtonIsDisabled", driver, e);
       fail(e.getMessage());
     }
   }
 
   @Test
-  public void test02UpdateQuickSalariesAndWagesValueAndAssertCalculationEnds() {
+  public void test02UpdateQuickSalariesAndWagesValueAndAssertCalculationEnds() throws Throwable {
     try {
       String[][] pairs = {
-        {"8195307", "0.000000"},
-        {"8399370", "2.00000"},
+        {"8195307", "2.000000"},
+        //Shilpa 15.09.2022 updated charge code
+//        {"8399370", "2.00000"},
+        {"8301392", "2.000000"},
       };
 
       for (String[] pair : pairs) {
         try {
-          String header = "Salaries & Wages Quick RVUs";
+        	//Shilpa 15.09.2022 updated header name
+         // String header = "Salaries & Wages Quick RVUs";
+        	String header = "Quick Salaries and Wages RVU";
           ucqcUpdateGridCellValue(pair[0], header, pair[1], printout);
         } catch (Throwable e) {
           fail(e.getMessage());
@@ -66,8 +89,13 @@ public class UcqcScriptTemplate extends UnitCostQuickCalculationHelperStatic {
       doClick(costingMap.getUnitCostQuickCalculationButtonSaveQuickRVUs());
       doClick(costingMap.getUnitCostQuickCalculationButtonCalculate());
       ucqcWaitForSpinnerToEnd();
-    } catch (Throwable e) {
-      fail(e.getMessage());
+      ExtentReport.logPass("PASS", "test02UpdateQuickSalariesAndWagesValueAndAssertCalculationEnds");
+    } catch (Exception|AssertionError e) {
+    	
+    	ExtentReport.logFail("FAIL", "test02UpdateQuickSalariesAndWagesValueAndAssertCalculationEnds", driver, e);
+        fail(e.getMessage());
+    	
+      
     }
   }
 
@@ -80,4 +108,15 @@ public class UcqcScriptTemplate extends UnitCostQuickCalculationHelperStatic {
       fail(e.getMessage());
     }
   }
+  
+  @AfterClass
+	public static void endtest() throws Exception {
+
+		ExtentReport.report.flush();
+
+	}
+
+  
+  
+  
 }

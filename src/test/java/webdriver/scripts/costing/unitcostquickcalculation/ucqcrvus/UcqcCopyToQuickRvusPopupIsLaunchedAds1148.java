@@ -2,11 +2,14 @@ package webdriver.scripts.costing.unitcostquickcalculation.ucqcrvus;
 
 import static org.junit.Assert.fail;
 
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
+
+import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.helpers.UcqcHelper;
 import webdriver.maps.CostingMap;
@@ -19,19 +22,28 @@ public class UcqcCopyToQuickRvusPopupIsLaunchedAds1148 extends UcqcHelper {
 
   /** //Zephyr ticket ADS-1148 (Dev Story ADS-1015).  Last Updated 06-7-19 **/
   @BeforeClass
-  public static void setupScript() throws Exception {
-    ucqcMap = BuildMap.getInstance(driver, CostingMap.class);
-    System.out.println("Test Class: " + UcqcCopyToQuickRvusPopupIsLaunchedAds1148.class.getSimpleName());
-    Login.loginUser("CostingDepartmentManager1");
-    goToPage("Unit Cost Quick Calculation");
-    doMaximizeWindow();
+  public static void setupScript() throws Exception,Throwable {
+	  ExtentReport.reportCreate("UcqcCopyToQuickRvusPopupIsLaunchedAds1148", "webdriver.scripts.costing.unitcostquickcalculation.ucqcrvus", "UcqcCopyToQuickRvusPopupIsLaunchedAds1148");
+    try {
+		ucqcMap = BuildMap.getInstance(driver, CostingMap.class);
+		System.out.println("Test Class: " + UcqcCopyToQuickRvusPopupIsLaunchedAds1148.class.getSimpleName());
+		Login.loginUser("CostingDepartmentManager1");
+		goToPage("Unit Cost Quick Calculation");
+		doMaximizeWindow();
+		 ExtentReport.logPass("PASS", "setupScript");
+			} catch (Exception|AssertionError e) {
+				ExtentReport.logFail("FAIL", "Failure in setupScript", driver, e);
+				fail(e.getMessage());
+			}
   }
 
   @Test
-  public void testUcqcCopyToQuickRvusPopupIsLaunched() {
+  public void testUcqcCopyToQuickRvusPopupIsLaunched() throws Throwable {
     try {
       waitForAjaxExtJs();
-      ucqcPopulateRequiredFieldsToDisplayGrid("QA Cost Model", "QA MHFY05 After Vol Change", "150 Marina Medical Center", "2110  ICU", "Apr 2004 to Mar 2005");
+      //Shilpa 19.09.2022 updated below line
+//      ucqcPopulateRequiredFieldsToDisplayGrid("QA Cost Model", "QA MHFY05 After Vol Change", "150 Marina Medical Center", "2110 ICU", "Apr 2004 to Mar 2005");
+      ucqcPopulateRequiredFieldsToDisplayGrid("QA Cost Model", "QA MHFY05 After Vol Change", "150 Marina Medical Center", "2110", "Apr 2004 to Mar 2005");
       assertElementIsEnabled(ucqcMap.getUnitCostQuickCalculationButtonApplySelections(), printout);
       doClick(ucqcMap.getUnitCostQuickCalculationButtonApplySelections());
       waitForSpinnerToEnd();
@@ -55,9 +67,17 @@ public class UcqcCopyToQuickRvusPopupIsLaunchedAds1148 extends UcqcHelper {
       doClick(driver.findElement(By.xpath("//span[contains(@id,'button') and contains (text(),'Cancel & Close')]")));
       waitForAjaxExtJs();
       doClosePageOnLowerBar("Unit Cost Quick...");
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "testUcqcCopyToQuickRvusPopupIsLaunched");
+	} catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "testUcqcCopyToQuickRvusPopupIsLaunched", driver, e);
+		fail(e.getMessage());
+	}
   }
+  @AfterClass
+	public static void endtest() throws Exception {
+
+		ExtentReport.report.flush();
+
+	}
 }
 

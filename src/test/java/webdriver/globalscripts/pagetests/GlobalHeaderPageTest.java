@@ -2,11 +2,14 @@ package webdriver.globalscripts.pagetests;
 
 import static org.junit.Assert.fail;
 
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
+
+import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.helpers.PageTestHelper;
 import webdriver.maps.GeneralElementsMap;
@@ -24,15 +27,24 @@ public class GlobalHeaderPageTest extends PageTestHelper {
 	 * Verifies working links on Contact Us global page.
 	 */
 	@BeforeClass
-	public static void setupScript() throws Exception {
-		genmap = BuildMap.getInstance(driver, GeneralElementsMap.class);
-		System.out.println("Test Class: " + GlobalHeaderPageTest.class.getSimpleName());
-		/*modified by Omkar on 26/5/22 as only aadmin user is available for qa3 env
-    Login.loginUser("AutomationTester1");
-		 */
-		Login.loginUser("AutomationTesterAdmin");
-		// End of modification
-		genmap.getGlobalHeaderButtonContactUs().click();
+	public static void setupScript() throws Exception ,Throwable{
+		ExtentReport.reportCreate("GlobalHeaderPageTest", "webdriver.globalscripts.pagetests", "GlobalHeaderPageTest");
+		try {
+			genmap = BuildMap.getInstance(driver, GeneralElementsMap.class);
+			System.out.println("Test Class: " + GlobalHeaderPageTest.class.getSimpleName());
+			/*modified by Omkar on 26/5/22 as only aadmin user is available for qa3 env
+   Login.loginUser("AutomationTester1");
+			 */
+			Login.loginUser("AutomationTesterAdmin");
+			// End of modification
+			genmap.getGlobalHeaderButtonContactUs().click();
+			ExtentReport.logPass("PASS", "setupScript");
+
+		} catch (Exception|AssertionError e) {
+			ExtentReport.logFail("FAIL", "Failure in setupScript", driver, e);
+
+			fail(e.getMessage());
+		}
 	}
 
 	/* The below TC's are already present in Change password dislogue test
@@ -81,82 +93,127 @@ public class GlobalHeaderPageTest extends PageTestHelper {
 
 
 	@Test
-	public void test05ContactUsPageHelpLink() throws InterruptedException {
-		final String helpLinkHeader = "Contact Us";
-		waitForAjaxExtJs();
-		testHelpLinkAndCloseNewWindow(
-				genmap.getContactUsPageHelpLink(),
-				helpLinkHeader,
-				printout
-				);
+	public void test05ContactUsPageHelpLink() throws InterruptedException,Throwable {
+		try {
+			final String helpLinkHeader = "Contact Us";
+			waitForAjaxExtJs();
+			testHelpLinkAndCloseNewWindow(
+					genmap.getContactUsPageHelpLink(),
+					helpLinkHeader,
+					printout
+					);
+			ExtentReport.logPass("PASS", "test05ContactUsPageHelpLink");
+
+		} catch (Exception|AssertionError e) {
+			ExtentReport.logFail("FAIL", "test05ContactUsPageHelpLink", driver, e);
+
+			fail(e.getMessage());
+		}
 	}
 
 	@Test
-	public void test06HarrisAffinityLinkText() throws InterruptedException {
-		waitForAjaxExtJs();
-		assertElementText(
-				genmap.getContactUsPageHarrisAffinityLink(),
-				"www.HarrisAffinity.com",
-				printout
-				);
-	}
-
-
-	@Test
-	public void test07HarrisAffinityLink() {
-		String firstHandle = null;
+	public void test06HarrisAffinityLinkText() throws InterruptedException,Throwable {
 		try {
 			waitForAjaxExtJs();
-			firstHandle = webSwitchToNewWindow(
+			assertElementText(
 					genmap.getContactUsPageHarrisAffinityLink(),
+					"www.HarrisAffinity.com",
 					printout
 					);
-			assertElementIsDisplayed(
-					/*Omkar 1/9/2022 : below xpath is no more working for Harris logo
-    		  driver.findElement(By.xpath("//*[@class='logo-header affix']")),
-              printout
-					 */
-					driver.findElement(By.xpath("//*[@class='attachment-large size-large entered lazyloaded']")),
-					printout
-					);
-			driver.close();
-		} catch (Throwable e) {
-			fail("ERROR: Could not locate Harris Affinity window");
-		} finally {
-			driver.switchTo().window(firstHandle);
+			ExtentReport.logPass("PASS", "test06HarrisAffinityLinkText");
+
+		} catch (Exception|AssertionError e) {
+			ExtentReport.logFail("FAIL", "test06HarrisAffinityLinkText", driver, e);
+
+			fail(e.getMessage());
+		}
+	}
+
+
+	@Test
+	public void test07HarrisAffinityLink() throws Throwable {
+		try {
+			String firstHandle = null;
+			try {
+				waitForAjaxExtJs();
+				firstHandle = webSwitchToNewWindow(
+						genmap.getContactUsPageHarrisAffinityLink(),
+						printout
+						);
+				assertElementIsDisplayed(
+						/*Omkar 1/9/2022 : below xpath is no more working for Harris logo
+				  driver.findElement(By.xpath("//*[@class='logo-header affix']")),
+			      printout
+						 */
+						driver.findElement(By.xpath("//*[@class='attachment-large size-large entered lazyloaded']")),
+						printout
+						);
+				driver.close();
+			} catch (Throwable e) {
+				fail("ERROR: Could not locate Harris Affinity window");
+			} finally {
+				driver.switchTo().window(firstHandle);
+			}
+			ExtentReport.logPass("PASS", "test07HarrisAffinityLink");
+
+		} catch (Exception|AssertionError e) {
+			ExtentReport.logFail("FAIL", "test07HarrisAffinityLink", driver, e);
+
+			fail(e.getMessage());
 		}
 	}
 
 	@Test
-	public void test08PortalLinkText() throws InterruptedException {
-		waitForAjaxExtJs();
-		assertElementText(
-				genmap.getContactUsPageSupportPortalLink(),
-				"https://support.harrishealthcare.com/Affinity/",
-				printout
-				);
-	}
-
-	@Test
-	public void test09PortalLinkSignInPage() {
-		String firstHandle = null;
+	public void test08PortalLinkText() throws InterruptedException,Throwable {
 		try {
 			waitForAjaxExtJs();
-			firstHandle = webSwitchToNewWindow(
+			assertElementText(
 					genmap.getContactUsPageSupportPortalLink(),
+					"https://support.harrishealthcare.com/Affinity/",
 					printout
 					);
-			Thread.sleep(1000);
-			assertElementIsDisplayed(
-					driver.findElement(By.xpath("//*[text()='Sign in with a local account']")),
-					printout
-					);
-			driver.close();
-		} catch (Throwable e) {
-			fail("ERROR: Could not locate Portal Login window");
-		} finally {
-			driver.switchTo().window(firstHandle);
+			ExtentReport.logPass("PASS", "test08PortalLinkText");
+
+		} catch (Exception|AssertionError e) {
+			ExtentReport.logFail("FAIL", "test08PortalLinkText", driver, e);
+
+			fail(e.getMessage());
 		}
 	}
 
+	@Test
+	public void test09PortalLinkSignInPage() throws Throwable {
+		try {
+			String firstHandle = null;
+			try {
+				waitForAjaxExtJs();
+				firstHandle = webSwitchToNewWindow(
+						genmap.getContactUsPageSupportPortalLink(),
+						printout
+						);
+				Thread.sleep(1000);
+				assertElementIsDisplayed(
+						driver.findElement(By.xpath("//*[text()='Sign in with a local account']")),
+						printout
+						);
+				driver.close();
+			} catch (Throwable e) {
+				fail("ERROR: Could not locate Portal Login window");
+			} finally {
+				driver.switchTo().window(firstHandle);
+			}
+			ExtentReport.logPass("PASS", "test09PortalLinkSignInPage");
+
+		} catch (Exception|AssertionError e) {
+			ExtentReport.logFail("FAIL", "test09PortalLinkSignInPage", driver, e);
+
+			fail(e.getMessage());
+		}
+	}
+	@AfterClass
+	public static void endtest() throws Exception {
+
+		ExtentReport.report.flush();
+
+	}
 }

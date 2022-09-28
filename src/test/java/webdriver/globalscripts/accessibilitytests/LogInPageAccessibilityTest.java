@@ -1,8 +1,13 @@
 package webdriver.globalscripts.accessibilitytests;
 
+import static org.junit.Assert.fail;
+
+import org.junit.AfterClass;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestName;
+
+import ExtentReport.ExtentReport;
 import webdriver.globalstatic.BeforeAfterStatic;
 import webdriver.utilities.Axe;
 
@@ -19,7 +24,20 @@ public class LogInPageAccessibilityTest extends BeforeAfterStatic {
   public TestName name = new TestName();
 
   @Test
-  public void testLogInPageAccessibilityCheck() {
-    ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName());
+  public void testLogInPageAccessibilityCheck() throws Throwable {
+	  ExtentReport.reportCreate("LogInPageAccessibilityTest", "webdriver.globalscripts.accessibilitytests", "LogInPageAccessibilityTest");
+    try {
+		ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName());
+		ExtentReport.logPass("PASS", "testLocalAccessibilityScript");
+	} catch (Exception|AssertionError e) {
+	ExtentReport.logFail("FAIL", "testLocalAccessibilityScript", driver, e);
+	fail(e.getMessage());
+	}
   }
+  @AfterClass
+	public static void endtest() throws Exception {
+
+		ExtentReport.report.flush();
+
+	}
 }

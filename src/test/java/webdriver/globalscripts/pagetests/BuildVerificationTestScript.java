@@ -3,11 +3,15 @@ package webdriver.globalscripts.pagetests;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -16,10 +20,21 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.data.AdsStandardData;
 import webdriver.helpers.UcqcHelper;
-import webdriver.maps.*;
+import webdriver.maps.AnalyticsMap;
+import webdriver.maps.ContractingMap;
+import webdriver.maps.CostingMap;
+import webdriver.maps.DataMaintenanceMap;
+import webdriver.maps.DialogsMap;
+import webdriver.maps.GeneralElementsMap;
+import webdriver.maps.ModelLibraryMap;
+import webdriver.maps.ReportingMap;
+import webdriver.maps.StatusMap;
+import webdriver.maps.SystemMaintenanceMap;
 import webdriver.maps.mapbuilder.BuildMap;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -40,114 +55,172 @@ public class BuildVerificationTestScript extends UcqcHelper {
 
   /** The local pages map test is a test of the elements on all of the individual functional area (local) page maps -
    * that the elements on the map display on the page.
+ * @throws Exception 
    */
   @BeforeClass
-  public static void setupScript() {
-    generalElement = BuildMap.getInstance(driver, GeneralElementsMap.class);
-    analyticsMap = BuildMap.getInstance(driver, AnalyticsMap.class);
-    contractingMap = BuildMap.getInstance(driver, ContractingMap.class);
-    costingMap = BuildMap.getInstance(driver, CostingMap.class);
-    statusMap = BuildMap.getInstance(driver, StatusMap.class);
-    dialogsMap = BuildMap.getInstance(driver, DialogsMap.class);
-    dataMaintenance = BuildMap.getInstance(driver, DataMaintenanceMap.class);
-    modelLibrary = BuildMap.getInstance(driver, ModelLibraryMap.class);
-    reportingMap = BuildMap.getInstance(driver, ReportingMap.class);
-    sysmaint = BuildMap.getInstance(driver, SystemMaintenanceMap.class);
-    System.out.println("Test Class: " + BuildVerificationTestScript.class.getSimpleName());
+  public static void setupScript() throws Exception,Throwable {
+	  ExtentReport.reportCreate("BuildVerificationTestScript", "webdriver.globalscripts.pagetests", "BuildVerificationTestScript");
+    try {
+		generalElement = BuildMap.getInstance(driver, GeneralElementsMap.class);
+		analyticsMap = BuildMap.getInstance(driver, AnalyticsMap.class);
+		contractingMap = BuildMap.getInstance(driver, ContractingMap.class);
+		costingMap = BuildMap.getInstance(driver, CostingMap.class);
+		statusMap = BuildMap.getInstance(driver, StatusMap.class);
+		dialogsMap = BuildMap.getInstance(driver, DialogsMap.class);
+		dataMaintenance = BuildMap.getInstance(driver, DataMaintenanceMap.class);
+		modelLibrary = BuildMap.getInstance(driver, ModelLibraryMap.class);
+		reportingMap = BuildMap.getInstance(driver, ReportingMap.class);
+		sysmaint = BuildMap.getInstance(driver, SystemMaintenanceMap.class);
+		System.out.println("Test Class: " + BuildVerificationTestScript.class.getSimpleName());
+		ExtentReport.logPass("PASS", "setupScript");
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "Failure in setupScript", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   //Login page tests
   @Test
-  public void test0000VerifyLoginPageIsDisplayed() {	
+  public void test0000VerifyLoginPageIsDisplayed() throws Throwable {	
     System.out.println("Testing Login Page");
     try {
       waitForSpinnerToEnd();
       Thread.sleep(1000);
       wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//img[@alt = 'Harris Affinity Logo']")));
-    } catch (Throwable e) {
-      fail("LOGIN PAGE NOT DISPLAYED");
-    }
+      ExtentReport.logPass("PASS", "test0000VerifyLoginPageIsDisplayed");
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test0000VerifyLoginPageIsDisplayed", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test0000aVerifyLoginPageElementsAreDisplayed() {
-    WebElement[] logInPageElements = {
-            generalElement.getGlobalHeaderLogo(),
-            generalElement.getLoginPageHeaderLogIn(),
-            generalElement.getLoginPageDate(),
-            generalElement.getLoginPageLogInHeaderSignIn(),
-            generalElement.getLoginPageFieldUsername(),
-            generalElement.getLoginPageFieldPassword(),
-            generalElement.getLoginPageButtonLogIn(),
-            generalElement.getLoginPageReleaseVersion()
-    };
-    assertElementsAreDisplayed(logInPageElements, printout);
+  public void test0000aVerifyLoginPageElementsAreDisplayed() throws Throwable {
+    try {
+		WebElement[] logInPageElements = {
+		        generalElement.getGlobalHeaderLogo(),
+		        generalElement.getLoginPageHeaderLogIn(),
+		        generalElement.getLoginPageDate(),
+		        generalElement.getLoginPageLogInHeaderSignIn(),
+		        generalElement.getLoginPageFieldUsername(),
+		        generalElement.getLoginPageFieldPassword(),
+		        generalElement.getLoginPageButtonLogIn(),
+		        generalElement.getLoginPageReleaseVersion()
+		};
+		assertElementsAreDisplayed(logInPageElements, printout);
+		 ExtentReport.logPass("PASS", "test0000aVerifyLoginPageElementsAreDisplayed");
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test0000aVerifyLoginPageElementsAreDisplayed", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test0000bLoginPageVerifyCurrentDateIsDisplayed() {
-    LocalDateTime now = LocalDateTime.now();
-    if (printout) {
-      System.out.println(DateTimeFormatter.ofPattern("EEEE MMMM d, yyy HH:mm a").format(now));
-    }
-    //String expectedDate = DateTimeFormatter.ofPattern("EEEE MMMM dd, yyy HH:mm a").format(now);
-    String expectedDate = DateTimeFormatter.ofPattern("EEEE MMMM d, yyy").format(now);
-    String actualLoginPageDate = generalElement.getLoginPageDate().getText();
-    assertThat(actualLoginPageDate, containsString(expectedDate));
+  public void test0000bLoginPageVerifyCurrentDateIsDisplayed() throws Throwable {
+    try {
+		LocalDateTime now = LocalDateTime.now();
+		if (printout) {
+		  System.out.println(DateTimeFormatter.ofPattern("EEEE MMMM d, yyy HH:mm a").format(now));
+		}
+		//String expectedDate = DateTimeFormatter.ofPattern("EEEE MMMM dd, yyy HH:mm a").format(now);
+		String expectedDate = DateTimeFormatter.ofPattern("EEEE MMMM d, yyy").format(now);
+		String actualLoginPageDate = generalElement.getLoginPageDate().getText();
+		assertThat(actualLoginPageDate, containsString(expectedDate));
+		 ExtentReport.logPass("PASS", "test0000bLoginPageVerifyCurrentDateIsDisplayed");
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test0000bLoginPageVerifyCurrentDateIsDisplayed", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test0000cLoginPageVerifyReleaseVersion() {
-    String actualReleaseVersion = generalElement.getLoginPageReleaseVersion().getText();
-    if (printout) {
-      System.out.println("Expected release version: " + expectedReleaseVersion);
-      System.out.println("Actual release version: " + actualReleaseVersion);
-    }
-    assertThat(actualReleaseVersion, containsString(expectedReleaseVersion));
+  public void test0000cLoginPageVerifyReleaseVersion() throws Throwable {
+    try {
+		String actualReleaseVersion = generalElement.getLoginPageReleaseVersion().getText();
+		if (printout) {
+		  System.out.println("Expected release version: " + expectedReleaseVersion);
+		  System.out.println("Actual release version: " + actualReleaseVersion);
+		}
+		assertThat(actualReleaseVersion, containsString(expectedReleaseVersion));
+		 ExtentReport.logPass("PASS", "test0000cLoginPageVerifyReleaseVersion");
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test0000cLoginPageVerifyReleaseVersion", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test0000dLoginPageVerifyHarrisLogoImage() {
-    if (printout) {
-      System.out.println("Actual Login Page Logo id: " + generalElement.getLoginPageLogo().getAttribute("id"));
-      System.out.println("Actual Login Page partial Logo src: " + generalElement.getLoginPageLogo().getAttribute("src").substring(23));
-    }
-    assertThat(generalElement.getLoginPageLogo().getAttribute("id"), containsString("image-1013"));
-    assertThat(generalElement.getLoginPageLogo().getAttribute("src").substring(23), containsString("/resources/images/app/Harris_Affinity_Logo.png"));
+  public void test0000dLoginPageVerifyHarrisLogoImage() throws Throwable {
+    try {
+		if (printout) {
+		  System.out.println("Actual Login Page Logo id: " + generalElement.getLoginPageLogo().getAttribute("id"));
+		  System.out.println("Actual Login Page partial Logo src: " + generalElement.getLoginPageLogo().getAttribute("src").substring(23));
+		}
+		assertThat(generalElement.getLoginPageLogo().getAttribute("id"), containsString("image-1013"));
+		assertThat(generalElement.getLoginPageLogo().getAttribute("src").substring(23), containsString("/resources/images/app/Harris_Affinity_Logo.png"));
+		 ExtentReport.logPass("PASS", "test0000dLoginPageVerifyHarrisLogoImage");
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test0000dLoginPageVerifyHarrisLogoImage", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test0000eLoginPageVerifyLogInPageHeaderIsLogIn() {
-    if (printout) {
-      System.out.println("Login Page Header: " + generalElement.getLoginPageHeaderLogIn().getText());
-    }
-    assertThat(generalElement.getLoginPageHeaderLogIn().getText(), containsString("Log In"));
+  public void test0000eLoginPageVerifyLogInPageHeaderIsLogIn() throws Throwable {
+    try {
+		if (printout) {
+		  System.out.println("Login Page Header: " + generalElement.getLoginPageHeaderLogIn().getText());
+		}
+		assertThat(generalElement.getLoginPageHeaderLogIn().getText(), containsString("Log In"));
+		 ExtentReport.logPass("PASS", "test0000eLoginPageVerifyLogInPageHeaderIsLogIn");
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test0000eLoginPageVerifyLogInPageHeaderIsLogIn", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test0000fLoginPageVerifySignInSectionHeaderIsSignIn() {
-    if (printout) {
-      System.out.println("Login Page Sign In section header: " + generalElement.getLoginPageLogInHeaderSignIn().getText());
-    }
-    assertThat(generalElement.getLoginPageLogInHeaderSignIn().getText(), containsString("Sign In"));
+  public void test0000fLoginPageVerifySignInSectionHeaderIsSignIn() throws Throwable {
+    try {
+		if (printout) {
+		  System.out.println("Login Page Sign In section header: " + generalElement.getLoginPageLogInHeaderSignIn().getText());
+		}
+		assertThat(generalElement.getLoginPageLogInHeaderSignIn().getText(), containsString("Sign In"));
+		 ExtentReport.logPass("PASS", "test0000fLoginPageVerifySignInSectionHeaderIsSignIn");
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test0000fLoginPageVerifySignInSectionHeaderIsSignIn", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test0000gLoginPageVerifyUsernameAndPasswordFieldLabelsAreDisplayed() {
-    if (printout) {
-      System.out.println("Login Page Username label: " + driver.findElement(By.xpath("//label[text() = 'Username']")));
-      System.out.println("Login Page Password label: " + driver.findElement(By.xpath("//label[text() = 'Password']")));
-    }
-    assertThat(driver.findElement(By.xpath("//label[text() = 'Username']")).isDisplayed(), equalTo(true));
-    assertThat(driver.findElement(By.xpath("//label[text() = 'Password']")).isDisplayed(), equalTo(true));
+  public void test0000gLoginPageVerifyUsernameAndPasswordFieldLabelsAreDisplayed() throws Throwable {
+    try {
+		if (printout) {
+		  System.out.println("Login Page Username label: " + driver.findElement(By.xpath("//label[text() = 'Username']")));
+		  System.out.println("Login Page Password label: " + driver.findElement(By.xpath("//label[text() = 'Password']")));
+		}
+		assertThat(driver.findElement(By.xpath("//label[text() = 'Username']")).isDisplayed(), equalTo(true));
+		assertThat(driver.findElement(By.xpath("//label[text() = 'Password']")).isDisplayed(), equalTo(true));
+		 ExtentReport.logPass("PASS", "test0000gLoginPageVerifyUsernameAndPasswordFieldLabelsAreDisplayed");
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test0000gLoginPageVerifyUsernameAndPasswordFieldLabelsAreDisplayed", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test0000hLoginPageVerifyLoginButtonTextIsLogIn() {
-    if (printout) {
-      System.out.println("Login Button text: " + generalElement.getLoginPageButtonLogIn().getText());
-    }
-    assertThat(generalElement.getLoginPageButtonLogIn().getText(), equalTo("Log In"));
+  public void test0000hLoginPageVerifyLoginButtonTextIsLogIn() throws Throwable {
+    try {
+		if (printout) {
+		  System.out.println("Login Button text: " + generalElement.getLoginPageButtonLogIn().getText());
+		}
+		assertThat(generalElement.getLoginPageButtonLogIn().getText(), equalTo("Log In"));
+		ExtentReport.logPass("PASS", "test0000hLoginPageVerifyLoginButtonTextIsLogIn");
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test0000hLoginPageVerifyLoginButtonTextIsLogIn", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   public static void assertElementsAreDisplayed(WebElement[] elements, boolean printout) {
@@ -165,67 +238,91 @@ public class BuildVerificationTestScript extends UcqcHelper {
 
   //===== Global Tests ======//
   @Test
-  public void test0001LandingPageSystemMaintenance() throws Exception {
-    System.out.println("Logging In");
-    
-    /*modified by Omkar on 26/5/22 as only aadmin user is available for qa3 env
-    Login.loginUser("AutomationTester1");
-    */
-    Login.loginUser("AutomationTesterAdmin");
-    // End of modification
-    waitForSpinnerToEnd();
-    waitForJsWindowOnload();
-    System.out.println("Testing Global Pages");
-    WebElement[] landingPageSystemMaintenanceElements = {
-            generalElement.getLandingPageBubbleSystemMaintenance(),
-            generalElement.getLandingPageBubbleSystemMaintenanceHeader(),
-            generalElement.getLandingPageBubbleSystemMaintenanceImage(),
-            generalElement.getLandingPageBubbleSystemMaintenanceQuickLinkUsers(),
-            generalElement.getLandingPageBubbleSystemMaintenanceQuickLinkRoles(),
-            generalElement.getLandingPageBubbleSystemMaintenanceQuickLinkSecuritySettings(),
-            generalElement.getLandingPageBubbleSystemMaintenanceQuickLinkGeneralSettings()
-    };
-    assertElementsAreDisplayed(landingPageSystemMaintenanceElements, printout);
+  public void test0001LandingPageSystemMaintenance() throws Throwable {
+    try {
+		System.out.println("Logging In");
+		
+		/*modified by Omkar on 26/5/22 as only aadmin user is available for qa3 env
+		Login.loginUser("AutomationTester1");
+		*/
+		Login.loginUser("AutomationTesterAdmin");
+		// End of modification
+		waitForSpinnerToEnd();
+		waitForJsWindowOnload();
+		System.out.println("Testing Global Pages");
+		WebElement[] landingPageSystemMaintenanceElements = {
+		        generalElement.getLandingPageBubbleSystemMaintenance(),
+		        generalElement.getLandingPageBubbleSystemMaintenanceHeader(),
+		        generalElement.getLandingPageBubbleSystemMaintenanceImage(),
+		        generalElement.getLandingPageBubbleSystemMaintenanceQuickLinkUsers(),
+		        generalElement.getLandingPageBubbleSystemMaintenanceQuickLinkRoles(),
+		        generalElement.getLandingPageBubbleSystemMaintenanceQuickLinkSecuritySettings(),
+		        generalElement.getLandingPageBubbleSystemMaintenanceQuickLinkGeneralSettings()
+		};
+		assertElementsAreDisplayed(landingPageSystemMaintenanceElements, printout);
+		ExtentReport.logPass("PASS", "test0001LandingPageSystemMaintenance");
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test0001LandingPageSystemMaintenance", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test0002LandingPageDataMaintenance() {
-    WebElement[] landingPageDataMaintenanceElements = {
-            generalElement.getLandingPageBubbleDataMaintenance(),
-            generalElement.getLandingPageBubbleDataMaintenanceHeader(),
-            generalElement.getLandingPageBubbleDataMaintenanceImage(),
-            generalElement.getLandingPageBubbleDataMaintenanceQuickLinkMaintainData(),
-            generalElement.getLandingPageBubbleDataMaintenanceQuickLinkLoadData(),
-            generalElement.getLandingPageBubbleDataMaintenanceQuickLinkUtilities()
-    };
-    assertElementsAreDisplayed(landingPageDataMaintenanceElements,printout);
+  public void test0002LandingPageDataMaintenance() throws Throwable {
+    try {
+		WebElement[] landingPageDataMaintenanceElements = {
+		        generalElement.getLandingPageBubbleDataMaintenance(),
+		        generalElement.getLandingPageBubbleDataMaintenanceHeader(),
+		        generalElement.getLandingPageBubbleDataMaintenanceImage(),
+		        generalElement.getLandingPageBubbleDataMaintenanceQuickLinkMaintainData(),
+		        generalElement.getLandingPageBubbleDataMaintenanceQuickLinkLoadData(),
+		        generalElement.getLandingPageBubbleDataMaintenanceQuickLinkUtilities()
+		};
+		assertElementsAreDisplayed(landingPageDataMaintenanceElements,printout);
+		ExtentReport.logPass("PASS", "test0002LandingPageDataMaintenance");
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test0002LandingPageDataMaintenance", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test0003LandingPageBudgeting() {
-    WebElement[] landingPageBudgetingElements = {
-            generalElement.getLandingPageBubbleBudgeting(),
-            generalElement.getLandingPageBubbleBudgetingHeader(),
-            generalElement.getLandingPageBubbleBudgetingImage(),
-            generalElement.getLandingPageBubbleBudgetingQuickLinkBudgeting()
-    };
-    assertElementsAreDisplayed(landingPageBudgetingElements, printout);
+  public void test0003LandingPageBudgeting() throws Throwable {
+    try {
+		WebElement[] landingPageBudgetingElements = {
+		        generalElement.getLandingPageBubbleBudgeting(),
+		        generalElement.getLandingPageBubbleBudgetingHeader(),
+		        generalElement.getLandingPageBubbleBudgetingImage(),
+		        generalElement.getLandingPageBubbleBudgetingQuickLinkBudgeting()
+		};
+		assertElementsAreDisplayed(landingPageBudgetingElements, printout);
+		ExtentReport.logPass("PASS", "test0003LandingPageBudgeting");
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test0003LandingPageBudgeting", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test0004LandingPageEpisodes() {
-    WebElement[] landingPageEpisodesElements = {
-            generalElement.getLandingPageBubbleEpisode(),
-            generalElement.getLandingPageBubbleEpisodeHeader(),
-            generalElement.getLandingPageBubbleEpisodeImage(),
-            generalElement.getLandingPageBubbleEpisodeQuickLinkEpisodeModels(),
-            generalElement.getLandingPageBubbleEpisodeQuickLinkEpisodeDataMaintenance()
-    };
-    assertElementsAreDisplayed(landingPageEpisodesElements, printout);
+  public void test0004LandingPageEpisodes() throws Throwable {
+    try {
+		WebElement[] landingPageEpisodesElements = {
+		        generalElement.getLandingPageBubbleEpisode(),
+		        generalElement.getLandingPageBubbleEpisodeHeader(),
+		        generalElement.getLandingPageBubbleEpisodeImage(),
+		        generalElement.getLandingPageBubbleEpisodeQuickLinkEpisodeModels(),
+		        generalElement.getLandingPageBubbleEpisodeQuickLinkEpisodeDataMaintenance()
+		};
+		assertElementsAreDisplayed(landingPageEpisodesElements, printout);
+		ExtentReport.logPass("PASS", "test0004LandingPageEpisodes");
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test0004LandingPageEpisodes", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test0005LandingPageContracting() {
+  public void test0005LandingPageContracting() throws Throwable {
     try {
       WebElement[] landingPageContractingElements = {
               generalElement.getLandingPageBubbleContracting(),
@@ -237,13 +334,15 @@ public class BuildVerificationTestScript extends UcqcHelper {
               generalElement.getLandingPageBubbleContractingQuickLinkContractingDataMaintenance()
       };
       assertElementsAreDisplayed(landingPageContractingElements, printout);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test0005LandingPageContracting");
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test0005LandingPageContracting", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test0006LandingPageCosting() {
+  public void test0006LandingPageCosting() throws Throwable {
     try {
       WebElement[] landingPageCostingElements = {
               generalElement.getLandingPageBubbleCosting(),
@@ -255,13 +354,15 @@ public class BuildVerificationTestScript extends UcqcHelper {
               generalElement.getLandingPageBubbleCostingQuickLinkCostingDataMaintenance()
       };
       assertElementsAreDisplayed(landingPageCostingElements,printout);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test0006LandingPageCosting");
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test0006LandingPageCosting", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test0007LandingPageReporting() {
+  public void test0007LandingPageReporting() throws Throwable {
     try {
       WebElement[] landingPageReportingElements = {
               generalElement.getLandingPageBubbleReporting(),
@@ -274,13 +375,15 @@ public class BuildVerificationTestScript extends UcqcHelper {
               generalElement.getLandingPageBubbleReportingQuickLinkAdHocReportDesign()
       };
       assertElementsAreDisplayed(landingPageReportingElements,printout);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test0007LandingPageReporting");
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test0007LandingPageReporting", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test0008LandingPageAnalytics() {
+  public void test0008LandingPageAnalytics() throws Throwable {
     try {
       WebElement[] landingPageAnalyticsElements = {
               generalElement.getLandingPageBubbleAnalytics(),
@@ -292,13 +395,15 @@ public class BuildVerificationTestScript extends UcqcHelper {
               generalElement.getLandingPageBubbleAnayticsQuickLinkAnalyticDashobaords()
       };
       assertElementsAreDisplayed(landingPageAnalyticsElements,printout);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test0008LandingPageAnalytics");
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test0008LandingPageAnalytics", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test0009aGlobalHeader() {
+  public void test0009aGlobalHeader() throws Throwable {
     try {
       WebElement[] globalHeaderElements = {
               generalElement.getGlobalHeaderLogo(),
@@ -307,13 +412,15 @@ public class BuildVerificationTestScript extends UcqcHelper {
               generalElement.getGlobalHeaderButtonLogout()
       };
       assertElementsAreDisplayed(globalHeaderElements,printout);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test0009aGlobalHeader");
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test0009aGlobalHeader", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test0009bUserMenu() {
+  public void test0009bUserMenu() throws Throwable {
     try {
       waitForPresenceOfElement("//*[@id = 'dropdown']");
       doClick(generalElement.getUserDropdown());
@@ -323,13 +430,15 @@ public class BuildVerificationTestScript extends UcqcHelper {
               generalElement.getUserDropdownTermsOfUse()
       };
       assertElementsAreDisplayed(userMenuElements,printout);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test0009bUserMenu");
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test0009bUserMenu", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test0009cMainTabs() {
+  public void test0009cMainTabs() throws Throwable {
     try {
       WebElement[] mainTabElements = {
               generalElement.getAnalyticsTab(),
@@ -343,104 +452,166 @@ public class BuildVerificationTestScript extends UcqcHelper {
               generalElement.getStatusTab()
       };
       assertElementsAreDisplayed(mainTabElements,printout);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test0009cMainTabs");
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test0009cMainTabs", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test0010AdsMainTabOrder() {
-    WebElement menuBar = driver.findElement(By.xpath("//div[@id='menubar-body']/ul"));
-    List<WebElement> actualTabs = javaMakeListOfWebElements2(menuBar, "/li");
-    List<String> actualTabsText = javaMakeListOfStrings(actualTabs);
-    assertEquals(AdsStandardData.expectedTabs, actualTabsText);
+  public void test0010AdsMainTabOrder() throws Throwable {
+    try {
+		WebElement menuBar = driver.findElement(By.xpath("//div[@id='menubar-body']/ul"));
+		List<WebElement> actualTabs = javaMakeListOfWebElements2(menuBar, "/li");
+		List<String> actualTabsText = javaMakeListOfStrings(actualTabs);
+		assertEquals(AdsStandardData.expectedTabs, actualTabsText);
+		ExtentReport.logPass("PASS", "test0010AdsMainTabOrder");
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test0010AdsMainTabOrder", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test0010bAnalyticsSubTabsOrder() throws InterruptedException {
-    verifySubTabOrder(
-            generalElement.getAnalyticsTab(),
-            "analytics_subtab",
-            AdsStandardData.expectedAnalyticsSubTabs
-    );
+  public void test0010bAnalyticsSubTabsOrder() throws InterruptedException,Throwable {
+    try {
+		verifySubTabOrder(
+		        generalElement.getAnalyticsTab(),
+		        "analytics_subtab",
+		        AdsStandardData.expectedAnalyticsSubTabs
+		);
+		ExtentReport.logPass("PASS", "test0010bAnalyticsSubTabsOrder");
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test0010bAnalyticsSubTabsOrder", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test0010cReportingSubTabsOrder() throws InterruptedException {
-    verifySubTabOrder(
-            generalElement.getReportingTab(),
-            "reporting_subtab",
-            AdsStandardData.expectedReportingSubTabs
-    );
+  public void test0010cReportingSubTabsOrder() throws InterruptedException,Throwable {
+    try {
+		verifySubTabOrder(
+		        generalElement.getReportingTab(),
+		        "reporting_subtab",
+		        AdsStandardData.expectedReportingSubTabs
+		);
+		ExtentReport.logPass("PASS", "test0010cReportingSubTabsOrder");
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test0010cReportingSubTabsOrder", driver, e);
+		fail(e.getMessage());
+	}
 //    String costingReports = driver.findElement(By.xpath("//*[@id='Costing Reports']/a")).getText();
 //    assertEquals("Costing Reports", costingReports);
   }
 
   @Test
-  public void test0010dCostingSubTabsOrder() throws InterruptedException {
-    verifySubTabOrder(
-            generalElement.getCostingTab(),
-            "costing_subtab",
-            AdsStandardData.expectedCostingSubTabs
-    );
+  public void test0010dCostingSubTabsOrder() throws InterruptedException,Throwable {
+    try {
+		verifySubTabOrder(
+		        generalElement.getCostingTab(),
+		        "costing_subtab",
+		        AdsStandardData.expectedCostingSubTabs
+		);
+		ExtentReport.logPass("PASS", "test0010dCostingSubTabsOrder");
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test0010dCostingSubTabsOrder", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test0010eContractingSubTabsOrder() throws InterruptedException {
-    verifySubTabOrder(
-            generalElement.getContractingTab(),
-            "contracting_subtab",
-            AdsStandardData.expectedContractingSubTabs
-    );
+  public void test0010eContractingSubTabsOrder() throws InterruptedException,Throwable{
+    try {
+		verifySubTabOrder(
+		        generalElement.getContractingTab(),
+		        "contracting_subtab",
+		        AdsStandardData.expectedContractingSubTabs
+		);
+		ExtentReport.logPass("PASS", "test0010eContractingSubTabsOrder");
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test0010eContractingSubTabsOrder", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test0010fEpisodesSubTabsOrder() throws InterruptedException {
-    verifySubTabOrder(
-            generalElement.getEpisodesTab(),
-            "episode_subtab",
-            AdsStandardData.expectedEpisodesSubTabs
-    );
+  public void test0010fEpisodesSubTabsOrder() throws InterruptedException,Throwable {
+    try {
+		verifySubTabOrder(
+		        generalElement.getEpisodesTab(),
+		        "episode_subtab",
+		        AdsStandardData.expectedEpisodesSubTabs
+		);
+		ExtentReport.logPass("PASS", "test0010fEpisodesSubTabsOrder");
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test0010fEpisodesSubTabsOrder", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test0010gBudgetingSubTabsOrder() throws InterruptedException {
-    verifySubTabOrder(
-            generalElement.getBudgetingTab(),
-            "budgeting_subtab",
-            AdsStandardData.expectedBudgetingSubTabs
-    );
+  public void test0010gBudgetingSubTabsOrder() throws InterruptedException,Throwable {
+    try {
+		verifySubTabOrder(
+		        generalElement.getBudgetingTab(),
+		        "budgeting_subtab",
+		        AdsStandardData.expectedBudgetingSubTabs
+		);
+		ExtentReport.logPass("PASS", "test0010gBudgetingSubTabsOrder");
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test0010gBudgetingSubTabsOrder", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test0010hDataMaintenanceSubTabsOrder() throws InterruptedException {
-    verifySubTabOrder(
-            generalElement.getDataMaintenanceTab(),
-            "datamaintenance_subtab",
-            AdsStandardData.expectedDataMaintenanceSubTabs
-    );
+  public void test0010hDataMaintenanceSubTabsOrder() throws InterruptedException,Throwable {
+    try {
+		verifySubTabOrder(
+		        generalElement.getDataMaintenanceTab(),
+		        "datamaintenance_subtab",
+		        AdsStandardData.expectedDataMaintenanceSubTabs
+		);
+		ExtentReport.logPass("PASS", "test0010hDataMaintenanceSubTabsOrder");
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test0010hDataMaintenanceSubTabsOrder", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test0010iSystemMaintenanceSubTabsOrder() throws InterruptedException {
-    verifySubTabOrder(
-            generalElement.getSystemMaintenanceTab(),
-            "systemmaintenance_subtab",
-            AdsStandardData.expectedSystemMaintenanceSubTabs
-    );
+  public void test0010iSystemMaintenanceSubTabsOrder() throws InterruptedException,Throwable{
+    try {
+		verifySubTabOrder(
+		        generalElement.getSystemMaintenanceTab(),
+		        "systemmaintenance_subtab",
+		        AdsStandardData.expectedSystemMaintenanceSubTabs
+		);
+		ExtentReport.logPass("PASS", "test0010iSystemMaintenanceSubTabsOrder");
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test0010iSystemMaintenanceSubTabsOrder", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test0010jStatusSubTabsOrder() throws InterruptedException {
-    verifySubTabOrder(
-            generalElement.getStatusTab(),
-            "status_subtab",
-            AdsStandardData.expectedStatusSubTabs
-    );
+  public void test0010jStatusSubTabsOrder() throws InterruptedException,Throwable {
+    try {
+		verifySubTabOrder(
+		        generalElement.getStatusTab(),
+		        "status_subtab",
+		        AdsStandardData.expectedStatusSubTabs
+		);
+		ExtentReport.logPass("PASS", "test0010jStatusSubTabsOrder");
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test0010jStatusSubTabsOrder", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test0012AnalyticsTab() {
+  public void test0012AnalyticsTab() throws Throwable {
     try {
       //Clicks the Analytics Tab in order to open the dropdown menu
       doClick(generalElement.getAnalyticsTab());
@@ -455,13 +626,15 @@ public class BuildVerificationTestScript extends UcqcHelper {
               generalElement.getAnalyticsServerDesktopSessionsSubTab()
       };
       assertElementsAreDisplayed(analyticsTabElements,printout);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test0012AnalyticsTab");
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test0012AnalyticsTab", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test0013ReportingTab() {
+  public void test0013ReportingTab() throws Throwable {
     try {
       //Clicks the Reporting Tab in order to open the dropdown menu
       doClick(generalElement.getReportingTab());
@@ -479,13 +652,15 @@ public class BuildVerificationTestScript extends UcqcHelper {
               //generalElement.getCostingReportsSubTab()
       };
       assertElementsAreDisplayed(reportingTabElements,printout);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test0013ReportingTab");
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test0013ReportingTab", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test0014CostingTab() {
+  public void test0014CostingTab() throws Throwable {
     try {
       doClick(generalElement.getCostingTab());
       WebElement[] costingTabElements = {
@@ -496,13 +671,15 @@ public class BuildVerificationTestScript extends UcqcHelper {
               generalElement.getUnitCostQuickCalculationSubTab()
       };
       assertElementsAreDisplayed(costingTabElements,printout);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test0014CostingTab");
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test0014CostingTab", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test0015ContractingTab() {
+  public void test0015ContractingTab() throws Throwable {
     try {
       //Clicks the Contracting Tab in order to open the dropdown menu
       doClick(generalElement.getContractingTab());
@@ -513,13 +690,15 @@ public class BuildVerificationTestScript extends UcqcHelper {
               generalElement.getApcAllocationSubTab()
       };
       assertElementsAreDisplayed(contractingTabElements, printout);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test0015ContractingTab");
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test0015ContractingTab", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test0016EpisodesTab() {
+  public void test0016EpisodesTab() throws Throwable {
     try {
       //Clicks the Episodes Tab in order to open the dropdown menu
       doClick(generalElement.getEpisodesTab());
@@ -528,24 +707,28 @@ public class BuildVerificationTestScript extends UcqcHelper {
               generalElement.getEpisodeDataMaintenanceSubTab()
       };
       assertElementsAreDisplayed(episodesTabElement,printout);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test0016EpisodesTab");
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test0016EpisodesTab", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test0017BudgetingTab() {
+  public void test0017BudgetingTab() throws Throwable {
     try {
       //Clicks the Budgeting Tab in order to open the dropdown menu
       doClick(generalElement.getBudgetingTab());
       assertElementIsDisplayed(generalElement.getBudgetingSubTab(),printout);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test0017BudgetingTab");
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test0017BudgetingTab", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test0018DataMaintenanceTab() {
+  public void test0018DataMaintenanceTab() throws Throwable {
     try {
       //Clicks the Data Maintenance Tab in order to open the dropdown menu
       doClick(generalElement.getDataMaintenanceTab());
@@ -555,13 +738,15 @@ public class BuildVerificationTestScript extends UcqcHelper {
               generalElement.getUtilitiesSubTab()
       };
       assertElementsAreDisplayed(dataMaintenanceTabElement,printout);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test0018DataMaintenanceTab");
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test0018DataMaintenanceTab", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test0019SystemMaintenanceTab() {
+  public void test0019SystemMaintenanceTab() throws Throwable {
     try {
       //Clicks the System Maintenance Tab in order to open the dropdown menu
       doClick(generalElement.getSystemMaintenanceTab());
@@ -576,13 +761,15 @@ public class BuildVerificationTestScript extends UcqcHelper {
               generalElement.getTerminalServerDesktopSubTab()
       };
       assertElementsAreDisplayed(systemMaintenanceTabElement,printout);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test0019SystemMaintenanceTab");
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test0019SystemMaintenanceTab", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test0020StatusTab() {
+  public void test0020StatusTab() throws Throwable {
     try {
       //Clicks the Status Tab in order to open the dropdown menu
       doClick(generalElement.getStatusTab());
@@ -592,13 +779,15 @@ public class BuildVerificationTestScript extends UcqcHelper {
               generalElement.getUtilityStatusSubTab()
       };
       assertElementsAreDisplayed(statusTabElement,printout);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test0020StatusTab");
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test0020StatusTab", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test0050MainPageHelpLinkAndHelpModule() {
+  public void test0050MainPageHelpLinkAndHelpModule() throws Throwable {
     
 	  try {	
 		  Thread.sleep(3000);
@@ -609,8 +798,11 @@ public class BuildVerificationTestScript extends UcqcHelper {
       driver.close();
       driver.switchTo().window(firstHandle);
       //assertHelpLink(generalElement.getGlobalHeaderButtonHelp(), "Decision Support", printout);
+      ExtentReport.logPass("PASS", "test0050MainPageHelpLinkAndHelpModule");
 
     } catch (Throwable e) {
+		ExtentReport.logFail("FAIL", "test0050MainPageHelpLinkAndHelpModule", driver, e);
+
       e.printStackTrace();
       fail("Global Header Page Test Failed");
     }
@@ -629,7 +821,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 
   //===== Analytics Map =====//
   @Test
-  public void test0100AnalyticsRefreshScenarios() throws InterruptedException {
+  public void test0100AnalyticsRefreshScenarios() throws InterruptedException,Throwable {
     System.out.println("Testing Local Pages");
     try {
       goToPage("Analytic Refresh Scenarios");
@@ -647,55 +839,69 @@ public class BuildVerificationTestScript extends UcqcHelper {
       };
       Thread.sleep(1000);
       assertElementsAreDisplayed(analyticsRefreshScenariosElements, printout);
-    } catch (Throwable e) {
+      ExtentReport.logPass("PASS", "test0100AnalyticsRefreshScenarios");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "test0100AnalyticsRefreshScenarios", driver, e);
       fail(e.getMessage());
     } finally {
-      doClosePageOnLowerBar("Analytic Refresh...");
-    }
-  }
-
-  @Test
-  public void test0200ReportingTabReportLibraryPageMap() throws InterruptedException {
-    try {
-      goToPage("Report Library");
-      waitForPresenceOfElement("//iframe[contains(@src,'reporting/main.html')]");
-      driver.switchTo().frame(driver.findElement(By.xpath("//iframe[contains(@src,'reporting/main.html')]")));
-      waitForPresenceOfElement("//div[contains(@class,'gwtQuery-draggable')]/a[@title]");
-      WebElement[] reportingTabReportLibraryPageElements = {
-              reportingMap.getReportLibraryPageName(),
-              reportingMap.getReportLibraryPageHelpLink(),
-              reportingMap.getReportLibraryPageFormFieldSearch(),
-              reportingMap.getReportLibraryPageSectionHeaderReportStatus(),
-              reportingMap.getReportLibraryPageSectionReportStatusTableHeaderName(),
-              reportingMap.getReportLibraryPageButtonRename(),
-              //uncomment this       reportingMap.getReportLibraryPageButtonDelete(),
-              reportingMap.getReportLibraryPageSectionReportStatusFirstReportListed(),
-              reportingMap.getReportLibraryPageLinkExpandAll(),
-              reportingMap.getReportLibraryPageLinkCollapseAll(),
-              reportingMap.getReportLibraryPageExpandTemplates(),
-              reportingMap.getReportLibraryPageExpandReports(),
-              reportingMap.getReportLibraryPageExpandFolders(),
-      };
-      assertElementsAreDisplayed(reportingTabReportLibraryPageElements, printout);
-      driver.switchTo().parentFrame();
-      doClosePageOnLowerBar("Report Library");
-    } catch (Throwable e) {
       try {
-        waitForPresenceOfElement("//table/tbody/tr[@class='dialogMiddle']/descendant::*[text()='Test']");
-        driver.switchTo().parentFrame();
-        doClosePageOnLowerBar("Report Library");
-        fail("Report Library not available for this environment.");
-      } catch (Exception ee) {
-        driver.switchTo().parentFrame();
-        doClosePageOnLowerBar("Report Library");
-        fail(e.getMessage());
-      }
-
+		doClosePageOnLowerBar("Analytic Refresh...");
+	} catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "test0100AnalyticsRefreshScenarios", driver, e);
+    	fail(e.getMessage());
+	}
     }
   }
 
   @Test
-  public void test0210ReportingTabReportMenuMaintenancePageMap() {
+  public void test0200ReportingTabReportLibraryPageMap() throws InterruptedException ,Throwable{
+    try {
+		try {
+		  goToPage("Report Library");
+		  waitForPresenceOfElement("//iframe[contains(@src,'reporting/main.html')]");
+		  driver.switchTo().frame(driver.findElement(By.xpath("//iframe[contains(@src,'reporting/main.html')]")));
+		  waitForPresenceOfElement("//div[contains(@class,'gwtQuery-draggable')]/a[@title]");
+		  WebElement[] reportingTabReportLibraryPageElements = {
+		          reportingMap.getReportLibraryPageName(),
+		          reportingMap.getReportLibraryPageHelpLink(),
+		          reportingMap.getReportLibraryPageFormFieldSearch(),
+		          reportingMap.getReportLibraryPageSectionHeaderReportStatus(),
+		          reportingMap.getReportLibraryPageSectionReportStatusTableHeaderName(),
+		          reportingMap.getReportLibraryPageButtonRename(),
+		          //uncomment this       reportingMap.getReportLibraryPageButtonDelete(),
+		          reportingMap.getReportLibraryPageSectionReportStatusFirstReportListed(),
+		          reportingMap.getReportLibraryPageLinkExpandAll(),
+		          reportingMap.getReportLibraryPageLinkCollapseAll(),
+		          reportingMap.getReportLibraryPageExpandTemplates(),
+		          reportingMap.getReportLibraryPageExpandReports(),
+		          reportingMap.getReportLibraryPageExpandFolders(),
+		  };
+		  assertElementsAreDisplayed(reportingTabReportLibraryPageElements, printout);
+		  driver.switchTo().parentFrame();
+		  doClosePageOnLowerBar("Report Library");
+		} catch (Throwable e) {
+		  try {
+		    waitForPresenceOfElement("//table/tbody/tr[@class='dialogMiddle']/descendant::*[text()='Test']");
+		    driver.switchTo().parentFrame();
+		    doClosePageOnLowerBar("Report Library");
+		    fail("Report Library not available for this environment.");
+		  } catch (Exception ee) {
+		    driver.switchTo().parentFrame();
+		    doClosePageOnLowerBar("Report Library");
+		    fail(e.getMessage());
+		  }
+
+		}
+		ExtentReport.logPass("PASS", "test0200ReportingTabReportLibraryPageMap");
+	} catch (Exception|AssertionError e) {
+
+		ExtentReport.logFail("FAIL", "test0200ReportingTabReportLibraryPageMap", driver, e);
+		fail(e.getMessage());
+	}
+  }
+
+  @Test
+  public void test0210ReportingTabReportMenuMaintenancePageMap() throws Throwable {
     try {
       goToPage("Report Menu Maintenance");
       waitForAjaxExtJs();
@@ -711,13 +917,16 @@ public class BuildVerificationTestScript extends UcqcHelper {
       assertElementsAreDisplayed(reportingTabReportMenuMaintenancePagePageElements, printout);
       assertGridTableLoads();
       doClosePageOnLowerBar("Report Menu...");
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test0210ReportingTabReportMenuMaintenancePageMap");
+	} catch (Exception|AssertionError e) {
+
+		ExtentReport.logFail("FAIL", "test0210ReportingTabReportMenuMaintenancePageMap", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test0220ReportingTabReportDateMaintenancePageMap() {
+  public void test0220ReportingTabReportDateMaintenancePageMap() throws Throwable {
     try {
       goToPage("Report Date Maintenance");
       waitForAjaxExtJs();
@@ -771,9 +980,12 @@ public class BuildVerificationTestScript extends UcqcHelper {
       };
       assertElementsAreDisplayed(reportDateMaintenancePageElementsContractingAndArSubTab, printout);
       doClosePageOnLowerBar("Report Date...");
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test0220ReportingTabReportDateMaintenancePageMap");
+     	} catch (Exception|AssertionError e) {
+
+     		ExtentReport.logFail("FAIL", "test0220ReportingTabReportDateMaintenancePageMap", driver, e);
+     		fail(e.getMessage());
+     	}
   }
 
   //===== Reporting Tab =====//
@@ -818,122 +1030,150 @@ public class BuildVerificationTestScript extends UcqcHelper {
 
   //===== Costing Tab =====//
   @Test
-  public void test0300CostingTabCostModelLibraryPage() throws InterruptedException {
+  public void test0300CostingTabCostModelLibraryPage() throws Throwable {
     try {
-      goToPage("Costing Models");
-      waitForAjaxExtJs();
-      waitForElementToBeVisible(modelLibrary.getModelLibraryTableButtonFirst());
-      WebElement[] modelLibraryElements = {
-              modelLibrary.getModelLibraryFieldSearch(),
-              modelLibrary.getModelLibraryButtonSearch(),
-              modelLibrary.getModelLibraryCostModelButtonNew(),
-              modelLibrary.getModelLibraryButtonOpenTaskList(),
-              modelLibrary.getModelLibraryButtonFilter(),
-              modelLibrary.getModelLibraryButtonClearFilter(),
-              modelLibrary.getModelLibraryCostModelButtonDelete(),
-              modelLibrary.getModelLibraryButtonNewFolder(),
-              modelLibrary.getModelLibraryButtonRenameFolder(),
-              modelLibrary.getModelLibraryButtonDeleteFolder(),
-              modelLibrary.getModelLibraryTreeColumnCosting(),
-              modelLibrary.getModelLibraryTreeColumnArrowCosting(),
-              modelLibrary.getModelLibraryTreeColumnContracting(),
-              modelLibrary.getModelLibraryTreeColumnArrowContracting(),
-              modelLibrary.getModelLibraryTreeColumnEpisodes(),
-              modelLibrary.getModelLibraryTreeColumnArrowEpisodes(),
-              modelLibrary.getModelLibraryTableButtonFirst(),
-              modelLibrary.getModelLibraryTableButtonPrevious(),
-              modelLibrary.getModelLibraryFieldInputNumber(),
-              modelLibrary.getModelLibraryTableButtonGo(),
-              modelLibrary.getModelLibraryTableButtonNext(),
-              modelLibrary.getModelLibraryTableButtonLast()
-      };
-      assertElementsAreDisplayed(modelLibraryElements, printout);
-      //doClick(modelLibrary.getModelLibraryTreeColumnContracting());
-      WebElement[] modelLibraryContractingElements = {
-              modelLibrary.getModelLibraryFieldSearch(),
-              modelLibrary.getModelLibraryButtonSearch(),
-              modelLibrary.getModelLibraryButtonOpenTaskList(),
-              modelLibrary.getModelLibraryCostModelButtonNew(),
-              modelLibrary.getModelLibraryCostModelButtonDelete(),
-              modelLibrary.getModelLibraryButtonFilter(),
-              modelLibrary.getModelLibraryButtonClearFilter()
-      };
-      assertElementsAreDisplayed(modelLibraryContractingElements, printout);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    } finally {
-      doClosePageOnLowerBar("Model Library");
-    }
+		try {
+		  goToPage("Costing Models");
+		  waitForAjaxExtJs();
+		  waitForElementToBeVisible(modelLibrary.getModelLibraryTableButtonFirst());
+		  WebElement[] modelLibraryElements = {
+		          modelLibrary.getModelLibraryFieldSearch(),
+		          modelLibrary.getModelLibraryButtonSearch(),
+		          modelLibrary.getModelLibraryCostModelButtonNew(),
+		          modelLibrary.getModelLibraryButtonOpenTaskList(),
+		          modelLibrary.getModelLibraryButtonFilter(),
+		          modelLibrary.getModelLibraryButtonClearFilter(),
+		          modelLibrary.getModelLibraryCostModelButtonDelete(),
+		          modelLibrary.getModelLibraryButtonNewFolder(),
+		          modelLibrary.getModelLibraryButtonRenameFolder(),
+		          modelLibrary.getModelLibraryButtonDeleteFolder(),
+		          modelLibrary.getModelLibraryTreeColumnCosting(),
+		          modelLibrary.getModelLibraryTreeColumnArrowCosting(),
+		          modelLibrary.getModelLibraryTreeColumnContracting(),
+		          modelLibrary.getModelLibraryTreeColumnArrowContracting(),
+		          modelLibrary.getModelLibraryTreeColumnEpisodes(),
+		          modelLibrary.getModelLibraryTreeColumnArrowEpisodes(),
+		          modelLibrary.getModelLibraryTableButtonFirst(),
+		          modelLibrary.getModelLibraryTableButtonPrevious(),
+		          modelLibrary.getModelLibraryFieldInputNumber(),
+		          modelLibrary.getModelLibraryTableButtonGo(),
+		          modelLibrary.getModelLibraryTableButtonNext(),
+		          modelLibrary.getModelLibraryTableButtonLast()
+		  };
+		  assertElementsAreDisplayed(modelLibraryElements, printout);
+		  //doClick(modelLibrary.getModelLibraryTreeColumnContracting());
+		  WebElement[] modelLibraryContractingElements = {
+		          modelLibrary.getModelLibraryFieldSearch(),
+		          modelLibrary.getModelLibraryButtonSearch(),
+		          modelLibrary.getModelLibraryButtonOpenTaskList(),
+		          modelLibrary.getModelLibraryCostModelButtonNew(),
+		          modelLibrary.getModelLibraryCostModelButtonDelete(),
+		          modelLibrary.getModelLibraryButtonFilter(),
+		          modelLibrary.getModelLibraryButtonClearFilter()
+		  };
+		  assertElementsAreDisplayed(modelLibraryContractingElements, printout);
+		} catch (Throwable e) {
+		  fail(e.getMessage());
+		} finally {
+		  doClosePageOnLowerBar("Model Library");
+		}
+		 ExtentReport.logPass("PASS", "test0300CostingTabCostModelLibraryPage");
+ 	} catch (Exception|AssertionError e) {
+
+ 		ExtentReport.logFail("FAIL", "test0300CostingTabCostModelLibraryPage", driver, e);
+ 		fail(e.getMessage());
+ 	}
   }
 
   @Test
-  public void test0310CostingTabDataMaintenancePage() throws InterruptedException {
+  public void test0310CostingTabDataMaintenancePage() throws InterruptedException,Throwable {
     try {
-      goToPage("Costing Data Maintenance");
-      waitForSpinnerToEnd();
-      assertTrue(driver.findElement(By.xpath("//span[text() = 'A - Z']")).isDisplayed());
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    } finally {
-      doClosePageOnLowerBar("Maintain Data");
-    }
+		try {
+		  goToPage("Costing Data Maintenance");
+		  waitForSpinnerToEnd();
+		  assertTrue(driver.findElement(By.xpath("//span[text() = 'A - Z']")).isDisplayed());
+		} catch (Throwable e) {
+		  fail(e.getMessage());
+		} finally {
+		  doClosePageOnLowerBar("Maintain Data");
+		}
+		 ExtentReport.logPass("PASS", "test0310CostingTabDataMaintenancePage");
+ 	} catch (Exception|AssertionError e) {
+
+ 		ExtentReport.logFail("FAIL", "test0310CostingTabDataMaintenancePage", driver, e);
+ 		fail(e.getMessage());
+ 	}
   }
 
   @Test
-  public void test0320CostingTabRvuMaintenanceMap() throws InterruptedException {
+  public void test0320CostingTabRvuMaintenanceMap() throws InterruptedException,Throwable{
     try {
-      goToPage("RVU Maintenance");
-      waitForAjaxExtJs();
-      WebElement[] rvuMaintenanceElements = {
-              costingMap.getRvuMaintenanceButtonMaintainRVUs(),
-              costingMap.getRvuMaintenanceButtonFilter(),
-              //costingMap.getRvuMaintenanceButtonClearFilter(), //inactive by default-greyed out
-              costingMap.getRvuMaintenanceButtonImport(),
-              costingMap.getRvuMaintenanceButtonExport(),
-              costingMap.getCostingMapTableButtonFirst(),
-              costingMap.getCostingMapTableButtonPrevious(),
-              costingMap.getCostingMapTableFieldInputNumber(),
-              costingMap.getCostingMapTableButtonGo(),
-              costingMap.getCostingMapTableButtonNext(),
-              costingMap.getCostingMapTableButtonLast()
-      };
-      assertElementsAreDisplayed(rvuMaintenanceElements, printout);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    } finally {
-      doClosePageOnLowerBar("RVU Maintenance");
-    }
+		try {
+		  goToPage("RVU Maintenance");
+		  waitForAjaxExtJs();
+		  WebElement[] rvuMaintenanceElements = {
+		          costingMap.getRvuMaintenanceButtonMaintainRVUs(),
+		          costingMap.getRvuMaintenanceButtonFilter(),
+		          //costingMap.getRvuMaintenanceButtonClearFilter(), //inactive by default-greyed out
+		          costingMap.getRvuMaintenanceButtonImport(),
+		          costingMap.getRvuMaintenanceButtonExport(),
+		          costingMap.getCostingMapTableButtonFirst(),
+		          costingMap.getCostingMapTableButtonPrevious(),
+		          costingMap.getCostingMapTableFieldInputNumber(),
+		          costingMap.getCostingMapTableButtonGo(),
+		          costingMap.getCostingMapTableButtonNext(),
+		          costingMap.getCostingMapTableButtonLast()
+		  };
+		  assertElementsAreDisplayed(rvuMaintenanceElements, printout);
+		} catch (Throwable e) {
+		  fail(e.getMessage());
+		} finally {
+		  doClosePageOnLowerBar("RVU Maintenance");
+		}
+		 ExtentReport.logPass("PASS", "test0320CostingTabRvuMaintenanceMap");
+ 	} catch (Exception|AssertionError e) {
+
+ 		ExtentReport.logFail("FAIL", "test0320CostingTabRvuMaintenanceMap", driver, e);
+ 		fail(e.getMessage());
+ 	}
   }
 
   @Test
-  public void test0330CostingTabCostModelScenarioCalculationMap() throws InterruptedException {
+  public void test0330CostingTabCostModelScenarioCalculationMap() throws InterruptedException,Throwable {
     try {
-      goToPage("Cost Model Scenario Calculation");
-      waitForAjaxExtJs();
-      WebElement[] costModelScenarioCalculationElements = {
-              costingMap.getCostModelScenarioCalculationButtonEdit(),
-              costingMap.getCostModelScenarioCalculationButtonFilter(),
-              costingMap.getCostModelScenarioCalculationButtonClearFilter(),
-              costingMap.getCostModelScenarioCalculationButtonCalculate(),
-              costingMap.getCostModelScenarioCalculationButtonResults(),
-              costingMap.getCostingMapTableButtonFirst(),
-              costingMap.getCostingMapTableButtonPrevious(),
-              costingMap.getCostingMapTableFieldInputNumber(),
-              costingMap.getCostingMapTableButtonGo(),
-              costingMap.getCostingMapTableButtonNext(),
-              costingMap.getCostingMapTableButtonLast()
-      };
-      Thread.sleep(1000);
-      assertElementsAreDisplayed(costModelScenarioCalculationElements, printout);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    } finally {
-      doClosePageOnLowerBar("Cost Model...");
-    }
+		try {
+		  goToPage("Cost Model Scenario Calculation");
+		  waitForAjaxExtJs();
+		  WebElement[] costModelScenarioCalculationElements = {
+		          costingMap.getCostModelScenarioCalculationButtonEdit(),
+		          costingMap.getCostModelScenarioCalculationButtonFilter(),
+		          costingMap.getCostModelScenarioCalculationButtonClearFilter(),
+		          costingMap.getCostModelScenarioCalculationButtonCalculate(),
+		          costingMap.getCostModelScenarioCalculationButtonResults(),
+		          costingMap.getCostingMapTableButtonFirst(),
+		          costingMap.getCostingMapTableButtonPrevious(),
+		          costingMap.getCostingMapTableFieldInputNumber(),
+		          costingMap.getCostingMapTableButtonGo(),
+		          costingMap.getCostingMapTableButtonNext(),
+		          costingMap.getCostingMapTableButtonLast()
+		  };
+		  Thread.sleep(1000);
+		  assertElementsAreDisplayed(costModelScenarioCalculationElements, printout);
+		} catch (Throwable e) {
+		  fail(e.getMessage());
+		} finally {
+		  doClosePageOnLowerBar("Cost Model...");
+		}
+		ExtentReport.logPass("PASS", "test0330CostingTabCostModelScenarioCalculationMap");
+ 	} catch (Exception|AssertionError e) {
+
+ 		ExtentReport.logFail("FAIL", "test0330CostingTabCostModelScenarioCalculationMap", driver, e);
+ 		fail(e.getMessage());
+ 	}
   }
 
   @Test
-  public void test0340aCostingTabUnitCostQuickCalculationPage() {
+  public void test0340aCostingTabUnitCostQuickCalculationPage() throws Throwable {
     try {
       goToPage("Unit Cost Quick Calculation");
       waitForSpinnerToEnd();
@@ -955,9 +1195,12 @@ public class BuildVerificationTestScript extends UcqcHelper {
               costingMap.getUnitCostQuickCalculationButtonHide()
       };
       assertElementsAreDisplayed(costModelScenarioCalculationElements, printout);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test0340aCostingTabUnitCostQuickCalculationPage");
+ 	} catch (Exception|AssertionError e) {
+
+ 		ExtentReport.logFail("FAIL", "test0340aCostingTabUnitCostQuickCalculationPage", driver, e);
+ 		fail(e.getMessage());
+ 	}
   }
 
   String costModel = "QA Cost Model";
@@ -965,122 +1208,157 @@ public class BuildVerificationTestScript extends UcqcHelper {
   String entity = "150 Marina Medical Center";
 
   @Test
-  public void test0340bCostingTabUnitCostQuickCalculationPageDepartmentDialog() {
+  public void test0340bCostingTabUnitCostQuickCalculationPageDepartmentDialog() throws Throwable {
     try {
-      waitForAjaxExtJs();
-      triggerDepartmentDialog(costModel, costModelScenario, entity);
-      String style = costingMap.getUnitCostQuickCalculationDepartmentButtonCancelAndClose().getAttribute("style");
-      WebElement[] departmentModalElements = {
-              costingMap.getUnitCostQuickCalculationDepartmentField(),
-              costingMap.getUnitCostQuickCalculationDepartmentButtonFilter(),
-              costingMap.getUnitCostQuickCalculationDepartmentButtonApply(),
-              costingMap.getUnitCostQuickCalculationDepartmentButtonClose(),
-              costingMap.getUnitCostQuickCalculationDepartmentButtonCancelAndClose()
-      };
-      assertElementsAreDisplayed(departmentModalElements, printout);
-      doClick(costingMap.getUnitCostQuickCalculationDepartmentButtonFilter());
-      waitForAjaxExtJs();
-      WebElement[] departmentFilterElements = {
-              costingMap.getUnitCostQuickCalculationDepartmentFilterField(),
-              costingMap.getUnitCostQuickCalculationDepartmentFilterOperator(),
-              costingMap.getUnitCostQuickCalculationDepartmentFilterCondition(),
-              costingMap.getUnitCostQuickCalculationDepartmentFilterValue(),
-              costingMap.getUnitCostQuickCalculationDepartmentFilterButtonAdd(),
-              costingMap.getUnitCostQuickCalculationDepartmentFilterButtonRemoveAll(),
-              costingMap.getUnitCostQuickCalculationDepartmentFilterButtonApplyFilter()
-      };
-      assertElementsAreDisplayed(departmentFilterElements, printout);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    } finally {
-      doClick(costingMap.getUnitCostQuickCalculationDepartmentButtonClose());
-    }
+		try {
+		  waitForAjaxExtJs();
+		  triggerDepartmentDialog(costModel, costModelScenario, entity);
+		  String style = costingMap.getUnitCostQuickCalculationDepartmentButtonCancelAndClose().getAttribute("style");
+		  WebElement[] departmentModalElements = {
+		          costingMap.getUnitCostQuickCalculationDepartmentField(),
+		          costingMap.getUnitCostQuickCalculationDepartmentButtonFilter(),
+		          costingMap.getUnitCostQuickCalculationDepartmentButtonApply(),
+		          costingMap.getUnitCostQuickCalculationDepartmentButtonClose(),
+		          costingMap.getUnitCostQuickCalculationDepartmentButtonCancelAndClose()
+		  };
+		  assertElementsAreDisplayed(departmentModalElements, printout);
+		  doClick(costingMap.getUnitCostQuickCalculationDepartmentButtonFilter());
+		  waitForAjaxExtJs();
+		  WebElement[] departmentFilterElements = {
+		          costingMap.getUnitCostQuickCalculationDepartmentFilterField(),
+		          costingMap.getUnitCostQuickCalculationDepartmentFilterOperator(),
+		          costingMap.getUnitCostQuickCalculationDepartmentFilterCondition(),
+		          costingMap.getUnitCostQuickCalculationDepartmentFilterValue(),
+		          costingMap.getUnitCostQuickCalculationDepartmentFilterButtonAdd(),
+		          costingMap.getUnitCostQuickCalculationDepartmentFilterButtonRemoveAll(),
+		          costingMap.getUnitCostQuickCalculationDepartmentFilterButtonApplyFilter()
+		  };
+		  assertElementsAreDisplayed(departmentFilterElements, printout);
+		} catch (Throwable e) {
+		  fail(e.getMessage());
+		} finally {
+		  doClick(costingMap.getUnitCostQuickCalculationDepartmentButtonClose());
+		}
+		ExtentReport.logPass("PASS", "test0340bCostingTabUnitCostQuickCalculationPageDepartmentDialog");
+ 	} catch (Exception|AssertionError e) {
+
+ 		ExtentReport.logFail("FAIL", "test0340bCostingTabUnitCostQuickCalculationPageDepartmentDialog", driver, e);
+ 		fail(e.getMessage());
+ 	}
   }
 
   @Test
   public void test0340cCostingTabUnitCostQuickCalculationPageShowHideFields()
-          throws InterruptedException {
+          throws InterruptedException,Throwable {
     try {
-      waitForAjaxExtJs();
-      costingMap.getUnitCostQuickCalculationButtonHide().click();
-      waitForAjaxExtJs();
-      assertElementIsDisplayed(costingMap.getUnitCostQuickCalculationButtonShow(), printout);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    } finally {
-      doClosePageOnLowerBar("Unit Cost Quick...");
-    }
+		try {
+		  waitForAjaxExtJs();
+		  costingMap.getUnitCostQuickCalculationButtonHide().click();
+		  waitForAjaxExtJs();
+		  assertElementIsDisplayed(costingMap.getUnitCostQuickCalculationButtonShow(), printout);
+		} catch (Throwable e) {
+		  fail(e.getMessage());
+		} finally {
+		  doClosePageOnLowerBar("Unit Cost Quick...");
+		}
+		ExtentReport.logPass("PASS", "test0340cCostingTabUnitCostQuickCalculationPageShowHideFields");
+ 	} catch (Exception|AssertionError e) {
+
+ 		ExtentReport.logFail("FAIL", "test0340cCostingTabUnitCostQuickCalculationPageShowHideFields", driver, e);
+ 		fail(e.getMessage());
+ 	}
   }
   //------------------------------------------------------------------------
 
   //===== Contracting Tab =====/
   @Test
-  public void test0400ContractingTabContractModelsPage() throws InterruptedException {
+  public void test0400ContractingTabContractModelsPage() throws InterruptedException,Throwable {
     try {
-      goToPage("Contract Models");
-      waitForAjaxExtJs();
-      waitForSpinnerToEnd();
-      WebElement[] modelLibraryContractingElements = {
-              modelLibrary.getModelLibraryContractingButtonCalculate(),
-              modelLibrary.getModelLibraryContractingButtonCopy(),
-              modelLibrary.getModelLibraryContractingButtonPaste(),
-              modelLibrary.getModelLibraryContractingButtonImport(),
-              modelLibrary.getModelLibraryContractingButtonExport()
-      };
-      assertElementsAreDisplayed(modelLibraryContractingElements, printout);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    } finally {
-      doClosePageOnLowerBar("Model Library");
-    }
+		try {
+		  goToPage("Contract Models");
+		  waitForAjaxExtJs();
+		  waitForSpinnerToEnd();
+		  WebElement[] modelLibraryContractingElements = {
+		          modelLibrary.getModelLibraryContractingButtonCalculate(),
+		          modelLibrary.getModelLibraryContractingButtonCopy(),
+		          modelLibrary.getModelLibraryContractingButtonPaste(),
+		          modelLibrary.getModelLibraryContractingButtonImport(),
+		          modelLibrary.getModelLibraryContractingButtonExport()
+		  };
+		  assertElementsAreDisplayed(modelLibraryContractingElements, printout);
+		} catch (Throwable e) {
+		  fail(e.getMessage());
+		} finally {
+		  doClosePageOnLowerBar("Model Library");
+		}
+		ExtentReport.logPass("PASS", "test0400ContractingTabContractModelsPage");
+ 	} catch (Exception|AssertionError e) {
+
+ 		ExtentReport.logFail("FAIL", "test0400ContractingTabContractModelsPage", driver, e);
+ 		fail(e.getMessage());
+ 	}
   }
 
   @Test
-  public void test0410ContractingTabApcAllocationPageMap() throws InterruptedException {
+  public void test0410ContractingTabApcAllocationPageMap() throws InterruptedException,Throwable {
     try {
-      goToPage("APC Allocation");
-      WebElement[] contractingTabApcAllocationPageElements = {
-        contractingMap.getApcAllocationPageHelpLink(),
-        contractingMap.getApcAllocationPageDataViewEncountersWithNoChargesReport(),
-        contractingMap.getApcAllocationPageDataViewEncountersWithZeroChargeBalanceReport(),
-        contractingMap.getApcAllocationPageDataViewEncountersWithNegativeChargeBalanceReport(),
-        contractingMap.getApcAllocationPageDataViewEncountersWithNoEfrsReport(),
-        contractingMap.getApcAllocationPageDataViewAllocateHcpcsAndBundledCharges(),
-        contractingMap.getApcAllocationPageDataViewResetEncounterApcCharges(),
-        contractingMap.getApcAllocationPageDataViewMatchEncounterId(),
-      };
-      assertElementsAreDisplayed(contractingTabApcAllocationPageElements, printout);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    } finally {
-      doClosePageOnLowerBar("APC Allocation");
-    }
+		try {
+		  goToPage("APC Allocation");
+		  WebElement[] contractingTabApcAllocationPageElements = {
+		    contractingMap.getApcAllocationPageHelpLink(),
+		    contractingMap.getApcAllocationPageDataViewEncountersWithNoChargesReport(),
+		    contractingMap.getApcAllocationPageDataViewEncountersWithZeroChargeBalanceReport(),
+		    contractingMap.getApcAllocationPageDataViewEncountersWithNegativeChargeBalanceReport(),
+		    contractingMap.getApcAllocationPageDataViewEncountersWithNoEfrsReport(),
+		    contractingMap.getApcAllocationPageDataViewAllocateHcpcsAndBundledCharges(),
+		    contractingMap.getApcAllocationPageDataViewResetEncounterApcCharges(),
+		    contractingMap.getApcAllocationPageDataViewMatchEncounterId(),
+		  };
+		  assertElementsAreDisplayed(contractingTabApcAllocationPageElements, printout);
+		} catch (Throwable e) {
+		  fail(e.getMessage());
+		} finally {
+		  doClosePageOnLowerBar("APC Allocation");
+		}
+		ExtentReport.logPass("PASS", "test0410ContractingTabApcAllocationPageMap");
+ 	} catch (Exception|AssertionError e) {
+
+ 		ExtentReport.logFail("FAIL", "test0410ContractingTabApcAllocationPageMap", driver, e);
+ 		fail(e.getMessage());
+ 	}
   }
 
   @Test
-  public void test0420ContractingTabContractualAllowanceExportPageMap() {
+  public void test0420ContractingTabContractualAllowanceExportPageMap() throws Throwable {
     try {
-      goToPage("Contractual Allowance Export");
-      WebElement[] contractingTabContractualAllowanceExportPageElements = {
-        contractingMap.getContractualAllowanceExportPageButtonNew(),
-        contractingMap.getContractualAllowanceExportPageButtonEdit(),
-        contractingMap.getContractualAllowanceExportPageButtonFilter(),
-        contractingMap.getContractualAllowanceExportPageButtonClearFilter(),
-        //uncomment this        contractingMap.getContractualAllowanceExportPageButtonDelete(),
-        contractingMap.getContractualAllowanceExportPageHelpLink(),
-        contractingMap.getContractualAllowanceExportPageTableCornerCell(),
-      };
-      assertElementsAreDisplayed(contractingTabContractualAllowanceExportPageElements, printout);
-      doClosePageOnLowerBar("Contractual...");
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+		try {
+		  goToPage("Contractual Allowance Export");
+		  WebElement[] contractingTabContractualAllowanceExportPageElements = {
+		    contractingMap.getContractualAllowanceExportPageButtonNew(),
+		    contractingMap.getContractualAllowanceExportPageButtonEdit(),
+		    contractingMap.getContractualAllowanceExportPageButtonFilter(),
+		    contractingMap.getContractualAllowanceExportPageButtonClearFilter(),
+		    //uncomment this        contractingMap.getContractualAllowanceExportPageButtonDelete(),
+		    contractingMap.getContractualAllowanceExportPageHelpLink(),
+		    contractingMap.getContractualAllowanceExportPageTableCornerCell(),
+		  };
+		  assertElementsAreDisplayed(contractingTabContractualAllowanceExportPageElements, printout);
+		  doClosePageOnLowerBar("Contractual...");
+		} catch (Throwable e) {
+		  fail(e.getMessage());
+		}
+		ExtentReport.logPass("PASS", "test0420ContractingTabContractualAllowanceExportPageMap");
+ 	} catch (Exception|AssertionError e) {
+
+ 		ExtentReport.logFail("FAIL", "test0420ContractingTabContractualAllowanceExportPageMap", driver, e);
+ 		fail(e.getMessage());
+ 	}
   }
 
   //------------------------------------------------------------------------
 
   @Test
-  public void test0700DataMaintenanceTabMaintainDataPage() {
+  public void test0700DataMaintenanceTabMaintainDataPage() throws Throwable {
     try {
       goToPage("Maintain Data");
       waitForAjaxExtJs();
@@ -1094,53 +1372,70 @@ public class BuildVerificationTestScript extends UcqcHelper {
               dataMaintenance.getDataMaintenanceAZ()
       };
       assertElementsAreDisplayed(maintainDataElements, printout);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test0700DataMaintenanceTabMaintainDataPage");
+ 	} catch (Exception|AssertionError e) {
+
+ 		ExtentReport.logFail("FAIL", "test0700DataMaintenanceTabMaintainDataPage", driver, e);
+ 		fail(e.getMessage());
+ 	}
   }
 
   @Test
   public void test0710DataMaintenanceTabMaintainDataPageAssertTreeListContainsTheFourMainDirectories()
-          throws InterruptedException {
+          throws InterruptedException,Throwable {
     try {
-      String[] mainFolders = {"Contracting", "Costing", "Episode", "General"};
-      for (String mainFolder : mainFolders) {
-        assertThatElementIsDisplayed(
-                driver.findElement(By.xpath("//div[text()='" + mainFolder + "']"
-                        + "/img[contains(@class,'x-tree-icon x-tree-icon-parent ')]")));
-      }
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    } finally {
-      doClosePageOnLowerBar("Maintain Data");
-    }
+		try {
+		  String[] mainFolders = {"Contracting", "Costing", "Episode", "General"};
+		  for (String mainFolder : mainFolders) {
+		    assertThatElementIsDisplayed(
+		            driver.findElement(By.xpath("//div[text()='" + mainFolder + "']"
+		                    + "/img[contains(@class,'x-tree-icon x-tree-icon-parent ')]")));
+		  }
+		} catch (Throwable e) {
+		  fail(e.getMessage());
+		} finally {
+		  doClosePageOnLowerBar("Maintain Data");
+		}
+		 ExtentReport.logPass("PASS", "test0710DataMaintenanceTabMaintainDataPageAssertTreeListContainsTheFourMainDirectories");
+ 	} catch (Exception|AssertionError e) {
+
+ 		ExtentReport.logFail("FAIL", "test0710DataMaintenanceTabMaintainDataPageAssertTreeListContainsTheFourMainDirectories", driver, e);
+ 		fail(e.getMessage());
+ 	}
   }
 
   @Test
-  public void test0720DataMaintenanceTabUtilitiesPage() throws InterruptedException {
+  public void test0720DataMaintenanceTabUtilitiesPage() throws InterruptedException,Throwable{
     try {
-      goToPage("Utilities");
-      waitForAjaxExtJs();
-      WebElement[] getUtilitiesElements = {
-              getWebElementWithElementText(dataMaintenance.getUtilityElementXpath(), "Encounters With No Charges Report", printout),
-              getWebElementWithElementText(dataMaintenance.getUtilityElementXpath(), "Encounters With Zero Charge Balance Report", printout),
-              getWebElementWithElementText(dataMaintenance.getUtilityElementXpath(), "Encounters With Negative Charge Balance Report", printout),
-              getWebElementWithElementText(dataMaintenance.getUtilityElementXpath(), "Encounters With No EFRs Report", printout),
-              getWebElementWithElementText(dataMaintenance.getUtilityElementXpath(), "Allocate HCPCS and Bundled Charges", printout),
-              getWebElementWithElementText(dataMaintenance.getUtilityElementXpath(), "Reset Encounter APC Charges", printout),
-              getWebElementWithElementText(dataMaintenance.getUtilityElementXpath(), "Match Encounter ID", printout)
-      };
-      assertElementsAreDisplayed(getUtilitiesElements, printout);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    } finally {
-      doClosePageOnLowerBar("Utilities");
-    }
+		try {
+		  goToPage("Utilities");
+		  waitForAjaxExtJs();
+		  WebElement[] getUtilitiesElements = {
+		          getWebElementWithElementText(dataMaintenance.getUtilityElementXpath(), "Encounters With No Charges Report", printout),
+		          getWebElementWithElementText(dataMaintenance.getUtilityElementXpath(), "Encounters With Zero Charge Balance Report", printout),
+		          getWebElementWithElementText(dataMaintenance.getUtilityElementXpath(), "Encounters With Negative Charge Balance Report", printout),
+		          getWebElementWithElementText(dataMaintenance.getUtilityElementXpath(), "Encounters With No EFRs Report", printout),
+		          getWebElementWithElementText(dataMaintenance.getUtilityElementXpath(), "Allocate HCPCS and Bundled Charges", printout),
+		          getWebElementWithElementText(dataMaintenance.getUtilityElementXpath(), "Reset Encounter APC Charges", printout),
+		          getWebElementWithElementText(dataMaintenance.getUtilityElementXpath(), "Match Encounter ID", printout)
+		  };
+		  assertElementsAreDisplayed(getUtilitiesElements, printout);
+		} catch (Throwable e) {
+		  fail(e.getMessage());
+		} finally {
+		  doClosePageOnLowerBar("Utilities");
+		}
+		 ExtentReport.logPass("PASS", "test0720DataMaintenanceTabUtilitiesPage");
+ 	} catch (Exception|AssertionError e) {
+
+ 		ExtentReport.logFail("FAIL", "test0720DataMaintenanceTabUtilitiesPage", driver, e);
+ 		fail(e.getMessage());
+ 	}
   }
 
   //------------------------------------------------------------------------
   @Test
-  public void test0800SystemMaintenanceTabUsersPageMap() {
+  public void test0800SystemMaintenanceTabUsersPageMap() throws Throwable {
     try {
       goToPage("Users");
       waitForAjaxExtJs();
@@ -1157,13 +1452,16 @@ public class BuildVerificationTestScript extends UcqcHelper {
       };
       assertElementsAreDisplayed(userPageElements, printout);
       doClosePageOnLowerBar("Users");
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test0800SystemMaintenanceTabUsersPageMap");
+ 	} catch (Exception|AssertionError e) {
+
+ 		ExtentReport.logFail("FAIL", "test0800SystemMaintenanceTabUsersPageMap", driver, e);
+ 		fail(e.getMessage());
+ 	}
   }
 
   @Test
-  public void test0810SystemMaintenanceTabRolesPageMap() {
+  public void test0810SystemMaintenanceTabRolesPageMap() throws Throwable {
     try {
       goToPage("Roles");
       waitForAjaxExtJs();
@@ -1175,13 +1473,16 @@ public class BuildVerificationTestScript extends UcqcHelper {
       };
       assertElementsAreDisplayed(rolesPageElements, printout);
       doClosePageOnLowerBar("Roles");
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test0810SystemMaintenanceTabRolesPageMap");
+ 	} catch (Exception|AssertionError e) {
+
+ 		ExtentReport.logFail("FAIL", "test0810SystemMaintenanceTabRolesPageMap", driver, e);
+ 		fail(e.getMessage());
+ 	}
   }
 
   @Test
-  public void test0820SystemMaintenanceTabSecuritySettingsPageMap() {
+  public void test0820SystemMaintenanceTabSecuritySettingsPageMap() throws Throwable {
     try {
       goToPage("Security Settings");
       waitForAjaxExtJs();
@@ -1209,13 +1510,16 @@ public class BuildVerificationTestScript extends UcqcHelper {
       };
       assertElementsAreDisplayed(securitySettingsPageElements, printout);
       doClosePageOnLowerBar("Security Settings");
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test0820SystemMaintenanceTabSecuritySettingsPageMap");
+ 	} catch (Exception|AssertionError e) {
+
+ 		ExtentReport.logFail("FAIL", "test0820SystemMaintenanceTabSecuritySettingsPageMap", driver, e);
+ 		fail(e.getMessage());
+ 	}
   }
 
   @Test
-  public void test0830SystemMaintenanceTabGeneralSettingsPageMap() {
+  public void test0830SystemMaintenanceTabGeneralSettingsPageMap() throws Throwable {
     try {
       goToPage("General Settings");
       waitForAjaxExtJs();
@@ -1264,86 +1568,110 @@ public class BuildVerificationTestScript extends UcqcHelper {
       };
       assertElementsAreDisplayed(generalSettingsPageElements, printout);
       doClosePageOnLowerBar("General Settings");
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test0830SystemMaintenanceTabGeneralSettingsPageMap");
+ 	} catch (Exception|AssertionError e) {
+
+ 		ExtentReport.logFail("FAIL", "test0830SystemMaintenanceTabGeneralSettingsPageMap", driver, e);
+ 		fail(e.getMessage());
+ 	}
   }
 
   @Test
-  public void test0840SystemMaintenanceTabCustomizeMaintainDataPageMap() throws InterruptedException {
+  public void test0840SystemMaintenanceTabCustomizeMaintainDataPageMap() throws InterruptedException ,Throwable{
     try {
-      goToPage("Customize Maintain Data");
-      waitForSpinnerToEnd();
-      waitForAjaxExtJs();
-      waitForElementDoWhileLoop(sysmaint.getCustomizeMaintainDataRadioButtonShowSelected(),
-              printout);
-      WebElement[] customizeMaintainDataPageElements = {
-              sysmaint.getCustomizeMaintainDataRadioButtonShowSelected(),
-              sysmaint.getCustomizeMaintainDataRadioButtonShowAll(),
-              sysmaint.getCustomizeMaintainDataPageButtonSave(),
-              sysmaint.getCustomizeMaintainDataPageButtonSaveAndClose(),
-              sysmaint.getCustomizeMaintainDataPageButtonCancelAndClose(),
-              sysmaint.getCustomizeMaintainDataPageLinkHelp(),
-              sysmaint.getCustomizeMaintainDataCollapsibleSectionMaintainData(),
-              sysmaint.getCustomizeMaintainDataCollapsibleSectionEncounterTabs(),
-              sysmaint.getCustomizeMaintainDataCollapsibleMaintainDataButtonFilter(),
-              sysmaint.getCustomizeMaintainDataCollapsibleMaintainDataButtonClearFilter(),
-              sysmaint.getCustomizeMaintainDataCollapsibleMaintainDataCheckBoxShowScreenSelectAll(),
-              sysmaint.getCustomizeMaintainDataCollapsibleMaintainDataCheckBoxReadOnlySelectAll(),
-              sysmaint.getCustomizeMaintainDataCollapsibleMaintainDataCheckBoxActivityStatisticMasters(),
-              sysmaint.getCustomizeMaintainDataCollapsibleEncounterTabsCheckBoxShowTabSelectAll(),
-              sysmaint.getCustomizeMaintainDataCollapsibleEncounterTabsCheckBoxTotals(),
-      };
-      assertElementsAreDisplayed(customizeMaintainDataPageElements, printout);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    } finally {
-      doClosePageOnLowerBar("Customize Maintain Data");
-    }
+		try {
+		  goToPage("Customize Maintain Data");
+		  waitForSpinnerToEnd();
+		  waitForAjaxExtJs();
+		  waitForElementDoWhileLoop(sysmaint.getCustomizeMaintainDataRadioButtonShowSelected(),
+		          printout);
+		  WebElement[] customizeMaintainDataPageElements = {
+		          sysmaint.getCustomizeMaintainDataRadioButtonShowSelected(),
+		          sysmaint.getCustomizeMaintainDataRadioButtonShowAll(),
+		          sysmaint.getCustomizeMaintainDataPageButtonSave(),
+		          sysmaint.getCustomizeMaintainDataPageButtonSaveAndClose(),
+		          sysmaint.getCustomizeMaintainDataPageButtonCancelAndClose(),
+		          sysmaint.getCustomizeMaintainDataPageLinkHelp(),
+		          sysmaint.getCustomizeMaintainDataCollapsibleSectionMaintainData(),
+		          sysmaint.getCustomizeMaintainDataCollapsibleSectionEncounterTabs(),
+		          sysmaint.getCustomizeMaintainDataCollapsibleMaintainDataButtonFilter(),
+		          sysmaint.getCustomizeMaintainDataCollapsibleMaintainDataButtonClearFilter(),
+		          sysmaint.getCustomizeMaintainDataCollapsibleMaintainDataCheckBoxShowScreenSelectAll(),
+		          sysmaint.getCustomizeMaintainDataCollapsibleMaintainDataCheckBoxReadOnlySelectAll(),
+		          sysmaint.getCustomizeMaintainDataCollapsibleMaintainDataCheckBoxActivityStatisticMasters(),
+		          sysmaint.getCustomizeMaintainDataCollapsibleEncounterTabsCheckBoxShowTabSelectAll(),
+		          sysmaint.getCustomizeMaintainDataCollapsibleEncounterTabsCheckBoxTotals(),
+		  };
+		  assertElementsAreDisplayed(customizeMaintainDataPageElements, printout);
+		} catch (Throwable e) {
+		  fail(e.getMessage());
+		} finally {
+		  doClosePageOnLowerBar("Customize Maintain Data");
+		}
+		ExtentReport.logPass("PASS", "test0840SystemMaintenanceTabCustomizeMaintainDataPageMap");
+ 	} catch (Exception|AssertionError e) {
+
+ 		ExtentReport.logFail("FAIL", "test0840SystemMaintenanceTabCustomizeMaintainDataPageMap", driver, e);
+ 		fail(e.getMessage());
+ 	}
   }
 
   @Test
-  public void test0850SystemMaintenanceTabCustomizeTaskListsPageMap() throws InterruptedException {
+  public void test0850SystemMaintenanceTabCustomizeTaskListsPageMap() throws InterruptedException ,Throwable{
     try {
-      goToPage("Customize Task Lists");
-      waitForAjaxExtJs();
-      WebElement[] customizeTaskListsPageElements = {
-              sysmaint.getCustomizeTaskListsPageLinkHelp(),
-              sysmaint.getCustomizeTaskListsPageSubTabCost(),
-              sysmaint.getCustomizeTaskListsPageSubTabOverhead(),
-              sysmaint.getCustomizeTaskListsPageSubTabUnpublishedContract(),
-              sysmaint.getCustomizeTaskListsPageSubTabPublishedContract(),
-              sysmaint.getCustomizeTaskListsPageSubTabEpisode(),
-      };
-      assertElementsAreDisplayed(customizeTaskListsPageElements, printout);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    } finally {
-      doClosePageOnLowerBar("Customize Task Lists");
-    }
+		try {
+		  goToPage("Customize Task Lists");
+		  waitForAjaxExtJs();
+		  WebElement[] customizeTaskListsPageElements = {
+		          sysmaint.getCustomizeTaskListsPageLinkHelp(),
+		          sysmaint.getCustomizeTaskListsPageSubTabCost(),
+		          sysmaint.getCustomizeTaskListsPageSubTabOverhead(),
+		          sysmaint.getCustomizeTaskListsPageSubTabUnpublishedContract(),
+		          sysmaint.getCustomizeTaskListsPageSubTabPublishedContract(),
+		          sysmaint.getCustomizeTaskListsPageSubTabEpisode(),
+		  };
+		  assertElementsAreDisplayed(customizeTaskListsPageElements, printout);
+		} catch (Throwable e) {
+		  fail(e.getMessage());
+		} finally {
+		  doClosePageOnLowerBar("Customize Task Lists");
+		}
+		ExtentReport.logPass("PASS", "test0850SystemMaintenanceTabCustomizeTaskListsPageMap");
+ 	} catch (Exception|AssertionError e) {
+
+ 		ExtentReport.logFail("FAIL", "test0850SystemMaintenanceTabCustomizeTaskListsPageMap", driver, e);
+ 		fail(e.getMessage());
+ 	}
   }
 
   @Test
-  public void test0860SystemMaintenanceTabTerminalServerSessionsPageMap() throws InterruptedException {
+  public void test0860SystemMaintenanceTabTerminalServerSessionsPageMap() throws InterruptedException,Throwable {
     try {
-      goToPage("Terminal Server Sessions");
-      waitForAjaxExtJs();
-      WebElement[] terminalServerSessionsPageElements = {
-              sysmaint.getTerminalServerSessionsPageLinkHelp(),
-              sysmaint.getTerminalServerSessionsPageButtonContinue(),
-              sysmaint.getTerminalServerSessionsPageButtonClose(),
-      };
-      assertElementsAreDisplayed(terminalServerSessionsPageElements, printout);
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    } finally {
-      doClosePageOnLowerBar("Terminal Server...");
-    }
+		try {
+		  goToPage("Terminal Server Sessions");
+		  waitForAjaxExtJs();
+		  WebElement[] terminalServerSessionsPageElements = {
+		          sysmaint.getTerminalServerSessionsPageLinkHelp(),
+		          sysmaint.getTerminalServerSessionsPageButtonContinue(),
+		          sysmaint.getTerminalServerSessionsPageButtonClose(),
+		  };
+		  assertElementsAreDisplayed(terminalServerSessionsPageElements, printout);
+		} catch (Throwable e) {
+		  fail(e.getMessage());
+		} finally {
+		  doClosePageOnLowerBar("Terminal Server...");
+		}
+		ExtentReport.logPass("PASS", "test0860SystemMaintenanceTabTerminalServerSessionsPageMap");
+ 	} catch (Exception|AssertionError e) {
+
+ 		ExtentReport.logFail("FAIL", "test0860SystemMaintenanceTabTerminalServerSessionsPageMap", driver, e);
+ 		fail(e.getMessage());
+ 	}
   }
 
   //-------------------------------------
   @Test
-  public void test0900StatusTabCalculationStatusPage() {
+  public void test0900StatusTabCalculationStatusPage() throws Throwable {
     try {
       goToPage("Calculation Status");
       doClick(statusMap.getCalculationStatusPageButtonAllStatus());
@@ -1361,13 +1689,16 @@ public class BuildVerificationTestScript extends UcqcHelper {
       };
       assertElementsAreDisplayed(statusPageElements, printout);
       doClosePageOnLowerBar("Calculation Status");
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test0900StatusTabCalculationStatusPage");
+ 	} catch (Exception|AssertionError e) {
+
+ 		ExtentReport.logFail("FAIL", "test0900StatusTabCalculationStatusPage", driver, e);
+ 		fail(e.getMessage());
+ 	}
   }
 
   @Test
-  public void test0910StatusTabImportExportStatusPage() {
+  public void test0910StatusTabImportExportStatusPage() throws Throwable {
     try {
       goToPage("Import/Export Status");
       doClick(statusMap.getImportExportStatusPageButtonAllStatus());
@@ -1385,13 +1716,16 @@ public class BuildVerificationTestScript extends UcqcHelper {
       };
       assertElementsAreDisplayed(statusPageElements, printout);
       doClosePageOnLowerBar("Import/Export Status");
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test0910StatusTabImportExportStatusPage");
+ 	} catch (Exception|AssertionError e) {
+
+ 		ExtentReport.logFail("FAIL", "test0910StatusTabImportExportStatusPage", driver, e);
+ 		fail(e.getMessage());
+ 	}
   }
 
   @Test
-  public void test0920StatusTabUtilityStatusPage() {
+  public void test0920StatusTabUtilityStatusPage() throws Throwable {
     try {
       goToPage("Utility Status");
       doClick(statusMap.getUtilityStatusPageButtonAllStatus());
@@ -1408,44 +1742,54 @@ public class BuildVerificationTestScript extends UcqcHelper {
       };
       assertElementsAreDisplayed(statusPageElements, printout);
       doClosePageOnLowerBar("Utility Status");
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test0920StatusTabUtilityStatusPage");
+ 	} catch (Exception|AssertionError e) {
+
+ 		ExtentReport.logFail("FAIL", "test0920StatusTabUtilityStatusPage", driver, e);
+ 		fail(e.getMessage());
+ 	}
   }
 
   //------------------------------------------------------------------------
 
   //===== Filter Dialog Map =====//
   @Test
-  public void test1000FilterDialogMap() throws InterruptedException {
+  public void test1000FilterDialogMap() throws Throwable {
     try {
-      goToPage("Users");
-      waitForSpinnerToEnd();
-      waitForAjaxExtJs();
-      doClick(sysmaint.getUsersPageButtonFilter());
-      waitForAjaxExtJs();
-      waitUntilElementIsClickable(dialogsMap.getFilterDialogButtonCancelAndClose());
-      String dialogHeader = dialogsMap.getFilterDialogHeader().getText();
-      assertEquals("Filter Users", dialogHeader);
-      WebElement[] filterDialogElements = {
-              dialogsMap.getFilterDialogHelpLink(),
-              dialogsMap.getFilterDialogDropdownField(),
-              dialogsMap.getFilterDialogDropdownOperator(),
-              dialogsMap.getFilterDialogDropdownCondition(),
-              dialogsMap.getFilterDialogFormFieldValue(),
-              dialogsMap.getFilterDialogButtonAdd(),
-              dialogsMap.getFilterDialogButtonApplyFilter(),
-      };
-      assertElementsAreDisplayed(filterDialogElements, printout);
-    } catch (Throwable e) {
-      throw e;
-    } finally {
-      try {
-        doClick(dialogsMap.getFilterDialogButtonCancelAndClose());
-        waitForAjaxExtJs();
-      } catch (Throwable ee) {}
-      doClosePageOnLowerBar("Users");
-    }
+		try {
+		  goToPage("Users");
+		  waitForSpinnerToEnd();
+		  waitForAjaxExtJs();
+		  doClick(sysmaint.getUsersPageButtonFilter());
+		  waitForAjaxExtJs();
+		  waitUntilElementIsClickable(dialogsMap.getFilterDialogButtonCancelAndClose());
+		  String dialogHeader = dialogsMap.getFilterDialogHeader().getText();
+		  assertEquals("Filter Users", dialogHeader);
+		  WebElement[] filterDialogElements = {
+		          dialogsMap.getFilterDialogHelpLink(),
+		          dialogsMap.getFilterDialogDropdownField(),
+		          dialogsMap.getFilterDialogDropdownOperator(),
+		          dialogsMap.getFilterDialogDropdownCondition(),
+		          dialogsMap.getFilterDialogFormFieldValue(),
+		          dialogsMap.getFilterDialogButtonAdd(),
+		          dialogsMap.getFilterDialogButtonApplyFilter(),
+		  };
+		  assertElementsAreDisplayed(filterDialogElements, printout);
+		} catch (Throwable e) {
+		  throw e;
+		} finally {
+		  try {
+		    doClick(dialogsMap.getFilterDialogButtonCancelAndClose());
+		    waitForAjaxExtJs();
+		  } catch (Throwable ee) {}
+		  doClosePageOnLowerBar("Users");
+		}
+		ExtentReport.logPass("PASS", "test1000FilterDialogMap");
+ 	} catch (Exception|AssertionError e) {
+
+ 		ExtentReport.logFail("FAIL", "test1000FilterDialogMap", driver, e);
+ 		fail(e.getMessage());
+ 	}
   }
 
   private void triggerDepartmentDialog(String costModel, String costModelScenario, String entity) throws InterruptedException {
@@ -1457,4 +1801,10 @@ public class BuildVerificationTestScript extends UcqcHelper {
     waitForAjaxExtJs();
     Thread.sleep(500);
   }
+  @AfterClass
+	public static void endtest() throws Exception {
+
+		ExtentReport.report.flush();
+
+	}
 }

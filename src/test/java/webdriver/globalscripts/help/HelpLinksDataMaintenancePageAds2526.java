@@ -30,14 +30,20 @@ public class HelpLinksDataMaintenancePageAds2526 extends PageTestHelper {
 
    /** Automates ADS-2526.  Verifies that the help link on each page of the application links to the
    * user help guide and the appropriate help page in the guide displays correctly.
- * @throws Exception 
+ * @throws Throwable 
    */
   @BeforeClass
-  public static void setupScript() throws Exception {
+  public static void setupScript() throws Throwable {
 	  ExtentReport.reportCreate("HelpLinksDataMaintenancePageAds2526","webdriver.globalscripts.help", "HelpLinksDataMaintenancePageAds2526");
-    System.out.println("TEST CLASS: " + HelpLinksDataMaintenancePageAds2526.class.getSimpleName());
-    loginUser(Users.ApplicationAdministrator1);
-    goToPage("Maintain Data");
+    try {
+		System.out.println("TEST CLASS: " + HelpLinksDataMaintenancePageAds2526.class.getSimpleName());
+		loginUser(Users.ApplicationAdministrator1);
+		goToPage("Maintain Data");
+		ExtentReport.logPass("PASS", "setupScript");
+	} catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "setupScript", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
@@ -99,7 +105,7 @@ public class HelpLinksDataMaintenancePageAds2526 extends PageTestHelper {
               testFailures++;
               testFailed = false;
             }
-          } catch (Throwable e) {
+          } catch (Exception e) {
         	 
             continue;
            

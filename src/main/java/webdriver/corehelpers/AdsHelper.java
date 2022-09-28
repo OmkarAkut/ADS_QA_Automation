@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import webdriver.maps.DialogsMap;
@@ -43,7 +44,13 @@ public class AdsHelper extends GetHelper {
     waitForAjaxExtJs();
     WebElement editCell = driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')]["+row+"]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-"+columnIdDigits+"')]/div/table"));
     Actions action = new Actions(driver);
-    action.moveToElement(editCell).sendKeys(newValue).perform();
+ //   action.moveToElement(editCell).sendKeys(newValue).perform();
+
+    action.moveToElement(editCell).clickAndHold().sendKeys(Keys.chord(Keys.CONTROL, "a")).sendKeys(Keys.chord(Keys.CLEAR));
+    Thread.sleep(1000);
+    action.moveToElement(editCell).clickAndHold().sendKeys(newValue).sendKeys(Keys.chord(Keys.ENTER)).build().perform();
+    waitForSpinnerToEnd();
+    Thread.sleep(1000);
   }
 
   public void setFilterValues(WebElement fieldOptionsUl, String field, String operator, String condition, String value) throws InterruptedException {

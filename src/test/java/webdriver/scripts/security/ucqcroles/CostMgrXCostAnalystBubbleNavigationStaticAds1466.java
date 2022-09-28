@@ -1,11 +1,16 @@
 package webdriver.scripts.security.ucqcroles;
 
+import static org.junit.Assert.fail;
+
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+
+import ExtentReport.ExtentReport;
 import webdriver.scripts.costing.unitcostquickcalculation.UnitCostQuickCalculationHelperStatic;
 import webdriver.maps.CostingMap;
 import webdriver.maps.GeneralElementsMap;
@@ -29,25 +34,39 @@ public class CostMgrXCostAnalystBubbleNavigationStaticAds1466
    UCQC screen opens using entire horizontal real estate with "Unit Cost Quick Calculation" title
    Unit Cost Quick Calculation displays in breadcrumbs
    Unit Cost Quick Calculation displays as item in dock bar
+ * @throws Throwable 
    **/
 
   @BeforeClass
-  public static void setupScript() {
-    costingMap = BuildMap.getInstance(driver, CostingMap.class);
+  public static void setupScript() throws Throwable {
+	  
+	  ExtentReport.reportCreate("CostMgrXCostAnalystBubbleNavigationStaticAds1466", "webdriver.scripts.security.ucqcroles","CostMgrXCostAnalystBubbleNavigationStaticAds1466");
+   
+	  try {
+	  costingMap = BuildMap.getInstance(driver, CostingMap.class);
     geMap = BuildMap.getInstance(driver, GeneralElementsMap.class);
-    System.out.println("Test Class: " + UcqcCalculateButtonEnableAndDisableAds1152.class.getSimpleName());
+    System.out.println("Test Class: " + CostMgrXCostAnalystBubbleNavigationStaticAds1466.class.getSimpleName());
     
     /*modified by Omkar on 27/5/22 as only aadmin user is available for qa3 env
     loginStaticUser(Users.AutoTestCostMgrXCostAnalyst);
     */
     loginStaticUser(Users.AutomationTesterAdmin);
  // End of modification
+    ExtentReport.logPass("PASS", "setupScript");
+    
+	  }
+	  catch(Exception| AssertionError e)
+	  {
+		  ExtentReport.logFail("FAIL", "setupScript", driver, e);
+	    fail(e.getMessage());
+	  }
     
   }
 
   @Test
-  public void testAssertLandingPageNavBubbleContainsUcqcLinkForCombinedRoleWithCostManagerAndCostAnalyst() {
+  public void testAssertLandingPageNavBubbleContainsUcqcLinkForCombinedRoleWithCostManagerAndCostAnalyst() throws Throwable {
     try {
+    	
       String[] expectedLinks = {"Costing Models", "Costing Data Maintenance",
               "Unit Cost Quick Calculation"};
       int index = 1;
@@ -64,8 +83,31 @@ public class CostMgrXCostAnalystBubbleNavigationStaticAds1466
       doClick(geMap.getLandingPageBubbleCostingQuickLinkUnitCostQuickCalculation());
       waitForAjaxExtJs();
       verifyUcqcPage(printout);
-    } catch (Throwable e) {
-      System.out.println(e.getMessage());
+      
+      ExtentReport.logPass("PASS", "testAssertLandingPageNavBubbleContainsUcqcLinkForCombinedRoleWithCostManagerAndCostAnalyst");
+      
+      
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "testAssertLandingPageNavBubbleContainsUcqcLinkForCombinedRoleWithCostManagerAndCostAnalyst", driver, e);
+    	fail(e.getMessage());
+       
     }
   }
+  
+  @AfterClass
+	public static void endtest() throws Exception {
+
+		ExtentReport.report.flush();
+
+	}
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 }

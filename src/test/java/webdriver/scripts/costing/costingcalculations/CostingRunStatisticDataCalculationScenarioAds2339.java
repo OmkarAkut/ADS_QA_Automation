@@ -1,5 +1,7 @@
 package webdriver.scripts.costing.costingcalculations;
 
+import static org.junit.Assert.fail;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
@@ -20,16 +22,30 @@ public class CostingRunStatisticDataCalculationScenarioAds2339 extends Calculati
   String expectedFilterTotal = "1237";
 
   @BeforeClass
-    public static void setupScript() throws Exception {
+    public static void setupScript() throws Exception,Throwable {
 	 ExtentReport.reportCreate("CostingRunStatisticDataCalculationScenarioAds2339", "webdriver.scripts.costing.costingcalculations", "CostingRunStatisticDataCalculationScenarioAds2339");
-    System.out.println("Test Class: " + CostingRunStatisticDataCalculationScenarioAds2339.class.getSimpleName());
-    Login.loginUser("CostAnalyst1");
-    goToPage("Costing Models");
+    try {
+		System.out.println("Test Class: " + CostingRunStatisticDataCalculationScenarioAds2339.class.getSimpleName());
+		Login.loginUser("CostAnalyst1");
+		 goToPage("Costing Models");
+		ExtentReport.logPass("PASS", "setupScript");
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("PASS", "Failure in setupScript", driver, e);
+		fail(e.getMessage());
+    }
   }
 
   @AfterClass
-  public static void teardownScript() throws InterruptedException {
-    doClosePageOnLowerBar("QA Marina");
+  public static void teardownScript() throws InterruptedException ,Throwable{
+    try {
+		doClosePageOnLowerBar("QA Marina");
+		ExtentReport.logPass("PASS", "teardownScript");
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("PASS", "teardownScript", driver, e);
+	    ExtentReport.report.flush();
+
+		fail(e.getMessage());
+    }
     ExtentReport.report.flush();
   }
 
@@ -67,6 +83,7 @@ public class CostingRunStatisticDataCalculationScenarioAds2339 extends Calculati
 		ExtentReport.logPass("PASS", "test01VerifyStaticDataScenarioPageConfiguration");
 	} catch (Exception|AssertionError e) {
 		ExtentReport.logFail("FAIL", "test01VerifyStaticDataScenarioPageConfiguration", driver, e);
+		fail(e.getMessage());
 	}
   }
 
@@ -97,6 +114,7 @@ public class CostingRunStatisticDataCalculationScenarioAds2339 extends Calculati
 
 	} catch (Exception|AssertionError e) {
 		ExtentReport.logFail("FAIL", "test02VerifyStaticDataCalculationScenarioPageConfigurationAndSave", driver, e);
+		fail(e.getMessage());
 
 	}
     //waitFor "Your Progress Has Been Saved" spinner to end
@@ -116,6 +134,7 @@ public class CostingRunStatisticDataCalculationScenarioAds2339 extends Calculati
 
 	} catch (Exception|AssertionError e) {
 		ExtentReport.logFail("FAIL", "test03RunCalculationAndAssertResultsMatchExpected", driver, e);
+		fail(e.getMessage());
 
 	}
   }
@@ -143,9 +162,10 @@ public class CostingRunStatisticDataCalculationScenarioAds2339 extends Calculati
    assertFilterResults(expectedFilterTotal);
    doClickButton("Cancel & Close");
    waitForSpinnerToEnd();
-   ExtentReport.logPass("PASS", "test03RunCalculationAndAssertResultsMatchExpected");
+   ExtentReport.logPass("PASS", "test04AssertActivityVolumeDataScenarioFilterResultsMatchExpected");
 		} catch (Exception|AssertionError e) {
-			ExtentReport.logFail("FAIL", "test03RunCalculationAndAssertResultsMatchExpected", driver, e);
+			ExtentReport.logFail("FAIL", "test04AssertActivityVolumeDataScenarioFilterResultsMatchExpected", driver, e);
+			fail(e.getMessage());
 
 		}
   }

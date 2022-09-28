@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.List;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -451,8 +452,14 @@ public class UcqcHelper extends GoHelper {
     waitForAjaxExtJs();
     WebElement editCell = driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')]["+row+"]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-"+columnIdDigits+"')]/div/table"));
     Actions action = new Actions(driver);
-    action.moveToElement(editCell).sendKeys(newValue).perform();
-    action.moveToElement(editCell).sendKeys(Keys.ENTER).perform();
+    //Shilpa updated : below lines wont work : 15.09.2022
+//    action.moveToElement(editCell).sendKeys(newValue).perform();
+//    action.moveToElement(editCell).sendKeys(Keys.ENTER).perform();
+//    Thread.sleep(1000);
+    action.moveToElement(editCell).clickAndHold().sendKeys(Keys.chord(Keys.CONTROL, "a")).sendKeys(Keys.chord(Keys.CLEAR));
+    Thread.sleep(1000);
+    action.moveToElement(editCell).clickAndHold().sendKeys(newValue).sendKeys(Keys.chord(Keys.ENTER)).build().perform();
+    waitForSpinnerToEnd();
     Thread.sleep(1000);
   }
 
@@ -557,23 +564,23 @@ public class UcqcHelper extends GoHelper {
     waitForAjaxExtJs();
     //Thread.sleep(1100);  //original value, which works
     Thread.sleep(500);  //alternative value, to reduce run time - reset to original value if there are false positives with this one
-   /*
-    doClick(driver.findElement(By.xpath("(//div[contains(@class,'x-grid-cell-inner') and contains(text(),\"" + departmentText + "\")])[2]")));
-    waitForAjaxExtJs();
-    Thread.sleep(300);
-   // driver.findElement(By.xpath("(//div[contains(text(),'"+departmentText+"')])[2]")); //Shilpa08.09.2022 added line to select option as Search by department name has issue
-    doClickButton("Apply");
-   // doClick(driver.findElement(By.xpath("//*[contains(@class,'docked-bottom')]/descendant::span[text()='Apply']")));
-    waitForAjaxExtJs();
-    */
-    driver.findElement(By.name("carrierfield")).sendKeys(departmentText);
-	Thread.sleep(500);
-	waitForSpinnerToEnd();
-	doClick(driver.findElement(By.xpath("(//div[contains(@class,'x-grid-cell-inner') and contains(text(),\"" + departmentText + "\")])[2]")));
-	Thread.sleep(300);
-	//driver.findElement(By.xpath("(//div[contains(text(),'"+departmentText+"')])[2]")).click();
-	doClickButton("Apply");
-	 waitForAjaxExtJs();
+    JavascriptExecutor jse = (JavascriptExecutor)driver;
+	   jse.executeScript("arguments[0].value='"+ departmentText +"';",  driver.findElement(By.name("carrierfield")));
+		waitForSpinnerToEnd();
+		try {
+			driver.findElement(By.name("carrierfield")).sendKeys(" ");
+			Thread.sleep(1000);
+			driver.findElement(By.name("carrierfield")).sendKeys(Keys.BACK_SPACE);
+			Thread.sleep(1000);
+
+		doClick(driver.findElement(By.xpath("//div[contains(@class,'x-grid-cell-inner') and contains(text()," + departmentText +")]")));
+		waitForAjaxExtJs();
+		doClick(driver.findElement(By.xpath("//*[contains(@class,'docked-bottom')]/descendant::span[text()='Apply']")));
+		waitForAjaxExtJs();
+	} catch (Exception|AssertionError e) {
+		doClick(driver.findElement(By.xpath("//*[contains(@class,'docked-bottom')]/descendant::span[text()='Apply']")));
+		waitForAjaxExtJs();
+	}
   }
 
   public static void setUcqcCriteria(String costModel, String costModelScenario, String entity, String department, String resultsStoredFor) throws InterruptedException {
@@ -581,7 +588,6 @@ public class UcqcHelper extends GoHelper {
     doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationDropdownCostModel(),costingMap.getUnitCostQuickCalculationDropdownCostModelMenuList(),costModel);
     doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationDropdownCostModelScenario(),costingMap.getUnitCostQuickCalculationDropdownCostModelScenarioMenuList(),costModelScenario);
     doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationDropdownEntity(),costingMap.getUnitCostQuickCalculationDropdownEntityMenuList(),entity);
-    System.out.println(""+department);
     updateDepartment(department);
     doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationFieldResultsStoredFor(),costingMap.getUnitCostQuickCalculationDropdownResultsStoredForMenuList(),resultsStoredFor);
   }

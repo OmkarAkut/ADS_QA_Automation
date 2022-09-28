@@ -16,16 +16,18 @@ import webdriver.utilities.FileUtility;
 public class FilesTemplate {
 
   FileUtility filer = new FileUtility();
-  File file = filer.getFile(
-          "./src\\test\\java\\webdriver\\templates\\files\\TestFile.txt"
-  );
-  String filePath = "./src\\test\\java\\webdriver\\templates\\files\\TestFile.txt";
+  File file = filer.getFile(System.getProperty("user.dir")+
+        "//src//test//java//webdriver//examples//files//TestFile.txt")
+  ;
+  String filePath =  System.getProperty("user.dir")+"//src//test//java//webdriver//examples//files//TestFile.txt";
   //String directoryPath = "C:\\SpreadsheetsTest";  //external file-see commented out examples below
-  String dataFile = "./src\\test\\java\\webdriver\\templates\\files\\SampleDataTextFile.txt";
+//  String dataFile = "./src\\test\\java\\webdriver\\templates\\files\\SampleDataTextFile.txt";
+  String dataFile =System.getProperty("user.dir")+"//src//test//java//webdriver//examples//files//SampleDataTextFile.txt";
   static String zipPath = null;
 
   @Test
   public void parseFileRowsWithCommasIntoData() throws IOException {
+	  System.out.println(filePath);
     //Note: The number of rows in the data file controls the number of test iterations
     //get file with comma-delimited rows of data
     List<String> myList = filer.convertFileLinesToList(dataFile);
@@ -49,6 +51,7 @@ public class FilesTemplate {
 
   @Test
   public void convertFileLinesToListAndAssertResult() throws IOException {
+	  System.out.println(filePath);
     List<String> myList = filer.convertFileLinesToList(filePath);
     for (String line : myList) {
       System.out.println(line);

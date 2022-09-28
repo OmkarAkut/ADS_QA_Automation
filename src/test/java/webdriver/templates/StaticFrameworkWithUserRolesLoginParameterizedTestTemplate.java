@@ -1,10 +1,16 @@
 package webdriver.templates;
 
+import static org.junit.Assert.fail;
+
 import java.util.Arrays;
 import java.util.Collection;
+
+import org.junit.AfterClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+
+import ExtentReport.ExtentReport;
 import webdriver.globalstatic.LoginRolesTesting;
 import webdriver.maps.GeneralElementsMap;
 import webdriver.maps.mapbuilder.BuildMap;
@@ -40,10 +46,22 @@ public class StaticFrameworkWithUserRolesLoginParameterizedTestTemplate
   }
 
   @Test
-  public void testAssertUcqcLinkInCostingBubbleIsDisplayed() throws InterruptedException {
-    geMap = BuildMap.getInstance(driver, GeneralElementsMap.class);
-    waitForAjaxExtJs();
-    assertThatElementIsDisplayed(geMap.getLandingPageBubbleCostingQuickLinkUnitCostQuickCalculation());
+  public void testAssertUcqcLinkInCostingBubbleIsDisplayed() throws InterruptedException,Throwable {
+	  ExtentReport.reportCreate("StaticFrameworkWithUserRolesLoginParameterizedTestTemplate", "webdriver.templates", "StaticFrameworkWithUserRolesLoginParameterizedTestTemplate");
+    try {
+		geMap = BuildMap.getInstance(driver, GeneralElementsMap.class);
+		waitForAjaxExtJs();
+		assertThatElementIsDisplayed(geMap.getLandingPageBubbleCostingQuickLinkUnitCostQuickCalculation());
+		ExtentReport.logPass("PASS", "testAssertUcqcLinkInCostingBubbleIsDisplayed");
+	} catch (Exception|AssertionError e) {
+	ExtentReport.logFail("FAIL", "testAssertUcqcLinkInCostingBubbleIsDisplayed", driver, e);
+	fail(e.getMessage());
+}
   }
+  @AfterClass
+	public static void endtest() throws Exception {
 
+		ExtentReport.report.flush();
+
+	}
 }

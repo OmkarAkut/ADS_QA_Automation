@@ -88,9 +88,9 @@ public class SecurityRolesTestMainTabLevelStatic extends LoginRolesTesting {
 //            testLandingPageDataMaintenance();
 //            testLandingPageSystemMaintenance();
       System.out.println("TEST COMPLETE");
-      ExtentReport.logPass("PASS", "setupScript");
+      ExtentReport.logPass("PASS", "testSecurityRolesTest");
 	} catch (Exception|AssertionError e) {
-		ExtentReport.logFail("FAIL", "setupScript", driver, e);
+		ExtentReport.logFail("FAIL", "testSecurityRolesTest", driver, e);
 		fail(e.getMessage());
 	}
   }
@@ -101,30 +101,30 @@ public class SecurityRolesTestMainTabLevelStatic extends LoginRolesTesting {
     Object[][] roles = new Object[][] {
       {Roles.valueOf("Application_Administrator")},
       {Roles.valueOf("System_Administrator")},
-//      {Roles.valueOf("Security_Administrator")},
-//
-//      {Roles.valueOf("Data_Administrator")},
-//      {Roles.valueOf("Cost_Analyst")},
-//      {Roles.valueOf("Costing_Department_Manager")},
-//      {Roles.valueOf("Contract_Analyst")},
-//
-//      {Roles.valueOf("Contract_Administrator")},
-//      {Roles.valueOf("Contract_Reviewer")},
-//      {Roles.valueOf("Episode_Analyst")},
-//      {Roles.valueOf("Report_Administrator")},
-//
-//      {Roles.valueOf("AdHoc_Report_Designer")},
-//      {Roles.valueOf("Report_User")},
-//      {Roles.valueOf("Web_Intelligence_Designer")},
-//      {Roles.valueOf("Web_Intelligence_User")},
-//
-//      {Roles.valueOf("Budgeting_User")},
-//      {Roles.valueOf("Analytics_Administrator")},
-//      {Roles.valueOf("Analytics_Analyst")},
-//      {Roles.valueOf("Analytics_Designer")},
-//
-//      {Roles.valueOf("Analytics_Executive")},
-      //{Roles.valueOf("Automation_Tester")},  //should be commented out
+      {Roles.valueOf("Security_Administrator")},
+
+      {Roles.valueOf("Data_Administrator")},
+      {Roles.valueOf("Cost_Analyst")},
+      {Roles.valueOf("Costing_Department_Manager")},
+      {Roles.valueOf("Contract_Analyst")},
+
+      {Roles.valueOf("Contract_Administrator")},
+      {Roles.valueOf("Contract_Reviewer")},
+      {Roles.valueOf("Episode_Analyst")},
+      {Roles.valueOf("Report_Administrator")},
+
+      {Roles.valueOf("AdHoc_Report_Designer")},
+      {Roles.valueOf("Report_User")},
+      {Roles.valueOf("Web_Intelligence_Designer")},
+      {Roles.valueOf("Web_Intelligence_User")},
+
+      {Roles.valueOf("Budgeting_User")},
+      {Roles.valueOf("Analytics_Administrator")},
+      {Roles.valueOf("Analytics_Analyst")},
+      {Roles.valueOf("Analytics_Designer")},
+
+      {Roles.valueOf("Analytics_Executive")},
+//      {Roles.valueOf("Automation_Tester")},  //should be commented out
     };
     return Arrays.asList(roles);
   }

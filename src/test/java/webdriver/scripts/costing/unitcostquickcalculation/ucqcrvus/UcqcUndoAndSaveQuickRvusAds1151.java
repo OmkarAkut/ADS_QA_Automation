@@ -64,7 +64,7 @@ public class UcqcUndoAndSaveQuickRvusAds1151 extends UcqcHelper {
   public void test04aPopulateRequiredFieldsAndVerifySaveQuickRvusAndUndoButtonsAreDisabled() throws Throwable {
     try {
       waitForAjaxExtJs();
-      //setUCQCCriteria("QA Cost Model","QA Automation Save Quick RVUs","150 Marina Medical Center","3010  SURGERY", "Apr 2004 to Apr 2004");
+//      setUcqcCriteria("QA Cost Model","QA Automation Save Quick RVUs","150 Marina Medical Center","3010  SURGERY", "Apr 2004 to Apr 2004");
       setUcqcCriteria("QA Cost Model","QA Automation Save Quick RVUs","150 Marina Medical Center","3010", "Apr 2004 to Apr 2004");
       waitForAjaxExtJs();
       assertElementIsDisabled(overwriteRVUMaintenance.getUnitCostQuickCalculationButtonUndo(),printout);

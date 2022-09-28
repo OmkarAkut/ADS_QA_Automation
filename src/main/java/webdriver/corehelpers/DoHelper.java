@@ -208,10 +208,15 @@ public class DoHelper extends DriverHelper {
     }
 
     public static void doClick(WebElement element) {
-    	JavascriptExecutor executor = (JavascriptExecutor)driver;
-    	executor.executeScript("arguments[0].click();", element);
-//        waitUntilElementIsClickable(element);
-//        element.click();
+    	try {
+    		waitUntilElementIsClickable(element);
+			element.click();
+		
+			
+		} catch (Exception e) {
+			JavascriptExecutor executor = (JavascriptExecutor)driver;
+			executor.executeScript("arguments[0].click();", element);
+		}
     }
 
     public static void doClick(String elementXpath) throws InterruptedException {

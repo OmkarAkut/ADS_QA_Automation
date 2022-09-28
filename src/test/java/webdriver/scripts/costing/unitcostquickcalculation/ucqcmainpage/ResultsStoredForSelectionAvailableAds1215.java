@@ -10,12 +10,16 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+
+import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.helpers.UcqcHelper;
 import webdriver.maps.CostingMap;
@@ -28,46 +32,63 @@ public class ResultsStoredForSelectionAvailableAds1215 extends UcqcHelper {
   String dept = "2130  PED ICU";
 
   /** Test ticket ADS-1215 (Dev Story ADS-478 and 653)
-  This script tests the Results Stored For drop down.*/
+  This script tests the Results Stored For drop down.
+ * @throws Throwable */
   @BeforeClass
-  public static void setupScript() throws Exception {
-    resultsStoredFor = BuildMap.getInstance(driver, CostingMap.class);
-    System.out.println("Test Class: " + ResultsStoredForSelectionAvailableAds1215.class.getSimpleName());
-    Login.loginUser("CostingDepartmentManager1");
-    goToPage("Unit Cost Quick Calculation");
+  public static void setupScript() throws Throwable {
+	  
+	  ExtentReport.reportCreate("ResultsStoredForSelectionAvailableAds1215","webdriver.scripts.costing.unitcostquickcalculation.ucqcmainpage", "ResultsStoredForSelectionAvailableAds1215");
+		
+    try {
+		resultsStoredFor = BuildMap.getInstance(driver, CostingMap.class);
+		System.out.println("Test Class: " + ResultsStoredForSelectionAvailableAds1215.class.getSimpleName());
+		Login.loginUser("CostingDepartmentManager1");
+		goToPage("Unit Cost Quick Calculation");
+		ExtentReport.logPass("PASS", "setupScript");
+	} catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL","setupScript", driver,e);
+		fail(e.getMessage());
+	} 
+    
   }
 
   @Test
-  public void test01ConfirmResultsStoredForDisabledOnPageLoad() {
+  public void test01ConfirmResultsStoredForDisabledOnPageLoad() throws Throwable {
     try {
       waitForAjaxExtJs();
       assertUCQCDropdownIsDisabled("resultStored",printout);
-    } catch (Throwable e) {
+      ExtentReport.logPass("PASS", "test01ConfirmResultsStoredForDisabledOnPageLoad");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL","test01ConfirmResultsStoredForDisabledOnPageLoad", driver,e);
       fail(e.getMessage());
     }
   }
 
   @Test
-  public void test02ConfirmRedAsteriskDisplays() {
+  public void test02ConfirmRedAsteriskDisplays() throws Throwable {
     try {
       waitForAjaxExtJs();
       assertAsteriskIsDisplayed("Results Stored For");
-    } catch (Throwable e) {
+      ExtentReport.logPass("PASS", "test02ConfirmRedAsteriskDisplays");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL","test02ConfirmRedAsteriskDisplays", driver,e);
       fail(e.getMessage());
     }
   }
 
   @Test
-  public void test03ConfirmResultsStoredForDisplaysNone() {
+  public void test03ConfirmResultsStoredForDisplaysNone() throws Throwable {
     try {
       assertDropdownPlaceholder("resultStored",printout);
-    } catch (Throwable e) {
+      ExtentReport.logPass("PASS", "test03ConfirmResultsStoredForDisplaysNone");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL","test03ConfirmResultsStoredForDisplaysNone", driver,e);
       fail(e.getMessage());
     }
   }
 
   @Test
-  public void test04ConfirmResultsStoredForDisabledWhenDepartmentIsNotSelected() {
+  public void test04ConfirmResultsStoredForDisabledWhenDepartmentIsNotSelected() throws Throwable {
     try {
      doDropdownSelectUsingOptionText(resultsStoredFor.getUnitCostQuickCalculationDropdownCostModel(),resultsStoredFor.getUnitCostQuickCalculationDropdownCostModelMenuList(),"Marina");
      assertUCQCDropdownIsDisabled("resultStored",printout);
@@ -75,13 +96,15 @@ public class ResultsStoredForSelectionAvailableAds1215 extends UcqcHelper {
      assertUCQCDropdownIsDisabled("resultStored",printout);
      doDropdownSelectUsingOptionText(resultsStoredFor.getUnitCostQuickCalculationDropdownEntity(),resultsStoredFor.getUnitCostQuickCalculationDropdownEntityMenuList(),"150 Marina Medical Center");
      assertUCQCDropdownIsDisabled("resultStored",printout);
-    } catch (Throwable e) {
+     ExtentReport.logPass("PASS", "test04ConfirmResultsStoredForDisabledWhenDepartmentIsNotSelected");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL","test04ConfirmResultsStoredForDisabledWhenDepartmentIsNotSelected", driver,e);
      fail(e.getMessage());
     }
   }
 
   @Test
-  public void test05ConfirmResultsStoredForEnabled() {
+  public void test05ConfirmResultsStoredForEnabled() throws Throwable {
     try {
       selectDepartment(dept);
       assertUCQCDropdownIsEnabled("resultStored",printout);
@@ -91,23 +114,27 @@ public class ResultsStoredForSelectionAvailableAds1215 extends UcqcHelper {
       doDropdownSelectUsingOptionText(resultsStoredFor.getUnitCostQuickCalculationDropdownEntity(),resultsStoredFor.getUnitCostQuickCalculationDropdownEntityMenuList(),"150 Marina Medical Center");
       selectDepartment(dept);
       assertUCQCDropdownIsEnabled("resultStored",printout);
-    } catch (Throwable e) {
+      ExtentReport.logPass("PASS", "test05ConfirmResultsStoredForEnabled");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL","test05ConfirmResultsStoredForEnabled", driver,e);
       fail(e.getMessage());
     }
   }
 
   @Test
-  public void test06ConfirmResultsStoredForDisplayFormat() {
+  public void test06ConfirmResultsStoredForDisplayFormat() throws Throwable {
       try {
           doDropdownSelectUsingOptionText(resultsStoredFor.getUnitCostQuickCalculationFieldResultsStoredFor(),resultsStoredFor.getUnitCostQuickCalculationDropdownResultsStoredForMenuList(),"Apr 2004 to Apr 2004");
           validateResultsStoredForFormat(resultsStoredFor.getUnitCostQuickCalculationFieldResultsStoredFor(),printout);
-      } catch (Throwable e) {
+          ExtentReport.logPass("PASS", "test06ConfirmResultsStoredForDisplayFormat");
+      } catch (Exception|AssertionError e) {
+    	  ExtentReport.logFail("FAIL","test06ConfirmResultsStoredForDisplayFormat", driver,e);
           fail(e.getMessage());
       }
   }
 
   @Test
-  public void test07ConfirmResultsStoredForStartMonthAscendingOrder() {
+  public void test07ConfirmResultsStoredForStartMonthAscendingOrder() throws Throwable {
       try {
           waitForAjaxExtJs();
           doClick(resultsStoredFor.getUnitCostQuickCalculationFieldResultsStoredFor());
@@ -131,7 +158,9 @@ public class ResultsStoredForSelectionAvailableAds1215 extends UcqcHelper {
               sortedDatesList.forEach(System.out::println);
           }
           assertEquals(datesList,sortedDatesList);  //compare actual date list to sorted date list
-      } catch (Throwable e){
+          ExtentReport.logPass("PASS", "test07ConfirmResultsStoredForStartMonthAscendingOrder");
+      } catch (Exception|AssertionError e){
+    	  ExtentReport.logFail("FAIL","test07ConfirmResultsStoredForStartMonthAscendingOrder", driver,e);
           fail(e.getMessage());
       }
   }
@@ -181,5 +210,11 @@ public class ResultsStoredForSelectionAvailableAds1215 extends UcqcHelper {
       }
       return menuItemsAsStrings;
   }
+  @AfterClass
+	public static void endtest() throws Exception {
+
+		ExtentReport.report.flush();
+
+	}
 }
 

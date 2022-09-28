@@ -4,13 +4,21 @@ import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.*;
 import ExtentReport.*;
+
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.aventstack.extentreports.Status;
 
@@ -32,7 +40,6 @@ public class AssertHelper extends AdsHelper {
 			fail(e.getMessage());
 		}
 	}
-
 	public void assertFilterResults(String expectedTotal) throws InterruptedException {
 		doClick(getWebElement("//div[3]/em/button/span[text()='Filter']"));
 		waitForAjaxExtJs();
@@ -84,7 +91,11 @@ public class AssertHelper extends AdsHelper {
 			Thread.sleep(2000);
 			waitForJsWindowOnload();
 			driver.switchTo().frame("topic");
-			WebElement header = driver.findElement(By.xpath("//body/h1"));
+			//venkat adding Explicity wait 13.09.2022
+		    WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(30,0));
+		    WebElement header=wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//body/h1")));
+			
+			//WebElement header = driver.findElement(By.xpath("//body/h1"));
 			String actualHeader = header.getText();
 			if (printout) {
 				Thread.sleep(2000); 
@@ -304,10 +315,32 @@ public class AssertHelper extends AdsHelper {
 		}
 	}
 
-	public void assertAsteriskIsDisplayed(String criteriaLabel) {
+	public void assertAsteriskIsDisplayed(String criteriaLabel) throws AWTException, InterruptedException {
+		
+		//Venkat 05-09-2022 Add Robot class in zoom in chrome browser
+				Thread.sleep(3000);
+				Robot robot = new Robot();
+		    	robot.keyPress(KeyEvent.VK_CONTROL);
+				robot.keyPress(KeyEvent.VK_SUBTRACT);
+				Thread.sleep(500);
+				robot.keyRelease(KeyEvent.VK_CONTROL);
+				robot.keyRelease(KeyEvent.VK_SUBTRACT);
+				Thread.sleep(500);
+				robot.keyPress(KeyEvent.VK_CONTROL);
+				robot.keyPress(KeyEvent.VK_SUBTRACT);
+				Thread.sleep(500);
+				robot.keyRelease(KeyEvent.VK_CONTROL);
+				robot.keyRelease(KeyEvent.VK_SUBTRACT);
+				Thread.sleep(2000);
 		String labelXpath = "//label[text()=\""+ criteriaLabel +"\"]/span";
 		String asterisk;
 		String asteriskColor;
+		
+		Thread.sleep(500);
+		//driver.manage().window().setSize(new Dimension(1920, 900));
+
+	    WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(20,0));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(labelXpath)));
 		asterisk = driver.findElement(By.xpath(labelXpath)).getText();
 		asteriskColor = driver.findElement(By.xpath(labelXpath)).getAttribute("style");
 		System.out.println(asterisk);
@@ -324,6 +357,18 @@ public class AssertHelper extends AdsHelper {
 			System.out.println("The 'required' asterisk is not red.");
 			fail();
 		}
+		
+	    robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_ADD);
+		Thread.sleep(500);//venkat adding key release function 23.09.2022
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		robot.keyRelease(KeyEvent.VK_ADD);
+		Thread.sleep(500);
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_ADD);
+		Thread.sleep(500);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		robot.keyRelease(KeyEvent.VK_ADD);
 	}
 
 	public void assertThatValueHasRequiredDecimalPlaces(String valueToConsider, int numberOfDecimalPlaces, boolean printout) {

@@ -353,7 +353,11 @@ public class CostingMap extends MapConfig {
   private WebElement unitCostQuickCalculationDropdownEntityMenuList;
   public WebElement getUnitCostQuickCalculationDropdownEntityMenuList() {return unitCostQuickCalculationDropdownEntityMenuList;}
 
-  @FindBy(xpath = "//div[@class='x-mask'][4]/preceding::div[@class='x-boundlist-list-ct']/following::ul[4]")
+
+  
+  
+  // @FindBy(xpath = "//div[@class='x-mask'][4]/preceding::div[@class='x-boundlist-list-ct']/following::ul[4]")
+  @FindBy(xpath = "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default'][4]//ul") //venkat update xpath 08-09-2022
   private WebElement unitCostQuickCalculationDropdownResultsStoredForMenuList;
   public WebElement getUnitCostQuickCalculationDropdownResultsStoredForMenuList() {return unitCostQuickCalculationDropdownResultsStoredForMenuList;}
 
@@ -367,7 +371,7 @@ public class CostingMap extends MapConfig {
   @FindBy (xpath = "//*[contains(@id,'buttonsContainer')]/descendant::span[text()='Select']")
   private WebElement unitCostQuickCalculationButtonColumnsToDisplayModalSelect;
   public WebElement getUnitCostQuickCalculationButtonColumnsToDisplayModalSelect() {return unitCostQuickCalculationButtonColumnsToDisplayModalSelect;}
-
+                   
   @FindBy (xpath = "//*[contains(@id,'button')][text()='Remove']")
   private WebElement unitCostQuickCalculationButtonColumnsToDisplayModalRemove;
   public WebElement getUnitCostQuickCalculationButtonColumnsToDisplayModalRemove() {return unitCostQuickCalculationButtonColumnsToDisplayModalRemove;}

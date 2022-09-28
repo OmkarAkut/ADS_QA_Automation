@@ -2,11 +2,14 @@ package webdriver.templates;
 
 import static org.junit.Assert.fail;
 
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
+
+import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.helpers.CalculationHelper;
 import webdriver.maps.DataMaintenanceMap;
@@ -24,48 +27,74 @@ public class IppsAndOppsCalculations extends CalculationHelper {
   /** Regression: Test script for ADS-3635 - 2021 IPPS: Transfers.
    *  Updated: 12/8/2020. */
   @BeforeClass
-  public static void setupScript() throws Exception {
-    dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);
-    System.out.println("Test Class: " + IppsAndOppsCalculations.class.getSimpleName());
-    Login.loginUser("ContractAnalyst1");
-    goToMaintainDataPageAndSelectContractBatch(batchName);
+  public static void setupScript() throws Exception,Throwable {
+	ExtentReport.reportCreate("IppsAndOppsCalculations", "webdriver.templates", "IppsAndOppsCalculations");
+    try {
+		dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);
+		System.out.println("Test Class: " + IppsAndOppsCalculations.class.getSimpleName());
+		Login.loginUser("ContractAnalyst1");
+		goToMaintainDataPageAndSelectContractBatch(batchName);
+		ExtentReport.logPass("PASS", "setupScript");
+	}  catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "Failure in setupScript", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test01ClickResetAndVerifyDatabaseValuesAreNull() throws ClassNotFoundException, InterruptedException {
-    waitForAjaxExtJs();
-    waitForPresenceOfElement("//*[text()='Refresh']");
-    doClick(driver.findElement(By.xpath("//*[text()='Refresh']")));
-    waitForSpinnerToEnd();
-    waitForFirstRowCalculationBarToReach100Percent(2000);
-    deleteMyCalculationStatusFirstRow();
-    getStringDataFromDatabaseAndAssertValuesAreNull(
-            data.sqlQueryIpps2021PsychComorbidity,
-            2
-    );
-    doClosePageOnLowerBar("Calculation Status");
+  public void test01ClickResetAndVerifyDatabaseValuesAreNull() throws ClassNotFoundException, InterruptedException,Throwable {
+    try {
+		waitForAjaxExtJs();
+		waitForPresenceOfElement("//*[text()='Refresh']");
+		doClick(driver.findElement(By.xpath("//*[text()='Refresh']")));
+		waitForSpinnerToEnd();
+		waitForFirstRowCalculationBarToReach100Percent(2000);
+		deleteMyCalculationStatusFirstRow();
+		getStringDataFromDatabaseAndAssertValuesAreNull(
+		        data.sqlQueryIpps2021PsychComorbidity,
+		        2
+		);
+		doClosePageOnLowerBar("Calculation Status");
+		ExtentReport.logPass("PASS", "test01ClickResetAndVerifyDatabaseValuesAreNull");
+	}  catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test01ClickResetAndVerifyDatabaseValuesAreNull", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test01ClickCalculateButtonAndAssertCalculationSummaryDetailsMatchExpected() {
+  public void test01ClickCalculateButtonAndAssertCalculationSummaryDetailsMatchExpected() throws Throwable {
     try {
       doClick(dmMap.getMaintainDataPageButtonCalculate());
       waitForCalculationToEndAndVerifyViewLogContainsOnViewDialogAndCloseDialog(
               expectedLogView
       );
       deleteMyCalculationStatusFirstRow();
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test01ClickCalculateButtonAndAssertCalculationSummaryDetailsMatchExpected");
+	}  catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test01ClickCalculateButtonAndAssertCalculationSummaryDetailsMatchExpected", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
   public void test02QueryDatabaseAndAssertValuesAreCorrectForIpps2021TransfersA()
-          throws ClassNotFoundException {
-    getDataFromDatabaseAndAssertExpectedValues(
-            data.sqlQueryIpps2021TransfersA,
-            data.expectedValuesIpps2021TransfersA
-    );
+          throws ClassNotFoundException,Throwable {
+    try {
+		getDataFromDatabaseAndAssertExpectedValues(
+		        data.sqlQueryIpps2021TransfersA,
+		        data.expectedValuesIpps2021TransfersA
+		);
+		 ExtentReport.logPass("PASS", "test02QueryDatabaseAndAssertValuesAreCorrectForIpps2021TransfersA");
+			}  catch (Exception|AssertionError e) {
+				ExtentReport.logFail("FAIL", "test02QueryDatabaseAndAssertValuesAreCorrectForIpps2021TransfersA", driver, e);
+				fail(e.getMessage());
+			}
   }
+  @AfterClass
+	public static void endtest() throws Exception {
 
+		ExtentReport.report.flush();
+
+	}
 }

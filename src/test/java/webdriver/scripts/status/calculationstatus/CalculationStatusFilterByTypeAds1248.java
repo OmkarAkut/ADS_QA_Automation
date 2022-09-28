@@ -5,12 +5,16 @@ import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+
+import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.helpers.UcqcHelper;
 import webdriver.maps.DialogsMap;
@@ -29,52 +33,70 @@ public class CalculationStatusFilterByTypeAds1248 extends UcqcHelper {
    * on the Calculation Status page.
    */
   @BeforeClass
-  public static void setupScript() throws Exception {
-    status = BuildMap.getInstance(driver, StatusMap.class);
-    filter = BuildMap.getInstance(driver,DialogsMap.class);
-    System.out.println("Test Class: " + CalculationStatusFilterByTypeAds1248.class.getSimpleName());
-    Login.loginUser("CostingDepartmentManager1");
-    goToPage("Calculation Status");
-    waitForAjaxExtJs();
-    OpenCalculationStatusFilterDialog();
+  public static void setupScript() throws Exception,Throwable {
+	 ExtentReport.reportCreate("CalculationStatusFilterByTypeAds1248", "webdriver.scripts.status.calculationstatus", "CalculationStatusFilterByTypeAds1248");
+    try {
+		status = BuildMap.getInstance(driver, StatusMap.class);
+		filter = BuildMap.getInstance(driver,DialogsMap.class);
+		System.out.println("Test Class: " + CalculationStatusFilterByTypeAds1248.class.getSimpleName());
+		Login.loginUser("CostingDepartmentManager1");
+		goToPage("Calculation Status");
+		waitForAjaxExtJs();
+		OpenCalculationStatusFilterDialog();
+		ExtentReport.logPass("PASS", "setupScript");
+	} catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "Failure in setupScript", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test02SelectCategoryAndAssertDefaultValues() {
+  public void test02SelectCategoryAndAssertDefaultValues() throws Throwable {
     try {
       doSelectCalcStatusFilterCriteria("Field", "Type");
       assertCalcStatusFilterOptionText("operator", "Is");
       assertCalcStatusFilterOptionText("condition", "Equal To");
-    } catch (Throwable e) {
+      ExtentReport.logPass("PASS", "test02SelectCategoryAndAssertDefaultValues");
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test02SelectCategoryAndAssertDefaultValues", driver, e);
+
       fail(e.getMessage());
     }
   }
 
   @Test
-  public void test03ConfirmEqualToValueAndAssertCriteriaMatch() {
+  public void test03ConfirmEqualToValueAndAssertCriteriaMatch() throws Throwable {
     try {
       doSelectCalcStatusFilterCriteria("Value", "Unit Cost Quick Calculation");
       doClick(status.getStatusFilterDialogButtonAdd());
       waitForAjaxExtJs();
       assertCalcStatusFilterToMatchCriteriaMessage("Type Is Equal To Unit Cost Quick Calculation");
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test03ConfirmEqualToValueAndAssertCriteriaMatch");
+ 
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test03ConfirmEqualToValueAndAssertCriteriaMatch", driver, e);
+
+	      fail(e.getMessage());
+	    }
   }
 
   @Test
-  public void test04ApplyFilterAndAssertEqualToUcqc() {
+  public void test04ApplyFilterAndAssertEqualToUcqc() throws Throwable {
     try {
       doClick(filter.getFilterDialogButtonApplyFilter());
       waitForAjaxExtJs();
       assertCalcStatusTypeValueIsEqual("Unit Cost Quick Calculation");
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test04ApplyFilterAndAssertEqualToUcqc");
+
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test04ApplyFilterAndAssertEqualToUcqc", driver, e);
+
+	      fail(e.getMessage());
+	    }
   }
 
   @Test
-  public void test05ConfirmIsNotOperationAndAssertCriteriaMatch() {
+  public void test05ConfirmIsNotOperationAndAssertCriteriaMatch() throws Throwable {
     try {
       doClick(status.getCalculationStatusPageButtonClearFilter());
       waitForAjaxExtJs();
@@ -87,24 +109,32 @@ public class CalculationStatusFilterByTypeAds1248 extends UcqcHelper {
       doClick(status.getStatusFilterDialogButtonAdd());
       waitForAjaxExtJs();
       assertCalcStatusFilterToMatchCriteriaMessage("Type Is not Equal To Unit Cost Quick Calculation");
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test05ConfirmIsNotOperationAndAssertCriteriaMatch");
+
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test05ConfirmIsNotOperationAndAssertCriteriaMatch", driver, e);
+
+	      fail(e.getMessage());
+	    }
   }
 
   @Test
-  public void test06ApplyFilterAndAssertIsNotEqualToUcqc() {
+  public void test06ApplyFilterAndAssertIsNotEqualToUcqc() throws Throwable {
     try {
       doClickButton("Apply Filter");
       waitForAjaxExtJs();
       assertCalcStatusTypeValueIsNotEqual("Unit Cost Quick Calculation");
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test06ApplyFilterAndAssertIsNotEqualToUcqc");
+
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test06ApplyFilterAndAssertIsNotEqualToUcqc", driver, e);
+
+	      fail(e.getMessage());
+	    }
   }
 
   @Test
-  public void test07ConfirmContainsConditionAndAssertCriteriaMatch() {
+  public void test07ConfirmContainsConditionAndAssertCriteriaMatch() throws Throwable {
     try {
       doClick(status.getCalculationStatusPageButtonFilter());
       waitForAjaxExtJs();
@@ -118,25 +148,32 @@ public class CalculationStatusFilterByTypeAds1248 extends UcqcHelper {
       //            doClick(driver.findElement(By.xpath("//span[text()=\"Add\"]")));
       waitForAjaxExtJs();
       assertCalcStatusFilterToMatchCriteriaMessage("Type Is Contains RVU");
+      ExtentReport.logPass("PASS", "test07ConfirmContainsConditionAndAssertCriteriaMatch");
 
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test07ConfirmContainsConditionAndAssertCriteriaMatch", driver, e);
+
+	      fail(e.getMessage());
+	    }
   }
 
   @Test
-  public void test08ApplyFilterAndAssertIsContainsUcqc() {
+  public void test08ApplyFilterAndAssertIsContainsUcqc() throws Throwable {
     try {
       doClickButton("Apply Filter");
       waitForAjaxExtJs();
       assertCalcStatusTypeValueIsContains("RVU");
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test08ApplyFilterAndAssertIsContainsUcqc");
+
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test08ApplyFilterAndAssertIsContainsUcqc", driver, e);
+
+	      fail(e.getMessage());
+	    }
   }
 
   @Test
-  public void test09ConfirmStartsWithConditionAndAssertCriteriaMatch() {
+  public void test09ConfirmStartsWithConditionAndAssertCriteriaMatch() throws Throwable {
     try {
       doClick(status.getCalculationStatusPageButtonFilter());
       waitForAjaxExtJs();
@@ -149,24 +186,32 @@ public class CalculationStatusFilterByTypeAds1248 extends UcqcHelper {
       doClick(driver.findElement(By.xpath("//span[text()=\"Add\"]")));
       waitForAjaxExtJs();
       assertCalcStatusFilterToMatchCriteriaMessage("Type Is Starts With Group");
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test09ConfirmStartsWithConditionAndAssertCriteriaMatch");
+
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test09ConfirmStartsWithConditionAndAssertCriteriaMatch", driver, e);
+
+	      fail(e.getMessage());
+	    }
   }
 
   @Test
-  public void test10ApplyFilterAndAssertIsStartsWithUcqc() {
+  public void test10ApplyFilterAndAssertIsStartsWithUcqc() throws Throwable {
     try {
       doClickButton("Apply Filter");
       waitForAjaxExtJs();
       assertCalcStatusTypeValueIsStartsWith("Group");
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test10ApplyFilterAndAssertIsStartsWithUcqc");
+
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test10ApplyFilterAndAssertIsStartsWithUcqc", driver, e);
+
+	      fail(e.getMessage());
+	    }
   }
 
   @Test
-  public void test11ConfirmEndsWithConditionAndAssertCriteriaMatch() {
+  public void test11ConfirmEndsWithConditionAndAssertCriteriaMatch() throws Throwable {
     try {
       doClick(status.getCalculationStatusPageButtonFilter());
       waitForAjaxExtJs();
@@ -179,24 +224,32 @@ public class CalculationStatusFilterByTypeAds1248 extends UcqcHelper {
       doClick(status.getStatusFilterDialogButtonAdd());
       waitForAjaxExtJs();
       assertCalcStatusFilterToMatchCriteriaMessage("Type Is Ends With Costs");
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test11ConfirmEndsWithConditionAndAssertCriteriaMatch");
+
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test11ConfirmEndsWithConditionAndAssertCriteriaMatch", driver, e);
+
+	      fail(e.getMessage());
+	    }
   }
 
   @Test
-  public void test12ApplyFilterAndAssertIsEndsWithUcqc() {
+  public void test12ApplyFilterAndAssertIsEndsWithUcqc() throws Throwable {
     try {
       doClickButton("Apply Filter");
       waitForAjaxExtJs();
       assertCalcStatusTypeValueIsEndsWith("Costs");
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test12ApplyFilterAndAssertIsEndsWithUcqc");
+
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test12ApplyFilterAndAssertIsEndsWithUcqc", driver, e);
+
+	      fail(e.getMessage());
+	    }
   }
 
   @Test
-  public void test13ConfirmOneOfConditionAndAssertCriteriaMatch() {
+  public void test13ConfirmOneOfConditionAndAssertCriteriaMatch() throws Throwable {
     try {
       doClick(status.getCalculationStatusPageButtonFilter());
       waitForAjaxExtJs();
@@ -214,20 +267,28 @@ public class CalculationStatusFilterByTypeAds1248 extends UcqcHelper {
       doClick(status.getStatusFilterDialogButtonAdd());
       waitForAjaxExtJs();
       assertCalcStatusFilterToMatchCriteriaMessage("Type Is One Of RVU Calculation, Statistic Data Calculation");
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test13ConfirmOneOfConditionAndAssertCriteriaMatch");
+
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test13ConfirmOneOfConditionAndAssertCriteriaMatch", driver, e);
+
+	      fail(e.getMessage());
+	    }
   }
 
   @Test
-  public void test14ApplyFilterAndAssertIsOneOfUcqc() {
+  public void test14ApplyFilterAndAssertIsOneOfUcqc() throws Throwable {
     try {
       doClickButton("Apply Filter");
       waitForAjaxExtJs();
       assertCalcStatusTypeValueIsOneOf("RVU Calculation","Statistic Data Calculation");
-    } catch (Throwable e) {
-      fail(e.getMessage());
-    }
+      ExtentReport.logPass("PASS", "test14ApplyFilterAndAssertIsOneOfUcqc");
+
+    } catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test14ApplyFilterAndAssertIsOneOfUcqc", driver, e);
+
+	      fail(e.getMessage());
+	    }
   }
 
   public void assertCalcStatusFilterOptionText(String nameAttribute, String optionText) {
@@ -356,4 +417,12 @@ public class CalculationStatusFilterByTypeAds1248 extends UcqcHelper {
       fail(e.getMessage());
     }
   }
+  
+
+  @AfterClass
+	public static void endtest() throws Exception {
+
+		ExtentReport.report.flush();
+
+	}
 }

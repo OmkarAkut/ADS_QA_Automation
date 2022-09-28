@@ -1,10 +1,16 @@
 package webdriver.scripts.security.ucqcroles;
 
+import static org.junit.Assert.fail;
+
 import java.util.Arrays;
 import java.util.Collection;
+
+import org.junit.AfterClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+
+import ExtentReport.ExtentReport;
 import webdriver.globalstatic.LoginRolesTesting;
 import webdriver.maps.GeneralElementsMap;
 import webdriver.maps.mapbuilder.BuildMap;
@@ -45,9 +51,13 @@ public class UcqcLinkInCostingBubbleDisplayedAds1466 extends LoginRolesTesting {
   }
 
   @Test
-  public void testAssertUcqcLinkInCostingBubbleIsDisplayed() {
-    GeneralElementsMap geMap = BuildMap.getInstance(driver, GeneralElementsMap.class);
+  public void testAssertUcqcLinkInCostingBubbleIsDisplayed() throws Throwable {
+	  ExtentReport.reportCreate("UcqcLinkInCostingBubbleDisplayedAds1466","webdriver.scripts.security.ucqcroles","UcqcLinkInCostingBubbleDisplayedAds1466");
+    
+	  
+	
     try {
+    	GeneralElementsMap geMap = BuildMap.getInstance(driver, GeneralElementsMap.class);
       waitForAjaxExtJs();
       assertThatElementIsDisplayed(geMap.getLandingPageBubbleCostingQuickLinkUnitCostQuickCalculation());
 //      String[] expectedLinks = {"Unit Cost Quick Calculation"};
@@ -64,10 +74,20 @@ public class UcqcLinkInCostingBubbleDisplayedAds1466 extends LoginRolesTesting {
       waitForAjaxExtJs();
       assertPageInformation("Unit Cost Quick Calculation");
       doClosePageOnLowerBar("Unit Cost Quick...");
-    } catch (Throwable e){
-      System.out.println(e.getMessage());
+      ExtentReport.logPass("PASS", "testAssertUcqcLinkInCostingBubbleIsDisplayed");
+    } catch (Exception|AssertionError e){
+    	ExtentReport.logFail("FAIL", "testAssertUcqcLinkInCostingBubbleIsDisplayed", driver, e);
+		fail(e.getMessage());
+   
     }
   }
+  
+  @AfterClass
+	public static void endtest() throws Exception {
+
+		ExtentReport.report.flush();
+
+	}
 
 }
 

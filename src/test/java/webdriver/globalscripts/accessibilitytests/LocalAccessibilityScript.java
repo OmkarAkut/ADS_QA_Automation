@@ -1,6 +1,9 @@
 package webdriver.globalscripts.accessibilitytests;
 
 import com.deque.axe.AXE;
+
+import ExtentReport.ExtentReport;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.json.JSONArray;
@@ -13,6 +16,8 @@ import org.junit.rules.TestName;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import webdriver.utilities.Axe;
+
+import static org.junit.Assert.fail;
 
 import java.net.URL;
 
@@ -27,21 +32,36 @@ public class LocalAccessibilityScript {
     private final URL scriptUrl = Axe.class.getResource("/axe.min.js");
 
     @Before
-    public void setupScript() throws InterruptedException {
-        System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+"//src//main//resources//drivers//chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.get(System.getProperty("user.dir")+"//TestFiles//Test Web Page.html");
-        Thread.sleep(500);
+    public void setupScript() throws InterruptedException,Throwable {
+    	ExtentReport.reportCreate("LocalAccessibilityScript", "webdriver.globalscripts.accessibilitytests", "LocalAccessibilityScript");
+        try {
+			System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir")+"//src//main//resources//drivers//chromedriver.exe");
+			driver = new ChromeDriver();
+			driver.get(System.getProperty("user.dir")+"//TestFiles//Test Web Page.html");
+			Thread.sleep(500);
+			ExtentReport.logPass("PASS", "setupScript");
+    	} catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "Failure in setupScript ", driver, e);
+    	fail(e.getMessage());
+    	}
     }
 
     @After
     public void teardown() {
+    	ExtentReport.report.flush();
         driver.quit();
+        
     }
 
     @Test
-    public void testLocalAccessibilityScript() throws InterruptedException {
-        runAxe(driver);
+    public void testLocalAccessibilityScript() throws InterruptedException,Throwable {
+        try {
+			runAxe(driver);
+			ExtentReport.logPass("PASS", "testLocalAccessibilityScript");
+    	} catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL", "testLocalAccessibilityScript", driver, e);
+    	fail(e.getMessage());
+    	}
     }
 
     public void runAxe(WebDriver driver) {

@@ -1,13 +1,18 @@
 package webdriver.globalscripts.accessibilitytests;
 
+import static org.junit.Assert.fail;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestName;
 import org.junit.runners.MethodSorters;
+
+import ExtentReport.ExtentReport;
 import webdriver.globalstatic.LoginStatic;
 import webdriver.maps.DataMaintenanceMap;
 import webdriver.maps.mapbuilder.BuildMap;
@@ -26,19 +31,33 @@ public class AdsAccessibilityMainPagesSuite extends LoginStatic {
   public TestName name = new TestName();
 
   /** Updated: 9-11-19. Test suite to run Axe accessibility test across all pages of ADS.  Each new page that is added
-   *  should be contained in its own atTest method.  */
+   *  should be contained in its own atTest method.  
+ * @throws Exception */
   @BeforeClass
-  public static void setupScript() {
-    dm = BuildMap.getInstance(driver, DataMaintenanceMap.class);
-    logger.info(AdsAccessibilityMainPagesSuite.class.getSimpleName());
-    loginUser(Users.AppSupportUser);
+  public static void setupScript() throws Exception,Throwable {
+	  ExtentReport.reportCreate("AdsAccessibilityMainPagesSuite", "webdriver.globalscripts.accessibilitytests", "AdsAccessibilityMainPagesSuite");
+    try {
+		dm = BuildMap.getInstance(driver, DataMaintenanceMap.class);
+		logger.info(AdsAccessibilityMainPagesSuite.class.getSimpleName());
+		loginUser(Users.AppSupportUser);
+		ExtentReport.logPass("PASS", "setupScript");
+	} catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "Failure in setupScript", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void test01LandingPageAccessibilityTest() throws InterruptedException {
-    waitForSpinnerToEnd();
-    waitForAjaxExtJs();
-    ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName());
+  public void test01LandingPageAccessibilityTest() throws InterruptedException,Throwable {
+    try {
+		waitForSpinnerToEnd();
+		waitForAjaxExtJs();
+		ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName());
+		ExtentReport.logPass("PASS", "test01LandingPageAccessibilityTest");
+	} catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "test01LandingPageAccessibilityTest", driver, e);
+		fail(e.getMessage());
+	}
   }
 
 //  @Test
@@ -143,62 +162,109 @@ public class AdsAccessibilityMainPagesSuite extends LoginStatic {
 //  }
 //
   @Test
-  public void testSystemMaintenanceTabTerminalServerSessionsPage() throws InterruptedException {
-    goToPage("Terminal Server Sessions");
-    waitForAjaxExtJs();
-    ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName());
-    doClosePageOnLowerBar("Terminal Server...");
+  public void testSystemMaintenanceTabTerminalServerSessionsPage() throws InterruptedException,Throwable {
+    try {
+		goToPage("Terminal Server Sessions");
+		waitForAjaxExtJs();
+		ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName());
+		doClosePageOnLowerBar("Terminal Server...");
+		ExtentReport.logPass("PASS", "testSystemMaintenanceTabTerminalServerSessionsPage");
+	} catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "testSystemMaintenanceTabTerminalServerSessionsPage", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void testSystemMaintenanceTabCustomizeTaskListsPage() throws InterruptedException {
-    goToPage("Customize Task Lists");
-    waitForAjaxExtJs();
-    ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName());
-    doClosePageOnLowerBar("Customize Task Lists");
+  public void testSystemMaintenanceTabCustomizeTaskListsPage() throws InterruptedException,Throwable {
+    try {
+		goToPage("Customize Task Lists");
+		waitForAjaxExtJs();
+		ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName());
+		doClosePageOnLowerBar("Customize Task Lists");
+		ExtentReport.logPass("PASS", "testSystemMaintenanceTabCustomizeTaskListsPage");
+	} catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "testSystemMaintenanceTabCustomizeTaskListsPage", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void testSystemMaintenanceTabCustomizeMaintainDataPage() throws InterruptedException {
-    goToPage("Customize Maintain Data");
-    waitForSpinnerToEnd();
-    waitForAjaxExtJs();
-    ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName());
-    doClosePageOnLowerBar("Customize Maintain Data");
+  public void testSystemMaintenanceTabCustomizeMaintainDataPage() throws InterruptedException,Throwable {
+    try {
+		goToPage("Customize Maintain Data");
+		waitForSpinnerToEnd();
+		waitForAjaxExtJs();
+		ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName());
+		doClosePageOnLowerBar("Customize Maintain Data");
+		ExtentReport.logPass("PASS", "testSystemMaintenanceTabCustomizeMaintainDataPage");
+	} catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "testSystemMaintenanceTabCustomizeMaintainDataPage", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void testSystemMaintenanceTabGeneralSettingsPage() throws InterruptedException {
-    goToPage("General Settings");
-    waitForAjaxExtJs();
-    ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName());
-    doClosePageOnLowerBar("General Settings");
+  public void testSystemMaintenanceTabGeneralSettingsPage() throws InterruptedException,Throwable {
+    try {
+		goToPage("General Settings");
+		waitForAjaxExtJs();
+		ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName());
+		doClosePageOnLowerBar("General Settings");
+		ExtentReport.logPass("PASS", "testSystemMaintenanceTabGeneralSettingsPage");
+	} catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "testSystemMaintenanceTabGeneralSettingsPage", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void testSystemMaintenanceTabSecuritySettingsPage() throws InterruptedException {
-    goToPage("Security Settings");
-    waitForAjaxExtJs();
-    ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName());
-    doClosePageOnLowerBar("Security Settings");
+  public void testSystemMaintenanceTabSecuritySettingsPage() throws InterruptedException,Throwable {
+    try {
+		goToPage("Security Settings");
+		waitForAjaxExtJs();
+		ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName());
+		doClosePageOnLowerBar("Security Settings");
+		ExtentReport.logPass("PASS", "testSystemMaintenanceTabSecuritySettingsPage");
+	} catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "testSystemMaintenanceTabSecuritySettingsPage", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void testSystemMaintenanceTabRolesPage() throws InterruptedException {
-    goToPage("Roles");
-    waitForAjaxExtJs();
-    ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName());
-    doClosePageOnLowerBar("Roles");
+  public void testSystemMaintenanceTabRolesPage() throws InterruptedException,Throwable {
+    try {
+		goToPage("Roles");
+		waitForAjaxExtJs();
+		ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName());
+		doClosePageOnLowerBar("Roles");
+		ExtentReport.logPass("PASS", "testSystemMaintenanceTabRolesPage");
+	} catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "testSystemMaintenanceTabRolesPage", driver, e);
+		fail(e.getMessage());
+	}
   }
 
   @Test
-  public void testSystemMaintenanceTabUsersPage() throws InterruptedException {
-    goToPage("Users");
-    waitForAjaxExtJs();
-    ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName());
-    doClosePageOnLowerBar("Users");
+  public void testSystemMaintenanceTabUsersPage() throws InterruptedException,Throwable {
+    try {
+		goToPage("Users");
+		waitForAjaxExtJs();
+		ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName());
+		doClosePageOnLowerBar("Users");
+		ExtentReport.logPass("PASS", "testSystemMaintenanceTabUsersPage");
+	} catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "testSystemMaintenanceTabUsersPage", driver, e);
+		fail(e.getMessage());
+	}
   }
+  @AfterClass
+	public static void endtest() throws Exception {
 
+		ExtentReport.report.flush();
+
+	}
 //  @Test
 //  public void testStatusTabCalculationStatusPage() throws InterruptedException {
 //    goToPage("Calculation Status");

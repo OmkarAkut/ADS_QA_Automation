@@ -3,6 +3,7 @@ package webdriver.scripts.costing.unitcostquickcalculation.ucqcrvus;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Ignore;
@@ -11,6 +12,8 @@ import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
+
+import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.helpers.UcqcHelper;
 import webdriver.maps.CostingMap;
@@ -28,20 +31,30 @@ public class UcqcWarningPopsUpWhenClearQuickRvusAndSaveButtonIsClickedAds1142 ex
     static String initialCellValue = null;
     String currentCellValue = null;
     String warningText = null;
-    String[] requiredFields = {"QA Cost Model", "QA MHFY05 After Vol Change", "150 Marina Medical Center", "2110  ICU", "Apr 2004 to Mar 2005"};
+    String[] requiredFields = {"QA Cost Model", "QA MHFY05 After Vol Change", "150 Marina Medical Center",
+    		//"2110  ICU",
+    		"2110", //venkat update department filed value 21.09.2022
+    		"Apr 2004 to Mar 2005"};
 
     @BeforeClass
-    public static void setupScript() throws Exception {
-       act = new Actions(driver);
-       ucqcMap = BuildMap.getInstance(driver, CostingMap.class);
-       System.out.println("Test Class: " + UcqcWarningPopsUpWhenClearQuickRvusAndSaveButtonIsClickedAds1142.class.getSimpleName());
-       Login.loginUser("CostingDepartmentManager1");
-       goToPage("Unit Cost Quick Calculation");
-       doMaximizeWindow();
+    public static void setupScript() throws Exception,Throwable {
+    	ExtentReport.reportCreate("UcqcWarningPopsUpWhenClearQuickRvusAndSaveButtonIsClickedAds1142", "webdriver.scripts.costing.unitcostquickcalculation.ucqcrvus", "UcqcWarningPopsUpWhenClearQuickRvusAndSaveButtonIsClickedAds1142");
+       try {
+		act = new Actions(driver);
+		   ucqcMap = BuildMap.getInstance(driver, CostingMap.class);
+		   System.out.println("Test Class: " + UcqcWarningPopsUpWhenClearQuickRvusAndSaveButtonIsClickedAds1142.class.getSimpleName());
+		   Login.loginUser("CostingDepartmentManager1");
+		   goToPage("Unit Cost Quick Calculation");
+		   doMaximizeWindow();
+		   ExtentReport.logPass("PASS", "setupScript");
+   	} catch (Exception|AssertionError e) {
+   		ExtentReport.logFail("FAIL", "Failure in setupScript", driver, e);
+   		fail(e.getMessage());
+   	}
     }
 
     @Test
-    public void test02TestSetup() {
+    public void test02TestSetup() throws Throwable {
         try {
             waitForAjaxExtJs();
             ucqcPopulateRequiredFieldsToDisplayGrid(requiredFields);
@@ -52,62 +65,96 @@ public class UcqcWarningPopsUpWhenClearQuickRvusAndSaveButtonIsClickedAds1142 ex
             ucqcGridClickInCell("1100023","Quick Salaries and Wages RVU", printout);
             waitForAjaxExtJs();
             assertElementIsEnabled(ucqcMap.getUnitCostQuickCalculationButtonClearQuickRVUsAndSave(), printout);
-        } catch (Throwable e){
-            fail(e.getMessage());
-        }
+            ExtentReport.logPass("PASS", "test02TestSetup");
+       	} catch (Exception|AssertionError e) {
+       		ExtentReport.logFail("FAIL", "test02TestSetup", driver, e);
+       		fail(e.getMessage());
+       	}
     }
 
     @Test
     public void test03aVerifyClickingClearQuickRvuAndSaveTriggersWarningMessage()
-            throws InterruptedException {
-        doClick(ucqcMap.getUnitCostQuickCalculationButtonClearQuickRVUsAndSave());
-        assertClearQuickRvusAndSaveDialog();
+            throws Throwable {
+        try {
+			doClick(ucqcMap.getUnitCostQuickCalculationButtonClearQuickRVUsAndSave());
+			assertClearQuickRvusAndSaveDialog();
+			ExtentReport.logPass("PASS", "test03aVerifyClickingClearQuickRvuAndSaveTriggersWarningMessage");
+       	} catch (Exception|AssertionError e) {
+       		ExtentReport.logFail("FAIL", "test03aVerifyClickingClearQuickRvuAndSaveTriggersWarningMessage", driver, e);
+       		fail(e.getMessage());
+       	}
     }
 
     @Test
-    public void test03bVerifyClearQuickRvuAndSaveWarningDialogMessageContent() {
-        warningText = driver.findElement(By.xpath(
-                "//*[contains(@id, 'warningwindow') and text()='Warning']/ancestor::div/descendant::div[contains(@id,'panel') and contains(@id,'body')]/div")).getText();
-        assertEquals(expectedWarningText, warningText);
+    public void test03bVerifyClearQuickRvuAndSaveWarningDialogMessageContent() throws Throwable {
+        try {
+			warningText = driver.findElement(By.xpath(
+			        "//*[contains(@id, 'warningwindow') and text()='Warning']/ancestor::div/descendant::div[contains(@id,'panel') and contains(@id,'body')]/div")).getText();
+			assertEquals(expectedWarningText, warningText);
+			ExtentReport.logPass("PASS", "test03bVerifyClearQuickRvuAndSaveWarningDialogMessageContent");
+       	} catch (Exception|AssertionError e) {
+       		ExtentReport.logFail("FAIL", "test03bVerifyClearQuickRvuAndSaveWarningDialogMessageContent", driver, e);
+       		fail(e.getMessage());
+       	}
     }
 
     @Test
     public void test04ClearQuickRvuAndSaveDialogCancelButtonClosesDialog()
-            throws InterruptedException {
-        driver.findElement(By.xpath("//*[contains(@id, 'warningwindow') and text()='Warning']/ancestor::div/descendant::span[text()='Cancel']")).click();
-        assertDialogClosesProperly();
+            throws Throwable {
+        try {
+			driver.findElement(By.xpath("//*[contains(@id, 'warningwindow') and text()='Warning']/ancestor::div/descendant::span[text()='Cancel']")).click();
+			assertDialogClosesProperly();
+			ExtentReport.logPass("PASS", "test04ClearQuickRvuAndSaveDialogCancelButtonClosesDialog");
+       	} catch (Exception|AssertionError e) {
+       		ExtentReport.logFail("FAIL", "test04ClearQuickRvuAndSaveDialogCancelButtonClosesDialog", driver, e);
+       		fail(e.getMessage());
+       	}
     }
 
     @Test
-    public void test05ClearQuickRvuAndSaveDialogTriggeredWhenAllValuesOfQuickRvuColumnAreSelected() {
+    public void test05ClearQuickRvuAndSaveDialogTriggeredWhenAllValuesOfQuickRvuColumnAreSelected() throws Throwable {
         try {
             waitForAjaxExtJs();
             ucqcGridClickHeader("Quick Salaries and Wages RVU", printout);
             doClick(ucqcMap.getUnitCostQuickCalculationButtonClearQuickRVUsAndSave());
             waitForAjaxExtJs();
             assertClearQuickRvusAndSaveDialog();
-        } catch (Throwable e){
-            fail(e.getMessage());
-        }
+            ExtentReport.logPass("PASS", "test05ClearQuickRvuAndSaveDialogTriggeredWhenAllValuesOfQuickRvuColumnAreSelected");
+       	} catch (Exception|AssertionError e) {
+       		ExtentReport.logFail("FAIL", "test05ClearQuickRvuAndSaveDialogTriggeredWhenAllValuesOfQuickRvuColumnAreSelected", driver, e);
+       		fail(e.getMessage());
+       	}
     }
 
     @Test
-    public void test06aClearQuickRvuAndSaveDialogCancelXClosesDialog() throws InterruptedException {
-        driver.findElement(By.xpath("//*[contains(@id, 'warningwindow') and text()='Warning']/ancestor::div/descendant::span[text()='Cancel']")).click();
-        waitForAjaxExtJs();
-        assertElementIsNotDisplayed(By.xpath("//*[contains(@id, 'warningwindow') and text()='Warning']"));
+    public void test06aClearQuickRvuAndSaveDialogCancelXClosesDialog() throws Throwable {
+        try {
+			driver.findElement(By.xpath("//*[contains(@id, 'warningwindow') and text()='Warning']/ancestor::div/descendant::span[text()='Cancel']")).click();
+			waitForAjaxExtJs();
+			assertElementIsNotDisplayed(By.xpath("//*[contains(@id, 'warningwindow') and text()='Warning']"));
+			 ExtentReport.logPass("PASS", "test06aClearQuickRvuAndSaveDialogCancelXClosesDialog");
+       	} catch (Exception|AssertionError e) {
+       		ExtentReport.logFail("FAIL", "test06aClearQuickRvuAndSaveDialogCancelXClosesDialog", driver, e);
+       		fail(e.getMessage());
+       	}
     }
 
     @Ignore
     @Test
-    public void test06bAssertCellValueRemainsUnchanged() throws InterruptedException {
-        driver.findElement(By.xpath("//table/tbody/tr[@class='x-grid-row']/td/div[text()='1']")).click();
-        currentCellValue = getNewCellValue("1100023","Quick Salaries and Wages RVU");
-        assertEquals(initialCellValue, currentCellValue);
+    public void test06bAssertCellValueRemainsUnchanged() throws InterruptedException ,Throwable{
+        try {
+			driver.findElement(By.xpath("//table/tbody/tr[@class='x-grid-row']/td/div[text()='1']")).click();
+			currentCellValue = getNewCellValue("1100023","Quick Salaries and Wages RVU");
+			assertEquals(initialCellValue, currentCellValue);
+			 ExtentReport.logPass("PASS", "test06bAssertCellValueRemainsUnchanged");
+       	} catch (Exception|AssertionError e) {
+       		ExtentReport.logFail("FAIL", "test06bAssertCellValueRemainsUnchanged", driver, e);
+       		fail(e.getMessage());
+       	}
     }
 
     @Test
-    public void test07UcqcPageVerifyClearQuickRvuAndSaveDialogTriggeredAfterSelectingMultipleQuickRvuCellsInSameColumnWithControlButton(){
+    public void test07UcqcPageVerifyClearQuickRvuAndSaveDialogTriggeredAfterSelectingMultipleQuickRvuCellsInSameColumnWithControlButton() throws Throwable{
         try {
             ucqcGridClickInCell("1100031","Quick Salaries and Wages RVU", printout);
             waitForAjaxExtJs();
@@ -116,20 +163,28 @@ public class UcqcWarningPopsUpWhenClearQuickRvusAndSaveButtonIsClickedAds1142 ex
             act.keyUp(Keys.CONTROL).perform();
             doClick(ucqcMap.getUnitCostQuickCalculationButtonClearQuickRVUsAndSave());
             assertClearQuickRvusAndSaveDialog();
-        } catch (Throwable e){
-            fail(e.getMessage());
-        }
+            ExtentReport.logPass("PASS", "test07UcqcPageVerifyClearQuickRvuAndSaveDialogTriggeredAfterSelectingMultipleQuickRvuCellsInSameColumnWithControlButton");
+       	} catch (Exception|AssertionError e) {
+       		ExtentReport.logFail("FAIL", "test07UcqcPageVerifyClearQuickRvuAndSaveDialogTriggeredAfterSelectingMultipleQuickRvuCellsInSameColumnWithControlButton", driver, e);
+       		fail(e.getMessage());
+       	}
     }
 
     @Test
     public void test08ClearQuickRvuAndSaveDialogCancelButtonClosesDialog()
-            throws InterruptedException {
-        driver.findElement(By.xpath("//*[contains(@id, 'warningwindow') and text()='Warning']/ancestor::div/descendant::span[text()='Cancel']")).click();
-        assertDialogClosesProperly();
+            throws Throwable {
+        try {
+			driver.findElement(By.xpath("//*[contains(@id, 'warningwindow') and text()='Warning']/ancestor::div/descendant::span[text()='Cancel']")).click();
+			assertDialogClosesProperly();
+			  ExtentReport.logPass("PASS", "test08ClearQuickRvuAndSaveDialogCancelButtonClosesDialog");
+       	} catch (Exception|AssertionError e) {
+       		ExtentReport.logFail("FAIL", "test08ClearQuickRvuAndSaveDialogCancelButtonClosesDialog", driver, e);
+       		fail(e.getMessage());
+       	}
     }
 
     @Test
-    public void test09UcqcPageVerifyClearQuickRvuAndSaveDialogTriggeredAfterSelectingMultipleQuickRvuColumnHeaders() {
+    public void test09UcqcPageVerifyClearQuickRvuAndSaveDialogTriggeredAfterSelectingMultipleQuickRvuColumnHeaders() throws Throwable {
         try {
             waitForAjaxExtJs();
             ucqcGridClickHeader("Quick Salaries and Wages RVU", printout);
@@ -141,28 +196,38 @@ public class UcqcWarningPopsUpWhenClearQuickRvusAndSaveButtonIsClickedAds1142 ex
             waitForAjaxExtJs();
             doClick(ucqcMap.getUnitCostQuickCalculationButtonClearQuickRVUsAndSave());
             assertClearQuickRvusAndSaveDialog();
-        } catch (Throwable e){
-            fail(e.getMessage());
-        }
+            ExtentReport.logPass("PASS", "test09UcqcPageVerifyClearQuickRvuAndSaveDialogTriggeredAfterSelectingMultipleQuickRvuColumnHeaders");
+       	} catch (Exception|AssertionError e) {
+       		ExtentReport.logFail("FAIL", "test09UcqcPageVerifyClearQuickRvuAndSaveDialogTriggeredAfterSelectingMultipleQuickRvuColumnHeaders", driver, e);
+       		fail(e.getMessage());
+       	}
     }
 
     @Test
-    public void test10ClearQuickRvuAndSaveDialogCancelButtonClosesDialog() {
+    public void test10ClearQuickRvuAndSaveDialogCancelButtonClosesDialog() throws Throwable {
         try {
             driver.findElement(By.xpath("//*[contains(@id, 'warningwindow') and text()='Warning']/ancestor::div/descendant::span[text()='Cancel']")).click();
             waitForAjaxExtJs();
             assertElementIsNotDisplayed(By.xpath("//*[contains(@id, 'warningwindow') and text()='Warning']"));
-        } catch (Throwable e){
-            fail(e.getMessage());
-        }
+            ExtentReport.logPass("PASS", "test10ClearQuickRvuAndSaveDialogCancelButtonClosesDialog");
+       	} catch (Exception|AssertionError e) {
+       		ExtentReport.logFail("FAIL", "test10ClearQuickRvuAndSaveDialogCancelButtonClosesDialog", driver, e);
+       		fail(e.getMessage());
+       	}
     }
 
     @Ignore
     @Test
-    public void test11AssertValueIsUnchanged() throws InterruptedException {
-        driver.findElement(By.xpath("//table/tbody/tr[@class='x-grid-row']/td/div[text()='1']")).click();
-        currentCellValue = getNewCellValue("1100023","Quick Salaries and Wages RVU");
-        assertEquals(initialCellValue, currentCellValue);
+    public void test11AssertValueIsUnchanged() throws InterruptedException,Throwable {
+        try {
+			driver.findElement(By.xpath("//table/tbody/tr[@class='x-grid-row']/td/div[text()='1']")).click();
+			currentCellValue = getNewCellValue("1100023","Quick Salaries and Wages RVU");
+			assertEquals(initialCellValue, currentCellValue);
+			 ExtentReport.logPass("PASS", "test11AssertValueIsUnchanged");
+       	} catch (Exception|AssertionError e) {
+       		ExtentReport.logFail("FAIL", "test11AssertValueIsUnchanged", driver, e);
+       		fail(e.getMessage());
+       	}
     }
 
     private void assertDialogClosesProperly() throws InterruptedException {
@@ -200,4 +265,10 @@ public class UcqcWarningPopsUpWhenClearQuickRvusAndSaveButtonIsClickedAds1142 ex
         }
         return columnValue;
     }
+    @AfterClass
+	public static void endtest() throws Exception {
+
+		ExtentReport.report.flush();
+
+	}
 }

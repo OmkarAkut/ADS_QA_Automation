@@ -23,24 +23,36 @@ public class UcqcCalculateButtonEnableAndDisableAds1152 extends UcqcHelper {
 	private static CostingMap ucqcMap;
 	private static Actions act;
 	private String[] requiredFields = { "QA Cost Model", "QA MHFY05 After Vol Change", "150 Marina Medical Center",
-			"2110  ICU", "Apr 2004 to Mar 2005" };
+			//"2110  ICU",
+			"2110", //venkat update text data 13.09.2022
+			"Apr 2004 to Mar 2005" };
 
 	@BeforeClass
-	public static void setupScript() throws Exception {
+	public static void setupScript() throws Throwable {
 		ExtentReport.reportCreate("UcqcCalculateButtonEnableAndDisableAds1152",
 				"webdriver.scripts.costing.unitcostquickcalculation.ucqccalculation",
 				"UcqcCalculateButtonEnableAndDisableAds1152");
-		act = new Actions(driver);
-		ucqcMap = BuildMap.getInstance(driver, CostingMap.class);
-		System.out.println("Test Class: " + UcqcCalculateButtonEnableAndDisableAds1152.class.getSimpleName());
-		Login.loginUser("CostingDepartmentManager1");
-		goToPage("Unit Cost Quick Calculation");
-		doMaximizeWindow();
+		
+		try {
+			act = new Actions(driver);
+			ucqcMap = BuildMap.getInstance(driver, CostingMap.class);
+			System.out.println("Test Class: " + UcqcCalculateButtonEnableAndDisableAds1152.class.getSimpleName());
+			Login.loginUser("CostingDepartmentManager1");
+			goToPage("Unit Cost Quick Calculation");
+			doMaximizeWindow();
+			ExtentReport.logPass("PASS", "setupScript");
+		} catch (Exception|AssertionError e) {
+			ExtentReport.logFail("FAIL", "setupScript", driver, e);
+			fail(e.getMessage());
+		}
+			
+		
 	}
 
 	@Test
 	public void test02UcqcPageVerifyDefaultStateOfCalculateButtonAsDisabled() throws Throwable {
 		try {
+			
 			waitForAjaxExtJs();
 			assertElementIsDisabled(ucqcMap.getUnitCostQuickCalculationButtonCalculate(), printout);
 			ExtentReport.logPass("PASS", "test02UcqcPageVerifyDefaultStateOfCalculateButtonAsDisabled");
@@ -53,6 +65,7 @@ public class UcqcCalculateButtonEnableAndDisableAds1152 extends UcqcHelper {
 	@Test
 	public void test03UcqcPageVerifyDisabledStateOfCalculateButtonAfterSelectingRequiredFields() throws Throwable {
 		try {
+			
 			waitForAjaxExtJs();
 			ucqcPopulateRequiredFieldsToDisplayGrid(requiredFields);
 			assertElementIsDisabled(ucqcMap.getUnitCostQuickCalculationButtonCalculate(), printout);

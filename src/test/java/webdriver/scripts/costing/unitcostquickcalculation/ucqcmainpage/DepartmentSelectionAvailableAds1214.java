@@ -5,12 +5,16 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+
+import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.helpers.UcqcHelper;
 import webdriver.maps.CostingMap;
@@ -26,61 +30,79 @@ public class DepartmentSelectionAvailableAds1214 extends UcqcHelper {
   String dept = "2130  PED ICU";
 
   /** Test tickets ADS-1212, 1214  (Dev tickets ADS-367, 584, 1048)
-  This script tests the Department drop down element. */
+  This script tests the Department drop down element. 
+ * @throws Throwable */
   @BeforeClass
-  public static void setupScript() throws Exception {
-    department = BuildMap.getInstance(driver, CostingMap.class);
-    dialogs = BuildMap.getInstance(driver, DialogsMap.class);
-    System.out.println("Test Class: " + DepartmentSelectionAvailableAds1214.class.getSimpleName());
-    Login.loginUser("CostingDepartmentManager1");
-    goToPage("Unit Cost Quick Calculation");
+  public static void setupScript() throws Throwable {
+	  
+	  ExtentReport.reportCreate("DepartmentSelectionAvailableAds1214","webdriver.scripts.costing.unitcostquickcalculation.ucqcmainpage", "DepartmentSelectionAvailableAds1214");
+		
+    try {
+		department = BuildMap.getInstance(driver, CostingMap.class);
+		dialogs = BuildMap.getInstance(driver, DialogsMap.class);
+		System.out.println("Test Class: " + DepartmentSelectionAvailableAds1214.class.getSimpleName());
+		Login.loginUser("CostingDepartmentManager1");
+		goToPage("Unit Cost Quick Calculation");
+		ExtentReport.logPass("PASS", "setupScript");
+	} catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL","setupScript", driver,e);
+		fail(e.getMessage());
+	} 
   }
 
   @Test
-  public void test01ConfirmSelectButtonIsDisabledByDefault() {
+  public void test01ConfirmSelectButtonIsDisabledByDefault() throws Throwable {
     try {
       waitForAjaxExtJs();
       assertElementIsDisabled(department.getUnitCostQuickCalculationButtonSelect(), printout);
-    } catch (Throwable e) {
+      ExtentReport.logPass("PASS", "test01ConfirmSelectButtonIsDisabledByDefault");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL","test01ConfirmSelectButtonIsDisabledByDefault", driver,e);
       fail(e.getMessage());
     }
   }
 
   @Test
-  public void test02ConfirmAsteriskDisplaysForDepartmentElementLabel() {
+  public void test02ConfirmAsteriskDisplaysForDepartmentElementLabel() throws Throwable {
     try {
       waitForAjaxExtJs();
       assertAsteriskIsDisplayed("Department");
-    } catch (Throwable e) {
+      ExtentReport.logPass("PASS", "test02ConfirmAsteriskDisplaysForDepartmentElementLabel");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL","test02ConfirmAsteriskDisplaysForDepartmentElementLabel", driver,e);
       fail(e.getMessage());
     }
   }
 
   @Test
-  public void test03SelectUcqcCriteriaAndAssertSelectButtonIsDisabled() {
+  public void test03SelectUcqcCriteriaAndAssertSelectButtonIsDisabled() throws Throwable {
     try {
       waitForAjaxExtJs();
       doDropdownSelectUsingOptionText(department.getUnitCostQuickCalculationDropdownCostModel(), department.getUnitCostQuickCalculationDropdownCostModelMenuList(), "Marina");
       doDropdownSelectUsingOptionText(department.getUnitCostQuickCalculationDropdownCostModelScenario(), department.getUnitCostQuickCalculationDropdownCostModelScenarioMenuList(), "ADS-1197 Multi Depts");
       assertElementIsDisabled(department.getUnitCostQuickCalculationButtonSelect(), printout);
-    } catch (Throwable e) {
+      ExtentReport.logPass("PASS", "test03SelectUcqcCriteriaAndAssertSelectButtonIsDisabled");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL","test03SelectUcqcCriteriaAndAssertSelectButtonIsDisabled", driver,e);
       fail(e.getMessage());
     }
   }
 
   @Test
-  public void test04SetDepartmentDropdownAndAssertDepartmentSelectButtonIsEnabled() {
+  public void test04SetDepartmentDropdownAndAssertDepartmentSelectButtonIsEnabled() throws Throwable {
     try {
       waitForAjaxExtJs();
       doDropdownSelectUsingOptionText(department.getUnitCostQuickCalculationDropdownEntity(), department.getUnitCostQuickCalculationDropdownEntityMenuList(), "150 Marina Medical Center");
       assertElementIsEnabled(department.getUnitCostQuickCalculationButtonSelect(), printout);
-    } catch (Throwable e) {
+      ExtentReport.logPass("PASS", "test04SetDepartmentDropdownAndAssertDepartmentSelectButtonIsEnabled");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL","test04SetDepartmentDropdownAndAssertDepartmentSelectButtonIsEnabled", driver,e);
       fail(e.getMessage());
     }
   }
 
   @Test
-  public void test05ConfirmDepartmentMenuOptionsAreFormattedProperly() {
+  public void test05ConfirmDepartmentMenuOptionsAreFormattedProperly() throws Throwable {
     try {
       waitForAjaxExtJs();
       selectDepartment(dept);
@@ -89,13 +111,15 @@ public class DepartmentSelectionAvailableAds1214 extends UcqcHelper {
         System.out.println("Department menu option format: " + text);
       }
       assertEquals("2130 PED ICU", text);
-    } catch (Throwable e) {
+      ExtentReport.logPass("PASS", "test05ConfirmDepartmentMenuOptionsAreFormattedProperly");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL","test05ConfirmDepartmentMenuOptionsAreFormattedProperly", driver,e);
       fail(e.getMessage());
     }
   }
 
   @Test
-  public void test06ConfirmDeptModalFieldDropdown() {
+  public void test06ConfirmDeptModalFieldDropdown() throws Throwable {
     try {
       waitForAjaxExtJs();
       doClickButton("Select");
@@ -111,13 +135,15 @@ public class DepartmentSelectionAvailableAds1214 extends UcqcHelper {
         actualFields.add(field.getText());
       }
       assertEquals(expectedField, actualFields);
-    } catch (Throwable e) {
+      ExtentReport.logPass("PASS", "test06ConfirmDeptModalFieldDropdown");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL","test06ConfirmDeptModalFieldDropdown", driver,e);
       fail(e.getMessage());
     }
   }
 
   @Test
-  public void test07ConfirmDeptModalOperatorDropdown() {
+  public void test07ConfirmDeptModalOperatorDropdown() throws Throwable {
     try {
       doClick(department.getUnitCostQuickCalculationDepartmentFilterOperator());
       waitForAjaxExtJs();
@@ -130,13 +156,15 @@ public class DepartmentSelectionAvailableAds1214 extends UcqcHelper {
         actualOperators.add(operator.getText());
       }
       assertEquals(expectedOperator, actualOperators);
-    } catch (Throwable e) {
+      ExtentReport.logPass("PASS", "test07ConfirmDeptModalOperatorDropdown");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL","test07ConfirmDeptModalOperatorDropdown", driver,e);
       fail(e.getMessage());
     }
   }
 
   @Test
-  public void test08ConfirmDeptModalConditionDropdown() {
+  public void test08ConfirmDeptModalConditionDropdown() throws Throwable {
     try {
       doDropdownSelectUsingOptionText(department.getUnitCostQuickCalculationDepartmentFilterField(), department.getUnitCostQuickCalculationDepartmentFilterFieldMenuList(), "Department Code");
       doClick(department.getUnitCostQuickCalculationDepartmentFilterCondition());
@@ -150,13 +178,15 @@ public class DepartmentSelectionAvailableAds1214 extends UcqcHelper {
         actualConditions.add(condition.getText());
       }
       assertEquals(expectedCondition, actualConditions);
-    } catch (Throwable e) {
+      ExtentReport.logPass("PASS", "test08ConfirmDeptModalConditionDropdown");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL","test08ConfirmDeptModalConditionDropdown", driver,e);
       fail(e.getMessage());
     }
   }
 
   @Test
-  public void test09ConfirmValueFieldIsNull() {
+  public void test09ConfirmValueFieldIsNull() throws Throwable {
     try {
       String filterValue;
       filterValue = department.getUnitCostQuickCalculationDepartmentFilterValue().getText();
@@ -164,13 +194,15 @@ public class DepartmentSelectionAvailableAds1214 extends UcqcHelper {
         System.out.println(filterValue);
       }
       assertEquals("", filterValue);
-    } catch (Throwable e) {
+      ExtentReport.logPass("PASS", "test09ConfirmValueFieldIsNull");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL","test09ConfirmValueFieldIsNull", driver,e);
       fail(e.getMessage());
     }
   }
 
   @Test
-  public void test10filterDepartmentsWithFilterDepartmentCodeIsContains2() {
+  public void test10filterDepartmentsWithFilterDepartmentCodeIsContains2() throws Throwable {
     try {
       originalCriteriaFilter = filterToMatchCriteria();
       filterDialogSetAllFields("Department Code", "Is", "Contains", "2", printout);
@@ -179,13 +211,15 @@ public class DepartmentSelectionAvailableAds1214 extends UcqcHelper {
       String newCriteriaFilter = filterToMatchCriteria();
       assertNotEquals(originalCriteriaFilter, newCriteriaFilter);
       doClick(department.getUnitCostQuickCalculationDepartmentFilterButtonRemoveAll());
-    } catch (Throwable e) {
+      ExtentReport.logPass("PASS", "test10filterDepartmentsWithFilterDepartmentCodeIsContains2");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL","test10filterDepartmentsWithFilterDepartmentCodeIsContains2", driver,e);
       fail(e.getMessage());
     }
   }
 
   @Test
-  public void test11filterDepartmentsWithFilterDepartmentCodeIsNotStartsWith2() {
+  public void test11filterDepartmentsWithFilterDepartmentCodeIsNotStartsWith2() throws Throwable {
     try {
       waitForAjaxExtJs();
       filterDialogSetAllFields("Department Code", "Is not", "Starts With", "2", printout);
@@ -196,7 +230,9 @@ public class DepartmentSelectionAvailableAds1214 extends UcqcHelper {
       doClick(department.getUnitCostQuickCalculationDepartmentFilterButtonRemoveAll());
       doClick(department.getUnitCostQuickCalculationDepartmentButtonCancelAndClose());
       waitForAjaxExtJs();
-    } catch (Throwable e) {
+      ExtentReport.logPass("PASS", "test11filterDepartmentsWithFilterDepartmentCodeIsNotStartsWith2");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL","test11filterDepartmentsWithFilterDepartmentCodeIsNotStartsWith2", driver,e);
       fail(e.getMessage());
     }
   }
@@ -280,4 +316,16 @@ public class DepartmentSelectionAvailableAds1214 extends UcqcHelper {
       System.out.println("filterDialogValueFieldValue: " + filterDialogValueFieldValue);
     }
   }
+  
+  @AfterClass
+	public static void endtest() throws Exception {
+
+		ExtentReport.report.flush();
+
+	}
+  
+  
+  
+  
+  
 }

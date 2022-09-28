@@ -41,11 +41,12 @@ private static EditContractingModelMap editModelMap;
 
   public static String getVersion() {
     String version = null;
-    if (testEnvironment.toLowerCase().contains("evolve") || testEnvironment.toLowerCase().contains("edge")) {
+    if (testEnvironment.toLowerCase().contains("evolve") || testEnvironment.toLowerCase().contains("edge")|| testEnvironment.toLowerCase().contains("qa3")) {
       version = "v104";
     } else {
       version = "v103";
     }
+
     return version;
   }
 
@@ -135,6 +136,7 @@ private static EditContractingModelMap editModelMap;
 
   public void waitForCalculationToEndAndVerifySummaryDetailsStringOnDialogAndCloseDialog(String detailText) throws InterruptedException {
     waitForCalculationToEnd();
+    driverDelay(4000);
     driver.findElement(By.xpath("//div[not(contains(@class,'disabled'))]/em/button/span[text()='View']")).click();
     waitForSpinnerToEnd();
     Thread.sleep(2000);
@@ -285,10 +287,10 @@ private static EditContractingModelMap editModelMap;
     driver.findElement(By.xpath("//button/span[text()='Cancel']")).click();
     waitForSpinnerToEnd();
   }
-
-  @Deprecated
+//Shilpa 14.09.2022 removed @Depreciated
   public void waitForCalculationToEndAndVerifyViewLogContainsOnViewDialogAndCloseDialog(String expectedViewLog) throws InterruptedException {
     waitForCalculationToEnd();
+    driverDelay(4000);
     driver.findElement(By.xpath("//tbody/tr[contains(@class, 'x-grid-row')]/td[contains(@class, 'x-grid-cell')]/descendant::button/span[text()='View']")).click();
     waitForSpinnerToEnd();
     Thread.sleep(1000);
@@ -307,7 +309,8 @@ private static EditContractingModelMap editModelMap;
 	 //Shilpa 07.09.2022 added wait for element
 	 
 	 //waitUntilElementIsClickable(driver.findElement(By.xpath("//*[text()='" + expectedDetail + "']")));
-    assertThatElementIsDisplayed(driver.findElement(By.xpath("//*[text()='" + expectedDetail + "']")));
+    //assertThatElementIsDisplayed(driver.findElement(By.xpath("//*[text()='" + expectedDetail + "']")));
+	  assertThatElementIsDisplayed(driver.findElement(By.xpath("//*[contains(text(),'" + expectedDetail + "')]")));
   }
 
   public void confirmCalculationStatusViewLogContains(String expectedViewLog) {

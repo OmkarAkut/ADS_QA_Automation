@@ -2,9 +2,13 @@ package webdriver.helpers;
 
 import static org.junit.Assert.*;
 
+import java.time.Duration;
 import java.util.Set;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import webdriver.corehelpers.GoHelper;
 
 public class PageTestHelper extends GoHelper {
@@ -172,7 +176,11 @@ public class PageTestHelper extends GoHelper {
       waitForJsWindowOnload();
       Thread.sleep(2000);
       driver.switchTo().frame("topic");
-      WebElement header = driver.findElement(By.xpath("//body/h1"));
+      
+    //venkat adding Explicity wait 13.09.2022
+	    WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(30,0));
+	    WebElement header=wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//body/h1")));
+     // WebElement header = driver.findElement(By.xpath("//body/h1"));
       String actualHeader = header.getText();
       if (printout) {
         System.out.println("Expected Header Text: " + expectedHeader);
@@ -193,7 +201,12 @@ public class PageTestHelper extends GoHelper {
       Thread.sleep(2000);
       waitForJsWindowOnload();
       driver.switchTo().frame("topic");
-      WebElement header = driver.findElement(By.xpath("//body/h1"));
+   // Add wait for loading time =========>Venkat_updated_ 01-09-2022
+		
+		
+   			WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(20,0));
+   			WebElement header =	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//body/h1")));
+    //  WebElement header = driver.findElement(By.xpath("//body/h1"));
       String actualHeader = header.getText();
       if (printout) {
         System.out.println("Expected Header Text: " + expectedHeader);

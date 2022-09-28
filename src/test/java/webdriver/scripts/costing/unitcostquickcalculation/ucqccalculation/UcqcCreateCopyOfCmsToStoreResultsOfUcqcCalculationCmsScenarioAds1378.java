@@ -36,16 +36,16 @@ public class UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds137
     "QA Cost Model",
     "ADS-1378 In Total1",
     "150 Marina Medical Center",
-    "3045  PAIN MANAGEMENT UNIT",
-    "Apr 2004 to Mar 2005"
-  };
+   //"3045  PAIN MANAGEMENT UNIT",
+    "3045",//venkat update value 14.09.2022
+    "Apr 2004 to Mar 2005"};
   static final String[] requiredFieldsForNewUcqcCalc = {
     "QA Cost Model",
     "ADS-1378 In Total1_UCQC",
     "150 Marina Medical Center",
-    "3045  PAIN MANAGEMENT UNIT",
-     "Apr 2004 to Mar 2005"
-  };
+ // "3045  PAIN MANAGEMENT UNIT",
+    "3045",//venkat update value 14.09.2022
+     "Apr 2004 to Mar 2005"};
   private static String status;
 
   /**Test ticket ADS-1378.  Dev Story ADS-609.  The purpose of this test is to make a copy of a
@@ -56,23 +56,20 @@ public class UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds137
    * "name_ucqc_ucqc".  If the name of the original "name" model is updated,
    * "name_ucqc" will be updated as well (? - need to confirm this).
  * @throws Throwable */
+  
   @BeforeClass
   public static void setupScript() throws Throwable {
 	  
 	  ExtentReport.reportCreate("UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds1378","webdriver.scripts.costing.unitcostquickcalculation.ucqccalculation", "UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds1378");
-   
-	  
 	  try {
 		costingMap = BuildMap.getInstance(driver, CostingMap.class);
-		System.out.println(
-		        "Test Class: "
-		        + UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds1378.class
-		                .getSimpleName());
+		System.out.println("Test Class: "+ UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds1378.class.getSimpleName());
 		loginUser(Users.ApplicationAdministrator1);
 		goToPage("Unit Cost Quick Calculation");
 		ucqcDisplayChargeCodeGrid(requiredFields);
+		ExtentReport.logPass("PASS", "setupScript");
 	} catch (Exception|AssertionError e) {
-		ExtentReport.logFail("FAIL","Beforeclassmethod", driver,e);
+		ExtentReport.logFail("FAIL","setupScript", driver,e);
 		fail(e.getMessage());
 	}
   }
@@ -117,7 +114,7 @@ public class UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds137
       goToPage("Calculation Status");
       waitForAjaxExtJs();
       waitForDisplayedSpinnerToEnd();
-      status = getCalculationStatusMyStatusFirstRow();
+        status = getCalculationStatusMyStatusFirstRow();
       assertThat(status, not(containsString("Failed")));
       waitForFirstRowCalculationBarToReach100Percent();
       status = getCalculationStatusMyStatusFirstRow();
@@ -257,14 +254,12 @@ public class UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds137
   }
 
   @Test
-  public void test11CostModelCalculationScenarioPageVerifyPriceList()
-          throws Throwable {
+  public void test11CostModelCalculationScenarioPageVerifyPriceList()throws Throwable {
 	  try {
     String expectedValue = "150 Marina Medical Center";
     doClick("//*[@name='priceList']/parent::td/following-sibling::td[contains(@class,'trigger')]");
-    assertThatDropdownSelectedValue(
-            javaGetListContainerElementFromAnyOptionText("0TB  Test"),
-            expectedValue);
+   // assertThatDropdownSelectedValue(javaGetListContainerElementFromAnyOptionText("0TB  Test"),expectedValue);
+    assertThatDropdownSelectedValue(javaGetListContainerElementFromAnyOptionText("0TB  Testsd"),expectedValue);//venkat updated text data 22.09.2022
     ExtentReport.logPass("PASS", "test11CostModelCalculationScenarioPageVerifyPriceList");
 	 	} 
 	  catch (Exception|AssertionError e) {
@@ -294,8 +289,7 @@ public class UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds137
 
   @Ignore
   @Test
-  public void test13CostModelCalculationScenarioPageVerifyEndMonth()
-          throws Throwable {
+  public void test13CostModelCalculationScenarioPageVerifyEndMonth()throws Throwable {
 	  try {
     doClick("//*[@name='savedEndMonth']/parent::td/following-sibling::td[contains(@class,'trigger')]");
     assertThatDropdownSelectedValue(
@@ -307,13 +301,10 @@ public class UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds137
 	 		ExtentReport.logFail("FAIL","test13CostModelCalculationScenarioPageVerifyEndMonth", driver,e);
 	 		fail(e.getMessage());
 	 	}
-    
-    
-    
-    
+
   }
 
-  @Test
+ @Test
   public void test14CostModelCalculationScenarioPageVerifyCalculateInTotalRadioButtonIsSelected() throws Throwable {
 	  try {
     assertThatElementIsChecked("In Total");
@@ -326,7 +317,7 @@ public class UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds137
     
   }
 
-  @Test
+ @Test
   public void test15CostModelCalculationScenarioPageVerifyRvusBasedOn() throws Throwable {
 	  try {
     assertThatElementIsChecked("Calculation Start Month");
@@ -350,7 +341,7 @@ public class UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds137
 	 	}
   }
 
-  @Test
+ @Test
   public void test17aGoToUcqcPageAndVerifyCostModelValuesOnLowerGridTable()
           throws Throwable {
 	  try {
@@ -372,7 +363,7 @@ public class UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds137
     
   }
 
-  @Test
+ @Test
   public void test17bUpdateQuickEmployeeBenefitsValuesAndAssertCalculationEnds() throws Throwable{
     try {
       final String[][] pairs = {
@@ -401,7 +392,7 @@ public class UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds137
       doClick(costingMap.getUnitCostQuickCalculationButtonSaveQuickRVUs());
       doClick(costingMap.getUnitCostQuickCalculationButtonCalculate());
       waitForSpinnerToEnd();
-      ExtentReport.logPass("PASS", "test17aGoToUcqcPageAndVerifyCostModelValuesOnLowerGridTable");
+      ExtentReport.logPass("PASS", "test17bUpdateQuickEmployeeBenefitsValuesAndAssertCalculationEnds");
       
     } catch (Exception|AssertionError e) {
       
@@ -428,9 +419,11 @@ public class UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds137
 //      );
 //      deleteMyCalculationStatusFirstRow();
 //      doClosePageOnLowerBar("Unit Cost...");
+      
+      ExtentReport.logPass("PASS", "test18GoToCalculationStatusPageAndAssertCalculationCompleted");
     } catch (Exception|AssertionError e) {
       
-      ExtentReport.logFail("FAIL","test17bUpdateQuickEmployeeBenefitsValuesAndAssertCalculationEnds", driver,e);
+      ExtentReport.logFail("FAIL","test18GoToCalculationStatusPageAndAssertCalculationCompleted", driver,e);
       fail(e.getMessage());
       
     }
@@ -444,7 +437,7 @@ public class UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds137
     for (WebElement item : classificationListing) {
       String clss = item.getAttribute("class");
    //   if (clss.contains("selected")) {
-    	 if (clss.contains("required")) {// venkat update trequired selected from 07-09-2022
+    	 if (clss.contains("required")) {// venkat update required selected from 07-09-2022
         MatcherAssert.assertThat(item.getText(), equalTo(expectedValue));
         System.out.println("Selected option = " + item.getText());
         break;

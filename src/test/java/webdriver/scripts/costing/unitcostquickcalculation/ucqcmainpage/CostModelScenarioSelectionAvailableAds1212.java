@@ -6,10 +6,14 @@ import static org.junit.Assert.fail;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
+
+import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.helpers.UcqcHelper;
 import webdriver.maps.CostingMap;
@@ -21,58 +25,76 @@ public class CostModelScenarioSelectionAvailableAds1212 extends UcqcHelper {
   private static CostingMap costModelScenario;
 
   /** ADS-1212 (Dev Story ADS-365)
-  This script tests the Cost Model Scenario drop down menu element.*/
+  This script tests the Cost Model Scenario drop down menu element.
+ * @throws Throwable */
   @BeforeClass
-  public static void setupScript() throws Exception {
-    costModelScenario = BuildMap.getInstance(driver, CostingMap.class);
-    System.out.println("Test Class: " + CostModelScenarioSelectionAvailableAds1212.class.getSimpleName());
-    Login.loginUser("CostingDepartmentManager1");
-    goToPage("Unit Cost Quick Calculation");
-    waitForAjaxExtJs();
+  public static void setupScript() throws Throwable {
+	  
+	  ExtentReport.reportCreate("CostModelScenarioSelectionAvailableAds1212","webdriver.scripts.costing.unitcostquickcalculation.ucqcmainpage", "CostModelScenarioSelectionAvailableAds1212");
+		
+    try {
+		costModelScenario = BuildMap.getInstance(driver, CostingMap.class);
+		System.out.println("Test Class: " + CostModelScenarioSelectionAvailableAds1212.class.getSimpleName());
+		Login.loginUser("CostingDepartmentManager1");
+		goToPage("Unit Cost Quick Calculation");
+		waitForAjaxExtJs();
+		ExtentReport.logPass("PASS", "setupScript");
+	} catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL","setupScript", driver,e);
+		fail(e.getMessage());
+	} 
   }
 
   @Test
-  public void test01ConfirmCostModelScenarioIsDisabledByDefault() {
+  public void test01ConfirmCostModelScenarioIsDisabledByDefault() throws Throwable {
     try {
       waitForAjaxExtJs();
       assertUCQCDropdownIsDisabled("costModelScenarioId",printout);
-    } catch (Throwable e) {
+      ExtentReport.logPass("PASS", "test01ConfirmCostModelScenarioIsDisabledByDefault");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL","test01ConfirmCostModelScenarioIsDisabledByDefault", driver,e);
       fail(e.getMessage());
     }
   }
 
   @Test
-  public void test02ConfirmCostModelScenarioMenuListContainsNoneOption() {
+  public void test02ConfirmCostModelScenarioMenuListContainsNoneOption() throws Throwable {
     try {
       waitForAjaxExtJs();
       assertDropdownPlaceholder("costModelScenarioId",printout);
-    } catch (Throwable e) {
+      ExtentReport.logPass("PASS", "test02ConfirmCostModelScenarioMenuListContainsNoneOption");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL","test02ConfirmCostModelScenarioMenuListContainsNoneOption", driver,e);
       fail(e.getMessage());
     }
   }
 
   @Test
-  public void test03ConfirmRedAsteriskDisplaysForCostModelScenarioElementLabel() {
+  public void test03ConfirmRedAsteriskDisplaysForCostModelScenarioElementLabel() throws Throwable {
     try {
       waitForAjaxExtJs();
       assertAsteriskIsDisplayed("Cost Model Scenario");
-    } catch (Throwable e) {
+      ExtentReport.logPass("PASS", "test03ConfirmRedAsteriskDisplaysForCostModelScenarioElementLabel");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL","test03ConfirmRedAsteriskDisplaysForCostModelScenarioElementLabel", driver,e);
       fail(e.getMessage());
     }
   }
 
   @Test
-  public void test04ConfirmCostModelScenarioIsEnabledAfterRequiredFieldsArePopulated() {
+  public void test04ConfirmCostModelScenarioIsEnabledAfterRequiredFieldsArePopulated() throws Throwable {
     try {
       doDropdownSelectUsingOptionText(costModelScenario.getUnitCostQuickCalculationDropdownCostModel(),costModelScenario.getUnitCostQuickCalculationDropdownCostModelMenuList(),"Marina");
       assertUCQCDropdownIsEnabled("costModelScenarioId",printout);
-    } catch (Throwable e) {
+      ExtentReport.logPass("PASS", "test04ConfirmCostModelScenarioIsEnabledAfterRequiredFieldsArePopulated");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL","test04ConfirmCostModelScenarioIsEnabledAfterRequiredFieldsArePopulated", driver,e);
       fail(e.getMessage());
     }
   }
 
   @Test
-  public void test05ConfirmCostModelScenarioDropdownMenuIsAscendingOrderWithNoneFirst() {
+  public void test05ConfirmCostModelScenarioDropdownMenuIsAscendingOrderWithNoneFirst() throws Throwable {
     try {
       doClick(costModelScenario.getUnitCostQuickCalculationDropdownCostModelScenario());
       List<String> cmsMenu = getDropdownMenuItemsTextAsArrayList(costModelScenario.getUnitCostQuickCalculationDropdownCostModelScenarioMenuList(), printout);
@@ -89,8 +111,23 @@ public class CostModelScenarioSelectionAvailableAds1212 extends UcqcHelper {
         }
       }
       assertEquals(sortedList, cmsMenu);  //compare actual list to sorted list
-    } catch (Throwable e) {
+      ExtentReport.logPass("PASS", "test05ConfirmCostModelScenarioDropdownMenuIsAscendingOrderWithNoneFirst");
+    } catch (Exception|AssertionError e) {
+    	ExtentReport.logFail("FAIL","test05ConfirmCostModelScenarioDropdownMenuIsAscendingOrderWithNoneFirst", driver,e);
       fail(e.getMessage());
     }
   }
+  
+  @AfterClass
+	public static void endtest() throws Exception {
+
+		ExtentReport.report.flush();
+
+	}
+  
+  
+  
+  
+  
+  
 }

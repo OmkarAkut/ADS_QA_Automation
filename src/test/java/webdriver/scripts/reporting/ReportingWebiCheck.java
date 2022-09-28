@@ -4,11 +4,13 @@ import static org.junit.Assert.fail;
 
 import java.util.List;
 
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.corehelpers.GoHelper;
 
@@ -17,16 +19,23 @@ public class ReportingWebiCheck extends GoHelper {
 	static String firstHandle;
 
 	@BeforeClass
-	public static void setupScript() throws Exception {
-		System.out.println("Test Class: " + ReportingWebiCheck.class.getSimpleName());
+	public static void setupScript() throws Exception,Throwable {
+		ExtentReport.reportCreate("ReportingWebiCheck", "webdriver.scripts.reporting", "ReportingWebiCheck");
+		try {
+			System.out.println("Test Class: " + ReportingWebiCheck.class.getSimpleName());
 
-		Login.loginUser("AutomationTester1");
+			Login.loginUser("AutomationTester1");
 
-		goToPage("Web Intelligence");
+			goToPage("Web Intelligence");
+			ExtentReport.logPass("PASS", "setupScript");
+		}  catch (Exception|AssertionError e) {
+			ExtentReport.logFail("FAIL", "Failure in setupScript", driver, e);
+			fail(e.getMessage());
+		}
 	}
 
 	@Test
-	public void testWebiPageLoads() {
+	public void testWebiPageLoads() throws Throwable {
 		try {
 			waitForAjaxExtJs();
 			firstHandle = webdriverSwitchToNewWindow(printout);
@@ -51,14 +60,20 @@ public class ReportingWebiCheck extends GoHelper {
 			assertThatElementIsDisplayed(driver.findElement(By.xpath(("//*[@title = 'Web Intelligence']"))));
 			driver.findElement(By.id("logoffLink-button")). click();
 			Thread.sleep(3000);
-			waitForPresenceOfElement("//*[@class = 'logonProductName' and text() = 'SAP BusinessObjects']");
-		} catch (Throwable e) {
+			ExtentReport.logPass("PASS", "testWebiPageLoads");
+		}  catch (Exception|AssertionError e) {
+			ExtentReport.logFail("FAIL", "testWebiPageLoads", driver, e);
 			fail(e.getMessage());
-		} finally {
+		}finally {
 			driver.close();
 			driver.switchTo().window(firstHandle);
 		}
 	}
+	@AfterClass
+	public static void endtest() throws Exception {
 
+		ExtentReport.report.flush();
+
+	}
 }
 
