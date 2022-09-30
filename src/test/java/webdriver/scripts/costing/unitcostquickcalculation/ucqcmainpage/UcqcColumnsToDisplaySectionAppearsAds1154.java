@@ -131,19 +131,8 @@ public class UcqcColumnsToDisplaySectionAppearsAds1154 extends UcqcHelper {
     public void test04UncheckAllCheckboxAndVerifySelectedButtonIsEnabled() throws Throwable {
         try {
         	
-        	//Venkat 05-09-2022 Add Robot class in zoom in chrome browser
-        	Robot robot = new Robot();
-        	robot.keyPress(KeyEvent.VK_CONTROL);
-			robot.keyPress(KeyEvent.VK_SUBTRACT);
-			Thread.sleep(500);//venkat adding key release function 23.09.2022
-			robot.keyRelease(KeyEvent.VK_CONTROL);
-			robot.keyRelease(KeyEvent.VK_SUBTRACT);
-			Thread.sleep(500);
-        	robot.keyPress(KeyEvent.VK_CONTROL);
-			robot.keyPress(KeyEvent.VK_SUBTRACT);
-			Thread.sleep(500);
-			robot.keyRelease(KeyEvent.VK_CONTROL);
-			robot.keyRelease(KeyEvent.VK_SUBTRACT);
+        	
+        	
 			
 			
 			waitForAjaxExtJs();
@@ -157,37 +146,14 @@ public class UcqcColumnsToDisplaySectionAppearsAds1154 extends UcqcHelper {
         	ExtentReport.logFail("FAIL","test04UncheckAllCheckboxAndVerifySelectedButtonIsEnabled", driver,e);
             fail(e.getMessage());
         }
-        Robot robot = new Robot();
-        robot.keyPress(KeyEvent.VK_CONTROL);
-    	robot.keyPress(KeyEvent.VK_ADD);
-    	Thread.sleep(500);//venkat adding key release function 23.09.2022
-    	robot.keyRelease(KeyEvent.VK_CONTROL);
-    	robot.keyRelease(KeyEvent.VK_ADD);
-    	Thread.sleep(500);
-    	robot.keyPress(KeyEvent.VK_CONTROL);
-    	robot.keyPress(KeyEvent.VK_ADD);
-    	Thread.sleep(500);
-    	robot.keyRelease(KeyEvent.VK_CONTROL);
-    	robot.keyRelease(KeyEvent.VK_ADD);
+     
         
     }
 
     @Test
     public void test05CheckAllCheckboxAndVerifySelectedButtonIsDisabled() throws Throwable {
         try {
-        	//Venkat 05-09-2022 Add Robot class in zoom in chrome browser
-        	Robot robot = new Robot();
-        	robot.keyPress(KeyEvent.VK_CONTROL);
-			robot.keyPress(KeyEvent.VK_SUBTRACT);
-			Thread.sleep(500);//venkat adding key release function 23.09.2022
-			robot.keyRelease(KeyEvent.VK_CONTROL);
-			robot.keyRelease(KeyEvent.VK_SUBTRACT);
-			Thread.sleep(500);
-        	robot.keyPress(KeyEvent.VK_CONTROL);
-			robot.keyPress(KeyEvent.VK_SUBTRACT);
-			Thread.sleep(500);
-			robot.keyRelease(KeyEvent.VK_CONTROL);
-			robot.keyRelease(KeyEvent.VK_SUBTRACT);
+        	
 			
             waitForAjaxExtJs();
             doClick(driver.findElement(By.xpath("//label[text()='All']/preceding-sibling::input")));
@@ -200,18 +166,7 @@ public class UcqcColumnsToDisplaySectionAppearsAds1154 extends UcqcHelper {
         	ExtentReport.logFail("FAIL","test05CheckAllCheckboxAndVerifySelectedButtonIsDisabled", driver,e);
             fail(e.getMessage());
         }
-        Robot robot = new Robot();
-        robot.keyPress(KeyEvent.VK_CONTROL);
-    	robot.keyPress(KeyEvent.VK_ADD);
-    	Thread.sleep(500);//venkat adding key release function 23.09.2022
-    	robot.keyRelease(KeyEvent.VK_CONTROL);
-    	robot.keyRelease(KeyEvent.VK_ADD);
-    	Thread.sleep(500);
-    	robot.keyPress(KeyEvent.VK_CONTROL);
-    	robot.keyPress(KeyEvent.VK_ADD);
-    	Thread.sleep(500);
-    	robot.keyRelease(KeyEvent.VK_CONTROL);
-    	robot.keyRelease(KeyEvent.VK_ADD);
+       
     }
 
     @Test

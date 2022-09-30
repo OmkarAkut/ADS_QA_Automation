@@ -16,6 +16,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -318,20 +319,12 @@ public class AssertHelper extends AdsHelper {
 	public void assertAsteriskIsDisplayed(String criteriaLabel) throws AWTException, InterruptedException {
 		
 		//Venkat 05-09-2022 Add Robot class in zoom in chrome browser
-				Thread.sleep(3000);
-				Robot robot = new Robot();
-		    	robot.keyPress(KeyEvent.VK_CONTROL);
-				robot.keyPress(KeyEvent.VK_SUBTRACT);
-				Thread.sleep(500);
-				robot.keyRelease(KeyEvent.VK_CONTROL);
-				robot.keyRelease(KeyEvent.VK_SUBTRACT);
-				Thread.sleep(500);
-				robot.keyPress(KeyEvent.VK_CONTROL);
-				robot.keyPress(KeyEvent.VK_SUBTRACT);
-				Thread.sleep(500);
-				robot.keyRelease(KeyEvent.VK_CONTROL);
-				robot.keyRelease(KeyEvent.VK_SUBTRACT);
-				Thread.sleep(2000);
+		
+		
+		Thread.sleep(2000);
+	    ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoViewIfNeeded();",driver.findElement(By.xpath("//label[text()=\""+ criteriaLabel +"\"]/span")));
+	    Thread.sleep(2000);
+				
 		String labelXpath = "//label[text()=\""+ criteriaLabel +"\"]/span";
 		String asterisk;
 		String asteriskColor;
@@ -357,18 +350,7 @@ public class AssertHelper extends AdsHelper {
 			System.out.println("The 'required' asterisk is not red.");
 			fail();
 		}
-		
-	    robot.keyPress(KeyEvent.VK_CONTROL);
-		robot.keyPress(KeyEvent.VK_ADD);
-		Thread.sleep(500);//venkat adding key release function 23.09.2022
-		robot.keyRelease(KeyEvent.VK_CONTROL);
-		robot.keyRelease(KeyEvent.VK_ADD);
-		Thread.sleep(500);
-		robot.keyPress(KeyEvent.VK_CONTROL);
-		robot.keyPress(KeyEvent.VK_ADD);
-		Thread.sleep(500);
-		robot.keyRelease(KeyEvent.VK_CONTROL);
-		robot.keyRelease(KeyEvent.VK_ADD);
+	
 	}
 
 	public void assertThatValueHasRequiredDecimalPlaces(String valueToConsider, int numberOfDecimalPlaces, boolean printout) {

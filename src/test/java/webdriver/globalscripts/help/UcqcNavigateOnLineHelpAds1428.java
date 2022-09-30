@@ -11,6 +11,7 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 
 import ExtentReport.ExtentReport;
 import webdriver.helpers.UcqcHelper;
@@ -114,20 +115,10 @@ public class UcqcNavigateOnLineHelpAds1428
 		waitForAjaxExtJs();
 		
 		//Venkat  Add Robot class in zoom in chrome browser and wait condition 13.09.2022
-		Thread.sleep(3000);
-		Robot robot = new Robot();
-    	robot.keyPress(KeyEvent.VK_CONTROL);
-		robot.keyPress(KeyEvent.VK_SUBTRACT);
-		Thread.sleep(500);//venkat adding key release function 23.09.2022
-		robot.keyRelease(KeyEvent.VK_CONTROL);
-		robot.keyRelease(KeyEvent.VK_SUBTRACT);
-		Thread.sleep(500);
-		robot.keyPress(KeyEvent.VK_CONTROL);
-		robot.keyPress(KeyEvent.VK_SUBTRACT);
-		Thread.sleep(500);
-		robot.keyRelease(KeyEvent.VK_CONTROL);
-		robot.keyRelease(KeyEvent.VK_SUBTRACT);
 		Thread.sleep(2000);
+	    ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoViewIfNeeded();", ucqcMap.getUnitCostQuickCalculationCheckBoxColumnsToDisplayAll());
+	    Thread.sleep(2000);
+		
 		
 		
 		
@@ -143,19 +134,7 @@ public class UcqcNavigateOnLineHelpAds1428
 		ucqcMap.getUnitCostQuickCalculationColumnsToDisplayModalCancel().click();
 		 driver.manage().window().maximize();
 			Thread.sleep(1000);
-		    //Robot robot = new Robot();
-		    robot.keyPress(KeyEvent.VK_CONTROL);
-			robot.keyPress(KeyEvent.VK_ADD);
-			Thread.sleep(500);//venkat adding key release function 23.09.2022
-			robot.keyRelease(KeyEvent.VK_CONTROL);
-			robot.keyRelease(KeyEvent.VK_ADD);
-			Thread.sleep(500);
-			robot.keyPress(KeyEvent.VK_CONTROL);
-			robot.keyPress(KeyEvent.VK_ADD);
-			Thread.sleep(500);
-			robot.keyRelease(KeyEvent.VK_CONTROL);
-			robot.keyRelease(KeyEvent.VK_ADD);
-			Thread.sleep(1000);
+		
 		ExtentReport.logPass("PASS", "test03VerifyHelpLinkForColumnsToDisplayDialog");
 	
 	} catch (Exception|AssertionError e) {

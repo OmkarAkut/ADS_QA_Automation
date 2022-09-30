@@ -15,6 +15,7 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -59,40 +60,18 @@ public class UcqcColumnsToDisplaySelectColumnsPopupAds1156 extends UcqcHelper {
     @Test
     public void test02aVerifyDefaultStatusOfAllCheckboxAndSelectButtonOnUcqcPage() throws Throwable {
         try {
-        	
         	//Venkat 05-09-2022 Add Robot class in zoom in chrome browser
         	Thread.sleep(2000);
-        	Robot robot = new Robot();
-        	robot.keyPress(KeyEvent.VK_CONTROL);
-			robot.keyPress(KeyEvent.VK_SUBTRACT);
-			Thread.sleep(500);//venkat adding key release function 23.09.2022
-			robot.keyRelease(KeyEvent.VK_CONTROL);
-			robot.keyRelease(KeyEvent.VK_SUBTRACT);
-			Thread.sleep(500);
-        	robot.keyPress(KeyEvent.VK_CONTROL);
-			robot.keyPress(KeyEvent.VK_SUBTRACT);
-			Thread.sleep(500);
-			robot.keyRelease(KeyEvent.VK_CONTROL);
-			robot.keyRelease(KeyEvent.VK_SUBTRACT);
-			Thread.sleep(1000);
+		    ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoViewIfNeeded();",costingMap.getUnitCostQuickCalculationButtonColumnsToDisplaySelect());
+		    Thread.sleep(3000);
+        	
+       
             waitForAjaxExtJs();
             assertElementIsDisabled(costingMap.getUnitCostQuickCalculationButtonColumnsToDisplaySelect(), printout);
             assertAllCheckboxIsDisabled(printout);
             assertColumnsToDisplayAllCheckBoxIsChecked();
             ExtentReport.logPass("PASS", "test02aVerifyDefaultStatusOfAllCheckboxAndSelectButtonOnUcqcPage");
-            //Robot robot = new Robot();
-            robot.keyPress(KeyEvent.VK_CONTROL);
-        	robot.keyPress(KeyEvent.VK_ADD);
-        	Thread.sleep(500);//venkat adding key release function 23.09.2022
-        	robot.keyRelease(KeyEvent.VK_CONTROL);
-        	robot.keyRelease(KeyEvent.VK_ADD);
-        	Thread.sleep(500);
-        	robot.keyPress(KeyEvent.VK_CONTROL);
-        	robot.keyPress(KeyEvent.VK_ADD);
-        	Thread.sleep(500);
-        	robot.keyRelease(KeyEvent.VK_CONTROL);
-        	robot.keyRelease(KeyEvent.VK_ADD);
-        	Thread.sleep(2000);
+         
         } catch (Exception|AssertionError e) {
         	ExtentReport.logFail("FAIL","test02aVerifyDefaultStatusOfAllCheckboxAndSelectButtonOnUcqcPage", driver,e);
             fail(e.getMessage());

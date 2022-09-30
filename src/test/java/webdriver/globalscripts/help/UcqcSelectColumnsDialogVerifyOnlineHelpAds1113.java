@@ -11,6 +11,7 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 
 import ExtentReport.ExtentReport;
 import webdriver.helpers.PageTestHelper;
@@ -49,29 +50,19 @@ public class UcqcSelectColumnsDialogVerifyOnlineHelpAds1113 extends PageTestHelp
 	@Test
 	public void testUcqcPageSelectColumnsDialogVerifyOnlineHelpLink() throws Throwable {
 		try {
-			
-			
+		    
 			
 			//Venkat  Add Robot class in zoom in chrome browser and wait condition 13.09.2022
-			Thread.sleep(3000);
-        	Robot robot = new Robot();
-        	robot.keyPress(KeyEvent.VK_CONTROL);
-			robot.keyPress(KeyEvent.VK_SUBTRACT);
-			Thread.sleep(500);//venkat adding key release function 23.09.2022
-			robot.keyRelease(KeyEvent.VK_CONTROL);
-			robot.keyRelease(KeyEvent.VK_SUBTRACT);
-			Thread.sleep(500);
-        	robot.keyPress(KeyEvent.VK_CONTROL);
-			robot.keyPress(KeyEvent.VK_SUBTRACT);
-			Thread.sleep(500);
-			robot.keyRelease(KeyEvent.VK_CONTROL);
-			robot.keyRelease(KeyEvent.VK_SUBTRACT);
+		
 			Thread.sleep(2000);
 			doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationDropdownCostModel(),
 					costingMap.getUnitCostQuickCalculationDropdownCostModelMenuList(), "QA Marina");
-			
+			Thread.sleep(2000);
+		    ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoViewIfNeeded();", costingMap.getUnitCostQuickCalculationCheckBoxColumnsToDisplayAll());
+		    Thread.sleep(2000);
 			waitForSpinnerToEnd();
 			waitForElementToBeVisible(costingMap.getUnitCostQuickCalculationCheckBoxColumnsToDisplayAll());
+			System.out.println("PASS");
 			
 			costingMap.getUnitCostQuickCalculationCheckBoxColumnsToDisplayAll().click();
 			costingMap.getUnitCostQuickCalculationButtonColumnsToDisplaySelect().click();
@@ -80,18 +71,7 @@ public class UcqcSelectColumnsDialogVerifyOnlineHelpAds1113 extends PageTestHelp
 			doClosePageOnLowerBar("Unit Cost Quick...");
 
 			ExtentReport.logPass("PASS", "testUcqcPageSelectColumnsDialogVerifyOnlineHelpLink");
-			//Robot robot = new Robot();
-		    robot.keyPress(KeyEvent.VK_CONTROL);
-			robot.keyPress(KeyEvent.VK_ADD);
-			Thread.sleep(500);//venkat adding key release function 23.09.2022
-			robot.keyRelease(KeyEvent.VK_CONTROL);
-			robot.keyRelease(KeyEvent.VK_ADD);
-			Thread.sleep(500);
-			robot.keyPress(KeyEvent.VK_CONTROL);
-			robot.keyPress(KeyEvent.VK_ADD);
-			Thread.sleep(500);
-			robot.keyRelease(KeyEvent.VK_CONTROL);
-			robot.keyRelease(KeyEvent.VK_ADD);
+			
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "testUcqcPageSelectColumnsDialogVerifyOnlineHelpLink", driver, e);
 			fail(e.getMessage());
