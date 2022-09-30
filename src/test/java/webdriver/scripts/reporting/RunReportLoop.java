@@ -23,8 +23,8 @@ public class RunReportLoop extends GoHelper {
 
   //int runs = 1;
   //int runs = 300;  //Run at 300 to create 10 server log archive directories
-  int runs = 450;  //Run 450-600 to create 10 dssserver log archive directories
-
+ // int runs = 450;  //Run 450-600 to create 10 dssserver log archive directories
+  int runs = 2;
   @BeforeClass
   public static void setupScript() throws Exception,Throwable {
 	  ExtentReport.reportCreate("RunReportLoop", "webdriver.scripts.reporting", "RunReportLoop");

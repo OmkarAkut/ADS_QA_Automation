@@ -295,6 +295,8 @@ public class RvuMaintenanceAds1492 extends GoHelper {
 					costing.getRvuMaintenanceDropdownEffectiveMonthStartYearOptions(),
 					"2004"
 					);
+			doClick(driver.findElement(By.xpath("//button/span[text()='Apply Selections']")));
+			waitForSpinnerToEnd();
 			ExtentReport.logPass("PASS", "test10aAssertEffectiveStartDateHasBeenUpdated");
 
 		} catch (Exception|AssertionError e) {
