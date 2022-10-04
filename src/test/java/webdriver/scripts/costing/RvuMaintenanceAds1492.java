@@ -87,11 +87,9 @@ public class RvuMaintenanceAds1492 extends GoHelper {
 	@Test
 	public void test02SetPageParametersAndAssertColumnsToDisplayIsUncheckedAndSelectButtonEnabled() throws Throwable {
 		try {
-			doDropdownSelectUsingOptionText(
-					costing.getRvuMaintenanceDropdownEntity(),
-					costing.getRvuMaintenanceDropdownEntityOptions(),
-					"150 Marina Medical Center"
-					);
+			
+			driverDelay(3000);//venkat added wait 04.10.2022
+			doDropdownSelectUsingOptionText(costing.getRvuMaintenanceDropdownEntity(),costing.getRvuMaintenanceDropdownEntityOptions(),"150 Marina Medical Center");
 			setDepartmentGroup("2110");// 2110 ICU is not searched in Filter , has issue in Department Group search by 2110 ICU
 			doDropdownSelectUsingOptionText(
 					costing.getRvuMaintenanceDropdownEffectiveMonthStartMonthDropdown(),
