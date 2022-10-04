@@ -4,6 +4,7 @@ import static org.junit.Assert.fail;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.config.Order;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
@@ -13,6 +14,7 @@ import org.junit.rules.TestName;
 import org.junit.runners.MethodSorters;
 
 import ExtentReport.ExtentReport;
+import net.bytebuddy.build.Plugin.Factory.UsingReflection.Priority;
 import webdriver.globalstatic.LoginStatic;
 import webdriver.maps.DataMaintenanceMap;
 import webdriver.maps.mapbuilder.BuildMap;
@@ -20,6 +22,7 @@ import webdriver.users.Users;
 import webdriver.utilities.Axe;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
+
 public class AdsAccessibilityCostingSuite extends LoginStatic {
 
   private Axe ax = new Axe();
@@ -52,12 +55,17 @@ public class AdsAccessibilityCostingSuite extends LoginStatic {
   }
 
   @Test
-  public void testCostingxCostModelScenarioCalculation() throws InterruptedException,Throwable {
+  //venkat updated method name
+  //public void testCostingxCostModelScenarioCalculation() throws InterruptedException,Throwable {
+  public void testCostingxZCostModelScenarioCalculation() throws InterruptedException,Throwable {
     try {
 		goToPage("Cost Model Scenario Calculation");
+		
 		waitForAjaxExtJs();
+		Thread.sleep(4000);
 		ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName());
 		doClosePageOnLowerBar("Cost Model...");
+		
 		ExtentReport.logPass("PASS", "testCostingxCostModelScenarioCalculation");
 	} catch (Exception|AssertionError e) {
 	ExtentReport.logFail("FAIL", "testCostingxCostModelScenarioCalculation", driver, e);
@@ -66,12 +74,16 @@ public class AdsAccessibilityCostingSuite extends LoginStatic {
   }
 
   @Test
+  
   public void testCostingxRvuMaintenance() throws InterruptedException,Throwable{
     try {
 		goToPage("RVU Maintenance");
+		
 		waitForAjaxExtJs();
 		ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName());
 		doClosePageOnLowerBar("RVU Maintenance");
+		
+		
 		ExtentReport.logPass("PASS", "testCostingxRvuMaintenance");
 	} catch (Exception|AssertionError e) {
 	ExtentReport.logFail("FAIL", "testCostingxRvuMaintenance", driver, e);
