@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+import org.assertj.core.error.AssertionErrorCreator;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
@@ -389,7 +390,7 @@ public class EntityLevelUserSecurityAds2409 extends LoginStatic {
 	@Test
 	public void test08AssertDefinitionElementsAddProvidersSelectorContainsOnlyRestrictedEntity() throws Throwable {
 		
-		try {
+		
 			try {
 
 				driverDelay();
@@ -429,18 +430,21 @@ public class EntityLevelUserSecurityAds2409 extends LoginStatic {
 							.click();
 					
 				} catch (Exception|AssertionError e) {
-					driver.findElement(By.xpath("//div[not(contains(@class, 'cancelCloseBtn'))]/em/button/span[text()='Cancel & Close']")).click();
+					
+					try {
+						driver.findElement(By.xpath("//div[not(contains(@class, 'cancelCloseBtn'))]/em/button/span[text()='Cancel & Close']")).click();
+					} catch (Exception|AssertionError e1) {
+						
+						ExtentReport.logFail("FAIL","Failed in Finally block", driver, e1);
+						fail(e1.getMessage());
+					}
 					ExtentReport.logFail("FAIL","test08AssertDefinitionElementsAddProvidersSelectorContainsOnlyRestrictedEntity", driver, e);
 					fail(e.getMessage());
 					
 
 				}
 			}
-		} catch (Exception|AssertionError e) {
-			
-			ExtentReport.logFail("FAIL","test08AssertDefinitionElementsAddProvidersSelectorContainsOnlyRestrictedEntity", driver, e);
-			fail(e.getMessage());
-		}
+		
 	}
 
 	@AfterClass
