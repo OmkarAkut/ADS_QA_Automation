@@ -415,7 +415,8 @@ public class EntityLevelUserSecurityAds2409 extends LoginStatic {
 			}
 
 			catch (Exception| AssertionError e) {
-				
+				ExtentReport.logFail("FAIL","test08AssertDefinitionElementsAddProvidersSelectorContainsOnlyRestrictedEntity", driver, e);
+				fail(e.getMessage());
 				
 
 			} finally {
