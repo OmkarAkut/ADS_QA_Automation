@@ -55,9 +55,14 @@ public class UcqcCalculateUcqcWithSixDigitQuickRvusAds1377 extends UnitCostQuick
   }
 
   @AfterClass
-  public static void teardownScript() throws InterruptedException {
-    doClosePageOnLowerBar("Calculation Status");
-    doClosePageOnLowerBar("Unit Cost Quick...");
+  public static void teardownScript() throws Throwable {
+	  
+    try {
+		doClosePageOnLowerBar("Calculation Status");
+		doClosePageOnLowerBar("Unit Cost Quick...");
+	} catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL","teardownScript", driver,e);
+	}
     ExtentReport.report.flush();
   }
 
