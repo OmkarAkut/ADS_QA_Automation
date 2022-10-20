@@ -12,7 +12,7 @@ import org.junit.runners.Suite;
 		ReportsLibraryRunCostingReportFromTemplate.class,
 		ReportsLibraryTestScript.class,
 		ReportsLibraryVerifyTemplateDirectoryContents.class,
-		RunReportLoop.class,
+		//RunReportLoop.class,
 })
 
 

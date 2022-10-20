@@ -74,7 +74,6 @@ public class ReportsLibraryCreateRenameAndDeleteNewFolderAds1348 extends LoginSt
   @Test
   public void test02RenameNewReportsFolder() throws Throwable {
     try {
-    	driverDelay(5000);;//venkat 03.10.2022 
       driver.findElement(By.xpath("//div[contains(@class,'droppable')][contains(text(),'New Folder')]")).click();
       driverPause();//shilpa 16.09.2022
       driver.findElement(By.xpath("//div/button[text()='Rename Folder']")).click();
@@ -106,7 +105,6 @@ public class ReportsLibraryCreateRenameAndDeleteNewFolderAds1348 extends LoginSt
   @Test
   public void test03CancelDeletingNewReportsFolder() throws Throwable {
     try {
-    	driverDelay(5000);;//venkat 03.10.2022 
       driver.findElement(By.xpath("//div/button[text()='Delete Folder']")).click();
       driverDelay(2000);
       driver.findElement(By.xpath("//div[text()='Delete Folder']/ancestor::tr/following-sibling::tr/descendant::td/button[text()='Cancel']"))

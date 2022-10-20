@@ -494,7 +494,8 @@ public class BuildVerificationTestScript extends UcqcHelper {
 		verifySubTabOrder(
 		        generalElement.getReportingTab(),
 		        "reporting_subtab",
-		        AdsStandardData.expectedReportingSubTabs);
+		        AdsStandardData.expectedReportingSubTabs
+		);
 		ExtentReport.logPass("PASS", "test0010cReportingSubTabsOrder");
     } catch (Exception|AssertionError e) {
 		ExtentReport.logFail("FAIL", "test0010cReportingSubTabsOrder", driver, e);

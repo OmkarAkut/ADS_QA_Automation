@@ -91,7 +91,6 @@ public class UtilitiesHelper extends GoHelper {
         Thread.sleep(5000);
         if (counter == 30) {
           fail("Utility did not finish in allotted time");
-          break;
         }
         counter++;
       }
