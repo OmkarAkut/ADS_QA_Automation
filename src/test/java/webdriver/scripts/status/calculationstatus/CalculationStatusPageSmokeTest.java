@@ -103,7 +103,11 @@ public class CalculationStatusPageSmokeTest extends CalculationHelper {
 
       fail(e.getMessage());
     } finally {
-      closeViewDialog();
+      try {
+		closeViewDialog();
+	} catch (Exception e) {
+		
+	}
     }
   }
 

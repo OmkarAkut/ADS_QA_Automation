@@ -16,6 +16,8 @@ import webdriver.utilities.FileUtility;
 public class FilesTemplate {
 
   FileUtility filer = new FileUtility();
+  //Shilpa updated below to get file from user.dir 
+  
   File file = filer.getFile(System.getProperty("user.dir")+
         "//src//test//java//webdriver//examples//files//TestFile.txt")
   ;

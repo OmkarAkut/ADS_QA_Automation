@@ -59,8 +59,12 @@ public class TotalQuickCostColumnPopulatesAfterCalculateStaticAds1228 extends Uc
   }
 
   @AfterClass
-  public static void teardownScript() throws InterruptedException {
-    doClosePageOnLowerBar("Unit Cost Quick...");
+  public static void teardownScript() throws Throwable {
+    try {
+		doClosePageOnLowerBar("Unit Cost Quick...");
+	} catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL","setupScript", driver,e);
+	}
     ExtentReport.report.flush();
   }
 

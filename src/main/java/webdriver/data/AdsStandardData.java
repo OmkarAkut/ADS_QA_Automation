@@ -28,7 +28,9 @@ public class AdsStandardData {
 			"ICD9/ICD10 GEMs Analysis","CUSTOM NAME","Test Report","MB Test","Custom Report Menu","Test Custom Report","Test New Menu","Report Menu File",
 			"jskoff test","EP Test","Tinesha","Costing Reports","OKHeart","new_menu_item","BPTESTItem","JK Test Report","MB Report SP2","new publ P2","mcarlson_dept report menu",
 			"mcarlson report menu","test quick","mb new test","mb new 9.4 regression","mb test security","Report Admin HCA before","mbreport hca 10 16","new 10-18","new 10-18 DB report",
-			"mb db aadmin","mbekkerall new","Ven","mb 98 regress","asdfsVVVC","dasfasdf"
+//			"mb db aadmin","mbekkerall new","Ven","mb 98 regress","asdfsVVVC","dasfasdf"
+			"mb db aadmin","mbekkerall new","Ven","mb 98 regress"
+
 			);
 
 	public static List<String> expectedCostingSubTabs = Arrays.asList(

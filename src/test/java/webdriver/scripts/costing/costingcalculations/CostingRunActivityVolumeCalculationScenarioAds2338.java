@@ -46,9 +46,6 @@ public class CostingRunActivityVolumeCalculationScenarioAds2338 extends Calculat
 	} catch (Exception|AssertionError e) {
 		
 		ExtentReport.logFail("FAIL", "Failure in teardownScript", driver, e);
-	    ExtentReport.report.flush();
-
-		fail(e.getMessage());
 	}
     ExtentReport.report.flush();
   }

@@ -24,7 +24,7 @@ import webdriver.scripts.datamaintenance.maintaindata.MaintaindataTestSuite;
 import webdriver.scripts.datamaintenance.utilities.UtilitiesTestSuite;
 import webdriver.scripts.episodes.EpisodesTestSuite;
 import webdriver.scripts.regression.generalcalculations.GeneralCalculationsTestSuite;
-import webdriver.scripts.reporting.ResportingTestSuite;
+import webdriver.scripts.reporting.ReportingTestSuite;
 import webdriver.scripts.security.SecurityTestSuite;
 import webdriver.scripts.security.ucqcroles.UcqcRoleBasedTestSuite;
 import webdriver.scripts.status.calculationstatus.CalculationStatusSuite;
@@ -51,7 +51,7 @@ import webdriver.templates.TemplatesTestSuite;
 	MaintaindataTestSuite.class,
 	EpisodesTestSuite.class,
 	GeneralCalculationsTestSuite.class,
-	ResportingTestSuite.class,
+	ReportingTestSuite.class,
 	UcqcRoleBasedTestSuite.class,
 	CalculationStatusSuite.class,
 	TemplatesTestSuite.class,

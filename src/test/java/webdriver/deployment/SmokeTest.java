@@ -43,8 +43,9 @@ public class SmokeTest extends UcqcHelper {
 	  String expectedReleaseVersion = version;
 	 @BeforeClass
 	  public static void setupScript() throws Throwable {
-		 try {
 			ExtentReport.reportCreate("SmokeTest", "webdriver.deployment", "SmokeTest");
+
+		 try {
 			generalElement = BuildMap.getInstance(driver, GeneralElementsMap.class);
 			analyticsMap = BuildMap.getInstance(driver, AnalyticsMap.class);
 			contractingMap = BuildMap.getInstance(driver, ContractingMap.class);
@@ -55,10 +56,11 @@ public class SmokeTest extends UcqcHelper {
 			modelLibrary = BuildMap.getInstance(driver, ModelLibraryMap.class);
 			reportingMap = BuildMap.getInstance(driver, ReportingMap.class);
 			sysmaint = BuildMap.getInstance(driver, SystemMaintenanceMap.class);
-			System.out.println("Test Class: " + BuildVerificationTestScript.class.getSimpleName());
+			System.out.println("Test Class: " + SmokeTest.class.getSimpleName());
 			ExtentReport.logPass("PASS", "setupScript");
 		 } catch (Exception|AssertionError e) {
 			ExtentReport.logFail("FAIL", "Failure in setupScript method", driver, e);
+			fail(e.getMessage());
 		}
 	  }
 
@@ -272,6 +274,7 @@ public class SmokeTest extends UcqcHelper {
 
 	  @Test
 	  public void test0003LandingPageBudgeting() throws Throwable {
+		  driverDelay(3000);
 	    try {
 			WebElement[] landingPageBudgetingElements = {
 			        generalElement.getLandingPageBubbleBudgeting(),

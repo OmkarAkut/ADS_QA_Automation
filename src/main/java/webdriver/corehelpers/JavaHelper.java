@@ -16,6 +16,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import webdriver.core.Login;
 
@@ -325,7 +326,11 @@ public class JavaHelper extends Login {
             if(printout){
                 System.out.println(webelement.getText() + ",");
             }
+            //Shilpa 10.07.2022
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", webelement);
+            Thread.sleep(500); 
             availableListStrings.add(webelement.getText());
+            System.out.println(webelement.getText());
         }
         return availableListStrings;
     }

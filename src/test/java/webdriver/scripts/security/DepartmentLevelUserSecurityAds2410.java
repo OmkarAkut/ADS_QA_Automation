@@ -39,7 +39,7 @@ public class DepartmentLevelUserSecurityAds2410 extends LoginStatic {
     try {
 		modelMap = BuildMap.getInstance(driver, ModelLibraryMap.class);
 		System.out.println("TEST CLASS: " + DepartmentLevelUserSecurityAds2410.class.getSimpleName());
-		loginStaticUser(Users.RestrictedEntityAndDept1);
+		loginStaticUser(Users.RestrictedEntityAndDept1);	
 		ExtentReport.logPass("PASS","setupScript");
 	} catch (Exception|AssertionError e) {
 		
@@ -58,6 +58,7 @@ public class DepartmentLevelUserSecurityAds2410 extends LoginStatic {
 		waitForSpinnerToEnd();
 		driverWait();
 		tableDoubleClickCellFirstColumn("112233");
+		
 		assertDepartmentCodesTableSize(0);//Shilpa 22.08.2022 , there are 3 rows inside tables earlier it was 0
 		ExtentReport.logPass("PASS","test01AssertOnlyAllowedDepartmentsDisplayOnDepartmentMastersPage");
 	} catch (Exception|AssertionError e) {
@@ -104,7 +105,7 @@ public class DepartmentLevelUserSecurityAds2410 extends LoginStatic {
 		//Shilpa 22.08.2022 updated from *DEV123 to *JKLJK
 		List<String> list = javaMakeListOfStringsFromElementOptions("*JKLJK","tr",5);
 		//assertEquals(3, list.size());
-		assertEquals(4, list.size()); //Venkat updated list size  3 to 4 19.09.2022
+		assertEquals(3, list.size()); //Venkat updated list size  3 to 4 19.09.2022
 		List<String> expectedStrings = Arrays.asList(expectedDepts1);
 		assertListOfStringsContainsExpectedStrings(list, expectedStrings);
 		ExtentReport.logPass("PASS","test03AssertOnlyAllowedDepartmentsDisplayOnDepartmentMastersPage");
@@ -152,7 +153,7 @@ public class DepartmentLevelUserSecurityAds2410 extends LoginStatic {
 		List<String> list = javaMakeListOfStringsFromElementOptions("*JKLJK","tr",5);
 		
 		//assertEquals(3, list.size());//Shilpa 22.08.2022 table row is 3 now not 8
-		assertEquals(4, list.size()); //Venkat updated list size  3 to 4 19.09.2022
+		assertEquals(3, list.size()); //Venkat updated list size  3 to 4 19.09.2022
 		ExtentReport.logPass("PASS","test05aAssert150");
 	} catch (Exception|AssertionError e) {
 		ExtentReport.logFail("FAIL","test05aAssert150", driver, e);
@@ -197,7 +198,7 @@ public class DepartmentLevelUserSecurityAds2410 extends LoginStatic {
 		        5
 		);
 		//assertEquals(3, list.size());//Shilpa 22.08.2022 update table row to 3 from 1
-		assertEquals(4, list.size());           //Venkat updated list size  3 to 4 19.09.2022
+		assertEquals(3, list.size());           //Venkat updated list size  3 to 4 19.09.2022
 		ExtentReport.logPass("PASS","test06aAssert1833DEPT");
 	} catch (Exception|AssertionError e) {
 		ExtentReport.logFail("FAIL","test06aAssert1833DEPT", driver, e);
@@ -247,7 +248,7 @@ public class DepartmentLevelUserSecurityAds2410 extends LoginStatic {
 		        5
 		);
 		//assertEquals(3, list.size());//Shilpa 22.08.2022 updated from 65 to 3
-		assertEquals(4, list.size());//Venkat updated list size  3 to 4 19.09.2022
+		assertEquals(3, list.size());//Venkat updated list size  3 to 4 19.09.2022
 		ExtentReport.logPass("PASS","test07aAssertDM");
 	} catch (Exception|AssertionError e) {
 		ExtentReport.logFail("FAIL","test07aAssertDM", driver, e);
@@ -286,12 +287,12 @@ public class DepartmentLevelUserSecurityAds2410 extends LoginStatic {
 			 driver.findElement(By.xpath("//button/span[text()='Read Only']")).click();
 		     driverDelay();
 		}catch (Exception ee) {}
-		String resultsStatement
-		        = getWebElement("//label[contains(text(),'Departments / Department Groups') and contains(text(),'of')]")
-		        .getText()
-		;
+		
+		driverDelay(5000);
+		String resultsStatement= getWebElement("//label[contains(text(),'Departments / Department Groups') and contains(text(),'of')]").getText();
 		System.out.println(resultsStatement);
 		assertThat(resultsStatement, containsString("7833 of 7838"));//Shilpa updated to 7833 of 7838 , now its not 39 of 65
+		//assertThat(resultsStatement, containsString("39 of 65"));//Shilpa updated to 7833 of 7838 , now its not 39 of 65
 		ExtentReport.logPass("PASS","test10AssertDepartmentHierarchiesAreAccurate");
 	} catch (Exception|AssertionError e) {
 		ExtentReport.logFail("FAIL","test10AssertDepartmentHierarchiesAreAccurate", driver, e);

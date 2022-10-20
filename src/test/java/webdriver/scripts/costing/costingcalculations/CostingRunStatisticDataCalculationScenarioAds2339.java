@@ -42,10 +42,7 @@ public class CostingRunStatisticDataCalculationScenarioAds2339 extends Calculati
 		ExtentReport.logPass("PASS", "teardownScript");
     } catch (Exception|AssertionError e) {
 		ExtentReport.logFail("PASS", "teardownScript", driver, e);
-	    ExtentReport.report.flush();
-
-		fail(e.getMessage());
-    }
+	       }
     ExtentReport.report.flush();
   }
 

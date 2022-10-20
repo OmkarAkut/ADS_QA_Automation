@@ -45,16 +45,15 @@ public class Axe {
           AXE.writeResults(methodName, violations);
         }
       }
-    } catch (Throwable e) {
-      e.printStackTrace();
+    } catch (Exception e) {
+    	fail("Failed in runAxeTestOnPage");
+    	
     }
   }
 
   public void runAxeTestOfPageJsonReport(WebDriver driver, String methodName) {  //creates JSON results file - no log4j files created
     try {
-      JSONObject responseJson = new AXE.Builder(driver, scriptUrl)
-              .options("{runOnly: [" + wcagStandard + "]}") //sets wcag standard
-              .skipFrames()
+      JSONObject responseJson = new AXE.Builder(driver, scriptUrl).options("{runOnly: ["+wcagStandard+"]}") //sets wcag standard.skipFrames()
               .analyze()
       ;
       JSONArray violations = responseJson.getJSONArray("violations");  //sets axe to return only violations
@@ -64,11 +63,10 @@ public class Axe {
         AXE.writeResults(methodName, violations);
         //assertTrue(AXE.report(violations), false);
       }
-    } catch (Throwable e) {
-      e.printStackTrace();
+    } catch (Exception e) {
+    	 fail("Failed in runAxeTestOfPageJsonReport");
     }
   }
-
 
   /** Method to run Axe core on the page under test - this one requires passing a logger object. */
   public void runAxeTestOfPageLog4jReport(WebDriver driver, Logger logger, String methodName) {
@@ -87,16 +85,16 @@ public class Axe {
         logger.info("Test Page: " + methodName);
         logger.info(AXE.report(violations));  //prints filtered results to console (i.e., violations)
       }
-    } catch (Throwable e) {
-      e.printStackTrace();
+    } catch (Exception e) {
+    	 fail("Failed in runAxeTestOfPageLog4jReport");
     }
   }
 
   /** Method to run Axe core on the page under test - this one does not require passing a logger object. */
   public void runAxeAccessibilityTestOfPage(WebDriver driver, String methodName) {
     try {
-      JSONObject responseJson = new AXE.Builder(driver, scriptUrl)
-              .options("{runOnly: [" + wcagStandard + "]}") //sets wcag standard
+    	
+      JSONObject responseJson = new AXE.Builder(driver, scriptUrl).options("{runOnly: [" + wcagStandard + "]}") //sets wcag standard
               //.skipFrames()  //if active, will not look in iframes; if commented out, will look in iframes
               .analyze();
       JSONArray violations = responseJson.getJSONArray("violations");  //sets axe to return only violations - i.e., a violations filter
@@ -107,8 +105,9 @@ public class Axe {
         logger.info("Test Page: " + methodName);
         logger.info(AXE.report(violations));  //prints filtered results to console (i.e., violations)
       }
-    } catch (Throwable e) {
-      e.printStackTrace();
+    } catch (Exception e) {
+    	
+      fail("Failed in runAxeAccessibilityTestOfPage");
     }
   }
 }

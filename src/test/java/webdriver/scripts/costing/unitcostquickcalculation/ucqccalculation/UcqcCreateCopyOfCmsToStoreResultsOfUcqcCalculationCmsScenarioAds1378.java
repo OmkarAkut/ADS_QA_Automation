@@ -258,8 +258,8 @@ public class UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds137
 	  try {
     String expectedValue = "150 Marina Medical Center";
     doClick("//*[@name='priceList']/parent::td/following-sibling::td[contains(@class,'trigger')]");
-   // assertThatDropdownSelectedValue(javaGetListContainerElementFromAnyOptionText("0TB  Test"),expectedValue);
-    assertThatDropdownSelectedValue(javaGetListContainerElementFromAnyOptionText("0TB  Testsd"),expectedValue);//venkat updated text data 22.09.2022
+    assertThatDropdownSelectedValue(javaGetListContainerElementFromAnyOptionText("0TB  Test"),expectedValue);
+//    assertThatDropdownSelectedValue(javaGetListContainerElementFromAnyOptionText("0TB  Testsd"),expectedValue);//venkat updated text data 22.09.2022
     ExtentReport.logPass("PASS", "test11CostModelCalculationScenarioPageVerifyPriceList");
 	 	} 
 	  catch (Exception|AssertionError e) {

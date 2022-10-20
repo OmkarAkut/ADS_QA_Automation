@@ -271,8 +271,8 @@ public class CorrectlySetValuesToNoneInSelectorsWhenPriorSelectionsChangedAds121
   public void test14ChangeCostModelScenarioToDifferentValueAndAssertRelevantDropdownsAreDisabled() throws Throwable {
     try {
     	//venkat text data updated 19.09.2022
-      //doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationDropdownCostModelScenario(),costingMap.getUnitCostQuickCalculationDropdownCostModelScenarioMenuList(),"*CM2 TB MHFY05 No Price List");
-      doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationDropdownCostModelScenario(),costingMap.getUnitCostQuickCalculationDropdownCostModelScenarioMenuList(),"*CM2 TB MHFY05 No Price List - 2");
+      doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationDropdownCostModelScenario(),costingMap.getUnitCostQuickCalculationDropdownCostModelScenarioMenuList(),"*CM2 TB MHFY05 No Price List");
+//      doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationDropdownCostModelScenario(),costingMap.getUnitCostQuickCalculationDropdownCostModelScenarioMenuList(),"*CM2 TB MHFY05 No Price List - 2");
       assertElementIsEnabled(costingMap.getUnitCostQuickCalculationDropdownCostModel(),printout);
       assertElementIsEnabled(costingMap.getUnitCostQuickCalculationDropdownCostModelScenario(),printout);
       assertElementIsEnabled(costingMap.getUnitCostQuickCalculationDropdownEntity(),printout);
@@ -289,8 +289,8 @@ public class CorrectlySetValuesToNoneInSelectorsWhenPriorSelectionsChangedAds121
   public void test15ResetCriteriaAndAssertRelevantDropdownsAreEnabled() throws Throwable {
     try {
     	//venkat updated text data 19.09.2022
-     // doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationDropdownCostModelScenario(),costingMap.getUnitCostQuickCalculationDropdownCostModelScenarioMenuList(),"*CM2 TB MHFY05 No Price List");
-    	doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationDropdownCostModelScenario(),costingMap.getUnitCostQuickCalculationDropdownCostModelScenarioMenuList(),"*CM2 TB MHFY05 No Price List - 2");
+      doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationDropdownCostModelScenario(),costingMap.getUnitCostQuickCalculationDropdownCostModelScenarioMenuList(),"*CM2 TB MHFY05 No Price List");
+//    	doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationDropdownCostModelScenario(),costingMap.getUnitCostQuickCalculationDropdownCostModelScenarioMenuList(),"*CM2 TB MHFY05 No Price List - 2");
     	
     	
     	assertElementIsEnabled(costingMap.getUnitCostQuickCalculationDropdownEntity(),printout);

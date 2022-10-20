@@ -98,8 +98,15 @@ public class UcqcColumnsToDisplaySelectColumnsPopupAds1156 extends UcqcHelper {
 @Test
     public void test03aAccessColumnsToDisplayDialogAndConfirmAvailableBoxOnSelectDialogIsNotPopulatedByDefault() throws Throwable {
         try {
+        	Thread.sleep(2000);
+		    ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoViewIfNeeded();",costingMap.getUnitCostQuickCalculationButtonColumnsToDisplaySelect());
+		    Thread.sleep(3000);
             doClick(costingMap.getUnitCostQuickCalculationButtonColumnsToDisplaySelect());
+            
             waitForAjaxExtJs();
+//            addDimension(1200,1000);
+//        	driverDelay(3000);
+//        	driver.manage().window().maximize();
             assertEquals(0, getSelectDialogAvailableListSize(printout));
             ExtentReport.logPass("PASS", "test03aAccessColumnsToDisplayDialogAndConfirmAvailableBoxOnSelectDialogIsNotPopulatedByDefault");
         } catch (Exception|AssertionError e) {
@@ -126,6 +133,7 @@ public class UcqcColumnsToDisplaySelectColumnsPopupAds1156 extends UcqcHelper {
     public void test03cConfirmChargeCodeIsNotInSelectedList() throws Throwable {
         try {
             waitForAjaxExtJs();
+            
             initialSelectedList = getSelectDialogSelectedList();
             selectedListStrings = javaListConvertListOfWebElementsToStrings(initialSelectedList, printout);
             assertFalse(selectedListStrings.contains("Charge Code"));
@@ -139,6 +147,10 @@ public class UcqcColumnsToDisplaySelectColumnsPopupAds1156 extends UcqcHelper {
 @Test
     public void test03dVerifyOrderOfListItemsInSelectedList() throws Throwable {
         try {
+        	 System.out.println(selectedListStrings.get(1));
+        	 //Shilpa 10.07.2022
+        	 ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.xpath("//label[text()='Selected']/ancestor::div[contains(@class,'x-panel x-box-item x-panel-default')]/following-sibling::div/descendant::tbody[2]//td/div[text()='"+selectedListStrings.get(1)+"']")));
+             Thread.sleep(500); 
             assertEquals("Charge Code Name", selectedListStrings.get(1));
             assertEquals("Modifier", selectedListStrings.get(2));
             assertEquals("Total Unit Cost", selectedListStrings.get(3));
@@ -146,6 +158,7 @@ public class UcqcColumnsToDisplaySelectColumnsPopupAds1156 extends UcqcHelper {
             assertEquals("Total Change", selectedListStrings.get(5));
             verifyFiveItemsEachCostComponent(selectedListStrings, printout);
             ExtentReport.logPass("PASS", "test03dVerifyOrderOfListItemsInSelectedList");
+            driver.manage().window().maximize();
         } catch (Exception|AssertionError e) {
         	ExtentReport.logFail("FAIL","test03dVerifyOrderOfListItemsInSelectedList", driver,e);
             fail(e.getMessage());
@@ -235,6 +248,8 @@ public class UcqcColumnsToDisplaySelectColumnsPopupAds1156 extends UcqcHelper {
     public void test06HighlightAnItemInBothListsAndVerifyRemoveAndSelectButtonsAreActive() throws Throwable {
         try {
             waitForAjaxExtJs();
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.xpath("//div[contains(@class,'x-panel x-box-item x-panel-default')]/following-sibling::div/descendant::tbody[1]/tr/*[contains(@class,'x-grid-cell-first')]")));
+            Thread.sleep(500); 
             doClick(driver.findElement(By.xpath("//div[contains(@class,'x-panel x-box-item x-panel-default')]/following-sibling::div/descendant::tbody[1]/tr/*[contains(@class,'x-grid-cell-first')]")));
             doClick(driver.findElement(By.xpath("//div[contains(@class,'x-panel x-box-item x-panel-default')]/following-sibling::div/descendant::tbody[2]/tr/*[contains(@class,'x-grid-cell-first')]")));
             assertElementIsEnabled(costingMap.getUnitCostQuickCalculationButtonColumnsToDisplayModalSelect(),printout);
@@ -338,6 +353,8 @@ public class UcqcColumnsToDisplaySelectColumnsPopupAds1156 extends UcqcHelper {
             doClick(costingMap.getUnitCostQuickCalculationButtonColumnsToDisplayModalRemove());
             waitForAjaxExtJs();
             assertEquals(1, getSelectDialogAvailableListSize(printout));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.xpath("//div[contains(@class,'x-panel x-box-item x-panel-default')]/following-sibling::div/descendant::tbody[1]/tr/*[contains(@class,'x-grid-cell-first')]")));
+            Thread.sleep(500); 
             doClick(driver.findElement(By.xpath("//div[contains(@class,'x-panel x-box-item x-panel-default')]/following-sibling::div/descendant::tbody[1]/tr/*[contains(@class,'x-grid-cell-first')]")));
             waitForAjaxExtJs();
             doClick(costingMap.getUnitCostQuickCalculationButtonColumnsToDisplayModalSelect());
@@ -448,9 +465,9 @@ public class UcqcColumnsToDisplaySelectColumnsPopupAds1156 extends UcqcHelper {
     }
 
     public List<WebElement> getSelectDialogAvailableList() throws InterruptedException {
-        waitForAjaxExtJs();
-        WebElement availableListElement = driver.findElement(By.xpath("//div[contains(@class,'x-panel x-box-item x-panel-default')]/following-sibling::div/descendant::tbody[1]"));
-        List<WebElement> availableList = availableListElement.findElements(By.tagName("tr"));
+    	  waitForAjaxExtJs();
+          WebElement availableListElement = driver.findElement(By.xpath("//div[contains(@class,'x-panel x-box-item x-panel-default')]/following-sibling::div/descendant::tbody[1]"));
+          List<WebElement> availableList = availableListElement.findElements(By.tagName("tr"));
         return availableList;
     }
 
@@ -461,14 +478,15 @@ public class UcqcColumnsToDisplaySelectColumnsPopupAds1156 extends UcqcHelper {
         return availableList;
     }
 
-    public void verifyFiveItemsEachCostComponent(ArrayList<String> listOfStrings, boolean printout) {
+    public void verifyFiveItemsEachCostComponent(ArrayList<String> listOfStrings, boolean printout) throws InterruptedException {
         int groups = listOfStrings.size();
         for (int i=6; i<groups; i=i+5) {
             if(printout) {
                 System.out.println("The index i is " + i);
                 System.out.println("List size is: " + groups);
             }
-
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.xpath("//td/div[text()='"+listOfStrings.get(i)+"']")));
+            Thread.sleep(500); 
             String one = listOfStrings.get(i);
             String two = listOfStrings.get(i+1);
             String three = listOfStrings.get(i+2);
@@ -482,7 +500,7 @@ public class UcqcColumnsToDisplaySelectColumnsPopupAds1156 extends UcqcHelper {
                 System.out.println(four);
                 System.out.println(five);
             }
-
+            System.out.println(five);
             assertTrue(one.contains("RVU"));
             assertTrue(two.contains("Quick") & two.contains("RVU"));
             assertTrue(three.contains("Cost"));

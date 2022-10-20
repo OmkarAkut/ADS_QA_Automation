@@ -124,6 +124,7 @@ public class UtilitiesPageHelper extends LoginStatic {
 
 						ExtentReport.extenttest.log(Status.INFO, e1);
 					}
+					break;
 				}
 				counter++;
 			}

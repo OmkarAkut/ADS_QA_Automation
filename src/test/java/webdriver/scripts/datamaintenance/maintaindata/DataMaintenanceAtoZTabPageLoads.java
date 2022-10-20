@@ -118,9 +118,11 @@ public class DataMaintenanceAtoZTabPageLoads extends DataMaintenanceHelper {
 		try {
 			if (testEnvironment.contains("qa3")) {
 				try {
+				
 					assertPageLoads(
 							//					Arrays.asList(DataMaintenanceAtoZPagesData.expectedMaintainDataAtoZPagesCompleteListEchelon));
 							Arrays.asList(DataMaintenanceAtoZPagesData.expectedMaintainDataAtoZPagesCompleteListQA3));
+					
 					ExtentReport.logPass("PASS", "test02MaintainDataPageAssertAtoZListPagesLoadProperly");
 
 				} catch (Exception|AssertionError e) {
@@ -132,6 +134,17 @@ public class DataMaintenanceAtoZTabPageLoads extends DataMaintenanceHelper {
 				try {
 					assertPageLoads(
 							Arrays.asList(DataMaintenanceAtoZPagesData.expectedMaintainDataAtoZPagesCompleteListEvolve));
+					ExtentReport.logPass("PASS", "test02MaintainDataPageAssertAtoZListPagesLoadProperly");
+
+				} catch (Exception|AssertionError e) {
+					ExtentReport.logFail("FAIL","test02MaintainDataPageAssertAtoZListPagesLoadProperly",driver,e);
+
+				}
+			} 
+			else if (testEnvironment.contains("ads11")) {
+				try {
+					assertPageLoads(
+							Arrays.asList(DataMaintenanceAtoZPagesData.expectedMaintainDataAtoZPagesCompleteListQA3));
 					ExtentReport.logPass("PASS", "test02MaintainDataPageAssertAtoZListPagesLoadProperly");
 
 				} catch (Exception|AssertionError e) {

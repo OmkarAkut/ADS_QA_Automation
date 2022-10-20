@@ -65,8 +65,12 @@ public class ReportingWebiCheck extends GoHelper {
 			ExtentReport.logFail("FAIL", "testWebiPageLoads", driver, e);
 			fail(e.getMessage());
 		}finally {
-			driver.close();
-			driver.switchTo().window(firstHandle);
+			try {
+				driver.close();
+				driver.switchTo().window(firstHandle);
+			} catch (Exception e) {
+				
+			}
 		}
 	}
 	@AfterClass

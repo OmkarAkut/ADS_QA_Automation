@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+import org.assertj.core.error.AssertionErrorCreator;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
@@ -388,52 +389,62 @@ public class EntityLevelUserSecurityAds2409 extends LoginStatic {
 
 	@Test
 	public void test08AssertDefinitionElementsAddProvidersSelectorContainsOnlyRestrictedEntity() throws Throwable {
-		try {
-
-			driverDelay();
-			waitForAjaxExtJs();
-
-			waitUntilElementIsClickable(driver.findElement(By.xpath("//button/span[text()='Add Providers']")));
-			driver.findElement(By.xpath("//button/span[text()='Add Providers']")).click();
-			waitForAjaxExtJs();
-			doClick("//label[text()='Select All']/preceding-sibling::input");
-
-			waitForSpinnerToEnd();
-			waitForAjaxExtJs();
-			driverWait();
-			List<String> actualOptions = javaMakeListOfStringsFromElementOptions("150 Marina Medical Center ", "");
-			System.out.println(actualOptions.size());
-			assertEquals(1, actualOptions.size());
-			List<String> expectedOptions = Arrays.asList("150 Marina Medical Center ");
-			System.out.println(expectedOptions);
-			assertListOfStringsContainsExpectedStrings(expectedOptions, actualOptions);
-ExtentReport.logPass("PASS",
-					"test08AssertDefinitionElementsAddProvidersSelectorContainsOnlyRestrictedEntity");
-
-		}
-
-		catch (Exception| AssertionError e) {
-			ExtentReport.logFail("FAIL","test08AssertDefinitionElementsAddProvidersSelectorContainsOnlyRestrictedEntity", driver, e);
-			fail(e.getMessage());
-			
-
-		} finally {
-			// Shilpa 23.08.2022 added try catch if Read only mode option is enabled
+		
+		
 			try {
-				driver.findElement(By.xpath("//button/span[text()='Cancel']")).click();
+
+				driverDelay();
 				waitForAjaxExtJs();
-				driver.findElement(By.xpath(
-						"//div[not(contains(@class, 'cancelCloseBtn'))]/em/button/span[text()='Cancel & Close']"))
-						.click();
-				
-			} catch (Exception|AssertionError e) {
-				driver.findElement(By.xpath("//div[not(contains(@class, 'cancelCloseBtn'))]/em/button/span[text()='Cancel & Close']")).click();
+
+				waitUntilElementIsClickable(driver.findElement(By.xpath("//button/span[text()='Add Providers']")));
+				driver.findElement(By.xpath("//button/span[text()='Add Providers']")).click();
+				waitForAjaxExtJs();
+				doClick("//label[text()='Select All']/preceding-sibling::input");
+
+				waitForSpinnerToEnd();
+				waitForAjaxExtJs();
+				driverWait();
+				List<String> actualOptions = javaMakeListOfStringsFromElementOptions("150 Marina Medical Center ", "");
+				System.out.println(actualOptions.size());
+				assertEquals(1, actualOptions.size());
+				List<String> expectedOptions = Arrays.asList("150 Marina Medical Center ");
+				System.out.println(expectedOptions);
+				assertListOfStringsContainsExpectedStrings(expectedOptions, actualOptions);
+			    ExtentReport.logPass("PASS",
+						"test08AssertDefinitionElementsAddProvidersSelectorContainsOnlyRestrictedEntity");
+
+			}
+
+			catch (Exception| AssertionError e) {
 				ExtentReport.logFail("FAIL","test08AssertDefinitionElementsAddProvidersSelectorContainsOnlyRestrictedEntity", driver, e);
 				fail(e.getMessage());
 				
 
+			} finally {
+				// Shilpa 23.08.2022 added try catch if Read only mode option is enabled
+				try {
+					driver.findElement(By.xpath("//button/span[text()='Cancel']")).click();
+					waitForAjaxExtJs();
+					driver.findElement(By.xpath(
+							"//div[not(contains(@class, 'cancelCloseBtn'))]/em/button/span[text()='Cancel & Close']"))
+							.click();
+					
+				} catch (Exception|AssertionError e) {
+					
+					try {
+						driver.findElement(By.xpath("//div[not(contains(@class, 'cancelCloseBtn'))]/em/button/span[text()='Cancel & Close']")).click();
+					} catch (Exception|AssertionError e1) {
+						
+						ExtentReport.logFail("FAIL","Failed in Finally block", driver, e1);
+						fail(e1.getMessage());
+					}
+					ExtentReport.logFail("FAIL","test08AssertDefinitionElementsAddProvidersSelectorContainsOnlyRestrictedEntity", driver, e);
+					fail(e.getMessage());
+					
+
+				}
 			}
-		}
+		
 	}
 
 	@AfterClass

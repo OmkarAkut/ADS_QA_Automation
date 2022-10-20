@@ -44,7 +44,12 @@ public class Login extends Driver {
 		} else if (testEnvironment.contains("qa3")) {
 			username = Usersqa3.valueOf(user).getUsername();
 			password = Usersqa3.valueOf(user).getPassword();
-		} else {
+		} 
+		else if (testEnvironment.contains("ads11")) {
+			username = Usersqa3.valueOf(user).getUsername();
+			password = Usersqa3.valueOf(user).getPassword();
+		}
+		else {
 			throw new Exception("ERROR: login credentials - environment name not recognized.");
 		}
 		login(username, password);
