@@ -17,6 +17,7 @@ public class DataMaintenanceHelper extends GoHelper {
           String folderName,
           String firstOptionInList,
           String[] expectedList) throws InterruptedException {
+	  Thread.sleep(4000);
     driver.findElement(By.xpath("//div[text()='"+folderName+"']/img[contains(@class,'x-tree-expander')]")).click();
     waitForAjaxExtJs();
     Thread.sleep(1000);

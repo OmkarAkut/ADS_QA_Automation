@@ -98,7 +98,7 @@ public class UcqcCalculationFailsWhenDeptSelectedNoLongerExistsInSelectedCms ext
 	}
   }
 
-  @Ignore
+//  @Ignore
   @Test
   public void test03GoToCalculationStatusPageAndAssertCalculationCompletedToOneHundredPercent() {
     try {

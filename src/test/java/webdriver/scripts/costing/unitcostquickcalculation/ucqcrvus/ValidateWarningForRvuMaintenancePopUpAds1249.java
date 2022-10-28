@@ -73,9 +73,9 @@ public class ValidateWarningForRvuMaintenancePopUpAds1249 extends UcqcHelper {
       assertElementIsDisplayedWithXpath("//button/span[text()='Cancel']");
       assertElementIsDisplayedWithXpath("//button/span[text()='Overwrite']");
       assertElementIsDisplayedWithXpath("//div[contains(@id,'warningwindow')]/div/img[@class='x-tool-close']");
-      doClick(costingMap.getUnitCostQuickCalculationOverwriteRVUMaintenanceModalWarningButtonCancel());
+//      doClick(costingMap.getUnitCostQuickCalculationOverwriteRVUMaintenanceModalWarningButtonCancel());
       waitForAjaxExtJs();
-      doClick(costingMap.getUnitCostQuickCalculationOverwriteRVUMaintenanceModalButtonCancelAndClose());
+//      doClick(costingMap.getUnitCostQuickCalculationOverwriteRVUMaintenanceModalButtonCancelAndClose());
       waitForAjaxExtJs();
       ExtentReport.logPass("PASS", "test01bOnOverwriteRvuDialogAssertDialogElementsAreDisplayed");
      	} catch (Exception|AssertionError e) {
@@ -84,10 +84,12 @@ public class ValidateWarningForRvuMaintenancePopUpAds1249 extends UcqcHelper {
      	}
   }
 
-  @Ignore
+//  @Ignore
   @Test
   public void test02ClickOverwriteButtonAndAssertWarningDailogDisappears() throws Throwable {
     try {
+        doClick(costingMap.getUnitCostQuickCalculationButtonOverwriteRVUMaintenance());
+        waitForSpinnerToEnd();
       waitForAjaxExtJs();
       doClick(costingMap.getUnitCostQuickCalculationOverwriteRVUMaintenanceModalWarningButtonOverwrite());
       ucqcWaitForSpinnerToEnd();
@@ -98,7 +100,7 @@ public class ValidateWarningForRvuMaintenancePopUpAds1249 extends UcqcHelper {
  	}
   }
 
-  @Ignore
+//  @Ignore
   @Test
   public void test03ClickOverwriteButtonAndAssertWarningDailogDisappears() throws Throwable {
     try {

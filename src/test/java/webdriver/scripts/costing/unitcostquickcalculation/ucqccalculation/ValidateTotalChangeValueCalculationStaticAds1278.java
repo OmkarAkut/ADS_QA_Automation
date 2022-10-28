@@ -92,26 +92,6 @@ public class ValidateTotalChangeValueCalculationStaticAds1278 extends UcqcHelper
 	}
   }
 
-  @Ignore
-  @Test
-  public void test03ValidateTotalChangeColumnNegativeValuesDisplayInRed() throws InterruptedException {
-    //Validate that negative values are displayed in red.
-    // do this manually
-  }
-
-  @Ignore
-  @Test
-  public void test04ValidateTotalChangeColumnZeroValuesAreNotDisplayedInRed() throws InterruptedException {
-    //Validate that zero values are NOT displayed in red.
-    // do this manually
-  }
-
-  @Ignore
-  @Test
-  public void test05ValidateThatWhenTotalUnitCostAndTotalQuickCostAreNullThenTotalChangeIsAlsoNull() throws InterruptedException {
-    //Validate that when Total Unit Cost and Total Quick Cost are null that the Total Change column is also null
-    //do this manually
-  }
   @AfterClass
 	public static void endtest() throws Exception {
 

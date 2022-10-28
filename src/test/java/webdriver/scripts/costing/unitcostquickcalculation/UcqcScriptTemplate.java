@@ -99,7 +99,7 @@ public class UcqcScriptTemplate extends UnitCostQuickCalculationHelperStatic {
     }
   }
 
-  @Ignore
+
   @Test
   public void test03GoToCalculationStatusPageAndAssertCalculationCompletedToOneHundredPercent() {
     try {

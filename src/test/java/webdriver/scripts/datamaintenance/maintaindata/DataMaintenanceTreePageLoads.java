@@ -67,7 +67,7 @@ public class DataMaintenanceTreePageLoads extends DataMaintenanceHelper {
     }
   }
 
-  @Ignore
+//  @Ignore
   @Test
   public void test20MaintainDataPageAssertTreeListContractingSectionContainsAllItems()
           throws Throwable {
@@ -86,11 +86,13 @@ public class DataMaintenanceTreePageLoads extends DataMaintenanceHelper {
 	}
   }
 
-  @Ignore
+//  @Ignore
   @Test
   public void test30MaintainDataPageAssertTreeListContractingSectionPagesLoad()
           throws Throwable {
     try {
+    	//Shilpa 28.10.2022 below line added
+//    	driver.findElement(By.xpath("(//div[@class='x-grid-cell-inner ']/img)[1]")).click();
 		assertPageLoads(
 		    Arrays.asList(DataMaintenanceTreePagesData.expectedContractingTreeSectionPages)
 		);

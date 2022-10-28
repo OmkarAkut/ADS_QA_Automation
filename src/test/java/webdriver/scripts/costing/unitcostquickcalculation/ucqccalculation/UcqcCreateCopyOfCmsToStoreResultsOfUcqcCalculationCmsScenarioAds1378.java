@@ -74,7 +74,7 @@ public class UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds137
 	}
   }
 
-  @Ignore
+//  //@Ignore
   @Test
   public void test02UpdateQuickSalariesAndWagesValueAndAssertCalculationEnds() {
     try {
@@ -107,7 +107,7 @@ public class UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds137
     }
   }
 
-  @Ignore
+//  //@Ignore
   @Test
   public void test03GoToCalculationStatusPageAndAssertCalculationCompleted() {
     try {
@@ -268,7 +268,7 @@ public class UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds137
 	 	}
   }
 
-  @Ignore
+  //@Ignore
   @Test
   public void test12CostModelCalculationScenarioPageVerifyStartMonth()
           throws Throwable {
@@ -287,7 +287,7 @@ public class UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds137
     
   }
 
-  @Ignore
+  //@Ignore
   @Test
   public void test13CostModelCalculationScenarioPageVerifyEndMonth()throws Throwable {
 	  try {

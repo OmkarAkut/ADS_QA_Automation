@@ -136,7 +136,7 @@ public class CostChangeColumnsPopulateAfterCalculateAds1230 extends UcqcHelper {
     
   }
 
-  @Ignore
+//  @Ignore
   @Test
   public void test06AssertChangeColumnAllowsNegativeValues() throws InterruptedException {
     final String[] requiredFieldsNegativeCase = {

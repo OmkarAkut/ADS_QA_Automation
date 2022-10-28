@@ -83,23 +83,6 @@ public class QuickCcCostColumnsForEachCostComponentPopulateAfterCalculateAds1229
 	}
   }
 
-  @Ignore
-  @Test
-  public void test02VerifyUpdateInDatabase() {
-    /**After the Scenario is completed, navigate to the QA database and query the CostModelScenario2 table for the OBJECTID of the CMS Copy using the following query: ﻿Select * FROM COSTMODELSCENARIO2
-     ORDER BY NAME*/
-    /**Using the OBJECTID of CMS Copy execute the following query to determine the OBJECTID of the Department  record in the ﻿EntDeptCostContainer2 table:  ﻿Select * FROM EntDeptCostContainer2 e
-     where e.CSTMODSCENID = <object ID>*/
-    /**Using the Object ID value, Execute the following query to determine the OBJECTID of the Results Stored For month from the ﻿COSTITEMDATASET2 table: ﻿Select * From COSTITEMDATASET2 ci
-     WHERE ci.CONTAINERID = <object ID>*/
-    /**Using the Object Id from the COSTITEMDATASET2 table,  execute the following query of the ActivityCostItem2 table: ﻿Select * From ActivityCostItem2 ac
-     Where ac.MASTERID = <object Id> . Select the OBJECTID of a charge code from the table*/
-    /**Using the Charge Code OBJECT ID, query the  ComponentStatistic2 table using the following query: ﻿Select * From COMPONENTSTATISTIC2 cs
-     Where cs.DATAITEMID = <object iD>*/
-    /**Confirm that the Quick CC Cost where CC is name of Cost Component are right-aligned and displayed with two decimals and that the value contained in the Quick CC Cost Column is being determined as the Sum of the FIXEDCOST and VARIABLECOST fields of the ComponentStatistic2table from Cost Model Scenario Copy. */
-  }
-  
-  
   @AfterClass
  	public static void endtest() throws Exception {
 

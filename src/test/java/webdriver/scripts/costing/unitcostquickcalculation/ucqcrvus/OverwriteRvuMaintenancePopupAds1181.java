@@ -239,12 +239,6 @@ public class OverwriteRvuMaintenancePopupAds1181 extends UcqcHelper {
     //Database
   }
 
-  @Ignore
-  @Test
-  public void test08bConfirmThatCostComponentsSectionContainsLabelSourceAndDestinationCostComponents() throws InterruptedException {
-    /**Confirm that all of the Cost Components do not appear in ascending alphanumeric Name order, do not appear in OBJECTID order and do not appear in COSTITEMNDEX order*/
-    //Database
-  }
 
   @Test
   public void test09ConfirmThatwhenSelectAllIsClickedAllCostComponentsAreCheckedAndOverwriteRvusAndCancelAndClosebuttonsRemainEnabled() throws Exception,Throwable {
@@ -328,7 +322,8 @@ public class OverwriteRvuMaintenancePopupAds1181 extends UcqcHelper {
 		doClick(overwriteRvuMaint.getUnitCostQuickCalculationOverwriteRVUMaintenanceModalWarningButtonCancel());
 		//assertElementText(driver.findElement(By.xpath("//div[contains(@class,'errorMsg')]")),expectedRvuMaintenanceWarningMessage,printout);
 		waitForAjaxExtJs();
-		doClick(overwriteRvuMaint.getUnitCostQuickCalculationOverwriteRVUMaintenanceModalButtonCancelAndClose());
+		//Shilpa: 28.10.2022 not required below line
+//		doClick(overwriteRvuMaint.getUnitCostQuickCalculationOverwriteRVUMaintenanceModalButtonCancelAndClose());
 		ExtentReport.logPass("PASS", "test13bClickCancelButtonToReturnToPreviousScreenWithoutOverwritingRvus");
     } catch (Exception|AssertionError e) {
     	ExtentReport.logFail("FAIL", "test13bClickCancelButtonToReturnToPreviousScreenWithoutOverwritingRvus", driver, e);
@@ -336,7 +331,7 @@ public class OverwriteRvuMaintenancePopupAds1181 extends UcqcHelper {
 	}
   }
 
-  @Ignore
+ 
   @Test
   public void test14aClickTheOverwriteRvusButtonAndConfirmWarningMessageIsDisplayed() throws Exception,Throwable {
     /**Click the Overwrite RVUs button and confirm a warning message is displayed stating, "﻿Decision Support will overwrite RVUs on the RVU Maintenance screen with the quick RVUs you selected.
@@ -352,7 +347,7 @@ public class OverwriteRvuMaintenancePopupAds1181 extends UcqcHelper {
 	}
   }
 
-  @Ignore
+ 
   @Test
   public void test14bClickOverwriteToContinueAndReplaceTheRvus() throws Exception,Throwable {
     //Click Overwrite to continue and replace the RVUs

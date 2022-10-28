@@ -10,6 +10,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 
@@ -139,10 +140,13 @@ public class UcqcWarningPopsUpWhenClearQuickRvusAndSaveButtonIsClickedAds1142 ex
        	}
     }
 
-    @Ignore
+  
     @Test
     public void test06bAssertCellValueRemainsUnchanged() throws InterruptedException ,Throwable{
         try {
+        	//Shilpa 28.102022 below jscript has been added to scoll
+        	((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoViewIfNeeded();",driver.findElement(By.xpath("//table/tbody/tr[@class='x-grid-row']/td/div[text()='1']")));
+		    Thread.sleep(3000);
 			driver.findElement(By.xpath("//table/tbody/tr[@class='x-grid-row']/td/div[text()='1']")).click();
 			currentCellValue = getNewCellValue("1100023","Quick Salaries and Wages RVU");
 			assertEquals(initialCellValue, currentCellValue);
@@ -216,10 +220,13 @@ public class UcqcWarningPopsUpWhenClearQuickRvusAndSaveButtonIsClickedAds1142 ex
        	}
     }
 
-    @Ignore
+    
     @Test
     public void test11AssertValueIsUnchanged() throws InterruptedException,Throwable {
         try {
+        	//Shilpa 28.10.2022
+        	((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoViewIfNeeded();",driver.findElement(By.xpath("//table/tbody/tr[@class='x-grid-row']/td/div[text()='1']")));
+		    Thread.sleep(3000);
 			driver.findElement(By.xpath("//table/tbody/tr[@class='x-grid-row']/td/div[text()='1']")).click();
 			currentCellValue = getNewCellValue("1100023","Quick Salaries and Wages RVU");
 			assertEquals(initialCellValue, currentCellValue);

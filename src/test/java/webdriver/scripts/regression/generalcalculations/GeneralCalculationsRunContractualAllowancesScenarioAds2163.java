@@ -79,7 +79,7 @@ public class GeneralCalculationsRunContractualAllowancesScenarioAds2163 extends 
 	}
   }
 
-  @Ignore
+//  @Ignore
   @Test
   public void test02AssertContractualAllowanceScenariosOnDbServer()
           throws ClassNotFoundException {

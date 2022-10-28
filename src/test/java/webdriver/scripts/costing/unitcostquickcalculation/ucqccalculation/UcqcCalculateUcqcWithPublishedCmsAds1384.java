@@ -56,11 +56,6 @@ public class UcqcCalculateUcqcWithPublishedCmsAds1384 extends UnitCostQuickCalcu
 	}
   }
 
-  @Ignore
-  @Test
-  public void test01ConfirmSalariesAndWagesAreTheSameValuesAsQuickSalariesAndWages() {
-
-  }
 
 //  @Ignore
   @Test
