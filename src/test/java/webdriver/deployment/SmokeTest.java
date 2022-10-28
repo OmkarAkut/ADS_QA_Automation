@@ -126,12 +126,15 @@ public class SmokeTest extends UcqcHelper {
 			  System.out.println("Expected release version: " + expectedReleaseVersion);
 			  System.out.println("Actual release version: " + actualReleaseVersion);
 			}
-			if(!actualReleaseVersion.equals(expectedReleaseVersion)) {
+			if(actualReleaseVersion.equals(expectedReleaseVersion)) {
+				assertFalse(printout);
+				ExtentReport.logFail("FAIL", "test0000cLoginPageVerifyReleaseVersion",driver,null);
+			}else {
 				assertTrue(printout);
 				ExtentReport.logPass("PASS", "test0000cLoginPageVerifyReleaseVersion");
 			}
 		} catch (Exception|AssertionError e) {
-			ExtentReport.logFail("FAIL", "test0000bLoginPageVerifyCurrentDateIsDisplayed", driver, e);
+			ExtentReport.logFail("FAIL", "test0000cLoginPageVerifyReleaseVersion", driver, e);
 			fail(e.getMessage());
 		}
 	   // assertTrue(actualReleaseVersion, containsString(expectedReleaseVersion));
