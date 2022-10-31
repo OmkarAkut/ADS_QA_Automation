@@ -53,8 +53,9 @@ public class CalculationsHelper extends AssertStatic {
 
   public String getCalculationStatusMyStatusFirstRow() {
 	  //String status = getWebElement("//div[3]/div/div/div[2]/div[2]/div/table/tbody/tr[2]/td[5]/div").getText();
-	    String status = getWebElement("(//table[@class='x-grid-table x-grid-table-resizer']//tr[2]//td[10])[3]//div").getText(); //venkat update xpath 08-09-2022
-   
+//	    String status = getWebElement("(//table[@class='x-grid-table x-grid-table-resizer']//tr[2]//td[10])[3]//div").getText(); //venkat update xpath 08-09-2022
+	    String status = getWebElement("//table[@class='x-grid-table x-grid-table-resizer']//tr[2]//td[10]/div").getText(); //Shilpa update xpath 31-10-2022
+
     return status;
   }
 

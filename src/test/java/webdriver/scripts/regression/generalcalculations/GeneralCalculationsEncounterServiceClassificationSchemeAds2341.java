@@ -69,6 +69,7 @@ public class GeneralCalculationsEncounterServiceClassificationSchemeAds2341 exte
       doClick(driver.findElement(By.xpath("//button/span[text()='Remove']")));
       waitForSpinnerToEnd();
       waitForFirstRowCalculationBarToReach100Percent();
+      driverDelay(5000);
       calculationStatusPageOpenViewDialog();
       assertViewLogTitle(viewLogTitleRemove);
       confirmCalculationStatusDetailsContains("Process Completed");

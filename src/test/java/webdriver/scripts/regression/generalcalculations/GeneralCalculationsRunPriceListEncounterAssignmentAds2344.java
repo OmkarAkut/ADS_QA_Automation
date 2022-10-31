@@ -108,9 +108,9 @@ public class GeneralCalculationsRunPriceListEncounterAssignmentAds2344 extends C
       doClick(getButton("Assign"));
       waitForSpinnerToEnd();
       waitForFirstRowCalculationBarToReach100Percent();
-      driverDelay(5000);
+      driverDelay(6000);
       calculationStatusPageOpenViewDialog();
-      driverDelay(5000);
+      driverDelay(7000);
       assertViewLogTitle(viewLogTitle);
       confirmCalculationStatusDetailsContains("Total number of charge items reset: 25");
       //confirmCalculationStatusDetailsContains("Total number of charge items processed = 25");

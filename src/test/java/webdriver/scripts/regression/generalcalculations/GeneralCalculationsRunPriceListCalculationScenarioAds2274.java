@@ -73,9 +73,9 @@ public class GeneralCalculationsRunPriceListCalculationScenarioAds2274 extends C
 //      doClick(getButton("Remove"));
       waitForSpinnerToEnd();
       waitForFirstRowCalculationBarToReach100Percent();
-      driverDelay(4000);
+      driverDelay(5000);
       calculationStatusPageOpenViewDialog();
-      driverDelay(4000);
+      driverDelay(5000);
       assertViewLogTitle(viewLogTitle);
       confirmCalculationStatusDetailsContains("Process Completed");
       //Shilpa 21.09.2022

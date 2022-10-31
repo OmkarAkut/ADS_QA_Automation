@@ -75,7 +75,7 @@ public class UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds137
   }
 
 //  //@Ignore
-  @Test
+//  @Test
   public void test02UpdateQuickSalariesAndWagesValueAndAssertCalculationEnds() {
     try {
       final String[][] pairs = {
@@ -101,6 +101,7 @@ public class UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds137
       }
       doClick(costingMap.getUnitCostQuickCalculationButtonSaveQuickRVUs());
       doClick(costingMap.getUnitCostQuickCalculationButtonCalculate());
+      driverDelay(5000);
       waitForSpinnerToEnd();
     } catch (Throwable e) {
       fail(e.getMessage());
@@ -108,7 +109,7 @@ public class UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds137
   }
 
 //  //@Ignore
-  @Test
+//  @Test
   public void test03GoToCalculationStatusPageAndAssertCalculationCompleted() {
     try {
       goToPage("Calculation Status");
