@@ -203,7 +203,11 @@ public class EntityLevelUserSecurityAds2409 extends LoginStatic {
 			driverDelay();
 			doClickTreeItem("CM Test");
 			doClickTreeItem("All Masters");
-			doClickTreeItem("Cost Component Masters");
+			//doClickTreeItem("Cost Component Masters");
+			//venkat updated name 31-10-2022
+			doClickTreeItem("Cost Component Variability Masters");
+			
+			
 			try {
 				driverPause();
 
@@ -215,14 +219,16 @@ public class EntityLevelUserSecurityAds2409 extends LoginStatic {
 
 				tableDoubleClickCellFirstColumn("Marina Health System");
 				waitForAjaxExtJs();
-				waitUntilElementIsClickable(driver.findElement(By.xpath(
-						"//div/ul/li[contains(@class,'x-boundlist-item') and text()='150 Marina Medical Center']/..")));
-				List<WebElement> list = javaMakeListOfWebElements(driver.findElement(By.xpath(
-						"//div/ul/li[contains(@class,'x-boundlist-item') and text()='150 Marina Medical Center']/..")),
-						"li");
+				//waitUntilElementIsClickable(driver.findElement(By.xpath("//div/ul/li[contains(@class,'x-boundlist-item') and text()='150 Marina Medical Center']/..")));
+				//List<WebElement> list = javaMakeListOfWebElements(driver.findElement(By.xpath("//div/ul/li[contains(@class,'x-boundlist-item') and text()='150 Marina Medical Center']/..")),"li");
+				//venkat updated xpath 31-10-2022
+				waitUntilElementIsClickable(driver.findElement(By.xpath("(//*[text()='Entities']//following::div//tr//td//div[text()='150  Marina Medical Center'])")));
+				List<WebElement> list = driver.findElements(By.xpath("(//*[text()='Entities']//following::div//tr//td//div[text()='150  Marina Medical Center'])"));
+				
+				
 				assertEquals(1, list.size());
 				List<String> entities = javaListConvertListOfWebElementsToStrings(list, printout);
-				List<String> expectedStrings = Arrays.asList("150 Marina Medical Center");
+				List<String> expectedStrings = Arrays.asList("150  Marina Medical Center");
 				assertListOfStringsContainsExpectedStrings(entities, expectedStrings);
 				
 
