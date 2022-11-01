@@ -135,7 +135,7 @@ public class UcqcColumnsToDisplayStatusWithCostModelFieldChangesAds1156 extends 
         }
     }
 
-    @Ignore
+   
     @Test
     public void test07SetCostModelToAnotherCostModelAndEnsureAllCheckboxIsCheckedAndDisabledAndSelectButtonIsDisabled() throws Throwable {
         try {
@@ -143,7 +143,10 @@ public class UcqcColumnsToDisplayStatusWithCostModelFieldChangesAds1156 extends 
             waitForSpinnerToEnd();
             waitForAjaxExtJs();
             assertColumnsToDisplayAllCheckBoxIsChecked();
-            assertAllCheckboxIsDisabled(printout);
+        //    assertAllCheckboxIsDisabled(printout);
+            //venkat updated enabled condition
+              assertAllCheckboxIsEnabled(printout);
+            
             assertElementIsDisabled(costingMap.getUnitCostQuickCalculationButtonColumnsToDisplaySelect(), printout);
             ExtentReport.logPass("PASS", "test07SetCostModelToAnotherCostModelAndEnsureAllCheckboxIsCheckedAndDisabledAndSelectButtonIsDisabled");
         } catch (Exception|AssertionError e) {

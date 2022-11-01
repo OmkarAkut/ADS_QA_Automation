@@ -589,8 +589,11 @@ public class UnitCostQuickCalculationHelperStatic extends LoginStatic {
 			doClick(driver.findElement(By.xpath("//div[contains(@class,'x-grid-cell-inner') and contains(text()," + departmentText +")]")));
 			waitForAjaxExtJs();
 			doClick(driver.findElement(By.xpath("//*[contains(@class,'docked-bottom')]/descendant::span[text()='Apply']")));
+			Thread.sleep(2000);
 			waitForAjaxExtJs();
+			
 		} catch (Exception|AssertionError e) {
+			Thread.sleep(2000);
 			doClick(driver.findElement(By.xpath("//*[contains(@class,'docked-bottom')]/descendant::span[text()='Apply']")));
 			waitForAjaxExtJs();
 		}

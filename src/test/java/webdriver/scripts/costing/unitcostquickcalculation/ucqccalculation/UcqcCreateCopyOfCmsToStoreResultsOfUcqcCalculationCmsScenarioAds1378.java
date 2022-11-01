@@ -410,9 +410,11 @@ public class UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds137
       waitForAjaxExtJs();
       waitForDisplayedSpinnerToEnd();
       status = getCalculationStatusMyStatusFirstRow();
+      Thread.sleep(500);
       assertThat(status, not(containsString("Failed")));
       waitForFirstRowCalculationBarToReach100Percent();
       status = getCalculationStatusMyStatusFirstRow();
+      System.out.println(status);
       assertThat(status, containsString("Completed"));
       
 //      waitForCalculationToEndAndVerifySummaryDetailsStringOnDialogAndCloseDialog(

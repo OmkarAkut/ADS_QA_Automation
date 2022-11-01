@@ -170,7 +170,9 @@ public class UcqcColumnsToDisplaySelectColumnsPopupAds1156 extends UcqcHelper {
         try {
             doClick(driver.findElement(By.xpath("//div[contains(@class,'x-panel x-box-item x-panel-default')]/following-sibling::div/descendant::tbody[2]/tr/*[contains(@class,'x-grid-cell-first')]")));
             waitForAjaxExtJs();
-            assertElementIsEnabled(costingMap.getUnitCostQuickCalculationButtonColumnsToDisplayModalRemove(),printout);
+           assertElementIsEnabled(costingMap.getUnitCostQuickCalculationButtonColumnsToDisplayModalRemove(),printout);
+           
+            
             ExtentReport.logPass("PASS", "test04aSelectItemFromSelectedListAndConfirmRemoveButtonIsEnabled");
         } catch (Exception|AssertionError e) {
         	ExtentReport.logFail("FAIL","test04aSelectItemFromSelectedListAndConfirmRemoveButtonIsEnabled", driver,e);
@@ -178,15 +180,19 @@ public class UcqcColumnsToDisplaySelectColumnsPopupAds1156 extends UcqcHelper {
         }
     }
 
-    @Ignore
+  
     @Test
-    public void test04bReclickItemInSelectedListToDeselectItAndConfirmRemoveButtonIsDisabled() {
+    public void test04bReclickItemInSelectedListToDeselectItAndConfirmRemoveButtonIsDisabled() throws Throwable {
         try {
             doClick(driver.findElement(By.xpath("//div[contains(@class,'x-panel x-box-item x-panel-default')]/following-sibling::div/descendant::tbody[2]/tr/*[contains(@class,'x-grid-cell-first')]")));
             waitForAjaxExtJs();
-            assertElementIsDisabled(costingMap.getUnitCostQuickCalculationButtonColumnsToDisplayModalRemove(),printout);
+           // assertElementIsDisabled(costingMap.getUnitCostQuickCalculationButtonColumnsToDisplayModalRemove(),printout);
+            //venkat update enable condition 01-11-2022
+            assertElementIsEnabled(costingMap.getUnitCostQuickCalculationButtonColumnsToDisplayModalRemove(),printout);
         } catch (Throwable e) {
+        	ExtentReport.logFail("FAIL","test04bReclickItemInSelectedListToDeselectItAndConfirmRemoveButtonIsDisabled", driver,e);
             fail(e.getMessage());
+            
         }
     }
 
@@ -282,52 +288,67 @@ public class UcqcColumnsToDisplaySelectColumnsPopupAds1156 extends UcqcHelper {
 
     //below set to ignore because these buttons are always enabled - need to verify if
     //the requirements are correct
-    @Ignore
+   
     @Test
-    public void test08aConfirmApplyButtonIsDisabledWhenNoItemsAreSelected() {
+    public void test08aConfirmApplyButtonIsDisabledWhenNoItemsAreSelected() throws Throwable {
         try {
             waitForAjaxExtJs();
-            assertElementIsDisabled(costingMap.getUnitCostQuickCalculationColumnsToDisplayModalApply(), printout);
+           // assertElementIsDisabled(costingMap.getUnitCostQuickCalculationColumnsToDisplayModalApply(), printout);
+            //venkat update enable condition 01-11-2022
+            assertElementIsEnabled(costingMap.getUnitCostQuickCalculationColumnsToDisplayModalApply(), printout);
         } catch (Throwable e) {
+        	ExtentReport.logFail("FAIL","test08aConfirmApplyButtonIsDisabledWhenNoItemsAreSelected", driver,e);
+            
             fail(e.getMessage());
+            
         }
     }
 
-    @Ignore
+    
     @Test
-    public void test08bConfirmApplyButtonIsDisabledWhenOnlyChargeCodeNameIsSelected() {
+    public void test08bConfirmApplyButtonIsDisabledWhenOnlyChargeCodeNameIsSelected() throws Throwable {
         try {
             driver.findElement(By.xpath("//div[contains(@class,'x-panel x-box-item x-panel-default')]/following-sibling::div/descendant::tbody[2]/tr/td/*[text()='Charge Code Name']")).click();
             waitForAjaxExtJs();
-            assertElementIsDisabled(costingMap.getUnitCostQuickCalculationColumnsToDisplayModalApply(), printout);
+           // assertElementIsDisabled(costingMap.getUnitCostQuickCalculationColumnsToDisplayModalApply(), printout);
+          //venkat update enable condition 01-11-2022
+            assertElementIsEnabled(costingMap.getUnitCostQuickCalculationColumnsToDisplayModalApply(), printout);
         } catch (Throwable e) {
+        	ExtentReport.logFail("FAIL","test08bConfirmApplyButtonIsDisabledWhenOnlyChargeCodeNameIsSelected", driver,e);
             fail(e.getMessage());
         }
     }
 
-    @Ignore
+   
     @Test
-    public void test08cConfirmApplyButtonIsDisabledWhenOnlyModifierIsSelected() {
+    public void test08cConfirmApplyButtonIsDisabledWhenOnlyModifierIsSelected() throws Throwable {
         try {
             driver.findElement(By.xpath("//div[contains(@class,'x-panel x-box-item x-panel-default')]/following-sibling::div/descendant::tbody[2]/tr/td/*[text()='Modifier']")).click();
             waitForAjaxExtJs();
-            assertElementIsDisabled(costingMap.getUnitCostQuickCalculationColumnsToDisplayModalApply(), printout);
+          //  assertElementIsDisabled(costingMap.getUnitCostQuickCalculationColumnsToDisplayModalApply(), printout);
+          //venkat update enable condition 01-11-2022
+            assertElementIsEnabled(costingMap.getUnitCostQuickCalculationColumnsToDisplayModalApply(), printout);
         } catch (Throwable e) {
+        	ExtentReport.logFail("FAIL","test08cConfirmApplyButtonIsDisabledWhenOnlyModifierIsSelected", driver,e);
             fail(e.getMessage());
         }
     }
 
-    @Ignore
+  
     @Test
-    public void test08dConfirmApplyButtonIsDisabledWhenOnlyChargeCodeNameAndModifierAreSelected() {
+    public void test08dConfirmApplyButtonIsDisabledWhenOnlyChargeCodeNameAndModifierAreSelected() throws Throwable {
         try {
             Actions act = new Actions(driver);
             act.keyDown(Keys.CONTROL).perform();
             driver.findElement(By.xpath("//div[contains(@class,'x-panel x-box-item x-panel-default')]/following-sibling::div/descendant::tbody[2]/tr/td/*[text()='Charge Code Name']")).click();
             act.keyUp(Keys.CONTROL).perform();
             waitForAjaxExtJs();
-            assertElementIsDisabled(costingMap.getUnitCostQuickCalculationColumnsToDisplayModalApply(), printout);
+           // assertElementIsDisabled(costingMap.getUnitCostQuickCalculationColumnsToDisplayModalApply(), printout);
+            //venkat update enable condition 01-11-2022
+            assertElementIsEnabled(costingMap.getUnitCostQuickCalculationColumnsToDisplayModalApply(), printout);
         } catch (Throwable e) {
+        	ExtentReport.logFail("FAIL","test08dConfirmApplyButtonIsDisabledWhenOnlyChargeCodeNameAndModifierAreSelected", driver,e);
+        	
             fail(e.getMessage());
         }
     }

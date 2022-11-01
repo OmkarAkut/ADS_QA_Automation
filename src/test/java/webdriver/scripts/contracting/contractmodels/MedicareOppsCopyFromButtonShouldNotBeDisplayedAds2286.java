@@ -29,6 +29,7 @@ public class MedicareOppsCopyFromButtonShouldNotBeDisplayedAds2286 extends Contr
 		evolveLoginStaticUser(Users.ContractAnalyst1);
 		navigateToContractModelsPageFeeForServicePaymentTermsPage(contractModel);
 		navigateFeeForServicePaymentTermsPagePricingMethodSectionSelectServiceModel(serviceModel);
+		Thread.sleep(1000);
 		doDropdownSelectUsingOptionText(driver.findElement(By.xpath("//td/div[contains(@class, 'x-form-trigger-last')]")),
 		        driver.findElement(By.xpath("//div[contains(@class, 'x-boundlist-list-ct') and contains(@id, 'listEl')]/ul")),"Medicare/Commercial Outpatient PPS"
 		);

@@ -126,7 +126,7 @@ public class DoHelper extends DriverHelper {
         .findElement(
             By.xpath(
                 "//td[contains(@class,'x-grid-cell-treecolumn')]" +
-                        "/div[text()='" + name + "']/input[@class='x-tree-checkbox']/.."))
+                        "/div[text()='" + name + "']/input[contains(@class,'x-tree-checkbox')]/.."))
         .click();
         waitForSpinnerToEnd();
         waitForAjaxExtJs();

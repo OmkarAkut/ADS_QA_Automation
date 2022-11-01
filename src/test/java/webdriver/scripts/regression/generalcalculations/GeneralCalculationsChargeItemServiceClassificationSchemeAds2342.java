@@ -65,7 +65,7 @@ public class GeneralCalculationsChargeItemServiceClassificationSchemeAds2342 ext
   public void test01ClickRemoveButtonAndVerifyRemoveProcessRanSuccessfully()
           throws InterruptedException,Throwable {
     try {
-  	  driverDelay();//Shilpa 16.09.2022
+  	  driverDelay(4000);//Shilpa 16.09.2022
 
       waitForPresenceOfElement("(//button/span[text()='Remove'])");
       doClick(driver.findElement(By.xpath("(//button/span[text()='Remove'])")));
