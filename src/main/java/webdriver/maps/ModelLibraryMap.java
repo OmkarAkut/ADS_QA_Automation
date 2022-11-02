@@ -19,7 +19,7 @@ public class ModelLibraryMap extends MapConfig {
     private WebElement modelLibraryPageHelpLink;
     public WebElement getModelLibraryPageHelpLink() {return modelLibraryPageHelpLink;}
 
-    @FindBy(xpath = "(//input[contains(@id,'textfield')])[1]") 
+    @FindBy(xpath = "(//input[contains(@name,'searchText')])") 
 //    @FindBy(xpath = "//input[@name='searchText']") //Shilpa update xpath 31.10.2022
     private WebElement modelLibraryFieldSearch;
     public WebElement getModelLibraryFieldSearch() {return modelLibraryFieldSearch;}

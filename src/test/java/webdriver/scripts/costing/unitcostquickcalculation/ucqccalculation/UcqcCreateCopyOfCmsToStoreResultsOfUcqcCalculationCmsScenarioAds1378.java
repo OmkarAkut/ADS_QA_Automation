@@ -75,7 +75,7 @@ public class UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds137
   }
 
 //  //@Ignore
-//  @Test
+  @Test
   public void test02UpdateQuickSalariesAndWagesValueAndAssertCalculationEnds() {
     try {
       final String[][] pairs = {
@@ -109,7 +109,7 @@ public class UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds137
   }
 
 //  //@Ignore
-//  @Test
+  @Test
   public void test03GoToCalculationStatusPageAndAssertCalculationCompleted() {
     try {
       goToPage("Calculation Status");
@@ -139,9 +139,12 @@ public class UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds137
       
       //Venkata Added wait 06-09-2022
 		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(40,0));
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@name='searchText']")));
-	
-      doSearchForModel("QA Cost Model");
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//input[contains(@name,'searchText')])")));
+		waitForSpinnerToEnd();
+		driverDelay();
+		doSearchForModel("QA Cost Model");
+		Thread.sleep(4000);
+//      doSearchForModel("QA Cost Model");
       waitForJsReadyState();
       tableDoubleClickCellFirstColumn("QA Cost Model");
       waitForJsReadyState();

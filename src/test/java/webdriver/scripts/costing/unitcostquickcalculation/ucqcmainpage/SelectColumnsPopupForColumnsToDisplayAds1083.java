@@ -386,7 +386,7 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
       }
   }
 
-  @Ignore
+  
   @Test
   public void test25ChangeUcqcSelectionAndAssertSubsetOfColumnsDoNotChange() throws Throwable {
     try {
@@ -395,11 +395,19 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
       selectMultipleColumnsToDisplay(columnsHeaderSubsetRvu);
       doClick(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalApply());
       waitForAjaxExtJs();
+      //venkat added below scroll code  02-11-2022
+      Thread.sleep(2000);
+	    ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoViewIfNeeded();",selectColumn.getUnitCostQuickCalculationButtonColumnsToDisplaySelect());
+	    Thread.sleep(3000);
+      
       doDropdownSelectUsingOptionText(selectColumn.getUnitCostQuickCalculationDropdownCostModelScenario(),selectColumn.getUnitCostQuickCalculationDropdownCostModelScenarioMenuList(),"*CM3 TB MHFY05 Before Vol Change_UC_UCQC");
       waitForAjaxExtJs();
       doDropdownSelectUsingOptionText(selectColumn.getUnitCostQuickCalculationDropdownEntity(),selectColumn.getUnitCostQuickCalculationDropdownEntityMenuList(),"200 Southgate");
       waitForAjaxExtJs();
-      selectDepartment("2110  ICU");
+      //venkat updated department 02-11-2022
+      updateDepartment("2110");
+      
+     // selectDepartment("2110  ICU");
       waitForAjaxExtJs();
       doDropdownSelectUsingOptionText(selectColumn.getUnitCostQuickCalculationFieldResultsStoredFor(),selectColumn.getUnitCostQuickCalculationDropdownResultsStoredForMenuList(),"Apr 2004 to Mar 2005");
       waitForAjaxExtJs();
@@ -420,7 +428,7 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
       }
   }
 
-  @Ignore
+  
   @Test
   public void test26CloseTheUcqcSessionAndAssertColumnSelectionDoesNotSaveUponReopen() throws Throwable {
     try {
@@ -435,13 +443,17 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
       }
   }
 
-  @Ignore
+  
   @Test
   public void test27SaveUndoAnEditAndAssertColumnSelectionDoesNotChange() throws Throwable {
     try {
       waitForAjaxExtJs();
+    //venkat updated department 02-11-2022
+      Thread.sleep(2000);
+	    ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoViewIfNeeded();",selectColumn.getUnitCostQuickCalculationButtonColumnsToDisplaySelect());
+	    Thread.sleep(3000);
       //setUCQCCriteria("Marina", "*CM1 TB MHFY05 After Vol Change", "150 Marina Medical Center", "2130  PED ICU", "Jan 2005 to Jan 2005");            doClick(selectColumn.getUnitCostQuickCalculationCheckBoxColumnsToDisplayAll());
-      setUcqcCriteria("Marina", "*CM1 TB MHFY05 After Vol Change", "150 Marina Medical Center", "2130  PED ICU", "Jan 2005 to Jan 2005");
+      setUcqcCriteria("Marina", "*CM1 TB MHFY05 After Vol Change", "150 Marina Medical Center", "2130", "Jan 2005 to Jan 2005");
       doClick(selectColumn.getUnitCostQuickCalculationButtonApplySelections());
       ucqcWaitForSpinnerToEnd();
       Thread.sleep(1500);
@@ -470,8 +482,7 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
       }
   }
 
-  @Ignore
-  @Test
+   @Test
   public void test28AssertPreviousColumnSubsetPersistsAfterCopyToQuickRvusIsSelected() throws Throwable {
     try {
       /**DO NOT RUN IN EVOLVE: This should be run in a dedicated environment with a Cost Model Scenario specific to this test case*/
@@ -485,10 +496,12 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
       }
   }
 
-  @Ignore
+  
   @Test
   public void test29AssertPreviousColumnSubsetPersistsAfterClearRvusAndSaveIsSelected() throws Throwable {
     try {
+    	Thread.sleep(3000);
+    	
       ucqcGridClickInCell("1100171","Quick Salaries and Wages RVU",printout);
       doClick(selectColumn.getUnitCostQuickCalculationButtonClearQuickRVUsAndSave());
       waitForAjaxExtJs();
@@ -501,7 +514,7 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
       }
   }
 
-  @Ignore
+  
   @Test
   public void test30AssertPreviousColumnSubsetPersistsAfterOverwriteRvuMaintenanceIsSelected() throws Throwable {
     try {
@@ -517,7 +530,7 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
       }
   }
 
-  @Ignore
+  
   @Test
   public void test31AssertPreviousColumnSubsetPersistsAfterCalculationIsRun() throws Throwable {
     try {
@@ -531,7 +544,7 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
       }
   }
 
-  @Ignore
+  
   @Test
   public void test32AssertApplySelectionsButtonIsEnabledWhenUcqcCriteriaIsSetAllCheckboxIsUncheckedAndAtLeastOneColumnIsSelectedInSelectColumnsPopUp() throws Throwable {
     try {
@@ -540,7 +553,13 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
       waitForAjaxExtJs();
       doClosePageOnLowerBar("Unit Cost Quick...");
       goToPage("Unit Cost Quick Calculation");
-      setUcqcCriteria("Marina", "*CM1 TB MHFY05 After Vol Change", "150 Marina Medical Center", "2130  PED ICU", "Jan 2005 to Jan 2005");
+     // setUcqcCriteria("Marina", "*CM1 TB MHFY05 After Vol Change", "150 Marina Medical Center", "2130  PED ICU", "Jan 2005 to Jan 2005");
+      setUcqcCriteria("Marina", "*CM1 TB MHFY05 After Vol Change", "150 Marina Medical Center", "2130", "Jan 2005 to Jan 2005");
+      
+      Thread.sleep(2000);
+	    ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoViewIfNeeded();",selectColumn.getUnitCostQuickCalculationButtonColumnsToDisplaySelect());
+	    Thread.sleep(3000);
+  	
       doClick(selectColumn.getUnitCostQuickCalculationCheckBoxColumnsToDisplayAll());
       waitForAjaxExtJs();
       assertElementIsEnabled(selectColumn.getUnitCostQuickCalculationButtonApplySelections(),printout);
@@ -551,7 +570,7 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
       }
   }
 
-  @Ignore
+  
   @Test
   public void test33AssertChargeCodeChargeCodeNameAndModifierGridColumnsAreLocked() throws Throwable {
     try {
@@ -578,7 +597,7 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
       }
   }
 
-  @Ignore
+  
   @Test
   public void test34AssertChargeCodeIsDisplayedAndNotAvailableInSelectColumnWindow() throws Throwable {
     try {
@@ -596,7 +615,7 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
       }
   }
 
-  @Ignore
+  
   @Test
   public void test35ChangeCostModelAndAssertAllCheckBoxIsCheckedAndSelectButtonIsDisabled() throws Throwable {
     try {

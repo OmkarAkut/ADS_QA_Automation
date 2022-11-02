@@ -341,15 +341,15 @@ public class CostingMap extends MapConfig {
   private WebElement unitCostQuickCalculationButtonShow;
   public WebElement getUnitCostQuickCalculationButtonShow() {return unitCostQuickCalculationButtonShow;}
 
-  @FindBy(xpath = "//div[@class='x-mask'][1]/preceding::div[contains(@class,'x-boundlist-list-ct')]/following::ul")
+  @FindBy(xpath = "(//div[contains(@class,'x-boundlist-floating x-layer')])[1]//ul")
   private WebElement unitCostQuickCalculationDropdownCostModelMenuList;
   public WebElement getUnitCostQuickCalculationDropdownCostModelMenuList() {return unitCostQuickCalculationDropdownCostModelMenuList;}
 
-  @FindBy(xpath = "//div[@class='x-mask'][2]/preceding::div[contains(@class,'x-boundlist-list-ct')][2]/following::ul")
+  @FindBy(xpath = "(//div[contains(@class,'x-boundlist-floating x-layer')])[2]//ul")
   private WebElement unitCostQuickCalculationDropdownCostModelScenarioMenuList;
   public WebElement getUnitCostQuickCalculationDropdownCostModelScenarioMenuList() {return unitCostQuickCalculationDropdownCostModelScenarioMenuList;}
 
-  @FindBy(xpath = "//div[@class='x-mask'][3]/preceding::div[contains(@class,'x-boundlist-list-ct')][2]/following::ul")
+  @FindBy(xpath = "(//div[contains(@class,'x-boundlist-floating x-layer')])[3]//ul")
   private WebElement unitCostQuickCalculationDropdownEntityMenuList;
   public WebElement getUnitCostQuickCalculationDropdownEntityMenuList() {return unitCostQuickCalculationDropdownEntityMenuList;}
 

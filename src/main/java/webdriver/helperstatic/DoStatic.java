@@ -124,7 +124,7 @@ public class DoStatic extends GetStatic {
     public void doSearchForModel(String contractModel) throws InterruptedException {
         waitForSpinnerToEnd();
         waitUntilElementIsClickable(modelMap.getModelLibraryFieldSearch());
-        modelMap.getModelLibraryFieldSearch().click();
+         modelMap.getModelLibraryFieldSearch().click();
       
         modelMap.getModelLibraryFieldSearch().sendKeys(Keys.chord(Keys.CONTROL, "a"));
         modelMap.getModelLibraryFieldSearch().clear();;
