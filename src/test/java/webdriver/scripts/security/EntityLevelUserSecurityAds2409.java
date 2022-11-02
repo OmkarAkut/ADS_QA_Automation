@@ -105,7 +105,7 @@ public class EntityLevelUserSecurityAds2409 extends LoginStatic {
 	}
 
 	@Test
-	public void test02CostingCostModelsPageAssertRestrictedEntitiesOnlyDisplay() throws InterruptedException {
+	public void test02CostingCostModelsPageAssertRestrictedEntitiesOnlyDisplay() throws Throwable {
 
 		try {
 			goToPage("Costing Models");
@@ -115,12 +115,14 @@ public class EntityLevelUserSecurityAds2409 extends LoginStatic {
 			doSearchForModel(costModel);
 			Thread.sleep(4000);
 			List<String> list = javaMakeListOfStringsFromElementOptions(costModel, "tr", 3);
+			
 			assertEquals(1, list.size());// table row is now 100 not 1
 			List<String> expectedStrings = Arrays.asList(costModel);
 			assertListOfStringsContainsExpectedStrings(list, expectedStrings);
-			ExtentReport.logPass("PASS", "test01AssertOnlyAllowedEntitiesDisplayOnMaintainDataEntitiesPage");
-		} catch (Exception | AssertionError e) {
 			ExtentReport.logPass("PASS", "test02CostingCostModelsPageAssertRestrictedEntitiesOnlyDisplay");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test02CostingCostModelsPageAssertRestrictedEntitiesOnlyDisplay", driver, e);
+		
 			fail(e.getMessage());
 		}
 
@@ -219,11 +221,13 @@ public class EntityLevelUserSecurityAds2409 extends LoginStatic {
 
 				tableDoubleClickCellFirstColumn("Marina Health System");
 				waitForAjaxExtJs();
+				Thread.sleep(2000);
 				//waitUntilElementIsClickable(driver.findElement(By.xpath("//div/ul/li[contains(@class,'x-boundlist-item') and text()='150 Marina Medical Center']/..")));
 				//List<WebElement> list = javaMakeListOfWebElements(driver.findElement(By.xpath("//div/ul/li[contains(@class,'x-boundlist-item') and text()='150 Marina Medical Center']/..")),"li");
 				//venkat updated xpath 31-10-2022
-				waitUntilElementIsClickable(driver.findElement(By.xpath("(//*[text()='Entities']//following::div//tr//td//div[text()='150  Marina Medical Center'])")));
-				List<WebElement> list = driver.findElements(By.xpath("(//*[text()='Entities']//following::div//tr//td//div[text()='150  Marina Medical Center'])"));
+				
+				waitUntilElementIsClickable(driver.findElement(By.xpath("(//*[text()='Entities']//following::div//div[text()='150  Marina Medical Center'])")));
+				List<WebElement> list = driver.findElements(By.xpath("(//*[text()='Entities']//following::div//div[text()='150  Marina Medical Center'])"));
 				
 				
 				assertEquals(1, list.size());

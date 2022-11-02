@@ -584,8 +584,10 @@ public class UnitCostQuickCalculationHelperStatic extends LoginStatic {
 		waitForSpinnerToEnd();
 		try {
 			driver.findElement(By.name("carrierfield")).sendKeys(" ");
-			Thread.sleep(500);
+			Thread.sleep(1500);
 			driver.findElement(By.name("carrierfield")).sendKeys(Keys.BACK_SPACE);
+			Thread.sleep(1500);
+
 			doClick(driver.findElement(By.xpath("//div[contains(@class,'x-grid-cell-inner') and contains(text()," + departmentText +")]")));
 			waitForAjaxExtJs();
 			doClick(driver.findElement(By.xpath("//*[contains(@class,'docked-bottom')]/descendant::span[text()='Apply']")));
