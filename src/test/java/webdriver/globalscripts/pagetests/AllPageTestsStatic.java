@@ -177,7 +177,7 @@ public class AllPageTestsStatic extends PageTestHelperStatic {
 		}
 	}
 
-	@Ignore
+//	@Ignore
 	@Test
 	public void testReportingTabIcd9Icd10GemsAnalysisPageTest() throws Throwable {
 		String iframePartialXpath = "//iframe[contains(@src,'gemsAnalysis')]";
@@ -185,7 +185,8 @@ public class AllPageTestsStatic extends PageTestHelperStatic {
 		try {
 			goToPage("Gems Analysis");
 			Thread.sleep(5000);
-			driver.switchTo().frame(driver.findElement(By.xpath("//iframe[contains(@src,'gemsInquiry.html')]")));
+			waitForAjaxExtJs();
+			driver.switchTo().frame(driver.findElement(By.xpath("//iframe[contains(@src,'../gemsAnalysis/gemsAnalysis.html')]")));
 			testHelpLink(reportingMap.getReportingTabGemsAnalysisPageHelpLink(), expectedHelpPageTitle, printout);
 			//      testHelpLinkWithFrames(iframePartialXpath,
 			//          reportingMap.getReportingTabGemsAnalysisPageHelpLink(), expectedHelpPageTitle, printout);
@@ -200,7 +201,7 @@ public class AllPageTestsStatic extends PageTestHelperStatic {
 		}
 	}
 
-	@Ignore
+//	@Ignore
 	@Test
 	public void testReportingTabIcd9Icd10GemsInquiryPageTest() throws Throwable {
 		String iframePartialXpath = "//iframe[contains(@src,'gemsInquiry.html')]";
@@ -255,7 +256,7 @@ public class AllPageTestsStatic extends PageTestHelperStatic {
 		}
 	}
 
-	@Ignore
+//	@Ignore
 	@Test
 	public void testReportingTabReportLibraryPageTest() throws Throwable {
 		String expectedHelpPageTitle = "xxxxxx";

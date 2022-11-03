@@ -9,7 +9,6 @@ import webdriver.scripts.status.calculationstatus.CalculationStatusSuite;
 @Suite.SuiteClasses({
 	
 		IppsAndOppsCalculations.class,
-		JavaTemplate.class,
 		JdbcTemplate.class,
 		ParameterizedTestTemplate.class,
 		StaticFrameworkWithUserRolesLoginParameterizedTestTemplate.class,

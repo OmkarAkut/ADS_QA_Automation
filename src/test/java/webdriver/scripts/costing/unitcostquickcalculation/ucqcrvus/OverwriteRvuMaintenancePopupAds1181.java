@@ -232,14 +232,6 @@ public class OverwriteRvuMaintenancePopupAds1181 extends UcqcHelper {
 	}
   }
 
-  @Ignore
-  @Test
-  public void test08aConfirmThatCostComponentsSectionContainsLabelSourceAndDestinationCostComponents() throws InterruptedException {
-    /**Confirm that all of the Cost Components in Cost Component Master of the selected Cost Model appear in Cost Components section in order as selected in Cost Component Master*/
-    //Database
-  }
-
-
   @Test
   public void test09ConfirmThatwhenSelectAllIsClickedAllCostComponentsAreCheckedAndOverwriteRvusAndCancelAndClosebuttonsRemainEnabled() throws Exception,Throwable {
     /**Confirm that when "Select All" is clicked all of the Cost Components are checked and Overwrite RVUs and Cancel & Close buttons remain enabled*/

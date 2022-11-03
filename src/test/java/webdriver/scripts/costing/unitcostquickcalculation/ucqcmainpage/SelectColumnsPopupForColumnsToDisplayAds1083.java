@@ -41,6 +41,7 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
    as well as being able to view a subset of columns once the selection is applied
  * @throws Throwable 
    */
+  
   @BeforeClass
   public static void setupScript() throws Throwable {
 	  ExtentReport.reportCreate("SelectColumnsPopupForColumnsToDisplayAds1083", "webdriver.scripts.costing.unitcostquickcalculation.ucqcmainpage", "SelectColumnsPopupForColumnsToDisplayAds1083");
@@ -549,7 +550,8 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
   public void test32AssertApplySelectionsButtonIsEnabledWhenUcqcCriteriaIsSetAllCheckboxIsUncheckedAndAtLeastOneColumnIsSelectedInSelectColumnsPopUp() throws Throwable {
     try {
       waitForAjaxExtJs();
-      doClick(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalCancel());
+      //venkat commented below line 03-11-2022
+     // doClick(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalCancel());
       waitForAjaxExtJs();
       doClosePageOnLowerBar("Unit Cost Quick...");
       goToPage("Unit Cost Quick Calculation");
