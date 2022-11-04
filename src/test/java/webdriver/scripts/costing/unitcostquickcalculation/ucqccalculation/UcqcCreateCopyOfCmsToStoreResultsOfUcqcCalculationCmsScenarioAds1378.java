@@ -139,18 +139,19 @@ public class UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds137
       
       //Venkata Added wait 06-09-2022
 		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(40,0));
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//input[contains(@name,'searchText')])")));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='x-container areaModelTitle x-box-item x-container-default']//following::input[1]")));
 		waitForSpinnerToEnd();
+		Thread.sleep(4000);
 		driverDelay();
 		doSearchForModel("QA Cost Model");
 		Thread.sleep(4000);
-//      doSearchForModel("QA Cost Model");
+     
       waitForJsReadyState();
       tableDoubleClickCellFirstColumn("QA Cost Model");
       waitForJsReadyState();
-   // doClickTreeItem("Assign Unit Costs");
-      doClickTreeItem("CM Test");// Venkat added text 06-09-2022
-      doClickTreeItem("Cost Scnenarios");// Venkat added text 06-09-2022
+    doClickTreeItem("Assign Unit Costs");
+//      doClickTreeItem("CM Test");// Venkat added text 06-09-2022
+//      doClickTreeItem("Cost Scnenarios");// Venkat added text 06-09-2022
       driverDelay(5000);
       doClickTreeItemWithCheckbox("Cost Model Calculation Scenarios");
       driverDelay(5000);
@@ -412,6 +413,7 @@ public class UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds137
       goToPage("Calculation Status");
       waitForAjaxExtJs();
       waitForDisplayedSpinnerToEnd();
+      driverDelay();
       status = getCalculationStatusMyStatusFirstRow();
       Thread.sleep(500);
       assertThat(status, not(containsString("Failed")));

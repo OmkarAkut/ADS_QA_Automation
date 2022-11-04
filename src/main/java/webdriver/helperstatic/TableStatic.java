@@ -111,6 +111,7 @@ public class TableStatic extends FilterStatic {
         act.doubleClick(element).perform();
         waitForSpinnerToEnd();
         waitForAjaxExtJs();
+        Thread.sleep(3000);
     }
 
     public String tableGetCellValueFromFirstRow(String columnName, int columnId, boolean printout) {

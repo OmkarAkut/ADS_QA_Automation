@@ -107,7 +107,7 @@ public class DoStatic extends GetStatic {
         .findElement(
             By.xpath(
                 "//td[contains(@class,'x-grid-cell-treecolumn')]" +
-                        "/div[text()='" + name + "']/input[@class='x-tree-checkbox']/.."))
+                        "/div[text()='" + name + "']//input/.."))
         .click();
         waitForSpinnerToEnd();
         waitForAjaxExtJs();
@@ -129,7 +129,7 @@ public class DoStatic extends GetStatic {
         modelMap.getModelLibraryFieldSearch().sendKeys(Keys.chord(Keys.CONTROL, "a"));
         modelMap.getModelLibraryFieldSearch().clear();;
         modelMap.getModelLibraryFieldSearch().sendKeys(contractModel);
-        Thread.sleep(2000);
+        Thread.sleep(5000);
         modelMap.getModelLibraryButtonSearch().click();
         waitForSpinnerToEnd();
         Thread.sleep(3000);
