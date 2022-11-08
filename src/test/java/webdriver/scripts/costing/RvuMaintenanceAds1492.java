@@ -69,6 +69,7 @@ public class RvuMaintenanceAds1492 extends GoHelper {
 		try {
 			waitForAjaxExtJs();
 			costing.getRvuMaintenanceButtonFilter().click();
+			Thread.sleep(2000);
 			waitForAjaxExtJs();
 			doFilterCreate(filter);
 			costing.getRvuMaintenanceButtonMaintainRVUs().click();

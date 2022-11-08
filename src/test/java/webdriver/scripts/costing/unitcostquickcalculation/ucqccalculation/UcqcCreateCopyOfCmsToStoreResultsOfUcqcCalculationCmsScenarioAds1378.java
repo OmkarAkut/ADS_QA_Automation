@@ -14,6 +14,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -143,15 +144,26 @@ public class UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds137
 		waitForSpinnerToEnd();
 		Thread.sleep(4000);
 		driverDelay();
-		doSearchForModel("QA Cost Model");
+//		doSearchForModel("QA Cost Model");
 		Thread.sleep(4000);
-     
+		//below changes made due to input index keeps changing
+		 waitForSpinnerToEnd();
+		  waitUntilElementIsClickable(driver.findElement(By.xpath("(//label[contains(@class,'LablAlgn-left')]//following::input[1])[3]")));
+	        driver.findElement(By.xpath("(//label[contains(@class,'LablAlgn-left')]//following::input[1])[3]")).click();
+	      
+	        driver.findElement(By.xpath("(//label[contains(@class,'LablAlgn-left')]//following::input[1])[3]")).sendKeys(Keys.chord(Keys.CONTROL, "a"));
+	        driver.findElement(By.xpath("(//label[contains(@class,'LablAlgn-left')]//following::input[1])[3]")).clear();;
+	        driver.findElement(By.xpath("(//label[contains(@class,'LablAlgn-left')]//following::input[1])[3]")).sendKeys("QA Cost Model");
+	        Thread.sleep(5000);
+	      driver.findElement(By.xpath("//*[contains(@class,'statusSearch')]")).click();
+	        waitForSpinnerToEnd();
+	        Thread.sleep(3000);
       waitForJsReadyState();
       tableDoubleClickCellFirstColumn("QA Cost Model");
       waitForJsReadyState();
-    doClickTreeItem("Assign Unit Costs");
-//      doClickTreeItem("CM Test");// Venkat added text 06-09-2022
-//      doClickTreeItem("Cost Scnenarios");// Venkat added text 06-09-2022
+//    doClickTreeItem("Assign Unit Costs");
+      doClickTreeItem("CM Test");// Venkat added text 06-09-2022
+      doClickTreeItem("Cost Scnenarios");// Venkat added text 06-09-2022
       driverDelay(5000);
       doClickTreeItemWithCheckbox("Cost Model Calculation Scenarios");
       driverDelay(5000);
