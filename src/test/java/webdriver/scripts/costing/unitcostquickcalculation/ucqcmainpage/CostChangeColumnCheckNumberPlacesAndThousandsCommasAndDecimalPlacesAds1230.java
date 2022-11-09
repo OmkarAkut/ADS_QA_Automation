@@ -159,7 +159,7 @@ public class CostChangeColumnCheckNumberPlacesAndThousandsCommasAndDecimalPlaces
 	}
   }
 
-  @Test
+//  @Test
   public void test10GetCellValueAndAssertHundredMillionsPlace () throws Throwable {
     try {
 		assertValueFormat(ucqcGetChargeCodeGridCellValue("1100650", "Hospital Overhead Change", printout),

@@ -155,7 +155,7 @@ public class UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds137
 	        driver.findElement(By.xpath("(//label[contains(@class,'LablAlgn-left')]//following::input[1])[3]")).clear();;
 	        driver.findElement(By.xpath("(//label[contains(@class,'LablAlgn-left')]//following::input[1])[3]")).sendKeys("QA Cost Model");
 	        Thread.sleep(5000);
-	      driver.findElement(By.xpath("//*[contains(@class,'statusSearch')]")).click();
+	      driver.findElement(By.xpath("(//*[contains(@class,'statusSearch')])[2]")).click();
 	        waitForSpinnerToEnd();
 	        Thread.sleep(3000);
       waitForJsReadyState();
