@@ -71,7 +71,7 @@ public class CostingMap extends MapConfig {
   private WebElement getRvuMaintenanceMaintainRvuPageButtonImport;
   public WebElement getRvuMaintenanceMaintainRvuPageButtonImport() {return getRvuMaintenanceMaintainRvuPageButtonImport;}
 
-  @FindBy(xpath = "//button/span[text()='Import']")
+  @FindBy(xpath = "//div[@class='x-btn btnCls x-box-item x-toolbar-item x-btn-default-toolbar-small x-noicon x-btn-noicon x-btn-default-toolbar-small-noicon']//button/span[text()='Import']")
   private WebElement rvuMaintenanceButtonImport;
   public WebElement getRvuMaintenanceButtonImport() {return rvuMaintenanceButtonImport;}
 
@@ -79,7 +79,7 @@ public class CostingMap extends MapConfig {
   private WebElement getRvuMaintenanceMaintainRvuPageButtonExport;
   public WebElement getRvuMaintenanceMaintainRvuPageButtonExport() {return getRvuMaintenanceMaintainRvuPageButtonExport;}
 
-  @FindBy(xpath = "//button/span[text()='Export']")
+  @FindBy(xpath = "//div[@class='x-btn btnCls x-box-item x-toolbar-item x-btn-default-toolbar-small x-noicon x-btn-noicon x-btn-default-toolbar-small-noicon']//button/span[text()='Export']")
   private WebElement rvuMaintenanceButtonExport;
   public WebElement getRvuMaintenanceButtonExport() {return rvuMaintenanceButtonExport;}
 
@@ -217,7 +217,7 @@ public class CostingMap extends MapConfig {
   private WebElement costModelScenarioCalculationButtonCalculate;
   public WebElement getCostModelScenarioCalculationButtonCalculate() {return costModelScenarioCalculationButtonCalculate;}
 
-  @FindBy(xpath = "//*[contains(text(),'Results')]")
+  @FindBy(xpath = "//div[@class='x-btn btnCls x-box-item x-toolbar-item x-btn-default-toolbar-small x-noicon x-btn-noicon x-btn-default-toolbar-small-noicon']//*[contains(text(),'Results')]")
   private WebElement costModelScenarioCalculationButtonResults;
   public WebElement getCostModelScenarioCalculationButtonResults() {return costModelScenarioCalculationButtonResults;}
 
@@ -505,27 +505,27 @@ public class CostingMap extends MapConfig {
 
   /******Table Navigation*****/
 
-  @FindBy(xpath = "//*[@data-qtip = 'First Page']")
+  @FindBy(xpath = "//div[@class='x-toolbar x-docked x-toolbar-default x-docked-bottom x-toolbar-docked-bottom x-toolbar-default-docked-bottom x-box-layout-ct x-docked-noborder-right x-docked-noborder-bottom x-docked-noborder-left']//div[@class='x-toolbar pagingCls x-box-item x-toolbar-item x-toolbar-default x-box-layout-ct']//div[contains(@id,'custompagingtoolbar')]//*[@data-qtip = 'First Page']")
   private WebElement costingMapTableButtonFirst;
   public WebElement getCostingMapTableButtonFirst() {return costingMapTableButtonFirst;}
 
-  @FindBy(xpath = "//*[@data-qtip = 'Previous Page']")
+  @FindBy(xpath = "//div[@class='x-toolbar x-docked x-toolbar-default x-docked-bottom x-toolbar-docked-bottom x-toolbar-default-docked-bottom x-box-layout-ct x-docked-noborder-right x-docked-noborder-bottom x-docked-noborder-left']//div[@class='x-toolbar pagingCls x-box-item x-toolbar-item x-toolbar-default x-box-layout-ct']//div[contains(@id,'custompagingtoolbar')]//*[@data-qtip = 'Previous Page']")
   private WebElement costingMapTableButtonPrevious;
   public WebElement getCostingMapTableButtonPrevious() {return costingMapTableButtonPrevious;}
 
-  @FindBy(xpath = "//*[contains(@name, 'inputItem')]")
+  @FindBy(xpath = "//div[@class='x-toolbar x-docked x-toolbar-default x-docked-bottom x-toolbar-docked-bottom x-toolbar-default-docked-bottom x-box-layout-ct x-docked-noborder-right x-docked-noborder-bottom x-docked-noborder-left']//div[@class='x-toolbar pagingCls x-box-item x-toolbar-item x-toolbar-default x-box-layout-ct']//div[contains(@id,'custompagingtoolbar')]//*[contains(@name, 'inputItem')]")
   private WebElement costingMapTableFieldInputNumber;
   public WebElement getCostingMapTableFieldInputNumber() {return costingMapTableFieldInputNumber;}
 
-  @FindBy(xpath = "//*[contains(@class, 'go-button')]")
+  @FindBy(xpath = "//div[@class='x-toolbar x-docked x-toolbar-default x-docked-bottom x-toolbar-docked-bottom x-toolbar-default-docked-bottom x-box-layout-ct x-docked-noborder-right x-docked-noborder-bottom x-docked-noborder-left']//div[@class='x-toolbar pagingCls x-box-item x-toolbar-item x-toolbar-default x-box-layout-ct']//div[contains(@id,'custompagingtoolbar')]//*[contains(@class, 'go-button')]")
   private WebElement costingMapTableButtonGo;
   public WebElement getCostingMapTableButtonGo() {return costingMapTableButtonGo;}
 
-  @FindBy(xpath = "//*[@data-qtip = 'Next Page']")
+  @FindBy(xpath = "//div[@class='x-toolbar x-docked x-toolbar-default x-docked-bottom x-toolbar-docked-bottom x-toolbar-default-docked-bottom x-box-layout-ct x-docked-noborder-right x-docked-noborder-bottom x-docked-noborder-left']//div[@class='x-toolbar pagingCls x-box-item x-toolbar-item x-toolbar-default x-box-layout-ct']//div[contains(@id,'custompagingtoolbar')]//*[@data-qtip = 'Next Page']")
   private WebElement costingMapTableButtonNext;
   public WebElement getCostingMapTableButtonNext() {return costingMapTableButtonNext;}
 
-  @FindBy(xpath = "//*[@data-qtip = 'Last Page']")
+  @FindBy(xpath = "//div[@class='x-toolbar x-docked x-toolbar-default x-docked-bottom x-toolbar-docked-bottom x-toolbar-default-docked-bottom x-box-layout-ct x-docked-noborder-right x-docked-noborder-bottom x-docked-noborder-left']//div[@class='x-toolbar pagingCls x-box-item x-toolbar-item x-toolbar-default x-box-layout-ct']//div[contains(@id,'custompagingtoolbar')]//*[@data-qtip = 'Last Page']")
   private WebElement costingMapTableButtonLast;
   public WebElement getCostingMapTableButtonLast() {return costingMapTableButtonLast;}
  
