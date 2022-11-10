@@ -201,7 +201,7 @@ public class CostingMap extends MapConfig {
   private WebElement costModelScenarioCalculationPageHelpLink;
   public WebElement getCostModelScenarioCalculationPageHelpLink() {return costModelScenarioCalculationPageHelpLink;}
 
-  @FindBy(xpath = "//*[contains(text(),'Edit')]")
+  @FindBy(xpath = "//div[@class='x-btn btnCls x-box-item x-toolbar-item x-btn-default-toolbar-small x-noicon x-btn-noicon x-btn-default-toolbar-small-noicon']//*[contains(text(),'Edit')]")
   private WebElement costModelScenarioCalculationButtonEdit;
   public WebElement getCostModelScenarioCalculationButtonEdit() {return costModelScenarioCalculationButtonEdit;}
 
@@ -325,7 +325,7 @@ public class CostingMap extends MapConfig {
   private WebElement unitCostQuickCalculationButtonSaveQuickRVUs;
   public WebElement getUnitCostQuickCalculationButtonSaveQuickRVUs() {return unitCostQuickCalculationButtonSaveQuickRVUs;}
 
-  @FindBy(xpath = "//*[contains(text(),'Calculate')]")
+  @FindBy(xpath = "//div[@class='x-panel gridCls gridClsCondensed lockCls ucqc-grid x-grid-with-row-lines x-grid-locked x-border-item x-box-item x-panel-default x-grid']//*[contains(text(),'Calculate')]")
   private WebElement unitCostQuickCalculationButtonCalculate;
   public WebElement getUnitCostQuickCalculationButtonCalculate() {return unitCostQuickCalculationButtonCalculate;}
 
@@ -442,7 +442,7 @@ public class CostingMap extends MapConfig {
   private WebElement unitCostQuickCalculationDepartmentFilterValue;
   public WebElement getUnitCostQuickCalculationDepartmentFilterValue() {return unitCostQuickCalculationDepartmentFilterValue;}
 
-  @FindBy(xpath = "//*[contains(@class,'docked')]/descendant::span[text()='Add']")
+  @FindBy(xpath = "//div[@class='x-toolbar x-docked x-toolbar-footer x-docked-bottom x-toolbar-docked-bottom x-toolbar-footer-docked-bottom x-box-layout-ct']//following::span[text()='Add']")
   private WebElement unitCostQuickCalculationDepartmentFilterButtonAdd;
   public WebElement getUnitCostQuickCalculationDepartmentFilterButtonAdd() {return unitCostQuickCalculationDepartmentFilterButtonAdd;}
 

@@ -1584,6 +1584,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 		  goToPage("Customize Maintain Data");
 		  waitForSpinnerToEnd();
 		  waitForAjaxExtJs();
+		  driverDelay();
 		  waitForElementDoWhileLoop(sysmaint.getCustomizeMaintainDataRadioButtonShowSelected(),
 		          printout);
 		  WebElement[] customizeMaintainDataPageElements = {
@@ -1763,7 +1764,8 @@ public class BuildVerificationTestScript extends UcqcHelper {
 		  waitForAjaxExtJs();
 		  doClick(sysmaint.getUsersPageButtonFilter());
 		  waitForAjaxExtJs();
-		  waitUntilElementIsClickable(dialogsMap.getFilterDialogButtonCancelAndClose());
+//		  waitUntilElementIsClickable(dialogsMap.getFilterDialogButtonCancelAndClose());
+		  waitUntilElementIsClickable(dialogsMap.getFilterDialogHeader());
 		  String dialogHeader = dialogsMap.getFilterDialogHeader().getText();
 		  assertEquals("Filter Users", dialogHeader);
 		  WebElement[] filterDialogElements = {

@@ -112,7 +112,7 @@ public class ModelLibraryMap extends MapConfig {
 
     /******Contracting Library Page******/
 
-    @FindBy(xpath = "//button/span[text()='Calculate']")
+    @FindBy(xpath = "//div[@class='x-toolbar commonTBar x-docked x-toolbar-default x-docked-top x-toolbar-docked-top x-toolbar-default-docked-top x-box-layout-ct x-docked-noborder-right x-docked-noborder-left']//button/span[text()='Calculate']")
     private WebElement modelLibraryContractingButtonCalculate;
     public WebElement getModelLibraryContractingButtonCalculate() {return modelLibraryContractingButtonCalculate;}
 

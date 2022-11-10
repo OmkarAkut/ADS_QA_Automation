@@ -361,7 +361,7 @@ public class SystemMaintenanceMap extends MapConfig {
     private WebElement customizeMaintainDataCollapsibleMaintainDataCheckBoxReadOnlySelectAll;
     public WebElement getCustomizeMaintainDataCollapsibleMaintainDataCheckBoxReadOnlySelectAll() {return customizeMaintainDataCollapsibleMaintainDataCheckBoxReadOnlySelectAll;}
 
-    @FindBy(xpath = "//div[contains(text(),'Activity Statistic Masters')]/..//div[contains(@class,'checkheader')]")
+    @FindBy(xpath = "//div[@class='x-grid-view x-fit-item x-grid-view-default x-unselectable']//div[contains(text(),'Activity Statistic Masters')]/..//div[contains(@class,'checkheader')]")
     private WebElement customizeMaintainDataCollapsibleMaintainDataCheckBoxActivityStatisticMasters;
     public WebElement getCustomizeMaintainDataCollapsibleMaintainDataCheckBoxActivityStatisticMasters() {return customizeMaintainDataCollapsibleMaintainDataCheckBoxActivityStatisticMasters;}
 

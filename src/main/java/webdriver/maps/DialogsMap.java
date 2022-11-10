@@ -48,7 +48,7 @@ public class DialogsMap extends MapConfig {
     private WebElement statusFilterDialogButtonApplyFilter;
     public WebElement getFilterDialogButtonApplyFilter() {return statusFilterDialogButtonApplyFilter;}
 
-    @FindBy(xpath = "//*[text()='Cancel & Close']")
+    @FindBy(xpath = "//div[@class='x-btn x-box-item x-toolbar-item x-btn-default-toolbar-small x-noicon x-btn-noicon x-btn-default-toolbar-small-noicon']//*[text()='Cancel & Close']")
     private WebElement statusFilterDialogButtonCancelAndClose;
     public WebElement getFilterDialogButtonCancelAndClose() {return statusFilterDialogButtonCancelAndClose;}
 
