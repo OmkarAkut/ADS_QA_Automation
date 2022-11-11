@@ -110,7 +110,8 @@ public class AllPageTestsStatic extends PageTestHelperStatic {
 			System.out.println("Filter Dialog Header: " + dialogHeader);
 			assertEquals("Filter Users", dialogHeader);
 			testHelpLink(dialogsMap.getFilterDialogHelpLink(), "Filter", printout);
-			doClick(dialogsMap.getFilterDialogButtonCancelAndClose());
+			driver.findElement(By.xpath("//*[text()='Cancel & Close']")).click();
+//			doClick(dialogsMap.getFilterDialogButtonCancelAndClose());
 			doClosePageOnLowerBar("Users");
 			System.out.println("FILTER TEST PASSED");
 			ExtentReport.logPass("PASS", "test02FilterDialogPageTest");
