@@ -10,6 +10,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
+import org.openqa.selenium.interactions.Actions;
 
 import ExtentReport.ExtentReport;
 import webdriver.maps.AnalyticsMap;
@@ -63,7 +64,7 @@ public class AllPageTestsStatic extends PageTestHelperStatic {
 		}
 	}
 
-	@Test
+@Test
 	public void testCostingTabCostingModelsPageTest() throws Throwable {
 		try {
 			goToPage("Costing Models");
@@ -79,7 +80,7 @@ public class AllPageTestsStatic extends PageTestHelperStatic {
 		}
 	}
 
-	@Test
+@Test
 	public void test01GlobalHeaderPageTest() throws Throwable {
 		try {
 			System.out.println("TEST: Global Header Page Test");
@@ -97,7 +98,7 @@ public class AllPageTestsStatic extends PageTestHelperStatic {
 		}
 	}
 
-	@Test
+@Test
 	public void test02FilterDialogPageTest() throws Throwable {
 		try {
 			System.out.println("TEST: Filter Dialog (Users Page)");
@@ -179,7 +180,7 @@ public class AllPageTestsStatic extends PageTestHelperStatic {
 	}
 
 //	@Ignore
-	@Test
+@Test
 	public void testReportingTabIcd9Icd10GemsAnalysisPageTest() throws Throwable {
 		String iframePartialXpath = "//iframe[contains(@src,'gemsAnalysis')]";
 		String expectedHelpPageTitle = "GEMs Analysis";
@@ -203,7 +204,7 @@ public class AllPageTestsStatic extends PageTestHelperStatic {
 	}
 
 //	@Ignore
-	@Test
+@Test
 	public void testReportingTabIcd9Icd10GemsInquiryPageTest() throws Throwable {
 		String iframePartialXpath = "//iframe[contains(@src,'gemsInquiry.html')]";
 		String expectedHelpPageTitle = "GEMs Inquiry";
@@ -224,7 +225,7 @@ public class AllPageTestsStatic extends PageTestHelperStatic {
 		}
 	}
 
-	@Test
+@Test
 	public void testReportingTabReportDateMaintenancePageTest() throws Throwable {
 		try {
 			goToPage("Report Date Maintenance");
@@ -243,7 +244,9 @@ public class AllPageTestsStatic extends PageTestHelperStatic {
 	@Test
 	public void testReportingTabReportMenuMaintenancePageTest() throws Throwable {
 		try {
+			 tab.getReportingTab().click();
 			goToPage("Report Menu Maintenance");
+			driverDelay();
 			waitForAjaxExtJs();
 			testHelpLink(reportingMap.getReportingTabReportMenuMaintenancePageHelpLink(), "Report Menu Item List", printout);
 			//assertTableColumnHeaders(reportingMap.getReportingTabReportMenuMaintenancePageTableCornerCell(), headers.expectedReportingTabReportMenuMaintenancePageTableHeaders, printout);
@@ -325,11 +328,20 @@ public class AllPageTestsStatic extends PageTestHelperStatic {
 		} catch (Exception|AssertionError e) {
 			ExtentReport.logFail("FAIL", "testReportingTabReportLibraryPageTest", driver, e);
 
-			fail(e.getMessage());
-		}
+			 try {
+
+			    driver.switchTo().parentFrame();
+			    doClosePageOnLowerBar("Report Library");
+			    fail("Report Library not available for this environment.");
+			  } catch (Exception ee) {
+			    driver.switchTo().parentFrame();
+			    doClosePageOnLowerBar("Report Library");
+			    fail(e.getMessage());
+			  }
+	}
 	}
 
-	@Test
+@Test
 	public void testAnalyticsRefreshScenariosPageTest() throws Throwable {
 		try {
 			goToPage("Analytic Refresh Scenarios");
@@ -345,7 +357,7 @@ public class AllPageTestsStatic extends PageTestHelperStatic {
 		}
 	}
 
-	@Test
+@Test
 	public void testContractingTabApcAllocationPageTest() throws Throwable {
 		try {
 			goToPage("APC Allocation");
@@ -361,7 +373,7 @@ public class AllPageTestsStatic extends PageTestHelperStatic {
 		}
 	}
 
-	@Test
+@Test
 	public void testContractingTabContractualAllowanceExportPageTest() throws Throwable {
 		try {
 			goToPage("Contractual Allowance Export");
@@ -377,7 +389,7 @@ public class AllPageTestsStatic extends PageTestHelperStatic {
 		}
 	}
 
-	@Test
+@Test
 	public void testCostingTabCostModelScenarioCalculationPageTest() throws Throwable {
 		try {
 			goToPage("Cost Model Scenario Calculation");
@@ -396,7 +408,11 @@ public class AllPageTestsStatic extends PageTestHelperStatic {
 
 	@Test public void testRvuMaintenancePageTest() throws Throwable {
 		try {
-		goToPage("RVU Maintenance"); waitForAjaxExtJs();
+			//driver.findElement(null)
+//			Actions act=new Actions(driver);
+//			act.moveToElement(driver.findElement(By.xpath("//li[@id='costing']/a"))).clickAndHold().click(driver.findElement(By.id("rvusmaintenance"))).click().perform();;
+		goToPage("RVU Maintenance"); 
+		waitForAjaxExtJs();
 		testHelpLink(costingMap.getRvuMaintenancePageHelpLink(),
 				"RVU Maintenance List", printout); doClosePageOnLowerBar("RVU Maintenance");
 				ExtentReport.logPass("PASS", "testRvuMaintenancePageTest");
