@@ -244,7 +244,6 @@ public class AllPageTestsStatic extends PageTestHelperStatic {
 	@Test
 	public void testReportingTabReportMenuMaintenancePageTest() throws Throwable {
 		try {
-			 tab.getReportingTab().click();
 			goToPage("Report Menu Maintenance");
 			driverDelay();
 			waitForAjaxExtJs();
