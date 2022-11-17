@@ -102,12 +102,13 @@ public class Login extends Driver {
 
 		} catch (Throwable e) {
 			try {
-				wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@class='footerText']")));
-				assertTrue(driver.findElement(By.className("footerText")).isDisplayed());
-				assertTrue(
-						driver.findElement(By.className("footerText")).getText()
-						.contains("Picis Clinical Solutions, Inc. All rights reserved.")
-						);
+//				wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@class='footerText']")));
+//				assertTrue(driver.findElement(By.className("footerText")).isDisplayed());
+//				assertTrue(
+//						driver.findElement(By.className("footerText")).getText()
+//						.contains("Picis Clinical Solutions, Inc. All rights reserved.")
+//						);
+				wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[contains(@class,'reporting')]/h1")));
 				assertTrue(driver.findElement(By.xpath("//div[contains(@class,'reporting')]/h1")).getText().contains("Reporting"));
 				System.out.println("Login Time: " + setupFinalTimerResult(timerStart, false));
 			} catch (Exception e1) {
