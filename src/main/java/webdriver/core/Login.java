@@ -108,6 +108,7 @@ public class Login extends Driver {
 						driver.findElement(By.className("footerText")).getText()
 						.contains("Picis Clinical Solutions, Inc. All rights reserved.")
 						);
+				assertTrue(driver.findElement(By.xpath("//div[contains(@class,'reporting')]/h1")).getText().contains("Reporting"));
 				System.out.println("Login Time: " + setupFinalTimerResult(timerStart, false));
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
