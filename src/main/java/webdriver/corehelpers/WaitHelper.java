@@ -201,7 +201,7 @@ public class WaitHelper extends JavaHelper {
 	public static void waitForPresenceOfElement(String xpath) {
 		//WebDriverWait wait = new WebDriverWait(driver, 30);
 		
-			WebDriverWait webdriverWait = new WebDriverWait(driver, Duration.ofSeconds(30,0));;
+			WebDriverWait webdriverWait = new WebDriverWait(driver, Duration.ofSeconds(50,0));;
 			webdriverWait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(""+xpath+"")));
 			
 

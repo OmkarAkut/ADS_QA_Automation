@@ -4,13 +4,17 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.*;
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import org.junit.BeforeClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import webdriver.corehelpers.GoHelper;
+import webdriver.maps.CostingMap;
 import webdriver.maps.DataMaintenanceMap;
 import webdriver.maps.EditContractingModelMap;
 import webdriver.maps.ModelLibraryMap;
@@ -87,6 +91,7 @@ private static EditContractingModelMap editModelMap;
   }
 
   public String getCalculationStatusMyStatusFirstRowStatusCellText() {
+	  
     String status = getWebElement("//div[2]/div/div[4]/div/table/tbody/tr[2]/td[10]/div").getText();
     return status;
   }
@@ -358,6 +363,22 @@ private static EditContractingModelMap editModelMap;
     boolean calculate = true;
     String percent;
     byte counter = 0;
+//    CostingMap costingMap = BuildMap.getInstance(driver, CostingMap.class);
+//    doClick(driver.findElement(By.xpath("//div[contains(@id,'statustoolbar')]//span[text()='Filter']/parent::button")));
+//    doDropdownSelectUsingOptionText(CostingMap.getcalculationFilterPopUpFilterDrop(),costingMap.getUnitCostQuickCalculationDropdownCostModelMenuList(),"Calculation Start Time");
+//    
+////    doClick(driver.findElement(By.xpath("//div[contains(@id,'statustoolbar')]//span[text()='Filter']/parent::button")));
+////    doClick(driver.findElement(By.xpath("(//table[contains(@id,'specialtagcombo')]//input[contains(@id,'specialtagcombo')])[1]")));
+////    doClick(driver.findElement(By.xpath("//li[text()='Calculation Start Time']")));
+//    doClick(driver.findElement(By.xpath("//input[@name='valuedate']")));
+//    driver.findElement(By.xpath("//input[@name='valuedate']")).sendKeys("11/24/2022");
+//    Thread.sleep(400);
+//d    doClick(driver.findElement(By.xpath("//span[text()='Apply Filter']/parent::button")));
+try {
+	filterByCalculationStartTimeInCalculationStatusPage();
+} catch (Throwable e1) {
+	
+}
     while (calculate) {
       try {
         driver.findElement(By.xpath("//button/span[text()='Refresh']")).click();
@@ -378,10 +399,15 @@ private static EditContractingModelMap editModelMap;
     Thread.sleep(1000);
   }
 
-  public static void waitForCalculationToEnd(int waitTimeInSeconds) throws InterruptedException {
+  public static void waitForCalculationToEnd(int waitTimeInSeconds) throws Exception {
     boolean calculate = true;
     String percent;
     byte counter = 0;
+    try {
+		filterByCalculationStartTimeInCalculationStatusPage();
+	} catch (Throwable e1) {
+		
+	}
     while (calculate) {
       try {
         driver.findElement(By.xpath("//button/span[text()='Refresh']")).click();
@@ -403,10 +429,15 @@ private static EditContractingModelMap editModelMap;
     driver.findElement(By.xpath("//button/span[text()='Refresh']")).click();
   }
 
-  public static void waitForFirstRowCalculationBarToReach100Percent() throws InterruptedException {
+  public static void waitForFirstRowCalculationBarToReach100Percent() throws Exception {
     boolean calculate = true;
     String percent;
     byte counter = 0;
+    try {
+		filterByCalculationStartTimeInCalculationStatusPage();
+	} catch (Throwable e1) {
+		
+	}
     while (calculate) {
       try {
         driver.findElement(By.xpath("//button/span[text()='Refresh']")).click();
@@ -428,10 +459,15 @@ private static EditContractingModelMap editModelMap;
   }
 
   //number of checks is 10 - total run time can be controlled by setting refresh interval - longer interval, longer run time
-  public static void waitForFirstRowCalculationBarToReach100Percent(int refreshInterval) throws InterruptedException {
+  public static void waitForFirstRowCalculationBarToReach100Percent(int refreshInterval) throws Exception {
     boolean calculate = true;
     String percent;
     byte counter = 0;
+    try {
+		filterByCalculationStartTimeInCalculationStatusPage();
+	} catch (Throwable e1) {
+		
+	}
     while (calculate) {
       try {
         driver.findElement(By.xpath("//button/span[text()='Refresh']")).click();
@@ -467,6 +503,18 @@ private static EditContractingModelMap editModelMap;
     driver.findElement(By.xpath("//*[contains(@class, 'grid-cell') and text()='" + subFolderName + "']")).click();
   }
 
+  public static void filterByCalculationStartTimeInCalculationStatusPage() throws Throwable {
+	  Format f = new SimpleDateFormat("MM/dd/yyyy");
+	  String strDate = f. format(new Date());
+	  CostingMap costingMap = BuildMap.getInstance(driver, CostingMap.class);
+	    doClick(driver.findElement(By.xpath("//div[contains(@id,'statustoolbar')]//span[text()='Filter']/parent::button")));
+	    doDropdownSelectUsingOptionText(CostingMap.getcalculationFilterPopUpFilterDrop(),costingMap.getUnitCostQuickCalculationDropdownCostModelMenuList(),"Calculation Start Time");
+	  
+	    doClick(driver.findElement(By.xpath("//input[@name='valuedate']")));
+	    driver.findElement(By.xpath("//input[@name='valuedate']")).sendKeys(strDate);
+	    doClick(driver.findElement(By.xpath("//div[contains(@id,'filter')]//span[text()='Add']/parent::button")));
+	    doClick(driver.findElement(By.xpath("//span[text()='Apply Filter']/parent::button")));
+  }
   public static void goToMaintainDataPageAndSelectContractBatch(String folderName) throws InterruptedException {
     goToPage("Maintain Data");
     waitForSpinnerToEnd();

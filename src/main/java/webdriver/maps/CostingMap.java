@@ -530,7 +530,10 @@ public class CostingMap extends MapConfig {
   public WebElement getCostingMapTableButtonLast() {return costingMapTableButtonLast;}
  
   /******End Table Navigation*****/
-
+//Shilpa
+  @FindBy(name = "field")
+  private static WebElement calculationFilterPopUpFilterDrop;
+  public static WebElement getcalculationFilterPopUpFilterDrop() {return calculationFilterPopUpFilterDrop;}
 
 
 }

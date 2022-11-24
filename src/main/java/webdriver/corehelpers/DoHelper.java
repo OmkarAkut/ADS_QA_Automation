@@ -211,11 +211,12 @@ public class DoHelper extends DriverHelper {
     	try {
     		waitUntilElementIsClickable(element);
 			element.click();
-		
+			Thread.sleep(300);
 			
 		} catch (Exception e) {
 			JavascriptExecutor executor = (JavascriptExecutor)driver;
 			executor.executeScript("arguments[0].click();", element);
+			
 		}
     }
 

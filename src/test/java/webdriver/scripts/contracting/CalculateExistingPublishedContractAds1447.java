@@ -58,8 +58,10 @@ public class CalculateExistingPublishedContractAds1447 extends CalculationHelper
 		waitForSpinnerToEnd();
 		waitForAjaxExtJs();
 		modelMap.getModelLibraryContractingButtonCalculate().click();
-		waitForCalculationToEnd(90);
+		waitForCalculationToEnd(1000);
+		driver.findElement(By.xpath("//button/span[text()='Refresh']")).click();
 		waitForPresenceOfElement("//div[2]/div/div[4]/div/table/tbody/tr[2]/td[17]/div");  //total records xpath
+		Thread.sleep(200);
 		assertTrue(getCalculationStatusMyStatusFirstRowStatusCellText().contains(status));
 		assertTrue(getCalculationStatusMyStatusFirstRowLogStatusCellText().contains(logStatus));
 		assertTrue(getCalculationStatusMyStatusFirstRowRecordsProcessedCellText().contains(recordsProcessed));
