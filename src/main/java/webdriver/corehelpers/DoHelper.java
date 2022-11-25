@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+
+import webdriver.maps.CostingMap;
 import webdriver.maps.DataMaintenanceMap;
 import webdriver.maps.ModelLibraryMap;
 import webdriver.maps.mapbuilder.BuildMap;
@@ -97,6 +99,7 @@ public class DoHelper extends DriverHelper {
 //    	boolean element = false;
 //		
 //    	waitForElementToBeVisible(driver.findElement(By.tagName("iframe")));
+    	Thread.sleep(300);
 		List<WebElement> iframes=driver.findElements(By.tagName("iframe"));
 		if(iframes.size()>2) {
 			driver.switchTo().frame(0);
@@ -148,6 +151,11 @@ public class DoHelper extends DriverHelper {
         modelMap.getModelLibraryButtonSearch().click();
         waitForSpinnerToEnd();
         Thread.sleep(1000);
+    }
+    //Shilpa 11.25.2022
+    public static void doEnterModelName(String modelName) {
+    	 waitUntilElementIsClickable(CostingMap.getEncounterName());
+    	 CostingMap.getEncounterName().sendKeys(modelName);
     }
 
 //    public void doFilter(String[][] filterStatements, WebElement fieldOptionsUl) throws InterruptedException {

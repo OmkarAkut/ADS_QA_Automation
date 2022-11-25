@@ -87,6 +87,7 @@ public class CalculationStatusPageSmokeTest extends CalculationHelper {
       waitForFirstRowCalculationBarToReach100Percent();
       driverDelay(4000);//venkat added explicitly time 21.09.2022
       calculationStatusPageOpenViewDialog();
+      driverDelay(4000);
       assertViewLogTitle(viewLogTitle);
     //venkat added java script 22.09.2022
       Thread.sleep(500); 

@@ -455,7 +455,7 @@ try {
         counter++;
       }
     }
-    Thread.sleep(1000);
+    Thread.sleep(5000);
   }
 
   //number of checks is 10 - total run time can be controlled by setting refresh interval - longer interval, longer run time

@@ -78,7 +78,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 		fail(e.getMessage());
 	}
   }
-
+/*Commented below test cases as they are executing under Smoke Test
   //Login page tests
   @Test
   public void test0000VerifyLoginPageIsDisplayed() throws Throwable {	
@@ -235,7 +235,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
       }
     }
   }
-
+*/
   //===== Global Tests ======//
   @Test
   public void test0001LandingPageSystemMaintenance() throws Throwable {
@@ -266,7 +266,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 		fail(e.getMessage());
 	}
   }
-
+/* Commented below test cases as they are executing under Smoke Test
   @Test
   public void test0002LandingPageDataMaintenance() throws Throwable {
     try {
@@ -418,7 +418,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 		fail(e.getMessage());
 	}
   }
-
+*/
   @Test
   public void test0009bUserMenu() throws Throwable {
     try {

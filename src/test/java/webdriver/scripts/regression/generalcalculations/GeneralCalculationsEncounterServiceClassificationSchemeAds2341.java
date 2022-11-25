@@ -34,7 +34,8 @@ public class GeneralCalculationsEncounterServiceClassificationSchemeAds2341 exte
 
   static DataMaintenanceMap dmMap;
   final static String aTozPage = "Encounter Service Classification Schemes";
-  final static String batch = "v10.2 REGRESSION Enc Serv Class Scheme";
+//  final static String batch = "v10.2 REGRESSION Enc Serv Class Scheme";
+  final static String batch = "v10.4 REGRESSION Enc Serv Class Scheme";//updated 11.25.2022
   private static List<WebElement> encountersTable;
 
   /** Regression: Test script for ADS-2341. Updated: 7-7-21. */
@@ -131,7 +132,7 @@ public class GeneralCalculationsEncounterServiceClassificationSchemeAds2341 exte
       //goToPage("Maintain Data");
       doMaintainDataPageSelectAtoZOption(aTozPage);
       tableClickColumnHeader("Name");
-      openMaintainDataBatch("v10.2 REGRESSION Enc Serv Class Scheme");
+      openMaintainDataBatch("v10.4 REGRESSION Enc Serv Class Scheme");
       waitForAjaxExtJs();
       doClick(driver.findElement(By.xpath("//button/span[text()='Assign']")));
       waitForSpinnerToEnd();
