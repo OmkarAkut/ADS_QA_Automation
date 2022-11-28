@@ -6,6 +6,7 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 		CostingModelsSmokeTest.class,
+		EncounterCost.class,
 
 })
 public class CostingModelsTestSuite {
