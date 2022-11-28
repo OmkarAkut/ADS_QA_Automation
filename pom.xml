@@ -25,7 +25,9 @@ under the License.
 	<packaging>jar</packaging>
 
 	<name>Flink Quickstart Job</name>
-
+	
+	<!--
+	 Script to re run failed cases
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<flink.version>1.10.1</flink.version>
@@ -35,6 +37,7 @@ under the License.
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<surefire.rerunFailingTestsCount>1</surefire.rerunFailingTestsCount>
 	</properties>
+	-->
 
 	<repositories>
 		<repository>
