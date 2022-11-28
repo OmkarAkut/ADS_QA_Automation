@@ -508,7 +508,7 @@ try {
 	  String strDate = f. format(new Date());
 	  CostingMap costingMap = BuildMap.getInstance(driver, CostingMap.class);
 	    doClick(driver.findElement(By.xpath("//div[contains(@id,'statustoolbar')]//span[text()='Filter']/parent::button")));
-	    doDropdownSelectUsingOptionText(CostingMap.getcalculationFilterPopUpFilterDrop(),costingMap.getUnitCostQuickCalculationDropdownCostModelMenuList(),"Calculation Start Time");
+	    doDropdownSelectUsingOptionText(CostingMap.getcalculationFilterPopUpFilterDrop(),costingMap.getCalculationFilterDropdownMenuList(),"Calculation Start Time");
 	  
 	    doClick(driver.findElement(By.xpath("//input[@name='valuedate']")));
 	    driver.findElement(By.xpath("//input[@name='valuedate']")).sendKeys(strDate);

@@ -341,7 +341,7 @@ public class CostingMap extends MapConfig {
   private WebElement unitCostQuickCalculationButtonShow;
   public WebElement getUnitCostQuickCalculationButtonShow() {return unitCostQuickCalculationButtonShow;}
 
-  @FindBy(xpath = "(//div[contains(@id,'filterwindow')]//following-sibling::div[contains(@class,'x-boundlist-floating x-layer')])[1]//ul")
+  @FindBy(xpath = "(//div[contains(@class,'x-boundlist-floating x-layer')])[1]//ul")
   private WebElement unitCostQuickCalculationDropdownCostModelMenuList;
   public WebElement getUnitCostQuickCalculationDropdownCostModelMenuList() {return unitCostQuickCalculationDropdownCostModelMenuList;}
 
@@ -531,6 +531,7 @@ public class CostingMap extends MapConfig {
  
   /******End Table Navigation*****/
 //Shilpa
+//Shilpa
   @FindBy(name = "field")
   private static WebElement calculationFilterPopUpFilterDrop;
   public static WebElement getcalculationFilterPopUpFilterDrop() {return calculationFilterPopUpFilterDrop;}
@@ -632,5 +633,9 @@ public class CostingMap extends MapConfig {
   private static WebElement getEncounterSave;
   public static WebElement getEncounterSave() {return getEncounterSave;}
   
-  
+  @FindBy(xpath = "(//div[contains(@id,'filterwindow')]//following-sibling::div[contains(@class,'x-boundlist-floating x-layer')])[1]//ul")
+  private WebElement getCalculationFilterDropdownMenuList;
+  public WebElement getCalculationFilterDropdownMenuList() {return getCalculationFilterDropdownMenuList;}
+
+
 }

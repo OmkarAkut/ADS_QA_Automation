@@ -26,7 +26,7 @@ public class EncounterCost extends UcqcHelper {
 	static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
 	static String costModel = "BC COST MODEL";
 	static String costModelName = "Model" + currentDateTime;
-	static CostingMap selectColumn;
+	private static CostingMap selectColumn;
 	static String dischargeDateFrom = "01/01/1800";
 	static String dischargeDateTo = "01/01/1800";
 	static String postingDateFrom = "04/01/2012";
@@ -40,7 +40,7 @@ public class EncounterCost extends UcqcHelper {
 			selectColumn = BuildMap.getInstance(driver, CostingMap.class);
 			System.out.println("Test Class: " + EncounterCost.class.getSimpleName());
 			Login.loginUser("AutomationTesterAdmin");
-			waitForDisplayedSpinnerToEnd();
+//			waitForDisplayedSpinnerToEnd();
 			goToPage("costing models");
 			waitForAjaxExtJs();
 			ExtentReport.logPass("PASS", "setupScript");

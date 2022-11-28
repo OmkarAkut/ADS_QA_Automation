@@ -112,6 +112,7 @@ public class DoHelper extends DriverHelper {
 			waitForSpinnerToEnd();
 		}
 		else {
+			driverDelay(2000);
 			waitUntilElementIsClickable(driver
 					.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]/div[text()='" + name + "']")));
 			driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]/div[text()='" + name + "']"))
