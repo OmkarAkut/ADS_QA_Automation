@@ -11,6 +11,7 @@ import java.util.Properties;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -167,6 +168,7 @@ public class Driver {
     browser = browser.toLowerCase();
     if (System.getProperty("os.name").toLowerCase().contains("windows")) {
       if (browser.equals("chrome") || browser.contains("headless")) {
+    	  
         System.setProperty("webdriver.chrome.driver", drivers + chromeDriver + ".exe");
         System.setProperty("webdriver.chrome.silentOutput", "true"); //chromedriver logging to console
       } else if (browser.equals("ie")) {
@@ -203,6 +205,10 @@ public class Driver {
 		  ChromeOptions options = new ChromeOptions();
 		  options.addArguments("--ignore-certificate-errors", "start-maximized");
 		 driver = new ChromeDriver(options);
+		 //Clear browser cache
+		 driver.manage().deleteAllCookies();
+		    driver.get("chrome://settings/clearBrowserData");
+		    driver.findElement(By.xpath("//settings-ui")).sendKeys(Keys.ENTER);
 		} else if (browser.equals("firefox")) {
 		  driver = new FirefoxDriver();
 		} else if (browser.equals("ie")) {
