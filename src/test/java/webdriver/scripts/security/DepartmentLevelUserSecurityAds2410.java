@@ -291,7 +291,7 @@ public class DepartmentLevelUserSecurityAds2410 extends LoginStatic {
 		driverDelay(5000);
 		String resultsStatement= getWebElement("//label[contains(text(),'Departments / Department Groups') and contains(text(),'of')]").getText();
 		System.out.println(resultsStatement);
-		assertThat(resultsStatement, containsString("7833 of 7838"));//Shilpa updated to 7833 of 7838 , now its not 39 of 65
+		assertThat(resultsStatement, containsString("325 of 373"));//Shilpa updated to 7833 of 7838 , now its not 39 of 65
 		//assertThat(resultsStatement, containsString("39 of 65"));//Shilpa updated to 7833 of 7838 , now its not 39 of 65
 		ExtentReport.logPass("PASS","test10AssertDepartmentHierarchiesAreAccurate");
 	} catch (Exception|AssertionError e) {
