@@ -25,12 +25,14 @@ import webdriver.maps.mapbuilder.BuildMap;
 public class GeneralCalculationsEncounterServiceClassificationSchemeAds2341 extends CalculationHelper {
 
   static String encounter = "OPPS2020DCA001";
+  static String encounterNoServices = "OPPS2020DCA002";
+  //Encounter Services
   List<String> expectedEncounters = Arrays.asList(
           "QAREGRESSION34567890123456789012345678901", //"PC Pop Fac or Non F"
           "OPPS 2020"
   );
   static String viewLogTitleRemove = "Remove Encounter Service Classification";
-  static String viewLogTitleApply = "Remove Encounter Service Classification";
+  static String viewLogTitleApply = "Encounter Service Classification Scheme";
 
   static DataMaintenanceMap dmMap;
   final static String aTozPage = "Encounter Service Classification Schemes";
@@ -109,8 +111,8 @@ public class GeneralCalculationsEncounterServiceClassificationSchemeAds2341 exte
           throws InterruptedException,Throwable {
     try {
 		doMaintainDataPageSelectAtoZOption("Encounters");
-		doSearchForModel(encounter);
-		openMaintainDataBatch(encounter);
+		doSearchForModel(encounterNoServices);
+		openMaintainDataBatch(encounterNoServices);
 		waitForAjaxExtJs();
 		waitForSpinnerToEnd();
 		doClick(driver.findElement(By.xpath("//button/span[text()='Services']")));
@@ -139,7 +141,7 @@ public class GeneralCalculationsEncounterServiceClassificationSchemeAds2341 exte
       waitForFirstRowCalculationBarToReach100Percent();
       calculationStatusPageOpenViewDialog();
       assertViewLogTitle(viewLogTitleApply);
-      confirmCalculationStatusDetailsContains("Total Encounters Processed: 26.");
+      confirmCalculationStatusDetailsContains("Total Encounters Processed: 40");
       confirmCalculationStatusDetailsContains("Process Completed");
       closeViewDialog();
       deleteMyCalculationStatusFirstRow();

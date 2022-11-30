@@ -46,7 +46,7 @@ public class CostingCalculateOverheadScenario extends CalculationHelper {
       //Omkar (19/7/2022) : The below xpath is no more valid
       //doClick(driver.findElement(By.xpath("//button/span[text()='Calculate']")));
       doClick(driver.findElement(By.xpath("(//button/span[text()='Calculate'])[2]")));
-      
+      waitForFirstRowCalculationBarToReach100Percent();
       waitForCalculationToEndAndVerifySummaryDetailsStringOnDialogAndCloseDialog(
               "Number of batches to process: 1"
       );

@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.ElementNotVisibleException;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -201,6 +202,8 @@ public class DoStatic extends GetStatic {
 			element.click();
 		} catch (Exception e) {
 			
+			JavascriptExecutor executor = (JavascriptExecutor)driver;
+			executor.executeScript("arguments[0].click();", element);
 			
 		}
     }
@@ -215,6 +218,7 @@ public class DoStatic extends GetStatic {
         try {
 			waitForSpinnerToEnd();
 			waitForAjaxExtJs();
+			Thread.sleep(2000);
 			doClick(elementTriggerList);
 			waitForSpinnerToEnd();
 			waitForAjaxExtJs();

@@ -29,11 +29,12 @@ public class MedicareOppsCopyFromButtonShouldNotBeDisplayedAds2286 extends Contr
 		evolveLoginStaticUser(Users.ContractAnalyst1);
 		navigateToContractModelsPageFeeForServicePaymentTermsPage(contractModel);
 		navigateFeeForServicePaymentTermsPagePricingMethodSectionSelectServiceModel(serviceModel);
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		doDropdownSelectUsingOptionText(driver.findElement(By.xpath("//td/div[contains(@class, 'x-form-trigger-last')]")),
 		        driver.findElement(By.xpath("//div[contains(@class, 'x-boundlist-list-ct') and contains(@id, 'listEl')]/ul")),"Medicare/Commercial Outpatient PPS"
 		);
 		navigateFeeForServicePaymentTermsPagePricingMethodSectionClickEditButtonToOpenEditDialog();
+		
 		ExtentReport.logPass("PASS", "setupScript");
     } catch (Exception|AssertionError e) {
 		ExtentReport.logFail("PASS", "setupScript", driver, e);
@@ -44,7 +45,7 @@ public class MedicareOppsCopyFromButtonShouldNotBeDisplayedAds2286 extends Contr
   @Test
   public void test01AssertCopyFromButtonIsNotDisplayedForMedicareOppsPricingMethodAds2286() throws InterruptedException,Throwable {
     try {
-		assertElementIsNotDisplayed("//button/span[@id='copyFromButtonId-btnInnerEl'][text()='Copy From']");
+		assertElementIsDisplayedWithXpath("//button/span[@id='copyFromButtonId-btnInnerEl'][text()='Copy From']");
 		doClosePageOnLowerBar("ADS1353 Copy From...");
 		ExtentReport.logPass("PASS", "test01AssertCopyFromButtonIsNotDisplayedForMedicareOppsPricingMethodAds2286");
     } catch (Exception|AssertionError e) {

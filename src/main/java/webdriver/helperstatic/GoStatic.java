@@ -367,7 +367,7 @@ public class GoStatic extends WebDriverStatic {
       System.out.println(2000);
       driver.findElement(By.xpath("//span[contains(@class,'x-panel-header-text')][text()='Pricing Method']/../following-sibling::div")).click();
       waitForAjaxExtJs();
-      Thread.sleep(1000);
+      Thread.sleep(2000);
       driver.findElement(By.xpath("//label[text()='Service Model']/ancestor::div/descendant::div[text() = '" + serviceModel + "'][2]")).click();
     } catch (Throwable e) {
       e.getMessage();

@@ -24,6 +24,7 @@ public class GeneralCalculationsRunPriceListCalculationScenarioAds2274 extends C
 	 //Shilpa 21.09.2022
 //  static String viewLogTitle = "Remove Encounter Service Classification";
   static String viewLogTitle = "Remove Price List to Encounters Assignment";
+  static String viewLogTitleAssign = "Price List Encounters Assignment";
   //Shilpa 21.09.2022
 //  final static String aTozPage = "Price Lists";
   final static String batch = "v10.2 REGRESSION Price List Enc Assign";
@@ -121,12 +122,11 @@ public class GeneralCalculationsRunPriceListCalculationScenarioAds2274 extends C
       driverDelay(4000);
       calculationStatusPageOpenViewDialog();
       driverDelay(4000);
-
-      assertViewLogTitle(viewLogTitle);
+      assertViewLogTitle(viewLogTitleAssign);
       ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);",
-    		  driver.findElement(By.xpath("//*[contains(text(),'Total number of charge items reset: 25')]"))
+    		  driver.findElement(By.xpath("//*[contains(text(),'Total number of charge items processed: 25')]"))
     		  );
-      confirmCalculationStatusDetailsContains("Total number of charge items reset: 25");
+      confirmCalculationStatusDetailsContains("Total number of charge items processed: 25");
       clickLastPageIconOnCalculationStatusViewLog();
       confirmCalculationStatusDetailsContains("Process Completed");
       closeViewDialog();

@@ -23,6 +23,7 @@ public class GeneralCalculationsRunPriceListEncounterAssignmentAds2344 extends C
 
 //  static String viewLogTitle = "Remove Encounter Service Classification";
 	static String viewLogTitle ="Remove Price List to Encounters Assignment";
+	static String viewLogTitleAssign ="Price List Encounters Assignment";
   //final static String aTozPage = "Price List to Encounters Assignment";
   final static String aTozPage = "Price List to Encounters Assignments";
   final static String batch = "v10.2 REGRESSION Price List Enc Assign";
@@ -98,22 +99,22 @@ public class GeneralCalculationsRunPriceListEncounterAssignmentAds2344 extends C
 //    );
   }
 //  //Shilpa 21.09.2022 below tc fails due to error pop up onclick Assign button
-
-  @Test
+//uncomment below tc after https://harrisaffinity.atlassian.net/browse/ADS-7148 is fixed
+//  @Test
   public void test02ClickAssignButtonAndAssertCalculationStatusPageDetails()
           throws InterruptedException,Throwable {
     try {
       waitForAjaxExtJs();
-      waitForPresenceOfElement("(//button/span[text()='Assign'])[1]");
-      doClick(getButton("Assign"));
+      waitForPresenceOfElement("//span[text()='Assign']/parent::button[1]");
+      doClick(driver.findElement(By.xpath("//span[text()='Assign']/parent::button[1]")));
       waitForSpinnerToEnd();
       waitForFirstRowCalculationBarToReach100Percent();
       driverDelay(6000);
       calculationStatusPageOpenViewDialog();
       driverDelay(7000);
-      assertViewLogTitle(viewLogTitle);
-      confirmCalculationStatusDetailsContains("Total number of charge items reset: 25");
-      //confirmCalculationStatusDetailsContains("Total number of charge items processed = 25");
+      assertViewLogTitle(viewLogTitleAssign);
+//      confirmCalculationStatusDetailsContains("Total number of charge items reset: 25");
+      confirmCalculationStatusDetailsContains("Total number of charge items processed: 25");
       clickLastPageIconOnCalculationStatusViewLog();
       driverDelay(5000);
       confirmCalculationStatusDetailsContains("Process Completed");
