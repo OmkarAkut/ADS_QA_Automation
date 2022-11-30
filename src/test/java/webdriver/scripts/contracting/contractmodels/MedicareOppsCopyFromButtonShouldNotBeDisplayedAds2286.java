@@ -29,10 +29,10 @@ public class MedicareOppsCopyFromButtonShouldNotBeDisplayedAds2286 extends Contr
 		evolveLoginStaticUser(Users.ContractAnalyst1);
 		navigateToContractModelsPageFeeForServicePaymentTermsPage(contractModel);
 		navigateFeeForServicePaymentTermsPagePricingMethodSectionSelectServiceModel(serviceModel);
-		Thread.sleep(2000);
-		doDropdownSelectUsingOptionText(driver.findElement(By.xpath("//input[contains(@id,'dynamiccombo')]")),
-		        driver.findElement(By.xpath("//div[contains(@class, 'x-boundlist-list-ct') and contains(@id, 'listEl')]/ul")),"Medicare/Commercial Outpatient PPS"
-		);
+		Thread.sleep(4000);
+//		doDropdownSelectUsingOptionText(driver.findElement(By.xpath("//input[contains(@id,'dynamiccombo')]/parent::td")),
+//		        driver.findElement(By.xpath("//div[contains(@class, 'x-boundlist-list-ct') and contains(@id, 'listEl')]/ul")),"Medicare/Commercial Outpatient PPS"
+//		);
 		navigateFeeForServicePaymentTermsPagePricingMethodSectionClickEditButtonToOpenEditDialog();
 		
 		ExtentReport.logPass("PASS", "setupScript");
