@@ -53,9 +53,9 @@ public class CostingCalculateOverheadScenario extends CalculationHelper {
       waitForFirstRowCalculationBarToReach100Percent();
       calculationStatusPageOpenViewDialog();
       assertViewLogTitle(viewLogTitle);
-//      doClick(driver.findElement(By.xpath("(//div[contains(@id,'window')]//span[contains(@id,'btnInnerEl')]//parent::button)[6]")));
-//      driverDelay();
-//      confirmCalculationStatusDetailsContains("Process Completed");
+      doClick(driver.findElement(By.xpath("(//div[contains(@id,'window')]//span[contains(@id,'btnInnerEl')]//parent::button)[6]")));
+      driverDelay();
+      confirmCalculationStatusDetailsContains("Process Completed");
       closeViewDialog();
      
 //      waitForCalculationToEndAndVerifySummaryDetailsStringOnDialogAndCloseDialog(
@@ -63,7 +63,7 @@ public class CostingCalculateOverheadScenario extends CalculationHelper {
 //      );
 
       //click last page icon
-      driver.findElement(By.xpath("//*[@class='x-btn-icon pagging-tbar-last-button']")).click();
+//      driver.findElement(By.xpath("//*[@class='x-btn-icon pagging-tbar-last-button']")).click();
       waitForSpinnerToEnd();
 
       deleteMyCalculationStatusFirstRow();
