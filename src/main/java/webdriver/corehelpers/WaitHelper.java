@@ -110,17 +110,23 @@ public class WaitHelper extends JavaHelper {
 	/** Waits for onscreen "spinner box" to disappear. */
 	public static void waitForSpinnerToEnd() {
 		boolean spinner = true;
+		int counter=0;
+
 		while(spinner){
 			try {
 				spinner = driver.findElement(By.xpath("//*[contains(text(),'Loading...')]")).isDisplayed();
+				if(counter==30) {
 				if (spinner) {
 					continue;
-				} else {
+				}
+				}
+				else {
 					break;
 				}
 			} catch (Throwable e) {
 				break;
 			}
+			
 		}
 	}
 
