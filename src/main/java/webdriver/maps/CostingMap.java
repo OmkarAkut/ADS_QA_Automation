@@ -636,6 +636,11 @@ public class CostingMap extends MapConfig {
   @FindBy(xpath = "(//div[contains(@id,'filterwindow')]//following-sibling::div[contains(@class,'x-boundlist-floating x-layer')])[1]//ul")
   private WebElement getCalculationFilterDropdownMenuList;
   public WebElement getCalculationFilterDropdownMenuList() {return getCalculationFilterDropdownMenuList;}
+  
+  public static String getContractingName="(//td[contains(@class,'x-grid-cell-treecolumn')]/*[text()='Contracting']/img)[1]";
+  public static String getContractingAutomationName="(//td[contains(@class,'x-grid-cell-treecolumn')]/*[text()='Automation']/img)[2]"; 
+  public static String getContractingAutomationRegressName="(//td[contains(@class,'x-grid-cell-treecolumn')]/*[text()='Regression v10.0'])";
+  
 
 
 }

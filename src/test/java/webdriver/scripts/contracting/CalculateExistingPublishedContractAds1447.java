@@ -13,6 +13,7 @@ import org.openqa.selenium.By;
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.helpers.CalculationHelper;
+import webdriver.maps.CostingMap;
 import webdriver.maps.ModelLibraryMap;
 import webdriver.maps.mapbuilder.BuildMap;
 
@@ -44,6 +45,12 @@ public class CalculateExistingPublishedContractAds1447 extends CalculationHelper
 		Login.loginUser("ContractAnalyst1");
 		goToPage("Contract Models");
 		waitForSpinnerToEnd();
+		Thread.sleep(4000);
+		doClick(CostingMap.getContractingName);
+//		doClick(CostingMap.getContractingName());
+		doClick(CostingMap.getContractingAutomationName);
+		doClick(CostingMap.getContractingAutomationRegressName);
+		Thread.sleep(4000);
 		filterAndSelectContractModelFromContractModelLibrary(modelName);
 		ExtentReport.logPass("PASS", "setupScript");
 	} catch (Exception|AssertionError e) {

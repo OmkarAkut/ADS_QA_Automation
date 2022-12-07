@@ -85,6 +85,7 @@ public class JavaListStatic extends JavaStatic {
         ArrayList<String> actualList = new ArrayList<>();
         WebElement optionsContainer = null;
         try {
+        	Thread.sleep(500);
             optionsContainer =
                     driver.findElement(By.xpath("//ul/descendant::*[text()='" + anyOptionText + "']/.."));
         } catch (Exception e) {
