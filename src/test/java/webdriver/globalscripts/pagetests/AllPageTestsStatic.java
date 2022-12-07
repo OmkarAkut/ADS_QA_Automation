@@ -262,7 +262,7 @@ public class AllPageTestsStatic extends PageTestHelperStatic {
 //	@Ignore
 	@Test
 	public void testReportingTabReportLibraryPageTest() throws Throwable {
-		String expectedHelpPageTitle = "xxxxxx";
+		String expectedHelpPageTitle = "Report Library";
 		//String firstHandle;
 		try {
 			goToPage("Report Library");
