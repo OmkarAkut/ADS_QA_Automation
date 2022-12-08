@@ -29,7 +29,7 @@ public class AdsStandardData {
 			"jskoff test","EP Test","Tinesha","Costing Reports","OKHeart","new_menu_item","BPTESTItem","JK Test Report","MB Report SP2","new publ P2","mcarlson_dept report menu",
 			"mcarlson report menu","test quick","mb new test","mb new 9.4 regression","mb test security","Report Admin HCA before","mbreport hca 10 16","new 10-18","new 10-18 DB report",
 //			"mb db aadmin","mbekkerall new","Ven","mb 98 regress","asdfsVVVC","dasfasdf"
-			"mb db aadmin","mbekkerall new","Ven","mb 98 regress"
+			"mb db aadmin","mbekkerall new","Ven","mb 98 regress","Test", "Test1", "Test2", "FSTEST", "test", "Test New Menu Imran 1"
 
 			);
 

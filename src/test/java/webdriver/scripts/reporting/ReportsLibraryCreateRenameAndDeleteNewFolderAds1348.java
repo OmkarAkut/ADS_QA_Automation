@@ -124,16 +124,22 @@ public class ReportsLibraryCreateRenameAndDeleteNewFolderAds1348 extends LoginSt
      	    }
   }
 
-  @Ignore
+//  @Ignore
   @Test
   public void test04DeleteNewReportsFolder() throws Throwable {
     try {
       driver.findElement(By.xpath("//div/button[text()='Delete Folder']")).click();
+     
       assertElementIsDisplayed(
               driver.findElement(By.xpath("//div[text()='Delete Folder']/ancestor::tr/following-sibling::tr/descendant::div[text()='"+folderName+" will be deleted. Do you want to continue?']")),
               printout);
       driver.findElement(By.xpath("//div[text()='Delete Folder']/ancestor::tr/following-sibling::tr/descendant::td/button[text()='Delete']")).click();
-      assertElementIsNotDisplayed(driver.findElement(By.xpath("//div[contains(@class, 'droppable')][contains(text(),'"+folderName+"')]")));
+      driverPause();
+      try {
+		assertElementIsNotDisplayed(driver.findElement(By.xpath("//div[contains(@class, 'droppable')][contains(text(),'"+folderName+"')]")));
+	} catch (Exception e) {
+		System.out.println("Folder has been deleted");
+	}
       ExtentReport.logPass("PASS", "test04DeleteNewReportsFolder");
 
  	} catch(Exception|AssertionError e) {

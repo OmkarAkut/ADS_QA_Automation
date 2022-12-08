@@ -603,6 +603,7 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
   @Test
   public void test34AssertChargeCodeIsDisplayedAndNotAvailableInSelectColumnWindow() throws Throwable {
     try {
+    	 doClick(selectColumn.getUnitCostQuickCalculationButtonColumnsToDisplaySelect());
       assertColumnHeaderIsDisplayed("Charge Code");
       /*doDropdownSelectUsingOptionText(selectColumn.getUnitCostQuickCalculationDropdownCostModel(),selectColumn.getUnitCostQuickCalculationDropdownCostModelMenuList(),"Marina");
       waitForAjaxExtJs();*/

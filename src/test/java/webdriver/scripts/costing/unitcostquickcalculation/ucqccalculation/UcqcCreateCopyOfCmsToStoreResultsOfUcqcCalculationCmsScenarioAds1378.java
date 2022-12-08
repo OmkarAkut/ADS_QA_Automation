@@ -14,6 +14,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -167,6 +168,8 @@ public class UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds137
       driverDelay(5000);
       doClickTreeItemWithCheckbox("Cost Model Calculation Scenarios");
       driverDelay(5000);
+      ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoViewIfNeeded();",driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell x-grid-cell-gridcolumn')][2]/*[text()='ADS-1378 In Total1_UCQC']")));
+	    Thread.sleep(200);
       doubleClickTableNameColumn("ADS-1378 In Total1_UCQC");
       ExtentReport.logPass("PASS", "test04CostModelCalculationScenarioPageVerifyNameField");
     } catch (Exception |AssertionError e) {

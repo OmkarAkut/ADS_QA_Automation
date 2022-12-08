@@ -487,6 +487,7 @@ public class UcqcHelper extends GoHelper {
     WebElement editCell = driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')]["+row+"]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-"+columnIdDigits+"')]/div/table"));
     Actions action = new Actions(driver);
     action.moveToElement(editCell).sendKeys(newValue).perform();
+    Thread.sleep(500);
   }
 
   public void ucqcGridClickInCell(String chargeCode, String headerName, boolean printout) throws InterruptedException {

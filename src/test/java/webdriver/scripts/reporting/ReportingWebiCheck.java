@@ -24,8 +24,8 @@ public class ReportingWebiCheck extends GoHelper {
 		try {
 			System.out.println("Test Class: " + ReportingWebiCheck.class.getSimpleName());
 
-			Login.loginUser("AutomationTester1");
-
+//			Login.loginUser("AutomationTester1");
+			Login.loginUser("AutomationTesterAdmin");
 			goToPage("Web Intelligence");
 			ExtentReport.logPass("PASS", "setupScript");
 		}  catch (Exception|AssertionError e) {

@@ -115,14 +115,15 @@ public class WaitHelper extends JavaHelper {
 		while(spinner){
 			try {
 				spinner = driver.findElement(By.xpath("//*[contains(text(),'Loading...')]")).isDisplayed();
-				if(counter==30) {
+				if(counter==450) {
 				if (spinner) {
 					continue;
-				}
 				}
 				else {
 					break;
 				}
+				}
+				
 			} catch (Throwable e) {
 				break;
 			}

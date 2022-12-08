@@ -13,6 +13,7 @@ import org.openqa.selenium.WebElement;
 
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
+import webdriver.helpers.CalculationHelper;
 import webdriver.helpers.UcqcHelper;
 import webdriver.maps.CostingMap;
 import webdriver.maps.mapbuilder.BuildMap;
@@ -103,9 +104,13 @@ public class LoadingSpinnerDisplaysWhileCalculationIsRunningAds1231
     try {
       goToPage("Calculation Status");
       waitForAjaxExtJs();
+    
+      
+      CalculationHelper.waitForFirstRowCalculationBarToReach100Percent();
       WebElement calculationProgress = driver.findElement(By.xpath(
         "//span[text()='Progress']/following::*[@class='x-progress-text x-progress-text-back'][1]")
       );
+     
       String calculationProgressValue = calculationProgress.getText();
       assertEquals(calculationProgressValue,"100%");
       ExtentReport.logPass("PASS", "test04NavigateToCalculationStatusPageAndAssertProgressIndicatorEquals100Percent");
