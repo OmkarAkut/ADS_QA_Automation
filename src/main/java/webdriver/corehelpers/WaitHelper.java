@@ -109,26 +109,48 @@ public class WaitHelper extends JavaHelper {
 
 	/** Waits for onscreen "spinner box" to disappear. */
 	public static void waitForSpinnerToEnd() {
+		 final long startTiming = System.currentTimeMillis();
 		boolean spinner = true;
 		int counter=0;
-
 		while(spinner){
+
 			try {
 				spinner = driver.findElement(By.xpath("//*[contains(text(),'Loading...')]")).isDisplayed();
-				if(counter==450) {
-				if (spinner) {
-					continue;
+				if(spinner) {
+					 
+
+					counter++;
+//					System.out.println(counter);
+					Thread.sleep(1000);
+					if(counter==30)
+					{
+						System.out.println(counter);
+						
+						System.out.println(counter);
+						break;
+					}
+					else {
+						continue;
+					}
+					
+					
 				}
 				else {
+					 
 					break;
 				}
-				}
+				
+				
+				
 				
 			} catch (Throwable e) {
 				break;
 			}
 			
 		}
+		final long finalTiming = System.currentTimeMillis();
+	      double totalRunTime = (finalTiming - startTiming) / 1000;
+	      System.out.println("Total wait Time for Spinner to Complete: " + totalRunTime + " seconds");
 	}
 
 	public static void waitForDisplayedSpinnerToEnd() {
@@ -140,7 +162,8 @@ public class WaitHelper extends JavaHelper {
 				if (spinner) {
 					
 					count++;
-					if(count==10) {
+					Thread.sleep(1000);
+					if(count==50) {
 						break;
 					}
 					continue;
