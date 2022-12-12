@@ -23,13 +23,7 @@ public class AdsStandardData {
       "Report Date Maintenance", "Report Publication", "Ad Hoc Business View Maintenance",
       "Web Intelligence Universe Maintenance", "ICD9/ICD10 GEMs Inquiry", "ICD9/ICD10 GEMs Analysis"*/	  
 
-			"Report Library","Web Intelligence","Ad Hoc Report Design","Report Menu Maintenance","Report Date Maintenance",
-			"Report Publication","Ad Hoc Business View Maintenance","Web Intelligence Universe Maintenance","ICD9/ICD10 GEMs Inquiry",
-			"ICD9/ICD10 GEMs Analysis","CUSTOM NAME","Test Report","MB Test","Custom Report Menu","Test Custom Report","Test New Menu","Report Menu File",
-			"jskoff test","EP Test","Tinesha","Costing Reports","OKHeart","new_menu_item","BPTESTItem","JK Test Report","MB Report SP2","new publ P2","mcarlson_dept report menu",
-			"mcarlson report menu","test quick","mb new test","mb new 9.4 regression","mb test security","Report Admin HCA before","mbreport hca 10 16","new 10-18","new 10-18 DB report",
-//			"mb db aadmin","mbekkerall new","Ven","mb 98 regress","asdfsVVVC","dasfasdf"
-			"mb db aadmin","mbekkerall new","Ven","mb 98 regress","Test", "Test1", "Test2", "FSTEST", "test", "Test New Menu Imran 1"
+			"Report Library", "Web Intelligence", "Ad Hoc Report Design", "Report Menu Maintenance", "Report Date Maintenance", "Report Publication", "Ad Hoc Business View Maintenance", "Web Intelligence Universe Maintenance", "ICD9/ICD10 GEMs Inquiry", "ICD9/ICD10 GEMs Analysis", "Test00", "Test Report1", "MB Test", "Custom Report Menu", "jskoff test", "EP Test", "Tinesha", "Costing Reports", "OKHeart", "new_menu_item", "BPTESTItem", "MB Report SP2", "new publ P2", "mcarlson_dept report menu", "mcarlson report menu", "test quick", "mb new test", "mb new 9.4 regression", "mb test security", "Report Admin HCA before", "mbreport hca 10 16", "new 10-18", "new 10-18 DB report", "mb db aadmin", "mbekkerall new", "Ven", "mb 98 regress", "Test1", "Test2", "FSTEST", "test", "Test New Menu Imran 1"
 
 			);
 
@@ -59,8 +53,9 @@ public class AdsStandardData {
 			/*"Users", "Roles", "Security Settings", "General Settings", "Customize Maintain Data",
 			"Customize Task Lists", "Terminal Server Sessions", "Terminal Server Desktop"1*/
 			
-			"Users","Roles","Security Settings","General Settings","Customize Maintain Data","Customize Task Lists",
-			"Terminal Server Sessions","Terminal Server Desktop","Launch Automation Engine","FHIR Client Test","HL7 Test","Automation Logs"
+//	Shilpa 12.12.2022		"Users","Roles","Security Settings","General Settings","Customize Maintain Data","Customize Task Lists",
+//			"Terminal Server Sessions","Terminal Server Desktop","Launch Automation Engine","FHIR Client Test","HL7 Test","Automation Logs"
+			"Users", "Roles", "Security Settings", "General Settings", "Customize Maintain Data", "Customize Task Lists", "Terminal Server Sessions", "Terminal Server Desktop", "FHIR Client Test", "HL7 Test", "Launch Automation Engine", "Automation Logs"
 			);
 
 	public static List<String> expectedStatusSubTabs = Arrays.asList(
