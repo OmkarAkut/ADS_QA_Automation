@@ -308,6 +308,8 @@ public class UcqcColumnsToDisplaySelectColumnsPopupAds1156 extends UcqcHelper {
     @Test
     public void test08bConfirmApplyButtonIsDisabledWhenOnlyChargeCodeNameIsSelected() throws Throwable {
         try {
+        	((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoViewIfNeeded();",driver.findElement(By.xpath("//div[contains(@class,'x-panel x-box-item x-panel-default')]/following-sibling::div/descendant::tbody[2]/tr/td/*[text()='Charge Code Name']")));
+		    Thread.sleep(3000);
             driver.findElement(By.xpath("//div[contains(@class,'x-panel x-box-item x-panel-default')]/following-sibling::div/descendant::tbody[2]/tr/td/*[text()='Charge Code Name']")).click();
             waitForAjaxExtJs();
            // assertElementIsDisabled(costingMap.getUnitCostQuickCalculationColumnsToDisplayModalApply(), printout);
@@ -323,6 +325,8 @@ public class UcqcColumnsToDisplaySelectColumnsPopupAds1156 extends UcqcHelper {
     @Test
     public void test08cConfirmApplyButtonIsDisabledWhenOnlyModifierIsSelected() throws Throwable {
         try {
+        	((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoViewIfNeeded();",driver.findElement(By.xpath("//div[contains(@class,'x-panel x-box-item x-panel-default')]/following-sibling::div/descendant::tbody[2]/tr/td/*[text()='Modifier']")));
+		    Thread.sleep(3000);
             driver.findElement(By.xpath("//div[contains(@class,'x-panel x-box-item x-panel-default')]/following-sibling::div/descendant::tbody[2]/tr/td/*[text()='Modifier']")).click();
             waitForAjaxExtJs();
           //  assertElementIsDisabled(costingMap.getUnitCostQuickCalculationColumnsToDisplayModalApply(), printout);
