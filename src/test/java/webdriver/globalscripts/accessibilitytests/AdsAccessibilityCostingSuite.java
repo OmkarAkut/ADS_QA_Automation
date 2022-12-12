@@ -55,7 +55,7 @@ public class AdsAccessibilityCostingSuite extends LoginStatic {
  // End of modification
   }
 
-  @Test
+//  @Test
   //venkat updated method name
   //public void testCostingxCostModelScenarioCalculation() throws InterruptedException,Throwable {
   public void testCostingxZCostModelScenarioCalculation() throws InterruptedException,Throwable {

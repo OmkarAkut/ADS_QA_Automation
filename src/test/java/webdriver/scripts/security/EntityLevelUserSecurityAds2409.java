@@ -396,7 +396,7 @@ public class EntityLevelUserSecurityAds2409 extends LoginStatic {
 
 	}
 
-	@Test
+//	@Test commented email sent to Ruchi regarding this
 	public void test08AssertDefinitionElementsAddProvidersSelectorContainsOnlyRestrictedEntity() throws Throwable {
 
 		try {

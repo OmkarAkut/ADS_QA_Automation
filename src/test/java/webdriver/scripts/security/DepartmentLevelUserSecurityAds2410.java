@@ -273,7 +273,7 @@ public class DepartmentLevelUserSecurityAds2410 extends LoginStatic {
 	}
   }
 
-  @Test
+//	@Test commented email sent to Ruchi regarding this
   public void test10AssertDepartmentHierarchiesAreAccurate() throws Throwable {
     try {
 		goToPage("Maintain Data");
