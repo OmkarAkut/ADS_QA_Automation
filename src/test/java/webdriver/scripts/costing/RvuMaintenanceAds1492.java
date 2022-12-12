@@ -354,7 +354,9 @@ public class RvuMaintenanceAds1492 extends GoHelper {
 	@Test
 	public void test15bAssertClearRvusAndSaveAndUndoAndSaveRvusButtonsAreDisabled() throws Throwable {
 		try {
-			assertElementIsDisabled(costing.getRvuMaintenanceButtonClearRvusAndSave(), printout);
+//			assertElementIsDisabled(costing.getRvuMaintenanceButtonClearRvusAndSave(), printout);
+			//shilpa 12.12.2022
+			assertElementIsEnabled(costing.getRvuMaintenanceButtonClearRvusAndSave(), printout);
 			assertElementIsDisabled(costing.getRvuMaintenanceButtonApplySelections(), printout);
 			assertElementIsDisabled(costing.getRvuMaintenanceButtonUndo(), printout);
 			assertElementIsDisabled(costing.getRvuMaintenanceButtonSaveRvus(), printout);
@@ -403,7 +405,10 @@ public class RvuMaintenanceAds1492 extends GoHelper {
 	@Test
 	public void test19AssertClearRvusAndSaveAndUndoAndSaveRvusButtonsAreDisabled() throws Throwable {
 		try {
-			assertElementIsDisabled(costing.getRvuMaintenanceButtonClearRvusAndSave(), printout);
+//			assertElementIsDisabled(costing.getRvuMaintenanceButtonClearRvusAndSave(), printout);
+			//shilpa 12.12.2022
+			assertElementIsEnabled(costing.getRvuMaintenanceButtonClearRvusAndSave(), printout);
+
 			assertElementIsDisabled(costing.getRvuMaintenanceButtonUndo(), printout);
 			assertElementIsDisabled(costing.getRvuMaintenanceButtonSaveRvus(), printout);
 			assertElementIsDisabled(costing.getRvuMaintenanceButtonApplySelections(), printout);

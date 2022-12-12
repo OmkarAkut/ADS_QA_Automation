@@ -48,7 +48,7 @@ public class ReportingWebiCheck extends GoHelper {
 				driver.findElement(By.id("yui-gen1")).click();
 			}
 			//omkar : end of edit
-
+/*
 			driver.findElement(By.id("gotomenubutton-button")).click();
 
 			driver.findElement(By.xpath("//*[@role='menuitem' and text()='Web Intelligence']")).click();
@@ -60,6 +60,27 @@ public class ReportingWebiCheck extends GoHelper {
 			assertThatElementIsDisplayed(driver.findElement(By.xpath(("//*[@title = 'Web Intelligence']"))));
 			driver.findElement(By.id("logoffLink-button")). click();
 			Thread.sleep(3000);
+			*/
+			//shilpa 12.12.2022
+			driverDelay();
+			waitForElementPresence("//span[contains(@id,'pageApplicationSection-anchor-content')]");
+			assertThatElementIsDisplayed(driver.findElement(By.xpath(("//span[@id='Folders-title-inner']"))));
+			assertThatElementIsDisplayed(driver.findElement(By.xpath(("//span[@id='Categories-title-inner']"))));
+			assertThatElementIsDisplayed(driver.findElement(By.xpath(("//span[@id='Documents-title']"))));
+			assertThatElementIsDisplayed(driver.findElement(By.xpath(("//span[@id='Inbox-title']"))));
+			driver.findElement(By.xpath("//span[contains(@id,'pageApplicationSection-anchor-content')]")).click();
+			driverDelay();
+			driver.findElement(By.xpath("//span[@id='Web_Intelligence-title']")).click();
+			driverDelay(10000);
+			waitUntilElementIsClickable(driver.findElement(By.xpath("//div[contains(@class,'sapMDialogScrollCont ')]//button[contains(@class,'wingTestDataSourcePickerCancel')]//child::span[@class='sapMBtnContent']")));
+			driver.findElement(By.xpath("//div[contains(@class,'sapMDialogScrollCont ')]//button[contains(@class,'wingTestDataSourcePickerCancel')]//child::span[@class='sapMBtnContent']")).click();
+			driverDelay(1000);
+			assertThatElementIsDisplayed(driver.findElement(By.xpath(("(//bdi[text()='Web Intelligence'])[1]"))));
+			assertThatElementIsDisplayed(driver.findElement(By.xpath(("//span[@id='home-icon-img']"))));
+
+			driver.findElement(By.id("avatar")). click();
+			Thread.sleep(200);
+			driver.findElement(By.xpath("//div[text()='Log out']")). click();
 			ExtentReport.logPass("PASS", "testWebiPageLoads");
 		}  catch (Exception|AssertionError e) {
 			ExtentReport.logFail("FAIL", "testWebiPageLoads", driver, e);
