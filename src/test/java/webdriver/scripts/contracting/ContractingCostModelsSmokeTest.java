@@ -46,7 +46,7 @@ public class ContractingCostModelsSmokeTest extends ContractModelsHelper {
 			System.out.println("Test Class: " + ContractingCostModelsSmokeTest.class.getSimpleName());
 			Login.loginUser("ContractAnalyst1");
 			navigateToContractModelsPageFeeForServicePaymentTermsPage(contractModel);
-			Thread.sleep(500);
+			Thread.sleep(2000);
 			navigateFeeForServicePaymentTermsPagePricingMethodSectionSelectServiceModel(serviceModel);
 			ExtentReport.logPass("PASS", "setupScript");
 		} catch (Exception|AssertionError e) {

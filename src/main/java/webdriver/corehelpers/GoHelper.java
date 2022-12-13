@@ -366,8 +366,9 @@ private static void checkForDomainLock() {
       System.out.println(2000);
       driver.findElement(By.xpath("//span[contains(@class,'x-panel-header-text')][text()='Pricing Method']/../following-sibling::div")).click();
       waitForAjaxExtJs();
-      System.out.println(2000);
+      Thread.sleep(2000);
       driver.findElement(By.xpath("//label[text()='Service Model']/ancestor::div/descendant::div[text() = '" + serviceModel + "'][2]")).click();
+      Thread.sleep(2000);
     } catch (Exception e) {
     	JavascriptExecutor executor = (JavascriptExecutor)driver;
     	executor.executeScript("arguments[0].click();",driver.findElement(By.xpath("//label[text()='Service Model']/ancestor::div/descendant::div[text() = '" + serviceModel + "'][2]"))
