@@ -1,7 +1,9 @@
 package webdriver.corehelpers;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+
 import webdriver.maps.GeneralElementsMap;
 import webdriver.maps.ModelLibraryMap;
 import webdriver.maps.mapbuilder.BuildMap;
@@ -366,8 +368,10 @@ private static void checkForDomainLock() {
       waitForAjaxExtJs();
       System.out.println(2000);
       driver.findElement(By.xpath("//label[text()='Service Model']/ancestor::div/descendant::div[text() = '" + serviceModel + "'][2]")).click();
-    } catch (Throwable e) {
-      e.getMessage();
+    } catch (Exception e) {
+    	JavascriptExecutor executor = (JavascriptExecutor)driver;
+    	executor.executeScript("arguments[0].click();",driver.findElement(By.xpath("//label[text()='Service Model']/ancestor::div/descendant::div[text() = '" + serviceModel + "'][2]"))
+);
     }
   }
 
