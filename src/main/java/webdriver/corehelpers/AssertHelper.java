@@ -709,14 +709,20 @@ public class AssertHelper extends AdsHelper {
 		return isLast;
 	}
 	//Shilpa 08.08.2022
-	public static void assertThatString(String expectedValue,String actualValue,String tcname) {
-
+	public static void assertThatString(WebElement element,String expectedValue,boolean printout) {
 		try {
-			assertThat(expectedValue, equalTo(actualValue));
-			ExtentReport.extenttest.log(Status.PASS, "'"+tcname+"'"+"is PASS");
-		} catch (AssertionError e) {
-			ExtentReport.extenttest.log(Status.INFO, e);
+			String elementText = element.getText();
+			if (printout) {
+				System.out.println("Expected Value: " + expectedValue);
+				System.out.println("Actual   Value: " + elementText);
+			}
+			if(elementText.toLowerCase().contains(expectedValue.toLowerCase())) {
+				assertTrue(true);
+			}
+		} catch (Throwable e) {
+			fail(e.getMessage());
 		}
-
+		
+			
 	}
 }
