@@ -18,6 +18,8 @@ public class TestGenericUIValidateCostingModelSearchTextbox extends GoHelper{
 	 static GeneralElementsMap generalMap;
 	  static CostingMap costing;
 	  static String CostModelName="Test";
+	  
+	  /** Regression: Automated test script for ADS-6515 */
 	 @BeforeClass
 	  public static void setupScript() throws Exception,Throwable {
 		  ExtentReport.reportCreate("CostingModelsSmokeTest", "webdriver.scripts.costing.costingmodels", "CostingModelsSmokeTest");

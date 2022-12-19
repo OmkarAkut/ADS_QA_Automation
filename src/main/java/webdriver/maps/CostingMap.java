@@ -1141,4 +1141,34 @@ public class CostingMap extends MapConfig {
 	public static List<WebElement> getCostingModelElementList() {
 		return getCostingModelElementList;
 	}
+	@FindBy(xpath = "//div[contains(@class,'modalLibBarCls')]/div//span[text()='New']//parent::button")
+	private static WebElement getNewContractFolderBtn;
+
+	public WebElement getNewContractFolderBtn() {
+		return getNewContractFolderBtn;
+	}
+	@FindBy(xpath = "//div[contains(@class,'modalLibBarCls')]/div//span[text()='New']//parent::button")
+	private static WebElement getNewFolderPopUp;
+
+	public WebElement getNewFolderPopUp() {
+		return getNewFolderPopUp;
+	}
+	@FindBy(xpath = "//div[contains(@class,'x-window-header-text-container')]//following::td[contains(@id,'textfield')]/input")
+	private static WebElement getNewFolderNameInput;
+
+	public WebElement getNewFolderNameInput() {
+		return getNewFolderNameInput;
+	}
+	@FindBy(xpath = "//div[contains(@class,'x-window-header-text-container')]//following::span[text()='Save & Close']")
+	private static WebElement getNewFolderNameSave;
+
+	public WebElement getNewFolderNameSave() {
+		return getNewFolderNameSave;
+	}
+	@FindBy(xpath = "(//td[contains(@class,'x-grid-cell-treecolumn')]/*[text()='Contracting']/img)[1]")
+	private static WebElement getContractingTreeExpand;
+
+	public WebElement getContractingTreeExpand() {
+		return getContractingTreeExpand;
+	}
 }
