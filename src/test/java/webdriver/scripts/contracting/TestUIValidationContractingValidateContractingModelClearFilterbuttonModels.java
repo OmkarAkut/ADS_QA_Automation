@@ -48,7 +48,7 @@ public class TestUIValidationContractingValidateContractingModelClearFilterbutto
 	}
 
 	@Test
-	public void test01ClearFilter() throws Throwable {
+	public void test01ContractModelClearFilter() throws Throwable {
 		try {
 			waitForAjaxExtJs();
 			BeforeApplyFilterContractModelListCount = CostingMap.getCostingModelElementList().size();

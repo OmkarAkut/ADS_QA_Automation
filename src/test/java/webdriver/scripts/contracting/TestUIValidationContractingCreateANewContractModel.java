@@ -36,7 +36,7 @@ public class TestUIValidationContractingCreateANewContractModel extends Calculat
 		try {
 			modelMap = BuildMap.getInstance(driver, CostingMap.class);
 
-			System.out.println("Test Class: " + CalculateExistingPublishedContractAds1447.class.getSimpleName());
+			System.out.println("Test Class: " + TestUIValidationContractingCreateANewContractModel.class.getSimpleName());
 			Login.loginUser("ContractAnalyst1");
 			goToPage("Contract Models");
 			waitForSpinnerToEnd();

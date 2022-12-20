@@ -48,7 +48,7 @@ public class TestUIValidationContractingValidateContractingModelFilterbuttonMode
 	}
 
 	@Test
-	public void test01ValidateFilterbuttomForContractModels() throws Throwable {
+	public void test01ValidateFilterForContractModels() throws Throwable {
 		try {
 			modelMap.getContractModelButtonFilter().click();
 			Thread.sleep(2000);
