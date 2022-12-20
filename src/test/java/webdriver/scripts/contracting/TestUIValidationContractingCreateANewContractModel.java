@@ -76,6 +76,7 @@ public class TestUIValidationContractingCreateANewContractModel extends Calculat
 			doSearchForContractModel(contractModelName);
 			driverDelay();
 			assertTextIsDisplayed(contractModelName);
+			doClosePageOnLowerBar("Model Library");
 			ExtentReport.logPass("PASS", "test01CreateNewContractModel");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01CreateNewContractModel", driver, e);

@@ -58,6 +58,7 @@ public class TestUIValidationContractingCreatingaNewContractingFolder extends Go
 					driver.findElement(By.xpath("//div[text()='" + contractFolderName + "']")));
 			Thread.sleep(500);
 			assertTextIsDisplayed(contractFolderName);
+			doClosePageOnLowerBar("Model Library");
 			ExtentReport.logPass("PASS", "test01CreateNewContractFolder");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01CreateNewContractFolder", driver, e);
