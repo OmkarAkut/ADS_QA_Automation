@@ -39,8 +39,9 @@ public class TestUIValidationContractingCreateANewContractModel extends Calculat
 			System.out.println("Test Class: " + TestUIValidationContractingCreateANewContractModel.class.getSimpleName());
 			Login.loginUser("ContractAnalyst1");
 			goToPage("Contract Models");
+			waitForAjaxExtJs();
+			waitForDisplayedSpinnerToEnd();
 			assertThatString(modelMap.getContractModelHeader(), "Contracting Model Library", printout);
-			waitForSpinnerToEnd();
 			doClick(CostingMap.getContractingName);
 			ExtentReport.logPass("PASS", "setupScript");
 		} catch (Exception | AssertionError e) {

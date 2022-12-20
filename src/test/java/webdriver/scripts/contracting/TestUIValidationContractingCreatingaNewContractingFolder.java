@@ -35,6 +35,7 @@ public class TestUIValidationContractingCreatingaNewContractingFolder extends Go
 			Login.loginUser("ContractAnalyst1");
 			goToPage("Contract Models");
 			waitForAjaxExtJs();
+			waitForDisplayedSpinnerToEnd();
 			assertThatString(modelMap.getContractModelHeader(), "Contracting Model Library", printout);
 			ExtentReport.logPass("PASS", "setupScript");
 		} catch (Exception | AssertionError e) {
@@ -50,7 +51,9 @@ public class TestUIValidationContractingCreatingaNewContractingFolder extends Go
 			waitForElementToBeVisible(modelMap.getNewFolderPopUp());
 			doClick(modelMap.getNewFolderNameInput());
 			modelMap.getNewFolderNameInput().sendKeys(contractFolderName);
+			driverPause();
 			doClick(modelMap.getNewFolderNameSave());
+			waitForAjaxExtJs();
 			waitForSpinnerToEnd();
 			doClick(modelMap.getContractingTreeExpand());
 			driverPause();

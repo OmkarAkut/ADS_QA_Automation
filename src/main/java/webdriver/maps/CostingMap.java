@@ -1228,4 +1228,34 @@ public class CostingMap extends MapConfig {
 	public WebElement getContractModelHeader() {
 		return ContractModelHeader;
 	}
+	@FindBy(xpath = "//div[contains(@class,'horzOverflow')]/div//span[text()='Copy']//parent::button")
+	private WebElement ContractModelButtonCopy;
+
+	public WebElement getContractModelButtonCopy() {
+		return ContractModelButtonCopy;
+	}
+	@FindBy(xpath = "//div[contains(@class,'horzOverflow')]/div//span[text()='Paste']//parent::button")
+	private WebElement ContractModelButtonPaste;
+
+	public WebElement getContractModelButtonPaste() {
+		return ContractModelButtonPaste;
+	}
+	@FindBy(xpath = "//div[contains(@class,'contractFrmCls ')]//input[contains(@id,'textfield')]")
+	private WebElement ContractModelPastePopup;
+
+	public WebElement getContractModelPastePopup() {
+		return ContractModelPastePopup;
+	}
+	@FindBy(xpath = "//div[contains(@class,'contractFrmCls ')]//input[contains(@id,'textfield')]")
+	private WebElement ContractModelPasteNameInput;
+
+	public WebElement getContractModelPasteNameInput() {
+		return ContractModelPasteNameInput;
+	}
+	@FindBy(xpath = "//span[text()='Save & Close']")
+	private WebElement ContractModelSaveCopy;
+
+	public WebElement getContractModelSaveCopy() {
+		return ContractModelSaveCopy;
+	}
 }

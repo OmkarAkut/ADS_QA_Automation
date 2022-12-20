@@ -39,6 +39,7 @@ public class TestUIValidationContractingValidateContractingModelFilterbuttonMode
 			Login.loginUser("ContractAnalyst1");
 			goToPage("Contract Models");
 			waitForAjaxExtJs();
+			waitForDisplayedSpinnerToEnd();
 			assertThatString(modelMap.getContractModelHeader(), "Contracting Model Library", printout);
 			ExtentReport.logPass("PASS", "setupScript");
 		} catch (Exception | AssertionError e) {
