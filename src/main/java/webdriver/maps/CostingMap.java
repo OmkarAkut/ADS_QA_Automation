@@ -1222,4 +1222,10 @@ public class CostingMap extends MapConfig {
 	public WebElement getContractModelClearFilter() {
 		return ContractModelClearFilter;
 	}
+	@FindBy(xpath = "//div[contains(@class,'horzOverflow')]/div//span[text()='Clear Filter']//parent::button")
+	private WebElement ContractModelHeader;
+
+	public WebElement getContractModelHeader() {
+		return ContractModelHeader;
+	}
 }

@@ -38,8 +38,8 @@ public class TestUIValidationContractingValidateContractingModelClearFilterbutto
 					+ TestUIValidationContractingValidateContractingModelClearFilterbuttonModels.class.getSimpleName());
 			Login.loginUser("ContractAnalyst1");
 			goToPage("Contract Models");
-			waitForSpinnerToEnd();
-
+			waitForAjaxExtJs();
+			assertThatString(modelMap.getContractModelHeader(), "Contracting Model Library", printout);
 			ExtentReport.logPass("PASS", "setupScript");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "setupScript", driver, e);
