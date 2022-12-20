@@ -11,12 +11,13 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 
 import webdriver.maps.CostingMap;
+import webdriver.maps.DialogsMap;
 import webdriver.maps.mapbuilder.BuildMap;
 import webdriver.scripts.costing.unitcostquickcalculation.ucqcmainpage.SelectColumnsPopupForColumnsToDisplayAds1083;
 
 public class ContractingHelperMethods extends SelectColumnsPopupForColumnsToDisplayAds1083 {
 	 static CostingMap selectColumn =BuildMap.getInstance(driver, CostingMap.class);
-//	 selectColumn = 
+	 private DialogsMap dialog = BuildMap.getInstance(driver, DialogsMap.class);
 
 	public void highlightColumnsToDisplayColumn(String column) throws InterruptedException,Throwable {
 	    String columnPath = "//*[contains(@class,'glAccountsGrid')]/descendant::*[text()='"+column+"']";
@@ -325,4 +326,12 @@ public class ContractingHelperMethods extends SelectColumnsPopupForColumnsToDisp
 	    }
 	    actualAvailableColumnNames.remove(0);
 	  }
+	  public void doFilterCreate(String[] filterParameters) throws InterruptedException {
+		    doFilterSetFilterParameters(filterParameters[0], filterParameters[1], filterParameters[2], filterParameters[3]);
+		    waitForAjaxExtJs();
+		    waitUntilElementIsClickable(dialog.getFilterDialogButtonAdd());
+		    doClick(dialog.getFilterDialogButtonAdd());
+		    waitForAjaxExtJs();
+		   
+		  }
 }

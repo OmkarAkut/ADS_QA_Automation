@@ -1171,4 +1171,34 @@ public class CostingMap extends MapConfig {
 	public WebElement getContractingTreeExpand() {
 		return getContractingTreeExpand;
 	}
+	@FindBy(xpath = "//div[contains(@class,'horzOverflow')]/div//span[text()='Filter']//parent::button")
+	private WebElement ContractModelButtonFilter;
+
+	public WebElement getContractModelButtonFilter() {
+		return ContractModelButtonFilter;
+	}
+	@FindBy(xpath = "//div[contains(@id,'headercontainer')]//div[text()='Remove']")
+	private WebElement ContractModelRemoveFilterButton;
+
+	public WebElement getContractModelRemoveFilterButton() {
+		return ContractModelRemoveFilterButton;
+	}
+	@FindBy(xpath = "//div[contains(@id,'toolbar')]//span[text()='Apply Filter']")
+	private WebElement ContractModelApplyFilterButton;
+
+	public WebElement getContractModelApplyFilterButton() {
+		return ContractModelApplyFilterButton;
+	}
+	@FindBy(xpath = "//div[contains(@id,'filtergrid')]//div[text()='Edit']//parent::td")
+	private WebElement ContractModelEditFilterButton;
+
+	public WebElement getContractModelEditFilterButton() {
+		return ContractModelEditFilterButton;
+	}
+	@FindBy(xpath = "//span[text()='Update']//parent::button")
+	private WebElement ContractModelUpdateFilterButton;
+
+	public WebElement getContractModelUpdateFilterButton() {
+		return ContractModelUpdateFilterButton;
+	}
 }
