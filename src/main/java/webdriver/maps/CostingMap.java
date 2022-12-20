@@ -1070,8 +1070,7 @@ public class CostingMap extends MapConfig {
 	public static String getContractingAutomationRegressName = "(//td[contains(@class,'x-grid-cell-treecolumn')]/*[text()='Regression v10.0'])";
 
 	@FindBy(xpath = "//div[contains(@class,'horzOverflow ')]//div[contains(@id,'acommontbar')]//span[text()='New']//parent::button")
-	public
-	static WebElement NewContractModelButton1;
+	public static WebElement NewContractModelButton1;
 
 	public static WebElement getNewContractModelButton() {
 		return NewContractModelButton1;
@@ -1111,94 +1110,116 @@ public class CostingMap extends MapConfig {
 	public WebElement getSaveContractModel() {
 		return getSaveContractModel;
 	}
+
 	@FindBy(xpath = "//div[contains(@class,'x-window-header-draggable')]//following::span[text()='Select']//parent::button")
 	private static WebElement getSelectItem;
 
 	public WebElement getSelectItem() {
 		return getSelectItem;
 	}
+
 	@FindBy(xpath = "(//div[contains(@id,'dynamicwindow')])//div[contains(@class,'multiSelPneCls')]//following::span[text()='Remove']//parent::button")
 	private static WebElement getRemoveItem;
 
 	public WebElement getRemoveItem() {
 		return getRemoveItem;
 	}
+
 	@FindBy(xpath = "(//div[contains(@id,'dynamicwindow')])//div[contains(@class,'multiSelPneCls')]//following::span[text()='Apply']//parent::button")
 	private static WebElement getApplySelections;
 
 	public WebElement getApplySelections() {
 		return getApplySelections;
 	}
+
 	@FindBy(xpath = "//div[contains(@class,'contractFrmCls')]//ul/li")
 	private static WebElement getProviderText;
 
 	public static WebElement getProviderText() {
 		return getProviderText;
 	}
+
 	@FindBy(xpath = "(//div[contains(@class,'horzOverflow')]//table[@class='x-grid-table x-grid-table-resizer'])//tr/td[3]/div")
 	private static List<WebElement> getCostingModelElementList;
 
 	public static List<WebElement> getCostingModelElementList() {
 		return getCostingModelElementList;
 	}
+
 	@FindBy(xpath = "//div[contains(@class,'modalLibBarCls')]/div//span[text()='New']//parent::button")
 	private static WebElement getNewContractFolderBtn;
 
 	public WebElement getNewContractFolderBtn() {
 		return getNewContractFolderBtn;
 	}
+
 	@FindBy(xpath = "//div[contains(@class,'modalLibBarCls')]/div//span[text()='New']//parent::button")
 	private static WebElement getNewFolderPopUp;
 
 	public WebElement getNewFolderPopUp() {
 		return getNewFolderPopUp;
 	}
+
 	@FindBy(xpath = "//div[contains(@class,'x-window-header-text-container')]//following::td[contains(@id,'textfield')]/input")
 	private static WebElement getNewFolderNameInput;
 
 	public WebElement getNewFolderNameInput() {
 		return getNewFolderNameInput;
 	}
+
 	@FindBy(xpath = "//div[contains(@class,'x-window-header-text-container')]//following::span[text()='Save & Close']")
 	private static WebElement getNewFolderNameSave;
 
 	public WebElement getNewFolderNameSave() {
 		return getNewFolderNameSave;
 	}
+
 	@FindBy(xpath = "(//td[contains(@class,'x-grid-cell-treecolumn')]/*[text()='Contracting']/img)[1]")
 	private static WebElement getContractingTreeExpand;
 
 	public WebElement getContractingTreeExpand() {
 		return getContractingTreeExpand;
 	}
+
 	@FindBy(xpath = "//div[contains(@class,'horzOverflow')]/div//span[text()='Filter']//parent::button")
 	private WebElement ContractModelButtonFilter;
 
 	public WebElement getContractModelButtonFilter() {
 		return ContractModelButtonFilter;
 	}
+
 	@FindBy(xpath = "//div[contains(@id,'headercontainer')]//div[text()='Remove']")
 	private WebElement ContractModelRemoveFilterButton;
 
 	public WebElement getContractModelRemoveFilterButton() {
 		return ContractModelRemoveFilterButton;
 	}
+
 	@FindBy(xpath = "//div[contains(@id,'toolbar')]//span[text()='Apply Filter']")
 	private WebElement ContractModelApplyFilterButton;
 
 	public WebElement getContractModelApplyFilterButton() {
 		return ContractModelApplyFilterButton;
 	}
+
 	@FindBy(xpath = "//div[contains(@id,'filtergrid')]//div[text()='Edit']//parent::td")
 	private WebElement ContractModelEditFilterButton;
 
 	public WebElement getContractModelEditFilterButton() {
 		return ContractModelEditFilterButton;
 	}
+
 	@FindBy(xpath = "//span[text()='Update']//parent::button")
 	private WebElement ContractModelUpdateFilterButton;
 
 	public WebElement getContractModelUpdateFilterButton() {
 		return ContractModelUpdateFilterButton;
+	}
+
+	@FindBy(xpath = "//div[contains(@class,'horzOverflow')]/div//span[text()='Clear Filter']//parent::button")
+	private WebElement ContractModelClearFilter;
+
+	public WebElement getContractModelClearFilter() {
+		return ContractModelClearFilter;
 	}
 }
