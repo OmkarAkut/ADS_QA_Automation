@@ -3,13 +3,16 @@ package webdriver.scripts.contracting;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
 import webdriver.maps.ContractingMap;
 import webdriver.maps.CostingMap;
 import webdriver.maps.DialogsMap;
@@ -326,4 +329,52 @@ public class ContractingHelperMethods extends SelectColumnsPopupForColumnsToDisp
 		    waitForAjaxExtJs();
 		   
 		  }
+	  public static void filterByCalculationStartTimeInCalculationStatusPage() throws Throwable {
+		  Format f = new SimpleDateFormat("MM/dd/yyyy");
+		  String strDate = f. format(new Date());
+		  CostingMap costingMap = BuildMap.getInstance(driver, CostingMap.class);
+		    doClick(driver.findElement(By.xpath("//div[contains(@id,'statustoolbar')]//span[text()='Filter']/parent::button")));
+		    doDropdownSelectUsingOptionText(CostingMap.getcalculationFilterPopUpFilterDrop(),costingMap.getCalculationFilterDropdownMenuList(),"Import/Export Start Time");
+		  
+		    doClick(driver.findElement(By.xpath("//input[@name='valuedate']")));
+		    driver.findElement(By.xpath("//input[@name='valuedate']")).sendKeys(strDate);
+		    doClick(driver.findElement(By.xpath("//div[contains(@id,'filter')]//span[text()='Add']/parent::button")));
+		    doClick(driver.findElement(By.xpath("//span[text()='Apply Filter']/parent::button")));
+	  }
+	  public static void waitForFirstRowCalculationBarToReach100Percent() throws Exception {
+		    boolean calculate = true;
+		    String percent;
+		    byte counter = 0;
+		    try {
+				filterByCalculationStartTimeInCalculationStatusPage();
+			} catch (Throwable e1) {
+				
+			}
+		    while (calculate) {
+		      try {
+		        driver.findElement(By.xpath("//button/span[text()='Refresh']")).click();
+		        waitForSpinnerToEnd();
+		        percent = driver.findElement(By.xpath("//*[contains(@class,'x-progress-text-back')]")).getText();
+		        System.out.println("Percent complete: " + percent);
+		        assertTrue(percent.contains("100%"));
+		        break;
+		      } catch (Throwable e) {
+		        System.out.println("percent less than 100");
+		        Thread.sleep(1000);
+		        if (counter == 120) {
+		          fail("Calculation did not finish in allotted time");
+		        }
+		        counter++;
+		      }
+		    }
+		    Thread.sleep(5000);
+		  }
+	  
+	  //File upload
+	  public static void uploadTheFileusingAutoIT(WebDriver driver, String exeFile, String uploadFile) {
+			try {
+				Runtime.getRuntime().exec(exeFile + " " + uploadFile);
+			} catch (Exception e) {
+			}
+		}
 }

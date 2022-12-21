@@ -215,7 +215,58 @@ public static WebElement getContractModelAddProviderBtn() {return getContractMod
 	
 	@FindBy(xpath = "//*[contains(@id,'button')][text()='Remove']")
 	private WebElement ContractModelButtonColumnsToDisplayModalRemove;
-	public WebElement getContractModelButtonColumnsToDisplayModalRemove() {
-		return ContractModelButtonColumnsToDisplayModalRemove;
-	}
+	public WebElement getContractModelButtonColumnsToDisplayModalRemove() {return ContractModelButtonColumnsToDisplayModalRemove;}
+	
+	@FindBy(xpath = "//div[contains(@class,'horzOverflow')]/div//span[text()='Export']//parent::button")
+	private WebElement ContractModelExportButton;
+	public WebElement getContractModelExportButton() {return ContractModelExportButton;}
+	
+	@FindBy(xpath = "//div[contains(@class,'horzOverflow')]/div//span[text()='Import']//parent::button")
+	private WebElement ContractModelImportButton;
+	public WebElement getContractModelImportButton() {return ContractModelImportButton;}
+	
+	@FindBy(xpath = "//div[contains(@id,'exportwindow')]//span[text()='Export Data']")
+	private WebElement ContractModelExportPopUp;
+	public WebElement getContractModelExportPopUp() {return ContractModelExportPopUp;}
+	
+	@FindBy(xpath = "//div[contains(@id,'importwindow')]//span[text()='Import Data']")
+	private WebElement ContractModelImportPopUp;
+	public WebElement getContractModelImportPopUp() {return ContractModelImportPopUp;}
+	
+	@FindBy(xpath = "//div[contains(@id,'exportwindow')]//span[text()='Select']//parent::button")
+	private WebElement ContractModelSelectFileButton;
+	public WebElement getContractModelSelectFileButton() {return ContractModelSelectFileButton;}
+	
+	@FindBy(xpath = "//div[contains(@id,'importwindow')]//span[text()='Select']//parent::button")
+	private WebElement ContractModelImportSelectFileButton;
+	public WebElement getContractModelImportSelectFileButton() {return ContractModelImportSelectFileButton;}
+	
+	@FindBy(xpath = "//div[contains(@class,'x-closable')]//div[contains(@id,'dynamicwindow')]//span[text()='Add Contract Model']")
+	private WebElement ContractModelInExportPopUp;
+	public WebElement getContractModelInExportPopUp() {return ContractModelInExportPopUp;}
+
+	@FindBy(xpath = "//div[contains(@class,'x-closable')]//div[contains(@id,'dynamicwindow')]//span[text()='Apply']//parent::button")
+	private WebElement ContractModelApplyInExportPopUp;
+	public WebElement getContractModelApplyInExportPopUp() {return ContractModelApplyInExportPopUp;}
+
+	@FindBy(xpath = "//div[contains(@class,'x-closable')]//div[contains(@id,'dynamicwindow')]//span[text()='Apply']//parent::button")
+	private WebElement ContractModelExportFileSharedLoc;
+	public WebElement getContractModelExportFileSharedLoc() {return ContractModelExportFileSharedLoc;}
+	
+	@FindBy(xpath = "//li[text()='<SFTP_SERVER>/PATH/TO/EXPORT_LOGS_SHARED_DIRECTORY/']")
+	private WebElement ContractModelExportFileSharedLocOption;
+	public WebElement getContractModelExportFileSharedLocOption() {return ContractModelExportFileSharedLocOption;}
+	
+	@FindBy(xpath = "//div[contains(@class,'x-toolbar-footer')]//div[contains(@class,'x-toolbar-item')]//span[text()='Export']//parent::button")
+	private WebElement ContractModelExportButtonInExportPopUp;
+	public WebElement getContractModelExportButtonInExportPopUp() {return ContractModelExportButtonInExportPopUp;}
+	
+	@FindBy(xpath = "//div[contains(@class,'x-toolbar-footer')]//div[contains(@class,'x-toolbar-item')]//span[text()='Import']//parent::button")
+	private WebElement ContractModelImportButtonInExportPopUp;
+	public WebElement getContractModelImportButtonInExportPopUp() {return ContractModelImportButtonInExportPopUp;}
+	
+	
+	@FindBy(xpath = "//span[contains(@id,'importexportstatus')][text()='Import/Export Status']")
+	private WebElement ContractModelImportExportstatusPage;
+	public WebElement getContractModelImportExportstatusPage() {return ContractModelImportExportstatusPage;}
 }
