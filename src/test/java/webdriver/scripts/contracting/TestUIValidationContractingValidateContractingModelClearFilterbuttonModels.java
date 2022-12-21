@@ -3,6 +3,7 @@ package webdriver.scripts.contracting;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.WebElement;
@@ -11,12 +12,13 @@ import org.openqa.selenium.interactions.Actions;
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.corehelpers.GoHelper;
+import webdriver.maps.ContractingMap;
 import webdriver.maps.CostingMap;
 import webdriver.maps.mapbuilder.BuildMap;
 
 public class TestUIValidationContractingValidateContractingModelClearFilterbuttonModels extends GoHelper {
 
-	private static CostingMap modelMap;
+	private static ContractingMap modelMap;
 	static String contractModel = "Test";
 	static String[] filter = { "Name", "Is", "Equal To", contractModel };
 	static int BeforeApplyFilterContractModelListCount;
@@ -32,7 +34,7 @@ public class TestUIValidationContractingValidateContractingModelClearFilterbutto
 				"webdriver.scripts.contracting",
 				"TestUIValidationContractingValidateContractingModelClearFilterbuttonModels");
 		try {
-			modelMap = BuildMap.getInstance(driver, CostingMap.class);
+			modelMap = BuildMap.getInstance(driver, ContractingMap.class);
 
 			System.out.println("Test Class: "
 					+ TestUIValidationContractingValidateContractingModelClearFilterbuttonModels.class.getSimpleName());
@@ -52,7 +54,7 @@ public class TestUIValidationContractingValidateContractingModelClearFilterbutto
 	public void test01ContractModelClearFilter() throws Throwable {
 		try {
 			waitForAjaxExtJs();
-			BeforeApplyFilterContractModelListCount = CostingMap.getCostingModelElementList().size();
+			BeforeApplyFilterContractModelListCount = ContractingMap.getCostingModelElementList().size();
 
 			modelMap.getContractModelButtonFilter().click();
 			Thread.sleep(2000);
@@ -63,14 +65,14 @@ public class TestUIValidationContractingValidateContractingModelClearFilterbutto
 					"Name Is Equal To " + contractModel + "", printout);
 			doClick(modelMap.getContractModelApplyFilterButton());
 			waitForDisplayedSpinnerToEnd();
-			for (WebElement costingElement : CostingMap.getCostingModelElementList()) {
+			for (WebElement costingElement : ContractingMap.getCostingModelElementList()) {
 				assertThatString(costingElement, contractModel, printout);
 			}
 			// Clear Filter
 			doClick(modelMap.getContractModelClearFilter());
 			waitForDisplayedSpinnerToEnd();
 			assertElementIsDisabled(modelMap.getContractModelClearFilter(), printout);
-			AfterApplyFilterContractModelListCount = CostingMap.getCostingModelElementList().size();
+			AfterApplyFilterContractModelListCount = ContractingMap.getCostingModelElementList().size();
 			if (BeforeApplyFilterContractModelListCount == AfterApplyFilterContractModelListCount) {
 				assertTrue("Contract Model List Matches", printout);
 			}
@@ -81,6 +83,12 @@ public class TestUIValidationContractingValidateContractingModelClearFilterbutto
 			fail(e.getMessage());
 
 		}
+
+	}
+	@AfterClass
+	public static void endtest() throws Exception {
+
+		ExtentReport.report.flush();
 
 	}
 }

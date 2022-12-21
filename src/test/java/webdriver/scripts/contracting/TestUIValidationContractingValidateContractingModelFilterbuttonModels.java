@@ -2,6 +2,7 @@ package webdriver.scripts.contracting;
 
 import static org.junit.Assert.fail;
 
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -12,12 +13,13 @@ import org.openqa.selenium.interactions.Actions;
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.corehelpers.GoHelper;
+import webdriver.maps.ContractingMap;
 import webdriver.maps.CostingMap;
 import webdriver.maps.mapbuilder.BuildMap;
 
 public class TestUIValidationContractingValidateContractingModelFilterbuttonModels extends GoHelper {
 
-	private static CostingMap modelMap;
+	private static ContractingMap modelMap;
 	static String contractModel = "Test";
 	static String updateContractModel = "Testing";
 	String[] filter = { "Name", "Is", "Equal To", contractModel };
@@ -32,7 +34,7 @@ public class TestUIValidationContractingValidateContractingModelFilterbuttonMode
 				"webdriver.scripts.contracting",
 				"TestUIValidationContractingValidateContractingModelFilterbuttonModels");
 		try {
-			modelMap = BuildMap.getInstance(driver, CostingMap.class);
+			modelMap = BuildMap.getInstance(driver, ContractingMap.class);
 
 			System.out.println("Test Class: "
 					+ TestUIValidationContractingValidateContractingModelFilterbuttonModels.class.getSimpleName());
@@ -68,7 +70,7 @@ public class TestUIValidationContractingValidateContractingModelFilterbuttonMode
 			contractHelper.doFilterCreate(filter);
 			doClick(modelMap.getContractModelApplyFilterButton());
 			waitForDisplayedSpinnerToEnd();
-			for (WebElement costingElement : CostingMap.getCostingModelElementList()) {
+			for (WebElement costingElement : ContractingMap.getCostingModelElementList()) {
 				assertThatString(costingElement, contractModel, printout);
 			}
 			doClosePageOnLowerBar("Model Library");
@@ -78,5 +80,11 @@ public class TestUIValidationContractingValidateContractingModelFilterbuttonMode
 			fail(e.getMessage());
 
 		}
+	}
+	@AfterClass
+	public static void endtest() throws Exception {
+
+		ExtentReport.report.flush();
+
 	}
 }

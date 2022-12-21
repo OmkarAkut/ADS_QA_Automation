@@ -5,6 +5,7 @@ import static org.junit.Assert.fail;
 
 import java.text.SimpleDateFormat;
 
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -15,12 +16,13 @@ import org.openqa.selenium.interactions.Actions;
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.corehelpers.GoHelper;
+import webdriver.maps.ContractingMap;
 import webdriver.maps.CostingMap;
 import webdriver.maps.mapbuilder.BuildMap;
 
 public class TestUIValidationContractingValidateContractingModelCopyPasteButtons extends GoHelper{
 
-	private static CostingMap modelMap;
+	private static ContractingMap modelMap;
 	private static String ContractModel="#fz Med IPPS Testing";
 	private static String UpdatedContractModel;
 	private static ContractingHelperMethods contractHelper = new ContractingHelperMethods();
@@ -34,7 +36,7 @@ public class TestUIValidationContractingValidateContractingModelCopyPasteButtons
 				"webdriver.scripts.contracting",
 				"TestUIValidationContractingValidateContractingModelCopyPasteButtons");
 		try {
-			modelMap = BuildMap.getInstance(driver, CostingMap.class);
+			modelMap = BuildMap.getInstance(driver, ContractingMap.class);
 
 			System.out.println("Test Class: "
 					+ TestUIValidationContractingValidateContractingModelCopyPasteButtons.class.getSimpleName());
@@ -84,5 +86,11 @@ public class TestUIValidationContractingValidateContractingModelCopyPasteButtons
 				fail(e.getMessage());
 			}
 		
+	}
+	@AfterClass
+	public static void endtest() throws Exception {
+
+		ExtentReport.report.flush();
+
 	}
 }

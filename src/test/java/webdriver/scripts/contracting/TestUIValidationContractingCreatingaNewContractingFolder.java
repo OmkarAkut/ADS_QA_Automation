@@ -4,6 +4,7 @@ import static org.junit.Assert.fail;
 
 import java.text.SimpleDateFormat;
 
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -12,12 +13,13 @@ import org.openqa.selenium.JavascriptExecutor;
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.corehelpers.GoHelper;
+import webdriver.maps.ContractingMap;
 import webdriver.maps.CostingMap;
 import webdriver.maps.mapbuilder.BuildMap;
 
 public class TestUIValidationContractingCreatingaNewContractingFolder extends GoHelper {
 
-	private static CostingMap modelMap;
+	private static ContractingMap modelMap;
 	static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
 	static String contractFolderName = "Folder" + currentDateTime;
 
@@ -28,7 +30,7 @@ public class TestUIValidationContractingCreatingaNewContractingFolder extends Go
 		ExtentReport.reportCreate("TestUIValidationContractingCreatingaNewContractingFolder",
 				"webdriver.scripts.contracting", "TestUIValidationContractingCreatingaNewContractingFolder");
 		try {
-			modelMap = BuildMap.getInstance(driver, CostingMap.class);
+			modelMap = BuildMap.getInstance(driver, ContractingMap.class);
 
 			System.out.println(
 					"Test Class: " + TestUIValidationContractingCreatingaNewContractingFolder.class.getSimpleName());
@@ -67,5 +69,11 @@ public class TestUIValidationContractingCreatingaNewContractingFolder extends Go
 			ExtentReport.logFail("FAIL", "test01CreateNewContractFolder", driver, e);
 			fail(e.getMessage());
 		}
+	}
+	@AfterClass
+	public static void endtest() throws Exception {
+
+		ExtentReport.report.flush();
+
 	}
 }

@@ -12,18 +12,18 @@ import org.openqa.selenium.By;
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.helpers.CalculationHelper;
+import webdriver.maps.ContractingMap;
 import webdriver.maps.CostingMap;
 import webdriver.maps.mapbuilder.BuildMap;
 
 public class TestUIValidationContractingCreateANewContractModel extends CalculationHelper {
 
-	private static CostingMap modelMap;
+	private static ContractingMap modelMap;
 	static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
 	static String contractModelName = "Contract Model" + currentDateTime;
 	private static ContractingHelperMethods contractHelper = new ContractingHelperMethods();
 	String[] columns = { "100  Pacific Hospital", "151  Copy of Marina Medical Center" };
-	String[] columnsToSelect = { "100  Pacific Hospital", "150  Marina Medical Center",
-			"151  Copy of Marina Medical Center" };
+	String[] columnsToSelect = { "100  Pacific Hospital", "151  Copy of Marina Medical Center", "150  Marina Medical Center" };
 	String[] columnsToRemove = { "100  Pacific Hospital", "151  Copy of Marina Medical Center" };
 	String addProvider = "150  Marina Medical Center";
 
@@ -34,7 +34,7 @@ public class TestUIValidationContractingCreateANewContractModel extends Calculat
 		ExtentReport.reportCreate("TestUIValidationContractingCreateANewContractModel", "webdriver.scripts.contracting",
 				"TestUIValidationContractingCreateANewContractModel");
 		try {
-			modelMap = BuildMap.getInstance(driver, CostingMap.class);
+			modelMap = BuildMap.getInstance(driver, ContractingMap.class);
 
 			System.out.println("Test Class: " + TestUIValidationContractingCreateANewContractModel.class.getSimpleName());
 			Login.loginUser("ContractAnalyst1");
@@ -53,20 +53,19 @@ public class TestUIValidationContractingCreateANewContractModel extends Calculat
 	@Test
 	public void test01CreateNewContractModel() throws Throwable {
 		try {
-			modelMap = BuildMap.getInstance(driver, CostingMap.class);
-			doClick(CostingMap.getNewContractModelButton());
-			waitForElementToBeVisible(CostingMap.getNewContractModelPopUp());
-			assertElementIsDisplayed(CostingMap.getNewContractModelPopUp());// assert contract model pop up
-			doClick(CostingMap.getContractModelNameInput());
-			CostingMap.getContractModelNameInput().sendKeys(contractModelName);
-			doClick(CostingMap.getContractModelAddProviderBtn());
-			waitForElementToBeVisible(CostingMap.getContractModelAddProviderPopup());
+			doClick(ContractingMap.getNewContractModelButton());
+			waitForElementToBeVisible(ContractingMap.getNewContractModelPopUp());
+			assertElementIsDisplayed(ContractingMap.getNewContractModelPopUp());// assert contract model pop up
+			doClick(ContractingMap.getContractModelNameInput());
+			ContractingMap.getContractModelNameInput().sendKeys(contractModelName);
+			doClick(ContractingMap.getContractModelAddProviderBtn());
+			waitForElementToBeVisible(ContractingMap.getContractModelAddProviderPopup());
 			contractHelper.selectMultipleColumnsToDisplay(columnsToSelect);
 			contractHelper.removeMultipleColumnsToDisplay(columnsToRemove);
 			doClick(modelMap.getApplySelections());
-			waitForElementToBeVisible(CostingMap.getNewContractModelPopUp());
+			waitForElementToBeVisible(ContractingMap.getNewContractModelPopUp());
 			// Validate model name and providers
-			assertElementTextContains(CostingMap.getProviderText(), addProvider, printout);
+			assertElementTextContains(ContractingMap.getProviderText(), addProvider, printout);
 			doClick(modelMap.getSaveContractModel());
 			doClick(CostingMap.getContractingName);// Takes time to display the new contract model so just click on
 													// contracting name to refresh the grid
@@ -78,10 +77,32 @@ public class TestUIValidationContractingCreateANewContractModel extends Calculat
 			doSearchForContractModel(contractModelName);
 			driverDelay();
 			assertTextIsDisplayed(contractModelName);
-			doClosePageOnLowerBar("Model Library");
+//			doClosePageOnLowerBar("Model Library");
 			ExtentReport.logPass("PASS", "test01CreateNewContractModel");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01CreateNewContractModel", driver, e);
+			fail(e.getMessage());
+		}
+	}
+/*TestUIValidationContractingValidateContractingModelDeletebutton : ADS-6435*/
+	@Test
+	public void test02DeleteContractModel() throws Throwable {
+		
+		try {
+			doClick(modelMap.getContractModelDeleteButton());
+			waitForElementToBeVisible(modelMap.getContractModelDeletePopUp());
+			assertElementIsDisplayed(modelMap.getContractModelDeletePopUp());
+			doClick(modelMap.getContractModelCancelButtonInPopUp());
+			doClick(modelMap.getContractModelDeleteButton());
+			waitForElementToBeVisible(modelMap.getContractModelDeletePopUp());
+			assertElementIsDisplayed(modelMap.getContractModelDeleteButtonInPopUp());
+			assertElementIsDisplayed(modelMap.getContractModelCancelButtonInPopUp());
+			doClick(modelMap.getContractModelDeleteButtonInPopUp());
+			assertTextIsDisplayed("There is no data available to display.");
+			doClosePageOnLowerBar("Model Library");
+			ExtentReport.logPass("PASS", "test02DeleteContractModel");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test02DeleteContractModel", driver, e);
 			fail(e.getMessage());
 		}
 	}

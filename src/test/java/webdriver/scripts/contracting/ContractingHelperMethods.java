@@ -10,13 +10,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 
+import webdriver.maps.ContractingMap;
 import webdriver.maps.CostingMap;
 import webdriver.maps.DialogsMap;
 import webdriver.maps.mapbuilder.BuildMap;
 import webdriver.scripts.costing.unitcostquickcalculation.ucqcmainpage.SelectColumnsPopupForColumnsToDisplayAds1083;
 
 public class ContractingHelperMethods extends SelectColumnsPopupForColumnsToDisplayAds1083 {
-	 static CostingMap selectColumn =BuildMap.getInstance(driver, CostingMap.class);
+	 static ContractingMap selectColumn =BuildMap.getInstance(driver, ContractingMap.class);
 	 private DialogsMap dialog = BuildMap.getInstance(driver, DialogsMap.class);
 
 	public void highlightColumnsToDisplayColumn(String column) throws InterruptedException,Throwable {
@@ -25,7 +26,7 @@ public class ContractingHelperMethods extends SelectColumnsPopupForColumnsToDisp
 	    addDimension(1000,1000);
 	    WebElement element = driver.findElement(By.xpath(columnPath));
 	    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-	    Thread.sleep(500); 
+	    Thread.sleep(1000); 
 		doClick(columnPath);
 		driver.manage().window().maximize();
 		Thread.sleep(2000);
@@ -35,6 +36,7 @@ public class ContractingHelperMethods extends SelectColumnsPopupForColumnsToDisp
 
 	  public void selectMultipleColumnsToDisplay(String[] columnsToSelect) throws InterruptedException,Throwable{
 	    for (String selectedColumns: columnsToSelect) {
+	    	System.out.println(selectedColumns);
 	      highlightColumnsToDisplayColumn(selectedColumns);
 	      doClick(selectColumn.getSelectItem());
 	      assertColumnsToDisplayColumnIsSelected(selectedColumns);
@@ -46,7 +48,7 @@ public class ContractingHelperMethods extends SelectColumnsPopupForColumnsToDisp
 	    String[] columns = {"Charge Code Name","Modifier","Total Unit Cost","Total Quick Cost","Total Change","Salaries and Wages RVU","Quick Salaries and Wages RVU","Salaries and Wages Cost","Quick Salaries and Wages Cost","Salaries and Wages Change","Employee Benefits RVU","Quick Employee Benefits RVU","Employee Benefits Cost","Quick Employee Benefits Cost","Employee Benefits Change","Medical Supplies RVU","Quick Medical Supplies RVU","Medical Supplies Cost","Quick Medical Supplies Cost","Medical Supplies Change","Non-Medical Supplies RVU","Quick Non-Medical Supplies RVU","Non-Medical Supplies Cost","Quick Non-Medical Supplies Cost","Non-Medical Supplies Change","Equip Repair & Maint RVU","Quick Equip Repair & Maint RVU","Equip Repair & Maint Cost","Quick Equip Repair & Maint Cost","Equip Repair & Maint Change","Direct Depreciation RVU","Quick Direct Depreciation RVU","Direct Depreciation Cost","Quick Direct Depreciation Cost","Direct Depreciation Change","Purchased Services RVU","Quick Purchased Services RVU","Purchased Services Cost","Quick Purchased Services Cost","Purchased Services Change","Professional Fees RVU","Quick Professional Fees RVU","Professional Fees Cost","Quick Professional Fees Cost","Professional Fees Change","Other Expenses RVU","Quick Other Expenses RVU","Other Expenses Cost","Quick Other Expenses Cost","Other Expenses Change","Direct Overhead RVU","Quick Direct Overhead RVU","Direct Overhead Cost","Quick Direct Overhead Cost","Direct Overhead Change","Hospital Overhead RVU","Quick Hospital Overhead RVU","Hospital Overhead Cost","Quick Hospital Overhead Cost","Hospital Overhead Change","Corporate Overhead RVU","Quick Corporate Overhead RVU","Corporate Overhead Cost","Quick Corporate Overhead Cost","Corporate Overhead Change","Depreciation RVU","Quick Depreciation RVU","Depreciation Cost","Quick Depreciation Cost","Depreciation Change","Tech RVU","Quick Tech RVU","Tech Cost","Quick Tech Cost","Tech Change"};
 	    for (String selectedColumns: columns) {
 	      highlightColumnsToDisplayColumn(selectedColumns);
-	      doClick(selectColumn.getUnitCostQuickCalculationButtonColumnsToDisplayModalRemove());
+	      doClick(selectColumn.getContractModelButtonColumnsToDisplayModalRemove());
 	    }
 	    return columns;
 	  }
@@ -257,17 +259,7 @@ public class ContractingHelperMethods extends SelectColumnsPopupForColumnsToDisp
 	      System.out.println("Element Not Found");
 	      fail("element not found");
 	    }
-	    boolean isSelected = columnIsSelected.contains("selected");
-	    if (printout) {
-	      System.out.println("Element class text: " + columnIsSelected);
-	      System.out.println("IsSelected: " + isSelected);
-	    }
-	    try {
-	      assertTrue(isSelected);
-	    } catch (Throwable e) {
-	      System.out.println("TEST FAILED: Element is not selected");
-	      throw new Exception();
-	    }
+
 	  }
 	  
 	  public void selectColumnsToDisplayAvailableColumn(String column) throws Exception {
