@@ -6,14 +6,13 @@ import static org.junit.Assert.fail;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
-
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.corehelpers.GoHelper;
 import webdriver.maps.ContractingMap;
-import webdriver.maps.CostingMap;
 import webdriver.maps.mapbuilder.BuildMap;
 
 public class TestUIValidationContractingValidateContractingModelClearFilterbuttonModels extends GoHelper {
@@ -65,9 +64,7 @@ public class TestUIValidationContractingValidateContractingModelClearFilterbutto
 					"Name Is Equal To " + contractModel + "", printout);
 			doClick(modelMap.getContractModelApplyFilterButton());
 			waitForDisplayedSpinnerToEnd();
-			for (WebElement costingElement : ContractingMap.getCostingModelElementList()) {
-				assertThatString(costingElement, contractModel, printout);
-			}
+			ContractingHelperMethods.getContractElementList(contractModel);
 			// Clear Filter
 			doClick(modelMap.getContractModelClearFilter());
 			waitForDisplayedSpinnerToEnd();
@@ -76,7 +73,6 @@ public class TestUIValidationContractingValidateContractingModelClearFilterbutto
 			if (BeforeApplyFilterContractModelListCount == AfterApplyFilterContractModelListCount) {
 				assertTrue("Contract Model List Matches", printout);
 			}
-			doClosePageOnLowerBar("Model Library");
 			ExtentReport.logPass("PASS", "test01ClearFilter");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01ClearFilter", driver, e);
@@ -85,6 +81,27 @@ public class TestUIValidationContractingValidateContractingModelClearFilterbutto
 		}
 
 	}
+	/**Test - UI Validation [Contracting] Validate Contracting Model – “Search” Textbox/button (Models); ADS-6438**/
+	@Test
+	public void test02ContractModelSearchText() throws Throwable {
+		try {
+			doSearchForContractModel(contractModel);
+			ContractingHelperMethods.getContractElementList(contractModel);
+			driver.findElement(By.name("searchText")).clear();
+			driver.findElement(By.name("searchText")).sendKeys(Keys.ENTER);
+			if (BeforeApplyFilterContractModelListCount == AfterApplyFilterContractModelListCount) {
+				assertTrue("Contract Model List Matches", printout);
+			}
+			doClosePageOnLowerBar("Model Library");
+
+			ExtentReport.logPass("PASS", "test01ClearFilter");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test01ClearFilter", driver, e);
+			fail(e.getMessage());
+
+		}
+	}
+	
 	@AfterClass
 	public static void endtest() throws Exception {
 

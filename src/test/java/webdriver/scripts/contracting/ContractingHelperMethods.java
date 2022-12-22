@@ -377,4 +377,11 @@ public class ContractingHelperMethods extends SelectColumnsPopupForColumnsToDisp
 			} catch (Exception e) {
 			}
 		}
+	  
+	  public static void getContractElementList(String contractModel) {
+		  List<WebElement> elementList=ContractingMap.getCostingModelElementList();
+		  for (WebElement costingElement : elementList) {
+				assertThatString(costingElement, contractModel, printout);
+			}
+	  }
 }

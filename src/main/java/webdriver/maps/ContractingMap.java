@@ -172,7 +172,7 @@ public static WebElement getContractModelAddProviderBtn() {return getContractMod
 	private WebElement ContractModelClearFilter;
 	public WebElement getContractModelClearFilter() {return ContractModelClearFilter;}
 	
-	@FindBy(xpath = "//div[contains(@class,'horzOverflow')]/div//span[text()='Clear Filter']//parent::button")
+	@FindBy(xpath = "//div[contains(@class,'areaModelTitle')]")
 	private WebElement ContractModelHeader;
 	public WebElement getContractModelHeader() {return ContractModelHeader;}
 	
