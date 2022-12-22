@@ -384,4 +384,33 @@ public class ContractingHelperMethods extends SelectColumnsPopupForColumnsToDisp
 				assertThatString(costingElement, contractModel, printout);
 			}
 	  }
+	  
+	  public static void navigateFeeForServicePaymentTermsScreenSelectionSelectServiceModel(String Model,String serviceModel) {
+		    try {
+		      waitForSpinnerToEnd();
+		      waitForAjaxExtJs();
+		      System.out.println(2000);
+		      driver.findElement(By.xpath("//span[contains(@class,'x-panel-header-text')][text()='"+Model+"']/../following-sibling::div")).click();
+		      waitForAjaxExtJs();
+		      Thread.sleep(2000);
+		      driver.findElement(By.xpath("//label[text()='Service Model']/ancestor::div/descendant::div[text() = '" + serviceModel + "']")).click();
+		      Thread.sleep(2000);
+		    } catch (Exception e) {
+		    	JavascriptExecutor executor = (JavascriptExecutor)driver;
+		    	executor.executeScript("arguments[0].click();",driver.findElement(By.xpath("//label[text()='Service Model']/ancestor::div/descendant::div[text() = '" + serviceModel + "']"))
+		);
+		    }
+		  }
+	  public static void navigateFeeForServicePaymentTermsPageRiskLimiterSectionClickEditButtonToOpenEditDialog() {
+		    try {
+		      waitForAjaxExtJs();
+		      driver.findElement(By.xpath("//div[contains(@class,'x-toolbar-item')]//span[text()='Edit']")).click();
+		      waitForAjaxExtJs();
+		      Thread.sleep(1000);
+		      //assertElementTextWithXpath("//span[contains(@id, 'medicareinpatientpps')]", "Edit Price for " + serviceModel + " [Encounter]", printout);
+		    } catch (Throwable e) {
+		      e.getMessage();
+		    }
+		  }
+
 }

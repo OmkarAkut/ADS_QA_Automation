@@ -12,34 +12,33 @@ import org.openqa.selenium.By;
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.helpers.CalculationHelper;
+import webdriver.helpers.ContractModelsHelper;
 import webdriver.maps.ContractingMap;
 import webdriver.maps.CostingMap;
 import webdriver.maps.mapbuilder.BuildMap;
 
-public class TestUIValidationContractingCreateANewContractModel extends CalculationHelper {
+public class CreateANewContractModel extends CalculationHelper {
 
 	private static ContractingMap modelMap;
 	static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
 	static String contractModelName = "Contract Model" + currentDateTime;
-	private static ContractingHelperMethods contractHelper = new ContractingHelperMethods();
+	ContractModelsHelper contractModelsHelper = new ContractModelsHelper();
+
 	String[] columns = { "100  Pacific Hospital", "151  Copy of Marina Medical Center" };
 	String[] columnsToSelect = { "100  Pacific Hospital", "151  Copy of Marina Medical Center", "150  Marina Medical Center" };
 	String[] columnsToRemove = { "100  Pacific Hospital", "151  Copy of Marina Medical Center" };
 	String addProvider = "150  Marina Medical Center";
 
-	/** Regression: Automated test script for ADS-6413 */
+	/** Regression: Automated test script for ADS-6413 ,ADS-6435 */
 
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("TestUIValidationContractingCreateANewContractModel", "webdriver.scripts.contracting",
-				"TestUIValidationContractingCreateANewContractModel");
+		ExtentReport.reportCreate("CreateANewContractModel", "webdriver.scripts.contracting",
+				"CreateANewContractModel");
 		try {
 			modelMap = BuildMap.getInstance(driver, ContractingMap.class);
-
-			System.out.println("Test Class: " + TestUIValidationContractingCreateANewContractModel.class.getSimpleName());
 			Login.loginUser("ContractAnalyst1");
 			goToPage("Contract Models");
-			waitForAjaxExtJs();
 			waitForDisplayedSpinnerToEnd();
 			assertThatString(modelMap.getContractModelHeader(), "Contracting Model Library", printout);
 			doClick(CostingMap.getContractingName);
@@ -50,6 +49,7 @@ public class TestUIValidationContractingCreateANewContractModel extends Calculat
 		}
 	}
 
+	/**Test - UI Validation [Contracting] “Create a New Contract Model”.ADS-6413 **/
 	@Test
 	public void test01CreateNewContractModel() throws Throwable {
 		try {
@@ -60,8 +60,8 @@ public class TestUIValidationContractingCreateANewContractModel extends Calculat
 			ContractingMap.getContractModelNameInput().sendKeys(contractModelName);
 			doClick(ContractingMap.getContractModelAddProviderBtn());
 			waitForElementToBeVisible(ContractingMap.getContractModelAddProviderPopup());
-			contractHelper.selectMultipleColumnsToDisplay(columnsToSelect);
-			contractHelper.removeMultipleColumnsToDisplay(columnsToRemove);
+			contractModelsHelper.selectMultipleColumnsToDisplay(columnsToSelect);
+			contractModelsHelper.removeMultipleColumnsToDisplay(columnsToRemove);
 			doClick(modelMap.getApplySelections());
 			waitForElementToBeVisible(ContractingMap.getNewContractModelPopUp());
 			// Validate model name and providers
@@ -70,14 +70,13 @@ public class TestUIValidationContractingCreateANewContractModel extends Calculat
 			doClick(CostingMap.getContractingName);// Takes time to display the new contract model so just click on
 													// contracting name to refresh the grid
 			waitForDisplayedSpinnerToEnd();
-			driver.findElement(By.xpath("//input[@name='searchText']")).click();
-			driverDelay();
+			driver.findElement(By.name("searchText")).click();
+			driverDelay(2000);
 			// Takes time to display the new contract model so just click on contracting name to refresh the grid
 			doClick(CostingMap.getContractingName);
 			doSearchForContractModel(contractModelName);
-			driverDelay();
+			driverDelay(2000);
 			assertTextIsDisplayed(contractModelName);
-//			doClosePageOnLowerBar("Model Library");
 			ExtentReport.logPass("PASS", "test01CreateNewContractModel");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01CreateNewContractModel", driver, e);

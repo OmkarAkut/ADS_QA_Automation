@@ -269,4 +269,24 @@ public static WebElement getContractModelAddProviderBtn() {return getContractMod
 	@FindBy(xpath = "//span[contains(@id,'importexportstatus')][text()='Import/Export Status']")
 	private WebElement ContractModelImportExportstatusPage;
 	public WebElement getContractModelImportExportstatusPage() {return ContractModelImportExportstatusPage;}
+	
+	@FindBy(xpath = "//span[contains(@id,'importexportstatus')][text()='Import/Export Status']")
+	private WebElement ContractModelRiskLimiterEditAvailableService;
+	public WebElement getContractModelRiskLimiterEditAvailableService() {return ContractModelRiskLimiterEditAvailableService;}
+	
+	@FindBy(xpath = "//div[contains(@class,'x-toolbar-item')]//span[text()='Continue & Close']")
+	private WebElement ContractModelRiskLimiterContinueCloseBtn;
+	public WebElement getContractModelRiskLimiterContinueCloseBtn() {return ContractModelRiskLimiterContinueCloseBtn;}
+	
+	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//span[text()='Cancel & Close']")
+	private WebElement ContractModelRiskLimiterCancelCloseBtn;
+	public WebElement getContractModelRiskLimiterCancelCloseBtn() {return ContractModelRiskLimiterCancelCloseBtn;}
+	
+	@FindBy(xpath = "//div[contains(@id,'messagebox')]//span[text()='Cancel & Close']")
+	private WebElement ContractModelRiskLimiterMessageBoxCancelCloseBtn;
+	public WebElement getContractModelRiskLimiterMessageBoxCancelCloseBtn() {return ContractModelRiskLimiterMessageBoxCancelCloseBtn;}
+	
+	@FindBy(xpath = "//div[contains(@class,'x-toolbar-item')]//span[text()='Cancel & Close']")
+	private WebElement ContractModelRiskLimiterMessageBox;
+	public WebElement getContractModelRiskLimiterMessageBox() {return ContractModelRiskLimiterMessageBox;}
 }

@@ -10,10 +10,11 @@ import org.openqa.selenium.Keys;
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.corehelpers.GoHelper;
+import webdriver.helpers.ContractModelsHelper;
 import webdriver.maps.ContractingMap;
 import webdriver.maps.mapbuilder.BuildMap;
 
-public class TestUIValidationContractingValidateContractingModeExportImportButton extends GoHelper{
+public class ValidateContractingModeExportImportButton extends GoHelper{
 
 	private static ContractingMap modelMap;
 	static String contractModel="#fz Med IPPS Testing";
@@ -22,15 +23,12 @@ public class TestUIValidationContractingValidateContractingModeExportImportButto
 
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("TestUIValidationContractingValidateContractingModeExportButton", "webdriver.scripts.contracting",
-				"TestUIValidationContractingValidateContractingModeExportButton");
+		ExtentReport.reportCreate("ValidateContractingModeExportImportButton", "webdriver.scripts.contracting",
+				"ValidateContractingModeExportImportButton");
 		try {
 			modelMap = BuildMap.getInstance(driver, ContractingMap.class);
-
-			System.out.println("Test Class: " + TestUIValidationContractingValidateContractingModeExportImportButton.class.getSimpleName());
 			Login.loginUser("ContractAnalyst1");
 			goToPage("Contract Models");
-			waitForAjaxExtJs();
 			waitForDisplayedSpinnerToEnd();
 			assertThatString(modelMap.getContractModelHeader(), "Contracting Model Library", printout);
 			doClick(ContractingMap.getContractingName);
@@ -40,7 +38,7 @@ public class TestUIValidationContractingValidateContractingModeExportImportButto
 			fail(e.getMessage());
 		}
 	}
-	/*Test - UI Validation [Contracting] Validate Contracting Model – “Export” button; ADS-6437*/
+	/*Test - UI Validation [Contracting] Validate Contracting Model ï¿½ ï¿½Exportï¿½ button; ADS-6437*/
 	@Test
 	public void test01FileExportContractModel() throws Throwable {
 		try {
@@ -51,14 +49,14 @@ public class TestUIValidationContractingValidateContractingModeExportImportButto
 			driver.findElement(By.name("carrierfield")).sendKeys(contractModel);
 			doClick(modelMap.getContractModelApplyInExportPopUp());
 			driver.findElement(By.name("sharedHostLocation")).click();
-			driverPause();
+			driverDelay(500);
 			doClick(modelMap.getContractModelExportFileSharedLocOption());
 			driver.findElement(By.name("logFileName")).sendKeys(logFileName);
-			Thread.sleep(200);
+			driverDelay(500);
 			doClick(modelMap.getContractModelExportButtonInExportPopUp());
 			waitForSpinnerToEnd();
 			assertElementIsDisplayed(modelMap.getContractModelImportExportstatusPage());
-			ContractingHelperMethods.waitForFirstRowCalculationBarToReach100Percent();
+			ContractModelsHelper.waitForFirstRowCalculationBarToReach100Percent();
 			doClosePageOnLowerBar("Import/Export Status");
 			ExtentReport.logPass("PASS", "setupScript");
 		} catch (Exception | AssertionError e) {
@@ -67,25 +65,24 @@ public class TestUIValidationContractingValidateContractingModeExportImportButto
 		}
 	
 	}
-	/** Test - UI Validation [Contracting] Validate Contracting Model – “Import” button; ADS-6436*/
+	/** Test - UI Validation [Contracting] Validate Contracting Model ï¿½ ï¿½Importï¿½ button; ADS-6436*/
 	@Test
 	public void test02FileImportContractModel() throws Throwable {
 		try {
 			doClick(modelMap.getContractModelImportButton());
 			waitForElementToBeVisible(modelMap.getContractModelImportSelectFileButton());
 			modelMap.getContractModelImportSelectFileButton().sendKeys(Keys.ENTER);;
-			driverPause();
-			ContractingHelperMethods.uploadTheFileusingAutoIT(driver,System.getProperty("user.dir") + "\\AutoIT\\UploadFile.exe",System.getProperty("user.dir")+"\\AutoIT\\fzMedIPPSTesting.xml");
+			driverDelay(500);
+			ContractModelsHelper.uploadTheFileusingAutoIT(driver,System.getProperty("user.dir") + "\\AutoIT\\UploadFile.exe",System.getProperty("user.dir")+"\\AutoIT\\fzMedIPPSTesting.xml");
 			driver.findElement(By.name("sharedHostLocation")).click();
-			driverPause();
+			driverDelay(500);
 			doClick(modelMap.getContractModelExportFileSharedLocOption());
 			driver.findElement(By.name("logFileName")).sendKeys(logFileName);
-			Thread.sleep(200);
-			driverDelay();
+			driverDelay(1200);
 			doClick(modelMap.getContractModelImportButtonInExportPopUp());
 			waitForSpinnerToEnd();
 			assertElementIsDisplayed(modelMap.getContractModelImportExportstatusPage());
-			ContractingHelperMethods.waitForFirstRowCalculationBarToReach100Percent();
+			ContractModelsHelper.waitForFirstRowCalculationBarToReach100Percent();
 			doClosePageOnLowerBar("Import/Export Status");
 			doClosePageOnLowerBar("Model Library");
 			ExtentReport.logPass("PASS", "test02ImportContractModel");

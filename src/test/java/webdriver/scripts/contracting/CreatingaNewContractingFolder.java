@@ -12,12 +12,14 @@ import org.openqa.selenium.JavascriptExecutor;
 
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
+import webdriver.corehelpers.DoHelper;
 import webdriver.corehelpers.GoHelper;
+import webdriver.helpers.ContractModelsHelper;
 import webdriver.maps.ContractingMap;
 import webdriver.maps.CostingMap;
 import webdriver.maps.mapbuilder.BuildMap;
 
-public class TestUIValidationContractingCreatingaNewContractingFolder extends GoHelper {
+public class CreatingaNewContractingFolder extends GoHelper {
 
 	private static ContractingMap modelMap;
 	static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
@@ -27,16 +29,12 @@ public class TestUIValidationContractingCreatingaNewContractingFolder extends Go
 
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("TestUIValidationContractingCreatingaNewContractingFolder",
-				"webdriver.scripts.contracting", "TestUIValidationContractingCreatingaNewContractingFolder");
+		ExtentReport.reportCreate("CreatingaNewContractingFolder",
+				"webdriver.scripts.contracting", "CreatingaNewContractingFolder");
 		try {
 			modelMap = BuildMap.getInstance(driver, ContractingMap.class);
-
-			System.out.println(
-					"Test Class: " + TestUIValidationContractingCreatingaNewContractingFolder.class.getSimpleName());
 			Login.loginUser("ContractAnalyst1");
 			goToPage("Contract Models");
-			waitForAjaxExtJs();
 			waitForDisplayedSpinnerToEnd();
 			assertThatString(modelMap.getContractModelHeader(), "Contracting Model Library", printout);
 			ExtentReport.logPass("PASS", "setupScript");
@@ -45,7 +43,7 @@ public class TestUIValidationContractingCreatingaNewContractingFolder extends Go
 			fail(e.getMessage());
 		}
 	}
-
+/**Test - UI Validation [Contracting] “Creating a New Contracting Folder”.**/
 	@Test
 	public void test01CreateNewContractFolder() throws Throwable {
 		try {
@@ -53,15 +51,13 @@ public class TestUIValidationContractingCreatingaNewContractingFolder extends Go
 			waitForElementToBeVisible(modelMap.getNewFolderPopUp());
 			doClick(modelMap.getNewFolderNameInput());
 			modelMap.getNewFolderNameInput().sendKeys(contractFolderName);
-			driverPause();
+			driverDelay(500);
 			doClick(modelMap.getNewFolderNameSave());
 			waitForAjaxExtJs();
 			waitForSpinnerToEnd();
 			doClick(modelMap.getContractingTreeExpand());
-			driverPause();
-			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);",
-					driver.findElement(By.xpath("//div[text()='" + contractFolderName + "']")));
-			Thread.sleep(500);
+			driverDelay(500);
+			DoHelper.scrollToView("//div[text()='" + contractFolderName + "']");
 			assertTextIsDisplayed(contractFolderName);
 			doClosePageOnLowerBar("Model Library");
 			ExtentReport.logPass("PASS", "test01CreateNewContractFolder");

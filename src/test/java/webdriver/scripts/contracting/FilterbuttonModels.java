@@ -13,34 +13,31 @@ import org.openqa.selenium.interactions.Actions;
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.corehelpers.GoHelper;
+import webdriver.helpers.ContractModelsHelper;
 import webdriver.maps.ContractingMap;
 import webdriver.maps.CostingMap;
 import webdriver.maps.mapbuilder.BuildMap;
 
-public class TestUIValidationContractingValidateContractingModelFilterbuttonModels extends GoHelper {
+public class FilterbuttonModels extends GoHelper {
 
 	private static ContractingMap modelMap;
 	static String contractModel = "Test";
 	static String updateContractModel = "Testing";
 	String[] filter = { "Name", "Is", "Equal To", contractModel };
 	Actions action = new Actions(driver);
-	private static ContractingHelperMethods contractHelper = new ContractingHelperMethods();
+	ContractModelsHelper contractModelsHelper = new ContractModelsHelper();
 
 	/** Regression: Automated test script for ADS-6431 */
 
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("TestUIValidationContractingValidateContractingModelFilterbuttonModels",
+		ExtentReport.reportCreate("FilterbuttonModels",
 				"webdriver.scripts.contracting",
-				"TestUIValidationContractingValidateContractingModelFilterbuttonModels");
+				"FilterbuttonModels");
 		try {
 			modelMap = BuildMap.getInstance(driver, ContractingMap.class);
-
-			System.out.println("Test Class: "
-					+ TestUIValidationContractingValidateContractingModelFilterbuttonModels.class.getSimpleName());
 			Login.loginUser("ContractAnalyst1");
 			goToPage("Contract Models");
-			waitForAjaxExtJs();
 			waitForDisplayedSpinnerToEnd();
 			assertThatString(modelMap.getContractModelHeader(), "Contracting Model Library", printout);
 			ExtentReport.logPass("PASS", "setupScript");
@@ -54,25 +51,21 @@ public class TestUIValidationContractingValidateContractingModelFilterbuttonMode
 	public void test01ValidateFilterForContractModels() throws Throwable {
 		try {
 			modelMap.getContractModelButtonFilter().click();
-			Thread.sleep(2000);
 			waitForAjaxExtJs();
-			contractHelper.doFilterCreate(filter);
+			contractModelsHelper.doFilterCreate(filter);
 			assertElementTextWithXpath("//div[text()='Name Is Equal To " + contractModel + "']",
 					"Name Is Equal To " + contractModel + "", printout);
 			action.moveToElement(modelMap.getContractModelEditFilterButton()).click().pause(10).perform();
 			driver.findElement(By.name("valuefield")).sendKeys(Keys.chord(Keys.CONTROL, "a"));
 			driver.findElement(By.name("valuefield")).sendKeys(updateContractModel);
-
 			doClick(modelMap.getContractModelUpdateFilterButton());
 			assertElementTextWithXpath("//div[text()='Name Is Equal To " + updateContractModel + "']",
 					"Name Is Equal To " + updateContractModel + "", printout);
 			action.moveToElement(modelMap.getContractModelRemoveFilterButton()).click().pause(10).perform();
-			contractHelper.doFilterCreate(filter);
+			contractModelsHelper.doFilterCreate(filter);
 			doClick(modelMap.getContractModelApplyFilterButton());
 			waitForDisplayedSpinnerToEnd();
-			for (WebElement costingElement : ContractingMap.getCostingModelElementList()) {
-				assertThatString(costingElement, contractModel, printout);
-			}
+			ContractModelsHelper.getContractElementList(contractModel);
 			doClosePageOnLowerBar("Model Library");
 			ExtentReport.logPass("PASS", "test01ValidateFilterbuttomForContractModels");
 		} catch (Exception | AssertionError e) {

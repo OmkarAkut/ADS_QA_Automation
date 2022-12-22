@@ -12,10 +12,11 @@ import org.openqa.selenium.interactions.Actions;
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.corehelpers.GoHelper;
+import webdriver.helpers.ContractModelsHelper;
 import webdriver.maps.ContractingMap;
 import webdriver.maps.mapbuilder.BuildMap;
 
-public class TestUIValidationContractingValidateContractingModelClearFilterbuttonModels extends GoHelper {
+public class ClearFilterbuttonModels extends GoHelper {
 
 	private static ContractingMap modelMap;
 	static String contractModel = "Test";
@@ -23,23 +24,22 @@ public class TestUIValidationContractingValidateContractingModelClearFilterbutto
 	static int BeforeApplyFilterContractModelListCount;
 	static int AfterApplyFilterContractModelListCount;
 	Actions action = new Actions(driver);
-	private static ContractingHelperMethods contractHelper = new ContractingHelperMethods();
+	ContractModelsHelper contractModelsHelper = new ContractModelsHelper();
 
-	/** Regression: Automated test script for ADS-6432 */
+	/** Regression: Automated test script for ADS-6432,ADS-6438 */
 
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("TestUIValidationContractingValidateContractingModelClearFilterbuttonModels",
+		ExtentReport.reportCreate("ClearFilterbuttonModels",
 				"webdriver.scripts.contracting",
-				"TestUIValidationContractingValidateContractingModelClearFilterbuttonModels");
+				"ClearFilterbuttonModels");
 		try {
 			modelMap = BuildMap.getInstance(driver, ContractingMap.class);
 
 			System.out.println("Test Class: "
-					+ TestUIValidationContractingValidateContractingModelClearFilterbuttonModels.class.getSimpleName());
+					+ ClearFilterbuttonModels.class.getSimpleName());
 			Login.loginUser("ContractAnalyst1");
 			goToPage("Contract Models");
-			waitForAjaxExtJs();
 			waitForDisplayedSpinnerToEnd();
 			assertThatString(modelMap.getContractModelHeader(), "Contracting Model Library", printout);
 			ExtentReport.logPass("PASS", "setupScript");
@@ -54,17 +54,15 @@ public class TestUIValidationContractingValidateContractingModelClearFilterbutto
 		try {
 			waitForAjaxExtJs();
 			BeforeApplyFilterContractModelListCount = ContractingMap.getCostingModelElementList().size();
-
 			modelMap.getContractModelButtonFilter().click();
-			Thread.sleep(2000);
 			waitForAjaxExtJs();
 			// Apply Filter
-			contractHelper.doFilterCreate(filter);
+			contractModelsHelper.doFilterCreate(filter);
 			assertElementTextWithXpath("//div[text()='Name Is Equal To " + contractModel + "']",
 					"Name Is Equal To " + contractModel + "", printout);
 			doClick(modelMap.getContractModelApplyFilterButton());
 			waitForDisplayedSpinnerToEnd();
-			ContractingHelperMethods.getContractElementList(contractModel);
+			ContractModelsHelper.getContractElementList(contractModel);
 			// Clear Filter
 			doClick(modelMap.getContractModelClearFilter());
 			waitForDisplayedSpinnerToEnd();
@@ -81,12 +79,12 @@ public class TestUIValidationContractingValidateContractingModelClearFilterbutto
 		}
 
 	}
-	/**Test - UI Validation [Contracting] Validate Contracting Model – “Search” Textbox/button (Models); ADS-6438**/
+	/**Test - UI Validation [Contracting] Validate Contracting Model ï¿½ ï¿½Searchï¿½ Textbox/button (Models); ADS-6438**/
 	@Test
 	public void test02ContractModelSearchText() throws Throwable {
 		try {
 			doSearchForContractModel(contractModel);
-			ContractingHelperMethods.getContractElementList(contractModel);
+			ContractModelsHelper.getContractElementList(contractModel);
 			driver.findElement(By.name("searchText")).clear();
 			driver.findElement(By.name("searchText")).sendKeys(Keys.ENTER);
 			if (BeforeApplyFilterContractModelListCount == AfterApplyFilterContractModelListCount) {

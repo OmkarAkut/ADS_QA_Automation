@@ -15,34 +15,33 @@ import org.openqa.selenium.interactions.Actions;
 
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
+import webdriver.corehelpers.DoHelper;
 import webdriver.corehelpers.GoHelper;
 import webdriver.maps.ContractingMap;
 import webdriver.maps.CostingMap;
 import webdriver.maps.mapbuilder.BuildMap;
 
-public class TestUIValidationContractingValidateContractingModelCopyPasteButtons extends GoHelper{
+public class CopyPasteButtons extends GoHelper{
 
 	private static ContractingMap modelMap;
 	private static String ContractModel="#fz Med IPPS Testing";
 	private static String UpdatedContractModel;
-	private static ContractingHelperMethods contractHelper = new ContractingHelperMethods();
 	Actions action=new Actions(driver);
 	static String modelName;
 	static String currentDateTime = new SimpleDateFormat("HH.mm.ss").format(new java.util.Date());
 	/** Regression: Automated test script for ADS-6434 */
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("TestUIValidationContractingValidateContractingModelCopyPasteButtons",
+		ExtentReport.reportCreate("CopyPasteButtons",
 				"webdriver.scripts.contracting",
-				"TestUIValidationContractingValidateContractingModelCopyPasteButtons");
+				"CopyPasteButtons");
 		try {
 			modelMap = BuildMap.getInstance(driver, ContractingMap.class);
 
 			System.out.println("Test Class: "
-					+ TestUIValidationContractingValidateContractingModelCopyPasteButtons.class.getSimpleName());
+					+ CopyPasteButtons.class.getSimpleName());
 			Login.loginUser("ContractAnalyst1");
 			goToPage("Contract Models");
-			waitForAjaxExtJs();
 			waitForDisplayedSpinnerToEnd();
 			assertThatString(modelMap.getContractModelHeader(), "Contracting Model Library", printout);
 			ExtentReport.logPass("PASS", "setupScript");
@@ -55,7 +54,7 @@ public class TestUIValidationContractingValidateContractingModelCopyPasteButtons
 	@Test
 	public void test01CopyPasteContractModel() throws Throwable {
 		 try {
-			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.xpath("//div[text()='"+ContractModel+"']")));
+			 DoHelper.scrollToView("//div[text()='"+ContractModel+"']");
 			driver.findElement(By.xpath("//div[text()='"+ContractModel+"']")).click();
 			doClick(modelMap.getContractModelButtonCopy());
 			assertElementIsEnabled(modelMap.getContractModelButtonPaste(),printout);
@@ -72,8 +71,8 @@ public class TestUIValidationContractingValidateContractingModelCopyPasteButtons
 			doClick(modelMap.getContractModelSaveCopy());
 			doClick(CostingMap.getContractingName);
 			waitForDisplayedSpinnerToEnd();
-			driver.findElement(By.xpath("//input[@name='searchText']")).click();
-			driverDelay();
+			driver.findElement(By.name("searchText")).click();
+			driverDelay(1200);
 			// Takes time to display the new contract model so just click on contracting name to refresh the grid
 			doClick(CostingMap.getContractingName);
 			doSearchForContractModel(UpdatedContractModel);

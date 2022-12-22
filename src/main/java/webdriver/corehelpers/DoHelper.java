@@ -356,6 +356,13 @@ public class DoHelper extends DriverHelper {
     	    driver.manage().window().setSize(dimension);
     	    Thread.sleep(3000);
     }
+    
+    //Javascript to scroll to view
+    public static void scrollToView(String xpath) throws Exception {
+		  ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);",
+					driver.findElement(By.xpath(xpath)));
+			Thread.sleep(500);
+	  }
 }
 
 
