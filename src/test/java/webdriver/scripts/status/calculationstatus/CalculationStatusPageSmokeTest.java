@@ -63,6 +63,8 @@ public class CalculationStatusPageSmokeTest extends CalculationHelper {
   static String durationXpath =           "//div[2]/div/div[4]/div/table/tbody/tr[2]/td[20]/div";
 
   /** Smoke test for calculation and calculation status pages - 2020 OPPS: J Packaging C. */
+  /**TEST - [Contracting] - REGRESSION - 2021 OPPS: J Packaging , ADS-5942 */
+
   @BeforeClass
   public static void setupScript() throws Exception,Throwable {
 	  ExtentReport.reportCreate("CalculationStatusPageSmokeTest", "webdriver.scripts.status.calculationstatus", "CalculationStatusPageSmokeTest");

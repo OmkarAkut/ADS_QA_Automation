@@ -1037,9 +1037,9 @@ public class CostingMap extends MapConfig {
 	public WebElement getCalculationFilterDropdownMenuList() {
 		return getCalculationFilterDropdownMenuList;
 	}
-	public static String getContractingName = "(//td[contains(@class,'x-grid-cell-treecolumn')]/*[text()='Contracting'])[1]";
-	public static String getContractingAutomationName = "(//td[contains(@class,'x-grid-cell-treecolumn')]/*[text()='Automation']/img)[2]";
-	public static String getContractingAutomationRegressName = "(//td[contains(@class,'x-grid-cell-treecolumn')]/*[text()='Regression v10.0'])";
+	public static String getContractingName="(//td[contains(@class,'x-grid-cell-treecolumn')]/*[text()='Contracting']/img)[1]";
+	  public static String getContractingAutomationName="(//td[contains(@class,'x-grid-cell-treecolumn')]/*[text()='Automation']/img)[2]"; 
+	  public static String getContractingAutomationRegressName="(//td[contains(@class,'x-grid-cell-treecolumn')]/*[text()='Regression v10.0'])";
 
 	@FindBy(xpath = "(//div[contains(@class,'horzOverflow')]//table[@class='x-grid-table x-grid-table-resizer'])//tr/td[3]/div")
 	private static List<WebElement> getCostingModelElementList;
