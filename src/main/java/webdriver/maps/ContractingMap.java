@@ -157,8 +157,8 @@ public static WebElement getContractModelAddProviderBtn() {return getContractMod
 	public WebElement getContractModelRemoveFilterButton() {return ContractModelRemoveFilterButton;}
 
 	@FindBy(xpath = "//div[contains(@id,'toolbar')]//span[text()='Apply Filter']")
-	private WebElement ContractModelApplyFilterButton;
-	public WebElement getContractModelApplyFilterButton() {return ContractModelApplyFilterButton;}
+	private static WebElement ContractModelApplyFilterButton;
+	public static WebElement getContractModelApplyFilterButton() {return ContractModelApplyFilterButton;}
 
 	@FindBy(xpath = "//div[contains(@id,'filtergrid')]//div[text()='Edit']//parent::td")
 	private WebElement ContractModelEditFilterButton;
@@ -289,4 +289,62 @@ public static WebElement getContractModelAddProviderBtn() {return getContractMod
 	@FindBy(xpath = "//div[contains(@class,'x-toolbar-item')]//span[text()='Cancel & Close']")
 	private WebElement ContractModelRiskLimiterMessageBox;
 	public WebElement getContractModelRiskLimiterMessageBox() {return ContractModelRiskLimiterMessageBox;}
+	
+	@FindBy(xpath = "//div[text()='Unpublished Contract Task List']")
+	private WebElement ContractModelLeftPane;
+	public WebElement getContractModelLeftPane() {return ContractModelLeftPane;}
+	
+	@FindBy(xpath = "//span[text()='Service Model']")
+	private WebElement ContractServiceModel;
+	public WebElement getContractServiceModel() {return ContractServiceModel;}
+	
+	@FindBy(xpath = "//span[text()='Pricing Method']")
+	private WebElement ContractPricingMethod;
+	public WebElement getContractPricingMethod() {return ContractPricingMethod;}
+
+	@FindBy(xpath = "//span[text()='Risk Limiter Model']")
+	private WebElement ContractRiskLimiterModel;
+	public WebElement getContractRiskLimiterModel() {return ContractRiskLimiterModel;}
+	
+	@FindBy(xpath = "//div[contains(@id,'feeForServicePaymentPanel')]//div[contains(@class,'toolbar')]//span[text()='Filter']")
+	private static WebElement ContractFeeForServicePaymentFilter;
+	public static WebElement getContractFeeForServicePaymentFilter() {return ContractFeeForServicePaymentFilter;}
+	
+	@FindBy(xpath = "//span[contains(@class,'x-panel-header-text')][text()='Service Model']/../following-sibling::div")
+	private static WebElement ContractFeeForServicePaymentFilterServiceModel;
+	public static WebElement getContractFeeForServicePaymentFilterServiceModel() {return ContractFeeForServicePaymentFilterServiceModel;}
+	
+	@FindBy(xpath = "//label[contains(text(),'Services')]")
+	private static WebElement ContractFeeForServicePaymentServices;
+	public WebElement getContractFeeForServicePaymentServices() {return ContractFeeForServicePaymentServices;}
+	
+	@FindBy(xpath = "//div[contains(@id,'feeForServicePaymentPanel')]//label[contains(@class,'multiSelectorLabel ')]//following-sibling::label[text()='Service Model']")
+	private static WebElement ContractFeeForServicePaymentServiceModel;
+	public WebElement getContractFeeForServicePaymentServiceModel() {return ContractFeeForServicePaymentServiceModel;}
+
+	@FindBy(xpath = "//span[contains(@id,'medicareinpatientpps')]")
+	private static WebElement ContractEditPricePopUp;
+	public WebElement getContractEditPricePopUp() {return ContractEditPricePopUp;}
+	
+	@FindBy(xpath = "//span[contains(@id,'medicareinpatientpps')]//following::span[text()='General']//following::span[text()='Select'][1]")
+	private static WebElement ContractEditPricePopUpDischargeStatus;
+	public WebElement getContractEditPricePopUpDischargeStatus() {return ContractEditPricePopUpDischargeStatus;}
+	
+	@FindBy(xpath = "//span[text()='Selector on: Discharge Status Code for Transfers']")
+	private static WebElement ContractEditPricePopUpDischargeStatusPopUp;
+	public WebElement getContractEditPricePopUpDischargeStatusPopUp() {return ContractEditPricePopUpDischargeStatusPopUp;}
+	
+	@FindBy(xpath = "//span[text()='Selector on: Discharge Status Code for Transfers']//following::label[text()='Select All']/parent::td/input")
+	private static WebElement ContractEditPricePopUpDischargeStatusSelectAll;
+	public WebElement getContractEditPricePopUpDischargeStatusSelectAll() {return ContractEditPricePopUpDischargeStatusSelectAll;}
+	
+	@FindBy(xpath = "//span[text()='Selector on: Discharge Status Code for Transfers']//following::span[text()='Apply']")
+	private static WebElement ContractEditPricePopUpDischargeStatusApply;
+	public WebElement getContractEditPricePopUpDischargeStatusApply() {return ContractEditPricePopUpDischargeStatusApply;}
+	
+	@FindBy(xpath = "(//div[contains(@id,'boundlist')])[3]/div/div")
+	private static WebElement ContractEditPricePopUpDischargeStatusItemCount;
+	public WebElement getContractEditPricePopUpDischargeStatusItemCount() {return ContractEditPricePopUpDischargeStatusItemCount;}
+	
+	
 }

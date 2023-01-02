@@ -30,6 +30,8 @@ public class ContractModelsHelper extends GoHelper {
 
   private static ModelLibraryMap modelMap;
   private static EditContractingModelMap editModelMap;
+  private static ContractingMap contractMap;
+
 
   /** Helper Class for Contract Models pages - individual test scripts should extend this one to use it.
    */
@@ -37,6 +39,7 @@ public class ContractModelsHelper extends GoHelper {
   public static void setupHelper() {
     modelMap = BuildMap.getInstance(driver, ModelLibraryMap.class);
     editModelMap = BuildMap.getInstance(driver, EditContractingModelMap.class);
+    contractMap=BuildMap.getInstance(driver, ContractingMap.class);
   }
 
   @AfterClass
@@ -767,11 +770,10 @@ public class ContractModelsHelper extends GoHelper {
 			}
 	  }
 	  
-	  public static void navigateFeeForServicePaymentTermsScreenSelectionSelectServiceModel(String Model,String serviceModel) {
+	  public static void navigateFeeForServicePaymentTermsScreenSelectionSelectServiceModel(String Model,String serviceModel) throws InterruptedException {
 		    try {
 		      waitForSpinnerToEnd();
 		      waitForAjaxExtJs();
-		      System.out.println(2000);
 		      driver.findElement(By.xpath("//span[contains(@class,'x-panel-header-text')][text()='"+Model+"']/../following-sibling::div")).click();
 		      waitForAjaxExtJs();
 		      Thread.sleep(2000);
@@ -795,5 +797,36 @@ public class ContractModelsHelper extends GoHelper {
 		    }
 		  }
 	  
+	 public  void navigateFeeForServicePaymentTermsPageServiceModel(String[] Service) throws InterruptedException {
+		 try {
+			doClick(ContractingMap.getContractFeeForServicePaymentFilter());		   
+				waitForAjaxExtJs();
+
+				doFilterCreate(Service);
+				doClick(ContractingMap.getContractModelApplyFilterButton());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			 e.getMessage();
+		}
+	 }
+	 public void navigateFeeForServicePaymentTerms() {
+		 try {
+			doClickTreeItem("Model Contract");
+				waitUntilTreeOptionIsClickable("Define Payment Terms");
+				doClickTreeItem("Define Payment Terms");
+				doClickTreeItem("Fee For Service Payment Terms");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			 e.getMessage();
+		}
+	 }
 	 
+	 public void navigateCloseOpenSection(WebElement element) {
+		 try {
+				doClick(element);		      
+
+		 }catch(Exception e) {
+			 
+		 }
+	 }
 }
