@@ -343,8 +343,47 @@ public static WebElement getContractModelAddProviderBtn() {return getContractMod
 	public WebElement getContractEditPricePopUpDischargeStatusApply() {return ContractEditPricePopUpDischargeStatusApply;}
 	
 	@FindBy(xpath = "(//div[contains(@id,'boundlist')])[3]/div/div")
-	private static WebElement ContractEditPricePopUpDischargeStatusItemCount;
-	public WebElement getContractEditPricePopUpDischargeStatusItemCount() {return ContractEditPricePopUpDischargeStatusItemCount;}
+	private static List<WebElement> ContractEditPricePopUpDischargeStatusItemCount;
+	public static List<WebElement> getContractEditPricePopUpDischargeStatusItemCount() {return ContractEditPricePopUpDischargeStatusItemCount;}
 	
+	@FindBy(xpath = "//span[@class='x-btn-icon pagging-tbar-last-button-multiselect']")
+	private static WebElement ContractEditPricePopUpDischargeStatusLastPage;
+	public static WebElement getContractEditPricePopUpDischargeStatusLastPage() {return ContractEditPricePopUpDischargeStatusLastPage;}
 	
+	@FindBy(xpath = "//input[@name='algorithmName']")
+	private static WebElement ContractEditPricePopUpDischargeStatusMedicareYearDrpdwn;
+	public static WebElement getContractEditPricePopUpDischargeStatusMedicareYearDrpdwn() {return ContractEditPricePopUpDischargeStatusMedicareYearDrpdwn;}
+	
+	@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='Oct 1, 2022 - Sept 30, 2023']/..")
+	private static WebElement ContractEditPricePopUpDischargeStatusMedicareYearDrpdwnList;
+	public static WebElement getContractEditPricePopUpDischargeStatusMedicareYearDrpdwnList() {return ContractEditPricePopUpDischargeStatusMedicareYearDrpdwnList;}
+	
+	@FindBy(xpath = "(//label[text()='Services Receiving Add On Technology Payment ']//following::span[text()='Select'])[1]")
+	private static WebElement ContractEditPricePopUpServicesSelectButton;
+	public static WebElement getContractEditPricePopUpServicesSelectButton() {return ContractEditPricePopUpServicesSelectButton;}
+	
+	@FindBy(xpath = "//*[text()='Add Services']")
+	private static WebElement ContractEditPricePopUpAddServices;
+	public static WebElement getContractEditPricePopUpAddServices() {return ContractEditPricePopUpAddServices;}
+	
+	@FindBy(xpath = "//div[contains(@class,'x-toolbar-footer')]//span[text()='Save & Close']")
+	private static WebElement ContractFeeForServicePaymentSave;
+	public static WebElement getContractFeeForServicePaymentSave() {return ContractFeeForServicePaymentSave;}
+	
+	@FindBy(xpath = "(//div[contains(@class,'x-toolbar-footer')]//following::span[text()='Continue'])[1]")
+	private static WebElement ContractFeeForServicePaymentWarningPopUpContinueButton;
+	public static WebElement getContractFeeForServicePaymentWarningPopUpContinueButton() {return ContractFeeForServicePaymentWarningPopUpContinueButton;}
+	
+	@FindBy(xpath = "//div[contains(@class,'horzOverflow')]/div//span[text()='Calculate']//parent::button")
+	private static WebElement ContractFeeForServicePaymentCalculateButton;
+	public static WebElement getContractFeeForServicePaymentCalculateButton() {return ContractFeeForServicePaymentCalculateButton;}
+	
+	@FindBy(xpath = "//span[text()='Apply']")
+	private static WebElement ContractFeeForServicePaymentApply;
+	public static WebElement getContractFeeForServicePaymentApply() {return ContractFeeForServicePaymentApply;}
+	
+	@FindBy(xpath = "//div[contains(@class,'x-btn windowbtn')]//span[text()='Cancel']")
+	private static WebElement ContractCalculationCloseViewDialog;
+	public static WebElement getContractCalculationCloseViewDialog() {return ContractCalculationCloseViewDialog;}
+
 }

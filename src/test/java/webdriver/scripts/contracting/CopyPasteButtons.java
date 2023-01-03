@@ -69,12 +69,8 @@ public class CopyPasteButtons extends GoHelper{
 			modelMap.getContractModelPastePopup().sendKeys("Copy of"+ContractModel+""+currentDateTime);
 			UpdatedContractModel=modelMap.getContractModelPasteNameInput().getAttribute("value");
 			doClick(modelMap.getContractModelSaveCopy());
-			doClick(CostingMap.getContractingName);
 			waitForDisplayedSpinnerToEnd();
-			driver.findElement(By.name("searchText")).click();
-			driverDelay(1200);
-			// Takes time to display the new contract model so just click on contracting name to refresh the grid
-			doClick(CostingMap.getContractingName);
+			goToPage("Contract Models");
 			doSearchForContractModel(UpdatedContractModel);
 			driverDelay();
 			assertTextIsDisplayed(UpdatedContractModel);

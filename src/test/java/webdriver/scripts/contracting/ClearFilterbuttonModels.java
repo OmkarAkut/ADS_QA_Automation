@@ -84,6 +84,7 @@ public class ClearFilterbuttonModels extends GoHelper {
 	public void test02ContractModelSearchText() throws Throwable {
 		try {
 			doSearchForContractModel(contractModel);
+			waitForDisplayedSpinnerToEnd();
 			ContractModelsHelper.getContractElementList(contractModel);
 			driver.findElement(By.name("searchText")).clear();
 			driver.findElement(By.name("searchText")).sendKeys(Keys.ENTER);

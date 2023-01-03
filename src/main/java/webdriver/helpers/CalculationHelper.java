@@ -310,11 +310,12 @@ private static EditContractingModelMap editModelMap;
     }
   }
 
-  public void confirmCalculationStatusDetailsContains(String expectedDetail) {
+  public void confirmCalculationStatusDetailsContains(String expectedDetail) throws Exception {
 	 //Shilpa 07.09.2022 added wait for element
 	 
 	 //waitUntilElementIsClickable(driver.findElement(By.xpath("//*[text()='" + expectedDetail + "']")));
     //assertThatElementIsDisplayed(driver.findElement(By.xpath("//*[text()='" + expectedDetail + "']")));
+	  ContractModelsHelper.scrollToView("//*[contains(text(),'" + expectedDetail + "')]");
 	  assertThatElementIsDisplayed(driver.findElement(By.xpath("//*[contains(text(),'" + expectedDetail + "')]")));
   }
 
