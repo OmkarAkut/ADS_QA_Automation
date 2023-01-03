@@ -49,7 +49,7 @@ public class CreateANewContractModel extends CalculationHelper {
 		}
 	}
 
-	/**Test - UI Validation [Contracting] “Create a New Contract Model”.ADS-6413 **/
+	/**Test - UI Validation [Contracting] â€œCreate a New Contract Modelâ€�.ADS-6413 **/
 	@Test
 	public void test01CreateNewContractModel() throws Throwable {
 		try {
@@ -67,13 +67,7 @@ public class CreateANewContractModel extends CalculationHelper {
 			// Validate model name and providers
 			assertElementTextContains(ContractingMap.getProviderText(), addProvider, printout);
 			doClick(modelMap.getSaveContractModel());
-			doClick(CostingMap.getContractingName);// Takes time to display the new contract model so just click on
-													// contracting name to refresh the grid
-			waitForDisplayedSpinnerToEnd();
-			driver.findElement(By.name("searchText")).click();
-			driverDelay(2000);
-			// Takes time to display the new contract model so just click on contracting name to refresh the grid
-			doClick(CostingMap.getContractingName);
+			goToPage("Contract Models");
 			doSearchForContractModel(contractModelName);
 			driverDelay(2000);
 			assertTextIsDisplayed(contractModelName);
@@ -97,6 +91,7 @@ public class CreateANewContractModel extends CalculationHelper {
 			assertElementIsDisplayed(modelMap.getContractModelDeleteButtonInPopUp());
 			assertElementIsDisplayed(modelMap.getContractModelCancelButtonInPopUp());
 			doClick(modelMap.getContractModelDeleteButtonInPopUp());
+			waitForElementToBeVisible(driver.findElement(By.xpath("//*[text()='There is no data available to display.']")));
 			assertTextIsDisplayed("There is no data available to display.");
 			doClosePageOnLowerBar("Model Library");
 			ExtentReport.logPass("PASS", "test02DeleteContractModel");
