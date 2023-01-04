@@ -363,6 +363,11 @@ public class DoHelper extends DriverHelper {
 					driver.findElement(By.xpath(xpath)));
 			Thread.sleep(500);
 	  }
+    public static void scrollToView(WebElement element) throws Exception {
+		  ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);",
+				  element);
+			Thread.sleep(500);
+	  }
 }
 
 

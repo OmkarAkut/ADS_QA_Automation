@@ -385,5 +385,21 @@ public static WebElement getContractModelAddProviderBtn() {return getContractMod
 	@FindBy(xpath = "//div[contains(@class,'x-btn windowbtn')]//span[text()='Cancel']")
 	private static WebElement ContractCalculationCloseViewDialog;
 	public static WebElement getContractCalculationCloseViewDialog() {return ContractCalculationCloseViewDialog;}
+	
+	@FindBy(xpath = "//span[contains(@id,'filefield')][text()='Select']//parent::button")
+	private static WebElement ContractFileSelect;
+	public static WebElement getContractFileSelect() {return ContractFileSelect;}
+	
+	@FindBy(xpath = "//span[text()='Reset']//parent::button")
+	private static WebElement ContractResetButton;
+	public static WebElement getContractResetButton() {return ContractResetButton;}
+	
+	@FindBy(xpath = "//span[text()='Calculate']//parent::button")
+	private static WebElement ContractCalculateButton;
+	public static WebElement getContractCalculateButton() {return ContractCalculateButton;}
+	
+	@FindBy(xpath = "//span[text()='Save & Close']//parent::button")
+	private static WebElement ContractSaveCloseButton;
+	public static WebElement getContractSaveCloseButton() {return ContractSaveCloseButton;}
 
 }
