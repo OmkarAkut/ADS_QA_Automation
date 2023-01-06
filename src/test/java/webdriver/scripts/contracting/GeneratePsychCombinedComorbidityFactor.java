@@ -24,7 +24,7 @@ public class GeneratePsychCombinedComorbidityFactor extends CalculationHelper {
 
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("FilterbuttonModels", "webdriver.scripts.contracting", "FilterbuttonModels");
+		ExtentReport.reportCreate("GeneratePsychCombinedComorbidityFactor", "webdriver.scripts.contracting", "GeneratePsychCombinedComorbidityFactor");
 		try {
 			modelMap = BuildMap.getInstance(driver, ContractingMap.class);
 			costingMap = BuildMap.getInstance(driver, CostingMap.class);

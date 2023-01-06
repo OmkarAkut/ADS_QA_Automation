@@ -132,6 +132,7 @@ public class AdsHelper extends GetHelper {
   }
 
   public void doFilterCreate(String[] filterParameters) throws InterruptedException {
+	  System.out.println(filterParameters[0]);
     doFilterSetFilterParameters(filterParameters[0], filterParameters[1], filterParameters[2], filterParameters[3]);
     waitForAjaxExtJs();
     waitUntilElementIsClickable(dialog.getFilterDialogButtonAdd());

@@ -362,6 +362,8 @@ public static WebElement getContractModelAddProviderBtn() {return getContractMod
 	private static WebElement ContractEditPricePopUpServicesSelectButton;
 	public static WebElement getContractEditPricePopUpServicesSelectButton() {return ContractEditPricePopUpServicesSelectButton;}
 	
+	
+	
 	@FindBy(xpath = "//*[text()='Add Services']")
 	private static WebElement ContractEditPricePopUpAddServices;
 	public static WebElement getContractEditPricePopUpAddServices() {return ContractEditPricePopUpAddServices;}
@@ -401,5 +403,105 @@ public static WebElement getContractModelAddProviderBtn() {return getContractMod
 	@FindBy(xpath = "//span[text()='Save & Close']//parent::button")
 	private static WebElement ContractSaveCloseButton;
 	public static WebElement getContractSaveCloseButton() {return ContractSaveCloseButton;}
+	
+	@FindBy(name = "operIndirectMedEducAdjFactor")
+	private static WebElement operatingIMEAdjustmentFactor;
+	public static WebElement getoperatingIMEAdjustmentFactor() {return operatingIMEAdjustmentFactor;}
 
+	@FindBy(name = "capitalIndrMedEducAdjFactor")
+	private static WebElement capitalIMEAdjustmentFactor;
+	public static WebElement getcapitalIMEAdjustmentFactor() {return capitalIMEAdjustmentFactor;}
+	
+	@FindBy(name = "operDispShareHospAdjFactor")
+	private static WebElement operatingDSHAdjustmentFactor;
+	public static WebElement getoperatingDSHAdjustmentFactor() {return operatingDSHAdjustmentFactor;}
+	
+	@FindBy(name = "capitalDispShareHospAdjFactor")
+	private static WebElement capitalDSHAdjustmentFactor;
+	public static WebElement getcapitalDSHAdjustmentFactor() {return capitalDSHAdjustmentFactor;}
+	
+	@FindBy(name = "areaWageIndex")
+	private static WebElement areaWageIndex;
+	public static WebElement getareaWageIndex() {return areaWageIndex;}
+	
+	@FindBy(name = "nationalOperlaborRate")
+	private static WebElement nationalLaborRate;
+	public static WebElement getnationalLaborRate() {return nationalLaborRate;}
+	
+	@FindBy(name = "nationalOperNonLaborRate")
+	private static WebElement nationalNonLaborRate;
+	public static WebElement getnationalNonLaborRate() {return nationalNonLaborRate;}
+	
+	@FindBy(name = "hospitalReadmAdjFactor")
+	private static WebElement hospitalReadmissionFactor;
+	public static WebElement gethospitalReadmissionFactor() {return hospitalReadmissionFactor;}
+	
+	@FindBy(name = "uncompensatedCarePayment")
+	private static WebElement uncompensatedCarePayment;
+	public static WebElement getuncompensatedCarePayment() {return uncompensatedCarePayment;}
+	
+	@FindBy(name = "valueBasedPurchAdjFactor")
+	private static WebElement valueBasedPurchasingFactor;
+	public static WebElement getvalueBasedPurchasingFactor() {return valueBasedPurchasingFactor;}
+	
+	@FindBy(name = "hacReductionPercent")
+	private static WebElement Reduction;
+	public static WebElement getReduction() {return Reduction;}
+	
+	@FindBy(name = "colaOperatingFactor")
+	private static WebElement locationAndOperatingFactor;
+	public static WebElement getlocationAndOperatingFactor() {return locationAndOperatingFactor;}
+	
+	@FindBy(name = "capitalGeographicAdjFactor")
+	private static WebElement capitalGeographicAdjustmentFactor;
+	public static WebElement getcapitalGeographicAdjustmentFactor() {return capitalGeographicAdjustmentFactor;}
+	
+	@FindBy(name = "colaCapitalFactor")
+	private static WebElement capitalColaFactor;
+	public static WebElement getcapitalColaFactor() {return capitalColaFactor;}
+	
+	@FindBy(name = "nationalCapitalRate")
+	private static WebElement nationalCapitalRate;
+	public static WebElement getnationalCapitalRate() {return nationalCapitalRate;}
+	
+	@FindBy(name = "operCostChargeRatio")
+	private static WebElement operatingRatioOfCostCharge;
+	public static WebElement getoperatingRatioOfCostCharge() {return operatingRatioOfCostCharge;}
+	
+	@FindBy(name = "capitalCostChargeRatio")
+	private static WebElement capitalRatioOfCostCharge;
+	public static WebElement getcapitalRatioOfCostCharge() {return capitalRatioOfCostCharge;}
+	
+	@FindBy(name = "paymentPercentage")
+	private static WebElement nonBurnMarginalCostFactor;
+	public static WebElement getnonBurnMarginalCostFactor() {return nonBurnMarginalCostFactor;}
+	
+	@FindBy(name = "fixedLossThreshold")
+	private static WebElement fixedLossThreshold;
+	public static WebElement getfixedLossThreshold() {return fixedLossThreshold;}
+	
+	@FindBy(name = "laborPortion")
+	private static WebElement thresholdLaborPortion;
+	public static WebElement getthresholdLaborPortion() {return thresholdLaborPortion;}
+	
+	@FindBy(xpath = "//div[contains(@id,'custommultiselector')]//span[text()='Filter']")
+	private static WebElement addOnServicesPopUpFilterButton;
+	public static WebElement getaddOnServicesPopUpFilterButton() {return addOnServicesPopUpFilterButton;}
+	
+	@FindBy(xpath = "//*[text()='Add Services']//following::span[text()='Add']//parent::button")
+	private static WebElement addOnServicesPopUpFilterAddButton;
+	public static WebElement getaddOnServicesPopUpFilterAddButton() {return addOnServicesPopUpFilterAddButton;}
+	
+	@FindBy(xpath = "//*[text()='Add Services']//following::span[text()='All'][1]//parent::button")
+	private static WebElement addOnServicesPopUpFilterAllButton;
+	public static WebElement getaddOnServicesPopUpFilterAllButton() {return addOnServicesPopUpFilterAllButton;}
+	
+	@FindBy(xpath = "//*[text()='Apply Filter']")
+    private static WebElement statusFilterDialogButtonApplyFilter;
+    public static WebElement getFilterDialogButtonApplyFilter() {return statusFilterDialogButtonApplyFilter;}
+    
+    @FindBy(xpath = "//span[text()='Add Services']//following::span[text()='Select']")
+    private static WebElement selectAddServicesButton;
+    public static WebElement getselectAddServicesButton() {return selectAddServicesButton;}
+    
 }

@@ -16,6 +16,7 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import webdriver.corehelpers.GoHelper;
@@ -829,4 +830,91 @@ public class ContractModelsHelper extends GoHelper {
 			 
 		 }
 	 }
+	 public static void keyInValuesUnderPricingMethod(WebElement element, String input) {
+		 try {
+			 element.click();	
+			 element.clear();
+			 element.sendKeys(input);
+			 element.sendKeys(Keys.ENTER);
+		} catch (Exception e) {
+			
+		}
+
+	 }
+	 
+		  public void doFilterCreateForServices(String[] filterParameters) throws Throwable {
+			  System.out.println(filterParameters[0]);
+		    doFilterSetFilterParameterServices(filterParameters[0], filterParameters[1], filterParameters[2], filterParameters[3]);
+		    waitForAjaxExtJs();
+		    doClick(ContractingMap.getaddOnServicesPopUpFilterAddButton());
+		    waitForAjaxExtJs();
+		    doClick(ContractingMap.getFilterDialogButtonApplyFilter());
+		    
+		  }
+		  public void doFilterSetFilterParameterServices(String field, String operator, String condition, String value) throws InterruptedException {
+			    waitForAjaxExtJs();
+			    doDropdownSelectUsingOptionTextServices(dialog.getFilterDialogDropdownField(), field);
+			    doDropdownSelectUsingOptionTextServices(dialog.getFilterDialogDropdownOperator(), operator);
+			    doDropdownSelectUsingOptionTextServices(dialog.getFilterDialogDropdownCondition(), condition);
+			    doClick(dialog.getFilterDialogFormFieldValue());
+			    dialog.getFilterDialogFormFieldValue().sendKeys(value);
+			  } 
+		  public void doDropdownSelectUsingOptionTextServices(WebElement element, String optionText) throws InterruptedException {
+		        waitForAjaxExtJs();
+		        doClick(element);
+		        waitForAjaxExtJs();
+		        driverDelay(200);
+		        WebElement list = driver.findElement(By.xpath("//div[contains(@id,'specialtagcombo')]//following::div[contains(@class,'floating')]//ul"));
+		        List<WebElement> menu = list.findElements(By.tagName("li"));
+		        System.out.println(optionText);
+		       for(WebElement option : menu) {
+		        	 System.out.println("Value"+option.getText());
+		            if(option.getText().equals(optionText)) {
+		                option.click();
+		                break;
+		            }
+		        }
+		    }
+		  public void highlightColumnsToDisplayColumnServices(String column) throws InterruptedException,Throwable {
+			    String columnPath = "//*[contains(@class,'glAccountsGrid')]/descendant::*[text()='"+column+"']";
+			    WebElement element = driver.findElement(By.xpath(columnPath));
+			    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+			    Thread.sleep(1000); 
+				doClick(columnPath);
+				Thread.sleep(2000);
+			    waitForAjaxExtJs();
+			    doClick(ContractingMap.getselectAddServicesButton());
+			  }
+		  
+		  public void AssertAddOnPaymentTechnologyServicesDisplayed(String serviceName,String[] filterParameters) throws Throwable {
+			  try {
+					doClick(ContractingMap.getContractEditPricePopUpServicesSelectButton());
+					
+					//Validate Services under Add Services Category
+					waitForElementToBeVisible(ContractingMap.getContractEditPricePopUpAddServices());
+					assertElementIsDisplayed(ContractingMap.getContractEditPricePopUpAddServices());
+					assertColumnsToDisplayColumnIsSelected(serviceName);
+					doClick(ContractingMap.getContractFeeForServicePaymentApply());
+				} catch (Exception|AssertionError e) {
+					doClick(ContractingMap.getaddOnServicesPopUpFilterButton());
+					doFilterCreateForServices(filterParameters);
+					highlightColumnsToDisplayColumnServices(serviceName);
+					doClick(ContractingMap.getContractFeeForServicePaymentApply());
+					}
+			  
+		  }
+		  public void AssertAddOnPaymentTechnologyServicesMaxValue(String serviceName,String value) throws Throwable {
+			  try {
+				  scrollToView("(//div[text()='" + serviceName + "']//following::td/div)[1]");
+				  System.out.println(driver.findElement(By.xpath("(//div[text()='"+serviceName +"']//following::td/div)[1]")).getText());
+				  if(!((driver.findElement(By.xpath("(//div[text()='"+serviceName +"']//following::td/div)[1]")).getText().equals(value)))) {
+					  driver.findElement(By.xpath("(//div[text()='"+serviceName +"']//following::td/div)[1]")).click();
+					  keyInValuesUnderPricingMethod(driver.findElement(By.xpath("//div[text()='"+serviceName+"']//following::input[@name='amount']")), 
+								value);
+				  }
+				  				} catch (Exception|AssertionError e) {
+					
+					}
+			  
+		  }
 }

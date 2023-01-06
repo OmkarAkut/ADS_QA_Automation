@@ -6,16 +6,20 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import java.util.List;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import ExtentReport.ExtentReport;
 import webdriver.helpers.CalculationHelper;
 import webdriver.helpers.ContractModelsHelper;
 import webdriver.maps.ContractingMap;
 import webdriver.maps.CostingMap;
+import webdriver.maps.DialogsMap;
 import webdriver.maps.EditContractingModelMap;
 import webdriver.maps.ModelLibraryMap;
 import webdriver.maps.mapbuilder.BuildMap;
@@ -28,9 +32,19 @@ public class ContractingModelDefinePaymentTermsFeeForServicePaymentTermsCalculat
 	private static final String contractFolder = "Test Imran Folder 2";// Shilpa: 1.08.2022 updated test data
 	private static final String contractModelName = "v105 REGRESSION 2021 IPPS DC A1";
 	private static final String serviceName = "MCR IPPS 2021";
+	private static final String serviceName1 = "ASESC-2836 IPPS KCentra A1";
+	private static final String serviceName2 = "ASESC-2836 IPPS KCentra A2";
+
+	private static final String serviceName3 = "ASESC-2836 IPPS KCentra A3";
+
+	final static String[] columnsToSelect= {"ASESC-2836 IPPS KCentra A1","ASESC-2836 IPPS KCentra A2","ASESC-2836 IPPS KCentra A3"};
+
 	private static final String serviceModel = "MCR IPPS 2021";
 	private static final String priceMethodOption = "Medicare Inpatient PPS";
 	static String[] filter = { "Name", "Is", "Equal To", serviceName };
+	static String[] filterServiceASESC2836IPPSKCentraA1 = { "Name", "Is", "Equal To", serviceName1 };
+	static String[] filterServiceASESC2836IPPSKCentraA2 = { "Name", "Is", "Equal To", "ASESC-2836 IPPS KCentra A2" };
+	static String[] filterServiceASESC2836IPPSKCentraA3 = { "Name", "Is", "Equal To", "ASESC-2836 IPPS KCentra A3" };
 	static String[] filterContractModel = { "Name", "Is", "Equal To", contractModelName };
 	private static final String medicareYear = "Oct 1, 2020 - Sept 30, 2021";
 	private static String operatingIMEAdjustmentFactor = "0.0264";
@@ -53,9 +67,6 @@ public class ContractingModelDefinePaymentTermsFeeForServicePaymentTermsCalculat
 	private static String nonBurnMarginalCostFactor = "0.8";
 	private static String fixedLossThreshold = "22539";
 	private static String thresholdLaborPortion = "13974.17";
-	private static String validateService01 = "ASESC-2836 IPPS KCentra A1";
-	private static String validateService02 = "ASESC-2836 IPPS KCentra A2";
-	private static String validateService03 = "ASESC-2836 IPPS KCentra A3";
 	private static String validateService01MaxValue = "1537.50";
 	private static String validateService02MaxValue = "153.75";
 	private static String validateService03MaxValue = "153750.00";
@@ -132,11 +143,16 @@ public class ContractingModelDefinePaymentTermsFeeForServicePaymentTermsCalculat
 			assertElementIsDisplayed(modelMap.getContractEditPricePopUp());
 			doClick(modelMap.getContractEditPricePopUpDischargeStatus());
 			waitForElementToBeVisible(modelMap.getContractEditPricePopUpDischargeStatusPopUp());
-			assertTextIsDisplayed("159 Item(s) Selected");
-			// doClick(modelMap.getContractEditPricePopUpDischargeStatusSelectAll());
-//				driverDelay(1000);
+			try {
+				assertTextIsDisplayed("0 Item(s) Selected");
+				doClick(modelMap.getContractEditPricePopUpDischargeStatusSelectAll());
+				driverDelay(1000);
+			} catch (Exception|AssertionError e1) {
+				assertTextIsDisplayed("159 Item(s) Selected");
+
+			}
 			doClick(modelMap.getContractEditPricePopUpDischargeStatusApply());
-//				driverDelay(1000);
+			driverDelay(100);
 			int expectedDischargeItems = 159;
 			int dischargeItems = ContractingMap.getContractEditPricePopUpDischargeStatusItemCount().size();
 			System.out.println(dischargeItems);
@@ -153,69 +169,38 @@ public class ContractingModelDefinePaymentTermsFeeForServicePaymentTermsCalculat
 			}
 			doDropdownSelectUsingOptionText(ContractingMap.getContractEditPricePopUpDischargeStatusMedicareYearDrpdwn(),
 					ContractingMap.getContractEditPricePopUpDischargeStatusMedicareYearDrpdwnList(), medicareYear);
-			//add inputs into different category
-			driver.findElement(By.name("operIndirectMedEducAdjFactor")).clear();
-			driver.findElement(By.name("operIndirectMedEducAdjFactor")).sendKeys(operatingIMEAdjustmentFactor);
-			driver.findElement(By.name("capitalIndrMedEducAdjFactor")).clear();
-			driver.findElement(By.name("capitalIndrMedEducAdjFactor")).sendKeys(capitalIMEAdjustmentFactor);
-			driver.findElement(By.name("operDispShareHospAdjFactor")).clear();
-			driver.findElement(By.name("operDispShareHospAdjFactor")).sendKeys(operatingDSHAdjustmentFactor);
-			driver.findElement(By.name("capitalDispShareHospAdjFactor")).clear();
-			driver.findElement(By.name("capitalDispShareHospAdjFactor")).sendKeys(capitalDSHAdjustmentFactor);
+//			//add inputs into different category
+			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getoperatingIMEAdjustmentFactor(),operatingIMEAdjustmentFactor);
+			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getcapitalIMEAdjustmentFactor(),capitalIMEAdjustmentFactor);
+			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getoperatingDSHAdjustmentFactor(),operatingDSHAdjustmentFactor);
+			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getcapitalDSHAdjustmentFactor(),capitalDSHAdjustmentFactor);
 			navigateCloseSectionOpenNewSection("General", "Operating Payment");
-			driver.findElement(By.name("areaWageIndex")).clear();
-			driver.findElement(By.name("areaWageIndex")).sendKeys(areaWageIndex);
-			driver.findElement(By.name("nationalOperlaborRate")).clear();
-			driver.findElement(By.name("nationalOperlaborRate")).sendKeys(nationalLaborRate);
-			driver.findElement(By.name("nationalOperNonLaborRate")).clear();
-			driver.findElement(By.name("nationalOperNonLaborRate")).sendKeys(nationalNonLaborRate);
-			driver.findElement(By.name("hospitalReadmAdjFactor")).clear();
-			driver.findElement(By.name("hospitalReadmAdjFactor")).sendKeys(hospitalReadmissionFactor);
-			driver.findElement(By.name("uncompensatedCarePayment")).clear();
-			driver.findElement(By.name("uncompensatedCarePayment")).sendKeys(uncompensatedCarePayment);
-			driver.findElement(By.name("valueBasedPurchAdjFactor")).clear();
-			driver.findElement(By.name("valueBasedPurchAdjFactor")).sendKeys(valueBasedPurchasingFactor);
-			driver.findElement(By.name("hacReductionPercent")).clear();
-			driver.findElement(By.name("hacReductionPercent")).sendKeys(Reduction);
-			driver.findElement(By.name("colaOperatingFactor")).clear();
-			driver.findElement(By.name("colaOperatingFactor")).sendKeys(locationAndOperatingFactor);
+			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getareaWageIndex(),areaWageIndex);
+			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getnationalLaborRate(),nationalLaborRate);
+			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getnationalNonLaborRate(),nationalNonLaborRate);
+			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.gethospitalReadmissionFactor(),hospitalReadmissionFactor);
+			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getuncompensatedCarePayment(),uncompensatedCarePayment);
+			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getvalueBasedPurchasingFactor(),valueBasedPurchasingFactor);
+			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getReduction(),Reduction);
+			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getlocationAndOperatingFactor(),locationAndOperatingFactor);
 			navigateCloseSectionOpenNewSection("Operating Payment", "Capital Payment");
-			driver.findElement(By.name("capitalGeographicAdjFactor")).clear();
-			driver.findElement(By.name("capitalGeographicAdjFactor")).sendKeys(capitalGeographicAdjustmentFactor);
-			driver.findElement(By.name("colaCapitalFactor")).clear();
-			driver.findElement(By.name("colaCapitalFactor")).sendKeys(capitalColaFactor);
-			driver.findElement(By.name("nationalCapitalRate")).clear();
-			driver.findElement(By.name("nationalCapitalRate")).sendKeys(nationalCapitalRate);
+			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getcapitalGeographicAdjustmentFactor(),capitalGeographicAdjustmentFactor);
+			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getcapitalColaFactor(),capitalColaFactor);
+			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getnationalCapitalRate(),nationalCapitalRate);
 			navigateCloseSectionOpenNewSection("Capital Payment", "Cost Outlier Payment");
-			driver.findElement(By.name("operCostChargeRatio")).clear();
-			driver.findElement(By.name("operCostChargeRatio")).sendKeys(operatingRatioOfCostCharge);
-			driver.findElement(By.name("capitalCostChargeRatio")).clear();
-			driver.findElement(By.name("capitalCostChargeRatio")).sendKeys(capitalRatioOfCostCharge);
-			driver.findElement(By.name("paymentPercentage")).clear();
-			driver.findElement(By.name("paymentPercentage")).sendKeys(nonBurnMarginalCostFactor);
-			driver.findElement(By.name("fixedLossThreshold")).clear();
-			driver.findElement(By.name("fixedLossThreshold")).sendKeys(fixedLossThreshold);
-			driver.findElement(By.name("laborPortion")).clear();
-			driver.findElement(By.name("laborPortion")).sendKeys(thresholdLaborPortion);
+			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getoperatingRatioOfCostCharge(),operatingRatioOfCostCharge);
+			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getcapitalRatioOfCostCharge(),capitalRatioOfCostCharge);
+			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getnonBurnMarginalCostFactor(),nonBurnMarginalCostFactor);
+			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getfixedLossThreshold(),fixedLossThreshold);
+			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getthresholdLaborPortion(),thresholdLaborPortion);
 			navigateCloseSectionOpenNewSection("Cost Outlier Payment", "Add On Technology Payment");
-			doClick(ContractingMap.getContractEditPricePopUpServicesSelectButton());
-			//Validate Services under Add Services Category
-			waitForElementToBeVisible(ContractingMap.getContractEditPricePopUpAddServices());
-			assertElementIsDisplayed(ContractingMap.getContractEditPricePopUpAddServices());
-			contractModelsHelper.assertColumnsToDisplayColumnIsSelected(validateService01);
-			contractModelsHelper.assertColumnsToDisplayColumnIsSelected(validateService02);
-			contractModelsHelper.assertColumnsToDisplayColumnIsSelected(validateService03);
-			doClick(ContractingMap.getContractFeeForServicePaymentApply());
-			ContractModelsHelper.assertThatString(
-					driver.findElement(By.xpath("(//div[text()='" + validateService01 + "']//following::td/div)[1]")),
-					validateService01MaxValue, printout);
-			ContractModelsHelper.assertThatString(
-					driver.findElement(By.xpath("(//div[text()='" + validateService02 + "']//following::td/div)[1]")),
-					validateService02MaxValue, printout);
-			ContractModelsHelper.assertThatString(
-					driver.findElement(By.xpath("(//div[text()='" + validateService03 + "']//following::td/div)[1]")),
-					validateService03MaxValue, printout);
 
+			contractModelsHelper.AssertAddOnPaymentTechnologyServicesDisplayed(serviceName1,filterServiceASESC2836IPPSKCentraA1);
+			contractModelsHelper.AssertAddOnPaymentTechnologyServicesDisplayed(serviceName2,filterServiceASESC2836IPPSKCentraA2);
+			contractModelsHelper.AssertAddOnPaymentTechnologyServicesDisplayed(serviceName3,filterServiceASESC2836IPPSKCentraA3);
+			contractModelsHelper.AssertAddOnPaymentTechnologyServicesMaxValue(serviceName1,validateService01MaxValue);
+			contractModelsHelper.AssertAddOnPaymentTechnologyServicesMaxValue(serviceName2,validateService02MaxValue);
+			contractModelsHelper.AssertAddOnPaymentTechnologyServicesMaxValue(serviceName3,validateService03MaxValue);
 			doClick(modelMap.getContractModelRiskLimiterContinueCloseBtn());
 			doClick(ContractingMap.getContractFeeForServicePaymentSave());
 			waitForElementToBeVisible(ContractingMap.getContractFeeForServicePaymentWarningPopUpContinueButton());

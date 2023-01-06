@@ -254,9 +254,12 @@ public class DoHelper extends DriverHelper {
         waitForAjaxExtJs();
         doClick(element);
         waitForAjaxExtJs();
+        driverDelay(200);
         WebElement list = driver.findElement(By.xpath("//div[contains(@class,'floating')]/div[contains(@id,'listEl')]/ul"));
         List<WebElement> menu = list.findElements(By.tagName("li"));
-        for(WebElement option : menu) {
+        System.out.println();
+       for(WebElement option : menu) {
+        	 System.out.println(option.getText());
             if(option.getText().equals(optionText)) {
                 option.click();
                 break;
