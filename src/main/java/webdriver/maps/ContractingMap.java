@@ -509,7 +509,7 @@ public static WebElement getContractModelAddProviderBtn() {return getContractMod
     private static WebElement selectDropServiceModelBox;
     public static WebElement getselectDropServiceModelBox() {return selectDropServiceModelBox;}
     
-    @FindBy(xpath = "(//div[text()='CM IPPS 2021']//following::table//td)[5]/div/img[2]")
+    @FindBy(xpath = "//label[text()='Service Model']//following::table//td[contains(@class,'treeNodeClsShow')]/div")
     private static WebElement selectDropServiceModelPanel;
     public static WebElement getselectDropServiceModelPanel() {return selectDropServiceModelPanel;}
     }
