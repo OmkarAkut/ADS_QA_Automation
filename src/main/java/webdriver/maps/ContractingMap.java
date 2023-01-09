@@ -3,13 +3,14 @@ package webdriver.maps;
 import java.util.List;
 
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import webdriver.maps.mapbuilder.MapConfig;
 
 public class ContractingMap extends MapConfig {
 
     // ===== Contracting Tab > Contractual Allowance Export Page ===== //
-
+	 
     @FindBy(xpath = "//div[contains(@id,'contractualallowances')]/descendant::div[contains(@id,'rownumberer') and @class='x-column-header-inner']/span[@class='x-column-header-text']")
     private WebElement contractualAllowanceExportPageTableCornerCell;
     public WebElement getContractualAllowanceExportPageTableCornerCell() {return contractualAllowanceExportPageTableCornerCell;}
@@ -504,4 +505,11 @@ public static WebElement getContractModelAddProviderBtn() {return getContractMod
     private static WebElement selectAddServicesButton;
     public static WebElement getselectAddServicesButton() {return selectAddServicesButton;}
     
-}
+    @FindBy(xpath = "//div[contains(@id,'feeForServicePaymentPanel')]//following-sibling::label[text()='Service Model']//following::div[contains(@id,'treeview')]//td")
+    private static WebElement selectDropServiceModelBox;
+    public static WebElement getselectDropServiceModelBox() {return selectDropServiceModelBox;}
+    
+    @FindBy(xpath = "(//div[text()='CM IPPS 2021']//following::table//td)[5]/div/img[2]")
+    private static WebElement selectDropServiceModelPanel;
+    public static WebElement getselectDropServiceModelPanel() {return selectDropServiceModelPanel;}
+    }

@@ -85,21 +85,19 @@ public class CreateANewContractModel extends CalculationHelper {
 	public void test03AssertConfirmFY2023MedicareYearisAvailableForMedIPPS() {
 		try {
 			navigateToContractModelsPageFeeForServicePaymentTermsPage(contractModelName);
-			doClick(ContractingMap.getContractFeeForServicePaymentFilterServiceModel());
 			waitForAjaxExtJs();
 			Thread.sleep(200);
 			assertElementIsDisplayed(modelMap.getContractFeeForServicePaymentServices());
 			assertElementIsDisplayed(modelMap.getContractFeeForServicePaymentServiceModel());
 			contractModelsHelper.navigateFeeForServicePaymentTermsPageServiceModel(filter);
+			try {
+				assertElementIsDisplayed(ContractingMap.getselectDropServiceModelPanel());
+				System.out.println(driver.findElement(By.xpath("//div[contains(@class,'glAccountsGrid')]//div[contains(@id,'gridview')]//following::div[text()='"+serviceName+"']")).getText());
+				ContractModelsHelper.dragAndDropElement((driver.findElement(By.xpath("//div[contains(@class,'glAccountsGrid')]//div[contains(@id,'gridview')]//following::div[text()='"+serviceName+"']//parent::td//parent::tr"))),ContractingMap.getselectDropServiceModelPanel());
 
-			driver.findElement(By.xpath(
-					"//label[text()='Service Model']/ancestor::div/descendant::div[text() = '" + serviceModel + "']"))
-					.click();
-			contractModelsHelper
-					.navigateCloseOpenSection(ContractingMap.getContractFeeForServicePaymentFilterServiceModel());
-			navigateFeeForServicePaymentTermsPagePricingMethodSectionSelectServiceModel(serviceModel);
-			Thread.sleep(2000);
-			waitForAjaxExtJs();
+			} catch (Exception|AssertionError e) {
+
+			}
 		} catch (Exception|AssertionError e) {
 			
 		}

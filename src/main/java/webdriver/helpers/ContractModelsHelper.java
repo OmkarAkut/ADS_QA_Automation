@@ -2,7 +2,9 @@ package webdriver.helpers;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.equalTo;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.text.DecimalFormat;
 import java.text.Format;
@@ -10,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
 import org.hamcrest.MatcherAssert;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -19,6 +22,8 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+
 import webdriver.corehelpers.GoHelper;
 import webdriver.maps.ContractingMap;
 import webdriver.maps.CostingMap;
@@ -907,7 +912,7 @@ public class ContractModelsHelper extends GoHelper {
 			  try {
 				  scrollToView("(//div[text()='" + serviceName + "']//following::td/div)[1]");
 				  System.out.println(driver.findElement(By.xpath("(//div[text()='"+serviceName +"']//following::td/div)[1]")).getText());
-				  if(!((driver.findElement(By.xpath("(//div[text()='"+serviceName +"']//following::td/div)[1]")).getText().equals(value)))) {
+				  	if(!((driver.findElement(By.xpath("(//div[text()='"+serviceName +"']//following::td/div)[1]")).getText().equals(value)))) {
 					  driver.findElement(By.xpath("(//div[text()='"+serviceName +"']//following::td/div)[1]")).click();
 					  keyInValuesUnderPricingMethod(driver.findElement(By.xpath("//div[text()='"+serviceName+"']//following::input[@name='amount']")), 
 								value);
@@ -917,4 +922,10 @@ public class ContractModelsHelper extends GoHelper {
 					}
 			  
 		  }
+		  public static void dragAndDropElement(WebElement from,WebElement to) throws InterruptedException {
+				Actions action=new Actions(driver);
+				action.dragAndDrop(from,to).moveToElement(to).build().perform();
+					
+			}
+		  
 }
