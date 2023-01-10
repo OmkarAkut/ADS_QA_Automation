@@ -35,7 +35,8 @@ public class CalculateExistingPublishedContractAds1447 extends CalculationHelper
   };
   private static ModelLibraryMap modelMap;
 
-  /** Regression: Automated test script for ADS-1447 */
+  /** Regression: Automated test script for ADS-1447 
+   * Test - [Contracting Calc] Contracting Model - Published Contract - Calculate. ADS-6782*/
   @BeforeClass
   public static void setupScript() throws Exception,Throwable {
 	  ExtentReport.reportCreate("CalculateExistingPublishedContractAds1447", "webdriver.scripts.contracting", "CalculateExistingPublishedContractAds1447");

@@ -73,7 +73,8 @@ public class ContractingModelDefinePaymentTermsFeeForServicePaymentTermsCalculat
 	static String viewLogTitleApply = "v105 REGRESSION 2021 IPPS DC A1";
 
 	ContractModelsHelper contractModelsHelper = new ContractModelsHelper();
-/** Test - [CMS Regs: FY2023 IPPS] - Create New Contracting Model with FY2023 Medicare Year ADS-6277 **/
+/** Test - [CMS Regs: FY2023 IPPS] - Create New Contracting Model with FY2023 Medicare Year ADS-6277,
+ * Test - [Contracting Calc] Contracting Model – Define Payment Terms > Fee For Service Payment Terms - "Calculate”.ADS-6775 -contract model is Test Regression 2022 IPPS A1 , the steps are similar ADS-6277**/
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
 		try {

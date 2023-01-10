@@ -4,6 +4,7 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
@@ -18,6 +19,7 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -51,6 +53,11 @@ public class BuildVerificationTestScript extends UcqcHelper {
   private static StatusMap statusMap;
   private static SystemMaintenanceMap sysmaint;
   WebDriverWait wait = new WebDriverWait(driver, 30);
+  private static String systemMaintenanceSubTabsBackgroundColor1= "rgba(165, 165, 165, 1)";
+  private static String systemMaintenanceSubTabsBackgroundColor2= "rgba(204, 204, 204, 1)";
+  private static String systemMaintenanceMainTabBackgroundColor= "rgba(204, 204, 204, 1)";
+  private static String BackgroundColorStatusTab= "rgba(158, 105, 0, 1)";
+
   String expectedReleaseVersion = version;  //only checks version, not date
 
   /** The local pages map test is a test of the elements on all of the individual functional area (local) page maps -
@@ -744,7 +751,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 		fail(e.getMessage());
 	}
   }
-
+/*Test - [Main Page UI] Validate “System Maintenance Menu bar” on dashboard. ADS-6600*/
   @Test
   public void test0019SystemMaintenanceTab() throws Throwable {
     try {
@@ -760,7 +767,10 @@ public class BuildVerificationTestScript extends UcqcHelper {
               generalElement.getTerminalServerSessionsSubTab(),
               generalElement.getTerminalServerDesktopSubTab()
       };
+     
       assertElementsAreDisplayed(systemMaintenanceTabElement,printout);
+      //Hover on sub tab and validate background color
+     validateBackgroundColorOnHoverForSubTabs(systemMaintenanceSubTabsBackgroundColor1,systemMaintenanceSubTabsBackgroundColor2,systemMaintenanceTabElement);
       ExtentReport.logPass("PASS", "test0019SystemMaintenanceTab");
     } catch (Exception|AssertionError e) {
 		ExtentReport.logFail("FAIL", "test0019SystemMaintenanceTab", driver, e);
@@ -773,12 +783,14 @@ public class BuildVerificationTestScript extends UcqcHelper {
     try {
       //Clicks the Status Tab in order to open the dropdown menu
       doClick(generalElement.getStatusTab());
+      validateBackgroundColorOnHoverForMenuTab(BackgroundColorStatusTab, generalElement.getStatusTab());
       WebElement[] statusTabElement = {
               generalElement.getCalculationStatusSubTab(),
               generalElement.getImportExportStatusSubTab(),
               generalElement.getUtilityStatusSubTab()
       };
       assertElementsAreDisplayed(statusTabElement,printout);
+      validateBackgroundColorOnHoverForSubTabs(BackgroundColorStatusTab, BackgroundColorStatusTab, statusTabElement);
       ExtentReport.logPass("PASS", "test0020StatusTab");
     } catch (Exception|AssertionError e) {
 		ExtentReport.logFail("FAIL", "test0020StatusTab", driver, e);

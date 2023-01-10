@@ -12,6 +12,7 @@ import org.openqa.selenium.interactions.Actions;
 import webdriver.corehelpers.GoHelper;
 import webdriver.globalstatic.LoginStatic;
 import webdriver.maps.CostingMap;
+import webdriver.maps.GeneralElementsMap;
 import webdriver.maps.mapbuilder.BuildMap;
 
 public class UcqcHelper extends GoHelper {
@@ -692,5 +693,44 @@ public class UcqcHelper extends GoHelper {
     waitForAjaxExtJs();
     assertNotNull(departmentList);
   }
+  public static boolean validateBackgroundColorOnHoverForSubTabs(String color1,String color2,WebElement[] systemMaintenanceTabElement) {
+		boolean testResult=false;
+		try {
+//			GeneralElementsMap generalElement=BuildMap.getInstance(driver, GeneralElementsMap.class);
+//			StatusMap statusMap=BuildMap.getInstance(driver, StatusMap.class);
 
+			  Actions action=new Actions(driver);
+
+				for (WebElement element : systemMaintenanceTabElement) {
+					action.moveToElement(element).perform();
+					String optionColor=element.getCssValue("background-color");
+					System.out.println("Option"+optionColor);
+					if(optionColor.equalsIgnoreCase(color1)||(optionColor.equalsIgnoreCase(color2))){
+						assertTrue(printout);
+					}
+					else {
+						assertFalse(false);
+					}
+		} 
+		}catch (Exception e) {
+			testResult=false;
+		}
+		
+		return testResult;
+	}
+	public static boolean validateBackgroundColorOnHoverForMenuTab(String color,WebElement element) {
+		boolean testResult=false;
+		try {
+
+					String optionColor=element.getCssValue("background-color");
+					System.out.println("Option"+optionColor);
+					assertEquals(color,optionColor);
+					testResult=true;
+		
+		}catch (Exception e) {
+			testResult=false;
+		}
+		
+		return testResult;
+	}
 }
