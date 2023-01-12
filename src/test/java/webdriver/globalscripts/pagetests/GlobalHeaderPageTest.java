@@ -145,8 +145,12 @@ public class GlobalHeaderPageTest extends PageTestHelper {
 				  driver.findElement(By.xpath("//*[@class='logo-header affix']")),
 			      printout
 						 */
+						/*Omkar : 12/1/2023 : below xpath is invalid
 						driver.findElement(By.xpath("//*[@class='attachment-large size-large entered lazyloaded']")),
 						printout
+						*/
+						driver.findElement(By.xpath("//*[@class='attachment-large size-large wp-image-34 entered lazyloaded']")),
+					      printout
 						);
 				driver.close();
 			} catch (Throwable e) {
