@@ -16,6 +16,18 @@ public class DialogsMap extends MapConfig {
 
     // ===== Filter Dialog ===== //
 
+    @FindBy(xpath = "(//div[contains(@id,'specialtagcombo')]//following::div[contains(@class,'floating')]//ul)[1]")
+    private WebElement field;
+    public WebElement getFilterNameField() {return field;}
+    
+    @FindBy(xpath = "(//div[contains(@id,'specialtagcombo')]//following::div[contains(@class,'floating')]//ul)[3]")
+    private WebElement condition;
+    public WebElement getFilterNameCondition() {return condition;}
+    
+    @FindBy(xpath = "(//div[contains(@id,'specialtagcombo')]//following::div[contains(@class,'floating')]//ul)[2]")
+    private WebElement operator;
+    public WebElement getFilterNameOperator() {return operator;}
+    
     @FindBy(xpath = "//*[contains(@id, 'filterwindow') and contains(@id, 'header_hd-textEl')]")
     private WebElement filterDialogHeader;
     public WebElement getFilterDialogHeader() {return filterDialogHeader;}

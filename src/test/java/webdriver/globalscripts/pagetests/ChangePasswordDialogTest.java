@@ -58,7 +58,7 @@ public class ChangePasswordDialogTest extends GoHelper {
 		fail(e.getMessage());
 	}
   }
-
+/**[Main Page UI] Validate “Change Password” section on dashboard.ADS-6614**/
   @Test
   public void test02OpenChangePasswordDialogAndAssert() throws InterruptedException,Throwable {
     try {

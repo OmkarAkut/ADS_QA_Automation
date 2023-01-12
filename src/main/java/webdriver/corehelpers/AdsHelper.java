@@ -141,12 +141,29 @@ public class AdsHelper extends GetHelper {
     doClick(dialog.getFilterDialogButtonApplyFilter());
     waitForSpinnerToEnd();
   }
-
+  public void doDropdownSelectUsingOptionTextServices(WebElement dropdownList,WebElement element, String optionText) throws InterruptedException {
+      waitForAjaxExtJs();
+      doClick(element);
+      waitForAjaxExtJs();
+      driverDelay(300);
+     
+//      WebElement list = driver.findElement(By.xpath("(//div[contains(@id,'specialtagcombo')]//following::div[contains(@class,'floating')]//ul)["+i+"]"));
+      List<WebElement> menu = dropdownList.findElements(By.tagName("li"));
+      System.out.println(optionText);
+     for(WebElement option : menu) {
+      	 System.out.println("Value"+option.getText());
+          if(option.getText().equals(optionText)) {
+              option.click();
+              break;
+          }
+     }
+    
+  }
   public void doFilterSetFilterParameters(String field, String operator, String condition, String value) throws InterruptedException {
     waitForAjaxExtJs();
-    doDropdownSelectUsingOptionText(dialog.getFilterDialogDropdownField(), field);
-    doDropdownSelectUsingOptionText(dialog.getFilterDialogDropdownOperator(), operator);
-    doDropdownSelectUsingOptionText(dialog.getFilterDialogDropdownCondition(), condition);
+    doDropdownSelectUsingOptionTextServices(dialog.getFilterNameField(),dialog.getFilterDialogDropdownField(), field);
+    doDropdownSelectUsingOptionTextServices(dialog.getFilterNameOperator(),dialog.getFilterDialogDropdownOperator(), operator);
+    doDropdownSelectUsingOptionTextServices(dialog.getFilterNameCondition(),dialog.getFilterDialogDropdownCondition(), condition);
     doClick(dialog.getFilterDialogFormFieldValue());
     dialog.getFilterDialogFormFieldValue().sendKeys(value);
   }

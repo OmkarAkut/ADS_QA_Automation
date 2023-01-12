@@ -6,72 +6,66 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import java.util.List;
-
+import java.util.HashMap;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-
 import ExtentReport.ExtentReport;
 import webdriver.helpers.CalculationHelper;
 import webdriver.helpers.ContractModelsHelper;
 import webdriver.maps.ContractingMap;
 import webdriver.maps.CostingMap;
-import webdriver.maps.DialogsMap;
-import webdriver.maps.EditContractingModelMap;
-import webdriver.maps.ModelLibraryMap;
 import webdriver.maps.mapbuilder.BuildMap;
 import webdriver.users.Users;
 
-public class ContractingModelDefinePaymentTermsFeeForServicePaymentTermsCalculate extends CalculationHelper {
+public class ConfirmFY2023MedicareYearisAvailableForMedIPPS extends CalculationHelper {
 
-	private static ContractingMap modelMap;
-	private static EditContractingModelMap editModelMap;
-	private static final String contractFolder = "Test Imran Folder 2";// Shilpa: 1.08.2022 updated test data
-	private static final String contractModelName = "v105 REGRESSION 2021 IPPS DC A1";
-	private static final String serviceName = "MCR IPPS 2021";
-	private static final String serviceName1 = "ASESC-2836 IPPS KCentra A1";
-	private static final String serviceName2 = "ASESC-2836 IPPS KCentra A2";
+	private static final String contractModelName = "Contract Model 6278";
+	private static final String serviceModel = "MCR IPPS 2023";
+	private static final String serviceName = "MCR IPPS 2023";
 
-	private static final String serviceName3 = "ASESC-2836 IPPS KCentra A3";
-
-	final static String[] columnsToSelect = { "ASESC-2836 IPPS KCentra A1", "ASESC-2836 IPPS KCentra A2",
-			"ASESC-2836 IPPS KCentra A3" };
-
-	private static final String serviceModel = "MCR IPPS 2021";
 	private static final String priceMethodOption = "Medicare Inpatient PPS";
+	private static final String medicareYear = "Oct 1, 2022 - Sept 30, 2023";
+	private static ContractingMap modelMap;
 	static String[] filter = { "Name", "Is", "Equal To", serviceName };
-	static String[] filterServiceASESC2836IPPSKCentraA1 = { "Name", "Is", "Equal To", serviceName1 };
-	static String[] filterServiceASESC2836IPPSKCentraA2 = { "Name", "Is", "Equal To", "ASESC-2836 IPPS KCentra A2" };
-	static String[] filterServiceASESC2836IPPSKCentraA3 = { "Name", "Is", "Equal To", "ASESC-2836 IPPS KCentra A3" };
-	static String[] filterContractModel = { "Name", "Is", "Equal To", contractModelName };
-	private static final String medicareYear = "Oct 1, 2020 - Sept 30, 2021";
-	private static String operatingIMEAdjustmentFactor = "0.0264";
-	private static String capitalIMEAdjustmentFactor = "0.0227";
-	private static String operatingDSHAdjustmentFactor = "0.112";
-	private static String capitalDSHAdjustmentFactor = "0.0554";
-	private static String areaWageIndex = "0.8729";
-	private static String nationalLaborRate = "3609.31";
-	private static String nationalNonLaborRate = "2212.16";
-	private static String hospitalReadmissionFactor = "0.9903";
-	private static String uncompensatedCarePayment = "472.62";
-	private static String valueBasedPurchasingFactor = "0.9946324313";
-	private static String Reduction = "1.0";
-	private static String locationAndOperatingFactor = "1.0";
-	private static String capitalGeographicAdjustmentFactor = "0.9111";
-	private static String capitalColaFactor = "1";
-	private static String nationalCapitalRate = "462.61";
-	private static String operatingRatioOfCostCharge = "0.116";
-	private static String capitalRatioOfCostCharge = "0.011";
-	private static String nonBurnMarginalCostFactor = "0.8";
-	private static String fixedLossThreshold = "22539";
-	private static String thresholdLaborPortion = "13974.17";
-	private static String validateService01MaxValue = "1537.50";
-	private static String validateService02MaxValue = "153.75";
-	private static String validateService03MaxValue = "153750.00";
-	static String viewLogTitleApply = "v105 REGRESSION 2021 IPPS DC A1";
+	private static String IndustryClassSchemeDefaultValue = "MSDRG1";
+	private static String IndustryClassSchemeUpdateValue = "MSDRG2";
+	private static String operatingIMEAdjustmentFactor = "2";
+	private static String capitalIMEAdjustmentFactor = "3";
+	private static String operatingDSHAdjustmentFactor = "4";
+	private static String capitalDSHAdjustmentFactor = "5";
+	private static String areaWageIndex = ".9999";
+	private static String expNationalLaborRate = "3952.96";
+	private static String expNationalNonLaborRate = "2422.78";
+	private static String hospitalReadmissionFactor = "1.2";
+	private static String uncompensatedCarePayment = "1.3";
+	private static String valueBasedPurchasingFactor = "1.5";
+	private static String Reduction = "1.8";
+	private static String capitalGeographicAdjustmentFactor = "1.5";
+	private static String validateCapitalColaFactor = "1";
+	private static String validateOperatingRatioOfCostCharge = "1";
+	private static String validateCapitalRatioOfCostCharge = "1";
+	private static String validateNonBurnMarginalCostFactor = "0.8";
+	private static String validateFixedLossThreshold = "38859";
+	private static String validateThresholdLaborPortion = "24092.59";
+	private static String colaWageAdjustedRate = "5960.82";
+	private static String WageAdjustedRate = "5960.82";
+	private static String colaGeographicAdjustedRate = "725.64";
+	private static String costPaymentService1 = "IP/OP Drugs RevCd 274 (CH)";
+	private static String costPaymentService2 = "IP/OP Drugs RevCd 275 (CH)";
+	private static String addPaymentService1 = "Bariatric Services (DRG 288)";
+	private static String addPaymentService2 = "DRG 302 Kidney Transplant";
+	private static String addPaymentService3 = "Drug Abuse (DRGs 433, 521-523)";
+	private static String addPaymentService4 = "HIV (DRGs 488-490)";
+	private static String addPaymentService5 = "Heart Transplant (DRG 103)";
+	static String[] costFilterPaymentService1 = { "Name", "Is", "Contains", "IP/OP Drugs RevCd 274 (CH)" };
+	static String[] costFilterPaymentService2 = { "Name", "Is", "Contains", "IP/OP Drugs RevCd 275 (CH)" };
+	static String[] addFilterPaymentService1 = { "Name", "Is", "Contains", "Bariatric Services (DRG 288)" };
+	static String[] addFilterPaymentService2 = { "Name", "Is", "Contains", "DRG 302 Kidney Transplant" };
+	static String[] addFilterPaymentService3 = { "Name", "Is", "Contains", "Drug Abuse (DRGs 433, 521-523)" };
+	static String[] addFilterPaymentService4 = { "Name", "Is", "Contains", "HIV (DRGs 488-490)" };
+	static String[] addFilterPaymentService5 = { "Name", "Is", "Contains", "Heart Transplant (DRG 103)" };
 
 	ContractModelsHelper contractModelsHelper = new ContractModelsHelper();
 
@@ -86,7 +80,6 @@ public class ContractingModelDefinePaymentTermsFeeForServicePaymentTermsCalculat
 					"webdriver.scripts.contracting",
 					"ContractingModelDefinePaymentTermsFeeForServicePaymentTermsCalculate");
 			modelMap = BuildMap.getInstance(driver, ContractingMap.class);
-			editModelMap = BuildMap.getInstance(driver, EditContractingModelMap.class);
 			loginUser(Users.AutomationTesterAdmin);
 			waitForDisplayedSpinnerToEnd();
 			goToPage("Contract Models");
@@ -104,10 +97,9 @@ public class ContractingModelDefinePaymentTermsFeeForServicePaymentTermsCalculat
 	}
 
 	@Test
-	public void FeeForServicePaymentTermsCalculate() throws Throwable {
+	public void ConfirmMedicareYearForMedIPPS() throws Throwable {
 		try {
-			ContractModelsHelper.scrollToView("//div[text()='" + contractFolder + "']//img[3]");
-			doClick("//div[text()='" + contractFolder + "']/img[2]");
+			doSearchForContractModel(contractModelName);
 			tableDoubleClickCellFirstColumn(contractModelName);
 			waitForPageTitle(contractModelName);
 			assertTextIsDisplayed("Unpublished Contract Task List");
@@ -121,7 +113,6 @@ public class ContractingModelDefinePaymentTermsFeeForServicePaymentTermsCalculat
 			assertElementIsDisplayed(modelMap.getContractFeeForServicePaymentServices());
 			assertElementIsDisplayed(modelMap.getContractFeeForServicePaymentServiceModel());
 			contractModelsHelper.navigateFeeForServicePaymentTermsPageServiceModel(filter);
-
 			driver.findElement(By.xpath(
 					"//label[text()='Service Model']/ancestor::div/descendant::div[text() = '" + serviceModel + "']"))
 					.click();
@@ -145,6 +136,10 @@ public class ContractingModelDefinePaymentTermsFeeForServicePaymentTermsCalculat
 			// shilpa 01.08.2022 added above steps
 			navigateFeeForServicePaymentTermsPagePricingMethodSectionClickEditButtonToOpenEditDialog();
 			assertElementIsDisplayed(modelMap.getContractEditPricePopUp());
+			assertThatString(ContractingMap.getindustryClassificationInput(), IndustryClassSchemeDefaultValue,
+					printout);
+			doDropdownSelectUsingOptionText(ContractingMap.getindustryClassificationInput(),
+					ContractingMap.industryClassificationList(), IndustryClassSchemeUpdateValue);
 			doClick(modelMap.getContractEditPricePopUpDischargeStatus());
 			waitForElementToBeVisible(modelMap.getContractEditPricePopUpDischargeStatusPopUp());
 			try {
@@ -184,10 +179,8 @@ public class ContractingModelDefinePaymentTermsFeeForServicePaymentTermsCalculat
 					capitalDSHAdjustmentFactor);
 			navigateCloseSectionOpenNewSection("General", "Operating Payment");
 			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getareaWageIndex(), areaWageIndex);
-			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getnationalLaborRate(),
-					nationalLaborRate);
-			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getnationalNonLaborRate(),
-					nationalNonLaborRate);
+			assertThatAttributeValue(ContractingMap.getnationalLaborRate(), expNationalLaborRate, printout);
+			assertThatAttributeValue(ContractingMap.getnationalNonLaborRate(), expNationalNonLaborRate, printout);
 			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.gethospitalReadmissionFactor(),
 					hospitalReadmissionFactor);
 			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getuncompensatedCarePayment(),
@@ -195,67 +188,67 @@ public class ContractingModelDefinePaymentTermsFeeForServicePaymentTermsCalculat
 			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getvalueBasedPurchasingFactor(),
 					valueBasedPurchasingFactor);
 			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getReduction(), Reduction);
-			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getlocationAndOperatingFactor(),
-					locationAndOperatingFactor);
+			assertThatString(ContractingMap.getcolaWageAdjustedRate(), colaWageAdjustedRate, printout);
+			assertThatString(ContractingMap.getWageAdjustedRate(), WageAdjustedRate, printout);
 			navigateCloseSectionOpenNewSection("Operating Payment", "Capital Payment");
 			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getcapitalGeographicAdjustmentFactor(),
 					capitalGeographicAdjustmentFactor);
-			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getcapitalColaFactor(),
-					capitalColaFactor);
-			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getnationalCapitalRate(),
-					nationalCapitalRate);
+			assertThatString(ContractingMap.getcolaGeographicAdjustedRate(), colaGeographicAdjustedRate, printout);
+			assertThatAttributeValue(ContractingMap.getcapitalColaFactor(), validateCapitalColaFactor, printout);
 			navigateCloseSectionOpenNewSection("Capital Payment", "Cost Outlier Payment");
-			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getoperatingRatioOfCostCharge(),
-					operatingRatioOfCostCharge);
-			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getcapitalRatioOfCostCharge(),
-					capitalRatioOfCostCharge);
-			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getnonBurnMarginalCostFactor(),
-					nonBurnMarginalCostFactor);
-			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getfixedLossThreshold(),
-					fixedLossThreshold);
-			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getthresholdLaborPortion(),
-					thresholdLaborPortion);
+			assertThatAttributeValue(ContractingMap.getoperatingRatioOfCostCharge(), validateOperatingRatioOfCostCharge,
+					printout);
+			assertThatAttributeValue(ContractingMap.getcapitalRatioOfCostCharge(), validateCapitalRatioOfCostCharge,
+					printout);
+			assertThatAttributeValue(ContractingMap.getnonBurnMarginalCostFactor(), validateNonBurnMarginalCostFactor,
+					printout);
+			assertThatAttributeValue(ContractingMap.getfixedLossThreshold(), validateFixedLossThreshold, printout);
+			assertThatAttributeValue(ContractingMap.getthresholdLaborPortion(), validateThresholdLaborPortion,
+					printout);
+			contractModelsHelper.AssertAddOnPaymentTechnologyServicesDisplayed(
+					ContractingMap.getContractEditPricePopUpCostPaymentServicesSelectButton(), costPaymentService1,
+					costFilterPaymentService1);
+			contractModelsHelper.AssertAddOnPaymentTechnologyServicesDisplayed(
+					ContractingMap.getContractEditPricePopUpCostPaymentServicesSelectButton(), costPaymentService2,
+					costFilterPaymentService2);
 			navigateCloseSectionOpenNewSection("Cost Outlier Payment", "Add On Technology Payment");
 			contractModelsHelper.AssertAddOnPaymentTechnologyServicesDisplayed(
-					ContractingMap.getContractEditPricePopUpAddPaymentServicesSelectButton(), serviceName1,
-					filterServiceASESC2836IPPSKCentraA1);
+					ContractingMap.getContractEditPricePopUpAddPaymentServicesSelectButton(), addPaymentService1,
+					addFilterPaymentService1);
 			contractModelsHelper.AssertAddOnPaymentTechnologyServicesDisplayed(
-					ContractingMap.getContractEditPricePopUpAddPaymentServicesSelectButton(), serviceName2,
-					filterServiceASESC2836IPPSKCentraA2);
+					ContractingMap.getContractEditPricePopUpAddPaymentServicesSelectButton(), addPaymentService2,
+					addFilterPaymentService2);
 			contractModelsHelper.AssertAddOnPaymentTechnologyServicesDisplayed(
-					ContractingMap.getContractEditPricePopUpAddPaymentServicesSelectButton(), serviceName3,
-					filterServiceASESC2836IPPSKCentraA3);
-			ContractingMap.services.put(serviceName1, validateService01MaxValue);
-			ContractingMap.services.put(serviceName2, validateService02MaxValue);
-			ContractingMap.services.put(serviceName3, validateService03MaxValue);
+					ContractingMap.getContractEditPricePopUpAddPaymentServicesSelectButton(), addPaymentService3,
+					addFilterPaymentService3);
+			contractModelsHelper.AssertAddOnPaymentTechnologyServicesDisplayed(
+					ContractingMap.getContractEditPricePopUpAddPaymentServicesSelectButton(), addPaymentService4,
+					addFilterPaymentService4);
+			contractModelsHelper.AssertAddOnPaymentTechnologyServicesDisplayed(
+					ContractingMap.getContractEditPricePopUpAddPaymentServicesSelectButton(), addPaymentService5,
+					addFilterPaymentService5);
+			ContractingMap.services.put("0000 Bariatric Services (DRG 288)", "10");
+			ContractingMap.services.put("0000 DRG 302 Kidney Transplant", "2");
+			ContractingMap.services.put("0000 Drug Abuse (DRGs 433, 521-523)", "3");
+			ContractingMap.services.put("0000 HIV (DRGs 488-490)", "4");
+			ContractingMap.services.put("0000 Heart Transplant (DRG 103)", "5");
 			ContractModelsHelper.enterServicesMaxValue(ContractingMap.services);
 			doClick(modelMap.getContractModelRiskLimiterContinueCloseBtn());
 			doClick(ContractingMap.getContractFeeForServicePaymentSave());
 			waitForElementToBeVisible(ContractingMap.getContractFeeForServicePaymentWarningPopUpContinueButton());
-			assertElementIsDisplayed(modelMap.getContractModelCancelButtonInPopUp());
-			assertElementIsDisplayed(ContractingMap.getContractFeeForServicePaymentWarningPopUpContinueButton());
-			driverDelay(3000);
 			doClick(ContractingMap.getContractFeeForServicePaymentWarningPopUpContinueButton());
-			doClosePageOnLowerBar("v105 REGRESSION...");
-			doClick(modelMap.getContractModelButtonFilter());
-			waitForAjaxExtJs();
-			Thread.sleep(200);
-			doFilterCreate(filterContractModel);
-			doClick(ContractingMap.getContractFeeForServicePaymentCalculateButton());
-			waitForFirstRowCalculationBarToReach100Percent();
-			calculationStatusPageOpenViewDialog();
-			assertViewLogTitle(viewLogTitleApply);
-			confirmCalculationStatusDetailsContains("Total Items Processed: 12");
-			confirmCalculationStatusDetailsContains("Process Completed");
-			doClick(ContractingMap.getContractCalculationCloseViewDialog());
-			deleteMyCalculationStatusFirstRow();
-			ExtentReport.logPass("PASS", "FeeForServicePaymentTermsCalculate");
+			doClick(ContractingMap.getfeeForServicePayementTerms());
+			driverDelay(1000);
+			doClick(ContractingMap.getpricingMethod());
+			driverDelay(1000);
+			driver.findElement(By.xpath("(//div[text()='" + serviceModel + "'])[2]")).click();
+			assertElementIsDisplayed(ContractingMap.getCriteriaBox());
+			ExtentReport.logPass("PASS", "ConfirmMedicareYearForMedIPPS");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "FeeForServicePaymentTermsCalculate", driver, e);
+			ExtentReport.logFail("FAIL", "ConfirmMedicareYearForMedIPPS", driver, e);
 			fail(e.getMessage());
-		}
-		finally {
-			doClosePageOnLowerBar("Calculation Status");
+		} finally {
+			doClosePageOnLowerBar(contractModelName);
 			doClosePageOnLowerBar("Model Library");
 		}
 	}

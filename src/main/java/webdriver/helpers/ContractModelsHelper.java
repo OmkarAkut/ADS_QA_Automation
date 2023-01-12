@@ -11,7 +11,9 @@ import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.hamcrest.MatcherAssert;
 import org.junit.AfterClass;
@@ -648,6 +650,7 @@ public class ContractModelsHelper extends GoHelper {
 	    String columnIsSelected = null;
 	    try {
 	      waitForAjaxExtJs();
+	      scrollToView("//*[contains(@class,'x-grid-table')]/descendant::*[text()='\"+column+\"']/../..");
 	      columnIsSelected = driver.findElement(By.xpath("//*[contains(@class,'x-grid-table')]/descendant::*[text()='"+column+"']/../..")).getAttribute("class");
 	    } catch (Throwable e) {
 	      System.out.println("Element Not Found");
@@ -712,14 +715,7 @@ public class ContractModelsHelper extends GoHelper {
 	    }
 	    actualAvailableColumnNames.remove(0);
 	  }
-	  public void doFilterCreate(String[] filterParameters) throws InterruptedException {
-		    doFilterSetFilterParameters(filterParameters[0], filterParameters[1], filterParameters[2], filterParameters[3]);
-		    waitForAjaxExtJs();
-		    waitUntilElementIsClickable(dialog.getFilterDialogButtonAdd());
-		    doClick(dialog.getFilterDialogButtonAdd());
-		    waitForAjaxExtJs();
-		   
-		  }
+	 
 	  public static void filterByCalculationStartTimeInCalculationStatusPage() throws Throwable {
 		  Format f = new SimpleDateFormat("MM/dd/yyyy");
 		  String strDate = f. format(new Date());
@@ -809,7 +805,7 @@ public class ContractModelsHelper extends GoHelper {
 				waitForAjaxExtJs();
 
 				doFilterCreate(Service);
-				doClick(ContractingMap.getContractModelApplyFilterButton());
+//				doClick(ContractingMap.getContractModelApplyFilterButton());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			 e.getMessage();
@@ -837,9 +833,12 @@ public class ContractModelsHelper extends GoHelper {
 	 }
 	 public static void keyInValuesUnderPricingMethod(WebElement element, String input) {
 		 try {
-			 element.click();	
+//			 element.click();	
+//			 Thread.sleep(1000);
 			 element.clear();
+			 Thread.sleep(1000);
 			 element.sendKeys(input);
+			 Thread.sleep(1000);
 			 element.sendKeys(Keys.ENTER);
 		} catch (Exception e) {
 			
@@ -858,19 +857,19 @@ public class ContractModelsHelper extends GoHelper {
 		  }
 		  public void doFilterSetFilterParameterServices(String field, String operator, String condition, String value) throws InterruptedException {
 			    waitForAjaxExtJs();
-			    doDropdownSelectUsingOptionTextServices(dialog.getFilterDialogDropdownField(), field);
-			    doDropdownSelectUsingOptionTextServices(dialog.getFilterDialogDropdownOperator(), operator);
-			    doDropdownSelectUsingOptionTextServices(dialog.getFilterDialogDropdownCondition(), condition);
+			    doDropdownSelectUsingOptionTextServices(dialog.getFilterNameField(),dialog.getFilterDialogDropdownField(), field);
+			    doDropdownSelectUsingOptionTextServices(dialog.getFilterNameOperator(),dialog.getFilterDialogDropdownOperator(), operator);
+			    doDropdownSelectUsingOptionTextServices(dialog.getFilterNameCondition(),dialog.getFilterDialogDropdownCondition(), condition);
+
 			    doClick(dialog.getFilterDialogFormFieldValue());
 			    dialog.getFilterDialogFormFieldValue().sendKeys(value);
 			  } 
-		  public void doDropdownSelectUsingOptionTextServices(WebElement element, String optionText) throws InterruptedException {
+		  public void doDropdownSelectUsingOptionTextServices(WebElement dropdownList,WebElement element, String optionText) throws InterruptedException {
 		        waitForAjaxExtJs();
 		        doClick(element);
 		        waitForAjaxExtJs();
-		        driverDelay(200);
-		        WebElement list = driver.findElement(By.xpath("//div[contains(@id,'specialtagcombo')]//following::div[contains(@class,'floating')]//ul"));
-		        List<WebElement> menu = list.findElements(By.tagName("li"));
+		        driverDelay(300);
+		       List<WebElement> menu = dropdownList.findElements(By.tagName("li"));
 		        System.out.println(optionText);
 		       for(WebElement option : menu) {
 		        	 System.out.println("Value"+option.getText());
@@ -878,23 +877,19 @@ public class ContractModelsHelper extends GoHelper {
 		                option.click();
 		                break;
 		            }
-		        }
+		       }
+		      
 		    }
 		  public void highlightColumnsToDisplayColumnServices(String column) throws InterruptedException,Throwable {
-			    String columnPath = "//*[contains(@class,'glAccountsGrid')]/descendant::*[text()='"+column+"']";
-			    WebElement element = driver.findElement(By.xpath(columnPath));
-			    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+			    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ContractingMap.getselectAddServicesButton());
 			    Thread.sleep(1000); 
-				doClick(columnPath);
-				Thread.sleep(2000);
-			    waitForAjaxExtJs();
 			    doClick(ContractingMap.getselectAddServicesButton());
 			  }
 		  
-		  public void AssertAddOnPaymentTechnologyServicesDisplayed(String serviceName,String[] filterParameters) throws Throwable {
+		  public void AssertAddOnPaymentTechnologyServicesDisplayed(WebElement element, String serviceName,String[] filterParameters) throws Throwable {
 			  try {
-					doClick(ContractingMap.getContractEditPricePopUpServicesSelectButton());
-					
+					doClick(element);
+					waitForElementToBeVisible(ContractingMap.getContractEditPricePopUpAddServices());
 					//Validate Services under Add Services Category
 					waitForElementToBeVisible(ContractingMap.getContractEditPricePopUpAddServices());
 					assertElementIsDisplayed(ContractingMap.getContractEditPricePopUpAddServices());
@@ -914,7 +909,8 @@ public class ContractModelsHelper extends GoHelper {
 				  System.out.println(driver.findElement(By.xpath("(//div[text()='"+serviceName +"']//following::td/div)[1]")).getText());
 				  	if(!((driver.findElement(By.xpath("(//div[text()='"+serviceName +"']//following::td/div)[1]")).getText().equals(value)))) {
 					  driver.findElement(By.xpath("(//div[text()='"+serviceName +"']//following::td/div)[1]")).click();
-					  keyInValuesUnderPricingMethod(driver.findElement(By.xpath("//div[text()='"+serviceName+"']//following::input[@name='amount']")), 
+					  Thread.sleep(500);
+					  keyInValuesUnderPricingMethod(driver.findElement(By.xpath("//div[text()='"+serviceName+"']//following::div")), 
 								value);
 				  }
 				  				} catch (Exception|AssertionError e) {
@@ -924,8 +920,26 @@ public class ContractModelsHelper extends GoHelper {
 		  }
 		  public static void dragAndDropElement(WebElement from,WebElement to) throws InterruptedException {
 				Actions action=new Actions(driver);
-				action.dragAndDrop(from,to).moveToElement(to).build().perform();
-					
+				action.clickAndHold(from).moveToElement(to).release(from).build();
+				Thread.sleep(2000);
+				action.dragAndDrop(from,to).perform()	;				
 			}
+		  
+		  public static void enterServicesMaxValue(HashMap<String,String> services) throws Exception {
+		
+			  for (Map.Entry<String, String> set :
+				  services.entrySet()) {
+				  System.out.println(set.getKey().toString());
+				  scrollToView("(//div[text()='" + set.getKey().toString() + "']//following::td/div)[1]");
+				  System.out.println(driver.findElement(By.xpath("(//div[text()='"+set.getKey().toString() +"']//following::td/div)[1]")).getText());
+				  	if(!((driver.findElement(By.xpath("(//div[text()='"+set.getKey().toString() +"']//following::td/div)[1]")).getText().equals(set.getValue().toString())))) {
+					  driver.findElement(By.xpath("(//div[text()='"+set.getKey().toString() +"']//following::td/div)[1]")).click();
+					  Thread.sleep(1500);
+					  keyInValuesUnderPricingMethod(driver.findElement(By.xpath("//div[text()='"+set.getKey().toString()+"']//following::input[@name='amount']")), 
+								set.getValue().toString());
+				  }
+				
+			  }
+		  }
 		  
 }

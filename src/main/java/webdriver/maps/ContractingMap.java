@@ -1,5 +1,6 @@
 package webdriver.maps;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.openqa.selenium.WebElement;
@@ -360,10 +361,12 @@ public static WebElement getContractModelAddProviderBtn() {return getContractMod
 	public static WebElement getContractEditPricePopUpDischargeStatusMedicareYearDrpdwnList() {return ContractEditPricePopUpDischargeStatusMedicareYearDrpdwnList;}
 	
 	@FindBy(xpath = "(//label[text()='Services Receiving Add On Technology Payment ']//following::span[text()='Select'])[1]")
-	private static WebElement ContractEditPricePopUpServicesSelectButton;
-	public static WebElement getContractEditPricePopUpServicesSelectButton() {return ContractEditPricePopUpServicesSelectButton;}
+	private static WebElement ContractEditPricePopUpAddPaymentServicesSelectButton;
+	public static WebElement getContractEditPricePopUpAddPaymentServicesSelectButton() {return ContractEditPricePopUpAddPaymentServicesSelectButton;}
 	
-	
+	@FindBy(xpath = "(//label[text()='Services/Charges excluded from Outlier Calculations ']//following::span[text()='Select'])[1]")
+	private static WebElement ContractEditPricePopUpCostPaymentServicesSelectButton;
+	public static WebElement getContractEditPricePopUpCostPaymentServicesSelectButton() {return ContractEditPricePopUpCostPaymentServicesSelectButton;}
 	
 	@FindBy(xpath = "//*[text()='Add Services']")
 	private static WebElement ContractEditPricePopUpAddServices;
@@ -512,4 +515,43 @@ public static WebElement getContractModelAddProviderBtn() {return getContractMod
     @FindBy(xpath = "//label[text()='Service Model']//following::table//td[contains(@class,'treeNodeClsShow')]/div")
     private static WebElement selectDropServiceModelPanel;
     public static WebElement getselectDropServiceModelPanel() {return selectDropServiceModelPanel;}
-    }
+    
+    @FindBy(name = "drgTypeString")
+    private static WebElement industryClassificationInput;
+    public static WebElement getindustryClassificationInput() {return industryClassificationInput;}
+    
+    @FindBy(xpath = "//label[text()='Industry Classification Scheme']/ancestor::div/following-sibling::div[contains(@class,'boundlist')][2]/div/ul")
+    private static WebElement industryClassificationInputList;
+    public static WebElement industryClassificationInputList() {return industryClassificationInputList;}
+    
+    @FindBy(xpath = "//label[text()='COLA Wage Adjusted Rate']//following::div[1]")
+    private static WebElement colaWageAdjustedRate;
+    public static WebElement getcolaWageAdjustedRate() {return colaWageAdjustedRate;}
+    
+    @FindBy(xpath = "//label[text()='Wage Adjusted Rate']//following::div[1]")
+    private static WebElement WageAdjustedRate;
+    public static WebElement getWageAdjustedRate() {return WageAdjustedRate;}
+    
+    @FindBy(xpath = "//label[text()='COLA Geographic Adjusted Rate']//following::div[1]")
+    private static WebElement colaGeographicAdjustedRate;
+    public static WebElement getcolaGeographicAdjustedRate() {return colaGeographicAdjustedRate;}
+    
+    @FindBy(xpath = "//label[text()='Industry Classification Scheme']/ancestor::div/following-sibling::div[contains(@class,'boundlist')]/div/ul")
+    private static WebElement industryClassificationList;
+    public static WebElement industryClassificationList() {return industryClassificationList;}
+    
+    @FindBy(xpath = "//label[text()='Criteria']//following::textarea[@readonly='readonly']")
+    private static WebElement CriteriaBox;
+    public static WebElement getCriteriaBox() {return CriteriaBox;}
+    
+    @FindBy(xpath = "//div[text()='Fee For Service Payment Terms']")
+    private static WebElement feeForServicePayementTerms;
+    public static WebElement getfeeForServicePayementTerms() {return feeForServicePayementTerms;}
+    
+    @FindBy(xpath = "(//span[text()='Pricing Method']//following::div/img)[1]")
+    private static WebElement pricingMethod;
+    public static WebElement getpricingMethod() {return pricingMethod;}
+    
+	public static HashMap<String, String> services=new HashMap<>();
+
+}
