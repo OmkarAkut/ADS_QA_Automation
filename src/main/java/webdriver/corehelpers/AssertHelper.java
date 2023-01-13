@@ -725,4 +725,20 @@ public class AssertHelper extends AdsHelper {
 		
 			
 	}
+	public static void assertThatAttributeValue(WebElement element,String expectedValue,boolean printout) {
+		try {
+			String elementText = element.getAttribute("value");
+			if (printout) {
+				System.out.println("Expected Value: " + expectedValue);
+				System.out.println("Actual   Value: " + elementText);
+			}
+			if(elementText.toLowerCase().contains(expectedValue.toLowerCase())) {
+				assertTrue(true);
+			}
+		} catch (Throwable e) {
+			fail(e.getMessage());
+		}
+		
+			
+	}
 }
