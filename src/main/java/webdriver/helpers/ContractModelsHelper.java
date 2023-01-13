@@ -831,7 +831,7 @@ public class ContractModelsHelper extends GoHelper {
 			 
 		 }
 	 }
-	 public static void keyInValuesUnderPricingMethod(WebElement element, String input) {
+	 public static void keyInValues(WebElement element, String input) {
 		 try {
 //			 element.click();	
 //			 Thread.sleep(1000);
@@ -880,7 +880,7 @@ public class ContractModelsHelper extends GoHelper {
 		       }
 		      
 		    }
-		  public void highlightColumnsToDisplayColumnServices(String column) throws InterruptedException,Throwable {
+		  public static void highlightColumnsToDisplayColumnServices() throws InterruptedException,Throwable {
 			    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", ContractingMap.getselectAddServicesButton());
 			    Thread.sleep(1000); 
 			    doClick(ContractingMap.getselectAddServicesButton());
@@ -898,7 +898,7 @@ public class ContractModelsHelper extends GoHelper {
 				} catch (Exception|AssertionError e) {
 					doClick(ContractingMap.getaddOnServicesPopUpFilterButton());
 					doFilterCreateForServices(filterParameters);
-					highlightColumnsToDisplayColumnServices(serviceName);
+					highlightColumnsToDisplayColumnServices();
 					doClick(ContractingMap.getContractFeeForServicePaymentApply());
 					}
 			  
@@ -910,7 +910,7 @@ public class ContractModelsHelper extends GoHelper {
 				  	if(!((driver.findElement(By.xpath("(//div[text()='"+serviceName +"']//following::td/div)[1]")).getText().equals(value)))) {
 					  driver.findElement(By.xpath("(//div[text()='"+serviceName +"']//following::td/div)[1]")).click();
 					  Thread.sleep(500);
-					  keyInValuesUnderPricingMethod(driver.findElement(By.xpath("//div[text()='"+serviceName+"']//following::div")), 
+					  keyInValues(driver.findElement(By.xpath("//div[text()='"+serviceName+"']//following::div")), 
 								value);
 				  }
 				  				} catch (Exception|AssertionError e) {
@@ -935,7 +935,7 @@ public class ContractModelsHelper extends GoHelper {
 				  	if(!((driver.findElement(By.xpath("(//div[text()='"+set.getKey().toString() +"']//following::td/div)[1]")).getText().equals(set.getValue().toString())))) {
 					  driver.findElement(By.xpath("(//div[text()='"+set.getKey().toString() +"']//following::td/div)[1]")).click();
 					  Thread.sleep(1500);
-					  keyInValuesUnderPricingMethod(driver.findElement(By.xpath("//div[text()='"+set.getKey().toString()+"']//following::input[@name='amount']")), 
+					  keyInValues(driver.findElement(By.xpath("//div[text()='"+set.getKey().toString()+"']//following::input[@name='amount']")), 
 								set.getValue().toString());
 				  }
 				

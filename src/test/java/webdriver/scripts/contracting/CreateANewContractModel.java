@@ -56,7 +56,7 @@ public class CreateANewContractModel extends CalculationHelper {
 	@Test
 	public void test01CreateNewContractModel() throws Throwable {
 		try {
-			doClick(ContractingMap.getNewContractModelButton());
+			doClick(modelMap.getNewContractModelButton());
 			waitForElementToBeVisible(ContractingMap.getNewContractModelPopUp());
 			assertElementIsDisplayed(ContractingMap.getNewContractModelPopUp());// assert contract model pop up
 			doClick(ContractingMap.getContractModelNameInput());

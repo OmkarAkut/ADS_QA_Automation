@@ -84,9 +84,9 @@ public class ContractingMap extends MapConfig {
 
 
 	@FindBy(xpath = "//div[contains(@class,'horzOverflow ')]//div[contains(@id,'acommontbar')]//span[text()='New']//parent::button")
-	public static WebElement NewContractModelButton1;
+	public   WebElement NewContractModelButton1;
 
-	public static WebElement getNewContractModelButton() {
+	public   WebElement getNewContractModelButton() {
 		return NewContractModelButton1;
 	}
 
@@ -139,12 +139,12 @@ public static WebElement getContractModelAddProviderBtn() {return getContractMod
 	public WebElement getNewFolderPopUp() {return getNewFolderPopUp;}
 
 	@FindBy(xpath = "//div[contains(@class,'x-window-header-text-container')]//following::td[contains(@id,'textfield')]/input")
-	private static WebElement getNewFolderNameInput;
-	public WebElement getNewFolderNameInput() {return getNewFolderNameInput;}
+	private  WebElement getNewFolderNameInput;
+	public  WebElement getNewFolderNameInput() {return getNewFolderNameInput;}
 
 	@FindBy(xpath = "//div[contains(@class,'x-window-header-text-container')]//following::span[text()='Save & Close']")
-	private static WebElement getNewFolderNameSave;
-	public WebElement getNewFolderNameSave() {return getNewFolderNameSave;}
+	private  WebElement getNewFolderNameSave;
+	public  WebElement getNewFolderNameSave() {return getNewFolderNameSave;}
 
 	@FindBy(xpath = "(//td[contains(@class,'x-grid-cell-treecolumn')]/*[text()='Contracting']/img)[1]")
 	private static WebElement getContractingTreeExpand;
@@ -194,9 +194,9 @@ public static WebElement getContractModelAddProviderBtn() {return getContractMod
 	private WebElement ContractModelPasteNameInput;
 	public WebElement getContractModelPasteNameInput() {return ContractModelPasteNameInput;}
 	
-	@FindBy(xpath = "//span[text()='Save & Close']")
-	private WebElement ContractModelSaveCopy;
-	public WebElement getContractModelSaveCopy() {return ContractModelSaveCopy;}
+	@FindBy(xpath = "//span[text()='Save & Close']//parent::button")
+	private  WebElement ContractModelSaveCopy;
+	public  WebElement getContractModelSaveCopy() {return ContractModelSaveCopy;}
 	
 	@FindBy(xpath = "//div[contains(@class,'horzOverflow')]/div//span[text()='Delete']//parent::button")
 	private WebElement ContractModelDeleteButton;
@@ -385,8 +385,8 @@ public static WebElement getContractModelAddProviderBtn() {return getContractMod
 	public static WebElement getContractFeeForServicePaymentCalculateButton() {return ContractFeeForServicePaymentCalculateButton;}
 	
 	@FindBy(xpath = "//span[text()='Apply']")
-	private static WebElement ContractFeeForServicePaymentApply;
-	public static WebElement getContractFeeForServicePaymentApply() {return ContractFeeForServicePaymentApply;}
+	private static  WebElement ContractFeeForServicePaymentApply;
+	public  static WebElement getContractFeeForServicePaymentApply() {return ContractFeeForServicePaymentApply;}
 	
 	@FindBy(xpath = "//div[contains(@class,'x-btn windowbtn')]//span[text()='Cancel']")
 	private static WebElement ContractCalculationCloseViewDialog;
@@ -492,7 +492,7 @@ public static WebElement getContractModelAddProviderBtn() {return getContractMod
 	private static WebElement addOnServicesPopUpFilterButton;
 	public static WebElement getaddOnServicesPopUpFilterButton() {return addOnServicesPopUpFilterButton;}
 	
-	@FindBy(xpath = "//*[text()='Add Services']//following::span[text()='Add']//parent::button")
+	@FindBy(xpath = "//div[contains(@class,'x-toolbar-footer')]//span[text()='Add']")
 	private static WebElement addOnServicesPopUpFilterAddButton;
 	public static WebElement getaddOnServicesPopUpFilterAddButton() {return addOnServicesPopUpFilterAddButton;}
 	
@@ -504,7 +504,7 @@ public static WebElement getContractModelAddProviderBtn() {return getContractMod
     private static WebElement statusFilterDialogButtonApplyFilter;
     public static WebElement getFilterDialogButtonApplyFilter() {return statusFilterDialogButtonApplyFilter;}
     
-    @FindBy(xpath = "//span[text()='Add Services']//following::span[text()='Select']")
+    @FindBy(xpath = "//div[contains(@class,'CustomMultiselect')]//span[text()='Select']")
     private static WebElement selectAddServicesButton;
     public static WebElement getselectAddServicesButton() {return selectAddServicesButton;}
     
@@ -554,4 +554,5 @@ public static WebElement getContractModelAddProviderBtn() {return getContractMod
     
 	public static HashMap<String, String> services=new HashMap<>();
 
+	
 }

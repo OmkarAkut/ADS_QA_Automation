@@ -169,29 +169,29 @@ public class ConfirmFY2023MedicareYearisAvailableForMedIPPS extends CalculationH
 			doDropdownSelectUsingOptionText(ContractingMap.getContractEditPricePopUpDischargeStatusMedicareYearDrpdwn(),
 					ContractingMap.getContractEditPricePopUpDischargeStatusMedicareYearDrpdwnList(), medicareYear);
 //			//add inputs into different category
-			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getoperatingIMEAdjustmentFactor(),
+			ContractModelsHelper.keyInValues(ContractingMap.getoperatingIMEAdjustmentFactor(),
 					operatingIMEAdjustmentFactor);
-			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getcapitalIMEAdjustmentFactor(),
+			ContractModelsHelper.keyInValues(ContractingMap.getcapitalIMEAdjustmentFactor(),
 					capitalIMEAdjustmentFactor);
-			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getoperatingDSHAdjustmentFactor(),
+			ContractModelsHelper.keyInValues(ContractingMap.getoperatingDSHAdjustmentFactor(),
 					operatingDSHAdjustmentFactor);
-			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getcapitalDSHAdjustmentFactor(),
+			ContractModelsHelper.keyInValues(ContractingMap.getcapitalDSHAdjustmentFactor(),
 					capitalDSHAdjustmentFactor);
 			navigateCloseSectionOpenNewSection("General", "Operating Payment");
-			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getareaWageIndex(), areaWageIndex);
+			ContractModelsHelper.keyInValues(ContractingMap.getareaWageIndex(), areaWageIndex);
 			assertThatAttributeValue(ContractingMap.getnationalLaborRate(), expNationalLaborRate, printout);
 			assertThatAttributeValue(ContractingMap.getnationalNonLaborRate(), expNationalNonLaborRate, printout);
-			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.gethospitalReadmissionFactor(),
+			ContractModelsHelper.keyInValues(ContractingMap.gethospitalReadmissionFactor(),
 					hospitalReadmissionFactor);
-			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getuncompensatedCarePayment(),
+			ContractModelsHelper.keyInValues(ContractingMap.getuncompensatedCarePayment(),
 					uncompensatedCarePayment);
-			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getvalueBasedPurchasingFactor(),
+			ContractModelsHelper.keyInValues(ContractingMap.getvalueBasedPurchasingFactor(),
 					valueBasedPurchasingFactor);
-			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getReduction(), Reduction);
+			ContractModelsHelper.keyInValues(ContractingMap.getReduction(), Reduction);
 			assertThatString(ContractingMap.getcolaWageAdjustedRate(), colaWageAdjustedRate, printout);
 			assertThatString(ContractingMap.getWageAdjustedRate(), WageAdjustedRate, printout);
 			navigateCloseSectionOpenNewSection("Operating Payment", "Capital Payment");
-			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getcapitalGeographicAdjustmentFactor(),
+			ContractModelsHelper.keyInValues(ContractingMap.getcapitalGeographicAdjustmentFactor(),
 					capitalGeographicAdjustmentFactor);
 			assertThatString(ContractingMap.getcolaGeographicAdjustedRate(), colaGeographicAdjustedRate, printout);
 			assertThatAttributeValue(ContractingMap.getcapitalColaFactor(), validateCapitalColaFactor, printout);

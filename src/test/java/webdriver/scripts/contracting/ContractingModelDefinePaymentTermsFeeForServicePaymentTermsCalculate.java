@@ -174,46 +174,46 @@ public class ContractingModelDefinePaymentTermsFeeForServicePaymentTermsCalculat
 			doDropdownSelectUsingOptionText(ContractingMap.getContractEditPricePopUpDischargeStatusMedicareYearDrpdwn(),
 					ContractingMap.getContractEditPricePopUpDischargeStatusMedicareYearDrpdwnList(), medicareYear);
 //			//add inputs into different category
-			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getoperatingIMEAdjustmentFactor(),
+			ContractModelsHelper.keyInValues(ContractingMap.getoperatingIMEAdjustmentFactor(),
 					operatingIMEAdjustmentFactor);
-			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getcapitalIMEAdjustmentFactor(),
+			ContractModelsHelper.keyInValues(ContractingMap.getcapitalIMEAdjustmentFactor(),
 					capitalIMEAdjustmentFactor);
-			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getoperatingDSHAdjustmentFactor(),
+			ContractModelsHelper.keyInValues(ContractingMap.getoperatingDSHAdjustmentFactor(),
 					operatingDSHAdjustmentFactor);
-			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getcapitalDSHAdjustmentFactor(),
+			ContractModelsHelper.keyInValues(ContractingMap.getcapitalDSHAdjustmentFactor(),
 					capitalDSHAdjustmentFactor);
 			navigateCloseSectionOpenNewSection("General", "Operating Payment");
-			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getareaWageIndex(), areaWageIndex);
-			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getnationalLaborRate(),
+			ContractModelsHelper.keyInValues(ContractingMap.getareaWageIndex(), areaWageIndex);
+			ContractModelsHelper.keyInValues(ContractingMap.getnationalLaborRate(),
 					nationalLaborRate);
-			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getnationalNonLaborRate(),
+			ContractModelsHelper.keyInValues(ContractingMap.getnationalNonLaborRate(),
 					nationalNonLaborRate);
-			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.gethospitalReadmissionFactor(),
+			ContractModelsHelper.keyInValues(ContractingMap.gethospitalReadmissionFactor(),
 					hospitalReadmissionFactor);
-			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getuncompensatedCarePayment(),
+			ContractModelsHelper.keyInValues(ContractingMap.getuncompensatedCarePayment(),
 					uncompensatedCarePayment);
-			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getvalueBasedPurchasingFactor(),
+			ContractModelsHelper.keyInValues(ContractingMap.getvalueBasedPurchasingFactor(),
 					valueBasedPurchasingFactor);
-			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getReduction(), Reduction);
-			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getlocationAndOperatingFactor(),
+			ContractModelsHelper.keyInValues(ContractingMap.getReduction(), Reduction);
+			ContractModelsHelper.keyInValues(ContractingMap.getlocationAndOperatingFactor(),
 					locationAndOperatingFactor);
 			navigateCloseSectionOpenNewSection("Operating Payment", "Capital Payment");
-			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getcapitalGeographicAdjustmentFactor(),
+			ContractModelsHelper.keyInValues(ContractingMap.getcapitalGeographicAdjustmentFactor(),
 					capitalGeographicAdjustmentFactor);
-			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getcapitalColaFactor(),
+			ContractModelsHelper.keyInValues(ContractingMap.getcapitalColaFactor(),
 					capitalColaFactor);
-			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getnationalCapitalRate(),
+			ContractModelsHelper.keyInValues(ContractingMap.getnationalCapitalRate(),
 					nationalCapitalRate);
 			navigateCloseSectionOpenNewSection("Capital Payment", "Cost Outlier Payment");
-			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getoperatingRatioOfCostCharge(),
+			ContractModelsHelper.keyInValues(ContractingMap.getoperatingRatioOfCostCharge(),
 					operatingRatioOfCostCharge);
-			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getcapitalRatioOfCostCharge(),
+			ContractModelsHelper.keyInValues(ContractingMap.getcapitalRatioOfCostCharge(),
 					capitalRatioOfCostCharge);
-			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getnonBurnMarginalCostFactor(),
+			ContractModelsHelper.keyInValues(ContractingMap.getnonBurnMarginalCostFactor(),
 					nonBurnMarginalCostFactor);
-			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getfixedLossThreshold(),
+			ContractModelsHelper.keyInValues(ContractingMap.getfixedLossThreshold(),
 					fixedLossThreshold);
-			ContractModelsHelper.keyInValuesUnderPricingMethod(ContractingMap.getthresholdLaborPortion(),
+			ContractModelsHelper.keyInValues(ContractingMap.getthresholdLaborPortion(),
 					thresholdLaborPortion);
 			navigateCloseSectionOpenNewSection("Cost Outlier Payment", "Add On Technology Payment");
 			contractModelsHelper.AssertAddOnPaymentTechnologyServicesDisplayed(

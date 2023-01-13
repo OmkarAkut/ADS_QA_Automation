@@ -187,5 +187,60 @@ public class ModelLibraryMap extends MapConfig {
     public WebElement getModelLibraryFilterButtonCancelAndClose() {return modelLibraryFilterButtonCancelAndClose;}
 
     /******Model Library Filter End******/
+    /*****Episodes***/
+    @FindBy(xpath = "//div[contains(@class,'x-window-closable ')]//div[contains(@id,'window')]//span[text()='New Episode Model']")
+	public  WebElement getNewpisodeModelPopUp;
+	public  WebElement getNewEpisodeModelPopUp() { return getNewpisodeModelPopUp;}
+	
+	@FindBy(name = "preAdmitDays")
+    private  WebElement preAdmissionPhase;
+    public  WebElement getPreAdmissionPhase() {return preAdmissionPhase;}
+    
+    @FindBy(name = "postDischargeDays")
+    private  WebElement preDischargePhase;
+    public  WebElement getpreDischargePhase() {return preDischargePhase;}
+    
+    @FindBy(xpath = "(//span[text()='Triggers']//following::span[text()='Add'])[1]")
+    private  WebElement triggerAddButton;
+    public  WebElement getTriggerAddButton() {return triggerAddButton;}
+    
+    @FindBy(xpath = "(//span[text()='Triggers']//following::span[text()='Remove'])[1]")
+    private  WebElement triggerRemoveButton;
+    public  WebElement getTriggerRemoveButton() {return triggerRemoveButton;}
+    
+    @FindBy(xpath = "//span[text()='Triggers Selector']")
+    private  WebElement triggerSelectorPopUp;
+    public  WebElement getTriggerSelectorPopUp() {return triggerSelectorPopUp;}
+    
+    @FindBy(name = "populationId")
+    private static WebElement episodePopulationDropdown;
+    public static WebElement getEpisodePopulationDropdown() {return episodePopulationDropdown;}
 
+    @FindBy(xpath = "//label[text()='Share Log in Selected Shared Location']//preceding::input[1]")
+    private  WebElement shareLogCheckbox;
+    public  WebElement getshareLogCheckbox() {return shareLogCheckbox;}
+    
+    @FindBy(xpath = "//div[text()='Model Episode']/img[3]")
+    private  WebElement modelEpisode;
+    public  WebElement getModelEpisode() {return modelEpisode;} 
+    
+    @FindBy(xpath = "//*[contains(@id, 'panel')][text()='Triggers']/parent::div/following-sibling::div/img")
+    private  WebElement openNewSection;
+    public  WebElement getOpenNewSection() {return openNewSection;} 
+    
+    @FindBy(xpath = "//div[contains(@class,'x-toolbar-footer')]//span[text()='Save']//parent::button")
+    private  WebElement SaveButton;
+    public  WebElement getSaveButton() {return SaveButton;} 
+    
+    @FindBy(xpath = "//div[contains(@class,'x-toolbar-footer')]//span[text()='Assign']//parent::button")
+    private  WebElement AssignButton;
+    public  WebElement getAssignButton() {return AssignButton;}
+    
+    @FindBy(xpath = "//span[contains(@id,'messagebox')]")
+    private  WebElement warningPopUp;
+    public  WebElement getWarningPopUp() {return warningPopUp;}
+    
+    @FindBy(xpath = "//span[contains(@id,'messagebox')]//following::span[text()='Remove']//parent::button")
+    private  WebElement RemoveButton;
+    public  WebElement getRemoveButton() {return RemoveButton;}
 }
