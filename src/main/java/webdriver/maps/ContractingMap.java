@@ -552,7 +552,44 @@ public static WebElement getContractModelAddProviderBtn() {return getContractMod
     private static WebElement pricingMethod;
     public static WebElement getpricingMethod() {return pricingMethod;}
     
+    
+    @FindBy(xpath = "//span[text()='Lump Sum Payment Allocation Rule']//following::span[text()='Add']//parent::button")
+    private static WebElement lumpSumAddButton;
+    public static WebElement getlumpSumAddButton() {return lumpSumAddButton;}
+    
+    @FindBy(name = "name")
+    private static WebElement InputName;
+    public static WebElement getInputName() {return InputName;}
+    
+    @FindBy(name = "description")
+    private static WebElement FieldDropdown;
+    public static WebElement getFieldDropdown() {return FieldDropdown;}
+    
+    @FindBy(name = "value")
+    private static WebElement ValueInput;
+    public static WebElement getValueInput() {return ValueInput;}
+    
+    @FindBy(name = "orderIndex")
+    private static WebElement OrderInut;
+    public static WebElement getOrderInut() {return OrderInut;}
+    
+    @FindBy(xpath = "//div[contains(@id,'warningwindow')]//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//following::span[text()='Save']")
+    private static WebElement SaveButton;
+    public static WebElement getSaveButton() {return SaveButton;}
+    
 	public static HashMap<String, String> services=new HashMap<>();
+	
+	@FindBy(xpath = "//div[contains(@id,'contracttaskfolder')]//*[text()='Calculate']")
+	private static  WebElement assertCalculateOption;
+	public static WebElement getAssertCalculateOption() {return assertCalculateOption;}
+	
+	@FindBy(xpath = "(//div[contains(@class,'horzOverflow')]/div//span[text()='Delete']//parent::button)[2]")
+	private WebElement TermDeleteButton;
+	public WebElement getTermDeleteButton() {return TermDeleteButton;}
+	
+	@FindBy(xpath = "//div[contains(@id,'messagebox')]/div//span[text()='Delete']//parent::button")
+	private static WebElement DeleteButtonMesaageBox;
+	public static WebElement getDeleteButtonMesaageBox() {return DeleteButtonMesaageBox;}
 
 	
 }

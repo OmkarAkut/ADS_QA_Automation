@@ -243,4 +243,8 @@ public class ModelLibraryMap extends MapConfig {
     @FindBy(xpath = "//span[contains(@id,'messagebox')]//following::span[text()='Remove']//parent::button")
     private  WebElement RemoveButton;
     public  WebElement getRemoveButton() {return RemoveButton;}
+    
+    @FindBy(xpath = "//span[contains(@id,'messagebox')]//following::span[text()='Return']//parent::button")
+    private  static WebElement ReturnButton;
+    public static WebElement getReturnButton() {return ReturnButton;}
 }

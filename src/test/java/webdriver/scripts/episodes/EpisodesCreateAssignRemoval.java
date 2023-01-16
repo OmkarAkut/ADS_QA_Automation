@@ -4,8 +4,10 @@ import static org.junit.Assert.fail;
 
 import java.text.SimpleDateFormat;
 
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.openqa.selenium.By;
 
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
@@ -16,37 +18,36 @@ import webdriver.maps.ModelLibraryMap;
 import webdriver.maps.ModelLibraryMap;
 import webdriver.maps.mapbuilder.BuildMap;
 
-
-public class EpisodesCreateAssignRemoval extends CalculationHelper{
+public class EpisodesCreateAssignRemoval extends CalculationHelper {
 	static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
 	static String episodeModelName = "Episode Model " + currentDateTime;
-	static String enterPreAdmissionPhase="3";
-	static String enterPostDischargePhase="60";
-	private static String[] trigerrFilter= {"Name","Is","Equal To","CMS CJR Trigger"};
-	private static String populationName="# Episodes of Care Population CJR 2016";
-	 static  ContractingMap contractingMap;
-	 static ModelLibraryMap modelMap;
-	 private String serviceName="CMS CJR Trigger";
-		ContractModelsHelper contractModelsHelper = new ContractModelsHelper();
+	static String enterPreAdmissionPhase = "3";
+	static String enterPostDischargePhase = "60";
+	private static String[] trigerrFilter = { "Name", "Is", "Equal To", "CMS CJR Trigger" };
+	private static String populationName = "# Episodes of Care Population CJR 2016";
+	static ContractingMap contractingMap;
+	static ModelLibraryMap modelMap;
+	private String serviceName = "CMS CJR Trigger";
+	ContractModelsHelper contractModelsHelper = new ContractModelsHelper();
 
-/** Automates test ticket ADS-1492. */
-	
+	/** Automates test ticket ADS-6296. */
+
 	@BeforeClass
-	public static void setupScript() throws Exception,Throwable {
-		ExtentReport.reportCreate("EpisodesCreateAssignRemoval", "webdriver.scripts.episodes", "EpisodesCreateAssignRemoval");
+	public static void setupScript() throws Exception, Throwable {
+		ExtentReport.reportCreate("EpisodesCreateAssignRemoval", "webdriver.scripts.episodes",
+				"EpisodesCreateAssignRemoval");
 		try {
-			 contractingMap = BuildMap.getInstance(driver, ContractingMap.class);
-			 modelMap=BuildMap.getInstance(driver, ModelLibraryMap.class);
+			contractingMap = BuildMap.getInstance(driver, ContractingMap.class);
+			modelMap = BuildMap.getInstance(driver, ModelLibraryMap.class);
 			Login.loginUser("EpisodeAnalyst1");
 			goToPage("Episode Models");
 			ExtentReport.logPass("PASS", "setupScript");
-		} catch (Exception|AssertionError e) {
+		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "Failure in setupScript", driver, e);
 			fail(e.getMessage());
 		}
 	}
 
-	
 	@Test
 	public void test01EpisodeCreation() throws Throwable {
 		try {
@@ -76,12 +77,16 @@ public class EpisodesCreateAssignRemoval extends CalculationHelper{
 			doClick(contractingMap.getContractFeeForServicePaymentApply());
 			doClick(contractingMap.getContractModelSaveCopy());
 			doClick(modelMap.getshareLogCheckbox());
-			
-		} catch (Exception|AssertionError e) {
-			
+
+			ExtentReport.logPass("PASS", "test01EpisodeCreation");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test01EpisodeCreation",
+					driver, e);
+			fail(e.getMessage());
 		}
-		
+
 	}
+
 	@Test
 	public void test02VerifyAssinEpisodeToEncounter() throws Throwable {
 		try {
@@ -92,29 +97,61 @@ public class EpisodesCreateAssignRemoval extends CalculationHelper{
 			doClick(modelMap.getshareLogCheckbox());
 			doClick(modelMap.getSaveButton());
 			doClick(modelMap.getAssignButton());
-			 waitForSpinnerToEnd();
-		      waitForFirstRowCalculationBarToReach100Percent();
-		      calculationStatusPageOpenViewDialog();
-		      confirmCalculationStatusDetailsContains("Total number of Encounters tagged as triggers : 10");
-		      confirmCalculationStatusDetailsContains("Total number of Encounters tagged as pre-admission inclusions: 0");
-		      confirmCalculationStatusDetailsContains("Total number of Encounters tagged as acute inclusions: 0");
-		      confirmCalculationStatusDetailsContains("Total number of Encounters tagged as post-discharge inclusions: 0");
-		      confirmCalculationStatusDetailsContains("Remove Total number of tagged Encounters: 0");
-		      closeViewDialog();
-		      deleteMyCalculationStatusFirstRow();
-		      doClosePageOnLowerBar("Calculation Status");
-		      doClickTreeItemWithCheckbox("General Information - Episode");
-		  	navigateOpenNewSection(modelMap.getOpenNewSection());
-		      doClick("//div[text()='"+serviceName+"']");
-		      doClick(modelMap.getTriggerRemoveButton());
-		      waitForElementToBeVisible(modelMap.getWarningPopUp());
-		      doClick(modelMap.getRemoveButton());
-		      
-		      ExtentReport.logPass("PASS", "test04ClickAssignButtonAndAssertCalculationSummaryDetailsMatchExpected");
-		     	} catch (Exception|AssertionError e) {
-		     		ExtentReport.logFail("FAIL", "test04ClickAssignButtonAndAssertCalculationSummaryDetailsMatchExpected", driver, e);
-		     		fail(e.getMessage());
-		     	}			
+			waitForSpinnerToEnd();
+			waitForFirstRowCalculationBarToReach100Percent();
+			calculationStatusPageOpenViewDialog();
+			clickLastPageIconOnCalculationStatusViewLog();
+			confirmCalculationStatusDetailsContains("Total number of Encounters tagged as triggers : 10");
+			confirmCalculationStatusDetailsContains("Total number of Encounters tagged as pre-admission inclusions: 0");
+			confirmCalculationStatusDetailsContains("Total number of Encounters tagged as acute inclusions: 0");
+			confirmCalculationStatusDetailsContains(
+					"Total number of Encounters tagged as post-discharge inclusions: 0");
+			confirmCalculationStatusDetailsContains("Remove Total number of tagged Encounters: 0");
+			closeViewDialog();
+			deleteMyCalculationStatusFirstRow();
+			doClosePageOnLowerBar("Calculation Status");
+			doClickTreeItemWithCheckbox("General Information - Episode");
+			navigateOpenNewSection(modelMap.getOpenNewSection());
+			doClick("//div[text()='" + serviceName + "']");
+			doClick(modelMap.getTriggerRemoveButton());
+			waitForElementToBeVisible(modelMap.getWarningPopUp());
+			doClick(modelMap.getRemoveButton());
+			doClickTreeItemWithCheckbox("Assign Episode to Encounters");
+			doClick(contractingMap.getContractModelRiskLimiterMessageBoxCancelCloseBtn());
+			doClick(contractingMap.getContractModelButtonColumnsToDisplayModalRemove());
+			waitForSpinnerToEnd();
+			waitForFirstRowCalculationBarToReach100Percent();
+
+			calculationStatusPageOpenViewDialog();
+			confirmCalculationStatusDetailsContains("Total EFRs in Population to process: 10");
+			confirmCalculationStatusDetailsContains("Remove Total number of tagged Encounters: 10");
+			closeViewDialog();
+			doClosePageOnLowerBar("Calculation Status");
+
+			doClosePageOnLowerBar(episodeModelName);
+			doClick(contractingMap.getContractModelDeleteButton());
+			waitForElementToBeVisible(contractingMap.getContractModelDeletePopUp());
+			assertElementIsDisplayed(contractingMap.getContractModelDeletePopUp());
+			doClick(contractingMap.getContractModelDeleteButton());
+			waitForElementToBeVisible(contractingMap.getContractModelDeletePopUp());
+			assertElementIsDisplayed(contractingMap.getContractModelDeleteButtonInPopUp());
+			assertElementIsDisplayed(contractingMap.getContractModelCancelButtonInPopUp());
+			doClick(contractingMap.getContractModelDeleteButtonInPopUp());
+			waitForElementToBeVisible(
+					driver.findElement(By.xpath("//*[text()='There is no data available to display.']")));
+			doClosePageOnLowerBar("Model Library");
+
+			ExtentReport.logPass("PASS", "test02VerifyAssinEpisodeToEncounter");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test02VerifyAssinEpisodeToEncounter",
+					driver, e);
+			fail(e.getMessage());
 		}
 	}
+	@AfterClass
+	public static void endtest() throws Exception {
 
+		ExtentReport.report.flush();
+
+	}
+}

@@ -2,6 +2,7 @@ package webdriver.scripts.contracting;
 
 import static org.junit.Assert.fail;
 
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.Keys;
@@ -15,7 +16,6 @@ import webdriver.maps.CostingMap;
 import webdriver.maps.mapbuilder.BuildMap;
 
 public class GeneratePsychCombinedComorbidityFactor extends CalculationHelper {
-	private static ContractingMap modelMap;
 	final static String aTozPage = "Psych Combined Comorbidity Assignments";
 	final static String batch = "v104 REGRESSION Comorbidity Code 1st";
 	static String viewLogTitleApply = "v104 REGRESSION Comorbidity Code 1st";
@@ -26,14 +26,12 @@ public class GeneratePsychCombinedComorbidityFactor extends CalculationHelper {
 	public static void setupScript() throws Exception, Throwable {
 		ExtentReport.reportCreate("GeneratePsychCombinedComorbidityFactor", "webdriver.scripts.contracting", "GeneratePsychCombinedComorbidityFactor");
 		try {
-			modelMap = BuildMap.getInstance(driver, ContractingMap.class);
 			costingMap = BuildMap.getInstance(driver, CostingMap.class);
 			Login.loginUser("ContractAnalyst1");
 			goToPage("Maintain Data");
 			selectMaintainDataAtoZ(aTozPage);
 			openMaintainDataBatch(batch);
 			waitForDisplayedSpinnerToEnd();
-//			assertThatString(modelMap.getContractModelHeader(), "Maintain Data", printout);
 			ExtentReport.logPass("PASS", "setupScript");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "setupScript", driver, e);
@@ -44,7 +42,6 @@ public class GeneratePsychCombinedComorbidityFactor extends CalculationHelper {
 	@Test
 	public void test01AssertResetCalculate() throws Throwable {
 		try {
-//			navigateCloseSectionOpenNewSection("Diagnoses", "Dates & Files");
 			ContractModelsHelper.scrollToView(ContractingMap.getContractFileSelect());
 			ContractingMap.getContractFileSelect().sendKeys(Keys.ENTER);;
 			driverDelay(500);
@@ -82,6 +79,12 @@ public class GeneratePsychCombinedComorbidityFactor extends CalculationHelper {
 			doClosePageOnLowerBar("Maintain Data");
 
 		}
+
+	}
+	@AfterClass
+	public static void endtest() throws Exception {
+
+		ExtentReport.report.flush();
 
 	}
 }
