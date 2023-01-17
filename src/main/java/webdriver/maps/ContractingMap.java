@@ -587,9 +587,64 @@ public static WebElement getContractModelAddProviderBtn() {return getContractMod
 	private WebElement TermDeleteButton;
 	public WebElement getTermDeleteButton() {return TermDeleteButton;}
 	
+	@FindBy(xpath = "//span[text()='Pricing Method']//following::label[text()='Service Model']")
+	private static WebElement PricingLabelServiceModel;
+	public static WebElement getPricingLabelServiceModel() {return PricingLabelServiceModel;}
+	
 	@FindBy(xpath = "//div[contains(@id,'messagebox')]/div//span[text()='Delete']//parent::button")
 	private static WebElement DeleteButtonMesaageBox;
 	public static WebElement getDeleteButtonMesaageBox() {return DeleteButtonMesaageBox;}
+	
+	@FindBy(xpath = "//span[text()='Pricing Method']//following::label[text()='Pricing Methods']")
+	private static WebElement PricingLabelPricingMethods;
+	public static WebElement getPricingLabelPricingMethods() {return PricingLabelPricingMethods;}
 
+	@FindBy(xpath = "//div[contains(@class,'expandContainer')]//div[contains(@class,'x-toolbar-item')]//span[text()='New']//parent::button")
+	private static WebElement PricingNewButton;
+	public static WebElement getPricingNewButton() {return PricingNewButton;}
+	
+	@FindBy(xpath = "//div[contains(@id,'dynamicwindow')]//*[text()='New Risk Limiter']")
+	private static WebElement NewRiskLimiterPopUp;
+	public static WebElement getNewRiskLimiterPopUp() {return NewRiskLimiterPopUp;}
+	
+	@FindBy(xpath = "(//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//span[text()='Cancel & Close'])[2]")
+	private static WebElement NewRiskLimiterPopUpCancelClose;
+	public static WebElement getNewRiskLimiterPopUpCancelClose() {return NewRiskLimiterPopUpCancelClose;}
+	
+	@FindBy(xpath = "//h1[text()='Medicare Carriers']//following::span[text()='New']//parent::button")
+	private static WebElement NewButtonMedicare;
+	public static WebElement getNewButtonMedicare() {return NewButtonMedicare;}
+	
+	@FindBy(xpath = "//div[contains(@id,'dynamicwindow')]//*[text()='New Code']")
+	private static WebElement NewCodePopUp;
+	public static WebElement getNewCodePopUp() {return NewCodePopUp;}
+	
+	@FindBy(name = "code")
+	private static WebElement MedicareCode;
+	public static WebElement getMedicareCode() {return MedicareCode;}
+	
+	@FindBy(xpath = "//div[contains(@id,'medicareCarrier')]/div//span[text()='Delete']//parent::button")
+	private static WebElement NewCodeDeleteButton;
+	public static WebElement getNewCodeDeleteButton() {return NewCodeDeleteButton;}
+	
+	@FindBy(xpath = "//div[contains(@id,'warningwindow')]/div//span[text()='Delete']//parent::button")
+	private static WebElement WarningPopUpDeleteButton;
+	public static WebElement getWarningPopUpDeleteButton() {return WarningPopUpDeleteButton;}
+	
+	@FindBy(xpath = "//div[contains(@id,'medicareCarrier')]/div//span[text()='Filter']//parent::button")
+	private static WebElement NewCodeFilterButton;
+	public static WebElement getNewCodeFilterButton() {return NewCodeFilterButton;}
+	
+	@FindBy(xpath = "//h1[text()='Update Indicators']")
+	private static WebElement UpdateIndicatorsPage;
+	public static WebElement getUpdateIndicatorsPage() {return UpdateIndicatorsPage;}
+
+	@FindBy(xpath = "//h1[text()='Update Indicators']//following::span[text()='Edit']//parent::button")
+	private static WebElement UpdateIndicatorsEditButton;
+	public static WebElement getUpdateIndicatorsEditButton() {return UpdateIndicatorsEditButton;}
+	
+	@FindBy(xpath = "//div[contains(@id,'dynamicwindow')]//following::span[text()='Update Indicator']")
+	private static WebElement UpdateIndicatorsEditPopUp;
+	public static WebElement getUpdateIndicatorsEditPopUp() {return UpdateIndicatorsEditPopUp;}
 	
 }

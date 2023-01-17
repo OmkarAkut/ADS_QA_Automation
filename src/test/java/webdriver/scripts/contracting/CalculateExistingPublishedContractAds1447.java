@@ -42,7 +42,6 @@ public class CalculateExistingPublishedContractAds1447 extends CalculationHelper
 	  ExtentReport.reportCreate("CalculateExistingPublishedContractAds1447", "webdriver.scripts.contracting", "CalculateExistingPublishedContractAds1447");
     try {
 		modelMap = BuildMap.getInstance(driver, ModelLibraryMap.class);
-		System.out.println("Test Class: " + CalculateExistingPublishedContractAds1447.class.getSimpleName());
 		Login.loginUser("ContractAnalyst1");
 		goToPage("Contract Models");
 		waitForSpinnerToEnd();

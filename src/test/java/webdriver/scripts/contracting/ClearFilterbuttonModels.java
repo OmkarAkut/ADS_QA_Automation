@@ -35,9 +35,6 @@ public class ClearFilterbuttonModels extends GoHelper {
 				"ClearFilterbuttonModels");
 		try {
 			modelMap = BuildMap.getInstance(driver, ContractingMap.class);
-
-			System.out.println("Test Class: "
-					+ ClearFilterbuttonModels.class.getSimpleName());
 			Login.loginUser("ContractAnalyst1");
 			goToPage("Contract Models");
 			waitForDisplayedSpinnerToEnd();
