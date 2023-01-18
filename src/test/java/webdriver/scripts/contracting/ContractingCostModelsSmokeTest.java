@@ -43,7 +43,6 @@ public class ContractingCostModelsSmokeTest extends ContractModelsHelper {
 		ExtentReport.reportCreate("ContractingCostModelsSmokeTest", "webdriver.scripts.contracting","ContractingCostModelsSmokeTest");
 		try {
 			editModelMap = BuildMap.getInstance(driver, EditContractingModelMap.class);
-			System.out.println("Test Class: " + ContractingCostModelsSmokeTest.class.getSimpleName());
 			Login.loginUser("ContractAnalyst1");
 			navigateToContractModelsPageFeeForServicePaymentTermsPage(contractModel);
 			Thread.sleep(2000);

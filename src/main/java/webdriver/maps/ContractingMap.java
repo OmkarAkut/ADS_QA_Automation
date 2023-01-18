@@ -647,4 +647,47 @@ public static WebElement getContractModelAddProviderBtn() {return getContractMod
 	private static WebElement UpdateIndicatorsEditPopUp;
 	public static WebElement getUpdateIndicatorsEditPopUp() {return UpdateIndicatorsEditPopUp;}
 	
+	@FindBy(xpath = "//h1[text()='APC Fee Schedule Masters']")
+	private static WebElement ApcFeeScheduleHeader;
+	public static WebElement getApcFeeScheduleHeader() {return ApcFeeScheduleHeader;}
+	
+	@FindBy(xpath = "(//h1[text()='APC Fee Schedule Masters']//following::span[text()='New']//parent::button)[1]")
+	private static WebElement NewButtonAPC;
+	public static WebElement getNewButtonAPC() {return NewButtonAPC;}
+	
+	
+	
+	@FindBy(xpath = "(//h1[text()='APC Fee Schedule Masters']//following::span[text()='Delete']//parent::button)[1]")
+	private static WebElement NewAPCodeDeleteButton;
+	public static WebElement getNewAPCodeDeleteButton() {return NewAPCodeDeleteButton;}
+	
+	
+	@FindBy(xpath = "(//h1[text()='APC Fee Schedule Masters']//following::span[text()='Filter']//parent::button)[1]")
+	private static WebElement NewAPCodeFilterButton;
+	public static WebElement getNewAPCodeFilterButton() {return NewAPCodeFilterButton;}
+	
+	@FindBy(xpath = "(//h1[text()='ASC Schemes']//following::span[text()='Filter']//parent::button)[1]")
+	private static WebElement ASCFilterButton;
+	public static WebElement getASCFilterButton() {return ASCFilterButton;}
+	
+	@FindBy(xpath = "//div[text()='Edit']")
+	private static WebElement ASCFilterEditButton;
+	public static WebElement getASCFilterEditButton() {return ASCFilterEditButton;}
+	
+	@FindBy(xpath = "//div[contains(@id,'filtergrid')]//td//div[text()='Remove']")
+	private static WebElement ASCFilterRemoveButton;
+	public static WebElement getASCFilterRemoveButton() {return ASCFilterRemoveButton;}
+	
+	@FindBy(xpath = "//div[contains(@id,'filter')]//div[contains(@class,'x-btn-disabled')]//following::span[text()='Add']")
+	private static WebElement ASCFilterAddButton;
+	public static WebElement getASCFilterAddButton() {return ASCFilterAddButton;}
+	
+	@FindBy(xpath = "//h1[text()='Contract Types']//following::span[text()='New']//parent::button")
+	private static WebElement ContractTypeNewButton;
+	public static WebElement getContractTypeNewButton() {return ContractTypeNewButton;}
+	
+	@FindBy(xpath = "//h1[text()='Contract Types']//following::span[text()='Filter']//parent::button")
+	private static WebElement ContractTypeFilterButton;
+	public static WebElement getContractTypeFilterButton() {return ContractTypeFilterButton;}
+	
 }

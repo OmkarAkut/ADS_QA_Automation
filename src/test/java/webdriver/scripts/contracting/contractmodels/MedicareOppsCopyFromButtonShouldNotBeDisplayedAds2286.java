@@ -45,7 +45,7 @@ public class MedicareOppsCopyFromButtonShouldNotBeDisplayedAds2286 extends Contr
   @Test
   public void test01AssertCopyFromButtonIsNotDisplayedForMedicareOppsPricingMethodAds2286() throws InterruptedException,Throwable {
     try {
-		assertElementIsDisplayedWithXpath("//button/span[@id='copyFromButtonId-btnInnerEl'][text()='Copy From']");
+		assertElementIsDisplayedWithXpath("//div[contains(@id,'medicarecommercialoutpatientpps')]//following::span[text()='Copy From']");
 		doClosePageOnLowerBar("ADS1353 Copy From...");
 		ExtentReport.logPass("PASS", "test01AssertCopyFromButtonIsNotDisplayedForMedicareOppsPricingMethodAds2286");
     } catch (Exception|AssertionError e) {
