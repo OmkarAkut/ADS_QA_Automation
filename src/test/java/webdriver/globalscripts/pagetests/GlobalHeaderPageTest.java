@@ -149,7 +149,7 @@ public class GlobalHeaderPageTest extends PageTestHelper {
 						driver.findElement(By.xpath("//*[@class='attachment-large size-large entered lazyloaded']")),
 						printout
 						*/
-						driver.findElement(By.xpath("//*[@class='attachment-large size-large wp-image-34 entered lazyloaded']")),
+						driver.findElement(By.xpath("//div[contains(@class,'header__logo-w ')]//div[@class='elementor-widget-container']/a/img")),
 					      printout
 						);
 				driver.close();
