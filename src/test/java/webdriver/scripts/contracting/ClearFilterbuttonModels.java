@@ -14,6 +14,7 @@ import webdriver.core.Login;
 import webdriver.corehelpers.GoHelper;
 import webdriver.helpers.ContractModelsHelper;
 import webdriver.maps.ContractingMap;
+import webdriver.maps.DialogsMap;
 import webdriver.maps.mapbuilder.BuildMap;
 
 public class ClearFilterbuttonModels extends GoHelper {
@@ -24,6 +25,7 @@ public class ClearFilterbuttonModels extends GoHelper {
 	static int BeforeApplyFilterContractModelListCount;
 	static int AfterApplyFilterContractModelListCount;
 	Actions action = new Actions(driver);
+	private DialogsMap dialog = BuildMap.getInstance(driver, DialogsMap.class);
 	ContractModelsHelper contractModelsHelper = new ContractModelsHelper();
 
 	/** Regression: Automated test script for ADS-6432,ADS-6438 */
@@ -54,10 +56,12 @@ public class ClearFilterbuttonModels extends GoHelper {
 			modelMap.getContractModelButtonFilter().click();
 			waitForAjaxExtJs();
 			// Apply Filter
-			contractModelsHelper.doFilterCreate(filter);
+			contractModelsHelper.doFilterSetFilterParameters("Name","Is","Equal To",contractModel);
+			doClick(dialog.getFilterDialogButtonAdd());
+		    waitForAjaxExtJs();
 			assertElementTextWithXpath("//div[text()='Name Is Equal To " + contractModel + "']",
 					"Name Is Equal To " + contractModel + "", printout);
-			doClick(modelMap.getContractModelApplyFilterButton());
+			doClick(ContractingMap.getContractModelApplyFilterButton());
 			waitForDisplayedSpinnerToEnd();
 			ContractModelsHelper.getContractElementList(contractModel);
 			// Clear Filter

@@ -371,6 +371,27 @@ public class DoHelper extends DriverHelper {
 				  element);
 			Thread.sleep(500);
 	  }
+    
+    public static void doClickTreeData(String name) throws Exception {
+    	Thread.sleep(2000);
+		waitUntilElementIsClickable(driver
+				.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]/div[text()='"+name+"']")));
+		driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]/div[text()='"+name+"']"))
+				.click();
+		waitForSpinnerToEnd();
+		waitForAjaxExtJs();
+		waitForSpinnerToEnd();
+    }
+    public static void doClickTreeSubItem(String name) throws Exception {
+    	Thread.sleep(2000);
+		waitUntilElementIsClickable(driver
+				.findElement(By.xpath("//div[@id='treepanelId-body']//div[text()='"+name+"']")));
+		driver.findElement(By.xpath("//div[@id='treepanelId-body']//div[text()='"+name+"']"))
+				.click();
+		waitForSpinnerToEnd();
+		waitForAjaxExtJs();
+		waitForSpinnerToEnd();
+    }
 }
 
 

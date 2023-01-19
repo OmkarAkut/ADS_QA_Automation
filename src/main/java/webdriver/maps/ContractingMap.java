@@ -686,6 +686,10 @@ public static WebElement getContractModelAddProviderBtn() {return getContractMod
 	private static WebElement ContractTypeNewButton;
 	public static WebElement getContractTypeNewButton() {return ContractTypeNewButton;}
 	
+	@FindBy(xpath = "//h1[text()='Contract Types']//following::span[text()='Edit']//parent::button")
+	private static WebElement ContractTypeEditButton;
+	public static WebElement ContractTypeEditButton() {return ContractTypeEditButton;}
+	
 	@FindBy(xpath = "//h1[text()='Contract Types']//following::span[text()='Filter']//parent::button")
 	private static WebElement ContractTypeFilterButton;
 	public static WebElement getContractTypeFilterButton() {return ContractTypeFilterButton;}
@@ -698,9 +702,14 @@ public static WebElement getContractModelAddProviderBtn() {return getContractMod
 	private static WebElement ContractDataMaintenanceNewButton;
 	public static WebElement getContractDataMaintenanceNewButton() {return ContractDataMaintenanceNewButton;}
 	
+	@FindBy(xpath = "//h1[text()='Time Periods']//following::span[text()='Edit']//parent::button")
+	private static WebElement ContractDataMaintenanceEditButton;
+	public static WebElement getContractDataMaintenanceEditButton() {return ContractDataMaintenanceEditButton;}
+	
 	@FindBy(xpath = "//div[contains(@id,'dynamicwindow')]//span[text()='New Time Period']")
 	private static WebElement NewTimePeriodPopUp;
 	public static WebElement getNewTimePeriodPopUp() {return NewTimePeriodPopUp;}
+	
 	
 	@FindBy(name = "month")
 	private static WebElement Monthdropdown;
@@ -713,4 +722,8 @@ public static WebElement getContractModelAddProviderBtn() {return getContractMod
 	@FindBy(xpath = "//h1[text()='Time Periods']//following::span[text()='Filter']//parent::button")
 	private static WebElement ContractDataMaintenanceFilterButton;
 	public static WebElement getContractDataMaintenanceFilterButton() {return ContractDataMaintenanceFilterButton;}
+	
+	@FindBy(xpath = "//tr[contains(@class,'x-grid-row x-grid-row-selected x-grid-row-focused')]/td[4]/div")
+	private static WebElement ContractTypeColName;
+	public static WebElement getContractTypeColName() {return ContractTypeColName;}
 }

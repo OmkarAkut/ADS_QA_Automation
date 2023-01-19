@@ -11,7 +11,6 @@ import ExtentReport.ExtentReport;
 import webdriver.helpers.CalculationHelper;
 import webdriver.helpers.ContractModelsHelper;
 import webdriver.maps.ContractingMap;
-import webdriver.maps.CostingMap;
 import webdriver.maps.DataMaintenanceMap;
 import webdriver.maps.mapbuilder.BuildMap;
 import webdriver.users.Users;
@@ -26,6 +25,7 @@ public class ContractingDataMaintenanceNewItem extends CalculationHelper {
 	static String timePeriodMonth="Sep";
 	static String timePeriodYear="2023";
 	static String[] filter= {"Name","Is","Equal To",timePeriod};
+	/**Regression test ADS-6443,ADS-6445*/
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
 		try {
@@ -58,6 +58,11 @@ public class ContractingDataMaintenanceNewItem extends CalculationHelper {
 			doClick(ContractingMap.getContractDataMaintenanceFilterButton());
 			driverDelay(20);
 			doFilterCreate(filter);
+			assertElementIsDisplayedWithXpath("//div[text()='"+timePeriod+"']");
+			//ADS-6443
+			doClick(ContractingMap.getContractDataMaintenanceEditButton());
+			assertThatAttributeValue(ContractingMap.getInputName(), timePeriod, printout);
+			doClick(modelMap.getContractModelRiskLimiterCancelCloseBtn());
 			assertElementIsDisplayedWithXpath("//div[text()='"+timePeriod+"']");
 			ExtentReport.logPass("PASS", "test01ContractingDataMaintenanceNewItem");
 		} catch (Exception|AssertionError e) {
