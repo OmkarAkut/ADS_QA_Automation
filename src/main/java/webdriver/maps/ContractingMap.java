@@ -690,4 +690,27 @@ public static WebElement getContractModelAddProviderBtn() {return getContractMod
 	private static WebElement ContractTypeFilterButton;
 	public static WebElement getContractTypeFilterButton() {return ContractTypeFilterButton;}
 	
+	@FindBy(xpath = "(//div[@class='bubbleSubContainer']//li/a[text()='Contracting Data Maintenance'])")
+	private static WebElement ContractDataMaintenance;
+	public static WebElement getContractDataMaintenance() {return ContractDataMaintenance;}
+	
+	@FindBy(xpath = "//h1[text()='Time Periods']//following::span[text()='New']//parent::button")
+	private static WebElement ContractDataMaintenanceNewButton;
+	public static WebElement getContractDataMaintenanceNewButton() {return ContractDataMaintenanceNewButton;}
+	
+	@FindBy(xpath = "//div[contains(@id,'dynamicwindow')]//span[text()='New Time Period']")
+	private static WebElement NewTimePeriodPopUp;
+	public static WebElement getNewTimePeriodPopUp() {return NewTimePeriodPopUp;}
+	
+	@FindBy(name = "month")
+	private static WebElement Monthdropdown;
+	public static WebElement getMonthdropdown() {return Monthdropdown;}
+	
+	@FindBy(name = "year")
+	private static WebElement Yeardropdown;
+	public static WebElement getYeardropdown() {return Yeardropdown;}
+	
+	@FindBy(xpath = "//h1[text()='Time Periods']//following::span[text()='Filter']//parent::button")
+	private static WebElement ContractDataMaintenanceFilterButton;
+	public static WebElement getContractDataMaintenanceFilterButton() {return ContractDataMaintenanceFilterButton;}
 }
