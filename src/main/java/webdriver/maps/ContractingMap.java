@@ -133,6 +133,14 @@ public static WebElement getContractModelAddProviderBtn() {return getContractMod
 	@FindBy(xpath = "//div[contains(@class,'modalLibBarCls')]/div//span[text()='New']//parent::button")
 	private static WebElement getNewContractFolderBtn;
 	public WebElement getNewContractFolderBtn() {return getNewContractFolderBtn;}
+	
+	@FindBy(xpath = "//div[contains(@class,'modalLibBarCls')]/div//span[text()='Rename']//parent::button")
+	private static WebElement getRenameContractFolderBtn;
+	public WebElement getRenameContractFolderBtn() {return getRenameContractFolderBtn;}
+	
+	@FindBy(xpath = "//div[contains(@class,'modalLibBarCls')]/div//span[text()='Delete']//parent::button")
+	private static WebElement getDeleteContractFolderBtn;
+	public WebElement getDeleteContractFolderBtn() {return getDeleteContractFolderBtn;}
 
 	@FindBy(xpath = "//div[contains(@class,'modalLibBarCls')]/div//span[text()='New']//parent::button")
 	private static WebElement getNewFolderPopUp;
@@ -146,7 +154,7 @@ public static WebElement getContractModelAddProviderBtn() {return getContractMod
 	private  WebElement getNewFolderNameSave;
 	public  WebElement getNewFolderNameSave() {return getNewFolderNameSave;}
 
-	@FindBy(xpath = "(//td[contains(@class,'x-grid-cell-treecolumn')]/*[text()='Contracting']/img)[1]")
+	@FindBy(xpath = "(//td[contains(@class,'x-grid-cell-treecolumn')]/*[text()='Contracting']/img[@class='x-tree-elbow-end-plus x-tree-expander'])")
 	private static WebElement getContractingTreeExpand;
 	public WebElement getContractingTreeExpand() {return getContractingTreeExpand;}
 
@@ -686,7 +694,7 @@ public static WebElement getContractModelAddProviderBtn() {return getContractMod
 	private static WebElement ContractTypeNewButton;
 	public static WebElement getContractTypeNewButton() {return ContractTypeNewButton;}
 	
-	@FindBy(xpath = "//h1[text()='Contract Types']//following::span[text()='Edit']//parent::button")
+	@FindBy(xpath = "(//h1[text()='APC Fee Schedule Masters']//following::span[text()='Edit']//parent::button)[1]")
 	private static WebElement ContractTypeEditButton;
 	public static WebElement ContractTypeEditButton() {return ContractTypeEditButton;}
 	
@@ -726,4 +734,14 @@ public static WebElement getContractModelAddProviderBtn() {return getContractMod
 	@FindBy(xpath = "//tr[contains(@class,'x-grid-row x-grid-row-selected x-grid-row-focused')]/td[4]/div")
 	private static WebElement ContractTypeColName;
 	public static WebElement getContractTypeColName() {return ContractTypeColName;}
+	
+	@FindBy(xpath = "//div[@class='bubble bubble2 large contracting']")
+	private static WebElement ContractingBubble;
+	public static WebElement getContractingBubble() {return ContractingBubble;}
+	
+	@FindBy(xpath = "//div[@class='bubble bubble2 large contracting']//*[text()='Contract Models']")
+	private static WebElement ContractModelsBubble;
+	public static WebElement getLandingPageContractModelBubble() {return ContractingBubble;}
+	
+	
 }

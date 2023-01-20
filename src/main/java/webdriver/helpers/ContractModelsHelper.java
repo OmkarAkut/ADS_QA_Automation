@@ -787,17 +787,21 @@ public class ContractModelsHelper extends GoHelper {
 		);
 		    }
 		  }
-	  public static void navigateFeeForServicePaymentTermsScreenSelectionPanel(String Model) throws InterruptedException {
+	  public static void navigateFeeForServicePaymentTermsScreenSelectionPanel(String Model) throws Throwable {
 		    try {
 		      waitForSpinnerToEnd();
 		      waitForAjaxExtJs();
+		      scrollToView("//span[contains(@class,'x-panel-header-text')][text()='"+Model+"']/../following-sibling::div");
 		      driver.findElement(By.xpath("//span[contains(@class,'x-panel-header-text')][text()='"+Model+"']/../following-sibling::div")).click();
 		      waitForAjaxExtJs();
-		     
+		      Thread.sleep(300);
 		    } catch (Exception e) {
 		    	JavascriptExecutor executor = (JavascriptExecutor)driver;
+			      scrollToView("//span[contains(@class,'x-panel-header-text')][text()='"+Model+"']/../following-sibling::div");
+
 		    	executor.executeScript("arguments[0].click();",driver.findElement(By.xpath("//label[text()='Service Model']/ancestor::div/descendant::div[text() = '" + Model + "']"))
 		);
+		    	 Thread.sleep(300);
 		    }
 		  }
 	  public static void navigateFeeForServicePaymentTermsPageRiskLimiterSectionClickEditButtonToOpenEditDialog() {

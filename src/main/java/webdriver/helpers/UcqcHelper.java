@@ -718,12 +718,13 @@ public class UcqcHelper extends GoHelper {
 		
 		return testResult;
 	}
-	public static boolean validateBackgroundColorOnHoverForMenuTab(String color,WebElement element) {
+	public static boolean validateBackgroundColor(String color,WebElement element) {
 		boolean testResult=false;
 		try {
 
 					String optionColor=element.getCssValue("background-color");
 					System.out.println("Option"+optionColor);
+					System.out.println(color);
 					assertEquals(color,optionColor);
 					testResult=true;
 		

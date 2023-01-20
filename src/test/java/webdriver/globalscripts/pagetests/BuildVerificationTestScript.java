@@ -751,7 +751,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 		fail(e.getMessage());
 	}
   }
-/*Test - [Main Page UI] Validate “System Maintenance Menu bar” on dashboard. ADS-6600*/
+/*Test - [Main Page UI] Validate ï¿½System Maintenance Menu barï¿½ on dashboard. ADS-6600*/
   @Test
   public void test0019SystemMaintenanceTab() throws Throwable {
     try {
@@ -783,7 +783,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
     try {
       //Clicks the Status Tab in order to open the dropdown menu
       doClick(generalElement.getStatusTab());
-      validateBackgroundColorOnHoverForMenuTab(BackgroundColorStatusTab, generalElement.getStatusTab());
+      validateBackgroundColor(BackgroundColorStatusTab, generalElement.getStatusTab());
       WebElement[] statusTabElement = {
               generalElement.getCalculationStatusSubTab(),
               generalElement.getImportExportStatusSubTab(),

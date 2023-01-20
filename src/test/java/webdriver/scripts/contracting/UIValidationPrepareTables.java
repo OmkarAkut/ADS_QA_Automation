@@ -22,7 +22,7 @@ public class UIValidationPrepareTables extends CalculationHelper{
 	static String currentDateTime = new SimpleDateFormat("MM.HH.ss").format(new java.util.Date());
 	static String medicareCode = currentDateTime;
 	static String filter[]= {"Code","Is","Equal To",medicareCode};
-	/** Regression: Automated test script for ADS-6466 ,ADS-6465,ADS-6461,ADS-6455 */
+	/** Regression: Automated test script for ADS-6466 ,ADS-6465,ADS-6461,ADS-6455,ADS-6442 */
 
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {

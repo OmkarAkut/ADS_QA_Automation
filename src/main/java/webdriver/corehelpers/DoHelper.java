@@ -375,8 +375,8 @@ public class DoHelper extends DriverHelper {
     public static void doClickTreeData(String name) throws Exception {
     	Thread.sleep(2000);
 		waitUntilElementIsClickable(driver
-				.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]/div[text()='"+name+"']")));
-		driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]/div[text()='"+name+"']"))
+				.findElement(By.xpath("//*[text()='"+name+"']/img[@class='x-tree-elbow-plus x-tree-expander']")));
+		driver.findElement(By.xpath("//*[text()='"+name+"']/img[@class='x-tree-elbow-plus x-tree-expander']"))
 				.click();
 		waitForSpinnerToEnd();
 		waitForAjaxExtJs();
@@ -385,8 +385,8 @@ public class DoHelper extends DriverHelper {
     public static void doClickTreeSubItem(String name) throws Exception {
     	Thread.sleep(2000);
 		waitUntilElementIsClickable(driver
-				.findElement(By.xpath("//div[@id='treepanelId-body']//div[text()='"+name+"']")));
-		driver.findElement(By.xpath("//div[@id='treepanelId-body']//div[text()='"+name+"']"))
+				.findElement(By.xpath("//div[@id='treepanelId-body']//div[text()='"+name+"']/img[1]")));
+		driver.findElement(By.xpath("//div[@id='treepanelId-body']//div[text()='"+name+"']/img[1]"))
 				.click();
 		waitForSpinnerToEnd();
 		waitForAjaxExtJs();
