@@ -3,6 +3,7 @@ package webdriver.suites;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
+import webdriver.globalscripts.help.ValidateHelpSectionOnDashboard;
 import webdriver.scripts.contracting.ClearFilterbuttonModels;
 import webdriver.scripts.contracting.ConfirmAddNewDeleteAPCFeeScheduleMasters;
 import webdriver.scripts.contracting.ConfirmFY2023MedicareYearisAvailableForMedIPPS;
@@ -69,6 +70,7 @@ import webdriver.scripts.contracting.VerifyFilterAscSchemes;
 	ValidateContractingModeExportImportButton.class,
 	ValidateContractingTreeTab.class,
 	VerifyFilterAscSchemes.class,
+	ValidateHelpSectionOnDashboard.class,
 
 
 })

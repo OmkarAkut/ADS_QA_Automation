@@ -6,7 +6,6 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.Keys;
-
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.helpers.CalculationHelper;
@@ -20,6 +19,7 @@ public class GeneratePsychCombinedComorbidityFactor extends CalculationHelper {
 	final static String batch = "v104 REGRESSION Comorbidity Code 1st";
 	static String viewLogTitleApply = "v104 REGRESSION Comorbidity Code 1st";
 	private static CostingMap costingMap;
+	private static ContractingMap contractingMap;
 	/** Regression: Automated test script for ADS-5943 */
 
 	@BeforeClass
@@ -27,11 +27,13 @@ public class GeneratePsychCombinedComorbidityFactor extends CalculationHelper {
 		ExtentReport.reportCreate("GeneratePsychCombinedComorbidityFactor", "webdriver.scripts.contracting", "GeneratePsychCombinedComorbidityFactor");
 		try {
 			costingMap = BuildMap.getInstance(driver, CostingMap.class);
+			contractingMap=BuildMap.getInstance(driver, ContractingMap.class);
 			Login.loginUser("ContractAnalyst1");
 			goToPage("Maintain Data");
 			selectMaintainDataAtoZ(aTozPage);
 			openMaintainDataBatch(batch);
 			waitForDisplayedSpinnerToEnd();
+			waitForAjaxExtJs();
 			ExtentReport.logPass("PASS", "setupScript");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "setupScript", driver, e);
@@ -42,16 +44,16 @@ public class GeneratePsychCombinedComorbidityFactor extends CalculationHelper {
 	@Test
 	public void test01AssertResetCalculate() throws Throwable {
 		try {
-			ContractModelsHelper.scrollToView(ContractingMap.getContractFileSelect());
-			ContractingMap.getContractFileSelect().sendKeys(Keys.ENTER);;
+			ContractModelsHelper.scrollToView("//div[contains(@id,'psychdatefiles')]/div/span[contains(@id,'psychdatefiles')]");
 			driverDelay(500);
+			ContractingMap.getContractFileSelect().sendKeys(Keys.ENTER);;
+			driverDelay(600);
 			ContractModelsHelper.uploadTheFileusingAutoIT(driver,
 					System.getProperty("user.dir") + "\\AutoIT\\UploadFile.exe",
 					System.getProperty("user.dir") + "\\AutoIT\\IPFC22WDICD10.txt");
 			driverDelay(7000);
 			doClick(ContractingMap.getContractResetButton());
 			doClick(costingMap.getCostModelScenariosinEvaluationOrderSave());
-			waitForPageTitle("Calculation Status");
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
 			driverDelay(200);
@@ -62,7 +64,6 @@ public class GeneratePsychCombinedComorbidityFactor extends CalculationHelper {
 			doClosePageOnLowerBar("Calculation Status");
 			driverDelay(1000);
 			doClick(ContractingMap.getContractCalculateButton());
-		    waitForPageTitle("Calculation Status");
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
 			assertViewLogTitle(viewLogTitleApply);

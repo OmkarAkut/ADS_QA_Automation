@@ -1044,4 +1044,24 @@ public class CostingMap extends MapConfig {
 	@FindBy(xpath = "(//div[contains(@class,'horzOverflow')]//table[@class='x-grid-table x-grid-table-resizer'])//tr/td[3]/div")
 	private static List<WebElement> getCostingModelElementList;
 	public static List<WebElement> getCostingModelElementList() {return getCostingModelElementList;}
+//Shilpa 23.01.2023
+	@FindBy(xpath = "//a[text()='Model Library']")
+	private static WebElement getHelpModelLibraryLink;
+	public static WebElement getHelpModelLibraryLink() {return getHelpModelLibraryLink;}
+	
+	@FindBy(xpath = "//span[text()='Index']")
+	private static WebElement getHelpIndexLink;
+	public static WebElement getHelpIndexLink() {return getHelpIndexLink;}
+	
+	@FindBy(xpath = "//input[@id='search-index']")
+	private static WebElement getHelpSearchIndex;
+	public static WebElement getHelpSearchIndex() {return getHelpSearchIndex;}
+	
+	@FindBy(xpath = "//li[@id='GlossaryTab']/div")
+	private static WebElement getHelpGlossaryTab;
+	public static WebElement getHelpGlossaryTab() {return getHelpGlossaryTab;}
+	
+	@FindBy(xpath = "//input[@id='search-glossary']")
+	private static WebElement getHelpGlossarySearch;
+	public static WebElement getHelpGlossarySearch() {return getHelpGlossarySearch;}
 }

@@ -400,7 +400,7 @@ public static WebElement getContractModelAddProviderBtn() {return getContractMod
 	private static WebElement ContractCalculationCloseViewDialog;
 	public static WebElement getContractCalculationCloseViewDialog() {return ContractCalculationCloseViewDialog;}
 	
-	@FindBy(xpath = "//span[contains(@id,'filefield')][text()='Select']//parent::button")
+	@FindBy(xpath = "//button[contains(@id,'filefield')]")
 	private static WebElement ContractFileSelect;
 	public static WebElement getContractFileSelect() {return ContractFileSelect;}
 	
@@ -694,7 +694,7 @@ public static WebElement getContractModelAddProviderBtn() {return getContractMod
 	private static WebElement ContractTypeNewButton;
 	public static WebElement getContractTypeNewButton() {return ContractTypeNewButton;}
 	
-	@FindBy(xpath = "(//h1[text()='APC Fee Schedule Masters']//following::span[text()='Edit']//parent::button)[1]")
+	@FindBy(xpath = "(//h1[text()='Contract Types']//following::span[text()='Edit']//parent::button)[1]")
 	private static WebElement ContractTypeEditButton;
 	public static WebElement ContractTypeEditButton() {return ContractTypeEditButton;}
 	

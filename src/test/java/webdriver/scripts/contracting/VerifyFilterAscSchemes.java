@@ -20,7 +20,7 @@ public class VerifyFilterAscSchemes extends CalculationHelper{
 	 private DialogsMap dialog = BuildMap.getInstance(driver, DialogsMap.class);
 	static final String ContractModelName = "ADS-1320 Contract Model D";
 	static String ascScheme = "ASESC-2995 Commercial ASC Scheme";
-	static String filter[]= {"Code","Is","Equal To",ascScheme};
+	static String filter[]= {"ASC Scheme Name","Is","Equal To",ascScheme};
 	/** Regression: Automated test script for ADS-6447*/
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {

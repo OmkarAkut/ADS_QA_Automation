@@ -52,7 +52,7 @@ public class FilterbuttonModels extends GoHelper {
 		try {
 			modelMap.getContractModelButtonFilter().click();
 			waitForAjaxExtJs();
-			contractModelsHelper.doFilterCreate(filter);
+			contractModelsHelper.doFilterCreateOnly(filter);
 			assertElementTextWithXpath("//div[text()='Name Is Equal To " + contractModel + "']",
 					"Name Is Equal To " + contractModel + "", printout);
 			action.moveToElement(modelMap.getContractModelEditFilterButton()).click().pause(10).perform();
@@ -63,8 +63,6 @@ public class FilterbuttonModels extends GoHelper {
 					"Name Is Equal To " + updateContractModel + "", printout);
 			action.moveToElement(modelMap.getContractModelRemoveFilterButton()).click().pause(10).perform();
 			contractModelsHelper.doFilterCreate(filter);
-			doClick(modelMap.getContractModelApplyFilterButton());
-			waitForDisplayedSpinnerToEnd();
 			ContractModelsHelper.getContractElementList(contractModel);
 			doClosePageOnLowerBar("Model Library");
 			ExtentReport.logPass("PASS", "test01ValidateFilterbuttomForContractModels");

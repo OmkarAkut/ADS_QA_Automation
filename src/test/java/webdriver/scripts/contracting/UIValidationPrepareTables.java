@@ -20,7 +20,7 @@ public class UIValidationPrepareTables extends CalculationHelper{
 	private static ContractingMap modelMap;
 	static final String ContractModelName = "ADS-1320 Contract Model D";
 	static String currentDateTime = new SimpleDateFormat("MM.HH.ss").format(new java.util.Date());
-	static String medicareCode = currentDateTime;
+	static String medicareCode = currentDateTime.replaceAll("\\W", "");
 	static String filter[]= {"Code","Is","Equal To",medicareCode};
 	/** Regression: Automated test script for ADS-6466 ,ADS-6465,ADS-6461,ADS-6455,ADS-6442 */
 
@@ -34,6 +34,7 @@ public class UIValidationPrepareTables extends CalculationHelper{
 			Login.loginUser("ContractAnalyst1");
 			goToPage("Contract Models");
 			waitForDisplayedSpinnerToEnd();
+			waitForAjaxExtJs();
 			assertThatString(modelMap.getContractModelHeader(), "Contracting Model Library", printout);
 			ExtentReport.logPass("PASS", "setupScript");
 		} catch (Exception | AssertionError e) {
@@ -47,16 +48,18 @@ public class UIValidationPrepareTables extends CalculationHelper{
 		try {
 			doSearchForContractModel(ContractModelName);
 			tableDoubleClickCellFirstColumn(ContractModelName);
-			driverDelay(1200);
+			driverDelay(1000);
 			assertTextIsDisplayed("Unpublished Contract Task List");
 			assertTextIsDisplayed("Build Structure Elements");
 			assertTextIsDisplayed("Model Contract");
 			assertTextIsDisplayed("Publish Contract");
 			assertTextIsDisplayed("Export Contract");
 			doClickTreeItem("Build Structure Elements");
-			driverDelay(300);
+			waitForPresenceOfElementText("Prepare RBRVS Tables");
 			doClickTreeItem("Prepare RBRVS Tables");
-			driverDelay(300);
+			waitForPresenceOfElementText("Prepare RBRVS RVU Tables");
+			doClickTreeItem("Prepare RBRVS RVU Tables");
+			waitForPresenceOfElementText("Global Periods");
 			//ADS-6461
 			assertTextIsDisplayed("Global Periods");
 			assertTextIsDisplayed("Status Indicators");
@@ -64,7 +67,7 @@ public class UIValidationPrepareTables extends CalculationHelper{
 			assertTextIsDisplayed("RBRVS Conversion Factor Tables");
 			assertTextIsDisplayed("RBRVS DRA Outpatient Cap Tables");
 			doClickTreeItem("Prepare GPCI Tables");
-			driverDelay(300);
+			waitForPresenceOfElementText("Medicare Carriers");
 			assertTextIsDisplayed("Medicare Carriers");
 			assertTextIsDisplayed("Medicare Localities");
 			assertTextIsDisplayed("GPCI Tables");
@@ -75,7 +78,6 @@ public class UIValidationPrepareTables extends CalculationHelper{
 			waitForElementToBeVisible(ContractingMap.getUpdateIndicatorsEditPopUp());
 			assertElementIsDisplayed(ContractingMap.getUpdateIndicatorsEditPopUp());
 			doClick(modelMap.getContractModelRiskLimiterCancelCloseBtn());
-			
 			doClickTreeItemWithCheckbox("Medicare Carriers");
 			waitForElementToBeVisible(ContractingMap.getNewButtonMedicare());
 			doClick(ContractingMap.getNewButtonMedicare());
