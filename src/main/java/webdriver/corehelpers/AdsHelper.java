@@ -306,7 +306,7 @@ private WebElement tableGetTableContainerElementWithTableHeading(String tableHea
     act.doubleClick(element).perform();
   }
 
-  public void tableDoubleClickCellFirstColumn(String cellValue) throws InterruptedException {
+  public static void tableDoubleClickCellFirstColumn(String cellValue) throws InterruptedException {
     Actions act = new Actions(driver);
     Thread.sleep(500);
     WebElement element = driver.findElement(By.xpath(

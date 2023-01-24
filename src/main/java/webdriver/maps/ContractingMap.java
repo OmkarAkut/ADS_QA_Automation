@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import webdriver.maps.mapbuilder.MapConfig;
 
@@ -400,7 +399,7 @@ public static WebElement getContractModelAddProviderBtn() {return getContractMod
 	private static WebElement ContractCalculationCloseViewDialog;
 	public static WebElement getContractCalculationCloseViewDialog() {return ContractCalculationCloseViewDialog;}
 	
-	@FindBy(xpath = "//button[contains(@id,'filefield')]")
+	@FindBy(xpath = "//label[text()='Psych Combined Comorbidity Mapping File']//following::span[text()='Select']//parent::button")
 	private static WebElement ContractFileSelect;
 	public static WebElement getContractFileSelect() {return ContractFileSelect;}
 	
@@ -742,6 +741,18 @@ public static WebElement getContractModelAddProviderBtn() {return getContractMod
 	@FindBy(xpath = "//div[@class='bubble bubble2 large contracting']//*[text()='Contract Models']")
 	private static WebElement ContractModelsBubble;
 	public static WebElement getLandingPageContractModelBubble() {return ContractingBubble;}
+	
+	@FindBy(xpath = "//tr[contains(@class,'x-grid-row treeWhite x-grid-tree-node-leaf')]/td/div")
+	private static WebElement getContractServiceModelName;
+	public static WebElement getContractServiceModelName() {return getContractServiceModelName;}
+	
+	@FindBy(xpath = "//div[contains(@id,'treepanel')]//following::tr[@class='x-grid-row treeWhite x-grid-tree-node-leaf']/td/div[@class='x-grid-cell-inner ']")
+	private static WebElement getPricingMethodServiceModelName;
+	public static WebElement getPricingMethodServiceModelName() {return getPricingMethodServiceModelName;}
+	
+	@FindBy(xpath = "(//div[contains(@id,'treeview')])[3]")
+	private static WebElement getSelectService;
+	public static WebElement getSelectService() {return getSelectService;}
 	
 	
 }
