@@ -46,6 +46,7 @@ public class CopyPasteButtons extends GoHelper {
 		}
 	}
 
+	
 	@Test
 	public void test01CopyPasteContractModel() throws Throwable {
 		try {
@@ -56,7 +57,7 @@ public class CopyPasteButtons extends GoHelper {
 			assertElementIsDisplayed(modelMap.getContractServiceModel());
 			assertElementIsDisplayed(modelMap.getContractPricingMethod());
 			assertElementIsDisplayed(modelMap.getContractRiskLimiterModel());
-			doClick(modelMap.getContractModelRiskLimiterCancelCloseBtn());
+			doClick(ContractingMap.getContractModelRiskLimiterCancelCloseBtn());
 			doClosePageOnLowerBar("10.2.1 Medicare...");
 			doClick(modelMap.getContractModelButtonCopy());
 			assertElementIsEnabled(modelMap.getContractModelButtonPaste(), printout);
@@ -94,7 +95,7 @@ public class CopyPasteButtons extends GoHelper {
 			assertTextIsDisplayed(serviceModel);
 			ContractModelsHelper.navigateFeeForServicePaymentTermsScreenSelectionPanel("Pricing Method");
 			assertTextIsDisplayed(serviceModel);
-			doClick(modelMap.getContractModelRiskLimiterCancelCloseBtn());
+			doClick(ContractingMap.getContractModelRiskLimiterCancelCloseBtn());
 			doClosePageOnLowerBar("Copy of 10.2.1...");
 			doClick(modelMap.getContractModelDeleteButton());
 			waitForElementToBeVisible(modelMap.getContractModelDeletePopUp());

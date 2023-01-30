@@ -19,6 +19,7 @@ public class DoHelper extends DriverHelper {
         ModelLibraryMap modelMapStatic = BuildMap.getInstance(driver, ModelLibraryMap.class);
         waitForSpinnerToEnd();
         waitForAjaxExtJs();
+        driver.findElement(By.xpath("//input[@name='searchText']")).clear();
         driver.findElement(By.xpath("//input[@name='searchText']")).sendKeys(contractModel);
         modelMapStatic.getModelLibraryButtonSearch().click();
         waitForSpinnerToEnd();
@@ -94,7 +95,7 @@ public class DoHelper extends DriverHelper {
 	 * "']")).click(); waitForSpinnerToEnd(); waitForAjaxExtJs();
 	 * waitForSpinnerToEnd(); }
 	 */
-    public void doClickTreeItem(String name) throws InterruptedException {
+    public static void doClickTreeItem(String name) throws InterruptedException {
     //Shilpa.27.07.2022 , some elements are inside frame 
 //    	boolean element = false;
 //		
@@ -124,7 +125,7 @@ public class DoHelper extends DriverHelper {
 				 
 	}
     	
-    public void doClickTreeItemWithCheckbox(String name) throws InterruptedException {
+    public static void doClickTreeItemWithCheckbox(String name) throws InterruptedException {
         waitUntilElementIsClickable(driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]/div[text()='" + name + "']")));
     driver
         .findElement(
@@ -230,9 +231,15 @@ public class DoHelper extends DriverHelper {
     }
 
     public static void doClick(String elementXpath) throws InterruptedException {
-        waitUntilElementIsClickable(driver.findElement(By.xpath("" + elementXpath + "")));
-        driver.findElement(By.xpath("" + elementXpath + "")).click();
-        waitForAjaxExtJs();
+        try {
+			waitUntilElementIsClickable(driver.findElement(By.xpath("" + elementXpath + "")));
+			driver.findElement(By.xpath("" + elementXpath + "")).click();
+			waitForAjaxExtJs();
+		} catch (Exception e) {
+			JavascriptExecutor executor = (JavascriptExecutor)driver;
+			executor.executeScript("arguments[0].click();", driver.findElement(By.xpath("" + elementXpath + "")));
+			
+		}
     }
 
     public static void doDropdownSelectUsingOptionText(WebElement elementTriggerList, WebElement elementList, String optionText) throws InterruptedException {

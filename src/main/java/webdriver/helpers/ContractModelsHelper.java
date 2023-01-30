@@ -5,16 +5,15 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-
 import java.text.DecimalFormat;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.hamcrest.MatcherAssert;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -25,7 +24,6 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-
 import webdriver.corehelpers.GoHelper;
 import webdriver.maps.ContractingMap;
 import webdriver.maps.CostingMap;
@@ -416,7 +414,7 @@ public class ContractModelsHelper extends GoHelper {
   static ContractingMap selectColumn =BuildMap.getInstance(driver, ContractingMap.class);
 	 private DialogsMap dialog = BuildMap.getInstance(driver, DialogsMap.class);
 
-	public void highlightColumnsToDisplayColumn(String column) throws InterruptedException,Throwable {
+	public static void highlightColumnsToDisplayColumn(String column) throws InterruptedException,Throwable {
 	    String columnPath = "//*[contains(@class,'glAccountsGrid')]/descendant::*[text()='"+column+"']";
 	   //Shilpa 02.09.2022 added dimension , scroll to element 
 //	    addDimension(1000,1000);
@@ -430,7 +428,7 @@ public class ContractModelsHelper extends GoHelper {
 	  }
 
 
-	  public void selectMultipleColumnsToDisplay(String[] columnsToSelect) throws InterruptedException,Throwable{
+	  public static void selectMultipleColumnsToDisplay(String[] columnsToSelect) throws InterruptedException,Throwable{
 	    for (String selectedColumns: columnsToSelect) {
 	    	System.out.println(selectedColumns);
 	      highlightColumnsToDisplayColumn(selectedColumns);
@@ -646,7 +644,7 @@ public class ContractModelsHelper extends GoHelper {
 	    }
 	  }
 
-	  public void assertColumnsToDisplayColumnIsSelected(String column) throws Exception {
+	  public static void assertColumnsToDisplayColumnIsSelected(String column) throws Exception {
 	    String columnIsSelected = null;
 	    try {
 	      waitForAjaxExtJs();
@@ -967,4 +965,37 @@ public class ContractModelsHelper extends GoHelper {
 			  }
 		  }
 		  
+		 public static void toggleBetweenTheDockBar(String xpath) {
+			 try {
+				doClick(xpath);
+			} catch (Exception e) {
+				
+//				e.printStackTrace();
+			}
+			 
+		 }
+		 
+		 public static void CompareListToArray(List<WebElement> elements,String[] names) {
+			 
+			 try {
+				int j=0;
+				 for(WebElement element:elements ){
+						System.out.println(element.getText());
+
+						ContractModelsHelper.scrollToView(element);
+						List<String> arrayList = Arrays.asList(names);
+						for(int i=j;i<=arrayList.size();) {
+							System.out.println(arrayList.get(i));
+						if(element.getText().equals(arrayList.get(i))) {
+							assertTrue(printout);
+											}
+						j=i+1;
+						break;
+
+						}
+ }
+			} catch (Exception e) {
+				
+			}
+		 }
 }

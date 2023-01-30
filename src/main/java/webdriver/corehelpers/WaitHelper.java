@@ -42,7 +42,7 @@ public class WaitHelper extends JavaHelper {
 		webdriverWait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@class='footerText']")));
 	}
 
-	public void waitForMainPageTitle(String pageTitle) {
+	public static void waitForMainPageTitle(String pageTitle) {
 		waitForPresenceOfElement("//*[text()='" + pageTitle + "']");
 		//    waitUntilElementIsVisible(
 		//            driver.findElement(By.xpath("//*[text()='" + pageTitle + "']"))

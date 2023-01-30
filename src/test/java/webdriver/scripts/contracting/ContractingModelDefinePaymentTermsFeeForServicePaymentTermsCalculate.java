@@ -5,23 +5,16 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-
-import java.util.List;
-
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-
 import ExtentReport.ExtentReport;
 import webdriver.helpers.CalculationHelper;
 import webdriver.helpers.ContractModelsHelper;
 import webdriver.maps.ContractingMap;
 import webdriver.maps.CostingMap;
-import webdriver.maps.DialogsMap;
 import webdriver.maps.EditContractingModelMap;
-import webdriver.maps.ModelLibraryMap;
 import webdriver.maps.mapbuilder.BuildMap;
 import webdriver.users.Users;
 
@@ -77,7 +70,7 @@ public class ContractingModelDefinePaymentTermsFeeForServicePaymentTermsCalculat
 
 	/**
 	 * Test - [CMS Regs: FY2023 IPPS] - Create New Contracting Model with FY2023
-	 * Medicare Year ADS-6277
+	 * Medicare Year ADS-6277 ,ADS-6775
 	 **/
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {

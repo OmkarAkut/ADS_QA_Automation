@@ -255,8 +255,8 @@ public static WebElement getContractModelAddProviderBtn() {return getContractMod
 	public WebElement getContractModelInExportPopUp() {return ContractModelInExportPopUp;}
 
 	@FindBy(xpath = "//div[contains(@class,'x-closable')]//div[contains(@id,'dynamicwindow')]//span[text()='Apply']//parent::button")
-	private WebElement ContractModelApplyInExportPopUp;
-	public WebElement getContractModelApplyInExportPopUp() {return ContractModelApplyInExportPopUp;}
+	private static WebElement ContractModelApplyInExportPopUp;
+	public static WebElement getContractModelApplyInExportPopUp() {return ContractModelApplyInExportPopUp;}
 
 	@FindBy(xpath = "//div[contains(@class,'x-closable')]//div[contains(@id,'dynamicwindow')]//span[text()='Apply']//parent::button")
 	private WebElement ContractModelExportFileSharedLoc;
@@ -288,12 +288,12 @@ public static WebElement getContractModelAddProviderBtn() {return getContractMod
 	public WebElement getContractModelRiskLimiterContinueCloseBtn() {return ContractModelRiskLimiterContinueCloseBtn;}
 	
 	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//span[text()='Cancel & Close']")
-	private WebElement ContractModelRiskLimiterCancelCloseBtn;
-	public WebElement getContractModelRiskLimiterCancelCloseBtn() {return ContractModelRiskLimiterCancelCloseBtn;}
+	private static WebElement ContractModelRiskLimiterCancelCloseBtn;
+	public static WebElement getContractModelRiskLimiterCancelCloseBtn() {return ContractModelRiskLimiterCancelCloseBtn;}
 	
 	@FindBy(xpath = "//div[contains(@id,'messagebox')]//span[text()='Cancel & Close']")
-	private WebElement ContractModelRiskLimiterMessageBoxCancelCloseBtn;
-	public WebElement getContractModelRiskLimiterMessageBoxCancelCloseBtn() {return ContractModelRiskLimiterMessageBoxCancelCloseBtn;}
+	private static WebElement ContractModelRiskLimiterMessageBoxCancelCloseBtn;
+	public static WebElement getContractModelRiskLimiterMessageBoxCancelCloseBtn() {return ContractModelRiskLimiterMessageBoxCancelCloseBtn;}
 	
 	@FindBy(xpath = "//div[contains(@class,'x-toolbar-item')]//span[text()='Cancel & Close']")
 	private WebElement ContractModelRiskLimiterMessageBox;
@@ -753,6 +753,34 @@ public static WebElement getContractModelAddProviderBtn() {return getContractMod
 	@FindBy(xpath = "(//div[contains(@id,'treeview')])[3]")
 	private static WebElement getSelectService;
 	public static WebElement getSelectService() {return getSelectService;}
+	
+	@FindBy(xpath = "(//button/span[text()='Definition Elements'])[1]")
+	private static WebElement getDefinitionElementC1;
+	public static WebElement getDefinitionElementC1() {return getDefinitionElementC1;}
+	
+	@FindBy(xpath = "(//button/span[text()='Definition Elements'])[2]")
+	private static WebElement getDefinitionElementC2;
+	public static WebElement getDefinitionElementC2() {return getDefinitionElementC2;}
+	
+	@FindBy(xpath = "(//div[contains(@class,'calcSceneCls')]//following::span[text()='Add'])[1]")
+	private static WebElement getDefinitionElementAddBtn;
+	public static WebElement getDefinitionElementAddBtn() {return getDefinitionElementAddBtn;}
+	
+	@FindBy(xpath = "(//div[contains(@class,'calcSceneCls')]//following::span[text()='Add'])[2]")
+	private static WebElement getDefinitionElementAddBtnC2;
+	public static WebElement getDefinitionElementAddBtnC2() {return getDefinitionElementAddBtnC2;}
+	
+	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//following::span[text()='Save']")
+	private static WebElement getSaveBenefitPlan;
+	public static WebElement getSaveBenefitPlan() {return getSaveBenefitPlan;}
+	
+	@FindBy(xpath = "(//div[contains(@id,'contractTabpanel')]//following::div[contains(@class,'accordContentMarg ')]//following::div[contains(@id,'gridview')]/table/tbody/tr/td[3]/div)")
+	private static List<WebElement> getBenefitPlans;
+	public static List<WebElement> getBenefitPlans() {return getBenefitPlans;}
+	
+	@FindBy(xpath = "//span[text()='Add Benefit Plans']//following::h1[text()='Select']//following::input[1]")
+	private static WebElement getSelectAllBenefitPlans;
+	public static WebElement getSelectAllBenefitPlans() {return getSelectAllBenefitPlans;}
 	
 	
 }

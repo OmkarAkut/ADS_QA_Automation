@@ -62,7 +62,7 @@ public class ContractingDataMaintenanceNewItem extends CalculationHelper {
 			//ADS-6443
 			doClick(ContractingMap.getContractDataMaintenanceEditButton());
 			assertThatAttributeValue(ContractingMap.getInputName(), timePeriod, printout);
-			doClick(modelMap.getContractModelRiskLimiterCancelCloseBtn());
+			doClick(ContractingMap.getContractModelRiskLimiterCancelCloseBtn());
 			assertElementIsDisplayedWithXpath("//div[text()='"+timePeriod+"']");
 			ExtentReport.logPass("PASS", "test01ContractingDataMaintenanceNewItem");
 		} catch (Exception|AssertionError e) {
