@@ -23,10 +23,9 @@ public class CopyPasteButtons extends GoHelper {
 	private static String ContractModel = "10.2.1 Medicare IPPS FY2020 Test";
 	private static String serviceModel = "MCR IPPS 2020";
 	private static String UpdatedContractModel;
-	Actions action = new Actions(driver);
 	static String modelName;
 	static String currentDateTime = new SimpleDateFormat("HH.mm.ss").format(new java.util.Date());
-	ContractModelsHelper contractModelsHelper = new ContractModelsHelper();
+	static ContractModelsHelper contractModelsHelper = new ContractModelsHelper();
 
 	/** Regression: Automated test script for ADS-6434 ,ADS-6084*/
 	@BeforeClass
@@ -39,33 +38,43 @@ public class CopyPasteButtons extends GoHelper {
 			goToPage("Contract Models");
 			waitForDisplayedSpinnerToEnd();
 			assertThatString(modelMap.getContractModelHeader(), "Contracting Model Library", printout);
+			doSearchForContractModel(ContractModel);
+			tableDoubleClickCellFirstColumn(ContractModel);
+			contractModelsHelper.navigateFeeForServicePaymentTerms();
+			ContractModelsHelper.navigateFeeForServicePaymentTermsScreenSelectionPanel("Service Model");
+			
 			ExtentReport.logPass("PASS", "setupScript");
+			
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "setupScript", driver, e);
 			fail(e.getMessage());
 		}
 	}
-
-	
 	@Test
-	public void test01CopyPasteContractModel() throws Throwable {
+	public void AssertFeeForServicePaymentTermsScreenSelectionPanel() throws Throwable {
 		try {
-			doSearchForContractModel(ContractModel);
-			tableDoubleClickCellFirstColumn(ContractModel);
-			contractModelsHelper.navigateFeeForServicePaymentTerms();
-			ContractModelsHelper.navigateFeeForServicePaymentTermsScreenSelectionPanel("Service Model");
 			assertElementIsDisplayed(modelMap.getContractServiceModel());
 			assertElementIsDisplayed(modelMap.getContractPricingMethod());
 			assertElementIsDisplayed(modelMap.getContractRiskLimiterModel());
 			doClick(ContractingMap.getContractModelRiskLimiterCancelCloseBtn());
 			doClosePageOnLowerBar("10.2.1 Medicare...");
+			ExtentReport.logPass("PASS", "AssertFeeForServicePaymentTermsScreenSelectionPanel");
+			
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "AssertFeeForServicePaymentTermsScreenSelectionPanel", driver, e);
+			fail(e.getMessage());
+		}
+	}
+	
+	@Test
+	public  void testCopyPasteContractmodel() throws Throwable {
+		try {
 			doClick(modelMap.getContractModelButtonCopy());
 			assertElementIsEnabled(modelMap.getContractModelButtonPaste(), printout);
 			doClick(modelMap.getContractModelButtonPaste());
 			waitForElementToBeVisible(modelMap.getContractModelPastePopup());
 			driverDelay();
 			modelName = modelMap.getContractModelPasteNameInput().getAttribute("value");
-			System.out.println(modelName);
 			if (modelName.equalsIgnoreCase("Copy of " + " " + ContractModel + "")) {
 				assertTrue(printout);
 			}
@@ -78,6 +87,17 @@ public class CopyPasteButtons extends GoHelper {
 			doSearchForContractModel(UpdatedContractModel);
 			driverDelay();
 			assertTextIsDisplayed(UpdatedContractModel);
+			ExtentReport.logPass("PASS", "testCopyPasteContractmodel");
+			
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "testCopyPasteContractmodel", driver, e);
+			fail(e.getMessage());
+		}
+	}
+	
+	@Test
+	public void testVerifyServiceModelUnderPastedContractModel() throws Throwable {
+		try {
 			tableDoubleClickCellFirstColumn(UpdatedContractModel);
 			driverDelay(1000);
 			driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]/div[text()='Model Contract']"))
@@ -97,19 +117,28 @@ public class CopyPasteButtons extends GoHelper {
 			assertTextIsDisplayed(serviceModel);
 			doClick(ContractingMap.getContractModelRiskLimiterCancelCloseBtn());
 			doClosePageOnLowerBar("Copy of 10.2.1...");
+			ExtentReport.logPass("PASS", "testVerifyServiceModelUnderPastedContractModel");
+			
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "testVerifyServiceModelUnderPastedContractModel", driver, e);
+			fail(e.getMessage());
+		}
+	}
+	@Test
+	public void testDeleteContractModel() throws Throwable {
+		try {
 			doClick(modelMap.getContractModelDeleteButton());
 			waitForElementToBeVisible(modelMap.getContractModelDeletePopUp());
 			assertElementIsDisplayed(modelMap.getContractModelDeleteButtonInPopUp());
 			assertElementIsDisplayed(modelMap.getContractModelCancelButtonInPopUp());
 			doClick(modelMap.getContractModelDeleteButtonInPopUp());
-			ExtentReport.logPass("PASS", "test01CopyPasteContractModel");
+			ExtentReport.logPass("PASS", "testDeleteContractModel");
+			
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test01CopyPasteContractModel", driver, e);
+			ExtentReport.logFail("FAIL", "testDeleteContractModel", driver, e);
 			fail(e.getMessage());
 		}
-
 	}
-
 	@AfterClass
 	public static void endtest() throws Exception {
 
