@@ -21,7 +21,7 @@ public class CostingRunActivityVolumeCalculationScenarioAds2338 extends Calculat
   String activityVolumeDataCalculationScenario = "Automated REGRESSION Act Vol Calc Scen";
   private final String expectedFilterTotal = "232";
 //  private final String expectedFilterTotal = "74";
-
+  /** Regression: Test script for ADS-5990 */
   @BeforeClass
     public static void setupScript() throws Exception,Throwable {
 	  ExtentReport.reportCreate("CostingRunActivityVolumeCalculationScenarioAds2338", "webdriver.scripts.costing.costingcalculations", "CostingRunActivityVolumeCalculationScenarioAds2338");

@@ -20,7 +20,7 @@ public class CostingRunStatisticDataCalculationScenarioAds2339 extends Calculati
   String statisticDataScenario = "Automated REGRESSION Stat Data Scenario";
   String statisticDataCalculationScenario = "Automated REGRESSION Stat Data Calc FY05";
   String expectedFilterTotal = "1237";
-
+  /** Regression: Test script for ADS-5989 */
   @BeforeClass
     public static void setupScript() throws Exception,Throwable {
 	 ExtentReport.reportCreate("CostingRunStatisticDataCalculationScenarioAds2339", "webdriver.scripts.costing.costingcalculations", "CostingRunStatisticDataCalculationScenarioAds2339");

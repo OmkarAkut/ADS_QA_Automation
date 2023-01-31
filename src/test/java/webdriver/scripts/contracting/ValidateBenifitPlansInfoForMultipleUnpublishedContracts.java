@@ -101,7 +101,7 @@ public class ValidateBenifitPlansInfoForMultipleUnpublishedContracts extends Cal
 			ContractModelsHelper.toggleBetweenTheDockBar("(//span[text()='CM ADS1327...']//parent::button)[1]");
 			doClick("(//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//span[text()='Cancel & Close'])[1]");
 			doClick("(//*[contains(@id,'tab') and contains(text(),'CM ADS1327...')]/../../following-sibling::a)[1]");
-			doClick(modelMap.getContractModelRiskLimiterCancelCloseBtn());
+			doClick(ContractingMap.getContractModelRiskLimiterCancelCloseBtn());
 			doClosePageOnLowerBar("Model Library");
 			ExtentReport.logPass("PASS", "test04ApplyBenefitPlanInMultipleContracts");
 		} catch (Exception | AssertionError e) {

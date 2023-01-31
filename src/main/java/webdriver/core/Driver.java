@@ -148,7 +148,7 @@ public class Driver {
     	
       }
     else if(testEnvironment.equals("ads11")) {
-    	url = "http://stgrhl-dev.harrispaas.com/alliance-webCont/alliance/index.jsp";  
+    	url = "https://qa3-dev-ap1.dev.harrispaas.com/alliance-webCont/alliance/index.jsp";  
       }
      else {
       url = "https://qaautomation.mdasdss.com/alliance-webCont/login/index.jsp";

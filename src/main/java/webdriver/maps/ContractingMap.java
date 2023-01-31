@@ -158,8 +158,8 @@ public static WebElement getContractModelAddProviderBtn() {return getContractMod
 	public WebElement getContractingTreeExpand() {return getContractingTreeExpand;}
 
 	@FindBy(xpath = "//div[contains(@class,'horzOverflow')]/div//span[text()='Filter']//parent::button")
-	private WebElement ContractModelButtonFilter;
-	public WebElement getContractModelButtonFilter() {return ContractModelButtonFilter;}
+	private static WebElement ContractModelButtonFilter;
+	public static WebElement getContractModelButtonFilter() {return ContractModelButtonFilter;}
 
 	@FindBy(xpath = "//div[contains(@id,'headercontainer')]//div[text()='Remove']")
 	private WebElement ContractModelRemoveFilterButton;
@@ -781,6 +781,14 @@ public static WebElement getContractModelAddProviderBtn() {return getContractMod
 	@FindBy(xpath = "//span[text()='Add Benefit Plans']//following::h1[text()='Select']//following::input[1]")
 	private static WebElement getSelectAllBenefitPlans;
 	public static WebElement getSelectAllBenefitPlans() {return getSelectAllBenefitPlans;}
+	
+	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//following::span[text()='Calculate']")
+	private static WebElement getCalculateButton;
+	public static WebElement getCalculateButton() {return getCalculateButton;}
+	
+	@FindBy(xpath = "//h1[text()='GL Adjustment and Reclassification Calculation Scenarios']//following::span[text()='Filter']")
+	private static WebElement getGLFilterButton;
+	public static WebElement getGLFilterButton() {return getGLFilterButton;}
 	
 	
 }

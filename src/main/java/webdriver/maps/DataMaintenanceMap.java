@@ -1,5 +1,7 @@
 package webdriver.maps;
 
+import java.util.List;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import webdriver.maps.mapbuilder.MapConfig;
@@ -87,4 +89,29 @@ public class DataMaintenanceMap extends MapConfig {
 
     //*[@class='itemWrap' and text()='Encounters With No Charges Report']
     /******End Utilities******/
+    
+    //Shilpa
+    @FindBy(xpath = "//label[text()='Encounter Population for Assign/Remove']//following::div[contains(@id,'displayfield')]")
+    private static WebElement getPopulationValue;
+    public static WebElement getPopulationValue() {return getPopulationValue;}
+    
+    @FindBy(xpath = "//label[text()='Service Model']//following::table[4]//tr[contains(@class,'x-grid-row treeWhite')]/td/div")
+    private  List<WebElement> getServiceModelList;
+    public List<WebElement> getServiceModelList() {return getServiceModelList;}
+    
+    @FindBy(xpath = "//span[text()='Filter']//parent::button")
+    private WebElement encounterButtonFilter;
+    public WebElement getencounterButtonFilter() {return encounterButtonFilter;}
+    
+    @FindBy(xpath = "//span[text()='Edit']//parent::button")
+    private WebElement encounterButtonEdit;
+    public WebElement getencounterButtonEdit() {return encounterButtonEdit;}
+    
+    @FindBy(xpath = "(//button/span[text()='Services'])[1]")
+	private static WebElement getServicesTabEncounter;
+	public static WebElement getServicesTabEncounter() {return getServicesTabEncounter;}
+	
+	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//span[text()='Assign']")
+	private static WebElement getAssignButtonEncounter;
+	public static WebElement getAssignButtonEncounter() {return getAssignButtonEncounter;}
 }
