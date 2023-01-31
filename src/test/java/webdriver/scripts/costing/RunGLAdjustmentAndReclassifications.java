@@ -32,9 +32,6 @@ public class RunGLAdjustmentAndReclassifications extends CalculationHelper {
 				"RunGLAdjustmentAndReclassifications");
 		try {
 			contractMap = BuildMap.getInstance(driver, ContractingMap.class);
-//			costing = BuildMap.getInstance(driver, CostingMap.class);
-//			System.out.println("Test Class: " + RvuMaintenanceAds1492.class.getSimpleName());
-
 			Login.loginUser("AutomationTesterAdmin");
 			waitForDisplayedSpinnerToEnd();
 			goToPage("Costing Models");
@@ -55,11 +52,8 @@ public class RunGLAdjustmentAndReclassifications extends CalculationHelper {
 	public void test01OpenGLAdjustmentAndReclassification() throws Throwable {
 		try {
 			ContractModelsHelper.doClickTreeData("CM Test");
-//			doClickTreeItem("CM Test");
 			waitForMainPageTitle("Cost Scnenarios");
 			ContractModelsHelper.doClickTreeData("Cost Scnenarios");
-//			doClickTreeItem("Cost Scnenarios");
-//			waitForMainPageTitle("GL Adjustment and Reclassification Calculation Scenarios");
 			doClick("//div[text()='GL Adjustment and Reclassification Calculation Scenarios']//input[@title='Changes screen']");
 			waitForElementToBeVisible(ContractingMap.getGLFilterButton());
 			doClick(ContractingMap.getGLFilterButton());
