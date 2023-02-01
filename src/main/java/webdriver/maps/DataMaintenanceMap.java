@@ -114,4 +114,32 @@ public class DataMaintenanceMap extends MapConfig {
 	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//span[text()='Assign']")
 	private static WebElement getAssignButtonEncounter;
 	public static WebElement getAssignButtonEncounter() {return getAssignButtonEncounter;}
+	
+	@FindBy(xpath = "(//div[contains(@id,'commontbar')]//span[text()='New']//parent::button)[1]")
+	private static WebElement getLoadDataNewButton;
+	public static WebElement getLoadDataNewButton() {return getLoadDataNewButton;}
+	
+	@FindBy(xpath = "(//div[contains(@id,'commontbar')]//span[text()='Filter']//parent::button)[1]")
+	private static WebElement getLoadDataFilterButton;
+	public static WebElement getLoadDataFilterButton() {return getLoadDataFilterButton;}
+	
+	@FindBy(name = "chargeMasterCode")
+	private static WebElement getChargeMaster;
+	public static WebElement getChargeMaster() {return getChargeMaster;}
+	
+	@FindBy(name = "priceListId")
+	private static WebElement getPriceListMaster;
+	public static WebElement getPriceListMaster() {return getPriceListMaster;}
+	
+	@FindBy(name = "logLocation")
+	private static WebElement getLogLoc;
+	public static WebElement getLogLoc() {return getLogLoc;}
+	
+	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//span[text()='Save & Create New']")
+	private static WebElement getSaveandCreateNewButton;
+	public static WebElement getSaveandCreateNewButton() {return getSaveandCreateNewButton;}
+	
+	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//span[text()='Calculate']//parent::button")
+	private static WebElement getCalculateButton;
+	public static WebElement getCalculateButton() {return getCalculateButton;}
 }

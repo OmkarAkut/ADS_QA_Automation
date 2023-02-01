@@ -194,7 +194,7 @@ public static List dbCredentials;
           url = "https://qa3-dev-ap1.dev.harrispaas.com/alliance-webCont/login/index.jsp";
     } 
     else if (testEnvironment.equals("ads11")) {
-        url = "https://qa3-dev-ap1.dev.harrispaas.com/alliance-webCont/alliance/index.jsp";
+        url = "http://stgrhl-dev.harrispaas.com/alliance-webCont/alliance/index.jsp";
   } 
     else {
       url = "https://qaautomation.mdasdss.com/alliance-webCont/login/index.jsp";

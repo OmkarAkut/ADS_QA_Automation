@@ -86,7 +86,7 @@ public class Fy2020IppsGeneralSectionDischargeStatusCodeForTransfersDialogAds151
   }
 
   @Test
-  public void test26VerifyAbilityToFilterAvailableCodesList() throws InterruptedException {
+  public void test26VerifyAbilityToFilterAvailableCodesList() throws Exception {
     doClick(driver.findElement(By.xpath("//span[text()='Filter']/following-sibling::span[contains(@class,'icon-expand')]")));
     doDropdownSelectUsingOptionText(driver.findElement(By.xpath("//*[contains(@id,'filter')]/descendant::label[text()='Field']/../following-sibling::table/descendant::input")), "Code");
     dialogsMap.getFilterDialogFormFieldValue().sendKeys("01");

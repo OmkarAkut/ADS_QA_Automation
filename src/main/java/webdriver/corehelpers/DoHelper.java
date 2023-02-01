@@ -7,6 +7,7 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 
+import webdriver.helpers.ContractModelsHelper;
 import webdriver.maps.CostingMap;
 import webdriver.maps.DataMaintenanceMap;
 import webdriver.maps.ModelLibraryMap;
@@ -257,7 +258,7 @@ public class DoHelper extends DriverHelper {
         }
     }
 
-    public void doDropdownSelectUsingOptionText(WebElement element, String optionText) throws InterruptedException {
+    public void doDropdownSelectUsingOptionText(WebElement element, String optionText) throws Exception {
         waitForAjaxExtJs();
         doClick(element);
         waitForAjaxExtJs();
@@ -266,8 +267,10 @@ public class DoHelper extends DriverHelper {
         List<WebElement> menu = list.findElements(By.tagName("li"));
         System.out.println();
        for(WebElement option : menu) {
+    	   ContractModelsHelper.scrollToView(option);
         	 System.out.println(option.getText());
             if(option.getText().equals(optionText)) {
+            	
                 option.click();
                 break;
             }
