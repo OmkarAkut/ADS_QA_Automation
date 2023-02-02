@@ -141,6 +141,15 @@ public class AdsHelper extends GetHelper {
     doClick(dialog.getFilterDialogButtonApplyFilter());
     waitForSpinnerToEnd();
   }
+  public void addFilter() {
+	  try {
+		doClick(dialog.getFilterDialogButtonAdd());
+	    waitForAjaxExtJs();
+
+	} catch (Exception e) {
+		
+	}
+  }
   public void doDropdownSelectUsingOptionTextServices(WebElement dropdownList,WebElement element, String optionText) throws InterruptedException {
       waitForAjaxExtJs();
       doClick(element);

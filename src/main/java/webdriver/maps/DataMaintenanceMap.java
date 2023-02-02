@@ -142,4 +142,20 @@ public class DataMaintenanceMap extends MapConfig {
 	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//span[text()='Calculate']//parent::button")
 	private static WebElement getCalculateButton;
 	public static WebElement getCalculateButton() {return getCalculateButton;}
+	
+	@FindBy(xpath = "//h1[text()='Price Items']//following::span[text()='Filter']//parent::button")
+	private static WebElement getPriceItemFilterButton;
+	public static WebElement getPriceItemFilterButton() {return getPriceItemFilterButton;}
+	
+	@FindBy(xpath = "//h1[text()='Price Items']//following::span[text()='Clear Filter']//parent::button")
+	private static WebElement getPriceItemClearFilterButton;
+	public static WebElement getPriceItemClearFilterButton() {return getPriceItemClearFilterButton;}
+	
+	@FindBy(xpath = "//span[text()='Department Code']//following::div[contains(@id,'dynamicGrid')]//table//tr[2]/td[11]/div")
+	private static WebElement getPriceItemValue;
+	public static WebElement getPriceItemValue() {return getPriceItemValue;}
+	
+	@FindBy(xpath = "//span[text()='Department Code']//following::div[contains(@id,'dynamicGrid')]//table//tr[2]/td[5]/div")
+	private static WebElement getPriceItemDeptCode;
+	public static WebElement getPriceItemDeptCode() {return getPriceItemDeptCode;}
 }
