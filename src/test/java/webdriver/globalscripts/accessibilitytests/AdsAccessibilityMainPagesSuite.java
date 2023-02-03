@@ -108,15 +108,23 @@ public class AdsAccessibilityMainPagesSuite extends LoginStatic {
 			fail(e.getMessage());
 		}
 	}
-	//
-	//  @Test
-	//  public void testReportingTabReportDateMaintenancePage() throws InterruptedException {
-	//    goToPage("Report Date Maintenance");
-	//    waitForAjaxExtJs();
-	//    ax.runAxeAccessibilityTestOfPage(driver, logger, name.getMethodName());
-	//    doClosePageOnLowerBar("Report Date...");
-	//  }
-	//
+	
+	@Test
+	public void testReportingTabReportDateMaintenancePage() throws InterruptedException,Throwable {
+		try {
+			goToPage("Report Date Maintenance");
+			waitForAjaxExtJs();
+			ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName());
+			doClosePageOnLowerBar("Report Date...");
+			ExtentReport.logPass("PASS", "testReportingTabReportDateMaintenancePage");
+		}
+
+		catch (Exception|AssertionError e) {
+			ExtentReport.logFail("FAIL", "testReportingTabReportDateMaintenancePage", driver, e);
+			fail(e.getMessage());
+		}
+	}
+	
 	//  @Test
 	//  public void testReportingTabReportMenuMaintenancePage() throws InterruptedException {
 	//    goToPage("Report Menu Maintenance");
