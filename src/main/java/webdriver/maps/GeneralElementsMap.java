@@ -451,6 +451,9 @@ public class GeneralElementsMap extends MapConfig {
     @FindBy(xpath = "//h1[text()='Costing']/../descendant::div[@class='bubbleQuickLinks']/descendant::a[text()='Unit Cost Quick Calculation']")
     private WebElement landingPageBubbleCostingUnitCostQuickCalculation;
     public WebElement getLandingPageBubbleCostingQuickLinkUnitCostQuickCalculation() {return landingPageBubbleCostingUnitCostQuickCalculation;}
+    @FindBy(xpath = "//div[@class='bubble bubble3 medium costing']")
+    private WebElement landingPageBubbleCostingBgColor;
+    public WebElement getlandingPageBubbleCostingBgColor() {return landingPageBubbleCostingBgColor;}
 
     //Contracting
     @FindBy(xpath = "//*[contains(@class,'contracting')]")
