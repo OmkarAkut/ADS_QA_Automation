@@ -1082,4 +1082,8 @@ public class CostingMap extends MapConfig {
 	@FindBy(xpath = "//td[contains(@id,'combobox')]/input")
 	private static WebElement getModelTypedropdown;
 	public WebElement getModelTypedropdown() {return getModelTypedropdown;}
+	
+	@FindBy(xpath = "//div[contains(@id,'masterlist')]//span[text()='Edit']//parent::button")
+	private static WebElement getEditButton;
+	public WebElement getEditButton() {return getEditButton;}
 }
