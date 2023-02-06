@@ -21,9 +21,10 @@ import webdriver.maps.mapbuilder.BuildMap;
 public class CreateNewCostModel extends GoHelper {
 	static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
 	static String costModel = "Model " + currentDateTime;
+	static String overheadModel = "OverheadModel " + currentDateTime;
 	static CostingMap costing;
 	static ContractingMap modelMap;
-/** Automates test ticket ADS-6632. */
+/** Automates test ticket ADS-6632, ADS-6633 ,ADS-6641*/
 	
 	@BeforeClass
 	public static void setupScript() throws Exception,Throwable {
@@ -57,7 +58,7 @@ public class CreateNewCostModel extends GoHelper {
 	}
 	
 	@Test
-	public void test02AssertNewelyCostModel() throws Throwable {
+	public void test02AssertNewCostModel() throws Throwable {
 		try {
 			goToPage("Cost Models");
 			doSearchForContractModel(costModel);
@@ -82,17 +83,84 @@ public class CreateNewCostModel extends GoHelper {
 			assertElementIsDisplayed(modelMap.getContractModelDeleteButtonInPopUp());
 			assertElementIsDisplayed(modelMap.getContractModelCancelButtonInPopUp());
 			doClick(modelMap.getContractModelDeleteButtonInPopUp());
+			driverDelay(200);
 			waitForElementToBeVisible(driver.findElement(By.xpath("//*[text()='There is no data available to display.']")));
 			assertTextIsDisplayed("There is no data available to display.");
-			doClosePageOnLowerBar("Model Library");
 			ExtentReport.logPass("PASS", "test03DeleteNewelyCreatedCostModel");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test03DeleteNewelyCreatedCostModel", driver, e);
 			fail(e.getMessage());
 		}
 	}
+	@Test
+	public void test04CancelButtonInCostModelPopUp() throws Throwable {
+		try {
+			doClick(modelMap.getNewContractModelButton());
+			waitUntilElementIsVisible(CostingMap.getNewCostModelPopUp());
+			doClick(costing.getCancelCostModel());
+			ExtentReport.logPass("PASS", "test04CancelButtonInCostModelPopUp");
+
+			}
+		catch(Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test04CancelButtonInCostModelPopUp", driver, e);
+			fail(e.getMessage());
+		}
+	}
+	@Test
+	public void test05CreateOverheadCostModel() throws Throwable {
+		try {
+			doClick(modelMap.getNewContractModelButton());
+			waitUntilElementIsVisible(CostingMap.getNewCostModelPopUp());
+			doDropdownSelectUsingOptionText(costing.getModelTypedropdown(), "Overhead");
+			doClick(ContractingMap.getInputName());
+			ContractingMap.getInputName().sendKeys(overheadModel);
+			doClick(costing.getSaveCostModel());
+			driverDelay(200);
+			ExtentReport.logPass("PASS", "test05CreateOverheadCostModel");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test05CreateOverheadCostModel", driver, e);
+			fail(e.getMessage());
+		}
+	}
+	
+	@Test
+	public void test06AssertCreatedOverheadCostModel() throws Throwable {
+		try {
+			goToPage("Cost Models");
+			doSearchForContractModel(overheadModel);
+			driverDelay(2000);
+			assertTextIsDisplayed(overheadModel);
+			ExtentReport.logPass("PASS", "test06AssertCreatedOverheadCostModel");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test06AssertCreatedOverheadCostModel", driver, e);
+			fail(e.getMessage());
+		}
+	}
+	
+	@Test
+	public void test07DeleteNewelyCreatedOverheadModel() throws Throwable {
+		try {
+			doClick(modelMap.getContractModelDeleteButton());
+			waitForElementToBeVisible(modelMap.getContractModelDeletePopUp());
+			assertElementIsDisplayed(modelMap.getContractModelDeletePopUp());
+			doClick(modelMap.getContractModelCancelButtonInPopUp());
+			doClick(modelMap.getContractModelDeleteButton());
+			waitForElementToBeVisible(modelMap.getContractModelDeletePopUp());
+			assertElementIsDisplayed(modelMap.getContractModelDeleteButtonInPopUp());
+			assertElementIsDisplayed(modelMap.getContractModelCancelButtonInPopUp());
+			doClick(modelMap.getContractModelDeleteButtonInPopUp());
+			driverDelay(200);
+			waitForElementToBeVisible(driver.findElement(By.xpath("//*[text()='There is no data available to display.']")));
+			assertTextIsDisplayed("There is no data available to display.");
+			ExtentReport.logPass("PASS", "test07DeleteNewelyCreatedOverheadModel");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test07DeleteNewelyCreatedOverheadModel", driver, e);
+			fail(e.getMessage());
+		}
+	}
 	@AfterClass
 	public static void endtest() throws Exception {
+		doClosePageOnLowerBar("Model Library");
 
 		ExtentReport.report.flush();
 

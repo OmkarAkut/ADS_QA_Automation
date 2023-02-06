@@ -1073,4 +1073,13 @@ public class CostingMap extends MapConfig {
 	@FindBy(xpath = "//div[contains(@class,'glFormCls')]//following::table//following::span[text()='Save & Close']//parent::button")
 	private static WebElement getSaveCostModel;
 	public WebElement getSaveCostModel() {return getSaveCostModel;}
+	
+
+	@FindBy(xpath = "//div[contains(@class,'glFormCls')]//following::table//following::span[text()='Cancel & Close']//parent::button")
+	private static WebElement getCancelCostModel;
+	public WebElement getCancelCostModel() {return getCancelCostModel;}
+	
+	@FindBy(xpath = "//td[contains(@id,'combobox')]/input")
+	private static WebElement getModelTypedropdown;
+	public WebElement getModelTypedropdown() {return getModelTypedropdown;}
 }
