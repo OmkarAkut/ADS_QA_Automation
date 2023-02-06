@@ -1064,4 +1064,13 @@ public class CostingMap extends MapConfig {
 	@FindBy(xpath = "//input[@id='search-glossary']")
 	private static WebElement getHelpGlossarySearch;
 	public static WebElement getHelpGlossarySearch() {return getHelpGlossarySearch;}
+	
+	//Shilpa
+	@FindBy(xpath = "//div[contains(@class,'x-window-closable ')]//div[contains(@id,'window')]//span[text()='New Cost Model']")
+	public static WebElement getNewCostModelPopUp;
+	public static WebElement getNewCostModelPopUp() { return getNewCostModelPopUp;}
+	
+	@FindBy(xpath = "//div[contains(@class,'glFormCls')]//following::table//following::span[text()='Save & Close']//parent::button")
+	private static WebElement getSaveCostModel;
+	public WebElement getSaveCostModel() {return getSaveCostModel;}
 }

@@ -63,7 +63,7 @@ public class CreateANewContractModel extends CalculationHelper {
 			ContractingMap.getContractModelNameInput().sendKeys(contractModelName);
 			doClick(ContractingMap.getContractModelAddProviderBtn());
 			waitForElementToBeVisible(ContractingMap.getContractModelAddProviderPopup());
-			contractModelsHelper.selectMultipleColumnsToDisplay(columnsToSelect);
+			ContractModelsHelper.selectMultipleColumnsToDisplay(columnsToSelect);
 			contractModelsHelper.removeMultipleColumnsToDisplay(columnsToRemove);
 			doClick(modelMap.getApplySelections());
 			waitForElementToBeVisible(ContractingMap.getNewContractModelPopUp());

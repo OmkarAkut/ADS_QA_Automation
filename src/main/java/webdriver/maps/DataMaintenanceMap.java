@@ -155,7 +155,7 @@ public class DataMaintenanceMap extends MapConfig {
 	private static WebElement getPriceItemValue;
 	public static WebElement getPriceItemValue() {return getPriceItemValue;}
 	
-	@FindBy(xpath = "//span[text()='Department Code']//following::div[contains(@id,'dynamicGrid')]//table//tr[2]/td[5]/div")
-	private static WebElement getPriceItemDeptCode;
-	public static WebElement getPriceItemDeptCode() {return getPriceItemDeptCode;}
+	@FindBy(xpath = "//span[text()='Department Code']//following::div[contains(@id,'dynamicGrid')]//table//tr/td[5]/div")
+	private static List<WebElement> getPriceItemDeptCode;
+	public static List<WebElement> getPriceItemDeptCode() {return getPriceItemDeptCode;}
 }
