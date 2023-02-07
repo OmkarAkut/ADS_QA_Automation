@@ -25,6 +25,7 @@ public class UcqcGridIsPopulatedAfterClickingApplySelectionsButtonAds1175 extend
   //Add checks for the columns Charge Code, Charge Code Name, and Modifier columns and
   //this test case can cover ADS-1219 as well - if scrolling is checked to start after
   //these three, then ADS-1204 covered.
+  /**Regression test case : ADS-6644 **/
   @BeforeClass
   public static void setupScript() throws Throwable {
 	  

@@ -35,7 +35,7 @@ public class RvuMaintenanceAds1492 extends GoHelper {
 			Integer.toString(javaGetRandomNumber(99,true))
 			);
 
-	/** Automates test ticket ADS-1492. */
+	/** Automates test ticket ADS-1492. ADS-6646*/
 	
 	@BeforeClass
 	public static void setupScript() throws Exception,Throwable {
