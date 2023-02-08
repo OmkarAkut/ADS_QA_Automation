@@ -1086,4 +1086,24 @@ public class CostingMap extends MapConfig {
 	@FindBy(xpath = "//div[contains(@id,'masterlist')]//span[text()='Edit']//parent::button")
 	private static WebElement getEditButton;
 	public WebElement getEditButton() {return getEditButton;}
+	
+	 @FindBy(xpath = "//span[text()='Name']//following::span[@class='fas fa-angle-down']")
+	 private WebElement landingPageNameSortAsc;
+	 public WebElement getlandingPageNameSortAsc() {return landingPageNameSortAsc;}
+	   
+	 @FindBy(xpath = "//span[text()='Date Created']//following::span[@class='fas fa-angle-down']")
+	 private WebElement landingPageDateSortAsc;
+	 public WebElement getlandingPageDateSortAsc() {return landingPageDateSortAsc;}
+	    
+	 @FindBy(xpath = "//span[text()='Name']//following::span[@class='fas fa-angle-up']")
+	 private WebElement landingPageNameSortDesc;
+	 public WebElement getlandingPageNameSortDesc() {return landingPageNameSortDesc;}
+	 
+	 @FindBy(xpath = "//span[text()='Date Created']//following::span[@class='fas fa-angle-up']")
+	 private WebElement landingPageDateSortDesc;
+	 public WebElement getlandingPageDateSortDesc() {return landingPageDateSortDesc;}
+	 
+	 @FindBy(xpath = "(//div[contains(@id,'adynamicgrid')])[7]//following::tr[2]//td[3]/div")
+	 private static List<WebElement> landingPageGridList;
+	 public static List<WebElement> getlandingPageGridList() {return landingPageGridList;}
 }

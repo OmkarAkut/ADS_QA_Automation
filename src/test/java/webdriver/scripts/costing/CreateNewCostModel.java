@@ -24,7 +24,7 @@ public class CreateNewCostModel extends GoHelper {
 	static String overheadModel = "OverheadModel " + currentDateTime;
 	static CostingMap costing;
 	static ContractingMap modelMap;
-/** Automates test ticket ADS-6632, ADS-6633 ,ADS-6641*/
+/** Automates test ticket ADS-6632, ADS-6633 ,ADS-6641,ADS-6253*/
 	
 	@BeforeClass
 	public static void setupScript() throws Exception,Throwable {

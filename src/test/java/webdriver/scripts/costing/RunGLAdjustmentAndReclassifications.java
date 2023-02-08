@@ -25,7 +25,7 @@ public class RunGLAdjustmentAndReclassifications extends CalculationHelper {
 	static String[] filterGLModel = { "Name", "Is", "Equal To", glModel };
 	static ContractingMap contractMap;
 
-	/** Automates test ticket ADS-5987. */
+	/** Automates test ticket ADS-5988. */
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
 		ExtentReport.reportCreate("RunGLAdjustmentAndReclassifications", "webdriver.scripts.costing",

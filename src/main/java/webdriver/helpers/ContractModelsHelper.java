@@ -10,6 +10,7 @@ import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -996,6 +997,41 @@ public class ContractModelsHelper extends GoHelper {
  }
 			} catch (Exception e) {
 				
+			}
+		 }
+		 
+		 public static void sortTableGridAscending(List<WebElement> elements) throws Exception {
+			 ArrayList<String> obtainedList = new ArrayList<>(); 
+				List<WebElement> elementList= elements;
+				for(WebElement we:elementList){
+				   obtainedList.add(we.getText());
+				}
+				driverDelay(1000);
+				ArrayList<String> sortedList = new ArrayList<>();   
+				for(String s:obtainedList){
+				sortedList.add(s);
+				}
+				Collections.sort(sortedList);
+				Collections.sort(obtainedList);
+				if(sortedList.equals(obtainedList)) {
+				assertTrue(printout);
+			}
+		 }
+		 public static void sortTableGridDescending(List<WebElement> elements) throws Exception {
+			 ArrayList<String> obtainedList = new ArrayList<>(); 
+				List<WebElement> elementList= elements;
+				for(WebElement we:elementList){
+				   obtainedList.add(we.getText());
+				}
+				driverDelay(1000);
+				ArrayList<String> sortedList = new ArrayList<>();   
+				for(String s:obtainedList){
+				sortedList.add(s);
+				}
+				Collections.reverse(sortedList);
+				Collections.reverse(obtainedList);
+			if(sortedList.equals(obtainedList)) {
+				assertTrue(printout);
 			}
 		 }
 }
