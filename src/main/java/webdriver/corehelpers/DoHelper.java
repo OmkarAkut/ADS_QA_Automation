@@ -108,6 +108,9 @@ public class DoHelper extends DriverHelper {
 			Thread.sleep(2000);
 			waitUntilElementIsClickable(
 					driver.findElement(By.xpath("(//div[@class='gwt-HTML'][contains(text(),'" + name + "')])[1]")));
+			 ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);",
+						driver.findElement(By.xpath("(//div[@class='gwt-HTML'][contains(text(),'" + name + "')])[1]")));
+				Thread.sleep(500);
 			driver.findElement(By.xpath("(//div[@class='gwt-HTML'][contains(text(),'" + name + "')])[1]")).click();
 			waitForSpinnerToEnd(); 
 //			 waitForAjaxExtJs();
@@ -117,8 +120,10 @@ public class DoHelper extends DriverHelper {
 			driverDelay(2000);
 			waitUntilElementIsClickable(driver
 					.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]/div[text()='" + name + "']")));
-			driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]/div[text()='" + name + "']"))
-					.click();
+			 ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);",
+						driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]/div[text()='" + name + "']")));
+			 driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]/div[text()='" + name + "']"))
+				.click();
 			waitForSpinnerToEnd();
 			waitForAjaxExtJs();
 			waitForSpinnerToEnd();
@@ -128,7 +133,9 @@ public class DoHelper extends DriverHelper {
     	
     public static void doClickTreeItemWithCheckbox(String name) throws InterruptedException {
         waitUntilElementIsClickable(driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]/div[text()='" + name + "']")));
-    driver
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);",
+				driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]/div[text()='" + name + "']")));
+        driver
         .findElement(
             By.xpath(
                 "//td[contains(@class,'x-grid-cell-treecolumn')]" +
