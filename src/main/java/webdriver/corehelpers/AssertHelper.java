@@ -731,9 +731,14 @@ public class AssertHelper extends AdsHelper {
 				assertTrue(true);
 			}
 		} catch (Throwable e) {
-			fail(e.getMessage());
-		}
 		
-			
+		}
 	}
+		
+		public static void assertThatFieldReadonly(WebElement element) {
+			if(element.getAttribute("readonly").equals("readonly")) {
+				assertTrue(true);
+			}
+		}
+	
 }

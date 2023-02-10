@@ -130,6 +130,7 @@ public class AdsHelper extends GetHelper {
     doClick(dialog.getFilterDialogButtonApplyFilter());
     waitForSpinnerToEnd();
   }
+  
 
   public void doFilterCreate(String[] filterParameters) throws InterruptedException {
 	  System.out.println(filterParameters[0]);
@@ -149,6 +150,22 @@ public class AdsHelper extends GetHelper {
 	} catch (Exception e) {
 		
 	}
+  }
+  public void doDropdownSelectUsingOptionTextWithelement(WebElement dropdownList,String optionText) throws InterruptedException {
+      waitForAjaxExtJs();
+      
+     
+//      WebElement list = driver.findElement(By.xpath("(//div[contains(@id,'specialtagcombo')]//following::div[contains(@class,'floating')]//ul)["+i+"]"));
+      List<WebElement> menu = dropdownList.findElements(By.tagName("li"));
+      System.out.println(optionText);
+     for(WebElement option : menu) {
+      	 System.out.println("Value"+option.getText());
+          if(option.getText().equals(optionText)) {
+              option.click();
+              break;
+          }
+     }
+    
   }
   public void doDropdownSelectUsingOptionTextServices(WebElement dropdownList,WebElement element, String optionText) throws InterruptedException {
       waitForAjaxExtJs();
@@ -176,6 +193,14 @@ public class AdsHelper extends GetHelper {
     doClick(dialog.getFilterDialogFormFieldValue());
     dialog.getFilterDialogFormFieldValue().sendKeys(value);
   }
+  public void doFilterSetFilterParameterswithElement(String field, String operator, String condition, String value) throws InterruptedException {
+	    waitForAjaxExtJs();
+	    doDropdownSelectUsingOptionTextServices(dialog.getfieldNAme(), dialog.getFilterDialogDropdownField(),field);
+	    doDropdownSelectUsingOptionTextServices(dialog.getFilterNameOperator(),dialog.getFilterDialogDropdownOperator(), operator);
+	    doDropdownSelectUsingOptionTextServices(dialog.getFilterNameCondition(),dialog.getFilterDialogDropdownCondition(), condition);
+	    doClick(dialog.getFilterDialogFormFieldValue());
+	    dialog.getFilterDialogFormFieldValue().sendKeys(value);
+	  }
 
   public void doSelectCalcStatusFilterCriteria(String criteriaOption, String optionText) throws InterruptedException {
     if(criteriaOption.equals("Field")){

@@ -25,6 +25,8 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+
+import webdriver.corehelpers.AdsHelper;
 import webdriver.corehelpers.GoHelper;
 import webdriver.maps.ContractingMap;
 import webdriver.maps.CostingMap;
@@ -1034,4 +1036,23 @@ public class ContractModelsHelper extends GoHelper {
 				assertTrue(printout);
 			}
 		 }
+		 
+	public static void applyMultipleFilters(String code,String name) throws Throwable {
+		AdsHelper adsHelper = new AdsHelper();
+		adsHelper.doFilterSetFilterParameterswithElement(code, "Is", "Equal To", name);
+		doClick(ContractingMap.getaddOnServicesPopUpFilterAddButton());
+		ContractModelsHelper.scrollToView(ContractingMap.getContractModelApplyFilterButton());
+		doClick(ContractingMap.getContractModelApplyFilterButton());
+//		ContractingMap.getFilterDialogButtonApplyFilter();
+		ContractModelsHelper.highlightColumnsToDisplayColumnServices();
+	    doClick("//div[contains(@class,'x-toolbar-footer')]//span[text()='Apply']");
+	}
+	
+	public static void groupSelectApplyFilters(String code,String name) throws Throwable {
+	
+		 ContractModelsHelper.scrollToView(CostingMap.getDeptGroupsSelect());
+			doClick(CostingMap.getDeptGroupsSelect());
+			doClick(CostingMap.getUnitCostQuickCalculationDepartmentButtonFilter());
+			applyMultipleFilters(code,name);
+	}
 }
