@@ -46,6 +46,7 @@ public class QuickCcCostColumnsForEachCostComponentPopulateAfterCalculateAds1229
   @Test
   public void test00UpdateTotalQuickCostColumnPopulatesAfterCalculate() throws Throwable {
     try {
+      assertElementIsDisabled(quickCostColumns.getUnitCostQuickCalculationButtonApplySelections(), printout);
       setUcqcCriteria("Marina", "*CM1 TB MHFY05 After Vol Change", "150 Marina Medical Center", "2130", "Jan 2005 to Jan 2005");//Shilpa 13.09.2022 updated depatment from 2130  PED ICU, issue with department grp pop up
       doClick(quickCostColumns.getUnitCostQuickCalculationButtonApplySelections());
       waitForAjaxExtJs();

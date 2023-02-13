@@ -25,7 +25,7 @@ public class UcqcGridIsPopulatedAfterClickingApplySelectionsButtonAds1175 extend
   //Add checks for the columns Charge Code, Charge Code Name, and Modifier columns and
   //this test case can cover ADS-1219 as well - if scrolling is checked to start after
   //these three, then ADS-1204 covered.
-  /**Regression test case : ADS-6644 ,ADS-5927**/
+  /**Regression test case : ADS-6644 ,ADS-5927,ADS-5917**/
   @BeforeClass
   public static void setupScript() throws Throwable {
 	  
@@ -58,6 +58,14 @@ public class UcqcGridIsPopulatedAfterClickingApplySelectionsButtonAds1175 extend
       applySelections("4099909");
       ucqcPopulateRequiredFieldsToDisplayGrid("0-MarinaCostModel", "entity 150 dept 2016 2110 3520", "150 Marina Medical Center", "2016", "Apr 2004 to Jun 2004");
       applySelections("0ALL");
+      ucqcPopulateRequiredFieldsToDisplayGrid("Marina", "*DM ADS-673 A", "150 Marina Medical Center", "2016", "Apr 2004 to Mar 2005");
+      applySelections("8195307");
+      ucqcPopulateRequiredFieldsToDisplayGrid("QA Cost Model", "ADS-931 By Month", "150 Marina Medical Center", "2110", "Apr 2004 to Apr 2004");
+      applySelections("1100049");
+      ucqcPopulateRequiredFieldsToDisplayGrid("QA Cost Model", "ADS-931 By Month", "150 Marina Medical Center", "2140", "Jun 2004 to Jun 2004");
+      applySelections("1100569");
+      ucqcPopulateRequiredFieldsToDisplayGrid("QA Cost Model", "ADS-931 By Month", "150 Marina Medical Center", "2140", "Feb 2005 to Feb 2005");
+      applySelections("1100569");
       ExtentReport.logPass("PASS", "testUcqcGridDisplaysAfterClickingApplySelectionsButton");
     } catch (Exception|AssertionError e){
     	ExtentReport.logFail("FAIL","testUcqcGridDisplaysAfterClickingApplySelectionsButton", driver,e);
