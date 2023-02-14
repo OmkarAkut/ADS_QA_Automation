@@ -1355,4 +1355,79 @@ public class CostingMap extends MapConfig {
 		public static WebElement getCostDischargeStatusFilterButton() {
 			return getCostDischargeStatusFilterButton;
 		}
+		@FindBy(xpath = "(//input[@name='singleSelectorName']//following::span[text()='Select']//parent::button)[1]")
+		private  WebElement getRvuSecSelectorSelectButton;
+		public  WebElement getRvuSecSelectorSelectButton() {
+			return getRvuSecSelectorSelectButton;
+		}
+		@FindBy(xpath = "(//input[@name='singleSelectorName']//following::span[text()='Select']//parent::button)[2]")
+		private  WebElement getRvuSecImportSelectButton;
+		public  WebElement getRvuSecImportSelectButton() {
+			return getRvuSecImportSelectButton;
+		}
+		@FindBy(name = "sharedHostLocation")
+		private  WebElement getRvuSharedLocDropdown;
+		public  WebElement getRvuSharedLocDropdown() {
+			return getRvuSharedLocDropdown;
+		}
+		@FindBy(name = "logFileName")
+		private  WebElement getRvuFileNameInput;
+		public  WebElement getRvuFileNameInput() {
+			return getRvuFileNameInput;
+		}
+		@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer x-docked-bottom')]//div[contains(@class,'x-toolbar-item')]//span[text()='Export']//parent::button")
+		private  WebElement getRvuExportButton;
+		public   WebElement getRvuExportButton() {
+			return getRvuExportButton;
+		}
+		@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer x-docked-bottom')]//div[contains(@class,'x-toolbar-item')]//span[text()='Import']//parent::button")
+		private  WebElement getRvuImportButton;
+		public   WebElement getRvuImportButton() {
+			return getRvuImportButton;
+		}
+		@FindBy(name = "enttityCode")
+		private  WebElement getRvuCostCalcScenarioEntityDropdown;
+		public   WebElement getRvuCostCalcScenarioEntityDropdown() {
+			return getRvuCostCalcScenarioEntityDropdown;
+		}
+		@FindBy(xpath = "(//div[contains(@id,'boundlist')]/ul/li[text()='150 Marina Medical Center']/..)")
+		private  WebElement getRvuCostCalcScenarioEntityOptions;
+		public   WebElement getRvuCostCalcScenarioEntityOptions() {
+			return getRvuCostCalcScenarioEntityOptions;
+		}
+		@FindBy(name = "deptName")
+		private  WebElement getRvuCostCalcScenarioDeptDropdown;
+		public   WebElement getRvuCostCalcScenarioDeptDropdown() {
+			return getRvuCostCalcScenarioDeptDropdown;
+		}
+		@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='2110  ICU']/..")
+		private  WebElement getRvuCostCalcScenarioDeptOptions;
+		public   WebElement getRvuCostCalcScenarioDeptOptions() {
+			return getRvuCostCalcScenarioDeptOptions;
+		}
+		@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='Apr 2004 to Mar 2005']/..")
+		private  WebElement getRvuCostCalcScenarioResultsOptions;
+		public   WebElement getRvuCostCalcScenarioResultsOptions() {
+			return getRvuCostCalcScenarioResultsOptions;
+		}
+		@FindBy(xpath = "(//table[contains(@class,'x-field totalCost')]//following::label[text()='Total Costs']//following::div[1])")
+		private  WebElement getRvuCostCalcScenarioTotalCost;
+		public   WebElement getRvuCostCalcScenarioTotalCost() {
+			return getRvuCostCalcScenarioTotalCost;
+		}
+		@FindBy(xpath = "(//span[text()='Cost Details']//following::div[@class='x-btn x-btn-default-small x-noicon x-btn-noicon x-btn-default-small-noicon']//span[text()='Apply Selections']//parent::button)")
+		private  WebElement getRvuCostCalcScenarioApplySelection;
+		public   WebElement getRvuCostCalcScenarioApplySelection() {
+			return getRvuCostCalcScenarioApplySelection;
+		}
+		@FindBy(xpath = "//div[contains(@class,'x-toolbar-footer')]//span[text()='Close']")
+		private  WebElement getRvuCostCalcScenarioCloseButton;
+		public   WebElement getRvuCostCalcScenarioCloseButton() {
+			return getRvuCostCalcScenarioCloseButton;
+		}
+		@FindBy(name = "hostLocation")
+		private  WebElement getRvuDownloadSharedLocDropdown;
+		public  WebElement getRvuDownloadSharedLocDropdown() {
+			return getRvuDownloadSharedLocDropdown;
+		}
 }
