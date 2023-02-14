@@ -27,6 +27,7 @@ import webdriver.scripts.costing.unitcostquickcalculation.ucqccalculation.Valida
  * This script confirms the ability to choose cost components and the destination effective
  * month start on the Overwrite RVU Maintenance Pop Up for a copied Cost Model Scenario.
  */
+/**Regression test case ADS-6667 */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class OverwriteRvuMaintenancePopupAds1181 extends UcqcHelper {
 

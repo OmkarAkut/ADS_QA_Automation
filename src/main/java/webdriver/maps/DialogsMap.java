@@ -20,6 +20,10 @@ public class DialogsMap extends MapConfig {
     private WebElement field;
     public WebElement getFilterNameField() {return field;}
     
+    @FindBy(xpath = "(//div[contains(@id,'specialtagcombo')]//following::div[contains(@class,'floating')]//ul)[5]")
+    private WebElement fieldNAme;
+    public WebElement getfieldNAme() {return fieldNAme;}
+    
     @FindBy(xpath = "(//div[contains(@id,'specialtagcombo')]//following::div[contains(@class,'floating')]//ul)[3]")
     private WebElement condition;
     public WebElement getFilterNameCondition() {return condition;}

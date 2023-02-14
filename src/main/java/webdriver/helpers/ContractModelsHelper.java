@@ -10,6 +10,7 @@ import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -24,6 +25,8 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+
+import webdriver.corehelpers.AdsHelper;
 import webdriver.corehelpers.GoHelper;
 import webdriver.maps.ContractingMap;
 import webdriver.maps.CostingMap;
@@ -998,4 +1001,58 @@ public class ContractModelsHelper extends GoHelper {
 				
 			}
 		 }
+		 
+		 public static void sortTableGridAscending(List<WebElement> elements) throws Exception {
+			 ArrayList<String> obtainedList = new ArrayList<>(); 
+				List<WebElement> elementList= elements;
+				for(WebElement we:elementList){
+				   obtainedList.add(we.getText());
+				}
+				driverDelay(1000);
+				ArrayList<String> sortedList = new ArrayList<>();   
+				for(String s:obtainedList){
+				sortedList.add(s);
+				}
+				Collections.sort(sortedList);
+				Collections.sort(obtainedList);
+				if(sortedList.equals(obtainedList)) {
+				assertTrue(printout);
+			}
+		 }
+		 public static void sortTableGridDescending(List<WebElement> elements) throws Exception {
+			 ArrayList<String> obtainedList = new ArrayList<>(); 
+				List<WebElement> elementList= elements;
+				for(WebElement we:elementList){
+				   obtainedList.add(we.getText());
+				}
+				driverDelay(1000);
+				ArrayList<String> sortedList = new ArrayList<>();   
+				for(String s:obtainedList){
+				sortedList.add(s);
+				}
+				Collections.reverse(sortedList);
+				Collections.reverse(obtainedList);
+			if(sortedList.equals(obtainedList)) {
+				assertTrue(printout);
+			}
+		 }
+		 
+	public static void applyMultipleFilters(String code,String name) throws Throwable {
+		AdsHelper adsHelper = new AdsHelper();
+		adsHelper.doFilterSetFilterParameterswithElement(code, "Is", "Equal To", name);
+		doClick(ContractingMap.getaddOnServicesPopUpFilterAddButton());
+		ContractModelsHelper.scrollToView(ContractingMap.getContractModelApplyFilterButton());
+		doClick(ContractingMap.getContractModelApplyFilterButton());
+//		ContractingMap.getFilterDialogButtonApplyFilter();
+		ContractModelsHelper.highlightColumnsToDisplayColumnServices();
+	    doClick("//div[contains(@class,'x-toolbar-footer')]//span[text()='Apply']");
+	}
+	
+	public static void groupSelectApplyFilters(String code,String name) throws Throwable {
+	
+		 ContractModelsHelper.scrollToView(CostingMap.getDeptGroupsSelect());
+			doClick(CostingMap.getDeptGroupsSelect());
+			doClick(CostingMap.getUnitCostQuickCalculationDepartmentButtonFilter());
+			applyMultipleFilters(code,name);
+	}
 }

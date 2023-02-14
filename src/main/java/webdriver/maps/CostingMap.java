@@ -654,9 +654,9 @@ public class CostingMap extends MapConfig {
 	}
 
 	@FindBy(xpath = "//*[contains(@class,'filterIconBtn')]/descendant::span[text()='Filter']")
-	private WebElement unitCostQuickCalculationDepartmentButtonFilter;
+	private static WebElement unitCostQuickCalculationDepartmentButtonFilter;
 
-	public WebElement getUnitCostQuickCalculationDepartmentButtonFilter() {
+	public static WebElement getUnitCostQuickCalculationDepartmentButtonFilter() {
 		return unitCostQuickCalculationDepartmentButtonFilter;
 	}
 
@@ -1064,4 +1064,295 @@ public class CostingMap extends MapConfig {
 	@FindBy(xpath = "//input[@id='search-glossary']")
 	private static WebElement getHelpGlossarySearch;
 	public static WebElement getHelpGlossarySearch() {return getHelpGlossarySearch;}
+	
+	//Shilpa
+	@FindBy(xpath = "//div[contains(@class,'x-window-closable ')]//div[contains(@id,'window')]//span[text()='New Cost Model']")
+	public static WebElement getNewCostModelPopUp;
+	public static WebElement getNewCostModelPopUp() { return getNewCostModelPopUp;}
+	
+	@FindBy(xpath = "//div[contains(@class,'glFormCls')]//following::table//following::span[text()='Save & Close']//parent::button")
+	private static WebElement getSaveCostModel;
+	public WebElement getSaveCostModel() {return getSaveCostModel;}
+	
+
+	@FindBy(xpath = "//div[contains(@class,'glFormCls')]//following::table//following::span[text()='Cancel & Close']//parent::button")
+	private static WebElement getCancelCostModel;
+	public WebElement getCancelCostModel() {return getCancelCostModel;}
+	
+	@FindBy(xpath = "//td[contains(@id,'combobox')]/input")
+	private static WebElement getModelTypedropdown;
+	public WebElement getModelTypedropdown() {return getModelTypedropdown;}
+	
+	@FindBy(xpath = "//div[contains(@id,'masterlist')]//span[text()='Edit']//parent::button")
+	private static WebElement getEditButton;
+	public WebElement getEditButton() {return getEditButton;}
+	
+	 @FindBy(xpath = "//span[text()='Name']//following::span[@class='fas fa-angle-down']")
+	 private WebElement landingPageNameSortAsc;
+	 public WebElement getlandingPageNameSortAsc() {return landingPageNameSortAsc;}
+	   
+	 @FindBy(xpath = "//span[text()='Date Created']//following::span[@class='fas fa-angle-down']")
+	 private WebElement landingPageDateSortAsc;
+	 public WebElement getlandingPageDateSortAsc() {return landingPageDateSortAsc;}
+	    
+	 @FindBy(xpath = "//span[text()='Name']//following::span[@class='fas fa-angle-up']")
+	 private WebElement landingPageNameSortDesc;
+	 public WebElement getlandingPageNameSortDesc() {return landingPageNameSortDesc;}
+	 
+	 @FindBy(xpath = "//span[text()='Date Created']//following::span[@class='fas fa-angle-up']")
+	 private WebElement landingPageDateSortDesc;
+	 public WebElement getlandingPageDateSortDesc() {return landingPageDateSortDesc;}
+	 
+	 @FindBy(xpath = "(//div[contains(@id,'adynamicgrid')])[7]//following::tr[2]//td[3]/div")
+	 private static List<WebElement> landingPageGridList;
+	 public static List<WebElement> getlandingPageGridList() {return landingPageGridList;}
+	 
+	 @FindBy(xpath = "//h1[text()='Cost Model Calculation Scenarios']//following::span[text()='New']//parent::button")
+	 private static WebElement getCostCalcNewButton;
+	 public static WebElement getCostCalcNewButton() {return getCostCalcNewButton;}
+	 
+	 @FindBy(name = "costModelScenarioName")
+	 private static WebElement getCostScenarioName;
+	 public static WebElement getCostScenarioName() {return getCostScenarioName;}
+	 
+	 @FindBy(name = "gLDataDescription")
+	 private static WebElement getGldataDesc;
+	 public static WebElement getGldataDesc() {return getGldataDesc;}
+	 
+	 @FindBy(name = "actStatCalcCode")
+	 private static WebElement getVolScenario;
+	 public static WebElement getVolScenario() {return getVolScenario;}
+	 
+	 @FindBy(name = "variabilityMasterId")
+	 private static WebElement getVariablilityMaster;
+	 public static WebElement getVariablilityMaster() {return getVariablilityMaster;}
+	 
+	 @FindBy(name = "overHeadScenarioId")
+	 private static WebElement getOverheadDrpDwn;
+	 public static WebElement getOverheadDrpDwn() {return getOverheadDrpDwn;}
+	 
+	 @FindBy(xpath = "(//span[text()='Entities and Departments']//following::span[text()='Select']//parent::button)[1]")
+	 private static WebElement getEntitiesSelect;
+	 public static WebElement getEntitiesSelect() {return getEntitiesSelect;}
+	 
+	 @FindBy(xpath = "(//span[text()='Departments / Groups']//following::span[text()='Select']//parent::button)[1]")
+	 private static WebElement getDeptGroupsSelect;
+	 public static WebElement getDeptGroupsSelect() {return getDeptGroupsSelect;}
+	 
+			@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='&23q2']/..")
+		private static WebElement getCostModelGLDataScenarioOptions;
+
+		public static WebElement getCostModelGLDataScenarioOptions() {
+			return getCostModelGLDataScenarioOptions;
+		}
+		@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='0TBACTVOLCALC']/..")
+		private static WebElement getCostModelVolScenarioOptions;
+
+		public static WebElement getCostModelVolScenarioOptions() {
+			return getCostModelVolScenarioOptions;
+		}
+		@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='1833CCVM']/..")
+		private static WebElement getCostModelVarMasterScenarioOptions;
+
+		public static WebElement getCostModelVarMasterScenarioOptions() {
+			return getCostModelVarMasterScenarioOptions;
+		}
+		@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='DEC12OHCALC2']/..")
+		private static WebElement getCostModelOHMasterScenarioOptions;
+
+		public static WebElement getCostModelOHMasterScenarioOptions() {
+			return getCostModelOHMasterScenarioOptions;
+		}
+		@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='0TB4  Test']/..")
+		private static WebElement getCostModelPriceListScenarioOptions;
+		public static WebElement getCostModelPriceListScenarioOptions() {
+			return getCostModelPriceListScenarioOptions;
+		}
+		@FindBy(name = "priceList")
+		private static WebElement getCostModelPriceListDrpdown;
+		public static WebElement getCostModelPriceListDrpdown() {
+			return getCostModelPriceListDrpdown;
+		}
+		@FindBy(name = "savedStartMonth")
+		private static WebElement getCostModelStartMonthDrpdown;
+		public static WebElement getCostModelStartMonthDrpdown() {
+			return getCostModelStartMonthDrpdown;
+		}
+		@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='Apr 2004']/..")
+		private static WebElement getCostModelStartMonthScenarioOptions;
+		public static WebElement getCostModelStartMonthScenarioOptions() {
+			return getCostModelStartMonthScenarioOptions;
+		}
+		@FindBy(name = "savedEndMonth")
+		private static WebElement getCostModelEndMonthDrpdown;
+		public static WebElement getCostModelEndMonthDrpdown() {
+			return getCostModelEndMonthDrpdown;
+		}
+		@FindBy(xpath = "(//div[contains(@id,'boundlist')]/ul/li[text()='May 2004']/..)[2]")
+		private static WebElement getCostModelEndMonthScenarioOptions;
+		public static WebElement getCostModelEndMonthScenarioOptions() {
+			return getCostModelEndMonthScenarioOptions;
+		}
+		@FindBy(xpath = "//input[@class='x-form-field x-form-checkbox']")
+		private static WebElement getCostModelSharedLogCheckbox;
+		public static WebElement getCostModelSharedLogCheckbox() {
+			return getCostModelSharedLogCheckbox;
+		}
+		@FindBy(xpath = "//h1[text()='Creat new Time Period']//following::span[text()='New']//parent::button")
+		private static WebElement getCostModelTimePeriodNewButton;
+		public static WebElement getCostModelTimePeriodNewButton() {
+			return getCostModelTimePeriodNewButton;
+		}
+		@FindBy(xpath = "//h1[text()='Creat new Time Period']//following::span[text()='Edit']//parent::button")
+		private static WebElement getCostModelTimePeriodEditButton;
+		public static WebElement getCostModelTimePeriodEditButton() {
+			return getCostModelTimePeriodEditButton;
+		}
+		
+		@FindBy(xpath = "//h1[text()='Creat new Time Period']//following::span[text()='Delete']//parent::button")
+		private static WebElement getCostModelTimePeriodDeleteButton;
+		public static WebElement getCostModelTimePeriodDeleteButton() {
+			return getCostModelTimePeriodDeleteButton;
+		}
+		@FindBy(xpath = "//h1[text()='Creat new Time Period']//following::span[text()='Filter']//parent::button")
+		private static WebElement getCostModelTimePeriodFilterButton;
+		public static WebElement getCostModelTimePeriodFilterButton() {
+			return getCostModelTimePeriodFilterButton;
+		}
+		
+		@FindBy(xpath = "//tr[@class='x-grid-row x-grid-row-selected x-grid-row-focused']/td[6]/div")
+		private static WebElement getCostModelEndMonth;
+		public static WebElement getCostModelEndMonth() {
+			return getCostModelEndMonth;
+		}
+		@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='Jan']/..")
+		private static WebElement getCostModelTimePeriodMonthScenarioOptions;
+		public static WebElement getCostModelTimePeriodMonthScenarioOptions() {
+			return getCostModelTimePeriodMonthScenarioOptions;
+		}
+		@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='2013']/..")
+		private static WebElement getCostModelTimePeriodYearScenarioOptions;
+		public static WebElement getCostModelTimePeriodYearScenarioOptions() {
+			return getCostModelTimePeriodYearScenarioOptions;
+		}
+		@FindBy(xpath = "(//h1[text()='Charge Masters']//following::span[text()='New']//parent::button)[1]")
+		private static WebElement getCostModelMethodMasterNew;
+		public static WebElement getCostModelMethodMasterNew() {
+			return getCostModelMethodMasterNew;
+		}
+		@FindBy(xpath = "(//h1[text()='Charge Masters']//following::span[text()='Delete']//parent::button)[1]")
+		private static WebElement getCostModelMethodMasterDelete;
+		public static WebElement getCostModelMethodMasterDelete() {
+			return getCostModelMethodMasterDelete;
+		}
+		@FindBy(xpath = "(//h1[text()='Charge Masters']//following::span[text()='Filter']//parent::button)[1]")
+		private static WebElement getCostModelMethodMasterFilter;
+		public static WebElement getCostModelMethodMasterFilter() {
+			return getCostModelMethodMasterFilter;
+		}
+		@FindBy(name = "deptMastCode")
+		private static WebElement getCostModelMethodMasterDeptMasterdropdown;
+		public static WebElement getCostModelMethodMasterDeptMasterdropdown() {
+			return getCostModelMethodMasterDeptMasterdropdown;
+		}
+		@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='150 old master 150']/..")
+		private static WebElement getCostModelMethodMasterDeptMasterOptions;
+		public static WebElement getCostModelMethodMasterDeptMasterOptions() {
+			return getCostModelMethodMasterDeptMasterOptions;
+		}
+		@FindBy(xpath = "(//div[contains(@id,'masterlist')]//h1[text()='Cost Method Masters']//following::span[text()='New']//parent::button)[1]")
+		private static WebElement getCostMethodMasterNewButton;
+		public static WebElement getCostMethodMasterNewButton() {
+			return getCostMethodMasterNewButton;
+		}
+		@FindBy(name = "cstCompObjectId")
+		private static WebElement getCostMethodMasterCostComponentMaster;
+		public static WebElement getCostMethodMasterCostComponentMaster() {
+			return getCostMethodMasterCostComponentMaster;
+		}
+		@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='00 Test CCM']/..")
+		private static WebElement getCostMethodMasterCostComponentMasterScenarioOptions;
+		public static WebElement getCostMethodMasterCostComponentMasterScenarioOptions() {
+			return getCostMethodMasterCostComponentMasterScenarioOptions;
+		}
+		@FindBy(xpath = "(//div[contains(@id,'masterlist')]//h1[text()='Cost Method Masters']//following::span[text()='Filter']//parent::button)[1]")
+		private static WebElement getCostMethodMasterFilterButton;
+		public static WebElement getCostMethodMasterFilterButton() {
+			return getCostMethodMasterFilterButton;
+		}
+		@FindBy(xpath = "(//div[contains(@id,'masterlist')]//h1[text()='Cost Method Masters']//following::span[text()='Delete']//parent::button)[1]")
+		private static WebElement getCostMethodMasterDeleteButton;
+		public static WebElement getCostMethodMasterDeleteButton() {
+			return getCostMethodMasterDeleteButton;
+		}
+		@FindBy(xpath = "(//div[contains(@id,'masterlist')]//h1[text()='Department Masters']//following::span[text()='New']//parent::button)[1]")
+		private static WebElement getCostDeptMasterNewButton;
+		public static WebElement getCostDeptMasterNewButton() {
+			return getCostDeptMasterNewButton;
+		}
+		@FindBy(xpath = "(//div[contains(@id,'masterlist')]//h1[text()='Department Masters']//following::span[text()='Filter']//parent::button)[1]")
+		private static WebElement getCostDeptMasterFilterButton;
+		public static WebElement getCostDeptMasterFilterButton() {
+			return getCostDeptMasterFilterButton;
+		}
+		@FindBy(xpath = "(//div[contains(@id,'masterlist')]//h1[text()='Department Masters']//following::span[text()='Delete']//parent::button)[1]")
+		private static WebElement getCostDeptMasterDeleteButton;
+		public static WebElement getCostDeptMasterDeleteButton() {
+			return getCostDeptMasterDeleteButton;
+		}
+		@FindBy(xpath = "//div[contains(@id,'treepanelId-body')]//*[text()='Contracting']")
+		private static WebElement getCostMaintenanceContracting;
+		public static WebElement getCostMaintenanceContracting() {
+			return getCostMaintenanceContracting;
+		}
+		@FindBy(xpath = "//div[contains(@id,'treepanelId-body')]//*[text()='Costing']")
+		private static WebElement getCostMaintenanceCosting;
+		public static WebElement getCostMaintenanceCosting() {
+			return getCostMaintenanceCosting;
+		}
+		@FindBy(xpath = "//div[contains(@id,'treepanelId-body')]//*[text()='Episode']")
+		private static WebElement getCostMaintenanceEpisode;
+		public static WebElement getCostMaintenanceEpisode() {
+			return getCostMaintenanceEpisode;
+		}
+		@FindBy(xpath = "//div[contains(@id,'treepanelId-body')]//*[text()='General']")
+		private static WebElement getCostMaintenanceGeneral;
+		public static WebElement getCostMaintenanceGeneral() {
+			return getCostMaintenanceGeneral;
+		}
+		@FindBy(xpath = "(//h1[text()='Encounter Types']//following::span[text()='Edit']//parent::button)[1]")
+		private static WebElement getEncounterTypeEditButton;
+		public static WebElement getEncounterTypeEditButton() {
+			return getEncounterTypeEditButton;
+		}
+		@FindBy(name = "columnLabel")
+		private static WebElement getEncounterShortName;
+		public static WebElement getEncounterShortName() {
+			return getEncounterShortName;
+		}
+		@FindBy(xpath = "(//div[contains(@id,'dynamicGrid')]//td[5]/div)[1]")
+		private static WebElement getEncounterNameinGrid;
+		public static WebElement getEncounterNameinGrid() {
+			return getEncounterNameinGrid;
+		}
+		@FindBy(xpath = "(//div[contains(@id,'dynamicGrid')]//td[6]/div)[1]")
+		private static WebElement getEncounterShortNameinGrid;
+		public static WebElement getEncounterShortNameinGrid() {
+			return getEncounterShortNameinGrid;
+		}
+		@FindBy(xpath = "(//div[contains(@id,'dischargeStatus')]//h1[text()='Discharge Statuses']//following::span[text()='New']//parent::button)[1]")
+		private static WebElement getCostDischargeStatusNewButton;
+		public static WebElement getCostDischargeStatusNewButton() {
+			return getCostDischargeStatusNewButton;
+		}
+		@FindBy(xpath = "(//div[contains(@id,'dischargeStatus')]//h1[text()='Discharge Statuses']//following::span[text()='Delete']//parent::button)[1]")
+		private static WebElement getCostDischargeStatusDeleteButton;
+		public static WebElement getCostDischargeStatusDeleteButton() {
+			return getCostDischargeStatusDeleteButton;
+		}
+		@FindBy(xpath = "(//div[contains(@id,'dischargeStatus')]//h1[text()='Discharge Statuses']//following::span[text()='Filter']//parent::button)[1]")
+		private static WebElement getCostDischargeStatusFilterButton;
+		public static WebElement getCostDischargeStatusFilterButton() {
+			return getCostDischargeStatusFilterButton;
+		}
 }

@@ -150,8 +150,8 @@ public static WebElement getContractModelAddProviderBtn() {return getContractMod
 	public  WebElement getNewFolderNameInput() {return getNewFolderNameInput;}
 
 	@FindBy(xpath = "//div[contains(@class,'x-window-header-text-container')]//following::span[text()='Save & Close']")
-	private  WebElement getNewFolderNameSave;
-	public  WebElement getNewFolderNameSave() {return getNewFolderNameSave;}
+	private static  WebElement getNewFolderNameSave;
+	public static  WebElement getNewFolderNameSave() {return getNewFolderNameSave;}
 
 	@FindBy(xpath = "(//td[contains(@class,'x-grid-cell-treecolumn')]/*[text()='Contracting']/img[@class='x-tree-elbow-end-plus x-tree-expander'])")
 	private static WebElement getContractingTreeExpand;

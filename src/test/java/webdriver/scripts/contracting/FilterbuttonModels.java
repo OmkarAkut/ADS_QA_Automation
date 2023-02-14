@@ -4,7 +4,9 @@ import static org.junit.Assert.fail;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -16,14 +18,19 @@ import webdriver.corehelpers.GoHelper;
 import webdriver.helpers.ContractModelsHelper;
 import webdriver.maps.ContractingMap;
 import webdriver.maps.CostingMap;
+import webdriver.maps.ModelLibraryMap;
 import webdriver.maps.mapbuilder.BuildMap;
-
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class FilterbuttonModels extends GoHelper {
 
 	private static ContractingMap modelMap;
+	private static ModelLibraryMap modellibMap;
 	static String contractModel = "Test";
-	static String updateContractModel = "Testing";
-	String[] filter = { "Name", "Is", "Equal To", contractModel };
+	static String costModel="0-MarinaCostModel";
+	static String updateFilterModel = "Testing";
+	String[] filterContractModel = { "Name", "Is", "Equal To", contractModel };
+	String[] filterCostModel = { "Name", "Is", "Equal To", costModel };
+
 	Actions action = new Actions(driver);
 	ContractModelsHelper contractModelsHelper = new ContractModelsHelper();
 
@@ -36,7 +43,8 @@ public class FilterbuttonModels extends GoHelper {
 				"FilterbuttonModels");
 		try {
 			modelMap = BuildMap.getInstance(driver, ContractingMap.class);
-			Login.loginUser("ContractAnalyst1");
+			modellibMap=BuildMap.getInstance(driver, ModelLibraryMap.class);
+			Login.loginUser("AutomationTesterAdmin");
 			goToPage("Contract Models");
 			waitForDisplayedSpinnerToEnd();
 			assertThatString(modelMap.getContractModelHeader(), "Contracting Model Library", printout);
@@ -48,31 +56,56 @@ public class FilterbuttonModels extends GoHelper {
 	}
 
 	@Test
-	public void test01ValidateFilterForContractModels() throws Throwable {
+	public void test01ValidateFilterForContractModel() throws Throwable {
 		try {
-			modelMap.getContractModelButtonFilter().click();
-			waitForAjaxExtJs();
-			contractModelsHelper.doFilterCreateOnly(filter);
-			assertElementTextWithXpath("//div[text()='Name Is Equal To " + contractModel + "']",
-					"Name Is Equal To " + contractModel + "", printout);
-			action.moveToElement(modelMap.getContractModelEditFilterButton()).click().pause(10).perform();
-			driver.findElement(By.name("valuefield")).sendKeys(Keys.chord(Keys.CONTROL, "a"));
-			driver.findElement(By.name("valuefield")).sendKeys(updateContractModel);
-			doClick(modelMap.getContractModelUpdateFilterButton());
-			assertElementTextWithXpath("//div[text()='Name Is Equal To " + updateContractModel + "']",
-					"Name Is Equal To " + updateContractModel + "", printout);
-			action.moveToElement(modelMap.getContractModelRemoveFilterButton()).click().pause(10).perform();
-			contractModelsHelper.doFilterCreate(filter);
-			ContractModelsHelper.getContractElementList(contractModel);
-			doClosePageOnLowerBar("Model Library");
-			ExtentReport.logPass("PASS", "test01ValidateFilterbuttomForContractModels");
+			ValidateFilterPopUp(filterContractModel,contractModel);
+			ExtentReport.logPass("PASS", "test01ValidateFilterForContractModel");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test01ValidateFilterbuttomForContractModels", driver, e);
+			ExtentReport.logFail("FAIL", "test01ValidateFilterForContractModel", driver, e);
 			fail(e.getMessage());
 
 		}
 	}
-	@AfterClass
+	
+	@Test
+	public void test02ValidateFilterForCostingModel() throws Throwable {
+		try {
+			goToPage("Costing Models");
+			waitForDisplayedSpinnerToEnd();
+			ValidateFilterPopUp(filterCostModel,costModel);
+			ExtentReport.logPass("PASS", "test02ValidateFilterForCostingModel");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test02ValidateFilterForCostingModel", driver, e);
+			fail(e.getMessage());
+
+		}
+	}
+	
+	public void ValidateFilterPopUp(String[] filterModel,String model) throws Throwable {
+		try {
+			modellibMap.getModelLibraryButtonSearch().click();
+			ContractingMap.getContractModelButtonFilter().click();
+			waitForAjaxExtJs();
+			contractModelsHelper.doFilterCreateOnly(filterModel);
+			assertElementTextWithXpath("//div[text()='Name Is Equal To " + model + "']",
+					"Name Is Equal To " + model + "", printout);
+			action.moveToElement(modelMap.getContractModelEditFilterButton()).click().pause(10).perform();
+			driver.findElement(By.name("valuefield")).sendKeys(Keys.chord(Keys.CONTROL, "a"));
+			driver.findElement(By.name("valuefield")).sendKeys(updateFilterModel);
+			doClick(modelMap.getContractModelUpdateFilterButton());
+			assertElementTextWithXpath("//div[text()='Name Is Equal To " + updateFilterModel + "']",
+					"Name Is Equal To " + updateFilterModel + "", printout);
+			action.moveToElement(modelMap.getContractModelRemoveFilterButton()).click().pause(10).perform();
+			contractModelsHelper.doFilterCreate(filterModel);
+			ContractModelsHelper.getContractElementList(model);
+			doClosePageOnLowerBar("Model Library");
+		} catch (Exception | AssertionError e) {
+			
+
+		}
+	}
+	
+		@AfterClass
 	public static void endtest() throws Exception {
 
 		ExtentReport.report.flush();

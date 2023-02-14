@@ -67,10 +67,7 @@ public class ConfirmAddNewDeleteAPCFeeScheduleMasters extends CalculationHelper 
 			ExtentReport.logFail("FAIL", "test01ConfirmAddandDeleteNewCodeUnderAPCFeeScheduleMasters", driver, e);
 			fail(e.getMessage());
 		} 
-		finally{
-			doClosePageOnLowerBar("Model Library");
-
-		}
+		
 	}
 	
 	@Test

@@ -55,8 +55,15 @@ public class BuildVerificationTestScript extends UcqcHelper {
   WebDriverWait wait = new WebDriverWait(driver, 30);
   private static String systemMaintenanceSubTabsBackgroundColor1= "rgba(165, 165, 165, 1)";
   private static String systemMaintenanceSubTabsBackgroundColor2= "rgba(204, 204, 204, 1)";
-  private static String systemMaintenanceMainTabBackgroundColor= "rgba(204, 204, 204, 1)";
   private static String BackgroundColorStatusTab= "rgba(158, 105, 0, 1)";
+  private static String BackgroundColorReportingTab="rgba(0, 119, 171, 1)";
+  private static String BackgroundColorAnalyticsTab= "rgba(0, 63, 96, 1)";
+  private static String BackgroundColorContractingTab= "rgba(127, 35, 111, 1)";
+  private static String BackgroundColorCostingTab= "rgba(0, 86, 26, 1)";
+  private static String BackgroundColorDataMaintenanceTab= "rgba(210, 70, 15, 1)";
+  private static String BackgroundColorEpisodeTab= "rgba(159, 29, 53, 1)";
+  private static String BackgroundColorBudgetingTab= "rgba(102, 102, 102, 1)";
+  private static String BackgroundColorSystemMaintenanceTab= "rgba(135, 85, 64, 1)";
 
   String expectedReleaseVersion = version;  //only checks version, not date
 
@@ -64,6 +71,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
    * that the elements on the map display on the page.
  * @throws Exception 
    */
+  /** Regression test ADS-6584,ADS-6582 */
   @BeforeClass
   public static void setupScript() throws Exception,Throwable {
 	  ExtentReport.reportCreate("BuildVerificationTestScript", "webdriver.globalscripts.pagetests", "BuildVerificationTestScript");
@@ -633,6 +641,8 @@ public class BuildVerificationTestScript extends UcqcHelper {
               generalElement.getAnalyticsServerDesktopSessionsSubTab()
       };
       assertElementsAreDisplayed(analyticsTabElements,printout);
+      validateBackgroundColor(BackgroundColorAnalyticsTab, driver.findElement(By.xpath("//div[@class='bubble bubble1 medium analytics']")));
+
       ExtentReport.logPass("PASS", "test0012AnalyticsTab");
     } catch (Exception|AssertionError e) {
 		ExtentReport.logFail("FAIL", "test0012AnalyticsTab", driver, e);
@@ -659,6 +669,8 @@ public class BuildVerificationTestScript extends UcqcHelper {
               //generalElement.getCostingReportsSubTab()
       };
       assertElementsAreDisplayed(reportingTabElements,printout);
+      validateBackgroundColor(BackgroundColorReportingTab, driver.findElement(By.xpath("//div[@class='bubble bubble2 medium reporting']")));
+
       ExtentReport.logPass("PASS", "test0013ReportingTab");
     } catch (Exception|AssertionError e) {
 		ExtentReport.logFail("FAIL", "test0013ReportingTab", driver, e);
@@ -678,6 +690,8 @@ public class BuildVerificationTestScript extends UcqcHelper {
               generalElement.getUnitCostQuickCalculationSubTab()
       };
       assertElementsAreDisplayed(costingTabElements,printout);
+      validateBackgroundColor(BackgroundColorCostingTab,driver.findElement(By.xpath("//div[@class='bubble bubble3 medium costing']")));
+
       ExtentReport.logPass("PASS", "test0014CostingTab");
     } catch (Exception|AssertionError e) {
 		ExtentReport.logFail("FAIL", "test0014CostingTab", driver, e);
@@ -697,6 +711,8 @@ public class BuildVerificationTestScript extends UcqcHelper {
               generalElement.getApcAllocationSubTab()
       };
       assertElementsAreDisplayed(contractingTabElements, printout);
+      validateBackgroundColor(BackgroundColorContractingTab,driver.findElement(By.xpath("//div[@class='bubble bubble4 medium contracting']")));
+
       ExtentReport.logPass("PASS", "test0015ContractingTab");
     } catch (Exception|AssertionError e) {
 		ExtentReport.logFail("FAIL", "test0015ContractingTab", driver, e);
@@ -714,6 +730,8 @@ public class BuildVerificationTestScript extends UcqcHelper {
               generalElement.getEpisodeDataMaintenanceSubTab()
       };
       assertElementsAreDisplayed(episodesTabElement,printout);
+      validateBackgroundColor(BackgroundColorEpisodeTab,driver.findElement(By.xpath("//div[@class='bubble bubble5 small episode']")));
+
       ExtentReport.logPass("PASS", "test0016EpisodesTab");
     } catch (Exception|AssertionError e) {
 		ExtentReport.logFail("FAIL", "test0016EpisodesTab", driver, e);
@@ -727,6 +745,8 @@ public class BuildVerificationTestScript extends UcqcHelper {
       //Clicks the Budgeting Tab in order to open the dropdown menu
       doClick(generalElement.getBudgetingTab());
       assertElementIsDisplayed(generalElement.getBudgetingSubTab(),printout);
+      validateBackgroundColor(BackgroundColorBudgetingTab,driver.findElement(By.xpath("//div[@class='bubble bubble7 small budgeting']")));
+
       ExtentReport.logPass("PASS", "test0017BudgetingTab");
     } catch (Exception|AssertionError e) {
 		ExtentReport.logFail("FAIL", "test0017BudgetingTab", driver, e);
@@ -745,6 +765,8 @@ public class BuildVerificationTestScript extends UcqcHelper {
               generalElement.getUtilitiesSubTab()
       };
       assertElementsAreDisplayed(dataMaintenanceTabElement,printout);
+      validateBackgroundColor(BackgroundColorDataMaintenanceTab,driver.findElement(By.xpath("//div[@class='bubble bubble6 small datamaintenance']")));
+
       ExtentReport.logPass("PASS", "test0018DataMaintenanceTab");
     } catch (Exception|AssertionError e) {
 		ExtentReport.logFail("FAIL", "test0018DataMaintenanceTab", driver, e);
@@ -770,6 +792,8 @@ public class BuildVerificationTestScript extends UcqcHelper {
      
       assertElementsAreDisplayed(systemMaintenanceTabElement,printout);
       //Hover on sub tab and validate background color
+      validateBackgroundColor(BackgroundColorSystemMaintenanceTab,driver.findElement(By.xpath("//div[@class='bubble bubble8 small systemmaintenance']")));
+
      validateBackgroundColorOnHoverForSubTabs(systemMaintenanceSubTabsBackgroundColor1,systemMaintenanceSubTabsBackgroundColor2,systemMaintenanceTabElement);
       ExtentReport.logPass("PASS", "test0019SystemMaintenanceTab");
     } catch (Exception|AssertionError e) {
@@ -1764,6 +1788,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
  	}
   }
 
+  
   //------------------------------------------------------------------------
 
   //===== Filter Dialog Map =====//
@@ -1806,7 +1831,24 @@ public class BuildVerificationTestScript extends UcqcHelper {
  		fail(e.getMessage());
  	}
   }
+  @Test
+  public void test1002ValidateContactUsPage() throws Throwable {
+	  try {
+		doClick(generalElement.getGlobalHeaderButtonContactUs());
+		  assertElementIsDisplayedWithXpath("(//*[contains(@src,'Harris_Affinity_Logo.png')])[2]");
+		  assertElementIsDisplayedWithXpath("(//a[@class='contactUsLink'])[1]");
+		  assertElementIsDisplayedWithXpath("(//a[@class='contactUsLink'])[2]");
+		  System.out.println(driver.findElement(By.xpath("//pre")).getAttribute("innerHTML").replaceAll("\\W", ""));
+		  if(driver.findElement(By.xpath("//pre")).getAttribute("innerHTML").replaceAll("\\W","").contains("ForcriticaldownissuespleasecontactSupportat8665693375forUScustomers8669648196forNonUScustomersFornoncriticalissuespleaseusetheCustomerSupportPortalataclasscontactUsLinktarget_blankhrefhttpssupportharrishealthcarecomAffinityhttpssupportharrishealthcarecomAffinityaFormoreinformationaboutourcompanyproductsandservicespleasevisitaclasscontactUsLinktarget_blankhrefhttpwwwHarrisAffinitycomwwwHarrisAffinitycoma")) {
+			  assertTrue(printout);
+		  }
+		  ExtentReport.logPass("PASS", "test1002ValidateContactUsPage");
+	 	} catch (Exception|AssertionError e) {
 
+	 		ExtentReport.logFail("FAIL", "test1002ValidateContactUsPage", driver, e);
+	 		fail(e.getMessage());
+	 	}
+  }
   private void triggerDepartmentDialog(String costModel, String costModelScenario, String entity) throws InterruptedException {
     doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationDropdownCostModel(),costingMap.getUnitCostQuickCalculationDropdownCostModelMenuList(),costModel);
     doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationDropdownCostModelScenario(),costingMap.getUnitCostQuickCalculationDropdownCostModelScenarioMenuList(),costModelScenario);

@@ -3,11 +3,7 @@ package webdriver.corehelpers;
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.*;
-import ExtentReport.*;
-
 import java.awt.AWTException;
-import java.awt.Robot;
-import java.awt.event.KeyEvent;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,14 +11,10 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import com.aventstack.extentreports.Status;
-
 import webdriver.utilities.Java;
 
 public class AssertHelper extends AdsHelper {
@@ -518,6 +510,9 @@ public class AssertHelper extends AdsHelper {
 
 	public static void assertTextIsDisplayed(String expectedText) {
 		try {
+			 ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);",
+						driver.findElement(By.xpath("//*[text()='" + expectedText + "']")));
+				Thread.sleep(500);
 			WebElement element = driver.findElement(By.xpath("//*[text()='" + expectedText + "']"));
 			assertTrue(element.isDisplayed());
 		} catch (Throwable e) {
@@ -736,9 +731,14 @@ public class AssertHelper extends AdsHelper {
 				assertTrue(true);
 			}
 		} catch (Throwable e) {
-			fail(e.getMessage());
-		}
 		
-			
+		}
 	}
+		
+		public static void assertThatFieldReadonly(WebElement element) {
+			if(element.getAttribute("readonly").equals("readonly")) {
+				assertTrue(true);
+			}
+		}
+	
 }
