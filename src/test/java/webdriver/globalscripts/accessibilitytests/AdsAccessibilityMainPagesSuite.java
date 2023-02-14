@@ -50,6 +50,7 @@ public class AdsAccessibilityMainPagesSuite extends LoginStatic {
   @Test
   public void test01LandingPageAccessibilityTest() throws InterruptedException,Throwable {
     try {
+    	Thread.sleep(1000);
 		waitForSpinnerToEnd();
 		waitForAjaxExtJs();
 		ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName());
@@ -60,107 +61,148 @@ public class AdsAccessibilityMainPagesSuite extends LoginStatic {
 	}
   }
 
-//  @Test
-//  public void testAnalyticsTabAnalyticRefreshScenariosPage() throws InterruptedException {
-//    goToPage("Analytic Refresh Scenarios");
-//    waitForAjaxExtJs();
-//    ax.runAxeAccessibilityTestOfPage(driver, logger, name.getMethodName());
-//    doClosePageOnLowerBar("Analytic Refresh...");
-//  }
-//
-//  @Test
-//  public void testReportingTabIcd9Icd10GemsAnalysisPage() throws InterruptedException {
-//    goToPage("Gems Analysis");
-//    waitForAjaxExtJs();
-//    ax.runAxeAccessibilityTestOfPage(driver, logger, name.getMethodName());
-//    doClosePageOnLowerBar("ICD9/ICD10 GEMs...");
-//  }
-//
-//  @Test
-//  public void testReportingTabIcd9Icd10GemsInquiryPage() throws InterruptedException {
-//    goToPage("Gems Inquiry");
-//    waitForAjaxExtJs();
-//    ax.runAxeAccessibilityTestOfPage(driver, logger, name.getMethodName());
-//    doClosePageOnLowerBar("ICD9/ICD10 GEMs...");
-//  }
-//
-//  @Test
-//  public void testReportingTabReportDateMaintenancePage() throws InterruptedException {
-//    goToPage("Report Date Maintenance");
-//    waitForAjaxExtJs();
-//    ax.runAxeAccessibilityTestOfPage(driver, logger, name.getMethodName());
-//    doClosePageOnLowerBar("Report Date...");
-//  }
-//
-//  @Test
-//  public void testReportingTabReportMenuMaintenancePage() throws InterruptedException {
-//    goToPage("Report Menu Maintenance");
-//    waitForAjaxExtJs();
-//    ax.runAxeAccessibilityTestOfPage(driver, logger, name.getMethodName());
-//    doClosePageOnLowerBar("Report Menu...");
-//  }
-//
-//  @Test
-//  public void testReportingTabReportLibraryPage() throws InterruptedException {
-//    goToPage("Report Library");
-//    waitForAjaxExtJs();
-//    ax.runAxeAccessibilityTestOfPage(driver, logger, name.getMethodName());
-//    doClosePageOnLowerBar("Report Library");
-//  }
-//
-//  @Test
-//  public void testContractingTabApcAllocationPage() throws InterruptedException {
-//    goToPage("APC Allocation");
-//    waitForAjaxExtJs();
-//    ax.runAxeAccessibilityTestOfPage(driver, logger, name.getMethodName());
-//    doClosePageOnLowerBar("APC Allocation");
-//  }
-//
-//  @Test
-//  public void testContractingTabContractualAllowanceExportPage() throws InterruptedException {
-//    goToPage("Contractual Allowance Export");
-//    waitForAjaxExtJs();
-//    ax.runAxeAccessibilityTestOfPage(driver, logger, name.getMethodName());
-//    doClosePageOnLowerBar("Contractual...");
-//  }
-//
-//  @Test
-//  public void testCostingTabCostModelScenarioCalculationPage() throws InterruptedException {
-//    goToPage("Cost Model Scenario Calculation");
-//    waitForAjaxExtJs();
-//    ax.runAxeAccessibilityTestOfPage(driver, logger, name.getMethodName());
-//    doClosePageOnLowerBar("Cost Model...");
-//  }
+  @Test
+  public void testAnalyticsTabAnalyticRefreshScenariosPage() throws InterruptedException,Throwable {
+	try {
+		goToPage("Analytic Refresh Scenarios");
+	    waitForAjaxExtJs();
+	    ax.runAxeAccessibilityTestOfPage(driver,name.getMethodName());
+	    doClosePageOnLowerBar("Analytic Refresh...");
+	    ExtentReport.logPass("PASS", "testAnalyticsTabAnalyticRefreshScenariosPage");
+	}
+	catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "testAnalyticsTabAnalyticRefreshScenariosPage", driver, e);
+		fail(e.getMessage());
+	}
+    
+  }
 
-//  @Test
-//  public void testCostingxRvuMaintenance() throws InterruptedException {
-//    goToPage("RVU Maintenance");
-//    waitForAjaxExtJs();
-//    ax.runAxeTestOfPageJsonReport(driver, name.getMethodName());
-//    //ax.runAxeAccessibilityTestOfPage(driver, logger, name.getMethodName());
-//    doClosePageOnLowerBar("RVU Maintenance");
-//  }
-//
-//  @Test
-//  public void testCostingxUnitCostQuickCalculation() throws InterruptedException {
-//    goToPage("Unit Cost Quick Calculation");
-//    waitForAjaxExtJs();
-//    ax.runAxeTestOfPageJsonReport(driver, name.getMethodName());
-//    //ax.runAxeAccessibilityTestOfPage(driver, logger, name.getMethodName());
-//    doClosePageOnLowerBar("Unit Cost Quick...");
-//  }
+  @Test
+  public void testReportingTabIcd9Icd10GemsAnalysisPage() throws InterruptedException,Throwable {
+	  try {
+		  goToPage("Gems Analysis");
+		    waitForAjaxExtJs();
+		    ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName());
+		    doClosePageOnLowerBar("ICD9/ICD10 GEMs...");
+		    ExtentReport.logPass("PASS", "testReportingTabIcd9Icd10GemsAnalysisPage");
+		}
+		catch (Exception|AssertionError e) {
+			ExtentReport.logFail("FAIL", "testReportingTabIcd9Icd10GemsAnalysisPage", driver, e);
+			fail(e.getMessage());
+		} 
+    
+  }
 
-//  @Test
-//  public void testDataMaintenancexUtilities() throws InterruptedException {
-//    goToPage("Utilities");
-//    waitForAjaxExtJs();
-////    doClick(dm.getUtilitiesPageEncountersWithNoChargesReport());
-////    waitForAjaxExtJs();
-//    //ax.runAxeTestOnPage(driver, name.getMethodName(), createJsonReport);
-//    ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName());
-//    doClosePageOnLowerBar("Utilities");
-//  }
-//
+  @Test
+  public void testReportingTabIcd9Icd10GemsInquiryPage() throws InterruptedException,Throwable {
+	  try {
+		  goToPage("Gems Inquiry");
+		    waitForAjaxExtJs();
+		    ax.runAxeAccessibilityTestOfPage(driver,name.getMethodName());
+		    doClosePageOnLowerBar("ICD9/ICD10 GEMs...");
+		    ExtentReport.logPass("PASS", "testReportingTabIcd9Icd10GemsInquiryPage");
+		}
+		catch (Exception|AssertionError e) {
+			ExtentReport.logFail("FAIL", "testReportingTabIcd9Icd10GemsInquiryPage", driver, e);
+			fail(e.getMessage());
+		} 
+    
+  }
+
+  @Test
+  public void testReportingTabReportDateMaintenancePage() throws InterruptedException,Throwable {
+	  try {
+		  goToPage("Report Date Maintenance");
+		  waitForAjaxExtJs();
+		  ax.runAxeAccessibilityTestOfPage(driver,name.getMethodName());
+		  doClosePageOnLowerBar("Report Date...");
+		  ExtentReport.logPass("PASS", "testReportingTabReportDateMaintenancePage");
+	  }
+	  catch (Exception|AssertionError e) {
+		  ExtentReport.logFail("FAIL", "testReportingTabReportDateMaintenancePage", driver, e);
+		  fail(e.getMessage());
+	  }  
+  }
+
+  @Test
+  public void testReportingTabReportMenuMaintenancePage() throws InterruptedException,Throwable {
+	  try {
+		  goToPage("Report Menu Maintenance");
+		  waitForAjaxExtJs();
+		  ax.runAxeAccessibilityTestOfPage(driver,name.getMethodName());
+		  doClosePageOnLowerBar("Report Menu...");
+		  ExtentReport.logPass("PASS", "testReportingTabReportMenuMaintenancePage");
+	  }
+	  catch (Exception|AssertionError e) {
+		  ExtentReport.logFail("FAIL", "testReportingTabReportMenuMaintenancePage", driver, e);
+		  fail(e.getMessage());
+	  }    
+  }
+
+  @Test
+  public void testReportingTabReportLibraryPage() throws InterruptedException,Throwable {
+  try {
+	  goToPage("Report Library");
+	    waitForAjaxExtJs();
+	    ax.runAxeAccessibilityTestOfPage(driver,name.getMethodName());
+	    doClosePageOnLowerBar("Report Library");
+	    ExtentReport.logPass("PASS", "testReportingTabReportLibraryPage");
+	}
+	catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "testReportingTabReportLibraryPage", driver, e);
+		fail(e.getMessage());
+	}
+   }
+
+  @Test
+  public void testContractingTabApcAllocationPage() throws InterruptedException,Throwable {
+  try {
+	  goToPage("APC Allocation");
+	    waitForAjaxExtJs();
+	    ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName());
+	    doClosePageOnLowerBar("APC Allocation");
+	    ExtentReport.logPass("PASS", "testContractingTabApcAllocationPage");
+	}
+	catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "testContractingTabApcAllocationPage", driver, e);
+		fail(e.getMessage());
+	}
+    
+  }
+
+  @Test
+  public void testContractingTabContractualAllowanceExportPage() throws InterruptedException,Throwable {
+  try {
+	  goToPage("Contractual Allowance Export");
+	    waitForAjaxExtJs();
+	    ax.runAxeAccessibilityTestOfPage(driver,name.getMethodName());
+	    doClosePageOnLowerBar("Contractual...");
+	    ExtentReport.logPass("PASS", "testContractingTabContractualAllowanceExportPage");
+	}
+	catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "testContractingTabContractualAllowanceExportPage", driver, e);
+		fail(e.getMessage());
+	}
+    
+  }
+
+
+  @Test
+  public void testDataMaintenancexUtilities() throws InterruptedException,Throwable {
+  try {
+	  goToPage("Utilities");
+	    waitForAjaxExtJs();
+	    ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName());
+	    doClosePageOnLowerBar("Utilities");
+	    ExtentReport.logPass("PASS", "testDataMaintenancexUtilities");
+	}
+	catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "testDataMaintenancexUtilities", driver, e);
+		fail(e.getMessage());
+	}
+    
+  }
+
   @Test
   public void testSystemMaintenanceTabTerminalServerSessionsPage() throws InterruptedException,Throwable {
     try {
@@ -266,7 +308,7 @@ public class AdsAccessibilityMainPagesSuite extends LoginStatic {
 
 	}
 //  @Test
-//  public void testStatusTabCalculationStatusPage() throws InterruptedException {
+//  public void testStatusTabCalculationStatusPage() throws InterruptedException,Throwable {
 //    goToPage("Calculation Status");
 //    waitForAjaxExtJs();
 //    ax.runAxeAccessibilityTestOfPage(driver, logger, name.getMethodName());
@@ -274,7 +316,7 @@ public class AdsAccessibilityMainPagesSuite extends LoginStatic {
 //  }
 //
 //  @Test
-//  public void testStatusTabImportExportStatusPage() throws InterruptedException {
+//  public void testStatusTabImportExportStatusPage() throws InterruptedException,Throwable {
 //    goToPage("Import/Export Status");
 //    waitForAjaxExtJs();
 //    ax.runAxeAccessibilityTestOfPage(driver, logger, name.getMethodName());
@@ -282,7 +324,7 @@ public class AdsAccessibilityMainPagesSuite extends LoginStatic {
 //  }
 //
 //  @Test
-//  public void testStatusTabUtilityStatusPage() throws InterruptedException {
+//  public void testStatusTabUtilityStatusPage() throws InterruptedException,Throwable {
 //    goToPage("Utility Status");
 //    waitForAjaxExtJs();
 //    ax.runAxeAccessibilityTestOfPage(driver, logger, name.getMethodName());
