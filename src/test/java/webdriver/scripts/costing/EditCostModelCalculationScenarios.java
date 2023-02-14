@@ -28,7 +28,7 @@ public class EditCostModelCalculationScenarios extends CalculationHelper {
 	static String department="2110 ICU";
 	static String results="Apr 2004 to Mar 2005";
 	static String resultAfterApply="1100023 ADULT CARE LVL 2 IP DLY";
-	/** Regression: Automated test script for ADS-6645,ADS-6662,ADS-6664,ADS-6663*/
+	/** Regression: Automated test script for ADS-6645*/
 
 	@BeforeClass
 	public static void setupScript() throws Throwable {
