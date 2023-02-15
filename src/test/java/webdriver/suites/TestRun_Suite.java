@@ -23,6 +23,18 @@ import webdriver.scripts.contracting.UIValidationPrepareTables;
 import webdriver.scripts.contracting.ValidateContractingModeExportImportButton;
 import webdriver.scripts.contracting.ValidateContractingTreeTab;
 import webdriver.scripts.contracting.VerifyFilterAscSchemes;
+import webdriver.scripts.costing.CreateDeleteCostMethodMaster;
+import webdriver.scripts.costing.CreateNewCostModel;
+import webdriver.scripts.costing.EditCostModelCalculationScenarios;
+import webdriver.scripts.costing.PaginationInCostingModels;
+import webdriver.scripts.costing.RVUExportImportFunction;
+import webdriver.scripts.costing.RunGLAdjustmentAndReclassifications;
+import webdriver.scripts.costing.TableColumnSorting;
+import webdriver.scripts.costing.ValidateCalculationStatusPage;
+import webdriver.scripts.costing.ValidateEditCostMethodMasters;
+import webdriver.scripts.costing.ValidateOpenTaskList;
+import webdriver.scripts.costing.costingmodels.TestGenericUIValidateCostingModelSearchTextbox;
+import webdriver.scripts.datamaintenance.maintaindata.CreateDeleteCostMethodDeptMasterDischargeStatus;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
@@ -69,7 +81,18 @@ import webdriver.scripts.contracting.VerifyFilterAscSchemes;
 	ValidateContractingTreeTab.class,
 	VerifyFilterAscSchemes.class,
 	ValidateHelpSectionOnDashboard.class,
-
+	CreateDeleteCostMethodMaster.class,
+	CreateNewCostModel.class,
+	CreateDeleteCostMethodDeptMasterDischargeStatus.class,
+	EditCostModelCalculationScenarios.class,
+	PaginationInCostingModels.class,
+	RunGLAdjustmentAndReclassifications.class,
+	RVUExportImportFunction.class,
+	TableColumnSorting.class,
+	ValidateCalculationStatusPage.class,
+	ValidateEditCostMethodMasters.class,
+	ValidateOpenTaskList.class,
+	TestGenericUIValidateCostingModelSearchTextbox.class,
 
 })
 

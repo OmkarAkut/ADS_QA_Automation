@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
+import webdriver.corehelpers.JavaHelper;
 import webdriver.helpers.CalculationHelper;
 import webdriver.helpers.ContractModelsHelper;
 import webdriver.helpers.UcqcHelper;
@@ -21,9 +22,9 @@ public class CreateUCQCLogMakeUCQCProcessAvailableCalculationPage  extends UcqcH
 	 static ContractingMap contractingMap;
 	  static final String[] requiredFields = {
 	    "Marina",
-	    "*DM4 FZL 150/3520 w ALL dept chg co_UCQC",
+	    "*CM1 TB MHFY05 After Vol Change",
 	    "150 Marina Medical Center",
-	    "3520",
+	    "2130",
 	    "Apr 2004 to Apr 2004"
 	  };
 	  @BeforeClass
@@ -35,7 +36,9 @@ public class CreateUCQCLogMakeUCQCProcessAvailableCalculationPage  extends UcqcH
 			costingMap = BuildMap.getInstance(driver, CostingMap.class);
 			contractingMap=BuildMap.getInstance(driver, ContractingMap.class);
 			System.out.println("Test Class: " + CostChangeColumnsPopulateAfterCalculateAds1230.class.getSimpleName());
-			Login.loginUser("CostingDepartmentManager1");
+//			Login.loginUser("CostingDepartmentManager1"); check in stage if calculation status updated
+			Login.loginUser("AutomationTesterAdmin");
+
 			webdriverMaximizeWindow();
 			goToPage("Unit Cost Quick Calculation");
 			waitForAjaxExtJs();
@@ -53,13 +56,17 @@ public class CreateUCQCLogMakeUCQCProcessAvailableCalculationPage  extends UcqcH
 	  @Test
 	    public void test01ChangeValues() throws Throwable {
 //			WebElement changeCell = ucqcGetCellValueAsWebElement("0ALL", "Salaries and Wages Change", printout);
-		      ucqcUpdateGridCellValue("6200133","Quick Salaries and Wages RVU","15",printout);
+		  	int value=JavaHelper.javaGetRandomNumber(12, printout);
+		      ucqcUpdateGridCellValue("1100270","Quick Salaries and Wages RVU",String.valueOf(value),printout);
 		    doClick(costingMap.getUnitCostQuickCalculationButtonSaveQuickRVUs());
+		  driverDelay(3000);
 		    doClick(costingMap.getUnitCostQuickCalculationButtonCalculate()); 
 		    waitForDisplayedSpinnerToEnd();
+		    driverDelay(10000);
 		    goToPage("Calculation Status");
 		    CalculationHelper.waitForFirstRowCalculationBarToReach100Percent();
 		    driverDelay();
+		    doClick("(//a[text()='Download'])[1]");
 		    doClick(costingMap.getRvuDownloadSharedLocDropdown());
 		    doClick(contractingMap.getContractModelExportFileSharedLocOption());
 			ContractModelsHelper.keyInValues(costingMap.getRvuFileNameInput(), "Test");
