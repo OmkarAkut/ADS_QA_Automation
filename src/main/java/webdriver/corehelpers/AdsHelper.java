@@ -142,6 +142,16 @@ public class AdsHelper extends GetHelper {
     doClick(dialog.getFilterDialogButtonApplyFilter());
     waitForSpinnerToEnd();
   }
+  public void doFilterCreateForDate(String[] filterParameters) throws InterruptedException {
+	  System.out.println(filterParameters[0]);
+	  doFilterSetFilterParametersForDate(filterParameters[0], filterParameters[1], filterParameters[2], filterParameters[3]);
+    waitForAjaxExtJs();
+    waitUntilElementIsClickable(dialog.getFilterDialogButtonAdd());
+    doClick(dialog.getFilterDialogButtonAdd());
+    waitForAjaxExtJs();
+    doClick(dialog.getFilterDialogButtonApplyFilter());
+    waitForSpinnerToEnd();
+  }
   public void addFilter() {
 	  try {
 		doClick(dialog.getFilterDialogButtonAdd());
@@ -193,6 +203,14 @@ public class AdsHelper extends GetHelper {
     doClick(dialog.getFilterDialogFormFieldValue());
     dialog.getFilterDialogFormFieldValue().sendKeys(value);
   }
+  public void doFilterSetFilterParametersForDate(String field, String operator, String condition, String value) throws InterruptedException {
+	    waitForAjaxExtJs();
+	    doDropdownSelectUsingOptionTextServices(dialog.getFilterNameField(),dialog.getFilterDialogDropdownField(), field);
+	    doDropdownSelectUsingOptionTextServices(dialog.getFilterNameOperator(),dialog.getFilterDialogDropdownOperator(), operator);
+	    doDropdownSelectUsingOptionTextServices(dialog.getFilterNameCondition(),dialog.getFilterDialogDropdownCondition(), condition);
+	    doClick(dialog.getstatusFilterDialogFieldValueDate());
+	    dialog.getstatusFilterDialogFieldValueDate().sendKeys(value);
+	  }
   public void doFilterSetFilterParameterswithElement(String field, String operator, String condition, String value) throws InterruptedException {
 	    waitForAjaxExtJs();
 	    doDropdownSelectUsingOptionTextServices(dialog.getfieldNAme(), dialog.getFilterDialogDropdownField(),field);

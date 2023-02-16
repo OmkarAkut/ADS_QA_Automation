@@ -1,0 +1,333 @@
+package webdriver.scripts.costing;
+
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
+import java.text.SimpleDateFormat;
+
+import org.junit.BeforeClass;
+import org.junit.FixMethodOrder;
+import org.junit.Test;
+import org.junit.runners.MethodSorters;
+import org.openqa.selenium.WebElement;
+
+import ExtentReport.ExtentReport;
+import webdriver.core.Login;
+import webdriver.corehelpers.GoHelper;
+import webdriver.helpers.ContractModelsHelper;
+import webdriver.helpers.UcqcHelper;
+import webdriver.maps.ContractingMap;
+import webdriver.maps.CostingMap;
+import webdriver.maps.DialogsMap;
+import webdriver.maps.ModelLibraryMap;
+import webdriver.maps.mapbuilder.BuildMap;
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+public class RVUContainerDeleteFilteredData extends GoHelper {
+	static CostingMap costing;
+	static ModelLibraryMap modelMap;
+	static ContractingMap contractMap;
+	static DialogsMap dialog;
+	static String TotalPages="/ 16";
+	static String costModel="Marina";
+	static String costingFolder="Marina Health";
+	static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
+	static String costModelName = "Model " + currentDateTime;
+	static String[] filterCostModel= {"Name","Is","Equal To",costModel};
+	static String[] filterRvu= {"Cost Model Name","Is","Equal To",costModelName};
+	static String[] filterRvuByStartMonth= {"Start Month","Is","Equal To","04/01/2019"};
+	static String entityCode="530";
+	static String endMonth= "04/01/2019";
+
+	static int RvuContainerList;
+/** Automates test ticket ADS-5983*/
+	
+	@BeforeClass
+	public static void setupScript() throws Exception,Throwable {
+		ExtentReport.reportCreate("RVUContainerDeleteFilteredData", "webdriver.scripts.costing", "RVUContainerDeleteFilteredData");
+		try {
+			costing = BuildMap.getInstance(driver, CostingMap.class);
+			modelMap=BuildMap.getInstance(driver, ModelLibraryMap.class);
+			contractMap=BuildMap.getInstance(driver, ContractingMap.class);
+			dialog=BuildMap.getInstance(driver, DialogsMap.class);
+			Login.loginUser("AutomationTesterAdmin");
+			waitForDisplayedSpinnerToEnd();
+			goToPage("Costing Models");
+			doClickTreeData("Costing");
+			waitForMainPageTitle("Marina Health");
+			doClickTreeData(costingFolder);
+			doClick("//div[text()='Marina Health']");
+			waitForDisplayedSpinnerToEnd();
+			ExtentReport.logPass("PASS", "setupScript");
+		} catch (Exception|AssertionError e) {
+			ExtentReport.logFail("FAIL", "Failure in setupScript", driver, e);
+			fail(e.getMessage());
+		}
+	}
+	
+	@Test
+	public void test01OpenGeneralInformationCost() throws Throwable {
+		try {
+			doClick(modelMap.getModelLibraryButtonFilter());
+			doFilterCreate(filterCostModel);
+			tableDoubleClickCellFirstColumn(costModel);
+			doClickTreeData("CM Test");
+			waitForMainPageTitle("Miscellaneous");
+			doClickTreeData("Miscellaneous");
+			waitForMainPageTitle("General Information - Cost");
+			doClickTreeItemWithCheckbox("General Information - Cost");
+			waitForElementToBeVisible(costing.getCostModelGeneralInfo());
+			assertElementText(costing.getCostModelGeneralInfo(),"Cost Model General Information", printout);
+			ExtentReport.logPass("PASS", "test01OpenGeneralInformationCost");
+		} catch (Exception|AssertionError e) {
+			ExtentReport.logFail("FAIL", "test01OpenGeneralInformationCost", driver, e);
+			fail(e.getMessage());
+		}
+	}
+	
+	@Test
+	public void test02CancelandCloseGeneralInformationCostModel() throws Throwable {
+		try {
+			doClick(ContractingMap.getContractModelRiskLimiterCancelCloseBtn());
+			doClickTreeData("CM Test");
+			waitForMainPageTitle("Miscellaneous");
+			doClickTreeData("Miscellaneous");
+			waitForMainPageTitle("General Information - Cost");
+			doClickTreeItemWithCheckbox("General Information - Cost");
+			waitForElementToBeVisible(costing.getCostModelGeneralInfo());
+			ExtentReport.logPass("PASS", "test02CancelandCloseGeneralInformationCostModel");
+		} catch (Exception|AssertionError e) {
+			ExtentReport.logFail("FAIL", "test02CancelandCloseGeneralInformationCostModel", driver, e);
+			fail(e.getMessage());
+		}
+	}
+	
+	@Test
+	public void  test03SaveAsGeneralInformationCostModel() throws Throwable {
+		try {
+			doClick(costing.getSaveAsButton());
+			waitForElementToBeVisible(costing.getSaveAsPopup());
+			ContractModelsHelper.keyInValues(ContractingMap.getInputName(), costModelName);
+			doClick(ContractingMap.getNewFolderNameSave());
+			waitForDisplayedSpinnerToEnd();
+			ExtentReport.logPass("PASS", "test03SaveAsGeneralInformationCostModel");
+		} catch (Exception|AssertionError e) {
+			ExtentReport.logFail("FAIL", "test03SaveAsGeneralInformationCostModel", driver, e);
+			fail(e.getMessage());
+		}
+		finally {
+			doClosePageOnLowerBar(costModel);
+		}
+	}
+	@Test
+	public void test04OpenRVUMaintenanceForTheSavedCostModel() throws Throwable {
+		try {
+			goToPage("Rvu Maintenance");
+			doClick(costing.getRvuMaintenanceButtonFilter());
+			doFilterCreate(filterRvu);
+			tableDoubleClickCellFirstColumn(costModelName);
+			doClick(costing.getRvuMaintenanceButtonRvuContainerList());
+			
+			ExtentReport.logPass("PASS", "test03SaveAsGeneralInformationCostModel");
+		} catch (Exception|AssertionError e) {
+			ExtentReport.logFail("FAIL", "test03SaveAsGeneralInformationCostModel", driver, e);
+			fail(e.getMessage());
+		}
+	}
+	@Test
+	public void test05FilterByStartMonth() throws Throwable {
+		try {
+			doClick(costing.getRvuContainerFilterButton());
+			doFilterSetFilterParametersForDate("Start Month","Is","Equal To","04/01/2019");
+			addFilter();
+			assertElementIsDisplayedWithXpath("//label[text()='Filter to Match These Criteria 3/13470']");
+			doClick(dialog.getFilterDialogButtonApplyFilter());
+			waitForSpinnerToEnd();
+			ExtentReport.logPass("PASS", "test03SaveAsGeneralInformationCostModel");
+		} catch (Exception|AssertionError e) {
+			ExtentReport.logFail("FAIL", "test03SaveAsGeneralInformationCostModel", driver, e);
+			fail(e.getMessage());
+		}
+	}
+	@Test
+	public void test06DeleteRowInRvuContainer() throws Throwable {
+		try {
+			RvuContainerList=ContractModelsHelper.getPopUpElementListInGrid(costing.getRvuContainerList());
+			doClick(costing.getRvuContainerDeleteButton());
+			waitForElementToBeVisible(contractMap.getContractModelDeletePopUp());
+			doClick(ContractingMap.getDeleteButtonMesaageBox());
+			waitForDisplayedSpinnerToEnd();
+			if(!(ContractModelsHelper.getPopUpElementListInGrid(costing.getRvuContainerList())==RvuContainerList)) {
+				assertTrue(printout);
+			}
+			ExtentReport.logPass("PASS", "test06DeleteRowInRvuContainer");
+		} catch (Exception|AssertionError e) {
+			ExtentReport.logFail("FAIL", "test06DeleteRowInRvuContainer", driver, e);
+			fail(e.getMessage());
+		}
+	}
+	@Test
+	public void test07DeleteFilteredInRvuContainer() throws Throwable {
+		try {
+			doClick(costing.getRvuContainerDeleteFilteredButton());
+			waitForElementToBeVisible(contractMap.getContractModelDeletePopUp());
+			doClick(ContractingMap.getDeleteButtonMesaageBox());
+			waitForDisplayedSpinnerToEnd();
+			assertTextIsDisplayed("There is no data available to display.");
+			ExtentReport.logPass("PASS", "test07DeleteFilteredInRvuContainer");
+		} catch (Exception|AssertionError e) {
+			ExtentReport.logFail("FAIL", "test07DeleteFilteredInRvuContainer", driver, e);
+			fail(e.getMessage());
+		}
+	}
+	@Test
+	public void test08ClearFilterInRvuContainer() throws Throwable {
+		try {
+			doClick(costing.getRvuContainerClearFilterButton());
+			assertListElementsAreDisplayed(costing.getRvuContainerList(), printout);
+			ExtentReport.logPass("PASS", "test08ClearFilterInRvuContainer");
+		} catch (Exception|AssertionError e) {
+			ExtentReport.logFail("FAIL", "test08ClearFilterInRvuContainer", driver, e);
+			fail(e.getMessage());
+		}
+	}
+
+	@Test
+	public void test09ValidateFilterByStartMonthAfterDeleteFiltered() throws Throwable {
+		try {
+			doClick(costing.getRvuContainerFilterButton());
+			doFilterSetFilterParametersForDate("Start Month","Is","Equal To","04/01/2019");
+			addFilter();
+			assertElementIsDisplayedWithXpath("//label[text()='Filter to Match These Criteria 0/13467']");
+//			doClick(dialog.getFilterDialogButtonApplyFilter());
+//			waitForSpinnerToEnd();
+			ExtentReport.logPass("PASS", "test09ValidateFilterByStartMonthAfterDeleteFiltered");
+		} catch (Exception|AssertionError e) {
+			ExtentReport.logFail("FAIL", "test09ValidateFilterByStartMonthAfterDeleteFiltered", driver, e);
+			fail(e.getMessage());
+		}
+	}
+	@Test
+	public void test10ValidateOpenInRvuFilterPopUp() throws Throwable {
+		try {
+			doClick(contractMap.getContractModelEditFilterButton());
+			doFilterSetFilterParametersForDate("End Month","Is","Equal To",endMonth);
+			doClick(costing.getRvuContainerOpenCheckbox());
+//			assertElementIsDisabled(costing.getRvuContainerValueField(), printout);
+			doClick(contractMap.getContractModelUpdateFilterButton());
+			assertElementIsDisplayedWithXpath("//label[text()='Filter to Match These Criteria 1596/13467']");
+			doClick(dialog.getFilterDialogButtonApplyFilter());
+			waitForSpinnerToEnd();
+			assertListElementsAreDisplayed(costing.getRvuContainerList(), printout);
+			assertElementIsDisplayedWithXpath("//div[contains(@id,'tbtext')][text()='"+TotalPages+"']");
+			ExtentReport.logPass("PASS", "test10ValidateOpenInRvuFilterPopUp");
+		} catch (Exception|AssertionError e) {
+			ExtentReport.logFail("FAIL", "test10ValidateOpenInRvuFilterPopUp", driver, e);
+			fail(e.getMessage());
+		}
+	}
+	@Test
+	public void test11DeleteFilteredForOPEN() throws Throwable {
+		try {
+			doClick(costing.getRvuContainerDeleteFilteredButton());
+			waitForElementToBeVisible(contractMap.getContractModelDeletePopUp());
+			doClick(ContractingMap.getDeleteButtonMesaageBox());
+			waitForDisplayedSpinnerToEnd();
+			for(WebElement element:costing.getRvuContainerListEndMonth()) {
+				if(element.getText().equals("Open")) {
+					assertTrue(printout);
+				}
+			}
+			ExtentReport.logPass("PASS", "test11DeleteFilteredForOPEN");
+		} catch (Exception|AssertionError e) {
+			ExtentReport.logFail("FAIL", "test11DeleteFilteredForOPEN", driver, e);
+			fail(e.getMessage());
+		}
+	}
+	@Test
+	public void test12FilterByEntityCodeInRvuContainer() throws Throwable {
+		try {
+			doClick(costing.getRvuContainerClearFilterButton());
+			doClick(costing.getRvuContainerFilterButton());
+			doFilterSetFilterParameters("Entity Code", "Is", "Equal To", entityCode);
+			doClick(dialog.getFilterDialogButtonAdd());
+		    waitForAjaxExtJs();
+			assertElementIsDisplayedWithXpath("//label[text()='Filter to Match These Criteria 12/11871']");
+			doClick(dialog.getFilterDialogButtonApplyFilter());
+			waitForSpinnerToEnd();
+			assertListElementsAreDisplayed(costing.getRvuContainerList(), printout);
+			test07DeleteFilteredInRvuContainer();
+			assertElementIsDisabled(ContractingMap.getCloseandDisplayButton(), printout);
+			doClick(ContractingMap.getCloseBtn());
+			ExtentReport.logPass("PASS", "test12FilterByEntityCodeInRvuContainer");
+		} catch (Exception|AssertionError e) {
+			ExtentReport.logFail("FAIL", "test12FilterByEntityCodeInRvuContainer", driver, e);
+			fail(e.getMessage());
+		}
+	}
+	@Test
+	public void test13ApplyRvuMaintenanceCriteria() throws Throwable {
+		try {
+			doDropdownSelectUsingOptionText(
+					costing.getRvuMaintenanceDropdownEntity(),
+					costing.getRvuMaintenanceDropdownEntityOptions(),
+					"150 Marina Medical Center"
+					);
+			UcqcHelper.updateDepartment("5310");
+				doDropdownSelectUsingOptionText(
+					costing.getRvuMaintenanceDropdownEffectiveMonthStartMonthDropdown(),
+					costing.getRvuMaintenanceDropdownEffectiveMonthStartMonthOptions(),
+					"Apr"
+					);
+			doDropdownSelectUsingOptionText(
+					costing.getRvuMaintenanceDropdownEffectiveMonthStartYearDropdown(),
+					costing.getRvuMaintenanceDropdownEffectiveMonthStartYearOptions(),
+					"2020"
+					);
+			doClick(costing.getRvuMaintenanceButtonApplySelections());
+			waitForDisplayedSpinnerToEnd();
+			
+			ExtentReport.logPass("PASS", "test13ApplyRvuMaintenanceCriteria");
+		} catch (Exception|AssertionError e) {
+			ExtentReport.logFail("FAIL", "test13ApplyRvuMaintenanceCriteria", driver, e);
+			fail(e.getMessage());
+		}
+	}
+	@Test
+	public void test14ApplyDepartmentCodeFilterInRvuContainerList() throws Throwable {
+		try {
+			doClick(costing.getRvuMaintenanceButtonRvuContainerList());
+			waitForDisplayedSpinnerToEnd();
+			doClick(costing.getRvuContainerFilterButton());
+			doFilterSetFilterParameters("Department Code", "Is", "Equal To", "3710");
+			addFilter();
+			assertElementIsDisplayedWithXpath("//label[text()='Filter to Match These Criteria 225/11859']");
+			doClick(dialog.getFilterDialogButtonApplyFilter());
+			waitForSpinnerToEnd();
+			assertListElementsAreDisplayed(costing.getRvuContainerList(), printout);
+			assertElementIsDisplayedWithXpath("//div[contains(@id,'tbtext')][text()='/ 3']");
+			test07DeleteFilteredInRvuContainer();
+			assertElementIsDisabled(ContractingMap.getCloseandDisplayButton(), printout);
+			test08ClearFilterInRvuContainer();
+			ExtentReport.logPass("PASS", "test14ApplyDepartmentCodeFilterInRvuContainerList");
+		} catch (Exception|AssertionError e) {
+			ExtentReport.logFail("FAIL", "test14ApplyDepartmentCodeFilterInRvuContainerList", driver, e);
+			fail(e.getMessage());
+		}
+	}
+	@Test
+	public void test15ApplyRADDepartmentCodeFilterInRvuContainerList() throws Throwable {
+		try {
+			doClick(costing.getRvuContainerFilterButton());
+			doFilterSetFilterParameters("Department Code", "Is", "Equal To", "RAD");
+			addFilter();
+			assertElementIsDisplayedWithXpath("//label[text()='Filter to Match These Criteria 4/11634']");
+			test07DeleteFilteredInRvuContainer();
+			assertElementIsDisabled(ContractingMap.getCloseandDisplayButton(), printout);
+			test08ClearFilterInRvuContainer();
+			ExtentReport.logPass("PASS", "test15ApplyRADDepartmentCodeFilterInRvuContainerList");
+		} catch (Exception|AssertionError e) {
+			ExtentReport.logFail("FAIL", "test15ApplyRADDepartmentCodeFilterInRvuContainerList", driver, e);
+			fail(e.getMessage());
+		}
+	}
+}

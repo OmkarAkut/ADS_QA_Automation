@@ -1055,4 +1055,15 @@ public class ContractModelsHelper extends GoHelper {
 			doClick(CostingMap.getUnitCostQuickCalculationDepartmentButtonFilter());
 			applyMultipleFilters(code,name);
 	}
+	public static int getPopUpElementListInGrid(List<WebElement> element) {
+		int elementSize;
+		 elementSize=element.size();
+		 return elementSize;
+	}
+
+	public static int getPopUpElementListInGrid(WebElement[] element) {
+		int elementSize;
+		 elementSize=element.length;
+		 return elementSize;
+	}
 }

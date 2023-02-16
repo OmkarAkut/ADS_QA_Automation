@@ -549,6 +549,18 @@ public class AssertHelper extends AdsHelper {
 			}
 		}
 	}
+	public static void assertListElementsAreDisplayed(List<WebElement> elements, boolean printout) {
+		for (WebElement element : elements) {
+			try {
+				assertTrue(element.isDisplayed());
+				if(printout){
+					System.out.println(element);
+				}
+			} catch (Throwable e) {
+				fail(e.getMessage());
+			}
+		}
+	}
 
 	public void assertElementValueAttribute(WebElement element, String expectedValue, boolean printout) {
 		String getValueAttribute = element.getAttribute("value");
