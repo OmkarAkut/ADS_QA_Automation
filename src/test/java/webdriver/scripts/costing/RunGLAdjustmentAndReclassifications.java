@@ -64,7 +64,8 @@ public class RunGLAdjustmentAndReclassifications extends CalculationHelper {
 			waitForPageTitle("Calculation Status");
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
-			driverDelay(5000);
+//			driverDelay(5000);
+			waitForPresenceOfElement("//*[contains(text(),'Number of Reclassifications To Process: 6')]");
 			confirmCalculationStatusDetailsContains("Number of Reclassifications To Process: 6");
 			closeViewDialog();
 			deleteCalculationStatusMyStatusPageFirstRow();

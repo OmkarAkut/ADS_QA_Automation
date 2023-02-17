@@ -163,8 +163,8 @@ public class CostingMap extends MapConfig {
 		return getRvuMaintenanceDropdownEffectiveMonthStartYearDropdown;
 	}
 
-	// @FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='2001']/..")
-	@FindBy(xpath = "//*[@name=\"selectedYear\"]")
+	 @FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='2011']/..")
+//	@FindBy(xpath = "//*[@name=\"selectedYear\"]")
 	private WebElement getRvuMaintenanceDropdownEffectiveMonthStartYearOptions;
 
 	public WebElement getRvuMaintenanceDropdownEffectiveMonthStartYearOptions() {
@@ -1484,5 +1484,30 @@ public class CostingMap extends MapConfig {
 		private  List<WebElement> getRvuContainerListEndMonth;
 		public    List<WebElement> getRvuContainerListEndMonth() {
 			return getRvuContainerListEndMonth;
+		}
+		@FindBy(xpath = "//span[text()='Add Value']//parent::button")
+		private  WebElement getRvuContainerAddValueButton;
+		public   WebElement getRvuContainerAddValueButton() {
+			return getRvuContainerAddValueButton;
+		}
+		@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='Entity Code']/..")
+		private  WebElement getEntityDropdownOptionsInFilter;
+		public   WebElement getEntityDropdownOptionsInFilter() {
+			return getEntityDropdownOptionsInFilter;
+		}
+		@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='Is']/..")
+		private  WebElement getFilterOperatorDropdownOptions;
+		public   WebElement getFilterOperatorDropdownOptions() {
+			return getFilterOperatorDropdownOptions;
+		}
+		@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='Equal To']/..")
+		private  WebElement getFilterConditionDropdownOptions;
+		public   WebElement getFilterConditionDropdownOptions() {
+			return getFilterConditionDropdownOptions;
+		}
+		@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='Yes']/..")
+		private  WebElement getFilterValueCostComponentOverheadDropdownOptions;
+		public   WebElement getFilterValueCostComponentOverheadDropdownOptions() {
+			return getFilterValueCostComponentOverheadDropdownOptions;
 		}
 }

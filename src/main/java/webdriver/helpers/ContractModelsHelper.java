@@ -872,8 +872,13 @@ public class ContractModelsHelper extends GoHelper {
 		    doClick(ContractingMap.getaddOnServicesPopUpFilterAddButton());
 		    waitForAjaxExtJs();
 		    doClick(ContractingMap.getFilterDialogButtonApplyFilter());
-		    
+		    waitForDisplayedSpinnerToEnd();
 		  }
+		  public void doFilterCreateAndAddFilter(String[] filterParameters,WebElement element) throws Throwable {
+			  System.out.println(filterParameters[0]);
+			  doFilterSetFilterParameterPassElementForCondition(filterParameters[0], filterParameters[1], filterParameters[2], filterParameters[3],element);
+		    waitForAjaxExtJs();
+		   		  }
 		  public void doFilterCreateOnly(String[] filterParameters) throws Throwable {
 			  System.out.println(filterParameters[0]);
 		    doFilterSetFilterParameterServices(filterParameters[0], filterParameters[1], filterParameters[2], filterParameters[3]);
@@ -889,6 +894,15 @@ public class ContractModelsHelper extends GoHelper {
 
 			    doClick(dialog.getFilterDialogFormFieldValue());
 			    dialog.getFilterDialogFormFieldValue().sendKeys(value);
+			  } 
+		  public void doFilterSetFilterParameterPassElementForCondition(String field, String operator, String condition, String value,WebElement element) throws InterruptedException {
+			    waitForAjaxExtJs();
+			    doDropdownSelectUsingOptionTextServices(dialog.getFilterNameField(),dialog.getFilterDialogDropdownField(), field);
+			    doDropdownSelectUsingOptionTextServices(dialog.getFilterNameOperator(),dialog.getFilterDialogDropdownOperator(), operator);
+			    doDropdownSelectUsingOptionTextServices(dialog.getFilterNameCondition(),dialog.getFilterDialogDropdownCondition(), condition);
+
+			    doClick(element);
+			    element.sendKeys(value);
 			  } 
 		  public void doDropdownSelectUsingOptionTextServices(WebElement dropdownList,WebElement element, String optionText) throws InterruptedException {
 		        waitForAjaxExtJs();
