@@ -55,6 +55,18 @@ public class DialogsMap extends MapConfig {
     @FindBy(name = "valuefield")
     private WebElement statusFilterDialogFieldValue;
     public WebElement getFilterDialogFormFieldValue() {return statusFilterDialogFieldValue;}
+    
+    @FindBy(name = "valueoneof")
+    private WebElement statusFilterDialogFieldValueOneOf;
+    public WebElement getFilterDialogFormFieldValueOneOf() {return statusFilterDialogFieldValueOneOf;}
+    
+    @FindBy(name = "valuelist")
+    private WebElement statusFilterDialogFieldValueList;
+    public WebElement getstatusFilterDialogFieldValueList() {return statusFilterDialogFieldValueList;}
+    
+    @FindBy(name = "valuedate")
+    private WebElement statusFilterDialogFieldValueDate;
+    public WebElement getstatusFilterDialogFieldValueDate() {return statusFilterDialogFieldValueDate;}
 
     @FindBy(name = "valueOfOnefield")
     private WebElement statusFilterDialogFieldValueOfOne;

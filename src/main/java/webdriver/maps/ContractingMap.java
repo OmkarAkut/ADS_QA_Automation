@@ -291,6 +291,14 @@ public static WebElement getContractModelAddProviderBtn() {return getContractMod
 	private static WebElement ContractModelRiskLimiterCancelCloseBtn;
 	public static WebElement getContractModelRiskLimiterCancelCloseBtn() {return ContractModelRiskLimiterCancelCloseBtn;}
 	
+	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//span[text()='Close']")
+	private static WebElement getCloseBtn;
+	public static WebElement getCloseBtn() {return getCloseBtn;}
+	
+	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//span[text()='Close & Display']")
+	private static WebElement getCloseandDisplayButton;
+	public static WebElement getCloseandDisplayButton() {return getCloseandDisplayButton;}
+	
 	@FindBy(xpath = "//div[contains(@id,'messagebox')]//span[text()='Cancel & Close']")
 	private static WebElement ContractModelRiskLimiterMessageBoxCancelCloseBtn;
 	public static WebElement getContractModelRiskLimiterMessageBoxCancelCloseBtn() {return ContractModelRiskLimiterMessageBoxCancelCloseBtn;}

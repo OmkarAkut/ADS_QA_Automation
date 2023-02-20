@@ -32,8 +32,6 @@ public class RVUExportImportFunction extends GoHelper {
 			generalMap = BuildMap.getInstance(driver, GeneralElementsMap.class);
 			costing = BuildMap.getInstance(driver, CostingMap.class);
 			contracting=BuildMap.getInstance(driver, ContractingMap.class);
-			System.out.println("Test Class: " + RvuMaintenanceAds1492.class.getSimpleName());
-
 			Login.loginUser("AutomationTesterAdmin");
 			waitForAjaxExtJs();
 			waitForDisplayedSpinnerToEnd();

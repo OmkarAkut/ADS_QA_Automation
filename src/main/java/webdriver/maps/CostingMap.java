@@ -163,8 +163,8 @@ public class CostingMap extends MapConfig {
 		return getRvuMaintenanceDropdownEffectiveMonthStartYearDropdown;
 	}
 
-	// @FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='2001']/..")
-	@FindBy(xpath = "//*[@name=\"selectedYear\"]")
+	 @FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='2011']/..")
+//	@FindBy(xpath = "//*[@name=\"selectedYear\"]")
 	private WebElement getRvuMaintenanceDropdownEffectiveMonthStartYearOptions;
 
 	public WebElement getRvuMaintenanceDropdownEffectiveMonthStartYearOptions() {
@@ -1429,5 +1429,85 @@ public class CostingMap extends MapConfig {
 		private  WebElement getRvuDownloadSharedLocDropdown;
 		public  WebElement getRvuDownloadSharedLocDropdown() {
 			return getRvuDownloadSharedLocDropdown;
+		}
+		@FindBy(xpath = "//span[text()='Cost Model General Information']")
+		private  WebElement getCostModelGeneralInfo;
+		public   WebElement getCostModelGeneralInfo() {
+			return getCostModelGeneralInfo;
+		}
+		@FindBy(xpath = "//div[contains(@class,'x-toolbar-footer')]//span[text()='Save As']")
+		private   WebElement getSaveAsButton;
+		public    WebElement getSaveAsButton() {
+			return getSaveAsButton;
+		}
+		@FindBy(xpath = "//span[@class='x-window-header-text x-window-header-text-default'][text()='Save As']")
+		private   WebElement getSaveAsPopup;
+		public    WebElement getSaveAsPopup() {
+			return getSaveAsPopup;
+		}
+		@FindBy(xpath = "//*[text()='RVU Container List']/ancestor::div/following-sibling::div/descendant::button/span[text()='Filter']")
+		private   WebElement getRvuContainerFilterButton;
+		public    WebElement getRvuContainerFilterButton() {
+			return getRvuContainerFilterButton;
+		}
+		@FindBy(xpath = "//*[text()='RVU Container List']/ancestor::div/following-sibling::div/descendant::button/span[text()='Delete']")
+		private   WebElement getRvuContainerDeleteButton;
+		public    WebElement getRvuContainerDeleteButton() {
+			return getRvuContainerDeleteButton;
+		}
+		@FindBy(xpath = "(//div[contains(@id,'rvucontainerlist')])[2]//following::tr[1]/td[6]/div")
+		private  List<WebElement> getRvuContainerList;
+		public    List<WebElement> getRvuContainerList() {
+			return getRvuContainerList;
+		}
+		@FindBy(xpath = "//*[text()='RVU Container List']/ancestor::div/following-sibling::div/descendant::button/span[text()='Delete Filtered']")
+		private   WebElement getRvuContainerDeleteFilteredButton;
+		public    WebElement getRvuContainerDeleteFilteredButton() {
+			return getRvuContainerDeleteFilteredButton;
+		}
+		@FindBy(xpath = "//*[text()='RVU Container List']/ancestor::div/following-sibling::div/descendant::button/span[text()='Clear Filter']")
+		private   WebElement getRvuContainerClearFilterButton;
+		public    WebElement getRvuContainerClearFilterButton() {
+			return getRvuContainerClearFilterButton;
+		}
+		@FindBy(xpath = "(//span[contains(@id,'filterwindow')]//following::table[contains(@class,'customComboTriggerCls')]//following::input[@class='x-form-field x-form-checkbox'])[1]")
+		private   WebElement getRvuContainerOpenCheckbox;
+		public    WebElement getRvuContainerOpenCheckbox() {
+			return getRvuContainerOpenCheckbox;
+		}
+		@FindBy(xpath = "//input[@name='valuedate']")
+		private   WebElement getRvuContainerValueField;
+		public    WebElement getRvuContainerValueField() {
+			return getRvuContainerValueField;
+		}
+		@FindBy(xpath = "(//div[contains(@id,'rvucontainerlist')])[2]//following::tr[1]/td[9]/div")
+		private  List<WebElement> getRvuContainerListEndMonth;
+		public    List<WebElement> getRvuContainerListEndMonth() {
+			return getRvuContainerListEndMonth;
+		}
+		@FindBy(xpath = "//span[text()='Add Value']//parent::button")
+		private  WebElement getRvuContainerAddValueButton;
+		public   WebElement getRvuContainerAddValueButton() {
+			return getRvuContainerAddValueButton;
+		}
+		@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='Entity Code']/..")
+		private  WebElement getEntityDropdownOptionsInFilter;
+		public   WebElement getEntityDropdownOptionsInFilter() {
+			return getEntityDropdownOptionsInFilter;
+		}
+		@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='Is']/..")
+		private  WebElement getFilterOperatorDropdownOptions;
+		public   WebElement getFilterOperatorDropdownOptions() {
+			return getFilterOperatorDropdownOptions;
+		}
+		@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='Equal To']/..")
+		private  WebElement getFilterConditionDropdownOptions;
+		public   WebElement getFilterConditionDropdownOptions() {
+			return getFilterConditionDropdownOptions;
+		}
+		@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='Yes']/..")
+		private  WebElement getFilterValueCostComponentOverheadDropdownOptions;
+		public   WebElement getFilterValueCostComponentOverheadDropdownOptions() {
+			return getFilterValueCostComponentOverheadDropdownOptions;
 		}
 }

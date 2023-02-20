@@ -29,7 +29,8 @@ public class CreateUCQCLogMakeUCQCProcessAvailableCalculationPage  extends UcqcH
 	  };
 	  @BeforeClass
 	  public static void setupScript() throws Throwable {
-		  ExtentReport.reportCreate("CreateUCQCLogMakeUCQCProcessAvailableCalculationPage","webdriver.scripts.costing.unitcostquickcalculation.ucqccalculation", "CreateUCQCLogMakeUCQCProcessAvailableCalculationPage");
+		  ExtentReport.reportCreate("CreateUCQCLogMakeUCQCProcessAvailableCalculationPage","webdriver.scripts.costing.unitcostquickcalculation.ucqccalculation", 
+"CreateUCQCLogMakeUCQCProcessAvailableCalculationPage");
 		   
 		  
 	    try {
@@ -57,7 +58,7 @@ public class CreateUCQCLogMakeUCQCProcessAvailableCalculationPage  extends UcqcH
 	    public void test01ChangeValues() throws Throwable {
 //			WebElement changeCell = ucqcGetCellValueAsWebElement("0ALL", "Salaries and Wages Change", printout);
 		  	int value=JavaHelper.javaGetRandomNumber(12, printout);
-		      ucqcUpdateGridCellValue("1100270","Quick Salaries and Wages RVU",String.valueOf(value),printout);
+		      ucqcUpdateGridCellValue("6200133","Quick Salaries and Wages RVU",String.valueOf(value),printout);
 		    doClick(costingMap.getUnitCostQuickCalculationButtonSaveQuickRVUs());
 		  driverDelay(3000);
 		    doClick(costingMap.getUnitCostQuickCalculationButtonCalculate()); 
