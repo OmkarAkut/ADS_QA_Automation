@@ -790,7 +790,7 @@ public static WebElement getContractModelAddProviderBtn() {return getContractMod
 	private static WebElement getSelectAllBenefitPlans;
 	public static WebElement getSelectAllBenefitPlans() {return getSelectAllBenefitPlans;}
 	
-	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//following::span[text()='Calculate']")
+	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//span[text()='Calculate']//parent::button")
 	private static WebElement getCalculateButton;
 	public static WebElement getCalculateButton() {return getCalculateButton;}
 	

@@ -54,6 +54,7 @@ public class RunGLAdjustmentAndReclassifications extends CalculationHelper {
 			ContractModelsHelper.doClickTreeData("CM Test");
 			waitForMainPageTitle("Cost Scnenarios");
 			ContractModelsHelper.doClickTreeData("Cost Scnenarios");
+			waitForElementPresence("//div[text()='GL Adjustment and Reclassification Calculation Scenarios']//input[@title='Changes screen']");
 			doClick("//div[text()='GL Adjustment and Reclassification Calculation Scenarios']//input[@title='Changes screen']");
 			waitForElementToBeVisible(ContractingMap.getGLFilterButton());
 			doClick(ContractingMap.getGLFilterButton());
@@ -64,7 +65,6 @@ public class RunGLAdjustmentAndReclassifications extends CalculationHelper {
 			waitForPageTitle("Calculation Status");
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
-//			driverDelay(5000);
 			waitForPresenceOfElement("//*[contains(text(),'Number of Reclassifications To Process: 6')]");
 			confirmCalculationStatusDetailsContains("Number of Reclassifications To Process: 6");
 			closeViewDialog();
