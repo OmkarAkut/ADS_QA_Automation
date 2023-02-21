@@ -79,6 +79,7 @@ public class CreateDeleteCostMethodMaster extends GoHelper{
 			ContractModelsHelper.keyInValues(ContractingMap.getMedicareCode(), code);
 			ContractModelsHelper.keyInValues(ContractingMap.getInputName(), costMethodMaster);
 			doDropdownSelectUsingOptionText(CostingMap.getCostModelMethodMasterDeptMasterdropdown(), CostingMap.getCostModelMethodMasterDeptMasterOptions(), deptMaster);
+			driverDelay(200);
 			doClick(ContractingMap.getContractFeeForServicePaymentSave());
 			doClick(CostingMap.getCostModelMethodMasterFilter());
 			doFilterCreate(filter);

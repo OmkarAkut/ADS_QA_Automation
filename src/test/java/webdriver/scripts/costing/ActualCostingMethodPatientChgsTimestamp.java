@@ -36,12 +36,9 @@ public class ActualCostingMethodPatientChgsTimestamp extends CalculationHelper {
 	static String[] filterCostModelScenarioC= { "Name", "Is", "Equal To", costModelCalcScenarioC };
 	static String[] filterCostModelScenarioD= { "Name", "Is", "Equal To", costModelCalcScenarioD};
 	static String[] filterCostModelScenarioE= { "Name", "Is", "Equal To", costModelCalcScenarioE};
-
-	/** Automates test ticket ADS-6671, ADS-6670 */
-
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("CreateDeleteCostMethodMaster", "webdriver.scripts.costing", "CreateDeleteCostMethodMaster");
+		ExtentReport.reportCreate("ActualCostingMethodPatientChgsTimestamp", "webdriver.scripts.costing", "ActualCostingMethodPatientChgsTimestamp");
 		try {
 			costing = BuildMap.getInstance(driver, CostingMap.class);
 			contractMap = BuildMap.getInstance(driver, ContractingMap.class);

@@ -8,12 +8,13 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import ExtentReport.ExtentReport;
+import webdriver.core.Login;
 import webdriver.helpers.CalculationHelper;
 import webdriver.helpers.ContractModelsHelper;
 import webdriver.maps.ContractingMap;
 import webdriver.maps.DataMaintenanceMap;
 import webdriver.maps.mapbuilder.BuildMap;
-import webdriver.users.Users;
+
 
 public class ContractingDataMaintenanceNewItem extends CalculationHelper {
 	
@@ -33,7 +34,7 @@ public class ContractingDataMaintenanceNewItem extends CalculationHelper {
 					"webdriver.scripts.contracting",
 					"ContractingDataMaintenanceNewItem");
 			modelMap = BuildMap.getInstance(driver, ContractingMap.class);
-			loginUser(Users.ContractAnalyst1);
+			Login.loginUser("AutomationTesterAdmin");
 			waitForDisplayedSpinnerToEnd();
 			doClick(ContractingMap.getContractDataMaintenance());
 			selectMaintainDataAtoZ(aTozPage);
