@@ -12,6 +12,7 @@ import org.openqa.selenium.By;
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.corehelpers.GoHelper;
+import webdriver.helpers.UcqcHelper;
 import webdriver.maps.GeneralElementsMap;
 import webdriver.maps.mapbuilder.BuildMap;
 
@@ -22,6 +23,8 @@ public class ChangePasswordDialogTest extends GoHelper {
   final static String warningText = "The old password you typed is not valid. Please type your old password again";
   final static String resetText = "To reset your password, provide your current password and new password";
   final static String termsOfUseText = "TERMS OF USE";
+  private static String BackgroundColorTermsOfUse= "rgba(0, 73, 141, 1)";
+  /**Regression test ADS-6585 **/
   @BeforeClass
   public static void setupScript() throws Exception,Throwable {
 	  ExtentReport.reportCreate("ChangePasswordDialogTest", "webdriver.globalscripts.pagetests", "ChangePasswordDialogTest");
@@ -98,6 +101,7 @@ public class ChangePasswordDialogTest extends GoHelper {
     try {
 		assertElementIsDisplayed(generalElement.getUserDropdown(), printout);
 		generalElement.getUserDropdown().click();
+		UcqcHelper.validateBackgroundColor(BackgroundColorTermsOfUse,driver.findElement(By.xpath("//a[text()='Terms of Use']//parent::li")));
 		waitForPresenceOfElement("//*[@id='adiv']/descendant::*[text()='Terms of Use']");
 		generalElement.getUserDropdownTermsOfUse().click();
 		waitForPresenceOfElementText(termsOfUseText);

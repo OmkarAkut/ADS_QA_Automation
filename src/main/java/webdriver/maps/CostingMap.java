@@ -1510,4 +1510,19 @@ public class CostingMap extends MapConfig {
 		public   WebElement getFilterValueCostComponentOverheadDropdownOptions() {
 			return getFilterValueCostComponentOverheadDropdownOptions;
 		}
+		@FindBy(xpath = "//*[contains(@id,'costmodelscenariolist')]/descendant::span[text()='Filter']")
+		private  WebElement getCostModelCalcFilterButton;
+		public   WebElement getCostModelCalcFilterButton() {
+			return getCostModelCalcFilterButton;
+		}
+		@FindBy(xpath = "//*[contains(@id,'costmodelscenariolist')]/descendant::span[text()='Clear Filter']")
+		private  WebElement getCostModelCalcClearFilterButton;
+		public   WebElement getCostModelCalcClearFilterButton() {
+			return getCostModelCalcClearFilterButton;
+		}
+		@FindBy(xpath = "//div[@id='costing_modelcosts_tabId-body']/descendant::span[text()='Filter']")
+		private  WebElement getCostModelFilterButton;
+		public   WebElement getCostModelFilterButton() {
+			return getCostModelFilterButton;
+		}
 }

@@ -500,8 +500,8 @@ public class ContractModelsHelper extends GoHelper {
 	    }
 	  }
 
-	  public List<String> getSelectedColumnList() {
-	    String selectedColumnsXpath = "//*[contains(@class,'glAccountsGrid')][2]/descendant::tbody";
+	  public static List<String> getSelectedColumnList() {
+	    String selectedColumnsXpath = "(//*[contains(@class,'glAccountsGrid')][2]/descendant::tbody)[1]";
 	    WebElement selectedMenu = driver.findElement(By.xpath(selectedColumnsXpath));
 	    List<WebElement> actualSelectedColumns = selectedMenu.findElements(By.tagName("tr"));
 	    List<String> actualSelectedColumnNames = new ArrayList<>();
@@ -1079,5 +1079,10 @@ public class ContractModelsHelper extends GoHelper {
 		int elementSize;
 		 elementSize=element.length;
 		 return elementSize;
+	}
+	public static void gotToSpecifiedPage(WebElement input,WebElement goOption,String number) throws InterruptedException {
+		ContractModelsHelper.keyInValues(input, number);
+		goOption.click();
+		driverDelay(1000);
 	}
 }

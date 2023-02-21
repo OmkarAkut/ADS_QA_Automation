@@ -250,4 +250,14 @@ public class ModelLibraryMap extends MapConfig {
     @FindBy(xpath = "//span[contains(@id,'messagebox')]//following::span[text()='Return']//parent::button")
     private  static WebElement ReturnButton;
     public static WebElement getReturnButton() {return ReturnButton;}
+    
+    //View Log
+    
+    @FindBy(xpath = "//div[contains(@id,'window')]//*[contains(@name, 'inputItem')]")
+    private  static WebElement getInputNumberPage;
+    public static WebElement getInputNumberPage() {return getInputNumberPage;}
+    
+    @FindBy(xpath = "//div[contains(@id,'window')]//*[contains(@class, 'go-button')]")
+    private  static WebElement getGoToPage;
+    public static WebElement getGoToPage() {return getGoToPage;}
 }
