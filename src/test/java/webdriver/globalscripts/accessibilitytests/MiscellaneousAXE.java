@@ -1,5 +1,8 @@
 package webdriver.globalscripts.accessibilitytests;
 
+
+package webdriver.globalscripts.accessibilitytests_old;
+
 import static org.junit.Assert.fail;
 
 import org.apache.logging.log4j.LogManager;
@@ -330,4 +333,9 @@ public class AdsAccessibilityMainPagesSuite extends LoginStatic {
 //    ax.runAxeAccessibilityTestOfPage(driver, logger, name.getMethodName());
 //    doClosePageOnLowerBar("Utility Status");
 //  }
+}
+
+
+public class MiscellaneousAXE {
+
 }

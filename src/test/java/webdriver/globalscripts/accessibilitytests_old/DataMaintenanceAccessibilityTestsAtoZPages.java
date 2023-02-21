@@ -1,4 +1,4 @@
-package webdriver.globalscripts.accessibilitytests;
+package webdriver.globalscripts.accessibilitytests_old;
 
 import static org.junit.Assert.fail;
 

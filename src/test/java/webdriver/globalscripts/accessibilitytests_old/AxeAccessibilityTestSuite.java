@@ -1,4 +1,4 @@
-package webdriver.globalscripts.accessibilitytests;
+package webdriver.globalscripts.accessibilitytests_old;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
