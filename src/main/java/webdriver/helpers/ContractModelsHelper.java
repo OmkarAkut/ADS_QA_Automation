@@ -1085,4 +1085,47 @@ public class ContractModelsHelper extends GoHelper {
 		goOption.click();
 		driverDelay(1000);
 	}
+	public  String getCellValue (String chargeCode) throws Throwable {
+	    String columnID;
+	    String columnValue = null;
+	    try {
+	      ContractModelsHelper.scrollToView(driver.findElement(By.xpath("(//*[text()='" + chargeCode + "']/../../descendant::div[1])[2]")));
+	      String row = driver.findElement(By.xpath("(//*[text()='" + chargeCode + "']/../../descendant::div[1])[2]")).getText();
+	      System.out.println("Row Number: " + row);
+	      columnID = driver.findElement(By.xpath("//*[contains(@class,'column-header-text')][text()='Salaries and Wages'][text()='Apr 2004']")).getAttribute("id");
+	      int columnIDDigits = Integer.parseInt(getNumbersFromStringWithRegex(columnID));
+	      columnValue = driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')][" + row + "]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-" + columnIDDigits + "')]")).getText();
+	      System.out.println("Value: " + columnValue);
+	    } catch (Throwable e) {
+	      e.getMessage();
+	    }
+	    return columnValue;
+	  }
+	public static void updateDepartment(String departmentText) throws InterruptedException {
+	     doClick("((//label[contains(@id,'singleselectorform')])[2]//following::span[text()='Select'])[1]");
+	   waitForDisplayedSpinnerToEnd();
+	    waitForAjaxExtJs();
+	    //Thread.sleep(1100);  //original value, which works
+	    Thread.sleep(500);  //alternative value, to reduce run time - reset to original value if there are false positives with this one
+	    JavascriptExecutor jse = (JavascriptExecutor)driver;
+		   jse.executeScript("arguments[0].value='"+ departmentText +"';",  driver.findElement(By.name("carrierfield")));
+			waitForSpinnerToEnd();
+			try {
+				driver.findElement(By.name("carrierfield")).sendKeys(" ");
+				Thread.sleep(1000);
+				driver.findElement(By.name("carrierfield")).sendKeys(Keys.BACK_SPACE);
+				Thread.sleep(1000);
+
+			doClick(driver.findElement(By.xpath("//div[contains(@class,'x-grid-cell-inner') and contains(text()," + departmentText +")]")));
+			waitForAjaxExtJs();
+			doClick(driver.findElement(By.xpath("//*[contains(@class,'docked-bottom')]/descendant::span[text()='Apply']")));
+			waitForAjaxExtJs();
+		} catch (Exception|AssertionError e) {
+			doClick(driver.findElement(By.xpath("//div[contains(@class,'x-grid-cell-inner') and contains(text()," + departmentText +")]")));
+
+			doClick(driver.findElement(By.xpath("//*[contains(@class,'docked-bottom')]/descendant::span[text()='Apply']")));
+			waitForAjaxExtJs();
+		}
+	  }
+
 }
