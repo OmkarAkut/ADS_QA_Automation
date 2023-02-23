@@ -1,4 +1,4 @@
-package webdriver.globalscripts.accessibilitytests_old;
+package webdriver.globalscripts.accessibilitytests;
 
 import static org.junit.Assert.fail;
 
@@ -11,7 +11,7 @@ import ExtentReport.ExtentReport;
 import webdriver.globalstatic.BeforeAfterStatic;
 import webdriver.utilities.Axe;
 
-public class LogInPageAccessibilityTest extends BeforeAfterStatic {
+public class LogInPageAXE extends BeforeAfterStatic {
 
   private Axe ax = new Axe();
   private boolean createJsonReport = false;
@@ -25,7 +25,7 @@ public class LogInPageAccessibilityTest extends BeforeAfterStatic {
 
   @Test
   public void testLogInPageAccessibilityCheck() throws Throwable {
-	  ExtentReport.reportCreate("LogInPageAccessibilityTest", "webdriver.globalscripts.accessibilitytests", "LogInPageAccessibilityTest");
+	  ExtentReport.reportCreate("LogInPageAXE", "webdriver.globalscripts.accessibilitytests", "LogInPageAXE");
     try {
 		ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName());
 		ExtentReport.logPass("PASS", "testLocalAccessibilityScript");
@@ -34,6 +34,8 @@ public class LogInPageAccessibilityTest extends BeforeAfterStatic {
 	fail(e.getMessage());
 	}
   }
+  
+  
   @AfterClass
 	public static void endtest() throws Exception {
 

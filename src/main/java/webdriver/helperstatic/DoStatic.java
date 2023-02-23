@@ -182,7 +182,9 @@ public class DoStatic extends GetStatic {
 
     public static void doClosePageOnLowerBar(String pageName) throws InterruptedException {
         waitForAjaxExtJs();
-        driver.findElement(By.xpath("//*[contains(@id,'tab') and contains(text(),'"+pageName+"')]/../../following-sibling::a")).click();
+//        Omkar : 23/03/2023 : Below xpath has been changed in staging. Its however working in qa3 and qa prod
+//        driver.findElement(By.xpath("//*[contains(@id,'tab') and contains(text(),'"+pageName+"')]/../../following-sibling::a")).click();
+        driver.findElement(By.xpath("//*[contains(@id,'tab') and contains(text(),'"+pageName+"')]/../../following-sibling::span")).click();
         waitForAjaxExtJs();
     }
 

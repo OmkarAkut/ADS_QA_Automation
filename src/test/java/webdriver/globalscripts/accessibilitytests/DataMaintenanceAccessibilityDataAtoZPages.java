@@ -1,4 +1,4 @@
-package webdriver.globalscripts.accessibilitytests_old;
+package webdriver.globalscripts.accessibilitytests;
 
 public class DataMaintenanceAccessibilityDataAtoZPages {
 
