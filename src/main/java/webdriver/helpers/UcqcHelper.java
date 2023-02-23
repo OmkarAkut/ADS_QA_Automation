@@ -406,7 +406,27 @@ public class UcqcHelper extends GoHelper {
       throw new Exception();
     }
   }
-
+  public void assertUCQCElementHasAttributeDisabled(WebElement element, boolean printout) throws Exception {
+	    String disabledText = null;
+	    try {
+	      waitForAjaxExtJs();
+	      disabledText = element.getAttribute("disabled");
+	    } catch(Throwable e) {
+	      System.out.println("Element Not Found");
+	      fail("element not found");
+	    }
+	    boolean isDisabled = disabledText.contains("true");
+	    if (printout){
+	      System.out.println("Element class text: " + disabledText);
+	      System.out.println("IsDisabled: " + isDisabled);
+	    }
+	    try {
+	      assertTrue(isDisabled);
+	    } catch(Throwable e){
+	      System.out.println("TEST FAILED: Element is Enabled");
+	      throw new Exception();
+	    }
+	  }
   public void assertUCQCDropdownIsDisabled(String nameAttribute, boolean printout) throws Exception {
     String disabledText = null;
     String disabledTextXpath = "//input[@placeholder='<None>'][@name='" + nameAttribute + "']";

@@ -21,7 +21,7 @@ import webdriver.maps.ModelLibraryMap;
 import webdriver.maps.mapbuilder.BuildMap;
 
 	@FixMethodOrder(MethodSorters.NAME_ASCENDING)
-	/** Regression test case ADS-5984 **/
+	/** Regression test case ADS-5982 **/
 	public class EncCostCalcScenarioSelectedCostModelScenariosdisplayed extends CalculationHelper {
 		static String costModel = "0-MarinaCostModel";
 		static String encCostScenario="#ADS-1533 Enc Cost performance issue";

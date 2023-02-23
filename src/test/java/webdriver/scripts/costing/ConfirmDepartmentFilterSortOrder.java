@@ -20,7 +20,7 @@ public class ConfirmDepartmentFilterSortOrder extends GoHelper {
 	static String costModelScenario = "ASESC2909 CMS";
 	static String entity = "150 Marina Medical Center";
 
-
+/** Regression Test ADS-5922 **/
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
 		ExtentReport.reportCreate("EncCostCalcScenarioSelectedCostModelScenariosdisplayed", "webdriver.scripts.costing",
