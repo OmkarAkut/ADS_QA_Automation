@@ -1639,5 +1639,53 @@ public class CostingMap extends MapConfig {
 		public WebElement getRvuNextPageButton() {
 			return getRvuNextPageButton;
 		}
+		@FindBy(xpath = "//span[contains(@id,'warningwindow')]//following::span[text()='Cancel']//parent::button")
+		private WebElement getRvuCancelButton;
+
+		public WebElement getRvuCancelButton() {
+			return getRvuCancelButton;
+		}
+		@FindBy(xpath = "//span[contains(@id,'window')][text()='Copy to Quick RVUs']")
+		private WebElement getCopyRvuWindow;
+
+		public WebElement getCopyRvuWindow() {
+			return getCopyRvuWindow;
+		}
+		@FindBy(xpath = "//span[contains(@id,'button') and text()='Copy and Save']")
+		private WebElement getCopyandSaveRvuButton;
+
+		public WebElement getCopyandSaveRvuButton() {
+			return getCopyandSaveRvuButton;
+		}
+		@FindBy(xpath = "//span[contains(@id,'warningwindow')]")
+		private WebElement getCopyandSaveRvuWarningPopUp;
+
+		public WebElement getCopyandSaveRvuWarningPopUp() {
+			return getCopyandSaveRvuWarningPopUp;
+		}
+		@FindBy(xpath = "//span[contains(@id,'window')][text()='Overwrite RVU Maintenance']")
+		private WebElement getOverwriteRvuWarningPopUp;
+
+		public WebElement getOverwriteRvuWarningPopUp() {
+			return getOverwriteRvuWarningPopUp;
+		}
+		@FindBy(xpath = "//span[contains(@id,'messagebox')][text()='Warning']")
+		private WebElement getClearRvuWarningPopUp;
+
+		public WebElement getClearRvuWarningPopUp() {
+			return getClearRvuWarningPopUp;
+		}
+		@FindBy(xpath = "//label[text()='Department']//following::div[text()][1]")
+		private WebElement getUcqcDeptFieldNone;
+
+		public WebElement getUcqcDeptFieldNone() {
+			return getUcqcDeptFieldNone;
+		}
+		@FindBy(xpath = "(//div[contains(@id,'ucqcform')]//label[text()='Department']//following::span[text()='Select']//parent::button)[1]")
+		private WebElement getUcqcDeptSelectButton;
+
+		public WebElement getUcqcDeptSelectButton() {
+			return getUcqcDeptSelectButton;
+		}
 
 }
