@@ -86,7 +86,7 @@ public class RVUExportImportFunction extends GoHelper {
 			fail(e.getMessage());
 		} 
 	}
-	public void selectFileLocAndaddFileName(WebElement button) throws Throwable {
+	public static void selectFileLocAndaddFileName(WebElement button) throws Throwable {
 		doClick(costing.getRvuSharedLocDropdown());
 		driverDelay(300);
 		doClick(contracting.getContractModelExportFileSharedLocOption());
