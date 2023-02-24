@@ -29,7 +29,8 @@ public class GeneralElementsMap extends MapConfig {
     @FindBy(xpath = "//*[contains(@class,'usernameField')]")
     private WebElement loginPageFieldUsername;
     public WebElement getLoginPageFieldUsername() {return loginPageFieldUsername;}
-    @FindBy(id = "password-inputRow")
+    //@FindBy(id = "password-inputRow")
+    @FindBy(id = "password-inputEl")
     private WebElement loginPageFieldPassword;
     public WebElement getLoginPageFieldPassword() {return loginPageFieldPassword;}
     @FindBy(xpath = "//*[contains(@class,'loginBtn')]")
