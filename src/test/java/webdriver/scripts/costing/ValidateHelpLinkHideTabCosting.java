@@ -49,8 +49,9 @@ public class ValidateHelpLinkHideTabCosting extends GoHelper {
 			ContractModelsHelper.doClickTreeData("CM Test");
 			waitForMainPageTitle("Miscellaneous");
 			ContractModelsHelper.doClickTreeData("Miscellaneous");
-			waitForMainPageTitle("RVU Maintenance");
-			doClick("//div[text()='RVU Maintenance']//input[@title='Changes screen']");
+			driverDelay(500);
+			doClick("//div[contains(@id,'taskfolder')]//following::div[text()='RVU Maintenance']/input");
+			waitForElementToBeVisible(costing.getRvuMaintenanceDropdownEntity());	
 			ExtentReport.logPass("PASS", "test01OpenRVUMaintenanceFromCostingModel");
 		} catch (Exception|AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01OpenRVUMaintenanceFromCostingModel", driver, e);
