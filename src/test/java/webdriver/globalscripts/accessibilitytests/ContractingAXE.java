@@ -13,6 +13,7 @@ import org.junit.runners.MethodSorters;
 
 import ExtentReport.ExtentReport;
 import webdriver.globalstatic.LoginStatic;
+import webdriver.maps.ContractingMap;
 import webdriver.maps.DataMaintenanceMap;
 import webdriver.maps.mapbuilder.BuildMap;
 import webdriver.users.Users;
@@ -23,7 +24,7 @@ public class ContractingAXE extends LoginStatic {
 
   private Axe ax = new Axe();
   private static final Logger logger = LogManager.getLogger();
-  static DataMaintenanceMap dm;
+  static ContractingMap dm;
   private boolean createJsonReport = true;
 
   @Rule
@@ -36,9 +37,11 @@ public class ContractingAXE extends LoginStatic {
   public static void setupScript() throws Exception,Throwable {
 	  ExtentReport.reportCreate("ContractingAXE", "webdriver.globalscripts.accessibilitytests", "ContractingAXE");
     try {
-		dm = BuildMap.getInstance(driver, DataMaintenanceMap.class);
+		dm = BuildMap.getInstance(driver, ContractingMap.class);
 		logger.info(ContractingAXE.class.getSimpleName());
-		loginUser(Users.AppSupportUser);
+//		loginUser(Users.AppSupportUser);
+//		Omkar : 27/2/2023 : Login user changed to admin as all menu options were not available for earlier used user
+		loginUser(Users.AutomationTesterAdmin);
 		ExtentReport.logPass("PASS", "setupScript");
 	} catch (Exception|AssertionError e) {
 		ExtentReport.logFail("FAIL", "Failure in setupScript", driver, e);
@@ -73,6 +76,38 @@ public class ContractingAXE extends LoginStatic {
 	}
 	catch (Exception|AssertionError e) {
 		ExtentReport.logFail("FAIL", "testContractingTabContractualAllowanceExportPage", driver, e);
+		fail(e.getMessage());
+	}
+    
+  }
+  
+  @Test
+  public void testContractingTabContractModelPage() throws InterruptedException,Throwable {
+  try {
+	  goToPage("contract models");
+	    waitForAjaxExtJs();
+	    ax.runAxeAccessibilityTestOfPage(driver,name.getMethodName());
+	    doClosePageOnLowerBar("Model Library");
+	    ExtentReport.logPass("PASS", "testContractingTabContractModelPage");
+	}
+	catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "testContractingTabContractModelPage", driver, e);
+		fail(e.getMessage());
+	}
+    
+  }
+  
+  @Test
+  public void testContractingTabContractingDataMaintenancePage() throws InterruptedException,Throwable {
+  try {
+	  goToPage("contracting data maintenance");
+	    waitForAjaxExtJs();
+	    ax.runAxeAccessibilityTestOfPage(driver,name.getMethodName());
+	    doClosePageOnLowerBar("Maintain Data");
+	    ExtentReport.logPass("PASS", "testContractingTabContractingDataMaintenancePage");
+	}
+	catch (Exception|AssertionError e) {
+		ExtentReport.logFail("FAIL", "testContractingTabContractingDataMaintenancePage", driver, e);
 		fail(e.getMessage());
 	}
     
