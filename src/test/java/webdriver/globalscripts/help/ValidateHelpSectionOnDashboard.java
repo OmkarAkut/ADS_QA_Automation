@@ -1,33 +1,29 @@
 package webdriver.globalscripts.help;
 
 import static org.junit.Assert.fail;
-
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
 import ExtentReport.ExtentReport;
+import webdriver.core.Login;
 import webdriver.helpers.PageTestHelper;
 import webdriver.maps.CostingMap;
 import webdriver.maps.GeneralElementsMap;
 import webdriver.maps.mapbuilder.BuildMap;
-import webdriver.users.Users;
-
+//Regression test ADS-5992 **/
 public class ValidateHelpSectionOnDashboard extends PageTestHelper{
 	private static CostingMap costingMap;
 	private static GeneralElementsMap generalElement;
 	String firsthandle;
 	@BeforeClass
 	public static void setupScript() throws Throwable {
-		ExtentReport.reportCreate("UcqcSelectColumnsDialogVerifyOnlineHelpAds1113", "webdriver.globalscripts.help",
-				"UcqcSelectColumnsDialogVerifyOnlineHelpAds1113");
+		ExtentReport.reportCreate("ValidateHelpSectionOnDashboard", "webdriver.globalscripts.help",
+				"ValidateHelpSectionOnDashboard");
 
 		try {
 			costingMap = BuildMap.getInstance(driver, CostingMap.class);
 			generalElement = BuildMap.getInstance(driver, GeneralElementsMap.class);
-			System.out.println("TEST CLASS: " + UcqcSelectColumnsDialogVerifyOnlineHelpAds1113.class.getSimpleName());
-			evolveLoginStaticUser(Users.AutomationTester1);
-		
+			Login.loginUser("AutomationTesterAdmin");
 			ExtentReport.logPass("PASS", "setupScript");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "setupScript", driver, e);

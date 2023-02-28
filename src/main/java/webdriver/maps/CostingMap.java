@@ -1722,4 +1722,14 @@ public class CostingMap extends MapConfig {
 		public WebElement getRvuFilterPanel() {
 			return getRvuFilterPanel;
 		}
+		@FindBy(xpath = "(//div[contains(@class,'glAccountsGrid hierarchyGrid')])[2]//following::table//tr/td/div")
+		private List<WebElement> getSelectColumnList;
+		public List<WebElement> getSelectColumnList() {
+			return getSelectColumnList;
+		}
+		@FindBy(xpath = "//span[contains(@id,'numbercolumn')][@class='x-column-header-text']")
+		private List<WebElement> getUcqcHeaderList;
+		public List<WebElement> getUcqcHeaderList() {
+			return getUcqcHeaderList;
+		}
 }
