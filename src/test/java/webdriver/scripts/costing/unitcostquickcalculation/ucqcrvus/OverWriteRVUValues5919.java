@@ -1,19 +1,12 @@
 package webdriver.scripts.costing.unitcostquickcalculation.ucqcrvus;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.corehelpers.JavaHelper;
@@ -33,7 +26,7 @@ public class OverWriteRVUValues5919 extends UcqcHelper {
 	static ContractingMap contracting;
 	static final String[] requiredFields = { "QA Cost Model", "ADS-1238 A By Month", "150 Marina Medical Center",
 			"3120", "Apr 2004 to Apr 2004" };
-
+	UcqcHelper ucqcHelper=new UcqcHelper();
 	int value = JavaHelper.javaGetRandomNumber(12, printout);
 
 	@BeforeClass
@@ -97,46 +90,26 @@ public class OverWriteRVUValues5919 extends UcqcHelper {
 		}
 	}
 
-	public void getCell(String chargeCode, String headerName, String value)
-			throws NumberFormatException, InterruptedException {
-		String columnID;
-
-		columnID = driver
-				.findElement(By.xpath("//*[contains(@class,'column-header-text')][text()='" + headerName + "']"))
-				.getAttribute("id");
-		int columnIdDigits = Integer.parseInt(getNumbersFromStringWithRegex(columnID));
-		String row = driver.findElement(By.xpath("//*[text()='" + chargeCode + "']/../../descendant::div[1]"))
-				.getText();
-		System.out.println(row);
-		System.out.println(columnIdDigits);
-		WebElement editCell = driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')][" + row
-				+ "]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-" + columnIdDigits + "')]/div"));
-		if (!editCell.getText().equals(value)) {
-			ucqcUpdateGridCellValue(chargeCode, headerName, String.valueOf(value), printout);
-
-		}
-	}
-
-	@Test
+		@Test
 	public void test03ApplyRvuSelections() throws Throwable {
 		try {
 			ucqcUpdateGridCellValue("1804582", "Quick Salaries and Wages RVU", String.valueOf(value), printout);
-			getCell("1804582", "Quick Salaries and Wages RVU", "0.000000");
-			getCell("1805373", "Quick Salaries and Wages RVU", "0.000000");
-			getCell("1805381", "Quick Salaries and Wages RVU", "0.000000");
-			getCell("1811355", "Quick Salaries and Wages RVU", "0.000000");
-			getCell("1811751", "Quick Salaries and Wages RVU", "9999918.12409");
-			getCell("1850205", "Quick Salaries and Wages RVU", "8888819.123456");
-			getCell("1856251", "Quick Salaries and Wages RVU", "-7777710.123456");
-			getCell("1890011", "Quick Salaries and Wages RVU", "-5555505.123456");
-			getCell("1890029", "Quick Salaries and Wages RVU", ".000003");
-			getCell("1890037", "Quick Salaries and Wages RVU", ".000004");
-			getCell("1890045", "Quick Salaries and Wages RVU", "-.000005");
-			getCell("1890052", "Quick Salaries and Wages RVU", "-.000006");
-			getCell("1890060", "Quick Salaries and Wages RVU", "9654.123417");
-			getCell("1890086", "Quick Salaries and Wages RVU", "56.123418");
-			getCell("1890094", "Quick Salaries and Wages RVU", "-5681.123419");
-			getCell("1890102", "Quick Salaries and Wages RVU", ".009902");
+			ucqcHelper.getCellValue("1804582", "Quick Salaries and Wages RVU", "0.000000");
+			ucqcHelper.getCellValue("1805373", "Quick Salaries and Wages RVU", "0.000000");
+			ucqcHelper.getCellValue("1805381", "Quick Salaries and Wages RVU", "0.000000");
+			ucqcHelper.getCellValue("1811355", "Quick Salaries and Wages RVU", "0.000000");
+			ucqcHelper.getCellValue("1811751", "Quick Salaries and Wages RVU", "9999918.12409");
+			ucqcHelper.getCellValue("1850205", "Quick Salaries and Wages RVU", "8888819.123456");
+			ucqcHelper.getCellValue("1856251", "Quick Salaries and Wages RVU", "-7777710.123456");
+			ucqcHelper.getCellValue("1890011", "Quick Salaries and Wages RVU", "-5555505.123456");
+			ucqcHelper.getCellValue("1890029", "Quick Salaries and Wages RVU", ".000003");
+			ucqcHelper.getCellValue("1890037", "Quick Salaries and Wages RVU", ".000004");
+			ucqcHelper.getCellValue("1890045", "Quick Salaries and Wages RVU", "-.000005");
+			ucqcHelper.getCellValue("1890052", "Quick Salaries and Wages RVU", "-.000006");
+			ucqcHelper.getCellValue("1890060", "Quick Salaries and Wages RVU", "9654.123417");
+			ucqcHelper.getCellValue("1890086", "Quick Salaries and Wages RVU", "56.123418");
+			ucqcHelper.getCellValue("1890094", "Quick Salaries and Wages RVU", "-5681.123419");
+			ucqcHelper.getCellValue("1890102", "Quick Salaries and Wages RVU", ".009902");
 			doClick(costing.getUnitCostQuickCalculationButtonSaveQuickRVUs());
 			waitForDisplayedSpinnerToEnd();
 			doClick(costing.getUnitCostQuickCalculationButtonOverwriteRVUMaintenance());
@@ -193,24 +166,24 @@ public class OverWriteRVUValues5919 extends UcqcHelper {
 			doClick(costing.getRvuApplySelections());
 			waitForDisplayedSpinnerToEnd();
 			assertElementIsDisplayedWithXpath("//*[text()='Salaries and Wages'][text()='Apr 2004']");
-			VerifyCellValue("1804582", "0.000000");
-			VerifyCellValue("1805373", "0.000000");
-			VerifyCellValue("1805381", "0.000000");
-			VerifyCellValue("1811355", "0.000000");
-			VerifyCellValue("1811751", "9999918.12409");
-			VerifyCellValue("1850205", "8888819.123456");
-			VerifyCellValue("1856251", "-7777710.123456");
+			ucqcHelper.VerifyCellValue("1804582", "0.000000",costing.SalariesAndWagesXpath);
+			ucqcHelper.VerifyCellValue("1805373", "0.000000",costing.SalariesAndWagesXpath);
+			ucqcHelper.VerifyCellValue("1805381", "0.000000",costing.SalariesAndWagesXpath);
+			ucqcHelper.VerifyCellValue("1811355", "0.000000",costing.SalariesAndWagesXpath);
+			ucqcHelper.VerifyCellValue("1811751", "9999918.12409",costing.SalariesAndWagesXpath);
+			ucqcHelper.VerifyCellValue("1850205", "8888819.123456",costing.SalariesAndWagesXpath);
+			ucqcHelper.VerifyCellValue("1856251", "-7777710.123456",costing.SalariesAndWagesXpath);
 			doClick(costing.getRvuNextPageButton());
 			waitForDisplayedSpinnerToEnd();
-			VerifyCellValue("1890011", "-5555505.123456");
-			VerifyCellValue("1890029", ".000003");
-			VerifyCellValue("1890037", ".000004");
-			VerifyCellValue("1890045", "-.000005");
-			VerifyCellValue("1890052", "-.000006");
-			VerifyCellValue("1890060", "9654.123417");
-			VerifyCellValue("1890086", "56.123418");
-			VerifyCellValue("1890094", "-5681.123419");
-			VerifyCellValue("1890102", ".009902");
+			ucqcHelper.VerifyCellValue("1890011", "-5555505.123456",costing.SalariesAndWagesXpath);
+			ucqcHelper.VerifyCellValue("1890029", ".000003",costing.SalariesAndWagesXpath);
+			ucqcHelper.VerifyCellValue("1890037", ".000004",costing.SalariesAndWagesXpath);
+			ucqcHelper.VerifyCellValue("1890045", "-.000005",costing.SalariesAndWagesXpath);
+			ucqcHelper.VerifyCellValue("1890052", "-.000006",costing.SalariesAndWagesXpath);
+			ucqcHelper.VerifyCellValue("1890060", "9654.123417",costing.SalariesAndWagesXpath);
+			ucqcHelper.VerifyCellValue("1890086", "56.123418",costing.SalariesAndWagesXpath);
+			ucqcHelper.VerifyCellValue("1890094", "-5681.123419",costing.SalariesAndWagesXpath);
+			ucqcHelper.VerifyCellValue("1890102", ".009902",costing.SalariesAndWagesXpath);
 			ExtentReport.logPass("PASS", "test04NavigateToRvuMaintenance");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test04NavigateToRvuMaintenance", driver, e);
@@ -229,20 +202,6 @@ public class OverWriteRVUValues5919 extends UcqcHelper {
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test06FilterByDepartmentCodeInRvuContainer", driver, e);
 			fail(e.getMessage());
-		}
-	}
-
-	public void VerifyCellValue(String chargeCode, String expValue) throws Throwable {
-		try {
-			ContractModelsHelper contractModelsHelper = new ContractModelsHelper();
-			String value = contractModelsHelper.getCellValue(chargeCode);
-			if (value.equals(expValue)) {
-				assertTrue(printout);
-			} else {
-				assertFalse(false);
-			}
-		} catch (Exception | AssertionError e) {
-
 		}
 	}
 

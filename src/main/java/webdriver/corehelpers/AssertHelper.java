@@ -15,6 +15,8 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import webdriver.helpers.ContractModelsHelper;
 import webdriver.utilities.Java;
 
 public class AssertHelper extends AdsHelper {
@@ -531,6 +533,7 @@ public class AssertHelper extends AdsHelper {
 		WebElement checkElement = null;
 		try {
 			checkElement = driver.findElement(By.xpath("" + xpath + ""));
+			ContractModelsHelper.scrollToView(checkElement);
 			assertThat(checkElement.isDisplayed(), equalTo(true));
 		} catch (Throwable e) {
 			fail("XPATH NOT FOUND: " + xpath);

@@ -1502,6 +1502,11 @@ public class CostingMap extends MapConfig {
 		public    List<WebElement> getRvuContainerListEndMonth() {
 			return getRvuContainerListEndMonth;
 		}
+		@FindBy(xpath = "(//div[contains(@id,'rvucontainerlist')])[2]//following::tr[1]/td[8]/div")
+		private  List<WebElement> getRvuContainerListStartMonth;
+		public    List<WebElement> getRvuContainerListStartMonth() {
+			return getRvuContainerListStartMonth;
+		}
 		@FindBy(xpath = "//span[text()='Add Value']//parent::button")
 		private  WebElement getRvuContainerAddValueButton;
 		public   WebElement getRvuContainerAddValueButton() {
@@ -1687,5 +1692,34 @@ public class CostingMap extends MapConfig {
 		public WebElement getUcqcDeptSelectButton() {
 			return getUcqcDeptSelectButton;
 		}
+		public  String SalariesAndWagesXpath="//*[contains(@class,'column-header-text')][text()='Salaries and Wages'][text()='Apr 2004']";
+		public  String EmployeeBenifitsXpath="//*[contains(@class,'column-header-text')][text()='Employee Benefits'][text()='Apr 2004']";
+		public  String MedicalSuppliesXpath="//*[contains(@class,'column-header-text')][text()='Medical Supplies'][text()='Apr 2004']";
+		public  String NonMedicalSuppliesXpath="//*[contains(@class,'column-header-text')][text()='Non-Medical Supplies'][text()='Apr 2004']";
+		public  String EquipRepairMaintXpath="//*[contains(@class,'column-header-text')][text()='Equip Repair & Maint'][text()='Apr 2004']";
+		public  String DirectDepreciationXpath="//*[contains(@class,'column-header-text')][text()='Direct Depreciation'][text()='Apr 2004']";
+		public  String PurchasedServicesXpath="//*[contains(@class,'column-header-text')][text()='Purchased Services'][text()='Apr 2004']";
+		public  String ProfessionalFeesXpath="//*[contains(@class,'column-header-text')][text()='Professional Fees'][text()='Apr 2004']";
+		public  String OtherExpensesXpath="//*[contains(@class,'column-header-text')][text()='Other Expenses'][text()='Apr 2004']";
+		public  String DirectOverheadXpath="//*[contains(@class,'column-header-text')][text()='Direct Overhead'][text()='Apr 2004']";
+		public  String HospitalOverheadXpath="//*[contains(@class,'column-header-text')][text()='Hospital Overhead'][text()='Apr 2004']";
+		public  String CorporateOverheadXpath="//*[contains(@class,'column-header-text')][text()='Corporate Overhead'][text()='Apr 2004']";
+		public  String DepreciationXpath="//*[contains(@class,'column-header-text')][text()='Depreciation'][text()='Apr 2004']";
+		public  String TechXpath="//*[contains(@class,'column-header-text')][text()='Tech'][text()='Apr 2004']";
 
+		@FindBy(xpath = "//div[contains(@class,'hidetoppx expand-icon')]//span[text()='Hide']//parent::button")
+		private WebElement getRvuHideButton;
+		public WebElement getRvuHideButton() {
+			return getRvuHideButton;
+		}
+		@FindBy(xpath = "//div[contains(@class,'hidetoppx collapse-icon')]//span[text()='Show']//parent::button")
+		private WebElement getRvuShowButton;
+		public WebElement getRvuShowButton() {
+			return getRvuShowButton;
+		}
+		@FindBy(xpath = "//div[contains(@id,'rvumaintenanceform')][contains(@class,'x-table-layout-ct')]")
+		private WebElement getRvuFilterPanel;
+		public WebElement getRvuFilterPanel() {
+			return getRvuFilterPanel;
+		}
 }

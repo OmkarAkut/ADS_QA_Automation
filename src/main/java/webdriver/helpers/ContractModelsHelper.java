@@ -1085,14 +1085,15 @@ public class ContractModelsHelper extends GoHelper {
 		goOption.click();
 		driverDelay(1000);
 	}
-	public  String getCellValue (String chargeCode) throws Throwable {
+	public  String getCellValue (String chargeCode,String columnNamepath) throws Throwable {
 	    String columnID;
 	    String columnValue = null;
 	    try {
+	    	
 	      ContractModelsHelper.scrollToView(driver.findElement(By.xpath("(//*[text()='" + chargeCode + "']/../../descendant::div[1])[2]")));
 	      String row = driver.findElement(By.xpath("(//*[text()='" + chargeCode + "']/../../descendant::div[1])[2]")).getText();
 	      System.out.println("Row Number: " + row);
-	      columnID = driver.findElement(By.xpath("//*[contains(@class,'column-header-text')][text()='Salaries and Wages'][text()='Apr 2004']")).getAttribute("id");
+	      columnID = driver.findElement(By.xpath(columnNamepath)).getAttribute("id");
 	      int columnIDDigits = Integer.parseInt(getNumbersFromStringWithRegex(columnID));
 	      columnValue = driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')][" + row + "]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-" + columnIDDigits + "')]")).getText();
 	      System.out.println("Value: " + columnValue);

@@ -21,7 +21,7 @@ public class VerifyUCQCButtonsBackgroundColor extends UcqcHelper {
 	private static String BackgroundColor = "rgba(0, 0, 0, 0)";
 	static final String[] requiredFields = { "QA Marina", "ADS-302 LG By Month", "150 Marina Medical Center", "Q302", 
 			"Apr 2004 to Apr 2004" };
-
+/** Regression Test ADS-5918**/
 	@BeforeClass
 	public static void setupScript() throws Throwable {
 		ExtentReport.reportCreate("VerifyUCQCButtonsBackgroundColor",

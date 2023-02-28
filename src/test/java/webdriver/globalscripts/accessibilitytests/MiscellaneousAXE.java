@@ -1,3 +1,4 @@
+
 package webdriver.globalscripts.accessibilitytests;
 import static org.junit.Assert.fail;
 import org.apache.logging.log4j.LogManager;
@@ -67,3 +68,4 @@ public class MiscellaneousAXE extends LoginStatic {
 	}
 
 }
+

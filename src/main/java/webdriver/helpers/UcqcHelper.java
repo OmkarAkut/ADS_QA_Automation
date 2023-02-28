@@ -754,4 +754,36 @@ public class UcqcHelper extends GoHelper {
 		
 		return testResult;
 	}
+	public  void VerifyCellValue(String chargeCode, String expValue,String columnNameXpath) throws Throwable {
+		try {
+			ContractModelsHelper contractModelsHelper = new ContractModelsHelper();
+			String value = contractModelsHelper.getCellValue(chargeCode,columnNameXpath);
+			if (value.equals(expValue)) {
+				assertTrue(printout);
+			} else {
+				assertFalse(false);
+			}
+		} catch (Exception | AssertionError e) {
+
+		}
+	}
+	public void getCellValue(String chargeCode, String headerName, String value)
+			throws NumberFormatException, InterruptedException {
+		String columnID;
+
+		columnID = driver
+				.findElement(By.xpath("//*[contains(@class,'column-header-text')][text()='" + headerName + "']"))
+				.getAttribute("id");
+		int columnIdDigits = Integer.parseInt(getNumbersFromStringWithRegex(columnID));
+		String row = driver.findElement(By.xpath("//*[text()='" + chargeCode + "']/../../descendant::div[1]"))
+				.getText();
+		System.out.println(row);
+		System.out.println(columnIdDigits);
+		WebElement editCell = driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')][" + row
+				+ "]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-" + columnIdDigits + "')]/div"));
+		if (!editCell.getText().equals(value)) {
+			ucqcUpdateGridCellValue(chargeCode, headerName, String.valueOf(value), printout);
+
+		}
+	}
 }

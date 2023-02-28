@@ -30,7 +30,7 @@ public class VerifyUCQCdropdownValuesForOptionNone extends UcqcHelper {
 	
 	static final String[] requiredFieldsUpdate = { "Marina", "*CM2 TB MHFY05 No Price List - 2", "150 Marina Medical Center",
 			"2110", "Apr 2004 to Mar 2005" };
-
+/** Regression Test ADS-5915 **/
 	@BeforeClass
 	public static void setupScript() throws Throwable {
 		ExtentReport.reportCreate("VerifyUCQCdropdownValuesForOptionNone",
