@@ -150,6 +150,9 @@ public class Driver {
     else if(testEnvironment.equals("ads11")) {
     	url = "http://stgrhl-dev.harrispaas.com/alliance-webCont/alliance/index.jsp";  
       }
+    else if(testEnvironment.equals("qa3prod")) {
+    	url = "http://qaprod-dev.harrispaas.com/alliance-webCont/login/index.jsp";  
+      }
      else {
       url = "https://qaautomation.mdasdss.com/alliance-webCont/login/index.jsp";
     }
@@ -281,7 +284,13 @@ public class Driver {
         dbUrl = "jdbc:oracle:thin:@10.204.20.101:1522:qacurr1"; //"jdbc:oracle:thin:@192.168.210.100:1540:qav8";
       	System.out.println(dbUrl);
 
-    } else if (testEnvironment.equals("ads11")) {
+    }
+    else if (testEnvironment.equals("qa3prod")) {
+        dbUrl = "jdbc:oracle:thin:@10.204.20.101:1522:qacurr1"; //"jdbc:oracle:thin:@192.168.210.100:1540:qav8";
+      	System.out.println(dbUrl);
+
+    }
+    else if (testEnvironment.equals("ads11")) {
         dbUrl = "jdbc:oracle:thin:@10.204.20.101:1528:STAGING"; //"jdbc:oracle:thin:@192.168.210.100:1540:qav8";
       	System.out.println(dbUrl);
 
