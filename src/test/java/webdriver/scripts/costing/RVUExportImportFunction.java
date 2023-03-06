@@ -46,6 +46,7 @@ public class RVUExportImportFunction extends GoHelper {
 	public void test01VerifyRVUExportPopUp() throws Throwable {
 		try {
 			doClick(costing.getRvuMaintenanceButtonExport());
+			waitForPageTitle("Export Data");
 			assertTextIsDisplayed("Export Data");
 			doClick(costing.getRvuMaintenanceFilterButtonCancelAndClose());
 			ExtentReport.logPass("PASS", "test01VerifyRVUExportPopUp");
@@ -58,6 +59,7 @@ public class RVUExportImportFunction extends GoHelper {
 	public void test02ExportRvuAndValidateImportExportStatus() throws Throwable {
 		try {
 			doClick(costing.getRvuMaintenanceButtonExport());
+			waitForPageTitle("Export Data");
 			assertTextIsDisplayed("Export Data");
 			doClick(costing.getRvuSecSelectorSelectButton());
 			waitForMainPageTitle("Find Items");
@@ -74,6 +76,7 @@ public class RVUExportImportFunction extends GoHelper {
 	public void test03ImportRvuAndValidateImportExportStatus() throws Throwable {
 		try {
 			doClick(costing.getRvuMaintenanceButtonImport());
+			waitForPageTitle("Import Data");
 			assertTextIsDisplayed("Import Data");
 			doClick(costing.getRvuSecImportSelectButton());
 			costing.getRvuSecImportSelectButton().sendKeys(Keys.ENTER);;

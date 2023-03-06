@@ -49,6 +49,10 @@ public class Login extends Driver {
 			username = Usersqa3.valueOf(user).getUsername();
 			password = Usersqa3.valueOf(user).getPassword();
 		}
+		else if (testEnvironment.contains("qaprod")) {
+			username = Usersqa3.valueOf(user).getUsername();
+			password = Usersqa3.valueOf(user).getPassword();
+		}
 		else {
 			throw new Exception("ERROR: login credentials - environment name not recognized.");
 		}

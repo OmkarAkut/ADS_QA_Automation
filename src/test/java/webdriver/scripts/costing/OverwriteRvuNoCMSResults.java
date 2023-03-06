@@ -22,6 +22,7 @@ import webdriver.maps.ModelLibraryMap;
 import webdriver.maps.mapbuilder.BuildMap;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
+/**Regression Test ADS-5920 **/
 public class OverwriteRvuNoCMSResults extends GoHelper {
 	static CostingMap costing;
 	static ModelLibraryMap modelMap;

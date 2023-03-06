@@ -33,7 +33,7 @@ public class RunEncounterServiceClassificationScheme extends CalculationHelper {
 	static DataMaintenanceMap dmMap;
 	static ContractingMap contractMap;
 	static AdsHelper adsHelper = new AdsHelper();
-	/** Regression: Automated test script for ADS-6102 */
+	/** Regression: Automated test script for ADS-6406 */
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
 		ExtentReport.reportCreate("RunEncounterServiceClassificationScheme",
