@@ -417,6 +417,23 @@ public class SystemMaintenanceMap extends MapConfig {
     private WebElement terminalServerSessionsPageButtonClose;
     public WebElement getTerminalServerSessionsPageButtonClose() {return terminalServerSessionsPageButtonClose;}
 
+    @FindBy(xpath = "//span[text()='Filter']//parent::button")
+    private WebElement getCustomTaskListFilterButton;
+    public WebElement getCustomTaskListFilterButton() {return getCustomTaskListFilterButton;}
+    
+    @FindBy(xpath = "//div[contains(@class,'customGrid')]//*[contains(@class,'docked-bottom')]/descendant::span[text()='Cancel & Close']")
+	private WebElement getSystemMaintenanceCancelCloseButton;
+	public WebElement getSystemMaintenanceCancelCloseButton() {
+		return getSystemMaintenanceCancelCloseButton;
+	}
+	 @FindBy(xpath = "//span[text()='Add Folder']//parent::button")
+	 private WebElement getSystemMaintenanceAddFolderButton;
+	 public WebElement getSystemMaintenanceAddFolderButton() {
+			return getSystemMaintenanceAddFolderButton;
+		}
+	 @FindBy(xpath = "//span[text()='Clear Filter']//parent::button")
+	    private WebElement getCustomTaskListClearFilterButton;
+	    public WebElement getCustomTaskListClearFilterButton() {return getCustomTaskListClearFilterButton;}
 
     // ===== End Terminal Server Sessions Page ===== //
 

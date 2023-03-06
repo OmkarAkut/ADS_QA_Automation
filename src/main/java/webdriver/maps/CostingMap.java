@@ -1732,4 +1732,17 @@ public class CostingMap extends MapConfig {
 		public List<WebElement> getUcqcHeaderList() {
 			return getUcqcHeaderList;
 		}
+		@FindBy(xpath = "//*[contains(@class,'x-btn windowbtn')]/descendant::*[text()='Cancel']")
+		private WebElement getAddProviderCancelButton;
+
+		public WebElement getAddProviderCancelButton() {
+			return getAddProviderCancelButton;
+		}
+		@FindBy(xpath = "(//span[text()='Providers']//following::table[1]//tr/td[1]/div)")
+		private List<WebElement> getProviderEntityList;
+
+		public List<WebElement> getProviderEntityList() {
+			return getProviderEntityList;
+		}
+		
 }
