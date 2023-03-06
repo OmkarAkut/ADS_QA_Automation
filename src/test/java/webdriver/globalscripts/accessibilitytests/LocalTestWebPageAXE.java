@@ -1,4 +1,4 @@
-package webdriver.globalscripts.accessibilitytests_old;
+package webdriver.globalscripts.accessibilitytests;
 
 import com.deque.axe.AXE;
 
@@ -21,7 +21,7 @@ import static org.junit.Assert.fail;
 
 import java.net.URL;
 
-public class LocalAccessibilityScript {
+public class LocalTestWebPageAXE {
 
     public WebDriver driver;
     private Axe ax = new Axe();

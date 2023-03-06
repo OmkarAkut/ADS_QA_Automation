@@ -76,4 +76,8 @@ public class AnalyticsMap extends MapConfig {
     private WebElement analyticsServerDesktopSessionsButtonClose;
     public WebElement getAnalyticsServerDesktopSessionsButtonClose() {return analyticsServerDesktopSessionsButtonClose;}
     /******Analytics Server Desktop Sessions******/
+    
+    
+    /******Analytic DAshboard******/
+    
 }

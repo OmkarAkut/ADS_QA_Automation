@@ -16,6 +16,7 @@ import org.junit.runners.MethodSorters;
 import ExtentReport.ExtentReport;
 //import net.bytebuddy.build.Plugin.Factory.UsingReflection.Priority;
 import webdriver.globalstatic.LoginStatic;
+import webdriver.maps.CostingMap;
 import webdriver.maps.DataMaintenanceMap;
 import webdriver.maps.mapbuilder.BuildMap;
 import webdriver.users.Users;
@@ -28,7 +29,7 @@ public class CostingAXE extends LoginStatic {
 
 	private Axe ax = new Axe();
 	private static final Logger logger = LogManager.getLogger();
-	static DataMaintenanceMap dm;
+	static CostingMap dm;
 
 	@Rule
 	public TestName name = new TestName();
@@ -41,12 +42,26 @@ public class CostingAXE extends LoginStatic {
 	public static void setupScript() throws Exception,Throwable {
 		ExtentReport.reportCreate("CostingAXE", "webdriver.globalscripts.accessibilitytests", "CostingAXE");
 		try {
-			dm = BuildMap.getInstance(driver, DataMaintenanceMap.class);
+			dm = BuildMap.getInstance(driver, CostingMap.class);
 			logger.info(CostingAXE.class.getSimpleName());			
 			loginUser(Users.AutomationTester1);
 			ExtentReport.logPass("PASS", "setupScript");
 		} catch (Exception|AssertionError e) {
 			ExtentReport.logFail("FAIL", "Failure in setupScript ", driver, e);
+			fail(e.getMessage());
+		}
+	}
+	
+	@Test
+	public void testCostingModel() throws InterruptedException,Throwable{
+		try {
+			goToPage("Costing Models");
+			waitForAjaxExtJs();
+			ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName());
+			doClosePageOnLowerBar("Model Library");
+			ExtentReport.logPass("PASS", "testCostingModel");
+		} catch (Exception|AssertionError e) {
+			ExtentReport.logFail("FAIL", "testCostingModel", driver, e);
 			fail(e.getMessage());
 		}
 	}
@@ -70,7 +85,6 @@ public class CostingAXE extends LoginStatic {
 	}
 
 	@Test
-
 	public void testCostingxRvuMaintenance() throws InterruptedException,Throwable{
 		try {
 			goToPage("RVU Maintenance");
