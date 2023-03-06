@@ -11,6 +11,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestName;
 import org.junit.runners.MethodSorters;
+import org.openqa.selenium.By;
 
 import ExtentReport.ExtentReport;
 import webdriver.globalstatic.LoginStatic;
@@ -23,7 +24,7 @@ public class AnalyticsAXE extends LoginStatic{
 
 	private Axe ax = new Axe();
 	private static final Logger logger = LogManager.getLogger();
-	static AnalyticsMap dm;
+	static AnalyticsMap am;
 	private boolean createJsonReport = true;
 
 	@Rule
@@ -34,11 +35,13 @@ public class AnalyticsAXE extends LoginStatic{
 	 * @throws Exception */
 	@BeforeClass
 	public static void setupScript() throws Exception,Throwable {
-		ExtentReport.reportCreate("ReportingAXE", "webdriver.globalscripts.accessibilitytests", "ReportingAXE");
+		ExtentReport.reportCreate("AnalyticsAXE", "webdriver.globalscripts.accessibilitytests", "AnalyticsAXE");
 		try {
-			dm = BuildMap.getInstance(driver, AnalyticsMap.class);
+			am = BuildMap.getInstance(driver, AnalyticsMap.class);
 			logger.info(ReportingAXE.class.getSimpleName());
-			loginUser(Users.AppSupportUser);
+//			loginUser(Users.AppSupportUser);
+//			Omkar : 1/3/2023 : Login user changed to admin as all menu options were not available for earlier used user
+			loginUser(Users.AutomationTesterAdmin);
 			ExtentReport.logPass("PASS", "setupScript");
 		} catch (Exception|AssertionError e) {
 			ExtentReport.logFail("FAIL", "Failure in setupScript", driver, e);
@@ -59,6 +62,24 @@ public class AnalyticsAXE extends LoginStatic{
 		}
 		catch (Exception|AssertionError e) {
 			ExtentReport.logFail("FAIL", "testAnalyticsTabAnalyticRefreshScenariosPage", driver, e);
+			fail(e.getMessage());
+		}
+
+	}
+	
+	@Test
+	public void testAnalyticsTabAnalyticDashboardPage() throws InterruptedException,Throwable {
+		try {
+			goToPage("analytic dashboards");
+			waitForAjaxExtJs();
+			String firstHandle = webdriverSwitchToNewWindow(printout);
+			ax.runAxeAccessibilityTestOfPage(driver,name.getMethodName());
+			driver.close();
+			driver.switchTo().window(firstHandle);
+			ExtentReport.logPass("PASS", "analytic dashboards");
+		}
+		catch (Exception|AssertionError e) {
+			ExtentReport.logFail("FAIL", "analytic dashboards", driver, e);
 			fail(e.getMessage());
 		}
 

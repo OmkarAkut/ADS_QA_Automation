@@ -14,7 +14,9 @@ import org.junit.runners.MethodSorters;
 
 import ExtentReport.ExtentReport;
 import webdriver.globalstatic.LoginStatic;
+import webdriver.maps.ContractingMap;
 import webdriver.maps.DataMaintenanceMap;
+import webdriver.maps.ReportingMap;
 import webdriver.maps.mapbuilder.BuildMap;
 import webdriver.users.Users;
 import webdriver.utilities.Axe;
@@ -24,7 +26,7 @@ public class ReportingAXE extends LoginStatic {
 
 	private Axe ax = new Axe();
 	private static final Logger logger = LogManager.getLogger();
-	static DataMaintenanceMap dm;
+	static ReportingMap dm;
 	private boolean createJsonReport = true;
 
 	@Rule
@@ -37,7 +39,7 @@ public class ReportingAXE extends LoginStatic {
 	public static void setupScript() throws Exception,Throwable {
 		ExtentReport.reportCreate("ReportingAXE", "webdriver.globalscripts.accessibilitytests", "ReportingAXE");
 		try {
-			dm = BuildMap.getInstance(driver, DataMaintenanceMap.class);
+			dm = BuildMap.getInstance(driver, ReportingMap.class);
 			logger.info(ReportingAXE.class.getSimpleName());
 			loginUser(Users.AppSupportUser);
 			ExtentReport.logPass("PASS", "setupScript");
