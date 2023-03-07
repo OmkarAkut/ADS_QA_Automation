@@ -582,7 +582,11 @@ public class AssertHelper extends AdsHelper {
 		}
 		assertThat(getValueAttribute, containsString(expectedValue));
 	}
-
+	public void assertElementForAttributeContains(WebElement element,  boolean printout) {
+		if(element.getAttribute("innerHTML").contains("diabled")) {
+			assertTrue(printout);
+		}
+	}
 	public void assertElementText(WebElement element, String expectedValue, boolean printout) {
 		try {
 			String elementText = element.getText();

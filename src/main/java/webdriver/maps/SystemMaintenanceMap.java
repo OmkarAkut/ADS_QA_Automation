@@ -1,7 +1,10 @@
 package webdriver.maps;
 
+import java.util.List;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
 import webdriver.maps.mapbuilder.MapConfig;
 
 public class SystemMaintenanceMap extends MapConfig {
@@ -44,7 +47,25 @@ public class SystemMaintenanceMap extends MapConfig {
     private WebElement usersPageButtonExport;
     public WebElement getUsersPageButtonExport() {return usersPageButtonExport;}
 
-
+    @FindBy(xpath = "//span[text()='Clear Filter']//parent::button")
+    private WebElement getCustomTaskListClearFilterButton;
+    public WebElement getCustomTaskListClearFilterButton() {return getCustomTaskListClearFilterButton;}
+    
+    @FindBy(xpath = "//span[text()='Filter']//parent::button")
+    private WebElement getCustomTaskListFilterButton;
+    public WebElement getCustomTaskListFilterButton() {return getCustomTaskListFilterButton;}
+    
+    @FindBy(xpath = "//div[contains(@class,'customGrid')]//*[contains(@class,'docked-bottom')]/descendant::span[text()='Cancel & Close']")
+	private WebElement getSystemMaintenanceCancelCloseButton;
+	public WebElement getSystemMaintenanceCancelCloseButton() {
+		return getSystemMaintenanceCancelCloseButton;
+	}
+	 @FindBy(xpath = "//span[text()='Add Folder']//parent::button")
+		private WebElement getSystemMaintenanceAddFolderButton;
+		public WebElement getSystemMaintenanceAddFolderButton() {
+			return getSystemMaintenanceAddFolderButton;
+		}
+    
     // ===== End  Users Page ===== //
 
     // ===== System Maintenance Tab >  Roles Page ===== //
@@ -401,6 +422,41 @@ public class SystemMaintenanceMap extends MapConfig {
     private WebElement customizeTaskListsPageSubTabEpisode;
     public WebElement getCustomizeTaskListsPageSubTabEpisode() {return customizeTaskListsPageSubTabEpisode;}
 
+    @FindBy(xpath = "(//h1[text()='Department Hierarchies']//following::span[text()='Filter']//parent::button)[1]")
+	private WebElement getDeptHierarchyFilterButton;
+    public WebElement getDeptHierarchyFilterButton() {
+		return getDeptHierarchyFilterButton;
+	}
+	@FindBy(xpath = "//label[text()='Use Default']//preceding::input[1]")
+	private WebElement getSystemMaintenanceRadioButton;
+
+	public WebElement getSystemMaintenanceRadioButton() {
+		return getSystemMaintenanceRadioButton;
+	}
+	@FindBy(xpath = "//div[@id='costingScreens-body']//table//tbody//tr/td/div")
+	private List<WebElement> getSystemMaintenanceCostScreenList;
+
+	public List<WebElement> getSystemMaintenanceCostScreenList() {
+		return getSystemMaintenanceCostScreenList;
+	}
+	@FindBy(xpath = "//div[@id='ctlCostingTree']//table//tbody//tr/td/div")
+	private List<WebElement> getSystemMaintenanceCostModelTaskList;
+
+	public List<WebElement> getSystemMaintenanceCostModelTaskList() {
+		return getSystemMaintenanceCostModelTaskList;
+	}
+	@FindBy(xpath = "(//div[@id='ctlCostingTree-body']//tr[contains(@class,'x-grid-row-focused')]/td/div)[1]")
+	private WebElement getSystemMaintenanceAddFolder;
+
+	public WebElement getSystemMaintenanceAddFolder() {
+		return getSystemMaintenanceAddFolder;
+	}
+	@FindBy(xpath = "(//div[@id='ctlCostingTree-body']//tr[contains(@class,'x-grid-row-focused')]/td/div)[2]")
+	private WebElement getSystemMaintenanceAddFoldercol;
+
+	public WebElement getSystemMaintenanceAddFoldercol() {
+		return getSystemMaintenanceAddFoldercol;
+	}
     // ===== End Customize Task Lists Page ===== //
 
     // ===== System Maintenance Tab > Terminal Server Sessions Page ===== //
@@ -417,24 +473,38 @@ public class SystemMaintenanceMap extends MapConfig {
     private WebElement terminalServerSessionsPageButtonClose;
     public WebElement getTerminalServerSessionsPageButtonClose() {return terminalServerSessionsPageButtonClose;}
 
-    @FindBy(xpath = "//span[text()='Filter']//parent::button")
-    private WebElement getCustomTaskListFilterButton;
-    public WebElement getCustomTaskListFilterButton() {return getCustomTaskListFilterButton;}
+    @FindBy(name = "roleDesc")
+    private WebElement rolesPageEditDesc;
+    public WebElement getrolesPageEditDesc() {return rolesPageEditDesc;}
     
-    @FindBy(xpath = "//div[contains(@class,'customGrid')]//*[contains(@class,'docked-bottom')]/descendant::span[text()='Cancel & Close']")
-	private WebElement getSystemMaintenanceCancelCloseButton;
-	public WebElement getSystemMaintenanceCancelCloseButton() {
-		return getSystemMaintenanceCancelCloseButton;
-	}
-	 @FindBy(xpath = "//span[text()='Add Folder']//parent::button")
-	 private WebElement getSystemMaintenanceAddFolderButton;
-	 public WebElement getSystemMaintenanceAddFolderButton() {
-			return getSystemMaintenanceAddFolderButton;
-		}
-	 @FindBy(xpath = "//span[text()='Clear Filter']//parent::button")
-	    private WebElement getCustomTaskListClearFilterButton;
-	    public WebElement getCustomTaskListClearFilterButton() {return getCustomTaskListClearFilterButton;}
+    @FindBy(name = "roleName")
+    private WebElement rolesPageEditName;
+    public WebElement getrolesPageEditName() {return rolesPageEditName;}
+    
+    @FindBy(xpath = "(//div[contains(@class,'x-boundlist-list-ct')])[3]//ul")
+	private WebElement getAssignedUsers;
 
+	public WebElement getAssignedUsers() {
+		return getAssignedUsers;
+	}
+	@FindBy(xpath = "(//div[contains(@id,'itemselectorfield')]//following::span[text()='Select']//parent::button)")
+	private WebElement getAssignedUsersSelectButton;
+
+	public WebElement getAssignedUsersSelectButton() {
+		return getAssignedUsersSelectButton;
+	}
+	@FindBy(xpath = "(//div[contains(@id,'itemselectorfield')]//following::span[text()='Remove']//parent::button)")
+	private WebElement getAssignedUsersRemoveButton;
+
+	public WebElement getAssignedUsersRemoveButton() {
+		return getAssignedUsersRemoveButton;
+	}
+	@FindBy(xpath = "(//div[contains(@class,'rolesMenuItems')]//table[contains(@class,'x-grid-table')]//following::span[text()='Select']//parent::button)[1]")
+	private WebElement getMenuItemsSelectButton;
+
+	public WebElement getMenuItemsSelectButton() {
+		return getMenuItemsSelectButton;
+	}
     // ===== End Terminal Server Sessions Page ===== //
 
 }

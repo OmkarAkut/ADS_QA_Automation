@@ -264,6 +264,21 @@ public class DoHelper extends DriverHelper {
             }
         }
     }
+    public static void doDropdownSelectUsingOptionTextOnly(WebElement elementList, String optionText) throws Exception {
+        waitForSpinnerToEnd();
+        waitForAjaxExtJs();
+        waitForSpinnerToEnd();
+        waitForAjaxExtJs();
+        List<WebElement> menu = elementList.findElements(By.tagName("li"));
+        for(WebElement option : menu) {
+        	ContractModelsHelper.scrollToView(option);
+            if(option.getText().equals(optionText)) {
+                option.click();
+                break;
+            }
+        }
+        
+    }
 
     public void doDropdownSelectUsingOptionText(WebElement element, String optionText) throws Exception {
         waitForAjaxExtJs();
