@@ -241,7 +241,15 @@ public class ContractModelsHelper extends GoHelper {
     String defaultValue = element.getAttribute("value");
     assertThat(defaultValue, equalTo(expectedValue));
   }
-
+  public static void selectMultipleColumnsToDisplayUser(String[] columnsToSelect) throws InterruptedException,Throwable{
+	    for (String selectedColumns: columnsToSelect) {
+	    	System.out.println(selectedColumns);
+	      highlightColumnsToDisplayColumn(selectedColumns);
+	      doClick("(//div[contains(@class,'x-window-header-draggable')]//following::span[text()='Select']//parent::button)[3]");
+	      assertColumnsToDisplayColumnIsSelected(selectedColumns);
+	      Thread.sleep(300);
+	    }
+	  }
   public void verifyServiceIsDisplayedInTextfieldOnMainPage(String availableService1) throws InterruptedException {
     waitForSpinnerToEnd();
     waitForAjaxExtJs();
