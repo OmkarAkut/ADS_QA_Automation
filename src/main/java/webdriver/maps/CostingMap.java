@@ -1744,5 +1744,29 @@ public class CostingMap extends MapConfig {
 		public List<WebElement> getProviderEntityList() {
 			return getProviderEntityList;
 		}
+		@FindBy(xpath = "(//div[contains(@class,'horzOverflow')]//table[@class='x-grid-table x-grid-table-resizer'])//tr/td[3]/div")
+		private static List<WebElement> getEntitiesPageElementList;
+		public static List<WebElement> getEntitiesPageElementList() {return getCostingModelElementList;}
 		
+		@FindBy(xpath = "//span[text()='I Agree']//parent::button")
+		private WebElement getIgreeButton;
+		public WebElement getIgreeButton() {
+			return getIgreeButton;
+		}
+		@FindBy(xpath = "//div[@id='entities-body']")
+		private WebElement getEntitiesPage;
+		public WebElement getEntitiesPage() {
+			return getEntitiesPage;
+		}
+		
+		@FindBy(xpath = "(//div[contains(@id,'masterlist')]//h1[text()='Department Masters']//following::span[text()='Edit']//parent::button)[1]")
+		private static WebElement getCostDeptMasterEditButton;
+		public static WebElement getCostDeptMasterEditButton() {
+			return getCostDeptMasterEditButton;
+		}
+		@FindBy(xpath = "(//div[contains(@id,'dischargeStatus')]//h1[text()='Discharge Statuses']//following::span[text()='Filter']//parent::button)[1]")
+		private static WebElement getDepartmentCodeFilterButton;
+		public static WebElement getDepartmentCodeFilterButton() {
+			return getDepartmentCodeFilterButton;
+		}
 }
