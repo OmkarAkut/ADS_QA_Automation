@@ -147,8 +147,11 @@ public class Driver {
     	url = "https://qa3-dev-ap1.dev.harrispaas.com/alliance-webCont/alliance/index.jsp"; 
     	
       }
-    else if(testEnvironment.equals("ads11")) {
+    else if(testEnvironment.equals("staging")) {
     	url = "http://stgrhl-dev.harrispaas.com/alliance-webCont/alliance/index.jsp";  
+      }
+    else if(testEnvironment.equals("staging_11.1.1")) {
+    	url = "http://qaprod-dev.harrispaas.com/alliance-webCont/login/index.jsp";  
       }
     else if(testEnvironment.equals("qa3prod")) {
     	url = "http://qaprod-dev.harrispaas.com/alliance-webCont/login/index.jsp";  
