@@ -151,7 +151,7 @@ public class Driver {
     	url = "http://stgrhl-dev.harrispaas.com/alliance-webCont/alliance/index.jsp";  
       }
     else if(testEnvironment.equals("staging_11.1.1")) {
-    	url = "http://qaprod-dev.harrispaas.com/alliance-webCont/login/index.jsp";  
+    	url = "http://qaapp-dev.harrispaas.com/alliance-webCont/login/index.jsp";  
       }
     else if(testEnvironment.equals("qa3prod")) {
     	url = "http://qaprod-dev.harrispaas.com/alliance-webCont/login/index.jsp";  
