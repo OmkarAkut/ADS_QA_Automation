@@ -60,8 +60,7 @@ public class Login extends Driver {
 		//Below code is temporarily added by Omkar on 31/5/2022 as qa3 response time is more than expected
 		Thread.sleep(5000);
 		waitForSpinnerToEnd();
-		WaitHelper wh = new WaitHelper();
-		wh.waitForJsWindowOnload();
+		WaitHelper.waitForJsWindowOnload();
 	}
 
 	public static void evolveLoginStaticUser(Users user) {
