@@ -11,6 +11,7 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.data.AdsStandardData;
@@ -40,6 +41,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 	private static ReportingMap reportingMap;
 	private static StatusMap statusMap;
 	private static SystemMaintenanceMap sysmaint;
+	WebDriverWait wait = new WebDriverWait(driver, 30);
 	private static String systemMaintenanceSubTabsBackgroundColor1= "rgba(165, 165, 165, 1)";
 	private static String systemMaintenanceSubTabsBackgroundColor2= "rgba(204, 204, 204, 1)";
 	private static String BackgroundColorStatusTab= "rgba(158, 105, 0, 1)";
@@ -58,8 +60,8 @@ public class BuildVerificationTestScript extends UcqcHelper {
 	 * that the elements on the map display on the page.
 	 * @throws Exception 
 	 */
-	/** Regression test ADS-6584,ADS-6582,ADS-6593,ADS-6594,ADS-6595,ADS-6596,ADS-6597,ADS-6598,ADS-6599
-	 */
+	/** Regression test ADS-6584,ADS-6582,ADS-6586,ADS-6592,ADS-6593,ADS-6594,ADS-6595,ADS-6596,ADS-6597,ADS-6598,ADS-6599
+ */
 	@BeforeClass
 	public static void setupScript() throws Exception,Throwable {
 		ExtentReport.reportCreate("BuildVerificationTestScript", "webdriver.globalscripts.pagetests", "BuildVerificationTestScript");
@@ -1244,15 +1246,16 @@ public class BuildVerificationTestScript extends UcqcHelper {
 			try {
 				waitForAjaxExtJs();
 				triggerDepartmentDialog(costModel, costModelScenario, entity);
+				String style = costingMap.getUnitCostQuickCalculationDepartmentButtonCancelAndClose().getAttribute("style");
 				WebElement[] departmentModalElements = {
 						costingMap.getUnitCostQuickCalculationDepartmentField(),
-						CostingMap.getUnitCostQuickCalculationDepartmentButtonFilter(),
+						costingMap.getUnitCostQuickCalculationDepartmentButtonFilter(),
 						costingMap.getUnitCostQuickCalculationDepartmentButtonApply(),
 						costingMap.getUnitCostQuickCalculationDepartmentButtonClose(),
 						costingMap.getUnitCostQuickCalculationDepartmentButtonCancelAndClose()
 				};
 				assertElementsAreDisplayed(departmentModalElements, printout);
-				doClick(CostingMap.getUnitCostQuickCalculationDepartmentButtonFilter());
+				doClick(costingMap.getUnitCostQuickCalculationDepartmentButtonFilter());
 				waitForAjaxExtJs();
 				WebElement[] departmentFilterElements = {
 						costingMap.getUnitCostQuickCalculationDepartmentFilterField(),
@@ -1842,17 +1845,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 			fail(e.getMessage());
 		}
 	}
-	public void test1003ValidateFooterInLoginPage() throws Throwable {
-		try {
-			
-			ExtentReport.logPass("PASS", "test1002ValidateContactUsPage");
-		} catch (Exception|AssertionError e) {
-
-			ExtentReport.logFail("FAIL", "test1002ValidateContactUsPage", driver, e);
-			fail(e.getMessage());
-		}
-	}
-	private void triggerDepartmentDialog(String costModel, String costModelScenario, String entity) throws InterruptedException {
+		private void triggerDepartmentDialog(String costModel, String costModelScenario, String entity) throws InterruptedException {
 		doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationDropdownCostModel(),costingMap.getUnitCostQuickCalculationDropdownCostModelMenuList(),costModel);
 		doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationDropdownCostModelScenario(),costingMap.getUnitCostQuickCalculationDropdownCostModelScenarioMenuList(),costModelScenario);
 		doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationDropdownEntity(),costingMap.getUnitCostQuickCalculationDropdownEntityMenuList(),entity);
