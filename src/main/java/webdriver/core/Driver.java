@@ -147,11 +147,14 @@ public class Driver {
     	url = "https://qa3-dev-ap1.dev.harrispaas.com/alliance-webCont/alliance/index.jsp"; 
     	
       }
-    else if(testEnvironment.equals("ads11")) {
+    else if(testEnvironment.equals("devstage")) {
     	url = "http://stgrhl-dev.harrispaas.com/alliance-webCont/alliance/index.jsp";  
       }
     else if(testEnvironment.equals("qa3prod")) {
     	url = "http://qaprod-dev.harrispaas.com/alliance-webCont/login/index.jsp";  
+      }
+    else if(testEnvironment.equals("qastage")) {
+    	url = "http://qaapp-dev.harrispaas.com/alliance-webCont/login/index.jsp";  
       }
      else {
       url = "https://qaautomation.mdasdss.com/alliance-webCont/login/index.jsp";
@@ -207,6 +210,7 @@ public class Driver {
 		} else if (browser.equals("chrome")) {
 		  ChromeOptions options = new ChromeOptions();
 		  options.addArguments("--ignore-certificate-errors", "start-maximized");
+		  options.addArguments("--remote-allow-origins=*");
 		 driver = new ChromeDriver(options);
 		 //Clear browser cache
 		 driver.manage().deleteAllCookies();
@@ -290,11 +294,19 @@ public class Driver {
       	System.out.println(dbUrl);
 
     }
-    else if (testEnvironment.equals("ads11")) {
+    else if(testEnvironment.equals("qastage")) {
+    	dbUrl = "jdbc:oracle:thin:@10.204.20.120:1522:qadb01"; //"jdbc:oracle:thin:@192.168.210.100:1540:qav8";
+    	System.out.println(dbUrl);
+
+    }
+    else if (testEnvironment.equals("devstage")) {
         dbUrl = "jdbc:oracle:thin:@10.204.20.101:1528:STAGING"; //"jdbc:oracle:thin:@192.168.210.100:1540:qav8";
       	System.out.println(dbUrl);
 
     }
+   
+   
+
     else {
       dbUrl = null;
       System.out.println("dbUrl not set");

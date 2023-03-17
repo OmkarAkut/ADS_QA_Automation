@@ -45,11 +45,15 @@ public class Login extends Driver {
 			username = Usersqa3.valueOf(user).getUsername();
 			password = Usersqa3.valueOf(user).getPassword();
 		} 
-		else if (testEnvironment.contains("ads11")) {
+		else if (testEnvironment.contains("devstage")) {
 			username = Usersqa3.valueOf(user).getUsername();
 			password = Usersqa3.valueOf(user).getPassword();
 		}
 		else if (testEnvironment.contains("qaprod")) {
+			username = Usersqa3.valueOf(user).getUsername();
+			password = Usersqa3.valueOf(user).getPassword();
+		}
+		else if (testEnvironment.contains("qastage")) {
 			username = Usersqa3.valueOf(user).getUsername();
 			password = Usersqa3.valueOf(user).getPassword();
 		}
