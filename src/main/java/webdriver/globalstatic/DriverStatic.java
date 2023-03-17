@@ -44,10 +44,12 @@ public class DriverStatic extends SetupStatic {
 			if (browser.contains("headless")) {
 			  System.out.println("Chrome is running in headless mode");
 			  ChromeOptions options = new ChromeOptions();
+			  options.addArguments("--remote-allow-origins=*");
 			  options.addArguments("--window-size=1920,1080", "--ignore-certificate-errors", "--headless");
 			  driver = new ChromeDriver(options);
 			} else if (browser.equals("chrome")) {
 			  ChromeOptions options = new ChromeOptions();
+			  options.addArguments("--remote-allow-origins=*");
 			  options.addArguments("--ignore-certificate-errors", "start-maximized");
 			 driver = new ChromeDriver(options);
 			} else if (browser.equals("firefox")) {
