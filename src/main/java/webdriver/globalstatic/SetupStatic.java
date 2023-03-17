@@ -229,6 +229,10 @@ public static List<String> setupDb(String testEnvironment) {
       	System.out.println(dbUrl);
 
     }
+    else if (testEnvironment.equals("staging_11.1.1")) {
+        dbUrl = "jdbc:oracle:thin:@10.204.20.120:1522:qadb01"; //"jdbc:oracle:thin:@192.168.210.100:1540:qav8";
+      	System.out.println(dbUrl);
+    }
     else {
       dbUrl = "jdbc:oracle:thin:@192.168.210.100:1525:qaauto";
   	System.out.println(dbUrl);

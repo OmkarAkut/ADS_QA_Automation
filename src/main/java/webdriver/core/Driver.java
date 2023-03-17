@@ -205,10 +205,12 @@ public class Driver {
 		if (browser.contains("headless")) {
 		  System.out.println("Chrome is running in headless mode");
 		  ChromeOptions options = new ChromeOptions();
+		  options.addArguments("--remote-allow-origins=*");
 		  options.addArguments("--window-size=1920,1080", "--ignore-certificate-errors", "--headless");
 		  driver = new ChromeDriver(options);
 		} else if (browser.equals("chrome")) {
 		  ChromeOptions options = new ChromeOptions();
+		  options.addArguments("--remote-allow-origins=*");
 		  options.addArguments("--ignore-certificate-errors", "start-maximized");
 		 driver = new ChromeDriver(options);
 		 //Clear browser cache
@@ -291,6 +293,10 @@ public class Driver {
         dbUrl = "jdbc:oracle:thin:@10.204.20.101:1528:STAGING"; //"jdbc:oracle:thin:@192.168.210.100:1540:qav8";
       	System.out.println(dbUrl);
 
+    }
+    else if (testEnvironment.equals("staging_11.1.1")) {
+        dbUrl = "jdbc:oracle:thin:@10.204.20.120:1522:qadb01"; //"jdbc:oracle:thin:@192.168.210.100:1540:qav8";
+      	System.out.println(dbUrl);
     }
     else {
       dbUrl = null;
