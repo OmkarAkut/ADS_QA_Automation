@@ -104,7 +104,31 @@ public class AssertHelper extends AdsHelper {
 		}
 	}
 
+	public void assertGridElementsOnSearch(WebElement nextBtn, WebElement pageNumber, List<WebElement> elements,
+			String searchText) throws Throwable {
+		String pageNumberCount = pageNumber.getText().replaceAll("[^0-9]", "");
+		System.out.println(pageNumberCount);
+		int pageCount = Integer.parseInt(pageNumberCount);
+		System.out.println(pageCount);
+		if (pageCount > 1) {
+			for (int i = 0; i <= pageCount; i++) {
 
+				for (WebElement element : elements) {
+					assertTrue(element.getText().toUpperCase().contains(searchText.toUpperCase()));
+					System.out.println(element.getText());
+
+				}
+				doClick(nextBtn);
+				waitForAjaxExtJs();
+			}
+		} else {
+			for (WebElement element : elements) {
+				assertTrue(element.getText().toUpperCase().contains(searchText.toUpperCase()));
+				System.out.println(element.getText());
+
+			}
+		}
+	}
 
 	public void assertListOfStringsContainsExpectedStrings(List<String> listOfStrings, List<String> expectedStrings) {
 		String listOfStringsAsSingleString = java.convertListOfStringToSingleString(listOfStrings);
