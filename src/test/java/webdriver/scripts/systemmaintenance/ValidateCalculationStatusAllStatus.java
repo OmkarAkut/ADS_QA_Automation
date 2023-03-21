@@ -23,7 +23,8 @@ import webdriver.maps.ModelLibraryMap;
 import webdriver.maps.StatusMap;
 import webdriver.maps.mapbuilder.BuildMap;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-/** Regression test case ADS-6610,ADS-6609,ADS-6607,ADS-6606,ADS-6605,ADS-6604
+/** Regression test case ADS-6610,ADS-6609,ADS-6607,ADS-6606,ADS-6605,ADS-6604,ADS-6603
+ADS-6602
  **/
 public class ValidateCalculationStatusAllStatus extends CalculationHelper{
 		static CostingMap costing;
