@@ -63,6 +63,33 @@ public class ReportingMap extends MapConfig {
     private WebElement reportLibraryPageExpanderFolders;
     public WebElement getReportLibraryPageExpandFolders() {return reportLibraryPageExpanderFolders;}
 
+    @FindBy(xpath = "//div[text()='Entity Range']//following::a[2]/parent::div")
+    private WebElement reportLibraryPageEntityRange;
+    public WebElement reportLibraryPageEntityRange() {return reportLibraryPageEntityRange;}
+    
+    @FindBy(xpath = "//button[text()='OK']")
+    private WebElement reportLibraryPageEntityOkButton;
+    public WebElement reportLibraryPageEntityOkButton() {return reportLibraryPageEntityOkButton;}
+    
+    @FindBy(xpath = "//div[contains(@class,'dialogMiddleCenterInner')]//following::button[text()='Cancel']")
+    private WebElement reportLibraryPageEntityCancelButton;
+    public WebElement reportLibraryPageEntityCancelButton() {return reportLibraryPageEntityCancelButton;}
+    
+    @FindBy(xpath = "//div[text()='Department or Department Group']//following::a[1]//parent::div")
+    private WebElement reportLibraryPageDeptGrp;
+    public WebElement reportLibraryPageDeptGrp() {return reportLibraryPageDeptGrp;}
+    
+    @FindBy(xpath = "//button[text()='Save As']")
+    private WebElement reportLibraryPageEntitySaveAsButton;
+    public WebElement reportLibraryPageEntitySaveAsButton() {return reportLibraryPageEntitySaveAsButton;}
+    
+    @FindBy(xpath = "//button[text()='Run']")
+    private WebElement reportLibraryPageEntityRunButton;
+    public WebElement reportLibraryPageEntityRunButton() {return reportLibraryPageEntityRunButton;}
+    
+    @FindBy(xpath = "//button[text()='Refresh']")
+    private WebElement reportLibraryPageEntityRefreshButton;
+    public WebElement reportLibraryPageEntityRefreshButton() {return reportLibraryPageEntityRefreshButton;}
     // ===== End Report Library Page ===== //
 
     // ===== Reporting Tab > Report Menu Maintenance Page ===== //

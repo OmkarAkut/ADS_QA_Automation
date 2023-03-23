@@ -1744,9 +1744,9 @@ public class CostingMap extends MapConfig {
 		public List<WebElement> getProviderEntityList() {
 			return getProviderEntityList;
 		}
-		@FindBy(xpath = "(//div[contains(@class,'horzOverflow')]//table[@class='x-grid-table x-grid-table-resizer'])//tr/td[3]/div")
+		@FindBy(xpath = "(//div[contains(@id,'dynamicGrid')]//table[@class='x-grid-table x-grid-table-resizer'])//tr/td[3]/div")
 		private static List<WebElement> getEntitiesPageElementList;
-		public static List<WebElement> getEntitiesPageElementList() {return getCostingModelElementList;}
+		public static List<WebElement> getEntitiesPageElementList() {return getEntitiesPageElementList;}
 		
 		@FindBy(xpath = "//span[text()='I Agree']//parent::button")
 		private WebElement getIgreeButton;
