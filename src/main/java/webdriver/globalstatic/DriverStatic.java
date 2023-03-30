@@ -49,6 +49,7 @@ public class DriverStatic extends SetupStatic {
 			} else if (browser.equals("chrome")) {
 			  ChromeOptions options = new ChromeOptions();
 			  options.addArguments("--ignore-certificate-errors", "start-maximized");
+			  options.addArguments("--remote-allow-origins=*");
 			 driver = new ChromeDriver(options);
 			} else if (browser.equals("firefox")) {
 			  driver = new FirefoxDriver();
