@@ -111,6 +111,10 @@ public class ModelLibraryMap extends MapConfig {
     @FindBy(xpath = "//div[text()='/ 3']")
     private WebElement modelLibraryTableText3PageShown;
     public WebElement getmodelLibraryTableText3PageShown() {return modelLibraryTableText3PageShown;}
+   
+    @FindBy(xpath = "//div[text()='/ 4']")
+    private WebElement modelLibraryTableText4PageShown;
+    public WebElement modelLibraryTableText4PageShown() {return modelLibraryTableText4PageShown;}
     /******End******/
 
     /******Contracting Library Page******/
