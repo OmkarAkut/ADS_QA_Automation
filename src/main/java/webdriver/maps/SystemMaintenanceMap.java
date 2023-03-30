@@ -65,7 +65,11 @@ public class SystemMaintenanceMap extends MapConfig {
 		public WebElement getSystemMaintenanceAddFolderButton() {
 			return getSystemMaintenanceAddFolderButton;
 		}
-    
+		@FindBy(xpath = "//div[contains(@class,'x-grid-view')]//td[3]/div")
+		private List<WebElement> getSystemMaintenanceUserList;
+		public List<WebElement> getSystemMaintenanceUserList() {
+			return getSystemMaintenanceUserList;
+		}
     // ===== End  Users Page ===== //
 
     // ===== System Maintenance Tab >  Roles Page ===== //
