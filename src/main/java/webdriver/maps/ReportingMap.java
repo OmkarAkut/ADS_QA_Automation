@@ -222,8 +222,9 @@ public class ReportingMap extends MapConfig {
     // ===== End Report Library Page ===== //
 
     // ===== Reporting Tab > Report Menu Maintenance Page ===== //
-
-    @FindBy(xpath = "//*[contains(@class,'areaTitle')]/*[text()='Report Menu Items']")
+//    Omkar 31/3/2023 : Changes in xpath for ADS 11.2
+//    @FindBy(xpath = "//*[contains(@class,'areaTitle')]/*[text()='Report Menu Items']")
+    @FindBy(xpath = "//*[contains(@class,'x-btn-button x-btn-button-default-toolbar-small x-btn-text    x-btn-button-center ')]/*[text()='Report Menu Items']")
     private WebElement reportingTabReportMenuMaintenancePageName;
     public WebElement getReportingTabReportMenuMaintenancePageName() {return reportingTabReportMenuMaintenancePageName;}
 

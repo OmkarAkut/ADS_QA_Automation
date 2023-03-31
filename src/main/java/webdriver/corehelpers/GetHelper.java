@@ -146,7 +146,9 @@ public class GetHelper extends DoHelper {
     }
 
     public WebElement getWebElementButtonWithElementText(String pageXpath, String buttonText, boolean printout) throws InterruptedException {
-        String xPath = pageXpath + "/descendant::button/span[text()='"+buttonText+"']";
+//        Omkar 31/3/2023 : Change in xpath for ADS 11.2
+//    	String xPath = pageXpath + "/descendant::button/span[text()='"+buttonText+"']";
+        String xPath = pageXpath + "/descendant::span[text()='"+buttonText+"']";
         if(printout){
             System.out.println("Element xpath:" + xPath);
         }

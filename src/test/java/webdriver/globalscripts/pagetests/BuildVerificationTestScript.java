@@ -62,7 +62,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 	 */
 	/** Regression test ADS-6584,ADS-6582,ADS-6586,ADS-6592,ADS-6593,ADS-6594,ADS-6595,ADS-6596,ADS-6597,ADS-6598,ADS-6599
  ADS-6503,ADS-6502,ADS-6501,ADS-6500,ADS-6498,ADS-6497,ADS-6496,ADS-6495
-/
+*/
 	@BeforeClass
 	public static void setupScript() throws Exception,Throwable {
 		ExtentReport.reportCreate("BuildVerificationTestScript", "webdriver.globalscripts.pagetests", "BuildVerificationTestScript");

@@ -19,8 +19,8 @@ public class ModelLibraryMap extends MapConfig {
     private WebElement modelLibraryPageHelpLink;
     public WebElement getModelLibraryPageHelpLink() {return modelLibraryPageHelpLink;}
 
-    @FindBy(xpath = "//label[contains(@class,'LablAlgn-left')]//following::input[1]") 
-//    @FindBy(xpath = "//input[@name='searchText']") //Shilpa update xpath 31.10.2022
+    
+    @FindBy(xpath = "//input[@name='searchText']") 
     private WebElement modelLibraryFieldSearch;
     public WebElement getModelLibraryFieldSearch() {return modelLibraryFieldSearch;}
 
