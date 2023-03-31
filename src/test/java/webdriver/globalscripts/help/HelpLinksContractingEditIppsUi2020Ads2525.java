@@ -89,8 +89,11 @@ public class HelpLinksContractingEditIppsUi2020Ads2525 extends PageTestHelper {
 			navigateToFeeForServicePaymentTermsPagePricingMethodSectionEditPriceDialog(serviceModel);
 			waitForAjaxExtJs();
 			Thread.sleep(1000);
+			/*Omkar 29/03/2023 : Xpath change for 11.2
 			testHelpLink(driver.findElement(By.xpath("//*[contains(@onclick, 'cnpmippsfd.htm')]")),
-					"Medicare Inpatient PPS Pricing Method", printout);
+					"Medicare Inpatient PPS Pricing Method", printout); */
+			testHelpLink(driver.findElement(By.xpath("//*[contains(@onclick, 'cnffsfd.htm')]")),
+					 "Medicare Inpatient PPS Pricing Method", printout);
 			ExtentReport.logPass("PASS", "testContractingTabContractModelsPage03EditPriceDialogHelpLink");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "testContractingTabContractModelsPage03EditPriceDialogHelpLink", driver, e);

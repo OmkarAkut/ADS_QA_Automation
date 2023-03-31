@@ -45,7 +45,7 @@ private static EditContractingModelMap editModelMap;
 
   public static String getVersion() {
     String version = null;
-    if (testEnvironment.toLowerCase().contains("evolve") || testEnvironment.toLowerCase().contains("edge")|| testEnvironment.toLowerCase().contains("qa3")||testEnvironment.toLowerCase().contains("ads11")) {
+    if (testEnvironment.toLowerCase().contains("evolve") || testEnvironment.toLowerCase().contains("edge")|| testEnvironment.toLowerCase().contains("qa3")||testEnvironment.toLowerCase().contains("ads11")||testEnvironment.toLowerCase().contains("qastage")) {
       version = "v104";
     } else {
       version = "v103";
@@ -310,11 +310,12 @@ private static EditContractingModelMap editModelMap;
     }
   }
 
-  public void confirmCalculationStatusDetailsContains(String expectedDetail) {
+  public void confirmCalculationStatusDetailsContains(String expectedDetail) throws Exception {
 	 //Shilpa 07.09.2022 added wait for element
 	 
 	 //waitUntilElementIsClickable(driver.findElement(By.xpath("//*[text()='" + expectedDetail + "']")));
     //assertThatElementIsDisplayed(driver.findElement(By.xpath("//*[text()='" + expectedDetail + "']")));
+	  ContractModelsHelper.scrollToView("//*[contains(text(),'" + expectedDetail + "')]");
 	  assertThatElementIsDisplayed(driver.findElement(By.xpath("//*[contains(text(),'" + expectedDetail + "')]")));
   }
 

@@ -35,13 +35,13 @@ public class CalculateExistingPublishedContractAds1447 extends CalculationHelper
   };
   private static ModelLibraryMap modelMap;
 
-  /** Regression: Automated test script for ADS-1447 */
+  /** Regression: Automated test script for ADS-1447, ADS-6782,ADS-6085 **/
+
   @BeforeClass
   public static void setupScript() throws Exception,Throwable {
 	  ExtentReport.reportCreate("CalculateExistingPublishedContractAds1447", "webdriver.scripts.contracting", "CalculateExistingPublishedContractAds1447");
     try {
 		modelMap = BuildMap.getInstance(driver, ModelLibraryMap.class);
-		System.out.println("Test Class: " + CalculateExistingPublishedContractAds1447.class.getSimpleName());
 		Login.loginUser("ContractAnalyst1");
 		goToPage("Contract Models");
 		waitForSpinnerToEnd();

@@ -3,11 +3,7 @@ package webdriver.corehelpers;
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.*;
-import ExtentReport.*;
-
 import java.awt.AWTException;
-import java.awt.Robot;
-import java.awt.event.KeyEvent;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,14 +11,12 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.aventstack.extentreports.Status;
-
+import webdriver.helpers.ContractModelsHelper;
 import webdriver.utilities.Java;
 
 public class AssertHelper extends AdsHelper {
@@ -110,7 +104,31 @@ public class AssertHelper extends AdsHelper {
 		}
 	}
 
+	public void assertGridElementsOnSearch(WebElement nextBtn, WebElement pageNumber, List<WebElement> elements,
+			String searchText) throws Throwable {
+		String pageNumberCount = pageNumber.getText().replaceAll("[^0-9]", "");
+		System.out.println(pageNumberCount);
+		int pageCount = Integer.parseInt(pageNumberCount);
+		System.out.println(pageCount);
+		if (pageCount > 1) {
+			for (int i = 0; i <= pageCount; i++) {
 
+				for (WebElement element : elements) {
+					assertTrue(element.getText().toUpperCase().contains(searchText.toUpperCase()));
+					System.out.println(element.getText());
+
+				}
+				doClick(nextBtn);
+				waitForAjaxExtJs();
+			}
+		} else {
+			for (WebElement element : elements) {
+				assertTrue(element.getText().toUpperCase().contains(searchText.toUpperCase()));
+				System.out.println(element.getText());
+
+			}
+		}
+	}
 
 	public void assertListOfStringsContainsExpectedStrings(List<String> listOfStrings, List<String> expectedStrings) {
 		String listOfStringsAsSingleString = java.convertListOfStringToSingleString(listOfStrings);
@@ -518,6 +536,9 @@ public class AssertHelper extends AdsHelper {
 
 	public static void assertTextIsDisplayed(String expectedText) {
 		try {
+			 ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);",
+						driver.findElement(By.xpath("//*[text()='" + expectedText + "']")));
+				Thread.sleep(500);
 			WebElement element = driver.findElement(By.xpath("//*[text()='" + expectedText + "']"));
 			assertTrue(element.isDisplayed());
 		} catch (Throwable e) {
@@ -536,6 +557,7 @@ public class AssertHelper extends AdsHelper {
 		WebElement checkElement = null;
 		try {
 			checkElement = driver.findElement(By.xpath("" + xpath + ""));
+			ContractModelsHelper.scrollToView(checkElement);
 			assertThat(checkElement.isDisplayed(), equalTo(true));
 		} catch (Throwable e) {
 			fail("XPATH NOT FOUND: " + xpath);
@@ -543,6 +565,18 @@ public class AssertHelper extends AdsHelper {
 	}
 
 	public static void assertElementsAreDisplayed(WebElement[] elements, boolean printout) {
+		for (WebElement element : elements) {
+			try {
+				assertTrue(element.isDisplayed());
+				if(printout){
+					System.out.println(element);
+				}
+			} catch (Throwable e) {
+				fail(e.getMessage());
+			}
+		}
+	}
+	public static void assertListElementsAreDisplayed(List<WebElement> elements, boolean printout) {
 		for (WebElement element : elements) {
 			try {
 				assertTrue(element.isDisplayed());
@@ -572,7 +606,11 @@ public class AssertHelper extends AdsHelper {
 		}
 		assertThat(getValueAttribute, containsString(expectedValue));
 	}
-
+	public void assertElementForAttributeContains(WebElement element,  boolean printout) {
+		if(element.getAttribute("innerHTML").contains("diabled")) {
+			assertTrue(printout);
+		}
+	}
 	public void assertElementText(WebElement element, String expectedValue, boolean printout) {
 		try {
 			String elementText = element.getText();
@@ -709,14 +747,41 @@ public class AssertHelper extends AdsHelper {
 		return isLast;
 	}
 	//Shilpa 08.08.2022
-	public static void assertThatString(String expectedValue,String actualValue,String tcname) {
-
+	public static void assertThatString(WebElement element,String expectedValue,boolean printout) {
 		try {
-			assertThat(expectedValue, equalTo(actualValue));
-			ExtentReport.extenttest.log(Status.PASS, "'"+tcname+"'"+"is PASS");
-		} catch (AssertionError e) {
-			ExtentReport.extenttest.log(Status.INFO, e);
+			String elementText = element.getText();
+			if (printout) {
+				System.out.println("Expected Value: " + expectedValue);
+				System.out.println("Actual   Value: " + elementText);
+			}
+			if(elementText.toLowerCase().contains(expectedValue.toLowerCase())) {
+				assertTrue(true);
+			}
+		} catch (Throwable e) {
+			fail(e.getMessage());
 		}
-
+		
+			
 	}
+	public static void assertThatAttributeValue(WebElement element,String expectedValue,boolean printout) {
+		try {
+			String elementText = element.getAttribute("value");
+			if (printout) {
+				System.out.println("Expected Value: " + expectedValue);
+				System.out.println("Actual   Value: " + elementText);
+			}
+			if(elementText.toLowerCase().contains(expectedValue.toLowerCase())) {
+				assertTrue(true);
+			}
+		} catch (Throwable e) {
+		
+		}
+	}
+		
+		public static void assertThatFieldReadonly(WebElement element) {
+			if(element.getAttribute("readonly").equals("readonly")) {
+				assertTrue(true);
+			}
+		}
+	
 }

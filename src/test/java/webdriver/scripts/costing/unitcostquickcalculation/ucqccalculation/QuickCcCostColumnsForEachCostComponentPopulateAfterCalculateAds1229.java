@@ -25,6 +25,7 @@ public class QuickCcCostColumnsForEachCostComponentPopulateAfterCalculateAds1229
   /** ADS-1229: Quick CC Cost columns for each cost component populate after Calculate (dev story ADS-672).
   This script confirms that quick cost component cost columns populate for each cost component after Calculate.
  * @throws Throwable */
+  /** Regression tc ADS-5924 **/
   @BeforeClass
   public static void setupScript() throws Throwable {
 	  
@@ -46,6 +47,7 @@ public class QuickCcCostColumnsForEachCostComponentPopulateAfterCalculateAds1229
   @Test
   public void test00UpdateTotalQuickCostColumnPopulatesAfterCalculate() throws Throwable {
     try {
+      assertElementIsDisabled(quickCostColumns.getUnitCostQuickCalculationButtonApplySelections(), printout);
       setUcqcCriteria("Marina", "*CM1 TB MHFY05 After Vol Change", "150 Marina Medical Center", "2130", "Jan 2005 to Jan 2005");//Shilpa 13.09.2022 updated depatment from 2130  PED ICU, issue with department grp pop up
       doClick(quickCostColumns.getUnitCostQuickCalculationButtonApplySelections());
       waitForAjaxExtJs();

@@ -22,7 +22,7 @@ public class GeneralCalculationsRunMedicalServiceAssignmentAds2343 extends Calcu
   final static String aTozPage = "Medical Service Assignments";
   final static String batch = "V10.2 REGRESSION Med Serv Assign";
 
-  /** Regression: Test script for ADS-2343. Updated: 7-7-21. */
+  /** Regression: Test script for ADS-2343. Updated: 7-7-21. ,ADS-6100*/
   @BeforeClass
   public static void setupScript() throws Exception,Throwable {
 	 ExtentReport.reportCreate("GeneralCalculationsRunMedicalServiceAssignmentAds2343", "webdriver.scripts.regression.generalcalculations", "GeneralCalculationsRunMedicalServiceAssignmentAds2343");

@@ -48,7 +48,7 @@ public class DriverHelper extends WaitHelper {
     Thread.sleep(2000);
   }
 
-  public void driverDelay(int milliseconds) throws InterruptedException {
+  public static void driverDelay(int milliseconds) throws InterruptedException {
     Thread.sleep(milliseconds);
   }
 

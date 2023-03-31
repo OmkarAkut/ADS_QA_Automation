@@ -29,7 +29,8 @@ public class GeneralElementsMap extends MapConfig {
     @FindBy(xpath = "//*[contains(@class,'usernameField')]")
     private WebElement loginPageFieldUsername;
     public WebElement getLoginPageFieldUsername() {return loginPageFieldUsername;}
-    //@FindBy(id = "password-inputRow")
+//    Omkar 28/3/2023 : Changes in id for ADS_11.2
+//    @FindBy(id = "password-inputRow")
     @FindBy(id = "password-inputEl")
     private WebElement loginPageFieldPassword;
     public WebElement getLoginPageFieldPassword() {return loginPageFieldPassword;}
@@ -452,6 +453,9 @@ public class GeneralElementsMap extends MapConfig {
     @FindBy(xpath = "//h1[text()='Costing']/../descendant::div[@class='bubbleQuickLinks']/descendant::a[text()='Unit Cost Quick Calculation']")
     private WebElement landingPageBubbleCostingUnitCostQuickCalculation;
     public WebElement getLandingPageBubbleCostingQuickLinkUnitCostQuickCalculation() {return landingPageBubbleCostingUnitCostQuickCalculation;}
+    @FindBy(xpath = "//div[@class='bubble bubble3 medium costing']")
+    private WebElement landingPageBubbleCostingBgColor;
+    public WebElement getlandingPageBubbleCostingBgColor() {return landingPageBubbleCostingBgColor;}
 
     //Contracting
     @FindBy(xpath = "//*[contains(@class,'contracting')]")

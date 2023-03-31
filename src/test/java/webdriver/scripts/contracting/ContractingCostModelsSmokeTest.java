@@ -10,8 +10,6 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-
-import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.model.Media;
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
@@ -26,8 +24,7 @@ public class ContractingCostModelsSmokeTest extends ContractModelsHelper {
 	private static EditContractingModelMap editModelMap;
 	private static final String contractModel = "AFT IPPS 2020 - Criteria Text";
 	private static final String serviceModel = "OPPS 2019";
-	private static final Media Exception = null;
-	private static List<WebElement> costMethods;
+
 
 	// static ExtentTest test1 ;
 	// static ExtentReports report=new ExtentReports();
@@ -43,7 +40,6 @@ public class ContractingCostModelsSmokeTest extends ContractModelsHelper {
 		ExtentReport.reportCreate("ContractingCostModelsSmokeTest", "webdriver.scripts.contracting","ContractingCostModelsSmokeTest");
 		try {
 			editModelMap = BuildMap.getInstance(driver, EditContractingModelMap.class);
-			System.out.println("Test Class: " + ContractingCostModelsSmokeTest.class.getSimpleName());
 			Login.loginUser("ContractAnalyst1");
 			navigateToContractModelsPageFeeForServicePaymentTermsPage(contractModel);
 			Thread.sleep(2000);

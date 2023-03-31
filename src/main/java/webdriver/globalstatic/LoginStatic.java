@@ -8,6 +8,8 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.decorators.WebDriverDecorator;
+
 import webdriver.users.Roles;
 import webdriver.users.Users;
 
@@ -70,6 +72,7 @@ public class LoginStatic extends BeforeAfterStatic {
 	}  catch (NoSuchElementException|ElementNotInteractableException e) {
 		
 	}
+      driverDelay(3000);
       waitForSpinnerToEnd();
       isLoggedIn();
       if (printout) {

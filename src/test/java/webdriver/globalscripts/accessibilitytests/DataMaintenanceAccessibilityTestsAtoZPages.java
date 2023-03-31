@@ -44,7 +44,7 @@ public class DataMaintenanceAccessibilityTestsAtoZPages extends DataMaintenanceA
   @Test
   public void axetest01MaintainDataxGLAccountTypes() throws Throwable {
     try {
-		if (testEnvironment.contains("echelon") || testEnvironment.contains("appsupport")) {
+		if (testEnvironment.contains("echelon") || testEnvironment.contains("appsupport") || testEnvironment.contains("ads11")) {
 		  navigateToPageAndRunAxeTest(
 		      Arrays.asList(DataMaintenanceAccessibilityDataAtoZPages
 		              .expectedMaintainDataAtoZPagesCompleteListEchelon)

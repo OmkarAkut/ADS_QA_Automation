@@ -45,11 +45,15 @@ public class Login extends Driver {
 			username = Usersqa3.valueOf(user).getUsername();
 			password = Usersqa3.valueOf(user).getPassword();
 		} 
-		else if (testEnvironment.contains("ads11")) {
+		else if (testEnvironment.contains("devstage")) {
 			username = Usersqa3.valueOf(user).getUsername();
 			password = Usersqa3.valueOf(user).getPassword();
 		}
-		else if (testEnvironment.contains("staging_11.1.1")) {
+		else if (testEnvironment.contains("qaprod")) {
+			username = Usersqa3.valueOf(user).getUsername();
+			password = Usersqa3.valueOf(user).getPassword();
+		}
+		else if (testEnvironment.contains("qastage")) {
 			username = Usersqa3.valueOf(user).getUsername();
 			password = Usersqa3.valueOf(user).getPassword();
 		}
@@ -60,8 +64,7 @@ public class Login extends Driver {
 		//Below code is temporarily added by Omkar on 31/5/2022 as qa3 response time is more than expected
 		Thread.sleep(5000);
 		waitForSpinnerToEnd();
-		WaitHelper wh = new WaitHelper();
-		wh.waitForJsWindowOnload();
+		WaitHelper.waitForJsWindowOnload();
 	}
 
 	public static void evolveLoginStaticUser(Users user) {

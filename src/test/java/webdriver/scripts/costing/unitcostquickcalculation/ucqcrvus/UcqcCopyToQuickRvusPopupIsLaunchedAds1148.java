@@ -16,11 +16,13 @@ import webdriver.maps.CostingMap;
 import webdriver.maps.mapbuilder.BuildMap;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
+
 public class UcqcCopyToQuickRvusPopupIsLaunchedAds1148 extends UcqcHelper {
 
   private static CostingMap ucqcMap;
 
   /** //Zephyr ticket ADS-1148 (Dev Story ADS-1015).  Last Updated 06-7-19 **/
+  /**Regression test case ADS-6666 */
   @BeforeClass
   public static void setupScript() throws Exception,Throwable {
 	  ExtentReport.reportCreate("UcqcCopyToQuickRvusPopupIsLaunchedAds1148", "webdriver.scripts.costing.unitcostquickcalculation.ucqcrvus", "UcqcCopyToQuickRvusPopupIsLaunchedAds1148");

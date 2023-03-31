@@ -1,7 +1,10 @@
 package webdriver.maps;
 
+import java.util.List;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
 import webdriver.maps.mapbuilder.MapConfig;
 
 public class ReportingMap extends MapConfig {
@@ -62,6 +65,159 @@ public class ReportingMap extends MapConfig {
     @FindBy(xpath = "//*[contains(text(),'Folders')]/ancestor::td/preceding-sibling::td/img")
     private WebElement reportLibraryPageExpanderFolders;
     public WebElement getReportLibraryPageExpandFolders() {return reportLibraryPageExpanderFolders;}
+    
+    @FindBy(xpath = "//div[text()='Entity Range']//following::a[2]/parent::div")
+    private WebElement reportLibraryPageEntityRange;
+    public WebElement reportLibraryPageEntityRange() {return reportLibraryPageEntityRange;}
+    
+    @FindBy(xpath = "//input[@class='GJT013UBGIC']")
+    private WebElement reportLibraryPageEntitySearch;
+    public WebElement reportLibraryPageEntitySearch() {return reportLibraryPageEntitySearch;}
+    
+    @FindBy(xpath = "//table[@class='GJT013UBAIC']//select[@class='gwt-ListBox']")
+    private WebElement reportLibraryPageEntitySelectDropdown;
+    public WebElement reportLibraryPageEntitySelectDropdown() {return reportLibraryPageEntitySelectDropdown;}
+    
+    @FindBy(xpath = "//button[text()='OK']")
+    private WebElement reportLibraryPageEntityOkButton;
+    public WebElement reportLibraryPageEntityOkButton() {return reportLibraryPageEntityOkButton;}
+    
+    @FindBy(xpath = "//div[contains(@class,'dialogMiddleCenterInner')]//following::button[text()='Cancel']")
+    private WebElement reportLibraryPageEntityCancelButton;
+    public WebElement reportLibraryPageEntityCancelButton() {return reportLibraryPageEntityCancelButton;}
+    
+    @FindBy(xpath = "//button[text()='Run']")
+    private WebElement reportLibraryPageEntityRunButton;
+    public WebElement reportLibraryPageEntityRunButton() {return reportLibraryPageEntityRunButton;}
+    
+    @FindBy(xpath = "//button[text()='Refresh']")
+    private WebElement reportLibraryPageEntityRefreshButton;
+    public WebElement reportLibraryPageEntityRefreshButton() {return reportLibraryPageEntityRefreshButton;}
+    
+    @FindBy(xpath = "//button[text()='Save As']")
+    private WebElement reportLibraryPageEntitySaveAsButton;
+    public WebElement reportLibraryPageEntitySaveAsButton() {return reportLibraryPageEntitySaveAsButton;}
+    
+    @FindBy(xpath = "//div[text()='Department Hierarchy']//following::a[1]")
+    private WebElement reportLibraryPageDeptHierarchy;
+    public WebElement reportLibraryPageDeptHierarchy() {return reportLibraryPageDeptHierarchy;}
+    
+    @FindBy(xpath = "//div[text()='Department or Department Group']//following::a[1]//parent::div")
+    private WebElement reportLibraryPageDeptGrp;
+    public WebElement reportLibraryPageDeptGrp() {return reportLibraryPageDeptGrp;}
+    
+    @FindBy(xpath = "//div[@class='Caption'][text()='Select: Contract Names']")
+    private WebElement reportContractNamePopUp;
+    public WebElement reportContractNamePopUp() {return reportContractNamePopUp;}
+    
+    @FindBy(xpath = "//div[@class='Caption'][text()='Select: Care Delivery Facilities']")
+    private WebElement reportCareDeliveryFacilitiesPopUp;
+    public WebElement reportCareDeliveryFacilitiesPopUp() {return reportCareDeliveryFacilitiesPopUp;}
+    
+    @FindBy(xpath = "//div[text()='Contract Names']//following::a[1]/u")
+    private WebElement reportContractNameLink;
+    public WebElement reportContractNameLink() {return reportContractNameLink;}
+    
+    @FindBy(xpath = "//div[text()='Name']")
+    private WebElement reportColumnName;
+    public WebElement reportColumnName() {return reportColumnName;}
+    
+    @FindBy(xpath = "//div[@class='GJT013UBH']//following::table//a")
+    private List<WebElement> reportTableElementList;
+    public List<WebElement> reportTableElementList() {return reportTableElementList;}
+    
+    @FindBy(xpath = "//div[@id='ListingURE_detailView_listColumn_8_0_1']")
+    private WebElement reportConversionTool;
+    public WebElement reportConversionTool() {return reportConversionTool;}
+    
+    @FindBy(xpath = "//div[@id='ListingURE_detailView_listColumn_0_0_1']")
+    private WebElement reportConversionToolDoc;
+    public WebElement reportConversionToolDoc() {return reportConversionToolDoc;}
+    
+    @FindBy(xpath = "//*[@id='Btn_rValuesOKButton']")
+    private WebElement reportToolOkBtn;
+    public WebElement reportToolOkBtn() {return reportToolOkBtn;}
+    
+    @FindBy(xpath = "//div[@id='pageContainer']//following::img")
+    private WebElement reportToolPieChart;
+    public WebElement reportToolPieChart() {return reportToolPieChart;}
+    
+    @FindBy(xpath = "(//div[@class='gwt-TabLayoutPanelContent']//following::input[@class='formTableCell-1a'])[1]")
+    private WebElement reportSubtitleName;
+    public WebElement reportSubtitleName() {return reportSubtitleName;}
+    
+    @FindBy(xpath = "//div[text()='Selections']")
+    private WebElement reportSelectionTab;
+    public WebElement reportSelectionTab() {return reportSelectionTab;}
+    
+    @FindBy(xpath = "//div[text()='Sorts']")
+    private WebElement reportSortTab;
+    public WebElement reportSortTab() {return reportSortTab;}
+    
+    @FindBy(xpath = "//div[text()='Additional Selections']")
+    private WebElement reportAdditionalSelectionTab;
+    public WebElement reportAdditionalSelectionTab() {return reportAdditionalSelectionTab;}
+    
+    @FindBy(xpath = "(//div[text()='Date']//preceding::img[1])[1]")
+    private WebElement reportSelectionDate;
+    public WebElement reportSelectionDate() {return reportSelectionDate;}
+    
+    @FindBy(xpath = "(//div[text()='Care Delivery Facility']//preceding::img[1])[1]")
+    private WebElement reportCareDeliveryFacility;
+    public WebElement reportCareDeliveryFacility() {return reportCareDeliveryFacility;}
+    
+    @FindBy(xpath = "(//div[text()='Charge Item']//preceding::img[1])[1]")
+    private WebElement reportChargeItem;
+    public WebElement reportChargeItem() {return reportChargeItem;}
+    
+    @FindBy(xpath = "(//div[text()='Charge ITem']//following::div[text()='Department Code'])[1]")
+    private WebElement reportChargeItemCode;
+    public WebElement reportChargeItemCode() {return reportChargeItemCode;}
+    
+    @FindBy(xpath = "(//div[text()='Care Delivery Facility']//following::div[text()='Code'])[1]")
+    private WebElement reportCareDeliveryFacilityCode;
+    public WebElement reportCareDeliveryFacilityCode() {return reportCareDeliveryFacilityCode;}
+    
+    @FindBy(xpath = "(//div[text()='Discharge Date'])[1]")
+    private WebElement reportDischargeDate;
+    public WebElement reportDischargeDate() {return reportDischargeDate;}
+    
+    @FindBy(xpath = "//button[text()='Match']")
+    private WebElement reportMatchButton;
+    public WebElement reportMatchButton() {return reportMatchButton;}
+    
+    @FindBy(xpath = "//button[text()='OK']")
+    private WebElement reportOkButton;
+    public WebElement reportOkButton() {return reportOkButton;}
+    
+    @FindBy(xpath = "(//table[@class='gwt-DatePicker']//following::input[@class='gwt-TextBox'])[1]")
+
+    private WebElement reportFromDate;
+    public WebElement reportFromDate() {return reportFromDate;}
+    
+    @FindBy(xpath = "(//table[@class='gwt-DatePicker']//following::input[@class='gwt-TextBox'])[3]")
+    private WebElement reportToDate;
+    public WebElement reportToDate() {return reportToDate;}
+    
+    @FindBy(xpath = "((//div[@class='absoluteMainPanel'])[1]//following::img)[2]")
+    private WebElement reportDetailsButton;
+    public WebElement reportDetailsButton() {return reportDetailsButton;}
+    
+    @FindBy(xpath = "//select[@class='GJT013UBN2']")
+    private WebElement reportSelectOption;
+    public WebElement reportSelectOption() {return reportSelectOption;}
+    
+    @FindBy(xpath = "(//button[@class='GJT013UBBGC'])[2]")
+    private WebElement reportSelectCodes;
+    public WebElement reportSelectCodes() {return reportSelectCodes;}
+    
+    @FindBy(xpath = "(//button[@class='GJT013UBPGC'])[2]")
+    private WebElement reportSelectCodesFromSortTab;
+    public WebElement reportSelectCodesFromSortTab() {return reportSelectCodesFromSortTab;}
+    
+    @FindBy(xpath = "//div[text()='Organization Name']//following::input[1]")
+    private WebElement reportOrganisationName;
+    public WebElement reportOrganisationName() {return reportOrganisationName;}
 
     // ===== End Report Library Page ===== //
 
@@ -79,6 +235,9 @@ public class ReportingMap extends MapConfig {
     private WebElement reportingTabReportMenuMaintenancePageTableCornerCell;
     public WebElement getReportingTabReportMenuMaintenancePageTableCornerCell() {return reportingTabReportMenuMaintenancePageTableCornerCell;}
 
+    @FindBy(xpath = "//div[@class='dialogMiddleCenterInner dialogContent']//input[@class='gwt-TextBox']")
+    private WebElement reportSavePopUp;
+    public WebElement reportSavePopUp() {return reportSavePopUp;}
     // ===== Reporting Tab > Report Date Maintenance Page ===== //
 
     @FindBy(xpath = "//*[contains(@id,'header') and text()='Dates']")

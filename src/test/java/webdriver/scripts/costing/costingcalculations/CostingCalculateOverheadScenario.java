@@ -15,7 +15,7 @@ import webdriver.helpers.CalculationHelper;
 public class CostingCalculateOverheadScenario extends CalculationHelper {
 	JavascriptExecutor executor = (JavascriptExecutor)driver;
 	static String viewLogTitle="Overhead Model Scenario Calculation";
-
+	/** Regression: Test script for ADS-5991 */
   @BeforeClass
     public static void setupScript() throws Exception,Throwable{
 	  ExtentReport.reportCreate("CostingCalculateOverheadScenario", "webdriver.scripts.costing.costingcalculations", "CostingCalculateOverheadScenario");
