@@ -17,19 +17,18 @@ import webdriver.maps.ContractingMap;
 import webdriver.maps.mapbuilder.BuildMap;
 
 public class ConfirmAddNewDeleteAPCFeeScheduleMasters extends CalculationHelper {
-	
 	private static ContractingMap modelMap;
 	static final String ContractModelName = "ADS-1320 Contract Model D";
 	static String currentDateTime = new SimpleDateFormat("MM.HH.ss").format(new java.util.Date());
 	static String APCCode = currentDateTime.replaceAll("\\W", "");
-	static String filter[]= {"Code","Is","Equal To",APCCode};
+	static String filter[] = { "Code", "Is", "Equal To", APCCode };
+
 	/** Regression: Automated test script for ADS-6458,ADS-6457 ,ADS-6455 */
 
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("APCFeeScheduleMasters",
-				"webdriver.scripts.contracting",
-				"APCFeeScheduleMasters");
+		ExtentReport.reportCreate("ConfirmAddNewDeleteAPCFeeScheduleMasters", "webdriver.scripts.contracting",
+				"ConfirmAddNewDeleteAPCFeeScheduleMasters");
 		try {
 			modelMap = BuildMap.getInstance(driver, ContractingMap.class);
 			Login.loginUser("ContractAnalyst1");
@@ -49,27 +48,22 @@ public class ConfirmAddNewDeleteAPCFeeScheduleMasters extends CalculationHelper 
 	@Test
 	public void test01AssertContractTaskList() throws Throwable {
 		try {
-			
-			//ADS-6455
+
+			// ADS-6455
 			assertTextIsDisplayed("Unpublished Contract Task List");
 			assertTextIsDisplayed("Build Structure Elements");
 			assertTextIsDisplayed("Model Contract");
 			assertTextIsDisplayed("Publish Contract");
 			assertTextIsDisplayed("Export Contract");
-			
-			
-			
-			
-			
-			
+
 			ExtentReport.logPass("PASS", "test01ConfirmAddandDeleteNewCodeUnderAPCFeeScheduleMasters");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01ConfirmAddandDeleteNewCodeUnderAPCFeeScheduleMasters", driver, e);
 			fail(e.getMessage());
-		} 
-		
+		}
+
 	}
-	
+
 	@Test
 	public void test02AssertBuildStructureElements() throws Throwable {
 		try {
@@ -86,8 +80,9 @@ public class ConfirmAddNewDeleteAPCFeeScheduleMasters extends CalculationHelper 
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test02AssertBuildStructureElements", driver, e);
 			fail(e.getMessage());
-		} 
+		}
 	}
+
 	@Test
 	public void test03AssertFeeScheduleMasters() throws Throwable {
 		try {
@@ -100,9 +95,9 @@ public class ConfirmAddNewDeleteAPCFeeScheduleMasters extends CalculationHelper 
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test03AssertFeeScheduleMasters", driver, e);
 			fail(e.getMessage());
-		} 
+		}
 	}
-	
+
 	@Test
 	public void test04AssertPriceLists() throws Throwable {
 		try {
@@ -114,9 +109,9 @@ public class ConfirmAddNewDeleteAPCFeeScheduleMasters extends CalculationHelper 
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test04AssertPriceLists", driver, e);
 			fail(e.getMessage());
-		} 
+		}
 	}
-	
+
 	@Test
 	public void test05AssertPrepareRBRVSTables() throws Throwable {
 		try {
@@ -130,9 +125,9 @@ public class ConfirmAddNewDeleteAPCFeeScheduleMasters extends CalculationHelper 
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test05AssertPrepareRBRVSTables", driver, e);
 			fail(e.getMessage());
-		} 
+		}
 	}
-	
+
 	@Test
 	public void test06CreateNewandDeleteAPCCode() throws Throwable {
 		try {
@@ -144,8 +139,8 @@ public class ConfirmAddNewDeleteAPCFeeScheduleMasters extends CalculationHelper 
 			doClick(ContractingMap.getContractFeeForServicePaymentSave());
 			doClick(ContractingMap.getNewAPCodeFilterButton());
 			doFilterCreate(filter);
-			assertElementIsDisplayed(driver.findElement(By.xpath("//div[text()='"+APCCode+"']")));
-			//ADS-6457
+			assertElementIsDisplayed(driver.findElement(By.xpath("//div[text()='" + APCCode + "']")));
+			// ADS-6457
 			doClick(ContractingMap.getNewAPCodeDeleteButton());
 			waitForElementToBeVisible(ContractingMap.getWarningPopUpDeleteButton());
 			doClick(ContractingMap.getWarningPopUpDeleteButton());
@@ -155,12 +150,12 @@ public class ConfirmAddNewDeleteAPCFeeScheduleMasters extends CalculationHelper 
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test06CreateNewandDeleteAPCCode", driver, e);
 			fail(e.getMessage());
-		} 
-		finally{
+		} finally {
 			doClosePageOnLowerBar("Model Library");
 
 		}
 	}
+
 	@AfterClass
 	public static void endtest() {
 		ExtentReport.report.flush();

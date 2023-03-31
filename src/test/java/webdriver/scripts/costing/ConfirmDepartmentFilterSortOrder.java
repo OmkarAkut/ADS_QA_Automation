@@ -23,8 +23,8 @@ public class ConfirmDepartmentFilterSortOrder extends GoHelper {
 /** Regression Test ADS-5922 **/
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("EncCostCalcScenarioSelectedCostModelScenariosdisplayed", "webdriver.scripts.costing",
-				"EncCostCalcScenarioSelectedCostModelScenariosdisplayed");
+		ExtentReport.reportCreate("ConfirmDepartmentFilterSortOrder", "webdriver.scripts.costing",
+				"ConfirmDepartmentFilterSortOrder");
 		try {
 			costingMap = BuildMap.getInstance(driver, CostingMap.class);
 			contractMap = BuildMap.getInstance(driver, ContractingMap.class);

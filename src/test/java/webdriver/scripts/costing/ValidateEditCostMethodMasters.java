@@ -19,7 +19,7 @@ public class ValidateEditCostMethodMasters extends GoHelper{
 	static CostingMap costing;
 	static ContractingMap modelMap;
 	static String costModel="Actual Cost Model";
-	/** Automates test ticket ADS-6643*/
+	/** Automates test ticket ADS-6643,ADS-6669*/
 	@BeforeClass
 	public static void setupScript() throws Exception,Throwable {
 		ExtentReport.reportCreate("ValidateEditCostMethodMasters", "webdriver.scripts.costing", "ValidateEditCostMethodMasters");

@@ -22,7 +22,7 @@ public class EditRiskLimiterScreen extends GoHelper{
 	static String contractModelName="ADS2371 Test Contract";
 	static String serviceModel="ADS2371 Test";
 	static String availableService="OPPS 2020";
-	/** Regression: Automated test script for ADS-6413 */
+	/** Regression: Automated test script for ADS-6079 */
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
 		ExtentReport.reportCreate("EditRiskLimiterScreen", "webdriver.scripts.contracting",

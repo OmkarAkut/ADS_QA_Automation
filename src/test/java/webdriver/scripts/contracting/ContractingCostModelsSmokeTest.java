@@ -10,7 +10,6 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import com.aventstack.extentreports.model.Media;
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.corehelpers.AssertHelper;
@@ -20,7 +19,6 @@ import webdriver.maps.mapbuilder.BuildMap;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ContractingCostModelsSmokeTest extends ContractModelsHelper {
-
 	private static EditContractingModelMap editModelMap;
 	private static final String contractModel = "AFT IPPS 2020 - Criteria Text";
 	private static final String serviceModel = "OPPS 2019";

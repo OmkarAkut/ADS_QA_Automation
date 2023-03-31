@@ -22,7 +22,7 @@ public class TestGenericUIValidateCostingModelSearchTextbox extends GoHelper{
 	  /** Regression: Automated test script for ADS-6515 */
 	 @BeforeClass
 	  public static void setupScript() throws Exception,Throwable {
-		  ExtentReport.reportCreate("CostingModelsSmokeTest", "webdriver.scripts.costing.costingmodels", "CostingModelsSmokeTest");
+		  ExtentReport.reportCreate("TestGenericUIValidateCostingModelSearchTextbox", "webdriver.scripts.costing.costingmodels", "TestGenericUIValidateCostingModelSearchTextbox");
 	    try {
 			generalMap = BuildMap.getInstance(driver, GeneralElementsMap.class);
 			costing = BuildMap.getInstance(driver, CostingMap.class);

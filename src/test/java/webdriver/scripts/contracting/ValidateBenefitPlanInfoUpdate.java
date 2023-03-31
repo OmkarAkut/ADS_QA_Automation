@@ -10,7 +10,6 @@ import webdriver.helpers.CalculationHelper;
 import webdriver.helpers.ContractModelsHelper;
 import webdriver.maps.ContractingMap;
 import webdriver.maps.mapbuilder.BuildMap;
-
 public class ValidateBenefitPlanInfoUpdate extends CalculationHelper {
 	private static ContractingMap modelMap;
 	private static String ContractModelA = "ADS 1321 FY2020 Test D";

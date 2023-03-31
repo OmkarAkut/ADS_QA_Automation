@@ -23,7 +23,7 @@ public class UcqcApplySelectionsButtonActiveAndColumnHeadersDisplayAds1136 exten
 //  String[] requiredFields = {"QA Cost Model", "QA MHFY05 After Vol Change", "150 Marina Medical Center", "2110  ICU", "Apr 2004 to Mar 2005"};
   String[] requiredFields = {"QA Cost Model", "QA MHFY05 After Vol Change", "150 Marina Medical Center", "2110", "Apr 2004 to Mar 2005"};
 
-  /**Zephyr ticket ADS-1136 (updated 06-21-19). 
+  /**Zephyr ticket ADS-1136 (updated 06-21-19). ,ADS-5926
  * @throws Throwable */
   @BeforeClass
   public static void setupScript() throws Throwable {

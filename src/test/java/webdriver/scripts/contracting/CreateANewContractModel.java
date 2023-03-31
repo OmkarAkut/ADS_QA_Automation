@@ -25,14 +25,13 @@ public class CreateANewContractModel extends CalculationHelper {
 	ContractModelsHelper contractModelsHelper = new ContractModelsHelper();
 	private static final String serviceName = "CM IPPS 2021";
 	private static final String serviceModel = "CM IPPS 2021";
-
 	String[] columns = { "100  Pacific Hospital", "151  Copy of Marina Medical Center" };
 	String[] columnsToSelect = { "100  Pacific Hospital", "151  Copy of Marina Medical Center", "150  Marina Medical Center" };
 	String[] columnsToRemove = { "100  Pacific Hospital", "151  Copy of Marina Medical Center" };
 	String addProvider = "150  Marina Medical Center";
 	static String[] filter = { "Name", "Is", "Equal To", serviceName };
 	
-	/** Regression: Automated test script for ADS-6413 ,ADS-6435 */
+	/** Regression: Automated test script for ADS-6413 ,ADS-6412,ADS-6435 */
 
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {

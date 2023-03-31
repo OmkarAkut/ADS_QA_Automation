@@ -13,9 +13,7 @@ import webdriver.helpers.CalculationHelper;
 import webdriver.helpers.UcqcHelper;
 import webdriver.maps.ContractingMap;
 import webdriver.maps.mapbuilder.BuildMap;
-
 public class ValidateContracDataMaintenanceBubble extends CalculationHelper {
-	
 	private static ContractingMap modelMap;
 	static final String ContractType = "Fee Schedule Masters";
 	static final String ContractTypeTest="end-to-end tests";

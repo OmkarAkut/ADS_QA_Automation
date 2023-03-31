@@ -11,7 +11,6 @@ import webdriver.core.Login;
 import webdriver.helpers.CalculationHelper;
 import webdriver.maps.ContractingMap;
 import webdriver.maps.mapbuilder.BuildMap;
-
 public class ValidateContractingTreeTab extends CalculationHelper{
 	private static ContractingMap modelMap;
 	static final String ContractType = "Contract Types";

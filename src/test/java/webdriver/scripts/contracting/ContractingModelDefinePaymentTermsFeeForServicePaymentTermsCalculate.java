@@ -19,7 +19,6 @@ import webdriver.maps.mapbuilder.BuildMap;
 import webdriver.users.Users;
 
 public class ContractingModelDefinePaymentTermsFeeForServicePaymentTermsCalculate extends CalculationHelper {
-
 	private static ContractingMap modelMap;
 	private static EditContractingModelMap editModelMap;
 	private static final String contractFolder = "Test Imran Folder 2";// Shilpa: 1.08.2022 updated test data
@@ -230,7 +229,7 @@ public class ContractingModelDefinePaymentTermsFeeForServicePaymentTermsCalculat
 			driverDelay(3000);
 			doClick(ContractingMap.getContractFeeForServicePaymentWarningPopUpContinueButton());
 			doClosePageOnLowerBar("v105 REGRESSION...");
-			doClick(modelMap.getContractModelButtonFilter());
+			doClick(ContractingMap.getContractModelButtonFilter());
 			waitForAjaxExtJs();
 			Thread.sleep(200);
 			doFilterCreate(filterContractModel);
