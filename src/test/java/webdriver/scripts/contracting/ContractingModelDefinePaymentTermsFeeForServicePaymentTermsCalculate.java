@@ -229,7 +229,7 @@ public class ContractingModelDefinePaymentTermsFeeForServicePaymentTermsCalculat
 			driverDelay(3000);
 			doClick(ContractingMap.getContractFeeForServicePaymentWarningPopUpContinueButton());
 			doClosePageOnLowerBar("v105 REGRESSION...");
-			doClick(modelMap.getContractModelButtonFilter());
+			doClick(ContractingMap.getContractModelButtonFilter());
 			waitForAjaxExtJs();
 			Thread.sleep(200);
 			doFilterCreate(filterContractModel);

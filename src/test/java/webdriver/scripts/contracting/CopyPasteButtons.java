@@ -7,7 +7,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.interactions.Actions;
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.corehelpers.GoHelper;

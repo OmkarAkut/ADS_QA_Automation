@@ -7,11 +7,6 @@ import java.text.SimpleDateFormat;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.interactions.Actions;
-
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.corehelpers.DoHelper;
@@ -43,7 +38,7 @@ public class CreatingaNewContractingFolder extends GoHelper {
 			fail(e.getMessage());
 		}
 	}
-/**Test - UI Validation [Contracting] “Creating a New Contracting Folder”.**/
+/**Test - UI Validation [Contracting] ï¿½Creating a New Contracting Folderï¿½.**/
 	@Test
 	public void test01CreateNewContractFolder() throws Throwable {
 		try {
@@ -52,7 +47,7 @@ public class CreatingaNewContractingFolder extends GoHelper {
 			doClick(modelMap.getNewFolderNameInput());
 			modelMap.getNewFolderNameInput().sendKeys(contractFolderName);
 			driverDelay(500);
-			doClick(modelMap.getNewFolderNameSave());
+			doClick(ContractingMap.getNewFolderNameSave());
 			waitForAjaxExtJs();
 			waitForSpinnerToEnd();
 			doClick(modelMap.getContractingTreeExpand());

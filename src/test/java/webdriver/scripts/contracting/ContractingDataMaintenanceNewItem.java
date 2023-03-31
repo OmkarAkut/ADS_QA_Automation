@@ -53,7 +53,7 @@ public class ContractingDataMaintenanceNewItem extends CalculationHelper {
 			ContractModelsHelper.keyInValues(ContractingMap.getInputName(), timePeriod);
 			doDropdownSelectUsingOptionText(ContractingMap.getMonthdropdown(), timePeriodMonth);
 			doDropdownSelectUsingOptionText(ContractingMap.getYeardropdown(), timePeriodYear);
-			doClick(modelMap.getNewFolderNameSave());
+			doClick(ContractingMap.getNewFolderNameSave());
 			driverDelay(20);
 			doClick(ContractingMap.getContractDataMaintenanceFilterButton());
 			driverDelay(20);

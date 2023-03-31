@@ -25,7 +25,6 @@ public class CreateANewContractModel extends CalculationHelper {
 	ContractModelsHelper contractModelsHelper = new ContractModelsHelper();
 	private static final String serviceName = "CM IPPS 2021";
 	private static final String serviceModel = "CM IPPS 2021";
-
 	String[] columns = { "100  Pacific Hospital", "151  Copy of Marina Medical Center" };
 	String[] columnsToSelect = { "100  Pacific Hospital", "151  Copy of Marina Medical Center", "150  Marina Medical Center" };
 	String[] columnsToRemove = { "100  Pacific Hospital", "151  Copy of Marina Medical Center" };
