@@ -35,7 +35,7 @@ public class CalculateExistingPublishedContractAds1447 extends CalculationHelper
   };
   private static ModelLibraryMap modelMap;
 
-  /** Regression: Automated test script for ADS-1447, ADS-6782,ADS-6085 **/
+  /** Regression: Automated test script for ADS-1447, ADS-6782,ADS-6433,ADS-6085 **/
 
   @BeforeClass
   public static void setupScript() throws Exception,Throwable {

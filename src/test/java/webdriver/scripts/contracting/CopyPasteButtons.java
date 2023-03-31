@@ -1,5 +1,4 @@
 package webdriver.scripts.contracting;
-
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import java.text.SimpleDateFormat;
@@ -15,10 +14,7 @@ import webdriver.corehelpers.GoHelper;
 import webdriver.helpers.ContractModelsHelper;
 import webdriver.maps.ContractingMap;
 import webdriver.maps.mapbuilder.BuildMap;
-
-
 public class CopyPasteButtons extends GoHelper {
-
 	private static ContractingMap modelMap;
 	private static String ContractModel = "10.2.1 Medicare IPPS FY2020 Test";
 	private static String serviceModel = "MCR IPPS 2020";

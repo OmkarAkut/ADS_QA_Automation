@@ -40,7 +40,7 @@ public class GeneralCalculationsEncounterServiceClassificationSchemeAds2341 exte
   final static String batch = "v10.4 REGRESSION Enc Serv Class Scheme";//updated 11.25.2022
   private static List<WebElement> encountersTable;
 
-  /** Regression: Test script for ADS-2341. Updated: 7-7-21. */
+  /** Regression: Test script for ADS-2341. Updated: 7-7-21.,ADS-6102 */
   @BeforeClass
   public static void setupScript() throws Exception,Throwable {
 	 ExtentReport.reportCreate("GeneralCalculationsEncounterServiceClassificationSchemeAds2341", "webdriver.scripts.regression.generalcalculations", "GeneralCalculationsEncounterServiceClassificationSchemeAds2341");

@@ -19,7 +19,6 @@ import webdriver.maps.mapbuilder.BuildMap;
 import webdriver.users.Users;
 
 public class ContractingModelDefinePaymentTermsFeeForServicePaymentTermsCalculate extends CalculationHelper {
-
 	private static ContractingMap modelMap;
 	private static EditContractingModelMap editModelMap;
 	private static final String contractFolder = "Test Imran Folder 2";// Shilpa: 1.08.2022 updated test data

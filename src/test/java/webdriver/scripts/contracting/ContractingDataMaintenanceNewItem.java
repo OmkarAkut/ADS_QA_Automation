@@ -17,7 +17,6 @@ import webdriver.maps.mapbuilder.BuildMap;
 
 
 public class ContractingDataMaintenanceNewItem extends CalculationHelper {
-	
 	private static String aTozPage="Time Periods";
 	private static ContractingMap modelMap;
 	static DataMaintenanceMap dmMap;

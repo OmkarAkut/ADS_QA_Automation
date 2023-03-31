@@ -21,7 +21,7 @@ public class PaginationInCostingModels extends GoHelper {
 	static CostingMap costing;
 	static GoStatic goStatic;
 	static ModelLibraryMap modelLibrary;
-/** Automates test ticket ADS-6632, ADS-6633 ,ADS-6641*/
+/** Automates test ticket ADS-6632, ADS-6633 ,ADS-6641,ADS-6652*/
 	
 	@BeforeClass
 	public static void setupScript() throws Exception,Throwable {

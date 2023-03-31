@@ -43,7 +43,7 @@ public class CreateDeleteCostMethodDeptMasterDischargeStatus extends Calculation
 	static String[] filter= {"Name of the Cost Method Master","Is","Equal To",costModel};
 	static String[] filterDeptMaster= {"Name","Is","Equal To",costModel};
 	static String[] filterDichargeStatus= {"Name","Is","Equal To",dischargeStatusName};
-	/** Regression: Automated test script for ADS-6396 */
+	/** Regression: Automated test script for ADS-6655,ADS-6657,ADS-6656,ADS-6658 */
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
 		ExtentReport.reportCreate("CreateDeleteCostMethodDeptMasterDischargeStatus",

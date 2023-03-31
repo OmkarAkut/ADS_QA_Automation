@@ -4,8 +4,6 @@
  * 
  */
 
-
-
 package webdriver.globalscripts.pagetests;
 
 import static org.junit.Assert.*;
@@ -18,35 +16,35 @@ import org.openqa.selenium.interactions.Actions;
 
 import webdriver.globalstatic.LoginStatic;
 
+//*Regression Test ADS-6583 **/
 public class PageTestHelperStatic extends LoginStatic {
 
-
-	public void testHelpLink(WebElement helpLinkElement, String expectedHeader, boolean printout) throws InterruptedException {
+	public void testHelpLink(WebElement helpLinkElement, String expectedHeader, boolean printout)
+			throws InterruptedException {
 		Thread.sleep(500);
 //		waitForAjaxExtJs();
-		//below code is added by Omkar on 6/6/22 to move the mouse pointer to other location to close the menu
+		// below code is added by Omkar on 6/6/22 to move the mouse pointer to other
+		// location to close the menu
 		Thread.sleep(1000);
 		Actions builder = new Actions(driver);
 		/*
-		WebElement el = helpLinkElement;
-		builder.keyUp(Keys.CONTROL)
-		.moveByOffset( 10, 25 )
-		//.clickAndHold(el)
-		.build().perform();
-		*/
-		builder.moveByOffset(10,20).perform();
-		//end of modification
+		 * WebElement el = helpLinkElement; builder.keyUp(Keys.CONTROL) .moveByOffset(
+		 * 10, 25 ) //.clickAndHold(el) .build().perform();
+		 */
+		builder.moveByOffset(10, 20).perform();
+		// end of modification
 		String firstHandle = webSwitchToNewWindow(helpLinkElement, printout);
 		Thread.sleep(5000);
 		assertHelpPageHeader(expectedHeader, printout);
-		driver.close();//Shilpa 03.11.2022 
+		driver.close();// Shilpa 03.11.2022
 		driver.switchTo().window(firstHandle);
-		
+
 	}
 
-	public boolean testHelpLinkContains(WebElement helpLinkElement, String expectedHeader, boolean printout) throws InterruptedException {
+	public boolean testHelpLinkContains(WebElement helpLinkElement, String expectedHeader, boolean printout)
+			throws InterruptedException {
 		boolean testFailureCheck = false;
-		//Thread.sleep(500);
+		// Thread.sleep(500);
 		waitForAjaxExtJs();
 		String firstHandle = webSwitchToNewWindow(helpLinkElement, printout);
 		testFailureCheck = assertHelpPageHeaderContains(expectedHeader, printout);
@@ -54,23 +52,22 @@ public class PageTestHelperStatic extends LoginStatic {
 		return testFailureCheck;
 	}
 
-	public void testHelpLinkAndCloseNewWindow(
-			WebElement helpLinkElement, String expectedHeader, boolean printout)
-					throws InterruptedException {
+	public void testHelpLinkAndCloseNewWindow(WebElement helpLinkElement, String expectedHeader, boolean printout)
+			throws InterruptedException {
 		String firstHandle = webSwitchToNewWindow(helpLinkElement, printout);
 		assertHelpPageHeader(expectedHeader, printout);
 		driver.close();
 		driver.switchTo().window(firstHandle);
 	}
 
-
 	/**
-	 * Returns a String of the starting page window handle, so can be used at the end of a String variable:
-	 * String firstHandle = webSwitchToNewWindow(element, printout);
-	 * AND THEN an ending switchTo is required to switch focus back or framework will not logout properly:
-	 * driver.switchTo().window(firstHandle);
-	 * --This statement goes at the end of the script or if focus needs to be moved back to initial page to
-	 * interact with elements.  The element that triggers the new window is the "elementToClick."
+	 * Returns a String of the starting page window handle, so can be used at the
+	 * end of a String variable: String firstHandle = webSwitchToNewWindow(element,
+	 * printout); AND THEN an ending switchTo is required to switch focus back or
+	 * framework will not logout properly: driver.switchTo().window(firstHandle);
+	 * --This statement goes at the end of the script or if focus needs to be moved
+	 * back to initial page to interact with elements. The element that triggers the
+	 * new window is the "elementToClick."
 	 *
 	 * @param elementToClick
 	 * @param printout
@@ -89,23 +86,24 @@ public class PageTestHelperStatic extends LoginStatic {
 		for (String handle : handles) {
 			if (!firstHandle.equals(handle)) {
 				driver.switchTo().window(handle);
-				//waitForJsWindowOnload();
-				//        if (printout) {
-				//          System.out.println("First Handle: " + firstHandle);
-				//          System.out.println("Switched to Handle: " + handle);
-				//        }
+				// waitForJsWindowOnload();
+				// if (printout) {
+				// System.out.println("First Handle: " + firstHandle);
+				// System.out.println("Switched to Handle: " + handle);
+				// }
 				break;
 			}
 		}
-		
+
 		return firstHandle;
 	}
 
-
 	public void assertHelpPageHeader(String expectedHeader, boolean printout) {
 		try {
-			//Thread.sleep(3000);  //original working wait-replaced by sleep 500 and waitForJsWindowOnload
-			// System.out.println("Thread sleep 3000 - find better solution"); //find better solution
+			// Thread.sleep(3000); //original working wait-replaced by sleep 500 and
+			// waitForJsWindowOnload
+			// System.out.println("Thread sleep 3000 - find better solution"); //find better
+			// solution
 			Thread.sleep(2000);
 			waitForJsWindowOnload();
 			driver.switchTo().frame("topic");
@@ -126,8 +124,10 @@ public class PageTestHelperStatic extends LoginStatic {
 	public boolean assertHelpPageHeaderContains(String expectedHeader, boolean printout) {
 		boolean testFailure = false;
 		try {
-			//Thread.sleep(3000);  //original working wait-replaced by sleep 500 and waitForJsWindowOnload
-			// System.out.println("Thread sleep 3000 - find better solution"); //find better solution
+			// Thread.sleep(3000); //original working wait-replaced by sleep 500 and
+			// waitForJsWindowOnload
+			// System.out.println("Thread sleep 3000 - find better solution"); //find better
+			// solution
 			Thread.sleep(2000);
 			waitForJsWindowOnload();
 			driver.switchTo().frame("topic");
@@ -142,7 +142,7 @@ public class PageTestHelperStatic extends LoginStatic {
 			e.printStackTrace();
 			System.out.println("There is a test failure");
 			testFailure = true;
-			//fail("Failed: assertHelpPageHeader");
+			// fail("Failed: assertHelpPageHeader");
 		}
 		return testFailure;
 	}
