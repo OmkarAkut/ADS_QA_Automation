@@ -25,7 +25,7 @@ public class PaginationInCostingModels extends GoHelper {
 	
 	@BeforeClass
 	public static void setupScript() throws Exception,Throwable {
-		ExtentReport.reportCreate("CreateNewCostModel", "webdriver.scripts.costing", "CreateNewCostModel");
+		ExtentReport.reportCreate("PaginationInCostingModels", "webdriver.scripts.costing", "PaginationInCostingModels");
 		try {
 			modelLibrary = BuildMap.getInstance(driver, ModelLibraryMap.class);
 //			goStatic=BuildMap.getInstance(driver, GoStatic.class);

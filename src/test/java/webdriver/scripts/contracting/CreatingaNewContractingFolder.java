@@ -55,24 +55,9 @@ public class CreatingaNewContractingFolder extends GoHelper {
 			DoHelper.scrollToView("//div[text()='" + contractFolderName + "']");
 			assertTextIsDisplayed(contractFolderName);
 			doClick("//div[text()='" + contractFolderName + "']");
-//			driver.findElement(By.xpath("//div[text()='" + contractFolderName + "']")).sendKeys("test");
 			doClick(modelMap.getDeleteContractFolderBtn());
 			waitForElementToBeVisible(modelMap.getContractModelDeleteButtonInPopUp());
 			doClick(modelMap.getContractModelDeleteButtonInPopUp());
-//			driver.findElement(By.xpath("//div[@id='modelFoldertree-body']//div[text()='"+contractFolderName+"']")).click();
-//			doClick(modelMap.getRenameContractFolderBtn());
-//			driverDelay(1000);
-//			driver.findElement(By.xpath("(//tr[@class='x-grid-row x-grid-row-selected x-grid-row-focused']/td/div)[1]")).click();
-////			System.out.println(driver.findElement(By.xpath("//div[@id='modelFoldertree-body']//div[text()='"+contractFolderName+"']")).getText());
-//			driver.findElement(By.xpath("(//tr[@class='x-grid-row x-grid-row-selected x-grid-row-focused']/td/div)[1]")).sendKeys(Keys.chord(Keys.CONTROL, "a"));
-//			JavascriptExecutor jse = (JavascriptExecutor)driver;
-//			jse.executeScript("arguments[0].setAttribute('value', '" + renameFolderName +"')", driver.findElement(By.xpath("//div[@id='modelFoldertree-body']//div[text()='"+contractFolderName+"']")));
-//System.out.println(renameFolderName);
-//			//			driver.findElement(By.xpath("//div[@id='modelFoldertree-body']//div[text()='"+contractFolderName+"']")).sendKeys(renameFolderName);
-
-//			ContractModelsHelper.keyInValues(driver.findElement(By.xpath("//div[@id='modelFoldertree-body']//div[text()='"+contractFolderName+"']")), renameFolderName);
-//			DoHelper.scrollToView("//div[text()='" + renameFolderName + "']");
-//			assertTextIsDisplayed(renameFolderName);
 			doClosePageOnLowerBar("Model Library");
 			ExtentReport.logPass("PASS", "test01CreateNewContractFolder");
 		} catch (Exception | AssertionError e) {

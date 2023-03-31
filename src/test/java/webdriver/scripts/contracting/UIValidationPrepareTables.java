@@ -14,9 +14,7 @@ import webdriver.helpers.CalculationHelper;
 import webdriver.helpers.ContractModelsHelper;
 import webdriver.maps.ContractingMap;
 import webdriver.maps.mapbuilder.BuildMap;
-
 public class UIValidationPrepareTables extends CalculationHelper{
-	
 	private static ContractingMap modelMap;
 	static final String ContractModelName = "ADS-1320 Contract Model D";
 	static String currentDateTime = new SimpleDateFormat("MM.HH.ss").format(new java.util.Date());

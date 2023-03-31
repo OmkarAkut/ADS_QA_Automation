@@ -1,18 +1,15 @@
 package webdriver.scripts.contracting;
 
 import static org.junit.Assert.fail;
-
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.helpers.CalculationHelper;
 import webdriver.helpers.ContractModelsHelper;
 import webdriver.maps.ContractingMap;
 import webdriver.maps.mapbuilder.BuildMap;
-
 public class UIValidationContracting extends CalculationHelper{
 	
 	private static ContractingMap modelMap;

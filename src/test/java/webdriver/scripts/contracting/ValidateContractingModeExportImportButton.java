@@ -15,7 +15,6 @@ import webdriver.maps.ContractingMap;
 import webdriver.maps.mapbuilder.BuildMap;
 
 public class ValidateContractingModeExportImportButton extends GoHelper{
-
 	private static ContractingMap modelMap;
 	static String contractModel="#fz Med IPPS Testing";
 	static String logFileName="SampleFile";

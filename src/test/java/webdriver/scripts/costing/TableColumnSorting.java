@@ -23,8 +23,8 @@ public class TableColumnSorting extends GoHelper {
 	/** Automates test ticket ADS-6654,ADS-6509 */
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("ValidateEditCostMethodMasters", "webdriver.scripts.costing",
-				"ValidateEditCostMethodMasters");
+		ExtentReport.reportCreate("TableColumnSorting", "webdriver.scripts.costing",
+				"TableColumnSorting");
 		try {
 			costing = BuildMap.getInstance(driver, CostingMap.class);
 			modelMap = BuildMap.getInstance(driver, ContractingMap.class);

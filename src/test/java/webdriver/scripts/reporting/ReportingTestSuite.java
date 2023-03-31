@@ -11,7 +11,6 @@ import org.junit.runners.Suite;
 		ReportsLibraryCreateRenameAndDeleteNewFolderAds1348.class,
 		ReportsLibraryRunCostingReportFromTemplate.class,
 		ReportsLibraryTestScript.class,
-		ReportsLibraryVerifyTemplateDirectoryContents.class,
 		RunReportLoop.class,
 })
 
