@@ -3,7 +3,9 @@ package webdriver.suites;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
+import webdriver.examples.files.FilesTemplate;
 import webdriver.examples.spreadsheets.SpreadsheetsTestSuite;
+import webdriver.globalscripts.accessibilitytests.TestSuiteAXE;
 import webdriver.globalscripts.checktests.ChecktestsSuite;
 import webdriver.globalscripts.help.HelpSuite;
 import webdriver.globalscripts.pagetests.BuildVerificationTestScript;
@@ -112,7 +114,7 @@ import webdriver.templates.TemplatesTestSuite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-//	FilesTemplate.class,
+	FilesTemplate.class,
 	SpreadsheetsTestSuite.class,
 	ChecktestsSuite.class,
 	HelpSuite.class,
@@ -222,6 +224,7 @@ import webdriver.templates.TemplatesTestSuite;
 	ValidateImportExportbuttonsontheSystemMaintenance.class,
 	ValidateOverheadTaskListscreensAreAvailableforCost.class,
 	ValidateSecuritySettingsGeneralSettingspagesintheSystemMaintenance.class,
+	TestSuiteAXE.class,
 
 })
 
