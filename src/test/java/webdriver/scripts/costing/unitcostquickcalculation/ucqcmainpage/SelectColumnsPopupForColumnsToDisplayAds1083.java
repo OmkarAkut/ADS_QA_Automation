@@ -949,6 +949,14 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
       throw new Exception();
     }
   }
+  
+  public void selectColumnsToDisplayAvailableColumn(String column) throws Exception {
+      String columnPath = "//*[contains(@class,'glAccountsGrid')][1]/descendant::*[text()='" + column + "']";
+      WebElement element = driver.findElement(By.xpath(columnPath));
+      ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+      Thread.sleep(500); 
+      assertElementIsDisplayed(element);
+  }
 
    /* public void selectColumnsToDisplaySelectedColumn(String column) {
         String columnPath = "//*[contains(@class,'glAccountsGrid')][2]/descendant::*[text()='" + column + "']";

@@ -26,6 +26,11 @@ public class IppsAndOppsCalculations extends CalculationHelper {
 
   /** Regression: Test script for ADS-3635 - 2021 IPPS: Transfers.
    *  Updated: 12/8/2020. */
+  /**TEST-[Contracting] - REGRESSION - 2022 IPPS: Transfers ADS-5946
+   * TEST-[Contracting] - REGRESSION - 2021 IPPS: Add On Tech (65%) ADS-5936
+   * TEST-[Contracting] - REGRESSION - 2022 IPPS: Device Credit ADS-5944
+   * 23.12.2022 Shilpa
+   */
   @BeforeClass
   public static void setupScript() throws Exception,Throwable {
 	ExtentReport.reportCreate("IppsAndOppsCalculations", "webdriver.templates", "IppsAndOppsCalculations");

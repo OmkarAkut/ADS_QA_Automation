@@ -20,6 +20,7 @@ public class MedicareOppsCopyFromButtonShouldNotBeDisplayedAds2286 extends Contr
   //private static EditContractingModelMap editModelMap;
 
   /** Dev Story ADS-2286. **/
+  /** Regression Test Case ADS-6083 */
   @BeforeClass
   public static void setupScript() throws InterruptedException,Throwable {
     //editModelMap = BuildMap.getInstance(driver, EditContractingModelMap.class);

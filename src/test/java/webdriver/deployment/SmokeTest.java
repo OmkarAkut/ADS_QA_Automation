@@ -41,6 +41,9 @@ public class SmokeTest extends UcqcHelper {
 	  private static SystemMaintenanceMap sysmaint;
 	  WebDriverWait wait = new WebDriverWait(driver, 30);
 	  String expectedReleaseVersion = version;
+	  private static String BackgroundColorCosting= "rgba(0, 86, 26, 1)";
+
+	  /** Automates test ticket ADS-6642(test0006LandingPageCosting(): includes only costing bubble validation and color in this)*/
 	 @BeforeClass
 	  public static void setupScript() throws Throwable {
 			ExtentReport.reportCreate("SmokeTest", "webdriver.deployment", "SmokeTest");
@@ -345,9 +348,12 @@ public class SmokeTest extends UcqcHelper {
 	              generalElement.getLandingPageBubbleCostingContentText(),
 	              generalElement.getLandingPageBubbleCostingImage(),
 	              generalElement.getLandingPageBubbleCostingQuickLinkCostingModels(),
-	              generalElement.getLandingPageBubbleCostingQuickLinkCostingDataMaintenance()
+	              generalElement.getLandingPageBubbleCostingQuickLinkCostingDataMaintenance(),
+	              generalElement.getLandingPageBubbleCostingQuickLinkUnitCostQuickCalculation()
+
 	      };
 	      assertElementsAreDisplayed(landingPageCostingElements,printout);
+	      validateBackgroundColor(BackgroundColorCosting,generalElement.getlandingPageBubbleCostingBgColor());
 			ExtentReport.logPass("PASS", "test0006LandingPageCosting");
 
 	    } catch (Exception|AssertionError e) {

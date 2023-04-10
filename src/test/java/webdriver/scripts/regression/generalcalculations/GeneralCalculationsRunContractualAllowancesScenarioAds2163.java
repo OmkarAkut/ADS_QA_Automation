@@ -25,6 +25,7 @@ public class GeneralCalculationsRunContractualAllowancesScenarioAds2163 extends 
    * Automated script for test ticket ADS-2163.
    * Updated: 3-26-2020.
    */
+  /** Regression Test ADS-6104**/
   @BeforeClass
   public static void setupScript() throws Exception,Throwable {
 	  ExtentReport.reportCreate("GeneralCalculationsRunContractualAllowancesScenarioAds2163", "webdriver.scripts.regression.generalcalculations", "GeneralCalculationsRunContractualAllowancesScenarioAds2163");

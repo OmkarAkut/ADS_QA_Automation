@@ -12,6 +12,7 @@ import org.openqa.selenium.interactions.Actions;
 import webdriver.corehelpers.GoHelper;
 import webdriver.globalstatic.LoginStatic;
 import webdriver.maps.CostingMap;
+import webdriver.maps.GeneralElementsMap;
 import webdriver.maps.mapbuilder.BuildMap;
 
 public class UcqcHelper extends GoHelper {
@@ -405,7 +406,27 @@ public class UcqcHelper extends GoHelper {
       throw new Exception();
     }
   }
-
+  public void assertUCQCElementHasAttributeDisabled(WebElement element, boolean printout) throws Exception {
+	    String disabledText = null;
+	    try {
+	      waitForAjaxExtJs();
+	      disabledText = element.getAttribute("disabled");
+	    } catch(Throwable e) {
+	      System.out.println("Element Not Found");
+	      fail("element not found");
+	    }
+	    boolean isDisabled = disabledText.contains("true");
+	    if (printout){
+	      System.out.println("Element class text: " + disabledText);
+	      System.out.println("IsDisabled: " + isDisabled);
+	    }
+	    try {
+	      assertTrue(isDisabled);
+	    } catch(Throwable e){
+	      System.out.println("TEST FAILED: Element is Enabled");
+	      throw new Exception();
+	    }
+	  }
   public void assertUCQCDropdownIsDisabled(String nameAttribute, boolean printout) throws Exception {
     String disabledText = null;
     String disabledTextXpath = "//input[@placeholder='<None>'][@name='" + nameAttribute + "']";
@@ -692,5 +713,77 @@ public class UcqcHelper extends GoHelper {
     waitForAjaxExtJs();
     assertNotNull(departmentList);
   }
+  public static boolean validateBackgroundColorOnHoverForSubTabs(String color1,String color2,WebElement[] systemMaintenanceTabElement) {
+		boolean testResult=false;
+		try {
+//			GeneralElementsMap generalElement=BuildMap.getInstance(driver, GeneralElementsMap.class);
+//			StatusMap statusMap=BuildMap.getInstance(driver, StatusMap.class);
 
+			  Actions action=new Actions(driver);
+
+				for (WebElement element : systemMaintenanceTabElement) {
+					action.moveToElement(element).perform();
+					String optionColor=element.getCssValue("background-color");
+					System.out.println("Option"+optionColor);
+					if(optionColor.equalsIgnoreCase(color1)||(optionColor.equalsIgnoreCase(color2))){
+						assertTrue(printout);
+					}
+					else {
+						assertFalse(false);
+					}
+		} 
+		}catch (Exception e) {
+			testResult=false;
+		}
+		
+		return testResult;
+	}
+	public static boolean validateBackgroundColor(String color,WebElement element) {
+		boolean testResult=false;
+		try {
+
+					String optionColor=element.getCssValue("background-color");
+					System.out.println("Option"+optionColor);
+					System.out.println(color);
+					assertEquals(color,optionColor);
+					testResult=true;
+		
+		}catch (Exception e) {
+			testResult=false;
+		}
+		
+		return testResult;
+	}
+	public  void VerifyCellValue(String chargeCode, String expValue,String columnNameXpath) throws Throwable {
+		try {
+			ContractModelsHelper contractModelsHelper = new ContractModelsHelper();
+			String value = contractModelsHelper.getCellValue(chargeCode,columnNameXpath);
+			if (value.equals(expValue)) {
+				assertTrue(printout);
+			} else {
+				assertFalse(false);
+			}
+		} catch (Exception | AssertionError e) {
+
+		}
+	}
+	public void getCellValue(String chargeCode, String headerName, String value)
+			throws NumberFormatException, InterruptedException {
+		String columnID;
+
+		columnID = driver
+				.findElement(By.xpath("//*[contains(@class,'column-header-text')][text()='" + headerName + "']"))
+				.getAttribute("id");
+		int columnIdDigits = Integer.parseInt(getNumbersFromStringWithRegex(columnID));
+		String row = driver.findElement(By.xpath("//*[text()='" + chargeCode + "']/../../descendant::div[1]"))
+				.getText();
+		System.out.println(row);
+		System.out.println(columnIdDigits);
+		WebElement editCell = driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')][" + row
+				+ "]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-" + columnIdDigits + "')]/div"));
+		if (!editCell.getText().equals(value)) {
+			ucqcUpdateGridCellValue(chargeCode, headerName, String.valueOf(value), printout);
+
+		}
+	}
 }

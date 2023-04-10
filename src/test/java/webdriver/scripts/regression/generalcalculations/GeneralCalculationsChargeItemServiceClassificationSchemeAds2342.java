@@ -41,7 +41,7 @@ public class GeneralCalculationsChargeItemServiceClassificationSchemeAds2342 ext
   );
   static final String recordsProcessedXpath = "//div[2]/div/div[4]/div/table/tbody/tr[2]/td[15]/div";
 
-  /** Regression: Test script for ADS-2341. Updated: 7-8-21. */
+  /** Regression: Test script for ADS-2341. Updated: 7-8-21.,ADS-6101 */
   @BeforeClass
   public static void setupScript() throws Exception,Throwable {
 	  ExtentReport.reportCreate("GeneralCalculationsChargeItemServiceClassificationSchemeAds2342", "webdriver.scripts.regression.generalcalculations", "GeneralCalculationsChargeItemServiceClassificationSchemeAds2342");

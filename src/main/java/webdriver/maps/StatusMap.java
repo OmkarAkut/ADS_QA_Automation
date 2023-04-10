@@ -1,5 +1,7 @@
 package webdriver.maps;
 
+import java.util.List;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import webdriver.maps.mapbuilder.MapConfig;
@@ -56,6 +58,55 @@ public class StatusMap extends MapConfig {
     @FindBy(xpath = "//*[contains(@id,'calculationstatus') and contains(@id,'header')]/../descendant::*[contains(text(),'Delete Filtered')]")
     private WebElement calculationStatusPageButtonDeleteFiltered;
     public WebElement getCalculationStatusPageButtonDeleteFiltered() {return calculationStatusPageButtonDeleteFiltered;}
+    
+    @FindBy(xpath = "//*[contains(@id,'calculationstatus') and contains(@id,'header')]/../descendant::*[contains(text(),'Scenario Name')]")
+    private WebElement calculationStatusPageScenarioNameColumnName;
+    public WebElement calculationStatusPageScenarioNameColumnName() {return calculationStatusPageScenarioNameColumnName;}
+    
+    @FindBy(xpath = "//*[contains(@id,'calculationstatus') and contains(@id,'header')]/../descendant::*[contains(text(),'User Name')]")
+    private WebElement calculationStatusPageUserNameColumnName;
+    public WebElement calculationStatusPageUserNameColumnName() {return calculationStatusPageUserNameColumnName;}
+    
+    @FindBy(xpath = "//*[contains(@id,'calculationstatus')]//table[contains(@class,'x-grid-table')]//tr/td[5]/div")
+    private List<WebElement> calculationStatusPageGridElements;
+    public List<WebElement> calculationStatusPageGridElements() {return calculationStatusPageGridElements;}
+
+    @FindBy(xpath = "//*[contains(@id,'calculationstatus')]//table[contains(@class,'x-grid-table')]//tr/td[8]//div[@class='x-progress-text x-progress-text-back']")
+    private List<WebElement> calculationStatusProgressBarPageGridElements;
+    public List<WebElement> calculationStatusProgressBarPageGridElements() {return calculationStatusProgressBarPageGridElements;}
+    
+    @FindBy(xpath = "//*[contains(@id,'calculationstatus')]//table[contains(@class,'x-grid-table')]//tr/td[8]//div[@class='x-progress-text x-progress-text-back']")
+    private List<WebElement> calcStatusPageGridElements;
+    public List<WebElement> calcStatusPageGridElements() {return calcStatusPageGridElements;}
+    
+    @FindBy(xpath = "//*[contains(@id,'calculationstatus')]//table[contains(@class,'x-grid-table')]//tr/td[19]/div")
+    private List<WebElement> calcStatusEndTimeGridElements;
+    public List<WebElement> calcStatusEndTimeGridElements() {return calcStatusEndTimeGridElements;}
+    
+    @FindBy(xpath = "//*[contains(@id,'calculationstatus')]//table[contains(@class,'x-grid-table')]//tr/td[20]/div")
+    private List<WebElement> calcStatusDurationGridElements;
+    public List<WebElement> calcStatusDurationGridElements() {return calcStatusDurationGridElements;}
+    
+    @FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked')]//div[contains(@class,'x-toolbar-text')][2]")
+    private WebElement calcStatusPageNumber;
+    public WebElement calcStatusPageNumber() {return calcStatusPageNumber;}
+    
+    @FindBy(xpath = "//div[contains(@class,'x-column-header-sort-DESC')]//span[text()='Calc Start Time']")
+    private WebElement calcStatusDefaultSortColumn;
+    public WebElement calcStatusDefaultSortColumn() {return calcStatusDefaultSortColumn;}
+    
+    @FindBy(xpath = "//*[contains(@id,'calculationstatus') and contains(@id,'header')]/../descendant::*[contains(text(),'Scenario Name')]")
+    private WebElement calcStatusCalcStartTimeSortColumn;
+    public WebElement calcStatusCalcStartTimeSortColumn() {return calcStatusCalcStartTimeSortColumn;}
+    
+    @FindBy(xpath = "//div[contains(@id,'warningwindow')]/div//span[text()='Delete Filtered']//parent::button")
+    private WebElement calcStatusDeleteFilteredButton;
+    public WebElement calcStatusDeleteFilteredButton() {return calcStatusDeleteFilteredButton;}
+    
+    @FindBy(xpath = "//div[contains(@id,'warningwindow')]/div//span[text()='Cancel']//parent::button")
+    private WebElement calcStatusDeleteFilteredCancelButton;
+    public WebElement calcStatusDeleteFilteredCancelButton() {return calcStatusDeleteFilteredCancelButton;}
+    
 
     // ===== End Calculation Status Page ===== //
 
@@ -101,6 +152,26 @@ public class StatusMap extends MapConfig {
     private WebElement importexportStatusPageButtonDeleteFiltered;
     public WebElement getImportExportStatusPageButtonDeleteFiltered() {return importexportStatusPageButtonDeleteFiltered;}
 
+    @FindBy(xpath = "//*[contains(@id,'importexportstatus')]//table[contains(@class,'x-grid-table')]//tr/td[5]/div")
+    private List<WebElement> importStatusPageGridElements;
+    public List<WebElement> importStatusPageGridElements() {return importStatusPageGridElements;}
+    
+    @FindBy(xpath = "//*[contains(@id,'importexportstatus')]//table[contains(@class,'x-grid-table')]//tr/td[19]/div")
+    private List<WebElement> importStatusEndTimeGridElements;
+    public List<WebElement> importStatusEndTimeGridElements() {return importStatusEndTimeGridElements;}
+    
+    @FindBy(xpath = "//*[contains(@id,'importexportstatus')]//table[contains(@class,'x-grid-table')]//tr/td[20]/div")
+    private List<WebElement> importStatusDurationGridElements;
+    public List<WebElement> importStatusDurationGridElements() {return importStatusDurationGridElements;}
+    
+    @FindBy(xpath = "//*[contains(@id,'importexportstatus') and contains(@id,'header')]/../descendant::*[contains(text(),'Import/Export')]")
+    private WebElement importStatusPageScenarioNameColumnName;
+    public WebElement importStatusPageScenarioNameColumnName() {return importStatusPageScenarioNameColumnName;}
+    
+    @FindBy(xpath = "//*[contains(@id,'importexportstatus') and contains(@id,'header')]/../descendant::*[contains(text(),'User Name')]")
+    private WebElement importStatusPageUserNameColumnName;
+    public WebElement importStatusPageUserNameColumnName() {return importStatusPageUserNameColumnName;}
+    
     // ===== End Import/Export Status Page ===== //
 
     // ===== Status Tab > Utility Status Page ===== //
@@ -149,6 +220,26 @@ public class StatusMap extends MapConfig {
     @FindBy(xpath = "//span[@class=\"x-btn-inner\"][text()=\"Add Value\"]")
     private WebElement statusFilterDialogButtonAddValue;
     public WebElement getStatusFilterDialogButtonAddValue() {return statusFilterDialogButtonAddValue;}
+    
+    @FindBy(xpath = "//*[contains(@id,'utilitystatus')]//table[contains(@class,'x-grid-table')]//tr/td[5]/div")
+    private List<WebElement> utilityStatusPageGridElements;
+    public List<WebElement> utilityStatusPageGridElements() {return utilityStatusPageGridElements;}
+    
+    @FindBy(xpath = "//*[contains(@id,'utilitystatus')]//table[contains(@class,'x-grid-table')]//tr/td[19]/div")
+    private List<WebElement> utilityStatusEndTimeGridElements;
+    public List<WebElement> utilityStatusEndTimeGridElements() {return utilityStatusEndTimeGridElements;}
+    
+    @FindBy(xpath = "//*[contains(@id,'utilitystatus')]//table[contains(@class,'x-grid-table')]//tr/td[20]/div")
+    private List<WebElement> utilityStatusDurationGridElements;
+    public List<WebElement> utilityStatusDurationGridElements() {return utilityStatusDurationGridElements;}
+    
+    @FindBy(xpath = "//*[contains(@id,'utilitystatus') and contains(@id,'header')]/../descendant::*[contains(text(),'Utility Name')]")
+    private WebElement utilityStatusPageScenarioNameColumnName;
+    public WebElement utilityStatusPageScenarioNameColumnName() {return utilityStatusPageScenarioNameColumnName;}
+    
+    @FindBy(xpath = "//*[contains(@id,'utilitystatus') and contains(@id,'header')]/../descendant::*[contains(text(),'User Name')]")
+    private WebElement utilityStatusPageUserNameColumnName;
+    public WebElement utilityStatusPageUserNameColumnName() {return utilityStatusPageUserNameColumnName;}
     // ===== End  Status Page > Filter  Status Dialog ===== //
 }
 

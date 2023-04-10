@@ -34,7 +34,7 @@ public class GeneralCalculationsRunPriceListCalculationScenarioAds2274 extends C
   final static String xDestinationChargeScenario = "Estimated Charges 15";
   private static List<WebElement> encountersTable;
 
-  /** Regression: Test script for ADS-2343. Updated: 7-7-21. */
+  /** Regression: Test script for ADS-2343. Updated: 7-7-21. ,ADS-6099*/
   @BeforeClass
   public static void setupScript() throws Exception, Throwable {
 	  ExtentReport.reportCreate("GeneralCalculationsRunPriceListCalculationScenarioAds2274", "webdriver.scripts.regression.generalcalculations", "GeneralCalculationsRunPriceListCalculationScenarioAds2274");

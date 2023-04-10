@@ -3,29 +3,15 @@ package webdriver.scripts.contracting;
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.*;
-
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Paths;
 import java.util.List;
-
-import javax.imageio.ImageIO;
-
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
-
-import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
-
-import webdriver.core.Driver;
 import webdriver.maps.EditContractingModelMap;
 import webdriver.maps.ModelLibraryMap;
 import webdriver.maps.mapbuilder.BuildMap;
@@ -33,12 +19,13 @@ import webdriver.scripts.contracting.contractmodels.ContractModelsHelper;
 import webdriver.users.Users;
 import ExtentReport.*;
 
-
+//Regression test case ADS-6041**/
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class GeneralContractInfo extends ContractModelsHelper {
 
 	private static ModelLibraryMap modelMap;
 	private static EditContractingModelMap editModelMap;
+//	private static UcqcHelper helper;
 	private static final String contractModel = "ADS-1320 Contract Model D";// Shilpa: 1.08.2022 updated test data
 	private static final String serviceModel = "OPPS 2019";// Shilpa: 1.08.2022 OPPS 2018 not available updated test
 															// data
@@ -50,6 +37,7 @@ public class GeneralContractInfo extends ContractModelsHelper {
 	private static final String nationalCapitalRate = "462.61";
 	private static final String costOutlierPaymentFixedLossThreshold = "26473";
 	private static final String CostOutlierPaymentSectionThresholdLaborPortion = "16413.26";
+	  private static String BackgroundColorTitleBarEditPopUp= "rgba(0, 0, 0, 0)";
 
 	// default values from ADS Help are in comments at the end of each line
 	String[] expectedCriteriaText = {
@@ -70,6 +58,7 @@ public class GeneralContractInfo extends ContractModelsHelper {
 			ExtentReport.reportCreate("GeneralContractInfo","webdriver.scripts.contracting" ,"GeneralContractInfo");
 			modelMap = BuildMap.getInstance(driver, ModelLibraryMap.class);
 			editModelMap = BuildMap.getInstance(driver, EditContractingModelMap.class);
+//			helper=BuildMap.getInstance(driver, UcqcHelper.class);
 			System.out.println("Test Class: " + GeneralContractInfo.class.getSimpleName());
 			loginUser(Users.ContractAnalyst1);
 			navigateToContractModelsPageFeeForServicePaymentTermsPage(contractModel);
@@ -160,6 +149,9 @@ public class GeneralContractInfo extends ContractModelsHelper {
 			Thread.sleep(200);
 			// shilpa 01.08.2022 added above steps
 			navigateFeeForServicePaymentTermsPagePricingMethodSectionClickEditButtonToOpenEditDialog();
+			String optionColor=driver.findElement(By.xpath("//div[contains(@class,'x-window-header x-window-header-draggable')]")).getCssValue("background-color");
+			System.out.println(optionColor);
+			assertEquals(BackgroundColorTitleBarEditPopUp,optionColor);
 			doChangeMedicareYearTo(expectedMedicareYearRange);
 			waitForAjaxExtJs();
 			String expectedText = "MSDRG1"; // HCFA DRG

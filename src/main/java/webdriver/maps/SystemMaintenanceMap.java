@@ -1,7 +1,10 @@
 package webdriver.maps;
 
+import java.util.List;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
 import webdriver.maps.mapbuilder.MapConfig;
 
 public class SystemMaintenanceMap extends MapConfig {
@@ -44,7 +47,29 @@ public class SystemMaintenanceMap extends MapConfig {
     private WebElement usersPageButtonExport;
     public WebElement getUsersPageButtonExport() {return usersPageButtonExport;}
 
-
+    @FindBy(xpath = "//span[text()='Clear Filter']//parent::button")
+    private WebElement getCustomTaskListClearFilterButton;
+    public WebElement getCustomTaskListClearFilterButton() {return getCustomTaskListClearFilterButton;}
+    
+    @FindBy(xpath = "//span[text()='Filter']//parent::button")
+    private WebElement getCustomTaskListFilterButton;
+    public WebElement getCustomTaskListFilterButton() {return getCustomTaskListFilterButton;}
+    
+    @FindBy(xpath = "//div[contains(@class,'customGrid')]//*[contains(@class,'docked-bottom')]/descendant::span[text()='Cancel & Close']")
+	private WebElement getSystemMaintenanceCancelCloseButton;
+	public WebElement getSystemMaintenanceCancelCloseButton() {
+		return getSystemMaintenanceCancelCloseButton;
+	}
+	 @FindBy(xpath = "//span[text()='Add Folder']//parent::button")
+		private WebElement getSystemMaintenanceAddFolderButton;
+		public WebElement getSystemMaintenanceAddFolderButton() {
+			return getSystemMaintenanceAddFolderButton;
+		}
+		@FindBy(xpath = "//div[contains(@class,'x-grid-view')]//td[3]/div")
+		private List<WebElement> getSystemMaintenanceUserList;
+		public List<WebElement> getSystemMaintenanceUserList() {
+			return getSystemMaintenanceUserList;
+		}
     // ===== End  Users Page ===== //
 
     // ===== System Maintenance Tab >  Roles Page ===== //
@@ -401,6 +426,41 @@ public class SystemMaintenanceMap extends MapConfig {
     private WebElement customizeTaskListsPageSubTabEpisode;
     public WebElement getCustomizeTaskListsPageSubTabEpisode() {return customizeTaskListsPageSubTabEpisode;}
 
+    @FindBy(xpath = "(//h1[text()='Department Hierarchies']//following::span[text()='Filter']//parent::button)[1]")
+	private WebElement getDeptHierarchyFilterButton;
+    public WebElement getDeptHierarchyFilterButton() {
+		return getDeptHierarchyFilterButton;
+	}
+	@FindBy(xpath = "//label[text()='Use Default']//preceding::input[1]")
+	private WebElement getSystemMaintenanceRadioButton;
+
+	public WebElement getSystemMaintenanceRadioButton() {
+		return getSystemMaintenanceRadioButton;
+	}
+	@FindBy(xpath = "//div[@id='costingScreens-body']//table//tbody//tr/td/div")
+	private List<WebElement> getSystemMaintenanceCostScreenList;
+
+	public List<WebElement> getSystemMaintenanceCostScreenList() {
+		return getSystemMaintenanceCostScreenList;
+	}
+	@FindBy(xpath = "//div[@id='ctlCostingTree']//table//tbody//tr/td/div")
+	private List<WebElement> getSystemMaintenanceCostModelTaskList;
+
+	public List<WebElement> getSystemMaintenanceCostModelTaskList() {
+		return getSystemMaintenanceCostModelTaskList;
+	}
+	@FindBy(xpath = "(//div[@id='ctlCostingTree-body']//tr[contains(@class,'x-grid-row-focused')]/td/div)[1]")
+	private WebElement getSystemMaintenanceAddFolder;
+
+	public WebElement getSystemMaintenanceAddFolder() {
+		return getSystemMaintenanceAddFolder;
+	}
+	@FindBy(xpath = "(//div[@id='ctlCostingTree-body']//tr[contains(@class,'x-grid-row-focused')]/td/div)[2]")
+	private WebElement getSystemMaintenanceAddFoldercol;
+
+	public WebElement getSystemMaintenanceAddFoldercol() {
+		return getSystemMaintenanceAddFoldercol;
+	}
     // ===== End Customize Task Lists Page ===== //
 
     // ===== System Maintenance Tab > Terminal Server Sessions Page ===== //
@@ -417,7 +477,153 @@ public class SystemMaintenanceMap extends MapConfig {
     private WebElement terminalServerSessionsPageButtonClose;
     public WebElement getTerminalServerSessionsPageButtonClose() {return terminalServerSessionsPageButtonClose;}
 
+    @FindBy(name = "roleDesc")
+    private WebElement rolesPageEditDesc;
+    public WebElement getrolesPageEditDesc() {return rolesPageEditDesc;}
+    
+    @FindBy(name = "roleName")
+    private WebElement rolesPageEditName;
+    public WebElement getrolesPageEditName() {return rolesPageEditName;}
+    
+    @FindBy(xpath = "(//div[contains(@class,'x-boundlist-list-ct')])[3]//ul")
+	private WebElement getAssignedUsers;
 
+	public WebElement getAssignedUsers() {
+		return getAssignedUsers;
+	}
+	@FindBy(xpath = "(//div[contains(@id,'itemselectorfield')]//following::span[text()='Select']//parent::button)")
+	private WebElement getAssignedUsersSelectButton;
+
+	public WebElement getAssignedUsersSelectButton() {
+		return getAssignedUsersSelectButton;
+	}
+	@FindBy(xpath = "(//div[contains(@id,'itemselectorfield')]//following::span[text()='Remove']//parent::button)")
+	private WebElement getAssignedUsersRemoveButton;
+
+	public WebElement getAssignedUsersRemoveButton() {
+		return getAssignedUsersRemoveButton;
+	}
+	@FindBy(xpath = "(//div[contains(@class,'rolesMenuItems')]//table[contains(@class,'x-grid-table')]//following::span[text()='Select']//parent::button)[1]")
+	private WebElement getMenuItemsSelectButton;
+
+	public WebElement getMenuItemsSelectButton() {
+		return getMenuItemsSelectButton;
+	}
+	@FindBy(xpath = "//input[@name='userId']")
+	private WebElement getUserID;
+	public WebElement getUserID() {
+		return getUserID;
+	}
+	@FindBy(xpath = "//input[@name='dbUserName']")
+	private WebElement getDbUsername;
+	public WebElement getDbUsername() {
+		return getDbUsername;
+	}
+	@FindBy(xpath = "//input[@name='firstName']")
+	private WebElement getUserFirstName;
+	public WebElement getUserFirstName() {
+		return getUserFirstName;
+	}
+	@FindBy(xpath = "//input[@name='lastName']")
+	private WebElement getUserLastName;
+	public WebElement getUserLastName() {
+		return getUserLastName;
+	}
+	@FindBy(xpath = "//input[@name='displayName']")
+	private WebElement getUserDisplayName;
+	public WebElement getUserDisplayName() {
+		return getUserDisplayName;
+	}
+	@FindBy(xpath = "//input[@name='initials']")
+	private WebElement getUserInitialsName;
+	public WebElement getUserInitialsName() {
+		return getUserInitialsName;
+	}
+	@FindBy(xpath = "//input[@name='email']")
+	private WebElement getUserEmailName;
+	public WebElement getUserEmailName() {
+		return getUserEmailName;
+	}
+	@FindBy(xpath = "//input[@name='jobFunction']")
+	private WebElement getUserJobFunction;
+	public WebElement getUserJobFunction() {
+		return getUserJobFunction;
+	}
+	@FindBy(xpath = "//input[@name='newPassword']")
+	private WebElement getUserNewPassword;
+	public WebElement getUserNewPassword() {
+		return getUserNewPassword;
+	}
+	@FindBy(xpath = "//input[@name='confirmNewPassword']")
+	private WebElement getUserConfirmNewPassword;
+	public WebElement getUserConfirmNewPassword() {
+		return getUserConfirmNewPassword;
+	}
+	@FindBy(xpath = "(//label[text()='Roles']//following::div[contains(@class,'roleSelect')])[1]")
+	private WebElement getUserRoleSelect;
+	public WebElement getUserRoleSelect() {
+		return getUserRoleSelect;
+	}
+	@FindBy(xpath = "(//label[text()='Entities']//following::div[contains(@class,'roleSelect')])[1]")
+	private WebElement getUserEntitySelect;
+	public WebElement getUserEntitySelect() {
+		return getUserEntitySelect;
+	}
+	@FindBy(xpath = "(//div[contains(@class,'x-window-header-draggable')]//following::div[contains(@class,'x-boundlist-list-ct')])[4]//ul")
+	private WebElement getUserRoleSelectOptions;
+	public WebElement getUserRoleSelectOptions() {
+		return getUserRoleSelectOptions;
+	}
+	@FindBy(xpath = "(//span[text()='All'])[2]")
+	private WebElement getUserRoleSelectAllLeftButton;
+	public WebElement getUserRoleSelectAllLeftButton() {
+		return getUserRoleSelectAllLeftButton;
+	}
+	@FindBy(xpath = "(//span[text()='All'])[1]")
+	private WebElement getUserRoleSelectAllRightButton;
+	public WebElement getUserRoleSelectAllRightButton() {
+		return getUserRoleSelectAllRightButton;
+	}
+	@FindBy(xpath = "(//label[contains(@class,'areaHeaderTitle')]//following::div[contains(@class,'x-grid-header-ct x-docked')]//following::table[1]//td[2]//div)[1]")
+	private WebElement getUserMasterSelectDropdownButton;
+	public WebElement getUserMasterSelectDropdownButton() {
+		return getUserMasterSelectDropdownButton;
+	}
+	@FindBy(xpath = "(//label[contains(@class,'areaHeaderTitle')]//following::div[contains(@class,'x-grid-header-ct x-docked')]//following::table[1]//td[3]//div)[1]")
+	private WebElement getUserMasterSelectDepartments;
+	public WebElement getUserMasterSelectDepartments() {
+		return getUserMasterSelectDepartments;
+	}
+	@FindBy(xpath = "//label[text()='Select All']//preceding::input[1]")
+	private WebElement getUserMasterSelectAllCheckbox;
+	public WebElement getUserMasterSelectAllCheckbox() {
+		return getUserMasterSelectAllCheckbox;
+	}
+	@FindBy(xpath = "(//div[contains(@class,'x-boundlist-list-ct')]//ul)[3]")
+	private WebElement getUserMasterSelectDropdownButtonOptions;
+	public WebElement getUserMasterSelectDropdownButtonOptions() {
+		return getUserMasterSelectDropdownButtonOptions;
+	}
+	@FindBy(xpath = "(//label[contains(@class,'areaHeaderTitle')]//following::div[contains(@class,'x-grid-header-ct x-docked')]//following::table[1]//td[3]//div)[1]")
+	private WebElement getUserMasterSelectDepartment;
+	public WebElement getUserMasterSelectDepartment() {
+		return getUserMasterSelectDepartment;
+	}
+	@FindBy(xpath = "(//label[contains(@class,'areaHeaderTitle')]//following::div[contains(@class,'x-grid-header-ct x-docked')]//following::table[1]//td[2]//div)[1]")
+	private WebElement getUserMasterSelectButton;
+	public WebElement getUserMasterSelectButton() {
+		return getUserMasterSelectButton;
+	}
+	@FindBy(xpath = "(//div[contains(@class,'x-boundlist-list-ct')]//ul)[3]")
+	private WebElement getUserMasterMenuItems;
+	public WebElement getUserMasterMenuItems() {
+		return getUserMasterMenuItems;
+	}
+	@FindBy(xpath = "(//div[contains(@class,'x-window-header-draggable')]//following::span[text()='Select']//parent::button)[3]")
+	private WebElement getUserSelectButtonInPopUp;
+	public WebElement getUserSelectButtonInPopUp() {
+		return getUserSelectButtonInPopUp;
+	}
     // ===== End Terminal Server Sessions Page ===== //
 
 }

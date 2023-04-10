@@ -1,5 +1,7 @@
 package webdriver.maps;
 
+import java.util.List;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import webdriver.maps.mapbuilder.MapConfig;
@@ -87,4 +89,73 @@ public class DataMaintenanceMap extends MapConfig {
 
     //*[@class='itemWrap' and text()='Encounters With No Charges Report']
     /******End Utilities******/
+    
+    //Shilpa
+    @FindBy(xpath = "//label[text()='Encounter Population for Assign/Remove']//following::div[contains(@id,'displayfield')]")
+    private static WebElement getPopulationValue;
+    public static WebElement getPopulationValue() {return getPopulationValue;}
+    
+    @FindBy(xpath = "//label[text()='Service Model']//following::table[4]//tr[contains(@class,'x-grid-row treeWhite')]/td/div")
+    private  List<WebElement> getServiceModelList;
+    public List<WebElement> getServiceModelList() {return getServiceModelList;}
+    
+    @FindBy(xpath = "//span[text()='Filter']//parent::button")
+    private WebElement encounterButtonFilter;
+    public WebElement getencounterButtonFilter() {return encounterButtonFilter;}
+    
+    @FindBy(xpath = "//span[text()='Edit']//parent::button")
+    private WebElement encounterButtonEdit;
+    public WebElement getencounterButtonEdit() {return encounterButtonEdit;}
+    
+    @FindBy(xpath = "(//button/span[text()='Services'])[1]")
+	private static WebElement getServicesTabEncounter;
+	public static WebElement getServicesTabEncounter() {return getServicesTabEncounter;}
+	
+	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//span[text()='Assign']")
+	private static WebElement getAssignButtonEncounter;
+	public static WebElement getAssignButtonEncounter() {return getAssignButtonEncounter;}
+	
+	@FindBy(xpath = "(//div[contains(@id,'commontbar')]//span[text()='New']//parent::button)[1]")
+	private static WebElement getLoadDataNewButton;
+	public static WebElement getLoadDataNewButton() {return getLoadDataNewButton;}
+	
+	@FindBy(xpath = "(//div[contains(@id,'commontbar')]//span[text()='Filter']//parent::button)[1]")
+	private static WebElement getLoadDataFilterButton;
+	public static WebElement getLoadDataFilterButton() {return getLoadDataFilterButton;}
+	
+	@FindBy(name = "chargeMasterCode")
+	private static WebElement getChargeMaster;
+	public static WebElement getChargeMaster() {return getChargeMaster;}
+	
+	@FindBy(name = "priceListId")
+	private static WebElement getPriceListMaster;
+	public static WebElement getPriceListMaster() {return getPriceListMaster;}
+	
+	@FindBy(name = "logLocation")
+	private static WebElement getLogLoc;
+	public static WebElement getLogLoc() {return getLogLoc;}
+	
+	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//span[text()='Save & Create New']")
+	private static WebElement getSaveandCreateNewButton;
+	public static WebElement getSaveandCreateNewButton() {return getSaveandCreateNewButton;}
+	
+	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//span[text()='Calculate']//parent::button")
+	private static WebElement getCalculateButton;
+	public static WebElement getCalculateButton() {return getCalculateButton;}
+	
+	@FindBy(xpath = "//h1[text()='Price Items']//following::span[text()='Filter']//parent::button")
+	private static WebElement getPriceItemFilterButton;
+	public static WebElement getPriceItemFilterButton() {return getPriceItemFilterButton;}
+	
+	@FindBy(xpath = "//h1[text()='Price Items']//following::span[text()='Clear Filter']//parent::button")
+	private static WebElement getPriceItemClearFilterButton;
+	public static WebElement getPriceItemClearFilterButton() {return getPriceItemClearFilterButton;}
+	
+	@FindBy(xpath = "//span[text()='Department Code']//following::div[contains(@id,'dynamicGrid')]//table//tr[2]/td[11]/div")
+	private static WebElement getPriceItemValue;
+	public static WebElement getPriceItemValue() {return getPriceItemValue;}
+	
+	@FindBy(xpath = "//span[text()='Department Code']//following::div[contains(@id,'dynamicGrid')]//table//tr/td[5]/div")
+	private static List<WebElement> getPriceItemDeptCode;
+	public static List<WebElement> getPriceItemDeptCode() {return getPriceItemDeptCode;}
 }

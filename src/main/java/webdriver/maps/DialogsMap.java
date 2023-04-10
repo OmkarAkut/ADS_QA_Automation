@@ -16,7 +16,25 @@ public class DialogsMap extends MapConfig {
 
     // ===== Filter Dialog ===== //
 
-    @FindBy(xpath = "//*[contains(@id, 'filterwindow') and contains(@id, 'header_hd-textEl')]")
+    @FindBy(xpath = "(//div[contains(@id,'specialtagcombo')]//following::div[contains(@class,'floating')]//ul)[1]")
+    private WebElement field;
+    public WebElement getFilterNameField() {return field;}
+    
+    @FindBy(xpath = "(//div[contains(@id,'specialtagcombo')]//following::div[contains(@class,'floating')]//ul)[5]")
+    private WebElement fieldNAme;
+    public WebElement getfieldNAme() {return fieldNAme;}
+    
+    @FindBy(xpath = "(//div[contains(@id,'specialtagcombo')]//following::div[contains(@class,'floating')]//ul)[3]")
+    private WebElement condition;
+    public WebElement getFilterNameCondition() {return condition;}
+    
+    @FindBy(xpath = "(//div[contains(@id,'specialtagcombo')]//following::div[contains(@class,'floating')]//ul)[2]")
+    private WebElement operator;
+    public WebElement getFilterNameOperator() {return operator;}
+    
+//    Omkar 30/3/2023 : Changes in xpath for ADS 11.2
+//    @FindBy(xpath = "//*[contains(@id, 'filterwindow') and contains(@id, 'header_hd-textEl')]")
+    @FindBy(xpath = "//*[text()='Filter Users']")
     private WebElement filterDialogHeader;
     public WebElement getFilterDialogHeader() {return filterDialogHeader;}
 
@@ -39,6 +57,18 @@ public class DialogsMap extends MapConfig {
     @FindBy(name = "valuefield")
     private WebElement statusFilterDialogFieldValue;
     public WebElement getFilterDialogFormFieldValue() {return statusFilterDialogFieldValue;}
+    
+    @FindBy(name = "valueoneof")
+    private WebElement statusFilterDialogFieldValueOneOf;
+    public WebElement getFilterDialogFormFieldValueOneOf() {return statusFilterDialogFieldValueOneOf;}
+    
+    @FindBy(name = "valuelist")
+    private WebElement statusFilterDialogFieldValueList;
+    public WebElement getstatusFilterDialogFieldValueList() {return statusFilterDialogFieldValueList;}
+    
+    @FindBy(name = "valuedate")
+    private WebElement statusFilterDialogFieldValueDate;
+    public WebElement getstatusFilterDialogFieldValueDate() {return statusFilterDialogFieldValueDate;}
 
     @FindBy(name = "valueOfOnefield")
     private WebElement statusFilterDialogFieldValueOfOne;
@@ -48,7 +78,9 @@ public class DialogsMap extends MapConfig {
     private WebElement statusFilterDialogButtonApplyFilter;
     public WebElement getFilterDialogButtonApplyFilter() {return statusFilterDialogButtonApplyFilter;}
 
-    @FindBy(xpath = "//div[@class='x-btn x-box-item x-toolbar-item x-btn-default-toolbar-small x-noicon x-btn-noicon x-btn-default-toolbar-small-noicon']//*[text()='Cancel & Close']")
+//    Omkar 30/3/2023 : Changes in xpath fpr ADS 11.2
+//    @FindBy(xpath = "//div[@class='x-btn x-box-item x-toolbar-item x-btn-default-toolbar-small x-noicon x-btn-noicon x-btn-default-toolbar-small-noicon']//*[text()='Cancel & Close']")
+    @FindBy(xpath = "//div[@class='x-btn x-unselectable x-box-item x-toolbar-item x-btn-default-toolbar-small']//*[text()='Cancel & Close']")
     private WebElement statusFilterDialogButtonCancelAndClose;
     public WebElement getFilterDialogButtonCancelAndClose() {return statusFilterDialogButtonCancelAndClose;}
 
