@@ -60,7 +60,10 @@ public class SystemMaintenanceMap extends MapConfig {
 	public WebElement getSystemMaintenanceCancelCloseButton() {
 		return getSystemMaintenanceCancelCloseButton;
 	}
-	 @FindBy(xpath = "//span[text()='Add Folder']//parent::button")
+	
+//	Omkar 6/4/23 : Change in xpath for 11.2
+//	 @FindBy(xpath = "//span[text()='Add Folder']//parent::button")
+	 @FindBy(xpath = "//span[text()='Add Folder']")
 		private WebElement getSystemMaintenanceAddFolderButton;
 		public WebElement getSystemMaintenanceAddFolderButton() {
 			return getSystemMaintenanceAddFolderButton;

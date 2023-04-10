@@ -1307,7 +1307,10 @@ public class CostingMap extends MapConfig {
 		public static WebElement getCostDeptMasterNewButton() {
 			return getCostDeptMasterNewButton;
 		}
-		@FindBy(xpath = "(//div[contains(@id,'masterlist')]//h1[text()='Department Masters']//following::span[text()='Filter']//parent::button)[1]")
+//		Omkar 6/4/2023 : xpath changes for ADS 11.2
+//		@FindBy(xpath = "(//div[contains(@id,'masterlist')]//h1[text()='Department Masters']//following::span[text()='Filter']//parent::button)[1]")
+		@FindBy(xpath = "(//div[contains(@id,'masterlist')]//h1[text()='Department Masters']//following::span[text()='Filter']//parent::span)")
+		
 		private static WebElement getCostDeptMasterFilterButton;
 		public static WebElement getCostDeptMasterFilterButton() {
 			return getCostDeptMasterFilterButton;

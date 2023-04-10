@@ -11,6 +11,8 @@ import java.util.Date;
 import java.util.List;
 import org.junit.BeforeClass;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import webdriver.corehelpers.GoHelper;
@@ -164,6 +166,17 @@ private static EditContractingModelMap editModelMap;
   public static void openMaintainDataBatch(String batchName) throws InterruptedException {
     Thread.sleep(1000);
     waitForSpinnerToEnd();
+    
+    driver.findElement(By.xpath("//*[contains(@class,'grid-cell') and text()='# TB Test 0228.2018']")).click();
+    JavascriptExecutor js = (JavascriptExecutor) driver;
+  //Scroll down till the bottom of the page
+//  js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
+//  js.executeScript("window.scrollBy(0,250)","");
+    driver.findElement(By.xpath("//*[contains(@class,'grid-cell') and text()='# TB Test 0228.2018']")).click();
+//    Actions act = new Actions(driver);
+//    act.sendKeys(Keys.PAGE_DOWN).build().perform(); //Page Down
+    System.out.println("Scroll down perfomed");
+    Thread.sleep(5000);
     Actions action = new Actions(driver);
     action.doubleClick(driver.findElement(By.xpath("//*[contains(@class,'grid-cell') and text()='" + batchName + "']"))).perform();
     waitForSpinnerToEnd();
