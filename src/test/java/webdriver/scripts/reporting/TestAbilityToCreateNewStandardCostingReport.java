@@ -28,7 +28,8 @@ public class TestAbilityToCreateNewStandardCostingReport extends GoHelper{
 	static String subDirectory="Costing";
 	@BeforeClass
 	public static void setupScript() throws InterruptedException, Throwable {
-		ExtentReport.reportCreate("SearchTheReportLibrary", "webdriver.scripts.reporting", "SearchTheReportLibrary");
+
+		ExtentReport.reportCreate("TestAbilityToCreateNewStandardCostingReport", "webdriver.scripts.reporting", "TestAbilityToCreateNewStandardCostingReport");
 
 		try {
 			reportMap = BuildMap.getInstance(driver, ReportingMap.class);

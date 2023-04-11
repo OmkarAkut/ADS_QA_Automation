@@ -32,7 +32,8 @@ public class ClearFilterbuttonModels extends GoHelper {
 	private DialogsMap dialog = BuildMap.getInstance(driver, DialogsMap.class);
 	ContractModelsHelper contractModelsHelper = new ContractModelsHelper();
 
-	/** Regression: Automated test script for ADS-6432,ADS-6438 ,ADS-6648,ADS-6650*/
+
+	/** Regression: Automated test script for ADS-6432,ADS-6438 ,ADS-6647,ADS-6648,ADS-6650*/
 
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {

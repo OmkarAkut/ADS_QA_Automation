@@ -32,7 +32,8 @@ public class CreateANewContractModel extends CalculationHelper {
 	String addProvider = "150  Marina Medical Center";
 	static String[] filter = { "Name", "Is", "Equal To", serviceName };
 	
-	/** Regression: Automated test script for ADS-6413 ,ADS-6435 */
+
+	/** Regression: Automated test script for ADS-6413 ,ADS-6412,ADS-6435 */
 
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {

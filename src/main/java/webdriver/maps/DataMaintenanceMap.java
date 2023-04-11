@@ -87,6 +87,13 @@ public class DataMaintenanceMap extends MapConfig {
     private WebElement getUtilitiesPageEncountersWithNoChargesReport;
     public WebElement getUtilitiesPageEncountersWithNoChargesReport() {return getUtilitiesPageEncountersWithNoChargesReport;}
 
+    @FindBy(xpath = "//span[contains(@id,'dynamicwindow')][text()='New Terminal Server Session']")
+    private WebElement dataMaintenanceNewTerminalPopUp;
+    public WebElement dataMaintenanceNewTerminalPopUp() {return dataMaintenanceNewTerminalPopUp;}
+    
+    @FindBy(xpath = "//span[text()='Open']//parent::button")
+    private WebElement dataMaintenanceOpenButton;
+    public WebElement dataMaintenanceOpenButton() {return dataMaintenanceOpenButton;}
     //*[@class='itemWrap' and text()='Encounters With No Charges Report']
     /******End Utilities******/
     
@@ -123,6 +130,15 @@ public class DataMaintenanceMap extends MapConfig {
 	private static WebElement getLoadDataFilterButton;
 	public static WebElement getLoadDataFilterButton() {return getLoadDataFilterButton;}
 	
+
+	@FindBy(xpath = "(//div[contains(@id,'commontbar')]//span[text()='Delete']//parent::button)[1]")
+	private static WebElement getLoadDataDeleteButton;
+	public static WebElement getLoadDataDeleteButton() {return getLoadDataDeleteButton;}
+	
+	@FindBy(xpath = "(//div[contains(@id,'commontbar')]//span[text()='Edit']//parent::button)[1]")
+	private static WebElement getLoadDataEditButton;
+	public static WebElement getLoadDataEditButton() {return getLoadDataEditButton;}
+	
 	@FindBy(name = "chargeMasterCode")
 	private static WebElement getChargeMaster;
 	public static WebElement getChargeMaster() {return getChargeMaster;}
@@ -158,4 +174,22 @@ public class DataMaintenanceMap extends MapConfig {
 	@FindBy(xpath = "//span[text()='Department Code']//following::div[contains(@id,'dynamicGrid')]//table//tr/td[5]/div")
 	private static List<WebElement> getPriceItemDeptCode;
 	public static List<WebElement> getPriceItemDeptCode() {return getPriceItemDeptCode;}
+
+	
+	@FindBy(xpath = "//div[contains(@id,'dynamicGrid')]//table//tr/td[5]/div")
+	private static List<WebElement> getEncounterItemList;
+	public static List<WebElement> getEncounterItemList() {return getEncounterItemList;}
+	
+	@FindBy(xpath = "//div[contains(@id,'dynamicGrid')]//table//tr/td[5]/div(//div[contains(@id,'boundlist')]/ul/li[text()='Admission Source Code']/..)")
+	private static WebElement getPopulationFieldDropdownOptions;
+	public static WebElement getPopulationFieldDropdownOptions() {return getPopulationFieldDropdownOptions;}
+	
+	@FindBy(xpath = "//span[text()='Add']//parent::button")
+	private static WebElement getPopulationAddButton;
+	public static WebElement getPopulationAddButton() {return getPopulationAddButton;}
+	
+	@FindBy(xpath = "//span[text()='Show Size']//parent::button")
+	private static WebElement getPopulationShowSizeButton;
+	public static WebElement getPopulationShowSizeButton() {return getPopulationShowSizeButton;}
+	
 }

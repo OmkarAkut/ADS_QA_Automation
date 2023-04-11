@@ -74,9 +74,10 @@ public class ConfirmFY2023MedicareYearisAvailableForMedIPPS extends CalculationH
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
 		try {
-			ExtentReport.reportCreate("ContractingModelDefinePaymentTermsFeeForServicePaymentTermsCalculate",
+
+			ExtentReport.reportCreate("ConfirmFY2023MedicareYearisAvailableForMedIPPS",
 					"webdriver.scripts.contracting",
-					"ContractingModelDefinePaymentTermsFeeForServicePaymentTermsCalculate");
+					"ConfirmFY2023MedicareYearisAvailableForMedIPPS");
 			modelMap = BuildMap.getInstance(driver, ContractingMap.class);
 			loginUser(Users.AutomationTesterAdmin);
 			waitForDisplayedSpinnerToEnd();

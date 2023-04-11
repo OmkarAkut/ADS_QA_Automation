@@ -1,21 +1,11 @@
 package webdriver.scripts.contracting;
-
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-
-import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.List;
-
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
-import org.openqa.selenium.By;
-
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.corehelpers.GoHelper;
@@ -23,6 +13,10 @@ import webdriver.helpers.ContractModelsHelper;
 import webdriver.maps.ContractingMap;
 import webdriver.maps.CostingMap;
 import webdriver.maps.mapbuilder.BuildMap;
+
+
+
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class EntityLevelSecurityContracting extends GoHelper{
 	private static ContractingMap modelMap;

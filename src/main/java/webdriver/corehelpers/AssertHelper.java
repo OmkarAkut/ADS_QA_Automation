@@ -26,7 +26,9 @@ public class AssertHelper extends AdsHelper {
 	public void assertGridTableLoads() {
 		String rowNumber;
 		try {
-			rowNumber = driver.findElement(By.xpath("//*[contains(@class,'rownumberer') and contains(@class,'grid-cell')]/div")).getText();
+			rowNumber = driver
+					.findElement(By.xpath("//*[contains(@class,'rownumberer') and contains(@class,'grid-cell')]/div"))
+					.getText();
 			if (printout) {
 				System.out.println("Row Number = " + rowNumber);
 			}
@@ -35,73 +37,12 @@ public class AssertHelper extends AdsHelper {
 			fail(e.getMessage());
 		}
 	}
+
 	public void assertFilterResults(String expectedTotal) throws InterruptedException {
 		doClick(getWebElement("//div[3]/em/button/span[text()='Filter']"));
 		waitForAjaxExtJs();
 		assertThat(filterGetFilterMatchesTheseCriteriaText(), containsString(expectedTotal));
 		doClick(getWebElement("//div[3]/em/button/span[text()='Cancel & Close']"));
-	}
-
-	public void assertFilterResultsStatement(String numberOfFilterMatches) {
-		doClick(driver.findElement(
-				By.xpath("//div[text()='Department Codes']/ancestor::div[contains(@class,'x-box-item')]/following-sibling::div/descendant::button/span[text()='Filter']")
-				));
-		assertTrue(filterGetFilterMatchesTheseCriteriaText().contains(numberOfFilterMatches));
-		filterClickButtonCancelAndClose();
-	}
-
-	public void assertPageInformation(String pageTitle) {
-		//assert page title
-		/* modified by Omkar on 23/5/22
-
-    assertElementIsDisplayed(driver.findElement(By.xpath("//*[contains(@id, 'header_hd-textEl') " +
-            "and text()='" + pageTitle + "']")), printout);
-		 */
-		assertElementIsDisplayed(driver.findElement(By.xpath("//*[contains(@class ,'h1ToNormalText')]")), printout);
-
-		//End of modification
-
-		/* modified by Omkar on 23/5/22 
-		 * Commenting the below part as it is the same assert as above
-		 * //assert title displays in breadcrumbs
-    	assertElementIsDisplayed(driver.findElement(By.xpath(
-            "//*[contains(@id, 'header_hd-textEl') and text()='" + pageTitle + "']")),
-            printout);
-		 */
-
-	}
-
-	public void assertHelpLink(WebElement helpLinkElement, String expectedHeader, boolean printout) throws InterruptedException {
-		//Thread.sleep(500);
-		waitForAjaxExtJs();
-		String firstHandle = webSwitchToNewWindow(helpLinkElement, printout);
-		assertHelpPageHeader(expectedHeader, printout);
-		driver.switchTo().window(firstHandle);
-	}
-
-	public void assertHelpPageHeader(String expectedHeader, boolean printout) {
-		try {
-			//Thread.sleep(3000);  //original working wait-replaced by sleep 500 and waitForJsWindowOnload
-			// System.out.println("Thread sleep 3000 - find better solution"); //find better solution
-			Thread.sleep(2000);
-			waitForJsWindowOnload();
-			driver.switchTo().frame("topic");
-			//venkat adding Explicity wait 13.09.2022
-		    WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(30,0));
-		    WebElement header=wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//body/h1")));
-			
-			//WebElement header = driver.findElement(By.xpath("//body/h1"));
-			String actualHeader = header.getText();
-			if (printout) {
-				Thread.sleep(2000); 
-				System.out.println("Expected Header Text: " + expectedHeader);
-				System.out.println("Actual Header Text  : " + actualHeader);
-			}
-			assertThat(expectedHeader, equalTo(actualHeader));
-		} catch (Throwable e) {
-			e.printStackTrace();
-			fail("Failed: assertHelpPageHeader");
-		}
 	}
 
 	public void assertGridElementsOnSearch(WebElement nextBtn, WebElement pageNumber, List<WebElement> elements,
@@ -130,6 +71,72 @@ public class AssertHelper extends AdsHelper {
 		}
 	}
 
+	public void assertFilterResultsStatement(String numberOfFilterMatches) {
+		doClick(driver.findElement(By.xpath(
+				"//div[text()='Department Codes']/ancestor::div[contains(@class,'x-box-item')]/following-sibling::div/descendant::button/span[text()='Filter']")));
+		assertTrue(filterGetFilterMatchesTheseCriteriaText().contains(numberOfFilterMatches));
+		filterClickButtonCancelAndClose();
+	}
+
+	public void assertPageInformation(String pageTitle) {
+		// assert page title
+		/*
+		 * modified by Omkar on 23/5/22
+		 * 
+		 * assertElementIsDisplayed(driver.findElement(By.
+		 * xpath("//*[contains(@id, 'header_hd-textEl') " + "and text()='" + pageTitle +
+		 * "']")), printout);
+		 */
+		assertElementIsDisplayed(driver.findElement(By.xpath("//*[contains(@class ,'h1ToNormalText')]")), printout);
+
+		// End of modification
+
+		/*
+		 * modified by Omkar on 23/5/22 Commenting the below part as it is the same
+		 * assert as above //assert title displays in breadcrumbs
+		 * assertElementIsDisplayed(driver.findElement(By.xpath(
+		 * "//*[contains(@id, 'header_hd-textEl') and text()='" + pageTitle + "']")),
+		 * printout);
+		 */
+
+	}
+
+	public void assertHelpLink(WebElement helpLinkElement, String expectedHeader, boolean printout)
+			throws InterruptedException {
+		// Thread.sleep(500);
+		waitForAjaxExtJs();
+		String firstHandle = webSwitchToNewWindow(helpLinkElement, printout);
+		assertHelpPageHeader(expectedHeader, printout);
+		driver.switchTo().window(firstHandle);
+	}
+
+	public void assertHelpPageHeader(String expectedHeader, boolean printout) {
+		try {
+			// Thread.sleep(3000); //original working wait-replaced by sleep 500 and
+			// waitForJsWindowOnload
+			// System.out.println("Thread sleep 3000 - find better solution"); //find better
+			// solution
+			Thread.sleep(2000);
+			waitForJsWindowOnload();
+			driver.switchTo().frame("topic");
+			// venkat adding Explicity wait 13.09.2022
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30, 0));
+			WebElement header = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//body/h1")));
+
+			// WebElement header = driver.findElement(By.xpath("//body/h1"));
+			String actualHeader = header.getText();
+			if (printout) {
+				Thread.sleep(2000);
+				System.out.println("Expected Header Text: " + expectedHeader);
+				System.out.println("Actual Header Text  : " + actualHeader);
+			}
+			assertThat(expectedHeader, equalTo(actualHeader));
+		} catch (Throwable e) {
+			e.printStackTrace();
+			fail("Failed: assertHelpPageHeader");
+		}
+	}
+
 	public void assertListOfStringsContainsExpectedStrings(List<String> listOfStrings, List<String> expectedStrings) {
 		String listOfStringsAsSingleString = java.convertListOfStringToSingleString(listOfStrings);
 		System.out.println("All options as a single string: " + listOfStringsAsSingleString);
@@ -139,19 +146,27 @@ public class AssertHelper extends AdsHelper {
 		}
 	}
 
-	public void assertListOfStringsContainsExpectedString(
-			List<String> listOfStrings,
-			String expectedString)
-	{
+	public void assertListOfStringsContainsExpectedString(List<String> listOfStrings, String expectedString) {
 		assertTrue(listOfStrings.contains(expectedString));
 	}
 
-	public void assertListOfStringsDoesNotContainExpectedStrings(List<String> listOfStrings, List<String> expectedStrings) {
+	public void assertListOfStringsDoesNotContainExpectedStrings(List<String> listOfStrings,
+			List<String> expectedStrings) {
 		String listOfStringsAsSingleString = java.convertListOfStringToSingleString(listOfStrings);
 		System.out.println("All options as a single string: " + listOfStringsAsSingleString);
 		for (String expectedString : expectedStrings) {
 			System.out.println("Expected String: " + expectedString);
 			assertThat(listOfStringsAsSingleString, not(containsString(expectedString)));
+		}
+	}
+
+	public void assertListOfElementsContainsExpectedString(List<WebElement> elementList, String name) {
+		for (WebElement element : elementList) {
+			if (element.getText().contains(name)) {
+				assertTrue(printout);
+			} else {
+				continue;
+			}
 		}
 	}
 
@@ -178,7 +193,7 @@ public class AssertHelper extends AdsHelper {
 			System.out.println("Element class text: " + elementClassText);
 			System.out.println("IsChecked: " + isChecked);
 		}
-		assertTrue("Expected element to be checked or selected",isChecked == true);
+		assertTrue("Expected element to be checked or selected", isChecked == true);
 	}
 
 	public void assertThatCheckBoxIsChecked(String sectionLabel, String checkboxLabel) throws Exception {
@@ -205,8 +220,9 @@ public class AssertHelper extends AdsHelper {
 		String classString = null;
 		try {
 			waitForAjaxExtJs();
-			classString = driver.findElement(By.xpath("//label[text()='" + elementLabel + "']" +
-					"/ancestor::table[contains(@class,'checkbox')]"))
+			classString = driver
+					.findElement(By.xpath(
+							"//label[text()='" + elementLabel + "']" + "/ancestor::table[contains(@class,'checkbox')]"))
 					.getAttribute("class");
 		} catch (Throwable e) {
 			fail("Class attribute not found");
@@ -214,11 +230,14 @@ public class AssertHelper extends AdsHelper {
 		return classString;
 	}
 
-	private String getCheckboxClass(String sectionLabel, String checkboxLabel) {  //Columns to Display
+	private String getCheckboxClass(String sectionLabel, String checkboxLabel) { // Columns to Display
 		String checkboxClassString = null;
 		try {
 			waitForAjaxExtJs();
-			checkboxClassString = driver.findElement(By.xpath("//label[text()='" + sectionLabel + "']/../following-sibling::td/label[text()='" + checkboxLabel + "']/ancestor::table[contains(@id,'checkboxfield')]"))
+			checkboxClassString = driver
+					.findElement(
+							By.xpath("//label[text()='" + sectionLabel + "']/../following-sibling::td/label[text()='"
+									+ checkboxLabel + "']/ancestor::table[contains(@id,'checkboxfield')]"))
 					.getAttribute("class");
 		} catch (Throwable e) {
 			fail("Checkbox not found");
@@ -237,20 +256,22 @@ public class AssertHelper extends AdsHelper {
 				if (printout) {
 					System.out.println("Expected text line:     " + textLine);
 				}
-				assertTrue("Test Failed - text area does not contain expected text line: " + textLine, actualText.contains(textLine));
+				assertTrue("Test Failed - text area does not contain expected text line: " + textLine,
+						actualText.contains(textLine));
 			}
 		} catch (Throwable e) {
 			e.getMessage();
 		}
 	}
 
-	public void assertThatDropdownSelectedValue(WebElement elementTriggerMenu, WebElement elementMenuList, String expectedValue){
+	public void assertThatDropdownSelectedValue(WebElement elementTriggerMenu, WebElement elementMenuList,
+			String expectedValue) {
 		try {
 			elementTriggerMenu.click();
 			Thread.sleep(1000);
 			waitForSpinnerToEnd();
 			waitForAjaxExtJs();
-			WebElement classificationList = elementMenuList;  //remove this and debugger wont work for this method
+			WebElement classificationList = elementMenuList; // remove this and debugger wont work for this method
 			List<WebElement> classificationListing = classificationList.findElements(By.tagName("li"));
 			for (WebElement item : classificationListing) {
 				String clss = item.getAttribute("class");
@@ -275,7 +296,8 @@ public class AssertHelper extends AdsHelper {
 		org.junit.Assert.assertThat(placeActualNoCommas.length(), equalTo(expectedPlace.replace(",", "").length()));
 	}
 
-	public void assertValueFormat(String value, String expectedDigitPlaces, int expectedDecimalPlaces, boolean printout) {
+	public void assertValueFormat(String value, String expectedDigitPlaces, int expectedDecimalPlaces,
+			boolean printout) {
 		assertThatNumberPlaceDigits(value, expectedDigitPlaces, printout);
 		assertValueHasCommasForThousands(value, printout);
 		assertThatValueHasRequiredDecimalPlaces(value, expectedDecimalPlaces, printout);
@@ -314,64 +336,66 @@ public class AssertHelper extends AdsHelper {
 
 	public void assertDropdownPlaceholder(String dropDownNameAttribute, boolean printout) throws Exception {
 		String placeHolder = null;
-		try{
+		try {
 			waitForAjaxExtJs();
-			placeHolder = driver.findElement(By.xpath("//input[@name='" + dropDownNameAttribute + "']")).getAttribute("placeholder");
-		} catch (Throwable e){
+			placeHolder = driver.findElement(By.xpath("//input[@name='" + dropDownNameAttribute + "']"))
+					.getAttribute("placeholder");
+		} catch (Throwable e) {
 			System.out.println("Element Not Found");
 			fail("element not found");
 		}
 		boolean placeHolderText = placeHolder.equals("<None>");
-		if (printout){
+		if (printout) {
 			System.out.println("Element class text: " + placeHolder);
 			System.out.println("Placeholder Text: " + placeHolderText);
 		}
 		try {
 			assertTrue(placeHolderText);
-		} catch(Throwable e){
+		} catch (Throwable e) {
 			System.out.println("TEST FAILED: Element text is not <None>.");
 			throw new Exception();
 		}
 	}
 
 	public void assertAsteriskIsDisplayed(String criteriaLabel) throws AWTException, InterruptedException {
-		
-		//Venkat 05-09-2022 Add Robot class in zoom in chrome browser
-		
-		
+
+		// Venkat 05-09-2022 Add Robot class in zoom in chrome browser
+
 		Thread.sleep(2000);
-	    ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoViewIfNeeded();",driver.findElement(By.xpath("//label[text()=\""+ criteriaLabel +"\"]/span")));
-	    Thread.sleep(2000);
-				
-		String labelXpath = "//label[text()=\""+ criteriaLabel +"\"]/span";
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoViewIfNeeded();",
+				driver.findElement(By.xpath("//label[text()=\"" + criteriaLabel + "\"]/span")));
+		Thread.sleep(2000);
+
+		String labelXpath = "//label[text()=\"" + criteriaLabel + "\"]/span";
 		String asterisk;
 		String asteriskColor;
-		
-		Thread.sleep(500);
-		//driver.manage().window().setSize(new Dimension(1920, 900));
 
-	    WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(20,0));
+		Thread.sleep(500);
+		// driver.manage().window().setSize(new Dimension(1920, 900));
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20, 0));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(labelXpath)));
 		asterisk = driver.findElement(By.xpath(labelXpath)).getText();
 		asteriskColor = driver.findElement(By.xpath(labelXpath)).getAttribute("style");
 		System.out.println(asterisk);
 		System.out.println(asteriskColor);
-		if(asterisk.contains("*")){
+		if (asterisk.contains("*")) {
 			System.out.println("The 'required' asterisk is displayed.");
 		} else {
 			System.out.println("The 'required' asterisk is not displayed.");
 			fail();
 		}
-		if(asteriskColor.contains("red")) {
+		if (asteriskColor.contains("red")) {
 			System.out.println("The 'required' asterisk is red.");
 		} else {
 			System.out.println("The 'required' asterisk is not red.");
 			fail();
 		}
-	
+
 	}
 
-	public void assertThatValueHasRequiredDecimalPlaces(String valueToConsider, int numberOfDecimalPlaces, boolean printout) {
+	public void assertThatValueHasRequiredDecimalPlaces(String valueToConsider, int numberOfDecimalPlaces,
+			boolean printout) {
 		String[] decimalPlaces = valueToConsider.split("\\.");
 		if (printout) {
 			System.out.println("Number of decimal places: " + decimalPlaces[1].length());
@@ -385,7 +409,7 @@ public class AssertHelper extends AdsHelper {
 			elementIsDisplayed = element.isDisplayed();
 			fail("Element should not be displayed");
 		} catch (Throwable e) {
-			assertThat(elementIsDisplayed, equalTo(true)); //true if not found
+			assertThat(elementIsDisplayed, equalTo(true)); // true if not found
 		}
 	}
 
@@ -408,7 +432,8 @@ public class AssertHelper extends AdsHelper {
 		assertFalse("This element should not be displayed", elementIsDisplayed);
 	}
 
-	// Use this one if the element is not on the page.  Using the above "element" version will result in a test failure.
+	// Use this one if the element is not on the page. Using the above "element"
+	// version will result in a test failure.
 	public void assertElementIsNotDisplayed(String elementXpath) {
 		boolean elementIsDisplayed;
 		try {
@@ -423,24 +448,26 @@ public class AssertHelper extends AdsHelper {
 		String disabledText = null;
 		try {
 			waitForAjaxExtJs();
-			disabledText = element.findElement(By.xpath("./ancestor::div[contains(@class,'x-btn')]")).getAttribute("class");
-			//disabledText = element.findElement(By.xpath("./../../..")).getAttribute("class");
-		} catch(Throwable e) {
+			disabledText = element.findElement(By.xpath("./ancestor::div[contains(@class,'x-btn')]"))
+					.getAttribute("class");
+			// disabledText =
+			// element.findElement(By.xpath("./../../..")).getAttribute("class");
+		} catch (Throwable e) {
 			System.out.println("Element Not Found");
 			fail("element not found");
 		}
 		boolean isDisabled = disabledText.contains("disabled");
-		if (printout){
+		if (printout) {
 			System.out.println("Element class text: " + disabledText);
 			System.out.println("IsDisabled: " + isDisabled);
 		}
 		assertTrue(disabledText, isDisabled);
-		//        try {
-		//            assertTrue(isDisabled);
-		//        } catch(Throwable e){
-		//            System.out.println("TEST FAILED: Element is Enabled");
-		//            throw new Exception();
-		//        }
+		// try {
+		// assertTrue(isDisabled);
+		// } catch(Throwable e){
+		// System.out.println("TEST FAILED: Element is Enabled");
+		// throw new Exception();
+		// }
 	}
 
 	public static void assertElementIsEnabled(WebElement element, boolean printout) throws Exception {
@@ -448,42 +475,43 @@ public class AssertHelper extends AdsHelper {
 		try {
 			waitForAjaxExtJs();
 			classText = element.findElement(By.xpath("./../../..")).getAttribute("class");
-		} catch(Throwable e) {
+		} catch (Throwable e) {
 			System.out.println("Element Not Found");
 			fail("element not found");
 		}
 		boolean isEnabled = classText.contains("disabled");
-		if (printout){
+		if (printout) {
 			System.out.println("Element class text: " + classText);
 			System.out.println("IsEnabled: " + isEnabled);
 		}
 		assertFalse(isEnabled);
-		//        try {
-		//            assertTrue(isEnabled);
-		//        } catch(Throwable e){
-		//            System.out.println("TEST FAILED: Element is Not Enabled");
-		//            throw new Exception();
-		//        }
+		// try {
+		// assertTrue(isEnabled);
+		// } catch(Throwable e){
+		// System.out.println("TEST FAILED: Element is Not Enabled");
+		// throw new Exception();
+		// }
 	}
 
-	public static void assertArraysAreEqual(String[] expectedValues, String[] actualValues, boolean printout) throws InterruptedException {
-		if(printout) {
+	public static void assertArraysAreEqual(String[] expectedValues, String[] actualValues, boolean printout)
+			throws InterruptedException {
+		if (printout) {
 			System.out.println("EXPECTED VALUES");
 			int erep = 1;
 			for (String item : expectedValues) {
-				System.out.println("Expected "+erep+": " + item);
+				System.out.println("Expected " + erep + ": " + item);
 				erep++;
 			}
 			System.out.println("ACTUAL VALUES");
 			int arep = 1;
 			for (String item : actualValues) {
-				System.out.println("Actual "+arep+": " + item);
+				System.out.println("Actual " + arep + ": " + item);
 				arep++;
 			}
 		}
 		try {
 			assertTrue(Arrays.equals(expectedValues, actualValues));
-			if(printout) {
+			if (printout) {
 				System.out.println("RESULT: Arrays are equal");
 			}
 		} catch (Throwable e) {
@@ -496,21 +524,21 @@ public class AssertHelper extends AdsHelper {
 		String rowNumber = null;
 		try {
 			rowNumber = driver.findElement(By.xpath("//*[contains(@class,'rownumberer')]/div")).getText();
-			////td[contains(@class,'rownumberer')]/div[text()='1']
+			//// td[contains(@class,'rownumberer')]/div[text()='1']
 			if (printout) {
 				System.out.println("Row Number = " + rowNumber);
 			}
-			assertEquals("Failed on: " + testCase ,"1", rowNumber);
+			assertEquals("Failed on: " + testCase, "1", rowNumber);
 		} catch (Exception e) {
-			fail(testCase +  ": " + e.getMessage());
+			fail(testCase + ": " + e.getMessage());
 		}
 	}
 
 	public void assertFirstRowNumberFromResultsTable(boolean printout) throws InterruptedException {
 		waitForAjaxExtJs();
 		String rowNumber = driver.findElement(By.xpath("//*[contains(@class,'rownumberer')]/div")).getText();
-		////td[contains(@class,'rownumberer')]/div[text()='1']
-		if(printout) {
+		//// td[contains(@class,'rownumberer')]/div[text()='1']
+		if (printout) {
 			System.out.println("Row Number = " + rowNumber);
 		}
 		assertEquals("1", rowNumber);
@@ -536,6 +564,7 @@ public class AssertHelper extends AdsHelper {
 
 	public static void assertTextIsDisplayed(String expectedText) {
 		try {
+
 			 ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);",
 						driver.findElement(By.xpath("//*[text()='" + expectedText + "']")));
 				Thread.sleep(500);
@@ -550,10 +579,11 @@ public class AssertHelper extends AdsHelper {
 		try {
 			WebElement element = driver.findElement(By.xpath("//*[text()='" + expectedText + "']"));
 			assertFalse(element.isDisplayed());
-		} catch (Throwable e) {}
+		} catch (Throwable e) {
+		}
 	}
 
-	public  void assertElementIsDisplayedWithXpath(String xpath) {
+	public void assertElementIsDisplayedWithXpath(String xpath) {
 		WebElement checkElement = null;
 		try {
 			checkElement = driver.findElement(By.xpath("" + xpath + ""));
@@ -568,7 +598,7 @@ public class AssertHelper extends AdsHelper {
 		for (WebElement element : elements) {
 			try {
 				assertTrue(element.isDisplayed());
-				if(printout){
+				if (printout) {
 					System.out.println(element);
 				}
 			} catch (Throwable e) {
@@ -576,11 +606,12 @@ public class AssertHelper extends AdsHelper {
 			}
 		}
 	}
+
 	public static void assertListElementsAreDisplayed(List<WebElement> elements, boolean printout) {
 		for (WebElement element : elements) {
 			try {
 				assertTrue(element.isDisplayed());
-				if(printout){
+				if (printout) {
 					System.out.println(element);
 				}
 			} catch (Throwable e) {
@@ -588,6 +619,7 @@ public class AssertHelper extends AdsHelper {
 			}
 		}
 	}
+
 
 	public void assertElementValueAttribute(WebElement element, String expectedValue, boolean printout) {
 		String getValueAttribute = element.getAttribute("value");
@@ -606,11 +638,13 @@ public class AssertHelper extends AdsHelper {
 		}
 		assertThat(getValueAttribute, containsString(expectedValue));
 	}
+
 	public void assertElementForAttributeContains(WebElement element,  boolean printout) {
 		if(element.getAttribute("innerHTML").contains("diabled")) {
 			assertTrue(printout);
 		}
 	}
+
 	public void assertElementText(WebElement element, String expectedValue, boolean printout) {
 		try {
 			String elementText = element.getText();
@@ -640,7 +674,7 @@ public class AssertHelper extends AdsHelper {
 	public static void assertElementTextWithXpath(String xpath, String expectedValue, boolean printout) {
 		try {
 			String elementText = driver.findElement(By.xpath("" + xpath + "")).getText();
-			if(printout){
+			if (printout) {
 				System.out.println("Expected Value: " + expectedValue);
 				System.out.println("Actual   Value: " + elementText);
 			}
@@ -652,29 +686,33 @@ public class AssertHelper extends AdsHelper {
 
 	public void assertElementTextContainsWithXpathLocator(String xpath, String expectedValue, boolean printout) {
 		String elementText = driver.findElement(By.xpath("" + xpath + "")).getText();
-		if(printout){
+		if (printout) {
 			System.out.println("Expected Value: " + expectedValue);
 			System.out.println("Actual   Value: " + elementText);
 		}
 		assertTrue(elementText.contains(expectedValue));
 	}
 
-	public void assertTableColumnHeaders(WebElement tableCornerCell, String[] expectedTableHeaders, boolean printout) throws InterruptedException {
+	public void assertTableColumnHeaders(WebElement tableCornerCell, String[] expectedTableHeaders, boolean printout)
+			throws InterruptedException {
 		waitForAjaxExtJs();
 		int tableId = getElementIdNumberCode(tableCornerCell, printout);
 		ArrayList<String> tableHeadings = getTableColumnHeadingsArrayList(tableId, printout);
 		assertArraysAreEqual(expectedTableHeaders, javaConvertStringArrayListToArray(tableHeadings), printout);
 	}
 
-	public void assertTableColumnHeadersNoRowNumbers(String[] expectedTableHeaders, boolean printout) throws InterruptedException {
+	public void assertTableColumnHeadersNoRowNumbers(String[] expectedTableHeaders, boolean printout)
+			throws InterruptedException {
 		waitForAjaxExtJs();
-		WebElement firstColumn = driver.findElement(By.xpath("//*[contains(@class,'x-column-header-first')]/div/span[contains(@id,'-textEl') and @class='x-column-header-text']"));
-		int tableId = getElementIdNumberCode(firstColumn, printout) - 3; //remove 3, to set value back (to "missing" first column)
+		WebElement firstColumn = driver.findElement(By.xpath(
+				"//*[contains(@class,'x-column-header-first')]/div/span[contains(@id,'-textEl') and @class='x-column-header-text']"));
+		int tableId = getElementIdNumberCode(firstColumn, printout) - 3; // remove 3, to set value back (to "missing"
+																			// first column)
 		ArrayList<String> tableHeadings = getTableColumnHeadingsArrayList(tableId, printout);
 		assertArraysAreEqual(expectedTableHeaders, javaConvertStringArrayListToArray(tableHeadings), printout);
 	}
 
-	//===============================================================================
+	// ===============================================================================
 
 	public String[] javaConvertStringArrayListToArray(ArrayList<String> arraylist) {
 		String[] stringArray = arraylist.toArray(new String[0]);
@@ -682,13 +720,13 @@ public class AssertHelper extends AdsHelper {
 	}
 
 	private String getNumbersFromStringWithRegex(String string, boolean printout) {
-		Pattern p = Pattern.compile("\\d+"); //regex pattern
-		Matcher m = p.matcher(string);    //string to search
+		Pattern p = Pattern.compile("\\d+"); // regex pattern
+		Matcher m = p.matcher(string); // string to search
 		String numbers = null;
-		while(m.find()) {
+		while (m.find()) {
 			numbers = m.group();
 		}
-		if(printout) {
+		if (printout) {
 			System.out.println("Get Numbers from String: " + numbers);
 		}
 		return numbers;
@@ -697,30 +735,32 @@ public class AssertHelper extends AdsHelper {
 	private int getElementIdNumberCode(WebElement element, boolean printout) throws InterruptedException {
 		String elementIdNumberCode;
 		elementIdNumberCode = element.getAttribute("id");
-		elementIdNumberCode = getNumbersFromStringWithRegex(elementIdNumberCode,printout);
+		elementIdNumberCode = getNumbersFromStringWithRegex(elementIdNumberCode, printout);
 		if (printout) {
 			System.out.println("Get Element ID Number Code: " + Integer.parseInt(elementIdNumberCode));
 		}
 		return Integer.parseInt(elementIdNumberCode);
 	}
 
-	private ArrayList<String> getTableColumnHeadingsArrayList(int tableId, boolean printout) throws InterruptedException {
+	private ArrayList<String> getTableColumnHeadingsArrayList(int tableId, boolean printout)
+			throws InterruptedException {
 		ArrayList<String> tableHeadings = new ArrayList<>();
 		int initialHeadingId = tableId + 3;
 		boolean hasNextColumn = true;
-		if(printout){
+		if (printout) {
 			System.out.println("Table Id: " + tableId);
 			System.out.println("First Column Heading Id: " + initialHeadingId);
 		}
 		waitForAjaxExtJs();
 		while (hasNextColumn) {
 			try {
-				WebElement heading = driver.findElement(By.xpath("//span[contains(@id,'column-"+initialHeadingId+"-textEl') and @class='x-column-header-text']"));
-				if(printout) {
+				WebElement heading = driver.findElement(By.xpath("//span[contains(@id,'column-" + initialHeadingId
+						+ "-textEl') and @class='x-column-header-text']"));
+				if (printout) {
 					System.out.println("Column Heading: " + heading.getText());
 				}
 				tableHeadings.add(heading.getText());
-				if(isLastTableColumn(initialHeadingId, printout)){
+				if (isLastTableColumn(initialHeadingId, printout)) {
 					break;
 				} else {
 					initialHeadingId++;
@@ -734,20 +774,25 @@ public class AssertHelper extends AdsHelper {
 		return tableHeadings;
 	}
 
-	private boolean isLastTableColumn (int columnIdDigits, boolean printout) {
+	private boolean isLastTableColumn(int columnIdDigits, boolean printout) {
 		boolean isLast;
 		try {
-			isLast = driver.findElement(By.xpath("//*[contains(@class,'x-column-header-last')]/div/span[contains(@id,'column-"+columnIdDigits+"-textEl') and @class='x-column-header-text']")).isDisplayed();
-		} catch (Throwable e){
+			isLast = driver
+					.findElement(By.xpath("//*[contains(@class,'x-column-header-last')]/div/span[contains(@id,'column-"
+							+ columnIdDigits + "-textEl') and @class='x-column-header-text']"))
+					.isDisplayed();
+		} catch (Throwable e) {
 			isLast = false;
 		}
-		if(printout) {
-			System.out.println("Table Column ID: "+columnIdDigits+" is last: "+isLast);
+		if (printout) {
+			System.out.println("Table Column ID: " + columnIdDigits + " is last: " + isLast);
 		}
 		return isLast;
 	}
+
 	//Shilpa 08.08.2022
 	public static void assertThatString(WebElement element,String expectedValue,boolean printout) {
+
 		try {
 			String elementText = element.getText();
 			if (printout) {
@@ -755,6 +800,7 @@ public class AssertHelper extends AdsHelper {
 				System.out.println("Actual   Value: " + elementText);
 			}
 			if(elementText.toLowerCase().contains(expectedValue.toLowerCase())) {
+
 				assertTrue(true);
 			}
 		} catch (Throwable e) {
@@ -763,7 +809,9 @@ public class AssertHelper extends AdsHelper {
 		
 			
 	}
+
 	public static void assertThatAttributeValue(WebElement element,String expectedValue,boolean printout) {
+
 		try {
 			String elementText = element.getAttribute("value");
 			if (printout) {
@@ -784,4 +832,5 @@ public class AssertHelper extends AdsHelper {
 			}
 		}
 	
+
 }

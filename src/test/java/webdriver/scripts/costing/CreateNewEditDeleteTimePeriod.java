@@ -30,7 +30,8 @@ public class CreateNewEditDeleteTimePeriod extends GoHelper {
 	static String costTimePeriod = "Time Period" + currentDateTime;
 	static String[] filter = { "Name", "Is", "Equal", costTimePeriod };
 
-	/** Automates test ticket ADS-6673, ADS-6675 */
+
+	/** Automates test ticket ADS-6673, ADS-6675 ,ADS-6672*/
 
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {

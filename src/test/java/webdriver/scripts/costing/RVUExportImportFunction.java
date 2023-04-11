@@ -24,7 +24,8 @@ public class RVUExportImportFunction extends GoHelper {
 	static ContractingMap contracting;
 	static String costModel="BC COST MODEL";
 	static String[] filter= {"Cost Model Name","Is","Equal To",costModel};
-	/** Automates test ticket ADS-6659. ADS-6646*/
+
+	/** Automates test ticket ADS-6659. ADS-6646,ADS-6660*/
 	@BeforeClass
 	public static void setupScript() throws Exception,Throwable {
 		ExtentReport.reportCreate("RVUExportImportFunction", "webdriver.scripts.costing", "RVUExportImportFunction");

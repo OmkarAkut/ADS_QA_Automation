@@ -2,7 +2,6 @@ package webdriver.core;
 
 import static java.lang.Boolean.parseBoolean;
 import static org.junit.Assert.fail;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Arrays;

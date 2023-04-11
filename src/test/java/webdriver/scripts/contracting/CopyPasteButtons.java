@@ -8,7 +8,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.interactions.Actions;
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.corehelpers.GoHelper;
@@ -16,9 +15,7 @@ import webdriver.helpers.ContractModelsHelper;
 import webdriver.maps.ContractingMap;
 import webdriver.maps.mapbuilder.BuildMap;
 
-
 public class CopyPasteButtons extends GoHelper {
-
 	private static ContractingMap modelMap;
 	private static String ContractModel = "10.2.1 Medicare IPPS FY2020 Test";
 	private static String serviceModel = "MCR IPPS 2020";

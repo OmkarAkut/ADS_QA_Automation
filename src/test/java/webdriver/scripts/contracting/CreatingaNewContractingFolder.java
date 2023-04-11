@@ -7,11 +7,6 @@ import java.text.SimpleDateFormat;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.interactions.Actions;
-
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.corehelpers.DoHelper;
@@ -43,7 +38,7 @@ public class CreatingaNewContractingFolder extends GoHelper {
 			fail(e.getMessage());
 		}
 	}
-/**Test - UI Validation [Contracting] “Creating a New Contracting Folder”.**/
+/**Test - UI Validation [Contracting] ï¿½Creating a New Contracting Folderï¿½.**/
 	@Test
 	public void test01CreateNewContractFolder() throws Throwable {
 		try {
@@ -52,7 +47,7 @@ public class CreatingaNewContractingFolder extends GoHelper {
 			doClick(modelMap.getNewFolderNameInput());
 			modelMap.getNewFolderNameInput().sendKeys(contractFolderName);
 			driverDelay(500);
-			doClick(modelMap.getNewFolderNameSave());
+			doClick(ContractingMap.getNewFolderNameSave());
 			waitForAjaxExtJs();
 			waitForSpinnerToEnd();
 			doClick(modelMap.getContractingTreeExpand());
@@ -60,24 +55,9 @@ public class CreatingaNewContractingFolder extends GoHelper {
 			DoHelper.scrollToView("//div[text()='" + contractFolderName + "']");
 			assertTextIsDisplayed(contractFolderName);
 			doClick("//div[text()='" + contractFolderName + "']");
-//			driver.findElement(By.xpath("//div[text()='" + contractFolderName + "']")).sendKeys("test");
 			doClick(modelMap.getDeleteContractFolderBtn());
 			waitForElementToBeVisible(modelMap.getContractModelDeleteButtonInPopUp());
 			doClick(modelMap.getContractModelDeleteButtonInPopUp());
-//			driver.findElement(By.xpath("//div[@id='modelFoldertree-body']//div[text()='"+contractFolderName+"']")).click();
-//			doClick(modelMap.getRenameContractFolderBtn());
-//			driverDelay(1000);
-//			driver.findElement(By.xpath("(//tr[@class='x-grid-row x-grid-row-selected x-grid-row-focused']/td/div)[1]")).click();
-////			System.out.println(driver.findElement(By.xpath("//div[@id='modelFoldertree-body']//div[text()='"+contractFolderName+"']")).getText());
-//			driver.findElement(By.xpath("(//tr[@class='x-grid-row x-grid-row-selected x-grid-row-focused']/td/div)[1]")).sendKeys(Keys.chord(Keys.CONTROL, "a"));
-//			JavascriptExecutor jse = (JavascriptExecutor)driver;
-//			jse.executeScript("arguments[0].setAttribute('value', '" + renameFolderName +"')", driver.findElement(By.xpath("//div[@id='modelFoldertree-body']//div[text()='"+contractFolderName+"']")));
-//System.out.println(renameFolderName);
-//			//			driver.findElement(By.xpath("//div[@id='modelFoldertree-body']//div[text()='"+contractFolderName+"']")).sendKeys(renameFolderName);
-
-//			ContractModelsHelper.keyInValues(driver.findElement(By.xpath("//div[@id='modelFoldertree-body']//div[text()='"+contractFolderName+"']")), renameFolderName);
-//			DoHelper.scrollToView("//div[text()='" + renameFolderName + "']");
-//			assertTextIsDisplayed(renameFolderName);
 			doClosePageOnLowerBar("Model Library");
 			ExtentReport.logPass("PASS", "test01CreateNewContractFolder");
 		} catch (Exception | AssertionError e) {
@@ -92,4 +72,3 @@ public class CreatingaNewContractingFolder extends GoHelper {
 
 	}
 }
-

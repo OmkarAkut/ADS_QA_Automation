@@ -12,6 +12,7 @@ import webdriver.helpers.ContractModelsHelper;
 import webdriver.maps.ContractingMap;
 import webdriver.maps.mapbuilder.BuildMap;
 
+
 public class ValidateBenifitPlansInfoForMultipleUnpublishedContracts extends CalculationHelper {
 
 	private static ContractingMap modelMap;

@@ -38,7 +38,8 @@ public class OverwriteRvuNoCMSResults extends GoHelper {
 
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("RVUExportImportFunction", "webdriver.scripts.costing", "RVUExportImportFunction");
+
+		ExtentReport.reportCreate("OverwriteRvuNoCMSResults", "webdriver.scripts.costing", "OverwriteRvuNoCMSResults");
 		try {
 			generalMap = BuildMap.getInstance(driver, GeneralElementsMap.class);
 			costing = BuildMap.getInstance(driver, CostingMap.class);

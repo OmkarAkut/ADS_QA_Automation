@@ -12,10 +12,7 @@ import webdriver.helpers.CalculationHelper;
 import webdriver.maps.ContractingMap;
 import webdriver.maps.DialogsMap;
 import webdriver.maps.mapbuilder.BuildMap;
-
-
 public class VerifyFilterAscSchemes extends CalculationHelper{
-	
 	private static ContractingMap modelMap;
 	 private DialogsMap dialog = BuildMap.getInstance(driver, DialogsMap.class);
 	static final String ContractModelName = "ADS-1320 Contract Model D";
@@ -24,9 +21,9 @@ public class VerifyFilterAscSchemes extends CalculationHelper{
 	/** Regression: Automated test script for ADS-6447*/
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("UIValidationPrepareTables",
+		ExtentReport.reportCreate("VerifyFilterAscSchemes",
 				"webdriver.scripts.contracting",
-				"UIValidationPrepareTables");
+				"VerifyFilterAscSchemes");
 		try {
 			modelMap = BuildMap.getInstance(driver, ContractingMap.class);
 			Login.loginUser("ContractAnalyst1");
