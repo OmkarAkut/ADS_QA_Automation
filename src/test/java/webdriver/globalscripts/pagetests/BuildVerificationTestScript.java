@@ -520,7 +520,9 @@ public class BuildVerificationTestScript extends UcqcHelper {
 			fail(e.getMessage());
 		} finally {
 			try {
-				doClosePageOnLowerBar("Analytic Refresh...");
+//				Omkar 12/04/2023 : Xpath change for 11.2
+//				doClosePageOnLowerBar("Analytic Refresh...");
+				doClosePageOnLowerBar("Analytic Refresh Scenarios");
 			} catch (Exception | AssertionError e) {
 				ExtentReport.logFail("FAIL", "test0100AnalyticsRefreshScenarios", driver, e);
 				fail(e.getMessage());
@@ -593,7 +595,9 @@ public class BuildVerificationTestScript extends UcqcHelper {
 			};
 			assertElementsAreDisplayed(reportingTabReportMenuMaintenancePagePageElements, printout);
 			assertGridTableLoads();
-			doClosePageOnLowerBar("Report Menu...");
+//			Omkar 12/04/2023 : Xpath change for 11.2
+//			doClosePageOnLowerBar("Report Menu...");
+			doClosePageOnLowerBar("Report Menu Maintenance");
 			ExtentReport.logPass("PASS", "test0210ReportingTabReportMenuMaintenancePageMap");
 		} catch (Exception | AssertionError e) {
 
@@ -659,7 +663,9 @@ public class BuildVerificationTestScript extends UcqcHelper {
 					reportingMap.getReportingTabReportDateMaintenancePageDateFieldContractExpirationDateRangeStart(),
 					reportingMap.getReportingTabReportDateMaintenancePageDateFieldContractExpirationDateRangeEnd(), };
 			assertElementsAreDisplayed(reportDateMaintenancePageElementsContractingAndArSubTab, printout);
-			doClosePageOnLowerBar("Report Date...");
+//			Omkar 12/04/2023 : Xpath change for 11.2
+//			doClosePageOnLowerBar("Report Date...");
+			doClosePageOnLowerBar("Report Date Maintenance");
 			ExtentReport.logPass("PASS", "test0220ReportingTabReportDateMaintenancePageMap");
 		} catch (Exception | AssertionError e) {
 
@@ -745,7 +751,9 @@ public class BuildVerificationTestScript extends UcqcHelper {
 			} catch (Throwable e) {
 				fail(e.getMessage());
 			} finally {
-				doClosePageOnLowerBar("Model Library");
+//				Omkar 12/04/2023 : Xpath change for 11.2
+//				doClosePageOnLowerBar("Model Library");
+				doClosePageOnLowerBar("Close Costing Models");
 			}
 			ExtentReport.logPass("PASS", "test0300CostingTabCostModelLibraryPage");
 		} catch (Exception | AssertionError e) {
@@ -823,7 +831,9 @@ public class BuildVerificationTestScript extends UcqcHelper {
 			} catch (Throwable e) {
 				fail(e.getMessage());
 			} finally {
-				doClosePageOnLowerBar("Cost Model...");
+//				Omkar 12/04/2023 : Xpath change for 11.2
+//				doClosePageOnLowerBar("Cost Model...");
+				doClosePageOnLowerBar("Close Cost Model Calculation Scenarios");
 			}
 			ExtentReport.logPass("PASS", "test0330CostingTabCostModelScenarioCalculationMap");
 		} catch (Exception | AssertionError e) {
@@ -878,7 +888,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 				WebElement[] departmentModalElements = { costingMap.getUnitCostQuickCalculationDepartmentField(),
 						costingMap.getUnitCostQuickCalculationDepartmentButtonFilter(),
 						costingMap.getUnitCostQuickCalculationDepartmentButtonApply(),
-						costingMap.getUnitCostQuickCalculationDepartmentButtonClose(),
+//						costingMap.getUnitCostQuickCalculationDepartmentButtonClose(),
 						costingMap.getUnitCostQuickCalculationDepartmentButtonCancelAndClose() };
 				assertElementsAreDisplayed(departmentModalElements, printout);
 				doClick(costingMap.getUnitCostQuickCalculationDepartmentButtonFilter());
@@ -894,7 +904,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 			} catch (Throwable e) {
 				fail(e.getMessage());
 			} finally {
-				doClick(costingMap.getUnitCostQuickCalculationDepartmentButtonClose());
+				doClick("Unit Cost Quick Calculation");
 			}
 			ExtentReport.logPass("PASS", "test0340bCostingTabUnitCostQuickCalculationPageDepartmentDialog");
 		} catch (Exception | AssertionError e) {
@@ -915,7 +925,9 @@ public class BuildVerificationTestScript extends UcqcHelper {
 			} catch (Throwable e) {
 				fail(e.getMessage());
 			} finally {
-				doClosePageOnLowerBar("Unit Cost Quick...");
+//				Omkar 12/04/2023 : Xpath change for 11.2
+//				doClosePageOnLowerBar("Unit Cost Quick...");
+				doClosePageOnLowerBar("Unit Cost Quick Calculation");
 			}
 			ExtentReport.logPass("PASS", "test0340cCostingTabUnitCostQuickCalculationPageShowHideFields");
 		} catch (Exception | AssertionError e) {
@@ -944,7 +956,9 @@ public class BuildVerificationTestScript extends UcqcHelper {
 			} catch (Throwable e) {
 				fail(e.getMessage());
 			} finally {
-				doClosePageOnLowerBar("Model Library");
+//				Omkar 12/04/2023 : Xpath change for 11.2
+//				doClosePageOnLowerBar("Model Library");
+				doClosePageOnLowerBar("Contract Models");
 			}
 			ExtentReport.logPass("PASS", "test0400ContractingTabContractModelsPage");
 		} catch (Exception | AssertionError e) {
@@ -996,7 +1010,9 @@ public class BuildVerificationTestScript extends UcqcHelper {
 						contractingMap.getContractualAllowanceExportPageHelpLink(),
 						contractingMap.getContractualAllowanceExportPageTableCornerCell(), };
 				assertElementsAreDisplayed(contractingTabContractualAllowanceExportPageElements, printout);
-				doClosePageOnLowerBar("Contractual...");
+//				Omkar 12/04/2023 : Xpath change for 11.2
+//				doClosePageOnLowerBar("Contractual...");
+				doClosePageOnLowerBar("Contractual Allowance Export");
 			} catch (Throwable e) {
 				fail(e.getMessage());
 			}

@@ -63,9 +63,13 @@ public class ValidateCustomizeTaskListspageSystemMaintenance extends Calculation
 		try {
 			doClick(systemMap.getCustomizeTaskListsPageSubTabOverhead());
 			assertTextIsDisplayed("Default Overhead Model Task List");
-			doClick("//span[text()='Default Overhead Model Task List']//following::div[text()='Prepare Costing Elements']");
+//			Omkar 21/4/2023 : xpath change for 11.2
+//			doClick("//span[text()='Default Overhead Model Task List']//following::div[text()='Prepare Costing Elements']");
+			doClick("//div[text()='Default Overhead Model Task List']//following::span[text()='Prepare Costing Elements']");
 			assertTextIsDisplayed("Entities");
-			doClick("//span[text()='Default Overhead Model Task List']//following::div[text()='Prepare Costing Elements']");
+//			Omkar 21/4/2023 : xpath change for 11.2
+//			doClick("//span[text()='Default Overhead Model Task List']//following::div[text()='Prepare Costing Elements']");
+			doClick("//div[text()='Default Overhead Model Task List']//following::span[text()='Prepare Costing Elements']");
 			ExtentReport.logPass("PASS", "test02OpenOverheadTab");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test02OpenOverheadTab", driver, e);
@@ -79,9 +83,13 @@ public class ValidateCustomizeTaskListspageSystemMaintenance extends Calculation
 			doClick(systemMap.getCustomizeTaskListsPageSubTabUnpublishedContract());
 			doClick(ContractingMap.getContractModelRiskLimiterCancelCloseBtn());
 			assertTextIsDisplayed("Default Unpublished Contract Model Task List");
-			doClick("//span[text()='Default Unpublished Contract Model Task List']//following::div[text()='Build Structure Elements'][1]");
+//			Omkar 21/4/2023 : xpath change for 11.2
+//			doClick("//span[text()='Default Unpublished Contract Model Task List']//following::div[text()='Build Structure Elements'][1]");
+			doClick("//div[text()='Default Unpublished Contract Model Task List']//following::span[text()='Build Structure Elements']");
 			assertTextIsDisplayed("Contract Types");
-			doClick("//span[text()='Default Unpublished Contract Model Task List']//following::div[text()='Build Structure Elements'][1]");
+//			Omkar 21/4/2023 : xpath change for 11.2
+//			doClick("//span[text()='Default Unpublished Contract Model Task List']//following::div[text()='Build Structure Elements'][1]");
+			doClick("//div[text()='Default Unpublished Contract Model Task List']//following::span[text()='Build Structure Elements']");
 			ExtentReport.logPass("PASS", "test02OpenUnpublishedContract");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test02OpenUnpublishedContract", driver, e);
@@ -95,10 +103,14 @@ public class ValidateCustomizeTaskListspageSystemMaintenance extends Calculation
 			doClick(systemMap.getCustomizeTaskListsPageSubTabPublishedContract());
 			doClick(ContractingMap.getContractModelRiskLimiterCancelCloseBtn());
 			assertTextIsDisplayed("Edit Payment Terms");
-			doClick("(//div[contains(@class,'nowrapRow')]//following::div[text()='Edit Payment Terms'])");
+//			Omkar 21/4/2023 : xpath change for 11.2
+//			doClick("(//div[contains(@class,'nowrapRow')]//following::div[text()='Edit Payment Terms'])");
+			doClick("//div[contains(@class,'nowrapRow')]//following::span[text()='Edit Payment Terms'])");
 			assertElementIsDisplayedWithXpath(
 					"//div[contains(@id,'treeview')]//div[text()='Fee For Service Payment Terms']");
-			doClick("(//div[contains(@class,'nowrapRow')]//following::div[text()='Edit Payment Terms'])");
+//			Omkar 21/4/2023 : xpath change for 11.2
+//			doClick("(//div[contains(@class,'nowrapRow')]//following::div[text()='Edit Payment Terms'])");
+			doClick("//div[contains(@class,'nowrapRow')]//following::span[text()='Edit Payment Terms'])");
 			ExtentReport.logPass("PASS", "test03OpenPublishedContract");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test03OpenPublishedContract", driver, e);

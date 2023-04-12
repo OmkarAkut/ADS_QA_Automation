@@ -216,7 +216,7 @@ public class DoHelper extends DriverHelper {
 		waitForAjaxExtJs();
 //      Omkar 28/03/2023 : Xpath change for 11.2
 //		driver.findElement(By.xpath("//*[contains(@id,'tab') and contains(text(),'"+pageName+"')]/../../following-sibling::a")).click();
-		driver.findElement(By.xpath("//*[contains(@id,'tab') and contains(text(),'"+pageName+"')]/../../following-sibling::span")).click();
+		driver.findElement(By.xpath("//*[contains(@id,'tab') and contains(text(),'"+" Close "+pageName+"')]")).click();
 		waitForAjaxExtJs();
 	}
 

@@ -674,12 +674,13 @@ public class CostingMap extends MapConfig {
 		return unitCostQuickCalculationDepartmentButtonCancelAndClose;
 	}
 
-	@FindBy(xpath = "//*[contains(@class,'tool-close')]")
-	private WebElement unitCostQuickCalculationDepartmentButtonClose;
-
-	public WebElement getUnitCostQuickCalculationDepartmentButtonClose() {
-		return unitCostQuickCalculationDepartmentButtonClose;
-	}
+//	Omkar 12/04/2023 : Not needed as we have a generalised method
+//	@FindBy(xpath = "//*[contains(@class,'tool-close')]")
+//	private WebElement unitCostQuickCalculationDepartmentButtonClose;
+//
+//	public WebElement getUnitCostQuickCalculationDepartmentButtonClose() {
+//		return unitCostQuickCalculationDepartmentButtonClose;
+//	}
 
 	/****** End Department Modal *****/
 
