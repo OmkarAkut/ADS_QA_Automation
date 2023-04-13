@@ -1241,6 +1241,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 	public void test0840SystemMaintenanceTabCustomizeMaintainDataPageMap() throws InterruptedException, Throwable {
 		try {
 			try {
+				Login.loginUser("AutomationTesterAdmin");
 				goToPage("Customize Maintain Data");
 				waitForSpinnerToEnd();
 				waitForAjaxExtJs();

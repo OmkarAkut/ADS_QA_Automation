@@ -81,8 +81,10 @@ public class WaitHelper extends JavaHelper {
 			} catch(Throwable e){
 				foundElement = false;
 			}
+			break;
 		}
 		while(!foundElement);
+		
 	}
 
 	/** Uses the WebDriver Javascript Executor to run window.onload, which waits for all page elements to be loaded */

@@ -103,7 +103,7 @@ public class ValidateCustomizeTaskListspageSystemMaintenance extends Calculation
 			doClick(systemMap.getCustomizeTaskListsPageSubTabPublishedContract());
 			doClick(ContractingMap.getContractModelRiskLimiterCancelCloseBtn());
 			assertTextIsDisplayed("Edit Payment Terms");
-//			Omkar 21/4/2023 : xpath change for 11.2
+//			Omkar 12/4/2023 : xpath change for 11.2
 //			doClick("(//div[contains(@class,'nowrapRow')]//following::div[text()='Edit Payment Terms'])");
 			doClick("//div[contains(@class,'nowrapRow')]//following::span[text()='Edit Payment Terms'])");
 			assertElementIsDisplayedWithXpath(

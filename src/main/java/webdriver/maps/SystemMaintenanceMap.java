@@ -338,7 +338,9 @@ public class SystemMaintenanceMap extends MapConfig {
 
 	// ===== System Maintenance Tab > Customize Maintain Data Page ===== //
 
-	@FindBy(xpath = "//label[contains(@id,'radiofield') and text()='Show Selected']/../descendant::input")
+//	Omkar 12/4/2023 : xpath change for 11.2
+//	@FindBy(xpath = "//label[contains(@id,'radiofield') and text()='Show Selected']/../descendant::input")
+	@FindBy(xpath = "//label[contains(@id,'radio') and text()='Show Selected']/../descendant::input")
 	private WebElement customizeMaintainDataRadioShowSelected;
 	public WebElement getCustomizeMaintainDataRadioButtonShowSelected() {return customizeMaintainDataRadioShowSelected;}
 
