@@ -81,8 +81,9 @@ public class ContractingMap extends MapConfig {
     
 	public static String getContractingName = "(//td[contains(@class,'x-grid-cell-treecolumn')]/*[text()='Contracting'])[1]";
 
-
-	@FindBy(xpath = "//div[contains(@class,'horzOverflow ')]//div[contains(@id,'acommontbar')]//span[text()='New']//parent::button")
+//	Omkar 14/04/2023 : xpath changes for 11.2 (done for episodes)
+//	@FindBy(xpath = "//div[contains(@class,'horzOverflow ')]//div[contains(@id,'acommontbar')]//span[text()='New']//parent::button")
+	@FindBy(xpath = "//div[contains(@class,'horzOverflow ')]//div[contains(@id,'acommontbar')]//span[text()='New']/parent::span")
 	public   WebElement NewContractModelButton1;
 
 	public   WebElement getNewContractModelButton() {
@@ -145,11 +146,15 @@ public static WebElement getContractModelAddProviderBtn() {return getContractMod
 	private static WebElement getNewFolderPopUp;
 	public WebElement getNewFolderPopUp() {return getNewFolderPopUp;}
 
-	@FindBy(xpath = "//div[contains(@class,'x-window-header-text-container')]//following::td[contains(@id,'textfield')]/input")
+//	Omkar 14/04/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//div[contains(@class,'x-window-header-text-container')]//following::td[contains(@id,'textfield')]/input")
+	@FindBy(xpath = "//div[contains(@class,'x-form-item-body')]//following::div[contains(@id,'textfield')]/input")
 	private  WebElement getNewFolderNameInput;
 	public  WebElement getNewFolderNameInput() {return getNewFolderNameInput;}
 
-	@FindBy(xpath = "//div[contains(@class,'x-window-header-text-container')]//following::span[text()='Save & Close']")
+//	Omkar 14/04/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//div[contains(@class,'x-window-header-text-container')]//following::span[text()='Save & Close']")
+	@FindBy(xpath = "//div[contains(@class,'x-box-target')]//following::span[text()='Save & Close']")
 	private static  WebElement getNewFolderNameSave;
 	public static  WebElement getNewFolderNameSave() {return getNewFolderNameSave;}
 
@@ -201,7 +206,9 @@ public static WebElement getContractModelAddProviderBtn() {return getContractMod
 	private WebElement ContractModelPasteNameInput;
 	public WebElement getContractModelPasteNameInput() {return ContractModelPasteNameInput;}
 	
-	@FindBy(xpath = "//span[text()='Save & Close']//parent::button")
+//	Omkar 14/04/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//span[text()='Save & Close']//parent::button")
+	@FindBy(xpath = "//span[text()='Save & Close']//parent::span")
 	private  WebElement ContractModelSaveCopy;
 	public  WebElement getContractModelSaveCopy() {return ContractModelSaveCopy;}
 	

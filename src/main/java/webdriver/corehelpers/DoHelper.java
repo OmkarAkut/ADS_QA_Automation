@@ -132,14 +132,21 @@ public class DoHelper extends DriverHelper {
 	}
 
 	public static void doClickTreeItemWithCheckbox(String name) throws InterruptedException {
-		waitUntilElementIsClickable(driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]/div[text()='" + name + "']")));
+//		  Omkar 14/04/2023 : xpath changes for 11.2
+//		waitUntilElementIsClickable(driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]/div[text()='" + name + "']")));
+		waitUntilElementIsClickable(driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]//span[text()='" + name + "']")));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);",
-				driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]/div[text()='" + name + "']")));
+				driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]//span[text()='" + name + "']")));
+//		Omkar 14/04/2023 : xpath changes for 11.2
+//		driver
+//		.findElement(
+//				By.xpath(
+//						"//td[contains(@class,'x-grid-cell-treecolumn')]" +
+//								"/div[text()='" + name + "']/input[contains(@class,'x-tree-checkbox')]/.."))
+//		.click();
 		driver
 		.findElement(
-				By.xpath(
-						"//td[contains(@class,'x-grid-cell-treecolumn')]" +
-								"/div[text()='" + name + "']/input[contains(@class,'x-tree-checkbox')]/.."))
+				By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]//span[text()='" + name + "']"))
 		.click();
 		waitForSpinnerToEnd();
 		waitForAjaxExtJs();
@@ -289,7 +296,9 @@ public class DoHelper extends DriverHelper {
 		doClick(element);
 		waitForAjaxExtJs();
 		driverDelay(200);
-		WebElement list = driver.findElement(By.xpath("//div[contains(@class,'floating')]/div[contains(@id,'listEl')]/ul"));
+//		Omkar 14/04/2023 : xpath changes for 11.2
+//		WebElement list = driver.findElement(By.xpath("//div[contains(@class,'floating')]/div[contains(@id,'listEl')]/ul"));
+		WebElement list = driver.findElement(By.xpath("//div[contains(@class,'floating')]//div[contains(@id,'listWrap')]/ul"));
 		List<WebElement> menu = list.findElements(By.tagName("li"));
 		System.out.println();
 		for(WebElement option : menu) {

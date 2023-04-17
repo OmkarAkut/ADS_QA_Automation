@@ -195,8 +195,10 @@ public class ModelLibraryMap extends MapConfig {
 
     /******Model Library Filter End******/
     /*****Episodes***/
-    @FindBy(xpath = "//div[contains(@class,'x-window-closable ')]//div[contains(@id,'window')]//span[text()='New Episode Model']")
-	public  WebElement getNewpisodeModelPopUp;
+//    Omkar 14/04/2023 : xpath changes for 11.2
+//    @FindBy(xpath = "//div[contains(@class,'x-window-closable ')]//div[contains(@id,'window')]//span[text()='New Episode Model']")
+	@FindBy(xpath = "//div[contains(@class,'x-window-closable ')]//div[contains(@id,'window')]//div[text()='New Episode Model']")
+    public  WebElement getNewpisodeModelPopUp;
 	public  WebElement getNewEpisodeModelPopUp() { return getNewpisodeModelPopUp;}
 	
 	@FindBy(name = "preAdmitDays")
@@ -207,7 +209,9 @@ public class ModelLibraryMap extends MapConfig {
     private  WebElement preDischargePhase;
     public  WebElement getpreDischargePhase() {return preDischargePhase;}
     
-    @FindBy(xpath = "(//span[text()='Triggers']//following::span[text()='Add'])[1]")
+//    Omkar 14/04/2023 : xpath changes for 11.2
+//    @FindBy(xpath = "(//span[text()='Triggers']//following::span[text()='Add'])[1]")
+    @FindBy(xpath = "(//div[text()='Triggers']//following::span[text()='Add'])[1]")
     private  WebElement triggerAddButton;
     public  WebElement getTriggerAddButton() {return triggerAddButton;}
     
@@ -215,11 +219,15 @@ public class ModelLibraryMap extends MapConfig {
     private  WebElement triggerRemoveButton;
     public  WebElement getTriggerRemoveButton() {return triggerRemoveButton;}
     
-    @FindBy(xpath = "//span[text()='Triggers Selector']")
+//    Omkar 14/04/2023 : xpath changes for 11.2
+//    @FindBy(xpath = "//span[text()='Triggers Selector']")
+    @FindBy(xpath = "//div[text()='Triggers Selector']")
     private  WebElement triggerSelectorPopUp;
     public  WebElement getTriggerSelectorPopUp() {return triggerSelectorPopUp;}
     
-    @FindBy(name = "populationId")
+//    Omkar 14/04/2023 : xpath changes for 11.2
+//    @FindBy(name = "populationId")//input[@name='populationId']
+    @FindBy(xpath = "//input[@name='populationId']")
     private static WebElement episodePopulationDropdown;
     public static WebElement getEpisodePopulationDropdown() {return episodePopulationDropdown;}
 
@@ -227,19 +235,27 @@ public class ModelLibraryMap extends MapConfig {
     private  WebElement shareLogCheckbox;
     public  WebElement getshareLogCheckbox() {return shareLogCheckbox;}
     
-    @FindBy(xpath = "//div[text()='Model Episode']/img[3]")
+//    Omkar 14/04/2023 : xpath changes for 11.2
+//    @FindBy(xpath = "//div[text()='Model Episode']/img[3]")
+    @FindBy(xpath = "//span[text()='Model Episode']//preceding-sibling::div[contains(@class,'x-tree-elbow-img x-tree-elbow-end')]")
     private  WebElement modelEpisode;
     public  WebElement getModelEpisode() {return modelEpisode;} 
     
-    @FindBy(xpath = "//*[contains(@id, 'panel')][text()='Triggers']/parent::div/following-sibling::div/img")
+//    Omkar 14/04/2023 : xpath changes for 11.2
+//    @FindBy(xpath = "//*[contains(@id, 'panel')][text()='Triggers']/parent::div/following-sibling::div/img")
+    @FindBy(xpath = "//*[contains(@id, 'panel')][text()='Triggers']/parent::div/following-sibling::div")
     private  WebElement openNewSection;
     public  WebElement getOpenNewSection() {return openNewSection;} 
     
-    @FindBy(xpath = "//div[contains(@class,'x-toolbar-footer')]//span[text()='Save']//parent::button")
+//    Omkar 14/04/2023 : xpath changes for 11.2
+//    @FindBy(xpath = "//div[contains(@class,'x-toolbar-footer')]//span[text()='Save']//parent::button")
+    @FindBy(xpath = "//div[contains(@class,'x-toolbar-footer')]//span[text()='Save']//parent::span")
     private  WebElement SaveButton;
     public  WebElement getSaveButton() {return SaveButton;} 
     
-    @FindBy(xpath = "//div[contains(@class,'x-toolbar-footer')]//span[text()='Assign']//parent::button")
+//    Omkar 14/04/2023 : xpath changes for 11.2
+//    @FindBy(xpath = "//div[contains(@class,'x-toolbar-footer')]//span[text()='Assign']//parent::button")
+    @FindBy(xpath = "//div[contains(@class,'x-toolbar-footer')]//span[text()='Assign']//parent::span")
     private  WebElement AssignButton;
     public  WebElement getAssignButton() {return AssignButton;}
     
@@ -247,11 +263,15 @@ public class ModelLibraryMap extends MapConfig {
     private  WebElement warningPopUp;
     public  WebElement getWarningPopUp() {return warningPopUp;}
     
-    @FindBy(xpath = "//span[contains(@id,'messagebox')]//following::span[text()='Remove']//parent::button")
+//    Omkar 14/04/2023 : xpath changes for 11.2
+//    @FindBy(xpath = "//span[contains(@id,'messagebox')]//following::span[text()='Remove']//parent::button")
+    @FindBy(xpath = "//span[contains(@id,'messagebox')]//following::span[text()='Remove']//parent::span")
     private  WebElement RemoveButton;
     public  WebElement getRemoveButton() {return RemoveButton;}
     
-    @FindBy(xpath = "//span[contains(@id,'messagebox')]//following::span[text()='Return']//parent::button")
+//    Omkar 14/04/2023 : xpath changes for 11.2
+//    @FindBy(xpath = "//span[contains(@id,'messagebox')]//following::span[text()='Return']//parent::button")
+    @FindBy(xpath = "//span[contains(@id,'messagebox')]//following::span[text()='Return']//parent::span")
     private  static WebElement ReturnButton;
     public static WebElement getReturnButton() {return ReturnButton;}
     

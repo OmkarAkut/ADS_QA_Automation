@@ -6,6 +6,7 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
 		EpisodesAssignmentAndRemovalFourPhasesAds1347.class,
 		EpisodesPostDischargeLogicUsesAdmitDateToQualifyEncountersAds2579.class,
+		EpisodesCreateAssignRemoval.class
 
 })
 

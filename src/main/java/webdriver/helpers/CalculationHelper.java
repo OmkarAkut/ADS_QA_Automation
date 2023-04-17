@@ -62,7 +62,9 @@ private static EditContractingModelMap editModelMap;
   }
 
   public void clickLastPageIconOnCalculationStatusViewLog() {
-    String xpath = "//div[4]/div/div/div[2]/div/div/div[7]/em/button[@aria-label='Last Page']";
+//	Omkar 17/04/2023 : Xpath changes to click the last page button  
+//    String xpath = "//div[4]/div/div/div[2]/div/div/div[7]/em/button[@aria-label='Last Page']";
+	String xpath = "(//span[contains(@class,'tbar-last-button')])[3]";
     try {
       waitForPresenceOfElement(xpath);
       driver.findElement(By.xpath(xpath)).click();
@@ -77,7 +79,9 @@ private static EditContractingModelMap editModelMap;
     modelMap.getModelLibraryButtonSearch().click();
     waitForAjaxExtJs();
     Thread.sleep(1000);
-    driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell x-grid-cell-gridcolumn')]/*[text()='" + contractModel + "']")).click();
+//    Omkar 13/4/2023 : change in xpath for 11.2
+//    driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell x-grid-cell-gridcolumn')]/*[text()='" + contractModel + "']")).click();
+    driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell x-grid-td x-grid-cell-gridcolumn')]/*[text()='" + contractModel + "']")).click();
   }
 
   public void assertCalculationStatusMyStatusFirstRowIsCompleted() {
@@ -275,8 +279,12 @@ private static EditContractingModelMap editModelMap;
   }
 
   public void calculationStatusPageOpenViewDialog() {
-    waitForPresenceOfElement("//div[not(contains(@class,'disabled'))]/em/button/span[text()='View']");
-    driver.findElement(By.xpath("//div[not(contains(@class,'disabled'))]/em/button/span[text()='View']")).click();
+//	  Omkar 14/04/2023 : xpath changes for 11.2
+//    waitForPresenceOfElement("//div[not(contains(@class,'disabled'))]/em/button/span[text()='View']");
+    waitForPresenceOfElement("(//div[not(contains(@class,'disabled'))]//td[contains(@class,'x-grid-cell x-grid-td x-grid-cell-gridcolumn-1490 x-unselectable')]/div/span)[1]");
+//    Omkar 14/04/2023 : xpath changes for 11.2
+//    driver.findElement(By.xpath("//div[not(contains(@class,'disabled'))]/em/button/span[text()='View']")).click();
+    driver.findElement(By.xpath("(//div[not(contains(@class,'disabled'))]//td[contains(@class,'x-grid-cell x-grid-td x-grid-cell-gridcolumn-1490 x-unselectable')]/div/span)[1]")).click();
     waitForDisplayedSpinnerToEnd();
   }
 
@@ -454,7 +462,9 @@ try {
 	}
     while (calculate) {
       try {
-        driver.findElement(By.xpath("//button/span[text()='Refresh']")).click();
+//    	  Omkar 14/04/2023 : xpath changes for 11.2
+//        driver.findElement(By.xpath("//button/span[text()='Refresh']")).click();
+        driver.findElement(By.xpath("//span[text()='Refresh']")).click();
         waitForSpinnerToEnd();
         percent = driver.findElement(By.xpath("//*[contains(@class,'x-progress-text-back')]")).getText();
         System.out.println("Percent complete: " + percent);

@@ -141,8 +141,11 @@ public class EpisodesPostDischargeLogicUsesAdmitDateToQualifyEncountersAds2579 e
   }
 
   public void doClickTree(String name) throws InterruptedException {
-    waitForPresenceOfElement("//td[contains(@class,'x-grid-cell-treecolumn')]/div[text()='" + name + "']");
-    driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]/div[text()='" + name + "']")).click();
+//	  Omkar 17/4/2023 : xpath changes for 11.2
+//    waitForPresenceOfElement("//td[contains(@class,'x-grid-cell-treecolumn')]/div[text()='" + name + "']");
+//    driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]/div[text()='" + name + "']")).click();
+	  waitForPresenceOfElement("//div[contains(@class,'x-grid-cell-inner x-grid-cell-inner-treecolumn')]//span[text()='" + name + "']");
+    driver.findElement(By.xpath("//div[contains(@class,'x-grid-cell-inner x-grid-cell-inner-treecolumn')]//span[text()='" + name + "']")).click();
     waitForSpinnerToEnd();
     waitForAjaxExtJs();
     waitForSpinnerToEnd();

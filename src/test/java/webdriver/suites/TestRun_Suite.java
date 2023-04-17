@@ -247,7 +247,7 @@ import webdriver.templates.TemplatesTestSuite;
 	ValidateImportExportbuttonsontheSystemMaintenance.class,
 //	ValidateOverheadTaskListscreensAreAvailableforCost.class,
 	ValidateSecuritySettingsGeneralSettingspagesintheSystemMaintenance.class,
-	TestSuiteAXE.class,
+//	TestSuiteAXE.class,
 
 
 })

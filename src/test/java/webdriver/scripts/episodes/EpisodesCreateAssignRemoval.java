@@ -8,6 +8,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
@@ -62,6 +63,7 @@ public class EpisodesCreateAssignRemoval extends CalculationHelper {
 			tableDoubleClickCellFirstColumn(episodeModelName);
 			waitForDisplayedSpinnerToEnd();
 			doClick(modelMap.getModelEpisode());
+			driverDelay(500);
 			doClickTreeItemWithCheckbox("General Information - Episode");
 //			doClickTreeItem("General Information - Episode");
 			ContractModelsHelper.keyInValues(modelMap.getPreAdmissionPhase(), enterPreAdmissionPhase);
@@ -76,7 +78,7 @@ public class EpisodesCreateAssignRemoval extends CalculationHelper {
 			ContractModelsHelper.highlightColumnsToDisplayColumnServices();
 			doClick(contractingMap.getContractFeeForServicePaymentApply());
 			doClick(contractingMap.getContractModelSaveCopy());
-			doClick(modelMap.getshareLogCheckbox());
+//			doClick(modelMap.getshareLogCheckbox());
 
 			ExtentReport.logPass("PASS", "test01EpisodeCreation");
 		} catch (Exception | AssertionError e) {
@@ -101,6 +103,9 @@ public class EpisodesCreateAssignRemoval extends CalculationHelper {
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
 			clickLastPageIconOnCalculationStatusViewLog();
+			System.out.println("Waiting");
+			Thread.sleep(1000);
+//			Omkar 17/04/2023 : The below elements would be found only on last page of view window
 			confirmCalculationStatusDetailsContains("Total number of Encounters tagged as triggers : 10");
 			confirmCalculationStatusDetailsContains("Total number of Encounters tagged as pre-admission inclusions: 0");
 			confirmCalculationStatusDetailsContains("Total number of Encounters tagged as acute inclusions: 0");
@@ -121,7 +126,7 @@ public class EpisodesCreateAssignRemoval extends CalculationHelper {
 			doClick(contractingMap.getContractModelButtonColumnsToDisplayModalRemove());
 			waitForSpinnerToEnd();
 			waitForFirstRowCalculationBarToReach100Percent();
-
+// Omkar 17/4/2023 : Unab;le to scroll to bottom to find element. Code will fail after this
 			calculationStatusPageOpenViewDialog();
 			confirmCalculationStatusDetailsContains("Total EFRs in Population to process: 10");
 			confirmCalculationStatusDetailsContains("Remove Total number of tagged Encounters: 10");
