@@ -136,9 +136,10 @@ import webdriver.templates.TemplatesTestSuite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-	SystemMaintenanceTestSuite.class,
-	EpisodesTestSuite.class,
-	ReportingTestSuite.class,
+//	SystemMaintenanceTestSuite.class,
+//	EpisodesTestSuite.class,
+//	ReportingTestSuite.class,
+	ContractingSuite.class,
 
 })
 

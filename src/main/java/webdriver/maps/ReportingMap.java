@@ -170,7 +170,7 @@ public class ReportingMap extends MapConfig {
     private WebElement reportChargeItem;
     public WebElement reportChargeItem() {return reportChargeItem;}
     
-    @FindBy(xpath = "(//div[text()='Charge ITem']//following::div[text()='Department Code'])[1]")
+    @FindBy(xpath = "(//div[text()='Charge Item']//following::div[text()='Department Code'])[1]")
     private WebElement reportChargeItemCode;
     public WebElement reportChargeItemCode() {return reportChargeItemCode;}
     
