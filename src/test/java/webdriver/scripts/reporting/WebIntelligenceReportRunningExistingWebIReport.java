@@ -45,8 +45,11 @@ public class WebIntelligenceReportRunningExistingWebIReport extends GoHelper {
 			driverDelay(5000);
 			waitForPresenceOfElement("//*[@name = 'servletBridgeIframe']");
 			webdriverSwitchToFrame("servletBridgeIframe");
-			waitForPresenceOfElement("//a[text()='Documents']");
-			doClick("//a[text()='Documents']");
+//			Omkar 19/04/2023 : xpath changes for ADS-11.2
+//			waitForPresenceOfElement("//a[text()='Documents']");
+//			doClick("//a[text()='Documents']");
+			waitForPresenceOfElement("//span[@id='Documents-title']");
+			doClick("//span[@id='Documents-title']");
 			waitForElementPresence("//a[@title='Expand Folders']");
 			ExtentReport.logPass("PASS", "testWebiPageLoads");
 		} catch (Exception | AssertionError e) {

@@ -273,11 +273,15 @@ public static WebElement getContractModelAddProviderBtn() {return getContractMod
 	private WebElement ContractModelExportFileSharedLocOption;
 	public WebElement getContractModelExportFileSharedLocOption() {return ContractModelExportFileSharedLocOption;}
 	
-	@FindBy(xpath = "//div[contains(@class,'x-toolbar-footer')]//div[contains(@class,'x-toolbar-item')]//span[text()='Export']//parent::button")
+//	Omkar 25/4/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//div[contains(@class,'x-toolbar-footer')]//div[contains(@class,'x-toolbar-item')]//span[text()='Export']//parent::button")
+	@FindBy(xpath = "//div[contains(@class,'x-toolbar-footer')]//descendant::span[text()='Export']")
 	private WebElement ContractModelExportButtonInExportPopUp;
 	public WebElement getContractModelExportButtonInExportPopUp() {return ContractModelExportButtonInExportPopUp;}
 	
-	@FindBy(xpath = "//div[contains(@class,'x-toolbar-footer')]//div[contains(@class,'x-toolbar-item')]//span[text()='Import']//parent::button")
+//	Omkar 25/4/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//div[contains(@class,'x-toolbar-footer')]//div[contains(@class,'x-toolbar-item')]//span[text()='Import']//parent::button")
+	@FindBy(xpath = "//div[contains(@class,'x-toolbar-footer')]//descendant::span[text()='Import']")
 	private WebElement ContractModelImportButtonInExportPopUp;
 	public WebElement getContractModelImportButtonInExportPopUp() {return ContractModelImportButtonInExportPopUp;}
 	
@@ -310,7 +314,9 @@ public static WebElement getContractModelAddProviderBtn() {return getContractMod
 	private static WebElement ContractModelRiskLimiterMessageBoxCancelCloseBtn;
 	public static WebElement getContractModelRiskLimiterMessageBoxCancelCloseBtn() {return ContractModelRiskLimiterMessageBoxCancelCloseBtn;}
 	
-	@FindBy(xpath = "//div[contains(@class,'x-toolbar-item')]//span[text()='Cancel & Close']")
+//	Omkar 25/4/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//div[contains(@class,'x-toolbar-item')]//span[text()='Cancel & Close']")
+	@FindBy(xpath = "//span[contains(@class,'x-btn-button-center ')]//span[text()='Cancel & Close']")
 	private WebElement ContractModelRiskLimiterMessageBox;
 	public WebElement getContractModelRiskLimiterMessageBox() {return ContractModelRiskLimiterMessageBox;}
 	

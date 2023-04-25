@@ -360,13 +360,20 @@ public class AssertHelper extends AdsHelper {
 	public void assertAsteriskIsDisplayed(String criteriaLabel) throws AWTException, InterruptedException {
 
 		// Venkat 05-09-2022 Add Robot class in zoom in chrome browser
+//		Omkar 24/4/2023 : xpath changes for 11.2
 
-		Thread.sleep(2000);
+//		Thread.sleep(2000);
+//		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoViewIfNeeded();",
+//				driver.findElement(By.xpath("//label[text()=\"" + criteriaLabel + "\"]/span")));
+//		Thread.sleep(2000);
+//
+//		String labelXpath = "//label[text()=\"" + criteriaLabel + "\"]/span";
+		
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoViewIfNeeded();",
-				driver.findElement(By.xpath("//label[text()=\"" + criteriaLabel + "\"]/span")));
+				driver.findElement(By.xpath("//span[text()=\"" + criteriaLabel + "\"]/span")));
 		Thread.sleep(2000);
 
-		String labelXpath = "//label[text()=\"" + criteriaLabel + "\"]/span";
+		String labelXpath = "//span[text()=\"" + criteriaLabel + "\"]/span";
 		String asterisk;
 		String asteriskColor;
 

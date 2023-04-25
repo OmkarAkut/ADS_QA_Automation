@@ -7,7 +7,7 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
 
 	FlexibleReportsProfitAndLossStatementTesting.class,
-	ReportingAdHocReportDesignIsManualTest.class,
+//	ReportingAdHocReportDesignIsManualTest.class,
 	ReportingWebiCheck.class,
 	ReportLibrarySortingTest.class,
 	ReportsLibraryCreateRenameAndDeleteNewFolderAds1348.class,

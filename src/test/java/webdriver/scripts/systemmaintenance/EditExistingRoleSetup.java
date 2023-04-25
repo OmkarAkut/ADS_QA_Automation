@@ -56,12 +56,18 @@ public class EditExistingRoleSetup extends GoHelper {
 		try {
 			doClick("//div[text()='" + userRole + "']");
 			doClick(systemMap.getRolesPageButtonEdit());
-			waitForPresenceOfElement("//span[contains(@id,'dynamicwindow')][text()='" + userRole + "']");
+//			Omkar 24/4/2023 : xpath changes for 11.2
+//			waitForPresenceOfElement("//span[contains(@id,'dynamicwindow')][text()='" + userRole + "']");
+			waitForPresenceOfElement("//div[contains(@id,'dynamicwindow')][text()='" + userRole + "']");
 			assertElementForAttributeContains(systemMap.getrolesPageEditName(), printout);
 			assertElementIsDisplayedWithXpath(
 					"//div[contains(@id,'rolesForm')]//label[contains(@class,'fieldLabelCls')] [text()='Assigned Users']");
+//			Omkar 24/4/2023 : xpath changes for 11.2
+//			assertElementIsDisplayedWithXpath(
+//					"//div[contains(@id,'rolesForm')]//table[contains(@class,'itemSelctorPanelNoPad')]//following::div[contains(@class,'x-btn windowbtn x-btn-default-small')]//span[text()='Select']//parent::button");
+			
 			assertElementIsDisplayedWithXpath(
-					"//div[contains(@id,'rolesForm')]//table[contains(@class,'itemSelctorPanelNoPad')]//following::div[contains(@class,'x-btn windowbtn x-btn-default-small')]//span[text()='Select']//parent::button");
+					"//span[text()='Select']//parent::span");
 			waitForAjaxExtJs();
 			ExtentReport.logPass("PASS", "test01EditUserRole");
 		} catch (Exception | AssertionError e) {
@@ -73,7 +79,9 @@ public class EditExistingRoleSetup extends GoHelper {
 	@Test
 	public void test02AddAssignedUsers() throws Throwable {
 		try {
-			doClick("//div[contains(@id,'rolesForm')]//table[contains(@class,'itemSelctorPanelNoPad')]//following::div[contains(@class,'x-btn windowbtn x-btn-default-small')]//span[text()='Select']//parent::button");
+//			Omkar 25/4/2023 : xpath changes for 11.2
+//			doClick("//div[contains(@id,'rolesForm')]//table[contains(@class,'itemSelctorPanelNoPad')]//following::div[contains(@class,'x-btn windowbtn x-btn-default-small')]//span[text()='Select']//parent::button");
+			doClick("(//span[@data-ref='btnInnerEl'][text()='Select']//parent::span)[1]");
 			assertElementIsDisplayedWithXpath("//span[contains(@id,'dynamicwindow')][text()='Assigned Users']");
 			doClick("(//div[contains(@class,'x-btn windowbtn x-box-item x-btn-default-small x-icon-text-left')]//span[text()='All']//parent::button)[2]");
 			doDropdownSelectUsingOptionText(driver.findElement(By.xpath(

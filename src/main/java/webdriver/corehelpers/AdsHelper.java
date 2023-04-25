@@ -138,6 +138,8 @@ public class AdsHelper extends GetHelper {
 		System.out.println(filterParameters[0]);
 		doFilterSetFilterParameters(filterParameters[0], filterParameters[1], filterParameters[2], filterParameters[3]);
 		waitForAjaxExtJs();
+//		Omkar 21/4/2023 : Commenting below method call as the method is not computing the xpath correctly
+//		waitUntilElementIsClickable(dialog.getFilterDialogButtonAdd());
 		waitUntilElementIsClickable(dialog.getFilterDialogButtonAdd());
 		doClick(dialog.getFilterDialogButtonAdd());
 		waitForAjaxExtJs();

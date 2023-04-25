@@ -201,11 +201,11 @@ doClick(reportMap.reportDetailsButton());
 				try {
 					driver.findElement(By.xpath("(//span[text()='" + orgName + "']//following::td[5]/div)")).click();
 					driverDelay(1500);
-//					waitForElementPresence("//iframe[contains(@src,'QueryCrystalReportInstance.jsp')]");
-//					driver.switchTo()
-//							.frame(driver.findElement(By.xpath("//iframe[contains(@src,'QueryCrystalReportInstance.jsp')]")));
-//					driverDelay(1500);
-//					driver.switchTo().frame(driver.findElement(By.xpath("//iframe[contains(@id,'bobjid')]")));
+					waitForElementPresence("//iframe[contains(@src,'QueryCrystalReportInstance.jsp')]");
+					driver.switchTo()
+							.frame(driver.findElement(By.xpath("//iframe[contains(@src,'QueryCrystalReportInstance.jsp')]")));
+					driverDelay(1500);
+					driver.switchTo().frame(driver.findElement(By.xpath("//iframe[contains(@id,'bobjid')]")));
 					String field1=driver.findElement(By.xpath("//div[@id='Field1']//span")).getText();
 					String field2=driver.findElement(By.xpath("//div[@id='Field2']//span")).getText();
 					System.out.println(field1);

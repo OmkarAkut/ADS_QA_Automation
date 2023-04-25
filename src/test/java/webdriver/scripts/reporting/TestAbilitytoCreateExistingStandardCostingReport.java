@@ -93,19 +93,20 @@ public class TestAbilitytoCreateExistingStandardCostingReport extends GoHelper {
 						continue;
 					}
 				}
-			} catch (Exception e) {
+			} 
+			catch (Exception e) {
 
 			}
 			driver.findElement(By.xpath("(//span[text()='" + newReportName + "']//following::div/a)[1]")).click();
 			driverDelay(1000);
 			waitForElementPresence("//iframe[contains(@src,'QueryCrystalReportInstance.jsp')]");
 			driver.switchTo()
-					.frame(driver.findElement(By.xpath("//iframe[contains(@src,'QueryCrystalReportInstance.jsp')]")));
+			.frame(driver.findElement(By.xpath("//iframe[contains(@src,'QueryCrystalReportInstance.jsp')]")));
 			waitForElementPresence("//iframe[contains(@id,'bobjid')]");
 			driver.switchTo().frame(driver.findElement(By.xpath("//iframe[contains(@id,'bobjid')]")));
 			System.out.println(
 					driver.findElement(By.xpath("//span[text()='Entity:']//preceding::div[@id='Text6-0-0']//span/span"))
-							.getText());
+					.getText());
 			assertElementTextContainsWithXpathLocator(
 					"//span[text()='Entity:']//preceding::div[@id='Text6-0-0']//span/span", "Marina Medical Center",
 					printout);

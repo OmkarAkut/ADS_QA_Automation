@@ -565,7 +565,10 @@ public class SystemMaintenanceMap extends MapConfig {
 	public WebElement getUserConfirmNewPassword() {
 		return getUserConfirmNewPassword;
 	}
-	@FindBy(xpath = "(//label[text()='Roles']//following::div[contains(@class,'roleSelect')])[1]")
+	
+//	Omkar 24/4/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "(//label[text()='Roles']//following::div[contains(@class,'roleSelect')])[1]")
+	@FindBy(xpath = "(//label[text()='Roles']//following::a[contains(@class,'roleSelect')])[1]")
 	private WebElement getUserRoleSelect;
 	public WebElement getUserRoleSelect() {
 		return getUserRoleSelect;
