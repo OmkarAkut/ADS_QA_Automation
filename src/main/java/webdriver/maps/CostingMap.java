@@ -301,7 +301,9 @@ public class CostingMap extends MapConfig {
 		return rvuMaintenanceFilterButtonApplyFilter;
 	}
 
-	@FindBy(xpath = "//*[contains(@class,'docked-bottom')]/descendant::span[text()='Cancel & Close']")
+//	Omkar 26/4/23 : Change in xpath for 11.2
+//	@FindBy(xpath = "//*[contains(@class,'docked-bottom')]/descendant::span[text()='Cancel & Close']")
+	@FindBy(xpath ="//a[contains(@class,'x-btn cancelCloseBtn')]//span[text()='Cancel & Close']")
 	private WebElement rvuMaintenanceFilterButtonCancelAndClose;
 
 	public WebElement getRvuMaintenanceFilterButtonCancelAndClose() {
@@ -1762,13 +1764,16 @@ public class CostingMap extends MapConfig {
 		public WebElement getEntitiesPage() {
 			return getEntitiesPage;
 		}
-		
-		@FindBy(xpath = "(//div[contains(@id,'masterlist')]//h1[text()='Department Masters']//following::span[text()='Edit']//parent::button)[1]")
+//		Omkar 26/4/2023 : Changes in xpath for ADS 11.2
+//		@FindBy(xpath = "(//div[contains(@id,'masterlist')]//h1[text()='Department Masters']//following::span[text()='Edit']//parent::button)[1]")
+		@FindBy(xpath ="//div[contains(@id,'maintenancespli')]//h1[text()='Department Masters']//ancestor::div[@class='x-panel x-box-item x-panel-default']/following-sibling::div//span[text()='Edit']")
 		private static WebElement getCostDeptMasterEditButton;
 		public static WebElement getCostDeptMasterEditButton() {
 			return getCostDeptMasterEditButton;
 		}
-		@FindBy(xpath = "(//div[contains(@id,'dischargeStatus')]//h1[text()='Discharge Statuses']//following::span[text()='Filter']//parent::button)[1]")
+//		Omkar 26/4/2023 : Changes in xpath for ADS 11.2
+//		@FindBy(xpath = "(//div[contains(@id,'dischargeStatus')]//h1[text()='Discharge Statuses']//following::span[text()='Filter']//parent::button)[1]")
+		@FindBy(xpath = "//h1[text()='Department Codes']/ancestor::div[contains(@class,'x-panel x-box-item x-panel-default')]/following-sibling::div//span[text()='Filter']")
 		private static WebElement getDepartmentCodeFilterButton;
 		public static WebElement getDepartmentCodeFilterButton() {
 			return getDepartmentCodeFilterButton;

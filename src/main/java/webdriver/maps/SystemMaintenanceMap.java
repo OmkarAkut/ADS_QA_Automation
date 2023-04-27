@@ -46,8 +46,10 @@ public class SystemMaintenanceMap extends MapConfig {
 	@FindBy(xpath = "//*[contains(@id,'userLayoutPage') and contains(@id,'targetEl')]/descendant::span[text()='Export']")
 	private WebElement usersPageButtonExport;
 	public WebElement getUsersPageButtonExport() {return usersPageButtonExport;}
-
-	@FindBy(xpath = "//span[text()='Clear Filter']//parent::button")
+	
+//	Omkar 6/4/23 : Change in xpath for 11.2
+//	@FindBy(xpath = "//span[text()='Clear Filter']//parent::button")
+	@FindBy(xpath = "//span[text()='Clear Filter']/parent::span")
 	private WebElement getCustomTaskListClearFilterButton;
 	public WebElement getCustomTaskListClearFilterButton() {return getCustomTaskListClearFilterButton;}
 
@@ -566,7 +568,7 @@ public class SystemMaintenanceMap extends MapConfig {
 		return getUserConfirmNewPassword;
 	}
 	
-//	Omkar 24/4/2023 : xpath changes for 11.2
+//	Omkar 25/4/2023 : xpath changes for 11.2
 //	@FindBy(xpath = "(//label[text()='Roles']//following::div[contains(@class,'roleSelect')])[1]")
 	@FindBy(xpath = "(//label[text()='Roles']//following::a[contains(@class,'roleSelect')])[1]")
 	private WebElement getUserRoleSelect;

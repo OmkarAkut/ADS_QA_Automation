@@ -49,24 +49,32 @@ public class AssertHelper extends AdsHelper {
 			String searchText) throws Throwable {
 		String pageNumberCount = pageNumber.getText().replaceAll("[^0-9]", "");
 		System.out.println(pageNumberCount);
-		int pageCount = Integer.parseInt(pageNumberCount);
-		System.out.println(pageCount);
-		if (pageCount > 1) {
-			for (int i = 0; i <= pageCount; i++) {
 
+		if(pageNumberCount==""){
+			System.out.println("Only single page is displayed");
+		}
+		else {
+			int pageCount = Integer.parseInt(pageNumberCount);
+			System.out.println(pageCount);
+
+
+			if (pageCount > 1) {
+				for (int i = 0; i <= pageCount; i++) {
+
+					for (WebElement element : elements) {
+						assertTrue(element.getText().toUpperCase().contains(searchText.toUpperCase()));
+						System.out.println(element.getText());
+
+					}
+					doClick(nextBtn);
+					waitForAjaxExtJs();
+				}
+			} else {
 				for (WebElement element : elements) {
 					assertTrue(element.getText().toUpperCase().contains(searchText.toUpperCase()));
 					System.out.println(element.getText());
 
 				}
-				doClick(nextBtn);
-				waitForAjaxExtJs();
-			}
-		} else {
-			for (WebElement element : elements) {
-				assertTrue(element.getText().toUpperCase().contains(searchText.toUpperCase()));
-				System.out.println(element.getText());
-
 			}
 		}
 	}
@@ -360,15 +368,15 @@ public class AssertHelper extends AdsHelper {
 	public void assertAsteriskIsDisplayed(String criteriaLabel) throws AWTException, InterruptedException {
 
 		// Venkat 05-09-2022 Add Robot class in zoom in chrome browser
-//		Omkar 24/4/2023 : xpath changes for 11.2
+		//		Omkar 24/4/2023 : xpath changes for 11.2
 
-//		Thread.sleep(2000);
-//		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoViewIfNeeded();",
-//				driver.findElement(By.xpath("//label[text()=\"" + criteriaLabel + "\"]/span")));
-//		Thread.sleep(2000);
-//
-//		String labelXpath = "//label[text()=\"" + criteriaLabel + "\"]/span";
-		
+		//		Thread.sleep(2000);
+		//		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoViewIfNeeded();",
+		//				driver.findElement(By.xpath("//label[text()=\"" + criteriaLabel + "\"]/span")));
+		//		Thread.sleep(2000);
+		//
+		//		String labelXpath = "//label[text()=\"" + criteriaLabel + "\"]/span";
+
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoViewIfNeeded();",
 				driver.findElement(By.xpath("//span[text()=\"" + criteriaLabel + "\"]/span")));
 		Thread.sleep(2000);
@@ -572,9 +580,9 @@ public class AssertHelper extends AdsHelper {
 	public static void assertTextIsDisplayed(String expectedText) {
 		try {
 
-			 ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);",
-						driver.findElement(By.xpath("//*[text()='" + expectedText + "']")));
-				Thread.sleep(500);
+			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);",
+					driver.findElement(By.xpath("//*[text()='" + expectedText + "']")));
+			Thread.sleep(500);
 			WebElement element = driver.findElement(By.xpath("//*[text()='" + expectedText + "']"));
 			assertTrue(element.isDisplayed());
 		} catch (Throwable e) {
@@ -714,7 +722,7 @@ public class AssertHelper extends AdsHelper {
 		WebElement firstColumn = driver.findElement(By.xpath(
 				"//*[contains(@class,'x-column-header-first')]/div/span[contains(@id,'-textEl') and @class='x-column-header-text']"));
 		int tableId = getElementIdNumberCode(firstColumn, printout) - 3; // remove 3, to set value back (to "missing"
-																			// first column)
+		// first column)
 		ArrayList<String> tableHeadings = getTableColumnHeadingsArrayList(tableId, printout);
 		assertArraysAreEqual(expectedTableHeaders, javaConvertStringArrayListToArray(tableHeadings), printout);
 	}
@@ -813,8 +821,8 @@ public class AssertHelper extends AdsHelper {
 		} catch (Throwable e) {
 			fail(e.getMessage());
 		}
-		
-			
+
+
 	}
 
 	public static void assertThatAttributeValue(WebElement element,String expectedValue,boolean printout) {
@@ -829,15 +837,15 @@ public class AssertHelper extends AdsHelper {
 				assertTrue(true);
 			}
 		} catch (Throwable e) {
-		
+
 		}
 	}
-		
-		public static void assertThatFieldReadonly(WebElement element) {
-			if(element.getAttribute("readonly").equals("readonly")) {
-				assertTrue(true);
-			}
+
+	public static void assertThatFieldReadonly(WebElement element) {
+		if(element.getAttribute("readonly").equals("readonly")) {
+			assertTrue(true);
 		}
-	
+	}
+
 
 }

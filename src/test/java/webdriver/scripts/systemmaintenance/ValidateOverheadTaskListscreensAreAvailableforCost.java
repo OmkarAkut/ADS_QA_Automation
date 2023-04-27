@@ -49,8 +49,12 @@ public class ValidateOverheadTaskListscreensAreAvailableforCost extends GoHelper
 		try {
 			doClick(systemMap.getCustomTaskListClearFilterButton());
 			waitForAjaxExtJs();
+//			Omkar 24/4/2023 : xpath changes for 11.2
+//			assertElementIsDisplayedWithXpath(
+//					"//div[contains(@class,'x-tab-default-active')]//child::span[text()='Cost']");
 			assertElementIsDisplayedWithXpath(
-					"//div[contains(@class,'x-tab-default-active')]//child::span[text()='Cost']");
+					"//span[contains(@class,'x-tab-wrap x-tab-wrap-default')]//child::span[text()='Cost']");
+//			OMkar 25/04/2023 : Unable to get all the contents in the table because of scrollbar.getting only 46 count
 			if (systemMap.getSystemMaintenanceCostScreenList().size() == 159) {
 				assertTrue("Cost screens are 159", printout);
 

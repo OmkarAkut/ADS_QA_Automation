@@ -99,11 +99,15 @@ public class StatusMap extends MapConfig {
     private WebElement calcStatusCalcStartTimeSortColumn;
     public WebElement calcStatusCalcStartTimeSortColumn() {return calcStatusCalcStartTimeSortColumn;}
     
-    @FindBy(xpath = "//div[contains(@id,'warningwindow')]/div//span[text()='Delete Filtered']//parent::button")
+//    Omkar 27/4/2023 : xpath changes for 11.2
+//    @FindBy(xpath = "//div[contains(@id,'warningwindow')]/div//span[text()='Delete Filtered']//parent::button")
+    @FindBy(xpath = "//div[contains(@id,'warningwindow')]/div//span[text()='Delete Filtered']/parent::span")
     private WebElement calcStatusDeleteFilteredButton;
     public WebElement calcStatusDeleteFilteredButton() {return calcStatusDeleteFilteredButton;}
     
-    @FindBy(xpath = "//div[contains(@id,'warningwindow')]/div//span[text()='Cancel']//parent::button")
+//    Omkar 27/4/2023 : xpath changes for 11.2
+//    @FindBy(xpath = "//div[contains(@id,'warningwindow')]/div//span[text()='Cancel']//parent::button")
+    @FindBy(xpath = "//div[contains(@id,'warningwindow')]/div//span[text()='Cancel']/parent::span")
     private WebElement calcStatusDeleteFilteredCancelButton;
     public WebElement calcStatusDeleteFilteredCancelButton() {return calcStatusDeleteFilteredCancelButton;}
     
@@ -221,7 +225,9 @@ public class StatusMap extends MapConfig {
     private WebElement statusFilterDialogButtonAddValue;
     public WebElement getStatusFilterDialogButtonAddValue() {return statusFilterDialogButtonAddValue;}
     
-    @FindBy(xpath = "//*[contains(@id,'utilitystatus')]//table[contains(@class,'x-grid-table')]//tr/td[5]/div")
+//    Omkar 27/4/2023 : xpath changes for 11.2
+//    @FindBy(xpath = "//*[contains(@id,'utilitystatus')]//table[contains(@class,'x-grid-table')]//tr/td[5]/div")
+    @FindBy(xpath = "//*[contains(@id,'utilitystatus')]//table[contains(@class,'x-grid-item x-grid-item-selected')]//td[2]")
     private List<WebElement> utilityStatusPageGridElements;
     public List<WebElement> utilityStatusPageGridElements() {return utilityStatusPageGridElements;}
     

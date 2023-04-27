@@ -86,16 +86,16 @@ public class DialogsMap extends MapConfig {
 
     private WebElement filterDialogButtonAdd;
     public WebElement getFilterDialogButtonAdd() throws InterruptedException {
-//    	Omkar 21/4/2023 : Commenting the below line as the computation for xpath is not done correctly. Have put the actual xpath to be returned
-//        filterDialogButtonAdd = driver.findElement(By.id("button-"+getFilterDialogAddButtonIdNumber()+""));
-    	filterDialogButtonAdd = driver.findElement(By.xpath("(//span[text() = 'Add'])[2]"));
-    	try {
-            assertEquals("Add", filterDialogButtonAdd.getText());
-        } catch (Throwable e) {
-            System.out.println("ERROR: Filter Dialog - Add button NOT FOUND");
-        }
-        return filterDialogButtonAdd;
-    }
+    	//    	Omkar 21/4/2023 : Commenting the below line as the computation for xpath is not done correctly. Have put the actual xpath to be returned
+    	//        filterDialogButtonAdd = driver.findElement(By.id("button-"+getFilterDialogAddButtonIdNumber()+""));
+    	filterDialogButtonAdd = driver.findElement(By.xpath("//div[contains(@id,'filterwindow')]//span[text() = 'Add']"));
+    	  		try {
+    			assertEquals("Add", filterDialogButtonAdd.getText());
+    		} catch (Throwable e) {
+    			System.out.println("ERROR: Filter Dialog - Add button NOT FOUND");
+    		}
+    return filterDialogButtonAdd;
+}
     private int getFilterDialogAddButtonIdNumber() throws InterruptedException {
         WebElement dialogHeaderElement = driver.findElement(By.xpath("//span[contains(@id,'filterwindow')]"));
         String dialogHeaderElementId = dialogHeaderElement.getAttribute("id");
