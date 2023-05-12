@@ -239,6 +239,7 @@ public class DoHelper extends DriverHelper {
 
 	public static void doClick(WebElement element) {
 		try {
+			Thread.sleep(300);
 			waitUntilElementIsClickable(element);
 			element.click();
 			Thread.sleep(300);
@@ -252,12 +253,13 @@ public class DoHelper extends DriverHelper {
 
 	public static void doClick(String elementXpath) throws InterruptedException {
 		try {
+			waitUntilElementIsClickable(driver.findElement(By.xpath("" + elementXpath + "")));
 			Actions action = new Actions(driver);
 			//Performing the mouse hover action on the target element.
 			action.moveToElement(driver.findElement(By.xpath("" + elementXpath + "")));
 			action.click().build().perform();
-			waitUntilElementIsClickable(driver.findElement(By.xpath("" + elementXpath + "")));
-			driver.findElement(By.xpath("" + elementXpath + "")).click();
+			
+//			driver.findElement(By.xpath("" + elementXpath + "")).click();
 			waitForAjaxExtJs();
 		} catch (Exception e) {
 			JavascriptExecutor executor = (JavascriptExecutor)driver;

@@ -127,8 +127,8 @@ public class EditAnExistingUserSetup extends GoHelper {
 			doDropdownSelectUsingOptionTextOnly(systemMap.getUserRoleSelectOptions(), "Cost Analyst");
 			doClick(systemMap.getAssignedUsersSelectButton());
 			doClick(contractMap.getApplySelections());
-			assertElementIsDisplayedWithXpath("//label[text()='Menu Items']//following::*[text()='Reporting']");
-			assertElementIsDisplayedWithXpath("//label[text()='Menu Items']//following::*[text()='Report Library']");
+			assertElementIsDisplayedWithXpath("//label[text()='Menu Items']//following::*[text()='Costing']");
+			assertElementIsDisplayedWithXpath("//label[text()='Menu Items']//following::*[text()='Contracting']");
 			assertElementIsDisplayedWithXpath(
 					"//label[text()='Menu Items']//following::*[text()='Report Publication']");
 			assertElementIsDisplayedWithXpath(

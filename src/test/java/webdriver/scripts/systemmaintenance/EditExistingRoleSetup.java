@@ -82,10 +82,19 @@ public class EditExistingRoleSetup extends GoHelper {
 //			Omkar 25/4/2023 : xpath changes for 11.2
 //			doClick("//div[contains(@id,'rolesForm')]//table[contains(@class,'itemSelctorPanelNoPad')]//following::div[contains(@class,'x-btn windowbtn x-btn-default-small')]//span[text()='Select']//parent::button");
 			doClick("(//span[@data-ref='btnInnerEl'][text()='Select']//parent::span)[1]");
-			assertElementIsDisplayedWithXpath("//span[contains(@id,'dynamicwindow')][text()='Assigned Users']");
-			doClick("(//div[contains(@class,'x-btn windowbtn x-box-item x-btn-default-small x-icon-text-left')]//span[text()='All']//parent::button)[2]");
+//			Omkar 9/5/2023 : xpath changes for 11.2
+//			assertElementIsDisplayedWithXpath("//span[contains(@id,'dynamicwindow')][text()='Assigned Users']");
+//			doClick("(//div[contains(@class,'x-btn windowbtn x-box-item x-btn-default-small x-icon-text-left')]//span[text()='All']//parent::button)[2]");
+			Thread.sleep(300);
+			assertElementIsDisplayedWithXpath("//div[contains(@id,'dynamicwindow')]//div[text()='Assigned Users']");
+			doClick(systemMap.getUserRoleSelectAllLeftButton());
+			
+//			Omkar 10/5/2023 : xpath changes for 11.2
+//			doDropdownSelectUsingOptionText(driver.findElement(By.xpath(
+//					"//div[contains(@id,'rolesForm')]//table[contains(@class,'itemSelctorPanelNoPad')]//following::div[contains(@class,'x-btn windowbtn x-btn-default-small')]//span[text()='Select']//parent::button")),
+//					systemMap.getAssignedUsers(), "AdHoc_Report_Designer   automationadhocrepdes1");
 			doDropdownSelectUsingOptionText(driver.findElement(By.xpath(
-					"//div[contains(@id,'rolesForm')]//table[contains(@class,'itemSelctorPanelNoPad')]//following::div[contains(@class,'x-btn windowbtn x-btn-default-small')]//span[text()='Select']//parent::button")),
+					"(//div[contains(@id,'buttonsContainer-innerCt')]//span[text()='Select'])[1]/..")),
 					systemMap.getAssignedUsers(), "AdHoc_Report_Designer   automationadhocrepdes1");
 			doClick(systemMap.getAssignedUsersSelectButton());
 			doClick(contractMap.getApplySelections());

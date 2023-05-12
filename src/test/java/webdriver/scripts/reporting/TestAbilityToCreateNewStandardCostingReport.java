@@ -62,15 +62,15 @@ public class TestAbilityToCreateNewStandardCostingReport extends GoHelper{
 
 			doClick("//*[text()='"+reportName+"']");
 			doClick(reportMap.reportLibraryPageEntityRange());
-			Actions act=new Actions(driver);
+//			Actions act=new Actions(driver);
 			driverDelay(1000);
 			executor.executeScript("arguments[0].click();", driver.findElement(By.xpath("//div[text()='PRIVATE PAY']//parent::td")));
 			driverDelay(1000);
 			ContractModelsHelper.scrollToView(reportMap.reportLibraryPageEntityOkButton());
 			driverDelay(1000);
 			executor.executeScript("arguments[0].click();", reportMap.reportLibraryPageEntityOkButton());
-			driverDelay(2000);
-//			doClick(reportMap.reportLibraryPageEntityOkButton());
+//			driverDelay(2000);
+			doClick(reportMap.reportLibraryPageEntityOkButton());
 //			driverDelay(10000);
 //			doClick(reportMap.reportLibraryPageEntitySaveAsButton());
 //			doClick(reportMap.reportLibraryPageDeptHierarchy());
@@ -88,7 +88,8 @@ public class TestAbilityToCreateNewStandardCostingReport extends GoHelper{
 //			doClick(reportMap.reportLibraryPageEntitySelectDropdown());
 //			ContractModelsHelper.ChooseOptionFromSelectDropdown(reportMap.reportLibraryPageEntitySelectDropdown(),1);
 //			ContractModelsHelper.keyInValues(reportMap.reportLibraryPageEntitySearch(), deptGroup);
-			doClick("//div[text()='PATCARE  PATCARE']");
+//			doClick("//div[text()='PATCARE  PATCARE']");
+			doClick("//div[text()='PRATEST1']");
 			driverDelay(1000);
 			doClick(reportMap.reportLibraryPageEntityOkButton());
 			driverDelay(1000);

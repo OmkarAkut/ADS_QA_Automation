@@ -118,7 +118,9 @@ public static WebElement getContractModelAddProviderBtn() {return getContractMod
 	private static WebElement getRemoveItem;
 	public WebElement getRemoveItem() {return getRemoveItem;}
 
-	@FindBy(xpath = "(//div[contains(@id,'dynamicwindow')])//div[contains(@class,'multiSelPneCls')]//following::span[text()='Apply']//parent::button")
+//	Omkar 9/5/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "(//div[contains(@id,'dynamicwindow')])//div[contains(@class,'multiSelPneCls')]//following::span[text()='Apply']//parent::button")
+	@FindBy(xpath = "//div[contains(@class,'multiSelPneCls')]//following::span[text()='Apply']/..")
 	private static WebElement getApplySelections;
 	public WebElement getApplySelections() {return getApplySelections;}
 
@@ -166,7 +168,9 @@ public static WebElement getContractModelAddProviderBtn() {return getContractMod
 	private static WebElement ContractModelButtonFilter;
 	public static WebElement getContractModelButtonFilter() {return ContractModelButtonFilter;}
 
-	@FindBy(xpath = "//div[contains(@id,'headercontainer')]//div[text()='Remove']")
+//	Omkar 2/5/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//div[contains(@id,'headercontainer')]//div[text()='Remove']")
+	@FindBy(xpath ="//div[contains(@id,'filter')]//span[text()='Remove']/parent::span")
 	private WebElement ContractModelRemoveFilterButton;
 	public WebElement getContractModelRemoveFilterButton() {return ContractModelRemoveFilterButton;}
 
@@ -174,11 +178,15 @@ public static WebElement getContractModelAddProviderBtn() {return getContractMod
 	private static WebElement ContractModelApplyFilterButton;
 	public static WebElement getContractModelApplyFilterButton() {return ContractModelApplyFilterButton;}
 
-	@FindBy(xpath = "//div[contains(@id,'filtergrid')]//div[text()='Edit']//parent::td")
+//	Omkar 2/5/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//div[contains(@id,'filtergrid')]//div[text()='Edit']//parent::td")
+	@FindBy(xpath = "//div[contains(@id,'filtergrid')]//span[text()='Edit']//parent::span")
 	private WebElement ContractModelEditFilterButton;
 	public WebElement getContractModelEditFilterButton() {return ContractModelEditFilterButton;}
 
-	@FindBy(xpath = "//span[text()='Update']//parent::button")
+//	Omkar 2/5/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//span[text()='Update']//parent::button")
+	@FindBy(xpath = "//span[text()='Update']/parent::span")
 	private WebElement ContractModelUpdateFilterButton;
 	public WebElement getContractModelUpdateFilterButton() {return ContractModelUpdateFilterButton;}
 

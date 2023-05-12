@@ -27,35 +27,35 @@ import webdriver.maps.mapbuilder.BuildMap;
 ADS-6602
  **/
 public class ValidateCalculationStatusAllStatus extends CalculationHelper{
-		static CostingMap costing;
-		static ContractingMap contractMap;
-		static ModelLibraryMap modelMap;
-		private static StatusMap statusMap;
-		static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
-		static String folder = currentDateTime;
-		static String name = "Folder Name" + currentDateTime;
-		static String userRole = "ASEC2310 CustomRole9";
-		static String assignedUserSelect = "AdHoc_Report_Designer   automationadhocrepdes1";
-		static String searchText="Test";
-		static String[] filter= {"Scenario Name","Is","Equal To",searchText};
-		@BeforeClass
-		public static void setupScript() throws Exception, Throwable {
-			ExtentReport.reportCreate("ValidateCalculationStatusAllStatus", "webdriver.scripts.systemmaintenance",
-					"ValidateCalculationStatusAllStatus");
-			try {
-				costing = BuildMap.getInstance(driver, CostingMap.class);
-				contractMap = BuildMap.getInstance(driver, ContractingMap.class);
-				modelMap = BuildMap.getInstance(driver, ModelLibraryMap.class);
-				statusMap = BuildMap.getInstance(driver, StatusMap.class);
-				Login.loginUser("AutomationTesterAdmin");
-				goToPage("Calculation Status");
-				ExtentReport.logPass("PASS", "setupScript");
-			} catch (Exception | AssertionError e) {
-				ExtentReport.logFail("FAIL", "Failure in setupScript", driver, e);
-				fail(e.getMessage());
-			}
+	static CostingMap costing;
+	static ContractingMap contractMap;
+	static ModelLibraryMap modelMap;
+	private static StatusMap statusMap;
+	static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
+	static String folder = currentDateTime;
+	static String name = "Folder Name" + currentDateTime;
+	static String userRole = "ASEC2310 CustomRole9";
+	static String assignedUserSelect = "AdHoc_Report_Designer   automationadhocrepdes1";
+	static String searchText="Test";
+	static String[] filter= {"Scenario Name","Is","Equal To",searchText};
+	@BeforeClass
+	public static void setupScript() throws Exception, Throwable {
+		ExtentReport.reportCreate("ValidateCalculationStatusAllStatus", "webdriver.scripts.systemmaintenance",
+				"ValidateCalculationStatusAllStatus");
+		try {
+			costing = BuildMap.getInstance(driver, CostingMap.class);
+			contractMap = BuildMap.getInstance(driver, ContractingMap.class);
+			modelMap = BuildMap.getInstance(driver, ModelLibraryMap.class);
+			statusMap = BuildMap.getInstance(driver, StatusMap.class);
+			Login.loginUser("AutomationTesterAdmin");
+			goToPage("Calculation Status");
+			ExtentReport.logPass("PASS", "setupScript");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "Failure in setupScript", driver, e);
+			fail(e.getMessage());
 		}
-		
+	}
+
 	@Test
 	public void test01ValidateDefaultTabInCalculationStatus() throws Throwable {
 		try {
@@ -97,7 +97,7 @@ public class ValidateCalculationStatusAllStatus extends CalculationHelper{
 			ExtentReport.logFail("FAIL", "test03ValidateAllStatusByPagination", driver, e);
 			fail(e.getMessage());
 		}
-		
+
 	}
 	@Test
 	public void test04ValidateCalculationStatusPageAfterRefresh() throws Throwable {
@@ -113,24 +113,24 @@ public class ValidateCalculationStatusAllStatus extends CalculationHelper{
 			fail(e.getMessage());
 		}
 	}
-//	@Test
+	//	@Test
 	public void test05ValidateSearchUnderCalcStatusPage() throws Throwable {
 		try {
-			 doSearchForContractModel(searchText.toUpperCase());
-			 waitForAjaxExtJs();
-			 assertGridElementsOnSearch(modelMap.getModelLibraryTableButtonNext(),statusMap.calcStatusPageNumber(),statusMap.calculationStatusPageGridElements(),searchText);
-			 ExtentReport.logPass("PASS", "test05ValidateSearchUnderCalcStatusPage");
+			doSearchForContractModel(searchText.toUpperCase());
+			waitForAjaxExtJs();
+			assertGridElementsOnSearch(modelMap.getModelLibraryTableButtonNext(),statusMap.calcStatusPageNumber(),statusMap.calculationStatusPageGridElements(),searchText);
+			ExtentReport.logPass("PASS", "test05ValidateSearchUnderCalcStatusPage");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test05ValidateSearchUnderCalcStatusPage", driver, e);
 			fail(e.getMessage());
 		}
 	}
-//	@Test
+	//	@Test
 	public void test06ValidateAfterClearSearch() throws Throwable {
 		try {
-			 doSearchForContractModel("");
-			 waitForAjaxExtJs();
-			 assertListElementsAreDisplayed(statusMap.calculationStatusPageGridElements(), printout);
+			doSearchForContractModel("");
+			waitForAjaxExtJs();
+			assertListElementsAreDisplayed(statusMap.calculationStatusPageGridElements(), printout);
 			ExtentReport.logPass("PASS", "test06ValidateAfterClearSearch");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test06ValidateAfterClearSearch", driver, e);
@@ -143,15 +143,15 @@ public class ValidateCalculationStatusAllStatus extends CalculationHelper{
 			Actions action=new Actions(driver);
 			doClick(statusMap.getCalculationStatusPageButtonFilter());
 			doFilterSetFilterParameters("Scenario Name", "Is", "Equal To", searchText);
-			 doClick(ContractingMap.getaddOnServicesPopUpFilterAddButton());
-			    waitForAjaxExtJs();
+			doClick(ContractingMap.getaddOnServicesPopUpFilterAddButton());
+			waitForAjaxExtJs();
 			action.moveToElement(contractMap.getContractModelEditFilterButton()).click().pause(10).perform();
 			driver.findElement(By.name("valuefield")).sendKeys(Keys.chord(Keys.CONTROL, "a"));
 			driver.findElement(By.name("valuefield")).sendKeys(searchText);
 			doClick(contractMap.getContractModelUpdateFilterButton());
 			action.moveToElement(contractMap.getContractModelRemoveFilterButton()).click().pause(10).perform();
 			doFilterCreate(filter);
-			 assertGridElementsOnSearch(modelMap.getModelLibraryTableButtonNext(),statusMap.calcStatusPageNumber(),statusMap.calculationStatusPageGridElements(),searchText);
+			assertGridElementsOnSearch(modelMap.getModelLibraryTableButtonNext(),statusMap.calcStatusPageNumber(),statusMap.calculationStatusPageGridElements(),searchText);
 			ExtentReport.logPass("PASS", "test07ValidateFilter");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test07ValidateFilter", driver, e);

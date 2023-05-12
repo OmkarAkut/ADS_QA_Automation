@@ -499,13 +499,17 @@ public class SystemMaintenanceMap extends MapConfig {
 	public WebElement getAssignedUsers() {
 		return getAssignedUsers;
 	}
-	@FindBy(xpath = "(//div[contains(@id,'itemselectorfield')]//following::span[text()='Select']//parent::button)")
+//	Omkar 8/5/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "(//div[contains(@id,'itemselectorfield')]//following::span[text()='Select']//parent::button)")
+	@FindBy(xpath = "//a[contains(@class,'x-btn windowbtn x-unselectable x-box-item x-btn-default-small')]//span[text() = 'Select']/..")
 	private WebElement getAssignedUsersSelectButton;
 
 	public WebElement getAssignedUsersSelectButton() {
 		return getAssignedUsersSelectButton;
 	}
-	@FindBy(xpath = "(//div[contains(@id,'itemselectorfield')]//following::span[text()='Remove']//parent::button)")
+//	Omkar 9/5/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "(//div[contains(@id,'itemselectorfield')]//following::span[text()='Remove']//parent::button)")
+	@FindBy(xpath = "(//div[contains(@id,'buttonsContainer-innerCt')]//following::span[text()='Remove']/..)")
 	private WebElement getAssignedUsersRemoveButton;
 
 	public WebElement getAssignedUsersRemoveButton() {
@@ -580,7 +584,9 @@ public class SystemMaintenanceMap extends MapConfig {
 	public WebElement getUserEntitySelect() {
 		return getUserEntitySelect;
 	}
-	@FindBy(xpath = "(//div[contains(@class,'x-window-header-draggable')]//following::div[contains(@class,'x-boundlist-list-ct')])[4]//ul")
+//	Omkar 8/5/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "(//div[contains(@class,'x-window-header-draggable')]//following::div[contains(@class,'x-boundlist-list-ct')])[4]//ul")
+	@FindBy(xpath ="(//div[contains(@class,'x-panel x-panel-default')]//following::div[contains(@class,'x-boundlist-list-ct')])[4]//ul")
 	private WebElement getUserRoleSelectOptions;
 	public WebElement getUserRoleSelectOptions() {
 		return getUserRoleSelectOptions;

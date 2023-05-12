@@ -139,7 +139,7 @@ import webdriver.templates.TemplatesTestSuite;
 	SystemMaintenanceTestSuite.class,
 	EpisodesTestSuite.class,
 	ReportingTestSuite.class,
-//	ContractingSuite.class,
+	ContractingSuite.class,
 
 })
 

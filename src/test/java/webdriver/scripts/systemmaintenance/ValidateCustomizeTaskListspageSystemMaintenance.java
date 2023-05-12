@@ -7,6 +7,7 @@ import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
@@ -63,9 +64,11 @@ public class ValidateCustomizeTaskListspageSystemMaintenance extends Calculation
 		try {
 			doClick(systemMap.getCustomizeTaskListsPageSubTabOverhead());
 			assertTextIsDisplayed("Default Overhead Model Task List");
+			Thread.sleep(500);
 //			Omkar 21/4/2023 : xpath change for 11.2
 //			doClick("//span[text()='Default Overhead Model Task List']//following::div[text()='Prepare Costing Elements']");
-			doClick("//div[text()='Default Overhead Model Task List']//following::span[text()='Prepare Costing Elements']");
+//			doClick("//div[text()='Default Overhead Model Task List']//following::span[text()='Prepare Costing Elements']");
+			doClick("//div[text()='Default Overhead Model Task List']//following::span[text()='Prepare Costing Elements']/../child::div");
 			assertTextIsDisplayed("Entities");
 //			Omkar 21/4/2023 : xpath change for 11.2
 //			doClick("//span[text()='Default Overhead Model Task List']//following::div[text()='Prepare Costing Elements']");
@@ -105,12 +108,14 @@ public class ValidateCustomizeTaskListspageSystemMaintenance extends Calculation
 			assertTextIsDisplayed("Edit Payment Terms");
 //			Omkar 12/4/2023 : xpath change for 11.2
 //			doClick("(//div[contains(@class,'nowrapRow')]//following::div[text()='Edit Payment Terms'])");
-			doClick("//div[contains(@class,'nowrapRow')]//following::span[text()='Edit Payment Terms'])");
-			assertElementIsDisplayedWithXpath(
-					"//div[contains(@id,'treeview')]//div[text()='Fee For Service Payment Terms']");
+			doClick("//div[contains(@class,'nowrapRow')]//following::span[text()='Edit Payment Terms']");
+//			Omkar 11/5/2023 : xpath change for 11.2
+//			assertElementIsDisplayedWithXpath(
+//					"//div[contains(@id,'treeview')]//div[text()='Fee For Service Payment Terms']");
+			assertElementIsDisplayedWithXpath("//div[contains(@id,'treeview')]//span[text()='Fee For Service Payment Terms']");
 //			Omkar 21/4/2023 : xpath change for 11.2
 //			doClick("(//div[contains(@class,'nowrapRow')]//following::div[text()='Edit Payment Terms'])");
-			doClick("//div[contains(@class,'nowrapRow')]//following::span[text()='Edit Payment Terms'])");
+			doClick("//div[contains(@class,'nowrapRow')]//following::span[text()='Edit Payment Terms']");
 			ExtentReport.logPass("PASS", "test03OpenPublishedContract");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test03OpenPublishedContract", driver, e);
@@ -123,9 +128,14 @@ public class ValidateCustomizeTaskListspageSystemMaintenance extends Calculation
 		try {
 			doClick(systemMap.getCustomizeTaskListsPageSubTabEpisode());
 			doClick(ContractingMap.getContractModelRiskLimiterCancelCloseBtn());
-			doClick("//span[text()='Default Episode Model Task List']//following::div[text()='Build Structure Elements']");
-			assertElementIsDisplayedWithXpath("//div[contains(@id,'treeview')]//div[text()='Services']");
-			doClick("//span[text()='Default Episode Model Task List']//following::div[text()='Build Structure Elements']");
+//			Omkar 11/5/2023 : xpath change for 11.2
+//			doClick("//span[text()='Default Episode Model Task List']//following::div[text()='Build Structure Elements']");
+//			assertElementIsDisplayedWithXpath("//div[contains(@id,'treeview')]//div[text()='Services']");
+//			doClick("//span[text()='Default Episode Model Task List']//following::div[text()='Build Structure Elements']");
+			doClick("//div[text()='Default Episode Model Task List']//following::span[text()='Build Structure Elements']");			
+			assertElementIsDisplayedWithXpath("//div[contains(@id,'treeview')]//span[text()='Services']");
+			doClick("//div[text()='Default Episode Model Task List']//following::span[text()='Build Structure Elements']");
+			
 			ExtentReport.logPass("PASS", "test03OpenEpisode");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test03OpenEpisode", driver, e);
