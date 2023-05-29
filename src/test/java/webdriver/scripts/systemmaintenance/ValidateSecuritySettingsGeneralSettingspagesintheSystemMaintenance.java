@@ -29,7 +29,9 @@ public class ValidateSecuritySettingsGeneralSettingspagesintheSystemMaintenance 
 	@Test
 	public void test01AssertSystemSettingsPageIsShown() throws Throwable {
 		try {
-			assertElementIsDisplayedWithXpath("//div[contains(@class,'x-container areaTitle')][text()='Security Settings']");
+//			Omkar 29/5/2023 : xpath changes for 11.2
+//			assertElementIsDisplayedWithXpath("//div[contains(@class,'x-container areaTitle')][text()='Security Settings']");
+			assertElementIsDisplayedWithXpath("//div[contains(@class,'x-container areaTitle')]//div[text()='Security Settings']");
 			ExtentReport.logPass("PASS", "test01AssertSystemSettingsPageIsShown");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01AssertSystemSettingsPageIsShown", driver, e);
@@ -58,7 +60,9 @@ public class ValidateSecuritySettingsGeneralSettingspagesintheSystemMaintenance 
 		try {
 			goToPage("General Settings");
 			waitForDisplayedSpinnerToEnd();
-			assertElementIsDisplayedWithXpath("//div[contains(@class,'x-panel-header-text-container')]/span[text()='General Settings']");
+//			Omkar 29/5/2023 : xpath changes for 11.2
+//			assertElementIsDisplayedWithXpath("//div[contains(@class,'x-panel-header-text-container')]/span[text()='General Settings']");
+			assertElementIsDisplayedWithXpath("//div[@id='generalsettings_panel_header-title-textEl'][text()='General Settings']");
 			ExtentReport.logPass("PASS", "test03AssertGeneralSettingsPageIsShown");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test03AssertGeneralSettingsPageIsShown", driver, e);
@@ -68,7 +72,9 @@ public class ValidateSecuritySettingsGeneralSettingspagesintheSystemMaintenance 
 	@Test
 	public void test04ValidateGeneralSettingParameters() throws Throwable {
 		try {
-			assertElementIsDisplayedWithXpath("//div[contains(@class,'x-panel-header-text-container')]/span[text()='General Settings']");
+//			Omkar 29/5/2023 : xpath changes for 11.2
+//			assertElementIsDisplayedWithXpath("//div[contains(@class,'x-panel-header-text-container')]/span[text()='General Settings']");
+			assertElementIsDisplayedWithXpath("//div[@id='generalsettings_panel_header-title-textEl'][text()='General Settings']");
 			assertTextIsDisplayed("User Interface Settings");
 			assertElementIsDisplayedWithXpath("//*[contains(text(),'Purge Logs Settings')]");
 			ExtentReport.logPass("PASS", "test03AssertGeneralSettingsPageIsShown");
