@@ -313,24 +313,34 @@ public class GoStatic extends WebDriverStatic {
       modelMap.getModelLibraryButtonSearch().click();
       waitForAjaxExtJs();
       Thread.sleep(1000);
-      driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell x-grid-cell-gridcolumn')]/*[text()='" + contractModel + "']")).click();
-      driver.findElement(By.xpath("//span[text()='Open Task List']")).click();
+//      Omkar 15/5/2023 : xpath changes for 11.2
+//      driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell x-grid-cell-gridcolumn')]/*[text()='" + contractModel + "']")).click();
+    		  driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell x-grid-td x-grid-cell-gridcolumn')]/*[text()='" + contractModel + "']")).click();
+    		  driver.findElement(By.xpath("//span[text()='Open Task List']")).click();
       try {
         String lockText = driver.findElement(By.xpath("//*[contains(text(),'currently locked by client')] ")).getText();
         System.out.println("Domain Lock is Blocking Test Run: " + lockText);
       } catch (Throwable e) {}
       waitForAjaxExtJs();
       Thread.sleep(2000);
-      driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]/*[text()='Model Contract']")).click();
+//      Omkar 15/5/2023 : xpath changes for 11.2
+//      driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]/*[text()='Model Contract']")).click();
+      driver.findElement(By.xpath("//div[contains(@class,'x-grid-cell-inner x-grid-cell-inner-treecolumn')]/*[text()='Model Contract']")).click();
       Thread.sleep(5000);
       waitForSpinnerToEnd();
       waitForAjaxExtJs();
-      driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]/*[text()='Define Payment Terms']")).click();
+//      Omkar 15/5/2023 : xpath changes for 11.2
+//      driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]/*[text()='Define Payment Terms']")).click();
+      driver.findElement(By.xpath("//td[contains(@class,' x-grid-cell-treecolumn x-grid-cell-first x-grid-cell-last x-unselectable')]//span[text()='Define Payment Terms']")).click();
       waitForAjaxExtJs();
       Thread.sleep(5000);
-      String feeCheckbox = driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]/*[text()='Fee For Service Payment Terms']/input")).getAttribute("class");
+//      Omkar 15/5/2023 : xpath changes for 11.2
+//      String feeCheckbox = driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]/*[text()='Fee For Service Payment Terms']/input")).getAttribute("class");
+      String feeCheckbox = driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]//span[text()='Fee For Service Payment Terms']")).getAttribute("class");
       //assertTrue(feeCheckbox.contains("checked"));
-      driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]/*[text()='Fee For Service Payment Terms']")).click();
+//      Omkar 15/5/2023 : xpath changes for 11.2
+//      driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]/*[text()='Fee For Service Payment Terms']")).click();
+      driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]//span[text()='Fee For Service Payment Terms']")).click();
       waitForSpinnerToEnd();
       waitForAjaxExtJs();
       System.out.println(5000);
@@ -365,10 +375,14 @@ public class GoStatic extends WebDriverStatic {
       waitForSpinnerToEnd();
       waitForAjaxExtJs();
       System.out.println(2000);
-      driver.findElement(By.xpath("//span[contains(@class,'x-panel-header-text')][text()='Pricing Method']/../following-sibling::div")).click();
+//    Omkar 15/5/2023 : xpath changes for 11.2
+//      driver.findElement(By.xpath("//span[contains(@class,'x-panel-header-text')][text()='Pricing Method']/../following-sibling::div")).click();
+      driver.findElement(By.xpath("//div[text()='Pricing Method']/../following-sibling::div")).click();
       waitForAjaxExtJs();
       Thread.sleep(2000);
-      driver.findElement(By.xpath("//label[text()='Service Model']/ancestor::div/descendant::div[text() = '" + serviceModel + "'][2]")).click();
+//    Omkar 15/5/2023 : xpath changes for 11.2
+//      driver.findElement(By.xpath("//label[text()='Service Model']/ancestor::div/descendant::div[text() = '" + serviceModel + "'][2]")).click();
+      driver.findElement(By.xpath("(//span[text() = 'OPPS 2019'])[2]")).click();
     } catch (Throwable e) {
       e.getMessage();
     }

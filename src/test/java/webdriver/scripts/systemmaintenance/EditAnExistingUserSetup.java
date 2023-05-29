@@ -171,7 +171,9 @@ public class EditAnExistingUserSetup extends GoHelper {
 	public void test05SelectEntity() throws Throwable {
 		try {
 			if (systemMap.getUserEntitySelect().getAttribute("class").contains("disabled")) {
-				doClick("//input[contains(@id,'checkboxfield')]");
+//				Omkar 18/5/2023 : xpath changes for 11.2
+//				doClick("//input[contains(@id,'checkboxfield')]");
+				doClick("//input[contains(@id,'checkbox')][@type='checkbox']");
 				doClick(systemMap.getUserEntitySelect());
 			} else {
 				doClick(systemMap.getUserEntitySelect());

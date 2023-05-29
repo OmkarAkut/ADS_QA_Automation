@@ -28,7 +28,7 @@ public class TestAbilitytoCreateExistingStandardCostingReport extends GoHelper {
 	static String newReportName = reportName + currentDateTime;
 	static String directory = "Reports";
 	static String subDirectory = "Costing";
-	static int refreshTime = 5;
+	static int refreshTime = 10;
 
 	@BeforeClass
 	public static void setupScript() throws InterruptedException, Throwable {
@@ -97,12 +97,15 @@ public class TestAbilitytoCreateExistingStandardCostingReport extends GoHelper {
 			catch (Exception e) {
 
 			}
+			driverDelay(1000);
 			driver.findElement(By.xpath("(//span[text()='" + newReportName + "']//following::div/a)[1]")).click();
 			driverDelay(1000);
-			waitForElementPresence("//iframe[contains(@src,'QueryCrystalReportInstance.jsp')]");
+//			waitForElementPresence("//iframe[contains(@src,'QueryCrystalReportInstance.jsp')]");
+			waitForPresenceOfElement("//iframe[contains(@src,'QueryCrystalReportInstance.jsp')]");
 			driver.switchTo()
 			.frame(driver.findElement(By.xpath("//iframe[contains(@src,'QueryCrystalReportInstance.jsp')]")));
-			waitForElementPresence("//iframe[contains(@id,'bobjid')]");
+//			waitForElementPresence("//iframe[contains(@id,'bobjid')]");
+			waitForPresenceOfElement("//iframe[contains(@id,'bobjid')]");
 			driver.switchTo().frame(driver.findElement(By.xpath("//iframe[contains(@id,'bobjid')]")));
 			System.out.println(
 					driver.findElement(By.xpath("//span[text()='Entity:']//preceding::div[@id='Text6-0-0']//span/span"))

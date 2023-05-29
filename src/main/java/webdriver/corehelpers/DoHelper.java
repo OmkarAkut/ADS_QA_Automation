@@ -119,11 +119,18 @@ public class DoHelper extends DriverHelper {
 		}
 		else {
 			driverDelay(2000);
+//			Omkar 22/5/2023 : xpath changes for 11.2
+//			waitUntilElementIsClickable(driver
+//					.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]/div[text()='" + name + "']")));
+//			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);",
+//					driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]/div[text()='" + name + "']")));
+//			driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]/div[text()='" + name + "']"))
+//			.click();
 			waitUntilElementIsClickable(driver
-					.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]/div[text()='" + name + "']")));
+					.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]//span[text()='" + name + "']")));
 			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);",
-					driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]/div[text()='" + name + "']")));
-			driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]/div[text()='" + name + "']"))
+					driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]//span[text()='" + name + "']")));
+			driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]//span[text()='" + name + "']"))
 			.click();
 			waitForSpinnerToEnd();
 			waitForAjaxExtJs();
@@ -250,6 +257,23 @@ public class DoHelper extends DriverHelper {
 
 		}
 	}
+	
+//	added by Omkar for double click action
+	public static void doDoubleClick(String elementXpath) {
+		try {
+			Thread.sleep(300);
+			WebElement element = driver.findElement(By.xpath("" + elementXpath + ""));
+			waitUntilElementIsClickable(element);
+			Actions act = new Actions(driver);
+			act.doubleClick(element).perform();
+
+		} catch (Exception e) {
+			JavascriptExecutor executor = (JavascriptExecutor)driver;
+			executor.executeScript("arguments[0].click();", driver.findElement(By.xpath("" + elementXpath + "")));
+
+		}
+	}
+	
 
 	public static void doClick(String elementXpath) throws InterruptedException {
 		try {
@@ -257,9 +281,9 @@ public class DoHelper extends DriverHelper {
 			Actions action = new Actions(driver);
 			//Performing the mouse hover action on the target element.
 			action.moveToElement(driver.findElement(By.xpath("" + elementXpath + "")));
-			action.click().build().perform();
+//			action.click().build().perform();
 			
-//			driver.findElement(By.xpath("" + elementXpath + "")).click();
+			driver.findElement(By.xpath("" + elementXpath + "")).click();
 			waitForAjaxExtJs();
 		} catch (Exception e) {
 			JavascriptExecutor executor = (JavascriptExecutor)driver;

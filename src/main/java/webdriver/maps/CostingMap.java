@@ -303,7 +303,8 @@ public class CostingMap extends MapConfig {
 
 //	Omkar 26/4/23 : Change in xpath for 11.2
 //	@FindBy(xpath = "//*[contains(@class,'docked-bottom')]/descendant::span[text()='Cancel & Close']")
-	@FindBy(xpath ="//a[contains(@class,'x-btn cancelCloseBtn')]//span[text()='Cancel & Close']")
+//	@FindBy(xpath ="//a[contains(@class,'x-btn cancelCloseBtn')]//span[text()='Cancel & Close']")
+	@FindBy(xpath ="//span[text()='Cancel & Close']") // xpath not working in create new contract model cancel and close.To be checked once else create new one.
 	private WebElement rvuMaintenanceFilterButtonCancelAndClose;
 
 	public WebElement getRvuMaintenanceFilterButtonCancelAndClose() {
@@ -1744,7 +1745,9 @@ public class CostingMap extends MapConfig {
 		public WebElement getAddProviderCancelButton() {
 			return getAddProviderCancelButton;
 		}
-		@FindBy(xpath = "(//span[text()='Providers']//following::table[1]//tr/td[1]/div)")
+//		Omkar 29/4/2023 : Changes in xpath for ADS 11.2
+//		@FindBy(xpath = "(//span[text()='Providers']//following::table[1]//tr/td[1]/div)")
+		@FindBy(xpath = "//div[text()='Providers']//following::table[1]//tr/td[1]/div")
 		private List<WebElement> getProviderEntityList;
 
 		public List<WebElement> getProviderEntityList() {

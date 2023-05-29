@@ -69,8 +69,12 @@ public class EntityLevelSecurityContracting extends GoHelper{
 			doSearchForContractModel(contractModel);
 			tableDoubleClickCellFirstColumn(contractModel);
 			doClickTreeItemWithCheckbox("General Information - Published Contract");
-			doClick("//button/span[text()='Definition Elements']");
-			doClick("//div[contains(@class,'x-tool')]/img[contains(@class, 'tool-expand-bottom')]");
+//			Omkar 29/5/2023 : xpath changes for 11.2
+//			doClick("//button/span[text()='Definition Elements']");
+//			doClick("//div[contains(@class,'x-tool')]/img[contains(@class, 'tool-expand-bottom')]");
+			doClick("//span[text()='Definition Elements']");
+			doClick("//div[contains(@class,'x-top x-panel-header-top x-panel-header-default-top x-docked')]"
+					+ "//div[contains(@class, 'x-tool-expand-bottom')]");			
 			if(!(costing.getProviderEntityList().size()==1)) {
 				assertFalse(false);
 			}
@@ -84,7 +88,9 @@ public class EntityLevelSecurityContracting extends GoHelper{
 	@Test
 	public void test03VeryThereisOneEntityUnderSelectedColumn() throws Throwable{
 			try {
-				doClick("//button/span[text()='Add Providers']");
+//				Omkar 29/5/2023 : xpath changes for 11.2
+//				doClick("//button/span[text()='Add Providers']");
+				doClick("//span[text()='Add Providers']");
 				waitForAjaxExtJs();
 				ContractModelsHelper.assertColumnsToDisplayColumnIsSelected(entityName);
 				doClick(costing.getAddProviderCancelButton());

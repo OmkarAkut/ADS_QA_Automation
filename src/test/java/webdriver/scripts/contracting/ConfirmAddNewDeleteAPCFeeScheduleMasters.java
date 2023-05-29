@@ -151,8 +151,9 @@ public class ConfirmAddNewDeleteAPCFeeScheduleMasters extends CalculationHelper 
 			ExtentReport.logFail("FAIL", "test06CreateNewandDeleteAPCCode", driver, e);
 			fail(e.getMessage());
 		} finally {
-			doClosePageOnLowerBar("Model Library");
-
+//			Omkar 22/5/2023 : xpath/name changes for 11.2
+//			doClosePageOnLowerBar("Model Library"); 
+			doClosePageOnLowerBar("Contract Models");
 		}
 	}
 

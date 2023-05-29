@@ -54,9 +54,12 @@ public class CreateCustomTaskListwithCostingTaskListSpecificScreens extends GoHe
 	public void test01AddNewFolder() throws Throwable {
 		try {
 			doClick(systemMap.getSystemMaintenanceAddFolderButton());
-			
-			act.moveToElement(driver.findElement(By.xpath("(//div[@id='ctlCostingTree-body']//tr[contains(@class,'x-grid-row-focused')]/td)[2]"))).sendKeys(Keys.CLEAR).sendKeys(Keys.chord(currentDateTime))
+//			Omkar 12/5/2023 : xpath changes for 11.2
+//			act.moveToElement(driver.findElement(By.xpath("(//div[@id='ctlCostingTree-body']//tr[contains(@class,'x-grid-row-focused')]/td)[2]"))).sendKeys(Keys.CLEAR).sendKeys(Keys.chord(currentDateTime))
+//	         .click().pause(200).perform();
+			act.moveToElement(driver.findElement(By.xpath("(//span[text() = 'Folder Name'])[1]"))).sendKeys(Keys.CLEAR).sendKeys(Keys.chord(currentDateTime))
 	         .click().pause(200).perform();
+			
 			ContractModelsHelper.scrollToView("//*[text()='"+name+"']");
 			assertTextIsDisplayed(name);
 			ExtentReport.logPass("PASS", "test01AddNewFolder");

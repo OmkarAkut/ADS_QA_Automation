@@ -245,7 +245,9 @@ public class ContractModelsHelper extends GoHelper {
 	    for (String selectedColumns: columnsToSelect) {
 	    	System.out.println(selectedColumns);
 	      highlightColumnsToDisplayColumn(selectedColumns);
-	      doClick("(//div[contains(@class,'x-window-header-draggable')]//following::span[text()='Select']//parent::button)[3]");
+//	      Omkar 19/5/2023 : xpath changes for 11.2
+//	      doClick("(//div[contains(@class,'x-window-header-draggable')]//following::span[text()='Select']//parent::button)[3]");
+	      doClick("//div[contains(@class,'x-container x-box-item x-container-default x-box-layout-ct')]//span[text()='Select']/..");
 	      assertColumnsToDisplayColumnIsSelected(selectedColumns);
 	      Thread.sleep(300);
 	    }

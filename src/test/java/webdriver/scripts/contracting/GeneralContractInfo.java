@@ -11,6 +11,8 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+
 import com.aventstack.extentreports.Status;
 import webdriver.maps.EditContractingModelMap;
 import webdriver.maps.ModelLibraryMap;
@@ -142,10 +144,17 @@ public class GeneralContractInfo extends ContractModelsHelper {
 			throws InterruptedException,Throwable{
 		// go to General section
 		try {
-			webdriverClick(driver.findElement(By.xpath("//*[@name='pricemethodoption']")));
+			webdriverClick(driver.findElement(By.xpath("//*[@name='pricemethodoption']/..")));
+			Thread.sleep(200);
 			waitForAjaxExtJs();
-			webdriverClick(driver
-					.findElement(By.xpath("//div[@class='x-boundlist-list-ct']/ul/li[text()='Medicare Inpatient PPS']")));
+//			webdriverClick(driver
+//					.findElement(By.xpath("//div[@class='x-boundlist-list-ct']/ul/li[text()='Medicare Inpatient PPS']")));
+			WebElement optionToSelect = driver
+					.findElement(By.xpath("//div[contains(@class,'x-boundlist x-boundlist-floating')]//ul/li[text()='Medicare Inpatient PPS']"));
+//			webdriverClick(driver
+//					.findElement(By.xpath("//div[contains(@class,'x-boundlist x-boundlist-floating')]//ul/li[text()='Medicare Inpatient PPS']")));
+			Actions action = new Actions(driver);
+			action.moveToElement(optionToSelect).click().pause(20).perform();
 			Thread.sleep(200);
 			// shilpa 01.08.2022 added above steps
 			navigateFeeForServicePaymentTermsPagePricingMethodSectionClickEditButtonToOpenEditDialog();
@@ -193,6 +202,8 @@ public class GeneralContractInfo extends ContractModelsHelper {
 			}
 			waitForAjaxExtJs();
 		} catch (Exception e) {
+			webdriverClick(driver
+					.findElement(By.xpath("//li[text()='Medicare Inpatient PPS']")));
 			ExtentReport.logFail("FAIL", "test04GeneralSectionAssertIndustryClassificationSchemeFieldDefaultValueIsMsdrg1", driver, e);
 			fail(e.getMessage());
 		}

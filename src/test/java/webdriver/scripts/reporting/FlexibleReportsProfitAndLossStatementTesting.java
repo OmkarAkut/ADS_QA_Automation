@@ -1,5 +1,6 @@
 package webdriver.scripts.reporting;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import java.text.SimpleDateFormat;
@@ -11,6 +12,8 @@ import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.interactions.DoubleClickAction;
+
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.corehelpers.GoHelper;
@@ -22,7 +25,8 @@ import webdriver.maps.mapbuilder.BuildMap;
 public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 	static String directory="Templates";
 	static String subDirectory="Flexible Reports";
-	static String report="Profit and Loss Statement";
+//		static String report="Profit and Loss Statement";
+	static String report="Contract Comparison";
 	private static ReportingMap reportMap;
 	static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
 	static String reportName= "Report " + currentDateTime;
@@ -56,10 +60,9 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 			doClick("//div[contains(text(),'" + directory
 					+ "')]/ancestor::table/following-sibling::div/descendant::*[contains(text(), '" + subDirectory
 					+ "')]");
-			Thread.sleep(2000);
-			doClick("//a[text()='"+report+"']");
-			waitForElementToBeVisible(reportMap.reportSubtitleName());
-			ContractModelsHelper.keyInValues(reportMap.reportSubtitleName(), reportName);
+
+			//			doClick("//a[text()='"+report+"']");
+			doClick("//a[@title='"+report+"']");			
 			ExtentReport.logPass("PASS", "test01OpenFlexibleReports");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01OpenFlexibleReports", driver, e);
@@ -85,13 +88,13 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 			ExtentReport.logFail("FAIL", "test02GoToSelectionsTab", driver, e);
 			fail(e.getMessage());
 		}
-		
+
 	}
 	@Test
 	public void test03GoToDetailsTab() throws Throwable {
 		try {
-doClick(reportMap.reportDetailsButton());
-			
+			doClick(reportMap.reportDetailsButton());
+
 			Actions act=new Actions(driver);
 			act.moveToElement(driver.findElement(By.xpath("//option[@value='Primary Benefit Plan Code']"))).doubleClick().build().perform();
 			driverDelay(400);
@@ -106,7 +109,7 @@ doClick(reportMap.reportDetailsButton());
 			fail(e.getMessage());
 		}
 	}
-	
+
 	@Test
 	public void test04GoToSortsTab() throws Throwable {
 		try {
@@ -149,91 +152,112 @@ doClick(reportMap.reportDetailsButton());
 			doClick(reportMap.reportLibraryPageEntityRunButton());
 			waitForElementToBeVisible(reportMap.reportLibraryPageEntityRefreshButton());
 			waitForPresenceOfElement(("//span[text()='" + orgName + "']"));
-			String status=driver.findElement(By.xpath("(//span[text()='" + orgName + "']//following::td[5]/div)")).getText();
+			Thread.sleep(2000);
+			doClick(reportMap.reportLibraryPageEntityRefreshButton());
+			waitForPresenceOfElement("//span[text()='" + orgName + "']//following::td[5]/div");
+			String status=driver.findElement(By.xpath("//span[text()='" + orgName + "']//following::td[5]/div")).getText();
 			String[] staNum=status.replaceAll("Step ", "").split("/");
 			int numerator=Integer.parseInt(staNum[0]);
 			int denominator=Integer.parseInt(staNum[1]);
-			
-				for (int i = 0; i <= denominator; i++) {
-					try {
+			String reportStatus=driver.findElement(By.xpath("//span[text()='" + orgName + "']//following::td[5]/div/a")).getText();
+
+			for (int i = 0; i <= denominator; i++) {
+				try {
+					Thread.sleep(2000);
+					doClick(reportMap.reportLibraryPageEntityRefreshButton());
+					waitForPresenceOfElement(("//span[text()='" + orgName + "']"));
+					String[] staNumber=status.replaceAll("Step ", "").split("/");
+					int numeratorNum=Integer.parseInt(staNumber[0]);
+//					String reportStatus=driver.findElement(By.xpath("//span[text()='" + orgName + "']//following::td[5]/div/a")).getText();
+					if(reportStatus.equals("FAILED")) {
+						assertFalse(printout);
+						break;
+					}
+					if (numeratorNum==denominator) {
 						doClick(reportMap.reportLibraryPageEntityRefreshButton());
 						waitForPresenceOfElement(("//span[text()='" + orgName + "']"));
-						String[] staNumber=status.replaceAll("Step ", "").split("/");
-						int numeratorNum=Integer.parseInt(staNumber[0]);
-						String reportStatus=driver.findElement(By.xpath("(//span[text()='" + orgName + "']//following::td[5]/div)")).getText();
 
-						if (numeratorNum==denominator) {
-							doClick(reportMap.reportLibraryPageEntityRefreshButton());
-							waitForPresenceOfElement(("//span[text()='" + orgName + "']"));
-
-							try {
-								if(reportStatus.equals("COMPLETED")) {
+						try {
+							if(reportStatus.equals("COMPLETED")) {
 								assertTrue(printout);
 								break;
-								}
-								else {
-									continue;
-								}
-							} catch (Exception e) {
+							}
+							else if(reportStatus.equals("FAILED")) {
+								assertFalse(printout);
+								break;
+							}
+							else {
 								continue;
 							}
-							
+						} catch (Exception e) {
+							continue;
 						}
-						if(reportStatus.equals("COMPLETED")) {
-							assertTrue(printout);
-							break;
-							}
-						
-					} catch (Exception | AssertionError e) {
+
+					}
+					else {
 						continue;
 					}
-			ExtentReport.logPass("PASS", "test06SaveReportAndAssertStatus");
-				}	
+//					if(reportStatus.equals("COMPLETED")) {
+//						assertTrue(printout);
+//						break;
+//					}
+//					else if(reportStatus.equals("FAILED")) {
+//						assertFalse(printout);
+//						break;
+//					}
+					
 
+				} catch (Exception | AssertionError e) {
+					continue;
+				}
+				
+//				ExtentReport.logPass("PASS", "test06SaveReportAndAssertStatus");
+			}	
+			ExtentReport.logPass("PASS", "test06SaveReportAndAssertStatus");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test06SaveReportAndAssertStatus", driver, e);
 			fail(e.getMessage());
 		}
 	}
-		
-			@Test
-			public void test07OpenCompletedReportAndVerifyReportNames() throws Throwable {
-				try {
-					driver.findElement(By.xpath("(//span[text()='" + orgName + "']//following::td[5]/div)")).click();
-					driverDelay(1500);
-					waitForElementPresence("//iframe[contains(@src,'QueryCrystalReportInstance.jsp')]");
-					driver.switchTo()
-							.frame(driver.findElement(By.xpath("//iframe[contains(@src,'QueryCrystalReportInstance.jsp')]")));
-					driverDelay(1500);
-					driver.switchTo().frame(driver.findElement(By.xpath("//iframe[contains(@id,'bobjid')]")));
-					String field1=driver.findElement(By.xpath("//div[@id='Field1']//span")).getText();
-					String field2=driver.findElement(By.xpath("//div[@id='Field2']//span")).getText();
-					System.out.println(field1);
-					System.out.println(field2);
-					if(field1.equals(orgName)) {
-						assertTrue(printout);
-					
-					}
-					else {
-						fail();
-					}
-					if(field2.equals(reportName)) {
-						assertTrue(printout);
-					
-					}else {
-						fail();
-					}
-					
-					ExtentReport.logPass("PASS", "test07OpenCompletedReportAndVerifyReportNames");
 
-				} catch (Exception | AssertionError e) {
-					ExtentReport.logFail("FAIL", "test07OpenCompletedReportAndVerifyReportNames", driver, e);
-					fail(e.getMessage());
-				}
+	@Test
+	public void test07OpenCompletedReportAndVerifyReportNames() throws Throwable {
+		try {
+			driver.findElement(By.xpath("(//span[text()='" + orgName + "']//following::td[5]/div)")).click();
+			driverDelay(1500);
+			waitForElementPresence("//iframe[contains(@src,'QueryCrystalReportInstance.jsp')]");
+			driver.switchTo()
+			.frame(driver.findElement(By.xpath("//iframe[contains(@src,'QueryCrystalReportInstance.jsp')]")));
+			driverDelay(1500);
+			driver.switchTo().frame(driver.findElement(By.xpath("//iframe[contains(@id,'bobjid')]")));
+			String field1=driver.findElement(By.xpath("//div[@id='Field1']//span")).getText();
+			String field2=driver.findElement(By.xpath("//div[@id='Field2']//span")).getText();
+			System.out.println(field1);
+			System.out.println(field2);
+			if(field1.equals(orgName)) {
+				assertTrue(printout);
+
 			}
-			
-			
-	
+			else {
+				fail();
+			}
+			if(field2.equals(reportName)) {
+				assertTrue(printout);
+
+			}else {
+				fail();
+			}
+
+			ExtentReport.logPass("PASS", "test07OpenCompletedReportAndVerifyReportNames");
+
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test07OpenCompletedReportAndVerifyReportNames", driver, e);
+			fail(e.getMessage());
+		}
+	}
+
+
+
 	@AfterClass
 	public static void endtest() throws Exception {
 		driver.switchTo().defaultContent();

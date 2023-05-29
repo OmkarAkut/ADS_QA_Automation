@@ -579,7 +579,9 @@ public class SystemMaintenanceMap extends MapConfig {
 	public WebElement getUserRoleSelect() {
 		return getUserRoleSelect;
 	}
-	@FindBy(xpath = "(//label[text()='Entities']//following::div[contains(@class,'roleSelect')])[1]")
+//	Omkar 18/5/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "(//label[text()='Entities']//following::div[contains(@class,'roleSelect')])[1]")
+	@FindBy(xpath = "//div[contains(@class,'x-panel x-box-item x-panel-default')]//span[text()='Select']")
 	private WebElement getUserEntitySelect;
 	public WebElement getUserEntitySelect() {
 		return getUserEntitySelect;
@@ -636,7 +638,9 @@ public class SystemMaintenanceMap extends MapConfig {
 	public WebElement getUserMasterMenuItems() {
 		return getUserMasterMenuItems;
 	}
-	@FindBy(xpath = "(//div[contains(@class,'x-window-header-draggable')]//following::span[text()='Select']//parent::button)[3]")
+//	Omkar 9/5/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "(//div[contains(@class,'x-window-header-draggable')]//following::span[text()='Select']//parent::button)[3]")
+	@FindBy(xpath = "//div[contains(@class,'x-container x-box-item x-container-default x-box-layout-ct')]//span[text()='Select']/..")
 	private WebElement getUserSelectButtonInPopUp;
 	public WebElement getUserSelectButtonInPopUp() {
 		return getUserSelectButtonInPopUp;
