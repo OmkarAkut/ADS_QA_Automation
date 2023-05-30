@@ -112,8 +112,9 @@ public class EditExistingRoleSetup extends GoHelper {
 			doClick(systemMap.getMenuItemsSelectButton());
 			waitForMainPageTitle("Menu Items");
 			doClick(systemMap.getAssignedUsersRemoveButton());
-			doClick("(//div[contains(@class,'x-btn windowbtn x-box-item x-btn-default-small x-icon-text-left')]//span[text()='All']//parent::button)[2]");
-
+//			Omkar 29/5/2023 : xpath changes for 11.2
+//			doClick("(//div[contains(@class,'x-btn windowbtn x-box-item x-btn-default-small x-icon-text-left')]//span[text()='All']//parent::button)[2]");
+			doClick(systemMap.getUserRoleSelectAllLeftButton());
 			ContractModelsHelper.doDropdownSelectUsingOptionTextOnly(systemMap.getAssignedUsers(),
 					"Ad Hoc Report Design");
 			doClick(systemMap.getAssignedUsersSelectButton());

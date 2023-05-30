@@ -261,7 +261,7 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 	@AfterClass
 	public static void endtest() throws Exception {
 		driver.switchTo().defaultContent();
-		doClick("//*[contains(@id,'tabbar')]//following::span[text()='Report Library']//following::a[@class='x-tab-close-btn']");
+//		doClick("//*[contains(@id,'tabbar')]//following::span[text()='Report Library']//following::a[@class='x-tab-close-btn']");
 		ExtentReport.report.flush();
 
 	}

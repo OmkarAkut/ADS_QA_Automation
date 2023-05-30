@@ -515,9 +515,11 @@ public class SystemMaintenanceMap extends MapConfig {
 	public WebElement getAssignedUsersRemoveButton() {
 		return getAssignedUsersRemoveButton;
 	}
-	@FindBy(xpath = "(//div[contains(@class,'rolesMenuItems')]//table[contains(@class,'x-grid-table')]//following::span[text()='Select']//parent::button)[1]")
+	
+//	Omkar 29/5/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "(//div[contains(@class,'rolesMenuItems')]//table[contains(@class,'x-grid-table')]//following::span[text()='Select']//parent::button)[1]")
+	@FindBy(xpath = "//div[contains(@class,'rolesMenuItems')]//following::span[text()='Select']/..")
 	private WebElement getMenuItemsSelectButton;
-
 	public WebElement getMenuItemsSelectButton() {
 		return getMenuItemsSelectButton;
 	}

@@ -342,15 +342,21 @@ public class ContractingMap extends MapConfig {
 	private WebElement ContractModelLeftPane;
 	public WebElement getContractModelLeftPane() {return ContractModelLeftPane;}
 
-	@FindBy(xpath = "//span[text()='Service Model']")
+//	Omkar 30/5/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//span[text()='Service Model']")
+	@FindBy(xpath = "//div[text()='Service Model']")
 	private WebElement ContractServiceModel;
 	public WebElement getContractServiceModel() {return ContractServiceModel;}
 
-	@FindBy(xpath = "//span[text()='Pricing Method']")
+//	Omkar 30/5/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//span[text()='Pricing Method']")
+	@FindBy(xpath = "//div[text()='Pricing Method']")
 	private WebElement ContractPricingMethod;
 	public WebElement getContractPricingMethod() {return ContractPricingMethod;}
 
-	@FindBy(xpath = "//span[text()='Risk Limiter Model']")
+//	Omkar 30/5/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//span[text()='Risk Limiter Model']")
+	@FindBy(xpath = "//div[text()='Risk Limiter Model']")
 	private WebElement ContractRiskLimiterModel;
 	public WebElement getContractRiskLimiterModel() {return ContractRiskLimiterModel;}
 

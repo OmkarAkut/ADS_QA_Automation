@@ -6,6 +6,8 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.corehelpers.GoHelper;
@@ -53,7 +55,11 @@ public class SearchTheReportLibrary extends GoHelper {
 	public void test02ClearSearch() throws Throwable {
 		try {
 			ContractModelsHelper.keyInValues(reportMap.getReportLibraryPageFormFieldSearch(), "");
-			assertElementIsDisplayedWithXpath("//div[@class='GJT013UBH']//tr");
+			Thread.sleep(2000);
+// verify there are more than 1 results available after clearing the filter. Random 3rd element is checked
+			WebElement otherValue = driver.findElement(By.xpath("//div[@class='GJT013UBH']//tr[3]"));
+//			assert this element is other than reportName = "Cost per RVU" (filter applied earlier)
+			assertThatElementIsDisplayed(otherValue);
 			ExtentReport.logPass("PASS", "test02ClearSearch");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test02ClearSearch", driver, e);
@@ -63,7 +69,7 @@ public class SearchTheReportLibrary extends GoHelper {
 
 	@AfterClass
 	public static void endtest() throws Exception {
-		doClosePageOnLowerBar("Report Library");
+//		doClosePageOnLowerBar("Report Library");
 		ExtentReport.report.flush();
 
 	}

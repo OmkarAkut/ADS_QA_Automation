@@ -21,19 +21,27 @@ public class WaitHelper extends JavaHelper {
 	}
 
 	public void waitUntilTreeOptionIsClickable(String treeOptionName) {
-		boolean wait = true;
-		while (wait){
+		/*Omkar 30/5/2023 : Commenting the bwelow code as the TC is going to infinite loop
+						xpath changes for 11.2 
+						*/
+		
+//		boolean wait = true;
+//		while (wait){
 			try {
+//				waitUntilElementIsClickable(
+//						driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]/div[text()='" + treeOptionName + "']"))
+//						);
 				waitUntilElementIsClickable(
-						driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]/div[text()='" + treeOptionName + "']"))
+						driver.findElement(By.xpath("//span[text()='" + treeOptionName + "']"))
 						);
-				wait = false;
-			} catch (NoSuchElementException nsee) {
-				continue;
-			} catch (Exception e) {
-				TestCase.fail("Tree Element Not Found");
+//				wait = false;
+//			} catch (NoSuchElementException nsee) {
+//				continue;
+			} 
+			catch (Exception e) {
+				TestCase.fail("Tree Element" +treeOptionName+ " Not Found");
 			}
-		}
+//		}
 	}
 
 	public void waitForLandingPageFooter() {
@@ -193,7 +201,7 @@ public class WaitHelper extends JavaHelper {
 	public static void waitUntilElementIsClickable(WebElement element){
 		//Edited by Omkar on 22/6/22 as the old wait is depreciated
 		//WebDriverWait wait = new WebDriverWait(driver, 30);
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40,0));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.elementToBeClickable(element));
 	}
 

@@ -661,8 +661,11 @@ public class ContractModelsHelper extends GoHelper {
 	    String columnIsSelected = null;
 	    try {
 	      waitForAjaxExtJs();
-	      scrollToView("//*[contains(@class,'x-grid-table')]/descendant::*[text()='"+column+"']/../..");
-	      columnIsSelected = driver.findElement(By.xpath("//*[contains(@class,'x-grid-table')]/descendant::*[text()='"+column+"']/../..")).getAttribute("class");
+//	      Omkar 30/5/2023 : xpath chages for 11.2
+//	      scrollToView("//*[contains(@class,'x-grid-table')]/descendant::*[text()='"+column+"']/../..");
+//	      columnIsSelected = driver.findElement(By.xpath("//*[contains(@class,'x-grid-table')]/descendant::*[text()='"+column+"']/../..")).getAttribute("class");
+	      scrollToView("//*[text()='"+column+"']/../..");
+	      columnIsSelected = driver.findElement(By.xpath("//*[text()='"+column+"']/../..")).getAttribute("class");
 	    } catch (Throwable e) {
 	      System.out.println("Element Not Found");
 	      fail("element not found");
@@ -802,14 +805,19 @@ public class ContractModelsHelper extends GoHelper {
 		    try {
 		      waitForSpinnerToEnd();
 		      waitForAjaxExtJs();
-		      scrollToView("//span[contains(@class,'x-panel-header-text')][text()='"+Model+"']/../following-sibling::div");
-		      driver.findElement(By.xpath("//span[contains(@class,'x-panel-header-text')][text()='"+Model+"']/../following-sibling::div")).click();
+//		      Omkar 30/5/2023 : xpath changes for 11.2
+//		      scrollToView("//span[contains(@class,'x-panel-header-text')][text()='"+Model+"']/../following-sibling::div");
+//		      driver.findElement(By.xpath("//span[contains(@class,'x-panel-header-text')][text()='"+Model+"']/../following-sibling::div")).click();
+		      scrollToView("//div[contains(@class,'default x-title-item')][text()='"+Model+"']/../following-sibling::div");
+		     
+		      driver.findElement(By.xpath("//div[contains(@class,'default x-title-item')][text()='"+Model+"']/../following-sibling::div")).click();
 		      waitForAjaxExtJs();
 		      Thread.sleep(300);
 		    } catch (Exception e) {
 		    	JavascriptExecutor executor = (JavascriptExecutor)driver;
-			      scrollToView("//span[contains(@class,'x-panel-header-text')][text()='"+Model+"']/../following-sibling::div");
-
+//		    	 Omkar 30/5/2023 : xpath changes for 11.2
+//			      scrollToView("//span[contains(@class,'x-panel-header-text')][text()='"+Model+"']/../following-sibling::div");
+			      scrollToView("//div[contains(@class,'default x-title-item')][text()='"+Model+"']/../following-sibling::div");
 		    	executor.executeScript("arguments[0].click();",driver.findElement(By.xpath("//label[text()='Service Model']/ancestor::div/descendant::div[text() = '" + Model + "']"))
 		);
 		    	 Thread.sleep(300);

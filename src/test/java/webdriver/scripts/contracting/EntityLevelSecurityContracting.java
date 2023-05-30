@@ -73,8 +73,7 @@ public class EntityLevelSecurityContracting extends GoHelper{
 //			doClick("//button/span[text()='Definition Elements']");
 //			doClick("//div[contains(@class,'x-tool')]/img[contains(@class, 'tool-expand-bottom')]");
 			doClick("//span[text()='Definition Elements']");
-			doClick("//div[contains(@class,'x-top x-panel-header-top x-panel-header-default-top x-docked')]"
-					+ "//div[contains(@class, 'x-tool-expand-bottom')]");			
+			doClick("//div[contains(@class, 'x-title-text x-title-text-default x-title-item')][text()='Providers']/parent::div/following-sibling::div");
 			if(!(costing.getProviderEntityList().size()==1)) {
 				assertFalse(false);
 			}
