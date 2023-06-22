@@ -1,5 +1,6 @@
 package webdriver.scripts.reporting;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
@@ -87,6 +88,12 @@ public class TestAbilitytoCreateExistingStandardCostingReport extends GoHelper {
 							assertTrue(printout);
 							break;
 						}
+						else if (driver
+								.findElement(By.xpath("(//span[text()='" + newReportName + "']//following::div/a)[1]"))
+								.getText().equals("FAILED")) {
+							assertFalse(printout);
+							break;
+						}
 
 						continue;
 					} catch (Exception | AssertionError e) {
@@ -125,7 +132,7 @@ public class TestAbilitytoCreateExistingStandardCostingReport extends GoHelper {
 	@AfterClass
 	public static void endtest() throws Exception {
 		driver.switchTo().defaultContent();
-		doClick("//*[contains(@id,'tabbar')]//following::span[text()='Report Library']//following::a[@class='x-tab-close-btn']");
+//		doClick("//*[contains(@id,'tabbar')]//following::span[text()='Report Library']//following::a[@class='x-tab-close-btn']");
 		ExtentReport.report.flush();
 
 	}

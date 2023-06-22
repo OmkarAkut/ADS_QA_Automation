@@ -48,7 +48,9 @@ public class ValidateBenefitPlanInfoUpdate extends CalculationHelper {
 	public void test01AddMultipleBenefitPlan() throws Throwable {
 		try {
 			doClick(ContractingMap.getDefinitionElementC1());
-			doClick("(//span[contains(text(),'Benefit Plans')]//following::img)[1]");
+//			Omkar 22/6/2023 : xpath changes for 11.2
+//			doClick("(//span[contains(text(),'Benefit Plans')]//following::img)[1]");
+			doClick("//div[contains(text(),'Benefit Plans')]/../following-sibling::div");
 			ContractModelsHelper.scrollToView(ContractingMap.getDefinitionElementAddBtn());
 			doClick(ContractingMap.getDefinitionElementAddBtn());
 			waitForMainPageTitle("Add Benefit Plans");
@@ -56,8 +58,11 @@ public class ValidateBenefitPlanInfoUpdate extends CalculationHelper {
 			doClick(ContractingMap.getContractModelApplyInExportPopUp());
 			ContractModelsHelper.CompareListToArray(ContractingMap.getBenefitPlans(), columnsToCompare);
 			doClick(ContractingMap.getSaveBenefitPlan());
-			ContractModelsHelper.toggleBetweenTheDockBar("//span[text()='Model Library']//parent::button");
-			ContractModelsHelper.toggleBetweenTheDockBar("//span[text()='ADS 1321 FY2020 Test D']//parent::button");
+//			Omkar 22/6/2023 : xpath changes for 11.2
+//			ContractModelsHelper.toggleBetweenTheDockBar("//span[text()='Model Library']//parent::button");
+//			ContractModelsHelper.toggleBetweenTheDockBar("//span[text()='ADS 1321 FY2020 Test D']//parent::button");
+			ContractModelsHelper.toggleBetweenTheDockBar("//span[text()='Model Library']");
+			ContractModelsHelper.toggleBetweenTheDockBar("//span[text()='ADS 1321 FY2020...']");
 			ContractModelsHelper.scrollToView(ContractingMap.getDefinitionElementAddBtn());
 			doClick(ContractingMap.getDefinitionElementAddBtn());
 			waitForMainPageTitle("Add Benefit Plans");

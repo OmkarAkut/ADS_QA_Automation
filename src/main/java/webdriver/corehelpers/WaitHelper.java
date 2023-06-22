@@ -59,8 +59,12 @@ public class WaitHelper extends JavaHelper {
 	}
 
 	public void waitForPageTitle(String pageTitle) {
+//		Omkar 19/6/2023 : xpath changes for 11.2
+//		waitUntilElementIsVisible(
+//				driver.findElement(By.xpath("//span[contains(@class, 'header') and text()='" + pageTitle + "']"))
+//				);
 		waitUntilElementIsVisible(
-				driver.findElement(By.xpath("//span[contains(@class, 'header') and text()='" + pageTitle + "']"))
+				driver.findElement(By.xpath("//div[text()='" + pageTitle + "']"))
 				);
 	}
 

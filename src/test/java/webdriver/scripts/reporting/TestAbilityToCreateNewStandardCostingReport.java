@@ -70,7 +70,7 @@ public class TestAbilityToCreateNewStandardCostingReport extends GoHelper{
 			driverDelay(1000);
 			executor.executeScript("arguments[0].click();", reportMap.reportLibraryPageEntityOkButton());
 //			driverDelay(2000);
-			doClick(reportMap.reportLibraryPageEntityOkButton());
+//			doClick(reportMap.reportLibraryPageEntityOkButton());
 //			driverDelay(10000);
 //			doClick(reportMap.reportLibraryPageEntitySaveAsButton());
 //			doClick(reportMap.reportLibraryPageDeptHierarchy());
@@ -82,19 +82,21 @@ public class TestAbilityToCreateNewStandardCostingReport extends GoHelper{
 //			doClick(reportMap.reportLibraryPageEntityOkButton());			
 //			driverDelay(500);
 			Actions action=new Actions(driver);
+			driverDelay(500);
 			action.moveToElement(reportMap.reportLibraryPageDeptGrp()).click().build().perform();
 //						doClick(reportMap.reportLibraryPageDeptGrp());
-//						driverDelay(1000);
+						driverDelay(1000);
 //			doClick(reportMap.reportLibraryPageEntitySelectDropdown());
 //			ContractModelsHelper.ChooseOptionFromSelectDropdown(reportMap.reportLibraryPageEntitySelectDropdown(),1);
 //			ContractModelsHelper.keyInValues(reportMap.reportLibraryPageEntitySearch(), deptGroup);
 //			doClick("//div[text()='PATCARE  PATCARE']");
 			doClick("//div[text()='PRATEST1']");
+			doClick("//div[text()='PRATEST1']");
 			driverDelay(1000);
 			doClick(reportMap.reportLibraryPageEntityOkButton());
 			driverDelay(1000);
 			doClick(reportMap.reportLibraryPageEntitySaveAsButton());
-			
+			driverDelay(1000);
 			ContractModelsHelper.keyInValues(driver.findElement(By.xpath("//input[@class='gwt-TextBox']")), "CM1 Cost");
 			doClick(reportMap.reportLibraryPageEntityOkButton());
 			driverDelay(400);
@@ -104,7 +106,7 @@ public class TestAbilityToCreateNewStandardCostingReport extends GoHelper{
 		
 			for(int i=0;i<=5;i++) {
 				doClick(reportMap.reportLibraryPageEntityRefreshButton());
-				if(driver.findElement(By.xpath("//span[text()='CM1 Cost']//following::div[5]")).getText().equals("COMPLETED")) {
+				if(driver.findElement(By.xpath("(//span[text()='CM1 Cost']//following::div[5]/a)[1]")).getText().equals("COMPLETED")) {
 					break;
 				}
 			}

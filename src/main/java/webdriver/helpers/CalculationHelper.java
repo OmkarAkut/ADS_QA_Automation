@@ -403,10 +403,14 @@ public class CalculationHelper extends GoHelper {
 		}
 		while (calculate) {
 			try {
-				driver.findElement(By.xpath("//button/span[text()='Refresh']")).click();
-				waitForSpinnerToEnd();
-				percent = driver.findElement(By.xpath("//*[contains(@class,'x-progress-text-back')]")).getText();
-				System.out.println("Percent complete: " + percent);
+//				  Omkar 21/6/2023 : xpath changes for 11.2
+//			        driver.findElement(By.xpath("//button/span[text()='Refresh']")).click();
+			        driver.findElement(By.xpath("//span[text()='Refresh']")).click();
+			        waitForSpinnerToEnd();
+//			        Omkar 21/6/2023 : xpath changes for 11.2
+//			        percent = driver.findElement(By.xpath("//*[contains(@class,'x-progress-text-back')]")).getText();
+			        percent = driver.findElement(By.xpath("//*[contains(@class,'x-progress-text-back')][1]")).getText();
+			        System.out.println("Percent complete: " + percent);
 				assertTrue(percent.contains("100%"));
 				break;
 			} catch (Throwable e) {

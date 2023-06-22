@@ -77,7 +77,9 @@ public class UtilitiesHelper extends GoHelper {
     byte counter = 0;
     while (calculate) {
       try {
-        driver.findElement(By.xpath("//button/span[text()='Refresh']")).click();
+//    	  Omkar 21/6/2023 : xpath changes for 11.2
+//        driver.findElement(By.xpath("//button/span[text()='Refresh']")).click();
+        driver.findElement(By.xpath("//span[text()='Refresh']")).click();
         waitForSpinnerToEnd();
         download = driver.findElement(
                 By.xpath("//tbody/tr[2]/td/div/a[@class='stLinks' and text()='Download']"))

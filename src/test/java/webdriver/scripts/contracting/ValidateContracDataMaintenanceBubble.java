@@ -53,7 +53,9 @@ public class ValidateContracDataMaintenanceBubble extends CalculationHelper {
 			driverDelay(1200);
 			doClickTreeData(ContractType);
 			doClickTreeSubItem(ContractTypeAPC);
-			doClick(ContractingMap.ContractTypeEditButton());
+//			Omkar 8/6/2023 : xpath changes for 11.2
+//			doClick(ContractingMap.ContractTypeEditButton());
+			doClick(ContractingMap.apcFeeScheduleMastersPageEditButton());
 			assertThatAttributeValue(ContractingMap.getInputName(), ContractTypeAPC, printout);
 			doClick(modelMap.getContractModelRiskLimiterCancelCloseBtn());
 			goToPage("Contract Models");
@@ -73,7 +75,7 @@ public class ValidateContracDataMaintenanceBubble extends CalculationHelper {
 			fail(e.getMessage());
 		} 
 		finally {
-			doClosePageOnLowerBar("Model Library");
+//			doClosePageOnLowerBar("Model Library");
 		}
 	}
 	@AfterClass

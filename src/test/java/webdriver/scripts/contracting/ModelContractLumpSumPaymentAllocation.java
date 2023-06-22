@@ -66,9 +66,11 @@ public class ModelContractLumpSumPaymentAllocation extends CalculationHelper {
 			assertTextIsDisplayed("Define Payment Terms");
 			assertElementIsDisplayed(ContractingMap.getAssertCalculateOption());
 			doClickTreeItem("Define Payment Terms");
-			driverDelay(200);
+			driverDelay(200); 
 			doClickTreeItemWithCheckbox("Lump Sum Payment Allocation Rules");
-			doClick(driver.findElement(By.xpath("//h1[text()='"+LumpSumPaymentAllocTerm+"']//following::span[1]//parent::button")));
+//			Omkar 19/8/2023 : xpath changes for 11.2
+//			doClick(driver.findElement(By.xpath("//h1[text()='"+LumpSumPaymentAllocTerm+"']//following::span[1]//parent::button")));
+			doClick(driver.findElement(By.xpath("//h1[text()='"+LumpSumPaymentAllocTerm+"']//following::span[text()='New']")));
 			waitForPageTitle("New Lump Sum Payment Allocation Rule");
 			assertTextIsDisplayed("General");
 			assertTextIsDisplayed("Allocation Rules");
@@ -87,6 +89,7 @@ public class ModelContractLumpSumPaymentAllocation extends CalculationHelper {
 			doClickTreeItemWithCheckbox("Lump Sum Payment Allocation Rules");
 			waitForAjaxExtJs();
 			assertElementIsDisplayed(driver.findElement(By.xpath("//div[contains(@id,'lumpsumpaymentallocationrulesmaingrid')]//following::div[text()='"+lumpSumPaymentAlloc+"']")));
+			driverDelay(1000);
 			doClick(contractingMap.getTermDeleteButton());
 			waitUntilElementIsClickable(contractingMap.getContractModelDeleteButtonInPopUp());
 			doClick(ContractingMap.getDeleteButtonMesaageBox());
@@ -94,16 +97,12 @@ public class ModelContractLumpSumPaymentAllocation extends CalculationHelper {
 			doClick(ContractingMap.getContractFeeForServicePaymentSave());
 			doClick(ContractingMap.getSaveButton());
 			doClosePageOnLowerBar("ADS-1320 Contract...");
+			doClosePageOnLowerBar("Model Library");
 			ExtentReport.logPass("PASS", "test01NewLumpSumPaymentAllocation");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01NewLumpSumPaymentAllocation", driver, e);
 			fail(e.getMessage());
 		} 
-		finally {
-			
-
-			doClosePageOnLowerBar("Model Library");
-		}
 	
 	}
 	

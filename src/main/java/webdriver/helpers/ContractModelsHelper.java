@@ -753,9 +753,13 @@ public class ContractModelsHelper extends GoHelper {
 			}
 		    while (calculate) {
 		      try {
-		        driver.findElement(By.xpath("//button/span[text()='Refresh']")).click();
+//		    	  Omkar 21/6/2023 : xpath changes for 11.2
+//		        driver.findElement(By.xpath("//button/span[text()='Refresh']")).click();
+		        driver.findElement(By.xpath("//span[text()='Refresh']")).click();
 		        waitForSpinnerToEnd();
-		        percent = driver.findElement(By.xpath("//*[contains(@class,'x-progress-text-back')]")).getText();
+//		        Omkar 21/6/2023 : xpath changes for 11.2
+//		        percent = driver.findElement(By.xpath("//*[contains(@class,'x-progress-text-back')]")).getText();
+		        percent = driver.findElement(By.xpath("//*[contains(@class,'x-progress-text-back')][1]")).getText();
 		        System.out.println("Percent complete: " + percent);
 		        assertTrue(percent.contains("100%"));
 		        break;

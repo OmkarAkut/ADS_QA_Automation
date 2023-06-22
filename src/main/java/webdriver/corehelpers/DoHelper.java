@@ -233,7 +233,10 @@ public class DoHelper extends DriverHelper {
 //      Omkar 28/03/2023 : Xpath change for 11.2
 //		driver.findElement(By.xpath("//*[contains(@id,'tab') and contains(text(),'"+pageName+"')]/../../following-sibling::a")).click();
 //		driver.findElement(By.xpath("//*[contains(@id,'tab') and contains(text(),'"+" Close "+pageName+"')]")).click();
-		driver.findElement(By.xpath("//span[contains(@id,'tab') and contains(text(),'"+" Close "+pageName+"')]")).click();
+//		driver.findElement(By.xpath("//span[contains(@id,'tab') and contains(text(),'"+" Close "+pageName+"')]")).click();
+//		Omkar 20/06/2023 : Xpath change for 11.2
+//		driver.findElement(By.xpath("//span[contains(@id,'tab') and contains(text(),' Close "+pageName+"')]")).click();
+		driver.findElement(By.xpath("//span[contains(text(),'"+pageName+"')]/parent::span/parent::span/following-sibling::span")).click();
 		waitForAjaxExtJs();
 	}
 
@@ -452,9 +455,14 @@ public class DoHelper extends DriverHelper {
 
 	public static void doClickTreeData(String name) throws Exception {
 		Thread.sleep(2000);
+//		Omkar 08/6/2023 : xpath changes or 11.2
+//		waitUntilElementIsClickable(driver
+//				.findElement(By.xpath("//*[text()='"+name+"']/img[contains(@class,'x-tree-expander')]")));
+//		driver.findElement(By.xpath("//*[text()='"+name+"']/img[contains(@class,'x-tree-expander')]"))
+//		.click();
 		waitUntilElementIsClickable(driver
-				.findElement(By.xpath("//*[text()='"+name+"']/img[contains(@class,'x-tree-expander')]")));
-		driver.findElement(By.xpath("//*[text()='"+name+"']/img[contains(@class,'x-tree-expander')]"))
+				.findElement(By.xpath("//span[text()='"+name+"']/parent::div/child::div[contains(@class,'x-tree-expander')]")));
+		driver.findElement(By.xpath("//span[text()='"+name+"']/parent::div/child::div[contains(@class,'x-tree-expander')]"))
 		.click();
 		waitForSpinnerToEnd();
 		waitForAjaxExtJs();
@@ -462,9 +470,14 @@ public class DoHelper extends DriverHelper {
 	}
 	public static void doClickTreeSubItem(String name) throws Exception {
 		Thread.sleep(2000);
+//		Omkar 8/6/2023 : xpath changes for 11.2
+//		waitUntilElementIsClickable(driver
+//				.findElement(By.xpath("//div[@id='treepanelId-body']//div[text()='"+name+"']/img[1]")));
+//		driver.findElement(By.xpath("//div[@id='treepanelId-body']//div[text()='"+name+"']/img[1]"))
+//		.click();
 		waitUntilElementIsClickable(driver
-				.findElement(By.xpath("//div[@id='treepanelId-body']//div[text()='"+name+"']/img[1]")));
-		driver.findElement(By.xpath("//div[@id='treepanelId-body']//div[text()='"+name+"']/img[1]"))
+				.findElement(By.xpath("//div[@id='treepanelId-body']//span[text()='"+name+"']")));
+		driver.findElement(By.xpath("//div[@id='treepanelId-body']//span[text()='"+name+"']"))
 		.click();
 		waitForSpinnerToEnd();
 		waitForAjaxExtJs();

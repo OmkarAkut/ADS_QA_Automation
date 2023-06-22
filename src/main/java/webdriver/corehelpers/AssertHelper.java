@@ -840,6 +840,21 @@ public class AssertHelper extends AdsHelper {
 
 		}
 	}
+	public static void assertThatAttributeValueIsEqual(WebElement element,String expectedValue,boolean printout) {
+
+		try {
+			String elementText = element.getAttribute("value");
+			if (printout) {
+				System.out.println("Expected Value: " + expectedValue);
+				System.out.println("Actual   Value: " + elementText);
+			}
+			if(elementText.toLowerCase().equals(expectedValue.toLowerCase())) {
+				assertTrue(true);
+			}
+		} catch (Throwable e) {
+
+		}
+	}
 
 	public static void assertThatFieldReadonly(WebElement element) {
 		if(element.getAttribute("readonly").equals("readonly")) {

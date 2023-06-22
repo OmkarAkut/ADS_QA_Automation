@@ -6,6 +6,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
@@ -71,7 +72,13 @@ public class ValidateContractingModeExportImportButton extends GoHelper{
 		try {
 			doClick(modelMap.getContractModelImportButton());
 			waitForElementToBeVisible(modelMap.getContractModelImportSelectFileButton());
-			modelMap.getContractModelImportSelectFileButton().sendKeys(Keys.ENTER);;
+			Thread.sleep(2000);
+//			Omkar 22/6/2023 : Select button not getting clicked
+//			modelMap.getContractModelImportSelectFileButton().sendKeys(Keys.ENTER);
+//			modelMap.getContractModelImportSelectFileButton().sendKeys(Keys.RETURN);
+//			doClick(modelMap.getContractModelImportSelectFileButton());
+			JavascriptExecutor executor = (JavascriptExecutor) driver;
+		    executor.executeScript("arguments[0].scrollIntoView(true);", modelMap.getContractModelImportSelectFileButton());
 			driverDelay(500);
 			ContractModelsHelper.uploadTheFileusingAutoIT(driver,System.getProperty("user.dir") + "\\AutoIT\\UploadFile.exe",System.getProperty("user.dir")+"\\AutoIT\\fzMedIPPSTesting.xml");
 			driver.findElement(By.name("sharedHostLocation")).click();
