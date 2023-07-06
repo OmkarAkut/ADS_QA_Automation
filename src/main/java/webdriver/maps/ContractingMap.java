@@ -120,7 +120,9 @@ public class ContractingMap extends MapConfig {
 	public static WebElement getContractModelAddProviderPopup;
 	public static WebElement getContractModelAddProviderPopup() {return getContractModelAddProviderPopup;}
 
-	@FindBy(xpath = "//div[contains(@class,'contractFrmCls')]//following::table//following::span[text()='Save & Close']//parent::button")
+//	Omkar 26/6/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//div[contains(@class,'contractFrmCls')]//following::table//following::span[text()='Save & Close']//parent::button")
+	@FindBy(xpath = "//div[contains(@class,'contractFrmCls')]//following::table//following::span[text()='Save & Close']")
 	private static WebElement getSaveContractModel;
 	public WebElement getSaveContractModel() {return getSaveContractModel;}
 
@@ -150,19 +152,27 @@ public class ContractingMap extends MapConfig {
 	private static List<WebElement> getCostingModelElementList;
 	public static List<WebElement> getCostingModelElementList() {return getCostingModelElementList;}
 
-	@FindBy(xpath = "//div[contains(@class,'modalLibBarCls')]/div//span[text()='New']//parent::button")
+//	Omkar 26/6/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//div[contains(@class,'modalLibBarCls')]/div//span[text()='New']//parent::button")
+	@FindBy(xpath = "//div[contains(@class,'modalLibBarCls')]/div//span[text()='New']")
 	private static WebElement getNewContractFolderBtn;
 	public WebElement getNewContractFolderBtn() {return getNewContractFolderBtn;}
 
-	@FindBy(xpath = "//div[contains(@class,'modalLibBarCls')]/div//span[text()='Rename']//parent::button")
+//	Omkar 26/6/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//div[contains(@class,'modalLibBarCls')]/div//span[text()='Rename']//parent::button")
+	@FindBy(xpath = "//div[contains(@class,'modalLibBarCls')]/div//span[text()='Rename']")
 	private static WebElement getRenameContractFolderBtn;
 	public WebElement getRenameContractFolderBtn() {return getRenameContractFolderBtn;}
 
-	@FindBy(xpath = "//div[contains(@class,'modalLibBarCls')]/div//span[text()='Delete']//parent::button")
+//	Omkar 26/6/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//div[contains(@class,'modalLibBarCls')]/div//span[text()='Delete']//parent::button")
+	@FindBy(xpath = "//div[contains(@class,'modalLibBarCls')]/div//span[text()='Delete']")
 	private static WebElement getDeleteContractFolderBtn;
 	public WebElement getDeleteContractFolderBtn() {return getDeleteContractFolderBtn;}
 
-	@FindBy(xpath = "//div[contains(@class,'modalLibBarCls')]/div//span[text()='New']//parent::button")
+//	Omkar 26/6/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//div[contains(@class,'modalLibBarCls')]/div//span[text()='New']//parent::button")
+	@FindBy(xpath = "//div[contains(@class,'modalLibBarCls')]/div//span[text()='New']")
 	private static WebElement getNewFolderPopUp;
 	public WebElement getNewFolderPopUp() {return getNewFolderPopUp;}
 
@@ -210,19 +220,25 @@ public class ContractingMap extends MapConfig {
 	private WebElement ContractModelUpdateFilterButton;
 	public WebElement getContractModelUpdateFilterButton() {return ContractModelUpdateFilterButton;}
 
-	@FindBy(xpath = "//div[contains(@class,'horzOverflow')]/div//span[text()='Clear Filter']//parent::button")
+//	Omkar 26/6/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//div[contains(@class,'horzOverflow')]/div//span[text()='Clear Filter']//parent::button")
+	@FindBy(xpath = "//div[contains(@class,'horzOverflow')]/div//span[text()='Clear Filter']")
 	private WebElement ContractModelClearFilter;
 	public WebElement getContractModelClearFilter() {return ContractModelClearFilter;}
 
 	@FindBy(xpath = "//div[contains(@class,'areaModelTitle')]")
 	private WebElement ContractModelHeader;
 	public WebElement getContractModelHeader() {return ContractModelHeader;}
-
-	@FindBy(xpath = "//div[contains(@class,'horzOverflow')]/div//span[text()='Copy']//parent::button")
+	
+//	Omkar 26/6/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//div[contains(@class,'horzOverflow')]/div//span[text()='Copy']//parent::button")
+	@FindBy(xpath = "//div[contains(@class,'horzOverflow')]/div//span[text()='Copy']")
 	private WebElement ContractModelButtonCopy;
 	public WebElement getContractModelButtonCopy() {return ContractModelButtonCopy;}
 
-	@FindBy(xpath = "//div[contains(@class,'horzOverflow')]/div//span[text()='Paste']//parent::button")
+//	Omkar 26/6/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//div[contains(@class,'horzOverflow')]/div//span[text()='Paste']//parent::button")
+	@FindBy(xpath = "//div[contains(@class,'horzOverflow')]/div//span[text()='Paste']")
 	private WebElement ContractModelButtonPaste;
 	public WebElement getContractModelButtonPaste() {return ContractModelButtonPaste;}
 
@@ -240,7 +256,9 @@ public class ContractingMap extends MapConfig {
 	private  WebElement ContractModelSaveCopy;
 	public  WebElement getContractModelSaveCopy() {return ContractModelSaveCopy;}
 
-	@FindBy(xpath = "//div[contains(@class,'horzOverflow')]/div//span[text()='Delete']//parent::button")
+//	Omkar 26/6/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//div[contains(@class,'horzOverflow')]/div//span[text()='Delete']//parent::button")
+	@FindBy(xpath = "//div[contains(@class,'horzOverflow')]/div//span[text()='Delete']")
 	private WebElement ContractModelDeleteButton;
 	public WebElement getContractModelDeleteButton() {return ContractModelDeleteButton;}
 
@@ -459,6 +477,8 @@ public class ContractingMap extends MapConfig {
 	private static WebElement ContractFeeForServicePaymentWarningPopUpContinueButton;
 	public static WebElement getContractFeeForServicePaymentWarningPopUpContinueButton() {return ContractFeeForServicePaymentWarningPopUpContinueButton;}
 
+//	Omkar 26/6/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//div[contains(@class,'horzOverflow')]/div//span[text()='Calculate']//parent::button")
 	@FindBy(xpath = "//div[contains(@class,'horzOverflow')]/div//span[text()='Calculate']//parent::button")
 	private static WebElement ContractFeeForServicePaymentCalculateButton;
 	public static WebElement getContractFeeForServicePaymentCalculateButton() {return ContractFeeForServicePaymentCalculateButton;}
@@ -471,19 +491,27 @@ public class ContractingMap extends MapConfig {
 	private static WebElement ContractCalculationCloseViewDialog;
 	public static WebElement getContractCalculationCloseViewDialog() {return ContractCalculationCloseViewDialog;}
 
-	@FindBy(xpath = "//label[text()='Psych Combined Comorbidity Mapping File']//following::span[text()='Select']//parent::button")
+//	Omkar 26/6/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//label[text()='Psych Combined Comorbidity Mapping File']//following::span[text()='Select']//parent::button")
+	@FindBy(xpath = "//label[text()='Psych Combined Comorbidity Mapping File']//following::span[text()='Select']")
 	private static WebElement ContractFileSelect;
 	public static WebElement getContractFileSelect() {return ContractFileSelect;}
 
-	@FindBy(xpath = "//span[text()='Reset']//parent::button")
+//	Omkar 26/6/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//span[text()='Reset']//parent::button")
+	@FindBy(xpath = "//span[text()='Reset']")
 	private static WebElement ContractResetButton;
 	public static WebElement getContractResetButton() {return ContractResetButton;}
 
-	@FindBy(xpath = "//span[text()='Calculate']//parent::button")
+//	Omkar 26/6/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//span[text()='Calculate']//parent::button")
+	@FindBy(xpath = "//span[text()='Calculate']")
 	private static WebElement ContractCalculateButton;
 	public static WebElement getContractCalculateButton() {return ContractCalculateButton;}
 
-	@FindBy(xpath = "//span[text()='Save & Close']//parent::button")
+//	Omkar 26/6/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//span[text()='Save & Close']//parent::button")
+	@FindBy(xpath = "//span[text()='Save & Close']")
 	private static WebElement ContractSaveCloseButton;
 	public static WebElement getContractSaveCloseButton() {return ContractSaveCloseButton;}
 
@@ -575,7 +603,9 @@ public class ContractingMap extends MapConfig {
 	private static WebElement addOnServicesPopUpFilterAddButton;
 	public static WebElement getaddOnServicesPopUpFilterAddButton() {return addOnServicesPopUpFilterAddButton;}
 
-	@FindBy(xpath = "//*[text()='Add Services']//following::span[text()='All'][1]//parent::button")
+//	Omkar 26/6/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//*[text()='Add Services']//following::span[text()='All'][1]//parent::button")
+	@FindBy(xpath = "//*[text()='Add Services']//following::span[text()='All'][1]")
 	private static WebElement addOnServicesPopUpFilterAllButton;
 	public static WebElement getaddOnServicesPopUpFilterAllButton() {return addOnServicesPopUpFilterAllButton;}
 
@@ -642,6 +672,23 @@ public class ContractingMap extends MapConfig {
 	@FindBy(xpath = "//input[@name='name']")
 	private static WebElement InputName;
 	public static WebElement getInputName() {return InputName;}
+	
+	@FindBy(xpath = "//span[contains(@class,'label-inner-default')]//span[text()='Code']")
+	private static WebElement CodeFieldLabel;
+	public static WebElement CodeFieldLabel() {return CodeFieldLabel;}
+	
+	@FindBy(xpath = "//div[text()='Field Specification']")
+	private static WebElement FieldSpecificationTab;
+	public static WebElement FieldSpecificationTab() {return FieldSpecificationTab;}
+	
+	@FindBy(xpath = "//div[text()='Templates']")
+	private static WebElement TemplatesTab;
+	public static WebElement TemplatesTab() {return TemplatesTab;}
+	
+	@FindBy(xpath = "//div[text()='Schedules']")
+	private static WebElement SchedulesTab;
+	public static WebElement SchedulesTab() {return SchedulesTab;}
+	
 
 	@FindBy(name = "description")
 	private static WebElement FieldDropdown;
@@ -699,7 +746,9 @@ public class ContractingMap extends MapConfig {
 	private static WebElement NewRiskLimiterPopUpCancelClose;
 	public static WebElement getNewRiskLimiterPopUpCancelClose() {return NewRiskLimiterPopUpCancelClose;}
 
-	@FindBy(xpath = "//h1[text()='Medicare Carriers']//following::span[text()='New']//parent::button")
+//	Omkar 6/7/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//h1[text()='Medicare Carriers']//following::span[text()='New']//parent::button")
+	@FindBy(xpath = "//h1[text()='Medicare Carriers']//following::span[text()='New']")
 	private static WebElement NewButtonMedicare;
 	public static WebElement getNewButtonMedicare() {return NewButtonMedicare;}
 
@@ -711,15 +760,21 @@ public class ContractingMap extends MapConfig {
 	private static WebElement MedicareCode;
 	public static WebElement getMedicareCode() {return MedicareCode;}
 
-	@FindBy(xpath = "//div[contains(@id,'medicareCarrier')]/div//span[text()='Delete']//parent::button")
+//	Omkar 5/7/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//div[contains(@id,'medicareCarrier')]/div//span[text()='Delete']//parent::button")
+	@FindBy(xpath = "//div[contains(@id,'medicareCarrier')]/div//span[text()='Delete']")
 	private static WebElement NewCodeDeleteButton;
 	public static WebElement getNewCodeDeleteButton() {return NewCodeDeleteButton;}
 
-	@FindBy(xpath = "//div[contains(@id,'warningwindow')]/div//span[text()='Delete']//parent::button")
+//	Omkar 5/7/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//div[contains(@id,'warningwindow')]/div//span[text()='Delete']//parent::button")
+	@FindBy(xpath = "//div[contains(@id,'warningwindow')]/div//span[text()='Delete']")
 	private static WebElement WarningPopUpDeleteButton;
 	public static WebElement getWarningPopUpDeleteButton() {return WarningPopUpDeleteButton;}
 
-	@FindBy(xpath = "//div[contains(@id,'medicareCarrier')]/div//span[text()='Filter']//parent::button")
+//	Omkar 5/7/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//div[contains(@id,'medicareCarrier')]/div//span[text()='Filter']//parent::button")
+	@FindBy(xpath = "//div[contains(@id,'medicareCarrier')]/div//span[text()='Filter']")
 	private static WebElement NewCodeFilterButton;
 	public static WebElement getNewCodeFilterButton() {return NewCodeFilterButton;}
 
@@ -727,11 +782,15 @@ public class ContractingMap extends MapConfig {
 	private static WebElement UpdateIndicatorsPage;
 	public static WebElement getUpdateIndicatorsPage() {return UpdateIndicatorsPage;}
 
-	@FindBy(xpath = "//h1[text()='Update Indicators']//following::span[text()='Edit']//parent::button")
+//	Omkar 5/7/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//h1[text()='Update Indicators']//following::span[text()='Edit']//parent::button")
+	@FindBy(xpath = "//h1[text()='Update Indicators']//following::span[text()='Edit']")
 	private static WebElement UpdateIndicatorsEditButton;
 	public static WebElement getUpdateIndicatorsEditButton() {return UpdateIndicatorsEditButton;}
 
-	@FindBy(xpath = "//div[contains(@id,'dynamicwindow')]//following::span[text()='Update Indicator']")
+//	Omkar 5/7/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//div[contains(@id,'dynamicwindow')]//following::span[text()='Update Indicator']")
+	@FindBy(xpath = "//div[contains(@id,'dynamicwindow')]//following::div[text()='Update Indicator']")
 	private static WebElement UpdateIndicatorsEditPopUp;
 	public static WebElement getUpdateIndicatorsEditPopUp() {return UpdateIndicatorsEditPopUp;}
 
@@ -746,13 +805,15 @@ public class ContractingMap extends MapConfig {
 	public static WebElement getNewButtonAPC() {return NewButtonAPC;}
 
 
-
-	@FindBy(xpath = "(//h1[text()='APC Fee Schedule Masters']//following::span[text()='Delete']//parent::button)[1]")
+//	Omkar 5/7/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "(//h1[text()='APC Fee Schedule Masters']//following::span[text()='Delete']//parent::button)[1]")
+	@FindBy(xpath = "(//h1[text()='APC Fee Schedule Masters']//following::span[text()='Delete'])[1]")
 	private static WebElement NewAPCodeDeleteButton;
 	public static WebElement getNewAPCodeDeleteButton() {return NewAPCodeDeleteButton;}
 
-
-	@FindBy(xpath = "(//h1[text()='APC Fee Schedule Masters']//following::span[text()='Filter']//parent::button)[1]")
+//	Omkar 5/7/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "(//h1[text()='APC Fee Schedule Masters']//following::span[text()='Filter']//parent::button)[1]")
+	@FindBy(xpath = "(//h1[text()='APC Fee Schedule Masters']//following::span[text()='Filter'])[1]")
 	private static WebElement NewAPCodeFilterButton;
 	public static WebElement getNewAPCodeFilterButton() {return NewAPCodeFilterButton;}
 
@@ -780,7 +841,9 @@ public class ContractingMap extends MapConfig {
 	private static WebElement ASCFilterAddButton;
 	public static WebElement getASCFilterAddButton() {return ASCFilterAddButton;}
 
-	@FindBy(xpath = "//h1[text()='Contract Types']//following::span[text()='New']//parent::button")
+//	Omkar 5/7/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//h1[text()='Contract Types']//following::span[text()='New']//parent::button")
+	@FindBy(xpath = "//h1[text()='Contract Types']//following::span[text()='New']")
 	private static WebElement ContractTypeNewButton;
 	public static WebElement getContractTypeNewButton() {return ContractTypeNewButton;}
 
@@ -790,7 +853,9 @@ public class ContractingMap extends MapConfig {
 	private static WebElement ContractTypeEditButton;
 	public static WebElement ContractTypeEditButton() {return ContractTypeEditButton;}
 
-	@FindBy(xpath = "//h1[text()='Contract Types']//following::span[text()='Filter']//parent::button")
+//	Omkar 5/7/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//h1[text()='Contract Types']//following::span[text()='Filter']//parent::button")
+	@FindBy(xpath = "//h1[text()='Contract Types']//following::span[text()='Filter']")
 	private static WebElement ContractTypeFilterButton;
 	public static WebElement getContractTypeFilterButton() {return ContractTypeFilterButton;}
 
@@ -798,11 +863,15 @@ public class ContractingMap extends MapConfig {
 	private static WebElement ContractDataMaintenance;
 	public static WebElement getContractDataMaintenance() {return ContractDataMaintenance;}
 
-	@FindBy(xpath = "//h1[text()='Time Periods']//following::span[text()='New']//parent::button")
+//	Omkar 5/7/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//h1[text()='Time Periods']//following::span[text()='New']//parent::button")
+	@FindBy(xpath = "//h1[text()='Time Periods']//following::span[text()='New']")
 	private static WebElement ContractDataMaintenanceNewButton;
 	public static WebElement getContractDataMaintenanceNewButton() {return ContractDataMaintenanceNewButton;}
 
-	@FindBy(xpath = "//h1[text()='Time Periods']//following::span[text()='Edit']//parent::button")
+//	Omkar 5/7/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//h1[text()='Time Periods']//following::span[text()='Edit']//parent::button")
+	@FindBy(xpath = "//h1[text()='Time Periods']//following::span[text()='Edit']")
 	private static WebElement ContractDataMaintenanceEditButton;
 	public static WebElement getContractDataMaintenanceEditButton() {return ContractDataMaintenanceEditButton;}
 
@@ -819,7 +888,9 @@ public class ContractingMap extends MapConfig {
 	private static WebElement Yeardropdown;
 	public static WebElement getYeardropdown() {return Yeardropdown;}
 
-	@FindBy(xpath = "//h1[text()='Time Periods']//following::span[text()='Filter']//parent::button")
+//	Omkar 5/7/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//h1[text()='Time Periods']//following::span[text()='Filter']//parent::button")
+	@FindBy(xpath = "//h1[text()='Time Periods']//following::span[text()='Filter']")
 	private static WebElement ContractDataMaintenanceFilterButton;
 	public static WebElement getContractDataMaintenanceFilterButton() {return ContractDataMaintenanceFilterButton;}
 
@@ -876,11 +947,15 @@ public class ContractingMap extends MapConfig {
 	private static List<WebElement> getBenefitPlans;
 	public static List<WebElement> getBenefitPlans() {return getBenefitPlans;}
 
-	@FindBy(xpath = "//span[text()='Add Benefit Plans']//following::h1[text()='Select']//following::input[1]")
+//	Omkar 5/7/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//span[text()='Add Benefit Plans']//following::h1[text()='Select']//following::input[1]")
+	@FindBy (xpath = "//div[text()='Add Benefit Plans']//following::h1[text()='Select']//following::input[@name='selectAllChk']")
 	private static WebElement getSelectAllBenefitPlans;
 	public static WebElement getSelectAllBenefitPlans() {return getSelectAllBenefitPlans;}
 
-	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//span[text()='Calculate']//parent::button")
+//	Omkar 5/7/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//span[text()='Calculate']//parent::button")
+	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//span[text()='Calculate']")
 	private static WebElement getCalculateButton;
 	public static WebElement getCalculateButton() {return getCalculateButton;}
 

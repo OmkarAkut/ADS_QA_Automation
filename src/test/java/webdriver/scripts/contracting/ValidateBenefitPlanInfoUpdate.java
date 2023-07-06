@@ -83,7 +83,9 @@ public class ValidateBenefitPlanInfoUpdate extends CalculationHelper {
 		try {
 			doClickTreeItemWithCheckbox("General Information - Unpublished Contract");
 			doClick(ContractingMap.getDefinitionElementC1());
-			doClick("(//span[contains(text(),'Benefit Plans')]//following::img)[1]");
+//			Omkar 5/7/2023 : xpath changes for 11.2
+//			doClick("(//span[contains(text(),'Benefit Plans')]//following::img)[1]");
+			doClick("//div[contains(text(),'Benefit Plans')]/../following-sibling::div");
 			ContractModelsHelper.CompareListToArray(ContractingMap.getBenefitPlans(), columnsToCompare);
 			doClick(ContractingMap.getDefinitionElementAddBtn());
 			waitForMainPageTitle("Add Benefit Plans");
@@ -91,7 +93,7 @@ public class ValidateBenefitPlanInfoUpdate extends CalculationHelper {
 			doClick(ContractingMap.getSelectAllBenefitPlans());
 			doClick(ContractingMap.getContractModelApplyInExportPopUp());
 			doClick(ContractingMap.getSaveBenefitPlan());
-			doClosePageOnLowerBar("ADS 1321 FY2020 Test D");
+			doClosePageOnLowerBar("ADS 1321 FY2020...");
 			doClosePageOnLowerBar("Model Library");
 			ExtentReport.logPass("PASS", "test01AddMultipleBenefitPlan");
 		} catch (Exception | AssertionError e) {

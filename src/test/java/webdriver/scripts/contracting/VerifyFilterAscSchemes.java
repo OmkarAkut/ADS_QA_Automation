@@ -52,18 +52,19 @@ public class VerifyFilterAscSchemes extends CalculationHelper{
 		    doClick(ContractingMap.getASCFilterEditButton());
 		    doFilterSetFilterParameters("ASC Scheme Name", "Is", "Equal To", "Test");
 		    doClick(ContractingMap.getASCFilterRemoveButton());
+		    Thread.sleep(1000);
 		   assertElementIsDisabled(ContractingMap.getASCFilterAddButton(),printout);
 		    doFilterCreate(filter);
 		    assertElementIsDisplayedWithXpath("//div[text()='"+ascScheme+"']");
 		    doClosePageOnLowerBar("ADS-1320 Contract...");
-		    doClosePageOnLowerBar("Model Library");
+//		    doClosePageOnLowerBar("Model Library");
 			ExtentReport.logPass("PASS", "test01VerifyFilterByAscSchemes");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01VerifyFilterByAscSchemes", driver, e);
 			fail(e.getMessage());
 		} 
 		finally{
-//			doClosePageOnLowerBar("Model Library");
+			doClosePageOnLowerBar("Model Library");
 
 		}
 	}

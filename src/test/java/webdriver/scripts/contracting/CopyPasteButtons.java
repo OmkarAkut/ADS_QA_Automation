@@ -97,16 +97,24 @@ public class CopyPasteButtons extends GoHelper {
 		try {
 			tableDoubleClickCellFirstColumn(UpdatedContractModel);
 			driverDelay(1000);
-			driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]/div[text()='Model Contract']"))
-					.click();
+//			Omkar 26/6/2023 : xpath changes for 11.2
+//			driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]/div[text()='Model Contract']"))
+//					.click();
+			driver.findElement(By.xpath("//span[text()='Model Contract']")).click();
 			driverDelay(300);
+//			Omkar 26/6/2023 : xpath changes for 11.2
+//			driver.findElement(
+//					By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]/div[text()='Define Payment Terms']"))
+//					.click();
 			driver.findElement(
-					By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]/div[text()='Define Payment Terms']"))
-					.click();
+					By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]//span[text()='Define Payment Terms']")).click();
 			driverDelay(300);
+//			Omkar 26/6/2023 : xpath changes for 11.2
+//			driver.findElement(By.xpath(
+//					"//td[contains(@class,'x-grid-cell-treecolumn')]/div[text()='Fee For Service Payment Terms']"))
+//					.click();
 			driver.findElement(By.xpath(
-					"//td[contains(@class,'x-grid-cell-treecolumn')]/div[text()='Fee For Service Payment Terms']"))
-					.click();
+					"//td[contains(@class,'x-grid-cell-treecolumn')]//span[text()='Fee For Service Payment Terms']")).click();
 			driverDelay(300);
 			ContractModelsHelper.navigateFeeForServicePaymentTermsScreenSelectionPanel("Service Model");
 			assertTextIsDisplayed(serviceModel);

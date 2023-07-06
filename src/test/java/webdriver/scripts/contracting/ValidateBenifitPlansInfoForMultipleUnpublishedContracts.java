@@ -38,11 +38,15 @@ public class ValidateBenifitPlansInfoForMultipleUnpublishedContracts extends Cal
 			doClickTreeItem("Model Contract");
 			waitForMainPageTitle("General Information - Unpublished Contract");
 			doClickTreeItemWithCheckbox("General Information - Unpublished Contract");
-			ContractModelsHelper.toggleBetweenTheDockBar("//span[text()='Model Library']//parent::button");
+//			Omkar 26/6/2023 : xpath changes for 11.2
+//			ContractModelsHelper.toggleBetweenTheDockBar("//span[text()='Model Library']//parent::button");
+			ContractModelsHelper.toggleBetweenTheDockBar("//span[text()='Model Library']");
 			doSearchForContractModel(ContractModelB);
 			tableDoubleClickCellFirstColumn(ContractModelB);
 			driverDelay(300);
-			doClick("(//td[contains(@class,'x-grid-cell-treecolumn')]/div[text()='Model Contract'])[2]");
+//			Omkar 26/6/2023 : xpath changes for 11.2
+//			doClick("(//td[contains(@class,'x-grid-cell-treecolumn')]/div[text()='Model Contract'])[2]");
+			doClick("(//td[contains(@class,'x-grid-cell-treecolumn')]//span[text()='Model Contract'])");
 			driverDelay(300);
 			doClick("(//td[contains(@class,'x-grid-cell-treecolumn')]/div[text()='General Information - Unpublished Contract'])[2]");
 			driverDelay(300);

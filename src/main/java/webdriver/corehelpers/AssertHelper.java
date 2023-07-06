@@ -463,7 +463,10 @@ public class AssertHelper extends AdsHelper {
 		String disabledText = null;
 		try {
 			waitForAjaxExtJs();
-			disabledText = element.findElement(By.xpath("./ancestor::div[contains(@class,'x-btn')]"))
+//			Omkar 4/7/2023 : xpath changes for 11.2
+//			disabledText = element.findElement(By.xpath("./ancestor::div[contains(@class,'x-btn')]"))
+//					.getAttribute("class");
+			disabledText = element.findElement(By.xpath("./ancestor::a[contains(@class,'x-btn')]"))
 					.getAttribute("class");
 			// disabledText =
 			// element.findElement(By.xpath("./../../..")).getAttribute("class");
