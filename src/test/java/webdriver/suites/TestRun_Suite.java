@@ -140,7 +140,8 @@ import webdriver.templates.TemplatesTestSuite;
 	EpisodesTestSuite.class,
 	ReportingTestSuite.class,
 	ContractingSuite.class,
-
+	UtilitiesTestSuite.class,
+	MaintaindataTestSuite.class,
 })
 
 public class TestRun_Suite {

@@ -46,9 +46,11 @@ public class ValidateBenifitPlansInfoForMultipleUnpublishedContracts extends Cal
 			driverDelay(300);
 //			Omkar 26/6/2023 : xpath changes for 11.2
 //			doClick("(//td[contains(@class,'x-grid-cell-treecolumn')]/div[text()='Model Contract'])[2]");
-			doClick("(//td[contains(@class,'x-grid-cell-treecolumn')]//span[text()='Model Contract'])");
+			doClick("(//td[contains(@class,'x-grid-cell-treecolumn')]//span[text()='Model Contract'])[2]");
 			driverDelay(300);
-			doClick("(//td[contains(@class,'x-grid-cell-treecolumn')]/div[text()='General Information - Unpublished Contract'])[2]");
+//			Omkar 7/7/2023 : xpath changes for 11.2
+//			doClick("(//td[contains(@class,'x-grid-cell-treecolumn')]/div[text()='General Information - Unpublished Contract'])[2]");
+			doClick("(//td[contains(@class,'x-grid-cell-treecolumn')]//span[text()='General Information - Unpublished Contract'])[2]");
 			driverDelay(300);
 			ExtentReport.logPass("PASS", "setupScript");
 		} catch (Exception | AssertionError e) {
@@ -60,12 +62,19 @@ public class ValidateBenifitPlansInfoForMultipleUnpublishedContracts extends Cal
 	@Test
 	public void test01MoveToDefinitionElementsTabInMultipleContracts() throws Throwable {
 		try {
-			ContractModelsHelper.toggleBetweenTheDockBar("(//span[text()='CM ADS1327...']//parent::button)[1]");
-			doClick(ContractingMap.getDefinitionElementC1());
-			doClick("(//span[contains(text(),'Benefit Plans')]//following::img)[1]");
-			ContractModelsHelper.toggleBetweenTheDockBar("(//span[text()='CM ADS1327...']//parent::button)[2]");
+//			Omkar 7/7/2023 : xpath changes for 11.2
+//			ContractModelsHelper.toggleBetweenTheDockBar("(//span[text()='CM ADS1327...']//parent::button)[1]");
+			ContractModelsHelper.toggleBetweenTheDockBar("(//span[text()='CM ADS1327...'])[1]");
+			doClick(ContractingMap.getDefinitionElementC1());			
+//			Omkar 7/7/2023 : xpath changes for 11.2
+//			doClick("(//span[contains(text(),'Benefit Plans')]//following::img)[1]");
+//			ContractModelsHelper.toggleBetweenTheDockBar("(//span[text()='CM ADS1327...']//parent::button)[2]");
+			doClick("(//div[contains(text(),'Benefit Plans')]//following::div)[1]");
+			ContractModelsHelper.toggleBetweenTheDockBar("(//span[text()='CM ADS1327...'])[2]");
 			doClick(ContractingMap.getDefinitionElementC2());
-			doClick("(//span[contains(text(),'Benefit Plans')]//following::img[1])[2]");
+//			Omkar 7/7/2023 : xpath changes for 11.2
+//			doClick("(//span[contains(text(),'Benefit Plans')]//following::img[1])[2]");
+			doClick("(//div[contains(text(),'Benefit Plans')]//following::div[1])[2]");
 			ExtentReport.logPass("PASS", "test02MoveToDefinitionElementsTabInMultipleContracts");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test02MoveToDefinitionElementsTabInMultipleContracts", driver, e);
@@ -76,17 +85,26 @@ public class ValidateBenifitPlansInfoForMultipleUnpublishedContracts extends Cal
 	@Test
 	public void test02RemoveBenefitPlanInMultipleContracts() throws Throwable {
 		try {
-			ContractModelsHelper.toggleBetweenTheDockBar("(//span[text()='CM ADS1327...']//parent::button)[1]");
+//			Omkar 7/7/2023 : xpath changes for 11.2
+//			ContractModelsHelper.toggleBetweenTheDockBar("(//span[text()='CM ADS1327...']//parent::button)[1]");
+			ContractModelsHelper.toggleBetweenTheDockBar("(//span[text()='CM ADS1327...'])[1]");
 			ContractModelsHelper.scrollToView(ContractingMap.getDefinitionElementAddBtn());
 			doClick(ContractingMap.getDefinitionElementAddBtn());
 			waitForMainPageTitle("Add Benefit Plans");
 			doClick(modelMap.getRemoveItem());
-			ContractModelsHelper.toggleBetweenTheDockBar("(//span[text()='CM ADS1327...']//parent::button)[2]");
+//			Omkar 7/7/2023 : xpath changes for 11.2
+//			ContractModelsHelper.toggleBetweenTheDockBar("(//span[text()='CM ADS1327...']//parent::button)[2]");
+			ContractModelsHelper.toggleBetweenTheDockBar("(//span[text()='CM ADS1327...'])[2]");
 			ContractModelsHelper.scrollToView(ContractingMap.getDefinitionElementAddBtnC2());
-			doClick("((//span[contains(@id,'contracttaskfolder') and (contains(text(),'" + ContractModelB
+//			Omkar 7/7/2023 : xpath changes for 11.2
+//			doClick("((//span[contains(@id,'contracttaskfolder') and (contains(text(),'" + ContractModelB
+//					+ "'))])//following::div[contains(@class,'calcSceneCls')]//following::span[text()='Add'])[1]");
+			doClick("((//div[contains(@id,'contracttaskfolder') and (contains(text(),'" + ContractModelB
 					+ "'))])//following::div[contains(@class,'calcSceneCls')]//following::span[text()='Add'])[1]");
 			waitForMainPageTitle("Add Benefit Plans");
-			doClick("((//div[contains(@id,'dynamicwindow')])//div[contains(@class,'multiSelPneCls')]//following::span[text()='Remove']//parent::button)[2]");
+//			Omkar 7/7/2023 : xpath changes for 11.2
+//			doClick("((//div[contains(@id,'dynamicwindow')])//div[contains(@class,'multiSelPneCls')]//following::span[text()='Remove']//parent::button)[2]");
+			doClick("((//div[contains(@id,'dynamicwindow')])//div[contains(@class,'multiSelPneCls')]//following::span[text()='Remove'])[2]");
 			ExtentReport.logPass("PASS", "test03RemoveBenefitPlanInMultipleContracts");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test03RemoveBenefitPlanInMultipleContracts", driver, e);
@@ -96,17 +114,32 @@ public class ValidateBenifitPlansInfoForMultipleUnpublishedContracts extends Cal
 
 	@Test
 	public void test03ApplyBenefitPlanInMultipleContracts() throws Throwable {
-		ContractModelsHelper.toggleBetweenTheDockBar("(//span[text()='CM ADS1327...']//parent::button)[1]");
+//		Omkar 7/7/2023 : xpath changes for 11.2
+//		ContractModelsHelper.toggleBetweenTheDockBar("(//span[text()='CM ADS1327...']//parent::button)[1]");
+				ContractModelsHelper.toggleBetweenTheDockBar("(//span[text()='CM ADS1327...'])[1]");
 		try {
-			doClick("//span[text()='Apply']//parent::button");
-			ContractModelsHelper.toggleBetweenTheDockBar("(//span[text()='CM ADS1327...']//parent::button)[2]");
-			doClick("//span[text()='Apply']//parent::button");
+//			Omkar 7/7/2023 : xpath changes for 11.2
+//			doClick("//span[text()='Apply']//parent::button");
+			doClick("//span[text()='Apply']");
+//			Omkar 7/7/2023 : xpath changes for 11.2
+//			ContractModelsHelper.toggleBetweenTheDockBar("(//span[text()='CM ADS1327...']//parent::button)[2]");
+//			doClick("//span[text()='Apply']//parent::button");
+			ContractModelsHelper.toggleBetweenTheDockBar("(//span[text()='CM ADS1327...'])[2]");
+			doClick("//span[text()='Apply']");
 			doClick("(//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//span[text()='Cancel & Close'])[2]");
-			doClick("(//*[contains(@id,'tab') and contains(text(),'CM ADS1327...')]/../../following-sibling::a)[2]");
-			ContractModelsHelper.toggleBetweenTheDockBar("(//span[text()='CM ADS1327...']//parent::button)[1]");
+			doClick("//div[@class='x-window-bodyWrap']//span[text()='Cancel & Close']"); // warning window
+//			Omkar 7/7/2023 : xpath changes for 11.2
+//			doClick("(//*[contains(@id,'tab') and contains(text(),'CM ADS1327...')]/../../following-sibling::a)[2]");
+			doClick("(//span[contains(text(),'CM ADS1327...')]/parent::span/parent::span/following-sibling::span)[2]"); // close the tab
+//			Omkar 7/7/2023 : xpath changes for 11.2
+//			ContractModelsHelper.toggleBetweenTheDockBar("(//span[text()='CM ADS1327...']//parent::button)[1]");
+			ContractModelsHelper.toggleBetweenTheDockBar("(//span[text()='CM ADS1327...'])[1]");
 			doClick("(//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//span[text()='Cancel & Close'])[1]");
-			doClick("(//*[contains(@id,'tab') and contains(text(),'CM ADS1327...')]/../../following-sibling::a)[1]");
-			doClick(ContractingMap.getContractModelRiskLimiterCancelCloseBtn());
+			doClick("//div[@class='x-window-bodyWrap']//span[text()='Cancel & Close']"); // warning window
+//			Omkar 7/7/2023 : xpath changes for 11.2
+//			doClick("(//*[contains(@id,'tab') and contains(text(),'CM ADS1327...')]/../../following-sibling::a)[1]");
+			doClick("(//span[contains(text(),'CM ADS1327...')]/parent::span/parent::span/following-sibling::span)[1]"); // close the tab
+//			doClick(ContractingMap.getContractModelRiskLimiterCancelCloseBtn());  not needed
 			doClosePageOnLowerBar("Model Library");
 			ExtentReport.logPass("PASS", "test04ApplyBenefitPlanInMultipleContracts");
 		} catch (Exception | AssertionError e) {

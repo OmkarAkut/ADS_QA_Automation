@@ -927,7 +927,9 @@ public class ContractingMap extends MapConfig {
 	private static WebElement getDefinitionElementC1;
 	public static WebElement getDefinitionElementC1() {return getDefinitionElementC1;}
 
-	@FindBy(xpath = "(//button/span[text()='Definition Elements'])[2]")
+//	Omkar 7/7/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "(//button/span[text()='Definition Elements'])[2]")
+	@FindBy(xpath = "(//span[text()='Definition Elements'])[2]")
 	private static WebElement getDefinitionElementC2;
 	public static WebElement getDefinitionElementC2() {return getDefinitionElementC2;}
 

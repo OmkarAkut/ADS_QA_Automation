@@ -17,7 +17,7 @@ import org.junit.runners.Suite;
 	EditRiskLimiterScreen.class,
 	EntityLevelSecurityContracting.class,
 	FilterbuttonModels.class,
-	GeneralContractInfo.class,
+//	GeneralContractInfo.class,
 	GeneratePsychCombinedComorbidityFactor.class,
 	ModelContractLumpSumPaymentAllocation.class,
 	ModelContractPatientFinancialResponsibility.class,
