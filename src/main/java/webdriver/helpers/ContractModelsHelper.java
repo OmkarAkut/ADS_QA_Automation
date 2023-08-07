@@ -794,7 +794,9 @@ public class ContractModelsHelper extends GoHelper {
 		    try {
 		      waitForSpinnerToEnd();
 		      waitForAjaxExtJs();
-		      driver.findElement(By.xpath("//span[contains(@class,'x-panel-header-text')][text()='"+Model+"']/../following-sibling::div")).click();
+//		      Omkar 10/7/2023 : xpath changes for 11.2
+//		      driver.findElement(By.xpath("//span[contains(@class,'x-panel-header-text')][text()='"+Model+"']/../following-sibling::div")).click();
+		      driver.findElement(By.xpath("//div[text()='"+Model+"']/../following-sibling::div")).click();
 		      waitForAjaxExtJs();
 		      Thread.sleep(2000);
 		      driver.findElement(By.xpath("//label[text()='Service Model']/ancestor::div/descendant::div[text() = '" + serviceModel + "']")).click();
@@ -830,7 +832,9 @@ public class ContractModelsHelper extends GoHelper {
 	  public static void navigateFeeForServicePaymentTermsPageRiskLimiterSectionClickEditButtonToOpenEditDialog() {
 		    try {
 		      waitForAjaxExtJs();
-		      driver.findElement(By.xpath("//div[contains(@class,'x-toolbar-item')]//span[text()='Edit']")).click();
+//		      Omkar 13/7/2023 : xpath changes for 11.2
+//		      driver.findElement(By.xpath("//div[contains(@class,'x-toolbar-item')]//span[text()='Edit']")).click();
+		      driver.findElement(By.xpath("//a[contains(@class,'x-toolbar-item x-btn-default-small')]//span[text()='Edit']")).click();
 		      waitForAjaxExtJs();
 		      Thread.sleep(1000);
 		      //assertElementTextWithXpath("//span[contains(@id, 'medicareinpatientpps')]", "Edit Price for " + serviceModel + " [Encounter]", printout);

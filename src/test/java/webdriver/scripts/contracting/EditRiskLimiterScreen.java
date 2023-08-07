@@ -47,14 +47,16 @@ public class EditRiskLimiterScreen extends GoHelper{
 		try {
 			doSearchForContractModel(contractModelName);
 			tableDoubleClickCellFirstColumn(contractModelName);
-			waitForPageTitle(contractModelName);
+//			waitForPageTitle(contractModelName);
 			doClickTreeItem("Model Contract");
 			waitUntilTreeOptionIsClickable("Define Payment Terms");
 			doClickTreeItem("Define Payment Terms");
 			doClickTreeItem("Fee For Service Payment Terms");
 			ContractModelsHelper.navigateFeeForServicePaymentTermsScreenSelectionSelectServiceModel("Risk Limiter Model",serviceModel);
 			ContractModelsHelper.navigateFeeForServicePaymentTermsPageRiskLimiterSectionClickEditButtonToOpenEditDialog();
-			assertElementText(driver.findElement(By.xpath("//span[text()='Edit Risk Limiter - "+serviceModel+"']")), "Edit Risk Limiter - "+serviceModel, printout);
+//			Omkar 13/7/2023 : xpath changes for 11.2
+//			assertElementText(driver.findElement(By.xpath("//span[text()='Edit Risk Limiter - "+serviceModel+"']")), "Edit Risk Limiter - "+serviceModel, printout);
+			assertElementText(driver.findElement(By.xpath("//div[text()='Edit Risk Limiter - "+serviceModel+"']")), "Edit Risk Limiter - "+serviceModel, printout);
 			navigateCloseGeneralSectionOpenNewSection("Advanced Options");
 			assertThatElementIsChecked("Apply to Included/Excluded Services");
 			assertElementText(driver.findElement(By.xpath("(//span[contains(text(),'Edit Risk Limiter')]//following::div[contains(@id,'gridpanel')]//td/div[text()='"+availableService+"'])[2]")), availableService, printout);

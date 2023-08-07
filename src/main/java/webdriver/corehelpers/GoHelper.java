@@ -422,12 +422,19 @@ public class GoHelper extends AssertHelper {
 
 	public static void navigateCloseGeneralSectionOpenNewSection(String newSection) throws InterruptedException {
 		Thread.sleep(3000);  //was 5000
-		waitForPresenceOfElement("//*[contains(@id, 'customaccordianpanel')][text()='General']/parent::div/following-sibling::div/img");
+//		Omkar 13/7/2023 : xpath changes for 11.2
+//		waitForPresenceOfElement("//*[contains(@id, 'customaccordianpanel')][text()='General']/parent::div/following-sibling::div/img");
 		driver.findElement(By.xpath("//*[contains(@id, 'customaccordianpanel')][text()='General']/parent::div/following-sibling::div/img")).click();
+		waitForPresenceOfElement("//*[contains(@id, 'customaccordianpanel')][text()='General']/parent::div/following-sibling::div/div");
+		driver.findElement(By.xpath("//*[contains(@id, 'customaccordianpanel')][text()='General']/parent::div/following-sibling::div/div")).click();
+
 		//driver.findElement(By.xpath("//*[contains(@id, 'customaccordianpanel')][text()='General']")).click();  //*[contains(@id, 'customaccordianpanel')][text()='General']/parent::div
 		Thread.sleep(2000); //was 3000
 		waitForAjaxExtJs();
-		driver.findElement(By.xpath("//*[contains(@id, 'customaccordianpanel')][text()='" + newSection + "']/parent::div/following-sibling::div/img")).click();
+//		Omkar 13/7/2023 : xpath changes for 11.2
+//		driver.findElement(By.xpath("//*[contains(@id, 'customaccordianpanel')][text()='" + newSection + "']/parent::div/following-sibling::div/img")).click();
+		driver.findElement(By.xpath("//*[contains(@id, 'customaccordianpanel')][text()='" + newSection + "']/parent::div/following-sibling::div/div")).click();
+		
 		waitForAjaxExtJs();
 		Thread.sleep(2000); //was 3000
 	}

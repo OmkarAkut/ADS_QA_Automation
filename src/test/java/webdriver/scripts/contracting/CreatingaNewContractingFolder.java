@@ -14,6 +14,8 @@ import webdriver.corehelpers.GoHelper;
 import webdriver.maps.ContractingMap;
 import webdriver.maps.mapbuilder.BuildMap;
 
+//Omkar 7/8/2023 : Unable to scroll to created folder. See comment below in the code
+
 public class CreatingaNewContractingFolder extends GoHelper {
 
 	private static ContractingMap modelMap;
@@ -52,7 +54,7 @@ public class CreatingaNewContractingFolder extends GoHelper {
 			waitForSpinnerToEnd();
 			doClick(modelMap.getContractingTreeExpand());
 			driverDelay(500);
-			DoHelper.scrollToView("//div[text()='" + contractFolderName + "']");
+			DoHelper.scrollToView("//div[text()='" + contractFolderName + "']");  //unable to scroll to this folder in 11.2 
 			assertTextIsDisplayed(contractFolderName);
 			doClick("//div[text()='" + contractFolderName + "']");
 			doClick(modelMap.getDeleteContractFolderBtn());

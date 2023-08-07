@@ -188,7 +188,9 @@ public class ContractingMap extends MapConfig {
 	private static  WebElement getNewFolderNameSave;
 	public static  WebElement getNewFolderNameSave() {return getNewFolderNameSave;}
 
-	@FindBy(xpath = "(//td[contains(@class,'x-grid-cell-treecolumn')]/*[text()='Contracting']/img[@class='x-tree-elbow-end-plus x-tree-expander'])")
+//	Omkar 4/8/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "(//td[contains(@class,'x-grid-cell-treecolumn')]/*[text()='Contracting']/img[@class='x-tree-elbow-end-plus x-tree-expander'])")
+	@FindBy(xpath = "//div[@id='modelFoldertree-body']//td[contains(@class,'x-grid-cell-treecolumn')]//span[text()='Contracting']/../div[contains(@class,'x-tree-elbow')]")
 	private static WebElement getContractingTreeExpand;
 	public WebElement getContractingTreeExpand() {return getContractingTreeExpand;}
 

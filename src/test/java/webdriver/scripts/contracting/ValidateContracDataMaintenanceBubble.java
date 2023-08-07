@@ -70,7 +70,9 @@ public class ValidateContracDataMaintenanceBubble extends CalculationHelper {
 			driverDelay(500);
 			doClickTreeData("Jordan");
 			driverDelay(200);
-			driver.findElement(By.xpath("//div[text()='"+ContractTypeTest+"']"));
+//			Omkar 4/8/2023 : xpath changes for 11.2
+//			driver.findElement(By.xpath("//div[text()='"+ContractTypeTest+"']"));
+			driver.findElement(By.xpath("//span[text()='"+ContractTypeTest+"']"));
 			doSearchForContractModel(ContractModel);
 			tableDoubleClickCellFirstColumn(ContractModel);
 			assertTextIsDisplayed("Unpublished Contract Task List");
