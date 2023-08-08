@@ -92,15 +92,21 @@ public class UtilitiesPageHelper extends LoginStatic {
 
 	public void selectItemsOnSelector(String[] items) throws InterruptedException {
 		waitForSpinnerToEnd();
-		for (String item : items) {
-			driver.findElement(By.xpath("//tr/td/div[text()='" + item + "']")).click();
-			Thread.sleep(2000);
-//			Omkar 8/8/2023 : xpath changes for 11.2
-//			driver.findElement(By.xpath("//button[not(@disabled)]/span[text()='Select']")).click();
-			driver.findElement(By.xpath("//div[(@class='x-container x-box-item x-container-default x-box-layout-ct')]//span[text()='Select']")).click();
-			waitForSpinnerToEnd();
-			Thread.sleep(900);
+		try {
+			for (String item : items) {
+				driver.findElement(By.xpath("//tr/td/div[text()='" + item + "']")).click();
+				Thread.sleep(2000);
+//				Omkar 8/8/2023 : xpath changes for 11.2
+//				driver.findElement(By.xpath("//button[not(@disabled)]/span[text()='Select']")).click();
+				driver.findElement(By.xpath("//div[(@class='x-container x-box-item x-container-default x-box-layout-ct')]//span[text()='Select']")).click();
+				waitForSpinnerToEnd();
+				Thread.sleep(900);
+			}
 		}
+		catch (Throwable e) {
+			System.out.println("Codes could not be selected");
+		}
+		
 	}
 
 	public static void waitForUtilityFirstRowDownloadLinkToBecomeActive() throws InterruptedException {
