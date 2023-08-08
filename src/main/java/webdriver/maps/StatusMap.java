@@ -184,11 +184,15 @@ public class StatusMap extends MapConfig {
     private WebElement utilityStatusPageHelpLink;
     public WebElement getUtilityStatusPageHelpLink() {return utilityStatusPageHelpLink;}
 
-    @FindBy(xpath = "//*[contains(@id,'utilitystatus') and contains(@id,'header')]/../descendant::table/descendant::input[@name='searchText']")
+//    Omkar 8/8/2023 : xpath changes for 11.2
+//    @FindBy(xpath = "//*[contains(@id,'utilitystatus') and contains(@id,'header')]/../descendant::table/descendant::input[@name='searchText']")
+    @FindBy(xpath = "//*[contains(@id,'utilitystatus') and contains(@id,'header')]/..//input[@name='searchText']")
     private WebElement utilityStatusFormFieldSearch;
     public WebElement getUtilityStatusPageFormFieldSearch() {return utilityStatusFormFieldSearch;}
 
-    @FindBy(xpath = "//*[contains(@id,'utilitystatus') and contains(@id,'header')]/../descendant::div[contains(@class, 'statusSearch')]/descendant::span[contains(@id,'button')]")
+//    Omkar 8/8/2023 : xpath changes for 11.2
+//    @FindBy(xpath = "//*[contains(@id,'utilitystatus') and contains(@id,'header')]/../descendant::div[contains(@class, 'statusSearch')]/descendant::span[contains(@id,'button')]")
+    @FindBy(xpath = "//*[contains(@id,'utilitystatus') and contains(@id,'header')]/..//a[@aria-label='Search']")
     private WebElement utilityStatusButtonSearchGlass;
     public WebElement getUtilityStatusPageButtonSearchGlass() {return utilityStatusButtonSearchGlass;}
 

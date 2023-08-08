@@ -51,18 +51,25 @@ public class UtilitiesPageHelper extends LoginStatic {
 			driver.findElement(By.name("endDate1")).click();
 			driver.findElement(By.name("endDate1")).clear();
 			driver.findElement(By.name("endDate1")).sendKeys(endDate);
-			driver.findElement(By.xpath("//button/span[text()='Select']")).click();
+//			Omkar 8/8/2023 : xpath changes for 11.2
+//			driver.findElement(By.xpath("//button/span[text()='Select']")).click();
+//			driver.findElement(By.xpath("//button/span[text()='Apply']")).click();
+			driver.findElement(By.xpath("//span[text()='Select']")).click();
 			selectItemsOnSelector(codes);
-			driver.findElement(By.xpath("//button/span[text()='Apply']")).click();
+			driver.findElement(By.xpath("//span[text()='Apply']")).click();
 		} catch (Exception e) {
 			ExtentReport.extenttest.log(Status.FAIL, "Element not Found");
 
 			ExtentReport.extenttest.log(Status.INFO, e);
 		}
 		waitForAjaxExtJs();
-		waitForElementToBeVisible(driver.findElement(By.xpath("//button/span[text()='Run']")));
+//		Omkar 8/8/2023 : xpath changes for 11.2
+//		waitForElementToBeVisible(driver.findElement(By.xpath("//button/span[text()='Run']")));
+		waitForElementToBeVisible(driver.findElement(By.xpath("//span[text()='Run']")));
 		try {
-			driver.findElement(By.xpath("//button/span[text()='Run']")).click();
+//			Omkar 8/8/2023 : xpath changes for 11.2
+//			driver.findElement(By.xpath("//button/span[text()='Run']")).click();
+			driver.findElement(By.xpath("//span[text()='Run']")).click();
 		}catch (Exception e) {
 			ExtentReport.extenttest.log(Status.FAIL, "Element not Found");
 
@@ -70,8 +77,10 @@ public class UtilitiesPageHelper extends LoginStatic {
 		}
 		waitForSpinnerToEnd();
 		waitForUtilityFirstRowDownloadLinkToBecomeActive();
-		driver.findElement(By.xpath("//tbody/tr[2]/td/div/a[@class='stLinks' and text()='Download']")).click();
-		Thread.sleep(7000);
+//		Omkar 8/8/2023 : xpath changes for 11.2
+//		driver.findElement(By.xpath("//tbody/tr[2]/td/div/a[@class='stLinks' and text()='Download']")).click();
+		driver.findElement(By.xpath("(//table/tbody/tr[1]/td)[5]/div/a")).click();
+		Thread.sleep(1000);
 		deleteUtilityStatusPageMyStatusFirstRow();
 	}
 
@@ -86,7 +95,9 @@ public class UtilitiesPageHelper extends LoginStatic {
 		for (String item : items) {
 			driver.findElement(By.xpath("//tr/td/div[text()='" + item + "']")).click();
 			Thread.sleep(2000);
-			driver.findElement(By.xpath("//button[not(@disabled)]/span[text()='Select']")).click();
+//			Omkar 8/8/2023 : xpath changes for 11.2
+//			driver.findElement(By.xpath("//button[not(@disabled)]/span[text()='Select']")).click();
+			driver.findElement(By.xpath("//div[(@class='x-container x-box-item x-container-default x-box-layout-ct')]//span[text()='Select']")).click();
 			waitForSpinnerToEnd();
 			Thread.sleep(900);
 		}
@@ -98,11 +109,20 @@ public class UtilitiesPageHelper extends LoginStatic {
 		byte counter = 0;
 		while (calculate) {
 			try {
-				driver.findElement(By.xpath("//button/span[text()='Refresh']")).click();
+//				Omkar 8/8/2023 : xpath changes for 11.2
+//				driver.findElement(By.xpath("//span[text()='Refresh']")).click();
+				driver.findElement(By.xpath("//span[text()='Refresh']")).click();
 				waitForSpinnerToEnd();
+				/*
+				Omkar 8/8/2023 : xpath changes for 11.2
 				download = driver
 						.findElement(By.xpath("//tbody/tr[2]/td/div/a[@class='stLinks' and text()='Download']"))
-						.getAttribute("class");
+						.getAttribute("class"); 
+						*/
+				download = driver.findElement(
+						By.xpath("(//table/tbody/tr[1]/td)[5]/div/a"))
+						.getAttribute("class")
+						;
 				System.out.println("Download: " + download);
 				try {
 					assertTrue(download.contains("stLinks"));
@@ -135,13 +155,17 @@ public class UtilitiesPageHelper extends LoginStatic {
 	public void deleteUtilityStatusPageMyStatusFirstRow() throws InterruptedException {
 		waitForSpinnerToEnd();
 		waitForAjaxExtJs();
-		Thread.sleep(1000);
-		WebElement firstRowDeleteIcon = driver
-				.findElement(By.xpath("//table/tbody/tr[2]/td[12]/descendant::button/span[@class='x-btn-icon ']"));
+		//    Omkar 8/8/2023 : xpath changes for 11.2
+		//    waitForPresenceOfElement("//div[contains(@class, 'delBtn')]/descendant::button/span[contains(@class, 'x-btn-icon')]");
+		//    WebElement firstRowDeleteIcon = driver.findElement(By.xpath("//div[contains(@class, 'delBtn')]/descendant::button/span[contains(@class, 'x-btn-icon')]"));
+		waitForPresenceOfElement("(//table/tbody/tr[1]/td)[9]//span[contains(@class, 'delBtn')]");
+		WebElement firstRowDeleteIcon = driver.findElement(By.xpath("(//table/tbody/tr[1]/td)[9]//span[contains(@class, 'delBtn')]"));
 		firstRowDeleteIcon.click();
-		waitForAjaxExtJs();
-		driver.findElement(By.xpath("//div[contains(@class,'windowbtn')]/descendant::button/span[text()='Delete']"))
-				.click();
+		//    Omkar 8/8/2023 : xpath changes for 11.2
+		//    waitForPresenceOfElement("//div[contains(@class,'windowbtn')]/descendant::button/span[text()='Delete']");
+		//    driver.findElement(By.xpath("//div[contains(@class,'windowbtn')]/descendant::button/span[text()='Delete']")).click();
+		waitForPresenceOfElement("//div[@role='dialog']//span[text()='Delete']");
+		driver.findElement(By.xpath("//div[@role='dialog']//span[text()='Delete']")).click();
 		waitForSpinnerToEnd();
 		waitForAjaxExtJs();
 	}

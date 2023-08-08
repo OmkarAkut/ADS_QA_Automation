@@ -38,7 +38,9 @@ public class UtilitiesReportCheck
   static final String expectedUtilityLogStatus = "Completed";
   static final String expectedUtilityDownload = "Download";
   String durationPatternMatch = "^\\d\\d:\\d\\d:\\d\\d$";
-
+  
+  /*
+  Omkar 7/8/2023 : xpath changes for 11.2
   static String utilityStatusUtilityNameXpath = "//table/tbody/tr[2]/td[5]/div[contains(@class, 'grid-cell')]";
   static String utilityStatusStatusXpath = "//table/tbody/tr[2]/td[6]/div[contains(@class, 'grid-cell')]";
   static String utilityStatusLogStatusXpath = "//table/tbody/tr[2]/td[7]/div[contains(@class, 'grid-cell')]";
@@ -46,7 +48,15 @@ public class UtilitiesReportCheck
   static String utilityStatusStartTimeXpath = "//table/tbody/tr[2]/td[9]/div[contains(@class, 'grid-cell')]";
   static String utilityStatusEndTimeXpath = "//table/tbody/tr[2]/td[10]/div[contains(@class, 'grid-cell')]";
   static String utilityStatusDurationXpath = "//table/tbody/tr[2]/td[11]/div[contains(@class, 'grid-cell')]";
-
+	*/
+  static String utilityStatusUtilityNameXpath = "(//table/tbody/tr[1]/td)[2]/div";
+  static String utilityStatusStatusXpath = "(//table/tbody/tr[1]/td)[3]/div";
+  static String utilityStatusLogStatusXpath = "(//table/tbody/tr[1]/td)[4]/div";
+  static String utilityStatusDownloadXpath = "(//table/tbody/tr[1]/td)[5]/div/a";
+  static String utilityStatusStartTimeXpath = "(//table/tbody/tr[1]/td)[6]/div";
+  static String utilityStatusEndTimeXpath = "(//table/tbody/tr[1]/td)[7]/div";
+  static String utilityStatusDurationXpath = "(//table/tbody/tr[1]/td)[8]/div";
+  
   /** Test script that verifies Encounters With No Charges Report. 
  * @throws Throwable */
   @BeforeClass
@@ -83,8 +93,12 @@ public class UtilitiesReportCheck
 //    waitForPresenceOfElement("//div[contains(@id, 'datamaintenanceutilities')]" +
 //            "/descendant::button/*[text()='Encounters With No Charges Report']"
 //    );
-		waitForPresenceOfElement("//span[contains(@id,'header_hd')]//following::input[contains(@id,'datefield')][1]"
-		);
+		
+//		Omkar 7/8/2023 : xpath changed for 11.2
+//		waitForPresenceOfElement("//span[contains(@id,'header_hd')]//following::input[contains(@id,'datefield')][1]"
+//		);
+		waitForPresenceOfElement("(//input[contains(@id,'datefield')])[1]"
+				);
 		String startDate = driver.findElement(By.name("startDate1")).getAttribute("value");
 			assertEquals(currentDate, startDate);
 		
@@ -230,8 +244,13 @@ public class UtilitiesReportCheck
   @Test
   public void test05VerifyUtilityStatusPageSearch() throws Throwable {
     try {
+    	/*
+    	Omkar 8/8/2023 : xpath changes for 11.2
 		waitForPresenceOfElement(
 		        "//*[contains(@id,'utilitystatus') and contains(@id,'header')]/../descendant::table/descendant::input[@name='searchText']"
+		); */
+		waitForPresenceOfElement(
+		        "//*[contains(@id,'utilitystatus') and contains(@id,'header')]/..//input[@name='searchText']"
 		);
 		
 			status.getUtilityStatusPageFormFieldSearch().sendKeys(currentDate);
@@ -269,8 +288,11 @@ public class UtilitiesReportCheck
 		waitForAjaxExtJs();
 		populateReportFields(startDate, endDate, codes);
 		waitForAjaxExtJs();
-		waitForElementToBeVisible(driver.findElement(By.xpath("//button/span[text()='Run']")));
-		driver.findElement(By.xpath("//button/span[text()='Run']")).click();
+//		Omkar 7/8/2023 : xpath changes for 11.2
+//		waitForElementToBeVisible(driver.findElement(By.xpath("//button/span[text()='Run']")));
+//		driver.findElement(By.xpath("//button/span[text()='Run']")).click();
+		waitForElementToBeVisible(driver.findElement(By.xpath("//span[text()='Run']")));
+		driver.findElement(By.xpath("//span[text()='Run']")).click();
 		waitForSpinnerToEnd();
 		waitForUtilityFirstRowDownloadLinkToBecomeActive();
 	
@@ -284,10 +306,14 @@ public class UtilitiesReportCheck
 		driver.findElement(By.name("startDate1")).sendKeys(startDate);
 		driver.findElement(By.name("endDate1")).clear();
 		driver.findElement(By.name("endDate1")).sendKeys(endDate);
-		driver.findElement(By.xpath("//button/span[text()='Select']")).click();
+//		Omkar 7/8/2023 : xpath changes for 11.2
+//		driver.findElement(By.xpath("//button/span[text()='Select']")).click();
+		driver.findElement(By.xpath("//span[text()='Select']")).click();
 	    selectItemsOnSelector(codes);
     try {
-		driver.findElement(By.xpath("//button/span[text()='Apply']")).click();
+//    	Omkar 7/8/2023 : xpath changes for 11.2
+//		driver.findElement(By.xpath("//button/span[text()='Apply']")).click();
+		driver.findElement(By.xpath("//span[text()='Apply']")).click();
 	} catch (Exception e) {
 		ExtentReport.logFail("FAIL","Apply Button not found",driver,e);
 	}
@@ -296,10 +322,15 @@ public class UtilitiesReportCheck
   public void assertButtonIsInactive(String buttonText) throws Throwable {
     try {
       waitForAjaxExtJs();
+//  	Omkar 7/8/2023 : xpath changes for 11.2
+      
+//      boolean isInactive = driver.findElement(By.xpath(
+//              "//button/*[text()='"+buttonText+"']/ancestor::button[@disabled]"))
+//              .isDisplayed()
+//              ;
       boolean isInactive = driver.findElement(By.xpath(
-              "//button/*[text()='"+buttonText+"']/ancestor::button[@disabled]"))
-              .isDisplayed()
-              ;
+              "//span[text()='"+buttonText+"']/ancestor::a[@aria-disabled='true']"))
+              	 .isDisplayed();
       try {
 		assertTrue(isInactive);
 	} catch (Exception e) {
@@ -319,11 +350,16 @@ public class UtilitiesReportCheck
     boolean isInactive = false;
     try {
       waitForAjaxExtJs();
-      isInactive = driver.findElement(By.xpath(
-              "//button/*[text()='" + buttonText + "']/ancestor::button[@disabled]"))
-              .isDisplayed()
-      ;
-      if (isInactive) {
+//      Omkar 7/8/2023 : xpath changes for 11.2
+      
+//      isInactive = driver.findElement(By.xpath(
+//              "//button/*[text()='" + buttonText + "']/ancestor::button[@disabled]"))
+//              .isDisplayed()
+//      ;
+      boolean isActive = driver.findElement(By.xpath(
+              "//span[text()='"+buttonText+"']/ancestor::a[@aria-disabled='false']"))
+              	 .isDisplayed();
+      if (isActive) {
         try {
 			fail("FAIL: " + buttonText + " button is inactive.");
 		} catch (AssertionError e) {
