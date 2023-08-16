@@ -4,6 +4,9 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import webdriver.helperstatic.CalculationsHelper;
 
 public class BeforeAfterStatic extends CalculationsHelper {
@@ -55,13 +58,17 @@ public class BeforeAfterStatic extends CalculationsHelper {
    */
   @AfterClass
   public static void teardown() {
+	  @SuppressWarnings("deprecation")
+	WebDriverWait wait = new WebDriverWait(driver, 10);
     try {
-      waitForElementToBeVisible(driver.findElement(By.id("component-1022")));
-      WebElement logOut = driver.findElement(By.id("component-1022"));
-      logOut.click();
-      Thread.sleep(1000);
-      waitUntilElementIsVisible(driver.findElement(By.id("username-inputEl")));
-      System.out.println("You have logged out successfully.");
+//      waitForElementToBeVisible(driver.findElement(By.id("component-1022")));
+//      WebElement logOut = driver.findElement(By.id("component-1022"));
+//      logOut.click();
+    	wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[contains(@class, 'logout') and text() = 'Log Out']")));
+        driver.findElement(By.xpath("//*[contains(@class, 'logout') and text() = 'Log Out']")).click();
+        Thread.sleep(1000);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='username-inputEl']")));
+        System.out.println("Logout successful");
     } catch (Throwable e) {
       System.out.println("WARNING: Logout was not successful");
     } finally {

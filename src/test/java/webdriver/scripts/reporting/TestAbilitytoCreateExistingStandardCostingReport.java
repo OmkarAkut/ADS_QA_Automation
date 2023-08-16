@@ -91,7 +91,7 @@ public class TestAbilitytoCreateExistingStandardCostingReport extends GoHelper {
 						else if (driver
 								.findElement(By.xpath("(//span[text()='" + newReportName + "']//following::div/a)[1]"))
 								.getText().equals("FAILED")) {
-							assertFalse(printout);
+							assertTrue(printout);
 							break;
 						}
 

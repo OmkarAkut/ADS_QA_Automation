@@ -489,7 +489,9 @@ public class ContractingMap extends MapConfig {
 	private static  WebElement ContractFeeForServicePaymentApply;
 	public  static WebElement getContractFeeForServicePaymentApply() {return ContractFeeForServicePaymentApply;}
 
-	@FindBy(xpath = "//div[contains(@class,'x-btn windowbtn')]//span[text()='Cancel']")
+//	Omkar 10/8/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//div[contains(@class,'x-btn windowbtn')]//span[text()='Cancel']")
+	@FindBy(xpath = "//span[contains(@class,'x-btn-button')]//span[text()='Cancel']")
 	private static WebElement ContractCalculationCloseViewDialog;
 	public static WebElement getContractCalculationCloseViewDialog() {return ContractCalculationCloseViewDialog;}
 
@@ -827,7 +829,9 @@ public class ContractingMap extends MapConfig {
 
 //	Omkar 08/6/2023 : xpath changes or 11.2
 //	@FindBy(xpath = "//div[text()='Edit']")
-	@FindBy(xpath = "//a[@class='x-btn editBtnClsFilter x-unselectable x-btn-default-small x-border-box']//span[text()='Edit']")
+//	@FindBy(xpath = "//a[@class='x-btn editBtnClsFilter x-unselectable x-btn-default-small x-border-box']//span[text()='Edit']")
+//	Omkar 16/8/2023 : xpath changes for 11.2
+	@FindBy(xpath = "//div[text()='Edit']")
 	private static WebElement ASCFilterEditButton;
 	public static WebElement getASCFilterEditButton() {return ASCFilterEditButton;}
 

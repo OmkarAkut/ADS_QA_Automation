@@ -78,5 +78,10 @@ public class ExtentReport {
 		extenttest.log(Status.INFO, e);
 		ExtentReport.getScreenshot(driver, tcname);
 	}
+	//logfail and add screenshot to report , method outside catch
+		public static void logFail(String logStatus,String tcname,WebDriver driver) throws Throwable {
+			extenttest.log(Status.FAIL, tcname);
+			ExtentReport.getScreenshot(driver, tcname);
+		}
 	
 }

@@ -80,6 +80,7 @@ public class Driver {
     try {
       wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[contains(@class, 'logout') and text() = 'Log Out']")));
       driver.findElement(By.xpath("//*[contains(@class, 'logout') and text() = 'Log Out']")).click();
+      Thread.sleep(1000);
       wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='username-inputEl']")));
       System.out.println("Logout successful");
     } catch (Throwable e) {

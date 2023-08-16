@@ -18,6 +18,7 @@ import webdriver.helpers.ContractModelsHelper;
 import webdriver.maps.ContractingMap;
 import webdriver.maps.CostingMap;
 import webdriver.maps.DataMaintenanceMap;
+//import webdriver.maps.xpath;
 import webdriver.maps.mapbuilder.BuildMap;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class CreateDeleteCostMethodDeptMasterDischargeStatus extends CalculationHelper{
@@ -88,7 +89,9 @@ public class CreateDeleteCostMethodDeptMasterDischargeStatus extends Calculation
 			waitForMainPageTitle("Departments");
 			doClickTreeData("Departments");
 			driverDelay(200);
-			doClick("//div[@id='treepanelId-body']//following::div[text()='Department Masters']/img[@class='x-tree-elbow-end']");
+//			Omkar 8/8/2023 : xpath changes for 11.2
+//			doClick("//div[@id='treepanelId-body']//following::div[text()='Department Masters']/img[@class='x-tree-elbow-end']");
+			doClick("//div[@id='treepanelId-body']//following::span[text()='Department Masters']/../div[5]");
 			ExtentReport.logPass("PASS", "test04GotoDepartmentMasters");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test04GotoDepartmentMasters", driver, e);
@@ -133,7 +136,9 @@ public class CreateDeleteCostMethodDeptMasterDischargeStatus extends Calculation
 		try {
 			doClickTreeData("Encounters");
 			driverDelay(200);
-			doClick("//div[@id='treepanelId-body']//following::div[text()='Encounter Types']/img[contains(@class,'x-tree-icon')]");
+//			Omkar 11/8/2023 : xpath changes for 11.2
+//			doClick("//div[@id='treepanelId-body']//following::div[text()='Encounter Types']/img[contains(@class,'x-tree-icon')]");
+			doClick("//div[@id='treepanelId-body']//following::span[text()='Encounter Types']/../div[5]");
 			encounterNameBeforeEdit=CostingMap.getEncounterNameinGrid().getText();
 			encounterShortNameBeforeEdit=CostingMap.getEncounterShortNameinGrid().getText();
 			doClick(CostingMap.getEncounterTypeEditButton());
@@ -158,7 +163,9 @@ public class CreateDeleteCostMethodDeptMasterDischargeStatus extends Calculation
 	@Test
 	public void test06CreateNewDischargeStatus() throws Throwable {
 		try {
-			doClick("//div[@id='treepanelId-body']//following::div[text()='Discharge Statuses']/img[contains(@class,'x-tree-icon')]");
+//			Omkar 16/8/2023 : xpath changes for 11.2
+//			doClick("//div[@id='treepanelId-body']//following::div[text()='Discharge Statuses']/img[contains(@class,'x-tree-icon')]");
+			doClick("//div[@id='treepanelId-body']//following::span[text()='Discharge Statuses']/../div[5]");
 			doClick(CostingMap.getCostDischargeStatusNewButton());
 			ContractModelsHelper.keyInValues(ContractingMap.getMedicareCode(),String.valueOf(dischargeCode)+"D");
 			ContractModelsHelper.keyInValues(ContractingMap.getInputName(), dischargeStatusName);

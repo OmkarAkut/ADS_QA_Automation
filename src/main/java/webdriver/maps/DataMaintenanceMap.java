@@ -106,11 +106,15 @@ public class DataMaintenanceMap extends MapConfig {
     private  List<WebElement> getServiceModelList;
     public List<WebElement> getServiceModelList() {return getServiceModelList;}
     
-    @FindBy(xpath = "//span[text()='Filter']//parent::button")
+//    Omkar 16/8/2023 : xpath changes for 11.2
+//    @FindBy(xpath = "//span[text()='Filter']//parent::button")
+    @FindBy(xpath = "//span[text()='Filter']//parent::span")
     private WebElement encounterButtonFilter;
     public WebElement getencounterButtonFilter() {return encounterButtonFilter;}
     
-    @FindBy(xpath = "//span[text()='Edit']//parent::button")
+//    Omkar 16/8/2023 : xpath changes for 11.2
+//    @FindBy(xpath = "//span[text()='Edit']//parent::button")
+    @FindBy(xpath = "//span[text()='Edit']//parent::span")
     private WebElement encounterButtonEdit;
     public WebElement getencounterButtonEdit() {return encounterButtonEdit;}
     
@@ -122,20 +126,27 @@ public class DataMaintenanceMap extends MapConfig {
 	private static WebElement getAssignButtonEncounter;
 	public static WebElement getAssignButtonEncounter() {return getAssignButtonEncounter;}
 	
-	@FindBy(xpath = "(//div[contains(@id,'commontbar')]//span[text()='New']//parent::button)[1]")
+//	Omkar 16/8/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "(//div[contains(@id,'commontbar')]//span[text()='New']//parent::button)[1]")
+	@FindBy(xpath = "(//div[contains(@id,'commontbar')]//span[text()='New']//parent::span)[1]")
 	private static WebElement getLoadDataNewButton;
 	public static WebElement getLoadDataNewButton() {return getLoadDataNewButton;}
 	
-	@FindBy(xpath = "(//div[contains(@id,'commontbar')]//span[text()='Filter']//parent::button)[1]")
+//	Omkar 16/8/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "(//div[contains(@id,'commontbar')]//span[text()='Filter']//parent::button)[1]")
+	@FindBy(xpath = "(//div[contains(@id,'commontbar')]//span[text()='Filter']//parent::span)[1]")
 	private static WebElement getLoadDataFilterButton;
 	public static WebElement getLoadDataFilterButton() {return getLoadDataFilterButton;}
 	
-
-	@FindBy(xpath = "(//div[contains(@id,'commontbar')]//span[text()='Delete']//parent::button)[1]")
+//	Omkar 16/8/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "(//div[contains(@id,'commontbar')]//span[text()='Delete']//parent::button)[1]")
+	@FindBy(xpath = "(//div[contains(@id,'commontbar')]//span[text()='Delete']//parent::span)[1]")
 	private static WebElement getLoadDataDeleteButton;
 	public static WebElement getLoadDataDeleteButton() {return getLoadDataDeleteButton;}
 	
-	@FindBy(xpath = "(//div[contains(@id,'commontbar')]//span[text()='Edit']//parent::button)[1]")
+//	Omkar 16/8/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "(//div[contains(@id,'commontbar')]//span[text()='Edit']//parent::button)[1]")
+	@FindBy(xpath = "(//div[contains(@id,'commontbar')]//span[text()='Edit']//parent::span)[1]")
 	private static WebElement getLoadDataEditButton;
 	public static WebElement getLoadDataEditButton() {return getLoadDataEditButton;}
 	
@@ -155,15 +166,21 @@ public class DataMaintenanceMap extends MapConfig {
 	private static WebElement getSaveandCreateNewButton;
 	public static WebElement getSaveandCreateNewButton() {return getSaveandCreateNewButton;}
 	
-	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//span[text()='Calculate']//parent::button")
+//	Omkar 16/8/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//span[text()='Calculate']//parent::button")
+	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//span[text()='Calculate']//parent::span")
 	private static WebElement getCalculateButton;
 	public static WebElement getCalculateButton() {return getCalculateButton;}
 	
-	@FindBy(xpath = "//h1[text()='Price Items']//following::span[text()='Filter']//parent::button")
+//	Omkar 16/8/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//h1[text()='Price Items']//following::span[text()='Filter']//parent::button")
+	@FindBy(xpath = "//h1[text()='Price Items']//following::span[text()='Filter']//parent::span")
 	private static WebElement getPriceItemFilterButton;
 	public static WebElement getPriceItemFilterButton() {return getPriceItemFilterButton;}
 	
-	@FindBy(xpath = "//h1[text()='Price Items']//following::span[text()='Clear Filter']//parent::button")
+//	Omkar 16/8/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//h1[text()='Price Items']//following::span[text()='Clear Filter']//parent::button")
+	@FindBy(xpath = "//h1[text()='Price Items']//following::span[text()='Clear Filter']//parent::span")
 	private static WebElement getPriceItemClearFilterButton;
 	public static WebElement getPriceItemClearFilterButton() {return getPriceItemClearFilterButton;}
 	
@@ -184,11 +201,15 @@ public class DataMaintenanceMap extends MapConfig {
 	private static WebElement getPopulationFieldDropdownOptions;
 	public static WebElement getPopulationFieldDropdownOptions() {return getPopulationFieldDropdownOptions;}
 	
-	@FindBy(xpath = "//span[text()='Add']//parent::button")
+//	Omkar 16/8/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//span[text()='Add']//parent::button")
+	@FindBy(xpath = "//span[text()='Add']//parent::span")
 	private static WebElement getPopulationAddButton;
 	public static WebElement getPopulationAddButton() {return getPopulationAddButton;}
 	
-	@FindBy(xpath = "//span[text()='Show Size']//parent::button")
+//	Omkar 16/8/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//span[text()='Show Size']//parent::button")
+	@FindBy(xpath = "//span[text()='Show Size']//parent::span")
 	private static WebElement getPopulationShowSizeButton;
 	public static WebElement getPopulationShowSizeButton() {return getPopulationShowSizeButton;}
 	
