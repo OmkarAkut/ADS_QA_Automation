@@ -205,7 +205,7 @@ public class WaitHelper extends JavaHelper {
 	public static void waitUntilElementIsClickable(WebElement element){
 		//Edited by Omkar on 22/6/22 as the old wait is depreciated
 		//WebDriverWait wait = new WebDriverWait(driver, 30);
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 		wait.until(ExpectedConditions.elementToBeClickable(element));
 	}
 

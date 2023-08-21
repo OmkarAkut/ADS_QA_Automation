@@ -30,8 +30,13 @@ public class CalculationHelper extends GoHelper {
 	private static ModelLibraryMap modelMap;
 	@SuppressWarnings("unused")
 	private static EditContractingModelMap editModelMap;
+	/*
+	Omkar 18/8/2023 : xpath changes for 11.2
 	public String calculationStatusDeleteFirstRowDeleteButtonXpath =
 			"//table/tbody/tr[2]/td[21]/div/div/em/button/span[2]";
+	*/
+	public String calculationStatusDeleteFirstRowDeleteButtonXpath =
+			"(//*[contains(@id,'calculationstatus') and contains(@id,'header')]/..//span[contains(@class,'x-btn-icon-el x-btn-icon-el-default-small delBtn')])[1]";
 
 	public String oldCalculationStatusFirstRowDeleteButtonXpath =
 			"//div[contains(@id,'calculationstatus') and contains(@class,'x-box-layout-ct')]/descendant::table/tbody/tr[2]/td[16]/descendant::button";
@@ -281,10 +286,12 @@ public class CalculationHelper extends GoHelper {
 	public void calculationStatusPageOpenViewDialog() {
 		//	  Omkar 14/04/2023 : xpath changes for 11.2
 		//    waitForPresenceOfElement("//div[not(contains(@class,'disabled'))]/em/button/span[text()='View']");
-		waitForPresenceOfElement("(//div[not(contains(@class,'disabled'))]//td[contains(@class,'x-grid-cell x-grid-td x-grid-cell-gridcolumn-1490 x-unselectable')]/div/span)[1]");
-		//    Omkar 14/04/2023 : xpath changes for 11.2
 		//    driver.findElement(By.xpath("//div[not(contains(@class,'disabled'))]/em/button/span[text()='View']")).click();
-		driver.findElement(By.xpath("(//div[not(contains(@class,'disabled'))]//td[contains(@class,'x-grid-cell x-grid-td x-grid-cell-gridcolumn-1490 x-unselectable')]/div/span)[1]")).click();
+//		Omkar 17/8/2023 : xpath changes for 11.2
+//		waitForPresenceOfElement("(//div[not(contains(@class,'disabled'))]//td[contains(@class,'x-grid-cell x-grid-td x-grid-cell-gridcolumn-1490 x-unselectable')]/div/span)[1]");
+//		driver.findElement(By.xpath("(//div[not(contains(@class,'disabled'))]//td[contains(@class,'x-grid-cell x-grid-td x-grid-cell-gridcolumn-1490 x-unselectable')]/div/span)[1]")).click();
+		waitForPresenceOfElement("(//*[contains(@id,'calculationstatus') and contains(@id,'header')]/..//span[text()='View'])[2]");
+		driver.findElement(By.xpath("(//*[contains(@id,'calculationstatus') and contains(@id,'header')]/..//span[text()='View'])[2]")).click();
 		waitForDisplayedSpinnerToEnd();
 	}
 
@@ -296,7 +303,9 @@ public class CalculationHelper extends GoHelper {
 
 	/* calculation status page */
 	public void closeViewDialog() {
-		driver.findElement(By.xpath("//button/span[text()='Cancel']")).click();
+//		Omkar 18/8/2023 : xpath changes for 11.2
+//		driver.findElement(By.xpath("//button/span[text()='Cancel']")).click();
+		driver.findElement(By.xpath("//span[contains(@id,'button')]//span[text()='Cancel']")).click();
 		waitForSpinnerToEnd();
 	}
 
@@ -359,7 +368,9 @@ public class CalculationHelper extends GoHelper {
 		WebElement firstRowDeleteIcon = driver.findElement(By.xpath(xpath));
 		firstRowDeleteIcon.click();
 		waitForAjaxExtJs();
-		driver.findElement(By.xpath("//div[contains(@class, 'windowbtn')]/descendant::button/span[text()='Delete']")).click();
+//		Omkar 18/8/2023 : xpath changes for 11.2
+//		driver.findElement(By.xpath("//div[contains(@class, 'windowbtn')]/descendant::button/span[text()='Delete']")).click();
+		driver.findElement(By.xpath("//div[contains(@id,'warningwindow')]//span[text()='Delete']")).click();
 		waitForSpinnerToEnd();
 		waitForAjaxExtJs();
 	}
@@ -371,13 +382,17 @@ public class CalculationHelper extends GoHelper {
 		WebElement firstRowDeleteIcon = driver.findElement(By.xpath(calculationStatusDeleteFirstRowDeleteButtonXpath));
 		firstRowDeleteIcon.click();
 		waitForAjaxExtJs();
-		driver.findElement(By.xpath("//div[contains(@class, 'windowbtn')]/descendant::button/span[text()='Delete']")).click();
+//		Omkar 18/8/2023 : xpath changes for 11.2
+//		driver.findElement(By.xpath("//div[contains(@class, 'windowbtn')]/descendant::button/span[text()='Delete']")).click();
+		driver.findElement(By.xpath("//div[contains(@id,'warningwindow')]//span[text()='Delete']")).click();
 		waitForSpinnerToEnd();
 		waitForAjaxExtJs();
 	}
 
 	public void deleteCalculationStatusMyStatusPageFirstRow() throws InterruptedException {
-		String xpath = "//div[2]/div/div[4]/div/table/tbody/tr[2]/td[21]/descendant::button";  //"//div[2]/div/div[4]/div/table/tbody/tr[2]/td[21]/descendant::button"
+//		Omkar 18/8/2023 : xpath changes for 11.2
+//		String xpath = "//div[2]/div/div[4]/div/table/tbody/tr[2]/td[21]/descendant::button";  //"//div[2]/div/div[4]/div/table/tbody/tr[2]/td[21]/descendant::button"
+		String xpath ="(//*[contains(@id,'calculationstatus') and contains(@id,'header')]/..//span[contains(@class,'x-btn-icon-el x-btn-icon-el-default-small delBtn')])[1]";
 		deleteFirstRow(xpath);
 	}
 
@@ -483,7 +498,7 @@ public class CalculationHelper extends GoHelper {
 				counter++;
 			}
 		}
-		Thread.sleep(5000);
+		Thread.sleep(500);
 	}
 
 	//number of checks is 10 - total run time can be controlled by setting refresh interval - longer interval, longer run time

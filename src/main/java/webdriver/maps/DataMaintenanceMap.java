@@ -97,8 +97,10 @@ public class DataMaintenanceMap extends MapConfig {
     //*[@class='itemWrap' and text()='Encounters With No Charges Report']
     /******End Utilities******/
     
+//    Omkar 17/8/2023 : xpath changes for 11.2
     //Shilpa
-    @FindBy(xpath = "//label[text()='Encounter Population for Assign/Remove']//following::div[contains(@id,'displayfield')]")
+//    @FindBy(xpath = "//label[text()='Encounter Population for Assign/Remove']//following::div[contains(@id,'displayfield')]")
+    @FindBy(xpath = "//span[text()='Encounter Population for Assign/Remove']")
     private static WebElement getPopulationValue;
     public static WebElement getPopulationValue() {return getPopulationValue;}
     
@@ -118,7 +120,9 @@ public class DataMaintenanceMap extends MapConfig {
     private WebElement encounterButtonEdit;
     public WebElement getencounterButtonEdit() {return encounterButtonEdit;}
     
-    @FindBy(xpath = "(//button/span[text()='Services'])[1]")
+//    Omkar 18/8/2023 : xpath changes for 11.2
+//    @FindBy(xpath = "(//button/span[text()='Services'])[1]")
+    @FindBy(xpath = "(//span[text()='Services'])[1]")
 	private static WebElement getServicesTabEncounter;
 	public static WebElement getServicesTabEncounter() {return getServicesTabEncounter;}
 	

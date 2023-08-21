@@ -27,11 +27,15 @@ public class StatusMap extends MapConfig {
     private WebElement calculationStatusPageTableCornerCell;
     public WebElement getCalculationStatusPageTableCornerCell() {return calculationStatusPageTableCornerCell;}
 
-    @FindBy(xpath = "//*[contains(@id,'calculationstatus') and contains(@id,'header')]/../descendant::table/descendant::input[@name='searchText']")
+//    Omkar 17/8/2023 : xpath changes for 11.2
+//    @FindBy(xpath = "//*[contains(@id,'calculationstatus') and contains(@id,'header')]/../descendant::table/descendant::input[@name='searchText']")
+    @FindBy(xpath = "//*[contains(@id,'calculationstatus') and contains(@id,'header')]/..//input[@name='searchText']")
     private WebElement calculationStatusFormFieldSearch;
     public WebElement getCalculationStatusPageFormFieldSearch() {return calculationStatusFormFieldSearch;}
 
-    @FindBy(xpath = "//*[contains(@id,'calculationstatus') and contains(@id,'header')]/../descendant::div[contains(@class, 'statusSearch')]/descendant::span[contains(@id,'button')]")
+//    Omkar 17/8/2023 : xpath changes for 11.2
+//    @FindBy(xpath = "//*[contains(@id,'calculationstatus') and contains(@id,'header')]/../descendant::div[contains(@class, 'statusSearch')]/descendant::span[contains(@id,'button')]")
+    @FindBy(xpath = "//*[contains(@id,'calculationstatus') and contains(@id,'header')]/..//span[contains(@class,'statusSearch consEnconSearch')]")
     private WebElement calculationStatusButtonSearchGlass;
     public WebElement getCalculationStatusPageButtonSearchGlass() {return calculationStatusButtonSearchGlass;}
 

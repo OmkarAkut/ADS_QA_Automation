@@ -16,6 +16,7 @@ import webdriver.helpers.CalculationHelper;
 import webdriver.helpers.ContractModelsHelper;
 import webdriver.maps.ContractingMap;
 import webdriver.maps.DataMaintenanceMap;
+import webdriver.maps.StatusMap;
 import webdriver.maps.mapbuilder.BuildMap;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -32,6 +33,7 @@ public class RunEncounterServiceClassificationScheme extends CalculationHelper {
 	static String[] filterByEncounterID = { "Encounter ID", "Is", "Equal To", encounterName };
 	static DataMaintenanceMap dmMap;
 	static ContractingMap contractMap;
+	static StatusMap statusMap;
 	static AdsHelper adsHelper = new AdsHelper();
 	/** Regression: Automated test script for ADS-6406 */
 	@BeforeClass
@@ -41,7 +43,7 @@ public class RunEncounterServiceClassificationScheme extends CalculationHelper {
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);
 			contractMap = BuildMap.getInstance(driver, ContractingMap.class);
-
+			statusMap = BuildMap.getInstance(driver, StatusMap.class);
 			Login.loginUser("AutomationTesterAdmin");
 			goToPage("Maintain Data");
 			waitForSpinnerToEnd();
@@ -73,11 +75,16 @@ public class RunEncounterServiceClassificationScheme extends CalculationHelper {
 	@Test
 	public void test02ValidateRemoveButtonForEncounterClassificationScheme() throws Throwable {
 		try {
+			waitUntilElementIsClickable(contractMap.getContractModelButtonColumnsToDisplayModalRemove());
 			doClick(contractMap.getContractModelButtonColumnsToDisplayModalRemove());
+			Thread.sleep(1000);
 			waitForPageTitle("Calculation Status");
+			doClick(statusMap.getCalculationStatusPageFormFieldSearch());
+			statusMap.getCalculationStatusPageFormFieldSearch().sendKeys(batch);
+			doClick(statusMap.getCalculationStatusPageButtonSearchGlass());
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
-			driverDelay(5000);
+			driverDelay(500);
 			confirmCalculationStatusDetailsContains("Process Completed");
 			closeViewDialog();
 			deleteCalculationStatusMyStatusPageFirstRow();
@@ -119,6 +126,9 @@ public class RunEncounterServiceClassificationScheme extends CalculationHelper {
 			tableDoubleClickCellFirstColumn(batch);
 			doClick(DataMaintenanceMap.getAssignButtonEncounter());
 			waitForPageTitle("Calculation Status");
+			doClick(statusMap.getCalculationStatusPageFormFieldSearch());
+			statusMap.getCalculationStatusPageFormFieldSearch().sendKeys(batch);
+			doClick(statusMap.getCalculationStatusPageButtonSearchGlass());
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
 			driverDelay(5000);
