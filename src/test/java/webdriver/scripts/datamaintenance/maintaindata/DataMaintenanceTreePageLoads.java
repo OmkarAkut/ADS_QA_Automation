@@ -53,12 +53,18 @@ public class DataMaintenanceTreePageLoads extends DataMaintenanceHelper {
     String[] mainFolders = {"Contracting", "Costing", "Episode", "General"};
     for (String mainFolder : mainFolders) {
       try {
+    	  /*
+    	  Omkar 21/8/2023 : xpath changes for 11.2
 		assertThatElementIsDisplayed(
 		          driver.findElement(By.xpath("//div[text()='" + mainFolder + "']"
 		                  + "/img[contains(@class,'x-tree-icon x-tree-icon-parent ')]")));
+		                  */
+		assertThatElementIsDisplayed(
+		          driver.findElement(By.xpath("//span[text()='" + mainFolder + "']"
+		                  +"/../div[contains(@class,' x-tree-expander')]")));
 		ExtentReport.logPass("PASS", "test10MaintainDataPageAssertTreeListContainsTheFourMainDirectories"+" : "+"Tree List Contains : "+mainFolder);
 
-	} catch (Exception|AssertionError e) {
+	} catch (Exception|AssertionError e) {//span[text()='Contracting']
 		System.out.println(e.getMessage());
 		ExtentReport.logFail("FAIL", "test10MaintainDataPageAssertTreeListContainsTheFourMainDirectories", driver, e);
 		fail(e.getMessage());

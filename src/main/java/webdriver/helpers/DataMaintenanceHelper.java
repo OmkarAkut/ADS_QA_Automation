@@ -29,13 +29,22 @@ public class DataMaintenanceHelper extends GoHelper {
 	public void assertTreeListSectionContainsAllItems(String folderName, String firstOptionInList,
 			String[] expectedList) throws InterruptedException {
 		Thread.sleep(4000);
+		/*
+		Omkar 21/8/2023 : xpath changes for 11.2
 		driver.findElement(By.xpath("//div[text()='" + folderName + "']/img[contains(@class,'x-tree-expander')]"))
 				.click();
+				*/
+		driver.findElement(By.xpath("//span[text()='" + folderName + "']/../div[contains(@class,' x-tree-expander')]"))
+		.click();
 		waitForAjaxExtJs();
 		Thread.sleep(1000);
+		/*
 		List<WebElement> contractingList = javaMakeListOfWebElements(driver.findElement(By.xpath("//div[text()='"
 				+ firstOptionInList + "']/img[contains(@class,'x-tree-icon x-tree-icon-leaf')]/ancestor::tbody")),
 				"tr");
+				*/
+		List<WebElement> contractingList = javaMakeListOfWebElements(driver.findElement(By.xpath("//div[text()='"
+				+ firstOptionInList + "']/ancestor::tbody")),"tr");
 		List<String> actualListForContractingPages = javaMakeListOfStringsFromElementText(contractingList, "class",
 				"x-grid-tree-node-leaf", "td[contains(@class,'x-grid-cell-treecolumn')]/div");
 		assertEquals(Arrays.asList(expectedList), actualListForContractingPages);
