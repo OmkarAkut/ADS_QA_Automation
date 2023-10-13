@@ -1054,11 +1054,15 @@ public class CostingMap extends MapConfig {
 		return getCalculationFilterDropdownMenuList;
 	}
 	//	Omkar 14/6/2023 : xpath changes for 11.2
+	
 	//	public static String getContractingName="(//td[contains(@class,'x-grid-cell-treecolumn')]/*[text()='Contracting']/img)[1]";
-	public static String getContractingName="//span[contains(@class,'x-tree-node-text ') and text()='Contracting']";
-	public static String getContractingAutomationName="(//td[contains(@class,'x-grid-cell-treecolumn')]/*[text()='Automation']/img)[2]"; 
-	public static String getContractingAutomationRegressName="(//td[contains(@class,'x-grid-cell-treecolumn')]/*[text()='Regression v10.0'])";
-
+//	public static String getContractingName="//span[contains(@class,'x-tree-node-text ') and text()='Contracting']";
+//	public static String getContractingAutomationName="(//td[contains(@class,'x-grid-cell-treecolumn')]/*[text()='Automation']/img)[2]"; 
+//	public static String getContractingAutomationRegressName="(//td[contains(@class,'x-grid-cell-treecolumn')]/*[text()='Regression v10.0'])";
+	//sHILPA 10/11/2023: XPATH CHANGES FOR 11.2
+	public static String getContractingName="//span[contains(@class,'x-tree-node-text ') and text()='Contracting']//preceding::div[2]";
+	public static String getContractingAutomationName="(//td[contains(@class,'x-grid-cell-treecolumn')]//div/*[text()='Automation']//preceding::div[2])"; //updated xpath 10.11.2023
+	public static String getContractingAutomationRegressName="(//td[contains(@class,'x-grid-cell-treecolumn')]//div/*[text()='Regression v10.0'])";
 	@FindBy(xpath = "(//div[contains(@class,'horzOverflow')]//table[@class='x-grid-table x-grid-table-resizer'])//tr/td[3]/div")
 	private static List<WebElement> getCostingModelElementList;
 	public static List<WebElement> getCostingModelElementList() {return getCostingModelElementList;}

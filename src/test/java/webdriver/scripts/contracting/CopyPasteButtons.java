@@ -116,7 +116,7 @@ public class CopyPasteButtons extends GoHelper {
 			driver.findElement(By.xpath(
 					"//td[contains(@class,'x-grid-cell-treecolumn')]//span[text()='Fee For Service Payment Terms']")).click();
 			driverDelay(300);
-			ContractModelsHelper.navigateFeeForServicePaymentTermsScreenSelectionPanel("Service Model");
+//			ContractModelsHelper.navigateFeeForServicePaymentTermsScreenSelectionPanel("Service Model");
 			assertTextIsDisplayed(serviceModel);
 			ContractModelsHelper.navigateFeeForServicePaymentTermsScreenSelectionPanel("Pricing Method");
 			assertTextIsDisplayed(serviceModel);

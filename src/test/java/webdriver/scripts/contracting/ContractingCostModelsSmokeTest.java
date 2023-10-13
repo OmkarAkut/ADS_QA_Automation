@@ -55,30 +55,38 @@ public class ContractingCostModelsSmokeTest extends ContractModelsHelper {
 			waitForAjaxExtJs();
 			// Shilpa : 29.07.2022 updated list and xpath's , exceptions handled
 			String optionUI;
+			//shilpa: 11/10/2023 added this line to select service model first then price method is enabled
+			doClick("//div[text()='Pricing Method']//following::div[contains(@class,'x-grid-cell-inner')]//following::span[text()='"+serviceModel+"']");
 			waitForPresenceOfElement("//*[@name = 'pricemethodoption']");
 			waitForAjaxExtJs();
 			webdriverClick(driver.findElement(By.name("pricemethodoption")));
 			waitForAjaxExtJs();
-			List<WebElement> costMethods = driver.findElements(By.xpath("//div[@class='x-boundlist-list-ct']/ul/li"));
+			//shilpa updated xpath for 11.2
+//			List<WebElement> costMethods = driver.findElements(By.xpath("//div[@class='x-boundlist-list-ct']/ul/li"));
+			List<WebElement> costMethods = driver.findElements(By.xpath("//div[contains(@id,'dynamiccombo')]/ul/li"));
 			for (int i = 1; i <= costMethods.size(); i++) {
 				Thread.sleep(300);
 				waitForElementToBeVisible(
-						driver.findElement(By.xpath("//div[@class='x-boundlist-list-ct']/ul/li[" + i + "]")));
-				optionUI = driver.findElement(By.xpath("//div[@class='x-boundlist-list-ct']/ul/li[" + i + "]")).getText();
+						driver.findElement(By.xpath("//div[contains(@id,'dynamiccombo')]/ul/li[" + i + "]")));
+				optionUI = driver.findElement(By.xpath("//div[contains(@id,'dynamiccombo')]/ul/li[" + i + "]")).getText();
 				if (optionUI.equals("<None>")) {
 					continue;
 				}
-				webdriverClick(driver.findElement(By.xpath("//div[@class='x-boundlist-list-ct']/ul/li[" + i + "]")));
+				webdriverClick(driver.findElement(By.xpath("//div[contains(@id,'dynamiccombo')]/ul/li[" + i + "]")));
 				Thread.sleep(300);
-				webdriverClick(driver.findElement(By.xpath("//input[@name='pricemethodoption']//following::span[1]")));
+				//shilpa updated xpath for 11.2
+//				webdriverClick(driver.findElement(By.xpath("//input[@name='pricemethodoption']//following::span[1]")));
+				webdriverClick(driver.findElement(By.xpath("(//input[@name='pricemethodoption']//following::a//span[text()='Edit'])[1]")));
+
 				Thread.sleep(500);
 				System.out.println(optionUI);
-
+				//shilpa updated xpath for 11.2
+//				waitForElementToBeVisible(driver
+//						.findElement(By.xpath("//span[contains(@id, 'header') and contains(text(), '" + optionUI + "')]")));
 				waitForElementToBeVisible(driver
-						.findElement(By.xpath("//span[contains(@id, 'header') and contains(text(), '" + optionUI + "')]")));
-
+						.findElement(By.xpath("//div[contains(@id, 'header') and contains(text(), '" + optionUI + "')]")));
 				AssertHelper.assertElementIsDisplayed(driver
-						.findElement(By.xpath("//span[contains(@id, 'header') and contains(text(), '" + optionUI + "')]")));
+						.findElement(By.xpath("//div[contains(@id, 'header') and contains(text(), '" + optionUI + "')]")));
 				try {
 					webdriverClick(driver.findElement(By.xpath(
 							"//*[contains(@id, 'feeschedule') and contains(@id, 'header-inner')]/descendant::*[@class = 'x-tool-close']")));

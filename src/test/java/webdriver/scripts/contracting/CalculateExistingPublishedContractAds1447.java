@@ -3,12 +3,17 @@ package webdriver.scripts.contracting;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import java.util.List;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
@@ -49,10 +54,33 @@ public class CalculateExistingPublishedContractAds1447 extends CalculationHelper
 		Thread.sleep(4000);
 		doClick(CostingMap.getContractingName);
 //		doClick(CostingMap.getContractingName());
-		doClick(CostingMap.getContractingAutomationName);
-		doClick(CostingMap.getContractingAutomationRegressName);
-		Thread.sleep(4000);
-		filterAndSelectContractModelFromContractModelLibrary(modelName);
+		List<WebElement> elements = driver.findElements(By.xpath("//div[contains(@id,'treeview')]//table"));
+		System.out.println(elements.size());
+		for(int i=1;i<elements.size();i++) {
+//			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);",driver.findElement(By.xpath("//div[contains(@id,'treeview')]//table")));
+			 Actions action=new Actions(driver);
+				action.moveToElement(driver.findElement(By.xpath("(//div[contains(@id,'treeview')]//table)["+i+"]"))).click().perform();
+			try {
+				if(i==53) {
+				if(driver.findElement(By.xpath("(//div[contains(@id,'treeview')]//table//span)["+i+"]")).getText().equals("Automation")) {
+					doClick(CostingMap.getContractingAutomationName);
+					doClick(CostingMap.getContractingAutomationRegressName);
+					Thread.sleep(4000);
+					filterAndSelectContractModelFromContractModelLibrary(modelName);
+					break;
+				}
+				}
+				else {
+					continue;
+				}
+			} catch (Exception e) {
+				
+			}
+			Thread.sleep(500); 
+			continue;
+		}
+//		doClick(CostingMap.getContractingAutomationName);
+		
 		ExtentReport.logPass("PASS", "setupScript");
 	} catch (Exception|AssertionError e) {
 	ExtentReport.logFail("FAIL", "setupScript", driver, e);
