@@ -79,7 +79,9 @@ public class UtilitiesPageHelper extends LoginStatic {
 		waitForUtilityFirstRowDownloadLinkToBecomeActive();
 //		Omkar 8/8/2023 : xpath changes for 11.2
 //		driver.findElement(By.xpath("//tbody/tr[2]/td/div/a[@class='stLinks' and text()='Download']")).click();
-		driver.findElement(By.xpath("(//table/tbody/tr[1]/td)[5]/div/a")).click();
+//		Omkar 11/10/2023 : xpath changes for 11.2
+//		driver.findElement(By.xpath("(//table/tbody/tr[1]/td)[5]/div/a")).click();
+		driver.findElement(By.xpath("(//table/tbody/tr[1]/td)[5]/div")).click();
 		Thread.sleep(1000);
 		deleteUtilityStatusPageMyStatusFirstRow();
 	}
@@ -124,11 +126,18 @@ public class UtilitiesPageHelper extends LoginStatic {
 				download = driver
 						.findElement(By.xpath("//tbody/tr[2]/td/div/a[@class='stLinks' and text()='Download']"))
 						.getAttribute("class"); 
-						*/
+					
+				Omkar 11/10/2023 : xpath changes for 11.2
 				download = driver.findElement(
 						By.xpath("(//table/tbody/tr[1]/td)[5]/div/a"))
 						.getAttribute("class")
 						;
+							*/
+				download = driver.findElement(
+						By.xpath("(//table/tbody/tr[1]/td)[5]/div"))
+						.getAttribute("class")
+						;
+				
 				System.out.println("Download: " + download);
 				try {
 					assertTrue(download.contains("stLinks"));
