@@ -312,7 +312,8 @@ public class GoHelper extends AssertHelper {
 			Thread.sleep(1000);
 			//			Omkar 28/03/2023 : Xpath changes for 11.2
 			//			driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell x-grid-cell-gridcolumn')]/*[text()='" + contractModel + "']")).click();
-			driver.findElement(By.xpath("//td[contains(@role,'gridcell')]/*[text()='AFT IPPS 2020 Defaults - DoNotModify']")).click();
+			//shilpa 11/11/2023 : Xpath changes for 11.2
+			driver.findElement(By.xpath("//td[contains(@role,'gridcell')]/*[text()='AFT IPPS 2020 - Criteria Text']")).click();
 			Thread.sleep(500);
 			driver.findElement(By.xpath("//span[text()='Open Task List']")).click();
 			try {

@@ -232,8 +232,11 @@ public class DoHelper extends DriverHelper {
 //		waitForAjaxExtJs();
 //      Omkar 28/03/2023 : Xpath change for 11.2
 //		driver.findElement(By.xpath("//*[contains(@id,'tab') and contains(text(),'"+pageName+"')]/../../following-sibling::a")).click();
-		driver.findElement(By.xpath("//*[contains(@id,'tab') and contains(text(),'"+" Close "+pageName+"')]")).click();
-//		driver.findElement(By.xpath("//span[contains(@id,'tab') and contains(text(),'"+" Close "+pageName+"')]")).click();
+		//shilpa 11/10/2023 xpath update for 11.2
+//		driver.findElement(By.xpath("//*[contains(@id,'tab') and contains(text(),'"+" Close "+pageName+"')]")).click();
+		driver.findElement(By.xpath("//*[contains(@id,'tab') and contains(text(),'"+pageName+"')]/following::span[1]")).click();
+
+		//		driver.findElement(By.xpath("//span[contains(@id,'tab') and contains(text(),'"+" Close "+pageName+"')]")).click();
 //		Omkar 20/06/2023 : Xpath change for 11.2
 //		driver.findElement(By.xpath("//span[contains(@id,'tab') and contains(text(),' Close "+pageName+"')]")).click();
 //		driver.findElement(By.xpath("//span[contains(text(),'"+pageName+"')]/parent::span/parent::span/following-sibling::span")).click();
@@ -283,6 +286,7 @@ public class DoHelper extends DriverHelper {
 	public static void doClick(String elementXpath) throws InterruptedException {
 		try {
 			waitUntilElementIsClickable(driver.findElement(By.xpath("" + elementXpath + "")));
+			
 			Actions action = new Actions(driver);
 			//Performing the mouse hover action on the target element.
 			action.moveToElement(driver.findElement(By.xpath("" + elementXpath + "")));

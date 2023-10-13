@@ -29,7 +29,7 @@ public class CreateANewContractModel extends CalculationHelper {
 	String[] columns = { "100  Pacific Hospital", "151  Copy of Marina Medical Center" };
 	String[] columnsToSelect = { "100  Pacific Hospital", "151  Copy of Marina Medical Center", "150  Marina Medical Center" };
 	String[] columnsToRemove = { "100  Pacific Hospital", "151  Copy of Marina Medical Center" };
-	String addProvider = "150  Marina Medical Center";
+	String addProvider = "150 Marina Medical Center";
 	static String[] filter = { "Name", "Is", "Equal To", serviceName };
 	
 

@@ -54,7 +54,7 @@ public class CreatingaNewContractingFolder extends GoHelper {
 			waitForSpinnerToEnd();
 			doClick(modelMap.getContractingTreeExpand());
 			driverDelay(500);
-			DoHelper.scrollToView("//div[text()='" + contractFolderName + "']");  //unable to scroll to this folder in 11.2 
+			DoHelper.scrollToView("//div[text()='" + contractFolderName + "']");  //unable to scroll to this folder in 11.2 need a fix ADS-11058
 			assertTextIsDisplayed(contractFolderName);
 			doClick("//div[text()='" + contractFolderName + "']");
 			doClick(modelMap.getDeleteContractFolderBtn());
