@@ -425,9 +425,10 @@ public class GoHelper extends AssertHelper {
 		Thread.sleep(3000);  //was 5000
 //		Omkar 13/7/2023 : xpath changes for 11.2
 //		waitForPresenceOfElement("//*[contains(@id, 'customaccordianpanel')][text()='General']/parent::div/following-sibling::div/img");
-		driver.findElement(By.xpath("//*[contains(@id, 'customaccordianpanel')][text()='General']/parent::div/following-sibling::div/img")).click();
-		waitForPresenceOfElement("//*[contains(@id, 'customaccordianpanel')][text()='General']/parent::div/following-sibling::div/div");
+//		Shilpa 16/10/2023 : xpath changes for 11.2
 		driver.findElement(By.xpath("//*[contains(@id, 'customaccordianpanel')][text()='General']/parent::div/following-sibling::div/div")).click();
+//		waitForPresenceOfElement("//*[contains(@id, 'customaccordianpanel')][text()='General']/parent::div/following-sibling::div/div");
+//		driver.findElement(By.xpath("//*[contains(@id, 'customaccordianpanel')][text()='General']/parent::div/following-sibling::div/div")).click();
 
 		//driver.findElement(By.xpath("//*[contains(@id, 'customaccordianpanel')][text()='General']")).click();  //*[contains(@id, 'customaccordianpanel')][text()='General']/parent::div
 		Thread.sleep(2000); //was 3000

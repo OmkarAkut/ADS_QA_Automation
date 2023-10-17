@@ -501,7 +501,8 @@ public class ContractingMap extends MapConfig {
 
 //	Omkar 26/6/2023 : xpath changes for 11.2
 //	@FindBy(xpath = "//label[text()='Psych Combined Comorbidity Mapping File']//following::span[text()='Select']//parent::button")
-	@FindBy(xpath = "//label[text()='Psych Combined Comorbidity Mapping File']//following::span[text()='Select']")
+//	Shilpa 16/10/2023 : xpath changes for 11.2
+	@FindBy(xpath = "//input[@name='diagCatPath']")
 	private static WebElement ContractFileSelect;
 	public static WebElement getContractFileSelect() {return ContractFileSelect;}
 

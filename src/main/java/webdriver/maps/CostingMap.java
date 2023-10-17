@@ -988,8 +988,8 @@ public class CostingMap extends MapConfig {
 	public WebElement getCostModelScenariosinEvaluationOrderPostingCheck() {
 		return getCostModelScenariosinEvaluationOrderPostingCheck;
 	}
-
-	@FindBy(xpath = "//div[contains(@id,'messagebox')]//span[text()='Save & Continue']/parent::button")
+	//Shilpa updated xpath for 11.2
+	@FindBy(xpath = "//div[contains(@id,'messagebox')]//span[text()='Save & Continue']/parent::span")
 	private WebElement getCostModelScenariosinEvaluationOrderSave;
 	public WebElement getCostModelScenariosinEvaluationOrderSave() {
 		return getCostModelScenariosinEvaluationOrderSave;

@@ -6,8 +6,11 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.interactions.Actions;
+
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
+import webdriver.corehelpers.AdsHelper;
 import webdriver.helpers.CalculationHelper;
 import webdriver.helpers.ContractModelsHelper;
 import webdriver.maps.ContractingMap;
@@ -31,6 +34,15 @@ public class GeneratePsychCombinedComorbidityFactor extends CalculationHelper {
 			Login.loginUser("ContractAnalyst1");
 			goToPage("Maintain Data");
 			selectMaintainDataAtoZ(aTozPage);
+			//Shilpa updated code 16/10/2023 for 11.2
+			ContractingMap.getContractModelButtonFilter().click();
+			waitForAjaxExtJs();
+			AdsHelper contractModelsHelper=new AdsHelper();
+			contractModelsHelper.doFilterSetFilterParameters("Name","Is","Equal To",batch);
+			doClick("//div[contains(@id,'filterwindow')]//span[text() = 'Add']");
+		    waitForAjaxExtJs();
+		    doClick(ContractingMap.getContractModelApplyFilterButton());
+			waitForAjaxExtJs();
 			openMaintainDataBatch(batch);
 			waitForDisplayedSpinnerToEnd();
 			waitForAjaxExtJs();
@@ -44,9 +56,12 @@ public class GeneratePsychCombinedComorbidityFactor extends CalculationHelper {
 	@Test
 	public void test01AssertResetCalculate() throws Throwable {
 		try {
-			ContractModelsHelper.scrollToView("//div[contains(@id,'psychdatefiles')]/div/span[contains(@id,'psychdatefiles')]");
+			ContractModelsHelper.scrollToView("//div[contains(@id,'psychdatefiles')]/div/div[contains(text(),'Dates & Files')]");
 			driverDelay(500);
-			ContractingMap.getContractFileSelect().sendKeys(Keys.ENTER);;
+//			doClick(ContractingMap.getContractFileSelect());
+			Actions action=new Actions(driver);
+			action.moveToElement(ContractingMap.getContractFileSelect()).click().build().perform();
+//			ContractingMap.getContractFileSelect().sendKeys(Keys.ENTER);;
 			driverDelay(600);
 			ContractModelsHelper.uploadTheFileusingAutoIT(driver,
 					System.getProperty("user.dir") + "\\AutoIT\\UploadFile.exe",
