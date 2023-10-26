@@ -68,11 +68,14 @@ public class EntityLevelSecurityContracting extends GoHelper{
 		try {
 			doSearchForContractModel(contractModel);
 			tableDoubleClickCellFirstColumn(contractModel);
-			doClickTreeItemWithCheckbox("General Information - Published Contract");
+			//shilpa 10.16.2023 added below 2 lines 
+			doClickTreeItemWithCheckbox("Model Contract");
+			doClick("//span[text()='General Information - Unpublished Contract']");
+
+			doClick("//span[text()='Definition Elements']");
 //			Omkar 29/5/2023 : xpath changes for 11.2
 //			doClick("//button/span[text()='Definition Elements']");
 //			doClick("//div[contains(@class,'x-tool')]/img[contains(@class, 'tool-expand-bottom')]");
-			doClick("//span[text()='Definition Elements']");
 			doClick("//div[contains(@class, 'x-title-text x-title-text-default x-title-item')][text()='Providers']/parent::div/following-sibling::div");
 			if(!(costing.getProviderEntityList().size()==1)) {
 				assertFalse(false);

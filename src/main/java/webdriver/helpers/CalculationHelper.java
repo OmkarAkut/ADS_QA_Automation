@@ -178,14 +178,14 @@ public class CalculationHelper extends GoHelper {
 
 		//    driver.findElement(By.xpath("//*[contains(@class,'grid-cell') and text()='# TB Test 0228.2018']")).click();
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-		//Scroll down till the bottom of the page
-		//  js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
-		//  js.executeScript("window.scrollBy(0,250)","");
+//		Scroll down till the bottom of the page
+//		  js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
+//		  js.executeScript("window.scrollBy(0,250)","");
 		//    driver.findElement(By.xpath("//*[contains(@class,'grid-cell') and text()='# TB Test 0228.2018']")).click();
 		Actions action = new Actions(driver);
-		action.sendKeys(Keys.PAGE_DOWN).build().perform(); //Page Down
-		System.out.println("Scroll down perfomed");
-		Thread.sleep(5000);
+//		action.sendKeys(Keys.PAGE_DOWN).build().perform(); //Page Down
+//		System.out.println("Scroll down perfomed");
+//		Thread.sleep(5000);
 		//    Actions action = new Actions(driver);
 		action.doubleClick(driver.findElement(By.xpath("//*[contains(@class,'grid-cell') and text()='" + batchName + "']"))).perform();
 		waitForSpinnerToEnd();
