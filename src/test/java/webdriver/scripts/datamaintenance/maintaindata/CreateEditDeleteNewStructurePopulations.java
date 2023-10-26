@@ -65,6 +65,7 @@ public class CreateEditDeleteNewStructurePopulations extends GoHelper{
 			doClick(DataMaintenanceMap.getPopulationAddButton());
 			doClick(DataMaintenanceMap.getPopulationShowSizeButton());
 			assertTextIsDisplayed("(Selected: 16334/2610846)");
+			assertTextIsDisplayed("(Selected: 16334/2610889)");
 			doClick(costing.getSaveCostModel());
 			waitForDisplayedSpinnerToEnd();
 			doClick(DataMaintenanceMap.getLoadDataFilterButton());

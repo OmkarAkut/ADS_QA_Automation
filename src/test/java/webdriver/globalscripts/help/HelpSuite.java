@@ -11,6 +11,7 @@ import org.junit.runners.Suite;
         HelpLinksDataMaintenancePageAds2526.class,
         HelpLinksMainPagesAds2524.class,
         UcqcSelectColumnsDialogVerifyOnlineHelpAds1113.class,
+        ValidateHelpSectionOnDashboard.class,
 
 })
 public class HelpSuite {
