@@ -3,136 +3,20 @@ package webdriver.suites;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
-
-
-import webdriver.scripts.contracting.ClearFilterbuttonModels;
-import webdriver.scripts.contracting.ConfirmAddNewDeleteAPCFeeScheduleMasters;
-
-import webdriver.scripts.contracting.ContractingDataMaintenanceNewItem;
-
-
-import webdriver.examples.files.FilesTemplate;
-import webdriver.examples.spreadsheets.SpreadsheetsTestSuite;
 import webdriver.globalscripts.accessibilitytests.TestSuiteAXE;
-import webdriver.globalscripts.checktests.ChecktestsSuite;
 import webdriver.globalscripts.help.HelpSuite;
-import webdriver.globalscripts.pagetests.BuildVerificationTestScript;
 import webdriver.globalscripts.pagetests.PagetestsSuite;
 import webdriver.globalscripts.securitytests.SecurityTestsSuite;
-
-import webdriver.scripts.contracting.ContractingCostModelsSmokeTest; 
 import webdriver.scripts.contracting.ContractingSuite;
-
-import webdriver.scripts.contracting.CopyPasteButtons;
-import webdriver.scripts.contracting.CreateANewContractModel;
-import webdriver.scripts.contracting.CreatingaNewContractingFolder;
-import webdriver.scripts.contracting.EditRiskLimiterScreen;
-
-import webdriver.scripts.contracting.EntityLevelSecurityContracting;
-
-import webdriver.scripts.contracting.FilterbuttonModels;
-import webdriver.scripts.contracting.GeneratePsychCombinedComorbidityFactor;
-import webdriver.scripts.contracting.ModelContractLumpSumPaymentAllocation;
-import webdriver.scripts.contracting.ModelContractPatientFinancialResponsibility;
-import webdriver.scripts.contracting.NewContractType;
-import webdriver.scripts.contracting.UIValidationContracting;
-import webdriver.scripts.contracting.UIValidationPrepareTables;
-
-import webdriver.scripts.contracting.ValidateContractingModeExportImportButton;
-import webdriver.scripts.contracting.ValidateContractingTreeTab;
-import webdriver.scripts.contracting.VerifyFilterAscSchemes;
-import webdriver.scripts.costing.CreateDeleteCostMethodMaster;
-import webdriver.scripts.costing.CreateNewCostModel;
-import webdriver.scripts.costing.EditCostModelCalculationScenarios;
-import webdriver.scripts.costing.PaginationInCostingModels;
-import webdriver.scripts.costing.RVUExportImportFunction;
-import webdriver.scripts.costing.RunGLAdjustmentAndReclassifications;
-import webdriver.scripts.costing.TableColumnSorting;
-import webdriver.scripts.costing.ValidateCalculationStatusPage;
-import webdriver.scripts.costing.ValidateEditCostMethodMasters;
-import webdriver.scripts.costing.ValidateOpenTaskList;
-import webdriver.scripts.costing.costingmodels.TestGenericUIValidateCostingModelSearchTextbox;
-import webdriver.scripts.datamaintenance.maintaindata.CreateDeleteCostMethodDeptMasterDischargeStatus;
-
-import webdriver.scripts.contracting.ValidateBenefitPlanInfoUpdate;
-import webdriver.scripts.contracting.ValidateBenifitPlansInfoForMultipleUnpublishedContracts;
-import webdriver.scripts.contracting.ValidateContracDataMaintenanceBubble;
-
-import webdriver.scripts.contracting.contractmodels.ContractModelsSuite;
-import webdriver.scripts.costing.ActualCostingMethodPatientChgsDateRange;
-import webdriver.scripts.costing.ActualCostingMethodPatientChgsDoesNotMatch;
-import webdriver.scripts.costing.ActualCostingMethodPatientChgsTimestamp;
-import webdriver.scripts.costing.ConfirmDepartmentFilterSortOrder;
-import webdriver.scripts.costing.CostingTestSuite;
-
-import webdriver.scripts.costing.CreateNewEditDeleteTimePeriod;
-
-import webdriver.scripts.costing.EncCostCalcScenarioSelectedCostModelScenariosdisplayed;
-import webdriver.scripts.costing.EntityLevelSecurityCosting;
-import webdriver.scripts.costing.OverwriteRvuNoCMSResults;
-
-import webdriver.scripts.costing.RVUContainerDeleteFilteredData;
-
-import webdriver.scripts.costing.RvuMaintenanceAds1492;
-
-import webdriver.scripts.costing.UsingCustomvsDefaulttasklistsInCustomizeTaskListCosting;
-
-import webdriver.scripts.costing.ValidateHelpLinkHideTabCosting;
-import webdriver.scripts.costing.ValidateHelpLinkHideTabDataMaintenance;
-import webdriver.scripts.costing.ValidateHelpLinkHideTabRvuMaintenance;
-
-import webdriver.scripts.costing.ValidatePaginationOnTheCostingRVUMaintenancepage;
-import webdriver.scripts.costing.costingcalculations.CostingCalculationsTestSuite;
-import webdriver.scripts.costing.costingmodels.CostingModelsTestSuite;
-
-import webdriver.scripts.costing.unitcostquickcalculation.UnitCostQuickCalculationSuite;
-import webdriver.scripts.costing.unitcostquickcalculation.ucqccalculation.CreateUCQCLogMakeUCQCProcessAvailableCalculationPage;
-import webdriver.scripts.costing.unitcostquickcalculation.ucqccalculation.QuickCcCostColumnsForEachCostComponentPopulateAfterCalculateAds1229;
-import webdriver.scripts.costing.unitcostquickcalculation.ucqccalculation.UcqcCalculationTestSuite;
-import webdriver.scripts.costing.unitcostquickcalculation.ucqccalculation.UpdateUCQCParmsRvuCalcScenario;
-import webdriver.scripts.costing.unitcostquickcalculation.ucqccalculation.VerifyUCQCButtonsBackgroundColor;
-import webdriver.scripts.costing.unitcostquickcalculation.ucqccalculation.VerifyUCQCdropdownValuesForOptionNone;
-import webdriver.scripts.costing.unitcostquickcalculation.ucqcmainpage.HorizontalScrollColumnsToDisplay;
-import webdriver.scripts.costing.unitcostquickcalculation.ucqcmainpage.UcqcApplySelectionsButtonActiveAndColumnHeadersDisplayAds1136;
-import webdriver.scripts.costing.unitcostquickcalculation.ucqcmainpage.UcqcGridIsPopulatedAfterClickingApplySelectionsButtonAds1175;
-import webdriver.scripts.costing.unitcostquickcalculation.ucqcmainpage.UcqcMainpageTestSuite;
-import webdriver.scripts.costing.unitcostquickcalculation.ucqcrvus.OverWriteRVUValues5919;
-import webdriver.scripts.costing.unitcostquickcalculation.ucqcrvus.UcqcRvusSuite;
-
-import webdriver.scripts.datamaintenance.maintaindata.CreateEditDeleteNewStructurePopulations;
 import webdriver.scripts.datamaintenance.maintaindata.MaintaindataTestSuite;
-import webdriver.scripts.datamaintenance.maintaindata.RunEncounterServiceClassificationScheme;
 import webdriver.scripts.datamaintenance.utilities.UtilitiesTestSuite;
 import webdriver.scripts.episodes.EpisodesTestSuite;
-import webdriver.scripts.regression.generalcalculations.GeneralCalculationsTestSuite;
-import webdriver.scripts.reporting.FlexibleReportsProfitAndLossStatementTesting;
-import webdriver.scripts.reporting.ReportLibrarySortingTest;
 import webdriver.scripts.reporting.ReportingTestSuite;
-import webdriver.scripts.reporting.ReportsLibraryRunCostingReportFromTemplate;
-import webdriver.scripts.reporting.SearchTheReportLibrary;
-import webdriver.scripts.reporting.TestADS1617ApplySelectionsforStandardReport;
-import webdriver.scripts.reporting.TestAbilityToCreateNewStandardCostingReport;
-import webdriver.scripts.reporting.TestAbilitytoCreateExistingStandardCostingReport;
-import webdriver.scripts.reporting.WebIntelligenceReportRunningExistingWebIReport;
-import webdriver.scripts.security.SecurityTestSuite;
-import webdriver.scripts.security.ucqcroles.UcqcRoleBasedTestSuite;
-import webdriver.scripts.status.calculationstatus.CalculationStatusSuite;
-import webdriver.scripts.systemmaintenance.AssociateOverheadModeltoCostModelCustomTaskList;
-import webdriver.scripts.systemmaintenance.CreateCustomTaskListwithCostingTaskListSpecificScreens;
-import webdriver.scripts.systemmaintenance.CreateaCustomTaskListwithOverheadTaskListSpecificScreens;
-import webdriver.scripts.systemmaintenance.DepartmentLevelSecurity;
-import webdriver.scripts.systemmaintenance.EditAnExistingUserSetup;
-import webdriver.scripts.systemmaintenance.EditExistingRoleSetup;
 import webdriver.scripts.systemmaintenance.SystemMaintenanceTestSuite;
-import webdriver.scripts.systemmaintenance.UIValidateImportStatuPage;
-import webdriver.scripts.systemmaintenance.UIValidationStatusUIValidateUtilityStatusPage;
-import webdriver.scripts.systemmaintenance.ValidateCalculationStatusAllStatus;
-import webdriver.scripts.systemmaintenance.ValidateCustomizeTaskListspageSystemMaintenance;
-import webdriver.scripts.systemmaintenance.ValidateFilterbuttonontheSystemMaintenanceUserspage;
-import webdriver.scripts.systemmaintenance.ValidateImportExportbuttonsontheSystemMaintenance;
-import webdriver.scripts.systemmaintenance.ValidateOverheadTaskListscreensAreAvailableforCost;
-import webdriver.scripts.systemmaintenance.ValidateSecuritySettingsGeneralSettingspagesintheSystemMaintenance;
-import webdriver.templates.TemplatesTestSuite;
+
+
+
+
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
@@ -142,6 +26,10 @@ import webdriver.templates.TemplatesTestSuite;
 	ContractingSuite.class,
 	UtilitiesTestSuite.class,
 	MaintaindataTestSuite.class,
+	TestSuiteAXE.class,
+	PagetestsSuite.class,
+	HelpSuite.class,
+	SecurityTestsSuite.class,
 })
 
 public class TestRun_Suite {
