@@ -72,6 +72,7 @@ public class ContractingCostModelsSmokeTest extends ContractModelsHelper {
 				if (optionUI.equals("<None>")) {
 					continue;
 				}
+				scrollToView("//div[contains(@id,'dynamiccombo')]/ul/li[" + i + "]");//Shilpa :scroll to element and then click
 				webdriverClick(driver.findElement(By.xpath("//div[contains(@id,'dynamiccombo')]/ul/li[" + i + "]")));
 				Thread.sleep(300);
 				//shilpa updated xpath for 11.2
@@ -109,8 +110,11 @@ public class ContractingCostModelsSmokeTest extends ContractModelsHelper {
 							By.xpath("(//label[contains(@class,'helplnk')])//following::div[contains(@class,'x-tool-close')]")));
 					Thread.sleep(200);
 					try {
+//						webdriverClick(driver.findElement(By.xpath(
+//								"((//div[contains(@id,'messagebox')]//following::div[contains(@class,'x-box-item')]//following::span[contains(@id,'button')][contains(text(),'Cancel & Close')]//parent::button))[1]")));
+//						Shilpa update xpath for 11.2 11.10.2023
 						webdriverClick(driver.findElement(By.xpath(
-								"((//div[contains(@id,'messagebox')]//following::div[contains(@class,'x-box-item')]//following::span[contains(@id,'button')][contains(text(),'Cancel & Close')]//parent::button))[1]")));
+								"(//div[contains(@id,'messagebox')][text()='Warning']//following::span[contains(@class,'x-btn-inner')])[4]")));
 						Thread.sleep(300);
 					} catch (Exception e1) {
 						System.out.println("Message not shown!!");
