@@ -103,26 +103,36 @@ public class CalculationHelper extends GoHelper {
 
 	public String getCalculationStatusMyStatusFirstRowStatusCellText() {
 
-		String status = getWebElement("//div[2]/div/div[4]/div/table/tbody/tr[2]/td[10]/div").getText();
+//		String status = getWebElement("//div[2]/div/div[4]/div/table/tbody/tr[2]/td[10]/div").getText();
+		//Shilpa update xpath for 11.2 11.09.2023
+		String status = getWebElement("((//div[contains(@id,'calculationstatus')])[11]//table//td[7]/div)[1]").getText();
 		return status;
 	}
 
 	public String getCalculationStatusMyStatusFirstRowLogStatusCellText() {
-		String text = getWebElement("//div[2]/div/div[4]/div/table/tbody/tr[2]/td[11]/div").getText();
+//		String text = getWebElement("//div[2]/div/div[4]/div/table/tbody/tr[2]/td[11]/div").getText();
+		//Shilpa update xpath for 11.2 11.09.2023
+		String text = getWebElement("((//div[contains(@id,'calculationstatus')])[11]//table//td[8]/div)[1]").getText();
 		return text;
 	}
 
 	public String getCalculationStatusMyStatusFirstRowRecordsProcessedCellText() {
-		String text = getWebElement("//div[2]/div/div[4]/div/table/tbody/tr[2]/td[15]/div").getText();
+//		String text = getWebElement("//div[2]/div/div[4]/div/table/tbody/tr[2]/td[15]/div").getText();
+		//Shilpa update xpath for 11.2 11.09.2023
+		String text = getWebElement("((//div[contains(@id,'calculationstatus')])[11]//table//td[12]/div)[1]").getText();
 		return text;
 	}
 
 	public String getCalculationStatusMyStatusFirstRowRecordsPendingCellText() {
-		String text = getWebElement("//div[2]/div/div[4]/div/table/tbody/tr[2]/td[16]/div").getText();
+//		String text = getWebElement("//div[2]/div/div[4]/div/table/tbody/tr[2]/td[16]/div").getText();
+		//Shilpa update xpath for 11.2 11.09.2023
+		String text = getWebElement("((//div[contains(@id,'calculationstatus')])[11]//table//td[13]/div)[1]").getText();
 		return text;
 	}
 	public String getCalculationStatusMyStatusFirstRowTotalRecordsCellText() {
-		String text = getWebElement("//div[2]/div/div[4]/div/table/tbody/tr[2]/td[17]/div").getText();
+//		String text = getWebElement("//div[2]/div/div[4]/div/table/tbody/tr[2]/td[17]/div").getText();
+		//Shilpa update xpath for 11.2 11.09.2023
+		String text = getWebElement("((//div[contains(@id,'calculationstatus')])[11]//table//td[14]/div)[1]").getText();
 		return text;
 	}
 
@@ -350,7 +360,7 @@ public class CalculationHelper extends GoHelper {
 	}
 
 	public void confirmCalculationStatusViewLogContains(String expectedViewLog) {
-		String viewLog = driver.findElement(By.xpath("//label[text()='View Log:']/../following-sibling::td/div")).getText();
+		String viewLog = driver.findElement(By.xpath("//span[text()='View Log:']/../following::div[1]")).getText();
 		System.out.println("View Log: " + viewLog);
 		assertThat(viewLog, containsString(expectedViewLog));
 	}
@@ -451,7 +461,10 @@ public class CalculationHelper extends GoHelper {
 		}
 		while (calculate) {
 			try {
-				driver.findElement(By.xpath("//button/span[text()='Refresh']")).click();
+//				driver.findElement(By.xpath("//button/span[text()='Refresh']")).click();
+				//Shilpa: update xpath for 11.2
+				driver.findElement(By.xpath("//span/span[text()='Refresh']")).click();
+
 				waitForSpinnerToEnd();
 				percent = driver.findElement(By.xpath("//*[contains(@class,'x-progress-text-back')]")).getText();
 				System.out.println("Percent complete: " + percent);
@@ -467,7 +480,7 @@ public class CalculationHelper extends GoHelper {
 			}
 		}
 		Thread.sleep(1000);
-		driver.findElement(By.xpath("//button/span[text()='Refresh']")).click();
+		driver.findElement(By.xpath("//span/span[text()='Refresh']")).click();
 	}
 
 	public static void waitForFirstRowCalculationBarToReach100Percent() throws Exception {

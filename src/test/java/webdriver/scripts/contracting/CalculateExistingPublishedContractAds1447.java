@@ -28,13 +28,13 @@ public class CalculateExistingPublishedContractAds1447 extends CalculationHelper
   static final String modelName = "v10 REGRESSION Published Contract";
   static final String status = "Completed";
   static final String logStatus = "Completed";
-  static final String recordsProcessed = "1470";
+  static final String recordsProcessed = "10359";
   static final String recordsPending = "0";
-  static final String totalRecords = "1470";
+  static final String totalRecords = "10359";
   final String expectedLogViewTitle = modelName + "\\Contracting\\Published Contract Calculation";
-  String logDetailTotalEfrs = "Total EFRs to be processed: 1470";
+  String logDetailTotalEfrs = "Total EFRs to be processed: 10359";
   String[] logViewDetails = {
-          "Number of Encounter Financial Records to Process: 1470",
+          "Number of Encounter Financial Records to Process: 10359",
           "Non-Critical Warnings: 433",
           "Encounter Financial Records Calculated to Zero: 218"
   };
@@ -95,8 +95,10 @@ public class CalculateExistingPublishedContractAds1447 extends CalculationHelper
 		waitForAjaxExtJs();
 		modelMap.getModelLibraryContractingButtonCalculate().click();
 		waitForCalculationToEnd(1000);
-		driver.findElement(By.xpath("//button/span[text()='Refresh']")).click();
-		waitForPresenceOfElement("//div[2]/div/div[4]/div/table/tbody/tr[2]/td[17]/div");  //total records xpath
+//		driver.findElement(By.xpath("//button/span[text()='Refresh']")).click();
+		driver.findElement(By.xpath("//span/span[text()='Refresh']")).click();//Shilpa: update xpath 11.2
+//		waitForPresenceOfElement("//div[2]/div/div[4]/div/table/tbody/tr[2]/td[17]/div");  //total records xpath
+		waitForPresenceOfElement("(//div[@class='x-grid-item-container'])[3]//table//tbody/tr/td[2]/div");//shilpa: xpath update 11.9.2023 for 11.2
 		Thread.sleep(200);
 		assertTrue(getCalculationStatusMyStatusFirstRowStatusCellText().contains(status));
 		assertTrue(getCalculationStatusMyStatusFirstRowLogStatusCellText().contains(logStatus));
@@ -115,7 +117,7 @@ public class CalculateExistingPublishedContractAds1447 extends CalculationHelper
 	try {
 		Thread.sleep(2000);
 		calculationStatusPageOpenViewDialog();
-		waitForPresenceOfElement("//div[4]/div/div/div[2]/div/div/div[4][contains(@id, 'tbtext')]");
+		waitForPresenceOfElement("(//div[contains(@id,'displayfield')])[3]");
 		assertViewLogTitle(expectedLogViewTitle);
    waitForAjaxExtJs();//Shilpa 07.09.2022 method added to wait loading
 		confirmCalculationStatusDetailsContains(logDetailTotalEfrs);

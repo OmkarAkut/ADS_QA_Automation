@@ -102,8 +102,11 @@ public class ContractingCostModelsSmokeTest extends ContractModelsHelper {
 						
 					}
 				} catch (Exception e) {
+//					webdriverClick(driver.findElement(
+//							By.xpath("(//div[contains(@class,'helplnk')])[2]//following::img[@class='x-tool-close']")));
+					//shilpa xpath update 11.10.2023
 					webdriverClick(driver.findElement(
-							By.xpath("(//div[contains(@class,'helplnk')])[2]//following::img[@class='x-tool-close']")));
+							By.xpath("(//label[contains(@class,'helplnk')])//following::div[contains(@class,'x-tool-close')]")));
 					Thread.sleep(200);
 					try {
 						webdriverClick(driver.findElement(By.xpath(

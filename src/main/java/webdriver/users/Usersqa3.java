@@ -9,7 +9,7 @@ public enum Usersqa3 {
     DataAdministrator1("automationdataadmin1", "password"),
     CostAnalyst1("automationcostanalyst1", "password"),
     CostingDepartmentManager1("automationcostdeptmanag1", "password"),
-    ContractAnalyst1("automationcontraanalyst1", "password"),
+    ContractAnalyst1("automationcontraanalyst1", "P@ssword1"),
     ContractAdministrator1("automationcontradmin1", "password"),
     ContractReviewer1("automationcontrreviewer1", "password"),
     EpisodeAnalyst1("automationepisanalyst1", "password"),
