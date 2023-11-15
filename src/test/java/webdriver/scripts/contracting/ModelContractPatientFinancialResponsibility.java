@@ -65,11 +65,16 @@ public class ModelContractPatientFinancialResponsibility extends CalculationHelp
 			driverDelay(200);
 			doClickTreeItemWithCheckbox("Patient Financial Responsibility");
 			waitForPageTitle("Patient Financial Responsibility");
-			doClick(driver.findElement(By.xpath("(//span[text()='"+PatientFinResponsibilityTerm+"'])[2]//following::span[text()='New']//parent::button")));
+//			doClick(driver.findElement(By.xpath("(//span[text()='"+PatientFinResponsibilityTerm+"'])[2]//following::span[text()='New']//parent::button")));
+			//Shilpa update xpath 11.2 on 11.15.2023
+			doClick(driver.findElement(By.xpath("(//span[text()='"+PatientFinResponsibilityTerm+"'])[2]//following::span[text()='New']//preceding-sibling::span/../..//parent::div")));
 			ContractModelsHelper.keyInValues(ContractingMap.getInputName(), patientFinRespName);
 			ContractModelsHelper.keyInValues(ContractingMap.getOrderInut(), patientFinResponsibilityOrder);
 			doClick(contractingMap.getContractModelSaveCopy());
-			assertElementIsDisplayed(driver.findElement(By.xpath("//span[contains(@id,'patientfinancialresponsibilitymaingrid')]//following::div[text()='"+patientFinRespName+"']")));
+//			assertElementIsDisplayed(driver.findElement(By.xpath("//span[contains(@id,'patientfinancialresponsibilitymaingrid')]//following::div[text()='"+patientFinRespName+"']")));
+			//Shilpa update xpath 11.2 on 11.15.2023
+			assertElementIsDisplayed(driver.findElement(By.xpath("//div[contains(@id,'amasterlist')]//following::div[text()='"+patientFinRespName+"']")));
+
 			doClick(contractingMap.getTermDeleteButton());
 			waitForElementToBeVisible(contractingMap.getContractModelDeleteButtonInPopUp());
 			doClick(ContractingMap.getDeleteButtonMesaageBox());

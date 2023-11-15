@@ -729,7 +729,10 @@ public class ContractingMap extends MapConfig {
 	private WebElement TermDeleteButton;
 	public WebElement getTermDeleteButton() {return TermDeleteButton;}
 
-	@FindBy(xpath = "//span[text()='Pricing Method']//following::label[text()='Service Model']")
+//	@FindBy(xpath = "//span[text()='Pricing Method']//following::label[text()='Service Model']")
+	//shilpa update xpath for 11.2 on 11.15.2023
+	@FindBy(xpath = "//div[text()='Pricing Method']//following::label[text()='Service Model']")
+
 	private static WebElement PricingLabelServiceModel;
 	public static WebElement getPricingLabelServiceModel() {return PricingLabelServiceModel;}
 
@@ -739,11 +742,16 @@ public class ContractingMap extends MapConfig {
 	private static WebElement DeleteButtonMesaageBox;
 	public static WebElement getDeleteButtonMesaageBox() {return DeleteButtonMesaageBox;}
 
-	@FindBy(xpath = "//span[text()='Pricing Method']//following::label[text()='Pricing Methods']")
+	//@FindBy(xpath = "//span[text()='Pricing Method']//following::label[text()='Pricing Methods']")
+	//Shilpa xpath update for 11.2 11.15.2023
+	@FindBy(xpath = "//div[text()='Pricing Method']//following::label[text()='Pricing Methods']")
+
 	private static WebElement PricingLabelPricingMethods;
 	public static WebElement getPricingLabelPricingMethods() {return PricingLabelPricingMethods;}
 
-	@FindBy(xpath = "//div[contains(@class,'expandContainer')]//div[contains(@class,'x-toolbar-item')]//span[text()='New']//parent::button")
+//	@FindBy(xpath = "//div[contains(@class,'expandContainer')]//div[contains(@class,'x-toolbar-item')]//span[text()='New']//parent::button")
+	//Shilpa updated xpath for11.2 11.15.2023
+	@FindBy(xpath = "//div[contains(@class,'expandContainer')]//div[contains(@id,'toolbar')]//span[text()='New']")
 	private static WebElement PricingNewButton;
 	public static WebElement getPricingNewButton() {return PricingNewButton;}
 
@@ -956,7 +964,9 @@ public class ContractingMap extends MapConfig {
 	private static WebElement getDefinitionElementAddBtnC2;
 	public static WebElement getDefinitionElementAddBtnC2() {return getDefinitionElementAddBtnC2;}
 
-	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//following::span[text()='Save']")
+//	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//following::span[text()='Save']")
+	//Shilpa update xpath for 11.2 11.15.2023
+	@FindBy(xpath = "//div[contains(@class,'toolbar')]//following::span[text()='Save']")
 	private static WebElement getSaveBenefitPlan;
 	public static WebElement getSaveBenefitPlan() {return getSaveBenefitPlan;}
 

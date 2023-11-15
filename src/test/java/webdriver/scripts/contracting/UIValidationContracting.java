@@ -67,8 +67,8 @@ public class UIValidationContracting extends CalculationHelper{
 			assertElementIsDisplayed(modelMap.getContractServiceModel());
 			assertElementIsDisplayed(modelMap.getContractPricingMethod());
 			assertElementIsDisplayed(modelMap.getContractRiskLimiterModel());
-			doClick(ContractingMap.getContractFeeForServicePaymentFilterServiceModel());
-			waitForAjaxExtJs();
+//			doClick(ContractingMap.getContractFeeForServicePaymentFilterServiceModel());
+//			waitForAjaxExtJs();
 			assertElementIsDisplayed(modelMap.getContractFeeForServicePaymentServices());
 			assertElementIsDisplayed(modelMap.getContractFeeForServicePaymentServiceModel());
 			ContractModelsHelper.navigateFeeForServicePaymentTermsScreenSelectionPanel("Pricing Method");
