@@ -76,16 +76,19 @@ public class ValidateContractingModeExportImportButton extends GoHelper{
 //			Omkar 22/6/2023 : Select button not getting clicked
 //			modelMap.getContractModelImportSelectFileButton().sendKeys(Keys.ENTER);
 //			modelMap.getContractModelImportSelectFileButton().sendKeys(Keys.RETURN);
-//			doClick(modelMap.getContractModelImportSelectFileButton());
-			JavascriptExecutor executor = (JavascriptExecutor) driver;
-		    executor.executeScript("arguments[0].scrollIntoView(true);", modelMap.getContractModelImportSelectFileButton());
+			doClick(modelMap.getContractModelImportSelectFileButton());//Shilpa added this line for 11.2 update 
+//			JavascriptExecutor executor = (JavascriptExecutor) driver;
+//		    executor.executeScript("arguments[0].scrollIntoView(true);", modelMap.getContractModelImportSelectFileButton());
 			driverDelay(500);
 			ContractModelsHelper.uploadTheFileusingAutoIT(driver,System.getProperty("user.dir") + "\\AutoIT\\UploadFile.exe",System.getProperty("user.dir")+"\\AutoIT\\fzMedIPPSTesting.xml");
+			driverDelay(500);
 			driver.findElement(By.name("sharedHostLocation")).click();
 			driverDelay(500);
 			doClick(modelMap.getContractModelExportFileSharedLocOption());
 			driver.findElement(By.name("logFileName")).sendKeys(logFileName);
-			driverDelay(1200);
+			driverDelay(2000);
+//			JavascriptExecutor executor = (JavascriptExecutor) driver;
+//		    executor.executeScript("arguments[0].scrollIntoView(true);", modelMap.getContractModelImportButtonInExportPopUp());
 			doClick(modelMap.getContractModelImportButtonInExportPopUp());
 			waitForSpinnerToEnd();
 			assertElementIsDisplayed(modelMap.getContractModelImportExportstatusPage());

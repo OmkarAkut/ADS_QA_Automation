@@ -315,7 +315,9 @@ public class ContractingMap extends MapConfig {
 
 //	Omkar 21/6/2023 : xpath changes for 11.2
 //	@FindBy(xpath = "//div[contains(@id,'importwindow')]//span[text()='Select']//parent::button")
-	@FindBy(xpath = "//div[contains(@id,'importwindow')]//span[text()='Select']")
+	//@FindBy(xpath = "//div[contains(@id,'importwindow')]//span[text()='Select']")
+	//Shilpa update xpath for 11.2 on 11.16.2023
+	@FindBy(xpath = "//div[contains(@id,'importwindow')]//span[text()='Select']/../../..")
 	private WebElement ContractModelImportSelectFileButton;
 	public WebElement getContractModelImportSelectFileButton() {return ContractModelImportSelectFileButton;}
 

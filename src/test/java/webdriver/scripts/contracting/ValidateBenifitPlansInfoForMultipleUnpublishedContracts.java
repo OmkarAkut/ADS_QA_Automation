@@ -126,16 +126,21 @@ public class ValidateBenifitPlansInfoForMultipleUnpublishedContracts extends Cal
 //			doClick("//span[text()='Apply']//parent::button");
 			ContractModelsHelper.toggleBetweenTheDockBar("(//span[text()='CM ADS1327...'])[2]");
 			doClick("//span[text()='Apply']");
-			doClick("(//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//span[text()='Cancel & Close'])[2]");
-			doClick("//div[@class='x-window-bodyWrap']//span[text()='Cancel & Close']"); // warning window
+//			doClick("(//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//span[text()='Cancel & Close'])[2]");
+			
+			//Shilpa update xpath for 11.2 on 11.16.2023
+			doClick("(//div[contains(@class,'footer')]//span[text()='Cancel & Close'])[2]");
+//			doClick("//div[@class='x-window-bodyWrap']//span[text()='Cancel & Close']"); // warning window
 //			Omkar 7/7/2023 : xpath changes for 11.2
 //			doClick("(//*[contains(@id,'tab') and contains(text(),'CM ADS1327...')]/../../following-sibling::a)[2]");
 			doClick("(//span[contains(text(),'CM ADS1327...')]/parent::span/parent::span/following-sibling::span)[2]"); // close the tab
 //			Omkar 7/7/2023 : xpath changes for 11.2
 //			ContractModelsHelper.toggleBetweenTheDockBar("(//span[text()='CM ADS1327...']//parent::button)[1]");
 			ContractModelsHelper.toggleBetweenTheDockBar("(//span[text()='CM ADS1327...'])[1]");
-			doClick("(//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//span[text()='Cancel & Close'])[1]");
-			doClick("//div[@class='x-window-bodyWrap']//span[text()='Cancel & Close']"); // warning window
+//			doClick("(//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//span[text()='Cancel & Close'])[1]");
+			//Shilpa update xpath for 11.2 on 11.16.2023
+			doClick("(//div[contains(@class,'footer')]//span[text()='Cancel & Close'])[1]");
+//			doClick("//div[@class='x-window-bodyWrap']//span[text()='Cancel & Close']"); // warning window
 //			Omkar 7/7/2023 : xpath changes for 11.2
 //			doClick("(//*[contains(@id,'tab') and contains(text(),'CM ADS1327...')]/../../following-sibling::a)[1]");
 			doClick("(//span[contains(text(),'CM ADS1327...')]/parent::span/parent::span/following-sibling::span)[1]"); // close the tab
