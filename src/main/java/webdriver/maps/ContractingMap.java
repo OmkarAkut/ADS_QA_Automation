@@ -848,7 +848,7 @@ public class ContractingMap extends MapConfig {
 //	@FindBy(xpath = "//div[text()='Edit']")
 //	@FindBy(xpath = "//a[@class='x-btn editBtnClsFilter x-unselectable x-btn-default-small x-border-box']//span[text()='Edit']")
 //	Omkar 16/8/2023 : xpath changes for 11.2
-	@FindBy(xpath = "//div[text()='Edit']")
+	@FindBy(xpath = "(//span[text()='Edit']/../../../..)[3]")
 	private static WebElement ASCFilterEditButton;
 	public static WebElement getASCFilterEditButton() {return ASCFilterEditButton;}
 
@@ -860,7 +860,8 @@ public class ContractingMap extends MapConfig {
 
 //	Omkar 08/6/2023 : xpath changes or 11.2
 //	@FindBy(xpath = "//div[contains(@id,'filter')]//div[contains(@class,'x-btn-disabled')]//following::span[text()='Add']")
-	@FindBy(xpath ="//a[contains(@class,'x-btn x-unselectable x-box-item x-toolbar-item x-btn-default-small x-item-disabled x-btn-disabled')]//following::span[text()='Add']")
+//	Shilpa 11/17/2023 : xpath changes or 11.2
+	@FindBy(xpath ="//div[contains(@id,'filterwindow')]//following::span[text()='Add']/../../..")
 	private static WebElement ASCFilterAddButton;
 	public static WebElement getASCFilterAddButton() {return ASCFilterAddButton;}
 

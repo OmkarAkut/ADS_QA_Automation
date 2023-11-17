@@ -1,5 +1,6 @@
 package webdriver.scripts.contracting;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import org.junit.AfterClass;
@@ -53,7 +54,14 @@ public class VerifyFilterAscSchemes extends CalculationHelper{
 		    doFilterSetFilterParameters("ASC Scheme Name", "Is", "Equal To", "Test");
 		    doClick(ContractingMap.getASCFilterRemoveButton());
 		    Thread.sleep(1000);
-		   assertElementIsDisabled(ContractingMap.getASCFilterAddButton(),printout);
+		    //Shilpa added below lines for 11.2 on 11.17.2023 becoz if we update xpath assertElementIsDisabled might affect other code
+		    if(ContractingMap.getASCFilterAddButton().getAttribute("class").contains("disabled")) {
+		    	assertTrue(printout);
+		    }
+		    else {
+		    	fail();
+		    }
+//		   assertElementIsDisabled(ContractingMap.getASCFilterAddButton(),printout);
 		    doFilterCreate(filter);
 		    assertElementIsDisplayedWithXpath("//div[text()='"+ascScheme+"']");
 		    doClosePageOnLowerBar("ADS-1320 Contract...");
