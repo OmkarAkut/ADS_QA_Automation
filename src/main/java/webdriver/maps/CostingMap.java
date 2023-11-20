@@ -591,7 +591,7 @@ public class CostingMap extends MapConfig {
 
 	// @FindBy(xpath =
 	// "//div[@class='x-mask'][4]/preceding::div[@class='x-boundlist-list-ct']/following::ul[4]")
-	@FindBy(xpath = "//div[@class='x-boundlist x-boundlist-floating x-layer x-boundlist-default'][4]//ul") // venkat
+	@FindBy(xpath = "(//div[contains(@class,'x-boundlist-floating x-layer')])[4]//ul") // Shilpa update xpath for 11.2 on 11.20.2023
 	// update
 	// xpath
 	// 08-09-2022

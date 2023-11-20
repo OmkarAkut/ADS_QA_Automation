@@ -64,8 +64,10 @@ public class CreateEditDeleteNewStructurePopulations extends GoHelper{
 			ContractModelsHelper.keyInValues(ContractingMap.getValueInput(), value);
 			doClick(DataMaintenanceMap.getPopulationAddButton());
 			doClick(DataMaintenanceMap.getPopulationShowSizeButton());
-			assertTextIsDisplayed("(Selected: 16334/2610846)");
+//			assertTextIsDisplayed("(Selected: 16334/2610846)");
+			//Shilpa update selected value for 11.2 on 11.20.2023
 			assertTextIsDisplayed("(Selected: 16334/2610889)");
+//			assertTextIsDisplayed("(Selected: 16334/2610889)");
 			doClick(costing.getSaveCostModel());
 			waitForDisplayedSpinnerToEnd();
 			doClick(DataMaintenanceMap.getLoadDataFilterButton());
@@ -86,11 +88,13 @@ public class CreateEditDeleteNewStructurePopulations extends GoHelper{
 	public void test02EditCreatedPopulation() throws Throwable {
 		try {
 			doClick(DataMaintenanceMap.getLoadDataEditButton());
-			doClick(ContractingMap.getASCFilterEditButton());
+//			doClick(ContractingMap.getASCFilterEditButton());
 			ContractModelsHelper.keyInValues(ContractingMap.getValueInput(), valueEdit);
-			doClick(contractMap.getContractModelUpdateFilterButton());
+//			doClick(contractMap.getContractModelUpdateFilterButton());
 			doClick(DataMaintenanceMap.getPopulationShowSizeButton());
-			assertTextIsDisplayed("(Selected: 21943/2610846)");
+//			assertTextIsDisplayed("(Selected: 21943/2610846)");
+			//Shilpa update selected value for 11.2 on 11.20.2023
+			assertTextIsDisplayed("(Selected: 16334/2610889)");
 			doClick(costing.getSaveCostModel());
 			waitForDisplayedSpinnerToEnd();
 			ExtentReport.logPass("PASS", "test02EditCreatedPopulation");

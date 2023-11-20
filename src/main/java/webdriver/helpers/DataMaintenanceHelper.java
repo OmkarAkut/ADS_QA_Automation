@@ -43,10 +43,10 @@ public class DataMaintenanceHelper extends GoHelper {
 				+ firstOptionInList + "']/img[contains(@class,'x-tree-icon x-tree-icon-leaf')]/ancestor::tbody")),
 				"tr");
 				*/
-		List<WebElement> contractingList = javaMakeListOfWebElements(driver.findElement(By.xpath("//div[text()='"
-				+ firstOptionInList + "']/ancestor::tbody")),"tr");
+		List<WebElement> contractingList = javaMakeListOfWebElements(driver.findElement(By.xpath("//span[text()='"
+				+ firstOptionInList + "']/ancestor::table/parent::div")),"tr");
 		List<String> actualListForContractingPages = javaMakeListOfStringsFromElementText(contractingList, "class",
-				"x-grid-tree-node-leaf", "td[contains(@class,'x-grid-cell-treecolumn')]/div");
+				"x-grid-tree-node-leaf", "td[contains(@class,'x-grid-cell-treecolumn')]/div/span");
 		assertEquals(Arrays.asList(expectedList), actualListForContractingPages);
 	}
 
@@ -58,7 +58,9 @@ public class DataMaintenanceHelper extends GoHelper {
 			if (expectedText.equals("User Defined Fields And Relations")) {
 				continue;
 			}
-			driver.findElement(By.xpath("//div[text() = '" + expectedText + "']")).click();
+//			driver.findElement(By.xpath("//div[text() = '" + expectedText + "']")).click();
+//Shilpa updated xpath for 11.2 on 11.20.2023
+			driver.findElement(By.xpath("//span[text() = '" + expectedText + "']")).click();
 			waitForAjaxExtJs();
 			waitForSpinnerToEnd();
 			if (expectedText.equals("Activity Volume Data Scenarios")
@@ -82,8 +84,12 @@ public class DataMaintenanceHelper extends GoHelper {
 			} else if (expectedText.equals("Populations") || expectedText.equals("Services")
 					|| expectedText.equals("Psych Combined Comorbidity Assignments")) {
 				String formattedExpectedText = expectedText.toLowerCase().replaceAll("\\s+", "");
+//				actualText = getElementText(
+//						driver.findElement(By.xpath("//span[contains(@id,'" + formattedExpectedText + "maingrid')]")),
+//						false);
+				//Shilpa updated xath for 11.2 on 11.20.2023
 				actualText = getElementText(
-						driver.findElement(By.xpath("//span[contains(@id,'" + formattedExpectedText + "maingrid')]")),
+						driver.findElement(By.xpath("//div[contains(@id,'" + formattedExpectedText + "maingrid')]/h1")),
 						false);
 			} else {
 				waitForAjaxExtJs();
