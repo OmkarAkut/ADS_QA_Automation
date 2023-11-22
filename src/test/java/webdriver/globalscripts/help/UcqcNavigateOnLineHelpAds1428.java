@@ -115,15 +115,15 @@ public class UcqcNavigateOnLineHelpAds1428
 		waitForAjaxExtJs();
 		
 		//Venkat  added scrollIntoView in zoom in chrome browser and wait condition 13.09.2022
-		Thread.sleep(2000);
-	    ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoViewIfNeeded();", ucqcMap.getUnitCostQuickCalculationCheckBoxColumnsToDisplayAll());
-	    Thread.sleep(2000);
-		
-		
-		
-		
-		waitForSpinnerToEnd();
-		waitForElementToBeVisible(ucqcMap.getUnitCostQuickCalculationCheckBoxColumnsToDisplayAll());
+//		Thread.sleep(2000);
+//	    ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoViewIfNeeded();", ucqcMap.getUnitCostQuickCalculationCheckBoxColumnsToDisplayAll());
+//	    Thread.sleep(2000);
+//		
+//		
+//		
+//		
+//		waitForSpinnerToEnd();
+//		waitForElementToBeVisible(ucqcMap.getUnitCostQuickCalculationCheckBoxColumnsToDisplayAll());
 		
 		ucqcMap.getUnitCostQuickCalculationCheckBoxColumnsToDisplayAll().click();
 		ucqcMap.getUnitCostQuickCalculationButtonColumnsToDisplaySelect().click();
@@ -131,6 +131,9 @@ public class UcqcNavigateOnLineHelpAds1428
 		waitForSpinnerToEnd();
 		waitForAjaxExtJs();
 		assertHelpLink(driver.findElement(By.xpath("//*[contains(@onclick, 'selectorfd.htm')]")),"Selector", printout);
+		//Shilpa added jscript update for 11.2 on 11.22.2023
+		((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoViewIfNeeded();", ucqcMap.getUnitCostQuickCalculationColumnsToDisplayModalCancel());
+	    Thread.sleep(2000);
 		ucqcMap.getUnitCostQuickCalculationColumnsToDisplayModalCancel().click();
 		 driver.manage().window().maximize();
 			Thread.sleep(1000);

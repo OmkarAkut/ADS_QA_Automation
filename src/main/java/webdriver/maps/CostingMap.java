@@ -463,7 +463,9 @@ public class CostingMap extends MapConfig {
 		return unitCostQuickCalculationFieldResultsStoredFor;
 	}
 
-	@FindBy(xpath = "//input[contains(@id,'checkboxfield')]")
+//	@FindBy(xpath = "//input[contains(@id,'checkboxfield')]")
+	//Shilpa update xpath for 11.2 on 11.22.2023
+	@FindBy(xpath = "//input[contains(@id,'checkbox')]")
 	private WebElement unitCostQuickCalculationCheckBoxColumnsToDisplayAll;
 
 	public WebElement getUnitCostQuickCalculationCheckBoxColumnsToDisplayAll() {

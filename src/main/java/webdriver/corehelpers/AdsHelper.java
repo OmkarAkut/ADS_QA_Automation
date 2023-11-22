@@ -16,7 +16,8 @@ public class AdsHelper extends GetHelper {
 	public final static String setStandardDateFormat = "yyyy-MM-dd:HH:mm:ss";
 
 	public static String getPageHeaderPath(String headerText) {
-		String xpath = "//*[contains(@class, 'areaTitle') and text() = '"+headerText+"']";
+//		String xpath = "//*[contains(@class, 'areaTitle') and text() = '"+headerText+"']";
+		String xpath = "//*[contains(@id, 'container') and text() = '"+headerText+"']";
 		return xpath;
 	}
 

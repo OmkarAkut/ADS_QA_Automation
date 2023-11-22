@@ -312,8 +312,12 @@ public class GoHelper extends AssertHelper {
 			Thread.sleep(1000);
 			//			Omkar 28/03/2023 : Xpath changes for 11.2
 			//			driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell x-grid-cell-gridcolumn')]/*[text()='" + contractModel + "']")).click();
-			//shilpa 11/11/2023 : Xpath changes for 11.2
-			driver.findElement(By.xpath("//td[contains(@role,'gridcell')]/*[text()='AFT IPPS 2020 - Criteria Text']")).click();
+			
+//			driver.findElement(By.xpath("//td[contains(@role,'gridcell')]/*[text()='AFT IPPS 2020 - Criteria Text']")).click();
+			Thread.sleep(500);
+			//Shilpa update xpath for 11.2 on 11.22.2023
+			driver.findElement(By.xpath("//td[contains(@role,'gridcell')]/*[text()='"+contractModel+"']")).click();
+
 			Thread.sleep(500);
 			driver.findElement(By.xpath("//span[text()='Open Task List']")).click();
 			try {
@@ -359,7 +363,7 @@ public class GoHelper extends AssertHelper {
 	public static void navigateFeeForServicePaymentTermsPagePricingMethodSectionClickEditButtonToOpenEditDialog() {
 		try {
 			waitForAjaxExtJs();
-			driver.findElement(By.xpath("//*[text()='Edit']")).click();
+			driver.findElement(By.xpath("//div[text()='Pricing Method']//following::span[text()='Edit'][1]")).click();
 			waitForAjaxExtJs();
 			Thread.sleep(1000);
 			//assertElementTextWithXpath("//span[contains(@id, 'medicareinpatientpps')]", "Edit Price for " + serviceModel + " [Encounter]", printout);
@@ -375,12 +379,15 @@ public class GoHelper extends AssertHelper {
 			System.out.println(2000);
 			//			Omkar 29/03/2023 : Xpath change for 11.2
 			//			driver.findElement(By.xpath("//span[contains(@class,'x-panel-header-text')][text()='Pricing Method']/../following-sibling::div")).click();
-			driver.findElement(By.xpath("//div[text()='Pricing Method']/../following-sibling::div")).click();
-			waitForAjaxExtJs();
-			Thread.sleep(2000);
+			
+						driver.findElement(By.xpath("//div[text()='Pricing Method']/../following-sibling::div")).click();
+//			waitForAjaxExtJs();
+//			Thread.sleep(2000);
 //			Omkar 29/03/2023 : Xpath change for 11.2
 //			driver.findElement(By.xpath("//label[text()='Service Model']/ancestor::div/descendant::div[text() = '" + serviceModel + "'][2]")).click();
-			driver.findElement(By.xpath("//span[text() = '" + serviceModel + "']")).click();
+						//Shilpa update for 11.2 ON 11.22.2023
+						doClick("//div[text()='Pricing Method']//following::span[text()='"+serviceModel+"']");
+//						driver.findElement(By.xpath("//span[text() = '" + serviceModel + "']")).click();
 			Thread.sleep(2000);
 		} catch (Exception e) {
 			JavascriptExecutor executor = (JavascriptExecutor)driver;

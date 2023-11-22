@@ -128,7 +128,8 @@ public class StatusMap extends MapConfig {
     private WebElement importexportStatusPageHelpLink;
     public WebElement getImportExportStatusPageHelpLink() {return importexportStatusPageHelpLink;}
 
-    @FindBy(xpath = "//*[contains(@id,'importexportstatus') and contains(@id,'header')]/../descendant::table/descendant::input[@name='searchText']")
+//    @FindBy(xpath = "//*[contains(@id,'importexportstatus') and contains(@id,'header')]/../descendant::table/descendant::input[@name='searchText']")
+    @FindBy(xpath = "//*[contains(@id,'importexportstatus') and contains(@id,'header')]/../descendant::div/descendant::input[@name='searchText']")
     private WebElement importexportStatusFormFieldSearch;
     public WebElement getImportExportStatusPageFormFieldSearch() {return importexportStatusFormFieldSearch;}
 

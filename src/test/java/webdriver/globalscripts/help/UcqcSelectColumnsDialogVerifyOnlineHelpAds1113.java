@@ -58,15 +58,18 @@ public class UcqcSelectColumnsDialogVerifyOnlineHelpAds1113 extends PageTestHelp
 			doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationDropdownCostModel(),
 					costingMap.getUnitCostQuickCalculationDropdownCostModelMenuList(), "QA Marina");
 			Thread.sleep(2000);
-		    ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoViewIfNeeded();", costingMap.getUnitCostQuickCalculationCheckBoxColumnsToDisplayAll());
-		    Thread.sleep(2000);
-			waitForSpinnerToEnd();
-			waitForElementToBeVisible(costingMap.getUnitCostQuickCalculationCheckBoxColumnsToDisplayAll());
-			System.out.println("PASS");
+//		    ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoViewIfNeeded();", costingMap.getUnitCostQuickCalculationCheckBoxColumnsToDisplayAll());
+//		    Thread.sleep(2000);
+//			waitForSpinnerToEnd();
+//			waitForElementToBeVisible(costingMap.getUnitCostQuickCalculationCheckBoxColumnsToDisplayAll());
+//			System.out.println("PASS");
 			
 			costingMap.getUnitCostQuickCalculationCheckBoxColumnsToDisplayAll().click();
 			costingMap.getUnitCostQuickCalculationButtonColumnsToDisplaySelect().click();
 			testHelpLink(driver.findElement(By.xpath("//*[contains(@onclick, 'selectorfd.htm')]")), "Selector",printout);
+			//Shilpa added scroll to view for 11.2 on 11.22.2023
+			((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoViewIfNeeded();", costingMap.getUnitCostQuickCalculationColumnsToDisplayModalCancel());
+//		    Thread.sleep(2000);
 			costingMap.getUnitCostQuickCalculationColumnsToDisplayModalCancel().click();
 			doClosePageOnLowerBar("Unit Cost Quick...");
 
