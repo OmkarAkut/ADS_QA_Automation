@@ -189,15 +189,19 @@ public class CalculationHelper extends GoHelper {
 		//    driver.findElement(By.xpath("//*[contains(@class,'grid-cell') and text()='# TB Test 0228.2018']")).click();
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 //		Scroll down till the bottom of the page
-//		  js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
-//		  js.executeScript("window.scrollBy(0,250)","");
+		  js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
+		  js.executeScript("window.scrollBy(0,1050)","");
 		//    driver.findElement(By.xpath("//*[contains(@class,'grid-cell') and text()='# TB Test 0228.2018']")).click();
+		  driver.findElement(By.xpath("//*[contains(@class,'grid-cell') and text()='" + batchName + "']")).sendKeys(Keys.PAGE_DOWN);
 		Actions action = new Actions(driver);
-//		action.sendKeys(Keys.PAGE_DOWN).build().perform(); //Page Down
+		action.keyDown(Keys.SHIFT)
+        .sendKeys("a")
+        .perform(); //Page Down
 //		System.out.println("Scroll down perfomed");
 //		Thread.sleep(5000);
 		//    Actions action = new Actions(driver);
-		action.doubleClick(driver.findElement(By.xpath("//*[contains(@class,'grid-cell') and text()='" + batchName + "']"))).perform();
+		 ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoViewIfNeeded();", driver.findElement(By.xpath("//*[contains(@class,'grid-cell') and text()='" + batchName + "']")));
+//		action.doubleClick(driver.findElement(By.xpath("//*[contains(@class,'grid-cell') and text()='" + batchName + "']"))).perform();
 		waitForSpinnerToEnd();
 		Thread.sleep(1000);
 	}
@@ -366,7 +370,10 @@ public class CalculationHelper extends GoHelper {
 	}
 
 	public void deleteMyCalculationStatusFirstRow() throws InterruptedException {
-		String xpath = "//table/tbody/tr[2]/td[21]/div/div/em/button/span[2]";
+//		String xpath = "//table/tbody/tr[2]/td[21]/div/div/em/button/span[2]";
+		//shilpa updated xpath for 11.2 on 11.23.2023
+		String xpath = "(//div[contains(@id,'calculationstatus')])//following::div[@class='x-grid-item-container']//table[1]/tbody/tr/td[18]";
+
 		deleteFirstRow(xpath);
 	}
 

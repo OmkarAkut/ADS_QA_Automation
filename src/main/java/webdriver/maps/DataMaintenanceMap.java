@@ -110,7 +110,10 @@ public class DataMaintenanceMap extends MapConfig {
     
 //    Omkar 16/8/2023 : xpath changes for 11.2
 //    @FindBy(xpath = "//span[text()='Filter']//parent::button")
-    @FindBy(xpath = "//span[text()='Filter']//parent::span")
+//    @FindBy(xpath = "//span[text()='Filter']//parent::span")
+    //Shilpa update xpath for 11.2 on 11.23.2023
+  @FindBy(xpath = "(//span[text()='Filter']//parent::span)[1]")
+
     private WebElement encounterButtonFilter;
     public WebElement getencounterButtonFilter() {return encounterButtonFilter;}
     
