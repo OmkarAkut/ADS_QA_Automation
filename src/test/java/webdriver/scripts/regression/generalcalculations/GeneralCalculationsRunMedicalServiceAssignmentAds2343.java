@@ -13,6 +13,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.helpers.CalculationHelper;
+import webdriver.maps.DataMaintenanceMap;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class GeneralCalculationsRunMedicalServiceAssignmentAds2343 extends CalculationHelper {
@@ -21,7 +22,7 @@ public class GeneralCalculationsRunMedicalServiceAssignmentAds2343 extends Calcu
 	static String viewLogTitleAssign = "Medical Service Assignment";
 	final static String aTozPage = "Medical Service Assignments";
 	final static String batch = "V10.2 REGRESSION Med Serv Assign";
-
+	String[] filterEncounterData = { "Name", "Is", "Equal To", batch };
 
 	/** Regression: Test script for ADS-2343. Updated: 7-7-21. ,ADS-6100*/
 	@BeforeClass
@@ -33,7 +34,7 @@ public class GeneralCalculationsRunMedicalServiceAssignmentAds2343 extends Calcu
 			Login.loginUser("ContractAnalyst1");
 			goToPage("Maintain Data");
 			selectMaintainDataAtoZ(aTozPage);
-			openMaintainDataBatch(batch);
+//			openMaintainDataBatch(batch);
 			ExtentReport.logPass("PASS", "setupScript");
 		}  catch (Exception|AssertionError e) {
 			ExtentReport.logFail("FAIL", "Failure in setupScript", driver, e);
@@ -46,9 +47,17 @@ public class GeneralCalculationsRunMedicalServiceAssignmentAds2343 extends Calcu
 	public void test01ClickClearResultsButtonAndVerifyCalculationStatusDetails()
 			throws InterruptedException,Throwable {
 		try {
+			
+			doClick(DataMaintenanceMap.getLoadDataFilterButton());
+			doFilterCreate(filterEncounterData);
+			driverDelay(4000);
 			waitForAjaxExtJs();
-			waitForPresenceOfElement("//button/span[text()='Clear Results']");
-			doClick(getButton("Clear Results"));
+			tableDoubleClickCellFirstColumn(batch);
+			//Shilpa updated for 11.2 update on 11.24.2023
+//			waitForPresenceOfElement("//button/span[text()='Clear Results']");
+//			doClick(getButton("Clear Results"));
+			waitForPresenceOfElement("//span[text()='Clear Results']/../../..");
+			doClick("//span[text()='Clear Results']/../../..");
 			waitForSpinnerToEnd();
 			waitForFirstRowCalculationBarToReach100Percent();
 			driverDelay(4000);//Shilpa 19.09.2022 requires wait
@@ -88,10 +97,13 @@ public class GeneralCalculationsRunMedicalServiceAssignmentAds2343 extends Calcu
 			throws InterruptedException ,Throwable{
 		try {
 			waitForAjaxExtJs();
-			waitForPresenceOfElement("//button/span[text()='Assign']");
-			doClick(getButton("Assign"));
+//			waitForPresenceOfElement("//button/span[text()='Assign']");
+//			doClick(getButton("Assign"));
+			//shilpa update xpath for 11.2 on 11.24.2023
+			waitForPresenceOfElement("//span[text()='Assign']/../../..");
+			doClick("//span[text()='Assign']/../../..");
 			waitForSpinnerToEnd();
-			waitForFirstRowCalculationBarToReach100Percent(2000);
+			waitForFirstRowCalculationBarToReach100Percent();
 			driverDelay(4000);
 			calculationStatusPageOpenViewDialog();
 			driverDelay(3000);
@@ -113,7 +125,7 @@ public class GeneralCalculationsRunMedicalServiceAssignmentAds2343 extends Calcu
 		} finally {
 			try {
 				doClosePageOnLowerBar("Calculation Status");
-				waitForPresenceOfElement("//button/span[text()='Assign']");
+				waitForPresenceOfElement("//span[text()='Assign']/../../..");
 				doClosePageOnLowerBar("Maintain Data");
 			}catch (Exception|AssertionError e) {
 				ExtentReport.logFail("FAIL", "test02ClickAssignButtonAndAssertCalculationStatusPageDetails", driver, e);

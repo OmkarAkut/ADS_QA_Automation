@@ -321,6 +321,7 @@ public class AdsHelper extends GetHelper {
 			optionsTag = "tr";
 		}
 		List<WebElement> list = javaMakeListOfWebElements(tableContainerElement, optionsTag);
+		System.out.println(list.size());
 		for (WebElement webelement : list) {
 			if (webelement.getAttribute("class").contains("x-grid-row")) {
 				actualList.add(webelement);
