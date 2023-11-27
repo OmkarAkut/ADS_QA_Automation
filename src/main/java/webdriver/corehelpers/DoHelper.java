@@ -340,7 +340,7 @@ public class DoHelper extends DriverHelper {
 //		WebElement list = driver.findElement(By.xpath("//div[contains(@class,'floating')]/div[contains(@id,'listEl')]/ul"));
 		WebElement list = driver.findElement(By.xpath("//div[contains(@class,'floating')]//div[contains(@id,'listWrap')]/ul"));
 		List<WebElement> menu = list.findElements(By.tagName("li"));
-		System.out.println();
+		System.out.println(menu.size());
 		for(WebElement option : menu) {
 			ContractModelsHelper.scrollToView(option);
 			System.out.println(option.getText());

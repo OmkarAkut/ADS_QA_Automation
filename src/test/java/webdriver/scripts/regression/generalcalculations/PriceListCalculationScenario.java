@@ -142,6 +142,7 @@ public class PriceListCalculationScenario extends CalculationHelper {
 	public void ValidateCalculationStatus(String priceVal, String chargeVal) throws Throwable {
 		try {
 			doClick(DataMaintenanceMap.getCalculateButton());
+			doClick(DataMaintenanceMap.getSaveContinueButton());
 			waitForPageTitle("Calculation Status");
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();

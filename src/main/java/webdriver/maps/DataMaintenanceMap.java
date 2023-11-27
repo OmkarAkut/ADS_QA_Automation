@@ -161,7 +161,7 @@ public class DataMaintenanceMap extends MapConfig {
 	private static WebElement getChargeMaster;
 	public static WebElement getChargeMaster() {return getChargeMaster;}
 	
-	@FindBy(name = "priceListId")
+	@FindBy(xpath = "//span[text()='Price List Master']//following::input[@name='priceListId']")
 	private static WebElement getPriceListMaster;
 	public static WebElement getPriceListMaster() {return getPriceListMaster;}
 	
@@ -175,9 +175,16 @@ public class DataMaintenanceMap extends MapConfig {
 	
 //	Omkar 16/8/2023 : xpath changes for 11.2
 //	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//span[text()='Calculate']//parent::button")
-	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//span[text()='Calculate']//parent::span")
+//	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//span[text()='Calculate']//parent::span")
+	//Shilpa update xpath for 11.2 on 11.27.2023
+	@FindBy(xpath = "(//span[text()='Calculate']/../../..)[3]")
 	private static WebElement getCalculateButton;
 	public static WebElement getCalculateButton() {return getCalculateButton;}
+	
+	//Shilpa added xpath for 11.2 on 11.27.2023
+		@FindBy(xpath = "//span[text()='Save & Continue']/../../..")
+		private static WebElement getSaveContinueButton;
+		public static WebElement getSaveContinueButton() {return getSaveContinueButton;}
 	
 //	Omkar 16/8/2023 : xpath changes for 11.2
 //	@FindBy(xpath = "//h1[text()='Price Items']//following::span[text()='Filter']//parent::button")
