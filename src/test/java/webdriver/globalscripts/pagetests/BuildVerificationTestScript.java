@@ -27,6 +27,7 @@ import webdriver.maps.ReportingMap;
 import webdriver.maps.StatusMap;
 import webdriver.maps.SystemMaintenanceMap;
 import webdriver.maps.mapbuilder.BuildMap;
+import webdriver.users.Users;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class BuildVerificationTestScript extends UcqcHelper {
@@ -494,7 +495,9 @@ public class BuildVerificationTestScript extends UcqcHelper {
 		WebElement listContainerElement = driver.findElement(By.id(subTabId));
 		List<WebElement> actualTabs = javaMakeListOfWebElements2(listContainerElement, "//li/a");
 		List<String> actualTabsText = javaMakeListOfStrings(actualTabs);
-		assertEquals(expectedSubTabs, actualTabsText);
+//		Omkar 28/11/2023 : In some cases such as Reporting tab, all the values need not be verified as most of tem have been created by test Users.AdHocReportDesigner1 Thus validating only expected values
+//		assertEquals(expectedSubTabs, actualTabsText);
+		assertListOfStringsContainsExpectedStrings(actualTabsText, expectedSubTabs);
 	}
 
 	// ===== Analytics Map =====//
@@ -773,7 +776,9 @@ public class BuildVerificationTestScript extends UcqcHelper {
 			} catch (Throwable e) {
 				fail(e.getMessage());
 			} finally {
-				doClosePageOnLowerBar("Maintain Data");
+//				Omkar 28/11/2023 : Change in xpath value
+//				doClosePageOnLowerBar("Maintain Data");
+				doClosePageOnLowerBar("Close Maintain Data");
 			}
 			ExtentReport.logPass("PASS", "test0310CostingTabDataMaintenancePage");
 		} catch (Exception | AssertionError e) {
@@ -801,7 +806,9 @@ public class BuildVerificationTestScript extends UcqcHelper {
 			} catch (Throwable e) {
 				fail(e.getMessage());
 			} finally {
-				doClosePageOnLowerBar("RVU Maintenance");
+//				Omkar 28/11/2023 : Changes in xpath
+//				doClosePageOnLowerBar("RVU Maintenance");
+				doClosePageOnLowerBar("Close RVU Maintenance");
 			}
 			ExtentReport.logPass("PASS", "test0320CostingTabRvuMaintenanceMap");
 		} catch (Exception | AssertionError e) {
@@ -845,7 +852,8 @@ public class BuildVerificationTestScript extends UcqcHelper {
 
 	@Test
 	public void test0340aCostingTabUnitCostQuickCalculationPage() throws Throwable {
-		try {
+			try {
+		
 			goToPage("Unit Cost Quick Calculation");
 			waitForSpinnerToEnd();
 			// doMaximizeWindow();
@@ -866,6 +874,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 					costingMap.getUnitCostQuickCalculationButtonHide() };
 			assertElementsAreDisplayed(costModelScenarioCalculationElements, printout);
 			ExtentReport.logPass("PASS", "test0340aCostingTabUnitCostQuickCalculationPage");
+			
 		} catch (Exception | AssertionError e) {
 
 			ExtentReport.logFail("FAIL", "test0340aCostingTabUnitCostQuickCalculationPage", driver, e);
@@ -904,7 +913,9 @@ public class BuildVerificationTestScript extends UcqcHelper {
 			} catch (Throwable e) {
 				fail(e.getMessage());
 			} finally {
-				doClick("Unit Cost Quick Calculation");
+//				Omkar 28/11/2023 : Changes in xpath
+//				doClick("Unit Cost Quick Calculation");
+				doClick("Close Unit Cost Quick Calculation");
 			}
 			ExtentReport.logPass("PASS", "test0340bCostingTabUnitCostQuickCalculationPageDepartmentDialog");
 		} catch (Exception | AssertionError e) {
@@ -958,7 +969,9 @@ public class BuildVerificationTestScript extends UcqcHelper {
 			} finally {
 //				Omkar 12/04/2023 : Xpath change for 11.2
 //				doClosePageOnLowerBar("Model Library");
-				doClosePageOnLowerBar("Contract Models");
+//				Omkar 28/11/2023 : Changes in xpath
+//				doClosePageOnLowerBar("Contract Models");
+				doClosePageOnLowerBar("Close Contract Models");
 			}
 			ExtentReport.logPass("PASS", "test0400ContractingTabContractModelsPage");
 		} catch (Exception | AssertionError e) {
@@ -985,7 +998,9 @@ public class BuildVerificationTestScript extends UcqcHelper {
 			} catch (Throwable e) {
 				fail(e.getMessage());
 			} finally {
-				doClosePageOnLowerBar("APC Allocation");
+//				Omkar 28/11/2023 : Changes in xpath
+//				doClosePageOnLowerBar("APC Allocation");
+				doClosePageOnLowerBar("Close APC Allocation");
 			}
 			ExtentReport.logPass("PASS", "test0410ContractingTabApcAllocationPageMap");
 		} catch (Exception | AssertionError e) {
@@ -1012,7 +1027,9 @@ public class BuildVerificationTestScript extends UcqcHelper {
 				assertElementsAreDisplayed(contractingTabContractualAllowanceExportPageElements, printout);
 //				Omkar 12/04/2023 : Xpath change for 11.2
 //				doClosePageOnLowerBar("Contractual...");
-				doClosePageOnLowerBar("Contractual Allowance Export");
+//				Omkar 28/11/2023 : Changes in xpath
+//				doClosePageOnLowerBar("Contractual Allowance Export");
+				doClosePageOnLowerBar("Close Contractual Allowance Export");
 			} catch (Throwable e) {
 				fail(e.getMessage());
 			}
@@ -1059,7 +1076,9 @@ public class BuildVerificationTestScript extends UcqcHelper {
 			} catch (Throwable e) {
 				fail(e.getMessage());
 			} finally {
-				doClosePageOnLowerBar("Maintain Data");
+//				Omkar 28/11/2023 : Changes in xpath
+//				doClosePageOnLowerBar("Maintain Data");
+				doClosePageOnLowerBar("Close Maintain Data");
 			}
 			ExtentReport.logPass("PASS",
 					"test0710DataMaintenanceTabMaintainDataPageAssertTreeListContainsTheFourMainDirectories");
@@ -1097,7 +1116,9 @@ public class BuildVerificationTestScript extends UcqcHelper {
 			} catch (Throwable e) {
 				fail(e.getMessage());
 			} finally {
-				doClosePageOnLowerBar("Utilities");
+//				Omkar 28/11/2023 : Changes in xpath
+//				doClosePageOnLowerBar("Utilities");
+				doClosePageOnLowerBar("Close Utilities");
 			}
 			ExtentReport.logPass("PASS", "test0720DataMaintenanceTabUtilitiesPage");
 		} catch (Exception | AssertionError e) {
@@ -1119,7 +1140,9 @@ public class BuildVerificationTestScript extends UcqcHelper {
 					sysmaint.getUsersPageButtonClearFilter(), sysmaint.getUsersPageHelpLink(),
 					sysmaint.getUsersPageTableCornerCell(), };
 			assertElementsAreDisplayed(userPageElements, printout);
-			doClosePageOnLowerBar("Users");
+//			Omkar 28/11/2023 : Changes in xpath
+//			doClosePageOnLowerBar("Users");
+			doClosePageOnLowerBar("Close Users");
 			ExtentReport.logPass("PASS", "test0800SystemMaintenanceTabUsersPageMap");
 		} catch (Exception | AssertionError e) {
 
@@ -1136,7 +1159,9 @@ public class BuildVerificationTestScript extends UcqcHelper {
 			WebElement[] rolesPageElements = { sysmaint.getRolesPageButtonNew(), sysmaint.getRolesPageButtonEdit(),
 					sysmaint.getRolesPageHelpLink(), sysmaint.getRolesPageTableCornerCell(), };
 			assertElementsAreDisplayed(rolesPageElements, printout);
-			doClosePageOnLowerBar("Roles");
+//			Omkar 28/11/2023 : Changes in xpath
+//			doClosePageOnLowerBar("Roles");
+			doClosePageOnLowerBar("Close Roles");
 			ExtentReport.logPass("PASS", "test0810SystemMaintenanceTabRolesPageMap");
 		} catch (Exception | AssertionError e) {
 
@@ -1171,7 +1196,9 @@ public class BuildVerificationTestScript extends UcqcHelper {
 					sysmaint.getSecuritySettingsPageFormFieldAuditLogRetentionPeriod(),
 					sysmaint.getSecuritySettingsPageButtonSave(), };
 			assertElementsAreDisplayed(securitySettingsPageElements, printout);
-			doClosePageOnLowerBar("Security Settings");
+//			Omkar 28/11/2023 : Changes in xpath
+//			doClosePageOnLowerBar("Security Settings");
+			doClosePageOnLowerBar("Close Security Settings");
 			ExtentReport.logPass("PASS", "test0820SystemMaintenanceTabSecuritySettingsPageMap");
 		} catch (Exception | AssertionError e) {
 
@@ -1228,7 +1255,9 @@ public class BuildVerificationTestScript extends UcqcHelper {
 					sysmaint.getGeneralSettingsPageFormFieldGeneralAllImportsAndExports(),
 					sysmaint.getGeneralSettingsPageButtonSave(), };
 			assertElementsAreDisplayed(generalSettingsPageElements, printout);
-			doClosePageOnLowerBar("General Settings");
+//			Omkar 28/11/2023 : Changes in xpath
+//			doClosePageOnLowerBar("General Settings");
+			doClosePageOnLowerBar("Close General Settings");
 			ExtentReport.logPass("PASS", "test0830SystemMaintenanceTabGeneralSettingsPageMap");
 		} catch (Exception | AssertionError e) {
 
@@ -1267,7 +1296,9 @@ public class BuildVerificationTestScript extends UcqcHelper {
 			} catch (Throwable e) {
 				fail(e.getMessage());
 			} finally {
-				doClosePageOnLowerBar("Customize Maintain Data");
+//				Omkar 28/11/2023 : Changes in xpath
+//				doClosePageOnLowerBar("Customize Maintain Data");
+				doClosePageOnLowerBar("Close Customize Maintain Data");
 			}
 			ExtentReport.logPass("PASS", "test0840SystemMaintenanceTabCustomizeMaintainDataPageMap");
 		} catch (Exception | AssertionError e) {
@@ -1293,7 +1324,9 @@ public class BuildVerificationTestScript extends UcqcHelper {
 			} catch (Throwable e) {
 				fail(e.getMessage());
 			} finally {
-				doClosePageOnLowerBar("Customize Task Lists");
+//				Omkar 28/11/2023 : Changes in xpath
+//				doClosePageOnLowerBar("Customize Task Lists");
+				doClosePageOnLowerBar("Close Customize Task Lists");
 			}
 			ExtentReport.logPass("PASS", "test0850SystemMaintenanceTabCustomizeTaskListsPageMap");
 		} catch (Exception | AssertionError e) {
@@ -1316,7 +1349,9 @@ public class BuildVerificationTestScript extends UcqcHelper {
 			} catch (Throwable e) {
 				fail(e.getMessage());
 			} finally {
-				doClosePageOnLowerBar("Terminal Server...");
+//				Omkar 28/11/2023 : Changes in xpath
+//				doClosePageOnLowerBar("Terminal Server...");
+				doClosePageOnLowerBar("Close Terminal Server Sessions");
 			}
 			ExtentReport.logPass("PASS", "test0860SystemMaintenanceTabTerminalServerSessionsPageMap");
 		} catch (Exception | AssertionError e) {
@@ -1344,7 +1379,9 @@ public class BuildVerificationTestScript extends UcqcHelper {
 					// statusMap.getCalculationStatusPageButtonDeleteFiltered(),
 			};
 			assertElementsAreDisplayed(statusPageElements, printout);
-			doClosePageOnLowerBar("Calculation Status");
+//			Omkar 28/11/2023 : Changes in xpath
+//			doClosePageOnLowerBar("Calculation Status");
+			doClosePageOnLowerBar("Close Calculation Status");
 			ExtentReport.logPass("PASS", "test0900StatusTabCalculationStatusPage");
 		} catch (Exception | AssertionError e) {
 
@@ -1370,7 +1407,9 @@ public class BuildVerificationTestScript extends UcqcHelper {
 					// statusMap.getImportExportStatusPageButtonDeleteFiltered(),
 			};
 			assertElementsAreDisplayed(statusPageElements, printout);
-			doClosePageOnLowerBar("Import/Export Status");
+//			Omkar 28/11/2023 : Changes in xpath
+//			doClosePageOnLowerBar("Import/Export Status");
+			doClosePageOnLowerBar("Cose Import/Export Status");
 			ExtentReport.logPass("PASS", "test0910StatusTabImportExportStatusPage");
 		} catch (Exception | AssertionError e) {
 
@@ -1392,7 +1431,9 @@ public class BuildVerificationTestScript extends UcqcHelper {
 					// statusMap.getUtilityStatusPageButtonDeleteFiltered(),
 			};
 			assertElementsAreDisplayed(statusPageElements, printout);
-			doClosePageOnLowerBar("Utility Status");
+//			Omkar 28/11/2023 : Changes in xpath
+//			doClosePageOnLowerBar("Utility Status");
+			doClosePageOnLowerBar("Close Utility Status");
 			ExtentReport.logPass("PASS", "test0920StatusTabUtilityStatusPage");
 		} catch (Exception | AssertionError e) {
 
@@ -1430,7 +1471,9 @@ public class BuildVerificationTestScript extends UcqcHelper {
 					waitForAjaxExtJs();
 				} catch (Throwable ee) {
 				}
-				doClosePageOnLowerBar("Users");
+//				Omkar 28/11/2023 : Changes in xpath
+//				doClosePageOnLowerBar("Users");
+				doClosePageOnLowerBar("Close Users");
 			}
 			ExtentReport.logPass("PASS", "test1000FilterDialogMap");
 		} catch (Exception | AssertionError e) {

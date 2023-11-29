@@ -60,7 +60,9 @@ public class ModelLibraryMap extends MapConfig {
     private WebElement modelLibraryButtonDeleteFolder;
     public WebElement getModelLibraryButtonDeleteFolder() {return modelLibraryButtonDeleteFolder;}
 
-    @FindBy(xpath = "//*[contains(@class,'grid-cell-treecolumn')]/*[contains(text(),'Costing')]")
+//    Omkar 28/11/2023 : Changes in xpath for 11.2
+//    @FindBy(xpath = "//*[contains(@class,'grid-cell-treecolumn')]/*[contains(text(),'Costing')]")
+    @FindBy(xpath ="//*[contains(@class,'grid-cell-treecolumn')]//span[contains(text(),'Costing')]")
     private WebElement modelLibraryTreeColumnCosting;
     public WebElement getModelLibraryTreeColumnCosting() {return modelLibraryTreeColumnCosting;}
 
