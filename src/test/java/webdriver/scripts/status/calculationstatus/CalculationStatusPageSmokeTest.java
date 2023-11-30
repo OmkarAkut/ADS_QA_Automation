@@ -45,22 +45,39 @@ public class CalculationStatusPageSmokeTest extends CalculationHelper {
   String durationPatternMatch = "^\\d\\d:\\d\\d:\\d\\d$";
 
   //static String baseXpath = "//div[2]/div/div/div[2]/div/div[3]/div/div/div[1]/div[2]/div/table/tbody";
-  static String nameXpath =         "//div[2]/div/div[4]/div/table/tbody/tr[2]/td[5]/div";
-  static String categoryXpath =     "//div[2]/div/div[4]/div/table/tbody/tr[2]/td[6]/div";
-  static String typeXpath =         "//div[2]/div/div[4]/div/table/tbody/tr[2]/td[7]/div";
-  static String progressXpath =     "//div[2]/div/div[4]/div/table/tbody/tr[2]/td[8]/div/div/div";
-  static String estCalcEndTimeXpath =   "//div[2]/div/div[4]/div/table/tbody/tr[2]/td[9]/div";
-  static String calcStatusXpath =     "//div[2]/div/div[4]/div/table/tbody/tr[2]/td[10]/div";
-  static String logStatusXpath =      "//div[2]/div/div[4]/div/table/tbody/tr[2]/td[11]/div";
-  static String sharedLocationXpath =      "//div[2]/div/div[4]/div/table/tbody/tr[2]/td[12]/div";
-  static String viewXpath =               "//div[2]/div/div[4]/div/table/tbody/tr[2]/td[13]/div";
-  static String downloadXpath =           "//div[2]/div/div[4]/div/table/tbody/tr[2]/td[14]/div/a";
-  static String recordsProcessedXpath =   "//div[2]/div/div[4]/div/table/tbody/tr[2]/td[15]/div";
-  static String recordsPendingXpath =     "//div[2]/div/div[4]/div/table/tbody/tr[2]/td[16]/div";
-  static String totalRecordsXpath =            "//div[2]/div/div[4]/div/table/tbody/tr[2]/td[17]/div";
-  static String calcStartTimeXpath =      "//div[2]/div/div[4]/div/table/tbody/tr[2]/td[18]/div";
-  static String calcEndTimeXpath =        "//div[2]/div/div[4]/div/table/tbody/tr[2]/td[19]/div";
-  static String durationXpath =           "//div[2]/div/div[4]/div/table/tbody/tr[2]/td[20]/div";
+//  static String nameXpath =         "//div[2]/div/div[4]/div/table/tbody/tr[2]/td[5]/div";
+//  static String categoryXpath =     "//div[2]/div/div[4]/div/table/tbody/tr[2]/td[6]/div";
+//  static String typeXpath =         "//div[2]/div/div[4]/div/table/tbody/tr[2]/td[7]/div";
+//  static String progressXpath =     "//div[2]/div/div[4]/div/table/tbody/tr[2]/td[8]/div/div/div";
+//  static String estCalcEndTimeXpath =   "//div[2]/div/div[4]/div/table/tbody/tr[2]/td[9]/div";
+//  static String calcStatusXpath =     "//div[2]/div/div[4]/div/table/tbody/tr[2]/td[10]/div";
+//  static String logStatusXpath =      "//div[2]/div/div[4]/div/table/tbody/tr[2]/td[11]/div";
+//  static String sharedLocationXpath =      "//div[2]/div/div[4]/div/table/tbody/tr[2]/td[12]/div";
+//  static String viewXpath =               "//div[2]/div/div[4]/div/table/tbody/tr[2]/td[13]/div";
+//  static String downloadXpath =           "//div[2]/div/div[4]/div/table/tbody/tr[2]/td[14]/div/a";
+//  static String recordsProcessedXpath =   "//div[2]/div/div[4]/div/table/tbody/tr[2]/td[15]/div";
+//  static String recordsPendingXpath =     "//div[2]/div/div[4]/div/table/tbody/tr[2]/td[16]/div";
+//  static String totalRecordsXpath =            "//div[2]/div/div[4]/div/table/tbody/tr[2]/td[17]/div";
+//  static String calcStartTimeXpath =      "//div[2]/div/div[4]/div/table/tbody/tr[2]/td[18]/div";
+//  static String calcEndTimeXpath =        "//div[2]/div/div[4]/div/table/tbody/tr[2]/td[19]/div";
+//  static String durationXpath =           "//div[2]/div/div[4]/div/table/tbody/tr[2]/td[20]/div";
+  //Shilpa update xpath for 11.2 on 11.30.2023
+  static String nameXpath =         "(//span[text()='Scenario Name']//following::div[@class='x-grid-item-container']//td[2]/div)[1]";
+  static String categoryXpath =     "(//span[text()='Scenario Name']//following::div[@class='x-grid-item-container']//td[3]/div)[1]";
+  static String typeXpath =         "(//span[text()='Scenario Name']//following::div[@class='x-grid-item-container']//td[4]/div)[1]";
+  static String progressXpath =     "(//span[text()='Scenario Name']//following::div[@class='x-grid-item-container']//td[5]//div//div/div)[1]";
+  static String estCalcEndTimeXpath =   "(//span[text()='Scenario Name']//following::div[@class='x-grid-item-container']//td[6]/div)[1]";
+  static String calcStatusXpath =     "(//span[text()='Scenario Name']//following::div[@class='x-grid-item-container']//td[7]/div)[1]";
+  static String logStatusXpath =      "(//span[text()='Scenario Name']//following::div[@class='x-grid-item-container']//td[8]/div)[1]";
+  static String sharedLocationXpath =      "(//span[text()='Scenario Name']//following::div[@class='x-grid-item-container']//td[9]/div)[1]";
+  static String viewXpath =               "(//span[text()='Scenario Name']//following::div[@class='x-grid-item-container']//td[10]/div/span)[1]";
+  static String downloadXpath =           "(//span[text()='Scenario Name']//following::div[@class='x-grid-item-container']//td[11]//div/a)[2]";
+  static String recordsProcessedXpath =   "(//span[text()='Scenario Name']//following::div[@class='x-grid-item-container']//td[12]//div)[1]";
+  static String recordsPendingXpath =     "(//span[text()='Scenario Name']//following::div[@class='x-grid-item-container']//td[13]//div)[1]";
+  static String totalRecordsXpath =            "(//span[text()='Scenario Name']//following::div[@class='x-grid-item-container']//td[14]//div)[1]";
+  static String calcStartTimeXpath =      "(//span[text()='Scenario Name']//following::div[@class='x-grid-item-container']//td[15]//div)[1]";
+  static String calcEndTimeXpath =        "(//span[text()='Scenario Name']//following::div[@class='x-grid-item-container']//td[16]//div)[1]";
+  static String durationXpath =           "(//span[text()='Scenario Name']//following::div[@class='x-grid-item-container']//td[17]//div)[1]";
 
   /** Smoke test for calculation and calculation status pages - 2020 OPPS: J Packaging C. */
   /**TEST - [Contracting] - REGRESSION - 2021 OPPS: J Packaging , ADS-5942 */
@@ -84,7 +101,10 @@ public class CalculationStatusPageSmokeTest extends CalculationHelper {
   public void test01ClickCalculateButtonAndAssertSummaryIsErrorFree() throws Throwable,InterruptedException {
     try {
       waitForAjaxExtJs();
-      doClick(driver.findElement(By.xpath("//button/span[text()='Calculate']")));
+//      doClick(driver.findElement(By.xpath("//button/span[text()='Calculate']")));
+      //shilpa update xpath for 11.2 on 11.30.2023
+      doClick(driver.findElement(By.xpath("//span[text()='Calculate']/../..")));
+
       waitForSpinnerToEnd();
       waitForFirstRowCalculationBarToReach100Percent();
       driverDelay(4000);//venkat added explicitly time 21.09.2022

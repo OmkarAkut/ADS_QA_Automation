@@ -22,6 +22,7 @@ import webdriver.scripts.episodes.EpisodesTestSuite;
 import webdriver.scripts.regression.generalcalculations.GeneralCalculationsTestSuite;
 import webdriver.scripts.reporting.ReportingTestSuite;
 import webdriver.scripts.security.ucqcroles.UcqcRoleBasedTestSuite;
+import webdriver.scripts.status.calculationstatus.CalculationStatusSuite;
 import webdriver.scripts.systemmaintenance.SystemMaintenanceTestSuite;
 
 
@@ -44,6 +45,7 @@ import webdriver.scripts.systemmaintenance.SystemMaintenanceTestSuite;
 	CostingTestSuite.class,
 	CostingCalculationsTestSuite.class,
 	CostingModelsTestSuite.class,
+	CalculationStatusSuite.class,
 //	UnitCostQuickCalculationSuite.class,
 //	UcqcCalculationTestSuite.class,
 //	UcqcMainpageTestSuite.class,

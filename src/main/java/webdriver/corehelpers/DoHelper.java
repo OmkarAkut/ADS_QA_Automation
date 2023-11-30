@@ -35,7 +35,10 @@ public class DoHelper extends DriverHelper {
 		modelMapStatic.getModelLibraryButtonSearch().click();
 		waitForAjaxExtJs();
 		Thread.sleep(1000);
-		driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell x-grid-cell-gridcolumn')]/*[text()='" + contractModel + "']")).click();
+//		driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell x-grid-cell-gridcolumn')]/*[text()='" + contractModel + "']")).click();
+		//Shilpa update xpath for 11.2 on 11.30.2023
+		driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell-gridcolumn')]/*[text()='" + contractModel + "']")).click();
+
 	}
 
 	/**
