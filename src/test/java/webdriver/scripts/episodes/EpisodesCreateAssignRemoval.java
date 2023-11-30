@@ -1,5 +1,6 @@
 package webdriver.scripts.episodes;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.text.SimpleDateFormat;
@@ -9,6 +10,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
 
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
@@ -106,6 +108,8 @@ public class EpisodesCreateAssignRemoval extends CalculationHelper {
 			System.out.println("Waiting");
 			Thread.sleep(1000);
 //			Omkar 17/04/2023 : The below elements would be found only on last page of view window
+			//Shilpa added below method to search records processed in all pages
+			checkForRecordsProcessed("Total number");
 			confirmCalculationStatusDetailsContains("Total number of Encounters tagged as triggers : 10");
 			confirmCalculationStatusDetailsContains("Total number of Encounters tagged as pre-admission inclusions: 0");
 			confirmCalculationStatusDetailsContains("Total number of Encounters tagged as acute inclusions: 0");
@@ -123,6 +127,7 @@ public class EpisodesCreateAssignRemoval extends CalculationHelper {
 			doClick(modelMap.getRemoveButton());
 			doClickTreeItemWithCheckbox("Assign Episode to Encounters");
 			doClick(contractingMap.getContractModelRiskLimiterMessageBoxCancelCloseBtn());
+			//Shilpa: below steps cannot be executed becoz of issue ADS-11770
 			doClick(contractingMap.getContractModelButtonColumnsToDisplayModalRemove());
 			waitForSpinnerToEnd();
 			waitForFirstRowCalculationBarToReach100Percent();

@@ -13,6 +13,7 @@ import org.junit.BeforeClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import webdriver.corehelpers.GoHelper;
@@ -521,6 +522,28 @@ public class CalculationHelper extends GoHelper {
 		Thread.sleep(500);
 	}
 
+	//Check the records processed under View dialog
+	public static void checkForRecordsProcessed(String text) throws Exception {
+	int value=Integer.parseInt(modelMap.getpagination().getText().replaceAll("[^0-9]", ""));
+	for(int i=1;i<=value;i++) {
+		try {
+			ContractModelsHelper.scrollToView("//*[contains(text(),'"+text+"')]");
+			if(driver.findElement(By.xpath("//*[contains(text(),'"+text+"')]")).isDisplayed()) {
+				assertTrue(printout);
+			}
+			
+		} catch (NoSuchElementException e) {
+			try {
+				ContractModelsHelper.scrollToView("//*[contains(text(),'"+text+"')]");
+			} catch (Exception e1) {
+				ModelLibraryMap.getGoToNextPage().click();
+				Thread.sleep(1000);
+				continue;
+			}
+			
+		}
+	}
+	}
 	//number of checks is 10 - total run time can be controlled by setting refresh interval - longer interval, longer run time
 	public static void waitForFirstRowCalculationBarToReach100Percent(int refreshInterval) throws Exception {
 		boolean calculate = true;

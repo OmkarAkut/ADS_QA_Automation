@@ -220,7 +220,9 @@ public class ModelLibraryMap extends MapConfig {
     private  WebElement triggerAddButton;
     public  WebElement getTriggerAddButton() {return triggerAddButton;}
     
-    @FindBy(xpath = "(//span[text()='Triggers']//following::span[text()='Remove'])[1]")
+//    @FindBy(xpath = "(//span[text()='Triggers']//following::span[text()='Remove'])[1]")
+    //Shilpa update xpath for 11.2 on 11.28.2023
+    @FindBy(xpath = "(//div[text()='Triggers']//following::span[text()='Remove'])[1]")
     private  WebElement triggerRemoveButton;
     public  WebElement getTriggerRemoveButton() {return triggerRemoveButton;}
     
@@ -264,7 +266,13 @@ public class ModelLibraryMap extends MapConfig {
     private  WebElement AssignButton;
     public  WebElement getAssignButton() {return AssignButton;}
     
-    @FindBy(xpath = "//span[contains(@id,'messagebox')]")
+    @FindBy(xpath = "(//div[text()='View Log']//following::div[contains(@id,'custompagingtoolbar')]//div[contains(@id,'tbtext')])[2]")
+    private  WebElement pagination;
+    public  WebElement getpagination() {return pagination;}
+    
+//    @FindBy(xpath = "//span[contains(@id,'messagebox')]")
+    //Shilpa update xpath for 11.2 on 11.28.2023
+    @FindBy(xpath = "(//a[contains(@class,'x-toolbar-item')]//following::span[text()='Remove'])[5]")
     private  WebElement warningPopUp;
     public  WebElement getWarningPopUp() {return warningPopUp;}
     
@@ -289,4 +297,8 @@ public class ModelLibraryMap extends MapConfig {
     @FindBy(xpath = "//div[contains(@id,'window')]//*[contains(@class, 'go-button')]")
     private  static WebElement getGoToPage;
     public static WebElement getGoToPage() {return getGoToPage;}
+    
+    @FindBy(xpath = "//div[text()='View Log']//following::span[contains(@class,'pagging-tbar-next-button')]/../../..")
+    private  static WebElement getGoToNextPage;
+    public static WebElement getGoToNextPage() {return getGoToNextPage;}
 }

@@ -369,7 +369,9 @@ public class ContractingMap extends MapConfig {
 	private WebElement ContractModelRiskLimiterContinueCloseBtn;
 	public WebElement getContractModelRiskLimiterContinueCloseBtn() {return ContractModelRiskLimiterContinueCloseBtn;}
 
-	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//span[text()='Cancel & Close']")
+//	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//span[text()='Cancel & Close']")
+	//Shilpa update xpath for 11.2 on 11.27.2023
+	@FindBy(xpath = "//span[text()='Cancel & Close']/../../..")
 	private static WebElement ContractModelRiskLimiterCancelCloseBtn;
 	public static WebElement getContractModelRiskLimiterCancelCloseBtn() {return ContractModelRiskLimiterCancelCloseBtn;}
 
