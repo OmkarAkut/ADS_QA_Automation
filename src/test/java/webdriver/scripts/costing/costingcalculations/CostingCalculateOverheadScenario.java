@@ -11,6 +11,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.helpers.CalculationHelper;
+import webdriver.maps.DataMaintenanceMap;
 
 public class CostingCalculateOverheadScenario extends CalculationHelper {
 	JavascriptExecutor executor = (JavascriptExecutor)driver;
@@ -34,9 +35,9 @@ public class CostingCalculateOverheadScenario extends CalculationHelper {
     public void testAdsLoginLogout() throws Throwable {
     try {
 //      doSearchForModel("v102 REGRESSION Overhead Model");
-    	 doSearchForModel("2005 Overhead Allocation");
+    	 doSearchForModel("2005 Overhead Allocation-Test2023");
 //      tableDoubleClickCellFirstColumn("v102 REGRESSION Overhead Model");
-    	 tableDoubleClickCellFirstColumn("2005 Overhead Allocation");
+    	 tableDoubleClickCellFirstColumn("2005 Overhead Allocation-Test2023");
      driverDelay(4000);
       doClickTreeItem("Allocate Overhead");
       driverDelay(4000);
@@ -49,12 +50,14 @@ public class CostingCalculateOverheadScenario extends CalculationHelper {
       Thread.sleep(1000);
       //Omkar (19/7/2022) : The below xpath is no more valid
       //doClick(driver.findElement(By.xpath("//button/span[text()='Calculate']")));
-      doClick(driver.findElement(By.xpath("(//button/span[text()='Calculate'])[2]")));
+      //SHILPA update xpath for 11.2 on 12.01.2023
+      doClick(driver.findElement(By.xpath("//div[contains(@id,'overheadmodelscenarioform')]//following::span[contains(@id,'button')][text()='Calculate']")));
       waitForFirstRowCalculationBarToReach100Percent();
       calculationStatusPageOpenViewDialog();
       assertViewLogTitle(viewLogTitle);
-      doClick(driver.findElement(By.xpath("(//div[contains(@id,'window')]//span[contains(@id,'btnInnerEl')]//parent::button)[6]")));
-      driverDelay();
+      checkForRecordsProcessed("Process Completed");
+//      doClick(driver.findElement(By.xpath("(//div[contains(@id,'window')]//span[contains(@id,'btnInnerEl')]//parent::button)[6]")));
+//      driverDelay();
       confirmCalculationStatusDetailsContains("Process Completed");
       closeViewDialog();
      
@@ -70,10 +73,11 @@ public class CostingCalculateOverheadScenario extends CalculationHelper {
       doClosePageOnLowerBar("Calculation Status");
       waitForAjaxExtJs();
       Thread.sleep(500);
-      doClick(driver.findElement(By.xpath("//button/span[text()='Save & Close']")));
+      doClick(driver.findElement(By.xpath("//div[contains(@id,'overheadmodelscenarioform')]//following::span[contains(@id,'button')][text()='Cancel & Close']")));
+//      doClick(driver.findElement(By.xpath("//button/span[text()='Save & Close']")));
 //      doClosePageOnLowerBar("v102 REGRESSION...");
       doClosePageOnLowerBar("2005 Overhead...");
-      doClosePageOnLowerBar("Model Library");
+      doClosePageOnLowerBar("Model");
 
 
 

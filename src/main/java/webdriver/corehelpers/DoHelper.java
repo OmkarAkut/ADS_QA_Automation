@@ -107,7 +107,9 @@ public class DoHelper extends DriverHelper {
 		//    	waitForElementToBeVisible(driver.findElement(By.tagName("iframe")));
 		Thread.sleep(300);
 		List<WebElement> iframes=driver.findElements(By.tagName("iframe"));
-		if(iframes.size()>2) {
+		System.out.println(iframes.size());
+		//Shilpa updated index on 12.1.2023
+		if(iframes.size()>=2) {
 			driver.switchTo().frame(0);
 			Thread.sleep(2000);
 			waitUntilElementIsClickable(
@@ -244,7 +246,14 @@ public class DoHelper extends DriverHelper {
 //		driver.findElement(By.xpath("//span[contains(@id,'tab') and contains(text(),' Close "+pageName+"')]")).click();
 //		driver.findElement(By.xpath("//span[contains(text(),'"+pageName+"')]/parent::span/parent::span/following-sibling::span")).click();
 //		Omkar 28/11/2023 : Changes xpath
-		driver.findElement(By.xpath("//span[contains(@id,'tab') and contains(text(),'"+" "+pageName+"')]")).click();
+//		driver.findElement(By.xpath("//span[contains(@id,'tab') and contains(text(),'"+pageName+"')]")).click();
+//		Actions act=new Actions(driver);
+//		act.moveToElement(driver.findElement(By.xpath("//span[@class='x-tab-close-btn'][text()='"+pageName+"']"))).click().perform();
+//		driver.findElement(By.xpath("//span[@class='x-tab-close-btn'][text()='"+pageName+"']")).click();
+		//SHILPA update xpath for 11.2 on 12.01.2023
+		
+		driver.findElement(By.xpath("//span[contains(text(),'"+pageName+"')]//following::span[@class='x-tab-close-btn'][contains(text(),'"+pageName+"')]")).click();
+
 		waitForAjaxExtJs();
 	}
 
