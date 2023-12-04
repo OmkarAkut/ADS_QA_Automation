@@ -56,9 +56,10 @@ public class ActualCostingMethodPatientChgsDoesNotMatch extends CalculationHelpe
 			doClick(costing.getCostModelFilterButton());
 			doFilterCreate(filter);
 			tableDoubleClickCellFirstColumn(costModel);
-			doClickTreeData("CM Test");
-			waitForMainPageTitle("Cost Scnenarios");
-			doClickTreeData("Cost Scnenarios");
+//			doClickTreeData("CM Test");
+//			waitForMainPageTitle("Cost Scnenarios");
+//			doClickTreeData("Cost Scnenarios");
+			doClickTreeData("Assign Unit Costs");
 			waitForMainPageTitle("Cost Model Calculation Scenarios");
 			doClickTreeItemWithCheckbox("Cost Model Calculation Scenarios");
 			ExtentReport.logPass("PASS", "test01OpenCostCalculationScenario");
@@ -139,7 +140,8 @@ public class ActualCostingMethodPatientChgsDoesNotMatch extends CalculationHelpe
 	@AfterClass
 	public static void endtest() throws Exception {
 		doClosePageOnLowerBar("v1024 REGRESSION...");
-		doClosePageOnLowerBar("Model Library");
+//		doClosePageOnLowerBar("Model Library");
+		doClosePageOnLowerBar("Model");
 		ExtentReport.report.flush();
 
 	}

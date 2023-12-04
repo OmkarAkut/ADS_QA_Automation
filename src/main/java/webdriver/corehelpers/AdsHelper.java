@@ -350,8 +350,12 @@ public class AdsHelper extends GetHelper {
 	}
 
 	public void tableClickCellFirstColumn(String cellValue) {
+//		WebElement element = driver.findElement(By.xpath(
+//				"//td[contains(@class,'x-grid-cell x-grid-cell-gridcolumn')]/*[text()='" + cellValue + "']"))
+//				;
+		//Shilpa Update xpath for 11.2 on 12.04.2023
 		WebElement element = driver.findElement(By.xpath(
-				"//td[contains(@class,'x-grid-cell x-grid-cell-gridcolumn')]/*[text()='" + cellValue + "']"))
+				"//td[contains(@class,'x-grid-cell x-grid-td x-grid-cell-gridcolumn')]/*[text()='" + cellValue + "']"))
 				;
 		element.click();
 	}

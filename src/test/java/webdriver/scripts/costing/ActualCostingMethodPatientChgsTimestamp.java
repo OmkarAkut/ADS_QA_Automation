@@ -36,6 +36,7 @@ public class ActualCostingMethodPatientChgsTimestamp extends CalculationHelper {
 	static String[] filterCostModelScenarioC= { "Name", "Is", "Equal To", costModelCalcScenarioC };
 	static String[] filterCostModelScenarioD= { "Name", "Is", "Equal To", costModelCalcScenarioD};
 	static String[] filterCostModelScenarioE= { "Name", "Is", "Equal To", costModelCalcScenarioE};
+	static String[] filterCostModelScenarioEdit= { "Name", "Is", "Equal To", costModelScenarioUpdate};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
 		ExtentReport.reportCreate("ActualCostingMethodPatientChgsTimestamp", "webdriver.scripts.costing", "ActualCostingMethodPatientChgsTimestamp");
@@ -59,9 +60,11 @@ public class ActualCostingMethodPatientChgsTimestamp extends CalculationHelper {
 			doClick(costing.getCostModelFilterButton());
 			doFilterCreate(filter);
 			tableDoubleClickCellFirstColumn(costModel);
-			doClickTreeData("CM Test");
-			waitForMainPageTitle("Cost Scnenarios");
-			doClickTreeData("Cost Scnenarios");
+//			doClickTreeData("CM Test");
+//			waitForMainPageTitle("Cost Scnenarios");
+			// Shilpa added below lines for 11.2 on 12.4.2023
+			doClickTreeData("Assign Unit Costs");
+			doClickTreeItemWithCheckbox("Cost Model Calculation Scenarios");
 			waitForMainPageTitle("Cost Model Calculation Scenarios");
 			doClickTreeItemWithCheckbox("Cost Model Calculation Scenarios");
 			ExtentReport.logPass("PASS", "test01OpenCostCalculationScenario");
@@ -184,12 +187,21 @@ public class ActualCostingMethodPatientChgsTimestamp extends CalculationHelper {
 		}
 		finally {
 			doClosePageOnLowerBar("Calculation Status");
+			doClick("//span[text()='Cancel & Close']/../..");
+			doClick(costing.getCostModelCalcClearFilterButton());
+			waitForDisplayedSpinnerToEnd();
+			doClick(costing.getCostModelCalcFilterButton());
+			doFilterCreate(filterCostModelScenarioEdit);
+			tableClickCellFirstColumn(costModelScenarioUpdate);
+			doClick("(//h1//following::div[contains(@id,'costmodelscenariolist')]//following::div//following::div[contains(@id,'acommontbar')]//following::span[text()='Delete'])[1]");
+			doClick("(//span[text()='Delete'])[4]");
+			waitForDisplayedSpinnerToEnd();
 		}
 	}
 	@AfterClass
 	public static void endtest() throws Exception {
 		doClosePageOnLowerBar("v1024 REGRESSION...");
-
+		
 		doClosePageOnLowerBar("Model Library");
 		ExtentReport.report.flush();
 

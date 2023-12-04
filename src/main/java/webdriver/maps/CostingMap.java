@@ -350,7 +350,8 @@ public class CostingMap extends MapConfig {
 		return costModelScenarioCalculationButtonClearFilter;
 	}
 
-	@FindBy(xpath = "//em[contains(@id,'abutton')]/button/*[contains(text(),'Calculate')]")
+//	@FindBy(xpath = "//em[contains(@id,'abutton')]/button/*[contains(text(),'Calculate')]")
+	@FindBy(xpath = "(//h1//following::span[text()='Calculate']/../..)[1]")
 	private WebElement costModelScenarioCalculationButtonCalculate;
 
 	public WebElement getCostModelScenarioCalculationButtonCalculate() {
