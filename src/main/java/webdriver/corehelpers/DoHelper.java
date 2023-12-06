@@ -251,8 +251,9 @@ public class DoHelper extends DriverHelper {
 //		act.moveToElement(driver.findElement(By.xpath("//span[@class='x-tab-close-btn'][text()='"+pageName+"']"))).click().perform();
 //		driver.findElement(By.xpath("//span[@class='x-tab-close-btn'][text()='"+pageName+"']")).click();
 		//SHILPA update xpath for 11.2 on 12.01.2023
-		
-		driver.findElement(By.xpath("//span[contains(text(),'"+pageName+"')]//following::span[@class='x-tab-close-btn'][contains(text(),'"+pageName+"')]")).click();
+		driver.findElement(By.xpath("//span[contains(@id,'tab') and contains(text(),' Close "+pageName+"')]")).click();
+
+//		driver.findElement(By.xpath("//span[contains(text(),'"+pageName+"')]//following::span[@class='x-tab-close-btn'][contains(text(),'"+pageName+"')]")).click();
 
 		waitForAjaxExtJs();
 	}

@@ -170,9 +170,7 @@ public class ActualCostingMethodPatientChgsDateRange extends CalculationHelper {
 	@AfterClass
 	public static void endtest() throws Exception {
 		doClosePageOnLowerBar("v1024 REGRESSION...");
-//		doClosePageOnLowerBar("Model Library");
-		//Shilpa updated the script on 12.04.2023
-		doClosePageOnLowerBar("Model");
+		doClosePageOnLowerBar("Model Library");
 		ExtentReport.report.flush();
 
 	}

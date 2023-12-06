@@ -1040,7 +1040,7 @@ public class CostingMap extends MapConfig {
 		return getEncounterFileLocDropdown;
 	}
 
-	@FindBy(xpath = "//div[contains(@id,'toolbar')]//span[text()='Calculate']/parent::button")
+	@FindBy(xpath = "(//span[text()='Calculate']/./..)[2]")
 	private static WebElement getEncounterCalculateBtn;
 	public static WebElement getEncounterCalculateBtn() {
 		return getEncounterCalculateBtn;

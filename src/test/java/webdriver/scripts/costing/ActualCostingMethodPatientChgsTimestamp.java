@@ -201,8 +201,8 @@ public class ActualCostingMethodPatientChgsTimestamp extends CalculationHelper {
 	@AfterClass
 	public static void endtest() throws Exception {
 		doClosePageOnLowerBar("v1024 REGRESSION...");
-		
-		doClosePageOnLowerBar("Model Library");
+//		doClosePageOnLowerBar("Model Library");
+		doClosePageOnLowerBar("Model");
 		ExtentReport.report.flush();
 
 	}
