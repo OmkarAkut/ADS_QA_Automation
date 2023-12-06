@@ -65,9 +65,11 @@ public class CreateaCustomTaskListwithOverheadTaskListSpecificScreens extends Go
 			fail(e.getMessage());
 		}
 	}
-//	@Test
+	@Test
+	// Omkar : this TC will fail as scrolling wont work from 3rd assertion.
 	public void test02VerifyScreensAndDataLoaderTasks() throws Throwable {
 		try {
+			doClick(systemMap.getCustomTaskListClearFilterButton());
 			assertElementIsDisplayedWithXpath("//div[@id='costingScreens-body']//*[text()='Allocation Exceptions']");
 			assertElementIsDisplayedWithXpath("//div[@id='costingScreens-body']//*[text()='Allocation Statistic Assignments']");
 			assertElementIsDisplayedWithXpath("//div[@id='costingScreens-body']//*[text()='General Information - Overhead']");

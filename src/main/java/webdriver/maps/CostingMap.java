@@ -65,7 +65,9 @@ public class CostingMap extends MapConfig {
 		return rvuMaintenanceButtonClearRVUsAndSave;
 	}
 
-	@FindBy(xpath = "//button/span[text()='Maintain RVUs']")
+//	Omkar 6/12/2023 : Changes in xpath for 11.2
+//	@FindBy(xpath = "//button/span[text()='Maintain RVUs']")
+	@FindBy(xpath = "//span[text()='Maintain RVUs']")
 	private WebElement rvuMaintenanceButtonMaintainRVUs;
 
 	public WebElement getRvuMaintenanceButtonMaintainRVUs() {
@@ -107,21 +109,27 @@ public class CostingMap extends MapConfig {
 		return getRvuMaintenanceMaintainRvuPageButtonImport;
 	}
 
-	@FindBy(xpath = "//div[@class='x-btn btnCls x-box-item x-toolbar-item x-btn-default-toolbar-small x-noicon x-btn-noicon x-btn-default-toolbar-small-noicon']//button/span[text()='Import']")
+//	Omkar 6/12/2023 : Changes in xpath for 11.2
+//	@FindBy(xpath = "//div[@class='x-btn btnCls x-box-item x-toolbar-item x-btn-default-toolbar-small x-noicon x-btn-noicon x-btn-default-toolbar-small-noicon']//button/span[text()='Import']")
+	@FindBy(xpath = "//span[contains(@id,'abutton')][text()='Import']")
 	private WebElement rvuMaintenanceButtonImport;
 
 	public WebElement getRvuMaintenanceButtonImport() {
 		return rvuMaintenanceButtonImport;
 	}
 
-	@FindBy(xpath = "//*[text()='Export to Spreadsheet']/ancestor::div[contains(@class, 'x-btn')]/following-sibling::div/descendant::button/span[text()='Export']")
+//	Omkar 6/12/2023 : Changes in xpath for 11.2
+//	@FindBy(xpath = "//*[text()='Export to Spreadsheet']/ancestor::div[contains(@class, 'x-btn')]/following-sibling::div/descendant::button/span[text()='Export']")
+	@FindBy(xpath = "//*[contains(@id,'abutton')][text()='Export']")
 	private WebElement getRvuMaintenanceMaintainRvuPageButtonExport;
 
 	public WebElement getRvuMaintenanceMaintainRvuPageButtonExport() {
 		return getRvuMaintenanceMaintainRvuPageButtonExport;
 	}
 
-	@FindBy(xpath = "//div[@class='x-btn btnCls x-box-item x-toolbar-item x-btn-default-toolbar-small x-noicon x-btn-noicon x-btn-default-toolbar-small-noicon']//button/span[text()='Export']")
+//	Omkar 6/12/2023 : Changes in xpath for 11.2
+//	@FindBy(xpath = "//div[@class='x-btn btnCls x-box-item x-toolbar-item x-btn-default-toolbar-small x-noicon x-btn-noicon x-btn-default-toolbar-small-noicon']//button/span[text()='Export']")
+	@FindBy(xpath = "//span[contains(@id,'abutton')][text()='Export']")
 	private WebElement rvuMaintenanceButtonExport;
 
 	public WebElement getRvuMaintenanceButtonExport() {
@@ -1004,7 +1012,9 @@ public class CostingMap extends MapConfig {
 		return getCalculationModelSearch;
 	}
 
-	@FindBy(xpath = "//div[@id='modelFoldertree-body']//div[text()='Costing']/img[1]")
+//	Omkar 6/12/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//div[@id='modelFoldertree-body']//div[text()='Costing']/img[1]")
+	@FindBy(xpath ="//div[@id='modelFoldertree-body']//td[contains(@class,'x-grid-cell-treecolumn')]//span[text()='Costing']/../div[contains(@class,'x-tree-elbow')]")
 	private static WebElement getCostingTreeItem;
 	public static WebElement getCostingTreeItem() {
 		return getCostingTreeItem;

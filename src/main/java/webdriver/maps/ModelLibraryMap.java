@@ -66,23 +66,33 @@ public class ModelLibraryMap extends MapConfig {
     private WebElement modelLibraryTreeColumnCosting;
     public WebElement getModelLibraryTreeColumnCosting() {return modelLibraryTreeColumnCosting;}
 
-    @FindBy(xpath = "//*[contains(@class,'grid-cell-treecolumn')]/*[contains(text(),'Costing')]/img")
+//    Omkar 6/12/2023 : Changes in xpath for 11.2
+//    @FindBy(xpath = "//*[contains(@class,'grid-cell-treecolumn')]/*[contains(text(),'Costing')]/img")
+    @FindBy(xpath = "//div[@id='modelFoldertree-body']//td[contains(@class,'x-grid-cell-treecolumn')]//span[text()='Costing']/../div[contains(@class,'x-tree-elbow')]")
     private WebElement modelLibraryTreeColumnArrowCosting;
     public WebElement getModelLibraryTreeColumnArrowCosting() {return modelLibraryTreeColumnArrowCosting;}
 
-    @FindBy(xpath = "//*[contains(@class,'grid-cell-treecolumn')]/*[contains(text(),'Contracting')]")
+//    Omkar 6/12/2023 : Changes in xpath for 11.2
+//    @FindBy(xpath = "//*[contains(@class,'grid-cell-treecolumn')]/*[contains(text(),'Contracting')]")
+    @FindBy(xpath ="//*[contains(@class,'grid-cell-treecolumn')]//span[contains(text(),'Contracting')]")
     private WebElement modelLibraryTreeColumnContracting;
     public WebElement getModelLibraryTreeColumnContracting() {return modelLibraryTreeColumnContracting;}
 
-    @FindBy(xpath = "//*[contains(@class,'grid-cell-treecolumn')]/*[contains(text(),'Contracting')]/img")
+//    Omkar 6/12/2023 : Changes in xpath for 11.2
+//    @FindBy(xpath = "//*[contains(@class,'grid-cell-treecolumn')]/*[contains(text(),'Contracting')]/img")
+    @FindBy(xpath = "//div[@id='modelFoldertree-body']//td[contains(@class,'x-grid-cell-treecolumn')]//span[text()='Contracting']/../div[contains(@class,'x-tree-elbow')]")
     private WebElement modelLibraryTreeColumnArrowContracting;
     public WebElement getModelLibraryTreeColumnArrowContracting() {return modelLibraryTreeColumnArrowContracting;}
 
-    @FindBy(xpath = "//*[contains(@class,'grid-cell-treecolumn')]/*[contains(text(),'Episodes')]")
+//    Omkar 6/12/2023 : Changes in xpath for 11.2
+//    @FindBy(xpath = "//*[contains(@class,'grid-cell-treecolumn')]/*[contains(text(),'Episodes')]")
+    @FindBy(xpath ="//*[contains(@class,'grid-cell-treecolumn')]//span[contains(text(),'Episodes')]")
     private WebElement modelLibraryTreeColumnEpisodes;
     public WebElement getModelLibraryTreeColumnEpisodes() {return modelLibraryTreeColumnEpisodes;}
 
-    @FindBy(xpath = "//*[contains(@class,'grid-cell-treecolumn')]/*[contains(text(),'Episodes')]/img")
+//    Omkar 6/12/2023 : Changes in xpath for 11.2
+//    @FindBy(xpath = "//*[contains(@class,'grid-cell-treecolumn')]/*[contains(text(),'Episodes')]/img")
+    @FindBy(xpath = "//div[@id='modelFoldertree-body']//td[contains(@class,'x-grid-cell-treecolumn')]//span[text()='Episodes']/../div[contains(@class,'x-tree-elbow')]")
     private WebElement modelLibraryTreeColumnArrowEpisodes;
     public WebElement getModelLibraryTreeColumnArrowEpisodes() {return modelLibraryTreeColumnArrowEpisodes;}
 

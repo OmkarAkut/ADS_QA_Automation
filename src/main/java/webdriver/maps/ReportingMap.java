@@ -225,6 +225,7 @@ public class ReportingMap extends MapConfig {
 //    Omkar 31/3/2023 : Changes in xpath for ADS 11.2
 //    @FindBy(xpath = "//*[contains(@class,'areaTitle')]/*[text()='Report Menu Items']")
     @FindBy(xpath = "//*[contains(@class,'x-btn-button x-btn-button-default-toolbar-small x-btn-text    x-btn-button-center ')]/*[text()='Report Menu Items']")
+    
     private WebElement reportingTabReportMenuMaintenancePageName;
     public WebElement getReportingTabReportMenuMaintenancePageName() {return reportingTabReportMenuMaintenancePageName;}
 
@@ -232,7 +233,9 @@ public class ReportingMap extends MapConfig {
     private WebElement reportingTabReportMenuMaintenancePageHelpLink;
     public WebElement getReportingTabReportMenuMaintenancePageHelpLink() {return reportingTabReportMenuMaintenancePageHelpLink;}
 
-    @FindBy(xpath = "//div[contains(@id,'reporting_reportmenumaintenance')]/descendant::div[contains(@id,'rownumberer')]/div")
+//    Omkar 6/12/2023 : Changes in xpath for 11.2
+//    @FindBy(xpath = "//div[contains(@id,'reporting_reportmenumaintenance')]/descendant::div[contains(@id,'rownumberer')]/div")
+    @FindBy(xpath = "//div[contains(@id,'reporting_reportmenumaintenance')]/descendant::div[contains(@class,'x-column-header x-row-numberer x-column-header-align-right')]")
     private WebElement reportingTabReportMenuMaintenancePageTableCornerCell;
     public WebElement getReportingTabReportMenuMaintenancePageTableCornerCell() {return reportingTabReportMenuMaintenancePageTableCornerCell;}
 
