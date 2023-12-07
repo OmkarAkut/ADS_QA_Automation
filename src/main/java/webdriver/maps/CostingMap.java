@@ -68,9 +68,17 @@ public class CostingMap extends MapConfig {
 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 //	Omkar 6/12/2023 : Changes in xpath for 11.2
 //	@FindBy(xpath = "//button/span[text()='Maintain RVUs']")
 //	@FindBy(xpath = "//span[text()='Maintain RVUs']")
+=======
+//	@FindBy(xpath = "//button/span[text()='Maintain RVUs']")
+	//Shilpa update xpath for 11.2 on 12.06.2023
+	@FindBy(xpath = "//span[text()='Maintain RVUs']/../../..")
+>>>>>>> Stashed changes
+||||||| Stash base
+	@FindBy(xpath = "//button/span[text()='Maintain RVUs']")
 =======
 //	@FindBy(xpath = "//button/span[text()='Maintain RVUs']")
 	//Shilpa update xpath for 11.2 on 12.06.2023
