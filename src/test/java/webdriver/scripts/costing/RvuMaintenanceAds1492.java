@@ -105,8 +105,13 @@ public class RvuMaintenanceAds1492 extends GoHelper {
 					"2003"
 					);
 			assertThatCheckBoxIsNotChecked("Columns to Display", "All");
+//			assertElementIsEnabled(
+//					driver.findElement(By.xpath("//label[text()='Columns to Display']/ancestor::table[contains(@class, 'x-field')]/following-sibling::div/descendant::button/span[text()='Select']")),
+//					printout
+//					);
+			//Shilpa update xpath for 11.2 on 12.06.2023
 			assertElementIsEnabled(
-					driver.findElement(By.xpath("//label[text()='Columns to Display']/ancestor::table[contains(@class, 'x-field')]/following-sibling::div/descendant::button/span[text()='Select']")),
+					driver.findElement(By.xpath("//span[text()='Columns to Display']//following::span[text()='Select']")),
 					printout
 					);
 			ExtentReport.logPass("PASS", "test02SetPageParametersAndAssertColumnsToDisplayIsUncheckedAndSelectButtonEnabled");
@@ -119,11 +124,19 @@ public class RvuMaintenanceAds1492 extends GoHelper {
 	@Test
 	public void test03ColumnsToDisplaySectionCheckAllCheckboxAndAssertSelectButtonIsDisabled() throws Throwable {
 		try {
-			driver.findElement(By.xpath("//label[text()='Columns to Display']/../following-sibling::td/label[text()='All']/preceding-sibling::input")).click();
+//			driver.findElement(By.xpath("//label[text()='Columns to Display']/../following-sibling::td/label[text()='All']/preceding-sibling::input")).click();
+			//Shilpa update xpath for 11.2 on 12.06.2023
+			driver.findElement(By.xpath("//span[text()='Columns to Display']//following::input[@type='checkbox']")).click();
 			waitForAjaxExtJs();
 			assertThatCheckBoxIsChecked("Columns to Display", "All");
-			assertElementIsDisabled(
-					driver.findElement(By.xpath("//label[text()='Columns to Display']/ancestor::table[contains(@class, 'x-field')]/following-sibling::div/descendant::button/span[text()='Select']")),
+//			assertElementIsDisabled(
+//					driver.findElement(By.xpath("//label[text()='Columns to Display']/ancestor::table[contains(@class, 'x-field')]/following-sibling::div/descendant::button/span[text()='Select']")),
+//					printout
+//					);
+			//Shilpa update xpath for 11.2 on 12.06.2023
+			
+			assertTheElementIsDisabled(
+					driver.findElement(By.xpath("//span[text()='Columns to Display']//following::span[text()='Select']/../../..")),
 					printout
 					);
 			ExtentReport.logPass("PASS", "test03ColumnsToDisplaySectionCheckAllCheckboxAndAssertSelectButtonIsDisabled");

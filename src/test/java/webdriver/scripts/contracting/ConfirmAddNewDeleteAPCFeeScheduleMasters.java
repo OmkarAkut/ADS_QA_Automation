@@ -145,7 +145,8 @@ public class ConfirmAddNewDeleteAPCFeeScheduleMasters extends CalculationHelper 
 			waitForElementToBeVisible(ContractingMap.getWarningPopUpDeleteButton());
 			doClick(ContractingMap.getWarningPopUpDeleteButton());
 			assertTextIsDisplayed("There is no data available to display.");
-			doClosePageOnLowerBar("ADS-1320 Contract...");
+//			doClosePageOnLowerBar("ADS-1320 Contract...");
+			doClick("//span[@class='x-tab-close-btn'][contains(text(),'removable')]");
 			ExtentReport.logPass("PASS", "test06CreateNewandDeleteAPCCode");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test06CreateNewandDeleteAPCCode", driver, e);

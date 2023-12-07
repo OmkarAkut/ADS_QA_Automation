@@ -242,10 +242,17 @@ public class AssertHelper extends AdsHelper {
 		String checkboxClassString = null;
 		try {
 			waitForAjaxExtJs();
+			/*
 			checkboxClassString = driver
 					.findElement(
 							By.xpath("//label[text()='" + sectionLabel + "']/../following-sibling::td/label[text()='"
 									+ checkboxLabel + "']/ancestor::table[contains(@id,'checkboxfield')]"))
+					.getAttribute("class");
+					*/
+			checkboxClassString = driver
+					.findElement(
+							By.xpath("//span[text()='" + sectionLabel + "']//following::label[text()='"
+									+ checkboxLabel + "']/../../.."))
 					.getAttribute("class");
 		} catch (Throwable e) {
 			fail("Checkbox not found");
@@ -467,6 +474,8 @@ public class AssertHelper extends AdsHelper {
 //			disabledText = element.findElement(By.xpath("./ancestor::div[contains(@class,'x-btn')]"))
 //					.getAttribute("class");
 			//shilpa 10/11/2023 : xpath change for 11.2
+//			disabledText = element.findElement(By.xpath("./ancestor::div[contains(@class,'x-btn')]"))
+//					.getAttribute("class");
 			disabledText = element.findElement(By.xpath("./ancestor::div[contains(@class,'x-btn')]"))
 					.getAttribute("class");
 			// disabledText =
@@ -488,6 +497,25 @@ public class AssertHelper extends AdsHelper {
 		// throw new Exception();
 		// }
 	}
+	public void assertTheElementIsDisabled(WebElement element, boolean printout) throws Exception {
+		String disabledText = null;
+		try {
+			waitForAjaxExtJs();
+			disabledText = element.getAttribute("class");
+			
+		} catch (Throwable e) {
+			System.out.println("Element Not Found");
+			fail("element not found");
+		}
+		boolean isDisabled = disabledText.contains("disabled");
+		if (printout) {
+			System.out.println("Element class text: " + disabledText);
+			System.out.println("IsDisabled: " + isDisabled);
+		}
+		assertTrue(disabledText, isDisabled);
+		
+	}
+
 
 	public static void assertElementIsEnabled(WebElement element, boolean printout) throws Exception {
 		String classText = null;

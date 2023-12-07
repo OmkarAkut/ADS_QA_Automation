@@ -64,7 +64,9 @@ public class VerifyFilterAscSchemes extends CalculationHelper{
 //		   assertElementIsDisabled(ContractingMap.getASCFilterAddButton(),printout);
 		    doFilterCreate(filter);
 		    assertElementIsDisplayedWithXpath("//div[text()='"+ascScheme+"']");
-		    doClosePageOnLowerBar("ADS-1320 Contract...");
+//		    doClosePageOnLowerBar("ADS-1320 Contract...");
+			doClick("//span[@class='x-tab-close-btn'][contains(text(),'removable')]");
+
 //		    doClosePageOnLowerBar("Model Library");
 			ExtentReport.logPass("PASS", "test01VerifyFilterByAscSchemes");
 		} catch (Exception | AssertionError e) {

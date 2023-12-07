@@ -63,11 +63,18 @@ public class CostingMap extends MapConfig {
 
 	public WebElement getRvuMaintenanceButtonClearRvusAndSave() {
 		return rvuMaintenanceButtonClearRVUsAndSave;
+		
 	}
 
+<<<<<<< Updated upstream
 //	Omkar 6/12/2023 : Changes in xpath for 11.2
 //	@FindBy(xpath = "//button/span[text()='Maintain RVUs']")
 	@FindBy(xpath = "//span[text()='Maintain RVUs']")
+=======
+//	@FindBy(xpath = "//button/span[text()='Maintain RVUs']")
+	//Shilpa update xpath for 11.2 on 12.06.2023
+	@FindBy(xpath = "//span[text()='Maintain RVUs']/../../..")
+>>>>>>> Stashed changes
 	private WebElement rvuMaintenanceButtonMaintainRVUs;
 
 	public WebElement getRvuMaintenanceButtonMaintainRVUs() {
@@ -136,43 +143,49 @@ public class CostingMap extends MapConfig {
 		return rvuMaintenanceButtonExport;
 	}
 
-	@FindBy(xpath = "//label[text()='Entity']/../following-sibling::td/descendant::div[contains(@class,'trigger')]")
+//	@FindBy(xpath = "//label[text()='Entity']/../following-sibling::td/descendant::div[contains(@class,'trigger')]")
+	@FindBy(xpath = "//span[text()='Entity']/../../following-sibling::div[contains(@id,'dynamiccombo')]")
 	private WebElement getRvuMaintenanceDropdownEntity;
 
 	public WebElement getRvuMaintenanceDropdownEntity() {
 		return getRvuMaintenanceDropdownEntity;
 	}
 
-	@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='150 Marina Medical Center']/..")
+//	@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='150 Marina Medical Center']/..")
+	@FindBy(xpath = "//div[contains(@class,'boundlist')]/ul/li[text()='150 Marina Medical Center']/..")
 	private WebElement getRvuMaintenanceDropdownEntityOptions;
 
 	public WebElement getRvuMaintenanceDropdownEntityOptions() {
 		return getRvuMaintenanceDropdownEntityOptions;
 	}
 
-	@FindBy(xpath = "//label[text()='Effective Month Start ']/../descendant::div[contains(@class,'trigger')]")
+//	@FindBy(xpath = "//label[text()='Effective Month Start ']/../descendant::div[contains(@class,'trigger')]")
+	@FindBy(xpath = "(//label[text()='Effective Month Start ']/../../..//div//following::div[contains(@class,'customComboTriggerCls ')])[1]")
 	private WebElement getRvuMaintenanceDropdownEffectiveMonthStartMonthDropdown;
 
 	public WebElement getRvuMaintenanceDropdownEffectiveMonthStartMonthDropdown() {
 		return getRvuMaintenanceDropdownEffectiveMonthStartMonthDropdown;
 	}
 
-	@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='Jan']/..")
+//	@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='Jan']/..")
+	@FindBy(xpath = "//div[contains(@class,'boundlist')]/ul/li[text()='Jan']/..")
 	private WebElement getRvuMaintenanceDropdownEffectiveMonthStartMonthOptions;
 
 	public WebElement getRvuMaintenanceDropdownEffectiveMonthStartMonthOptions() {
 		return getRvuMaintenanceDropdownEffectiveMonthStartMonthOptions;
 	}
 
-	@FindBy(xpath = "//label[text()='Effective Month Start ']/../descendant::div[contains(@class,'trigger')][2]")
+//	@FindBy(xpath = "//label[text()='Effective Month Start ']/../descendant::div[contains(@class,'trigger')][2]")
+	@FindBy(xpath = "(//label[text()='Effective Month Start ']/../../..//div//following::div[contains(@class,'customComboTriggerCls ')])[2]")
 	private WebElement getRvuMaintenanceDropdownEffectiveMonthStartYearDropdown;
 
 	public WebElement getRvuMaintenanceDropdownEffectiveMonthStartYearDropdown() {
 		return getRvuMaintenanceDropdownEffectiveMonthStartYearDropdown;
 	}
 
-	@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='2011']/..")
+//	@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='2011']/..")
 	//	@FindBy(xpath = "//*[@name=\"selectedYear\"]")
+	@FindBy(xpath = "//div[contains(@class,'boundlist')]/ul/li[text()='2011']/..")
 	private WebElement getRvuMaintenanceDropdownEffectiveMonthStartYearOptions;
 
 	public WebElement getRvuMaintenanceDropdownEffectiveMonthStartYearOptions() {
