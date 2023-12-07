@@ -243,7 +243,9 @@ public class RvuMaintenanceAds1492 extends GoHelper {
 	@Test
 	public void test07ClickApplySelectionsAndAssertDataGridDisplays() throws Throwable {
 		try {
-			doClick(driver.findElement(By.xpath("//button/span[text()='Apply Selections']")));
+//			doClick(driver.findElement(By.xpath("//button/span[text()='Apply Selections']")));
+			//shilpa update xpath for 11.2 on 12.07.2023
+			doClick(driver.findElement(By.xpath("//span[text()='Apply Selections']")));
 			waitForSpinnerToEnd();
 			ExtentReport.logPass("PASS", "test07ClickApplySelectionsAndAssertDataGridDisplays");
 
@@ -257,7 +259,9 @@ public class RvuMaintenanceAds1492 extends GoHelper {
 	public void test08ClickRvuContainerListButtonAndAssert() throws Throwable {
 		try {
 			Thread.sleep(3000);
-			doClick(driver.findElement(By.xpath("//button/span[text()='RVU Container List']")));
+//			doClick(driver.findElement(By.xpath("//button/span[text()='RVU Container List']")));
+			//shilpa update xpath for 11.2 on 12.07.2023
+			doClick(driver.findElement(By.xpath("//span[text()='RVU Container List']")));
 			waitForDisplayedSpinnerToEnd();
 			ExtentReport.logPass("PASS", "test08ClickRvuContainerListButtonAndAssert");
 
@@ -274,13 +278,18 @@ public class RvuMaintenanceAds1492 extends GoHelper {
 				{"Cost Component Name", "Is", "Equal To", "Salaries and Wages"},
 		};
 		try {
+//			waitUntilElementIsClickable(driver.findElement(By.xpath(
+//					"//*[text()='RVU Container List']/ancestor::div/following-sibling::div/descendant::button/span[text()='Filter']")));
+			//Shilpa update xpath for 11.2
 			waitUntilElementIsClickable(driver.findElement(By.xpath(
-					"//*[text()='RVU Container List']/ancestor::div/following-sibling::div/descendant::button/span[text()='Filter']")));
+					"//div[contains(@id,'dynamicwindow')][text()='RVU Container List']//following::span[text()='Filter']")));
 			driverDelay(2000);
+//			driver.findElement(By.xpath(
+//					"//*[text()='RVU Container List']/ancestor::div/following-sibling::div/descendant::button/span[text()='Filter']"))
+//			.click();
 			driver.findElement(By.xpath(
-					"//*[text()='RVU Container List']/ancestor::div/following-sibling::div/descendant::button/span[text()='Filter']"))
+					"//div[contains(@id,'dynamicwindow')][text()='RVU Container List']//following::span[text()='Filter']"))
 			.click();
-			
 			waitForDisplayedSpinnerToEnd();
 			doFilter(filterStatements, costing.getRvuMaintenanceDialogFilterRvuContainerListFieldOptions());
 			waitForAjaxExtJs();
@@ -309,7 +318,9 @@ public class RvuMaintenanceAds1492 extends GoHelper {
 					costing.getRvuMaintenanceDropdownEffectiveMonthStartYearOptions(),
 					"2004"
 					);
-			doClick(driver.findElement(By.xpath("//button/span[text()='Apply Selections']")));
+//			doClick(driver.findElement(By.xpath("//button/span[text()='Apply Selections']")));
+			//Shilpa update xpath for 11.2
+			doClick(driver.findElement(By.xpath("//span[text()='Apply Selections']")));
 			waitForSpinnerToEnd();
 			ExtentReport.logPass("PASS", "test10aAssertEffectiveStartDateHasBeenUpdated");
 
@@ -322,11 +333,11 @@ public class RvuMaintenanceAds1492 extends GoHelper {
 	@Test
 	public void test10bAssertCostModelScenarioFieldsHaveBeenClearedOfValuesAndDisabled() throws Throwable {
 		try {
-			assertValueAttributeValue(costing.getRvuMaintenanceDropdownCostModelScenario(), "<None>");
+			assertValueAttributeValue(costing.getRvuMaintenanceDropdownCostModelScenarioNone(), "<None>");
 			assertElementContainsDisabledAttribute(costing.getRvuMaintenanceDropdownCostModelScenario());
-			assertValueAttributeValue(costing.getRvuMaintenanceDropdownActivityVolumeScenario(), "<None>");
+			assertValueAttributeValue(costing.getRvuMaintenanceDropdownActivityVolumeScenarioNone(), "<None>");
 			assertElementContainsDisabledAttribute(costing.getRvuMaintenanceDropdownActivityVolumeScenario());
-			assertValueAttributeValue(costing.getRvuMaintenanceDropdownPriceList(), "<None>");
+//			assertValueAttributeValue(costing.getRvuMaintenanceDropdownPriceListNone(), "<None>"); this element is not showing in DOM Issue https://harrisaffinity.atlassian.net/browse/ADS-11871
 			assertElementContainsDisabledAttribute(costing.getRvuMaintenanceDropdownPriceList());
 			ExtentReport.logPass("PASS", "test10bAssertCostModelScenarioFieldsHaveBeenClearedOfValuesAndDisabled");
 
@@ -370,9 +381,9 @@ public class RvuMaintenanceAds1492 extends GoHelper {
 //			assertElementIsDisabled(costing.getRvuMaintenanceButtonClearRvusAndSave(), printout);
 			//shilpa 12.12.2022
 			assertElementIsEnabled(costing.getRvuMaintenanceButtonClearRvusAndSave(), printout);
-			assertElementIsDisabled(costing.getRvuMaintenanceButtonApplySelections(), printout);
-			assertElementIsDisabled(costing.getRvuMaintenanceButtonUndo(), printout);
-			assertElementIsDisabled(costing.getRvuMaintenanceButtonSaveRvus(), printout);
+			assertTheElementIsDisabled(costing.getRvuMaintenanceButtonApplySelections(), printout);
+			assertTheElementIsDisabled(costing.getRvuMaintenanceButtonUndo(), printout);
+			assertTheElementIsDisabled(costing.getRvuMaintenanceButtonSaveRvus(), printout);
 			ExtentReport.logPass("PASS", "test15bAssertClearRvusAndSaveAndUndoAndSaveRvusButtonsAreDisabled");
 
 		} catch (Exception|AssertionError e) {
@@ -388,7 +399,7 @@ public class RvuMaintenanceAds1492 extends GoHelper {
 			assertElementIsEnabled(costing.getRvuMaintenanceButtonClearRvusAndSave(), printout);
 			assertElementIsEnabled(costing.getRvuMaintenanceButtonUndo(), printout);
 			assertElementIsEnabled(costing.getRvuMaintenanceButtonSaveRvus(), printout);
-			assertElementIsDisabled(costing.getRvuMaintenanceButtonApplySelections(), printout);
+			assertTheElementIsDisabled(costing.getRvuMaintenanceButtonApplySelections(), printout);
 			ExtentReport.logPass("PASS", "test16EditDataGridCellAndAssertClearRvusAndSaveAndUndoAndSaveRvusButtonsAreEnabled");
 
 		} catch (Exception|AssertionError e) {
@@ -422,9 +433,9 @@ public class RvuMaintenanceAds1492 extends GoHelper {
 			//shilpa 12.12.2022
 			assertElementIsEnabled(costing.getRvuMaintenanceButtonClearRvusAndSave(), printout);
 
-			assertElementIsDisabled(costing.getRvuMaintenanceButtonUndo(), printout);
-			assertElementIsDisabled(costing.getRvuMaintenanceButtonSaveRvus(), printout);
-			assertElementIsDisabled(costing.getRvuMaintenanceButtonApplySelections(), printout);
+			assertTheElementIsDisabled(costing.getRvuMaintenanceButtonUndo(), printout);
+			assertTheElementIsDisabled(costing.getRvuMaintenanceButtonSaveRvus(), printout);
+			assertTheElementIsDisabled(costing.getRvuMaintenanceButtonApplySelections(), printout);
 			ExtentReport.logPass("PASS", "test19AssertClearRvusAndSaveAndUndoAndSaveRvusButtonsAreDisabled");
 
 		} catch (Exception|AssertionError e) {

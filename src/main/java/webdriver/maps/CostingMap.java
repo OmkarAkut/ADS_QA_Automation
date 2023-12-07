@@ -30,35 +30,45 @@ public class CostingMap extends MapConfig {
 		return rvuMaintenancePageHelpLink;
 	}
 
-	@FindBy(xpath = "//button/span[text()='RVU Container List']")
+//	@FindBy(xpath = "//button/span[text()='RVU Container List']")
+	//Shilpa update xpath for 11.2 on 12.07.2023
+	@FindBy(xpath = "//span[text()='RVU Container List']")
 	private WebElement rvuMaintenanceButtonRvuContainerList;
 
 	public WebElement getRvuMaintenanceButtonRvuContainerList() {
 		return rvuMaintenanceButtonRvuContainerList;
 	}
 
-	@FindBy(xpath = "//button/span[text()='Save RVUs']")
+//	@FindBy(xpath = "//button/span[text()='Save RVUs']")
+	//Shilpa update xpath for 11.2 on 12.07.2023
+	@FindBy(xpath = "//span[text()='Save RVUs']/../../..")
 	private WebElement rvuMaintenanceButtonSaveRvus;
 
 	public WebElement getRvuMaintenanceButtonSaveRvus() {
 		return rvuMaintenanceButtonSaveRvus;
 	}
 
-	@FindBy(xpath = "//button/span[text()='Undo']")
+//	@FindBy(xpath = "//button/span[text()='Undo']")
+	//Shilpa update xpath for 11.2 on 12.07.2023
+	@FindBy(xpath = "//span[text()='Undo']/../../..")
 	private WebElement rvuMaintenanceButtonUndo;
 
 	public WebElement getRvuMaintenanceButtonUndo() {
 		return rvuMaintenanceButtonUndo;
 	}
 
-	@FindBy(xpath = "//button/span[text()='Apply Selections']")
+//	@FindBy(xpath = "//button/span[text()='Apply Selections']")
+	//Shilpa update xpath for 11.2 on 12.07.2023
+	@FindBy(xpath = "//span[text()='Apply Selections']/../../..")
 	private WebElement rvuMaintenanceButtonApplySelections;
 
 	public WebElement getRvuMaintenanceButtonApplySelections() {
 		return rvuMaintenanceButtonApplySelections;
 	}
 
-	@FindBy(xpath = "//button/span[text()='Clear RVUs & Save']")
+//	@FindBy(xpath = "//button/span[text()='Clear RVUs & Save']")
+	//Shilpa update xpath for 11.2 on 12.07.2023
+	@FindBy(xpath = "//span[text()='Clear RVUs & Save']")
 	private WebElement rvuMaintenanceButtonClearRVUsAndSave;
 
 	public WebElement getRvuMaintenanceButtonClearRvusAndSave() {
@@ -81,14 +91,18 @@ public class CostingMap extends MapConfig {
 		return rvuMaintenanceButtonMaintainRVUs;
 	}
 
-	@FindBy(xpath = "//button/span[text()='Copy RVUs']")
+//	@FindBy(xpath = "//button/span[text()='Copy RVUs']")
+	//Shilpa update xpath for 11.2
+	@FindBy(xpath = "//span[text()='Copy RVUs']")
 	private WebElement rvuMaintenanceButtonCopyRVUs;
 
 	public WebElement getRvuMaintenanceButtonCopyRvus() {
 		return rvuMaintenanceButtonCopyRVUs;
 	}
 
-	@FindBy(xpath = "//button/span[text()='Export to Spreadsheet']")
+//	@FindBy(xpath = "//button/span[text()='Export to Spreadsheet']")
+	//Shilpa update xpath for 11.2
+	@FindBy(xpath = "//span[text()='Export to Spreadsheet']")
 	private WebElement rvuMaintenanceButtonExportToSpreadsheet;
 
 	public WebElement getRvuMaintenanceButtonExportToSpreadsheet() {
@@ -192,84 +206,129 @@ public class CostingMap extends MapConfig {
 		return getRvuMaintenanceDropdownEffectiveMonthStartYearOptions;
 	}
 
-	@FindBy(xpath = "//*[@name='costModelScenarioId']")
+//	@FindBy(xpath = "//*[@name='costModelScenarioId']")
+	//Shilpa update xpath for 11.2 on 12.07.2023
+	@FindBy(xpath = "//*[@name='costModelScenarioId']/parent::div/parent::div/../..")
 	private WebElement getRvuMaintenanceDropdownCostModelScenario;
 
 	public WebElement getRvuMaintenanceDropdownCostModelScenario() {
 		return getRvuMaintenanceDropdownCostModelScenario;
 	}
+	@FindBy(xpath = "//input[@name='costModelScenarioId']")
+	private WebElement getRvuMaintenanceDropdownCostModelScenarioNone;
 
-	@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='ADS-302 LG By Month']/..")
+	public WebElement getRvuMaintenanceDropdownCostModelScenarioNone() {
+		return getRvuMaintenanceDropdownCostModelScenarioNone;
+	}
+
+//	@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='ADS-302 LG By Month']/..")
+	//Shilpa update xpath for 11.2 on 12.07.2023
+	@FindBy(xpath = "//div[contains(@class,'boundlist')]/ul/li[text()='ADS-302 LG By Month']/..")
 	private WebElement getRvuMaintenanceDropdownCostModelScenarioOptions;
 
 	public WebElement getRvuMaintenanceDropdownCostModelScenarioOptions() {
 		return getRvuMaintenanceDropdownCostModelScenarioOptions;
 	}
 
-	@FindBy(xpath = "//*[@name='activityVolumeScenarioId']")
+//	@FindBy(xpath = "//*[@name='activityVolumeScenarioId']")
+	//Shilpa update xpath for 11.2 on 12.07.2023
+	@FindBy(xpath = "//*[@name='activityVolumeScenarioId']/parent::div/parent::div/../..")
 	private WebElement getRvuMaintenanceDropdownActivityVolumeScenario;
 
 	public WebElement getRvuMaintenanceDropdownActivityVolumeScenario() {
 		return getRvuMaintenanceDropdownActivityVolumeScenario;
 	}
+	@FindBy(xpath = "//input[@name='activityVolumeScenarioId']")
+	private WebElement getRvuMaintenanceDropdownActivityVolumeScenarioNone;
 
-	@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='00FZTEST 00 fz test 1/15/2019']/..")
+	public WebElement getRvuMaintenanceDropdownActivityVolumeScenarioNone() {
+		return getRvuMaintenanceDropdownActivityVolumeScenarioNone;
+	}
+	
+
+//	@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='00FZTEST 00 fz test 1/15/2019']/..")
+	@FindBy(xpath = "//div[contains(@class,'boundlist')]/ul/li[text()='00FZTEST 00 fz test 1/15/2019']/..")
+
+	//Shilpa update xpath for 11.2 on 12.07.2023
 	private WebElement getRvuMaintenanceDropdownActivityVolumeScenarioOptions;
 
 	public WebElement getRvuMaintenanceDropdownActivityVolumeScenarioOptions() {
 		return getRvuMaintenanceDropdownActivityVolumeScenarioOptions;
 	}
 
-	@FindBy(xpath = "//*[@name='priceListId']")
+//	@FindBy(xpath = "//*[@name='priceListId']")
+	//Shilpa update xpath for 11.2 on 12.07.2023
+	@FindBy(xpath = "//*[@name='priceListId']/parent::div/parent::div/../..")
+
 	private WebElement getRvuMaintenanceDropdownPriceList;
 
 	public WebElement getRvuMaintenanceDropdownPriceList() {
 		return getRvuMaintenanceDropdownPriceList;
 	}
+	@FindBy(xpath = "//input[@name='priceListId']")
 
-	@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='0TB  Test']/..")
+	private WebElement getRvuMaintenanceDropdownPriceListNone;
+
+	public WebElement getRvuMaintenanceDropdownPriceListNone() {
+		return getRvuMaintenanceDropdownPriceListNone;
+	}
+
+//	@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='0TB  Test']/..")
+	@FindBy(xpath = "//div[contains(@class,'boundlist')]/ul/li[text()='0TB  Test']/..")
+
 	private WebElement getRvuMaintenanceDropdownPriceListOptions;
 
 	public WebElement getRvuMaintenanceDropdownPriceListOptions() {
 		return getRvuMaintenanceDropdownPriceListOptions;
 	}
 
-	@FindBy(xpath = "//label[text()='Based On']/ancestor::table/following-sibling::table/descendant::div[contains(@class,'trigger')]")
+//	@FindBy(xpath = "//label[text()='Based On']/ancestor::table/following-sibling::table/descendant::div[contains(@class,'trigger')]")
+	//shilpa update xpath for 11.2 on 12.07.2023
+	@FindBy(xpath = "//*[@name='closestPriorMonth']/parent::div/parent::div")
 	private WebElement getRvuMaintenanceDropdownBasedOn;
 
 	public WebElement getRvuMaintenanceDropdownBasedOn() {
 		return getRvuMaintenanceDropdownBasedOn;
 	}
 
-	@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='Stored Month or Closest Prior']/..")
+//	@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='Stored Month or Closest Prior']/..")
+	//shilpa update xpath for 11.2 on 12.07.2023
+	@FindBy(xpath = "//div[contains(@class,'boundlist')]/ul/li[text()='Stored Month or Closest Prior']/..")
 	private WebElement getRvuMaintenanceDropdownBasedOnOptions;
 
 	public WebElement getRvuMaintenanceDropdownBasedOnOptions() {
 		return getRvuMaintenanceDropdownBasedOnOptions;
 	}
 
-	@FindBy(xpath = "//*[@name='volumesConfig']/parent::td/following-sibling::td/div")
+//	@FindBy(xpath = "//*[@name='volumesConfig']/parent::td/following-sibling::td/div")
+	//shilpa update xpath for 11.2 on 12.07.2023
+	@FindBy(xpath = "//*[@name='volumesConfig']/parent::div/parent::div")
 	private WebElement getRvuMaintenanceDropdownBasedOnVolumes;
 
 	public WebElement getRvuMaintenanceDropdownBasedOnVolumes() {
 		return getRvuMaintenanceDropdownBasedOnVolumes;
 	}
 
-	@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='With and Without Volumes']/..")
+//	@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='With and Without Volumes']/..")
+	//shilpa update xpath for 11.2 on 12.07.2023
+	@FindBy(xpath = "//div[contains(@class,'boundlist')]/ul/li[text()='With and Without Volumes']/..")
 	private WebElement getRvuMaintenanceDropdownBasedOnVolumesOptions;
 
 	public WebElement getRvuMaintenanceDropdownBasedOnVolumesOptions() {
 		return getRvuMaintenanceDropdownBasedOnVolumesOptions;
 	}
 
-	@FindBy(xpath = "//*[@name='pricesConfig']/parent::td/following-sibling::td/div")
+//	@FindBy(xpath = "//*[@name='pricesConfig']/parent::td/following-sibling::td/div")
+	//shilpa update xpath for 11.2 on 12.07.2023
+	@FindBy(xpath = "//*[@name='pricesConfig']/parent::div/parent::div")
 	private WebElement getRvuMaintenanceDropdownBasedOnPrices;
 
 	public WebElement getRvuMaintenanceDropdownBasedOnPrices() {
 		return getRvuMaintenanceDropdownBasedOnPrices;
 	}
 
-	@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='With and Without Prices']/..")
+//	@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='With and Without Prices']/..")
+	@FindBy(xpath = "//div[contains(@class,'boundlist')]/ul/li[text()='With and Without Prices']/..")
 	private WebElement getRvuMaintenanceDropdownBasedOnPricesOptions;
 
 	public WebElement getRvuMaintenanceDropdownBasedOnPricesOptions() {
@@ -332,7 +391,9 @@ public class CostingMap extends MapConfig {
 		return rvuMaintenanceFilterButtonCancelAndClose;
 	}
 
-	@FindBy(xpath = "//div[contains(@id,'listEl')]/ul/li[text()='Entity Code']/..")
+//	@FindBy(xpath = "//div[contains(@id,'listEl')]/ul/li[text()='Entity Code']/..")
+	//Shilpa update xpath for 11.2 on 12.07.2023
+	@FindBy(xpath = "//div[contains(@id,'listWrap')]/ul/li[text()='Entity Code']/..")
 	private WebElement getRvuMaintenanceDialogFilterRvuContainerListFieldOptions;
 
 	public WebElement getRvuMaintenanceDialogFilterRvuContainerListFieldOptions() {

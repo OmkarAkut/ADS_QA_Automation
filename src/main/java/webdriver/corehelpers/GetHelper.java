@@ -49,7 +49,9 @@ public class GetHelper extends DoHelper {
             System.out.println("Row Number: " + row);
             columnID = driver.findElement(By.xpath("//*[contains(@class,'column-header-text')][contains(text(),'" + headerName + "')]")).getAttribute("id");
             int columnIDDigits = Integer.parseInt(getNumbersFromStringWithRegex(columnID));
-            cellValue = driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')][" + row + "]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-" + columnIDDigits + "')]")).getText();
+//            cellValue = driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')][" + row + "]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-" + columnIDDigits + "')]")).getText();
+            //Shilpa update xpath for 11.2 on 12.07.2023
+            cellValue = driver.findElement(By.xpath("(//tr[contains(@class,'x-grid-row')]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-" + columnIDDigits + "')])[" + row + "]")).getText();
             System.out.println("Value: " + cellValue);
         } catch (Throwable e) {
             e.getMessage();

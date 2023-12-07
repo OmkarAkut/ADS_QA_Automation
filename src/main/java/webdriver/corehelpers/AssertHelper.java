@@ -179,7 +179,8 @@ public class AssertHelper extends AdsHelper {
 	}
 
 	public void assertElementContainsDisabledAttribute(WebElement element) {
-		String disabledAttributeText;
+		String disabledAttributeText=null;
+		/*
 		try {
 			disabledAttributeText = element.getAttribute("disabled");
 		} catch (Throwable e) {
@@ -187,10 +188,25 @@ public class AssertHelper extends AdsHelper {
 		}
 		System.out.println(disabledAttributeText);
 		assertThat(disabledAttributeText, equalTo("true"));
+		*/
+		try {
+			waitForAjaxExtJs();
+			disabledAttributeText = element.getAttribute("class");
+			
+		} catch (Throwable e) {
+			System.out.println("Element Not Found");
+			fail("element not found");
+		}
+		boolean isDisabled = disabledAttributeText.contains("disabled");
+		if (printout) {
+			System.out.println("Element class text: " + disabledAttributeText);
+			System.out.println("IsDisabled: " + isDisabled);
+		}
+		assertTrue(disabledAttributeText, isDisabled);
 	}
 
 	public void assertValueAttributeValue(WebElement element, String expectedValue) {
-		String getValueAttribute = element.getAttribute("value");
+		String getValueAttribute = element.getAttribute("placeholder");
 		assertThat(getValueAttribute, containsString(expectedValue));
 	}
 
