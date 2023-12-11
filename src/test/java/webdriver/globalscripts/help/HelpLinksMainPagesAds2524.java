@@ -183,7 +183,7 @@ public class HelpLinksMainPagesAds2524 extends PageTestHelper {
       goToPage("Report Date Maintenance");
       //waitForAjaxExtJs();
       testHelpLink(reportingMap.getReportingTabReportDateMaintenancePageHelpLink(), "Report Date Maintenance", printout);
-      doClosePageOnLowerBar("Report Date...");
+      doClosePageOnLowerBar("Report Date Maintenance");
       ExtentReport.logPass("PASS", "testReportingTabReportDateMaintenancePageTest");
     } catch(Exception|AssertionError e) {
     	ExtentReport.logFail("FAIL", "testStatusTabUtilityStatusPageTest", driver, e);
@@ -199,7 +199,7 @@ public class HelpLinksMainPagesAds2524 extends PageTestHelper {
       //waitForAjaxExtJs();
       testHelpLink(reportingMap.getReportingTabReportMenuMaintenancePageHelpLink(), "Report Menu Item List", printout);
       //assertTableColumnHeaders(reportingMap.getReportingTabReportMenuMaintenancePageTableCornerCell(), headers.expectedReportingTabReportMenuMaintenancePageTableHeaders, printout);
-      doClosePageOnLowerBar("Report Menu...");
+      doClosePageOnLowerBar("Report Menu Maintenance");
       ExtentReport.logPass("PASS", "testReportingTabReportMenuMaintenancePageTest");
 
     } catch(Exception|AssertionError e) {
@@ -285,7 +285,7 @@ public class HelpLinksMainPagesAds2524 extends PageTestHelper {
       goToPage("Analytic Refresh Scenarios");
       //waitForAjaxExtJs();
       testHelpLink(analyticsMap.getAnalyticsRefreshScenariosPageHelpLink(), "Analytics Refresh Scenarios", printout);
-      doClosePageOnLowerBar("Analytic Refresh...");
+      doClosePageOnLowerBar("Analytic Refresh Scenarios");
       ExtentReport.logPass("PASS", "testAnalyticsRefreshScenariosPageTest");
     } catch(Exception|AssertionError e) {
     	ExtentReport.logFail("FAIL", "testAnalyticsRefreshScenariosPageTest", driver, e);
@@ -316,7 +316,7 @@ public class HelpLinksMainPagesAds2524 extends PageTestHelper {
       goToPage("Contractual Allowance Export");
       //waitForAjaxExtJs();
       testHelpLink(contractingMap.getContractualAllowanceExportPageHelpLink(), "Contractual Allowances List", printout);
-      doClosePageOnLowerBar("Contractual...");
+      doClosePageOnLowerBar("Contractual Allowance Export");
       ExtentReport.logPass("PASS", "testContractingTabContractualAllowanceExportPageTest");
     } catch(Exception|AssertionError e) {
     	ExtentReport.logFail("FAIL", "testContractingTabContractualAllowanceExportPageTest", driver, e);
@@ -331,7 +331,7 @@ public class HelpLinksMainPagesAds2524 extends PageTestHelper {
       goToPage("Costing Models");
       //waitForAjaxExtJs();
       testHelpLink(modelLibrary.getModelLibraryPageHelpLink(), "Model Library", printout);
-      doClosePageOnLowerBar("Model Library");
+      doClosePageOnLowerBar("Costing Models");
       ExtentReport.logPass("PASS", "testCostingTabCostingModelsPageTest");
       
     } catch (Exception|AssertionError e) {
@@ -347,7 +347,7 @@ public class HelpLinksMainPagesAds2524 extends PageTestHelper {
       goToPage("Cost Model Scenario Calculation");
       //waitForAjaxExtJs();
       testHelpLink(costingMap.getCostModelScenarioCalculationPageHelpLink(), "Cost Model Calculation Scenario List", printout);
-      doClosePageOnLowerBar("Cost Model...");
+      doClosePageOnLowerBar("Cost Model Calculation Scenarios");
       ExtentReport.logPass("PASS", "testCostingTabCostModelScenarioCalculationPageTest");
     } catch (Exception|AssertionError e) {
         ExtentReport.logFail("FAIL", "testCostingTabCostModelScenarioCalculationPageTest", driver, e);
@@ -379,7 +379,7 @@ public class HelpLinksMainPagesAds2524 extends PageTestHelper {
       goToPage("Unit Cost Quick Calculation");
       //waitForAjaxExtJs();
       testHelpLink(costingMap.getUnitCostQuickCalculationPageHelpLink(), "Unit Cost Quick Calculation", printout);
-      doClosePageOnLowerBar("Unit Cost Quick...");
+      doClosePageOnLowerBar("Unit Cost Quick Calculation");
       ExtentReport.logPass("PASS", "testCostingTabUnitCostQuickCalculationPageTest");
     } catch (Exception|AssertionError e) {
         ExtentReport.logFail("FAIL", "testCostingTabUnitCostQuickCalculationPageTest", driver, e);
@@ -396,7 +396,7 @@ public class HelpLinksMainPagesAds2524 extends PageTestHelper {
       waitForPresenceOfElement(getPageHeaderPath("Terminal Server Sessions"));
       doClick(getPageHeaderPath("Terminal Server Sessions"));
       testHelpLink(sysmaint.getTerminalServerSessionsPageLinkHelp(), "Sessions", printout);
-      doClosePageOnLowerBar("Terminal Server...");
+      doClosePageOnLowerBar("Terminal Server Sessions");
       ExtentReport.logPass("PASS", "testSystemMaintenanceTabTerminalServerSessionsPageTest");
     } catch (Exception|AssertionError e) {
         ExtentReport.logFail("FAIL", "testSystemMaintenanceTabTerminalServerSessionsPageTest", driver, e);

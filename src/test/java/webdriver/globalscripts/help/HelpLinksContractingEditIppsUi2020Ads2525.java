@@ -59,7 +59,8 @@ public class HelpLinksContractingEditIppsUi2020Ads2525 extends PageTestHelper {
 			waitForSpinnerToEnd();
 			testHelpLink(driver.findElement(By.xpath("//*[contains(@onclick, 'mlfd.htm')]")), "Model Library",
 					printout);
-			doClosePageOnLowerBar("Model Library");
+//			doClosePageOnLowerBar("Model Library");
+			doClosePageOnLowerBar("Contract Models");
 			ExtentReport.logPass("PASS", "testContractingTabContractModelsPage01HelpLinkTest");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "testContractingTabContractModelsPage01HelpLinkTest", driver, e);
@@ -120,7 +121,9 @@ public class HelpLinksContractingEditIppsUi2020Ads2525 extends PageTestHelper {
 			driver.findElement(
 					By.xpath("//div[contains(@id,'dynamicwindow')]/descendant::*[contains(@class,'x-tool-close')]"))
 					.click();
-			doClosePageOnLowerBar("AFT IPPS 2020...");
+//			doClosePageOnLowerBar("AFT IPPS 2020...");
+			doClick("//span[contains(text(),'AFT IPPS 2020...')]//following::span[@class='x-tab-close-btn']");
+
 			ExtentReport.logPass("PASS",
 					"testContractingTabContractModelsPage04DischargeStatusCodeForTransfersDialogHelpLink");
 

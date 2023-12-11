@@ -971,7 +971,7 @@ public class ContractingMap extends MapConfig {
 
 //	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//following::span[text()='Save']")
 	//Shilpa update xpath for 11.2 11.15.2023
-	@FindBy(xpath = "//div[contains(@class,'toolbar')]//following::span[text()='Save']")
+	@FindBy(xpath = "//div[contains(@id,'messagebox')]//following::span[text()='Save']")
 	private static WebElement getSaveBenefitPlan;
 	public static WebElement getSaveBenefitPlan() {return getSaveBenefitPlan;}
 

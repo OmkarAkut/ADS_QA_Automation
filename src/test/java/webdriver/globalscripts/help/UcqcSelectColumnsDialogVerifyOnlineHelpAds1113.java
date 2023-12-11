@@ -71,7 +71,7 @@ public class UcqcSelectColumnsDialogVerifyOnlineHelpAds1113 extends PageTestHelp
 			((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoViewIfNeeded();", costingMap.getUnitCostQuickCalculationColumnsToDisplayModalCancel());
 //		    Thread.sleep(2000);
 			costingMap.getUnitCostQuickCalculationColumnsToDisplayModalCancel().click();
-			doClosePageOnLowerBar("Unit Cost Quick...");
+			doClosePageOnLowerBar("Unit Cost Quick Calculation");
 
 			ExtentReport.logPass("PASS", "testUcqcPageSelectColumnsDialogVerifyOnlineHelpLink");
 			

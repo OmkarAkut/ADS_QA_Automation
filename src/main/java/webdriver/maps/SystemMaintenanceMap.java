@@ -457,7 +457,7 @@ public class SystemMaintenanceMap extends MapConfig {
 	public List<WebElement> getSystemMaintenanceCostModelTaskList() {
 		return getSystemMaintenanceCostModelTaskList;
 	}
-	@FindBy(xpath = "(//div[@id='ctlCostingTree-body']//tr[contains(@class,'x-grid-row-focused')]/td/div)[1]")
+	@FindBy(xpath = "(//div[@id='ctlCostingTree-body']//div[@class='x-grid-item-container']//table//tr//td//div/span[text()='Folder Name'])")
 	private WebElement getSystemMaintenanceAddFolder;
 
 	public WebElement getSystemMaintenanceAddFolder() {
@@ -514,6 +514,20 @@ public class SystemMaintenanceMap extends MapConfig {
 
 	public WebElement getAssignedUsersRemoveButton() {
 		return getAssignedUsersRemoveButton;
+	}
+	
+	@FindBy(xpath = "//span[text()='Remove']")
+	private static WebElement getTaskListRemoveButton;
+
+	public static WebElement getTaskListRemoveButton() {
+		return getTaskListRemoveButton;
+	}
+	
+	@FindBy(xpath = "//div[contains(@class,'panel')]//span[text()='Save']")
+	private static WebElement getTaskListSaveButton;
+
+	public static WebElement getTaskListSaveButton() {
+		return getTaskListSaveButton;
 	}
 	
 //	Omkar 29/5/2023 : xpath changes for 11.2
