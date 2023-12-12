@@ -14,6 +14,8 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -39,6 +41,7 @@ public class Driver {
  // protected static final String chromeDriver = "C:/ADS_automation/AffinityDecisionSupport/src/selenium/chromedriver";
   protected static final String ieDriverServer = "IEDriverServer32";
   protected static final String geckoDriver = "C:/ads/apps/Selenium/geckoDriver.exe";
+  protected static final String edgeDriver = "msedgedriver";
   public static WebDriver driver;
   static long timerStart;
   protected static String localOs;
@@ -181,7 +184,11 @@ public class Driver {
         System.setProperty("webdriver.ie.driver", drivers + ieDriverServer + ".exe");
       } else if (browser.equals("firefox")) {
         System.setProperty("webdriver.firefox.driver", drivers + geckoDriver + ".exe");
-      } else {
+      }
+    //Shilpa added below line for 11.2 on 12.12.2023
+      else if (browser.equals("edge")) {
+          System.setProperty("webdriver.edge.driver", drivers + edgeDriver + ".exe");
+        } else {
         fail("ERROR: Driver object not set.");
       }
     } else {
@@ -193,7 +200,11 @@ public class Driver {
         System.setProperty("webdriver.ie.driver", drivers + ieDriverServer);
       } else if (browser.equals("firefox")) {
         System.setProperty("webdriver.firefox.driver", drivers + geckoDriver);
-      } else {
+      }
+    //Shilpa added below line for 11.2 on 12.12.2023
+      else if (browser.equals("edge")) {
+          System.setProperty("webdriver.edge.driver", drivers + edgeDriver);
+        }else {
         fail("ERROR: Browser driver not set.");
       }
     }
@@ -220,7 +231,16 @@ public class Driver {
 		  driver = new FirefoxDriver();
 		} else if (browser.equals("ie")) {
 		  driver = new InternetExplorerDriver();
-		} else {
+		} 
+		//Shilpa added below line for 11.2 on 12.12.2023
+		else if (browser.equals("edge")) {
+			  
+			  EdgeOptions options =new EdgeOptions();
+			  options.addArguments("--remote-allow-origins=*");
+			  options.addArguments("--ignore-certificate-errors", "start-maximized");
+			  driver = new EdgeDriver(options);
+			  
+			}else {
 		  fail("ERROR: Driver object not set.");
 		}
 	} catch (Exception e) {
