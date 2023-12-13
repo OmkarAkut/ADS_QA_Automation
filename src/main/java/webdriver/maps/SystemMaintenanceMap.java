@@ -53,7 +53,9 @@ public class SystemMaintenanceMap extends MapConfig {
 	private WebElement getCustomTaskListClearFilterButton;
 	public WebElement getCustomTaskListClearFilterButton() {return getCustomTaskListClearFilterButton;}
 
-	@FindBy(xpath = "//span[text()='Filter']//parent::button")
+//	@FindBy(xpath = "//span[text()='Filter']//parent::button")
+	//SHILPA UPDATE XPATH FOR 11.2 ON 12.13.2023
+	@FindBy(xpath = "//span[text()='Filter']")
 	private WebElement getCustomTaskListFilterButton;
 	public WebElement getCustomTaskListFilterButton() {return getCustomTaskListFilterButton;}
 

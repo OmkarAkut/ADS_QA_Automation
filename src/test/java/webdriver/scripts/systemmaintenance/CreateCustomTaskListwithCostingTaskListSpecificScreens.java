@@ -3,6 +3,7 @@ package webdriver.scripts.systemmaintenance;
 import static org.junit.Assert.fail;
 
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -11,6 +12,7 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 import ExtentReport.ExtentReport;
@@ -57,11 +59,29 @@ public class CreateCustomTaskListwithCostingTaskListSpecificScreens extends GoHe
 //			Omkar 12/5/2023 : xpath changes for 11.2
 //			act.moveToElement(driver.findElement(By.xpath("(//div[@id='ctlCostingTree-body']//tr[contains(@class,'x-grid-row-focused')]/td)[2]"))).sendKeys(Keys.CLEAR).sendKeys(Keys.chord(currentDateTime))
 //	         .click().pause(200).perform();
-			act.moveToElement(driver.findElement(By.xpath("(//span[text() = 'Folder Name'])[1]"))).sendKeys(Keys.CLEAR).sendKeys(Keys.chord(currentDateTime))
-	         .click().pause(200).perform();
-			
-			ContractModelsHelper.scrollToView("//*[text()='"+name+"']");
-			assertTextIsDisplayed(name);
+//			act.moveToElement(driver.findElement(By.xpath("(//span[text() = 'Folder Name'])[1]"))).sendKeys(Keys.CLEAR).sendKeys(Keys.chord(currentDateTime))
+//	         .click().pause(200).perform();
+			String folderName;
+			 List<WebElement> elements = driver.findElements(By.xpath("(//div[@id='ctlCostingTree-body']//div[@class='x-grid-item-container']//table//tr//td//div/span[text()='Folder Name'])"));
+			 for(int i=1;i<=elements.size();i++) {
+				 if(i==elements.size()) {
+					 folderName=currentDateTime+name;
+					 act.moveToElement(driver.findElement(By.xpath("(//div[@id='ctlCostingTree-body']//div[@class='x-grid-item-container']//table//tr//td//div/span[text()='Folder Name'])["+i+"]"))).sendKeys(Keys.DELETE).sendKeys(Keys.chord(folderName)).pause(1000).sendKeys(Keys.ENTER).perform();
+						driverDelay(200);
+						ContractModelsHelper.scrollToView("//*[text()='"+folderName+"']");
+						assertTextIsDisplayed(folderName);
+						doClick(SystemMaintenanceMap.getTaskListSaveButton());
+						doClick(ContractingMap.getSaveBenefitPlan());
+						waitForAjaxExtJs();
+						waitUntilElementIsClickable(SystemMaintenanceMap.getTaskListRemoveButton());
+						act.moveToElement(driver.findElement(By.xpath("(//div[@id='ctlCostingTree-body']//div[@class='x-grid-item-container']//table//tr//td//div/span[text()='"+folderName+"'])"))).click().perform();
+						doClick(SystemMaintenanceMap.getTaskListRemoveButton());
+						doClick(contractMap.getContractModelDeleteButtonInPopUp());
+						waitForAjaxExtJs();
+						Thread.sleep(4000);
+				 }
+			 }
+				 
 			ExtentReport.logPass("PASS", "test01AddNewFolder");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01AddNewFolder", driver, e);

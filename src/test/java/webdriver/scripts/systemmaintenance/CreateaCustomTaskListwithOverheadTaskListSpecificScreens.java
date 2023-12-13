@@ -2,6 +2,7 @@ package webdriver.scripts.systemmaintenance;
 import static org.junit.Assert.fail;
 
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -10,6 +11,7 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
@@ -46,7 +48,7 @@ public class CreateaCustomTaskListwithOverheadTaskListSpecificScreens extends Go
 			fail(e.getMessage());
 		}
 	}
-//	@Test
+	@Test
 	public void test01VerifyClearFilter() throws Throwable {
 		try {
 			doClick(systemMap.getCustomTaskListFilterButton());
@@ -86,15 +88,32 @@ public class CreateaCustomTaskListwithOverheadTaskListSpecificScreens extends Go
 		try {
 			doClick(systemMap.getSystemMaintenanceAddFolderButton());
 			Actions act=new Actions(driver);
-			act.moveToElement(driver.findElement(By.xpath("(//div[@id='ctlCostingTree-body']//tr[contains(@class,'x-grid-row-focused')]/td)[2]"))).sendKeys(Keys.CLEAR).sendKeys(Keys.chord(currentDateTime))
-	         .click().pause(200).perform();
+			String folderName;
+//			act.moveToElement(driver.findElement(By.xpath("(//div[@id='ctlCostingTree-body']//tr[contains(@class,'x-grid-row-focused')]/td)[2]"))).sendKeys(Keys.CLEAR).sendKeys(Keys.chord(currentDateTime))
+//	         .click().pause(200).perform();
+			//Shilpa added below lines for 11.2 
+			List<WebElement> elements = driver.findElements(By.xpath("(//div[@id='ctlCostingTree-body']//div[@class='x-grid-item-container']//table//tr//td//div/span[text()='Folder Name'])"));
+			 for(int i=1;i<=elements.size();i++) {
+				 if(i==elements.size()) {
+					  folderName=currentDateTime+name;
+				 act.moveToElement(driver.findElement(By.xpath("(//div[@id='ctlCostingTree-body']//div[@class='x-grid-item-container']//table//tr//td//div/span[text()='Folder Name'])["+i+"]"))).sendKeys(Keys.DELETE).sendKeys(Keys.chord(folderName)).pause(1000).sendKeys(Keys.ENTER).perform();
+					driverDelay(200);
+					ContractModelsHelper.scrollToView("//*[text()='"+folderName+"']");
+					assertTextIsDisplayed(folderName);
+					doClick(SystemMaintenanceMap.getTaskListSaveButton());
+					doClick(ContractingMap.getSaveBenefitPlan());
+					waitForAjaxExtJs();
+					waitUntilElementIsClickable(SystemMaintenanceMap.getTaskListRemoveButton());
+					act.moveToElement(driver.findElement(By.xpath("(//div[@id='ctlCostingTree-body']//div[@class='x-grid-item-container']//table//tr//td//div/span[text()='"+folderName+"'])"))).click().perform();
+					doClick(SystemMaintenanceMap.getTaskListRemoveButton());
+					doClick(contractMap.getContractModelDeleteButtonInPopUp());
+					waitForAjaxExtJs();
+					Thread.sleep(4000);
+				 }
+			 }
 			//Drag and Drop not working : move element from screens to task list is pending here
 			//			act.moveToElement(driver.findElement(By.xpath("(//div[@id='ctlCostingTree-body']//table/tbody/tr[13]/td/div[text()='"+name+"'])"))).pause(200).dragAndDrop(driver.findElement(By.xpath("(//div[@id='costingScreens-body']//td)[5]")), driver.findElement(By.xpath("(//div[@id='ctlCostingTree-body']//table/tbody/tr[13]/td/div[text()='"+name+"'])"))).release().perform();
-			ContractModelsHelper.scrollToView("//*[text()='"+name+"']");
-			assertTextIsDisplayed(name);
-			doClick(contractMap.getContractModelSaveCopy());
-			doClick(ContractingMap.getSaveBenefitPlan());
-			waitForAjaxExtJs();
+			
 			ExtentReport.logPass("PASS", "test03AddNewFolder");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test03AddNewFolder", driver, e);
