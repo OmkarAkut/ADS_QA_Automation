@@ -84,7 +84,7 @@ public class ValidateCustomizeTaskListspageSystemMaintenance extends Calculation
 	public void test02OpenUnpublishedContract() throws Throwable {
 		try {
 			doClick(systemMap.getCustomizeTaskListsPageSubTabUnpublishedContract());
-			doClick(ContractingMap.getContractModelRiskLimiterCancelCloseBtn());
+			doClick(ContractingMap.getWarningCancelCloseBtn());
 			assertTextIsDisplayed("Default Unpublished Contract Model Task List");
 //			Omkar 21/4/2023 : xpath change for 11.2
 //			doClick("//span[text()='Default Unpublished Contract Model Task List']//following::div[text()='Build Structure Elements'][1]");
@@ -104,7 +104,7 @@ public class ValidateCustomizeTaskListspageSystemMaintenance extends Calculation
 	public void test03OpenPublishedContract() throws Throwable {
 		try {
 			doClick(systemMap.getCustomizeTaskListsPageSubTabPublishedContract());
-			doClick(ContractingMap.getContractModelRiskLimiterCancelCloseBtn());
+			doClick(ContractingMap.getWarningCancelCloseBtn());
 			assertTextIsDisplayed("Edit Payment Terms");
 //			Omkar 12/4/2023 : xpath change for 11.2
 //			doClick("(//div[contains(@class,'nowrapRow')]//following::div[text()='Edit Payment Terms'])");
@@ -112,7 +112,8 @@ public class ValidateCustomizeTaskListspageSystemMaintenance extends Calculation
 //			Omkar 11/5/2023 : xpath change for 11.2
 //			assertElementIsDisplayedWithXpath(
 //					"//div[contains(@id,'treeview')]//div[text()='Fee For Service Payment Terms']");
-			assertElementIsDisplayedWithXpath("//div[contains(@id,'treeview')]//span[text()='Fee For Service Payment Terms']");
+			//Shilpa update xpath for 11.2 on 12.15.2023 
+			assertElementIsDisplayedWithXpath("//div[contains(@id,'treepanel')]//span[text()='Fee For Service Payment Terms']");
 //			Omkar 21/4/2023 : xpath change for 11.2
 //			doClick("(//div[contains(@class,'nowrapRow')]//following::div[text()='Edit Payment Terms'])");
 			doClick("//div[contains(@class,'nowrapRow')]//following::span[text()='Edit Payment Terms']");
@@ -127,14 +128,18 @@ public class ValidateCustomizeTaskListspageSystemMaintenance extends Calculation
 	public void test04OpenEpisode() throws Throwable {
 		try {
 			doClick(systemMap.getCustomizeTaskListsPageSubTabEpisode());
-			doClick(ContractingMap.getContractModelRiskLimiterCancelCloseBtn());
+			//Shilpa updated xpath for 11.2 on 12.15.2023
+			doClick(ContractingMap.getWarningCancelCloseBtn());
 //			Omkar 11/5/2023 : xpath change for 11.2
 //			doClick("//span[text()='Default Episode Model Task List']//following::div[text()='Build Structure Elements']");
 //			assertElementIsDisplayedWithXpath("//div[contains(@id,'treeview')]//div[text()='Services']");
 //			doClick("//span[text()='Default Episode Model Task List']//following::div[text()='Build Structure Elements']");
-			doClick("//div[text()='Default Episode Model Task List']//following::span[text()='Build Structure Elements']");			
-			assertElementIsDisplayedWithXpath("//div[contains(@id,'treeview')]//span[text()='Services']");
-			doClick("//div[text()='Default Episode Model Task List']//following::span[text()='Build Structure Elements']");
+			//Shilpa commented below line for 11.2
+//			doClick("//div[text()='Default Episode Model Task List']//following::span[text()='Build Structure Elements']");			
+//			assertElementIsDisplayedWithXpath("//div[contains(@id,'treepanel')]//span[text()='Services']");
+			//Shilpa updated xpath for 11.2 on 12.15.2023
+			assertElementIsDisplayedWithXpath("//div[contains(@id,'ctlEpisodeTree-body')]//span[text()='Services']");
+			doClick("//div[@id='ctlEpisodeTree-body']//following::span[text()='Build Structure Elements']");
 			
 			ExtentReport.logPass("PASS", "test03OpenEpisode");
 		} catch (Exception | AssertionError e) {

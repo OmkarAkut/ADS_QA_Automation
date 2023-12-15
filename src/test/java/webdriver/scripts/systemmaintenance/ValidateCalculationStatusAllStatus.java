@@ -36,8 +36,8 @@ public class ValidateCalculationStatusAllStatus extends CalculationHelper{
 	static String name = "Folder Name" + currentDateTime;
 	static String userRole = "ASEC2310 CustomRole9";
 	static String assignedUserSelect = "AdHoc_Report_Designer   automationadhocrepdes1";
-	static String searchText="Test";
-	static String[] filter= {"Scenario Name","Is","Equal To",searchText};
+	static String searchText;
+	static String[] filter;
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
 		ExtentReport.reportCreate("ValidateCalculationStatusAllStatus", "webdriver.scripts.systemmaintenance",
@@ -142,6 +142,8 @@ public class ValidateCalculationStatusAllStatus extends CalculationHelper{
 		try {
 			Actions action=new Actions(driver);
 			doClick(statusMap.getCalculationStatusPageButtonFilter());
+			//Shilpa updated for 11.2 take  the text from existing records then search for the text
+			searchText=getElementText(driver.findElement(By.xpath("(//td[contains(@class,'x-grid-cell')]/div)[3]")), printout);
 			doFilterSetFilterParameters("Scenario Name", "Is", "Equal To", searchText);
 			doClick(ContractingMap.getaddOnServicesPopUpFilterAddButton());
 			waitForAjaxExtJs();
@@ -150,6 +152,7 @@ public class ValidateCalculationStatusAllStatus extends CalculationHelper{
 			driver.findElement(By.name("valuefield")).sendKeys(searchText);
 			doClick(contractMap.getContractModelUpdateFilterButton());
 			action.moveToElement(contractMap.getContractModelRemoveFilterButton()).click().pause(10).perform();
+			String[] filter= {"Scenario Name","Is","Equal To",searchText};
 			doFilterCreate(filter);
 			assertGridElementsOnSearch(modelMap.getModelLibraryTableButtonNext(),statusMap.calcStatusPageNumber(),statusMap.calculationStatusPageGridElements(),searchText);
 			ExtentReport.logPass("PASS", "test07ValidateFilter");

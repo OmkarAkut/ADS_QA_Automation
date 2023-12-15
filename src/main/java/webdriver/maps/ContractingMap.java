@@ -374,6 +374,10 @@ public class ContractingMap extends MapConfig {
 	@FindBy(xpath = "//span[text()='Cancel & Close']/../../..")
 	private static WebElement ContractModelRiskLimiterCancelCloseBtn;
 	public static WebElement getContractModelRiskLimiterCancelCloseBtn() {return ContractModelRiskLimiterCancelCloseBtn;}
+	
+	@FindBy(xpath = "//div[contains(@id,'messagebox')]//span[text()='Cancel & Close']/../../..")
+	private static WebElement WarningCancelCloseBtn;
+	public static WebElement getWarningCancelCloseBtn() {return WarningCancelCloseBtn;}
 
 	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//span[text()='Close']")
 	private static WebElement getCloseBtn;

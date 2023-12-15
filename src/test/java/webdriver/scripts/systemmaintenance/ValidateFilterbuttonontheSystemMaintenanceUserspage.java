@@ -54,7 +54,9 @@ public class ValidateFilterbuttonontheSystemMaintenanceUserspage extends GoHelpe
 		try {
 			doClick(sysmaint.getUsersPageButtonFilter());
 			doFilterSetFilterParameters("First Name", "Is", "Equal To", "Test");
-			doClick(driver.findElement(By.xpath("//div[contains(@id,'filter')]//span[text()='Add']/parent::button")));
+//			doClick(driver.findElement(By.xpath("//span[text()='Add']")));
+			//Shilpa udated xpath for 11.2 on 12.15.2023
+			doClick("//div[contains(@id,'filter')]//span[text()='Add']");
 			action.moveToElement(modelMap.getContractModelEditFilterButton()).click().pause(10).perform();
 			driver.findElement(By.name("valuefield")).sendKeys(Keys.chord(Keys.CONTROL, "a"));
 			driver.findElement(By.name("valuefield")).sendKeys(updateFilterModel);
@@ -62,7 +64,7 @@ public class ValidateFilterbuttonontheSystemMaintenanceUserspage extends GoHelpe
 			action.moveToElement(modelMap.getContractModelRemoveFilterButton()).click().pause(10).perform();
 			doFilterCreate(filter);
 			for (WebElement element : sysmaint.getSystemMaintenanceUserList()) {
-				if (element.getText().equals(filterText)) {
+				if (element.getText().equalsIgnoreCase(filterText)) {
 					assertTrue(printout);
 				}
 
