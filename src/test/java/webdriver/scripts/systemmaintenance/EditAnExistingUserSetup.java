@@ -7,6 +7,8 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
+import org.openqa.selenium.interactions.Actions;
+
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.corehelpers.GoHelper;
@@ -24,7 +26,7 @@ public class EditAnExistingUserSetup extends GoHelper {
 	static ContractingMap contractMap;
 	static ModelLibraryMap modelMap;
 	private static SystemMaintenanceMap systemMap;
-	private static String userID = "adstest";
+	private static String userID = "testuser";
 //	Omkar 12/10/2023 : Removing 0008 PAYMENT PLAN as scrolling action is not working for 11.2
 //	private static String[] entities = { "0000 PRIVATE PAY", "0001 PRIVATE PAY PENDING", "0008 PAYMENT PLAN" };
 	private static String[] entities = { "0000 PRIVATE PAY", "0001 PRIVATE PAY PENDING"};
@@ -34,8 +36,11 @@ public class EditAnExistingUserSetup extends GoHelper {
 	private static String lastName = "LastName2";
 	private static String displayName = "DisplayName2";
 	private static String initials = "ABCD2";
-	private static String newPassword = "password1234";
-	private static String confirmNewPassword = "password1234";
+//	private static String newPassword = "password1234";
+//	private static String confirmNewPassword = "password1234";
+	//Shilpa updated pwd as per new criteria for 11.2 
+	private static String newPassword = "ZAQ!2wsx@123";
+	private static String confirmNewPassword = "ZAQ!2wsx@123";
 	private static String email = "Name2@gmail.com";
 	private static String jobFunction = "Software testing2";
 
@@ -199,12 +204,19 @@ public class EditAnExistingUserSetup extends GoHelper {
 	@Test
 	public void test06SelectMasterDepartments() throws Throwable {
 		try {
-			doClick("(//div[text()='" + dept + "']//following::table[2]//td[2]//div)[1]");
+			Actions act=new Actions(driver);
+			//Shilpa updated code for 11.2
+			act.moveToElement(driver.findElement(By.xpath("(//div[text()='" + dept + "']//following::input[contains(@id,'combo')])[1]"))).click().clickAndHold().build().perform();
+//			doClick("(//div[text()='" + dept + "']//following::table[2]//td[2]//div)[1]");
+//			doClick("(//div[text()='" + dept + "']//following::input[contains(@id,'combo')])[1]");
 			assertTextIsDisplayed("All");
 			assertTextIsDisplayed("None");
 			assertTextIsDisplayed("Selected");
-			doDropdownSelectUsingOptionTextOnly(systemMap.getUserMasterSelectDropdownButtonOptions(), "Selected");
-			doClick("//div[text()='" + dept + "']//following::div[4]");
+			//Shilpa updated code for 11.2
+			act.moveToElement(driver.findElement(By.xpath("//li[text()='Selected']"))).click().perform();
+//			doClick("//li[text()='Selected']");
+//			doDropdownSelectUsingOptionTextOnly(systemMap.getUserMasterSelectDropdownButtonOptions(), "Selected");
+			doClick("//div[text()='" + dept + "']//following::div[7]");
 			doClick(systemMap.getUserSelectButtonInPopUp());
 			doClick(systemMap.getUserRoleSelectAllLeftButton());
 			doClick(systemMap.getUserSelectButtonInPopUp());
@@ -218,7 +230,7 @@ public class EditAnExistingUserSetup extends GoHelper {
 					"130 EMERGENCY ROOM PHYSICIANS");
 			doClick(systemMap.getUserSelectButtonInPopUp());
 			doClick(contractMap.getApplySelections());
-			assertElementText(driver.findElement(By.xpath("//div[text()='" + dept + "']//following::div[4]")),
+			assertElementText(driver.findElement(By.xpath("(//div[text()='"+dept+"']//following::div[4]//following::div[contains(@class,'x-grid-cell-inner ')])[1]")),
 					"2 Selected", printout);
 			driverDelay(200);
 			doClick(ContractingMap.getContractFeeForServicePaymentSave());

@@ -636,7 +636,7 @@ public class SystemMaintenanceMap extends MapConfig {
 	public WebElement getUserMasterSelectAllCheckbox() {
 		return getUserMasterSelectAllCheckbox;
 	}
-	@FindBy(xpath = "(//div[contains(@class,'x-boundlist-list-ct')]//ul)[3]")
+	@FindBy(xpath = "(//div[contains(@class,'x-boundlist-list-ct')]//ul)[4]")
 	private WebElement getUserMasterSelectDropdownButtonOptions;
 	public WebElement getUserMasterSelectDropdownButtonOptions() {
 		return getUserMasterSelectDropdownButtonOptions;

@@ -10,6 +10,8 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
+import org.openqa.selenium.interactions.Actions;
+
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.corehelpers.GoHelper;
@@ -137,9 +139,14 @@ public class EditExistingRoleSetup extends GoHelper {
 	@Test
 	public void test04AddActionPermission() throws Throwable {
 		try {
-			doClick("//div[text()='Costing']");
-			doClick("//span[text()='De-Select All']//parent::button");
-			doClick("//span[text()='Select All']//parent::button");
+//			doClick("//div[text()='Costing']");
+//			doClick("//span[text()='De-Select All']//parent::button");
+//			doClick("//span[text()='Select All']//parent::button");
+//			doClick(ContractingMap.getContractFeeForServicePaymentSave());
+			//Shilpa updated xpath for 11.2 on 12.20.2023
+			doClick("//span[text()='Costing']");
+			doClick("//span[text()='De-Select All']");
+			doClick("//span[text()='Select All']");
 			doClick(ContractingMap.getContractFeeForServicePaymentSave());
 			assertElementIsNotDisplayed("//span[contains(@id,'dynamicwindow')][text()='" + userRole + "']");
 			ExtentReport.logPass("PASS", "test03AddMenuItems");
@@ -154,11 +161,18 @@ public class EditExistingRoleSetup extends GoHelper {
 		try {
 			doClick("//div[text()='" + userRole + "']");
 			doClick(systemMap.getRolesPageButtonEdit());
+			Thread.sleep(300);
+			Actions act=new Actions(driver);
+			act.moveToElement(driver.findElement(By.xpath("//div[contains(@id,'treepanel')]//*[text()='Ad Hoc Report Design']"))).perform();
 			assertElementIsDisplayedWithXpath("//div[contains(@id,'treepanel')]//*[text()='Ad Hoc Report Design']");
 			assertElementIsDisplayedWithXpath("//div[contains(@id,'treepanel')]//*[text()='Costing Reports']");
-			assertElementIsDisplayedWithXpath("//div[contains(@id,'treepanel')]//*[text()='Calculation Status']");
+//			assertElementIsDisplayedWithXpath("//div[contains(@id,'treepanel')]//*[text()='Calculation Status']");
+			//Shilpa updated xpath for 11.2 on 12.20.2023
+			assertElementIsDisplayedWithXpath("(//div[contains(@id,'treepanel')]//*[text()='Calculation Status'])[1]");
 			assertTextIsDisplayed(assignedUserSelect);
-			doClick("//div[text()='Costing']");
+//			doClick("//div[text()='Costing']");
+			//Shilpa updated xpath for 11.2 on 12.20.2023
+			doClick("//span[text()='Costing']");
 			doClick(ContractingMap.getContractModelRiskLimiterCancelCloseBtn());
 			ExtentReport.logPass("PASS", "test04VerifyUpdatedRole");
 		} catch (Exception | AssertionError e) {

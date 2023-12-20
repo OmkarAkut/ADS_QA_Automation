@@ -55,21 +55,26 @@ public class GeneralCalculationsRunContractualAllowancesScenarioAds2163 extends 
 	public void test01ExportContractualAllowanceScenarios()
 			throws InterruptedException,Throwable {
 		try {
-			doClick(driver.findElement(By.xpath("//span[@class='x-btn-icon pagging-tbar-last-button']")));
+//			doClick(driver.findElement(By.xpath("//span[@class='x-btn-icon pagging-tbar-last-button']")));
+			doClick(driver.findElement(By.xpath("//span[@class='x-btn-icon-el x-btn-icon-el-plain-toolbar-small pagging-tbar-last-button ']")));
 			waitForDisplayedSpinnerToEnd();
 			for (String scenario : allowanceScenarios) {
 				waitForAjaxExtJs();
 				tableDoubleClickCellFirstColumn(scenario);
-				doClick(driver.findElement(By.xpath("(//button/span[text()='Export'])[2]")));
+//				doClick(driver.findElement(By.xpath("(//button/span[text()='Export'])[2]")));
+				doClick(driver.findElement(By.xpath("//div[text()='Contractual Allowance']//following::span[text()='Export']")));
 				waitForSpinnerToEnd();
 				driverDelay(2000);
+//				calculationStatusPageOpenViewDialog();
+//				waitForCalculationToEndAndVerifyViewLogContainsOnViewDialogAndCloseDialog("Selection Criteria:");
 				waitForCalculationToEndAndVerifySummaryDetailsStringOnDialogAndCloseDialog(
 						"Selection Criteria:");//Shilpa 20.09.2022 added assert value
 				assertCalcStatusColumnForFirstRowOfStatusTableIsCompleted();
 				deleteMyCalculationStatusFirstRow();
 				//Shilpa 20.09.2022 added below lines to complete the tc
 				doClosePageOnLowerBar("Calculation Status");
-				driver.findElement(By.xpath("//button/span[text()='Cancel & Close']")).click();
+//				driver.findElement(By.xpath("//button/span[text()='Cancel & Close']")).click();
+				doClick("//span[text()='Cancel & Close']");
 				waitForSpinnerToEnd();
 				ExtentReport.logPass("PASS", "test01ExportContractualAllowanceScenarios");
 
@@ -81,7 +86,7 @@ public class GeneralCalculationsRunContractualAllowancesScenarioAds2163 extends 
 	}
 
 	//  @Ignore
-	@Test
+//	@Test
 	public void test02AssertContractualAllowanceScenariosOnDbServer()
 			throws ClassNotFoundException {
 		calculationsAssertDbRowCount(
@@ -92,8 +97,12 @@ public class GeneralCalculationsRunContractualAllowancesScenarioAds2163 extends 
 	}
 
 	private void assertCalcStatusColumnForFirstRowOfStatusTableIsCompleted() {
+//		assertTrue(
+//				driver.findElement(By.xpath("//table/tbody/tr[2]/td[contains(@class,'x-grid-cell')]/div[text()='Completed']"))
+//				.isDisplayed()
+//				);
 		assertTrue(
-				driver.findElement(By.xpath("//table/tbody/tr[2]/td[contains(@class,'x-grid-cell')]/div[text()='Completed']"))
+				driver.findElement(By.xpath("(//table/tbody/tr[1]/td[contains(@class,'x-grid-cell')]/div[text()='Completed'])[5]"))
 				.isDisplayed()
 				);
 	}

@@ -164,12 +164,14 @@ public class CalculationHelper extends GoHelper {
 	public void waitForCalculationToEndAndVerifySummaryDetailsStringOnDialogAndCloseDialog(String detailText) throws InterruptedException {
 		waitForCalculationToEnd();
 		driverDelay(4000);
-		driver.findElement(By.xpath("//div[not(contains(@class,'disabled'))]/em/button/span[text()='View']")).click();
+//		driver.findElement(By.xpath("//div[not(contains(@class,'disabled'))]/em/button/span[text()='View']")).click();
+		doClick("((//table[contains(@id,'gridview')]//div[not(contains(@class,'disabled'))]//span[text()='View']))[1]");
 		waitForSpinnerToEnd();
 		Thread.sleep(2000);
 		assertElementIsDisplayed(driver.findElement(By.xpath("//*[text()='" + detailText + "']")), printout);
 		//Completed at: 11/18/2019 01:52 PM
-		driver.findElement(By.xpath("//button/span[text()='Cancel']")).click();
+//		driver.findElement(By.xpath("//button/span[text()='Cancel']")).click();
+		driver.findElement(By.xpath("//div[text()='View Log']//following::span[text()='Cancel']")).click();
 		waitForSpinnerToEnd();
 	}
 
@@ -298,7 +300,7 @@ public class CalculationHelper extends GoHelper {
 		waitForSpinnerToEnd();
 	}
 
-	public void calculationStatusPageOpenViewDialog() {
+	public void calculationStatusPageOpenViewDialog() throws Exception {
 		//	  Omkar 14/04/2023 : xpath changes for 11.2
 		//    waitForPresenceOfElement("//div[not(contains(@class,'disabled'))]/em/button/span[text()='View']");
 		//    driver.findElement(By.xpath("//div[not(contains(@class,'disabled'))]/em/button/span[text()='View']")).click();
@@ -308,6 +310,7 @@ public class CalculationHelper extends GoHelper {
 		waitForPresenceOfElement("(//*[contains(@id,'calculationstatus') and contains(@id,'header')]/..//span[text()='View'])[2]");
 		driver.findElement(By.xpath("(//*[contains(@id,'calculationstatus') and contains(@id,'header')]/..//span[text()='View'])[2]")).click();
 		waitForDisplayedSpinnerToEnd();
+		driverDelay(2000);
 	}
 
 	/* calculation status page */

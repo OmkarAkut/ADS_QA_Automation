@@ -137,8 +137,10 @@ public class EpisodesCreateAssignRemoval extends CalculationHelper {
 			confirmCalculationStatusDetailsContains("Remove Total number of tagged Encounters: 10");
 			closeViewDialog();
 			doClosePageOnLowerBar("Calculation Status");
-
-			doClosePageOnLowerBar(episodeModelName);
+			//Shilpa updated xpath for 11.2 on 12.20.2023
+			doClick("//span[text()='"+episodeModelName+"']//following::span[@class='x-tab-close-btn']");
+//			doClosePageOnLowerBar(episodeModelName);
+			
 			doClick(contractingMap.getContractModelDeleteButton());
 			waitForElementToBeVisible(contractingMap.getContractModelDeletePopUp());
 			assertElementIsDisplayed(contractingMap.getContractModelDeletePopUp());
@@ -149,7 +151,7 @@ public class EpisodesCreateAssignRemoval extends CalculationHelper {
 			doClick(contractingMap.getContractModelDeleteButtonInPopUp());
 			waitForElementToBeVisible(
 					driver.findElement(By.xpath("//*[text()='There is no data available to display.']")));
-			doClosePageOnLowerBar("Model Library");
+			doClosePageOnLowerBar("Episode Models");
 
 			ExtentReport.logPass("PASS", "test02VerifyAssinEpisodeToEncounter");
 		} catch (Exception | AssertionError e) {
