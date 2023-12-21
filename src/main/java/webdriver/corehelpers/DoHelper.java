@@ -17,7 +17,7 @@ import webdriver.maps.mapbuilder.BuildMap;
 
 public class DoHelper extends DriverHelper {
 
-	public static void doSearchForContractModel(String contractModel) throws InterruptedException {
+	public static void doSearchForContractModel(String contractModel) throws Throwable {
 		ModelLibraryMap modelMapStatic = BuildMap.getInstance(driver, ModelLibraryMap.class);
 		waitForSpinnerToEnd();
 		waitForAjaxExtJs();

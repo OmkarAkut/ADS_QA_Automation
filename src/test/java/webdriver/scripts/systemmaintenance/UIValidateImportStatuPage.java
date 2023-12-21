@@ -51,7 +51,7 @@ public class UIValidateImportStatuPage extends CalculationHelper{
 			doSearchForContractModel(searchText.toUpperCase());
 			waitForDisplayedSpinnerToEnd();
 			assertGridElementsOnSearch(modelMap.getModelLibraryTableButtonNext(),statusMap.calcStatusPageNumber(),statusMap.importStatusPageGridElements(),searchText);
-			doSearchForContractModel("");
+			doSearchForContractModel(" ");
 			waitForAjaxExtJs();
 			assertListElementsAreDisplayed(statusMap.importStatusPageGridElements(), printout);
 			ExtentReport.logPass("PASS", "test01ValidateSearchCriteriaUnderUtilityStatusPage");

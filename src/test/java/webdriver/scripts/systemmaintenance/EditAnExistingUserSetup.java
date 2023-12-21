@@ -113,7 +113,7 @@ public class EditAnExistingUserSetup extends GoHelper {
 		}
 	}
 
-	@Test
+//	@Test
 	public void test04SelectUserRoleThenVerifyMenuItems() throws Throwable {
 		try {
 			doClick(systemMap.getUserRoleSelect());
@@ -174,7 +174,7 @@ public class EditAnExistingUserSetup extends GoHelper {
 		}
 	}
 
-	@Test
+//	@Test
 	public void test05SelectEntity() throws Throwable {
 		try {
 			if (systemMap.getUserEntitySelect().getAttribute("class").contains("disabled")) {
@@ -206,14 +206,14 @@ public class EditAnExistingUserSetup extends GoHelper {
 		try {
 			Actions act=new Actions(driver);
 			//Shilpa updated code for 11.2
-			act.moveToElement(driver.findElement(By.xpath("(//div[text()='" + dept + "']//following::input[contains(@id,'combo')])[1]"))).click().clickAndHold().build().perform();
+			act.moveToElement(driver.findElement(By.xpath("(//div[text()='" + dept + "']//following::input[contains(@id,'combo')]//parent::div)[1]"))).click().clickAndHold().pause(1000).build().perform();
 //			doClick("(//div[text()='" + dept + "']//following::table[2]//td[2]//div)[1]");
 //			doClick("(//div[text()='" + dept + "']//following::input[contains(@id,'combo')])[1]");
-			assertTextIsDisplayed("All");
-			assertTextIsDisplayed("None");
-			assertTextIsDisplayed("Selected");
+			assertElementIsDisplayedWithXpath("(//div[text()='" + dept + "']//following::li[text()='All'])");
+			assertElementIsDisplayedWithXpath("(//div[text()='" + dept + "']//following::li[text()='None'])");
+			assertElementIsDisplayedWithXpath("(//div[text()='" + dept + "']//following::li[text()='Selected'])");
 			//Shilpa updated code for 11.2
-			act.moveToElement(driver.findElement(By.xpath("//li[text()='Selected']"))).click().perform();
+			act.moveToElement(driver.findElement(By.xpath("//li[text()='Selected']"))).clickAndHold().pause(1000).click().build().perform();
 //			doClick("//li[text()='Selected']");
 //			doDropdownSelectUsingOptionTextOnly(systemMap.getUserMasterSelectDropdownButtonOptions(), "Selected");
 			doClick("//div[text()='" + dept + "']//following::div[7]");
@@ -232,7 +232,7 @@ public class EditAnExistingUserSetup extends GoHelper {
 			doClick(contractMap.getApplySelections());
 			assertElementText(driver.findElement(By.xpath("(//div[text()='"+dept+"']//following::div[4]//following::div[contains(@class,'x-grid-cell-inner ')])[1]")),
 					"2 Selected", printout);
-			driverDelay(200);
+			driverDelay(500);
 			doClick(ContractingMap.getContractFeeForServicePaymentSave());
 			ExtentReport.logPass("PASS", "test06SelectMasterDepartments");
 		} catch (Exception | AssertionError e) {

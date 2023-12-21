@@ -100,14 +100,16 @@ public class UIValidationContracting extends CalculationHelper{
 			assertTextIsDisplayed("Calculation Log");
 			doClick(modelMap.getContractModelRiskLimiterCancelCloseBtn());
 			assertTextIsDisplayed("Complete a model using a list of assignments.");
-			doClosePageOnLowerBar("ADS-1320 Contract...");
+//			doClosePageOnLowerBar("ADS-1320 Contract...");
+			//shilpa updated xpath for 11.2
+			doClick("//span[text()='ADS-1320 Contract...']//following::span[@class='x-tab-close-btn']");
 			ExtentReport.logPass("PASS", "AssertContractModelPage");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "AssertContractModelPage", driver, e);
 			fail(e.getMessage());
 		} 
 		finally{
-			doClosePageOnLowerBar("Model Library");
+			doClosePageOnLowerBar("Contract Models");
 
 		}
 	}

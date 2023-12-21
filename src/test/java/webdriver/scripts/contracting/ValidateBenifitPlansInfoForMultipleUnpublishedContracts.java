@@ -145,7 +145,7 @@ public class ValidateBenifitPlansInfoForMultipleUnpublishedContracts extends Cal
 //			doClick("(//*[contains(@id,'tab') and contains(text(),'CM ADS1327...')]/../../following-sibling::a)[1]");
 			doClick("(//span[contains(text(),'CM ADS1327...')]/parent::span/parent::span/following-sibling::span)[1]"); // close the tab
 //			doClick(ContractingMap.getContractModelRiskLimiterCancelCloseBtn());  not needed
-			doClosePageOnLowerBar("Model Library");
+			doClosePageOnLowerBar("Contract Models");
 			ExtentReport.logPass("PASS", "test04ApplyBenefitPlanInMultipleContracts");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test04ApplyBenefitPlanInMultipleContracts", driver, e);

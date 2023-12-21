@@ -94,7 +94,7 @@ public class ValidateContractingModeExportImportButton extends GoHelper{
 			assertElementIsDisplayed(modelMap.getContractModelImportExportstatusPage());
 			ContractModelsHelper.waitForFirstRowCalculationBarToReach100Percent();
 			doClosePageOnLowerBar("Import/Export Status");
-			doClosePageOnLowerBar("Model Library");
+			doClosePageOnLowerBar("Contract Models");
 			ExtentReport.logPass("PASS", "test02ImportContractModel");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test02ImportContractModel", driver, e);

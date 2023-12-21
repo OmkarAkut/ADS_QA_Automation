@@ -57,7 +57,9 @@ public class ValidateBenefitPlanInfoUpdate extends CalculationHelper {
 			ContractModelsHelper.selectMultipleColumnsToDisplay(columns);
 			doClick(ContractingMap.getContractModelApplyInExportPopUp());
 			ContractModelsHelper.CompareListToArray(ContractingMap.getBenefitPlans(), columnsToCompare);
-			doClick(ContractingMap.getSaveBenefitPlan());
+//			doClick(ContractingMap.getSaveBenefitPlan());
+			//shilpa added xpath for 11.2
+			doClick("//span[text()='Save']");
 //			Omkar 22/6/2023 : xpath changes for 11.2
 //			ContractModelsHelper.toggleBetweenTheDockBar("//span[text()='Model Library']//parent::button");
 //			ContractModelsHelper.toggleBetweenTheDockBar("//span[text()='ADS 1321 FY2020 Test D']//parent::button");
@@ -92,9 +94,10 @@ public class ValidateBenefitPlanInfoUpdate extends CalculationHelper {
 			doClick(ContractingMap.getSelectAllBenefitPlans());
 //			doClick(ContractingMap.getSelectAllBenefitPlans());
 			doClick(ContractingMap.getContractModelApplyInExportPopUp());
-			doClick(ContractingMap.getSaveBenefitPlan());
-			doClosePageOnLowerBar("ADS 1321 FY2020 Test D");
-			doClosePageOnLowerBar("Model Library");
+//			doClick(ContractingMap.getSaveBenefitPlan());
+			doClick("//span[text()='Save']");
+			doClick("//span[text()='ADS 1321 FY2020 Test D']//following::span[@class='x-tab-close-btn']");
+			doClosePageOnLowerBar("Contract Models");
 			ExtentReport.logPass("PASS", "test01AddMultipleBenefitPlan");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01AddMultipleBenefitPlan", driver, e);

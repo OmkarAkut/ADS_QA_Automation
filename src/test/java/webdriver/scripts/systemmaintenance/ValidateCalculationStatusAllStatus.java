@@ -128,7 +128,7 @@ public class ValidateCalculationStatusAllStatus extends CalculationHelper{
 	//	@Test
 	public void test06ValidateAfterClearSearch() throws Throwable {
 		try {
-			doSearchForContractModel("");
+			doSearchForContractModel(" ");
 			waitForAjaxExtJs();
 			assertListElementsAreDisplayed(statusMap.calculationStatusPageGridElements(), printout);
 			ExtentReport.logPass("PASS", "test06ValidateAfterClearSearch");

@@ -54,7 +54,7 @@ public class UIValidationStatusUIValidateUtilityStatusPage extends CalculationHe
 					doSearchForContractModel(searchText.toUpperCase());
 					waitForDisplayedSpinnerToEnd();
 					assertGridElementsOnSearch(modelMap.getModelLibraryTableButtonNext(),statusMap.calcStatusPageNumber(),statusMap.utilityStatusPageGridElements(),searchText);
-					doSearchForContractModel("");
+					doSearchForContractModel(" ");
 					 waitForAjaxExtJs();
 					ExtentReport.logPass("PASS", "test01ValidateSearchCriteriaUnderUtilityStatusPage");
 				} catch (Exception | AssertionError e) {
