@@ -1,18 +1,13 @@
 package webdriver.scripts.costing.costingcalculations;
-
 import static org.junit.Assert.fail;
-
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.helpers.CalculationHelper;
-import webdriver.maps.DataMaintenanceMap;
-
 public class CostingCalculateOverheadScenario extends CalculationHelper {
 	JavascriptExecutor executor = (JavascriptExecutor)driver;
 	static String viewLogTitle="Overhead Model Scenario Calculation";

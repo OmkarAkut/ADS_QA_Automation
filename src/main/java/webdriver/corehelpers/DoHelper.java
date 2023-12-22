@@ -147,9 +147,9 @@ public class DoHelper extends DriverHelper {
 	public static void doClickTreeItemWithCheckbox(String name) throws InterruptedException {
 //		  Omkar 14/04/2023 : xpath changes for 11.2
 //		waitUntilElementIsClickable(driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]/div[text()='" + name + "']")));
-		waitUntilElementIsClickable(driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]//span[text()='" + name + "']")));
+		waitUntilElementIsClickable(driver.findElement(By.xpath("//tr[contains(@class,'x-grid-tree-node-leaf')]//td[contains(@class,'x-grid-cell-treecolumn')]//span[text()='" + name + "']//preceding::div[@class=' x-tree-checkbox']")));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);",
-				driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]//span[text()='" + name + "']")));
+				driver.findElement(By.xpath("//tr[contains(@class,'x-grid-tree-node-leaf')]//td[contains(@class,'x-grid-cell-treecolumn')]//span[text()='" + name + "']//preceding::div[@class=' x-tree-checkbox']")));
 //		Omkar 14/04/2023 : xpath changes for 11.2
 //		driver
 //		.findElement(
@@ -159,7 +159,7 @@ public class DoHelper extends DriverHelper {
 //		.click();
 		driver
 		.findElement(
-				By.xpath("//td[contains(@class,'x-grid-cell-treecolumn')]//span[text()='" + name + "']"))
+				By.xpath("//tr[contains(@class,'x-grid-tree-node-leaf')]//td[contains(@class,'x-grid-cell-treecolumn')]//span[text()='" + name + "']//preceding::div[@class=' x-tree-checkbox']"))
 		.click();
 		waitForSpinnerToEnd();
 		waitForAjaxExtJs();

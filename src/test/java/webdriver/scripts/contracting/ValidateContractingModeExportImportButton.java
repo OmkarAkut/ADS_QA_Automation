@@ -1,13 +1,9 @@
 package webdriver.scripts.contracting;
-
 import static org.junit.Assert.fail;
-
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.corehelpers.GoHelper;
@@ -48,7 +44,7 @@ public class ValidateContractingModeExportImportButton extends GoHelper{
 			doClick(modelMap.getContractModelSelectFileButton());
 			waitForElementToBeVisible(modelMap.getContractModelInExportPopUp());
 			driver.findElement(By.name("carrierfield")).sendKeys(contractModel);
-			doClick(modelMap.getContractModelApplyInExportPopUp());
+			doClick(ContractingMap.getContractModelApplyInExportPopUp());
 			driver.findElement(By.name("sharedHostLocation")).click();
 			driverDelay(500);
 			doClick(modelMap.getContractModelExportFileSharedLocOption());

@@ -160,7 +160,9 @@ public class GetHelper extends DoHelper {
     }
 
     public WebElement getWebElementButtonWithElementText(String buttonText) throws InterruptedException {
-        String xpath = "//div[not(contains(@class,'disabled'))]/em/button/span[text()='" + buttonText + "']";
+//        String xpath = "//div[not(contains(@class,'disabled'))]/em/button/span[text()='" + buttonText + "']";
+    	//Shilpa updated xpath for 11.2
+    	String xpath = "//div[contains(@id,'activityvolumecalcdataform')]//span[text()='" + buttonText + "']";
         waitForAjaxExtJs();
         WebElement element = driver.findElement(By.xpath("" + xpath + ""));
         return element;

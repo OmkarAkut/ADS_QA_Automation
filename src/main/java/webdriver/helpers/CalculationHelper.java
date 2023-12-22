@@ -138,10 +138,14 @@ public class CalculationHelper extends GoHelper {
 	}
 
 	public void assertFilterResults(String expectedTotal) throws InterruptedException {
-		doClick(getWebElement("//div[3]/em/button/span[text()='Filter']"));
+		//shilpa updated xpath for 11.2
+		doClick(getWebElement("//div[contains(@id,'activityvolumedatagrid')]//following::span[text()='Filter']"));
 		waitForAjaxExtJs();
 		assertThat(filterGetFilterMatchesTheseCriteriaText(), containsString(expectedTotal));
-		doClick(getWebElement("//div[3]/em/button/span[text()='Cancel & Close']"));
+//		doClick(getWebElement("//div[3]/em/button/span[text()='Cancel & Close']"));
+		//shilpa updated xpath for 11.2
+		doClick(getWebElement("//div[contains(@id,'activityvolumedatagrid')]//following::span[text()='Cancel & Close']"));
+
 	}
 
 	public void calculationsAssertDbRowCount(
