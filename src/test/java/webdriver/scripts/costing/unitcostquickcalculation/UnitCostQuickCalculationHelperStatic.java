@@ -45,9 +45,13 @@ public class UnitCostQuickCalculationHelperStatic extends LoginStatic {
 
   public void verifyUcqcPage(boolean printout) {
     //UCQC screen opens with "Unit Cost Quick Calculation" title
-    assertElementIsDisplayed(driver.findElement(By.xpath("//*[contains(@id, 'header_hd-textEl') and text()='Unit Cost Quick Calculation']")), printout);
+//	 Omkar 22/12/2023 : xpath changes for 11.2
+//    assertElementIsDisplayed(driver.findElement(By.xpath("//*[contains(@id, 'header_hd-textEl') and text()='Unit Cost Quick Calculation']")), printout);
+    assertElementIsDisplayed(driver.findElement(By.xpath("//*[contains(@id, 'header-title-textEl') and text()='Unit Cost Quick Calculation']")), printout);
     //Unit Cost Quick Calculation displays in breadcrumbs
-    assertElementIsDisplayed(driver.findElement(By.xpath("//*[contains(@id, 'header_hd-textEl') and text()='Unit Cost Quick Calculation']")), printout);
+//	Omkar 22/12/2023 : xpath changes for 11.2
+//    assertElementIsDisplayed(driver.findElement(By.xpath("//*[contains(@id, 'header_hd-textEl') and text()='Unit Cost Quick Calculation']")), printout);
+    assertElementIsDisplayed(driver.findElement(By.xpath("//*[contains(@id, 'btnInnerEl') and text()='Unit Cost Quick Calculation']")), printout);
     //Unit Cost Quick Calculation displays as item in dock bar
     assertElementIsDisplayed(driver.findElement(By.xpath("//*[contains(@id, 'btnInnerEl') and text()='Unit Cost Quick...']")), printout);
   }

@@ -24,13 +24,19 @@ public class AssertStatic extends TableStatic {
 
   public void assertPageInformation(String pageTitle) {
     //assert page title
+	 /* Omkar 22/12/2023 : xpath changes for 11.2
     assertElementIsDisplayed(driver.findElement(By.xpath("//*[contains(@id, 'header_hd-textEl') " +
+            "and text()='" + pageTitle + "']")), printout); */
+    assertElementIsDisplayed(driver.findElement(By.xpath("//*[contains(@id, 'header-title-textEl') " +
             "and text()='" + pageTitle + "']")), printout);
     //assert title displays in breadcrumbs
+    /*   Omkar 22/12/2023 : xpath changes for 11.2
     assertElementIsDisplayed(driver.findElement(By.xpath(
             "//*[contains(@id, 'header_hd-textEl') and text()='" + pageTitle + "']")),
-            printout)
-    ;
+            printout); */
+    assertElementIsDisplayed(driver.findElement(By.xpath(
+            "//*[contains(@id, 'btnInnerEl') and text()='" + pageTitle + "']")),
+            printout);
   }
 
   public void assertFilterResultsStatement(String numberOfFilterMatches) {

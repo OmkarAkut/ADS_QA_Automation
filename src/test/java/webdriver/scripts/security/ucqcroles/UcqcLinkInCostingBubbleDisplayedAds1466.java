@@ -59,6 +59,7 @@ public class UcqcLinkInCostingBubbleDisplayedAds1466 extends LoginRolesTesting {
     try {
     	GeneralElementsMap geMap = BuildMap.getInstance(driver, GeneralElementsMap.class);
       waitForAjaxExtJs();
+      Thread.sleep(2500);
       assertThatElementIsDisplayed(geMap.getLandingPageBubbleCostingQuickLinkUnitCostQuickCalculation());
 //      String[] expectedLinks = {"Unit Cost Quick Calculation"};
 //      int index = 1;

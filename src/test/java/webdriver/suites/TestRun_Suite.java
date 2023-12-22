@@ -50,7 +50,7 @@ import webdriver.scripts.systemmaintenance.SystemMaintenanceTestSuite;
 ////	UcqcCalculationTestSuite.class,
 ////	UcqcMainpageTestSuite.class,
 ////	UcqcRvusSuite.class,
-////	UcqcRoleBasedTestSuite.class,
+	UcqcRoleBasedTestSuite.class,
 	GeneralCalculationsTestSuite.class,
 	ReportingTestSuite.class,
 })
