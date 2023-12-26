@@ -70,13 +70,13 @@ public class UIValidationPrepareTables extends CalculationHelper{
 			assertTextIsDisplayed("Medicare Localities");
 			assertTextIsDisplayed("GPCI Tables");
 			assertTextIsDisplayed("Site of Service Tables");
-			doClickTreeItemWithCheckbox("Update Indicators");
+			doClickTreeItem("Update Indicators");
 			assertElementIsDisplayed(ContractingMap.getUpdateIndicatorsPage());
 			doClick(ContractingMap.getUpdateIndicatorsEditButton());
 			waitForElementToBeVisible(ContractingMap.getUpdateIndicatorsEditPopUp());
 			assertElementIsDisplayed(ContractingMap.getUpdateIndicatorsEditPopUp());
 			doClick(modelMap.getContractModelRiskLimiterCancelCloseBtn());
-			doClickTreeItemWithCheckbox("Medicare Carriers");
+			doClickTreeItem("Medicare Carriers");
 			waitForElementToBeVisible(ContractingMap.getNewButtonMedicare());
 			doClick(ContractingMap.getNewButtonMedicare());
 			waitForElementToBeVisible(ContractingMap.getNewCodePopUp());
@@ -88,14 +88,14 @@ public class UIValidationPrepareTables extends CalculationHelper{
 			waitForElementToBeVisible(ContractingMap.getWarningPopUpDeleteButton());
 			doClick(ContractingMap.getWarningPopUpDeleteButton());
 			assertTextIsDisplayed("There is no data available to display.");
-			doClosePageOnLowerBar("ADS-1320 Contract...");
+			doClick("//span[text()='ADS-1320 Contract...']//following::span[@class='x-tab-close-btn']");
 			ExtentReport.logPass("PASS", "AssertPrepareTables");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "AssertPrepareTables", driver, e);
 			fail(e.getMessage());
 		} 
 		finally{
-			doClosePageOnLowerBar("Model Library");
+			doClosePageOnLowerBar("Contract Models");
 
 		}
 	}

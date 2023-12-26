@@ -63,7 +63,7 @@ public class UIValidationContracting extends CalculationHelper{
 			assertTextIsDisplayed("Fee For Service Payment Terms");
 			assertTextIsDisplayed("Patient Financial Responsibility");
 			assertTextIsDisplayed("Lump Sum Payment Allocation Rules");
-			doClickTreeItemWithCheckbox("Fee For Service Payment Terms");
+			doClickTreeItem("Fee For Service Payment Terms");
 			assertElementIsDisplayed(modelMap.getContractServiceModel());
 			assertElementIsDisplayed(modelMap.getContractPricingMethod());
 			assertElementIsDisplayed(modelMap.getContractRiskLimiterModel());
@@ -88,7 +88,7 @@ public class UIValidationContracting extends CalculationHelper{
 			doClick(ContractingMap.getContractFeeForServicePaymentSave());
 			doClickTreeItemWithCheckbox("Fee For Service Payment Terms");
 			//ADS-6465
-			doClickTreeItemWithCheckbox("Calculate");
+			doClickTreeItem("Calculate");
 			driverDelay(100);
 			assertTextIsDisplayed("General");
 			assertTextIsDisplayed("Fee for Service/Lump Sum");
@@ -102,7 +102,8 @@ public class UIValidationContracting extends CalculationHelper{
 			assertTextIsDisplayed("Complete a model using a list of assignments.");
 //			doClosePageOnLowerBar("ADS-1320 Contract...");
 			//shilpa updated xpath for 11.2
-			doClick("//span[text()='ADS-1320 Contract...']//following::span[@class='x-tab-close-btn']");
+//			driverDelay(500);
+			doClick("//span[text()='ADS-1320 Contract Model D']//following::span[@class='x-tab-close-btn']");
 			ExtentReport.logPass("PASS", "AssertContractModelPage");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "AssertContractModelPage", driver, e);
