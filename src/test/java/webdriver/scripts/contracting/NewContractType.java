@@ -58,14 +58,14 @@ public class NewContractType extends CalculationHelper{
 			driverDelay(100);
 			doFilterCreate(filter);
 			assertElementIsDisplayedWithXpath("//div[text()='"+contractCode+"']");
-			 doClosePageOnLowerBar("ADS-1320 Contract...");
+			 doClick("//span[text()='ADS-1320 Contract...']//following::span[@class='x-tab-close-btn']");
 			ExtentReport.logPass("PASS", "test01CreateNewContractType");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01CreateNewContractType", driver, e);
 			fail(e.getMessage());
 		} 
 		finally{
-			doClosePageOnLowerBar("Model Library");
+			doClosePageOnLowerBar("Contract Models");
 
 		}
 	}
