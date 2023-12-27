@@ -58,21 +58,24 @@ public class CostingRunStatisticDataCalculationScenarioAds2339 extends Calculati
 		waitForAjaxExtJs();
 		driverDelay();
 		//Shilpa 26.08.2022 updated test data
-//    doClickTreeItem("Prepare Data");
-		doClickTreeItem("CM Test");
+    doClickTreeItem("Prepare Data");
+//		doClickTreeItem("CM Test");
 //    waitSpinAjaxDelay(2000);
 		driverDelay();
-		doClickTreeItem("Cost Scnenarios");
-		waitSpinAjaxDelay(2000);
+//		doClickTreeItem("Cost Scnenarios");
+//		waitSpinAjaxDelay(2000);
 		doClickTreeItem("Statistic Data Scenarios");
 		driverDelay();
 //    doClickTreeItemWithCheckbox("Statistic Data Scenarios");
+		doClick("(//tr[contains(@class,'x-grid-tree-node-leaf')]//td[contains(@class,'x-grid-cell-treecolumn')]//span[text()='Statistic Data Scenarios']//preceding::div[@class=' x-tree-checkbox'])[2]");
 		waitForSpinnerToEnd();
 		waitForAjaxExtJs();
 		driverDelay();
+		scrollToView(driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell x-grid-td x-grid-cell-gridcolumn')]/*[text()='" + statisticDataScenario + "']")));
 		tableDoubleClickCellFirstColumn(statisticDataScenario);
 		waitForSpinnerToEnd();
 		waitForAjaxExtJs();
+		
 		assertFilterResults(expectedFilterTotal);
 		doClickButton("Cancel & Close");
 		waitForSpinnerToEnd();
@@ -84,13 +87,15 @@ public class CostingRunStatisticDataCalculationScenarioAds2339 extends Calculati
 	}
   }
 
+  //Shilpa : Scroll issue
   @Test
   public void test02VerifyStaticDataCalculationScenarioPageConfigurationAndSave() throws InterruptedException,Throwable {
     try {
-		doClickTreeItemWithCheckbox("Statistic Data Calculation Scenarios");
+    	doClickTreeItem("Statistic Data Calculation Scenarios");
 		waitForSpinnerToEnd();
 		waitForAjaxExtJs();
 		driverDelay();
+		scrollToView(driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell x-grid-td x-grid-cell-gridcolumn')]/*[text()='" + statisticDataCalculationScenario + "']")));
 		tableDoubleClickCellFirstColumn(statisticDataCalculationScenario);
 		waitForSpinnerToEnd();
 		waitForAjaxExtJs();
@@ -120,7 +125,7 @@ public class CostingRunStatisticDataCalculationScenarioAds2339 extends Calculati
   @Test
   public void test03RunCalculationAndAssertResultsMatchExpected() throws InterruptedException,Throwable {
     try {
-		doClick(getWebElement("//div[1]/em/button/span[text()='Calculate']"));
+		doClick(getWebElement("(//div[contains(@id,'calculationscenario')]//span[text()='Calculate'])[1]"));
 		waitForFirstRowCalculationBarToReach100Percent(10000);
 		deleteMyCalculationStatusFirstRow();
 		doClosePageOnLowerBar("Calculation Status");

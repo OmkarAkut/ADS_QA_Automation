@@ -990,7 +990,8 @@ public class CostingMap extends MapConfig {
 		return calculationFilterPopUpFilterDrop;
 	}
 
-	@FindBy(xpath = "//div[contains(@class,'x-btn windowbtn')]//button")
+//	@FindBy(xpath = "//div[contains(@class,'x-btn windowbtn')]//button")
+	@FindBy(xpath = "(//div[contains(@id,'container')]//span[text()='Select']/../../..)[1]")
 	private WebElement selectCostModelScenariosInEvaluationOrder;
 	public WebElement getSelctCostModelScenariosInEvaluationOrder() {
 		return selectCostModelScenariosInEvaluationOrder;
@@ -1014,13 +1015,15 @@ public class CostingMap extends MapConfig {
 		return getCostModelScenariosinEvaluationOrderTo;
 	}
 
-	@FindBy(xpath = "(//div[contains(@id,'boundlist')]/ul/li[contains(text(),'Apr')]/..)[1]")
+//	@FindBy(xpath = "(//div[contains(@id,'boundlist')]/ul/li[contains(text(),'Apr')]/..)[1]")
+	@FindBy(xpath = "(//div[contains(@class,'boundlist')]/ul/li[contains(text(),'Apr')]/..)[1]")
 	private WebElement getCostModelScenariosinEvaluationOrderFromList;
 	public WebElement getCostModelScenariosinEvaluationOrderFromList() {
 		return getCostModelScenariosinEvaluationOrderFromList;
 	}
 
-	@FindBy(xpath = "(//div[contains(@id,'boundlist')]/ul/li[contains(text(),'Apr')]/..)[2]")
+//	@FindBy(xpath = "(//div[contains(@id,'boundlist')]/ul/li[contains(text(),'Apr')]/..)[2]")
+	@FindBy(xpath = "(//div[contains(@class,'boundlist')]/ul/li[contains(text(),'Apr')]/..)[2]")
 	private WebElement getCostModelScenariosinEvaluationOrderToList;
 	public WebElement getCostModelScenariosinEvaluationOrderToList() {
 		return getCostModelScenariosinEvaluationOrderToList;
@@ -1032,43 +1035,53 @@ public class CostingMap extends MapConfig {
 		return getCostModelScenariosinEvaluationOrderAssignedCost;
 	}
 
-	@FindBy(xpath = "(//div[contains(@id,'boundlist')]/ul/li[contains(text(),'1 : Primary Assigned Cost Destination')]/..)[1]")
+//	@FindBy(xpath = "(//div[contains(@id,'boundlist')]/ul/li[contains(text(),'1 : Primary Assigned Cost Destination')]/..)[1]")
+	@FindBy(xpath = "(//div[contains(@class,'boundlist')]/ul/li[contains(text(),'1 : Primary Assigned Cost Destination')]/..)[1]")
 	private WebElement getCostModelScenariosinEvaluationOrderAssignedCostList;
 	public WebElement getCostModelScenariosinEvaluationOrderAssignedCostList() {
 		return getCostModelScenariosinEvaluationOrderAssignedCostList;
 	}
 
-	@FindBy(xpath = "//label[text()='Encounter Types']//following::button[contains(@id,'abutton')][1]")
+//	@FindBy(xpath = "//label[text()='Encounter Types']//following::button[contains(@id,'abutton')][1]")
+	//shilpa updated xpath for 11.2 on 12.27.2023
+	@FindBy(xpath = "//span[text()='Encounter Types']//following::span[contains(@id,'abutton')][1]")
 	private WebElement getCostModelScenariosinEvaluationOrderEncounterSelect;
 	public WebElement getCostModelScenariosinEvaluationOrderEncounterSelect() {
 		return getCostModelScenariosinEvaluationOrderEncounterSelect;
 	}
 
-	@FindBy(xpath = "//h1[text()='Select']//following::input[contains(@id,'checkboxfield')]")
+//	@FindBy(xpath = "//h1[text()='Select']//following::input[contains(@id,'checkboxfield')]")
+	//shilpa updated xpath for 11.2 on 12.27.2023
+	@FindBy(xpath = "//h1[text()='Select']//following::input[contains(@name,'selectAllChk')]")
 	private WebElement getCostModelScenariosinEvaluationOrderEncounterSelectAll;
 	public WebElement getCostModelScenariosinEvaluationOrderEncounterSelectAll() {
 		return getCostModelScenariosinEvaluationOrderEncounterSelectAll;
 	}
 
-	@FindBy(xpath = "//label[text()='Entities']//following::button[contains(@id,'abutton')][1]")
+//	@FindBy(xpath = "//label[text()='Entities']//following::button[contains(@id,'abutton')][1]")
+	//shilpa updated xpath for 11.2 on 12.27.2023
+	@FindBy(xpath = "//span[text()='Entities']//following::span[contains(@id,'abutton')][1]")
 	private WebElement getCostModelScenariosinEvaluationOrderEntitiesSelect;
 	public WebElement getCostModelScenariosinEvaluationOrderEntitiesSelect() {
 		return getCostModelScenariosinEvaluationOrderEntitiesSelect;
 	}
 
-	@FindBy(xpath = "//label[text()='Admission']//preceding::input[contains(@id,'checkboxfield')][1]")
+//	@FindBy(xpath = "//label[text()='Admission']//preceding::input[contains(@id,'checkboxfield')][1]")
+	@FindBy(xpath = "//input[@name='useAdmissionTimePeriod']")
 	private WebElement getCostModelScenariosinEvaluationOrderAdmissionCheck;
 	public WebElement getCostModelScenariosinEvaluationOrderAdmissionCheck() {
 		return getCostModelScenariosinEvaluationOrderAdmissionCheck;
 	}
 
-	@FindBy(xpath = "//label[text()='Discharge']//preceding::input[contains(@id,'checkboxfield')][1]")
+//	@FindBy(xpath = "//label[text()='Discharge']//preceding::input[contains(@id,'checkboxfield')][1]")
+	@FindBy(xpath = "//input[@name='useDischargeTimePeriod']")
 	private WebElement getCostModelScenariosinEvaluationOrderDischargeCheck;
 	public WebElement getCostModelScenariosinEvaluationOrderDischargeCheck() {
 		return getCostModelScenariosinEvaluationOrderDischargeCheck;
 	}
 
-	@FindBy(xpath = "//label[text()='Posting']//preceding::input[contains(@id,'checkboxfield')][1]")
+//	@FindBy(xpath = "//label[text()='Posting']//preceding::input[contains(@id,'checkboxfield')][1]")
+	@FindBy(xpath = "//input[@name='usePostingTimePeriod']")
 	private WebElement getCostModelScenariosinEvaluationOrderPostingCheck;
 	public WebElement getCostModelScenariosinEvaluationOrderPostingCheck() {
 		return getCostModelScenariosinEvaluationOrderPostingCheck;
@@ -1126,13 +1139,14 @@ public class CostingMap extends MapConfig {
 		return getEncounterFileLocDropdown;
 	}
 
-	@FindBy(xpath = "(//span[text()='Calculate']/./..)[2]")
+	@FindBy(xpath = "//div[contains(@id,'encountercostcalculationform')]//following::span[text()='Calculate']")
 	private static WebElement getEncounterCalculateBtn;
 	public static WebElement getEncounterCalculateBtn() {
 		return getEncounterCalculateBtn;
 	}
 
-	@FindBy(xpath = "//span[text()='Save']//parent::button")
+//	@FindBy(xpath = "//span[text()='Save']//parent::button")
+	@FindBy(xpath = "//div[contains(@id,'encountercostcalculationform')]//following::span[text()='Save']")
 	private static WebElement getEncounterSave;
 	public static WebElement getEncounterSave() {return getEncounterSave;
 	}

@@ -45,7 +45,7 @@ public class VerifyFilterAscSchemes extends CalculationHelper{
 			driverDelay(1200);
 			doClickTreeItem("Build Structure Elements");
 			driverDelay(300);
-			doClickTreeItemWithCheckbox("ASC Schemes");
+			doClickTreeItem("ASC Schemes");
 			doClick(ContractingMap.getASCFilterButton());
 			doFilterSetFilterParameters("ASC Scheme Name", "Is", "Equal To", ascScheme);
 			doClick(dialog.getFilterDialogButtonAdd());
@@ -65,7 +65,7 @@ public class VerifyFilterAscSchemes extends CalculationHelper{
 		    doFilterCreate(filter);
 		    assertElementIsDisplayedWithXpath("//div[text()='"+ascScheme+"']");
 //		    doClosePageOnLowerBar("ADS-1320 Contract...");
-			doClick("//span[@class='x-tab-close-btn'][contains(text(),'removable')]");
+			doClick("//span[text()='ADS-1320 Contract...']//following::span[@class='x-tab-close-btn']");
 
 //		    doClosePageOnLowerBar("Model Library");
 			ExtentReport.logPass("PASS", "test01VerifyFilterByAscSchemes");

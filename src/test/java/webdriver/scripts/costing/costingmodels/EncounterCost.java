@@ -90,19 +90,26 @@ public class EncounterCost extends UcqcHelper {
 			DoHelper.doEnterModelName(costModelName);
 			Thread.sleep(400);
 			doClick(selectColumn.getSelctCostModelScenariosInEvaluationOrder());
-			highlightColumnsToDisplayColumn("BC REGRESSION CMS");
+//			highlightColumnsToDisplayColumn("BC REGRESSION CMS");
+			//Shilpa update test data
+			highlightColumnsToDisplayColumn("*USE MHC FY05 Total Cost Scenario");
+
 			doClick(selectColumn.getcostModelButtonColumnsToDisplayModalSelect());
 			Thread.sleep(500);
 			doClick(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalApply());
 			Thread.sleep(500);
+//			doDropdownSelectUsingOptionText(selectColumn.getCostModelScenariosinEvaluationOrderFrom(),
+//					selectColumn.getCostModelScenariosinEvaluationOrderFromList(), "Apr 2012");
 			doDropdownSelectUsingOptionText(selectColumn.getCostModelScenariosinEvaluationOrderFrom(),
-					selectColumn.getCostModelScenariosinEvaluationOrderFromList(), "Apr 2012");
-
+					selectColumn.getCostModelScenariosinEvaluationOrderFromList(), "Apr 2004");
+//			doDropdownSelectUsingOptionText(selectColumn.getCostModelScenariosinEvaluationOrderTo(),
+//					selectColumn.getCostModelScenariosinEvaluationOrderToList(), "Mar 2013");
 			doDropdownSelectUsingOptionText(selectColumn.getCostModelScenariosinEvaluationOrderTo(),
-					selectColumn.getCostModelScenariosinEvaluationOrderToList(), "Mar 2013");
-
+					selectColumn.getCostModelScenariosinEvaluationOrderToList(), "Mar 2005");
+//			doDropdownSelectUsingOptionText(selectColumn.getCostModelScenariosinEvaluationOrderAssignedCost(),
+//					selectColumn.getCostModelScenariosinEvaluationOrderAssignedCostList(), "10 : BC Destination");
 			doDropdownSelectUsingOptionText(selectColumn.getCostModelScenariosinEvaluationOrderAssignedCost(),
-					selectColumn.getCostModelScenariosinEvaluationOrderAssignedCostList(), "10 : BC Destination");
+					selectColumn.getCostModelScenariosinEvaluationOrderAssignedCostList(), "12 : Actual Cost Destination");
 			doClick(selectColumn.getCostModelScenariosinEvaluationOrderEncounterSelect());
 
 			doClick(selectColumn.getCostModelScenariosinEvaluationOrderEncounterSelectAll());
@@ -114,12 +121,12 @@ public class EncounterCost extends UcqcHelper {
 			doClick(selectColumn.getCostModelScenariosinEvaluationOrderEncounterSelectAll());
 
 			doClick(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalApply());
-
+			doClick("//span[text()='Continue']");
 			doClick(selectColumn.getCostModelScenariosinEvaluationOrderAdmissionCheck());
 
 			doClick(selectColumn.getCostModelScenariosinEvaluationOrderDischargeCheck());
-
-			driver.findElement(By.name("admStartDate")).click();
+			scrollToView(driver.findElement(By.name("admStartDate")));
+//			driver.findElement(By.name("admStartDate")).click();
 
 			driver.findElement(By.name("dsChgStartDate")).sendKeys(dischargeDateFrom);
 
@@ -130,14 +137,17 @@ public class EncounterCost extends UcqcHelper {
 			driver.findElement(By.name("postStartDate")).sendKeys(postingDateFrom);
 
 			driver.findElement(By.name("postEndDate")).sendKeys(postingDateTo);
-
+			scrollToView(driver.findElement(By.name("hostLocation")));
 			driver.findElement(By.name("hostLocation")).click();
 			waitForElementToBeVisible(CostingMap.getEncounterFileLocDropdown());
 			doClick(CostingMap.getEncounterFileLocDropdown());
 			Thread.sleep(300);
 			driver.findElement(By.name("logLocation")).sendKeys("Test");
 			doClick(CostingMap.getEncounterSave());
+			doClick("//span[text()='Continue']");
+			waitForDisplayedSpinnerToEnd();
 			doClick(CostingMap.getEncounterCalculateBtn());
+			doClick("//span[text()='Save & Continue']");
 			waitForSpinnerToEnd();
 			CalculationHelper.waitForFirstRowCalculationBarToReach100Percent();
 			ExtentReport.logPass("PASS", "test01AssertCostModelPageHeader");

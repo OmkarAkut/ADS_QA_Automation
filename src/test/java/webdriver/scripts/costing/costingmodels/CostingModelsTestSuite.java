@@ -7,6 +7,7 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
 		CostingModelsSmokeTest.class,
 		EncounterCost.class,
+		TestGenericUIValidateCostingModelSearchTextbox.class,
 
 })
 public class CostingModelsTestSuite {

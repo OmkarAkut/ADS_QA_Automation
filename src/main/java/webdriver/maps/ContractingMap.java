@@ -846,7 +846,7 @@ public class ContractingMap extends MapConfig {
 
 //	Omkar 08/6/2023 : xpath changes or 11.2
 //	@FindBy(xpath = "(//h1[text()='ASC Schemes']//following::span[text()='Filter']//parent::button)[1]")
-	@FindBy(xpath = "//div[@id='contractTypeList-innerCt']//span[text()='Filter']")
+	@FindBy(xpath = "//div[contains(@id,'masterlist')]//span[text()='Filter']")
 	private static WebElement ASCFilterButton;
 	public static WebElement getASCFilterButton() {return ASCFilterButton;}
 
