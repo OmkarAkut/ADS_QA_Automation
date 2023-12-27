@@ -74,7 +74,7 @@ public class VerifyFilterAscSchemes extends CalculationHelper{
 			fail(e.getMessage());
 		} 
 		finally{
-			doClosePageOnLowerBar("Model Library");
+			doClosePageOnLowerBar("Contract Models");
 
 		}
 	}

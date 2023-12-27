@@ -65,10 +65,11 @@ public class CostingModelsSmokeTest extends GoHelper {
     doClickButton("New");
     */
 	 try {
-		doClick("(//button/span[text()='New'])[2]");
+		 //Shilpa updated xpath for 11.2 on 12.27.2023
+		doClick("//div[contains(@id,'adynamicgrid')]//following::span[text()='New']");
 		 
 		 //End of modification
-		assertElementIsDisplayedWithXpath("//span[contains(@id, 'header') and text()='New Cost Model']");
+		assertElementIsDisplayedWithXpath("//div[contains(@id,'dynamicwindow')]//following::div[text()='New Cost Model']");
 		doClickButton("Cancel & Close");
 		ExtentReport.logPass("PASS", "test02AssertCostModelNewDialog");
 		} catch (Exception|AssertionError e) {
@@ -92,9 +93,9 @@ public class CostingModelsSmokeTest extends GoHelper {
 		*/
 		waitForAjaxExtJs();
 //driver.switchTo().frame(2);
-		waitForElementToBeVisible(driver.findElement(By.xpath("(//td[contains(@class,'x-grid-cell-treecolumn')]//child::div[1])[2]")));
+		waitForElementToBeVisible(driver.findElement(By.xpath("//div[contains(@id,'taskfolder')]//following::span[text()='Prepare Costing Elements']")));
 		//Shilpa 06.09.2022 updated xpath
-		assertElementIsDisplayedWithXpath("(//td[contains(@class,'x-grid-cell-treecolumn')]//child::div[1])[2]");
+		assertElementIsDisplayedWithXpath("//div[contains(@id,'taskfolder')]//following::span[text()='Prepare Costing Elements']");
 		//assertElementIsDisplayedWithXpath("//*[contains(@class ,'x-grid-row undefined x-grid-tree-node-expanded x-grid-row-selected x-grid-row-focused')]");
    //Commented below line , now it's not showing 06.09.2022
 		// assertElementIsDisplayedWithXpath("//*[contains(text(),'Prepare Costing Elements')]");

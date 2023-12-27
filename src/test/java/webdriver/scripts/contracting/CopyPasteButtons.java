@@ -54,7 +54,7 @@ public class CopyPasteButtons extends GoHelper {
 			assertElementIsDisplayed(modelMap.getContractPricingMethod());
 			assertElementIsDisplayed(modelMap.getContractRiskLimiterModel());
 			doClick(ContractingMap.getContractModelRiskLimiterCancelCloseBtn());
-			doClosePageOnLowerBar("10.2.1 Medicare...");
+			doClick("//span[(text()='10.2.1 Medicare...')]//following::span[@class='x-tab-close-btn']");
 			ExtentReport.logPass("PASS", "AssertFeeForServicePaymentTermsScreenSelectionPanel");
 			
 		} catch (Exception | AssertionError e) {
@@ -121,7 +121,7 @@ public class CopyPasteButtons extends GoHelper {
 			ContractModelsHelper.navigateFeeForServicePaymentTermsScreenSelectionPanel("Pricing Method");
 			assertTextIsDisplayed(serviceModel);
 			doClick(ContractingMap.getContractModelRiskLimiterCancelCloseBtn());
-			doClosePageOnLowerBar("Copy of 10.2.1...");
+			doClick("//span[(text()='Copy of 10.2.1...')]//following::span[@class='x-tab-close-btn']");
 			ExtentReport.logPass("PASS", "testVerifyServiceModelUnderPastedContractModel");
 			
 		} catch (Exception | AssertionError e) {

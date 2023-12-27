@@ -1100,13 +1100,15 @@ public class CostingMap extends MapConfig {
 		return getCalculateEncounterCostItem;
 	}
 
-	@FindBy(xpath = "//div[contains(@id,'encountercostcalculationmaingrid')]//following::span[contains(@id,'abutton')and (text()='New')]//parent::button")
+//	@FindBy(xpath = "//div[contains(@id,'encountercostcalculationmaingrid')]//following::span[contains(@id,'abutton')and (text()='New')]//parent::button")
+	@FindBy(xpath = "//div[contains(@id,'encountercostcalculationmaingrid')]//span[text()='New']")
 	private static WebElement getEncounterNewBtn;
 	public static WebElement getEncounterNewBtn() {
 		return getEncounterNewBtn;
 	}
 
-	@FindBy(xpath = "//div[contains(@id,'encountercostcalculationmaingrid')]//following::input[contains(@id,'atextname')]")
+//	@FindBy(xpath = "//div[contains(@id,'encountercostcalculationmaingrid')]//following::input[contains(@id,'atextname')]")
+	@FindBy(xpath = "//div[contains(@id,'encountercostcalculationform')]//h1[text()='Encounter Cost Calculation Scenario']")
 	private static WebElement getEncounterPageText;
 	public static WebElement getEncounterPageText() {
 		return getEncounterPageText;

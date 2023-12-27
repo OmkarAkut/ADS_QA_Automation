@@ -65,11 +65,14 @@ public class EncounterCost extends UcqcHelper {
 			driverDelay();
 			tableDoubleClickCellFirstColumn(costModel);
 			waitForSpinnerToEnd();
-			waitForPageTitle("BC COST MODEL");
-			doClickTreeItem("COST PROCESS");
-			waitUntilTreeOptionIsClickable("ENCOUNTER COST");
-			doClickTreeItem("ENCOUNTER COST");
-			doClick(CostingMap.getCalculateEncounterCostItem());
+			waitForPresenceOfElement("//div[contains(@id,'costing_modelcosts_tabId-bodyWrap')]//div[text()='BC COST MODEL']");
+//			doClickTreeItem("COST PROCESS");
+			doClickTreeItem("Assign Costs to Encounters");
+//			waitUntilTreeOptionIsClickable("ENCOUNTER COST");
+//			waitUntilTreeOptionIsClickable("Encounter Cost Calculation Scenarios");
+
+			doClickTreeItemUsingXpathLocator("//span[text()='Encounter Cost Calculation Scenarios']/..");
+//			doClick(CostingMap.getCalculateEncounterCostItem());
 			doClick(CostingMap.getEncounterNewBtn());
 			waitForElementToBeVisible(CostingMap.getEncounterPageText());
 			// Encounter Cost Calculation Scenario page is shown

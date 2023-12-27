@@ -76,14 +76,14 @@ public class ValidateContracDataMaintenanceBubble extends CalculationHelper {
 			doSearchForContractModel(ContractModel);
 			tableDoubleClickCellFirstColumn(ContractModel);
 			assertTextIsDisplayed("Unpublished Contract Task List");
-			doClosePageOnLowerBar(ContractModel);
+			doClick("//span[text()='ASESC-20 1']//following::span[@class='x-tab-close-btn']");
 			ExtentReport.logPass("PASS", "test01ValidateContractingBubleColor");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01ValidateContractingBubleColor", driver, e);
 			fail(e.getMessage());
 		} 
 		finally {
-			doClosePageOnLowerBar("Model Library");
+			doClosePageOnLowerBar("Contract Models");
 		}
 	}
 	@AfterClass

@@ -834,19 +834,19 @@ public class ContractingMap extends MapConfig {
 
 //	Omkar 5/7/2023 : xpath changes for 11.2
 //	@FindBy(xpath = "(//h1[text()='APC Fee Schedule Masters']//following::span[text()='Delete']//parent::button)[1]")
-	@FindBy(xpath = "(//h1[text()='APC Fee Schedule Masters']//following::span[text()='Delete'])[1]")
+	@FindBy(xpath = "//div[@id='contractTypeList-innerCt']//span[text()='Delete']")
 	private static WebElement NewAPCodeDeleteButton;
 	public static WebElement getNewAPCodeDeleteButton() {return NewAPCodeDeleteButton;}
 
 //	Omkar 5/7/2023 : xpath changes for 11.2
 //	@FindBy(xpath = "(//h1[text()='APC Fee Schedule Masters']//following::span[text()='Filter']//parent::button)[1]")
-	@FindBy(xpath = "(//h1[text()='APC Fee Schedule Masters']//following::span[text()='Filter'])[1]")
+	@FindBy(xpath = "//div[@id='contractTypeList-innerCt']//span[text()='Filter']")
 	private static WebElement NewAPCodeFilterButton;
 	public static WebElement getNewAPCodeFilterButton() {return NewAPCodeFilterButton;}
 
 //	Omkar 08/6/2023 : xpath changes or 11.2
 //	@FindBy(xpath = "(//h1[text()='ASC Schemes']//following::span[text()='Filter']//parent::button)[1]")
-	@FindBy(xpath = "(//h1[text()='ASC Schemes']//following::span[text()='Filter']//parent::span)[1]")
+	@FindBy(xpath = "//div[@id='contractTypeList-innerCt']//span[text()='Filter']")
 	private static WebElement ASCFilterButton;
 	public static WebElement getASCFilterButton() {return ASCFilterButton;}
 
