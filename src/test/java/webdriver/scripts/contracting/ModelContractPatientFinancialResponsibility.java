@@ -63,7 +63,7 @@ public class ModelContractPatientFinancialResponsibility extends CalculationHelp
 			assertElementIsDisplayed(ContractingMap.getAssertCalculateOption());
 			doClickTreeItem("Define Payment Terms");
 			driverDelay(200);
-			doClickTreeItemWithCheckbox("Patient Financial Responsibility");
+			doClickTreeItem("Patient Financial Responsibility");
 			waitForPageTitle("Patient Financial Responsibility");
 //			doClick(driver.findElement(By.xpath("(//span[text()='"+PatientFinResponsibilityTerm+"'])[2]//following::span[text()='New']//parent::button")));
 			//Shilpa update xpath 11.2 on 11.15.2023
@@ -78,14 +78,14 @@ public class ModelContractPatientFinancialResponsibility extends CalculationHelp
 			doClick(contractingMap.getTermDeleteButton());
 			waitForElementToBeVisible(contractingMap.getContractModelDeleteButtonInPopUp());
 			doClick(ContractingMap.getDeleteButtonMesaageBox());
-			doClosePageOnLowerBar("ADS-1320 Contract...");
+			doClick("//span[text()='ADS-1320 Contract...']//following::span[@class='x-tab-close-btn']");
 			ExtentReport.logPass("PASS", "test01VerifyNewPatientFinancialResponsibility");
 		} catch (Exception|AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01VerifyNewPatientFinancialResponsibility", driver, e);
 			fail(e.getMessage());
 		}
 		finally {
-			doClosePageOnLowerBar("Model Library");
+			doClosePageOnLowerBar("Contract Models");
 		}
 	}
 	@AfterClass
