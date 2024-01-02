@@ -11,7 +11,9 @@ public class ContractingMap extends MapConfig {
 
 	// ===== Contracting Tab > Contractual Allowance Export Page ===== //
 
-	@FindBy(xpath = "//div[contains(@id,'contractualallowances')]/descendant::div[contains(@id,'rownumberer') and @class='x-column-header-inner']/span[@class='x-column-header-text']")
+//	@FindBy(xpath = "//div[contains(@id,'contractualallowances')]/descendant::div[contains(@id,'rownumberer') and @class='x-column-header-inner']/span[@class='x-column-header-text']")
+//Shilpa update xpath for 11.2 on 2.1.2024
+	@FindBy(xpath = "//div[contains(@id,'dynamicGrid')]/descendant::div[contains(@id,'rownumberer') and @class='x-column-header-text']/span/../..")
 	private WebElement contractualAllowanceExportPageTableCornerCell;
 	public WebElement getContractualAllowanceExportPageTableCornerCell() {return contractualAllowanceExportPageTableCornerCell;}
 

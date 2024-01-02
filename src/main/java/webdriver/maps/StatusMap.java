@@ -23,7 +23,9 @@ public class StatusMap extends MapConfig {
     private WebElement calculationStatusPageTableMyStatus;
     public WebElement getCalculationStatusPageTableMyStatus() {return calculationStatusPageTableMyStatus;}
 
-    @FindBy(xpath = "//div[contains(@id,'calculationstatus')]/descendant::div[contains(@id,'rownumberer') and @class='x-column-header-inner']/span[@class='x-column-header-text']")
+//    @FindBy(xpath = "//div[contains(@id,'calculationstatus')]/descendant::div[contains(@id,'rownumberer') and @class='x-column-header-inner']/span[@class='x-column-header-text']")
+//Shilpa update xpath for 11.2 on 1.2.2024
+    @FindBy(xpath = "//div[contains(@id,'calculationstatus')]/descendant::div[contains(@id,'rownumberer') and @class='x-column-header-text']/span[@class='x-column-header-text-inner']")
     private WebElement calculationStatusPageTableCornerCell;
     public WebElement getCalculationStatusPageTableCornerCell() {return calculationStatusPageTableCornerCell;}
 
@@ -133,7 +135,8 @@ public class StatusMap extends MapConfig {
     private WebElement importexportStatusFormFieldSearch;
     public WebElement getImportExportStatusPageFormFieldSearch() {return importexportStatusFormFieldSearch;}
 
-    @FindBy(xpath = "//*[contains(@id,'importexportstatus') and contains(@id,'header')]/../descendant::div[contains(@class, 'statusSearch')]/descendant::span[contains(@id,'button')]")
+//    @FindBy(xpath = "//*[contains(@id,'importexportstatus') and contains(@id,'header')]/../descendant::div[contains(@class, 'statusSearch')]/descendant::span[contains(@id,'button')]")
+    @FindBy(xpath = "//*[contains(@id,'importexportstatus') and contains(@id,'header')]//following::span[contains(@class,'statusSearch ')]")
     private WebElement importexportStatusButtonSearchGlass;
     public WebElement getImportExportStatusPageButtonSearchGlass() {return importexportStatusButtonSearchGlass;}
 
@@ -149,7 +152,8 @@ public class StatusMap extends MapConfig {
     private WebElement importexportStatusPageButtonRefresh;
     public WebElement getImportExportStatusPageButtonRefresh() {return importexportStatusPageButtonRefresh;}
 
-    @FindBy(xpath = "//*[contains(@id,'importexportstatus') and contains(@id,'header')]/../descendant::*[contains(text(),'Filter')]")
+//    @FindBy(xpath = "//*[contains(@id,'importexportstatus') and contains(@id,'header')]/../descendant::*[contains(text(),'Filter')]")
+    @FindBy(xpath = "//*[contains(@id,'importexportstatus') and contains(@id,'header')]/../descendant::*[./text()='Filter']")
     private WebElement importexportStatusPageButtonFilter;
     public WebElement getImportExportStatusPageButtonFilter() {return importexportStatusPageButtonFilter;}
 

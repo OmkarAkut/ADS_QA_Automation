@@ -107,8 +107,12 @@ public class BuildVerificationTestScript extends UcqcHelper {
 			waitForJsWindowOnload();
 			isLoggedIn();
 			System.out.println(driver.findElement(By.xpath("//div[@class='footerText']/span")).getText());
+//			assertTrue(driver.findElement(By.xpath("//div[@class='footerText']/span")).getText()
+//					.contains("Contents Copyright © 2023 Picis Clinical Solutions, Inc. All rights reserved."));
+			//Shilpa updated text for 11.2 on 1.2.2024
+			System.out.println(driver.findElement(By.xpath("//div[@class='footerText']/span")).getText());
 			assertTrue(driver.findElement(By.xpath("//div[@class='footerText']/span")).getText()
-					.contains("Contents Copyright © 2023 Picis Clinical Solutions, Inc. All rights reserved."));
+					.contains("Contents Copyright © 2024 Picis Clinical Solutions, Inc. All rights reserved."));
 			System.out.println("Testing Global Pages");
 			WebElement[] landingPageSystemMaintenanceElements = {
 					generalElement.getLandingPageBubbleSystemMaintenance(),
@@ -826,9 +830,9 @@ public class BuildVerificationTestScript extends UcqcHelper {
 						costingMap.getCostModelScenarioCalculationButtonClearFilter(),
 						costingMap.getCostModelScenarioCalculationButtonCalculate(),
 						costingMap.getCostModelScenarioCalculationButtonResults(),
-						costingMap.getCostingMapTableButtonFirst(), costingMap.getCostingMapTableButtonPrevious(),
-						costingMap.getCostingMapTableFieldInputNumber(), costingMap.getCostingMapTableButtonGo(),
-						costingMap.getCostingMapTableButtonNext(), costingMap.getCostingMapTableButtonLast() };
+						costingMap.getCostModelCalcTableButtonFirst(), costingMap.getCostModelCalcTableButtonPrevious(),
+						costingMap.getCostModelCalcTableButtonInputNumber(), costingMap.getCostModelCalcTableButtonGo(),
+						costingMap.getCostModelCalcTableButtonNext(), costingMap.getCostModelCalcTableButtonLast() };
 				Thread.sleep(1000);
 				assertElementsAreDisplayed(costModelScenarioCalculationElements, printout);
 			} catch (Throwable e) {
@@ -908,9 +912,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 				assertElementsAreDisplayed(departmentFilterElements, printout);
 			} catch (Throwable e) {
 				fail(e.getMessage());
-			} finally {
-				doClick("Unit Cost Quick Calculation");
-			}
+			} 
 			ExtentReport.logPass("PASS", "test0340bCostingTabUnitCostQuickCalculationPageDepartmentDialog");
 		} catch (Exception | AssertionError e) {
 
@@ -1011,13 +1013,13 @@ public class BuildVerificationTestScript extends UcqcHelper {
 						contractingMap.getContractualAllowanceExportPageButtonFilter(),
 						contractingMap.getContractualAllowanceExportPageButtonClearFilter(),
 						// uncomment this
-						// contractingMap.getContractualAllowanceExportPageButtonDelete(),
+						 contractingMap.getContractualAllowanceExportPageButtonDelete(),
 						contractingMap.getContractualAllowanceExportPageHelpLink(),
-						contractingMap.getContractualAllowanceExportPageTableCornerCell(), };
+						contractingMap.getContractualAllowanceExportPageTableCornerCell(),
+						 };
 				assertElementsAreDisplayed(contractingTabContractualAllowanceExportPageElements, printout);
 //				Omkar 12/04/2023 : Xpath change for 11.2
 //				doClosePageOnLowerBar("Contractual...");
-				doClosePageOnLowerBar("Contractual Allowance Export");
 			} catch (Throwable e) {
 				fail(e.getMessage());
 			}
@@ -1026,6 +1028,10 @@ public class BuildVerificationTestScript extends UcqcHelper {
 
 			ExtentReport.logFail("FAIL", "test0420ContractingTabContractualAllowanceExportPageMap", driver, e);
 			fail(e.getMessage());
+		}
+		finally {
+			doClosePageOnLowerBar("Contractual Allowance Export");
+
 		}
 	}
 
@@ -1058,8 +1064,11 @@ public class BuildVerificationTestScript extends UcqcHelper {
 			try {
 				String[] mainFolders = { "Contracting", "Costing", "Episode", "General" };
 				for (String mainFolder : mainFolders) {
-					assertThatElementIsDisplayed(driver.findElement(By.xpath("//div[text()='" + mainFolder + "']"
-							+ "/img[contains(@class,'x-tree-icon x-tree-icon-parent ')]")));
+//					assertThatElementIsDisplayed(driver.findElement(By.xpath("//s[text()='" + mainFolder + "']"
+//							+ "/img[contains(@class,'x-tree-icon x-tree-icon-parent ')]")));
+					//Shilpa update xpath for 11.2 on 1.2.2024
+					assertThatElementIsDisplayed(driver.findElement(By.xpath("//span[text()='" + mainFolder + "']"
+							+ "//preceding::div[contains(@class,'x-tree-elbow-img')]")));
 				}
 			} catch (Throwable e) {
 				fail(e.getMessage());
@@ -1155,8 +1164,12 @@ public class BuildVerificationTestScript extends UcqcHelper {
 	@Test
 	public void test0820SystemMaintenanceTabSecuritySettingsPageMap() throws Throwable {
 		try {
+			//fail due to scroll issue
 			goToPage("Security Settings");
 			waitForAjaxExtJs();
+			if(sysmaint.getSecuritySettingsPageRadioButtonDefaultEntitiesForNewUsersAll().isDisplayed()) {
+				System.out.println("PASS");
+			}
 			WebElement[] securitySettingsPageElements = { sysmaint.getSecuritySettingsPageHelpLink(),
 					sysmaint.getSecuritySettingsPageFormFieldAuthenticationType(),
 					sysmaint.getSecuritySettingsPageFormFieldInactivityTimeOutPeriod(),
@@ -1178,12 +1191,15 @@ public class BuildVerificationTestScript extends UcqcHelper {
 					sysmaint.getSecuritySettingsPageFormFieldAuditLogRetentionPeriod(),
 					sysmaint.getSecuritySettingsPageButtonSave(), };
 			assertElementsAreDisplayed(securitySettingsPageElements, printout);
-			doClosePageOnLowerBar("Security Settings");
+			
 			ExtentReport.logPass("PASS", "test0820SystemMaintenanceTabSecuritySettingsPageMap");
 		} catch (Exception | AssertionError e) {
 
 			ExtentReport.logFail("FAIL", "test0820SystemMaintenanceTabSecuritySettingsPageMap", driver, e);
 			fail(e.getMessage());
+		}
+		finally {
+			doClosePageOnLowerBar("Security Settings");
 		}
 	}
 
@@ -1235,12 +1251,15 @@ public class BuildVerificationTestScript extends UcqcHelper {
 					sysmaint.getGeneralSettingsPageFormFieldGeneralAllImportsAndExports(),
 					sysmaint.getGeneralSettingsPageButtonSave(), };
 			assertElementsAreDisplayed(generalSettingsPageElements, printout);
-			doClosePageOnLowerBar("General Settings");
+			
 			ExtentReport.logPass("PASS", "test0830SystemMaintenanceTabGeneralSettingsPageMap");
 		} catch (Exception | AssertionError e) {
 
 			ExtentReport.logFail("FAIL", "test0830SystemMaintenanceTabGeneralSettingsPageMap", driver, e);
 			fail(e.getMessage());
+		}
+		finally {
+			doClosePageOnLowerBar("General Settings");
 		}
 	}
 
@@ -1248,7 +1267,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 	public void test0840SystemMaintenanceTabCustomizeMaintainDataPageMap() throws InterruptedException, Throwable {
 		try {
 			try {
-				Login.loginUser("AutomationTesterAdmin");
+//				Login.loginUser("AutomationTesterAdmin");
 				goToPage("Customize Maintain Data");
 				waitForSpinnerToEnd();
 				waitForAjaxExtJs();
@@ -1273,8 +1292,6 @@ public class BuildVerificationTestScript extends UcqcHelper {
 				assertElementsAreDisplayed(customizeMaintainDataPageElements, printout);
 			} catch (Throwable e) {
 				fail(e.getMessage());
-			} finally {
-				doClosePageOnLowerBar("Customize Maintain Data");
 			}
 			ExtentReport.logPass("PASS", "test0840SystemMaintenanceTabCustomizeMaintainDataPageMap");
 		} catch (Exception | AssertionError e) {
@@ -1282,6 +1299,9 @@ public class BuildVerificationTestScript extends UcqcHelper {
 			ExtentReport.logFail("FAIL", "test0840SystemMaintenanceTabCustomizeMaintainDataPageMap", driver, e);
 			fail(e.getMessage());
 		}
+		 finally {
+				doClosePageOnLowerBar("Customize Maintain Data");
+			}
 	}
 
 	@Test

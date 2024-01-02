@@ -20,19 +20,24 @@ public class DataMaintenanceMap extends MapConfig {
     private WebElement dataMaintenanceTree;
     public WebElement getDataMaintenanceTree() {return dataMaintenanceTree;}
 
-    @FindBy(xpath = "//*[contains(@class,'grid-cell-treecolumn')]/*[contains(text(),'Contracting')]/img[1]")
+//    @FindBy(xpath = "//*[contains(@class,'grid-cell-treecolumn')]/*[contains(text(),'Contracting')]/img[1]")
+    //Update xpath for 11.2 on 1.2.2024
+    @FindBy(xpath = "(//*[contains(@class,'grid-cell-inner-treecolumn')]/*[./text()='Contracting']//preceding::div[@class=' x-tree-elbow-img x-tree-elbow-plus x-tree-expander'])[1]")
     private WebElement dataMaintenanceTreeExpanderContracting;
     public WebElement getDataMaintenanceTreeExpanderContracting() {return dataMaintenanceTreeExpanderContracting;}
 
-    @FindBy(xpath = "//*[contains(@class,'grid-cell-treecolumn')]/*[contains(text(),'Costing')]/img[1]")
+//    @FindBy(xpath = "//*[contains(@class,'grid-cell-treecolumn')]/*[contains(text(),'Costing')]/img[1]")
+    @FindBy(xpath = "(//*[contains(@class,'grid-cell-inner-treecolumn')]/*[./text()='Costing']//preceding::div[@class=' x-tree-elbow-img x-tree-elbow-plus x-tree-expander'])[1]")
     private WebElement dataMaintenanceTreeExpanderCosting;
     public WebElement getDataMaintenanceTreeExpanderCosting() {return dataMaintenanceTreeExpanderCosting;}
 
-    @FindBy(xpath = "//*[contains(@class,'grid-cell-treecolumn')]/*[contains(text(),'Episode')]/img[1]")
+//    @FindBy(xpath = "//*[contains(@class,'grid-cell-treecolumn')]/*[contains(text(),'Episode')]/img[1]")
+    @FindBy(xpath = "(//*[contains(@class,'grid-cell-inner-treecolumn')]/*[./text()='Episode']//preceding::div[@class=' x-tree-elbow-img x-tree-elbow-plus x-tree-expander'])[1]")
     private WebElement dataMaintenanceTreeExpanderEpisode;
     public WebElement getDataMaintenanceTreeExpanderEpisode() {return dataMaintenanceTreeExpanderEpisode;}
 
-    @FindBy(xpath = "//*[contains(@class,'grid-cell-treecolumn')]/*[contains(text(),'General')]/img[1]")
+//    @FindBy(xpath = "//*[contains(@class,'grid-cell-treecolumn')]/*[contains(text(),'General')]/img[1]")
+    @FindBy(xpath = "(//*[contains(@class,'grid-cell-inner-treecolumn')]/*[./text()='General']//preceding::div[@class=' x-tree-elbow-img x-tree-elbow-plus x-tree-expander'])[1]")
     private WebElement dataMaintenanceTreeExpanderGeneral;
     public WebElement getDataMaintenanceTreeExpanderGeneral() {return dataMaintenanceTreeExpanderGeneral;}
 

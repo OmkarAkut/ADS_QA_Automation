@@ -411,14 +411,18 @@ public class CostingMap extends MapConfig {
 		return costModelScenarioCalculationPageHelpLink;
 	}
 
-	@FindBy(xpath = "//div[@class='x-btn btnCls x-box-item x-toolbar-item x-btn-default-toolbar-small x-noicon x-btn-noicon x-btn-default-toolbar-small-noicon']//*[contains(text(),'Edit')]")
+//	@FindBy(xpath = "//div[@class='x-btn btnCls x-box-item x-toolbar-item x-btn-default-toolbar-small x-noicon x-btn-noicon x-btn-default-toolbar-small-noicon']//*[contains(text(),'Edit')]")
+	//Shilpa update xpath for 11.2 on 1.2.2024
+	@FindBy(xpath = "//div[contains(@id,'costmodelscenariolist')]//*[contains(text(),'Edit')]")
 	private WebElement costModelScenarioCalculationButtonEdit;
 
 	public WebElement getCostModelScenarioCalculationButtonEdit() {
 		return costModelScenarioCalculationButtonEdit;
 	}
 
-	@FindBy(xpath = "//*[contains(@id,'costing_costingmodelscenario_tabId-body')]/descendant::span[text()='Filter']")
+//	@FindBy(xpath = "//*[contains(@id,'costing_costingmodelscenario_tabId-body')]/descendant::span[text()='Filter']")
+	//Shilpa update xpath for 11.2 on 1.2.2024
+	@FindBy(xpath = "//div[contains(@id,'costmodelscenariolist')]//*[./text()='Filter']")
 	private WebElement costModelScenarioCalculationButtonFilter;
 
 	public WebElement getCostModelScenarioCalculationButtonFilter() {
@@ -433,14 +437,18 @@ public class CostingMap extends MapConfig {
 	}
 
 //	@FindBy(xpath = "//em[contains(@id,'abutton')]/button/*[contains(text(),'Calculate')]")
-	@FindBy(xpath = "(//h1//following::span[text()='Calculate']/../..)[1]")
+//	@FindBy(xpath = "(//h1//following::span[text()='Calculate']/../..)[1]")
+	@FindBy(xpath = "//div[contains(@id,'costmodelscenariolist')]//*[./text()='Calculate']")
 	private WebElement costModelScenarioCalculationButtonCalculate;
 
 	public WebElement getCostModelScenarioCalculationButtonCalculate() {
 		return costModelScenarioCalculationButtonCalculate;
 	}
 
-	@FindBy(xpath = "//div[@class='x-btn btnCls x-box-item x-toolbar-item x-btn-default-toolbar-small x-noicon x-btn-noicon x-btn-default-toolbar-small-noicon']//*[contains(text(),'Results')]")
+//	@FindBy(xpath = "//div[@class='x-btn btnCls x-box-item x-toolbar-item x-btn-default-toolbar-small x-noicon x-btn-noicon x-btn-default-toolbar-small-noicon']//*[contains(text(),'Results')]")
+	//Shilpa update xpath for 11.2 on 1.2.2024
+	@FindBy(xpath = "//div[contains(@id,'costmodelscenariolist')]//*[./text()='Results']")
+
 	private WebElement costModelScenarioCalculationButtonResults;
 
 	public WebElement getCostModelScenarioCalculationButtonResults() {
@@ -625,7 +633,9 @@ public class CostingMap extends MapConfig {
 		return unitCostQuickCalculationButtonSaveQuickRVUs;
 	}
 
-	@FindBy(xpath = "//div[@class='x-panel gridCls gridClsCondensed lockCls ucqc-grid x-grid-with-row-lines x-grid-locked x-border-item x-box-item x-panel-default x-grid']//*[contains(text(),'Calculate')]")
+//	@FindBy(xpath = "//div[@class='x-panel gridCls gridClsCondensed lockCls ucqc-grid x-grid-with-row-lines x-grid-locked x-border-item x-box-item x-panel-default x-grid']//*[contains(text(),'Calculate')]")
+	//shilpa update xpath for 11.2 on 2.1.2024
+	@FindBy(xpath = "//div[@class='x-panel gridCls gridClsCondensed lockCls ucqc-grid x-grid-locked x-border-item x-box-item x-panel-default x-grid']//*[contains(text(),'Calculate')]")
 	private WebElement unitCostQuickCalculationButtonCalculate;
 
 	public WebElement getUnitCostQuickCalculationButtonCalculate() {
@@ -822,7 +832,8 @@ public class CostingMap extends MapConfig {
 		return unitCostQuickCalculationDepartmentFilterValue;
 	}
 
-	@FindBy(xpath = "//div[@class='x-toolbar x-docked x-toolbar-footer x-docked-bottom x-toolbar-docked-bottom x-toolbar-footer-docked-bottom x-box-layout-ct']//following::span[text()='Add']")
+//	@FindBy(xpath = "//div[@class='x-toolbar x-docked x-toolbar-footer x-docked-bottom x-toolbar-docked-bottom x-toolbar-footer-docked-bottom x-box-layout-ct']//following::span[text()='Add']")
+	@FindBy(xpath="//div[contains(@id,'filter')]//following::span[text()='Add']")
 	private WebElement unitCostQuickCalculationDepartmentFilterButtonAdd;
 
 	public WebElement getUnitCostQuickCalculationDepartmentFilterButtonAdd() {
@@ -939,47 +950,94 @@ public class CostingMap extends MapConfig {
 
 	/****** Table Navigation *****/
 
-	@FindBy(xpath = "//div[@class='x-toolbar x-docked x-toolbar-default x-docked-bottom x-toolbar-docked-bottom x-toolbar-default-docked-bottom x-box-layout-ct x-docked-noborder-right x-docked-noborder-bottom x-docked-noborder-left']//div[@class='x-toolbar pagingCls x-box-item x-toolbar-item x-toolbar-default x-box-layout-ct']//div[contains(@id,'custompagingtoolbar')]//*[@data-qtip = 'First Page']")
+//	@FindBy(xpath = "//div[@class='x-toolbar x-docked x-toolbar-default x-docked-bottom x-toolbar-docked-bottom x-toolbar-default-docked-bottom x-box-layout-ct x-docked-noborder-right x-docked-noborder-bottom x-docked-noborder-left']//div[@class='x-toolbar pagingCls x-box-item x-toolbar-item x-toolbar-default x-box-layout-ct']//div[contains(@id,'custompagingtoolbar')]//*[@data-qtip = 'First Page']")
+	//shilpa update xpath for 11.2 on 1.2.2024
+	@FindBy(xpath = "//div[contains(@id,'rvumasterlist')]//*[@data-qtip='First Page']")
+
 	private WebElement costingMapTableButtonFirst;
 
 	public WebElement getCostingMapTableButtonFirst() {
 		return costingMapTableButtonFirst;
 	}
 
-	@FindBy(xpath = "//div[@class='x-toolbar x-docked x-toolbar-default x-docked-bottom x-toolbar-docked-bottom x-toolbar-default-docked-bottom x-box-layout-ct x-docked-noborder-right x-docked-noborder-bottom x-docked-noborder-left']//div[@class='x-toolbar pagingCls x-box-item x-toolbar-item x-toolbar-default x-box-layout-ct']//div[contains(@id,'custompagingtoolbar')]//*[@data-qtip = 'Previous Page']")
+//	@FindBy(xpath = "//div[@class='x-toolbar x-docked x-toolbar-default x-docked-bottom x-toolbar-docked-bottom x-toolbar-default-docked-bottom x-box-layout-ct x-docked-noborder-right x-docked-noborder-bottom x-docked-noborder-left']//div[@class='x-toolbar pagingCls x-box-item x-toolbar-item x-toolbar-default x-box-layout-ct']//div[contains(@id,'custompagingtoolbar')]//*[@data-qtip = 'Previous Page']")
+	//shilpa update xpath for 11.2 on 1.2.2024
+		@FindBy(xpath = "//div[contains(@id,'rvumasterlist')]//*[@data-qtip='Previous Page']")
+
 	private WebElement costingMapTableButtonPrevious;
 
 	public WebElement getCostingMapTableButtonPrevious() {
 		return costingMapTableButtonPrevious;
 	}
 
-	@FindBy(xpath = "//div[@class='x-toolbar x-docked x-toolbar-default x-docked-bottom x-toolbar-docked-bottom x-toolbar-default-docked-bottom x-box-layout-ct x-docked-noborder-right x-docked-noborder-bottom x-docked-noborder-left']//div[@class='x-toolbar pagingCls x-box-item x-toolbar-item x-toolbar-default x-box-layout-ct']//div[contains(@id,'custompagingtoolbar')]//*[contains(@name, 'inputItem')]")
+//	@FindBy(xpath = "//div[@class='x-toolbar x-docked x-toolbar-default x-docked-bottom x-toolbar-docked-bottom x-toolbar-default-docked-bottom x-box-layout-ct x-docked-noborder-right x-docked-noborder-bottom x-docked-noborder-left']//div[@class='x-toolbar pagingCls x-box-item x-toolbar-item x-toolbar-default x-box-layout-ct']//div[contains(@id,'custompagingtoolbar')]//*[contains(@name, 'inputItem')]")
+	//shilpa update xpath for 11.2 on 1.2.2024
+	@FindBy(xpath = "//div[contains(@id,'rvumasterlist')]//*[@name='inputItem']")
 	private WebElement costingMapTableFieldInputNumber;
-
 	public WebElement getCostingMapTableFieldInputNumber() {
 		return costingMapTableFieldInputNumber;
 	}
 
-	@FindBy(xpath = "//div[@class='x-toolbar x-docked x-toolbar-default x-docked-bottom x-toolbar-docked-bottom x-toolbar-default-docked-bottom x-box-layout-ct x-docked-noborder-right x-docked-noborder-bottom x-docked-noborder-left']//div[@class='x-toolbar pagingCls x-box-item x-toolbar-item x-toolbar-default x-box-layout-ct']//div[contains(@id,'custompagingtoolbar')]//*[contains(@class, 'go-button')]")
+//	@FindBy(xpath = "//div[@class='x-toolbar x-docked x-toolbar-default x-docked-bottom x-toolbar-docked-bottom x-toolbar-default-docked-bottom x-box-layout-ct x-docked-noborder-right x-docked-noborder-bottom x-docked-noborder-left']//div[@class='x-toolbar pagingCls x-box-item x-toolbar-item x-toolbar-default x-box-layout-ct']//div[contains(@id,'custompagingtoolbar')]//*[contains(@class, 'go-button')]")
+	//shilpa update xpath for 11.2 on 1.2.2024
+		@FindBy(xpath = "//div[contains(@id,'rvumasterlist')]//*[@class='x-btn-icon-el x-btn-icon-el-plain-toolbar-small pagging-tbar-go-button ']")
 	private WebElement costingMapTableButtonGo;
 
 	public WebElement getCostingMapTableButtonGo() {
 		return costingMapTableButtonGo;
 	}
 
-	@FindBy(xpath = "//div[@class='x-toolbar x-docked x-toolbar-default x-docked-bottom x-toolbar-docked-bottom x-toolbar-default-docked-bottom x-box-layout-ct x-docked-noborder-right x-docked-noborder-bottom x-docked-noborder-left']//div[@class='x-toolbar pagingCls x-box-item x-toolbar-item x-toolbar-default x-box-layout-ct']//div[contains(@id,'custompagingtoolbar')]//*[@data-qtip = 'Next Page']")
+//	@FindBy(xpath = "//div[@class='x-toolbar x-docked x-toolbar-default x-docked-bottom x-toolbar-docked-bottom x-toolbar-default-docked-bottom x-box-layout-ct x-docked-noborder-right x-docked-noborder-bottom x-docked-noborder-left']//div[@class='x-toolbar pagingCls x-box-item x-toolbar-item x-toolbar-default x-box-layout-ct']//div[contains(@id,'custompagingtoolbar')]//*[@data-qtip = 'Next Page']")
+	//shilpa update xpath for 11.2 on 1.2.2024
+    @FindBy(xpath = "//div[contains(@id,'rvumasterlist')]//*[@class='x-btn-icon-el x-btn-icon-el-plain-toolbar-small pagging-tbar-next-button ']")
 	private WebElement costingMapTableButtonNext;
 
 	public WebElement getCostingMapTableButtonNext() {
 		return costingMapTableButtonNext;
 	}
 
-	@FindBy(xpath = "//div[@class='x-toolbar x-docked x-toolbar-default x-docked-bottom x-toolbar-docked-bottom x-toolbar-default-docked-bottom x-box-layout-ct x-docked-noborder-right x-docked-noborder-bottom x-docked-noborder-left']//div[@class='x-toolbar pagingCls x-box-item x-toolbar-item x-toolbar-default x-box-layout-ct']//div[contains(@id,'custompagingtoolbar')]//*[@data-qtip = 'Last Page']")
+//	@FindBy(xpath = "//div[@class='x-toolbar x-docked x-toolbar-default x-docked-bottom x-toolbar-docked-bottom x-toolbar-default-docked-bottom x-box-layout-ct x-docked-noborder-right x-docked-noborder-bottom x-docked-noborder-left']//div[@class='x-toolbar pagingCls x-box-item x-toolbar-item x-toolbar-default x-box-layout-ct']//div[contains(@id,'custompagingtoolbar')]//*[@data-qtip = 'Last Page']")
+	//shilpa update xpath for 11.2 on 1.2.2024
+    @FindBy(xpath = "//div[contains(@id,'rvumasterlist')]//*[@class='x-btn-icon-el x-btn-icon-el-plain-toolbar-small pagging-tbar-last-button ']")
 	private WebElement costingMapTableButtonLast;
 
 	public WebElement getCostingMapTableButtonLast() {
 		return costingMapTableButtonLast;
 	}
+	
+    @FindBy(xpath = "//div[contains(@id,'costmodelscenariolist')]//*[@data-qtip='First Page']")
+	private WebElement getCostModelCalcTableButtonFirst;
+
+	public WebElement getCostModelCalcTableButtonFirst() {
+		return getCostModelCalcTableButtonFirst;
+	}
+	 
+	@FindBy(xpath = "//div[contains(@id,'costmodelscenariolist')]//*[@data-qtip='Previous Page']")
+	 private WebElement getCostModelCalcTableButtonPrevious;
+     public WebElement getCostModelCalcTableButtonPrevious() {
+	 return getCostModelCalcTableButtonPrevious;
+		}
+     @FindBy(xpath = "//div[contains(@id,'costmodelscenariolist')]//*[@name='inputItem']")
+	 private WebElement getCostModelCalcTableButtonInputNumber;
+     public WebElement getCostModelCalcTableButtonInputNumber() {
+	 return getCostModelCalcTableButtonInputNumber;
+		}	
+    
+     @FindBy(xpath = "//div[contains(@id,'costmodelscenariolist')]//*[@class='x-btn-icon-el x-btn-icon-el-plain-toolbar-small pagging-tbar-go-button ']")
+	 private WebElement getCostModelCalcTableButtonGo;
+     public WebElement getCostModelCalcTableButtonGo() {
+	 return getCostModelCalcTableButtonGo;
+		}	
+     @FindBy(xpath = "//div[contains(@id,'costmodelscenariolist')]//*[@class='x-btn-icon-el x-btn-icon-el-plain-toolbar-small pagging-tbar-next-button ']")
+	 private WebElement getCostModelCalcTableButtonNext;
+     public WebElement getCostModelCalcTableButtonNext() {
+	 return getCostModelCalcTableButtonNext;
+		}	
+     @FindBy(xpath = "//div[contains(@id,'costmodelscenariolist')]//*[@class='x-btn-icon-el x-btn-icon-el-plain-toolbar-small pagging-tbar-last-button ']")
+	 private WebElement getCostModelCalcTableButtonLast;
+     public WebElement getCostModelCalcTableButtonLast() {
+	 return getCostModelCalcTableButtonLast;
+		}	
 
 	/****** End Table Navigation *****/
 	//Shilpa
