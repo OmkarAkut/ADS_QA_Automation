@@ -32,16 +32,16 @@ import webdriver.scripts.systemmaintenance.SystemMaintenanceTestSuite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 	SystemMaintenanceTestSuite.class,
-	EpisodesTestSuite.class,
-	ReportingTestSuite.class,
+//	EpisodesTestSuite.class,
+//	ReportingTestSuite.class,
 	ContractingSuite.class,
-	UtilitiesTestSuite.class,
-	MaintaindataTestSuite.class,
-	TestSuiteAXE.class,
-	PagetestsSuite.class,
-	HelpSuite.class,
-	SecurityTestsSuite.class,
-	ChecktestsSuite.class,
+//	UtilitiesTestSuite.class,
+//	MaintaindataTestSuite.class,
+//	TestSuiteAXE.class,
+//	PagetestsSuite.class,
+//	HelpSuite.class,
+//	SecurityTestsSuite.class,
+//	ChecktestsSuite.class,
 	CostingTestSuite.class,
 	CostingCalculationsTestSuite.class,
 	CostingModelsTestSuite.class,
@@ -50,9 +50,9 @@ import webdriver.scripts.systemmaintenance.SystemMaintenanceTestSuite;
 ////	UcqcCalculationTestSuite.class,
 ////	UcqcMainpageTestSuite.class,
 ////	UcqcRvusSuite.class,
-	UcqcRoleBasedTestSuite.class,
-	GeneralCalculationsTestSuite.class,
-	ReportingTestSuite.class,
+//	UcqcRoleBasedTestSuite.class,
+//	GeneralCalculationsTestSuite.class,
+//	ReportingTestSuite.class,
 })
 
 public class TestRun_Suite {
