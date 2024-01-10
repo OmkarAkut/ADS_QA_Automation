@@ -67,7 +67,7 @@ public class ModelContractLumpSumPaymentAllocation extends CalculationHelper {
 			assertElementIsDisplayed(ContractingMap.getAssertCalculateOption());
 			doClickTreeItem("Define Payment Terms");
 			driverDelay(200); 
-			doClickTreeItemWithCheckbox("Lump Sum Payment Allocation Rules");
+			doClickTreeItem("Lump Sum Payment Allocation Rules");
 //			Omkar 19/8/2023 : xpath changes for 11.2
 //			doClick(driver.findElement(By.xpath("//h1[text()='"+LumpSumPaymentAllocTerm+"']//following::span[1]//parent::button")));
 			doClick(driver.findElement(By.xpath("//h1[text()='"+LumpSumPaymentAllocTerm+"']//following::span[text()='New']")));
@@ -96,8 +96,8 @@ public class ModelContractLumpSumPaymentAllocation extends CalculationHelper {
 			driverDelay(200);
 			doClick(ContractingMap.getContractFeeForServicePaymentSave());
 			doClick(ContractingMap.getSaveButton());
-			doClosePageOnLowerBar("ADS-1320 Contract...");
-			doClosePageOnLowerBar("Model Library");
+			doClick("//span[text()='ADS-1320 Contract...']//following::span[@class='x-tab-close-btn']");
+			doClosePageOnLowerBar("Contract Models");
 			ExtentReport.logPass("PASS", "test01NewLumpSumPaymentAllocation");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01NewLumpSumPaymentAllocation", driver, e);

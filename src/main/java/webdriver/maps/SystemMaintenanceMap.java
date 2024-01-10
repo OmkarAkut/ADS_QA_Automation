@@ -11,7 +11,9 @@ public class SystemMaintenanceMap extends MapConfig {
 
 	// ===== System Maintenance Tab >  Users Page ===== //
 
-	@FindBy(xpath = "//div[contains(@id,'systemmaintenance_users')]/descendant::div[contains(@id,'rownumberer') and @class='x-column-header-inner']/span[@class='x-column-header-text']")
+//	@FindBy(xpath = "//div[contains(@id,'systemmaintenance_users')]/descendant::div[contains(@id,'rownumberer') and @class='x-column-header-inner']/span[@class='x-column-header-text']")
+	//Shilpa update xpath for 11.2 on 1.2.2024
+	@FindBy(xpath = "//div[contains(@id,'userLayoutPage')]/descendant::div[contains(@id,'rownumberer') and @class='x-column-header-text']/span[@class='x-column-header-text-inner']")
 	private WebElement usersPageTableCornerCell;
 	public WebElement getUsersPageTableCornerCell() {return usersPageTableCornerCell;}
 
@@ -82,7 +84,8 @@ public class SystemMaintenanceMap extends MapConfig {
 
 	// ===== System Maintenance Tab >  Roles Page ===== //
 
-	@FindBy(xpath = "//div[contains(@id,'systemmaintenance_roles')]/../descendant::div[contains(@class,'column-header-align-center')]/div/span[@class='x-column-header-text']")
+//	@FindBy(xpath = "//div[contains(@id,'systemmaintenance_roles')]/../descendant::div[contains(@class,'column-header-align-center')]/div/span[@class='x-column-header-text']")
+	@FindBy(xpath = "//div[contains(@id,'rolesGridLayout')]/descendant::div[contains(@id,'rownumberer') and @class='x-column-header-text']/span[@class='x-column-header-text-inner']")
 	private WebElement rolesPageTableCornerCell;
 	public WebElement getRolesPageTableCornerCell() {return rolesPageTableCornerCell;}
 
@@ -158,27 +161,37 @@ public class SystemMaintenanceMap extends MapConfig {
 	private WebElement objectsSyncLevel;
 	public WebElement getSecuritySettingsPageFormFieldBusinessObjectsEnterpriseSynchInterval() {return objectsSyncLevel;}
 
-	@FindBy(xpath = "//*[contains(text(),'Default Entities For New Users')]/../following-sibling::td/descendant::*[contains(@id,'radiofield') and text()='All']/preceding-sibling::input[contains(@id,'radiofield')]")
+//	@FindBy(xpath = "//*[contains(text(),'Default Entities For New Users')]/../following-sibling::td/descendant::*[contains(@id,'radiofield') and text()='All']/preceding-sibling::input[contains(@id,'radiofield')]")
+	//Shilpa updated xpath for 11.2 on 1.2.2024
+	@FindBy(xpath = "(//*[contains(text(),'Default Entities For New Users')]//following::input[@name='entityRadio'])[1]")
 	private WebElement defaultEntitiesForNewUsersRadioAll;
 	public WebElement getSecuritySettingsPageRadioButtonDefaultEntitiesForNewUsersAll() {return defaultEntitiesForNewUsersRadioAll;}
 
-	@FindBy(xpath = "//*[contains(text(),'Default Entities For New Users')]/../following-sibling::td/descendant::*[contains(@id,'radiofield') and text()='None']/preceding-sibling::input[contains(@id,'radiofield')]")
+//	@FindBy(xpath = "//*[contains(text(),'Default Entities For New Users')]/../following-sibling::td/descendant::*[contains(@id,'radiofield') and text()='None']/preceding-sibling::input[contains(@id,'radiofield')]")
+	//Shilpa updated xpath for 11.2 on 1.2.2024
+	@FindBy(xpath = "(//*[contains(text(),'Default Entities For New Users')]//following::input[@name='entityRadio'])[2]")
 	private WebElement defaultEntitiesForNewUsersRadioNone;
 	public WebElement getSecuritySettingsPageRadioButtonDefaultEntitiesForNewUsersNone() {return defaultEntitiesForNewUsersRadioNone;}
 
-	@FindBy(xpath = "//*[contains(text(),'Default Departments For New Users')]/../following-sibling::td/descendant::*[contains(@id,'radiofield') and text()='All']/preceding-sibling::input[contains(@id,'radiofield')]")
+//	@FindBy(xpath = "//*[contains(text(),'Default Departments For New Users')]/../following-sibling::td/descendant::*[contains(@id,'radiofield') and text()='All']/preceding-sibling::input[contains(@id,'radiofield')]")
+	//Shilpa updated xpath for 11.2 on 1.2.2024
+	@FindBy(xpath = "(//*[contains(text(),'Default Departments For New Users')]//following::input[@name='departmentRadio'])[1]")
 	private WebElement defaultDepartmentsForNewUsersRadioAll;
 	public WebElement getSecuritySettingsPageRadioButtonDefaultDepartmentsForNewUsersAll() {return defaultDepartmentsForNewUsersRadioAll;}
 
-	@FindBy(xpath = "//*[contains(text(),'Default Departments For New Users')]/../following-sibling::td/descendant::*[contains(@id,'radiofield') and text()='None']/preceding-sibling::input[contains(@id,'radiofield')]")
+//	@FindBy(xpath = "//*[contains(text(),'Default Departments For New Users')]/../following-sibling::td/descendant::*[contains(@id,'radiofield') and text()='None']/preceding-sibling::input[contains(@id,'radiofield')]")
+	//Shilpa updated xpath for 11.2 on 1.2.2024
+		@FindBy(xpath = "(//*[contains(text(),'Default Departments For New Users')]//following::input[@name='departmentRadio'])[2]")
 	private WebElement defaultDepartmentsForNewUsersRadioNone;
 	public WebElement getSecuritySettingsPageRadioButtonDefaultDepartmentsForNewUsersNone() {return defaultDepartmentsForNewUsersRadioNone;}
 
-	@FindBy(xpath = "//*[contains(@id,'isAuditLogEnabled')]")
+//	@FindBy(xpath = "//*[contains(@id,'isAuditLogEnabled')]")
+	@FindBy(xpath = "//input[@name='isAuditLogEnabled']")
 	private WebElement isAuditLogEnabled;
 	public WebElement getSecuritySettingsPageCheckboxAuditLoggingEnabled() {return isAuditLogEnabled;}
 
-	@FindBy(xpath = "//*[@name='auditRetentionPeriod']")
+//	@FindBy(xpath = "//*[@name='auditRetentionPeriod']")
+	@FindBy(xpath = "//input[@name='auditRetentionPeriod']")
 	private WebElement auditRetentionPeriod;
 	public WebElement getSecuritySettingsPageFormFieldAuditLogRetentionPeriod() {return auditRetentionPeriod;}
 

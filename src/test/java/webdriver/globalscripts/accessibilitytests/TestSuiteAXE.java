@@ -11,7 +11,7 @@ import org.junit.runners.Suite;
 	CostingAXE.class,
 	DataMaintenanceAccessibilityTestsAtoZPages.class,
 	EpisodesAXE.class,
-	LocalTestWebPageAXE.class,
+//	LocalTestWebPageAXE.class,
 	LogInPageAXE.class,
 	MiscellaneousAXE.class,
 	ReportingAXE.class,

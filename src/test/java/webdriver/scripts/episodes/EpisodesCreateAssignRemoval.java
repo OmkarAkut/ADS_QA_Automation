@@ -96,7 +96,7 @@ public class EpisodesCreateAssignRemoval extends CalculationHelper {
 		try {
 			doClick(modelMap.getModelEpisode());
 
-			doClickTreeItemWithCheckbox("Assign Episode to Encounters");
+			doClickTreeItem("Assign Episode to Encounters");
 			doDropdownSelectUsingOptionText(modelMap.getEpisodePopulationDropdown(), populationName);
 			doClick(modelMap.getshareLogCheckbox());
 			doClick(modelMap.getSaveButton());

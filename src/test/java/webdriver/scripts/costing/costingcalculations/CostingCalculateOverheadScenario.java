@@ -72,7 +72,7 @@ public class CostingCalculateOverheadScenario extends CalculationHelper {
 //      doClick(driver.findElement(By.xpath("//button/span[text()='Save & Close']")));
 //      doClosePageOnLowerBar("v102 REGRESSION...");
       doClosePageOnLowerBar("2005 Overhead...");
-      doClosePageOnLowerBar("Model");
+      doClosePageOnLowerBar("Costing Models");
 
 
 

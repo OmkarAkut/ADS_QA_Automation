@@ -316,7 +316,7 @@ public class RvuMaintenanceAds1492 extends GoHelper {
 					);
 //			doClick(driver.findElement(By.xpath("//button/span[text()='Apply Selections']")));
 			//Shilpa update xpath for 11.2
-			doClick(driver.findElement(By.xpath("//span[text()='Apply Selections']")));
+			doClick(driver.findElement(By.xpath("//span[text()='Apply Selections']/../..")));
 			waitForSpinnerToEnd();
 			ExtentReport.logPass("PASS", "test10aAssertEffectiveStartDateHasBeenUpdated");
 
