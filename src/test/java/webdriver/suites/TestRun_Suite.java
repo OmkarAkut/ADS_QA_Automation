@@ -49,7 +49,7 @@ import webdriver.scripts.systemmaintenance.SystemMaintenanceTestSuite;
 ////	UnitCostQuickCalculationSuite.class,
 ////	UcqcCalculationTestSuite.class,
 ////	UcqcMainpageTestSuite.class,
-////	UcqcRvusSuite.class,
+	UcqcRvusSuite.class,
 	UcqcRoleBasedTestSuite.class,
 	GeneralCalculationsTestSuite.class,
 	ReportingTestSuite.class,

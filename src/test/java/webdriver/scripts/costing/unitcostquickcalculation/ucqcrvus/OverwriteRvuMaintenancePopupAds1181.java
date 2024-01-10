@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.apache.poi.ss.formula.functions.Count;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
@@ -181,7 +182,7 @@ public class OverwriteRvuMaintenancePopupAds1181 extends UcqcHelper {
   public void test04ConfirmThatYearFormatIsYyyyAndDefaultYearIsCurrentYear() throws InterruptedException,Throwable {
     /**Confirm that the year format is YYYY and the default year is the current server year*/
     try {
-		compareServerYearAndDestinationEffectiveYear();
+    	compareServerYearAndDestinationEffectiveYear();
 		validateYearFormat(overwriteRvuMaint.getUnitCostQuickCalculationOverwriteRVUMaintenanceModalDropdownYear(), printout);
 		 ExtentReport.logPass("PASS", "test04ConfirmThatYearFormatIsYyyyAndDefaultYearIsCurrentYear");
     } catch (Exception|AssertionError e) {
@@ -194,7 +195,10 @@ public class OverwriteRvuMaintenancePopupAds1181 extends UcqcHelper {
   public void test05ConfirmThatCostComponentsSectionContainsLabelSourceAndDestinationCostComponents() throws InterruptedException,Throwable {
     /**Confirm that the cost components section is displayed with a label stating, "Source and Destination Cost Components"*/
     try {
-		assertElementText(driver.findElement(By.xpath("//label[contains(@class,'x-form-item-label')][text()='Source and Destination Cost Components']")), "Source and Destination Cost Components *", printout);
+//    	  Omkar 27/12/2023 : xpath changes for 11.2
+//		assertElementText(driver.findElement(By.xpath("//label[contains(@class,'x-form-item-label')][text()='Source and Destination Cost Components']")), "Source and Destination Cost Components *", printout);
+		assertElementText(driver.findElement(By.xpath("//span[contains(@class,'x-form-item-label')][text()='Source and Destination Cost Components']")), "Source and Destination Cost Components", printout);
+		assertElementText(driver.findElement(By.xpath("(//span[contains(@class,'x-form-item-label')]/span)[2]")), " *", printout);
 		ExtentReport.logPass("PASS", "test05ConfirmThatCostComponentsSectionContainsLabelSourceAndDestinationCostComponents");
     } catch (Exception|AssertionError e) {
     	ExtentReport.logFail("FAIL", "test05ConfirmThatCostComponentsSectionContainsLabelSourceAndDestinationCostComponents", driver, e);
@@ -224,7 +228,7 @@ public class OverwriteRvuMaintenancePopupAds1181 extends UcqcHelper {
 		for (String costComponent : costComponents) {
 		  verifyCheckBox(costComponent, printout);
 		}
-		assertElementIsDisabled(overwriteRvuMaint.getUnitCostQuickCalculationOverwriteRVUMaintenanceModalButtonOverwriteRVUs(),printout);
+    	assertElementIsDisabled(overwriteRvuMaint.getUnitCostQuickCalculationOverwriteRVUMaintenanceModalButtonOverwriteRVUs(),printout);
 		assertElementIsEnabled(overwriteRvuMaint.getUnitCostQuickCalculationOverwriteRVUMaintenanceModalButtonCancelAndClose(),printout);
 		ExtentReport.logPass("PASS", "test07ConfirmThatCostComponentsSectionContainsLabelSourceAndDestinationCostComponents");
     } catch (Exception|AssertionError e) {
@@ -270,6 +274,7 @@ public class OverwriteRvuMaintenancePopupAds1181 extends UcqcHelper {
   public void test11ConfirmThatWhenRemoveAllIsClickedThatOverwriteRvusButtonIsDisabledAndCancelAndCloseButtonIsEnabled() throws Exception,Throwable {
     /**Confirm that when "Remove All" is clicked that the Overwrite RVUs is disabled and Cancel & Close button  is enabled*/
     try {
+    	
 		assertElementIsDisabled(overwriteRvuMaint.getUnitCostQuickCalculationOverwriteRVUMaintenanceModalButtonOverwriteRVUs(),printout);
 		assertElementIsEnabled(overwriteRvuMaint.getUnitCostQuickCalculationOverwriteRVUMaintenanceModalButtonCancelAndClose(),printout);
 		ExtentReport.logPass("PASS", "test11ConfirmThatWhenRemoveAllIsClickedThatOverwriteRvusButtonIsDisabledAndCancelAndCloseButtonIsEnabled");
@@ -312,6 +317,7 @@ public class OverwriteRvuMaintenancePopupAds1181 extends UcqcHelper {
   public void test13bClickCancelButtonToReturnToPreviousScreenWithoutOverwritingRvus() throws Exception,Throwable {
     //click Cancel to return to the previous screen without overwriting the RVUs."*/
     try {
+    	Thread.sleep(1000);
 		doClick(overwriteRvuMaint.getUnitCostQuickCalculationOverwriteRVUMaintenanceModalWarningButtonCancel());
 		//assertElementText(driver.findElement(By.xpath("//div[contains(@class,'errorMsg')]")),expectedRvuMaintenanceWarningMessage,printout);
 		waitForAjaxExtJs();

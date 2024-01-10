@@ -496,10 +496,13 @@ public class AssertHelper extends AdsHelper {
 			//shilpa 10/11/2023 : xpath change for 11.2
 //			disabledText = element.findElement(By.xpath("./ancestor::div[contains(@class,'x-btn')]"))
 //					.getAttribute("class");
+			/*Omkar 28/12/2023 : xpath changes for 11.2
 			disabledText = element.findElement(By.xpath("./ancestor::div[contains(@class,'x-btn')]"))
 					.getAttribute("class");
-			// disabledText =
-			// element.findElement(By.xpath("./../../..")).getAttribute("class");
+					*/
+			disabledText = element.findElement(By.xpath("./ancestor::a[contains(@class,'x-btn')]"))
+					.getAttribute("class");
+			
 		} catch (Throwable e) {
 			System.out.println("Element Not Found");
 			fail("element not found");

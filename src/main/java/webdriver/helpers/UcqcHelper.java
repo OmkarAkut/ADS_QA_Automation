@@ -471,7 +471,9 @@ public class UcqcHelper extends GoHelper {
     //click in cell and update
     driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')]["+row+"]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-"+columnIdDigits+"')]")).click();
     waitForAjaxExtJs();
-    WebElement editCell = driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')]["+row+"]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-"+columnIdDigits+"')]/div/table"));
+//	Omkar 28/12/2023 : xpath changes for 11.2
+//    WebElement editCell = driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')]["+row+"]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-"+columnIdDigits+"')]/div/table"));
+    WebElement editCell = driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')]["+row+"]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-"+columnIdDigits+"')]/div"));
     Actions action = new Actions(driver);
     //Shilpa updated : below lines wont work : 15.09.2022
 //    action.moveToElement(editCell).sendKeys(newValue).perform();

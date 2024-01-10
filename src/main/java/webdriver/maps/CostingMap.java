@@ -625,7 +625,9 @@ public class CostingMap extends MapConfig {
 		return unitCostQuickCalculationButtonSaveQuickRVUs;
 	}
 
-	@FindBy(xpath = "//div[@class='x-panel gridCls gridClsCondensed lockCls ucqc-grid x-grid-with-row-lines x-grid-locked x-border-item x-box-item x-panel-default x-grid']//*[contains(text(),'Calculate')]")
+//	Omkar 28/12/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//div[@class='x-panel gridCls gridClsCondensed lockCls ucqc-grid x-grid-with-row-lines x-grid-locked x-border-item x-box-item x-panel-default x-grid']//*[contains(text(),'Calculate')]")
+	@FindBy(xpath = "//span[contains(@class,'x-btn-button-center ')]//*[contains(text(),'Calculate')]") 
 	private WebElement unitCostQuickCalculationButtonCalculate;
 
 	public WebElement getUnitCostQuickCalculationButtonCalculate() {
@@ -872,42 +874,54 @@ public class CostingMap extends MapConfig {
 		return unitCostQuickCalculationOverwriteRVUMaintenanceModalDropdownYearOptions;
 	}
 
-	@FindBy(xpath = "//div[contains(@class,'windowbtn')]/descendant::*[text()='Select All']")
+//	 Omkar 27/12/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//div[contains(@class,'windowbtn')]/descendant::*[text()='Select All']")
+	@FindBy(xpath = "//span[contains(@class,'x-btn-inner-default-small')][text()='Select All']")
 	private WebElement unitCostQuickCalculationOverwriteRVUMaintenanceModalButtonSelectAll;
 
 	public WebElement getUnitCostQuickCalculationOverwriteRVUMaintenanceModalButtonSelectAll() {
 		return unitCostQuickCalculationOverwriteRVUMaintenanceModalButtonSelectAll;
 	}
 
-	@FindBy(xpath = "//div[contains(@class,'windowbtn')]/descendant::*[text()='Remove All']")
+//	Omkar 27/12/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//div[contains(@class,'windowbtn')]/descendant::*[text()='Remove All']")
+	@FindBy(xpath = "//span[contains(@class,'x-btn-inner-default-small')][text()='Remove All']")
 	private WebElement unitCostQuickCalculationOverwriteRVUMaintenanceModalButtonRemoveAll;
 
 	public WebElement getUnitCostQuickCalculationOverwriteRVUMaintenanceModalButtonRemoveAll() {
 		return unitCostQuickCalculationOverwriteRVUMaintenanceModalButtonRemoveAll;
 	}
 
-	@FindBy(xpath = "//div[contains(@class,'windowbtn')]/descendant::*[text()='Overwrite RVUs']")
+//	Omkar 27/12/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//div[contains(@class,'windowbtn')]/descendant::*[text()='Overwrite RVUs']")
+	@FindBy(xpath = "//a[contains(@class,'windowbtn')]/descendant::*[text()='Overwrite RVUs']")
 	private WebElement unitCostQuickCalculationOverwriteRVUMaintenanceModalButtonOverwriteRVUs;
 
 	public WebElement getUnitCostQuickCalculationOverwriteRVUMaintenanceModalButtonOverwriteRVUs() {
 		return unitCostQuickCalculationOverwriteRVUMaintenanceModalButtonOverwriteRVUs;
 	}
 
-	@FindBy(xpath = "//div[contains(@class,'windowbtn')]/descendant::*[text()='Cancel & Close']")
+//	Omkar 27/12/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//div[contains(@class,'windowbtn')]/descendant::*[text()='Cancel & Close']")
+	@FindBy(xpath = "//a[contains(@class,'windowbtn')]/descendant::*[text()='Cancel & Close']")
 	private WebElement unitCostQuickCalculationOverwriteRVUMaintenanceModalButtonCancelAndClose;
 
 	public WebElement getUnitCostQuickCalculationOverwriteRVUMaintenanceModalButtonCancelAndClose() {
 		return unitCostQuickCalculationOverwriteRVUMaintenanceModalButtonCancelAndClose;
 	}
 
-	@FindBy(xpath = "//div[contains(@class,'windowbtn')]/descendant::*[text()='Overwrite']")
+//	Omkar 28/12/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//div[contains(@class,'windowbtn')]/descendant::*[text()='Overwrite']")
+	@FindBy(xpath = "//a[contains(@class,'windowbtn')]/descendant::*[text()='Overwrite']")
 	private WebElement unitCostQuickCalculationOverwriteRVUMaintenanceModalWarningButtonOverwrite;
 
 	public WebElement getUnitCostQuickCalculationOverwriteRVUMaintenanceModalWarningButtonOverwrite() {
 		return unitCostQuickCalculationOverwriteRVUMaintenanceModalWarningButtonOverwrite;
 	}
 
-	@FindBy(xpath = "//div[contains(@class,'windowbtn')]/descendant::*[text()='Cancel']")
+//	Omkar 28/12/2023 : xpath changes for 11.2
+//	@FindBy(xpath = "//div[contains(@class,'windowbtn')]/descendant::*[text()='Cancel']")
+	@FindBy(xpath = "//a[contains(@class,'windowbtn')]/descendant::*[text()='Cancel']")
 	private WebElement unitCostQuickCalculationOverwriteRVUMaintenanceModalWarningButtonCancel;
 
 	public WebElement getUnitCostQuickCalculationOverwriteRVUMaintenanceModalWarningButtonCancel() {
