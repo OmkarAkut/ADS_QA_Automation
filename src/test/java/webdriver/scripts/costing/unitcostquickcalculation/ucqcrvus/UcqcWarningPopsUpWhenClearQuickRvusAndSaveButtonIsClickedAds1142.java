@@ -144,10 +144,15 @@ public class UcqcWarningPopsUpWhenClearQuickRvusAndSaveButtonIsClickedAds1142 ex
     @Test
     public void test06bAssertCellValueRemainsUnchanged() throws InterruptedException ,Throwable{
         try {
+        	/*Omkar 29/1/2024 : xpath changes for 11.2
         	//Shilpa 28.102022 below jscript has been added to scoll
         	((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoViewIfNeeded();",driver.findElement(By.xpath("//table/tbody/tr[@class='x-grid-row']/td/div[text()='1']")));
 		    Thread.sleep(3000);
 			driver.findElement(By.xpath("//table/tbody/tr[@class='x-grid-row']/td/div[text()='1']")).click();
+			*/
+			((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoViewIfNeeded();",driver.findElement(By.xpath("//table/tbody/tr[@class='  x-grid-row']/td/div[text()='1']")));
+		    Thread.sleep(3000);
+			driver.findElement(By.xpath("//table/tbody/tr[@class='  x-grid-row']/td/div[text()='1']")).click();
 			currentCellValue = getNewCellValue("1100023","Quick Salaries and Wages RVU");
 			assertEquals(initialCellValue, currentCellValue);
 			 ExtentReport.logPass("PASS", "test06bAssertCellValueRemainsUnchanged");
@@ -224,10 +229,15 @@ public class UcqcWarningPopsUpWhenClearQuickRvusAndSaveButtonIsClickedAds1142 ex
     @Test
     public void test11AssertValueIsUnchanged() throws InterruptedException,Throwable {
         try {
+        	/*Omkar 29/1/2024 : xpath changes for 11.2
         	//Shilpa 28.10.2022
         	((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoViewIfNeeded();",driver.findElement(By.xpath("//table/tbody/tr[@class='x-grid-row']/td/div[text()='1']")));
 		    Thread.sleep(3000);
 			driver.findElement(By.xpath("//table/tbody/tr[@class='x-grid-row']/td/div[text()='1']")).click();
+			*/
+			((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoViewIfNeeded();",driver.findElement(By.xpath("//table/tbody/tr[@class='  x-grid-row']/td/div[text()='1']")));
+		    Thread.sleep(3000);
+			driver.findElement(By.xpath("//table/tbody/tr[@class='  x-grid-row']/td/div[text()='1']")).click();
 			currentCellValue = getNewCellValue("1100023","Quick Salaries and Wages RVU");
 			assertEquals(initialCellValue, currentCellValue);
 			 ExtentReport.logPass("PASS", "test11AssertValueIsUnchanged");
@@ -245,14 +255,19 @@ public class UcqcWarningPopsUpWhenClearQuickRvusAndSaveButtonIsClickedAds1142 ex
     }
 
     private void assertClearQuickRvusAndSaveDialog() throws InterruptedException {
+    	
         waitForAjaxExtJs();
         String warning = driver.findElement(By.xpath("//*[contains(@id, 'warningwindow') and text()='Warning']")).getText();
         assertEquals("Warning", warning);
-        warningText = driver.findElement(By.xpath("//*[contains(@id, 'warningwindow') and text()='Warning']/ancestor::div/descendant::div[contains(@id,'panel') and contains(@id,'body')]/div")).getText();
+//        Omkar 29/1/2024 : xpath changes for 11.2
+//        warningText = driver.findElement(By.xpath("//*[contains(@id, 'warningwindow') and text()='Warning']/ancestor::div/descendant::div[contains(@id,'panel') and contains(@id,'body')]/div")).getText();
+        warningText = driver.findElement(By.xpath("(//*[contains(@id, 'warningwindow') and text()='Warning']/ancestor::div/descendant::div[contains(@id,'panel') and contains(@id,'body')]//div)[4]")).getText();
         assertEquals(expectedWarningText, warningText);
         assertElementIsDisplayed(driver.findElement(By.xpath("//*[contains(@id, 'warningwindow') and text()='Warning']/ancestor::div/descendant::span[text()='Cancel']")), printout);
         assertElementIsDisplayed(driver.findElement(By.xpath("//*[contains(@id, 'warningwindow') and text()='Warning']/ancestor::div/descendant::span[text()='Clear and Save']")), printout);
-        assertElementIsDisplayed(driver.findElement(By.xpath("//*[contains(@id, 'warningwindow') and text()='Warning']/ancestor::div/descendant::img")), printout);
+//        Omkar 29/1/2024 : xpath changes for 11.2
+//        assertElementIsDisplayed(driver.findElement(By.xpath("//*[contains(@id, 'warningwindow') and text()='Warning']/ancestor::div/descendant::img")), printout);
+        assertElementIsDisplayed(driver.findElement(By.xpath("//*[contains(@id, 'warningwindow') and text()='Warning']/ancestor::div/descendant::div[contains(@class,'x-tool-after-title')]")), printout);
     }
 
     private String getNewCellValue (String chargeCode, String headerName) throws InterruptedException {

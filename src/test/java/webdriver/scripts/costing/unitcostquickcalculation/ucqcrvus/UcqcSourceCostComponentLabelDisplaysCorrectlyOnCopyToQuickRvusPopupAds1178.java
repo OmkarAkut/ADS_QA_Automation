@@ -59,11 +59,18 @@ public class UcqcSourceCostComponentLabelDisplaysCorrectlyOnCopyToQuickRvusPopup
       doClick(ucqcMap.getUnitCostQuickCalculationButtonCopyToQuickRVUs());
       waitForAjaxExtJs();
       doClick(driver.findElement(By.xpath("//*[@name='copyType']")));
-      doDropdownSelectUsingOptionTextRequiresInitialElementClick(driver.findElement(By.xpath("//*[@name='copyType']/ancestor::table/following::ul")), optionText, printout);
-      assertElementIsDisplayed(driver.findElement(By.xpath("//label[text()='" + expectedLabelText + "']")), printout);
+//      doDropdownSelectUsingOptionTextRequiresInitialElementClick(driver.findElement(By.xpath("//*[@name='copyType']/ancestor::table/following::ul")), optionText, printout);
+      
+//      Omkar 29/1/2024 : xpath changes for 11.2
+//      doDropdownSelectUsingOptionTextRequiresInitialElementClick(driver.findElement(By.xpath("(//div[@class ='x-boundlist-list-ct x-unselectable x-scroller'])[6]/following::ul")), optionText, printout);
+//      assertElementIsDisplayed(driver.findElement(By.xpath("//label[text()='" + expectedLabelText + "']")), printout);
+      doDropdownSelectUsingOptionTextRequiresInitialElementClick(driver.findElement(By.xpath("(//div[@class ='x-boundlist-list-ct x-unselectable x-scroller'])[6]/ul")), optionText, printout);
+      assertElementIsDisplayed(driver.findElement(By.xpath("//span[text()='" + expectedLabelText + "']")), printout);
       doClick(driver.findElement(By.xpath("//span[contains(@id,'button') and contains (text(),'Cancel & Close')]")));
       waitForAjaxExtJs();
-      doClosePageOnLowerBar("Unit Cost Quick...");
+//      Omkar 29/1/2024 : xpath changes for 11.2
+//      doClosePageOnLowerBar("Unit Cost Quick...");
+      doClosePageOnLowerBar("Unit Cost Quick Calculation");
       ExtentReport.logPass("PASS", "testUcqcSourceCostComponentLabelDisplaysCorrectlyOnCopyToQuickRvusPopup");
 	} catch (Exception|AssertionError e) {
 		ExtentReport.logFail("FAIL", "testUcqcSourceCostComponentLabelDisplaysCorrectlyOnCopyToQuickRvusPopup", driver, e);

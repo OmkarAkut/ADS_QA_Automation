@@ -155,7 +155,9 @@ public class UcqcUndoAndSaveQuickRvusAds1151 extends UcqcHelper {
   @Test
   public void test05bMoveToAnotherPageAfterEditingCellAndVerifySaveQuickRvusAndUndoButtonsAreEnabled() throws Throwable {
     try {
-      driver.findElement(By.xpath("//*[@class='x-btn-icon pagging-tbar-next-button']")).click();
+//    	Omkar 29/1/2024 : xpath changes for 11.2
+//      driver.findElement(By.xpath("//*[@class='x-btn-icon pagging-tbar-next-button']")).click();
+      driver.findElement(By.xpath("//*[contains(@class,'small pagging-tbar-next-button')]")).click();
       waitForSpinnerToEnd();
       waitForAjaxExtJs();
     assertEquals(101, ucqcGridGetFirstRowNumberOnPage(printout)); //verifies new page is displayed
@@ -176,7 +178,9 @@ public class UcqcUndoAndSaveQuickRvusAds1151 extends UcqcHelper {
 //    	ucqcUpdateGridCellValuex("2001626", "Quick Salaries and Wages RVU", "21", printout);
     	ucqcWaitForSpinnerToEnd();
       waitForAjaxExtJs();
-      driver.findElement(By.xpath("//*[@class='x-btn-icon pagging-tbar-previous-button']")).click();
+//      Omkar 29/1/2024 : xpath changes for 11.2
+//      driver.findElement(By.xpath("//*[@class='x-btn-icon pagging-tbar-previous-button']")).click();
+      driver.findElement(By.xpath("//*[contains(@class,'small pagging-tbar-previous-button ')]")).click();
       ucqcWaitForSpinnerToEnd();
       waitForAjaxExtJs();
       
@@ -356,7 +360,9 @@ public class UcqcUndoAndSaveQuickRvusAds1151 extends UcqcHelper {
   }
 
   public int ucqcGridGetFirstRowNumberOnPage(boolean printout) {
-    int cellValue = Integer.parseInt(driver.findElement(By.xpath("//tbody/tr[2]/td[contains(@class,'rownumberer')]/div")).getText());
+//	 Omkar 29/1/2024 : xpath changes for 11.2
+//    int cellValue = Integer.parseInt(driver.findElement(By.xpath("//tbody/tr[2]/td[contains(@class,'rownumberer')]/div")).getText());
+    int cellValue = Integer.parseInt(driver.findElement(By.xpath("(//table[contains(@id,'gridview')]/tbody/tr)[1]/td[contains(@class,' x-grid-cell-first x-unselectable')]/div")).getText());
     if (printout) {
       System.out.println("First row number on page: " + cellValue);
     }
@@ -393,11 +399,15 @@ public class UcqcUndoAndSaveQuickRvusAds1151 extends UcqcHelper {
       System.out.println("For cell update, columnIdDigits: " + columnIdDigits);
     }
     //click in cell and update
-    driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')][" + row + "]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-" + columnIdDigits + "')]")).click();
+//    Omkar 29/1/2024 : xpath changes for 11.2
+//    driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')][" + row + "]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-" + columnIdDigits + "')]")).click();
+    driver.findElement(By.xpath("(//td[contains(@class,'x-grid-cell-numbercolumn-" + columnIdDigits + "')])[" + row + "]/div")).click();
     waitForAjaxExtJs();
-    WebElement editCell = driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')][" + row + "]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-" + columnIdDigits + "')]/div/table"));
+//    Omkar 29/1/2024 : xpath changes for 11.2
+//    WebElement editCell = driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')][" + row + "]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-" + columnIdDigits + "')]/div/table"));
+    WebElement editCell =  driver.findElement(By.xpath("(//td[contains(@class,'x-grid-cell-numbercolumn-" + columnIdDigits + "')])[" + row + "]/div"));
     Actions action=new Actions(driver);
-    action.moveToElement(editCell).clickAndHold().sendKeys(Keys.chord(Keys.CONTROL, "a")).sendKeys(Keys.chord(Keys.CLEAR));
+//    action.moveToElement(editCell).clickAndHold().sendKeys(Keys.chord(Keys.CONTROL, "a")).sendKeys(Keys.chord(Keys.CLEAR));
     Thread.sleep(1000);
     action.moveToElement(editCell).clickAndHold().sendKeys(newValue).sendKeys(Keys.chord(Keys.ENTER)).build().perform();
   Thread.sleep(1000);
