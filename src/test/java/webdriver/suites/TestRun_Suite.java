@@ -32,7 +32,7 @@ import webdriver.scripts.systemmaintenance.SystemMaintenanceTestSuite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-	/*
+	
 	SystemMaintenanceTestSuite.class,
 	EpisodesTestSuite.class,
 	ReportingTestSuite.class,
@@ -55,8 +55,8 @@ import webdriver.scripts.systemmaintenance.SystemMaintenanceTestSuite;
 	UcqcRoleBasedTestSuite.class,
 	GeneralCalculationsTestSuite.class,
 	ReportingTestSuite.class,
-	*/
-	Regression_suite.class
+	
+//	Regression_suite.class
 })
 
 public class TestRun_Suite {
