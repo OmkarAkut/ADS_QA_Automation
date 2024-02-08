@@ -1,4 +1,4 @@
-package webdriver.globalscripts.pagetests;
+package Regression;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -283,7 +283,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 			fail(e.getMessage());
 		}
 	}
-//ADS-6582
+
 	@Test
 	public void test0012AnalyticsTab() throws Throwable {
 		try {
@@ -1472,7 +1472,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 		}
 	}
 
-	//ADS-6584
+	//ADS-6584[add step4]
 	@Test
 	public void test1002ValidateContactUsPage() throws Throwable {
 		try {

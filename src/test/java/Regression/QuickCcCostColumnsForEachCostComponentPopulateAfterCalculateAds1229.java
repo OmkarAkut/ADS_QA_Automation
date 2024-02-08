@@ -1,4 +1,4 @@
-package webdriver.scripts.costing.unitcostquickcalculation.ucqccalculation;
+package Regression;
 
 import static org.junit.Assert.fail;
 
@@ -43,7 +43,7 @@ public class QuickCcCostColumnsForEachCostComponentPopulateAfterCalculateAds1229
 	}
     
   }
-
+//ADS -5924
   @Test
   public void test00UpdateTotalQuickCostColumnPopulatesAfterCalculate() throws Throwable {
     try {
@@ -68,7 +68,7 @@ public class QuickCcCostColumnsForEachCostComponentPopulateAfterCalculateAds1229
     	fail(e.getMessage());
     }
   }
-
+//ADS-6665 step 11 and step12 are missing
   @Test
   public void test01VerifyCalculatedScenarioNameIsAppendedWithUcqcOnCalculationStatusPage() throws Throwable {
 	  

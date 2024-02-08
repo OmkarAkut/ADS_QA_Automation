@@ -1,4 +1,4 @@
-package webdriver.scripts.reporting;
+package Regression;
 
 import static org.junit.Assert.fail;
 
@@ -50,7 +50,7 @@ public class ReportsLibraryCreateRenameAndDeleteNewFolderAds1348 extends LoginSt
     ExtentReport.report.flush();
   }
 
-
+//ADS-5661
 @Test
   public void test01aCreateNewReportsFolderAndConfirmRenameAndDeleteButtonsAreEnabled() throws Exception,Throwable {
 		driverDelay(5000);;//Shilpa 16.09.2022 

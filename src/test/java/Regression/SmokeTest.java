@@ -1,4 +1,4 @@
-package webdriver.deployment;
+package Regression;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -231,7 +231,7 @@ public class SmokeTest extends UcqcHelper {
 	      }
 	    }
 	  }
-	  //ADS-6500
+	  //ADS-6500[add step4-15]
 	  @Test
 	  public void test0001LandingPageSystemMaintenance() throws Throwable {
 	    try {
@@ -261,7 +261,7 @@ public class SmokeTest extends UcqcHelper {
 			fail(e.getMessage());
 		}
 	  }
-//ADS-6498
+//ADS-6498[add step4 -12]
 	  @Test
 	  public void test0002LandingPageDataMaintenance() throws Throwable {
 	    try {
@@ -298,7 +298,7 @@ public class SmokeTest extends UcqcHelper {
 			fail(e.getMessage());
 		}
 	  }
-//ADS-6497
+//ADS-6497[add step4 -12]
 	  @Test
 	  public void test0004LandingPageEpisodes() throws Throwable {
 	    try {
@@ -317,7 +317,7 @@ public class SmokeTest extends UcqcHelper {
 			fail(e.getMessage());
 		}
 	  }
-//ADS-6496
+//ADS-6496[add step4 -12],ADS-6582
 	  @Test
 	  public void test0005LandingPageContracting() throws Throwable {
 	    try {
@@ -338,7 +338,7 @@ public class SmokeTest extends UcqcHelper {
 			fail(e.getMessage());
 		}
 	  }
-//ADS-6495
+//ADS-6495[add step 4-8],ADS-6642[add step 4-8]
 	  @Test
 	  public void test0006LandingPageCosting() throws Throwable {
 	    try {
@@ -362,7 +362,7 @@ public class SmokeTest extends UcqcHelper {
 			fail(e.getMessage());
 		}
 	  }
-	  //ADS-6502
+	  //ADS-6502[add step 4-11]
 	  @Test
 	  public void test0007LandingPageReporting() throws Throwable {
 	    try {
@@ -383,7 +383,7 @@ public class SmokeTest extends UcqcHelper {
 			fail(e.getMessage());
 		}
 	  }
-//ADS-6501
+//ADS-6501[ add step 4-7]
 	  @Test
 	  public void test0008LandingPageAnalytics() throws Throwable {
 	    try {
