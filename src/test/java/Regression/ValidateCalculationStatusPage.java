@@ -20,7 +20,7 @@ import webdriver.maps.mapbuilder.BuildMap;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ValidateCalculationStatusPage extends CalculationHelper {
 	static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
-	static String costModel = "ADS-1232 / ADS-958 CMS 1 " + currentDateTime;
+	static String costModel = "Testing" + currentDateTime;
 	static CostingMap costing;
 	static ContractingMap modelMap;
 	static String glDataDescription="* MHFY05 Reclass TB";
@@ -55,14 +55,17 @@ public class ValidateCalculationStatusPage extends CalculationHelper {
 			doSearchForModel("QA Cost Model");
 			tableDoubleClickCellFirstColumn("QA Cost Model");
 			driverDelay(500);
-//			doClickTreeItem("Cost Model Task List");
+			doClickTreeItem("Assign Unit Costs");
+			/*
 			waitForMainPageTitle("CM Test");
 			doClickTreeItem("CM Test");
 			waitForMainPageTitle("Cost Scnenarios");
 			doClickTreeItem("Cost Scnenarios");
 			waitForMainPageTitle("Cost Model Calculation Scenarios");
-			doClickTreeItemWithCheckbox("Cost Model Calculation Scenarios");
+			doClickTreeItem("Cost Model Calculation Scenarios");
 			waitForDisplayedSpinnerToEnd();
+			*/
+			doClickTreeItem("Cost Model Calculation Scenarios");
 			ExtentReport.logPass("PASS", "test01GotoCostModelCalculationScenario");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01GotoCostModelCalculationScenario", driver, e);
@@ -98,15 +101,6 @@ public class ValidateCalculationStatusPage extends CalculationHelper {
 					CostingMap.getCostModelOHMasterScenarioOptions(),
 					OHMaster
 					);
-//			doDropdownSelectUsingOptionText(CostingMap.getGldataDesc(), glDataDescription);
-//			doClick(CostingMap.getVolScenario());
-//			doDropdownSelectUsingOptionTextWithelement(driver.findElement(By.xpath("(//div[contains(@class,'floating')]/div[contains(@id,'listEl')]/ul)[2]")), actVol);
-//			doClick(CostingMap.getVariablilityMaster());
-//			doDropdownSelectUsingOptionTextWithelement(driver.findElement(By.xpath("(//div[contains(@class,'floating')]/div[contains(@id,'listEl')]/ul)[3]")), varMaster);
-//			doClick(CostingMap.getOverheadDrpDwn());
-//			doDropdownSelectUsingOptionTextWithelement(driver.findElement(By.xpath("(//div[contains(@class,'floating')]/div[contains(@id,'listEl')]/ul)[4]")), OHMaster);
-			
-
 			ExtentReport.logPass("PASS", "test02CreateCostModel");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test02CreateCostModel", driver, e);
