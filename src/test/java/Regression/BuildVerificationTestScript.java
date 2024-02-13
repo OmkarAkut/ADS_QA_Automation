@@ -58,7 +58,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 	private static String BackgroundColorEpisodeTab = "rgba(159, 29, 53, 1)";
 	private static String BackgroundColorBudgetingTab = "rgba(102, 102, 102, 1)";
 	private static String BackgroundColorSystemMaintenanceTab = "rgba(135, 85, 64, 1)";
-
+	 private static String BackgroundColorCosting= "rgba(0, 86, 26, 1)";
 	String expectedReleaseVersion = version; // only checks version, not date
 
 
@@ -92,6 +92,130 @@ public class BuildVerificationTestScript extends UcqcHelper {
 	}
 	 
 	// ===== Global Tests ======//
+	//ADS-6503
+	  @Test
+	  public void test0003LandingPageBudgeting() throws Throwable {
+		  driverDelay(3000);
+	    try {
+			WebElement[] landingPageBudgetingElements = {
+			        generalElement.getLandingPageBubbleBudgeting(),
+			        generalElement.getLandingPageBubbleBudgetingHeader(),
+			        generalElement.getLandingPageBubbleBudgetingImage(),
+			        generalElement.getLandingPageBubbleBudgetingQuickLinkBudgeting()
+			};
+			assertElementsAreDisplayed(landingPageBudgetingElements, printout);
+			ExtentReport.logPass("PASS", "test0003LandingPageBudgeting");
+		} catch (Exception|AssertionError e) {
+			ExtentReport.logFail("FAIL", "test0003LandingPageBudgeting", driver, e);
+			fail(e.getMessage());
+		}
+	  }
+//ADS-6497[add step4 -12]
+	  @Test
+	  public void test0004LandingPageEpisodes() throws Throwable {
+	    try {
+			WebElement[] landingPageEpisodesElements = {
+			        generalElement.getLandingPageBubbleEpisode(),
+			        generalElement.getLandingPageBubbleEpisodeHeader(),
+			        generalElement.getLandingPageBubbleEpisodeImage(),
+			        generalElement.getLandingPageBubbleEpisodeQuickLinkEpisodeModels(),
+			        generalElement.getLandingPageBubbleEpisodeQuickLinkEpisodeDataMaintenance()
+			};
+			assertElementsAreDisplayed(landingPageEpisodesElements, printout);
+			ExtentReport.logPass("PASS", "test0004LandingPageEpisodes");
+
+		} catch (Exception|AssertionError e) {
+			ExtentReport.logFail("FAIL", "test0004LandingPageEpisodes", driver, e);
+			fail(e.getMessage());
+		}
+	  }
+//ADS-6496[add step4 -12],ADS-6582
+	  @Test
+	  public void test0005LandingPageContracting() throws Throwable {
+	    try {
+	      WebElement[] landingPageContractingElements = {
+	              generalElement.getLandingPageBubbleContracting(),
+	              generalElement.getLandingPageBubbleContractingHeader(),
+	              generalElement.getLandingPageBubbleContractingContent(),
+	              generalElement.getLandingPageBubbleCostingContentText(),
+	              generalElement.getLandingPageBubbleContractingImage(),
+	              generalElement.getLandingPageBubbleContractingQuickLinkContractModels(),
+	              generalElement.getLandingPageBubbleContractingQuickLinkContractingDataMaintenance()
+	      };
+	      assertElementsAreDisplayed(landingPageContractingElements, printout);
+			ExtentReport.logPass("PASS", "test0005LandingPageContracting");
+
+	    }  catch (Exception|AssertionError e) {
+			ExtentReport.logFail("FAIL", "test0005LandingPageContracting", driver, e);
+			fail(e.getMessage());
+		}
+	  }
+//ADS-6495[add step 4-8],ADS-6642[add step 4-8]
+	  @Test
+	  public void test0006LandingPageCosting() throws Throwable {
+	    try {
+	      WebElement[] landingPageCostingElements = {
+	              generalElement.getLandingPageBubbleCosting(),
+	              generalElement.getLandingPageBubbleCostingHeader(),
+	              generalElement.getLandingPageBubbleCostingContent(),
+	              generalElement.getLandingPageBubbleCostingContentText(),
+	              generalElement.getLandingPageBubbleCostingImage(),
+	              generalElement.getLandingPageBubbleCostingQuickLinkCostingModels(),
+	              generalElement.getLandingPageBubbleCostingQuickLinkCostingDataMaintenance(),
+	              generalElement.getLandingPageBubbleCostingQuickLinkUnitCostQuickCalculation()
+
+	      };
+	      assertElementsAreDisplayed(landingPageCostingElements,printout);
+	      validateBackgroundColor(BackgroundColorCosting,generalElement.getlandingPageBubbleCostingBgColor());
+			ExtentReport.logPass("PASS", "test0006LandingPageCosting");
+
+	    } catch (Exception|AssertionError e) {
+			ExtentReport.logFail("FAIL", "test0006LandingPageCosting", driver, e);
+			fail(e.getMessage());
+		}
+	  }
+	  //ADS-6502[add step 4-11]
+	  @Test
+	  public void test0007LandingPageReporting() throws Throwable {
+	    try {
+	      WebElement[] landingPageReportingElements = {
+	              generalElement.getLandingPageBubbleReporting(),
+	              generalElement.getLandingPageBubbleReportingHeader(),
+	              generalElement.getLandingPageBubbleReportingContent(),
+	              generalElement.getLandingPageBubbleReportingContentText(),
+	              generalElement.getLandingPageBubbleReportingImage(),
+	              generalElement.getLandingPageBubbleReportingQuickLinkReportLibrary(),
+	              generalElement.getLandingPageBubbleReportingQuickLinkWebIntelligence(),
+	              generalElement.getLandingPageBubbleReportingQuickLinkAdHocReportDesign()
+	      };
+	      assertElementsAreDisplayed(landingPageReportingElements,printout);
+	      ExtentReport.logPass("PASS", "test0007LandingPageReporting");
+	    } catch (Exception|AssertionError e) {
+			ExtentReport.logFail("FAIL", "test0007LandingPageReporting", driver, e);
+			fail(e.getMessage());
+		}
+	  }
+//ADS-6501[ add step 4-7]
+	  @Test
+	  public void test0008LandingPageAnalytics() throws Throwable {
+	    try {
+	      WebElement[] landingPageAnalyticsElements = {
+	              generalElement.getLandingPageBubbleAnalytics(),
+	              generalElement.getLandingPageBubbleAnalyticsHeader(),
+	              generalElement.getLandingPageBubbleAnalyticsContent(),
+	              generalElement.getLandingPageBubbleAnalyticsContentText(),
+	              generalElement.getLandingPageBubbleAnalyticsImage(),
+	              generalElement.getLandingPageBubbleAnalyticsQuickLinkExecutiveDashboard(),
+	              generalElement.getLandingPageBubbleAnayticsQuickLinkAnalyticDashobaords()
+	      };
+	      assertElementsAreDisplayed(landingPageAnalyticsElements,printout);
+	      ExtentReport.logPass("PASS", "test0008LandingPageAnalytics");
+
+	    } catch (Exception|AssertionError e) {
+			ExtentReport.logFail("FAIL", "test0008LandingPageAnalytics", driver, e);
+			fail(e.getMessage());
+		}
+	  }
 	//ADS-6586
 	@Test
 	public void test0001LandingPageSystemMaintenance() throws Throwable {

@@ -51,7 +51,7 @@ import org.junit.runners.Suite;
 	TableColumnSorting.class,//ADS-6654,ADS-6509
 	PaginationInCostingModels.class,//ADS-6652
 	ClearFilterbuttonModels.class,//ADS-6647,ADS-6648,ADS-6650,ADS-6438,ADS-6432,ADS-6431
-	SmokeTest.class, //ADS-6642[add step 4-9],ADS-6582,ADS-6503,ADS-6502[add step 4-11],ADS-6501[ add step 4-7],ADS-6500[add step4-15],ADS-6498[add step4 -12],ADS-6497[add step4 -12],ADS-6496[add step4 -12],ADS-6495[add step 4-8],
+//	SmokeTest.class, //ADS-6642[add step 4-9],ADS-6582,ADS-6503,ADS-6502[add step 4-11],ADS-6501[ add step 4-7],ADS-6500[add step4-15],ADS-6498[add step4 -12],ADS-6497[add step4 -12],ADS-6496[add step4 -12],ADS-6495[add step 4-8],
 	CreateEditDeleteNewStructurePopulations.class,//ADS-6396
 	ValidateCalculationStatusPage.class,//ADS-5771[add step15 -25]
 	BuildVerificationTestScript.class,//ADS-6584[add step4],ADS-6586,ADS-6592,ADS-6593,ADS-6594,ADS-6595,ADS-6596,ADS-6597,ADS-6598,ADS-6599

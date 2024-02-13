@@ -68,7 +68,7 @@ public class CostingCalculateOverheadScenario extends CalculationHelper {
       doClosePageOnLowerBar("Calculation Status");
       waitForAjaxExtJs();
       Thread.sleep(500);
-      doClick(driver.findElement(By.xpath("//div[contains(@id,'overheadmodelscenarioform')]//following::span[contains(@id,'button')][text()='Cancel & Close']")));
+      doClick(driver.findElement(By.xpath("//div[contains(@id,'overheadmodelscenarioform')]//following::span[contains(@id,'button')][text()='Save & Close']")));
 //      doClick(driver.findElement(By.xpath("//button/span[text()='Save & Close']")));
 //      doClosePageOnLowerBar("v102 REGRESSION...");
       doClosePageOnLowerBar("2005 Overhead...");
@@ -102,6 +102,9 @@ waitForSpinnerToEnd();
 		//Shilpa: 27.07.2022 , added some wait
 		Thread.sleep(5000);
 		doClick(driver.findElement(By.xpath("//div[@class='gwt-Hyperlink']/a/u[text()='* TB MH FY05 Overhead']")));
+		doClick("//button[text()='OK']");
+		doClick("//button[text()='Run']");
+		waitForOverheadReceivedReport();
 		ExtentReport.logPass("PASS", "testAssertReportLibrary");
     } catch (Exception|AssertionError e) {
 		ExtentReport.logFail("FAIL", "testAssertReportLibrary", driver, e);
