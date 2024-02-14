@@ -311,6 +311,7 @@ public class CalculationHelper extends GoHelper {
 //		Omkar 17/8/2023 : xpath changes for 11.2
 //		waitForPresenceOfElement("(//div[not(contains(@class,'disabled'))]//td[contains(@class,'x-grid-cell x-grid-td x-grid-cell-gridcolumn-1490 x-unselectable')]/div/span)[1]");
 //		driver.findElement(By.xpath("(//div[not(contains(@class,'disabled'))]//td[contains(@class,'x-grid-cell x-grid-td x-grid-cell-gridcolumn-1490 x-unselectable')]/div/span)[1]")).click();
+		Thread.sleep(1000);
 		waitForPresenceOfElement("(//*[contains(@id,'calculationstatus') and contains(@id,'header')]/..//span[text()='View'])[2]");
 		driver.findElement(By.xpath("(//*[contains(@id,'calculationstatus') and contains(@id,'header')]/..//span[text()='View'])[2]")).click();
 		waitForDisplayedSpinnerToEnd();

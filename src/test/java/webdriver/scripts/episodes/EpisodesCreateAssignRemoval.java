@@ -131,7 +131,7 @@ public class EpisodesCreateAssignRemoval extends CalculationHelper {
 			doClick(contractingMap.getContractModelButtonColumnsToDisplayModalRemove());
 			waitForSpinnerToEnd();
 			waitForFirstRowCalculationBarToReach100Percent();
-// Omkar 17/4/2023 : Unab;le to scroll to bottom to find element. Code will fail after this
+// Omkar 17/4/2023 : Unable to scroll to bottom to find element. Code will fail after this
 			calculationStatusPageOpenViewDialog();
 			confirmCalculationStatusDetailsContains("Total EFRs in Population to process: 10");
 			confirmCalculationStatusDetailsContains("Remove Total number of tagged Encounters: 10");

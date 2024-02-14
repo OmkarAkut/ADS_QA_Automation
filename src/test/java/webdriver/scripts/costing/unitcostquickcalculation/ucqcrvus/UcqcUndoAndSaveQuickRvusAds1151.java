@@ -407,7 +407,7 @@ public class UcqcUndoAndSaveQuickRvusAds1151 extends UcqcHelper {
 //    WebElement editCell = driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')][" + row + "]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-" + columnIdDigits + "')]/div/table"));
     WebElement editCell =  driver.findElement(By.xpath("(//td[contains(@class,'x-grid-cell-numbercolumn-" + columnIdDigits + "')])[" + row + "]/div"));
     Actions action=new Actions(driver);
-//    action.moveToElement(editCell).clickAndHold().sendKeys(Keys.chord(Keys.CONTROL, "a")).sendKeys(Keys.chord(Keys.CLEAR));
+    action.moveToElement(editCell).clickAndHold().sendKeys(Keys.chord(Keys.CONTROL, "a")).sendKeys(Keys.chord(Keys.CLEAR));
     Thread.sleep(1000);
     action.moveToElement(editCell).clickAndHold().sendKeys(newValue).sendKeys(Keys.chord(Keys.ENTER)).build().perform();
   Thread.sleep(1000);
