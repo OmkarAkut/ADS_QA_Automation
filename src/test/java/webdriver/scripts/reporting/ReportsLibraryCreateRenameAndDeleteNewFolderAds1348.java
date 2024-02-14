@@ -23,7 +23,7 @@ public class ReportsLibraryCreateRenameAndDeleteNewFolderAds1348 extends LoginSt
   //static GeneralElementsMap generalMap;
   static String folderName = "New Folderdelete" + javaGetRandomNumber(1000, printout);
 
-  /** Regression Test for Test Ticket ADS-1348. **/
+  /** Regression Test for Test Ticket ADS-1348. ADS-5661**/
   @BeforeClass
   public static void setupScript() throws InterruptedException,Throwable {
     //generalMap = BuildMap.getInstance(driver, GeneralElementsMap.class);

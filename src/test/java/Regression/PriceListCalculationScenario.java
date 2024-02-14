@@ -1,0 +1,170 @@
+package Regression;
+
+import static org.junit.Assert.fail;
+import java.text.SimpleDateFormat;
+import java.util.HashMap;
+
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.FixMethodOrder;
+import org.junit.Test;
+import org.junit.runners.MethodSorters;
+import ExtentReport.ExtentReport;
+import webdriver.core.Login;
+import webdriver.helpers.CalculationHelper;
+import webdriver.helpers.ContractModelsHelper;
+import webdriver.helpers.DataMaintenanceHelper;
+import webdriver.maps.ContractingMap;
+import webdriver.maps.DataMaintenanceMap;
+import webdriver.maps.mapbuilder.BuildMap;
+
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+public class PriceListCalculationScenario extends CalculationHelper {
+	static DataMaintenanceMap dmMap;
+	static ContractingMap contractMap;
+	final static String batch1 = "v10.2 REGRESSION PL Calc - Avg Enc Chgs1";
+	final static String batch2 = "v10.2 REGRESSION PL Calc - Avg Enc Chgs2";
+	final static String batch3 = "v10.2 REGRESSION PL Calc - Avg Enc Chgs3";
+	final static String aTozPage1 = "Price Lists";
+	final static String aTozPage2 = "Price List Calculation Scenarios";
+	static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
+	static String priceList = "PRICE" + currentDateTime;
+	static String priceListName = currentDateTime.replaceAll("\\W", "") + " " + priceList;
+	static String chargeMaster = "150 Marina Charge Master 2";
+	static String[] filterPriceScenario1 = { "Name", "Is", "Equal To", batch1 };
+	static String[] filterPriceScenario2 = { "Name", "Is", "Equal To", batch2 };
+	static String[] filterPriceScenario3 = { "Name", "Is", "Equal To", batch3 };
+
+	static String[] filterPriceList = { "Name", "Is", "Equal To", priceList };
+	static HashMap<String, String> filters = new HashMap<>();
+	DataMaintenanceHelper helper = new DataMaintenanceHelper();
+	/** Regression: Test script for ADS-6103 */
+	@BeforeClass
+	public static void setupScript() throws Exception, Throwable {
+		ExtentReport.reportCreate("PriceListCalculationScenario",
+				"webdriver.scripts.regression.generalcalculations",
+				"PriceListCalculationScenario");
+		try {
+			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);
+			contractMap = BuildMap.getInstance(driver, ContractingMap.class);
+			Login.loginUser("AutomationTesterAdmin");
+			goToPage("Maintain Data");
+			selectMaintainDataAtoZ(aTozPage1);
+			ExtentReport.logPass("PASS", "setupScript");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "Failure in setupScript ", driver, e);
+			fail(e.getMessage());
+		}
+	}
+//ADS-6103 all steps
+	@Test
+	public void test01AddNewPriceList() throws Throwable {
+		try {
+			doClick(DataMaintenanceMap.getLoadDataNewButton());
+			ContractingMap.getMedicareCode().sendKeys(currentDateTime.replaceAll("\\W", ""));
+			ContractingMap.getInputName().sendKeys(priceList);
+			doDropdownSelectUsingOptionText(DataMaintenanceMap.getChargeMaster(), chargeMaster);
+			driverDelay(200);
+			doClick(ContractingMap.getContractFeeForServicePaymentSave());
+			ExtentReport.logPass("PASS", "test01AddNewPriceList");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test01AddNewPriceList", driver, e);
+			fail(e.getMessage());
+		}
+	}
+
+	@Test
+	public void test02ValidateBatch1PriceValues() throws Throwable {
+		try {
+			ChangeResultsDestinationPriceLists(aTozPage2, batch1, filterPriceScenario1);
+			ValidateCalculationStatus("6443", "4185640");
+			helper.FilterByChargeCode(aTozPage1, filterPriceList, priceList, DataMaintenanceMap.getPriceItemDeptCode(),
+					"26.25", "482.35", "1,121.86", "684.72", "106.59", "248", "145", "25.84");
+			doClick(ContractingMap.getContractModelRiskLimiterCancelCloseBtn());
+			ExtentReport.logPass("PASS", "test02ValidateBatch1PriceValues");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test02ValidateBatch1PriceValues", driver, e);
+			fail(e.getMessage());
+		}
+	}
+
+	@Test
+	public void test03ValidateBatch2PriceValues() throws Throwable {
+		try {
+			ChangeResultsDestinationPriceLists(aTozPage2, batch2, filterPriceScenario2);
+			ValidateCalculationStatus("6443", "4185640");
+			helper.FilterByChargeCode(aTozPage1, filterPriceList, priceList, DataMaintenanceMap.getPriceItemDeptCode(),
+					"26.25", "482.35", "1,121.86", "684.72", "86.57", "277.2", "136", "25.84");
+			doClick(ContractingMap.getContractModelRiskLimiterCancelCloseBtn());
+			ExtentReport.logPass("PASS", "test03ValidateBatch2PriceValues");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test03ValidateBatch2PriceValues", driver, e);
+			fail(e.getMessage());
+		}
+	}
+
+	@Test
+	public void test04ValidateBatch3PriceValues() throws Throwable {
+		try {
+			ChangeResultsDestinationPriceLists(aTozPage2, batch3, filterPriceScenario3);
+			ValidateCalculationStatus("6443", "4185640");
+			helper.FilterByChargeCode(aTozPage1, filterPriceList, priceList, DataMaintenanceMap.getPriceItemDeptCode(),
+					"125.00", "448.5", "954.89", "752.11", "96.59", "238", "135", "124.61");
+			ExtentReport.logPass("PASS", "test04ValidateBatch3PriceValues");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test04ValidateBatch3PriceValues", driver, e);
+			fail(e.getMessage());
+		}
+	}
+
+	public void ChangeResultsDestinationPriceLists(String atoZpage, String batch, String[] filterPriceScenario)
+			throws Throwable {
+		try {
+			selectMaintainDataAtoZ(atoZpage);
+			doClick(DataMaintenanceMap.getLoadDataFilterButton());
+			driverDelay(100);
+			doFilterCreate(filterPriceScenario);
+			tableDoubleClickCellFirstColumn(batch);
+			System.out.println(currentDateTime.replaceAll("\\W", "") + " " + priceList);
+			doDropdownSelectUsingOptionText(DataMaintenanceMap.getPriceListMaster(),
+					currentDateTime.replaceAll("\\W", "") + " " + priceList);
+			ContractModelsHelper.scrollToView(DataMaintenanceMap.getLogLoc());
+			DataMaintenanceMap.getLogLoc().clear();
+			DataMaintenanceMap.getLogLoc().sendKeys(priceListName);
+			doClick(ContractingMap.getSaveBenefitPlan());
+			ExtentReport.logPass("PASS", "test02ChangeResultsDestinationPriceLists");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test02ChangeResultsDestinationPriceLists", driver, e);
+			fail(e.getMessage());
+		}
+	}
+
+	public void ValidateCalculationStatus(String priceVal, String chargeVal) throws Throwable {
+		try {
+			doClick(DataMaintenanceMap.getCalculateButton());
+			doClick(DataMaintenanceMap.getSaveContinueButton());
+			waitForPageTitle("Calculation Status");
+			waitForFirstRowCalculationBarToReach100Percent();
+			calculationStatusPageOpenViewDialog();
+			driverDelay(600);
+			clickLastPageIconOnCalculationStatusViewLog();
+			waitForSpinnerToEnd();
+			driverDelay(2000);
+			confirmCalculationStatusDetailsContains("Total number of price items inserted/updated: " + priceVal + "");
+			confirmCalculationStatusDetailsContains("Total number of charge items processed: " + chargeVal + "");
+			closeViewDialog();
+			doClosePageOnLowerBar("Calculation Status");
+			doClick(ContractingMap.getContractFeeForServicePaymentSave());
+			ExtentReport.logPass("PASS", "test03ValidateCalculationStatus");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test03ValidateCalculationStatus", driver, e);
+			fail(e.getMessage());
+		}
+	}
+	@AfterClass
+	public static void endtest() throws Exception {
+
+		ExtentReport.report.flush();
+
+	}
+}

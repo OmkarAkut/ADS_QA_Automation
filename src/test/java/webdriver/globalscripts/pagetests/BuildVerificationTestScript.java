@@ -66,8 +66,8 @@ public class BuildVerificationTestScript extends UcqcHelper {
 	 * that the elements on the map display on the page.
 	 * @throws Exception 
 	 */
-	/** Regression test ADS-6584,ADS-6582,ADS-6586,ADS-6592,ADS-6593,ADS-6594,ADS-6595,ADS-6596,ADS-6597,ADS-6598,ADS-6599
- ADS-6503,ADS-6502,ADS-6501,ADS-6500,ADS-6498,ADS-6497,ADS-6496,ADS-6495
+	/** Regression test //ADS-6584,ADS-6582,ADS-6586,ADS-6592,ADS-6593,ADS-6594,ADS-6595,ADS-6596,ADS-6597,ADS-6598,ADS-6599
+	 //ADS-6601,ADS-6600
 */
 	@BeforeClass
 	public static void setupScript() throws Exception,Throwable {
@@ -92,6 +92,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 	}
 	 
 	// ===== Global Tests ======//
+	//ADS-6586
 	@Test
 	public void test0001LandingPageSystemMaintenance() throws Throwable {
 		try {
@@ -144,7 +145,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 			fail(e.getMessage());
 		}
 	}
-
+//ADS-6592
 	@Test
 	public void test0009cMainTabs() throws Throwable {
 		try {
@@ -173,7 +174,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 			fail(e.getMessage());
 		}
 	}
-
+//ADS-6593
 	@Test
 	public void test0010bAnalyticsSubTabsOrder() throws InterruptedException, Throwable {
 		try {
@@ -282,7 +283,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 			fail(e.getMessage());
 		}
 	}
-
+//ADS-6582
 	@Test
 	public void test0012AnalyticsTab() throws Throwable {
 		try {
@@ -304,7 +305,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 			fail(e.getMessage());
 		}
 	}
-
+//ADS-6594
 	@Test
 	public void test0013ReportingTab() throws Throwable {
 		try {
@@ -331,7 +332,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 			fail(e.getMessage());
 		}
 	}
-
+//ADS-6595
 	@Test
 	public void test0014CostingTab() throws Throwable {
 		try {
@@ -350,7 +351,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 			fail(e.getMessage());
 		}
 	}
-
+//ADS-6596
 	@Test
 	public void test0015ContractingTab() throws Throwable {
 		try {
@@ -369,7 +370,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 			fail(e.getMessage());
 		}
 	}
-
+//ADS-6597
 	@Test
 	public void test0016EpisodesTab() throws Throwable {
 		try {
@@ -387,7 +388,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 			fail(e.getMessage());
 		}
 	}
-
+//ADS-6598
 	@Test
 	public void test0017BudgetingTab() throws Throwable {
 		try {
@@ -403,7 +404,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 			fail(e.getMessage());
 		}
 	}
-
+//ADS-6599
 	@Test
 	public void test0018DataMaintenanceTab() throws Throwable {
 		try {
@@ -426,6 +427,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 	 * Test - [Main Page UI] Validate �System Maintenance Menu bar� on dashboard.
 	 * ADS-6600
 	 */
+	//ADS-6600
 	@Test
 	public void test0019SystemMaintenanceTab() throws Throwable {
 		try {
@@ -450,7 +452,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 			fail(e.getMessage());
 		}
 	}
-
+//ADS-6601
 	@Test
 	public void test0020StatusTab() throws Throwable {
 		try {
@@ -1470,6 +1472,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 		}
 	}
 
+	//ADS-6584
 	@Test
 	public void test1002ValidateContactUsPage() throws Throwable {
 		try {

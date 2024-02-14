@@ -9,7 +9,7 @@ import webdriver.core.Login;
 import webdriver.corehelpers.GoHelper;
 
 public class LoginLogoutCheck extends GoHelper {
-
+/**Regression test ADS-6587 **/
   @BeforeClass
     public static void setupScript() throws Exception {
 	 ExtentReport.reportCreate("LoginLogoutCheck", "webdriver.globalscripts.smoketests", "LoginLogoutCheck");

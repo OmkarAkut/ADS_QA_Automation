@@ -1337,41 +1337,43 @@ public class CostingMap extends MapConfig {
 
 //	Omkar 16/8/2023 : xpath changes for 11.2
 //	@FindBy(xpath = "(//span[text()='Entities and Departments']//following::span[text()='Select']//parent::button)[1]")
-	@FindBy(xpath = "(//span[text()='Entities and Departments']//following::span[text()='Select']//parent::span)[1]")
+//	Omkar 2/9/2024 : xpath changes for 11.2
+	@FindBy(xpath = "(//div[text()='Entities and Departments']//following::span[text()='Select']//parent::span)[1]")
 	private static WebElement getEntitiesSelect;
 	public static WebElement getEntitiesSelect() {return getEntitiesSelect;}
 
 //	Omkar 16/8/2023 : xpath changes for 11.2
 //	@FindBy(xpath = "(//span[text()='Departments / Groups']//following::span[text()='Select']//parent::button)[1]")
-	@FindBy(xpath = "(//span[text()='Departments / Groups']//following::span[text()='Select']//parent::span)[1]")
+//	Omkar 2/9/2024 : xpath changes for 11.2
+	@FindBy(xpath = "(//div[text()='Departments / Groups']//following::span[text()='Select']//parent::span)[1]")
 	private static WebElement getDeptGroupsSelect;
 	public static WebElement getDeptGroupsSelect() {return getDeptGroupsSelect;}
-
-	@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='&23q2']/..")
+//Shilpa 2.9.2024 xpath update
+	@FindBy(xpath = "//div[contains(@class,'boundlist')]/ul/li[text()='&23q2']/..")
 	private static WebElement getCostModelGLDataScenarioOptions;
 
 	public static WebElement getCostModelGLDataScenarioOptions() {
 		return getCostModelGLDataScenarioOptions;
 	}
-	@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='0TBACTVOLCALC']/..")
+	@FindBy(xpath = "//div[contains(@class,'boundlist')]/ul/li[text()='0TBACTVOLCALC']/..")
 	private static WebElement getCostModelVolScenarioOptions;
 
 	public static WebElement getCostModelVolScenarioOptions() {
 		return getCostModelVolScenarioOptions;
 	}
-	@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='1833CCVM']/..")
+	@FindBy(xpath = "//div[contains(@class,'boundlist')]/ul/li[text()='1833CCVM']/..")
 	private static WebElement getCostModelVarMasterScenarioOptions;
 
 	public static WebElement getCostModelVarMasterScenarioOptions() {
 		return getCostModelVarMasterScenarioOptions;
 	}
-	@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='DEC12OHCALC2']/..")
+	@FindBy(xpath = "//div[contains(@class,'boundlist')]/ul/li[text()='DEC12OHCALC2']/..")
 	private static WebElement getCostModelOHMasterScenarioOptions;
 
 	public static WebElement getCostModelOHMasterScenarioOptions() {
 		return getCostModelOHMasterScenarioOptions;
 	}
-	@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='0TB4  Test']/..")
+	@FindBy(xpath = "//div[contains(@class,'boundlist')]/ul/li[text()='0TB4  Test']/..")
 	private static WebElement getCostModelPriceListScenarioOptions;
 	public static WebElement getCostModelPriceListScenarioOptions() {
 		return getCostModelPriceListScenarioOptions;
@@ -1386,7 +1388,8 @@ public class CostingMap extends MapConfig {
 	public static WebElement getCostModelStartMonthDrpdown() {
 		return getCostModelStartMonthDrpdown;
 	}
-	@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='Apr 2004']/..")
+	//Shilpa update xpath for 11.2 on 2.9.2024
+	@FindBy(xpath = "//div[contains(@class,'boundlist')]/ul/li[text()='Apr 2004']/..")
 	private static WebElement getCostModelStartMonthScenarioOptions;
 	public static WebElement getCostModelStartMonthScenarioOptions() {
 		return getCostModelStartMonthScenarioOptions;
@@ -1396,12 +1399,14 @@ public class CostingMap extends MapConfig {
 	public static WebElement getCostModelEndMonthDrpdown() {
 		return getCostModelEndMonthDrpdown;
 	}
-	@FindBy(xpath = "(//div[contains(@id,'boundlist')]/ul/li[text()='May 2004']/..)[2]")
+	//Shilpa update xpath for 11.2 on 2.9.2024
+
+	@FindBy(xpath = "(//div[contains(@class,'boundlist')]/ul/li[text()='May 2004']/..)[2]")
 	private static WebElement getCostModelEndMonthScenarioOptions;
 	public static WebElement getCostModelEndMonthScenarioOptions() {
 		return getCostModelEndMonthScenarioOptions;
 	}
-	@FindBy(xpath = "//input[@class='x-form-field x-form-checkbox']")
+	@FindBy(xpath = "//input[contains(@id,'checkbox')]")
 	private static WebElement getCostModelSharedLogCheckbox;
 	public static WebElement getCostModelSharedLogCheckbox() {
 		return getCostModelSharedLogCheckbox;

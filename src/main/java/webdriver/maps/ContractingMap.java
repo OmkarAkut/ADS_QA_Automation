@@ -976,8 +976,8 @@ public class ContractingMap extends MapConfig {
 	public static WebElement getDefinitionElementAddBtnC2() {return getDefinitionElementAddBtnC2;}
 
 //	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//following::span[text()='Save']")
-	//Shilpa update xpath for 11.2 11.15.2023
-	@FindBy(xpath = "//div[contains(@id,'messagebox')]//following::span[text()='Save']")
+	//Shilpa update xpath for 11.2 2.9.2024
+	@FindBy(xpath = "//div[contains(@id,'button')]//following::span[text()='Save']")
 	private static WebElement getSaveBenefitPlan;
 	public static WebElement getSaveBenefitPlan() {return getSaveBenefitPlan;}
 

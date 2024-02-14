@@ -529,6 +529,33 @@ public class CalculationHelper extends GoHelper {
 		}
 		Thread.sleep(500);
 	}
+	//Shilpa updated 2.13.2024
+	public static void waitForOverheadReceivedReport() throws Exception {
+		boolean calculate = true;
+		String percent;
+		byte counter = 0;
+		
+		while (calculate) {
+			try {
+				//    	  Omkar 14/04/2023 : xpath changes for 11.2
+				//        driver.findElement(By.xpath("//button/span[text()='Refresh']")).click();
+				driver.findElement(By.xpath("//button[text()='Refresh']")).click();
+				waitForSpinnerToEnd();
+				percent = driver.findElement(By.xpath("(//tr[@class='GJT013UBCG']//td//a)[1]")).getText();
+				System.out.println("Percent complete: " + percent);
+				assertTrue(percent.contains("COMPLETED"));
+				break;
+			} catch (Throwable e) {
+				System.out.println("Status is Failed");
+				Thread.sleep(1000);
+				if (counter == 10) {
+					fail("Status is not Completed");
+				}
+				counter++;
+			}
+		}
+		Thread.sleep(500);
+	}
 
 	//Check the records processed under View dialog
 	public static void checkForRecordsProcessed(String text) throws Exception {

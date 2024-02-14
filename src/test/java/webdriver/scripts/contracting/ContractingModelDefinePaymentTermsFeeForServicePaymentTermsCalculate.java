@@ -70,7 +70,7 @@ public class ContractingModelDefinePaymentTermsFeeForServicePaymentTermsCalculat
 
 	/**
 	 * Test - [CMS Regs: FY2023 IPPS] - Create New Contracting Model with FY2023
-	 * Medicare Year ADS-6277 ,ADS-6775
+	 * Medicare Year ADS-6277 ,ADS-6775,ADS-6782
 	 **/
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {

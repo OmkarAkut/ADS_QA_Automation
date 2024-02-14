@@ -3,6 +3,7 @@ package webdriver.suites;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
+import Regression.Regression_suite;
 import webdriver.globalscripts.accessibilitytests.TestSuiteAXE;
 import webdriver.globalscripts.checktests.ChecktestsSuite;
 import webdriver.globalscripts.help.HelpSuite;
@@ -31,6 +32,7 @@ import webdriver.scripts.systemmaintenance.SystemMaintenanceTestSuite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
+	
 	SystemMaintenanceTestSuite.class,
 	EpisodesTestSuite.class,
 	ReportingTestSuite.class,
@@ -53,6 +55,8 @@ import webdriver.scripts.systemmaintenance.SystemMaintenanceTestSuite;
 	UcqcRoleBasedTestSuite.class,
 	GeneralCalculationsTestSuite.class,
 	ReportingTestSuite.class,
+	
+//	Regression_suite.class
 })
 
 public class TestRun_Suite {

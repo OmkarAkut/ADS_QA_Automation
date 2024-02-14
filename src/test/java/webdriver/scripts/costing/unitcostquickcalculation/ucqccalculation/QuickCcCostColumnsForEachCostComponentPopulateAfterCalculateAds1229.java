@@ -25,7 +25,7 @@ public class QuickCcCostColumnsForEachCostComponentPopulateAfterCalculateAds1229
   /** ADS-1229: Quick CC Cost columns for each cost component populate after Calculate (dev story ADS-672).
   This script confirms that quick cost component cost columns populate for each cost component after Calculate.
  * @throws Throwable */
-  /** Regression tc ADS-5924 **/
+  /** Regression tc ADS-5924,ADS-6665 update tc  **/
   @BeforeClass
   public static void setupScript() throws Throwable {
 	  

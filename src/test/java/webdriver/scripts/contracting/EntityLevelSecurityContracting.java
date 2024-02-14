@@ -14,9 +14,6 @@ import webdriver.maps.ContractingMap;
 import webdriver.maps.CostingMap;
 import webdriver.maps.mapbuilder.BuildMap;
 
-
-
-
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class EntityLevelSecurityContracting extends GoHelper{
 	private static ContractingMap modelMap;
