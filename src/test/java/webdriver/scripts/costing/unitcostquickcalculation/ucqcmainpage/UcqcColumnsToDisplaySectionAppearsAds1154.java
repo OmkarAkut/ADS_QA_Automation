@@ -131,12 +131,10 @@ public class UcqcColumnsToDisplaySectionAppearsAds1154 extends UcqcHelper {
     public void test04UncheckAllCheckboxAndVerifySelectedButtonIsEnabled() throws Throwable {
         try {
         	
-        	
-        	
-			
-			
 			waitForAjaxExtJs();
-            doClick(driver.findElement(By.xpath("//label[text()='All']/preceding-sibling::input")));
+//			Omkar 19/2/2024 : xpath changes for 11.2
+//            doClick(driver.findElement(By.xpath("//label[text()='All']/preceding-sibling::input")));
+            doClick(driver.findElement(By.xpath("//label[text()='All']/preceding-sibling::span/input")));
             System.out.println("ENter");
             waitForAjaxExtJs();
             assertAllCheckboxIsEnabled(printout);
@@ -156,7 +154,9 @@ public class UcqcColumnsToDisplaySectionAppearsAds1154 extends UcqcHelper {
         	
 			
             waitForAjaxExtJs();
-            doClick(driver.findElement(By.xpath("//label[text()='All']/preceding-sibling::input")));
+//            Omkar 19/2/2024 : xpath changes for 11.2
+//          doClick(driver.findElement(By.xpath("//label[text()='All']/preceding-sibling::input")));
+            doClick(driver.findElement(By.xpath("//label[text()='All']/preceding-sibling::span/input")));
             waitForAjaxExtJs();
             assertColumnsToDisplayAllCheckBoxIsChecked();
             assertAllCheckboxIsEnabled(printout);
@@ -265,8 +265,11 @@ public class UcqcColumnsToDisplaySectionAppearsAds1154 extends UcqcHelper {
         
         try {
             waitForAjaxExtJs();
-            classText = driver.findElement(By.xpath("//label[text()='All']/ancestor::*[contains(@class,'x-form-cb')]")).getAttribute("class");
-            boolean isEnabled = !(classText.contains("disabled"));
+//            Omkar 19/2/2024 : xpath changes for 11.2
+//            classText = driver.findElement(By.xpath("//label[text()='All']/ancestor::*[contains(@class,'x-form-cb')]")).getAttribute("class");
+//            boolean isEnabled = !(classText.contains("disabled"));
+            classText = driver.findElement(By.xpath("//label[text()='All']/preceding-sibling::span/input")).getAttribute("aria-disabled");
+            boolean isEnabled = !(classText.contains("true"));		
             if (printout) {
                 System.out.println("Element class text: " + classText);
                 System.out.println("IsEnabled: " + isEnabled);
@@ -297,7 +300,10 @@ public class UcqcColumnsToDisplaySectionAppearsAds1154 extends UcqcHelper {
         String columnsToDisplayCheckBox = null;
         try {
             waitForAjaxExtJs();
-            columnsToDisplayCheckBox = driver.findElement(By.xpath("//*[contains(@class,'labelValignMiddle')][contains(@id,'checkboxfield')]")).getAttribute("class");
+//            Omkar 19/2/2024 : xpath changes for 11.2
+//          columnsToDisplayCheckBox = driver.findElement(By.xpath("//*[contains(@class,'labelValignMiddle')][contains(@id,'checkboxfield')]")).getAttribute("class");
+          columnsToDisplayCheckBox = driver.findElement(By.xpath("//*[contains(@class,'labelValignMiddle')][contains(@id,'checkbox')]")).getAttribute("class");
+     
         } catch(Throwable e) {
             System.out.println("Element Not Found");
             fail("element not found");
@@ -319,7 +325,9 @@ public class UcqcColumnsToDisplaySectionAppearsAds1154 extends UcqcHelper {
         String columnsToDisplayCheckBox = null;
         try {
             waitForAjaxExtJs();
-            columnsToDisplayCheckBox = driver.findElement(By.xpath("//*[contains(@class,'labelValignMiddle')][contains(@id,'checkboxfield')]")).getAttribute("class");
+//            Omkar 19/2/2024 : xpath changes for 11.2
+//            columnsToDisplayCheckBox = driver.findElement(By.xpath("//*[contains(@class,'labelValignMiddle')][contains(@id,'checkboxfield')]")).getAttribute("class");
+            columnsToDisplayCheckBox = driver.findElement(By.xpath("//*[contains(@class,'labelValignMiddle')][contains(@id,'checkbox')]")).getAttribute("class");
         } catch(Throwable e) {
             System.out.println("Element Not Found");
             fail("element not found");

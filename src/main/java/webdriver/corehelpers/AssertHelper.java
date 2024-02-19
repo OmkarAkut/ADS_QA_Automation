@@ -408,21 +408,25 @@ public class AssertHelper extends AdsHelper {
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoViewIfNeeded();",
 //		Omkar 15/2/2024 : xpath changes for 11.2
 //				driver.findElement(By.xpath("//span[text()=\"" + criteriaLabel + "\"]/span")));
-				driver.findElement(By.xpath("//span[text()=" + criteriaLabel + "]")));
+				driver.findElement(By.xpath("//span[text()='" + criteriaLabel + "']")));
 		Thread.sleep(2000);
 //		Omkar 15/2/2024 : xpath changes for 11.2		
 //		String labelXpath = "//span[text()=" + criteriaLabel + "]/span";
-		String labelXpath = "//span[text()=" + criteriaLabel + "]";
+		String labelXpath = "//span[text()='" + criteriaLabel + "']";
 		String asterisk;
 		String asteriskColor;
-
+		//span[text()='Columns to Display']
 		Thread.sleep(500);
 		// driver.manage().window().setSize(new Dimension(1920, 900));
 
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20, 0));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(labelXpath)));
-		asterisk = driver.findElement(By.xpath(labelXpath)).getText();
-		asteriskColor = driver.findElement(By.xpath(labelXpath)).getAttribute("style");
+		
+//		Omkar 19/2/2024 : xpath changes for 11.2
+//		asterisk = driver.findElement(By.xpath(labelXpath)).getText();
+//		asteriskColor = driver.findElement(By.xpath(labelXpath)).getAttribute("style");
+		asterisk = driver.findElement(By.xpath(labelXpath+"/following-sibling::span")).getText();
+		asteriskColor = driver.findElement(By.xpath(labelXpath+"/following-sibling::span")).getAttribute("style");
 		System.out.println(asterisk);
 		System.out.println(asteriskColor);
 		if (asterisk.contains("*")) {
