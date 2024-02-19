@@ -3,7 +3,7 @@ package webdriver.suites;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
-import Regression.Regression_suite;
+
 import webdriver.globalscripts.accessibilitytests.TestSuiteAXE;
 import webdriver.globalscripts.checktests.ChecktestsSuite;
 import webdriver.globalscripts.help.HelpSuite;
@@ -50,7 +50,7 @@ import webdriver.scripts.systemmaintenance.SystemMaintenanceTestSuite;
 	CalculationStatusSuite.class,
 ////	UnitCostQuickCalculationSuite.class,
 ////	UcqcCalculationTestSuite.class,
-////	UcqcMainpageTestSuite.class,
+	UcqcMainpageTestSuite.class,
 	UcqcRvusSuite.class,
 	UcqcRoleBasedTestSuite.class,
 	GeneralCalculationsTestSuite.class,

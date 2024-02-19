@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import ExtentReport.ExtentReport;
+import net.bytebuddy.dynamic.scaffold.inline.MethodRebaseResolver.Disabled;
 import webdriver.core.Login;
 import webdriver.helpers.UcqcHelper;
 import webdriver.maps.CostingMap;
@@ -276,8 +277,12 @@ public class CorrectlySetValuesToNoneInSelectorsWhenPriorSelectionsChangedAds121
       assertElementIsEnabled(costingMap.getUnitCostQuickCalculationDropdownCostModel(),printout);
       assertElementIsEnabled(costingMap.getUnitCostQuickCalculationDropdownCostModelScenario(),printout);
       assertElementIsEnabled(costingMap.getUnitCostQuickCalculationDropdownEntity(),printout);
-      assertElementIsDisabled(costingMap.getUnitCostQuickCalculationButtonSelect(),printout);
-      assertUCQCDropdownIsDisabled("resultStored",printout);
+//      Omkar 14/2/2024 : The below select button will not be disabled. The value is incorrect. It should be columns to select, 'Select' button
+//      assertElementIsDisabled(costingMap.getUnitCostQuickCalculationButtonSelect(),printout);
+      assertElementIsDisabled(costingMap.getUnitCostQuickCalculationButtonColumnsToDisplaySelect(),printout);
+//      Omkar 14/2/2024 :The below element will be enabled and not Disabled.class Verified in QA3
+//      assertUCQCDropdownIsDisabled("resultStored",printout);
+      assertElementIsEnabled(costingMap.getUnitCostQuickCalculationFieldResultsStoredFor(),printout);
       ExtentReport.logPass("PASS", "test14ChangeCostModelScenarioToDifferentValueAndAssertRelevantDropdownsAreDisabled");
     } catch (Exception|AssertionError e) {
     	ExtentReport.logFail("FAIL","test14ChangeCostModelScenarioToDifferentValueAndAssertRelevantDropdownsAreDisabled", driver,e);
@@ -298,7 +303,9 @@ public class CorrectlySetValuesToNoneInSelectorsWhenPriorSelectionsChangedAds121
       assertElementIsEnabled(costingMap.getUnitCostQuickCalculationButtonSelect(),printout);
       selectDepartment(dept);
       assertElementIsEnabled(costingMap.getUnitCostQuickCalculationFieldResultsStoredFor(),printout);
-      doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationFieldResultsStoredFor(),costingMap.getUnitCostQuickCalculationDropdownResultsStoredForMenuList(),"Apr 2004 to Mar 2005");
+//      Omkar 15/2/2024 : Old value is not available
+//      doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationFieldResultsStoredFor(),costingMap.getUnitCostQuickCalculationDropdownResultsStoredForMenuList(),"Apr 2004 to Mar 2005");
+      doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationFieldResultsStoredFor(),costingMap.getUnitCostQuickCalculationDropdownResultsStoredForMenuList(),"Apr 2004 to Apr 2004");
       assertElementIsEnabled(costingMap.getUnitCostQuickCalculationButtonApplySelections(),printout);
       ExtentReport.logPass("PASS", "test15ResetCriteriaAndAssertRelevantDropdownsAreEnabled");
     } catch (Exception|AssertionError e) {
@@ -310,6 +317,7 @@ public class CorrectlySetValuesToNoneInSelectorsWhenPriorSelectionsChangedAds121
   @Test
   public void test16ChangeEntityToDifferentValueAndAssertRelevantDropdownsAreDisabled() throws Throwable {
     try {
+    	doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationDropdownCostModelScenario(),costingMap.getUnitCostQuickCalculationDropdownCostModelScenarioMenuList(),"*CM2 TB MHFY05 No Price List - 2");
       doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationDropdownEntity(),costingMap.getUnitCostQuickCalculationDropdownEntityMenuList(),"200 Southgate");
       assertElementIsEnabled(costingMap.getUnitCostQuickCalculationDropdownCostModel(),printout);
       assertElementIsEnabled(costingMap.getUnitCostQuickCalculationDropdownCostModelScenario(),printout);

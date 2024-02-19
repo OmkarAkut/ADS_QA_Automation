@@ -406,10 +406,13 @@ public class AssertHelper extends AdsHelper {
 		//		String labelXpath = "//label[text()=\"" + criteriaLabel + "\"]/span";
 
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoViewIfNeeded();",
-				driver.findElement(By.xpath("//span[text()=\"" + criteriaLabel + "\"]/span")));
+//		Omkar 15/2/2024 : xpath changes for 11.2
+//				driver.findElement(By.xpath("//span[text()=\"" + criteriaLabel + "\"]/span")));
+				driver.findElement(By.xpath("//span[text()=" + criteriaLabel + "]")));
 		Thread.sleep(2000);
-
-		String labelXpath = "//span[text()=\"" + criteriaLabel + "\"]/span";
+//		Omkar 15/2/2024 : xpath changes for 11.2		
+//		String labelXpath = "//span[text()=" + criteriaLabel + "]/span";
+		String labelXpath = "//span[text()=" + criteriaLabel + "]";
 		String asterisk;
 		String asteriskColor;
 
@@ -491,18 +494,25 @@ public class AssertHelper extends AdsHelper {
 		String disabledText = null;
 		try {
 			waitForAjaxExtJs();
-//			Omkar 4/7/2023 : xpath changes for 11.2
-//			disabledText = element.findElement(By.xpath("./ancestor::div[contains(@class,'x-btn')]"))
-//					.getAttribute("class");
-			//shilpa 10/11/2023 : xpath change for 11.2
-//			disabledText = element.findElement(By.xpath("./ancestor::div[contains(@class,'x-btn')]"))
-//					.getAttribute("class");
-			/*Omkar 28/12/2023 : xpath changes for 11.2
-			disabledText = element.findElement(By.xpath("./ancestor::div[contains(@class,'x-btn')]"))
-					.getAttribute("class");
-					*/
-			disabledText = element.findElement(By.xpath("./ancestor::a[contains(@class,'x-btn')]"))
-					.getAttribute("class");
+			try {
+//				Omkar 4/7/2023 : xpath changes for 11.2
+//				disabledText = element.findElement(By.xpath("./ancestor::div[contains(@class,'x-btn')]"))
+//						.getAttribute("class");
+				//shilpa 10/11/2023 : xpath change for 11.2
+//				disabledText = element.findElement(By.xpath("./ancestor::div[contains(@class,'x-btn')]"))
+//						.getAttribute("class");
+				/*Omkar 28/12/2023 : xpath changes for 11.2
+				 disabledText = element.findElement(By.xpath("./ancestor::a[contains(@class,'x-btn')]"))
+						.getAttribute("class");
+						*/
+				disabledText = element.findElement(By.xpath("./ancestor::div[contains(@class,'x-btn')]"))
+						.getAttribute("class");
+			}
+			catch (Throwable e) {
+				disabledText = element.findElement(By.xpath("./ancestor::a[contains(@class,'x-btn')]"))
+						.getAttribute("class");
+			}		
+			
 			
 		} catch (Throwable e) {
 			System.out.println("Element Not Found");

@@ -322,6 +322,7 @@ public class DoHelper extends DriverHelper {
 		doClick(elementTriggerList);
 		waitForSpinnerToEnd();
 		waitForAjaxExtJs();
+		Thread.sleep(500);
 		List<WebElement> menu = elementList.findElements(By.tagName("li"));
 		for(WebElement option : menu) {
 			if(option.getText().equals(optionText)) {

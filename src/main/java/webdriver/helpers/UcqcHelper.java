@@ -131,11 +131,24 @@ public class UcqcHelper extends GoHelper {
 
   public void selectDepartment(String departmentText) throws InterruptedException {
 //        doClick(overwriteRVUMaintenance.getUnitCostQuickCalculationButtonSelect());
+	  
     doClickButton("Select");
     waitForAjaxExtJs();
     /**Select a Department and Click Apply*/
     Thread.sleep(1100);
-    doClick(driver.findElement(By.xpath("//div[contains(text(),'" + departmentText + "')]")));
+//    Omkar 15/2/2024 : The below code is put in place while values are getting updated when earlier values are already present for department
+//    WebElement dept = driver.findElement(By.xpath("(//div[contains(text(),'" + departmentText + "')])[2]"));
+//    if(!driver.findElement(By.xpath("(//div[contains(text(),'" + departmentText + "')])[2]")).)
+//    	doClick(driver.findElement(By.xpath("(//div[contains(text(),'" + departmentText + "')])[2]")));
+//    else
+//    doClick(driver.findElement(By.xpath("//div[contains(text(),'" + departmentText + "')]")));   
+   
+    
+    try {
+    	doClick(driver.findElement(By.xpath("(//div[contains(text(),'" + departmentText + "')])[2]")));
+    }catch (Throwable e) {
+    	doClick(driver.findElement(By.xpath("//div[contains(text(),'" + departmentText + "')]"))); 
+    }
     waitForAjaxExtJs();
     doClick(driver.findElement(By.xpath("//*[contains(@class,'docked-bottom')]/descendant::span[text()='Apply']")));
     waitForAjaxExtJs();
