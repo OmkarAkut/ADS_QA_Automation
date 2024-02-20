@@ -231,7 +231,6 @@ public class SmokeTest extends UcqcHelper {
 	      }
 	    }
 	  }
-	  //ADS-6500
 	  @Test
 	  public void test0001LandingPageSystemMaintenance() throws Throwable {
 	    try {
@@ -261,7 +260,7 @@ public class SmokeTest extends UcqcHelper {
 			fail(e.getMessage());
 		}
 	  }
-//ADS-6498
+
 	  @Test
 	  public void test0002LandingPageDataMaintenance() throws Throwable {
 	    try {
@@ -280,7 +279,7 @@ public class SmokeTest extends UcqcHelper {
 			fail(e.getMessage());
 		}
 	  }
-//ADS-6503
+
 	  @Test
 	  public void test0003LandingPageBudgeting() throws Throwable {
 		  driverDelay(3000);
@@ -298,7 +297,7 @@ public class SmokeTest extends UcqcHelper {
 			fail(e.getMessage());
 		}
 	  }
-//ADS-6497
+
 	  @Test
 	  public void test0004LandingPageEpisodes() throws Throwable {
 	    try {
@@ -317,7 +316,7 @@ public class SmokeTest extends UcqcHelper {
 			fail(e.getMessage());
 		}
 	  }
-//ADS-6496
+
 	  @Test
 	  public void test0005LandingPageContracting() throws Throwable {
 	    try {
@@ -338,7 +337,7 @@ public class SmokeTest extends UcqcHelper {
 			fail(e.getMessage());
 		}
 	  }
-//ADS-6495
+
 	  @Test
 	  public void test0006LandingPageCosting() throws Throwable {
 	    try {
@@ -362,7 +361,7 @@ public class SmokeTest extends UcqcHelper {
 			fail(e.getMessage());
 		}
 	  }
-	  //ADS-6502
+
 	  @Test
 	  public void test0007LandingPageReporting() throws Throwable {
 	    try {
@@ -383,7 +382,7 @@ public class SmokeTest extends UcqcHelper {
 			fail(e.getMessage());
 		}
 	  }
-//ADS-6501
+
 	  @Test
 	  public void test0008LandingPageAnalytics() throws Throwable {
 	    try {
