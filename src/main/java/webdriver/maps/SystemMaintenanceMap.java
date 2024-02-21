@@ -105,7 +105,9 @@ public class SystemMaintenanceMap extends MapConfig {
 
 	// ===== System Maintenance Tab >  Security Settings Page ===== //
 
-	@FindBy(xpath = "//*[contains(@id,'security') and contains(@id,'targetEl')]/descendant::span[text()='Save']")
+//	Omkar 20/2/2024 : xpath changes for 11.2
+//	@FindBy(xpath = "//*[contains(@id,'security') and contains(@id,'targetEl')]/descendant::span[text()='Save']")
+	@FindBy(xpath = "//*[contains(@id,'security') and contains(@id,'targetEl')]/descendant::span[text()='Save']/parent::span")
 	private WebElement securitySettingsPageButtonSave;
 	public WebElement getSecuritySettingsPageButtonSave() {return securitySettingsPageButtonSave;}
 
@@ -141,57 +143,77 @@ public class SystemMaintenanceMap extends MapConfig {
 	private WebElement allowedLoginAftExp;
 	public WebElement getSecuritySettingsPageFormFieldPasswordGraceLoginsAfterExpirationPeriod() {return allowedLoginAftExp;}
 
-	@FindBy(xpath = "//*[contains(@id,'isAtleastOneLetter')]")
+//	Omkar 20/2/2024 : xpath changes for 11.2
+//	@FindBy(xpath = "//*[contains(@id,'isAtleastOneLetter')]")
+	@FindBy(xpath = "//*[contains(@id,'isAtleastOneLetter') and @type ='checkbox']/parent::span")
 	private WebElement isAtleastOneLetter;
 	public WebElement getSecuritySettingsPageCheckboxMustIncludeAtLeastOneLetter() {return isAtleastOneLetter;}
 
-	@FindBy(xpath = "//*[contains(@id,'isBothUpperAndLoweCase')]")
+//	Omkar 20/2/2024 : xpath changes for 11.2
+//	@FindBy(xpath = "//*[contains(@id,'isBothUpperAndLoweCase')]")
+	@FindBy(xpath = "//*[contains(@id,'isBothUpperAndLoweCase') and @type='checkbox']/parent::span")
 	private WebElement isBothUpperAndLoweCase;
 	public WebElement getSecuritySettingsPageCheckboxMustIncludeBothUpperAndLowerCaseLetters() {return isBothUpperAndLoweCase;}
 
-	@FindBy(xpath = "//*[contains(@id,'isAtleastOneNumber')]")
+//	Omkar 20/2/2024 : xpath changes for 11.2
+//	@FindBy(xpath = "//*[contains(@id,'isAtleastOneNumber')]")
+	@FindBy(xpath = "//*[contains(@id,'isAtleastOneNumber')  and @type='checkbox']/parent::span")
 	private WebElement isAtleastOneNumber;
 	public WebElement getSecuritySettingsPageCheckboxMustIncludeAtLeastOneNumber() {return isAtleastOneNumber;}
 
-	@FindBy(xpath = "//*[contains(@id,'isBothUpperAndLoweCase')]")
+//	Omkar 20/2/2024 : xpath changes for 11.2
+//	@FindBy(xpath = "//*[contains(@id,'isBothUpperAndLoweCase')]")
+	@FindBy(xpath = "//*[contains(@id,'isBothUpperAndLoweCase') and @type='checkbox']/parent::span")
 	private WebElement isAtleastOneSplChar;
 	public WebElement getSecuritySettingsPageCheckboxMustIncludeAtLeastOneSpecialCharacter() {return isAtleastOneSplChar;}
 
-	@FindBy(xpath = "//*[@name='objectsSyncLevel']")
+//	Omkar 20/2/2024 : xpath changes for 11.2
+//	@FindBy(xpath = "//*[@name='objectsSyncLevel']")
+	@FindBy(xpath = "//*[@name='objectsSyncLevel']/parent::div")
 	private WebElement objectsSyncLevel;
 	public WebElement getSecuritySettingsPageFormFieldBusinessObjectsEnterpriseSynchInterval() {return objectsSyncLevel;}
 
 //	@FindBy(xpath = "//*[contains(text(),'Default Entities For New Users')]/../following-sibling::td/descendant::*[contains(@id,'radiofield') and text()='All']/preceding-sibling::input[contains(@id,'radiofield')]")
 	//Shilpa updated xpath for 11.2 on 1.2.2024
-	@FindBy(xpath = "(//*[contains(text(),'Default Entities For New Users')]//following::input[@name='entityRadio'])[1]")
+//	Omkar 20/2/2024 : xpath changes for 11.2
+//	@FindBy(xpath = "(//*[contains(text(),'Default Entities For New Users')]//following::input[@name='entityRadio'])[1]")
+	@FindBy(xpath = "(//input[@name='entityRadio'])[1]/parent::span")
 	private WebElement defaultEntitiesForNewUsersRadioAll;
 	public WebElement getSecuritySettingsPageRadioButtonDefaultEntitiesForNewUsersAll() {return defaultEntitiesForNewUsersRadioAll;}
 
-//	@FindBy(xpath = "//*[contains(text(),'Default Entities For New Users')]/../following-sibling::td/descendant::*[contains(@id,'radiofield') and text()='None']/preceding-sibling::input[contains(@id,'radiofield')]")
 	//Shilpa updated xpath for 11.2 on 1.2.2024
-	@FindBy(xpath = "(//*[contains(text(),'Default Entities For New Users')]//following::input[@name='entityRadio'])[2]")
+//	@FindBy(xpath = "//*[contains(text(),'Default Entities For New Users')]/../following-sibling::td/descendant::*[contains(@id,'radiofield') and text()='None']/preceding-sibling::input[contains(@id,'radiofield')]"
+//	Omkar 20/2/2024 : xpath changes for 11.2
+//	@FindBy(xpath = "(//*[contains(text(),'Default Entities For New Users')]//following::input[@name='entityRadio'])[2]")
+	@FindBy(xpath = "(//input[@name='entityRadio'])[2]/parent::span")
 	private WebElement defaultEntitiesForNewUsersRadioNone;
 	public WebElement getSecuritySettingsPageRadioButtonDefaultEntitiesForNewUsersNone() {return defaultEntitiesForNewUsersRadioNone;}
 
-//	@FindBy(xpath = "//*[contains(text(),'Default Departments For New Users')]/../following-sibling::td/descendant::*[contains(@id,'radiofield') and text()='All']/preceding-sibling::input[contains(@id,'radiofield')]")
 	//Shilpa updated xpath for 11.2 on 1.2.2024
-	@FindBy(xpath = "(//*[contains(text(),'Default Departments For New Users')]//following::input[@name='departmentRadio'])[1]")
+//	@FindBy(xpath = "//*[contains(text(),'Default Departments For New Users')]/../following-sibling::td/descendant::*[contains(@id,'radiofield') and text()='All']/preceding-sibling::input[contains(@id,'radiofield')]")
+//	Omkar 20/2/2024 : xpath changes for 11.2
+//	@FindBy(xpath = "(//*[contains(text(),'Default Departments For New Users')]//following::input[@name='departmentRadio'])[1]")
+	@FindBy(xpath = "(//input[@name='departmentRadio'])[1]/parent::span")
 	private WebElement defaultDepartmentsForNewUsersRadioAll;
 	public WebElement getSecuritySettingsPageRadioButtonDefaultDepartmentsForNewUsersAll() {return defaultDepartmentsForNewUsersRadioAll;}
 
-//	@FindBy(xpath = "//*[contains(text(),'Default Departments For New Users')]/../following-sibling::td/descendant::*[contains(@id,'radiofield') and text()='None']/preceding-sibling::input[contains(@id,'radiofield')]")
 	//Shilpa updated xpath for 11.2 on 1.2.2024
-		@FindBy(xpath = "(//*[contains(text(),'Default Departments For New Users')]//following::input[@name='departmentRadio'])[2]")
+//	@FindBy(xpath = "//*[contains(text(),'Default Departments For New Users')]/../following-sibling::td/descendant::*[contains(@id,'radiofield') and text()='None']/preceding-sibling::input[contains(@id,'radiofield')]")
+//	Omkar 20/2/2024 : xpath changes for 11.2
+	//	@FindBy(xpath = "(//*[contains(text(),'Default Departments For New Users')]//following::input[@name='departmentRadio'])[2]")
+	@FindBy(xpath = "(//input[@name='departmentRadio'])[2]/parent::span")
 	private WebElement defaultDepartmentsForNewUsersRadioNone;
 	public WebElement getSecuritySettingsPageRadioButtonDefaultDepartmentsForNewUsersNone() {return defaultDepartmentsForNewUsersRadioNone;}
 
+//	Omkar 20/2/2024 : xpath changes for 11.2
 //	@FindBy(xpath = "//*[contains(@id,'isAuditLogEnabled')]")
-	@FindBy(xpath = "//input[@name='isAuditLogEnabled']")
+	@FindBy(xpath = "//input[@name='isAuditLogEnabled']/parent::span")
 	private WebElement isAuditLogEnabled;
 	public WebElement getSecuritySettingsPageCheckboxAuditLoggingEnabled() {return isAuditLogEnabled;}
 
+//	Omkar 20/2/2024 : xpath changes for 11.2
 //	@FindBy(xpath = "//*[@name='auditRetentionPeriod']")
-	@FindBy(xpath = "//input[@name='auditRetentionPeriod']")
+	@FindBy(xpath = "//input[@name='auditRetentionPeriod']/parent::div")
 	private WebElement auditRetentionPeriod;
 	public WebElement getSecuritySettingsPageFormFieldAuditLogRetentionPeriod() {return auditRetentionPeriod;}
 
@@ -223,11 +245,15 @@ public class SystemMaintenanceMap extends MapConfig {
 	private WebElement destReimbursementsScenariosUnPublishedEnd;
 	public WebElement getGeneralSettingsPageComboBoxDestinationReimbursementsScenariosUnpublishedEnd() {return destReimbursementsScenariosUnPublishedEnd;}
 
-	@FindBy(xpath = "//*[contains(@id,'checkbox') and text()='Price']/../following-sibling::input")
+//	 Omkar 20/2/2024 : xpath changes for 11.2
+//	@FindBy(xpath = "//*[contains(@id,'checkbox') and text()='Price']/../following-sibling::input")
+	@FindBy(xpath ="//*[contains(@aria-label , 'Price')]")
 	private WebElement rvuMaintShowPriceCheckbox;
 	public WebElement getGeneralSettingsPageCheckboxRvuMaintenanceShowPrice() {return rvuMaintShowPriceCheckbox;}
 
-	@FindBy(xpath = "//*[contains(@id,'checkbox') and text()='Revenue']/../following-sibling::input")
+//	Omkar 20/2/2024 : xpath changes for 11.2
+//	@FindBy(xpath = "//*[contains(@id,'checkbox') and text()='Revenue']/../following-sibling::input")
+	@FindBy(xpath ="//*[contains(@aria-label , 'Revenue')]")
 	private WebElement rvuMaintShowRevenueCheckbox;
 	public WebElement getGeneralSettingsPageCheckboxRvuMaintenanceShowRevenue() {return rvuMaintShowRevenueCheckbox;}
 

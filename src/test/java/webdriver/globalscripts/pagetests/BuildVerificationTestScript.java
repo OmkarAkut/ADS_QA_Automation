@@ -113,7 +113,9 @@ public class BuildVerificationTestScript extends UcqcHelper {
 			//Shilpa updated text for 11.2 on 1.2.2024
 			System.out.println(driver.findElement(By.xpath("//div[@class='footerText']/span")).getText());
 			assertTrue(driver.findElement(By.xpath("//div[@class='footerText']/span")).getText()
+//					 Omkar 20/2/2024 : Extra spaces added in 11.2
 					.contains("Contents Copyright © 2024 Picis Clinical Solutions, Inc. All rights reserved."));
+//					.contains("Contents Copyright © 2024 Picis Clinical Solutions, Inc.  All rights reserved. "));
 			System.out.println("Testing Global Pages");
 			WebElement[] landingPageSystemMaintenanceElements = {
 					generalElement.getLandingPageBubbleSystemMaintenance(),
