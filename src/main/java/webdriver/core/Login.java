@@ -2,6 +2,9 @@ package webdriver.core;
 
 import static org.junit.Assert.*;
 import static webdriver.helperstatic.WaitStatic.waitForSpinnerToEnd;
+
+import java.util.NoSuchElementException;
+
 //import java.lang.Enum;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -89,6 +92,13 @@ public class Login extends Driver {
 		try {
 			if (printout) {
 				System.out.println("Login Username: " + username);
+			}
+			try {
+				if(driver.findElement(By.xpath("//div[text()='Application Update']")).isDisplayed()) {
+					driver.findElement(By.xpath("//span[text()='Yes']")).click();
+				}
+			} catch (Exception e) {
+				
 			}
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='username-inputEl']")));
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='password-inputEl']")));
