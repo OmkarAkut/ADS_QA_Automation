@@ -988,7 +988,7 @@ public class ContractModelsHelper extends GoHelper {
 				Actions action=new Actions(driver);
 				action.clickAndHold(from).moveToElement(to).release(from).build();
 				Thread.sleep(2000);
-				action.dragAndDrop(from,to).perform()	;				
+				action.dragAndDrop(from,to).perform();		;	
 			}
 		  
 		  public static void enterServicesMaxValue(HashMap<String,String> services) throws Exception {
