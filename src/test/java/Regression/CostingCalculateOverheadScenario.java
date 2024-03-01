@@ -40,7 +40,8 @@ public class CostingCalculateOverheadScenario extends CalculationHelper {
       //Omkar (19/7/2022) : value v102 REGRESSION OH Scenario is not found hence changing it to v102 REGRESSION OH Calc Scenario
       //tableDoubleClickCellFirstColumn("v102 REGRESSION OH Scenario");
 //      tableDoubleClickCellFirstColumn("v102 REGRESSION OH Calc Scenario");
-      tableDoubleClickCellFirstColumn("OH calculation June 2004");
+//      tableDoubleClickCellFirstColumn("OH calculation June 2004");
+      tableDoubleClickCellFirstColumn("ADS-12389 testing");
       waitForAjaxExtJs();
       Thread.sleep(1000);
       //Omkar (19/7/2022) : The below xpath is no more valid

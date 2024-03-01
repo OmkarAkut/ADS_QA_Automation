@@ -17,7 +17,7 @@ import webdriver.maps.mapbuilder.BuildMap;
 
 public class CopyPasteButtons extends GoHelper {
 	private static ContractingMap modelMap;
-	private static String ContractModel = "10.2.1 Medicare IPPS FY2020 Test";
+	private static String ContractModel = "10.2.1 Medicare IPPS FY2";
 	private static String serviceModel = "MCR IPPS 2020";
 	private static String UpdatedContractModel;
 	static String modelName;
@@ -62,9 +62,9 @@ public class CopyPasteButtons extends GoHelper {
 			fail(e.getMessage());
 		}
 	}
-	//ADS-6433
+	//ADS-6434
 	@Test
-	public  void testCopyPasteContractmodel() throws Throwable {
+	public  void testCopyPasteContractmodel_6434() throws Throwable {
 		try {
 			doClick(modelMap.getContractModelButtonCopy());
 			assertElementIsEnabled(modelMap.getContractModelButtonPaste(), printout);
@@ -93,7 +93,7 @@ public class CopyPasteButtons extends GoHelper {
 	}
 	//ADS-6084
 	@Test
-	public void testVerifyServiceModelUnderPastedContractModel() throws Throwable {
+	public void testVerifyServiceModelUnderPastedContractModel_6084() throws Throwable {
 		try {
 			tableDoubleClickCellFirstColumn(UpdatedContractModel);
 			driverDelay(1000);
