@@ -931,6 +931,15 @@ public class AssertHelper extends AdsHelper {
 			assertTrue(true);
 		}
 	}
+	//Shilpa added method 3.1.2024 
+	public void assertThatElementIsChecked(WebElement webelement) {
+		String checkbox=webelement.getAttribute("checked");
+		boolean isChecked = checkbox.contains("true");
+		if (printout) {
+			System.out.println("IsChecked: " + isChecked);
+		}
+		assertTrue("Expected element to be checked or selected", isChecked == true);
+	}
 
 
 }

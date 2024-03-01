@@ -373,7 +373,8 @@ public class ContractingMap extends MapConfig {
 
 //	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//span[text()='Cancel & Close']")
 	//Shilpa update xpath for 11.2 on 11.27.2023
-	@FindBy(xpath = "//span[text()='Cancel & Close']/../../..")
+	//Shilpa update xpath for 11.2 on 3.1.2024
+	@FindBy(xpath = "(//span[text()='Risk Limiter Model']//following::span[text()='Cancel & Close']/../../..)[1]")
 	private static WebElement ContractModelRiskLimiterCancelCloseBtn;
 	public static WebElement getContractModelRiskLimiterCancelCloseBtn() {return ContractModelRiskLimiterCancelCloseBtn;}
 	
@@ -395,7 +396,9 @@ public class ContractingMap extends MapConfig {
 
 	//	Omkar 25/4/2023 : xpath changes for 11.2
 	//	@FindBy(xpath = "//div[contains(@class,'x-toolbar-item')]//span[text()='Cancel & Close']")
-	@FindBy(xpath = "//span[contains(@class,'x-btn-button-center ')]//span[text()='Cancel & Close']")
+//	@FindBy(xpath = "//span[contains(@class,'x-btn-button-center ')]//span[text()='Cancel & Close']")
+//	Shilpa 1/3/2024 : xpath changes for 11.2
+	@FindBy(xpath = "//div[contains(@id,'messagebox')]//button[contains(@class,'x-btn-center')]//span[text()='Cancel & Close']")
 	private WebElement ContractModelRiskLimiterMessageBox;
 	public WebElement getContractModelRiskLimiterMessageBox() {return ContractModelRiskLimiterMessageBox;}
 
