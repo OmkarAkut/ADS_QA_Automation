@@ -425,8 +425,8 @@ public class AssertHelper extends AdsHelper {
 //		Omkar 19/2/2024 : xpath changes for 11.2
 //		asterisk = driver.findElement(By.xpath(labelXpath)).getText();
 //		asteriskColor = driver.findElement(By.xpath(labelXpath)).getAttribute("style");
-		asterisk = driver.findElement(By.xpath(labelXpath+"/following-sibling::span")).getText();
-		asteriskColor = driver.findElement(By.xpath(labelXpath+"/following-sibling::span")).getAttribute("style");
+		asterisk = driver.findElement(By.xpath(labelXpath+"//following-sibling::span")).getText();
+		asteriskColor = driver.findElement(By.xpath(labelXpath+"//following-sibling::span")).getAttribute("style");
 		System.out.println(asterisk);
 		System.out.println(asteriskColor);
 		if (asterisk.contains("*")) {
@@ -443,7 +443,7 @@ public class AssertHelper extends AdsHelper {
 		}
 
 	}
-
+	
 	public void assertThatValueHasRequiredDecimalPlaces(String valueToConsider, int numberOfDecimalPlaces,
 			boolean printout) {
 		String[] decimalPlaces = valueToConsider.split("\\.");

@@ -50,7 +50,7 @@ public class ValidateCalculationStatusPage extends CalculationHelper {
 	}
 	//ADS-5771[add step 15-25]
 	@Test
-	public void test01GotoCostModelCalculationScenario() throws Throwable {
+	public void test01GotoCostModelCalculationScenario_5771() throws Throwable {
 		try {
 			doSearchForModel("QA Cost Model");
 			tableDoubleClickCellFirstColumn("QA Cost Model");

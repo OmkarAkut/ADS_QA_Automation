@@ -42,7 +42,7 @@ public class NewContractType extends CalculationHelper{
 	}
 	//ADS-6446
 	@Test
-	public void test01CreateNewContractType() throws Throwable {
+	public void test01CreateNewContractType_6446() throws Throwable {
 		try {
 			doSearchForContractModel(ContractModelName);
 			tableDoubleClickCellFirstColumn(ContractModelName);

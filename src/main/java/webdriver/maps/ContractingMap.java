@@ -729,6 +729,10 @@ public class ContractingMap extends MapConfig {
 	@FindBy(xpath = "//div[contains(@id,'warningwindow')]//following::span[text()='Save']")
 	private static WebElement SaveButton;
 	public static WebElement getSaveButton() {return SaveButton;}
+	
+	@FindBy(xpath = "(//div[contains(@id,'feeForServicePaymentPanel')]//following::span[text()='Save'])[1]")
+	private static WebElement SaveOption;
+	public static WebElement SaveOption() {return SaveOption;}
 
 	public static HashMap<String, String> services=new HashMap<>();
 
@@ -775,6 +779,14 @@ public class ContractingMap extends MapConfig {
 	@FindBy(xpath = "(//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//span[text()='Cancel & Close'])[2]")
 	private static WebElement NewRiskLimiterPopUpCancelClose;
 	public static WebElement getNewRiskLimiterPopUpCancelClose() {return NewRiskLimiterPopUpCancelClose;}
+	
+	@FindBy(xpath = "(//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//span[text()='Cancel & Close'])")
+	private static WebElement FeeForPaymentCancelClose;
+	public static WebElement getFeeForPaymentCancelClose() {return FeeForPaymentCancelClose;}
+	
+	@FindBy(xpath = "(//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//span[text()='Save & Close'])")
+	private static WebElement FeeForPaymentSaveClose;
+	public static WebElement getFeeForPaymentSaveClose() {return FeeForPaymentSaveClose;}
 
 //	Omkar 6/7/2023 : xpath changes for 11.2
 //	@FindBy(xpath = "//h1[text()='Medicare Carriers']//following::span[text()='New']//parent::button")
@@ -795,6 +807,10 @@ public class ContractingMap extends MapConfig {
 	@FindBy(xpath = "//div[contains(@id,'medicareCarrier')]/div//span[text()='Delete']")
 	private static WebElement NewCodeDeleteButton;
 	public static WebElement getNewCodeDeleteButton() {return NewCodeDeleteButton;}
+	
+	@FindBy(xpath = "//div[contains(@id,'globalPeriod')]/div//span[text()='Delete']")
+	private static WebElement NewPeriodDeleteButton;
+	public static WebElement NewPeriodDeleteButton() {return NewPeriodDeleteButton;}
 
 //	Omkar 5/7/2023 : xpath changes for 11.2
 //	@FindBy(xpath = "//div[contains(@id,'warningwindow')]/div//span[text()='Delete']//parent::button")

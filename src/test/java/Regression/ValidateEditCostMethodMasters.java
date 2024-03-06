@@ -37,7 +37,7 @@ public class ValidateEditCostMethodMasters extends GoHelper{
 	}
 	//ADS-6643 all steps
 	@Test
-	public void test01ExpandToCostMethodMasters() throws Throwable {
+	public void test01ExpandToCostMethodMasters_6643() throws Throwable {
 		try {
 			doClickTreeData("Costing");
 			driverDelay(200);
@@ -53,7 +53,7 @@ public class ValidateEditCostMethodMasters extends GoHelper{
 	}
 	
 	@Test
-	public void test02EditCostMethodModel() throws Throwable {
+	public void test02EditCostMethodModel_6643() throws Throwable {
 		try {
 			doClick(costing.getEditButton());
 			driverDelay(200);

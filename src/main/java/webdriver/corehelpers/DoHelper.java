@@ -349,12 +349,15 @@ public class DoHelper extends DriverHelper {
 
 	public void doDropdownSelectUsingOptionText(WebElement element, String optionText) throws Exception {
 		waitForAjaxExtJs();
+		ContractModelsHelper.scrollToView(element);
+		driverDelay(500);
 		doClick(element);
 		waitForAjaxExtJs();
-		driverDelay(200);
+//		driverDelay(500);
 //		Omkar 14/04/2023 : xpath changes for 11.2
 //		WebElement list = driver.findElement(By.xpath("//div[contains(@class,'floating')]/div[contains(@id,'listEl')]/ul"));
 		WebElement list = driver.findElement(By.xpath("//div[contains(@class,'floating')]//div[contains(@id,'listWrap')]/ul"));
+		
 		List<WebElement> menu = list.findElements(By.tagName("li"));
 		System.out.println(menu.size());
 		for(WebElement option : menu) {

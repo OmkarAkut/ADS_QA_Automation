@@ -52,7 +52,7 @@ public class ReportsLibraryCreateRenameAndDeleteNewFolderAds1348 extends LoginSt
 
 //ADS-5661
 @Test
-  public void test01aCreateNewReportsFolderAndConfirmRenameAndDeleteButtonsAreEnabled() throws Exception,Throwable {
+  public void test01aCreateNewReportsFolderAndConfirmRenameAndDeleteButtonsAreEnabled_5661() throws Exception,Throwable {
 		driverDelay(5000);;//Shilpa 16.09.2022 
      try {
 		driver.findElement(By.xpath("//div[@role='treeitem']/div[contains(text(),'Folders')]")).click();

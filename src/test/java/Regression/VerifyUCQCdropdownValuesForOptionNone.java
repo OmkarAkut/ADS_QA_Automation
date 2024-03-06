@@ -54,7 +54,7 @@ public class VerifyUCQCdropdownValuesForOptionNone extends UcqcHelper {
 	}
 //ADS-5915
 	@Test
-	public void test01SetCostModelToNone() throws Throwable {
+	public void test01SetCostModelToNone_5915() throws Throwable {
 		try {
 			doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationDropdownCostModel(),
 					costingMap.getUnitCostQuickCalculationDropdownCostModelMenuList(), "<None>");

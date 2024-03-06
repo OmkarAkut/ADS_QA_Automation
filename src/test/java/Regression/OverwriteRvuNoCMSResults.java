@@ -58,7 +58,7 @@ public class OverwriteRvuNoCMSResults extends GoHelper {
 	}
 //ADS-5920
 	@Test
-	public void test01OpenCostModel() throws Throwable {
+	public void test01OpenCostModel_5920() throws Throwable {
 		try {
 			doClick(costing.getRvuMaintenanceButtonFilter());
 			doFilterCreate(filterByCostModel);

@@ -38,7 +38,7 @@ public class WebIntelligenceReportRunningExistingWebIReport extends GoHelper {
 	}
 //ADS-6638[all steps]
 	@Test
-	public void test01GoToPublicFolders() throws Throwable {
+	public void test01GoToPublicFolders_6638() throws Throwable {
 		try {
 			waitForAjaxExtJs();
 			firstHandle = webdriverSwitchToNewWindow(printout);
@@ -60,7 +60,7 @@ public class WebIntelligenceReportRunningExistingWebIReport extends GoHelper {
 	}
 
 	@Test
-	public void test02MoveToPublicFolders() throws Throwable {
+	public void test02MoveToPublicFolders_6638() throws Throwable {
 		try {
 			driver.switchTo().frame(driver.findElement(By.xpath("(//iframe[contains(@id,'iframe')])[2]")));
 			doClick("//a[@title='Expand Folders']");
@@ -81,7 +81,7 @@ public class WebIntelligenceReportRunningExistingWebIReport extends GoHelper {
 	}
 
 	@Test
-	public void test03OpenConversionToolReport() throws Throwable {
+	public void test03OpenConversionToolReport_6638() throws Throwable {
 		try {
 			webdriverSwitchToFrame("servletBridgeIframe");
 			driver.switchTo().frame(driver.findElement(By.xpath("(//iframe[contains(@id,'iframe')])[3]")));

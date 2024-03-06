@@ -45,7 +45,7 @@ public class ValidateCustomizeTaskListspageSystemMaintenance extends Calculation
 	}
 //ADS-6516
 	@Test
-	public void test01assertCustomiseTaskListsTabs() throws Throwable {
+	public void test01assertCustomiseTaskListsTabs_6516() throws Throwable {
 		try {
 			assertElementIsDisplayed(systemMap.getCustomizeTaskListsPageSubTabCost());
 			assertElementIsDisplayed(systemMap.getCustomizeTaskListsPageSubTabOverhead());

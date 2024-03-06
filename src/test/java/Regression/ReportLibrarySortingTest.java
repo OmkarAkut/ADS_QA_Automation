@@ -40,7 +40,7 @@ public class ReportLibrarySortingTest extends GoHelper {
 	}
 //ADS-5662
 	@Test
-	public void test01TemplatesSortByColumnDescending() throws Throwable {
+	public void test01TemplatesSortByColumnDescending_5662() throws Throwable {
 		try {
 			doClick("//div[contains(text(),'" + directory1 + "')]");
 			assertElementIsDisplayedWithXpath("//div[contains(text(),'" + directory1

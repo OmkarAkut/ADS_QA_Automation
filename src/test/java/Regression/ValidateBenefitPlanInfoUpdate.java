@@ -19,7 +19,7 @@ public class ValidateBenefitPlanInfoUpdate extends CalculationHelper {
 	String[] columnsToCompare = { "PRIVATE PAY", "PRIVATE PAY PENDING", "APP PENDING", "PRIVATE PAY INSUFF",
 			"PRIVATE PAY BAL" };
 
-	/** Regression: Automated test script for ADS-6076 , tc fails becoz of defect ADS-6076*/
+	/** Regression: Automated test script for ADS-6076 , tc fails becoz of defect ADS-12488*/
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
 		ExtentReport.reportCreate("ValidateBenefitPlanInfoUpdate", "webdriver.scripts.contracting",

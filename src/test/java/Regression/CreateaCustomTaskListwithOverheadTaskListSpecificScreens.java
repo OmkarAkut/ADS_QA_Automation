@@ -48,9 +48,9 @@ public class CreateaCustomTaskListwithOverheadTaskListSpecificScreens extends Go
 			fail(e.getMessage());
 		}
 	}
-	//ADS-5809
+	//ADS-5801
 	@Test
-	public void test01VerifyClearFilter() throws Throwable {
+	public void test01VerifyClearFilter_5801() throws Throwable {
 		try {
 			doClick(systemMap.getCustomTaskListFilterButton());
 			waitForAjaxExtJs();

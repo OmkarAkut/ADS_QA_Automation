@@ -54,7 +54,7 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 	}
 	//ADS-5660
 	@Test
-	public void test01OpenFlexibleReports() throws Throwable {
+	public void test01OpenFlexibleReports_5660() throws Throwable {
 		try {
 			doClick(reportMap.getReportLibraryPageFormFieldSearch());
 			Thread.sleep(2000);

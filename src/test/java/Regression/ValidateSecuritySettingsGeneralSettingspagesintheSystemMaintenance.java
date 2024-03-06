@@ -28,7 +28,7 @@ public class ValidateSecuritySettingsGeneralSettingspagesintheSystemMaintenance 
 	}
 	//ADS-6512
 	@Test
-	public void test01AssertSystemSettingsPageIsShown() throws Throwable {
+	public void test01AssertSystemSettingsPageIsShown_6512() throws Throwable {
 		try {
 //			Omkar 29/5/2023 : xpath changes for 11.2
 //			assertElementIsDisplayedWithXpath("//div[contains(@class,'x-container areaTitle')][text()='Security Settings']");

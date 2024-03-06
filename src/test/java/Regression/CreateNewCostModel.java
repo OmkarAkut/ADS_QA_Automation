@@ -43,7 +43,7 @@ public class CreateNewCostModel extends GoHelper {
 	}
 //ADS-6632 , include steps for ADS-6253 from step7]
 	@Test
-	public void test01CreateNewCostModel() throws Throwable {
+	public void test01CreateNewCostModel_6632() throws Throwable {
 		try {
 		doClick(modelMap.getNewContractModelButton());
 		waitUntilElementIsVisible(CostingMap.getNewCostModelPopUp());
@@ -59,7 +59,7 @@ public class CreateNewCostModel extends GoHelper {
 	}
 	//ADS-6632
 	@Test
-	public void test02AssertNewCostModel() throws Throwable {
+	public void test02AssertNewCostModel_6632() throws Throwable {
 		try {
 			goToPage("Cost Models");
 			doSearchForContractModel(costModel);
@@ -73,7 +73,7 @@ public class CreateNewCostModel extends GoHelper {
 	}
 	//ADS-6633
 	@Test
-	public void test03DeleteNewelyCreatedCostModel() throws Throwable {
+	public void test03DeleteNewelyCreatedCostModel_6633() throws Throwable {
 		try {
 			doClick(modelMap.getContractModelDeleteButton());
 			waitForElementToBeVisible(modelMap.getContractModelDeletePopUp());
@@ -95,7 +95,7 @@ public class CreateNewCostModel extends GoHelper {
 	}
 	//ADS-6633
 	@Test
-	public void test04CancelButtonInCostModelPopUp() throws Throwable {
+	public void test04CancelButtonInCostModelPopUp_6633() throws Throwable {
 		try {
 			doClick(modelMap.getNewContractModelButton());
 			waitUntilElementIsVisible(CostingMap.getNewCostModelPopUp());
@@ -110,7 +110,7 @@ public class CreateNewCostModel extends GoHelper {
 	}
 	//ADS-6641,include steps for ADS-6253 from step7
 	@Test
-	public void test05CreateOverheadCostModel() throws Throwable {
+	public void test05CreateOverheadCostModel_6641() throws Throwable {
 		try {
 			doClick(modelMap.getNewContractModelButton());
 			waitUntilElementIsVisible(CostingMap.getNewCostModelPopUp());
@@ -127,7 +127,7 @@ public class CreateNewCostModel extends GoHelper {
 	}
 	//ADS-6641
 	@Test
-	public void test06AssertCreatedOverheadCostModel() throws Throwable {
+	public void test06AssertCreatedOverheadCostModel_6641() throws Throwable {
 		try {
 			goToPage("Cost Models");
 			doSearchForContractModel(overheadModel);

@@ -40,7 +40,7 @@ public class UcqcCopyToQuickRvusPopupIsLaunchedAds1148 extends UcqcHelper {
   }
 //ADS-6666
   @Test
-  public void testUcqcCopyToQuickRvusPopupIsLaunched() throws Throwable {
+  public void testUcqcCopyToQuickRvusPopupIsLaunched_6666() throws Throwable {
     try {
       waitForAjaxExtJs();
       //Shilpa 19.09.2022 updated below line

@@ -40,7 +40,7 @@ public class TableColumnSorting extends GoHelper {
 	}
 	//ADS-6654
 	@Test
-	public void test01AssertTableOnSortByNameColumnCostingModel() throws Throwable {
+	public void test01AssertTableOnSortByNameColumnCostingModel_6654() throws Throwable {
 		try {
 			SortByNameColumn();
 			ExtentReport.logPass("PASS", "test01AssertTableOnSortByNameColumn");
@@ -52,7 +52,7 @@ public class TableColumnSorting extends GoHelper {
 	}
 	//ADS-6654
 	@Test
-	public void test02AssertTableOnSortByDateCreatedColumn() throws Throwable {
+	public void test02AssertTableOnSortByDateCreatedColumn_6654() throws Throwable {
 		try {
 			SortByDateCreatedColumn();
 			ExtentReport.logPass("PASS", "test01AssertTableOnSortByDateCreatedColumn");
@@ -64,7 +64,7 @@ public class TableColumnSorting extends GoHelper {
 	}
 	//ADS-6509
 	@Test
-	public void test03AssertTableOnSortByNameColumnEpisode() throws Throwable {
+	public void test03AssertTableOnSortByNameColumnEpisode_6509() throws Throwable {
 		try {
 			goToPage("Episode Models");
 			SortByNameColumn();
@@ -77,7 +77,7 @@ public class TableColumnSorting extends GoHelper {
 	}
 	//ADS-6509
 	@Test
-	public void test04AssertTableOnSortByDateCreatedColumnEpisode() throws Throwable {
+	public void test04AssertTableOnSortByDateCreatedColumnEpisode_6509() throws Throwable {
 		try {
 			SortByDateCreatedColumn();
 			ExtentReport.logPass("PASS", "test04AssertTableOnSortByDateCreatedColumnEpisode");

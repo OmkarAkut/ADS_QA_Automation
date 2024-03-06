@@ -55,7 +55,7 @@ public class ClearFilterbuttonModels extends GoHelper {
 	}
 //ADS-6432
 	@Test
-	public void test01ContractModelClearFilter() throws Throwable {
+	public void test01ContractModelClearFilter_6432() throws Throwable {
 		try {
 			ClearFilter(filter,Model);
 			ExtentReport.logPass("PASS", "test01ContractModelClearFilter");
@@ -67,7 +67,7 @@ public class ClearFilterbuttonModels extends GoHelper {
 	}
 	//ADS-6438
 	@Test
-	public void test02ContractModelSearchText() throws Throwable {
+	public void test02ContractModelSearchText_6438() throws Throwable {
 		try {
 			ModelSearchText(Model);
 			ExtentReport.logPass("PASS", "test02ContractModelSearchText");
@@ -92,7 +92,7 @@ public class ClearFilterbuttonModels extends GoHelper {
 	}
 	//ADS-6650
 	@Test
-	public void test04CostModelSearchText() throws Throwable {
+	public void test04CostModelSearchText_6650() throws Throwable {
 		try {
 			ModelSearchText(Model);
 			ExtentReport.logPass("PASS", "test04CostModelSearchText");

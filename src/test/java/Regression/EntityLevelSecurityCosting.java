@@ -42,7 +42,7 @@ public class EntityLevelSecurityCosting extends CalculationHelper {
 	}
 //ADS-5793
 	@Test
-	public void test01VerifyHomePageIsShown() throws Throwable {
+	public void test01VerifyHomePageIsShown_5793() throws Throwable {
 		try {
 			try {
 				if (costing.getIgreeButton().isDisplayed()) {
