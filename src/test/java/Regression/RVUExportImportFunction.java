@@ -45,7 +45,7 @@ public class RVUExportImportFunction extends GoHelper {
 	}
 	//ADS-6659
 	@Test
-	public void test01VerifyRVUExportPopUp() throws Throwable {
+	public void test01VerifyRVUExportPopUp_6659() throws Throwable {
 		try {
 			doClick(costing.getRvuMaintenanceButtonExport());
 			waitForPageTitle("Export Data");

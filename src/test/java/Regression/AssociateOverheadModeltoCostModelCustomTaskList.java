@@ -83,9 +83,9 @@ public class AssociateOverheadModeltoCostModelCustomTaskList extends GoHelper {
 		 }
 
 	}
-	//ADS-5789
+	//ADS-5798
 	@Test
-	public void test01AddScreens() throws Throwable {
+	public void test01AddScreens_5798() throws Throwable {
 		try {
 			clearNewFolderName("Allocation Exceptions");
 			clearNewFolderName("Allocation Statistic Assignments");

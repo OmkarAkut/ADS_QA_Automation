@@ -60,7 +60,7 @@ public class HorizontalScrollColumnsToDisplay extends UcqcHelper {
 	  }
 //ADS-5921 all steps
 		@Test
-		public void test01UncheckAllColumnsAndRemoveColumnTodisplay() throws Throwable {
+		public void test01UncheckAllColumnsAndRemoveColumnTodisplay_5921() throws Throwable {
 			try {
 				doClick(driver.findElement(By.xpath("//label[text()='All']/preceding-sibling::input")));
 				doClick(costingMap.getUnitCostQuickCalculationButtonColumnsToDisplaySelect());
@@ -80,7 +80,7 @@ public class HorizontalScrollColumnsToDisplay extends UcqcHelper {
 		}
 
 		@Test
-		public void test02SelectMultipleColumnsAndVerifyappliedColumns() throws Throwable {
+		public void test02SelectMultipleColumnsAndVerifyappliedColumns_5921() throws Throwable {
 			try {
 				doClick(costingMap.getUnitCostQuickCalculationButtonColumnsToDisplaySelect());
 				waitForMainPageTitle("Select Columns");

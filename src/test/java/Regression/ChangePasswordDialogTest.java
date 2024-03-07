@@ -101,7 +101,7 @@ public class ChangePasswordDialogTest extends GoHelper {
 	}
 //ADS-6585
 	@Test
-	public void test04AssertTermsOfUse() throws InterruptedException, Throwable {
+	public void test04AssertTermsOfUse_6585() throws InterruptedException, Throwable {
 		try {
 			assertElementIsDisplayed(generalElement.getUserDropdown(), printout);
 			generalElement.getUserDropdown().click();

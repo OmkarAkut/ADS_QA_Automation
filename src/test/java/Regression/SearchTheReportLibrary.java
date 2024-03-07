@@ -38,7 +38,7 @@ public class SearchTheReportLibrary extends GoHelper {
 	}
 //ADS-5663
 	@Test
-	public void test01SearchReportLibrary() throws Throwable {
+	public void test01SearchReportLibrary_5663() throws Throwable {
 		try {
 			doClick(reportMap.getReportLibraryPageFormFieldSearch());
 			ContractModelsHelper.keyInValues(reportMap.getReportLibraryPageFormFieldSearch(), reportName);

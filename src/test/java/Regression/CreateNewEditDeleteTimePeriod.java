@@ -49,7 +49,7 @@ public class CreateNewEditDeleteTimePeriod extends GoHelper {
 	}
 //ADS-6673
 	@Test
-	public void test01OpenCostModel() throws Throwable {
+	public void test01OpenCostModel_6673() throws Throwable {
 		try {
 			doSearchForModel(costModel);
 			tableDoubleClickCellFirstColumn(costModel);
@@ -66,7 +66,7 @@ public class CreateNewEditDeleteTimePeriod extends GoHelper {
 	}
 	//ADS-6673
 	@Test
-	public void test02CreateNewTimePeriod() throws Throwable {
+	public void test02CreateNewTimePeriod_6673() throws Throwable {
 		try {
 			doClickTreeItem("FISCAL YEAR SETUP");
 			waitForMainPageTitle("Creat new Time Period");
@@ -90,7 +90,7 @@ public class CreateNewEditDeleteTimePeriod extends GoHelper {
 	}
 //ADS-6672
 	@Test
-	public void test02EditNewTimePeriod() throws Throwable {
+	public void test02EditNewTimePeriod_6672() throws Throwable {
 		try {
 			doClick(CostingMap.getCostModelTimePeriodFilterButton());
 			doFilterCreate(filter);
@@ -111,7 +111,7 @@ public class CreateNewEditDeleteTimePeriod extends GoHelper {
 	}
 //ADS-6675
 	@Test
-	public void test03DeleteNewTimePeriod() throws Throwable {
+	public void test03DeleteNewTimePeriod_6675() throws Throwable {
 		try {
 			doClick(CostingMap.getCostModelTimePeriodDeleteButton());
 			waitForElementToBeVisible(ContractingMap.getWarningPopUpDeleteButton());

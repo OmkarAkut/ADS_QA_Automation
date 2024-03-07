@@ -47,7 +47,7 @@ public class CostingRunStatisticDataCalculationScenarioAds2339 extends Calculati
   }
 //ADS-5989 all steps
   @Test
-    public void test01VerifyStaticDataScenarioPageConfiguration() throws Throwable {
+    public void test01VerifyStaticDataScenarioPageConfiguration_5989() throws Throwable {
     try {
 		doSearchForModel(costModel);
 		waitForSpinnerToEnd();
@@ -89,7 +89,7 @@ public class CostingRunStatisticDataCalculationScenarioAds2339 extends Calculati
 
   //Shilpa : Scroll issue
   @Test
-  public void test02VerifyStaticDataCalculationScenarioPageConfigurationAndSave() throws InterruptedException,Throwable {
+  public void test02VerifyStaticDataCalculationScenarioPageConfigurationAndSave_5989() throws InterruptedException,Throwable {
     try {
     	doClickTreeItem("Statistic Data Calculation Scenarios");
 		waitForSpinnerToEnd();
@@ -123,7 +123,7 @@ public class CostingRunStatisticDataCalculationScenarioAds2339 extends Calculati
   }
 
   @Test
-  public void test03RunCalculationAndAssertResultsMatchExpected() throws InterruptedException,Throwable {
+  public void test03RunCalculationAndAssertResultsMatchExpected_5989() throws InterruptedException,Throwable {
     try {
 		doClick(getWebElement("(//div[contains(@id,'calculationscenario')]//span[text()='Calculate'])[1]"));
 		waitForFirstRowCalculationBarToReach100Percent(10000);
@@ -142,7 +142,7 @@ public class CostingRunStatisticDataCalculationScenarioAds2339 extends Calculati
   }
 
   @Test
-  public void test04AssertActivityVolumeDataScenarioFilterResultsMatchExpected() throws Throwable,InterruptedException {
+  public void test04AssertActivityVolumeDataScenarioFilterResultsMatchExpected_5989() throws Throwable,InterruptedException {
 //    doClickTreeItemWithCheckbox("Statistic Data Scenarios");
 //    waitForSpinnerToEnd();
 //    waitForAjaxExtJs();

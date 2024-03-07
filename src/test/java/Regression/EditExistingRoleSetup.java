@@ -54,7 +54,7 @@ public class EditExistingRoleSetup extends GoHelper {
 	}
 //ADS-5783
 	@Test
-	public void test01EditUserRole() throws Throwable {
+	public void test01EditUserRole_5783() throws Throwable {
 		try {
 			doClick("//div[text()='" + userRole + "']");
 			doClick(systemMap.getRolesPageButtonEdit());

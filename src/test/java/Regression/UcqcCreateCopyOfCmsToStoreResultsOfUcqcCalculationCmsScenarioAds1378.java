@@ -134,7 +134,7 @@ public class UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds137
   }
 //ADS-5987
   @Test
-  public void test04CostModelCalculationScenarioPageVerifyNameField() throws Throwable {
+  public void test04CostModelCalculationScenarioPageVerifyNameField_5987() throws Throwable {
     try {
     	
       goToPage("Costing Models");

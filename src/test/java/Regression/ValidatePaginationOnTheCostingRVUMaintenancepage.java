@@ -40,7 +40,7 @@ public class ValidatePaginationOnTheCostingRVUMaintenancepage  extends GoHelper{
 	}
 	//ADS-6508
 	@Test
-	public void test01AssertPaginationAvailableInRVU() throws Throwable {
+	public void test01AssertPaginationAvailableInRVU_6508() throws Throwable {
 		  try {
 			WebElement[] modelLibraryElements = {
 			          modelLibrary.modelLibraryTableText4PageShown(),

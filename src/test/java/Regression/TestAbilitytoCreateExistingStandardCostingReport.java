@@ -50,7 +50,7 @@ public class TestAbilitytoCreateExistingStandardCostingReport extends GoHelper {
 	}
 //ADS-5659
 	@Test
-	public void test01SearchReport() throws Throwable {
+	public void test01SearchReport_5659() throws Throwable {
 		try {
 			doClick(reportMap.getReportLibraryPageFormFieldSearch());
 			doClick("//div[contains(text(),'" + directory

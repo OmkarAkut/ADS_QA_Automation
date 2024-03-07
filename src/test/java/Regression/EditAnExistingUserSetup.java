@@ -63,7 +63,7 @@ public class EditAnExistingUserSetup extends GoHelper {
 	}
 //ADS-5781
 	@Test
-	public void test01OpenUserID() throws Throwable {
+	public void test01OpenUserID_5781() throws Throwable {
 		try {
 			doClick(systemMap.getUsersPageButtonFilter());
 			driverDelay(100);
@@ -78,7 +78,7 @@ public class EditAnExistingUserSetup extends GoHelper {
 	}
 
 	@Test
-	public void test02VerifyDisabledFields() throws Throwable {
+	public void test02VerifyDisabledFields_5781() throws Throwable {
 		try {
 			assertElementForAttributeContains(systemMap.getUserID(), printout);
 			assertElementForAttributeContains(systemMap.getDbUsername(), printout);
@@ -90,7 +90,7 @@ public class EditAnExistingUserSetup extends GoHelper {
 	}
 
 	@Test
-	public void test03AddUserDetails() throws Throwable {
+	public void test03AddUserDetails_5781() throws Throwable {
 		try {
 			ContractModelsHelper.keyInValues(systemMap.getUserFirstName(), firstName);
 			ContractModelsHelper.keyInValues(systemMap.getUserLastName(), lastName);
@@ -114,7 +114,7 @@ public class EditAnExistingUserSetup extends GoHelper {
 	}
 
 //	@Test
-	public void test04SelectUserRoleThenVerifyMenuItems() throws Throwable {
+	public void test04SelectUserRoleThenVerifyMenuItems_5781() throws Throwable {
 		try {
 			doClick(systemMap.getUserRoleSelect());
 			waitForElementPresence("//span[contains(@id,'dynamicwindow')][text()='Roles']");
@@ -174,8 +174,8 @@ public class EditAnExistingUserSetup extends GoHelper {
 		}
 	}
 
-//	@Test
-	public void test05SelectEntity() throws Throwable {
+	@Test
+	public void test05SelectEntity_5781() throws Throwable {
 		try {
 			if (systemMap.getUserEntitySelect().getAttribute("class").contains("disabled")) {
 //				Omkar 18/5/2023 : xpath changes for 11.2
@@ -202,7 +202,7 @@ public class EditAnExistingUserSetup extends GoHelper {
 	}
 
 	@Test
-	public void test06SelectMasterDepartments() throws Throwable {
+	public void test06SelectMasterDepartments_5781() throws Throwable {
 		try {
 			Actions act=new Actions(driver);
 			//Shilpa updated code for 11.2
@@ -242,9 +242,9 @@ public class EditAnExistingUserSetup extends GoHelper {
 	}
 
 	@Test
-	public void test07VerifyUpdatedDetailsOfUser() throws Throwable {
+	public void test07VerifyUpdatedDetailsOfUser_5781() throws Throwable {
 		try {
-			test01OpenUserID();
+			test01OpenUserID_5781();
 			assertThatAttributeValue(systemMap.getUserFirstName(), firstName, printout);
 			assertThatAttributeValue(systemMap.getUserLastName(), lastName, printout);
 			assertThatAttributeValue(systemMap.getUserDisplayName(), displayName, printout);

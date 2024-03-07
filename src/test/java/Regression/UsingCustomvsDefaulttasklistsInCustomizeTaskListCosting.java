@@ -42,7 +42,7 @@ public class UsingCustomvsDefaulttasklistsInCustomizeTaskListCosting extends GoH
 	}
 //ADS-6589
 	@Test
-	public void test01VerifyFoldersShownUnderTaskList() throws Throwable {
+	public void test01VerifyFoldersShownUnderTaskList_6589() throws Throwable {
 		try {
 			doClick(costing.getCostModelFilterButton());
 			doFilterCreate(filter);

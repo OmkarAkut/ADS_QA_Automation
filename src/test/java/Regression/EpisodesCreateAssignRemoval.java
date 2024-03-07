@@ -52,7 +52,7 @@ public class EpisodesCreateAssignRemoval extends CalculationHelper {
 	}
 //ADS-6296 all steps
 	@Test
-	public void test01EpisodeCreation() throws Throwable {
+	public void test01EpisodeCreation_6296() throws Throwable {
 		try {
 			doClick(contractingMap.getNewContractModelButton());
 			waitForElementToBeVisible(modelMap.getNewEpisodeModelPopUp());
@@ -92,7 +92,7 @@ public class EpisodesCreateAssignRemoval extends CalculationHelper {
 	}
 
 	@Test
-	public void test02VerifyAssinEpisodeToEncounter() throws Throwable {
+	public void test02VerifyAssinEpisodeToEncounter_6296() throws Throwable {
 		try {
 			doClick(modelMap.getModelEpisode());
 

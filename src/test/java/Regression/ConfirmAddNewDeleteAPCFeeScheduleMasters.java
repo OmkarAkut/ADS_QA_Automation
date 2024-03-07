@@ -46,7 +46,7 @@ public class ConfirmAddNewDeleteAPCFeeScheduleMasters extends CalculationHelper 
 	}
 //ADS-6458
 	@Test
-	public void test01AssertContractTaskList() throws Throwable {
+	public void test01AssertContractTaskList_6458() throws Throwable {
 		try {
 
 			// ADS-6455
@@ -65,7 +65,7 @@ public class ConfirmAddNewDeleteAPCFeeScheduleMasters extends CalculationHelper 
 	}
 //ADS-6442,ADS-6455[add collapse function]
 	@Test
-	public void test02AssertBuildStructureElements() throws Throwable {
+	public void test02AssertBuildStructureElements_6442_6455() throws Throwable {
 		try {
 			doClickTreeItem("Build Structure Elements");
 			driverDelay(300);
@@ -129,7 +129,7 @@ public class ConfirmAddNewDeleteAPCFeeScheduleMasters extends CalculationHelper 
 	}
 //ADS-6458
 	@Test
-	public void test06CreateNewandDeleteAPCCode() throws Throwable {
+	public void test06CreateNewandDeleteAPCCode_6458() throws Throwable {
 		try {
 			doClickTreeItemWithCheckbox("APC Fee Schedule Masters");
 			waitForElementToBeVisible(ContractingMap.getApcFeeScheduleHeader());

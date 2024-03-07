@@ -55,7 +55,7 @@ public class CreateANewContractModel extends CalculationHelper {
 
 	/**Test - UI Validation [Contracting] â€œCreate a New Contract Model ADS-6413 **/
 	@Test
-	public void test01CreateNewContractModel() throws Throwable {
+	public void test01CreateNewContractModel_6413() throws Throwable {
 		try {
 			doClick(modelMap.getNewContractModelButton());
 			waitForElementToBeVisible(ContractingMap.getNewContractModelPopUp());
@@ -105,8 +105,8 @@ public class CreateANewContractModel extends CalculationHelper {
 	}
 /*TestUIValidationContractingValidateContractingModelDeletebutton : ADS-6435,ADS-6412*/
 //	@Test
-	public void test02DeleteContractModel() throws Throwable {
-		
+	public void test02DeleteContractModel_6435_6412() throws Throwable {
+	
 		try {
 			doClick(modelMap.getContractModelDeleteButton());
 			waitForElementToBeVisible(modelMap.getContractModelDeletePopUp());

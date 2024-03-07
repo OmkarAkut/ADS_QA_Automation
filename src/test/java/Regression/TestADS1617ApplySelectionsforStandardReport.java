@@ -42,7 +42,7 @@ public class TestADS1617ApplySelectionsforStandardReport extends GoHelper {
 	}
 //ADS-5657
 	@Test
-	public void test01SearchReport() throws Throwable {
+	public void test01SearchReport_5657() throws Throwable {
 		try {
 			doClick(reportMap.getReportLibraryPageFormFieldSearch());
 			doClick("//div[contains(text(),'" + directory
