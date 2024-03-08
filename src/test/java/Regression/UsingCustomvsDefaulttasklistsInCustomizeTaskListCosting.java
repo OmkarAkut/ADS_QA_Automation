@@ -6,6 +6,8 @@ import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
+import org.openqa.selenium.By;
+
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.corehelpers.GoHelper;
@@ -31,9 +33,28 @@ public class UsingCustomvsDefaulttasklistsInCustomizeTaskListCosting extends GoH
 			costing = BuildMap.getInstance(driver, CostingMap.class);
 			modelMap = BuildMap.getInstance(driver, ContractingMap.class);
 			systemMap=BuildMap.getInstance(driver, SystemMaintenanceMap.class);
+			Login.loginUser("AutomationTesterAdmin");
+			goToPage("Customize Task Lists");
+			waitForDisplayedSpinnerToEnd();
+			assertTextIsDisplayed("CM Test");
+			assertTextIsDisplayed("All Masters");
+			assertTextIsDisplayed("Cost Scnenarios");
+			assertTextIsDisplayed("Groupings");
+			assertTextIsDisplayed("Miscellaneous");
+			driver.findElement(By.xpath("(//input[@name='costingOption'])[2]")).click();
+			doClick(SystemMaintenanceMap.getTaskListSaveButton());
+			doClick(ContractingMap.getSaveBenefitPlan());
+			doClick("(//div[contains(@id,'button')]//following::span[text()='Save'])[2]");
+			waitForAjaxExtJs();
+			doClick("//div[text()='Log Out']");
 			Login.loginUser("CostAnalyst1");
 			goToPage("Costing Models");
 			waitForAjaxExtJs();
+			/*
+			Login.loginUser("CostAnalyst1");
+			goToPage("Costing Models");
+			waitForAjaxExtJs();
+			*/
 			ExtentReport.logPass("PASS", "setupScript");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "Failure in setupScript", driver, e);
@@ -48,7 +69,7 @@ public class UsingCustomvsDefaulttasklistsInCustomizeTaskListCosting extends GoH
 			doFilterCreate(filter);
 			tableDoubleClickCellFirstColumn(costModel);
 			assertTextIsDisplayed("CM Test");
-			doClickTreeData("CM Test");
+			doClickTreeItem("CM Test");
 			assertTextIsDisplayed("All Masters");
 			assertTextIsDisplayed("Cost Scnenarios");
 			assertTextIsDisplayed("Groupings");
@@ -67,7 +88,7 @@ public class UsingCustomvsDefaulttasklistsInCustomizeTaskListCosting extends GoH
 			doClickTreeItemWithCheckbox("Department Masters");
 			assertElementIsDisplayedWithXpath("//div[contains(@id,'masterlist')]//following::div[contains(@id,'dynamicGrid')]//table//tr");
 			doClickTreeData("All Masters");
-			doClickTreeData("Groupings");
+			doClickTreeData("Groupings");// scroll issue
 			waitForMainPageTitle("Chargeable Activity Groups");
 			assertTextIsDisplayed("Chargeable Activity Groups");
 			assertTextIsDisplayed("Department Groups");
@@ -83,7 +104,7 @@ public class UsingCustomvsDefaulttasklistsInCustomizeTaskListCosting extends GoH
 	
 	}
 	@Test
-	public void test02VerifyDepartmentHierarchy() throws Throwable {
+	public void test02VerifyDepartmentHierarchy_6589() throws Throwable {
 		try {
 			doClick(systemMap.getDeptHierarchyFilterButton());
 			doFilterCreate(filterByDeptHierarchy);
