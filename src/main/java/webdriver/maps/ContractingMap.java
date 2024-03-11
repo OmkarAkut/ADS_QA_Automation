@@ -759,6 +759,10 @@ public class ContractingMap extends MapConfig {
 	private static WebElement DeleteButtonMesaageBox;
 	public static WebElement getDeleteButtonMesaageBox() {return DeleteButtonMesaageBox;}
 
+	@FindBy(xpath = "//div[contains(@id,'messagebox')]/div//span[text()='Save']")
+	private static WebElement SaveButtonMesaageBox;
+	public static WebElement getSaveButtonMesaageBox() {return SaveButtonMesaageBox;}
+	
 	//@FindBy(xpath = "//span[text()='Pricing Method']//following::label[text()='Pricing Methods']")
 	//Shilpa xpath update for 11.2 11.15.2023
 	@FindBy(xpath = "//div[text()='Pricing Method']//following::label[text()='Pricing Methods']")

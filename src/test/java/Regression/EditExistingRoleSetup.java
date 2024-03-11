@@ -79,7 +79,7 @@ public class EditExistingRoleSetup extends GoHelper {
 	}
 
 	@Test
-	public void test02AddAssignedUsers() throws Throwable {
+	public void test02AddAssignedUsers_5783() throws Throwable {
 		try {
 //			Omkar 25/4/2023 : xpath changes for 11.2
 //			doClick("//div[contains(@id,'rolesForm')]//table[contains(@class,'itemSelctorPanelNoPad')]//following::div[contains(@class,'x-btn windowbtn x-btn-default-small')]//span[text()='Select']//parent::button");
@@ -109,7 +109,7 @@ public class EditExistingRoleSetup extends GoHelper {
 	}
 
 	@Test
-	public void test03AddMenuItems() throws Throwable {
+	public void test03AddMenuItems_5783() throws Throwable {
 		try {
 			doClick(systemMap.getMenuItemsSelectButton());
 			waitForMainPageTitle("Menu Items");
@@ -137,7 +137,7 @@ public class EditExistingRoleSetup extends GoHelper {
 	}
 
 	@Test
-	public void test04AddActionPermission() throws Throwable {
+	public void test04AddActionPermission_5783() throws Throwable {
 		try {
 //			doClick("//div[text()='Costing']");
 //			doClick("//span[text()='De-Select All']//parent::button");
@@ -157,7 +157,7 @@ public class EditExistingRoleSetup extends GoHelper {
 	}
 
 	@Test
-	public void test04VerifyUpdatedRole() throws Throwable {
+	public void test04VerifyUpdatedRole_5783() throws Throwable {
 		try {
 			doClick("//div[text()='" + userRole + "']");
 			doClick(systemMap.getRolesPageButtonEdit());

@@ -26,7 +26,7 @@ public class EditAnExistingUserSetup extends GoHelper {
 	static ContractingMap contractMap;
 	static ModelLibraryMap modelMap;
 	private static SystemMaintenanceMap systemMap;
-	private static String userID = "testuser";
+	private static String userID = "ads5781";
 //	Omkar 12/10/2023 : Removing 0008 PAYMENT PLAN as scrolling action is not working for 11.2
 //	private static String[] entities = { "0000 PRIVATE PAY", "0001 PRIVATE PAY PENDING", "0008 PAYMENT PLAN" };
 	private static String[] entities = { "0000 PRIVATE PAY", "0001 PRIVATE PAY PENDING"};
@@ -287,7 +287,9 @@ public class EditAnExistingUserSetup extends GoHelper {
 			assertElementIsDisplayedWithXpath("//label[text()='Menu Items']//following::*[text()='Utility Status']");
 			assertTextIsDisplayed("0000 PRIVATE PAY");
 			assertTextIsDisplayed("0001 PRIVATE PAY PENDING");
-			assertTextIsDisplayed("0008 PAYMENT PLAN");
+//			assertTextIsDisplayed("0008 PAYMENT PLAN");
+			driverDelay(500);
+			ContractModelsHelper.scrollToView("//div[text()='" + dept + "']");
 			assertElementText(driver.findElement(By.xpath("//div[text()='" + dept + "']//following::div[4]")),
 					"2 Selected", printout);
 			doClick(ContractingMap.getContractModelRiskLimiterCancelCloseBtn());

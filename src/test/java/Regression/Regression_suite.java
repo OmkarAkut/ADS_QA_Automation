@@ -92,11 +92,11 @@ import org.junit.runners.Suite;
 	ValidateCalculationStatusAllStatus.class,//ADS-6610,ADS-6609,ADS-6607,ADS-6606,ADS-6605,ADS-6604,ADS-6603,ADS-6602
 	EntityLevelSecurityContracting.class,//ADS-5794
 	EntityLevelSecurityCosting.class,//ADS-5793
-	UsingCustomvsDefaulttasklistsInCustomizeTaskListCosting.class,//ADS-6589
-	CreateaCustomTaskListwithOverheadTaskListSpecificScreens.class,//ADS-5801
-	ValidateOverheadTaskListscreensAreAvailableforCost.class,//ADS-5799
-	AssociateOverheadModeltoCostModelCustomTaskList.class,//ADS-5798
-	EditExistingRoleSetup.class,//ADS-5783
+	UsingCustomvsDefaulttasklistsInCustomizeTaskListCosting.class,//ADS-6589 scroll issue
+	CreateaCustomTaskListwithOverheadTaskListSpecificScreens.class,//ADS-5801 scroll bar issue
+	ValidateOverheadTaskListscreensAreAvailableforCost.class,//ADS-5799 scrollbar issue so tc fail
+	AssociateOverheadModeltoCostModelCustomTaskList.class,//ADS-5798 scroll issue need to implement steps aswell
+	EditExistingRoleSetup.class,//ADS-5783 Completed - tc fail due to ADS-12564 
 	EditAnExistingUserSetup.class,//ADS-5781 Completed - tc fail due to ADS-12547
 })
 
