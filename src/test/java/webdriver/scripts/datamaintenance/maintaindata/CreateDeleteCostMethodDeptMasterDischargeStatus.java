@@ -98,8 +98,9 @@ public class CreateDeleteCostMethodDeptMasterDischargeStatus extends Calculation
 			fail(e.getMessage());
 		}
 	}
+	//ADS-6656
 	@Test
-	public void test03CreateDepartmentMaster() throws Throwable {
+	public void test03CreateDepartmentMaster_6656() throws Throwable {
 		try {
 			doClick(CostingMap.getCostDeptMasterNewButton());
 			ContractModelsHelper.keyInValues(ContractingMap.getMedicareCode(), deptCode);
@@ -131,8 +132,9 @@ public class CreateDeleteCostMethodDeptMasterDischargeStatus extends Calculation
 			fail(e.getMessage());
 		}
 	}
+	//ADS-6657
 	@Test
-	public void test05EditEncounterType() throws Throwable {
+	public void test05EditEncounterType_6657() throws Throwable {
 		try {
 			doClickTreeData("Encounters");
 			driverDelay(200);
@@ -160,8 +162,9 @@ public class CreateDeleteCostMethodDeptMasterDischargeStatus extends Calculation
 			fail(e.getMessage());
 		}
 	}
+	//ADS-6658
 	@Test
-	public void test06CreateNewDischargeStatus() throws Throwable {
+	public void test06CreateNewDischargeStatus_6658() throws Throwable {
 		try {
 //			Omkar 16/8/2023 : xpath changes for 11.2
 //			doClick("//div[@id='treepanelId-body']//following::div[text()='Discharge Statuses']/img[contains(@class,'x-tree-icon')]");
@@ -197,9 +200,9 @@ public class CreateDeleteCostMethodDeptMasterDischargeStatus extends Calculation
 		}
 	}
 	
-	
+	//ADS-6655
 	@Test
-	public void test07CreateCostMethodMaster() throws Throwable {
+	public void test07CreateCostMethodMaster_6655() throws Throwable {
 		try {
 			selectMaintainDataAtoZ(aTozPageCostMethodMaster);
 

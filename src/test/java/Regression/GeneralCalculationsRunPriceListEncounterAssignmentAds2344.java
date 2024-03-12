@@ -114,7 +114,7 @@ public class GeneralCalculationsRunPriceListEncounterAssignmentAds2344 extends C
 	}
 
 	@Test
-	public void test02ClickAssignButtonAndAssertCalculationStatusPageDetails() throws InterruptedException, Throwable {
+	public void test02ClickAssignButtonAndAssertCalculationStatusPageDetails_6099() throws InterruptedException, Throwable {
 		try {
 			waitForAjaxExtJs();
 //      waitForPresenceOfElement("(//span[text()='Assign'])");

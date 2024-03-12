@@ -19,7 +19,7 @@ public class ValidateBenefitPlanInfoUpdate extends CalculationHelper {
 	String[] columnsToCompare = { "PRIVATE PAY", "PRIVATE PAY PENDING", "APP PENDING", "PRIVATE PAY INSUFF",
 			"PRIVATE PAY BAL" };
 
-	/** Regression: Automated test script for ADS-6076 */
+	/** Regression: Automated test script for ADS-6076 , tc fails becoz of defect ADS-12488*/
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
 		ExtentReport.reportCreate("ValidateBenefitPlanInfoUpdate", "webdriver.scripts.contracting",
@@ -43,9 +43,9 @@ public class ValidateBenefitPlanInfoUpdate extends CalculationHelper {
 			fail(e.getMessage());
 		}
 	}
-
+//ADS-6076 [all steps]
 	@Test
-	public void test01AddMultipleBenefitPlan() throws Throwable {
+	public void test01AddMultipleBenefitPlan_6076() throws Throwable {
 		try {
 			doClick(ContractingMap.getDefinitionElementC1());
 //			Omkar 22/6/2023 : xpath changes for 11.2
@@ -65,11 +65,14 @@ public class ValidateBenefitPlanInfoUpdate extends CalculationHelper {
 //			ContractModelsHelper.toggleBetweenTheDockBar("//span[text()='ADS 1321 FY2020 Test D']//parent::button");
 //			ContractModelsHelper.toggleBetweenTheDockBar("//span[text()='Model Library']");
 //			ContractModelsHelper.toggleBetweenTheDockBar("//span[text()='ADS 1321 FY2020...']");
+			ContractModelsHelper.toggleBetweenTheDockBar("//span[text()='Model Library']");
+			ContractModelsHelper.toggleBetweenTheDockBar("//span[text()='"+ContractModelA+"']");
 			ContractModelsHelper.scrollToView(ContractingMap.getDefinitionElementAddBtn());
 			doClick(ContractingMap.getDefinitionElementAddBtn());
 			waitForMainPageTitle("Add Benefit Plans");
 			doClick(ContractingMap.getSelectAllBenefitPlans());
 			doClick(ContractingMap.getContractModelApplyInExportPopUp());
+			doClick("//span[text()='Cancel & Close']");
 //			doClick(ContractingMap.getContractModelRiskLimiterCancelCloseBtn());
 //			assertElementIsDisplayed(ContractingMap.getContractModelRiskLimiterMessageBoxCancelCloseBtn());
 //			doClick(ContractingMap.getContractModelRiskLimiterMessageBoxCancelCloseBtn());
@@ -81,21 +84,19 @@ public class ValidateBenefitPlanInfoUpdate extends CalculationHelper {
 	}
 
 	@Test
-	public void test02ClearAllBenefitPlans() throws Throwable {
+	public void test02ClearAllBenefitPlans_6076() throws Throwable {
 		try {
-			doClickTreeItemWithCheckbox("General Information - Unpublished Contract");
+//			doClickTreeItemWithCheckbox("General Information - Unpublished Contract");
 //			doClick(ContractingMap.getDefinitionElementC1());
 //			Omkar 5/7/2023 : xpath changes for 11.2
 //			doClick("(//span[contains(text(),'Benefit Plans')]//following::img)[1]");
 //			doClick("//div[contains(text(),'Benefit Plans')]/../following-sibling::div");
+			ContractModelsHelper.toggleBetweenTheDockBar("//span[text()='Model Library']");
+			waitForElementToBeVisible(modelMap.getContractModelRiskLimiterMessageBox());// tc fails here becoz of defect ADS-12488
+			ContractModelsHelper.toggleBetweenTheDockBar("//span[text()='"+ContractModelA+"']");
+			doClick("//div[contains(@id,'messagebox')]//span[text()='Return']/../../..");
 			ContractModelsHelper.CompareListToArray(ContractingMap.getBenefitPlans(), columnsToCompare);
 			doClick(ContractingMap.getDefinitionElementAddBtn());
-			waitForMainPageTitle("Add Benefit Plans");
-			doClick(ContractingMap.getSelectAllBenefitPlans());
-//			doClick(ContractingMap.getSelectAllBenefitPlans());
-			doClick(ContractingMap.getContractModelApplyInExportPopUp());
-//			doClick(ContractingMap.getSaveBenefitPlan());
-			doClick("//span[text()='Save']");
 			doClick("//span[text()='ADS 1321 FY2020 Test D']//following::span[@class='x-tab-close-btn']");
 			doClosePageOnLowerBar("Contract Models");
 			ExtentReport.logPass("PASS", "test01AddMultipleBenefitPlan");

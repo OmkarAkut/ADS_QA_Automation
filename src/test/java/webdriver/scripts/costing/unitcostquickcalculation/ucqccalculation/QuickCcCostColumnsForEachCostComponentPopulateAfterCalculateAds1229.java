@@ -43,9 +43,9 @@ public class QuickCcCostColumnsForEachCostComponentPopulateAfterCalculateAds1229
 	}
     
   }
-
+//ADS -5924
   @Test
-  public void test00UpdateTotalQuickCostColumnPopulatesAfterCalculate() throws Throwable {
+  public void test00UpdateTotalQuickCostColumnPopulatesAfterCalculate_5924() throws Throwable {
     try {
       assertElementIsDisabled(quickCostColumns.getUnitCostQuickCalculationButtonApplySelections(), printout);
       setUcqcCriteria("Marina", "*CM1 TB MHFY05 After Vol Change", "150 Marina Medical Center", "2130", "Jan 2005 to Jan 2005");//Shilpa 13.09.2022 updated depatment from 2130  PED ICU, issue with department grp pop up
@@ -68,9 +68,9 @@ public class QuickCcCostColumnsForEachCostComponentPopulateAfterCalculateAds1229
     	fail(e.getMessage());
     }
   }
-
+//ADS-6665 step 11 and step12 are missing
   @Test
-  public void test01VerifyCalculatedScenarioNameIsAppendedWithUcqcOnCalculationStatusPage() throws Throwable {
+  public void test01VerifyCalculatedScenarioNameIsAppendedWithUcqcOnCalculationStatusPage_6665() throws Throwable {
 	  
     try {
 		goToPage("Calculation Status");

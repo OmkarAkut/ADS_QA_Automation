@@ -5,17 +5,64 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+//	SmokeTest.class, //ADS-6642[add step 4-9],ADS-6582,ADS-6503,ADS-6502[add step 4-11],ADS-6501[ add step 4-7],ADS-6500[add step4-15],ADS-6498[add step4 -12],ADS-6497[add step4 -12],ADS-6496[add step4 -12],ADS-6495[add step 4-8],
+	
+	
+	BuildVerificationTestScript.class,//ADS-6584[add step4],ADS-6586,ADS-6592,ADS-6593,ADS-6594,ADS-6595,ADS-6596,ADS-6597,ADS-6598,ADS-6599
+	 //ADS-6601,ADS-6600,ADS-6583 Done - check once and move
+	
+
+	//To be executed to check
 	CalculateExistingPublishedContractAds1447.class,//ADS-6433,ADS-6085 Done
-	CopyPasteButtons.class,//ADS-6434,ADS-6084 Done
+
 	MedicareOppsCopyFromButtonShouldNotBeDisplayedAds2286.class,//ADS-6083[incomplete steps need to be added]
+	CopyPasteButtons.class,//ADS-6434,ADS-6084 Done
 	ValidateBenifitPlansInfoForMultipleUnpublishedContracts.class,//ADS-6080 Done
 	EditRiskLimiterScreen.class,//ADS-6079 has issue ADS-12487 so tc fails
-	ValidateBenefitPlanInfoUpdate.class,//ADS-6076 ValidateBenefitPlanInfoUpdate
-	ContractingModelDefinePaymentTermsFeeForServicePaymentTermsCalculate.class,//ADS-6775,ADS-6782 tc fails scroll issue
 	GeneralCalculationsRunContractualAllowancesScenarioAds2163.class,//ADS-6104 Done
-	PriceListCalculationScenario.class,//ADS-6103 scroll issue
-	GeneralCalculationsEncounterServiceClassificationSchemeAds2341.class,//ADS-6102 has issue with UI ADS-12509
+	ContractingModelDefinePaymentTermsFeeForServicePaymentTermsCalculate.class,//ADS-6775,ADS-6782 tc fails scroll issue
+	ValidateBenefitPlanInfoUpdate.class,//ADS-6076 ValidateBenefitPlanInfoUpdate
 	GeneralCalculationsChargeItemServiceClassificationSchemeAds2342.class,//ADS-6101 has issue with UI ADS-12509
+	GeneralCalculationsEncounterServiceClassificationSchemeAds2341.class,//ADS-6102 has issue with UI ADS-12509
+	PriceListCalculationScenario.class,//ADS-6103 scroll issue
 	GeneralCalculationsRunMedicalServiceAssignmentAds2343.class,//ADS-6100 Done
 	GeneralCalculationsRunPriceListEncounterAssignmentAds2344.class,//ADS-6099 Done
 	RvuMaintenanceAds1492.class,//ADS-5993,ADS-6646 Done
@@ -51,28 +98,27 @@ import org.junit.runners.Suite;
 	TableColumnSorting.class,//ADS-6654,ADS-6509 Done
 	PaginationInCostingModels.class,//ADS-6652 Done
 	ClearFilterbuttonModels.class,//ADS-6647,ADS-6648,ADS-6650,ADS-6438,ADS-6432,ADS-6431 check
-//	SmokeTest.class, //ADS-6642[add step 4-9],ADS-6582,ADS-6503,ADS-6502[add step 4-11],ADS-6501[ add step 4-7],ADS-6500[add step4-15],ADS-6498[add step4 -12],ADS-6497[add step4 -12],ADS-6496[add step4 -12],ADS-6495[add step 4-8],
 	CreateEditDeleteNewStructurePopulations.class,//ADS-6396 Done
 	ValidateCalculationStatusPage.class,//ADS-5771[add step15 -25] Done
-	BuildVerificationTestScript.class,//ADS-6584[add step4],ADS-6586,ADS-6592,ADS-6593,ADS-6594,ADS-6595,ADS-6596,ADS-6597,ADS-6598,ADS-6599
-	 //ADS-6601,ADS-6600,ADS-6583 Done
 	ChangePasswordDialogTest.class,//ADS-6585 Done
-	EpisodesCreateAssignRemoval.class,//ADS-6296 Done
-	ModelContractLumpSumPaymentAllocation.class,//ADS-6468 done
-	ModelContractPatientFinancialResponsibility.class,//ADS-6467
-	UIValidationPrepareTables.class,//ADS-6463,ADS-6462[add step],ADS-6461 check -Completed
-	UIValidationContracting.class,//ADS-6465,ADS-6466 Completed
-	ConfirmAddNewDeleteAPCFeeScheduleMasters.class,//ADS-6458,ADS-6457[to be auto],ADS-6455,ADS-6442 Done
-	
-	VerifyFilterAscSchemes.class,//ADS-6447Done
-	NewContractType.class,//ADS-6446 Done
-	ContractingDataMaintenanceNewItem.class,//ADS-6445 done
-	ValidateContractingTreeTab.class,//ADS-6444 done
-	ContractingDataMaintenanceNewItem.class,//ADS-6443 done
-	ValidateContractingModeExportImportButton.class,//ADS-6437,ADS-6436 done
-	CreateANewContractModel.class,//ADS-6435,ADS-6413,ADS-6412
-	ValidateContracDataMaintenanceBubble.class,//ADS-6430,ADS-6428
 	CreatingaNewContractingFolder.class,//ADS-6411[to be auto],ADS-6410, Done
+	ValidateContracDataMaintenanceBubble.class,//ADS-6430,ADS-6428,ADS-6429
+	CreateANewContractModel.class,//ADS-6435,ADS-6413,ADS-6412
+	ValidateContractingModeExportImportButton.class,//ADS-6437,ADS-6436 done
+	ContractingDataMaintenanceNewItem.class,//ADS-6443,ADS-6445 done
+	ValidateContractingTreeTab.class,//ADS-6444 done
+	NewContractType.class,//ADS-6446 Done
+	VerifyFilterAscSchemes.class,//ADS-6447Done
+	ConfirmAddNewDeleteAPCFeeScheduleMasters.class,//ADS-6458,ADS-6457[to be auto],ADS-6455,ADS-6442 Done
+	UIValidationContracting.class,//ADS-6465,ADS-6466 Completed
+	UIValidationPrepareTables.class,//ADS-6463,ADS-6462[add step],ADS-6461 
+	ModelContractPatientFinancialResponsibility.class,//ADS-6467
+	ModelContractLumpSumPaymentAllocation.class,//ADS-6468 done
+	EpisodesCreateAssignRemoval.class,//ADS-6296 Done
+	
+	
+	
+	//Completed
 	WebIntelligenceReportRunningExistingWebIReport.class,//ADS-6638 Done
 	SearchTheReportLibrary.class,//ADS-5663 Done
 	ReportLibrarySortingTest.class,//ADS-5662 Done
@@ -88,7 +134,6 @@ import org.junit.runners.Suite;
 	ValidatePaginationOnTheCostingRVUMaintenancepage.class,//ADS-6508 done
 	UIValidationStatusUIValidateUtilityStatusPage.class,//ADS-6622,ADS-6621,ADS-6620,ADS-6619,ADS-6618,ADS-6617
 	UIValidateImportStatuPage.class,//ADS-6616,,ADS-6615,ADS-6614,ADS-6613,ADS-6612,ADS-6611 done
-	//Start from here
 	ValidateCalculationStatusAllStatus.class,//ADS-6610,ADS-6609,ADS-6607,ADS-6606,ADS-6605,ADS-6604,ADS-6603,ADS-6602
 	EntityLevelSecurityContracting.class,//ADS-5794
 	EntityLevelSecurityCosting.class,//ADS-5793

@@ -44,9 +44,9 @@ public class OverWriteRVUValues5919 extends UcqcHelper {
 			fail(e.getMessage());
 		}
 	}
-
+//ADS-5919
 	@Test
-	public void test01OpenRvuCostModelAndImport() throws Throwable {
+	public void test01OpenRvuCostModelAndImport_5919() throws Throwable {
 		try {
 			doClick(costing.getRvuMaintenanceButtonFilter());
 			doFilterCreate(filter);
@@ -78,7 +78,7 @@ public class OverWriteRVUValues5919 extends UcqcHelper {
 	}
 
 	@Test
-	public void test02ApplyRvuSelections() throws Throwable {
+	public void test02ApplyRvuSelections_5919() throws Throwable {
 		try {
 			goToPage("Unit Cost Quick Calculation");
 			waitForDisplayedSpinnerToEnd();
@@ -91,7 +91,7 @@ public class OverWriteRVUValues5919 extends UcqcHelper {
 	}
 
 		@Test
-	public void test03ApplyRvuSelections() throws Throwable {
+	public void test03ApplyRvuSelections_5919() throws Throwable {
 		try {
 			ucqcUpdateGridCellValue("1804582", "Quick Salaries and Wages RVU", String.valueOf(value), printout);
 			ucqcHelper.getCellValue("1804582", "Quick Salaries and Wages RVU", "0.000000");
@@ -135,7 +135,7 @@ public class OverWriteRVUValues5919 extends UcqcHelper {
 	}
 
 	@Test
-	public void test04NavigateToRvuMaintenance() throws Throwable {
+	public void test04NavigateToRvuMaintenance_5919() throws Throwable {
 		try {
 			goToPage("RVU Maintenance");
 			waitForDisplayedSpinnerToEnd();
@@ -161,7 +161,7 @@ public class OverWriteRVUValues5919 extends UcqcHelper {
 	}
 
 	@Test
-	public void test05ApplyRvuSelections() throws Throwable {
+	public void test05ApplyRvuSelections_5919() throws Throwable {
 		try {
 			doClick(costing.getRvuApplySelections());
 			waitForDisplayedSpinnerToEnd();
@@ -192,7 +192,7 @@ public class OverWriteRVUValues5919 extends UcqcHelper {
 	}
 
 	@Test
-	public void test06FilterByDepartmentCodeInRvuContainer() throws Throwable {
+	public void test06FilterByDepartmentCodeInRvuContainer_5919() throws Throwable {
 		try {
 			doClick(costing.getRvuMaintenanceButtonRvuContainerList());
 			waitForDisplayedSpinnerToEnd();

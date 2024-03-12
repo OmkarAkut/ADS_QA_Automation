@@ -52,8 +52,9 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 			fail(e.getMessage());
 		}
 	}
+	//ADS-5660
 	@Test
-	public void test01OpenFlexibleReports() throws Throwable {
+	public void test01OpenFlexibleReports_5660() throws Throwable {
 		try {
 			doClick(reportMap.getReportLibraryPageFormFieldSearch());
 			Thread.sleep(2000);
@@ -70,7 +71,7 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 		}
 	}
 	@Test
-	public void test02GoToSelectionsTab() throws Throwable {
+	public void test02GoToSelectionsTab_5660() throws Throwable {
 		try {
 			doClick(reportMap.reportSelectionTab());
 			doClick(reportMap.reportSelectionDate());
@@ -91,7 +92,7 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 
 	}
 	@Test
-	public void test03GoToDetailsTab() throws Throwable {
+	public void test03GoToDetailsTab_5660() throws Throwable {
 		try {
 			doClick(reportMap.reportDetailsButton());
 
@@ -111,7 +112,7 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 	}
 
 	@Test
-	public void test04GoToSortsTab() throws Throwable {
+	public void test04GoToSortsTab_5660() throws Throwable {
 		try {
 			doClick(reportMap.reportSortTab());
 			doClick(reportMap.reportCareDeliveryFacility());
@@ -129,7 +130,7 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 		}
 	}
 	@Test
-	public void test05GoToSelectionsTab() throws Throwable {
+	public void test05GoToSelectionsTab_5660() throws Throwable {
 		try {
 			doClick(reportMap.reportAdditionalSelectionTab());
 			driverDelay(300);
@@ -147,7 +148,7 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 		}
 	}
 	@Test
-	public void test06SaveReportAndAssertStatus() throws Throwable {
+	public void test06SaveReportAndAssertStatus_5660() throws Throwable {
 		try {
 			doClick(reportMap.reportLibraryPageEntityRunButton());
 			waitForElementToBeVisible(reportMap.reportLibraryPageEntityRefreshButton());
@@ -221,7 +222,7 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 	}
 
 	@Test
-	public void test07OpenCompletedReportAndVerifyReportNames() throws Throwable {
+	public void test07OpenCompletedReportAndVerifyReportNames_5660() throws Throwable {
 		try {
 			driver.findElement(By.xpath("(//span[text()='" + orgName + "']//following::td[5]/div)")).click();
 			driverDelay(1500);

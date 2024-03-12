@@ -42,9 +42,9 @@ public class GeneralCalculationsRunMedicalServiceAssignmentAds2343 extends Calcu
 		}
 
 	}
-
+//ADS-6100 all steps
 	@Test
-	public void test01ClickClearResultsButtonAndVerifyCalculationStatusDetails()
+	public void test01ClickClearResultsButtonAndVerifyCalculationStatusDetails_6100()
 			throws InterruptedException,Throwable {
 		try {
 			
@@ -93,7 +93,7 @@ public class GeneralCalculationsRunMedicalServiceAssignmentAds2343 extends Calcu
 	//  }
 
 	@Test
-	public void test02ClickAssignButtonAndAssertCalculationStatusPageDetails()
+	public void test02ClickAssignButtonAndAssertCalculationStatusPageDetails_6100()
 			throws InterruptedException ,Throwable{
 		try {
 			waitForAjaxExtJs();

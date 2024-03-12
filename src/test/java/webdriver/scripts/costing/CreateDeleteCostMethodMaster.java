@@ -67,9 +67,9 @@ public class CreateDeleteCostMethodMaster extends GoHelper{
 		}
 
 	}
-	
+	//ADS-6670 [just create cost master]
 	@Test
-	public void test02CreateNewMethodMaster() throws Throwable {
+	public void test02CreateNewMethodMaster_6670() throws Throwable {
 		try {
 			doClickTreeItem("All Masters");
 			waitForMainPageTitle("Charge Masters");
@@ -90,9 +90,9 @@ public class CreateDeleteCostMethodMaster extends GoHelper{
 			fail(e.getMessage());
 		} 
 			}
-	
+	//ADS-6671
 	@Test
-	public void test03DeleteNewMethodMaster() throws Throwable {
+	public void test03DeleteNewMethodMaster_6671() throws Throwable {
 		try {
 			doClick(CostingMap.getCostModelMethodMasterDelete());
 			waitForElementToBeVisible(ContractingMap.getWarningPopUpDeleteButton());

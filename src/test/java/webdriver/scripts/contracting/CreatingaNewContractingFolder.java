@@ -22,7 +22,7 @@ public class CreatingaNewContractingFolder extends GoHelper {
 	static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
 	static String contractFolderName = "Folder" + currentDateTime;
 	static String renameFolderName="Test";
-	/** Regression: Automated test script for ADS-6410,ADS-6411 */
+	/** Regression: Automated test script for ADS-6410,ADS-6411 [add steps for rename folder]*/
 
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
@@ -41,8 +41,9 @@ public class CreatingaNewContractingFolder extends GoHelper {
 		}
 	}
 /**Test - UI Validation [Contracting] �Creating a New Contracting Folder�.**/
+	//ADS-6410
 	@Test
-	public void test01CreateNewContractFolder() throws Throwable {
+	public void test01CreateNewContractFolder_6410() throws Throwable {
 		try {
 			doClick(modelMap.getNewContractFolderBtn());
 			waitForElementToBeVisible(modelMap.getNewFolderPopUp());

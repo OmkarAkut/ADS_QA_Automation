@@ -25,7 +25,7 @@ public class RVUExportImportFunction extends GoHelper {
 	static String costModel="BC COST MODEL";
 	static String[] filter= {"Cost Model Name","Is","Equal To",costModel};
 
-	/** Automates test ticket ADS-6659. ADS-6646,ADS-6660*/
+	/** Automates test ticket ADS-6659. ADS-6660*/
 	@BeforeClass
 	public static void setupScript() throws Exception,Throwable {
 		ExtentReport.reportCreate("RVUExportImportFunction", "webdriver.scripts.costing", "RVUExportImportFunction");
@@ -43,8 +43,9 @@ public class RVUExportImportFunction extends GoHelper {
 			fail(e.getMessage());
 		}
 	}
+	//ADS-6659
 	@Test
-	public void test01VerifyRVUExportPopUp() throws Throwable {
+	public void test01VerifyRVUExportPopUp_6660() throws Throwable {
 		try {
 			doClick(costing.getRvuMaintenanceButtonExport());
 			waitForPageTitle("Export Data");
@@ -57,7 +58,7 @@ public class RVUExportImportFunction extends GoHelper {
 		}
 	}
 	@Test
-	public void test02ExportRvuAndValidateImportExportStatus() throws Throwable {
+	public void test02ExportRvuAndValidateImportExportStatus_6660() throws Throwable {
 		try {
 			doClick(costing.getRvuMaintenanceButtonExport());
 			waitForPageTitle("Export Data");
@@ -74,7 +75,7 @@ public class RVUExportImportFunction extends GoHelper {
 		}
 	}
 	@Test
-	public void test03ImportRvuAndValidateImportExportStatus() throws Throwable {
+	public void test03ImportRvuAndValidateImportExportStatus_6659() throws Throwable {
 		try {
 			doClick(costing.getRvuMaintenanceButtonImport());
 			waitForPageTitle("Import Data");

@@ -55,7 +55,7 @@ public class CostingRunActivityVolumeCalculationScenarioAds2338 extends Calculat
 	}
 
 	@Test
-	public void test01VerifyActivityVolumeDataScenarioPageConfigurationAndSave()
+	public void test01VerifyActivityVolumeDataScenarioPageConfigurationAndSave_5990()
 			throws InterruptedException, Throwable {
 		try {
 			doSearchForModel(costModel);

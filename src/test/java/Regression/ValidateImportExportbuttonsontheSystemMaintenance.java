@@ -52,7 +52,7 @@ public class ValidateImportExportbuttonsontheSystemMaintenance extends GoHelper{
 		}
 	}
 	@Test
-	public void test02ValidateExportOption() throws Throwable {
+	public void test02ValidateExportOption_6511() throws Throwable {
 		try {
 			doClick(sysmaint.getUsersPageButtonExport());
 			waitForMainPageTitle("Multiple File Export");

@@ -35,7 +35,7 @@ public class UcqcGridIsPopulatedAfterClickingApplySelectionsButtonAds1175 extend
 		ucqcMap = BuildMap.getInstance(driver, CostingMap.class);
 		System.out.println("Test Class: " + UcqcGridIsPopulatedAfterClickingApplySelectionsButtonAds1175.class.getSimpleName());
 		Login.loginUser("CostingDepartmentManager1");
-		goToPage("Unit Cost Quick Calculation");
+		goToPage("Unit Cost Quick Calculation");//ADS-6644
 		doMaximizeWindow();
 		ExtentReport.logPass("PASS", "setupScript");
 	} catch (Exception|AssertionError e) {
@@ -44,9 +44,9 @@ public class UcqcGridIsPopulatedAfterClickingApplySelectionsButtonAds1175 extend
 	}
     
   }
-
+//ADS-5927 , all steps , ADS-6644 [also covered]
   @Test
-  public void testUcqcGridDisplaysAfterClickingApplySelectionsButton() throws Throwable{
+  public void testUcqcGridDisplaysAfterClickingApplySelectionsButton_5927_6644() throws Throwable{
     try {
       waitForAjaxExtJs();
 //      ucqcPopulateRequiredFieldsToDisplayGrid("QA Cost Model", "QA MHFY05 After Vol Change", "150 Marina Medical Center", "2110  ICU", "Apr 2004 to Mar 2005");

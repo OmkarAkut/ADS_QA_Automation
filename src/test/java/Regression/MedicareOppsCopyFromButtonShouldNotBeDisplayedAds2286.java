@@ -55,7 +55,7 @@ public class MedicareOppsCopyFromButtonShouldNotBeDisplayedAds2286 extends Contr
   }
 
   @Test
-  public void test01AssertCopyFromButtonIsNotDisplayedForMedicareOppsPricingMethodAds2286() throws InterruptedException,Throwable {
+  public void test01AssertCopyFromButtonIsNotDisplayedForMedicareOppsPricingMethodAds2286_6083() throws InterruptedException,Throwable {
     try {
     	doClick(modelMap.getNewContractModelButton());
 		waitForElementToBeVisible(ContractingMap.getNewContractModelPopUp());

@@ -60,7 +60,7 @@ public class ValidateCustomizeTaskListspageSystemMaintenance extends Calculation
 	}
 
 	@Test
-	public void test02OpenOverheadTab() throws Throwable {
+	public void test02OpenOverheadTab_6516() throws Throwable {
 		try {
 			doClick(systemMap.getCustomizeTaskListsPageSubTabOverhead());
 			assertTextIsDisplayed("Default Overhead Model Task List");
@@ -81,7 +81,7 @@ public class ValidateCustomizeTaskListspageSystemMaintenance extends Calculation
 	}
 
 	@Test
-	public void test02OpenUnpublishedContract() throws Throwable {
+	public void test02OpenUnpublishedContract_6516() throws Throwable {
 		try {
 			doClick(systemMap.getCustomizeTaskListsPageSubTabUnpublishedContract());
 			doClick(ContractingMap.getWarningCancelCloseBtn());
@@ -101,7 +101,7 @@ public class ValidateCustomizeTaskListspageSystemMaintenance extends Calculation
 	}
 
 	@Test
-	public void test03OpenPublishedContract() throws Throwable {
+	public void test03OpenPublishedContract_6516() throws Throwable {
 		try {
 			doClick(systemMap.getCustomizeTaskListsPageSubTabPublishedContract());
 			doClick(ContractingMap.getWarningCancelCloseBtn());
@@ -125,7 +125,7 @@ public class ValidateCustomizeTaskListspageSystemMaintenance extends Calculation
 	}
 
 	@Test
-	public void test04OpenEpisode() throws Throwable {
+	public void test04OpenEpisode_6516() throws Throwable {
 		try {
 			doClick(systemMap.getCustomizeTaskListsPageSubTabEpisode());
 			//Shilpa updated xpath for 11.2 on 12.15.2023
@@ -148,6 +148,12 @@ public class ValidateCustomizeTaskListspageSystemMaintenance extends Calculation
 		}
 	}
 
+	@Test
+	public void test05OpenCostTab_6516() throws Throwable {
+		doClick(systemMap.getCustomizeTaskListsPageSubTabCost());
+		doClick("(//span[text()='Prepare Costing Elements']//parent::div/div)[1]");
+		doClick("(//span[text()='Prepare Costing Elements']//parent::div/div)[1]");
+	}
 	@AfterClass
 	public static void endtest() throws Exception {
 		ExtentReport.report.flush();

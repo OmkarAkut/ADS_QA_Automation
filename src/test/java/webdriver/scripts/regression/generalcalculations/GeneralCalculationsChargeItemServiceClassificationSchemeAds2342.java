@@ -69,9 +69,9 @@ public class GeneralCalculationsChargeItemServiceClassificationSchemeAds2342 ext
 			fail(e.getMessage());
 		}
 	}
-
+//ADS-6101 all steps
 	@Test
-	public void test01ClickRemoveButtonAndVerifyRemoveProcessRanSuccessfully() throws InterruptedException, Throwable {
+	public void test01ClickRemoveButtonAndVerifyRemoveProcessRanSuccessfully_6101() throws InterruptedException, Throwable {
 		try {
 			doClick(DataMaintenanceMap.getLoadDataFilterButton());
 			doFilterCreate(filterCostModel);
@@ -116,7 +116,7 @@ public class GeneralCalculationsChargeItemServiceClassificationSchemeAds2342 ext
 	}
 
 	@Test
-	public void test03VerifyNoServicesAppearOnEncountersPage() throws InterruptedException, Throwable {
+	public void test03VerifyNoServicesAppearOnEncountersPage_6101() throws InterruptedException, Throwable {
 		try {
 			doMaintainDataPageSelectAtoZOption("Encounters");
 			doSearchForModel(encounter);
@@ -150,7 +150,7 @@ public class GeneralCalculationsChargeItemServiceClassificationSchemeAds2342 ext
 	}
 
 	@Test
-	public void test04ClickAssignButtonAndAssertCalculationSummaryDetailsMatchExpected()
+	public void test04ClickAssignButtonAndAssertCalculationSummaryDetailsMatchExpected_6101()
 			throws InterruptedException, Throwable {
 		try {
 
@@ -204,7 +204,7 @@ public class GeneralCalculationsChargeItemServiceClassificationSchemeAds2342 ext
 	}
 
 	@Test
-	public void test05AssertServicesCountOnEncountersPage() throws InterruptedException, Throwable {
+	public void test05AssertServicesCountOnEncountersPage_6101() throws InterruptedException, Throwable {
 		try {
 			goToPage("Maintain Data");
 			doMaintainDataPageSelectAtoZOption("Encounters");
@@ -232,7 +232,7 @@ public class GeneralCalculationsChargeItemServiceClassificationSchemeAds2342 ext
 	}
 
 	@Test
-	public void test06VerifyServicesNowAppearOnEncountersPage() throws InterruptedException, Throwable {
+	public void test06VerifyServicesNowAppearOnEncountersPage_6101() throws InterruptedException, Throwable {
 		try {
 			List<String> encountersTableStrings = javaMakeListOfStrings(encountersTable, "//td[3]/div");
 			assertThat(encountersTableStrings, equalTo(expectedEncounters));

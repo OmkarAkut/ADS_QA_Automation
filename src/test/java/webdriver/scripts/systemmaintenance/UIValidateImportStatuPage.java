@@ -45,8 +45,9 @@ public class UIValidateImportStatuPage extends CalculationHelper{
 			fail(e.getMessage());
 		}
 	}
+	//ADS-6615
 	@Test
-	public void test01ValidateSearchCriteriaUnderImportStatusPage() throws Throwable {
+	public void test01ValidateSearchCriteriaUnderImportStatusPage_6615() throws Throwable {
 		try {
 			doSearchForContractModel(searchText.toUpperCase());
 			waitForDisplayedSpinnerToEnd();
@@ -60,9 +61,9 @@ public class UIValidateImportStatuPage extends CalculationHelper{
 			fail(e.getMessage());
 		}
 	}
-	
+	//ADS-6614,
 	@Test
-	public void test02ValidateDeleteFilteredUnderImportStatusPage() throws Throwable {
+	public void test02ValidateDeleteFilteredUnderImportStatusPage_6614() throws Throwable {
 		try {
 			doClick(statusMap.getImportExportStatusPageButtonDeleteFiltered());
 			waitForElementToBeVisible(statusMap.calcStatusDeleteFilteredButton());
@@ -76,8 +77,9 @@ public class UIValidateImportStatuPage extends CalculationHelper{
 			fail(e.getMessage());
 		}
 	}
+	//ADS-6613
 	@Test
-	public void test03ValidateRefreshUnderImportStatusPage() throws Throwable {
+	public void test03ValidateRefreshUnderImportStatusPage_6613() throws Throwable {
 		try {
 			doClick(statusMap.getImportExportStatusPageButtonRefresh());
 			waitForAjaxExtJs();
@@ -90,8 +92,9 @@ public class UIValidateImportStatuPage extends CalculationHelper{
 			fail(e.getMessage());
 		}
 	}
+	//ADS-6612
 	@Test
-	public void test04ValidateDefaultTabInImportExportStatusPage() throws Throwable {
+	public void test04ValidateDefaultTabInImportExportStatusPage_6612() throws Throwable {
 		try {
 			assertElementIsDisplayed(statusMap.getImportExportStatusPageButtonMyStatus());
 			assertElementIsDisplayed(statusMap.importStatusPageScenarioNameColumnName());
@@ -102,8 +105,9 @@ public class UIValidateImportStatuPage extends CalculationHelper{
 			fail(e.getMessage());
 		}
 	}
+	//ADS-6611
 	@Test
-	public void test05ValidateAllStatusInImportStatusPage() throws Throwable {
+	public void test05ValidateAllStatusInImportStatusPage_6611() throws Throwable {
 		try {
 			doClick(statusMap.getImportExportStatusPageButtonAllStatus());
 			assertListElementsAreDisplayed(statusMap.importStatusDurationGridElements(), printout);
@@ -114,8 +118,9 @@ public class UIValidateImportStatuPage extends CalculationHelper{
 			fail(e.getMessage());
 		}
 	}
+	//ADS-6616
 	@Test
-	public void test06ValidateSortByImportExportName() throws Throwable {
+	public void test06ValidateSortByImportExportName_6616() throws Throwable {
 		try {
 			scrollToView(statusMap.importStatusPageScenarioNameColumnName());
 			doClick(statusMap.importStatusPageScenarioNameColumnName());

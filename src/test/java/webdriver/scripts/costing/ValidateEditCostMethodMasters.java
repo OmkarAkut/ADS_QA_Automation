@@ -20,7 +20,7 @@ public class ValidateEditCostMethodMasters extends GoHelper{
 	static ContractingMap modelMap;
 	static String costModel="Actual Cost Model";
 
-	/** Automates test ticket ADS-6643,ADS-6669*/
+	/** Automates test ticket ADS-6643,ADS-6669[ steps missing]*/
 	@BeforeClass
 	public static void setupScript() throws Exception,Throwable {
 		ExtentReport.reportCreate("ValidateEditCostMethodMasters", "webdriver.scripts.costing", "ValidateEditCostMethodMasters");
@@ -35,8 +35,9 @@ public class ValidateEditCostMethodMasters extends GoHelper{
 			fail(e.getMessage());
 		}
 	}
+	//ADS-6643 all steps
 	@Test
-	public void test01ExpandToCostMethodMasters() throws Throwable {
+	public void test01ExpandToCostMethodMasters_6643() throws Throwable {
 		try {
 			doClickTreeData("Costing");
 			driverDelay(200);
@@ -52,7 +53,7 @@ public class ValidateEditCostMethodMasters extends GoHelper{
 	}
 	
 	@Test
-	public void test02EditCostMethodModel() throws Throwable {
+	public void test02EditCostMethodModel_6643() throws Throwable {
 		try {
 			doClick(costing.getEditButton());
 			driverDelay(200);

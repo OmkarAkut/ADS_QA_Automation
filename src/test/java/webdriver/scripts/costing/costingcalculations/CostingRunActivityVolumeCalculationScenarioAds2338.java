@@ -24,7 +24,7 @@ public class CostingRunActivityVolumeCalculationScenarioAds2338 extends Calculat
 	private final String expectedFilterTotal = "232";
 
 //  private final String expectedFilterTotal = "74";
-	/** Regression: Test script for ADS-5990 */
+	/** Regression: Test script for ADS-5990, incomplete steps need to be added  */
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
 		ExtentReport.reportCreate("CostingRunActivityVolumeCalculationScenarioAds2338",
@@ -55,7 +55,7 @@ public class CostingRunActivityVolumeCalculationScenarioAds2338 extends Calculat
 	}
 
 	@Test
-	public void test01VerifyActivityVolumeDataScenarioPageConfigurationAndSave()
+	public void test01VerifyActivityVolumeDataScenarioPageConfigurationAndSave_5990()
 			throws InterruptedException, Throwable {
 		try {
 			doSearchForModel(costModel);

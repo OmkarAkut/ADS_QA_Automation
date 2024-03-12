@@ -43,9 +43,9 @@ public class VerifyUCQCButtonsBackgroundColor extends UcqcHelper {
 		}
 
 	}
-
+//ADS-5918 all steps
 	@Test
-	public void test01AssertUCQCOptions() throws Throwable {
+	public void test01AssertUCQCOptions_5918() throws Throwable {
 		try {
 			assertElementIsDisplayed(costingMap.getUnitCostQuickCalculationButtonApplySelections());
 			assertElementIsDisplayed(costingMap.getUnitCostQuickCalculationButtonCopyToQuickRVUs());
@@ -63,7 +63,7 @@ public class VerifyUCQCButtonsBackgroundColor extends UcqcHelper {
 	}
 
 	@Test
-	public void test02VerifyBackgroundColorForUCQCOptions() throws Throwable {
+	public void test02VerifyBackgroundColorForUCQCOptions_5918() throws Throwable {
 		try {
 			validateBackgroundColor(BackgroundColor, costingMap.getUnitCostQuickCalculationButtonApplySelections());
 			validateBackgroundColor(BackgroundColor, costingMap.getUnitCostQuickCalculationButtonCopyToQuickRVUs());
@@ -84,7 +84,7 @@ public class VerifyUCQCButtonsBackgroundColor extends UcqcHelper {
 	}
 
 	@Test
-	public void test03VerifyCopyToRvuOverwritePopUp() throws Throwable {
+	public void test03VerifyCopyToRvuOverwritePopUp_5918() throws Throwable {
 		try {
 			doClick(costingMap.getUnitCostQuickCalculationButtonCopyToQuickRVUs());
 			assertElementIsDisplayed(costingMap.getCopyRvuWindow());

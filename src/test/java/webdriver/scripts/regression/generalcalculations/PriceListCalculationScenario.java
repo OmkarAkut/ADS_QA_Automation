@@ -56,9 +56,9 @@ public class PriceListCalculationScenario extends CalculationHelper {
 			fail(e.getMessage());
 		}
 	}
-
+//ADS-6103 all steps
 	@Test
-	public void test01AddNewPriceList() throws Throwable {
+	public void test01AddNewPriceList_6103() throws Throwable {
 		try {
 			doClick(DataMaintenanceMap.getLoadDataNewButton());
 			ContractingMap.getMedicareCode().sendKeys(currentDateTime.replaceAll("\\W", ""));
@@ -74,7 +74,7 @@ public class PriceListCalculationScenario extends CalculationHelper {
 	}
 
 	@Test
-	public void test02ValidateBatch1PriceValues() throws Throwable {
+	public void test02ValidateBatch1PriceValues_6103() throws Throwable {
 		try {
 			ChangeResultsDestinationPriceLists(aTozPage2, batch1, filterPriceScenario1);
 			ValidateCalculationStatus("6443", "4185640");
@@ -89,7 +89,7 @@ public class PriceListCalculationScenario extends CalculationHelper {
 	}
 
 	@Test
-	public void test03ValidateBatch2PriceValues() throws Throwable {
+	public void test03ValidateBatch2PriceValues_6103() throws Throwable {
 		try {
 			ChangeResultsDestinationPriceLists(aTozPage2, batch2, filterPriceScenario2);
 			ValidateCalculationStatus("6443", "4185640");
@@ -104,7 +104,7 @@ public class PriceListCalculationScenario extends CalculationHelper {
 	}
 
 	@Test
-	public void test04ValidateBatch3PriceValues() throws Throwable {
+	public void test04ValidateBatch3PriceValues_6103() throws Throwable {
 		try {
 			ChangeResultsDestinationPriceLists(aTozPage2, batch3, filterPriceScenario3);
 			ValidateCalculationStatus("6443", "4185640");

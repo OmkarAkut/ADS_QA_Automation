@@ -147,7 +147,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 	}
 //ADS-6592
 	@Test
-	public void test0009cMainTabs() throws Throwable {
+	public void test0009cMainTabs_6592() throws Throwable {
 		try {
 			WebElement[] mainTabElements = { generalElement.getAnalyticsTab(), generalElement.getReportingTab(),
 					generalElement.getCostingTab(), generalElement.getContractingTab(), generalElement.getEpisodesTab(),
@@ -176,7 +176,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 	}
 //ADS-6593
 	@Test
-	public void test0010bAnalyticsSubTabsOrder() throws InterruptedException, Throwable {
+	public void test0010bAnalyticsSubTabsOrder_6593() throws InterruptedException, Throwable {
 		try {
 			verifySubTabOrder(generalElement.getAnalyticsTab(), "analytics_subtab",
 					AdsStandardData.expectedAnalyticsSubTabs);
@@ -285,7 +285,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 	}
 //ADS-6582
 	@Test
-	public void test0012AnalyticsTab() throws Throwable {
+	public void test0012AnalyticsTab_6582() throws Throwable {
 		try {
 			// Clicks the Analytics Tab in order to open the dropdown menu
 			doClick(generalElement.getAnalyticsTab());
@@ -307,7 +307,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 	}
 //ADS-6594
 	@Test
-	public void test0013ReportingTab() throws Throwable {
+	public void test0013ReportingTab_6594() throws Throwable {
 		try {
 			// Clicks the Reporting Tab in order to open the dropdown menu
 			doClick(generalElement.getReportingTab());
@@ -334,7 +334,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 	}
 //ADS-6595
 	@Test
-	public void test0014CostingTab() throws Throwable {
+	public void test0014CostingTab_6595() throws Throwable {
 		try {
 			doClick(generalElement.getCostingTab());
 			WebElement[] costingTabElements = { generalElement.getCostingModelsSubTab(),
@@ -353,7 +353,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 	}
 //ADS-6596
 	@Test
-	public void test0015ContractingTab() throws Throwable {
+	public void test0015ContractingTab_6596() throws Throwable {
 		try {
 			// Clicks the Contracting Tab in order to open the dropdown menu
 			doClick(generalElement.getContractingTab());
@@ -372,7 +372,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 	}
 //ADS-6597
 	@Test
-	public void test0016EpisodesTab() throws Throwable {
+	public void test0016EpisodesTab_6597() throws Throwable {
 		try {
 			// Clicks the Episodes Tab in order to open the dropdown menu
 			doClick(generalElement.getEpisodesTab());
@@ -390,7 +390,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 	}
 //ADS-6598
 	@Test
-	public void test0017BudgetingTab() throws Throwable {
+	public void test0017BudgetingTab_6598() throws Throwable {
 		try {
 			// Clicks the Budgeting Tab in order to open the dropdown menu
 			doClick(generalElement.getBudgetingTab());
@@ -406,7 +406,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 	}
 //ADS-6599
 	@Test
-	public void test0018DataMaintenanceTab() throws Throwable {
+	public void test0018DataMaintenanceTab_6599() throws Throwable {
 		try {
 			// Clicks the Data Maintenance Tab in order to open the dropdown menu
 			doClick(generalElement.getDataMaintenanceTab());
@@ -429,7 +429,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 	 */
 	//ADS-6600
 	@Test
-	public void test0019SystemMaintenanceTab() throws Throwable {
+	public void test0019SystemMaintenanceTab_6600() throws Throwable {
 		try {
 			// Clicks the System Maintenance Tab in order to open the dropdown menu
 			doClick(generalElement.getSystemMaintenanceTab());
@@ -454,7 +454,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 	}
 //ADS-6601
 	@Test
-	public void test0020StatusTab() throws Throwable {
+	public void test0020StatusTab_6601() throws Throwable {
 		try {
 			// Clicks the Status Tab in order to open the dropdown menu
 			doClick(generalElement.getStatusTab());

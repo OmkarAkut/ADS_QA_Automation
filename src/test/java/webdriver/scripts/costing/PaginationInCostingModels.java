@@ -21,7 +21,7 @@ public class PaginationInCostingModels extends GoHelper {
 	static CostingMap costing;
 	static GoStatic goStatic;
 	static ModelLibraryMap modelLibrary;
-/** Automates test ticket ADS-6632, ADS-6633 ,ADS-6641,ADS-6652*/
+/** Automates test ticket ADS-6652*/
 	
 	@BeforeClass
 	public static void setupScript() throws Exception,Throwable {
@@ -38,9 +38,9 @@ public class PaginationInCostingModels extends GoHelper {
 			fail(e.getMessage());
 		}
 	}
-
+//ADS-6652 all steps
 	@Test
-	public void test01AssertPaginationAvailableInCostingModel() throws Throwable {
+	public void test01AssertPaginationAvailableInCostingModel_6652() throws Throwable {
 		  try {
 			WebElement[] modelLibraryElements = {
 			         modelLibrary.getmodelLibraryTableText3PageShown(),
@@ -60,7 +60,7 @@ public class PaginationInCostingModels extends GoHelper {
 	}
 	
 	@Test
-	public void test02ValidateNextPageAndPreviousPage() throws Throwable {
+	public void test02ValidateNextPageAndPreviousPage_6652() throws Throwable {
 		try {
 			doClick(modelLibrary.getModelLibraryTableButtonNext());
 			assertElementIsEnabled( modelLibrary.getModelLibraryTableButtonPrevious(), printout);
@@ -73,7 +73,7 @@ public class PaginationInCostingModels extends GoHelper {
 		}
 }
 	@Test
-	public void test03ValidateFirstPageAndLastPage() throws Throwable {
+	public void test03ValidateFirstPageAndLastPage_6652() throws Throwable {
 		try {
 			doClick(modelLibrary.getModelLibraryTableButtonLast());
 			assertElementIsDisabled( modelLibrary.getModelLibraryTableButtonLast(), printout);
@@ -87,7 +87,7 @@ public class PaginationInCostingModels extends GoHelper {
 
 	}
 	@Test
-	public void test04ValidateGoButtonInPagination() throws Throwable {
+	public void test04ValidateGoButtonInPagination_6652() throws Throwable {
 		try {
 			modelLibrary.getModelLibraryFieldInputNumber().clear();
 			modelLibrary.getModelLibraryFieldInputNumber().sendKeys("2");

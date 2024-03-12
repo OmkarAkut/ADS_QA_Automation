@@ -49,7 +49,7 @@ public class ChangePasswordDialogTest extends GoHelper {
 	}
 
 	@Test
-	public void test01OpenChangePasswordDialogAndAssert() throws Throwable {
+	public void test01OpenChangePasswordDialogAndAssert_6614() throws Throwable {
 		try {
 			assertElementIsDisplayed(generalElement.getUserDropdown(), printout);
 			generalElement.getUserDropdown().click();
@@ -99,9 +99,9 @@ public class ChangePasswordDialogTest extends GoHelper {
 			fail(e.getMessage());
 		}
 	}
-
+//ADS-6585
 	@Test
-	public void test04AssertTermsOfUse() throws InterruptedException, Throwable {
+	public void test04AssertTermsOfUse_6585() throws InterruptedException, Throwable {
 		try {
 			assertElementIsDisplayed(generalElement.getUserDropdown(), printout);
 			generalElement.getUserDropdown().click();

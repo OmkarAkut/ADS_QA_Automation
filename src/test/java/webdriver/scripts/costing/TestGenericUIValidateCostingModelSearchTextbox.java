@@ -1,4 +1,4 @@
-package Regression;
+package webdriver.scripts.costing;
 
 import static org.junit.Assert.fail;
 

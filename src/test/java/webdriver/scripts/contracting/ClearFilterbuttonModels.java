@@ -33,7 +33,7 @@ public class ClearFilterbuttonModels extends GoHelper {
 	ContractModelsHelper contractModelsHelper = new ContractModelsHelper();
 
 
-	/** Regression: Automated test script for ADS-6432,ADS-6438 ,ADS-6647,ADS-6648,ADS-6650*/
+	/** Regression: Automated test script for ADS-6432,ADS-6438 ,ADS-6647[to be auto],ADS-6648[to be auto],ADS-6650*/
 
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
@@ -53,9 +53,11 @@ public class ClearFilterbuttonModels extends GoHelper {
 			fail(e.getMessage());
 		}
 	}
-
+	
+	
+//ADS-6432
 	@Test
-	public void test01ContractModelClearFilter() throws Throwable {
+	public void test01ContractModelClearFilter_6432() throws Throwable {
 		try {
 			ClearFilter(filter,Model);
 			ExtentReport.logPass("PASS", "test01ContractModelClearFilter");
@@ -65,8 +67,9 @@ public class ClearFilterbuttonModels extends GoHelper {
 
 		}
 	}
+	//ADS-6438
 	@Test
-	public void test02ContractModelSearchText() throws Throwable {
+	public void test02ContractModelSearchText_6438() throws Throwable {
 		try {
 			ModelSearchText(Model);
 			ExtentReport.logPass("PASS", "test02ContractModelSearchText");
@@ -89,8 +92,9 @@ public class ClearFilterbuttonModels extends GoHelper {
 
 		}
 	}
+	//ADS-6650
 	@Test
-	public void test04CostModelSearchText() throws Throwable {
+	public void test04CostModelSearchText_6650() throws Throwable {
 		try {
 			ModelSearchText(Model);
 			ExtentReport.logPass("PASS", "test04CostModelSearchText");
@@ -152,6 +156,24 @@ public class ClearFilterbuttonModels extends GoHelper {
 			fail(e.getMessage());
 
 		}
+	}
+	@Test
+	public void test04ValidateFilterButton_6431() throws Throwable {
+		ContractingMap.getContractModelButtonFilter().click();
+		waitForAjaxExtJs();
+		// Apply Filter
+		contractModelsHelper.doFilterSetFilterParameters("Name","Is","Equal To",Model);
+		doClick(dialog.getFilterDialogButtonAdd());
+	    waitForAjaxExtJs();
+	    doClick("//span[text()='Edit']");
+	    ContractModelsHelper.keyInValues(driver.findElement(By.name("valuefield")), "Testing");
+	    doClick("//span[text()='Update']");
+//	    doFilterSetFilterParameters("ASC Scheme Name", "Is", "Contains", "Testing");
+	    doClick(ContractingMap.getASCFilterRemoveButton());
+	    Thread.sleep(1000);
+	    doFilterCreate(filter);
+//	    assertElementIsDisplayedWithXpath("//div[text()='"+ascScheme+"']");
+	    assertListOfElementsContainsExpectedString(driver.findElements(By.xpath("(//div[contains(@id,'adynamicgrid')]//tr//td[1]/div)")), Model);
 	}
 	
 	@AfterClass

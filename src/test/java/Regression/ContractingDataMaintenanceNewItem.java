@@ -27,7 +27,7 @@ public class ContractingDataMaintenanceNewItem extends CalculationHelper {
 	static String timePeriodMonth="Sep";
 	static String timePeriodYear="2023";
 	static String[] filter= {"Name","Is","Equal To",timePeriod};
-	/**Regression test ADS-6445*/
+	/**Regression test ADS-6443*/
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
 		try {
@@ -48,7 +48,7 @@ public class ContractingDataMaintenanceNewItem extends CalculationHelper {
 	}
 //ADS-6443 all steps
 	@Test
-	public void test01ContractingDataMaintenanceNewItem_6443() throws Throwable {
+	public void test01ContractingDataMaintenanceNewItem_6443_6445() throws Throwable {
 		try {
 			doClick(ContractingMap.getContractDataMaintenanceNewButton());
 			waitUntilElementIsVisible(ContractingMap.getNewTimePeriodPopUp());

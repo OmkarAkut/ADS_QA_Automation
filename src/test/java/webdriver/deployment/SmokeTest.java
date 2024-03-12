@@ -231,8 +231,9 @@ public class SmokeTest extends UcqcHelper {
 	      }
 	    }
 	  }
+	//ADS-6500
 	  @Test
-	  public void test0001LandingPageSystemMaintenance() throws Throwable {
+	  public void test0001LandingPageSystemMaintenance_6500() throws Throwable {
 	    try {
 			System.out.println("Logging In");
 			
@@ -260,9 +261,9 @@ public class SmokeTest extends UcqcHelper {
 			fail(e.getMessage());
 		}
 	  }
-
+//ADS-6498
 	  @Test
-	  public void test0002LandingPageDataMaintenance() throws Throwable {
+	  public void test0002LandingPageDataMaintenance_6498() throws Throwable {
 	    try {
 			WebElement[] landingPageDataMaintenanceElements = {
 			        generalElement.getLandingPageBubbleDataMaintenance(),
@@ -281,7 +282,7 @@ public class SmokeTest extends UcqcHelper {
 	  }
 
 	  @Test
-	  public void test0003LandingPageBudgeting() throws Throwable {
+	  public void test0003LandingPageBudgeting_6503() throws Throwable {
 		  driverDelay(3000);
 	    try {
 			WebElement[] landingPageBudgetingElements = {
@@ -297,9 +298,9 @@ public class SmokeTest extends UcqcHelper {
 			fail(e.getMessage());
 		}
 	  }
-
+	//ADS-6497[add step4 -12]
 	  @Test
-	  public void test0004LandingPageEpisodes() throws Throwable {
+	  public void test0004LandingPageEpisodes_6497() throws Throwable {
 	    try {
 			WebElement[] landingPageEpisodesElements = {
 			        generalElement.getLandingPageBubbleEpisode(),
@@ -316,9 +317,9 @@ public class SmokeTest extends UcqcHelper {
 			fail(e.getMessage());
 		}
 	  }
-
+	//ADS-6496[add step4 -12],ADS-6582
 	  @Test
-	  public void test0005LandingPageContracting() throws Throwable {
+	  public void test0005LandingPageContracting_6496_6582() throws Throwable {
 	    try {
 	      WebElement[] landingPageContractingElements = {
 	              generalElement.getLandingPageBubbleContracting(),
@@ -337,9 +338,9 @@ public class SmokeTest extends UcqcHelper {
 			fail(e.getMessage());
 		}
 	  }
-
+	//ADS-6495[add step 4-8],ADS-6642[add step 4-8]
 	  @Test
-	  public void test0006LandingPageCosting() throws Throwable {
+	  public void test0006LandingPageCosting_6495_6642() throws Throwable {
 	    try {
 	      WebElement[] landingPageCostingElements = {
 	              generalElement.getLandingPageBubbleCosting(),
@@ -361,9 +362,9 @@ public class SmokeTest extends UcqcHelper {
 			fail(e.getMessage());
 		}
 	  }
-
+	  //ADS-6502[add step 4-11]
 	  @Test
-	  public void test0007LandingPageReporting() throws Throwable {
+	  public void test0007LandingPageReporting_6502() throws Throwable {
 	    try {
 	      WebElement[] landingPageReportingElements = {
 	              generalElement.getLandingPageBubbleReporting(),
@@ -382,9 +383,9 @@ public class SmokeTest extends UcqcHelper {
 			fail(e.getMessage());
 		}
 	  }
-
+	//ADS-6501[ add step 4-7]
 	  @Test
-	  public void test0008LandingPageAnalytics() throws Throwable {
+	  public void test0008LandingPageAnalytics_6501() throws Throwable {
 	    try {
 	      WebElement[] landingPageAnalyticsElements = {
 	              generalElement.getLandingPageBubbleAnalytics(),

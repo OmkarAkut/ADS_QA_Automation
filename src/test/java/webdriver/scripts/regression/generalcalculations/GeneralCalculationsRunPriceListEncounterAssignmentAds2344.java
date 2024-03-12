@@ -61,9 +61,9 @@ public class GeneralCalculationsRunPriceListEncounterAssignmentAds2344 extends C
 		assertThat(sourcePriceList, equalTo(xSourcePriceList));
 		assertThat(destinationChargeScenario, equalTo(xDestinationChargeScenario));
 	}
-
+//ADS-6099
 	@Test
-	public void test01ClickClearResultsButtonAndVerifyCalculationStatusPageDetails()
+	public void test01ClickClearResultsButtonAndVerifyCalculationStatusPageDetails_6099()
 			throws InterruptedException, Throwable {
 		try {
 			doClick(DataMaintenanceMap.getLoadDataFilterButton());
@@ -114,7 +114,7 @@ public class GeneralCalculationsRunPriceListEncounterAssignmentAds2344 extends C
 	}
 
 	@Test
-	public void test02ClickAssignButtonAndAssertCalculationStatusPageDetails() throws InterruptedException, Throwable {
+	public void test02ClickAssignButtonAndAssertCalculationStatusPageDetails_6099() throws InterruptedException, Throwable {
 		try {
 			waitForAjaxExtJs();
 //      waitForPresenceOfElement("(//span[text()='Assign'])");

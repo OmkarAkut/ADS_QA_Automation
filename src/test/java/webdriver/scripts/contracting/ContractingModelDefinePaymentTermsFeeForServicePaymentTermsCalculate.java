@@ -70,7 +70,7 @@ public class ContractingModelDefinePaymentTermsFeeForServicePaymentTermsCalculat
 
 	/**
 	 * Test - [CMS Regs: FY2023 IPPS] - Create New Contracting Model with FY2023
-	 * Medicare Year ADS-6277 ,ADS-6775,ADS-6782
+	 * Medicare Year ADS-6277 ,ADS-6775
 	 **/
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
@@ -95,9 +95,9 @@ public class ContractingModelDefinePaymentTermsFeeForServicePaymentTermsCalculat
 		}
 
 	}
-
+//ADS-6775,ADS-6782 [both test cases covered here]
 	@Test
-	public void FeeForServicePaymentTermsCalculate() throws Throwable {
+	public void FeeForServicePaymentTermsCalculate_6775_6782() throws Throwable {
 		try {
 			ContractModelsHelper.scrollToView("//div[text()='" + contractFolder + "']//img[3]");
 			doClick("//div[text()='" + contractFolder + "']/img[2]");

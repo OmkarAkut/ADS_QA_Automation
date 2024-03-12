@@ -25,9 +25,9 @@ public class CostingCalculateOverheadScenario extends CalculationHelper {
 		fail(e.getMessage());
 	}
   }
-
+//ADS-5991, covered only for Costing , need to add steps[from step16] for Report library Costing for overhead cost model
   @Test
-    public void testAdsLoginLogout() throws Throwable {
+    public void test01AdsLoginLogout5991() throws Throwable {
     try {
 //      doSearchForModel("v102 REGRESSION Overhead Model");
     	 doSearchForModel("2005 Overhead Allocation-Test2023");
@@ -40,7 +40,8 @@ public class CostingCalculateOverheadScenario extends CalculationHelper {
       //Omkar (19/7/2022) : value v102 REGRESSION OH Scenario is not found hence changing it to v102 REGRESSION OH Calc Scenario
       //tableDoubleClickCellFirstColumn("v102 REGRESSION OH Scenario");
 //      tableDoubleClickCellFirstColumn("v102 REGRESSION OH Calc Scenario");
-      tableDoubleClickCellFirstColumn("OH calculation June 2004");
+//      tableDoubleClickCellFirstColumn("OH calculation June 2004");
+      tableDoubleClickCellFirstColumn("ADS-12389 testing");
       waitForAjaxExtJs();
       Thread.sleep(1000);
       //Omkar (19/7/2022) : The below xpath is no more valid
@@ -68,7 +69,7 @@ public class CostingCalculateOverheadScenario extends CalculationHelper {
       doClosePageOnLowerBar("Calculation Status");
       waitForAjaxExtJs();
       Thread.sleep(500);
-      doClick(driver.findElement(By.xpath("//div[contains(@id,'overheadmodelscenarioform')]//following::span[contains(@id,'button')][text()='Cancel & Close']")));
+      doClick(driver.findElement(By.xpath("//div[contains(@id,'overheadmodelscenarioform')]//following::span[contains(@id,'button')][text()='Save & Close']")));
 //      doClick(driver.findElement(By.xpath("//button/span[text()='Save & Close']")));
 //      doClosePageOnLowerBar("v102 REGRESSION...");
       doClosePageOnLowerBar("2005 Overhead...");
@@ -87,7 +88,7 @@ public class CostingCalculateOverheadScenario extends CalculationHelper {
 
     //Shilpa 27.07.2022, some wait is added and updated to click element inside frame
   @Test //(Omkar 24/5/22 : Need to review which objectr needs to be clicked in tree in step 2.The test is failing saying that object is not clickable)
-  public void testAssertReportLibrary() throws InterruptedException,Throwable {
+  public void test02AssertReportLibrary5991() throws InterruptedException,Throwable {
     try {
 		goToPage("Report Library");
 waitForSpinnerToEnd();
@@ -102,6 +103,9 @@ waitForSpinnerToEnd();
 		//Shilpa: 27.07.2022 , added some wait
 		Thread.sleep(5000);
 		doClick(driver.findElement(By.xpath("//div[@class='gwt-Hyperlink']/a/u[text()='* TB MH FY05 Overhead']")));
+		doClick("//button[text()='OK']");
+		doClick("//button[text()='Run']");
+		waitForOverheadReceivedReport();
 		ExtentReport.logPass("PASS", "testAssertReportLibrary");
     } catch (Exception|AssertionError e) {
 		ExtentReport.logFail("FAIL", "testAssertReportLibrary", driver, e);

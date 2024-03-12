@@ -48,9 +48,9 @@ public class ValidateFilterbuttonontheSystemMaintenanceUserspage extends GoHelpe
 			fail(e.getMessage());
 		}
 	}
-
+//ADS-6510
 	@Test
-	public void test01ValidateFilterOption() throws Throwable {
+	public void test01ValidateFilterOption_6510() throws Throwable {
 		try {
 			doClick(sysmaint.getUsersPageButtonFilter());
 			doFilterSetFilterParameters("First Name", "Is", "Equal To", "Test");

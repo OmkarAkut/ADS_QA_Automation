@@ -47,9 +47,9 @@ public class ModelContractLumpSumPaymentAllocation extends CalculationHelper {
 			fail(e.getMessage());
 		}
 	}
-
+//ADS-6468 all steps
 	@Test
-	public void test01NewLumpSumPaymentAllocation() throws Throwable {
+	public void test01NewLumpSumPaymentAllocation_6468() throws Throwable {
 		try {
 			doClickTreeItem("Contracting");
 			doSearchForContractModel(ContractModelName);

@@ -50,9 +50,9 @@ public class EpisodesCreateAssignRemoval extends CalculationHelper {
 			fail(e.getMessage());
 		}
 	}
-
+//ADS-6296 all steps
 	@Test
-	public void test01EpisodeCreation() throws Throwable {
+	public void test01EpisodeCreation_6296() throws Throwable {
 		try {
 			doClick(contractingMap.getNewContractModelButton());
 			waitForElementToBeVisible(modelMap.getNewEpisodeModelPopUp());
@@ -92,7 +92,7 @@ public class EpisodesCreateAssignRemoval extends CalculationHelper {
 	}
 
 	@Test
-	public void test02VerifyAssinEpisodeToEncounter() throws Throwable {
+	public void test02VerifyAssinEpisodeToEncounter_6296() throws Throwable {
 		try {
 			doClick(modelMap.getModelEpisode());
 
@@ -131,7 +131,7 @@ public class EpisodesCreateAssignRemoval extends CalculationHelper {
 			doClick(contractingMap.getContractModelButtonColumnsToDisplayModalRemove());
 			waitForSpinnerToEnd();
 			waitForFirstRowCalculationBarToReach100Percent();
-// Omkar 17/4/2023 : Unable to scroll to bottom to find element. Code will fail after this
+// Omkar 17/4/2023 : Unab;le to scroll to bottom to find element. Code will fail after this
 			calculationStatusPageOpenViewDialog();
 			confirmCalculationStatusDetailsContains("Total EFRs in Population to process: 10");
 			confirmCalculationStatusDetailsContains("Remove Total number of tagged Encounters: 10");

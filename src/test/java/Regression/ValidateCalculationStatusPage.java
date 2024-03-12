@@ -75,7 +75,7 @@ public class ValidateCalculationStatusPage extends CalculationHelper {
 	}
 	
 	@Test
-	public void test02SelectSourceData() throws Throwable {
+	public void test02SelectSourceData_5771() throws Throwable {
 		try {
 			doClick(CostingMap.getCostCalcNewButton());
 			waitForElementToBeVisible(CostingMap.getCostScenarioName());
@@ -110,7 +110,7 @@ public class ValidateCalculationStatusPage extends CalculationHelper {
 		
 	}
 	@Test
-	public void test03EntityAndDepartmentGroupSelection() throws Throwable {
+	public void test03EntityAndDepartmentGroupSelection_5771() throws Throwable {
 		try {
 			ContractModelsHelper.scrollToView(CostingMap.getEntitiesSelect());
 			doClick(CostingMap.getEntitiesSelect());
@@ -133,7 +133,7 @@ public class ValidateCalculationStatusPage extends CalculationHelper {
 		}
 	}
 	@Test
-	public void test04SelectPriceListStartEndMonth() throws Throwable {
+	public void test04SelectPriceListStartEndMonth_5771() throws Throwable {
 		try {
 			driverDelay();
 			doDropdownSelectUsingOptionText(
@@ -159,7 +159,7 @@ public class ValidateCalculationStatusPage extends CalculationHelper {
 		}
 	}
 	@Test
-	public void test05SaveAndCalculate() throws Throwable {
+	public void test05SaveAndCalculate_5771() throws Throwable {
 		try {
 			doClick(ContractingMap.getSaveBenefitPlan());
 			driverDelay(100);

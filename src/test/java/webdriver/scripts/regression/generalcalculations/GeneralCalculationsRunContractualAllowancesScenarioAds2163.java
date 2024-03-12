@@ -14,6 +14,7 @@ import org.openqa.selenium.By;
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.helpers.CalculationHelper;
+import webdriver.scripts.regression.generalcalculations.GeneralCalculationsData;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class GeneralCalculationsRunContractualAllowancesScenarioAds2163 extends CalculationHelper {
@@ -50,9 +51,9 @@ public class GeneralCalculationsRunContractualAllowancesScenarioAds2163 extends 
 		//doClosePageOnLowerBar("Calculation Status");
 		ExtentReport.report.flush();
 	}
-
+//ADS-6104 only test01 db verification is ignored
 	@Test
-	public void test01ExportContractualAllowanceScenarios()
+	public void test01ExportContractualAllowanceScenarios_6104()
 			throws InterruptedException,Throwable {
 		try {
 //			doClick(driver.findElement(By.xpath("//span[@class='x-btn-icon pagging-tbar-last-button']")));

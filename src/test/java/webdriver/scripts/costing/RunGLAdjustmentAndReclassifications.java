@@ -47,9 +47,9 @@ public class RunGLAdjustmentAndReclassifications extends CalculationHelper {
 			fail(e.getMessage());
 		}
 	}
-
+//ADS-5988 all steps
 	@Test
-	public void test01OpenGLAdjustmentAndReclassification() throws Throwable {
+	public void test01OpenGLAdjustmentAndReclassification_5988() throws Throwable {
 		try {
 			ContractModelsHelper.doClickTreeData("CM Test");
 			waitForMainPageTitle("Cost Scnenarios");

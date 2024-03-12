@@ -70,7 +70,7 @@ public class CreateaCustomTaskListwithOverheadTaskListSpecificScreens extends Go
 	}
 	@Test
 	// Omkar : this TC will fail as scrolling wont work from 3rd assertion.
-	public void test02VerifyScreensAndDataLoaderTasks() throws Throwable {
+	public void test02VerifyScreensAndDataLoaderTasks_5801() throws Throwable {
 		try {
 			doClick(systemMap.getCustomTaskListClearFilterButton());
 			assertElementIsDisplayedWithXpath("//div[@id='costingScreens-body']//*[text()='Allocation Exceptions']");
@@ -85,7 +85,7 @@ public class CreateaCustomTaskListwithOverheadTaskListSpecificScreens extends Go
 		}
 	}
 	@Test
-	public void test03AddNewFolder() throws Throwable {
+	public void test03AddNewFolder_5801() throws Throwable {
 		try {
 			doClick(systemMap.getSystemMaintenanceAddFolderButton());
 			Actions act=new Actions(driver);

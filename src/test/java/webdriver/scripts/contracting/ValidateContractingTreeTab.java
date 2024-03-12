@@ -33,9 +33,9 @@ public class ValidateContractingTreeTab extends CalculationHelper{
 			fail(e.getMessage());
 		}
 	}
-	
+	//ADS-6444
 	@Test
-	public void test01VerifyEditContractingTreeTab() throws Throwable {
+	public void test01VerifyEditContractingTreeTab_6444() throws Throwable {
 		try {
 			doClickTreeData("Contracting");
 			driverDelay(200);

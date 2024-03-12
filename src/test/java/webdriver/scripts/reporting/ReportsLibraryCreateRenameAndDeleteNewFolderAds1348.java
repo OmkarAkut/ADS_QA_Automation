@@ -50,9 +50,9 @@ public class ReportsLibraryCreateRenameAndDeleteNewFolderAds1348 extends LoginSt
     ExtentReport.report.flush();
   }
 
-
+//ADS-5661
 @Test
-  public void test01aCreateNewReportsFolderAndConfirmRenameAndDeleteButtonsAreEnabled() throws Exception,Throwable {
+  public void test01aCreateNewReportsFolderAndConfirmRenameAndDeleteButtonsAreEnabled_5661() throws Exception,Throwable {
 		driverDelay(5000);;//Shilpa 16.09.2022 
      try {
 		driver.findElement(By.xpath("//div[@role='treeitem']/div[contains(text(),'Folders')]")).click();
@@ -72,7 +72,7 @@ public class ReportsLibraryCreateRenameAndDeleteNewFolderAds1348 extends LoginSt
   }
 
   @Test
-  public void test02RenameNewReportsFolder() throws Throwable {
+  public void test02RenameNewReportsFolder_5661() throws Throwable {
     try {
     	driverDelay(5000);;//venkat 03.10.2022 
       driver.findElement(By.xpath("//div[contains(@class,'droppable')][contains(text(),'New Folder')]")).click();
@@ -104,7 +104,7 @@ public class ReportsLibraryCreateRenameAndDeleteNewFolderAds1348 extends LoginSt
   }
 
   @Test
-  public void test03CancelDeletingNewReportsFolder() throws Throwable {
+  public void test03CancelDeletingNewReportsFolder_5611() throws Throwable {
     try {
     	driverDelay(5000);;//venkat 03.10.2022 
       driver.findElement(By.xpath("//div/button[text()='Delete Folder']")).click();
@@ -126,7 +126,7 @@ public class ReportsLibraryCreateRenameAndDeleteNewFolderAds1348 extends LoginSt
 
 //  @Ignore
   @Test
-  public void test04DeleteNewReportsFolder() throws Throwable {
+  public void test04DeleteNewReportsFolder_5661() throws Throwable {
     try {
       driver.findElement(By.xpath("//div/button[text()='Delete Folder']")).click();
      

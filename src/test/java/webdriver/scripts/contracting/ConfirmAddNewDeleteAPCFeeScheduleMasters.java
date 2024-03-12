@@ -23,7 +23,7 @@ public class ConfirmAddNewDeleteAPCFeeScheduleMasters extends CalculationHelper 
 	static String APCCode = currentDateTime.replaceAll("\\W", "");
 	static String filter[] = { "Code", "Is", "Equal To", APCCode };
 
-	/** Regression: Automated test script for ADS-6458,ADS-6457 ,ADS-6455 */
+	/** Regression: Automated test script for ADS-6458,ADS-6457[to be auto],ADS-6455 */
 
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
@@ -44,9 +44,9 @@ public class ConfirmAddNewDeleteAPCFeeScheduleMasters extends CalculationHelper 
 			fail(e.getMessage());
 		}
 	}
-
+//ADS-6458
 	@Test
-	public void test01AssertContractTaskList() throws Throwable {
+	public void test01AssertContractTaskList_6458() throws Throwable {
 		try {
 
 			// ADS-6455
@@ -63,9 +63,9 @@ public class ConfirmAddNewDeleteAPCFeeScheduleMasters extends CalculationHelper 
 		}
 
 	}
-
+//ADS-6442,ADS-6455[add collapse function]
 	@Test
-	public void test02AssertBuildStructureElements() throws Throwable {
+	public void test02AssertBuildStructureElements_6442_6455() throws Throwable {
 		try {
 			doClickTreeItem("Build Structure Elements");
 			driverDelay(300);
@@ -127,9 +127,9 @@ public class ConfirmAddNewDeleteAPCFeeScheduleMasters extends CalculationHelper 
 			fail(e.getMessage());
 		}
 	}
-
+//ADS-6458
 	@Test
-	public void test06CreateNewandDeleteAPCCode() throws Throwable {
+	public void test06CreateNewandDeleteAPCCode_6458() throws Throwable {
 		try {
 			doClickTreeItemWithCheckbox("APC Fee Schedule Masters");
 			waitForElementToBeVisible(ContractingMap.getApcFeeScheduleHeader());
@@ -140,7 +140,7 @@ public class ConfirmAddNewDeleteAPCFeeScheduleMasters extends CalculationHelper 
 			doClick(ContractingMap.getNewAPCodeFilterButton());
 			doFilterCreate(filter);
 			assertElementIsDisplayed(driver.findElement(By.xpath("//div[text()='" + APCCode + "']")));
-			// ADS-6457
+			
 			doClick(ContractingMap.getNewAPCodeDeleteButton());
 			waitForElementToBeVisible(ContractingMap.getWarningPopUpDeleteButton());
 			doClick(ContractingMap.getWarningPopUpDeleteButton());

@@ -1996,7 +1996,8 @@ public class CostingMap extends MapConfig {
 	public List<WebElement> getProviderEntityList() {
 		return getProviderEntityList;
 	}
-	@FindBy(xpath = "(//div[contains(@id,'dynamicGrid')]//table[@class='x-grid-table x-grid-table-resizer'])//tr/td[3]/div")
+	//Shilpa updated xpath : 3.11.2024
+	@FindBy(xpath = "//div[contains(@id,'codenomaster')]//div//table//tr//td[3]/div")
 	private static List<WebElement> getEntitiesPageElementList;
 	public static List<WebElement> getEntitiesPageElementList() {return getEntitiesPageElementList;}
 

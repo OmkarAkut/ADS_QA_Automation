@@ -1,4 +1,4 @@
-package Regression;
+package webdriver.scripts.costing;
 
 import static org.junit.Assert.fail;
 
@@ -82,7 +82,7 @@ public class ValidateCalculationStatusAllStatus extends CalculationHelper{
 		}
 	}
 	@Test
-	public void test03ValidateAllStatusByPagination() throws Throwable {
+	public void test03ValidateAllStatusByPagination_6602() throws Throwable {
 		try {
 			doClick(modelMap.getModelLibraryTableButtonLast());
 			assertListElementsAreDisplayed(statusMap.calculationStatusPageGridElements(), printout);

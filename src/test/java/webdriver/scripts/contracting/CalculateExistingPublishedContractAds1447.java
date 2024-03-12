@@ -41,7 +41,7 @@ public class CalculateExistingPublishedContractAds1447 extends CalculationHelper
   private static ModelLibraryMap modelMap;
 
 
-  /** Regression: Automated test script for ADS-1447, ADS-6782,ADS-6433,ADS-6085 **/
+  /** Regression: Automated test script for ADS-6433,ADS-6085 **/
 
   @BeforeClass
   public static void setupScript() throws Exception,Throwable {
@@ -87,9 +87,9 @@ public class CalculateExistingPublishedContractAds1447 extends CalculationHelper
 	fail(e.getMessage());
 	}
   }
-
+//ADS-6433
   @Test
-  public void test01RunPublishedContractAndVerifyStatusPageDetailsAfterCompleted() throws Throwable, InterruptedException {
+  public void test01RunPublishedContractAndVerifyStatusPageDetailsAfterCompleted_ADS_6433_() throws Throwable, InterruptedException {
     try {
 		waitForSpinnerToEnd();
 		waitForAjaxExtJs();
@@ -111,9 +111,9 @@ public class CalculateExistingPublishedContractAds1447 extends CalculationHelper
 		fail(e.getMessage());
     	}
   }
-
+//ADS-6085
   @Test
-  public void test02OpenViewDialogAndAssertTotalEfrs() throws InterruptedException,Throwable {
+  public void test02OpenViewDialogAndAssertTotalEfrs_ADS_6085_() throws InterruptedException,Throwable {
 	try {
 		Thread.sleep(2000);
 		calculationStatusPageOpenViewDialog();

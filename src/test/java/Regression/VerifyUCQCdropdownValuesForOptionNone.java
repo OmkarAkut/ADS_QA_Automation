@@ -78,7 +78,7 @@ public class VerifyUCQCdropdownValuesForOptionNone extends UcqcHelper {
 	}
 
 	@Test
-	public void test02SetCostModelScenarioToNone() throws Throwable {
+	public void test02SetCostModelScenarioToNone_5915() throws Throwable {
 		try {
 			ucqcDisplayChargeCodeGrid(requiredFields);
 			doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationDropdownCostModelScenario(),
@@ -100,7 +100,7 @@ public class VerifyUCQCdropdownValuesForOptionNone extends UcqcHelper {
 	}
 
 	@Test
-	public void test03SetCostModelEntityToNone() throws Throwable {
+	public void test03SetCostModelEntityToNone_5915() throws Throwable {
 		try {
 			ucqcDisplayChargeCodeGrid(requiredFields);
 			doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationDropdownEntity(),
@@ -124,7 +124,7 @@ public class VerifyUCQCdropdownValuesForOptionNone extends UcqcHelper {
 	}
 
 	@Test
-	public void test04SetDepartmentValueToNone() throws Throwable {
+	public void test04SetDepartmentValueToNone_5915() throws Throwable {
 		try {
 			ucqcDisplayChargeCodeGrid(requiredFields);
 			updateDepartment("<None>");
@@ -146,7 +146,7 @@ public class VerifyUCQCdropdownValuesForOptionNone extends UcqcHelper {
 		}
 	}
 	@Test
-	public void test05SetResultsStoredToNone() throws Throwable {
+	public void test05SetResultsStoredToNone_5915() throws Throwable {
 		try {
 			ucqcDisplayChargeCodeGrid(requiredFields);
 		    doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationFieldResultsStoredFor(),costingMap.getUnitCostQuickCalculationDropdownResultsStoredForMenuList(),"<None>");
@@ -170,7 +170,7 @@ public class VerifyUCQCdropdownValuesForOptionNone extends UcqcHelper {
 		}
 	}
 	@Test
-	public void test06ResetCostModel() throws Throwable {
+	public void test06ResetCostModel_5915() throws Throwable {
 		try {
 			ucqcDisplayChargeCodeGrid(requiredFields);
 		    doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationDropdownCostModel(),costingMap.getUnitCostQuickCalculationDropdownCostModelMenuList(),"Marina Clinics");
@@ -188,7 +188,7 @@ public class VerifyUCQCdropdownValuesForOptionNone extends UcqcHelper {
 		}
 	}
 	@Test
-	public void test07ResetCostModelScenario() throws Throwable {
+	public void test07ResetCostModelScenario_5915() throws Throwable {
 		try {
 			ucqcDisplayChargeCodeGrid(requiredFields);
 		    doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationDropdownCostModelScenario(),costingMap.getUnitCostQuickCalculationDropdownCostModelScenarioMenuList(),"*CM2 TB MHFY05 No Price List - 2");
@@ -207,7 +207,7 @@ public class VerifyUCQCdropdownValuesForOptionNone extends UcqcHelper {
 		}
 	}
 	@Test
-	public void test08ResetEntity() throws Throwable {
+	public void test08ResetEntity_5915() throws Throwable {
 		try {
 			ucqcDisplayChargeCodeGrid(requiredFieldsUpdate);
 		    doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationDropdownEntity(),costingMap.getUnitCostQuickCalculationDropdownEntityMenuList(),"200 Southgate");
@@ -228,7 +228,7 @@ public class VerifyUCQCdropdownValuesForOptionNone extends UcqcHelper {
 		}
 	}
 	@Test
-	public void test09ResetDepartment() throws Throwable {
+	public void test09ResetDepartment_5915() throws Throwable {
 		try {
 			ucqcDisplayChargeCodeGrid(requiredFieldsUpdate);
 			updateDepartment("2111");
@@ -247,7 +247,7 @@ public class VerifyUCQCdropdownValuesForOptionNone extends UcqcHelper {
 		}
 	}
 	@Test
-	public void test10ResetResultsStoredFor() throws Throwable {
+	public void test10ResetResultsStoredFor_5915() throws Throwable {
 		try {
 		    doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationFieldResultsStoredFor(),costingMap.getUnitCostQuickCalculationDropdownResultsStoredForMenuList(),"May 2004 to May 2004");
 		    assertElementIsEnabled(costingMap.getUnitCostQuickCalculationDropdownEntity(), printout);
