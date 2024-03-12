@@ -105,7 +105,9 @@ public class SystemMaintenanceMap extends MapConfig {
 
 	// ===== System Maintenance Tab >  Security Settings Page ===== //
 
-	@FindBy(xpath = "//*[contains(@id,'security') and contains(@id,'targetEl')]/descendant::span[text()='Save']")
+//	Omkar 20/2/2024 : xpath changes for 11.2
+//	@FindBy(xpath = "//*[contains(@id,'security') and contains(@id,'targetEl')]/descendant::span[text()='Save']")
+	@FindBy(xpath = "//*[contains(@id,'security') and contains(@id,'targetEl')]/descendant::span[text()='Save']/parent::span")
 	private WebElement securitySettingsPageButtonSave;
 	public WebElement getSecuritySettingsPageButtonSave() {return securitySettingsPageButtonSave;}
 
@@ -141,57 +143,77 @@ public class SystemMaintenanceMap extends MapConfig {
 	private WebElement allowedLoginAftExp;
 	public WebElement getSecuritySettingsPageFormFieldPasswordGraceLoginsAfterExpirationPeriod() {return allowedLoginAftExp;}
 
-	@FindBy(xpath = "//*[contains(@id,'isAtleastOneLetter')]")
+//	Omkar 20/2/2024 : xpath changes for 11.2
+//	@FindBy(xpath = "//*[contains(@id,'isAtleastOneLetter')]")
+	@FindBy(xpath = "//*[contains(@id,'isAtleastOneLetter') and @type ='checkbox']/parent::span")
 	private WebElement isAtleastOneLetter;
 	public WebElement getSecuritySettingsPageCheckboxMustIncludeAtLeastOneLetter() {return isAtleastOneLetter;}
 
-	@FindBy(xpath = "//*[contains(@id,'isBothUpperAndLoweCase')]")
+//	Omkar 20/2/2024 : xpath changes for 11.2
+//	@FindBy(xpath = "//*[contains(@id,'isBothUpperAndLoweCase')]")
+	@FindBy(xpath = "//*[contains(@id,'isBothUpperAndLoweCase') and @type='checkbox']/parent::span")
 	private WebElement isBothUpperAndLoweCase;
 	public WebElement getSecuritySettingsPageCheckboxMustIncludeBothUpperAndLowerCaseLetters() {return isBothUpperAndLoweCase;}
 
-	@FindBy(xpath = "//*[contains(@id,'isAtleastOneNumber')]")
+//	Omkar 20/2/2024 : xpath changes for 11.2
+//	@FindBy(xpath = "//*[contains(@id,'isAtleastOneNumber')]")
+	@FindBy(xpath = "//*[contains(@id,'isAtleastOneNumber')  and @type='checkbox']/parent::span")
 	private WebElement isAtleastOneNumber;
 	public WebElement getSecuritySettingsPageCheckboxMustIncludeAtLeastOneNumber() {return isAtleastOneNumber;}
 
-	@FindBy(xpath = "//*[contains(@id,'isBothUpperAndLoweCase')]")
+//	Omkar 20/2/2024 : xpath changes for 11.2
+//	@FindBy(xpath = "//*[contains(@id,'isBothUpperAndLoweCase')]")
+	@FindBy(xpath = "//*[contains(@id,'isBothUpperAndLoweCase') and @type='checkbox']/parent::span")
 	private WebElement isAtleastOneSplChar;
 	public WebElement getSecuritySettingsPageCheckboxMustIncludeAtLeastOneSpecialCharacter() {return isAtleastOneSplChar;}
 
-	@FindBy(xpath = "//*[@name='objectsSyncLevel']")
+//	Omkar 20/2/2024 : xpath changes for 11.2
+//	@FindBy(xpath = "//*[@name='objectsSyncLevel']")
+	@FindBy(xpath = "//*[@name='objectsSyncLevel']/parent::div")
 	private WebElement objectsSyncLevel;
 	public WebElement getSecuritySettingsPageFormFieldBusinessObjectsEnterpriseSynchInterval() {return objectsSyncLevel;}
 
 //	@FindBy(xpath = "//*[contains(text(),'Default Entities For New Users')]/../following-sibling::td/descendant::*[contains(@id,'radiofield') and text()='All']/preceding-sibling::input[contains(@id,'radiofield')]")
 	//Shilpa updated xpath for 11.2 on 1.2.2024
-	@FindBy(xpath = "(//*[contains(text(),'Default Entities For New Users')]//following::input[@name='entityRadio'])[1]")
+//	Omkar 20/2/2024 : xpath changes for 11.2
+//	@FindBy(xpath = "(//*[contains(text(),'Default Entities For New Users')]//following::input[@name='entityRadio'])[1]")
+	@FindBy(xpath = "(//input[@name='entityRadio'])[1]/parent::span")
 	private WebElement defaultEntitiesForNewUsersRadioAll;
 	public WebElement getSecuritySettingsPageRadioButtonDefaultEntitiesForNewUsersAll() {return defaultEntitiesForNewUsersRadioAll;}
 
-//	@FindBy(xpath = "//*[contains(text(),'Default Entities For New Users')]/../following-sibling::td/descendant::*[contains(@id,'radiofield') and text()='None']/preceding-sibling::input[contains(@id,'radiofield')]")
 	//Shilpa updated xpath for 11.2 on 1.2.2024
-	@FindBy(xpath = "(//*[contains(text(),'Default Entities For New Users')]//following::input[@name='entityRadio'])[2]")
+//	@FindBy(xpath = "//*[contains(text(),'Default Entities For New Users')]/../following-sibling::td/descendant::*[contains(@id,'radiofield') and text()='None']/preceding-sibling::input[contains(@id,'radiofield')]"
+//	Omkar 20/2/2024 : xpath changes for 11.2
+//	@FindBy(xpath = "(//*[contains(text(),'Default Entities For New Users')]//following::input[@name='entityRadio'])[2]")
+	@FindBy(xpath = "(//input[@name='entityRadio'])[2]/parent::span")
 	private WebElement defaultEntitiesForNewUsersRadioNone;
 	public WebElement getSecuritySettingsPageRadioButtonDefaultEntitiesForNewUsersNone() {return defaultEntitiesForNewUsersRadioNone;}
 
-//	@FindBy(xpath = "//*[contains(text(),'Default Departments For New Users')]/../following-sibling::td/descendant::*[contains(@id,'radiofield') and text()='All']/preceding-sibling::input[contains(@id,'radiofield')]")
 	//Shilpa updated xpath for 11.2 on 1.2.2024
-	@FindBy(xpath = "(//*[contains(text(),'Default Departments For New Users')]//following::input[@name='departmentRadio'])[1]")
+//	@FindBy(xpath = "//*[contains(text(),'Default Departments For New Users')]/../following-sibling::td/descendant::*[contains(@id,'radiofield') and text()='All']/preceding-sibling::input[contains(@id,'radiofield')]")
+//	Omkar 20/2/2024 : xpath changes for 11.2
+//	@FindBy(xpath = "(//*[contains(text(),'Default Departments For New Users')]//following::input[@name='departmentRadio'])[1]")
+	@FindBy(xpath = "(//input[@name='departmentRadio'])[1]/parent::span")
 	private WebElement defaultDepartmentsForNewUsersRadioAll;
 	public WebElement getSecuritySettingsPageRadioButtonDefaultDepartmentsForNewUsersAll() {return defaultDepartmentsForNewUsersRadioAll;}
 
-//	@FindBy(xpath = "//*[contains(text(),'Default Departments For New Users')]/../following-sibling::td/descendant::*[contains(@id,'radiofield') and text()='None']/preceding-sibling::input[contains(@id,'radiofield')]")
 	//Shilpa updated xpath for 11.2 on 1.2.2024
-		@FindBy(xpath = "(//*[contains(text(),'Default Departments For New Users')]//following::input[@name='departmentRadio'])[2]")
+//	@FindBy(xpath = "//*[contains(text(),'Default Departments For New Users')]/../following-sibling::td/descendant::*[contains(@id,'radiofield') and text()='None']/preceding-sibling::input[contains(@id,'radiofield')]")
+//	Omkar 20/2/2024 : xpath changes for 11.2
+	//	@FindBy(xpath = "(//*[contains(text(),'Default Departments For New Users')]//following::input[@name='departmentRadio'])[2]")
+	@FindBy(xpath = "(//input[@name='departmentRadio'])[2]/parent::span")
 	private WebElement defaultDepartmentsForNewUsersRadioNone;
 	public WebElement getSecuritySettingsPageRadioButtonDefaultDepartmentsForNewUsersNone() {return defaultDepartmentsForNewUsersRadioNone;}
 
+//	Omkar 20/2/2024 : xpath changes for 11.2
 //	@FindBy(xpath = "//*[contains(@id,'isAuditLogEnabled')]")
-	@FindBy(xpath = "//input[@name='isAuditLogEnabled']")
+	@FindBy(xpath = "//input[@name='isAuditLogEnabled']/parent::span")
 	private WebElement isAuditLogEnabled;
 	public WebElement getSecuritySettingsPageCheckboxAuditLoggingEnabled() {return isAuditLogEnabled;}
 
+//	Omkar 20/2/2024 : xpath changes for 11.2
 //	@FindBy(xpath = "//*[@name='auditRetentionPeriod']")
-	@FindBy(xpath = "//input[@name='auditRetentionPeriod']")
+	@FindBy(xpath = "//input[@name='auditRetentionPeriod']/parent::div")
 	private WebElement auditRetentionPeriod;
 	public WebElement getSecuritySettingsPageFormFieldAuditLogRetentionPeriod() {return auditRetentionPeriod;}
 
@@ -219,137 +241,201 @@ public class SystemMaintenanceMap extends MapConfig {
 	private WebElement destReimbursementsScenariosUnPublishedStart;
 	public WebElement getGeneralSettingsPageComboBoxDestinationReimbursementsScenariosUnpublishedStart() {return destReimbursementsScenariosUnPublishedStart;}
 
-	@FindBy(name = "unPublishedEnd")
+//	Omkar 20/2/2024 : xpath changes for 11.2
+//	@FindBy(name = "unPublishedEnd")
+	@FindBy(xpath ="//*[contains(@name , 'unPublishedEnd')]/parent::div")
 	private WebElement destReimbursementsScenariosUnPublishedEnd;
 	public WebElement getGeneralSettingsPageComboBoxDestinationReimbursementsScenariosUnpublishedEnd() {return destReimbursementsScenariosUnPublishedEnd;}
 
-	@FindBy(xpath = "//*[contains(@id,'checkbox') and text()='Price']/../following-sibling::input")
+//	 Omkar 20/2/2024 : xpath changes for 11.2
+//	@FindBy(xpath = "//*[contains(@id,'checkbox') and text()='Price']/../following-sibling::input")
+	@FindBy(xpath ="//*[contains(@aria-label , 'Price')]/parent::span")
 	private WebElement rvuMaintShowPriceCheckbox;
 	public WebElement getGeneralSettingsPageCheckboxRvuMaintenanceShowPrice() {return rvuMaintShowPriceCheckbox;}
 
-	@FindBy(xpath = "//*[contains(@id,'checkbox') and text()='Revenue']/../following-sibling::input")
+//	Omkar 20/2/2024 : xpath changes for 11.2
+//	@FindBy(xpath = "//*[contains(@id,'checkbox') and text()='Revenue']/../following-sibling::input")
+	@FindBy(xpath ="//*[contains(@aria-label , 'Revenue')]/parent::span")
 	private WebElement rvuMaintShowRevenueCheckbox;
 	public WebElement getGeneralSettingsPageCheckboxRvuMaintenanceShowRevenue() {return rvuMaintShowRevenueCheckbox;}
 
-	@FindBy(name = "uiPageSize")
+//	Omkar 21/2/2024 : xpath changes for 11.2
+//	@FindBy(name = "uiPageSize")
+	@FindBy(xpath = "//*[@name= 'uiPageSize']/parent::div")
 	private WebElement uiPageSize;
 	public WebElement getGeneralSettingsPageFormFieldUiPageSize() {return uiPageSize;}
 
-	@FindBy(name = "calStatusUIPageSize")
+//	Omkar 21/2/2024 : xpath changes for 11.2
+//	@FindBy(name = "calStatusUIPageSize")
+	@FindBy(xpath = "//*[@name= 'calStatusUIPageSize']/parent::div")
 	private WebElement calStatusUIPageSize;
 	public WebElement getGeneralSettingsPageFormFieldCalculationStatusUiPageSize() {return calStatusUIPageSize;}
 
-	@FindBy(name = "impExpStatusUIPageSize")
+//	Omkar 21/2/2024 : xpath changes for 11.2
+//	@FindBy(name = "impExpStatusUIPageSize")
+	@FindBy(xpath = "//*[@name= 'impExpStatusUIPageSize']/parent::div")
 	private WebElement impExpStatusUIPageSize;
 	public WebElement getGeneralSettingsPageFormFieldImportExportAndUtilityStatusUiPageSize() {return impExpStatusUIPageSize;}
 
-	@FindBy(name = "maxDockItems")
+//	Omkar 21/2/2024 : xpath changes for 11.2
+//	@FindBy(name = "maxDockItems")
+	@FindBy(xpath = "//*[@name= 'maxDockItems']/parent::div")
 	private WebElement maxDockItems;
 	public WebElement getGeneralSettingsPageFormFieldMaximumDockItems() {return maxDockItems;}
 
-	@FindBy(name = "CONTRACT_CALCULATION")
+//	Omkar 21/2/2024 : xpath changes for 11.2
+//	@FindBy(name = "CONTRACT_CALCULATION")
+	@FindBy(xpath = "//*[@name= 'CONTRACT_CALCULATION']/parent::div")
 	private WebElement CONTRACT_CALCULATION;
 	public WebElement getGeneralSettingsPageFormFieldContractingContractBatch() {return CONTRACT_CALCULATION;}
 
-	@FindBy(name = "CONTRACTUAL_ALLOWANCES")
+//	Omkar 21/2/2024 : xpath changes for 11.2
+//	@FindBy(name = "CONTRACTUAL_ALLOWANCES")
+	@FindBy(xpath = "//*[@name= 'CONTRACTUAL_ALLOWANCES']/parent::div")
 	private WebElement CONTRACTUAL_ALLOWANCES;
 	public WebElement getGeneralSettingsPageFormFieldContractingContractAllowances() {return CONTRACTUAL_ALLOWANCES;}
 
-	@FindBy(name = "PSYCH_COMORBIDITY")
+//	Omkar 21/2/2024 : xpath changes for 11.2
+//	@FindBy(name = "PSYCH_COMORBIDITY")
+	@FindBy(xpath = "//*[@name= 'PSYCH_COMORBIDITY']/parent::div")
 	private WebElement PSYCH_COMORBIDITY;
 	public WebElement getGeneralSettingsPageFormFieldContractingPsychCombinedComorbidityAssignment() {return PSYCH_COMORBIDITY;}
 
-	@FindBy(name = "PUBLISHED_CONTRACT_CALCULATION")
+//	Omkar 21/2/2024 : xpath changes for 11.2
+//	@FindBy(name = "PUBLISHED_CONTRACT_CALCULATION")
+	@FindBy(xpath = "//*[@name= 'PUBLISHED_CONTRACT_CALCULATION']/parent::div")
 	private WebElement PUBLISHED_CONTRACT_CALCULATION;
 	public WebElement getGeneralSettingsPageFormFieldContractingPublishedContractCalculation() {return PUBLISHED_CONTRACT_CALCULATION;}
 
-	@FindBy(name = "REIMBURSEMENT_SCENARIO")
+//	Omkar 21/2/2024 : xpath changes for 11.2
+//	@FindBy(name = "REIMBURSEMENT_SCENARIO")
+	@FindBy(xpath = "//*[@name= 'REIMBURSEMENT_SCENARIO']/parent::div")
 	private WebElement REIMBURSEMENT_SCENARIO;
 	public WebElement getGeneralSettingsPageFormFieldContractingReimbursementScenarioAssignment() {return REIMBURSEMENT_SCENARIO;}
 
-	@FindBy(name = "UNPUBLISHED_CONTRACT_CALCULATION")
+//	Omkar 21/2/2024 : xpath changes for 11.2
+//	@FindBy(name = "UNPUBLISHED_CONTRACT_CALCULATION")
+	@FindBy(xpath = "//*[@name= 'UNPUBLISHED_CONTRACT_CALCULATION']/parent::div")
 	private WebElement UNPUBLISHED_CONTRACT_CALCULATION;
 	public WebElement getGeneralSettingsPageFormFieldContractingUnpublishedContractCalculation() {return UNPUBLISHED_CONTRACT_CALCULATION;}
 
-
-	@FindBy(name = "ACTIVITY_VOLUME")
+//	Omkar 21/2/2024 : xpath changes for 11.2
+//	@FindBy(name = "ACTIVITY_VOLUME")
+	@FindBy(xpath = "//*[@name= 'ACTIVITY_VOLUME']/parent::div")
 	private WebElement ACTIVITY_VOLUME;
 	public WebElement getGeneralSettingsPageFormFieldCostingActivityVolumeDataCalculation() {return ACTIVITY_VOLUME;}
 
-	@FindBy(name = "ENCOUNTER_COST_CALC")
+//	Omkar 21/2/2024 : xpath changes for 11.2
+//	@FindBy(name = "ENCOUNTER_COST_CALC")
+	@FindBy(xpath = "//*[@name= 'ENCOUNTER_COST_CALC']/parent::div")
 	private WebElement ENCOUNTER_COST_CALC;
 	public WebElement getGeneralSettingsPageFormFieldCostingEncounterCostCalculation() {return ENCOUNTER_COST_CALC;}
 
-	@FindBy(name = "ENCOUNTER_COST_CALC_CLEAR")
+//	Omkar 21/2/2024 : xpath changes for 11.2
+//	@FindBy(name = "ENCOUNTER_COST_CALC_CLEAR")
+	@FindBy(xpath = "//*[@name= 'ENCOUNTER_COST_CALC_CLEAR']/parent::div")
 	private WebElement ENCOUNTER_COST_CALC_CLEAR;
 	public WebElement getGeneralSettingsPageFormFieldCostingClearEncounterCosts() {return ENCOUNTER_COST_CALC_CLEAR;}
 
-	@FindBy(name = "COST_MODEL_SCENARIO_CALC")
+//	Omkar 21/2/2024 : xpath changes for 11.2
+//	@FindBy(name = "COST_MODEL_SCENARIO_CALC")
+	@FindBy(xpath = "//*[@name= 'COST_MODEL_SCENARIO_CALC']/parent::div")
 	private WebElement COST_MODEL_SCENARIO_CALC;
 	public WebElement getGeneralSettingsPageFormFieldCostingCostModelScenarioCalculation() {return COST_MODEL_SCENARIO_CALC;}
 
-	@FindBy(name = "GL_ADJUSTMENT_AND_RECLASS")
+//	Omkar 21/2/2024 : xpath changes for 11.2
+//	@FindBy(name = "GL_ADJUSTMENT_AND_RECLASS")
+	@FindBy(xpath = "//*[@name= 'GL_ADJUSTMENT_AND_RECLASS']/parent::div")
 	private WebElement GL_ADJUSTMENT_AND_RECLASS;
 	public WebElement getGeneralSettingsPageFormFieldCostingGlAdjustmentsAndReclassificationCalculation() {return GL_ADJUSTMENT_AND_RECLASS;}
 
-	@FindBy(name = "GROUP_ALLOCATION")
+//	Omkar 21/2/2024 : xpath changes for 11.2
+//	@FindBy(name = "GROUP_ALLOCATION")
+	@FindBy(xpath = "//*[@name= 'GROUP_ALLOCATION']/parent::div")
 	private WebElement GROUP_ALLOCATION;
 	public WebElement getGeneralSettingsPageFormFieldCostingGroupAllocationCalculation() {return GROUP_ALLOCATION;}
 
-	@FindBy(name = "OVERHEAD_ALLOCATION")
+//	Omkar 21/2/2024 : xpath changes for 11.2
+//	@FindBy(name = "OVERHEAD_ALLOCATION")
+	@FindBy(xpath = "//*[@name= 'OVERHEAD_ALLOCATION']/parent::div")
 	private WebElement OVERHEAD_ALLOCATION;
 	public WebElement getGeneralSettingsPageFormFieldCostingOverheadModelScenarioCalculation() {return OVERHEAD_ALLOCATION;}
 
-	@FindBy(name = "RVU_CALC")
+//	Omkar 21/2/2024 : xpath changes for 11.2
+//	@FindBy(name = "RVU_CALC")
+	@FindBy(xpath = "//*[@name= 'RVU_CALC']/parent::div")
 	private WebElement RVU_CALC;
 	public WebElement getGeneralSettingsPageFormFieldCostingRvuCalculation() {return RVU_CALC;}
 
-	@FindBy(name = "COSTING_STATISTIC")
+//	Omkar 21/2/2024 : xpath changes for 11.2
+//	@FindBy(name = "COSTING_STATISTIC")
+	@FindBy(xpath = "//*[@name= 'COSTING_STATISTIC']/parent::div")
 	private WebElement COSTING_STATISTIC;
 	public WebElement getGeneralSettingsPageFormFieldCostingStatisticDataCalculation() {return COSTING_STATISTIC;}
 
-	@FindBy(name = "COST_MODEL_SCENARIO_CALC_UCQC")
+//	Omkar 21/2/2024 : xpath changes for 11.2
+//	@FindBy(name = "COST_MODEL_SCENARIO_CALC_UCQC")
+	@FindBy(xpath = "//*[@name= 'COST_MODEL_SCENARIO_CALC_UCQC']/parent::div")
 	private WebElement COST_MODEL_SCENARIO_CALC_UCQC;
 	public WebElement getGeneralSettingsPageFormFieldCostingUnitCostQuickCalculation() {return COST_MODEL_SCENARIO_CALC_UCQC;}
 
-
-	@FindBy(name = "MEDICAL_SVC_ANALYSIS_CLEAR")
+//	Omkar 21/2/2024 : xpath changes for 11.2
+//	@FindBy(name = "MEDICAL_SVC_ANALYSIS_CLEAR")
+	@FindBy(xpath = "//*[@name= 'MEDICAL_SVC_ANALYSIS_CLEAR']/parent::div")
 	private WebElement MEDICAL_SVC_ANALYSIS_CLEAR;
 	public WebElement getGeneralSettingsPageFormFieldGeneralClearMedicalServiceAssignment() {return MEDICAL_SVC_ANALYSIS_CLEAR;}
 
-	@FindBy(name = "CHARGEITEM_SERVICE_CLASSIFICATION_ASSIGN")
+//	Omkar 21/2/2024 : xpath changes for 11.2
+//	@FindBy(name = "CHARGEITEM_SERVICE_CLASSIFICATION_ASSIGN")
+	@FindBy(xpath = "//*[@name= 'CHARGEITEM_SERVICE_CLASSIFICATION_ASSIGN']/parent::div")
 	private WebElement CHARGEITEM_SERVICE_CLASSIFICATION_ASSIGN;
 	public WebElement getGeneralSettingsPageFormFieldGeneralChargeItemServiceClassificationScheme() {return CHARGEITEM_SERVICE_CLASSIFICATION_ASSIGN;}
 
-	@FindBy(name = "ENCOUNTER_SERVICE_CLASSIFICATION_ASSIGN")
+//	Omkar 21/2/2024 : xpath changes for 11.2
+//	@FindBy(name = "ENCOUNTER_SERVICE_CLASSIFICATION_ASSIGN")
+	@FindBy(xpath = "//*[@name= 'ENCOUNTER_SERVICE_CLASSIFICATION_ASSIGN']/parent::div")
 	private WebElement ENCOUNTER_SERVICE_CLASSIFICATION_ASSIGN;
 	public WebElement getGeneralSettingsPageFormFieldGeneralEncounterServiceClassificationScheme() {return ENCOUNTER_SERVICE_CLASSIFICATION_ASSIGN;}
 
-	@FindBy(name = "MEDICAL_SVC_ANALYSIS")
+//	Omkar 21/2/2024 : xpath changes for 11.2
+//	@FindBy(name = "MEDICAL_SVC_ANALYSIS")
+	@FindBy(xpath = "//*[@name= 'MEDICAL_SVC_ANALYSIS']/parent::div")
 	private WebElement MEDICAL_SVC_ANALYSIS;
 	public WebElement getGeneralSettingsPageFormFieldGeneralMedicalServiceAssignment() {return MEDICAL_SVC_ANALYSIS;}
 
-	@FindBy(name = "PRICE_LIST_CALC")
+//	Omkar 21/2/2024 : xpath changes for 11.2
+//	@FindBy(name = "PRICE_LIST_CALC")
+	@FindBy(xpath = "//*[@name= 'PRICE_LIST_CALC']/parent::div")
 	private WebElement PRICE_LIST_CALC;
 	public WebElement getGeneralSettingsPageFormFieldGeneralPriceListCalculation() {return PRICE_LIST_CALC;}
 
-	@FindBy(name = "PRICE_LIST_ASSIGN")
+//	Omkar 21/2/2024 : xpath changes for 11.2
+//	@FindBy(name = "PRICE_LIST_ASSIGN")
+	@FindBy(xpath = "//*[@name= 'PRICE_LIST_ASSIGN']/parent::div")
 	private WebElement PRICE_LIST_ASSIGN;
 	public WebElement getGeneralSettingsPageFormFieldGeneralPriceListEncountersAssignment() {return PRICE_LIST_ASSIGN;}
 
-	@FindBy(name = "CHARGEITEM_SERVICE_CLASSIFICATION_ASSIGN_REMOVAL")
+//	Omkar 21/2/2024 : xpath changes for 11.2
+//	@FindBy(name = "CHARGEITEM_SERVICE_CLASSIFICATION_ASSIGN_REMOVAL")
+	@FindBy(xpath = "//*[@name= 'CHARGEITEM_SERVICE_CLASSIFICATION_ASSIGN_REMOVAL']/parent::div")
 	private WebElement CHARGEITEM_SERVICE_CLASSIFICATION_ASSIGN_REMOVAL;
 	public WebElement getGeneralSettingsPageFormFieldGeneralRemoveChargeItemServiceClassification() {return CHARGEITEM_SERVICE_CLASSIFICATION_ASSIGN_REMOVAL;}
 
-	@FindBy(name = "ENCOUNTER_SERVICE_CLASSIFICATION_ASSIGN_REMOVAL")
+//	Omkar 21/2/2024 : xpath changes for 11.2
+//	@FindBy(name = "ENCOUNTER_SERVICE_CLASSIFICATION_ASSIGN_REMOVAL")
+	@FindBy(xpath = "//*[@name= 'ENCOUNTER_SERVICE_CLASSIFICATION_ASSIGN_REMOVAL']/parent::div")
 	private WebElement ENCOUNTER_SERVICE_CLASSIFICATION_ASSIGN_REMOVAL;
 	public WebElement getGeneralSettingsPageFormFieldGeneralRemoveEncounterServiceClassification() {return ENCOUNTER_SERVICE_CLASSIFICATION_ASSIGN_REMOVAL;}
 
-	@FindBy(name = "PRICE_LIST_REMOVE")
+//	Omkar 21/2/2024 : xpath changes for 11.2
+//	@FindBy(name = "PRICE_LIST_REMOVE")
+	@FindBy(xpath = "//*[@name= 'PRICE_LIST_REMOVE']/parent::div")
 	private WebElement PRICE_LIST_REMOVE;
 	public WebElement getGeneralSettingsPageFormFieldGeneralRemovePriceListToEncountersAssignment() {return PRICE_LIST_REMOVE;}
 
-	@FindBy(name = "IMPORT_EXPORT")
+//	Omkar 21/2/2024 : xpath changes for 11.2
+//	@FindBy(name = "IMPORT_EXPORT")
+	@FindBy(xpath = "//*[@name= 'IMPORT_EXPORT']/parent::div")
 	private WebElement IMPORT_EXPORT;
 	public WebElement getGeneralSettingsPageFormFieldGeneralAllImportsAndExports() {return IMPORT_EXPORT;}
 
@@ -357,11 +443,13 @@ public class SystemMaintenanceMap extends MapConfig {
 
 //	Omkar 12/4/2023 : xpath change for 11.2
 //	@FindBy(xpath = "//label[contains(@id,'radiofield') and text()='Show Selected']/../descendant::input")
-	@FindBy(xpath = "//label[contains(@id,'radio') and text()='Show Selected']/../descendant::input")
+	@FindBy(xpath = "//label[contains(@id,'radio') and text()='Show All']/../descendant::input/parent::span")
 	private WebElement customizeMaintainDataRadioShowSelected;
 	public WebElement getCustomizeMaintainDataRadioButtonShowSelected() {return customizeMaintainDataRadioShowSelected;}
 
-	@FindBy(xpath = "//label[contains(@id,'radiofield') and text()='Show All']/../descendant::input")
+//	Omkar 21/2/2024 : xpath changes for 11.2
+//	@FindBy(xpath = "//label[contains(@id,'radiofield') and text()='Show All']/../descendant::input")
+	@FindBy(xpath = "//label[contains(@id,'radio') and text()='Show All']/../descendant::input/parent::span")
 	private WebElement customizeMaintainDataRadioShowAll;
 	public WebElement getCustomizeMaintainDataRadioButtonShowAll() {return customizeMaintainDataRadioShowAll;}
 
@@ -381,11 +469,15 @@ public class SystemMaintenanceMap extends MapConfig {
 	private WebElement customizeMaintainDataPageLinkHelp;
 	public WebElement getCustomizeMaintainDataPageLinkHelp() {return customizeMaintainDataPageLinkHelp;}
 
-	@FindBy(xpath = "//*[contains(@id,'customizeMaintainData')]/descendant::span[contains(@id,'header') and text()='Maintain Data']")
+//	Omkar 21/2/2024 : xpath changes for 11.2
+//	@FindBy(xpath = "//*[contains(@id,'customizeMaintainData')]/descendant::span[contains(@id,'header') and text()='Maintain Data']")
+	@FindBy(xpath = "//*[contains(@id,'customizeMaintainData')]/descendant::div[contains(@id,'header') and text()='Maintain Data']/parent::div/following-sibling::div")
 	private WebElement customizeMaintainDataCollapsibleSectionMaintainData;
 	public WebElement getCustomizeMaintainDataCollapsibleSectionMaintainData() {return customizeMaintainDataCollapsibleSectionMaintainData;}
 
-	@FindBy(xpath = "//*[contains(@id,'customizeMaintainData')]/descendant::span[contains(@id,'header') and text()='Encounter Tabs']")
+//	Omkar 21/2/2024 : xpath changes for 11.2
+//	@FindBy(xpath = "//*[contains(@id,'customizeMaintainData')]/descendant::span[contains(@id,'header') and text()='Encounter Tabs']")
+	@FindBy(xpath = "//*[contains(@id,'customizeMaintainData')]/descendant::div[contains(@id,'header') and text()='Encounter Tabs']/parent::div/following-sibling::div")
 	private WebElement customizeMaintainDataCollapsibleSectionEncounterTabs;
 	public WebElement getCustomizeMaintainDataCollapsibleSectionEncounterTabs() {return customizeMaintainDataCollapsibleSectionEncounterTabs;}
 
@@ -393,11 +485,15 @@ public class SystemMaintenanceMap extends MapConfig {
 	private WebElement customizeMaintainDataCollapsibleMaintainDataDropdownMaintainDataViewOption;
 	public WebElement getCustomizeMaintainDataPageCollapsibleMaintainDataDropdownMaintainDataViewOption() {return customizeMaintainDataCollapsibleMaintainDataDropdownMaintainDataViewOption;}
 
-	@FindBy(xpath = "//div[text()='Maintain Data Screen Selections']/../descendant::span[text()='Filter']")
+//	Omkar 21/2/2024 : xpath changes for 11.2
+//	@FindBy(xpath = "//div[text()='Maintain Data Screen Selections']/../descendant::span[text()='Filter']")
+	@FindBy(xpath = "//span[text()='Filter']/parent::span")
 	private WebElement customizeMaintainDataCollapsibleMaintainDataButtonFilter;
 	public WebElement getCustomizeMaintainDataCollapsibleMaintainDataButtonFilter() {return customizeMaintainDataCollapsibleMaintainDataButtonFilter;}
 
-	@FindBy(xpath = "//div[text()='Maintain Data Screen Selections']/../descendant::span[text()='Clear Filter']")
+//	Omkar 21/2/2024 : xpath changes for 11.2
+//	@FindBy(xpath = "//div[text()='Maintain Data Screen Selections']/../descendant::span[text()='Clear Filter']")
+	@FindBy(xpath = "//span[text()='Clear Filter']/parent::span")
 	private WebElement customizeMaintainDataCollapsibleMaintainDataButtonClearFilter;
 	public WebElement getCustomizeMaintainDataCollapsibleMaintainDataButtonClearFilter() {return customizeMaintainDataCollapsibleMaintainDataButtonClearFilter;}
 

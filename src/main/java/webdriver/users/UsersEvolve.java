@@ -5,7 +5,11 @@ public enum UsersEvolve {
     ApplicationAdministrator1("automationappadmin1", "password"),
     SystemAdministrator1("automationappadmin1", "password"),
     SecurityAdministrator1("automationappadmin1", "password"),
-    DataAdministrator1("automationappadmin1", "password"),
+    /*
+    Omkar 22/2/2024 : Someone seems to have changed the role while testing so adding back the 
+                      role and changing the password as system does not allow with old password
+    DataAdministrator1("automationdataadmin1", "password"), */
+    DataAdministrator1("automationdataadmin1", "Pa$$w0rd"),
     CostAnalyst1("automationappadmin1", "password"),
     CostingDepartmentManager1("automationappadmin1", "password"),
     ContractAnalyst1("automationappadmin1", "password"),
