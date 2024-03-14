@@ -26,7 +26,7 @@ public class ModelContractLumpSumPaymentAllocation extends CalculationHelper {
 	static String fieldName = "AP DRG Code";
 	static String fieldValue = "2";
 	static String LumpSumPaymentAllocTerm="Lump Sum Payment Allocation Rules";
-
+	
 	/** Regression: Automated test script for ADS-6468 */
 
 	@BeforeClass
@@ -49,7 +49,7 @@ public class ModelContractLumpSumPaymentAllocation extends CalculationHelper {
 	}
 //ADS-6468 all steps
 	@Test
-	public void test01NewLumpSumPaymentAllocation_6468() throws Throwable {
+	public void test01NewLumpSumPaymentAllocation_ADS_6468() throws Throwable {
 		try {
 			doClickTreeItem("Contracting");
 			doSearchForContractModel(ContractModelName);
@@ -79,8 +79,9 @@ public class ModelContractLumpSumPaymentAllocation extends CalculationHelper {
 			ContractModelsHelper.keyInValues(ContractingMap.getValueInput(), fieldValue);
 			doClick(ContractingMap.getlumpSumAddButton());
 			doClick(ContractingMap.getContractFeeForServicePaymentWarningPopUpContinueButton());
+			
 			assertTextIsDisplayed(lumpSumPaymentAlloc);
-			doClick(contractingMap.getContractModelRiskLimiterMessageBox());
+			doClick("//h1[text()='Lump Sum Payment Allocation Rules']//following::span[text()='Cancel & Close']");
 			assertElementIsDisplayed(ModelLibraryMap.getReturnButton());
 			doClick(ModelLibraryMap.getReturnButton());
 			doClick(ContractingMap.getContractFeeForServicePaymentSave());

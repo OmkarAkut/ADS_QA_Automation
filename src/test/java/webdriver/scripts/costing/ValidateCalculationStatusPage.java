@@ -9,6 +9,11 @@ import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.interactions.Actions;
+
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.corehelpers.AdsHelper;
@@ -149,7 +154,7 @@ public class ValidateCalculationStatusPage extends CalculationHelper {
 			doDropdownSelectUsingOptionText(
 					CostingMap.getCostModelEndMonthDrpdown(),
 					CostingMap.getCostModelEndMonthScenarioOptions(),
-					"Mar 2005"
+					"Apr 2004"
 					);
 			doClick(CostingMap.getCostModelSharedLogCheckbox());
 			ExtentReport.logPass("PASS", "test04SelectPriceListStartEndMonth");
@@ -164,9 +169,38 @@ public class ValidateCalculationStatusPage extends CalculationHelper {
 			doClick(ContractingMap.getSaveBenefitPlan());
 			driverDelay(100);
 			doClick(ContractingMap.getCalculateButton());
+//			doClick(driver.findElement(By.xpath("//div[text()='"+costModel+"']")));
+//			assertElementIsDisplayed(driver.findElement(By.xpath("(//span[text()='Cancel'])[2]")));
+			assertElementIsDisplayed(driver.findElement(By.xpath("(//div[text()='"+costModel+"']//following::span[text()='Cancel'])")));
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
-			//implement later steps from step15 after issueresolved
+			doClick("(//div[text()='View Log']//following::span[text()='Cancel'])[1]");
+			doClick("(//div[text()='"+costModel+"']//following::span[text()='Download'])[2]");
+			waitForPresenceOfElementText("Download Log");
+			doClick(modelMap.getContractModelDownloadFileSharedLoc());
+			
+			doClick(modelMap.getContractModelCalcFileSharedLocOption());
+			ContractModelsHelper.keyInValues(modelMap.getContractModelCalcFilename(), "Testing"+currentDateTime);
+//			doClick(modelMap.getContractModelCalcContinueBtn());
+			JavascriptExecutor executor = (JavascriptExecutor)driver;
+			executor.executeScript("arguments[0].click();", modelMap.getContractModelCalcContinueBtn());
+			waitForDisplayedSpinnerToEnd();
+			driverDelay();
+			/*
+			String shared = costModel.concat(".zip");
+			assertElementIsDisplayed(driver.findElement(By.xpath("(//div[text()='"+costModel+"']//following::sftp_server[contains(text(),'"+shared+"')])[1]")), printout);
+			*/
+//			driver.findElement(By.xpath("(//div[text()='"+costModel+"']//following::span[text()='View'])[1]")).sendKeys(Keys.ARROW_LEFT);
+//			driver.findElement(By.xpath("(//div[text()='"+costModel+"']//following::span[text()='View'])[1]")).sendKeys(Keys.ENTER);
+
+			Actions act=new Actions(driver);
+			driver.findElement(By.xpath("(//div[text()='"+costModel+"']//following::div[text()='Completed'])[1]/..")).click();
+			act.moveToElement(driver.findElement(By.xpath("(//div[text()='"+costModel+"']//following::span[text()='View'])[1]/.."))).sendKeys(Keys.ARROW_RIGHT).sendKeys(Keys.ARROW_RIGHT).sendKeys(Keys.ARROW_DOWN).build().perform();
+			act.moveToElement(driver.findElement(By.xpath("(//div[text()='"+costModel+"']//following::span[text()='View'])[1]/.."))).sendKeys(Keys.ARROW_UP).sendKeys(Keys.RIGHT).sendKeys(Keys.ENTER).perform();
+			//Keyboard access not working ADS-11287
+			assertTextIsDisplayed("View Log");
+			doClick("(//div[text()='View Log']//following::span[text()='Cancel'])[1]");
+			deleteCalculationStatusMyStatusPageFirstRow();
 			ExtentReport.logPass("PASS", "test05SaveAndCalculate");
 		}catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test05SaveAndCalculate", driver, e);

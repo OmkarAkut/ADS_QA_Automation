@@ -20,7 +20,7 @@ import webdriver.users.Users;
 public class ConfirmFY2023MedicareYearisAvailableForMedIPPS extends CalculationHelper {
 
 //	private static final String contractModelName = "Contract Model 6278";
-	private static final String contractModelName = "10.2.1 Medicare IPPS FY2020 Test";
+	private static final String contractModelName = "10.2.1 Medicare IPPS FY2020";
 
 	private static final String serviceModel = "MCR IPPS 2023";
 	private static final String serviceName = "MCR IPPS 2023";

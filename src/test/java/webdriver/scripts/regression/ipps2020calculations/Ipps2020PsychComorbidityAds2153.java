@@ -30,7 +30,7 @@ public class Ipps2020PsychComorbidityAds2153 extends CalculationHelper {
   }
 
   @Test
-  public void test01ClickResetAndVerifyDatabaseValuesAreNull() throws Exception {
+  public void test01ClickResetAndVerifyDatabaseValuesAreNull() throws Throwable {
     waitForAjaxExtJs();
     assertEquals(
             "IPFC20WD_ICD10.txt",

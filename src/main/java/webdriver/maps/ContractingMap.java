@@ -242,6 +242,10 @@ public class ContractingMap extends MapConfig {
 	@FindBy(xpath = "//div[contains(@class,'horzOverflow')]/div//span[text()='Copy']")
 	private WebElement ContractModelButtonCopy;
 	public WebElement getContractModelButtonCopy() {return ContractModelButtonCopy;}
+	
+	@FindBy(xpath = "//span[text()='Save As']")
+	private WebElement ContractModelButtonSaveAs;
+	public WebElement getContractModelButtonSaveAs() {return ContractModelButtonSaveAs;}
 
 //	Omkar 26/6/2023 : xpath changes for 11.2
 //	@FindBy(xpath = "//div[contains(@class,'horzOverflow')]/div//span[text()='Paste']//parent::button")
@@ -340,7 +344,23 @@ public class ContractingMap extends MapConfig {
 	@FindBy(xpath = "//div[contains(@class,'x-closable')]//div[contains(@id,'dynamicwindow')]//span[text()='Apply']")
 	private WebElement ContractModelExportFileSharedLoc;
 	public WebElement getContractModelExportFileSharedLoc() {return ContractModelExportFileSharedLoc;}
+	
+	@FindBy(xpath = "(//div[contains(@class,'calcLog ')]//input[@name='hostLocation']//parent::div)[2]")
+	private WebElement ContractModelDownloadFileSharedLoc;
+	public WebElement getContractModelDownloadFileSharedLoc() {return ContractModelDownloadFileSharedLoc;}
+	
+	@FindBy(xpath = "(//li[text()='<SFTP_SERVER>/PATH/TO/CALC_LOGS_SHARED_DIRECTORY2/'])")
+	private WebElement ContractModelCalcFileSharedLocOption;
+	public WebElement getContractModelCalcFileSharedLocOption() {return ContractModelCalcFileSharedLocOption;}
 
+	@FindBy(xpath = "(//input[@name='logLocation'])[2]")
+	private WebElement ContractModelCalcFilename;
+	public WebElement getContractModelCalcFilename() {return ContractModelCalcFilename;}
+	
+	@FindBy(xpath = "//span[text()='Continue']/../../..")
+	private WebElement ContractModelCalcContinueBtn;
+	public WebElement getContractModelCalcContinueBtn() {return ContractModelCalcContinueBtn;}
+	
 	@FindBy(xpath = "//li[text()='<SFTP_SERVER>/PATH/TO/EXPORT_LOGS_SHARED_DIRECTORY/']")
 	private WebElement ContractModelExportFileSharedLocOption;
 	public WebElement getContractModelExportFileSharedLocOption() {return ContractModelExportFileSharedLocOption;}
@@ -358,7 +378,7 @@ public class ContractingMap extends MapConfig {
 	public WebElement getContractModelImportButtonInExportPopUp() {return ContractModelImportButtonInExportPopUp;}
 
 //	Omkar 21/6/2023 : xpath changes for 11.2
-//	@FindBy(xpath = "//span[contains(@id,'importexportstatus')][text()='Import/Export Status']")
+//	@FindBy(xpath = "//span[contains(@id,'importexportstat;us')][text()='Import/Export Status']")
 	@FindBy(xpath = "//div[contains(@id,'importexportstatus')][text()='Import/Export Status']")
 	private WebElement ContractModelImportExportstatusPage;
 	public WebElement getContractModelImportExportstatusPage() {return ContractModelImportExportstatusPage;}
@@ -729,6 +749,10 @@ public class ContractingMap extends MapConfig {
 	@FindBy(xpath = "//div[contains(@id,'warningwindow')]//following::span[text()='Save']")
 	private static WebElement SaveButton;
 	public static WebElement getSaveButton() {return SaveButton;}
+	
+	@FindBy(xpath = "(//div[contains(@id,'feeForServicePaymentPanel')]//following::span[text()='Save'])[1]")
+	private static WebElement SaveButtonFeePaymentTerm;
+	public static WebElement getSaveButtonFeePaymentTerm() {return SaveButtonFeePaymentTerm;}
 	
 	@FindBy(xpath = "(//div[contains(@id,'feeForServicePaymentPanel')]//following::span[text()='Save'])[1]")
 	private static WebElement SaveOption;

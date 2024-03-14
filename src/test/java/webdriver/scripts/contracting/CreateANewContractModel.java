@@ -6,7 +6,9 @@ import java.text.SimpleDateFormat;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 
 import ExtentReport.ExtentReport;
@@ -16,7 +18,7 @@ import webdriver.helpers.ContractModelsHelper;
 import webdriver.maps.ContractingMap;
 import webdriver.maps.CostingMap;
 import webdriver.maps.mapbuilder.BuildMap;
-
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class CreateANewContractModel extends CalculationHelper {
 
 	private static ContractingMap modelMap;
@@ -104,8 +106,8 @@ public class CreateANewContractModel extends CalculationHelper {
 		}
 	}
 /*TestUIValidationContractingValidateContractingModelDeletebutton : ADS-6435,ADS-6412*/
-//	@Test
-	public void test02DeleteContractModel_6435_6412() throws Throwable {
+	@Test
+	public void test02DeleteContractModel_ADS6435_ADS6412() throws Throwable {
 	
 		try {
 			doClick(modelMap.getContractModelDeleteButton());
@@ -119,7 +121,7 @@ public class CreateANewContractModel extends CalculationHelper {
 			doClick(modelMap.getContractModelDeleteButtonInPopUp());
 			waitForElementToBeVisible(driver.findElement(By.xpath("//*[text()='There is no data available to display.']")));
 			assertTextIsDisplayed("There is no data available to display.");
-			doClosePageOnLowerBar("Model Library");
+			doClosePageOnLowerBar("Contract Models");
 			ExtentReport.logPass("PASS", "test02DeleteContractModel");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test02DeleteContractModel", driver, e);

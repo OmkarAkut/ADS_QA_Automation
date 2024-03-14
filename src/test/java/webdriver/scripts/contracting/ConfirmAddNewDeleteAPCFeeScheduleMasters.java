@@ -1,21 +1,19 @@
 package webdriver.scripts.contracting;
-
 import static org.junit.Assert.fail;
-
 import java.text.SimpleDateFormat;
-
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
-
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.helpers.CalculationHelper;
 import webdriver.helpers.ContractModelsHelper;
 import webdriver.maps.ContractingMap;
 import webdriver.maps.mapbuilder.BuildMap;
-
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ConfirmAddNewDeleteAPCFeeScheduleMasters extends CalculationHelper {
 	private static ContractingMap modelMap;
 	static final String ContractModelName = "ADS-1320 Contract Model D";
@@ -46,7 +44,7 @@ public class ConfirmAddNewDeleteAPCFeeScheduleMasters extends CalculationHelper 
 	}
 //ADS-6458
 	@Test
-	public void test01AssertContractTaskList_6458() throws Throwable {
+	public void test01AssertContractTaskList_ADS_6458() throws Throwable {
 		try {
 
 			// ADS-6455
@@ -65,7 +63,7 @@ public class ConfirmAddNewDeleteAPCFeeScheduleMasters extends CalculationHelper 
 	}
 //ADS-6442,ADS-6455[add collapse function]
 	@Test
-	public void test02AssertBuildStructureElements_6442_6455() throws Throwable {
+	public void test02AssertBuildStructureElements_ADS_6442_ADS_6455() throws Throwable {
 		try {
 			doClickTreeItem("Build Structure Elements");
 			driverDelay(300);
@@ -129,7 +127,7 @@ public class ConfirmAddNewDeleteAPCFeeScheduleMasters extends CalculationHelper 
 	}
 //ADS-6458
 	@Test
-	public void test06CreateNewandDeleteAPCCode_6458() throws Throwable {
+	public void test06CreateNewandDeleteAPCCode_ADS_6458() throws Throwable {
 		try {
 			doClickTreeItemWithCheckbox("APC Fee Schedule Masters");
 			waitForElementToBeVisible(ContractingMap.getApcFeeScheduleHeader());

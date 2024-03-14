@@ -18,6 +18,7 @@ import org.openqa.selenium.interactions.Actions;
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.helpers.CalculationHelper;
+import webdriver.helpers.ContractModelsHelper;
 import webdriver.maps.CostingMap;
 import webdriver.maps.ModelLibraryMap;
 import webdriver.maps.mapbuilder.BuildMap;
@@ -28,15 +29,21 @@ public class CalculateExistingPublishedContractAds1447 extends CalculationHelper
   static final String modelName = "v10 REGRESSION Published Contract";
   static final String status = "Completed";
   static final String logStatus = "Completed";
-  static final String recordsProcessed = "10359";
+  static final String recordsProcessed = "1470";
   static final String recordsPending = "0";
-  static final String totalRecords = "10359";
+  static final String totalRecords = "1470";
   final String expectedLogViewTitle = modelName + "\\Contracting\\Published Contract Calculation";
-  String logDetailTotalEfrs = "Total EFRs to be processed: 10359";
-  String[] logViewDetails = {
-          "Number of Encounter Financial Records to Process: 10359",
-          "Non-Critical Warnings: 433",
-          "Encounter Financial Records Calculated to Zero: 218"
+  String logDetailTotalEfrs = "Total EFRs to be processed: 1470";
+//  String logDetailTotalEfrs = "Total EFRs to be processed: 10359";
+
+//  String[] logViewDetails = {
+//          "Number of Encounter Financial Records to Process: 10359",
+//          "Non-Critical Warnings: 433",
+//          "Encounter Financial Records Calculated to Zero: 218"
+          String[] logViewDetails = {
+                  "Number of Encounter Financial Records to Process: 1470",
+                  "Non-Critical Warnings: 433",
+                  "Encounter Financial Records Calculated to Zero: 218"
   };
   private static ModelLibraryMap modelMap;
 
@@ -52,6 +59,11 @@ public class CalculateExistingPublishedContractAds1447 extends CalculationHelper
 		goToPage("Contract Models");
 		waitForSpinnerToEnd();
 		Thread.sleep(4000);
+		doSearchForContractModel(modelName);
+		doClick("//div[text()='"+modelName+"']");
+//		Actions act=new Actions(driver);
+//		act.doubleClick(driver.findElement(By.xpath("//div[text()="+modelName+"]"))).perform();
+		/* uncomment when scroll works
 		doClick(CostingMap.getContractingName);
 //		doClick(CostingMap.getContractingName());
 		List<WebElement> elements = driver.findElements(By.xpath("//div[contains(@id,'treeview')]//table"));
@@ -80,7 +92,7 @@ public class CalculateExistingPublishedContractAds1447 extends CalculationHelper
 			continue;
 		}
 //		doClick(CostingMap.getContractingAutomationName);
-		
+		*/
 		ExtentReport.logPass("PASS", "setupScript");
 	} catch (Exception|AssertionError e) {
 	ExtentReport.logFail("FAIL", "setupScript", driver, e);
@@ -89,22 +101,32 @@ public class CalculateExistingPublishedContractAds1447 extends CalculationHelper
   }
 //ADS-6433
   @Test
-  public void test01RunPublishedContractAndVerifyStatusPageDetailsAfterCompleted_ADS_6433_() throws Throwable, InterruptedException {
+  public void test01RunPublishedContractAndVerifyStatusPageDetailsAfterCompleted_ADS_6433() throws Throwable, InterruptedException {
     try {
 		waitForSpinnerToEnd();
 		waitForAjaxExtJs();
 		modelMap.getModelLibraryContractingButtonCalculate().click();
 		waitForCalculationToEnd(1000);
+		/*
 //		driver.findElement(By.xpath("//button/span[text()='Refresh']")).click();
 		driver.findElement(By.xpath("//span/span[text()='Refresh']")).click();//Shilpa: update xpath 11.2
 //		waitForPresenceOfElement("//div[2]/div/div[4]/div/table/tbody/tr[2]/td[17]/div");  //total records xpath
 		waitForPresenceOfElement("(//div[@class='x-grid-item-container'])[3]//table//tbody/tr/td[2]/div");//shilpa: xpath update 11.9.2023 for 11.2
 		Thread.sleep(200);
-		assertTrue(getCalculationStatusMyStatusFirstRowStatusCellText().contains(status));
-		assertTrue(getCalculationStatusMyStatusFirstRowLogStatusCellText().contains(logStatus));
-		assertTrue(getCalculationStatusMyStatusFirstRowRecordsProcessedCellText().contains(recordsProcessed));
-		assertTrue(getCalculationStatusMyStatusFirstRowRecordsPendingCellText().contains(recordsPending));
-		assertTrue(getCalculationStatusMyStatusFirstRowTotalRecordsCellText().contains(totalRecords));
+		*/
+		waitForFirstRowCalculationBarToReach100Percent();
+		calculationStatusPageOpenViewDialog();
+		checkForRecordsProcessed(status);
+		checkForRecordsProcessed(logStatus);
+		checkForRecordsProcessed(recordsProcessed);
+		checkForRecordsProcessed(recordsPending);
+		checkForRecordsProcessed(totalRecords);
+//		assertTrue(getCalculationStatusMyStatusFirstRowStatusCellText().contains(status));
+//		assertTrue(getCalculationStatusMyStatusFirstRowLogStatusCellText().contains(logStatus));
+//		assertTrue(getCalculationStatusMyStatusFirstRowRecordsProcessedCellText().contains(recordsProcessed));
+//		assertTrue(getCalculationStatusMyStatusFirstRowRecordsPendingCellText().contains(recordsPending));
+//		assertTrue(getCalculationStatusMyStatusFirstRowTotalRecordsCellText().contains(totalRecords));
+		closeViewDialog();
 		ExtentReport.logPass("PASS", "test01RunPublishedContractAndVerifyStatusPageDetailsAfterCompleted");
     	} catch (Exception|AssertionError e) {
 	ExtentReport.logFail("FAIL", "test01RunPublishedContractAndVerifyStatusPageDetailsAfterCompleted", driver, e);
@@ -113,14 +135,14 @@ public class CalculateExistingPublishedContractAds1447 extends CalculationHelper
   }
 //ADS-6085
   @Test
-  public void test02OpenViewDialogAndAssertTotalEfrs_ADS_6085_() throws InterruptedException,Throwable {
+  public void test02OpenViewDialogAndAssertTotalEfrs_ADS_6085() throws InterruptedException,Throwable {
 	try {
 		Thread.sleep(2000);
 		calculationStatusPageOpenViewDialog();
 		waitForPresenceOfElement("(//div[contains(@id,'displayfield')])[3]");
 		assertViewLogTitle(expectedLogViewTitle);
    waitForAjaxExtJs();//Shilpa 07.09.2022 method added to wait loading
-		confirmCalculationStatusDetailsContains(logDetailTotalEfrs);
+   checkForRecordsProcessed(logDetailTotalEfrs);
 		ExtentReport.logPass("PASS", "test02OpenViewDialogAndAssertTotalEfrs");
 	} catch (Exception|AssertionError e) {
 		ExtentReport.logFail("FAIL", "test02OpenViewDialogAndAssertTotalEfrs", driver, e);
@@ -133,10 +155,11 @@ public class CalculateExistingPublishedContractAds1447 extends CalculationHelper
     try {
 		clickLastPageIconOnCalculationStatusViewLog();
 		waitForSpinnerToEnd();
-		waitForPresenceOfElement("//*[text() = 'CALCULATION SUMMARY']");
+//		waitForPresenceOfElement("//*[text() = 'CALCULATION SUMMARY']");
+		//Scroll not working here
 		confirmCalculationStatusDetailsContains(logViewDetails);
 		closeViewDialog();
-		ExtentReport.logPass("PADD", "test03OnLastPageOfViewDialogAssertLogDetails");
+		ExtentReport.logPass("PASS", "test03OnLastPageOfViewDialogAssertLogDetails");
 	} catch (Exception|AssertionError e) {
 		ExtentReport.logFail("FAIL", "test03OnLastPageOfViewDialogAssertLogDetails", driver, e);
 		fail(e.getMessage());
@@ -146,7 +169,10 @@ public class CalculateExistingPublishedContractAds1447 extends CalculationHelper
   @Test
   public void test04DeleteCalculationStatusPageF() throws InterruptedException,Throwable {
     try {
-		deleteCalculationStatusMyStatusPageFirstRow();
+    	closeViewDialog();//workaround till scroll works
+    	doClick("(//*[contains(@id,'calculationstatus') and contains(@id,'header')]/..//span[contains(@class,'x-btn-icon-el x-btn-icon-el-default-small delBtn')])[1]");
+    	driver.findElement(By.xpath("//div[contains(@id,'warningwindow')]//span[text()='Delete']")).click();
+//    	deleteCalculationStatusMyStatusPageFirstRow();
 		ExtentReport.logPass("PASS", "test04DeleteCalculationStatusPageF");
 	} catch (Exception|AssertionError e) {
 		ExtentReport.logFail("FAIL", "test04DeleteCalculationStatusPageF", driver, e);

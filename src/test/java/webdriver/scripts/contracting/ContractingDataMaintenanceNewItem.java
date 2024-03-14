@@ -48,7 +48,7 @@ public class ContractingDataMaintenanceNewItem extends CalculationHelper {
 	}
 //ADS-6443 all steps
 	@Test
-	public void test01ContractingDataMaintenanceNewItem_6443() throws Throwable {
+	public void test01ContractingDataMaintenanceNewItem_ADS_6443() throws Throwable {
 		try {
 			doClick(ContractingMap.getContractDataMaintenanceNewButton());
 			waitUntilElementIsVisible(ContractingMap.getNewTimePeriodPopUp());
@@ -65,7 +65,7 @@ public class ContractingDataMaintenanceNewItem extends CalculationHelper {
 			//ADS-6443
 			doClick(ContractingMap.getContractDataMaintenanceEditButton());
 			assertThatAttributeValue(ContractingMap.getInputName(), timePeriod, printout);
-			doClick(ContractingMap.getContractModelRiskLimiterCancelCloseBtn());
+			doClick("//div[text()='"+timePeriod+"']//following::span[text()='Cancel & Close']");
 			assertElementIsDisplayedWithXpath("//div[text()='"+timePeriod+"']");
 			ExtentReport.logPass("PASS", "test01ContractingDataMaintenanceNewItem");
 		} catch (Exception|AssertionError e) {

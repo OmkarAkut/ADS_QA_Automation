@@ -380,7 +380,7 @@ public class AdsHelper extends GetHelper {
 		//            "//td[contains(@class,'x-grid-cell x-grid-cell-gridcolumn')]/*[text()='" + cellValue + "']"));
 		WebElement element = driver.findElement(By.xpath(
 				"//td[contains(@class,'x-grid-cell x-grid-td x-grid-cell-gridcolumn')]/*[text()='" + cellValue + "']"));
-		act.doubleClick(element).perform();
+		act.doubleClick(element).pause(500).perform();
 
 		waitForSpinnerToEnd();
 		waitForAjaxExtJs();

@@ -5,7 +5,9 @@ import static org.junit.Assert.fail;
 import java.text.SimpleDateFormat;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import ExtentReport.ExtentReport;
@@ -14,7 +16,7 @@ import webdriver.corehelpers.GoHelper;
 import webdriver.helpers.ContractModelsHelper;
 import webdriver.maps.ContractingMap;
 import webdriver.maps.mapbuilder.BuildMap;
-
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class CopyPasteButtons extends GoHelper {
 	private static ContractingMap modelMap;
 	private static String ContractModel = "10.2.1 Medicare IPPS FY2";
@@ -48,12 +50,12 @@ public class CopyPasteButtons extends GoHelper {
 		}
 	}
 	@Test
-	public void AssertFeeForServicePaymentTermsScreenSelectionPanel() throws Throwable {
+	public void test01AssertFeeForServicePaymentTermsScreenSelectionPanel() throws Throwable {
 		try {
 			assertElementIsDisplayed(modelMap.getContractServiceModel());
 			assertElementIsDisplayed(modelMap.getContractPricingMethod());
 			assertElementIsDisplayed(modelMap.getContractRiskLimiterModel());
-			doClick(ContractingMap.getContractModelRiskLimiterCancelCloseBtn());
+			doClick(ContractingMap.getFeeForPaymentCancelClose());
 			doClick("//span[(text()='10.2.1 Medicare...')]//following::span[@class='x-tab-close-btn']");
 			ExtentReport.logPass("PASS", "AssertFeeForServicePaymentTermsScreenSelectionPanel");
 			
@@ -64,7 +66,7 @@ public class CopyPasteButtons extends GoHelper {
 	}
 	//ADS-6434
 	@Test
-	public  void testCopyPasteContractmodel_6434() throws Throwable {
+	public  void test02CopyPasteContractmodel_ADS_6434() throws Throwable {
 		try {
 			doClick(modelMap.getContractModelButtonCopy());
 			assertElementIsEnabled(modelMap.getContractModelButtonPaste(), printout);
@@ -93,7 +95,7 @@ public class CopyPasteButtons extends GoHelper {
 	}
 	//ADS-6084
 	@Test
-	public void testVerifyServiceModelUnderPastedContractModel_6084() throws Throwable {
+	public void test03VerifyServiceModelUnderPastedContractModel_ADS_6084() throws Throwable {
 		try {
 			tableDoubleClickCellFirstColumn(UpdatedContractModel);
 			driverDelay(1000);
@@ -116,11 +118,11 @@ public class CopyPasteButtons extends GoHelper {
 			driver.findElement(By.xpath(
 					"//td[contains(@class,'x-grid-cell-treecolumn')]//span[text()='Fee For Service Payment Terms']")).click();
 			driverDelay(300);
-//			ContractModelsHelper.navigateFeeForServicePaymentTermsScreenSelectionPanel("Service Model");
+			ContractModelsHelper.navigateFeeForServicePaymentTermsScreenSelectionPanel("Service Model");
 			assertTextIsDisplayed(serviceModel);
 			ContractModelsHelper.navigateFeeForServicePaymentTermsScreenSelectionPanel("Pricing Method");
 			assertTextIsDisplayed(serviceModel);
-			doClick(ContractingMap.getContractModelRiskLimiterCancelCloseBtn());
+			doClick(ContractingMap.getFeeForPaymentCancelClose());
 			doClick("//span[(text()='Copy of 10.2.1...')]//following::span[@class='x-tab-close-btn']");
 			ExtentReport.logPass("PASS", "testVerifyServiceModelUnderPastedContractModel");
 			
@@ -129,8 +131,9 @@ public class CopyPasteButtons extends GoHelper {
 			fail(e.getMessage());
 		}
 	}
+	
 	@Test
-	public void testDeleteContractModel() throws Throwable {
+	public void test04DeleteCreatedContractModel() throws Throwable {
 		try {
 			doClick(modelMap.getContractModelDeleteButton());
 			waitForElementToBeVisible(modelMap.getContractModelDeletePopUp());
