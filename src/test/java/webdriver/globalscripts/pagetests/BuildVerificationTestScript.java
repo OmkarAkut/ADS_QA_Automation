@@ -3,6 +3,9 @@ package webdriver.globalscripts.pagetests;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
+
+import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -11,6 +14,7 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
@@ -58,6 +62,18 @@ public class BuildVerificationTestScript extends UcqcHelper {
 	private static String BackgroundColorEpisodeTab = "rgba(159, 29, 53, 1)";
 	private static String BackgroundColorBudgetingTab = "rgba(102, 102, 102, 1)";
 	private static String BackgroundColorSystemMaintenanceTab = "rgba(135, 85, 64, 1)";
+	 private static String BackgroundColorCosting= "rgba(0, 86, 26, 1)";
+	  private static String BackgroundColorReporting= "rgba(0, 119, 171, 1)";
+	  private static String BackgroundColorAnalytics= "rgba(0, 63, 96, 1)";
+	  private static String BackgroundColorSystemMaintenance= "rgba(135, 85, 64, 1)";
+	  private static String BackgroundColorEpisodes= "rgba(159, 29, 53, 1)";
+	  private static String BackgroundColorContracting= "rgba(127, 35, 111, 1)";
+	  private static String BackgroundColorDataMaintenance= "rgba(210, 70, 15, 1)";
+	  private static String BackgroundColorDockBarReporting= "rgba(0, 119, 171, 1)";
+	  private static String BackgroundColorDockBarWebIntel= "rgba(0, 119, 171, 1)";
+	  private static String BackgroundColorDockBarAdHoc= "rgba(0, 119, 171, 1)";
+	  private static String BackgroundColorDockBarSystemMaintainenance= "rgba(101, 55, 47, 1)";
+	  private static String BackgroundColorDockEisodes="rgba(246, 246, 246, 1)";
 
 	String expectedReleaseVersion = version; // only checks version, not date
 
@@ -94,7 +110,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 	// ===== Global Tests ======//
 	//ADS-6586
 	@Test
-	public void test0001LandingPageSystemMaintenance() throws Throwable {
+	public void test0001LandingPageSystemMaintenance_ADS_6500() throws Throwable {
 		try {
 			System.out.println("Logging In");
 
@@ -126,13 +142,274 @@ public class BuildVerificationTestScript extends UcqcHelper {
 					generalElement.getLandingPageBubbleSystemMaintenanceQuickLinkSecuritySettings(),
 					generalElement.getLandingPageBubbleSystemMaintenanceQuickLinkGeneralSettings() };
 			assertElementsAreDisplayed(landingPageSystemMaintenanceElements, printout);
+			validateBackgroundColor(BackgroundColorSystemMaintenance, generalElement.getlandingPageSystemMaintenanceBgColor());
+			//Users
+			doClick(generalElement.getLandingPageBubbleSystemMaintenanceQuickLinkUsers());
+			validateBgColorAndPage(
+					driver.findElement(By.xpath("//h1[text()='Users']")),
+					BackgroundColorDockBarSystemMaintainenance,generalElement.getdockUsersbar(),"Users");
+			
+//			Roles
+			doClick(generalElement.getLandingPageBubbleSystemMaintenanceQuickLinkRoles());
+			validateBgColorAndPage(
+					driver.findElement(By.xpath("//div[text()='Roles']")),
+					BackgroundColorDockBarSystemMaintainenance,generalElement.getdockRolesbar(),"Roles");
+			//Security Settings
+			doClick(generalElement.getLandingPageBubbleSystemMaintenanceQuickLinkSecuritySettings());
+			validateBgColorAndPage(
+					driver.findElement(By.xpath("//div[text()='Security Settings']")),
+					BackgroundColorDockBarSystemMaintainenance,generalElement.getdockSecuritySetbar(),"Security Settings");
+			//General Settings
+			doClick(generalElement.getLandingPageBubbleSystemMaintenanceQuickLinkGeneralSettings());
+			validateBgColorAndPage(
+					driver.findElement(By.xpath("//div[text()='General Settings']")),
+					BackgroundColorDockBarSystemMaintainenance,generalElement.getdockSecurityGenSetbar(),"General Settings");
 			ExtentReport.logPass("PASS", "test0001LandingPageSystemMaintenance");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test0001LandingPageSystemMaintenance", driver, e);
 			fail(e.getMessage());
 		}
 	}
+	 @Test
+	  public void test0002LandingPageDataMaintenance_ADS_6498() throws Throwable {
+	    try {
+			WebElement[] landingPageDataMaintenanceElements = {
+			        generalElement.getLandingPageBubbleDataMaintenance(),
+			        generalElement.getLandingPageBubbleDataMaintenanceHeader(),
+			        generalElement.getLandingPageBubbleDataMaintenanceImage(),
+			        generalElement.getLandingPageBubbleDataMaintenanceQuickLinkMaintainData(),
+			        generalElement.getLandingPageBubbleDataMaintenanceQuickLinkLoadData(),
+			        generalElement.getLandingPageBubbleDataMaintenanceQuickLinkUtilities()
+			};
+			assertElementsAreDisplayed(landingPageDataMaintenanceElements,printout);
+			validateBackgroundColor(BackgroundColorDataMaintenance, generalElement.getlandingPageDataMaintenanceBgColor());
+			doClick(generalElement.getLandingPageBubbleDataMaintenanceQuickLinkMaintainData());
+			validateBgColorAndPage(driver.findElement(By.xpath("//div[text()='Maintain Data']")), BackgroundColorDataMaintenance,generalElement.getdockDataMaintenancebar(), "Maintain Data");
+			doClick(generalElement.getLandingPageBubbleDataMaintenanceQuickLinkLoadData());
+			 
+			 try {
+				 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+			        wait.until(ExpectedConditions.numberOfWindowsToBe(2));
+				String windowHandle = driver.getWindowHandle();
+			      ArrayList tabs = new ArrayList (driver.getWindowHandles());
+		    	  driver.switchTo().window((String) tabs.get(1));
+			      if(driver.getCurrentUrl().contains("Myrtille")) {
+			    	  assertTrue(printout);
+			    	   driver.close();
+			    	   driver.switchTo().window(windowHandle );
+			      }
+		      }catch(Exception e) {
+		    	  assertElementIsDisplayed(driver.findElement(By.xpath("//div[text()='Load Data Sessions']")));
+		    	  validateBackgroundColor(BackgroundColorDataMaintenance, generalElement.getdockLoadDatabar());
+			      doClosePageOnLowerBar("Load Data");
+		      }
+				doClick(generalElement.getLandingPageBubbleDataMaintenanceQuickLinkUtilities());
+				validateBgColorAndPage(driver.findElement(By.xpath("//div[text()='Utilities']")), BackgroundColorDataMaintenance,generalElement.getdockUtilitiesbar(), "Utilities");
+			ExtentReport.logPass("PASS", "test0002LandingPageDataMaintenance");
+	    } catch (Exception|AssertionError e) {
+			ExtentReport.logFail("FAIL", "test0002LandingPageDataMaintenance", driver, e);
+			fail(e.getMessage());
+		}
+	  }
+	//ADS-6497[add step4 -12]
+	  @Test
+	  public void test0004LandingPageEpisodes_ADS_6497() throws Throwable {
+	    try {
+			WebElement[] landingPageEpisodesElements = {
+			        generalElement.getLandingPageBubbleEpisode(),
+			        generalElement.getLandingPageBubbleEpisodeHeader(),
+			        generalElement.getLandingPageBubbleEpisodeImage(),
+			        generalElement.getLandingPageBubbleEpisodeQuickLinkEpisodeModels(),
+			        generalElement.getLandingPageBubbleEpisodeQuickLinkEpisodeDataMaintenance()
+			};
+			assertElementsAreDisplayed(landingPageEpisodesElements, printout);
+			validateBackgroundColor(BackgroundColorEpisodes,generalElement.getlandingPageEpisodesBgColor());
+			doClick(generalElement.getLandingPageBubbleEpisodeQuickLinkEpisodeModels());
+			doClick("(//span[text()='Episodes'])[2]//preceding::div[contains(@class,'x-tree-expander')]");
+			assertListElementsAreDisplayed(driver.findElements(By.xpath("(//div[@class='x-grid-item-container'])[1]//table//tr//td//div//span")), printout);
+			doClick("(//span[text()='Episodes'])[2]//preceding::div[contains(@class,'x-tree-expander')]");
+			validateBgColorAndPage(driver.findElement(By.xpath("(//span[text()='Episodes'])[2]")), BackgroundColorDockEisodes, generalElement.getdockdockEpisodeModelsbar(), "Episode Models");
+			doClick(generalElement.getLandingPageBubbleEpisodeQuickLinkEpisodeDataMaintenance());
+			validateBgColorAndPage(driver.findElement(By.xpath("((//div[text()='Maintain Data'])[1]")), BackgroundColorDataMaintenance, generalElement.getdockDataMaintenancebar(), "Maintain Data");
+		ExtentReport.logPass("PASS", "test0004LandingPageEpisodes");
 
+		} catch (Exception|AssertionError e) {
+			ExtentReport.logFail("FAIL", "test0004LandingPageEpisodes", driver, e);
+			fail(e.getMessage());
+		}
+	  }
+	//ADS-6496[add step4 -12],ADS-6582
+	  @Test
+	  public void test0005LandingPageContracting_ADS_6496_ADS_6582() throws Throwable {
+	    try {
+	      WebElement[] landingPageContractingElements = {
+	              generalElement.getLandingPageBubbleContracting(),
+	              generalElement.getLandingPageBubbleContractingHeader(),
+	              generalElement.getLandingPageBubbleContractingContent(),
+	              generalElement.getLandingPageBubbleCostingContentText(),
+	              generalElement.getLandingPageBubbleContractingImage(),
+	              generalElement.getLandingPageBubbleContractingQuickLinkContractModels(),
+	              generalElement.getLandingPageBubbleContractingQuickLinkContractingDataMaintenance()
+	      };
+	      assertElementsAreDisplayed(landingPageContractingElements, printout);
+	      validateBackgroundColor(BackgroundColorContracting,generalElement.getlandingPageContractingBgColor());
+	      doClick(generalElement.getLandingPageBubbleContractingQuickLinkContractModels());
+	      validateBgColorAndPage(driver.findElement(By.xpath("(//span[text()='Contracting'])[1]")), BackgroundColorDockEisodes, generalElement.getdockdockEpisodeModelsbar(), "Model Library");
+	      doClick(generalElement.getLandingPageBubbleContractingQuickLinkContractingDataMaintenance());
+	      validateBgColorAndPage(driver.findElement(By.xpath("(//div[text()='Maintain Data'])[1]")), BackgroundColorDataMaintenance, generalElement.getdockDataMaintenancebar(), "Maintain Data");
+
+	      ExtentReport.logPass("PASS", "test0005LandingPageContracting");
+
+	    }  catch (Exception|AssertionError e) {
+			ExtentReport.logFail("FAIL", "test0005LandingPageContracting", driver, e);
+			fail(e.getMessage());
+		}
+	  }
+	//ADS-6495[add step 4-8],ADS-6642[add step 4-8]
+	  @Test
+	  public void test0006LandingPageCosting_ADS_6495_ADS_6642() throws Throwable {
+	    try {
+	      WebElement[] landingPageCostingElements = {
+	              generalElement.getLandingPageBubbleCosting(),
+	              generalElement.getLandingPageBubbleCostingHeader(),
+	              generalElement.getLandingPageBubbleCostingContent(),
+	              generalElement.getLandingPageBubbleCostingContentText(),
+	              generalElement.getLandingPageBubbleCostingImage(),
+	              generalElement.getLandingPageBubbleCostingQuickLinkCostingModels(),
+	              generalElement.getLandingPageBubbleCostingQuickLinkCostingDataMaintenance(),
+	              generalElement.getLandingPageBubbleCostingQuickLinkUnitCostQuickCalculation()
+
+	      };
+	      assertElementsAreDisplayed(landingPageCostingElements,printout);
+	      validateBackgroundColor(BackgroundColorCosting,generalElement.getlandingPageBubbleCostingBgColor());
+	      doClick(generalElement.getLandingPageBubbleCostingQuickLinkCostingModels());
+	      validateBgColorAndPage(driver.findElement(By.xpath("(//span[text()='Costing'])[2]")), BackgroundColorEpisodes,generalElement.getdockdockEpisodeModelsbar(), "Costing Models");
+	      doClick(generalElement.getLandingPageBubbleCostingQuickLinkCostingDataMaintenance());
+	      validateBgColorAndPage(driver.findElement(By.xpath("(//div[text()='Maintain Data'])[1]")), BackgroundColorDataMaintenance, generalElement.getdockDataMaintenancebar(), "Maintain Data");
+	      doClick(generalElement.getLandingPageBubbleCostingQuickLinkUnitCostQuickCalculation());
+	      validateBgColorAndPage(driver.findElement(By.xpath("(//div[text()='Unit Cost Quick Calculation'])")), BackgroundColorCosting, generalElement.getdockUnitCostQuickModelsbar(), "Unit Cost Quick Calculation");
+    
+	      ExtentReport.logPass("PASS", "test0006LandingPageCosting");
+
+	    } catch (Exception|AssertionError e) {
+			ExtentReport.logFail("FAIL", "test0006LandingPageCosting", driver, e);
+			fail(e.getMessage());
+		}
+	  }
+	  //ADS-6502[add step 4-11]
+	  @Test
+	  public void test0007LandingPageReporting_ADS_6502() throws Throwable {
+	    try {
+	      WebElement[] landingPageReportingElements = {
+	              generalElement.getLandingPageBubbleReporting(),
+	              generalElement.getLandingPageBubbleReportingHeader(),
+	              generalElement.getLandingPageBubbleReportingContent(),
+	              generalElement.getLandingPageBubbleReportingContentText(),
+	              generalElement.getLandingPageBubbleReportingImage(),
+	              generalElement.getLandingPageBubbleReportingQuickLinkReportLibrary(),
+	              generalElement.getLandingPageBubbleReportingQuickLinkWebIntelligence(),
+	              generalElement.getLandingPageBubbleReportingQuickLinkAdHocReportDesign()
+	      };
+	      assertElementsAreDisplayed(landingPageReportingElements,printout);
+	      validateBackgroundColor(BackgroundColorReporting,generalElement.getlandingPageReportingBgColor());
+	      doClick(generalElement.getLandingPageBubbleReportingQuickLinkReportLibrary());
+	      validateBackgroundColor(BackgroundColorDockBarReporting, generalElement.getdockReportingbar());
+	      doClosePageOnLowerBar("Report Library");
+	      doClick(generalElement.getLandingPageBubbleReportingQuickLinkWebIntelligence());
+	      WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+	        wait.until(ExpectedConditions.numberOfWindowsToBe(2));
+	      String windowHandle = driver.getWindowHandle();
+	      ArrayList tabs = new ArrayList (driver.getWindowHandles());
+	      driver.switchTo().window((String) tabs.get(1));
+	      driver.switchTo().frame("servletBridgeIframe");
+	      assertElementIsDisplayed(driver.findElement(By.xpath("//img[@title='SAP']")));
+	      driver.switchTo().defaultContent();
+	      driver.close();
+	      driver.switchTo().window(windowHandle );
+	      doClick(generalElement.getLandingPageBubbleReportingQuickLinkAdHocReportDesign());
+	      try {
+	    	  driver.switchTo().window((String) tabs.get(1));
+		      if(driver.getCurrentUrl().contains("Myrtille")) {
+		    	  assertTrue(printout);
+		    	   driver.close();
+		    	   driver.switchTo().window(windowHandle );
+		      }
+	      }catch(Exception e) {
+	    	  assertElementIsDisplayed(driver.findElement(By.xpath("//div[text()='Ad Hoc Report Design']")));
+	    	  validateBackgroundColor(BackgroundColorDockBarReporting, generalElement.getdockAdhocbar());
+		      doClosePageOnLowerBar("Ad Hoc Report Design");
+	      }
+	   
+	   
+	    
+	      ExtentReport.logPass("PASS", "test0007LandingPageReporting");
+	    } catch (Exception|AssertionError e) {
+			ExtentReport.logFail("FAIL", "test0007LandingPageReporting", driver, e);
+			fail(e.getMessage());
+		}
+	  }
+	  public void ValidateQlikView(WebElement element) {
+		  try {
+			doClick(element);
+			  WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+			    wait.until(ExpectedConditions.numberOfWindowsToBe(2));
+			   
+			     
+			  String windowHandle = driver.getWindowHandle();
+			  ArrayList tabs = new ArrayList (driver.getWindowHandles());
+			  driver.switchTo().window((String) tabs.get(1));
+			  if(driver.getCurrentUrl().contains("qlikview")) {
+				  assertTrue(printout);
+				  
+				  driver.switchTo().defaultContent();
+				  driver.close();
+				  driver.switchTo().window(windowHandle );
+			  }
+			  else {
+				  fail();
+			  }
+		} catch (Exception e) {
+			
+		}
+		 
+	  }
+	//ADS-6501[ add step 4-7]
+	  @Test
+	  public void test0008LandingPageAnalytics_ADS_6501() throws Throwable {
+	    try {
+	      WebElement[] landingPageAnalyticsElements = {
+	              generalElement.getLandingPageBubbleAnalytics(),
+	              generalElement.getLandingPageBubbleAnalyticsHeader(),
+	              generalElement.getLandingPageBubbleAnalyticsContent(),
+	              generalElement.getLandingPageBubbleAnalyticsContentText(),
+	              generalElement.getLandingPageBubbleAnalyticsImage(),
+	              generalElement.getLandingPageBubbleAnalyticsQuickLinkExecutiveDashboard(),
+	              generalElement.getLandingPageBubbleAnayticsQuickLinkAnalyticDashobaords()
+	      };
+	      assertElementsAreDisplayed(landingPageAnalyticsElements,printout);
+	      validateBackgroundColor(BackgroundColorAnalytics, generalElement.getlandinglandingPageAnalyticsBgColor());
+	      ValidateQlikView(generalElement.getLandingPageBubbleAnalyticsQuickLinkExecutiveDashboard());
+	      ValidateQlikView(generalElement.getLandingPageBubbleAnayticsQuickLinkAnalyticDashobaords());
+
+	      ExtentReport.logPass("PASS", "test0008LandingPageAnalytics");
+
+	    } catch (Exception|AssertionError e) {
+			ExtentReport.logFail("FAIL", "test0008LandingPageAnalytics", driver, e);
+			fail(e.getMessage());
+		}
+	  }
+	 public void validateBgColorAndPage(WebElement PageTextxpath,String bgColor,WebElement dockElement,String closeBarElement){
+		  try {
+			 
+				waitForElementToBeVisible(PageTextxpath);
+				assertElementIsDisplayed(PageTextxpath);
+				validateBackgroundColor(bgColor,dockElement);
+				doClosePageOnLowerBar(closeBarElement);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	  }
 	@Test
 	public void test0009bUserMenu() throws Throwable {
 		try {

@@ -456,7 +456,75 @@ public class GeneralElementsMap extends MapConfig {
     @FindBy(xpath = "//div[@class='bubble bubble3 medium costing']")
     private WebElement landingPageBubbleCostingBgColor;
     public WebElement getlandingPageBubbleCostingBgColor() {return landingPageBubbleCostingBgColor;}
+    @FindBy(xpath = "//div[@class='bubble bubble2 medium reporting']")
+    private WebElement landingPageReportingBgColor;
+    public WebElement getlandingPageReportingBgColor() {return landingPageReportingBgColor;}
+    @FindBy(xpath = "//div[@class='bubble bubble3 medium costing']")
+    private WebElement landingPageCostingBgColor;
+    public WebElement getlandingPageCostingBgColor() {return landingPageCostingBgColor;}
+    @FindBy(xpath = "//div[@class='bubble bubble1 medium analytics']")
+    private WebElement landingPageAnalyticsBgColor;
+    public WebElement getlandinglandingPageAnalyticsBgColor() {return landingPageAnalyticsBgColor;}
+    
+    @FindBy(xpath = "//div[@class='bubble bubble8 small systemmaintenance']")
+    private WebElement landingPageSystemMaintenanceBgColor;
+    public WebElement getlandingPageSystemMaintenanceBgColor() {return landingPageSystemMaintenanceBgColor;}
+    
+    @FindBy(xpath = "//div[@class='bubble bubble6 small datamaintenance']")
+    private WebElement landingPageDataMaintenanceBgColor;
+    public WebElement getlandingPageDataMaintenanceBgColor() {return landingPageDataMaintenanceBgColor;}
+    
+    @FindBy(xpath = "//div[@class='bubble bubble5 small episode']")
+    private WebElement landingPageEpisodesBgColor;
+    public WebElement getlandingPageEpisodesBgColor() {return landingPageEpisodesBgColor;}
+    
+    @FindBy(xpath = "//div[@class='bubble bubble4 medium contracting']")
+    private WebElement landingPageContractingBgColor;
+    public WebElement getlandingPageContractingBgColor() {return landingPageContractingBgColor;}
+    
+    @FindBy(xpath = "//a[@data-qtip='Report Library']")
+    private WebElement dockReportingbar;
+    public WebElement getdockReportingbar() {return dockReportingbar;}
+   
+    @FindBy(xpath = "//a[@data-qtip='Ad Hoc Report Design']")
+    private WebElement dockAdhocbar;
+    public WebElement getdockAdhocbar() {return dockAdhocbar;}
+    
+    @FindBy(xpath = "//a[@data-qtip='Users']")
+    private WebElement dockUsersbar;
+    public WebElement getdockUsersbar() {return dockUsersbar;}
+    
+    @FindBy(xpath = "//a[@data-qtip='Roles']")
+    private WebElement dockRolesbar;
+    public WebElement getdockRolesbar() {return dockRolesbar;}
+    
+    @FindBy(xpath = "//a[@data-qtip='Security Settings']")
+    private WebElement dockSecuritySetbar;
+    public WebElement getdockSecuritySetbar() {return dockSecuritySetbar;}
+    
+    @FindBy(xpath = "//a[@data-qtip='General Settings']")
+    private WebElement dockSecurityGenSetbar;
+    public WebElement getdockSecurityGenSetbar() {return dockSecurityGenSetbar;}
+    
+    @FindBy(xpath = "//a[@data-qtip='Maintain Data']")
+    private WebElement dockDataMaintenancebar;
+    public WebElement getdockDataMaintenancebar() {return dockDataMaintenancebar;}
+    
+    @FindBy(xpath = "//a[@data-qtip='Load Data']")
+    private WebElement dockLoadDatabar;
+    public WebElement getdockLoadDatabar() {return dockLoadDatabar;}
+    
+    @FindBy(xpath = "//a[@data-qtip='Utilities']")
+    private WebElement dockUtilitiesbar;
+    public WebElement getdockUtilitiesbar() {return dockUtilitiesbar;}
+    
+    @FindBy(xpath = "//a[contains(@class,'modelLib-tab')]")
+    private WebElement dockEpisodeModelsbar;
+    public WebElement getdockdockEpisodeModelsbar() {return dockEpisodeModelsbar;}
 
+    @FindBy(xpath = "//a[contains(@data-qtip='Unit Cost Quick Calculation')]")
+    private WebElement dockUnitCostQuickModelsbar;
+    public WebElement getdockUnitCostQuickModelsbar() {return dockUnitCostQuickModelsbar;}
     //Contracting
     @FindBy(xpath = "//*[contains(@class,'contracting')]")
     private WebElement landingPageBubbleContracting;
