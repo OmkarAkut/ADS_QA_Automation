@@ -3,7 +3,7 @@ package webdriver.suites;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
-
+import webdriver.deployment.SmokeTest;
 import webdriver.globalscripts.accessibilitytests.TestSuiteAXE;
 import webdriver.globalscripts.checktests.ChecktestsSuite;
 import webdriver.globalscripts.help.HelpSuite;
@@ -40,7 +40,7 @@ import webdriver.scripts.systemmaintenance.SystemMaintenanceTestSuite;
 //	UtilitiesTestSuite.class,
 //	MaintaindataTestSuite.class,
 //	TestSuiteAXE.class,
-	PagetestsSuite.class,
+//	PagetestsSuite.class,
 //	HelpSuite.class,
 //	SecurityTestsSuite.class,
 //	ChecktestsSuite.class,
@@ -57,6 +57,7 @@ import webdriver.scripts.systemmaintenance.SystemMaintenanceTestSuite;
 //	ReportingTestSuite.class,
 	
 //	Regression_suite.class
+	SmokeTest.class,
 })
 
 public class TestRun_Suite {
