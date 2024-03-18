@@ -978,7 +978,7 @@ public class ContractingMap extends MapConfig {
 //	Omkar 21/6/2023 : xpath changes for 11.2
 //	The below xpath will pick the second name from name column
 //	@FindBy(xpath = "//tr[contains(@class,'x-grid-row x-grid-row-selected x-grid-row-focused')]/td[4]/div")
-	@FindBy(xpath= "((//div[@class='x-grid-item-container'])[2]//tr[contains(@class,'  x-grid-row')]/td)[3]/div")
+	@FindBy(xpath= "((//div[@class='x-grid-item-container'])[2]//tr[contains(@class,'  x-grid-row')]/td)[2]/div")
 	private static WebElement ContractTypeColName;
 	public static WebElement getContractTypeColName() {return ContractTypeColName;}
 

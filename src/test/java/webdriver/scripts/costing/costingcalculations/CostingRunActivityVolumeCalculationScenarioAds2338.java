@@ -55,7 +55,7 @@ public class CostingRunActivityVolumeCalculationScenarioAds2338 extends Calculat
 	}
 
 	@Test
-	public void test01VerifyActivityVolumeDataScenarioPageConfigurationAndSave_5990()
+	public void test01VerifyActivityVolumeDataScenarioPageConfigurationAndSave_ADS_5990()
 			throws InterruptedException, Throwable {
 		try {
 			doSearchForModel(costModel);
@@ -118,7 +118,10 @@ public class CostingRunActivityVolumeCalculationScenarioAds2338 extends Calculat
 //    	doClick(getWebElement("//span[text()='Calculate']"));
 			doClick(getWebElementButtonWithElementText("Calculate"));
 			waitForFirstRowCalculationBarToReach100Percent();
-			deleteMyCalculationStatusFirstRow();
+			String xpath ="(//*[contains(@id,'calculationstatus') and contains(@id,'header')]/..//span[contains(@class,'x-btn-icon-el x-btn-icon-el-default-small delBtn')])[1]";
+			doClick(xpath);
+			doClick("(//div[contains(@class,'x-toolbar-footer')]//following::div//following::a//following::span[text()='Delete'])[2]");
+//			deleteCalculationStatusMyStatusPageFirstRow();
 			doClosePageOnLowerBar("Calculation Status");
 			waitForAjaxExtJs();
 //		doClick(getWebElement("//div[3]/em/button/span[text()='Save & Close']"));

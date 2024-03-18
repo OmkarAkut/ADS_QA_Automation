@@ -63,7 +63,7 @@ public class ValidateContracDataMaintenanceBubble extends CalculationHelper {
 			assertElementIsDisplayed(ContractingMap.FieldSpecificationTab());
 			assertElementIsDisplayed(ContractingMap.TemplatesTab());
 			assertElementIsDisplayed(ContractingMap.SchedulesTab());
-			doClick(modelMap.getContractModelRiskLimiterCancelCloseBtn());
+			doClick("(//div[text()='APC Fee Schedule Master']//following::span[text()='Cancel & Close']/../../..)[1]");
 			goToPage("Contract Models");
 			waitForElementToBeVisible(modelMap.getContractingTreeExpand());
 			doClick(modelMap.getContractingTreeExpand());
@@ -83,7 +83,7 @@ public class ValidateContracDataMaintenanceBubble extends CalculationHelper {
 			fail(e.getMessage());
 		} 
 		finally {
-			doClosePageOnLowerBar("Contract Models");
+			doClosePageOnLowerBar("Maintain Data");
 		}
 	}
 	@AfterClass

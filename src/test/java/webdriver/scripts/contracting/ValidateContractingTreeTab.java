@@ -43,7 +43,7 @@ public class ValidateContractingTreeTab extends CalculationHelper{
 			ContractTypeName=ContractingMap.getContractTypeColName().getText();
 			doClick(ContractingMap.ContractTypeEditButton());
 			assertThatAttributeValueIsEqual(ContractingMap.getInputName(), ContractTypeName, printout);
-			doClick(ContractingMap.getContractModelRiskLimiterCancelCloseBtn());
+			doClick("//div[text()='"+ContractTypeName+"']//following::span[text()='Cancel & Close']");
 			ExtentReport.logPass("PASS", "test01VerifyEditContractingTreeTab");
 		} catch (Exception|AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01VerifyEditContractingTreeTab", driver, e);

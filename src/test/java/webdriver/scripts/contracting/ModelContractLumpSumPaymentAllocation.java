@@ -87,7 +87,7 @@ public class ModelContractLumpSumPaymentAllocation extends CalculationHelper {
 			doClick(ContractingMap.getContractFeeForServicePaymentSave());
 			assertElementIsDisplayed(ContractingMap.getSaveButton());
 			doClick(ContractingMap.getSaveButton());
-			doClickTreeItemWithCheckbox("Lump Sum Payment Allocation Rules");
+			doClickTreeItem("Lump Sum Payment Allocation Rules");
 			waitForAjaxExtJs();
 			assertElementIsDisplayed(driver.findElement(By.xpath("//div[contains(@id,'lumpsumpaymentallocationrulesmaingrid')]//following::div[text()='"+lumpSumPaymentAlloc+"']")));
 			driverDelay(1000);

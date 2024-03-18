@@ -43,7 +43,7 @@ public class CreatingaNewContractingFolder extends GoHelper {
 /**Test - UI Validation [Contracting] �Creating a New Contracting Folder�.**/
 	//ADS-6410
 	@Test
-	public void test01CreateNewContractFolder_6410() throws Throwable {
+	public void test01CreateNewContractFolder_ADS_6410() throws Throwable {
 		try {
 			doClick(modelMap.getNewContractFolderBtn());
 			waitForElementToBeVisible(modelMap.getNewFolderPopUp());

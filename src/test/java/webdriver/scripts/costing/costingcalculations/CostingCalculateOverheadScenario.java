@@ -6,7 +6,9 @@ import java.text.SimpleDateFormat;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import ExtentReport.ExtentReport;
@@ -15,7 +17,7 @@ import webdriver.helpers.CalculationHelper;
 import webdriver.helpers.ContractModelsHelper;
 import webdriver.maps.ContractingMap;
 import webdriver.maps.mapbuilder.BuildMap;
-
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class CostingCalculateOverheadScenario extends CalculationHelper {
 	JavascriptExecutor executor = (JavascriptExecutor) driver;
 	static String viewLogTitle = "Overhead Model Scenario Calculation";
@@ -42,7 +44,7 @@ public class CostingCalculateOverheadScenario extends CalculationHelper {
 
 //ADS-5991, covered only for Costing , need to add steps[from step16] for Report library Costing for overhead cost model
 	@Test
-	public void test01AdsLoginLogout5991() throws Throwable {
+	public void test01AdsLoginLogout_ADS_5991() throws Throwable {
 		try {
 //      doSearchForModel("v102 REGRESSION Overhead Model");
 			doSearchForModel("2005 Overhead Allocation-Test2023");
@@ -111,7 +113,7 @@ public class CostingCalculateOverheadScenario extends CalculationHelper {
 	// frame
 	@Test // (Omkar 24/5/22 : Need to review which objectr needs to be clicked in tree in
 			// step 2.The test is failing saying that object is not clickable)
-	public void test02AssertReportLibrary5991() throws InterruptedException, Throwable {
+	public void test02AssertReportLibrary_ADS_5991() throws InterruptedException, Throwable {
 		try {
 			goToPage("Report Library");
 			waitForSpinnerToEnd();

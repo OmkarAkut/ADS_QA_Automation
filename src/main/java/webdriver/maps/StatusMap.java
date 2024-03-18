@@ -234,7 +234,7 @@ public class StatusMap extends MapConfig {
     private WebElement statusFilterDialogButtonAdd;
     public WebElement getStatusFilterDialogButtonAdd() {return statusFilterDialogButtonAdd;}
 
-    @FindBy(xpath = "//span[@class=\"x-btn-inner\"][text()=\"Add Value\"]")
+    @FindBy(xpath = "//span[contains(@id,'button')][text()='Add Value']")
     private WebElement statusFilterDialogButtonAddValue;
     public WebElement getStatusFilterDialogButtonAddValue() {return statusFilterDialogButtonAddValue;}
     

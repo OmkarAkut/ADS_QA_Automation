@@ -65,7 +65,7 @@ public class ValidateBenifitPlansInfoForMultipleUnpublishedContracts extends Cal
 	}
 
 	@Test
-	public void test01MoveToDefinitionElementsTabInMultipleContracts6080() throws Throwable {
+	public void test01MoveToDefinitionElementsTabInMultipleContracts_ADS_6080() throws Throwable {
 		try {
 //			Omkar 7/7/2023 : xpath changes for 11.2
 //			ContractModelsHelper.toggleBetweenTheDockBar("(//span[text()='CM ADS1327...']//parent::button)[1]");
@@ -100,7 +100,7 @@ public class ValidateBenifitPlansInfoForMultipleUnpublishedContracts extends Cal
 	}
 
 	@Test
-	public void test02RemoveBenefitPlanInMultipleContracts6080() throws Throwable {
+	public void test02RemoveBenefitPlanInMultipleContracts_ADS_6080() throws Throwable {
 		try {
 //			Omkar 7/7/2023 : xpath changes for 11.2
 //			ContractModelsHelper.toggleBetweenTheDockBar("(//span[text()='CM ADS1327...']//parent::button)[1]");
@@ -131,7 +131,7 @@ public class ValidateBenifitPlansInfoForMultipleUnpublishedContracts extends Cal
 	}
 
 	@Test
-	public void test03ApplyBenefitPlanInMultipleContracts6080() throws Throwable {
+	public void test03ApplyBenefitPlanInMultipleContracts_ADS_6080() throws Throwable {
 //		Omkar 7/7/2023 : xpath changes for 11.2
 //		ContractModelsHelper.toggleBetweenTheDockBar("(//span[text()='CM ADS1327...']//parent::button)[1]");
 				ContractModelsHelper.toggleBetweenTheDockBar("(//span[text()='CM ADS1327...'])[1]");
@@ -155,9 +155,12 @@ public class ValidateBenifitPlansInfoForMultipleUnpublishedContracts extends Cal
 //			Omkar 7/7/2023 : xpath changes for 11.2
 //			ContractModelsHelper.toggleBetweenTheDockBar("(//span[text()='CM ADS1327...']//parent::button)[1]");
 			ContractModelsHelper.toggleBetweenTheDockBar("(//span[text()='CM ADS1327...'])[1]");
+		
 //			doClick("(//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//span[text()='Cancel & Close'])[1]");
 			//Shilpa update xpath for 11.2 on 11.16.2023
+			doClick(ContractingMap.getWarningCancelCloseBtn());
 			doClick("(//div[contains(@class,'footer')]//span[text()='Cancel & Close'])[1]");
+			doClick(ContractingMap.getWarningCancelCloseBtn());
 //			doClick("//div[@class='x-window-bodyWrap']//span[text()='Cancel & Close']"); // warning window
 //			Omkar 7/7/2023 : xpath changes for 11.2
 //			doClick("(//*[contains(@id,'tab') and contains(text(),'CM ADS1327...')]/../../following-sibling::a)[1]");

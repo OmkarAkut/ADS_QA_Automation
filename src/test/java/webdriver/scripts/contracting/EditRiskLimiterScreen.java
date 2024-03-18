@@ -43,7 +43,7 @@ public class EditRiskLimiterScreen extends GoHelper{
 	}
 	//ADS-6079[all steps]
 	@Test
-	public void test01ContractModelEditRiskLimiterScreen6079() throws Throwable {
+	public void test01ContractModelEditRiskLimiterScreen_ADS_6079() throws Throwable {
 		try {
 			doSearchForContractModel(contractModelName);
 			tableDoubleClickCellFirstColumn(contractModelName);

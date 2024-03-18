@@ -45,7 +45,7 @@ public class ValidateBenefitPlanInfoUpdate extends CalculationHelper {
 	}
 //ADS-6076 [all steps]
 	@Test
-	public void test01AddMultipleBenefitPlan_6076() throws Throwable {
+	public void test01AddMultipleBenefitPlan_ADS_6076() throws Throwable {
 		try {
 			doClick(ContractingMap.getDefinitionElementC1());
 //			Omkar 22/6/2023 : xpath changes for 11.2
@@ -72,7 +72,7 @@ public class ValidateBenefitPlanInfoUpdate extends CalculationHelper {
 			waitForMainPageTitle("Add Benefit Plans");
 			doClick(ContractingMap.getSelectAllBenefitPlans());
 			doClick(ContractingMap.getContractModelApplyInExportPopUp());
-			doClick("//span[text()='Cancel & Close']");
+			doClick("(//div[contains(@class,'footer')]//span[text()='Cancel & Close'])");
 //			doClick(ContractingMap.getContractModelRiskLimiterCancelCloseBtn());
 //			assertElementIsDisplayed(ContractingMap.getContractModelRiskLimiterMessageBoxCancelCloseBtn());
 //			doClick(ContractingMap.getContractModelRiskLimiterMessageBoxCancelCloseBtn());
@@ -84,7 +84,7 @@ public class ValidateBenefitPlanInfoUpdate extends CalculationHelper {
 	}
 
 	@Test
-	public void test02ClearAllBenefitPlans_6076() throws Throwable {
+	public void test02ClearAllBenefitPlans_ADS_6076() throws Throwable {
 		try {
 //			doClickTreeItemWithCheckbox("General Information - Unpublished Contract");
 //			doClick(ContractingMap.getDefinitionElementC1());

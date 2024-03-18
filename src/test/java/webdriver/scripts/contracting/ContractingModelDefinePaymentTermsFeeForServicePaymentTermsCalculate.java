@@ -97,7 +97,7 @@ public class ContractingModelDefinePaymentTermsFeeForServicePaymentTermsCalculat
 	}
 //ADS-6775,ADS-6782 [both test cases covered here]
 	@Test
-	public void FeeForServicePaymentTermsCalculate_ADS6775_ADS6782() throws Throwable {
+	public void FeeForServicePaymentTermsCalculate_ADS_6775_ADS_6782() throws Throwable {
 		try {
 			ContractModelsHelper.scrollToView("//div[text()='" + contractFolder + "']//img[3]");
 			doClick("//div[text()='" + contractFolder + "']/img[2]");
