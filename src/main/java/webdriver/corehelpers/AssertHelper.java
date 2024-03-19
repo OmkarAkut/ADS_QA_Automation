@@ -633,6 +633,7 @@ public class AssertHelper extends AdsHelper {
 		boolean checkElement = element.isDisplayed();
 		assertTrue(checkElement);
 	}
+	
 
 	public static void assertElementIsDisplayed(WebElement element, boolean printout) {
 		WebElement checkElement = element;

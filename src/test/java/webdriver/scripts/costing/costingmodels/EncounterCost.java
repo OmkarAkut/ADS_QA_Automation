@@ -147,7 +147,7 @@ public class EncounterCost extends UcqcHelper {
 			doClick("//span[text()='Continue']");
 			waitForDisplayedSpinnerToEnd();
 			doClick(CostingMap.getEncounterCalculateBtn());
-			doClick("//span[text()='Save & Continue']");
+//			doClick("//span[text()='Save & Continue']");
 			waitForSpinnerToEnd();
 			CalculationHelper.waitForFirstRowCalculationBarToReach100Percent();
 			ExtentReport.logPass("PASS", "test01AssertCostModelPageHeader");

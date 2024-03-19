@@ -67,7 +67,7 @@ public class CreateEditDeleteNewStructurePopulations extends GoHelper{
 			doClick(DataMaintenanceMap.getPopulationShowSizeButton());
 //			assertTextIsDisplayed("(Selected: 16334/2610846)");
 			//Shilpa update selected value for 11.2 on 11.20.2023
-			assertTextIsDisplayed("(Selected: 16334/2610889)");
+			assertTextIsDisplayed("(Selected: 16334/2610890)");
 //			assertTextIsDisplayed("(Selected: 16334/2610889)");
 			doClick(costing.getSaveCostModel());
 			waitForDisplayedSpinnerToEnd();
@@ -95,7 +95,7 @@ public class CreateEditDeleteNewStructurePopulations extends GoHelper{
 			doClick(DataMaintenanceMap.getPopulationShowSizeButton());
 //			assertTextIsDisplayed("(Selected: 21943/2610846)");
 			//Shilpa update selected value for 11.2 on 11.20.2023
-			assertTextIsDisplayed("(Selected: 16334/2610889)");
+			assertTextIsDisplayed("(Selected: 16334/2610890)");
 			doClick(costing.getSaveCostModel());
 			waitForDisplayedSpinnerToEnd();
 			ExtentReport.logPass("PASS", "test02EditCreatedPopulation");

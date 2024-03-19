@@ -7,6 +7,7 @@ import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
+import org.openqa.selenium.By;
 
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
@@ -42,9 +43,9 @@ public class ValidateImportExportbuttonsontheSystemMaintenance extends GoHelper{
 		try {
 			doClick(sysmaint.getUsersPageButtonImport());
 			waitForMainPageTitle("Multiple File Import");
-			assertElementIsDisplayed(contractMap.getContractModelRiskLimiterMessageBox());
+			assertElementIsDisplayed(driver.findElement(By.xpath("//div[text()='Multiple File Import']//following::span[text()='Cancel & Close']")),printout);
 			assertElementIsDisplayed(contractMap.getContractModelImportButtonInExportPopUp());
-			doClick(contractMap.getContractModelRiskLimiterMessageBox());
+			doClick("//div[text()='Multiple File Import']//following::span[text()='Cancel & Close']");
 			ExtentReport.logPass("PASS", "test01ValidateImportOption");
 		} catch (Exception|AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01ValidateImportOption", driver, e);
@@ -56,9 +57,9 @@ public class ValidateImportExportbuttonsontheSystemMaintenance extends GoHelper{
 		try {
 			doClick(sysmaint.getUsersPageButtonExport());
 			waitForMainPageTitle("Multiple File Export");
-			assertElementIsDisplayed(contractMap.getContractModelRiskLimiterMessageBox());
+			assertElementIsDisplayed(driver.findElement(By.xpath("//div[text()='Multiple File Export']//following::span[text()='Cancel & Close']")),printout);
 			assertElementIsDisplayed(contractMap.getContractModelExportButtonInExportPopUp());
-			doClick(contractMap.getContractModelRiskLimiterMessageBox());
+			doClick("//div[text()='Multiple File Export']//following::span[text()='Cancel & Close']");
 			ExtentReport.logPass("PASS", "test02ValidateExportOption");
 		} catch (Exception|AssertionError e) {
 			ExtentReport.logFail("FAIL", "test02ValidateExportOption", driver, e);

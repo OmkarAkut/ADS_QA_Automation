@@ -64,9 +64,9 @@ public class GeneralCalculationsEncounterServiceClassificationSchemeAds2341 exte
 		fail(e.getMessage());
 	}
   }
-//ADS-6102 all steps
+//ADS-6101 all steps
   @Test
-  public void test01ClickRemoveButtonAndVerifyRemoveProcessRanSuccessfully_6102()
+  public void test01ClickRemoveButtonAndVerifyRemoveProcessRanSuccessfully_6101()
           throws InterruptedException,Throwable {
     try {
     	doClick(DataMaintenanceMap.getLoadDataFilterButton());
@@ -120,7 +120,7 @@ public class GeneralCalculationsEncounterServiceClassificationSchemeAds2341 exte
 //  }
 
   @Test
-  public void test03VerifyNoServicesAppearOnEncountersPage_6102()
+  public void test03VerifyNoServicesAppearOnEncountersPage_6101()
           throws InterruptedException,Throwable {
     try {
 		doMaintainDataPageSelectAtoZOption("Encounters");
@@ -146,7 +146,7 @@ public class GeneralCalculationsEncounterServiceClassificationSchemeAds2341 exte
   }
 
   @Test
-  public void test04ClickAssignButtonAndAssertCalculationSummaryDetailsMatchExpected_6102()
+  public void test04ClickAssignButtonAndAssertCalculationSummaryDetailsMatchExpected_6101()
           throws InterruptedException,Throwable {
     try {
       //goToPage("Maintain Data");
@@ -186,7 +186,7 @@ public class GeneralCalculationsEncounterServiceClassificationSchemeAds2341 exte
   }
 
   @Test
-  public void test05AssertServicesCountOnEncountersPage_6102() throws InterruptedException,Throwable{
+  public void test05AssertServicesCountOnEncountersPage_6101() throws InterruptedException,Throwable{
       try {
 		goToPage("Maintain Data");
 		  doMaintainDataPageSelectAtoZOption("Encounters");
@@ -223,7 +223,7 @@ public class GeneralCalculationsEncounterServiceClassificationSchemeAds2341 exte
   }
 
   @Test
-  public void test06VerifyServicesNowAppearOnEncountersPage_6102() throws Throwable {
+  public void test06VerifyServicesNowAppearOnEncountersPage_6101() throws Throwable {
     try {
 //		  List<WebElement> ele=driver.findElements(By.xpath("//*[text()='Service Scheme']/ancestor::div[contains(@class,'x-grid-header')]//following-sibling::div/descendant::table//tbody/tr"));
 
