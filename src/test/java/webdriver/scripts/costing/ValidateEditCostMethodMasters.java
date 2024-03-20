@@ -58,7 +58,7 @@ public class ValidateEditCostMethodMasters extends GoHelper{
 			doClick(costing.getEditButton());
 			driverDelay(200);
 			assertTextIsDisplayed("Cost Method Master");
-			doClick(ContractingMap.getContractModelRiskLimiterCancelCloseBtn());
+			doClick("//div[text()='Cost Method Master']//following::span[text()='Cancel & Close']");
 			ExtentReport.logPass("PASS", "test02EditCostMethodModel");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test02EditCostMethodModel", driver, e);
