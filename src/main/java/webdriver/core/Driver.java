@@ -21,6 +21,8 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 /** Saves properties from file as variables for test framework */
 public class Driver {
 
@@ -215,10 +217,12 @@ public class Driver {
 		browser = browser.toLowerCase();
 		if (browser.contains("headless")) {
 		  System.out.println("Chrome is running in headless mode");
+		  WebDriverManager.chromedriver().setup();
 		  ChromeOptions options = new ChromeOptions();
 		  options.addArguments("--window-size=1920,1080", "--ignore-certificate-errors", "--headless");
 		  driver = new ChromeDriver(options);
 		} else if (browser.equals("chrome")) {
+			 WebDriverManager.chromedriver().setup();
 		  ChromeOptions options = new ChromeOptions();
 		  options.addArguments("--ignore-certificate-errors", "start-maximized");
 		  options.addArguments("--remote-allow-origins=*");
@@ -234,7 +238,7 @@ public class Driver {
 		} 
 		//Shilpa added below line for 11.2 on 12.12.2023
 		else if (browser.equals("edge")) {
-			  
+			 WebDriverManager.edgedriver().setup();
 			  EdgeOptions options =new EdgeOptions();
 			  options.addArguments("--remote-allow-origins=*");
 			  options.addArguments("--ignore-certificate-errors", "start-maximized");
