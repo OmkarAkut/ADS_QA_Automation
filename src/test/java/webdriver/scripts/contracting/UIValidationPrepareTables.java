@@ -41,7 +41,7 @@ public class UIValidationPrepareTables extends CalculationHelper{
 	}
 //ADS-6463
 	@Test
-	public void AssertPrepareTables_6463_6461_6462() throws Throwable {
+	public void AssertPrepareTables_ADS_6463_ADS_6461_ADS_6462() throws Throwable {
 		try {
 			doSearchForContractModel(ContractModelName);
 			tableDoubleClickCellFirstColumn(ContractModelName);

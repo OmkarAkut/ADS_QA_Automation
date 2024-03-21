@@ -173,7 +173,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 			fail(e.getMessage());
 		}
 	}
-//	 @Test
+	 @Test
 	  public void test0002LandingPageDataMaintenance_ADS_6498() throws Throwable {
 	    try {
 			WebElement[] landingPageDataMaintenanceElements = {
@@ -1794,7 +1794,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 
 	//ADS-6584
 	@Test
-	public void test1002ValidateContactUsPage() throws Throwable {
+	public void test1002ValidateContactUsPage_ADS_6584() throws Throwable {
 		try {
 			doClick(generalElement.getGlobalHeaderButtonContactUs());
 			assertElementIsDisplayedWithXpath("(//*[contains(@src,'Harris_Affinity_Logo.png')])[2]");
@@ -1805,6 +1805,8 @@ public class BuildVerificationTestScript extends UcqcHelper {
 					"ForcriticaldownissuespleasecontactSupportat8665693375forUScustomers8669648196forNonUScustomersFornoncriticalissuespleaseusetheCustomerSupportPortalataclasscontactUsLinktarget_blankhrefhttpssupportharrishealthcarecomAffinityhttpssupportharrishealthcarecomAffinityaFormoreinformationaboutourcompanyproductsandservicespleasevisitaclasscontactUsLinktarget_blankhrefhttpwwwHarrisAffinitycomwwwHarrisAffinitycoma")) {
 				assertTrue(printout);
 			}
+			validateBgColorAndPage(driver.findElement(By.xpath("(//*[contains(@src,'Harris_Affinity_Logo.png')])[2]")), BackgroundColorReportingTab, generalElement.getdockContactUsbar(),"Contact Us");
+
 			ExtentReport.logPass("PASS", "test1002ValidateContactUsPage");
 		} catch (Exception | AssertionError e) {
 

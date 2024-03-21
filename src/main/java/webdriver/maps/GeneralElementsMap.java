@@ -498,6 +498,10 @@ public class GeneralElementsMap extends MapConfig {
     private WebElement dockRolesbar;
     public WebElement getdockRolesbar() {return dockRolesbar;}
     
+    @FindBy(xpath = "//a[@data-qtip='Contact Us']")
+    private WebElement dockContactUsbar;
+    public WebElement getdockContactUsbar() {return dockContactUsbar;}
+    
     @FindBy(xpath = "//a[@data-qtip='Security Settings']")
     private WebElement dockSecuritySetbar;
     public WebElement getdockSecuritySetbar() {return dockSecuritySetbar;}

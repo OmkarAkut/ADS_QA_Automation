@@ -61,7 +61,7 @@ public class ConfirmAddNewDeleteAPCFeeScheduleMasters extends CalculationHelper 
 		}
 
 	}
-//ADS-6442,ADS-6455[add collapse function]
+//ADS-6442,ADS-6455
 	@Test
 	public void test02AssertBuildStructureElements_ADS_6442_ADS_6455() throws Throwable {
 		try {
@@ -74,6 +74,9 @@ public class ConfirmAddNewDeleteAPCFeeScheduleMasters extends CalculationHelper 
 			assertTextIsDisplayed("Membership Classification Schemes");
 			assertTextIsDisplayed("ASC Schemes");
 			assertTextIsDisplayed("Fee Schedule Masters");
+			assertTextIsDisplayed("Price Lists");
+			assertTextIsDisplayed("Prepare RBRVS Tables");
+			doClickTreeItem("Build Structure Elements");
 			ExtentReport.logPass("PASS", "test02AssertBuildStructureElements");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test02AssertBuildStructureElements", driver, e);
@@ -84,6 +87,8 @@ public class ConfirmAddNewDeleteAPCFeeScheduleMasters extends CalculationHelper 
 	@Test
 	public void test03AssertFeeScheduleMasters() throws Throwable {
 		try {
+			doClickTreeItem("Build Structure Elements");
+			driverDelay(120);
 			doClickTreeItem("Fee Schedule Masters");
 			driverDelay(300);
 			assertTextIsDisplayed("APC Fee Schedule Masters");
@@ -125,11 +130,28 @@ public class ConfirmAddNewDeleteAPCFeeScheduleMasters extends CalculationHelper 
 			fail(e.getMessage());
 		}
 	}
+	//ADS-6457
+		@Test
+		public void test05CreateNewAPDRGScheduleMasters_ADS_6457() throws Throwable {
+			doClickTreeItem("DRG Fee Schedule Masters");
+			doClickTreeItem("AP DRG Fee Schedule Masters");
+			driverDelay();
+			doClick("(//h1[text()='AP DRG Fee Schedule Masters']//following::span[text()='New'])[1]");
+			ContractModelsHelper.keyInValues(driver.findElement(By.name("code")), APCCode);
+			doClick("(//h1[text()='AP DRG Fee Schedule Masters']//following::span[text()='Save & Close'])[1]");
+			doClick(ContractingMap.getAPDRGFilterButton());
+			doFilterCreate(filter);
+			assertElementIsDisplayed(driver.findElement(By.xpath("//div[text()='" + APCCode + "']")));
+			doClick(ContractingMap.getAPDRGDeleteButton());
+			waitForElementToBeVisible(ContractingMap.getWarningPopUpDeleteButton());
+			doClick(ContractingMap.getWarningPopUpDeleteButton());
+			assertTextIsDisplayed("There is no data available to display.");
+		}
 //ADS-6458
 	@Test
 	public void test06CreateNewandDeleteAPCCode_ADS_6458() throws Throwable {
 		try {
-			doClickTreeItemWithCheckbox("APC Fee Schedule Masters");
+			doClickTreeItem("APC Fee Schedule Masters");
 			waitForElementToBeVisible(ContractingMap.getApcFeeScheduleHeader());
 			doClick(ContractingMap.getNewButtonAPC());
 			waitForElementToBeVisible(ContractingMap.getMedicareCode());
@@ -155,6 +177,8 @@ public class ConfirmAddNewDeleteAPCFeeScheduleMasters extends CalculationHelper 
 			doClosePageOnLowerBar("Contract Models");
 		}
 	}
+	//ADS-6462
+	
 
 	@AfterClass
 	public static void endtest() {

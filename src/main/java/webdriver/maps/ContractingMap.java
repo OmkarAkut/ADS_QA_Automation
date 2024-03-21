@@ -845,6 +845,14 @@ public class ContractingMap extends MapConfig {
 	@FindBy(xpath = "//div[contains(@id,'warningwindow')]/div//span[text()='Delete']")
 	private static WebElement WarningPopUpDeleteButton;
 	public static WebElement getWarningPopUpDeleteButton() {return WarningPopUpDeleteButton;}
+	
+	@FindBy(xpath = "(//h1[text()='AP DRG Fee Schedule Masters']//following::span[text()='Delete'])[1]")
+	private static WebElement APDRGDeleteButton;
+	public static WebElement getAPDRGDeleteButton() {return APDRGDeleteButton;}
+	
+	@FindBy(xpath = "(//h1[text()='AP DRG Fee Schedule Masters']//following::span[text()='Filter'])[1]")
+	private static WebElement APDRGFilterButton;
+	public static WebElement getAPDRGFilterButton() {return APDRGFilterButton;}
 
 //	Omkar 5/7/2023 : xpath changes for 11.2
 //	@FindBy(xpath = "//div[contains(@id,'medicareCarrier')]/div//span[text()='Filter']//parent::button")
@@ -883,13 +891,13 @@ public class ContractingMap extends MapConfig {
 
 //	Omkar 5/7/2023 : xpath changes for 11.2
 //	@FindBy(xpath = "(//h1[text()='APC Fee Schedule Masters']//following::span[text()='Delete']//parent::button)[1]")
-	@FindBy(xpath = "//div[@id='contractTypeList-innerCt']//span[text()='Delete']")
+	@FindBy(xpath = "(//h1[text()='APC Fee Schedule Masters']//following::span[text()='Delete'])[1]")
 	private static WebElement NewAPCodeDeleteButton;
 	public static WebElement getNewAPCodeDeleteButton() {return NewAPCodeDeleteButton;}
 
 //	Omkar 5/7/2023 : xpath changes for 11.2
 //	@FindBy(xpath = "(//h1[text()='APC Fee Schedule Masters']//following::span[text()='Filter']//parent::button)[1]")
-	@FindBy(xpath = "//div[@id='contractTypeList-innerCt']//span[text()='Filter']")
+	@FindBy(xpath = "(//h1[text()='APC Fee Schedule Masters']//following::span[text()='Filter'])[1]")
 	private static WebElement NewAPCodeFilterButton;
 	public static WebElement getNewAPCodeFilterButton() {return NewAPCodeFilterButton;}
 

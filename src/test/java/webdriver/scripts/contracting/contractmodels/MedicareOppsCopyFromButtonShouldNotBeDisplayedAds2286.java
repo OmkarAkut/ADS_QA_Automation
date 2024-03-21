@@ -30,7 +30,7 @@ public class MedicareOppsCopyFromButtonShouldNotBeDisplayedAds2286 extends Contr
   //private static EditContractingModelMap editModelMap;
 
   /** Dev Story ADS-2286. **/
-  /** Regression Test Case ADS-6083 incomplete */
+  /** Regression Test Case ADS-6083 incomplete due to scroll issue*/
   @BeforeClass
   public static void setupScript() throws InterruptedException,Throwable {
     //editModelMap = BuildMap.getInstance(driver, EditContractingModelMap.class);
@@ -46,7 +46,9 @@ public class MedicareOppsCopyFromButtonShouldNotBeDisplayedAds2286 extends Contr
 //		        driver.findElement(By.xpath("//div[contains(@class, 'x-boundlist-list-ct') and contains(@id, 'listEl')]/ul")),"Medicare/Commercial Outpatient PPS"
 //		);
 //		navigateFeeForServicePaymentTermsPagePricingMethodSectionClickEditButtonToOpenEditDialog();
-		
+		goToPage("Contract Models");
+		waitForSpinnerToEnd();
+		Thread.sleep(4000);
 		ExtentReport.logPass("PASS", "setupScript");
     } catch (Exception|AssertionError e) {
 		ExtentReport.logFail("PASS", "setupScript", driver, e);
@@ -55,7 +57,7 @@ public class MedicareOppsCopyFromButtonShouldNotBeDisplayedAds2286 extends Contr
   }
 
   @Test
-  public void test01AssertCopyFromButtonIsNotDisplayedForMedicareOppsPricingMethodAds2286_6083() throws InterruptedException,Throwable {
+  public void test01AssertCopyFromButtonIsNotDisplayedForMedicareOppsPricingMethodAds2286_ADS_6083() throws InterruptedException,Throwable {
     try {
     	doClick(modelMap.getNewContractModelButton());
 		waitForElementToBeVisible(ContractingMap.getNewContractModelPopUp());
@@ -69,12 +71,15 @@ public class MedicareOppsCopyFromButtonShouldNotBeDisplayedAds2286 extends Contr
 		doClick(modelMap.getApplySelections());
 		waitForElementToBeVisible(ContractingMap.getNewContractModelPopUp());
 		doClick(modelMap.getSaveContractModel());
-		goToPage("Contract Models");
-		doSearchForContractModel(contractModelName);
-		driverDelay(2000);
+//		goToPage("Contract Models");
+//		doSearchForContractModel(contractModelName);
+//		driverDelay(2000);
 //		tableDoubleClickCellFirstColumn(contractModelName);
 		navigateToContractModelsPageFeeForServicePaymentTermsPage(contractModel);
+//		navigateToFeeForServicePaymentTermsPagePricingMethodSectionEditPriceDialog(serviceModel);
+		doClick("//div[text()='Service Model']");
 		contractModelsHelper.navigateFeeForServicePaymentTermsPageServiceModel(filter);
+		//Below steps fail due to drag and drop
 		ContractModelsHelper.dragAndDropElement((driver.findElement(By.xpath("(//table[@class='x-grid-item x-grid-item-selected'])[4]"))),ContractingMap.getselectDropServiceModelPanel());
 		navigateFeeForServicePaymentTermsPagePricingMethodSectionSelectServiceModel(serviceModel);
 		Thread.sleep(4000);
