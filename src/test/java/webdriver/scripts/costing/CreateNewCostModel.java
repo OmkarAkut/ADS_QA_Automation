@@ -10,6 +10,7 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
@@ -71,9 +72,29 @@ public class CreateNewCostModel extends GoHelper {
 			fail(e.getMessage());
 		}
 	}
+	public void OpenTreeItemThenValidate(String itemName, String assertValue,WebElement element) throws Throwable{
+		doClickTreeItem(itemName);
+		driverDelay();
+		
+	}
+	//ADS-6253
+	@Test
+	public void test03CheckCostingElements_6253() throws Throwable {
+		try {
+			tableDoubleClickCellFirstColumn(costModel);
+			doClickTreeItem("Prepare Costing Elements");
+			doClickTreeItem("Entities");
+			driverDelay();
+			
+			ExtentReport.logPass("PASS", "test02AssertNewCostModel_6253");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test02AssertNewCostModel_6253", driver, e);
+			fail(e.getMessage());
+		}
+	}
 	//ADS-6633
 	@Test
-	public void test03DeleteNewelyCreatedCostModel_6633() throws Throwable {
+	public void test04DeleteNewelyCreatedCostModel_6633() throws Throwable {
 		try {
 			doClick(modelMap.getContractModelDeleteButton());
 			waitForElementToBeVisible(modelMap.getContractModelDeletePopUp());
@@ -95,7 +116,7 @@ public class CreateNewCostModel extends GoHelper {
 	}
 	//ADS-6633
 	@Test
-	public void test04CancelButtonInCostModelPopUp_6633() throws Throwable {
+	public void test05CancelButtonInCostModelPopUp_6633() throws Throwable {
 		try {
 			doClick(modelMap.getNewContractModelButton());
 			waitUntilElementIsVisible(CostingMap.getNewCostModelPopUp());
@@ -110,7 +131,7 @@ public class CreateNewCostModel extends GoHelper {
 	}
 	//ADS-6641,include steps for ADS-6253 from step7
 	@Test
-	public void test05CreateOverheadCostModel_6641() throws Throwable {
+	public void test06CreateOverheadCostModel_6641() throws Throwable {
 		try {
 			doClick(modelMap.getNewContractModelButton());
 			waitUntilElementIsVisible(CostingMap.getNewCostModelPopUp());
@@ -127,7 +148,7 @@ public class CreateNewCostModel extends GoHelper {
 	}
 	//ADS-6641
 	@Test
-	public void test06AssertCreatedOverheadCostModel_6641() throws Throwable {
+	public void test07AssertCreatedOverheadCostModel_6641() throws Throwable {
 		try {
 			goToPage("Cost Models");
 			doSearchForContractModel(overheadModel);
@@ -141,7 +162,7 @@ public class CreateNewCostModel extends GoHelper {
 	}
 	
 	@Test
-	public void test07DeleteNewelyCreatedOverheadModel() throws Throwable {
+	public void test08DeleteNewelyCreatedOverheadModel() throws Throwable {
 		try {
 			doClick(modelMap.getContractModelDeleteButton());
 			waitForElementToBeVisible(modelMap.getContractModelDeletePopUp());

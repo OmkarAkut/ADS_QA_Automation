@@ -361,7 +361,7 @@ public class GoStatic extends WebDriverStatic {
   public static void navigateFeeForServicePaymentTermsPagePricingMethodSectionClickEditButtonToOpenEditDialog() {
     try {
       waitForAjaxExtJs();
-      driver.findElement(By.xpath("//*[text()='Edit']")).click();
+      driver.findElement(By.xpath("(//input[@name='pricemethodoption']//following::*[text()='Edit'])[1]")).click();
       waitForAjaxExtJs();
       Thread.sleep(1000);
       //assertElementTextWithXpath("//span[contains(@id, 'medicareinpatientpps')]", "Edit Price for " + serviceModel + " [Encounter]", printout);

@@ -179,7 +179,7 @@ public class Driver {
     browser = browser.toLowerCase();
     if (System.getProperty("os.name").toLowerCase().contains("windows")) {
       if (browser.equals("chrome") || browser.contains("headless")) {
-    	  
+    	  WebDriverManager.chromedriver().setup();
         System.setProperty("webdriver.chrome.driver", drivers + chromeDriver + ".exe");
         System.setProperty("webdriver.chrome.silentOutput", "true"); //chromedriver logging to console
       } else if (browser.equals("ie")) {
@@ -189,12 +189,14 @@ public class Driver {
       }
     //Shilpa added below line for 11.2 on 12.12.2023
       else if (browser.equals("edge")) {
+    	  WebDriverManager.chromedriver().setup();
           System.setProperty("webdriver.edge.driver", drivers + edgeDriver + ".exe");
         } else {
         fail("ERROR: Driver object not set.");
       }
     } else {
       if (browser.equals("chrome") || browser.contains("headless")) {
+    	  WebDriverManager.chromedriver().setup();
     	 System.out.println(drivers + " " + chromeDriver);
         System.setProperty("webdriver.chrome.driver", drivers + chromeDriver);
         System.setProperty("webdriver.chrome.silentOutput", "true"); //chromedriver logging to console
@@ -205,6 +207,7 @@ public class Driver {
       }
     //Shilpa added below line for 11.2 on 12.12.2023
       else if (browser.equals("edge")) {
+    	  WebDriverManager.chromedriver().setup();
           System.setProperty("webdriver.edge.driver", drivers + edgeDriver);
         }else {
         fail("ERROR: Browser driver not set.");

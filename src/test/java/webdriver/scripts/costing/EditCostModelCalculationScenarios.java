@@ -110,7 +110,7 @@ public class EditCostModelCalculationScenarios extends CalculationHelper {
 			waitForDisplayedSpinnerToEnd();
 			test01OpenCostCalculationScenario();
 			doClick(costing.getCostModelScenarioCalculationButtonEdit());
-			doClick(ContractingMap.getContractModelRiskLimiterCancelCloseBtn());
+			doClick("//h1[text()='Cost Model Calculation Scenario']//following::span[text()='Cancel & Close']");
 			ExtentReport.logPass("PASS", "test04CancelCostModelCalculationScenario");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test04CancelCostModelCalculationScenario", driver, e);
@@ -125,7 +125,8 @@ public class EditCostModelCalculationScenarios extends CalculationHelper {
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
 			 clickLastPageIconOnCalculationStatusViewLog();
-			confirmCalculationStatusDetailsContains("Studied Allocation Percent = 100");
+			 checkForRecordsProcessed("Studied Allocation Percent = 100");
+//			confirmCalculationStatusDetailsContains("Studied Allocation Percent = 100");
 			closeViewDialog();
 			ExtentReport.logPass("PASS", "test05CalculateCostCalcultionScenario");
 		} catch (Exception | AssertionError e) {

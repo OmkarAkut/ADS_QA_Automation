@@ -546,7 +546,7 @@ public class SystemMaintenanceMap extends MapConfig {
 	public WebElement getCustomizeTaskListsPageSubTabEpisode() {return customizeTaskListsPageSubTabEpisode;}
 	
 	
-	@FindBy(xpath = "(//h1[text()='Department Hierarchies']//following::span[text()='Filter']//parent::button)[1]")
+	@FindBy(xpath = "(//h1[text()='Department Hierarchies']//following::span[text()='Filter'])[1]")
 	private WebElement getDeptHierarchyFilterButton;
 	public WebElement getDeptHierarchyFilterButton() {
 		return getDeptHierarchyFilterButton;

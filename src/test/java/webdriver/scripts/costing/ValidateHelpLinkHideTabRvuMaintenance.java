@@ -42,7 +42,7 @@ public class ValidateHelpLinkHideTabRvuMaintenance extends GoHelper {
 			waitForAjaxExtJs();
 			doClick(costing.getRvuMaintenanceButtonMaintainRVUs());
 			assertElementIsDisplayedWithXpath("//*[contains(@onclick,'csrvumfd.htm') and @class='listhelpLnk']");		
-			assertElementIsDisplayedWithXpath("//div[contains(@class,'hidetoppx expand-icon')]//span[text()='Hide']");
+			assertElementIsDisplayedWithXpath("//a[contains(@class,'expand-icon')]//span[text()='Hide']");
 			ExtentReport.logPass("PASS", "test01ValidateHelpAndHideOptions");
 		} catch (Exception|AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01ValidateHelpAndHideOptions", driver, e);

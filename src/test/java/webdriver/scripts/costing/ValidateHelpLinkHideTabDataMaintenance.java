@@ -36,7 +36,7 @@ public class ValidateHelpLinkHideTabDataMaintenance extends CalculationHelper {
 		}
 	}
 	@Test
-	public void test01VerifyRvuMaintenancePageIsShown() throws Throwable {
+	public void test01VerifyRvuMaintenancePageIsShown_ADS_5992() throws Throwable {
 		try {
 			assertElementTextWithXpath("//*[text()='RVU Maintenance'][contains(@id,'rvumasterlist')]", "RVU Maintenance", printout);
 			ExtentReport.logPass("PASS", "test01VerifyRvuMaintenancePageIsShown");
@@ -47,20 +47,20 @@ public class ValidateHelpLinkHideTabDataMaintenance extends CalculationHelper {
 		}
 	}
 	@Test
-	public void test02VerifyHideHelpOptions() throws Throwable {
+	public void test02VerifyHideHelpOptions_ADS_5992() throws Throwable {
 		try {
 			doClick("//*[contains(@id,'-body')]/descendant::span[text()='Filter']");
 			doFilterCreate(filter);
 			tableDoubleClickCellFirstColumn("QA Marina");
 			assertElementIsDisplayedWithXpath("//*[contains(@onclick,'csrvumfd.htm') and @class='listhelpLnk']");		
-			assertElementIsDisplayedWithXpath("//div[contains(@class,'hidetoppx expand-icon')]//span[text()='Hide']");
+			assertElementIsDisplayedWithXpath("//a[contains(@class,'expand-icon')]//span[text()='Hide']");
 			} catch (Exception|AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01VerifyRvuMaintenancePageIsShown", driver, e);
 			fail(e.getMessage());
 		}
 	}
 	@Test
-	public void test03ValidateHideAndShowFunctions() throws Throwable {
+	public void test03ValidateHideAndShowFunctions_ADS_5992() throws Throwable {
 		try {
 			doClick(costing.getRvuHideButton());
 			assertElementIsDisplayed(costing.getRvuShowButton());

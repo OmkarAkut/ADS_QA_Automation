@@ -1263,13 +1263,13 @@ public class CostingMap extends MapConfig {
 	public static WebElement getHelpGlossarySearch() {return getHelpGlossarySearch;}
 
 	//Shilpa
-	@FindBy(xpath = "//div[contains(@class,'x-window-closable ')]//div[contains(@id,'window')]//span[text()='New Cost Model']")
+	@FindBy(xpath = "//div[contains(@id,'window')]//div[text()='New Cost Model']")
 	public static WebElement getNewCostModelPopUp;
 	public static WebElement getNewCostModelPopUp() { return getNewCostModelPopUp;}
 
 //	Omkar 16/8/2023 : xpath changes for 11.2
 //	@FindBy(xpath = "//div[contains(@class,'glFormCls')]//following::table//following::span[text()='Save & Close']//parent::button")
-	@FindBy(xpath = "//div[contains(@class,'glFormCls')]//following::table//following::span[text()='Save & Close']")
+	@FindBy(xpath = "//div[text()='New Cost Model']//following::span[text()='Save & Close']")
 	private static WebElement getSaveCostModel;
 	public WebElement getSaveCostModel() {return getSaveCostModel;}
 
@@ -1957,12 +1957,12 @@ public class CostingMap extends MapConfig {
 	public  String DepreciationXpath="//*[contains(@class,'column-header-text')][text()='Depreciation'][text()='Apr 2004']";
 	public  String TechXpath="//*[contains(@class,'column-header-text')][text()='Tech'][text()='Apr 2004']";
 
-	@FindBy(xpath = "//div[contains(@class,'hidetoppx expand-icon')]//span[text()='Hide']//parent::button")
+	@FindBy(xpath = "//a[contains(@class,'expand-icon')]//span[text()='Hide']")
 	private WebElement getRvuHideButton;
 	public WebElement getRvuHideButton() {
 		return getRvuHideButton;
 	}
-	@FindBy(xpath = "//div[contains(@class,'hidetoppx collapse-icon')]//span[text()='Show']//parent::button")
+	@FindBy(xpath = "//a[contains(@class,'showHideBtnRVU ')]//span[text()='Show']")
 	private WebElement getRvuShowButton;
 	public WebElement getRvuShowButton() {
 		return getRvuShowButton;

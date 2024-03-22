@@ -9,6 +9,7 @@ import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
+import org.openqa.selenium.By;
 
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
@@ -17,6 +18,7 @@ import webdriver.helpers.ContractModelsHelper;
 import webdriver.maps.ContractingMap;
 import webdriver.maps.CostingMap;
 import webdriver.maps.DataMaintenanceMap;
+import webdriver.maps.SystemMaintenanceMap;
 import webdriver.maps.mapbuilder.BuildMap;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -39,7 +41,22 @@ public class CreateNewEditDeleteTimePeriod extends GoHelper {
 		try {
 			costing = BuildMap.getInstance(driver, CostingMap.class);
 			modelMap = BuildMap.getInstance(driver, ContractingMap.class);
+			
 			Login.loginUser("AutomationTesterAdmin");
+			goToPage("Customize Task Lists");
+			waitForDisplayedSpinnerToEnd();
+			driver.findElement(By.xpath("(//input[@name='costingOption'])[2]")).click();
+			driver.findElement(By.xpath("//div[contains(@class,'panel')]//span[text()='Save']")).click();
+//			doClick(SystemMaintenanceMap.getTaskListSaveButton());
+			try {
+				doClick("//div[contains(@id,'button')]//following::span[text()='Save']");
+				doClick("(//div[contains(@id,'button')]//following::span[text()='Save'])[2]");
+				waitForAjaxExtJs();
+			} catch (Exception e) {
+				
+			}
+			
+//			doClick("//div[text()='Log Out']");
 			goToPage("Costing Models");
 			ExtentReport.logPass("PASS", "setupScript");
 		} catch (Exception | AssertionError e) {

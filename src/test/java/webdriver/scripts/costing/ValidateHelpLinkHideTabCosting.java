@@ -34,23 +34,25 @@ public class ValidateHelpLinkHideTabCosting extends GoHelper {
 		}
 	}
 	@Test
-	public void test01OpenRVUMaintenanceFromCostingModel() throws Throwable {
+	public void test01OpenRVUMaintenanceFromCostingModel_5992() throws Throwable {
 		try {
-			ContractModelsHelper.doClickTreeData("Costing");
-			driverDelay(1000);
-			ContractModelsHelper.scrollToView("//div[text()='Marina Health']");
-			ContractModelsHelper.doClickTreeData("Tinesha");
-			driverDelay(3000);
-			ContractModelsHelper.doClickTreeData("Marina Health");
+//			ContractModelsHelper.doClickTreeData("Costing");
+//			driverDelay(1000);
+//			ContractModelsHelper.scrollToView("//span[text()='Marina Health']");
+//			ContractModelsHelper.doClickTreeData("Tinesha");
+//			driverDelay(3000);
+//			ContractModelsHelper.doClickTreeData("Marina Health");
 			doSearchForModel(costModel);
 			tableClickCellFirstColumn(costModel);
 			doClickButton("Open Task List");
-			waitForPageTitle(costModel);
-			ContractModelsHelper.doClickTreeData("CM Test");
-			waitForMainPageTitle("Miscellaneous");
-			ContractModelsHelper.doClickTreeData("Miscellaneous");
+			waitForElementPresence("//h1[text()='Cost Model Task List']");
+//			ContractModelsHelper.doClickTreeData("CM Test");
+//			waitForMainPageTitle("Miscellaneous");
+//			ContractModelsHelper.doClickTreeData("Miscellaneous");
 			driverDelay(500);
-			doClick("//div[contains(@id,'taskfolder')]//following::div[text()='RVU Maintenance']/input");
+			doClickTreeItem("Assign Unit Costs");
+			doClickTreeItem("RVU Maintenance");
+//			doClick("//div[contains(@id,'taskfolder')]//following::div[text()='RVU Maintenance']/input");
 			waitForElementToBeVisible(costing.getRvuMaintenanceDropdownEntity());	
 			ExtentReport.logPass("PASS", "test01OpenRVUMaintenanceFromCostingModel");
 		} catch (Exception|AssertionError e) {
@@ -60,10 +62,10 @@ public class ValidateHelpLinkHideTabCosting extends GoHelper {
 		}
 	}
 	@Test
-	public void test02VerifyHideHelpOptions() throws Throwable {
+	public void test02VerifyHideHelpOptions_ADS_5992() throws Throwable {
 		try {
 			assertElementIsDisplayedWithXpath("//*[contains(@onclick,'csrvumfd.htm') and @class='listhelpLnk']");		
-			assertElementIsDisplayedWithXpath("//div[contains(@class,'hidetoppx expand-icon')]//span[text()='Hide']");
+			assertElementIsDisplayedWithXpath("//a[contains(@class,'expand-icon')]//span[text()='Hide']");
 			ExtentReport.logPass("PASS", "test02VerifyHideHelpOptions");
 
 		} catch (Exception|AssertionError e) {
@@ -72,7 +74,7 @@ public class ValidateHelpLinkHideTabCosting extends GoHelper {
 		}
 	}
 	@Test
-	public void test03ValidateHideAndShowFunctions() throws Throwable {
+	public void test03ValidateHideAndShowFunctions_ADS_5992() throws Throwable {
 		try {
 			doClick(costing.getRvuHideButton());
 			assertElementIsDisplayed(costing.getRvuShowButton());

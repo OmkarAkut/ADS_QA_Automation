@@ -55,9 +55,7 @@ import webdriver.scripts.systemmaintenance.SystemMaintenanceTestSuite;
 	UcqcRoleBasedTestSuite.class,
 	GeneralCalculationsTestSuite.class,
 	ReportingTestSuite.class,
-	
-//	Regression_suite.class
-//	SmokeTest.class,
+
 })
 
 public class TestRun_Suite {
