@@ -49,7 +49,7 @@ public class ConfirmDepartmentFilterSortOrder extends GoHelper {
 			doClickButton("Select");
 			waitForDisplayedSpinnerToEnd();
 			waitForAjaxExtJs();
-			doClick("//div[contains(@class,'dynamicformCls')]//span[text()='Filter']//parent::button");
+			doClick("//div[contains(@class,'dynamicformCls')]//following::span[text()='Filter']");
 			assertTextIsDisplayed("Filter to Match These Criteria 300/300");
 			doFilterSetFilterParameters("Department Code", "Is", "Contains", "0");
 			doClick(costingMap.getCostModelScenarioCalculationFilterButtonAdd());

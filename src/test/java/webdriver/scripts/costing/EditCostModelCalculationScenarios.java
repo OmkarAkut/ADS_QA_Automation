@@ -124,7 +124,8 @@ public class EditCostModelCalculationScenarios extends CalculationHelper {
 			doClick(costing.getCostModelScenarioCalculationButtonCalculate());
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
-			 clickLastPageIconOnCalculationStatusViewLog();
+			driverDelay(500);
+//			 clickLastPageIconOnCalculationStatusViewLog();
 			 checkForRecordsProcessed("Studied Allocation Percent = 100");
 //			confirmCalculationStatusDetailsContains("Studied Allocation Percent = 100");
 			closeViewDialog();
@@ -167,7 +168,7 @@ public class EditCostModelCalculationScenarios extends CalculationHelper {
 
 	@AfterClass
 	public static void endtest() throws Exception {
-		doClosePageOnLowerBar("Cost Model...");
+		doClosePageOnLowerBar("Cost Model Calculation Scenarios");
 		ExtentReport.report.flush();
 
 	}

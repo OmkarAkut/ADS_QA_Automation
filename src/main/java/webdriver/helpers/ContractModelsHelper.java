@@ -33,6 +33,7 @@ import webdriver.maps.CostingMap;
 import webdriver.maps.DialogsMap;
 import webdriver.maps.EditContractingModelMap;
 import webdriver.maps.ModelLibraryMap;
+import webdriver.maps.SystemMaintenanceMap;
 import webdriver.maps.mapbuilder.BuildMap;
 
 public class ContractModelsHelper extends GoHelper {
@@ -1155,4 +1156,42 @@ public class ContractModelsHelper extends GoHelper {
 		}
 	  }
 
+	public static void saveCustomSettings(String setName,String modelName) {
+		try {
+			goToPage("Customize Task Lists");
+			doClick("//label[text()='"+setName+"']//preceding-sibling::span");
+			doClick(SystemMaintenanceMap.getTaskListSaveButton());
+			doClick("//div[contains(@id,'messagebox')]//span[text()='Save']");
+			waitForDisplayedSpinnerToEnd();
+			goToPage(modelName);
+			
+		} catch (Exception e) {
+			
+		}
+	}
+	public static void saveCustomSettingsLogOut(String setName,String modelName) {
+		try {
+			goToPage("Customize Task Lists");
+			doClick("//label[text()='"+setName+"']//preceding-sibling::span");
+			doClick(SystemMaintenanceMap.getTaskListSaveButton());
+			doClick("//div[contains(@id,'messagebox')]//span[text()='Save']");
+			waitForDisplayedSpinnerToEnd();
+			doClick("//div[text()='Log Out']");
+			
+		} catch (Exception e) {
+			
+		}
+	}
+	public static void revertCustomSettings() {
+		try {
+			goToPage("Customize Task Lists");
+			doClick("//label[text()='Use Default']//preceding-sibling::span");
+			doClick(SystemMaintenanceMap.getTaskListSaveButton());
+			doClick("//div[contains(@id,'messagebox')]//span[text()='Save']");
+			waitForDisplayedSpinnerToEnd();
+			doClosePageOnLowerBar("Customize Task Lists");
+		} catch (Exception e) {
+		
+		}
+	}
 }

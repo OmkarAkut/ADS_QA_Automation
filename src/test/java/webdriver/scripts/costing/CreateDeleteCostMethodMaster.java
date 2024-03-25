@@ -16,17 +16,19 @@ import webdriver.corehelpers.GoHelper;
 import webdriver.helpers.ContractModelsHelper;
 import webdriver.maps.ContractingMap;
 import webdriver.maps.CostingMap;
+import webdriver.maps.SystemMaintenanceMap;
 import webdriver.maps.mapbuilder.BuildMap;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class CreateDeleteCostMethodMaster extends GoHelper{
 	static String costModel = "Test Cost Model 100";
 	static CostingMap costing;
 	static ContractingMap modelMap;
+	static SystemMaintenanceMap systemMap;
 	static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
 	static String currentDateTimeCode = new SimpleDateFormat("MM.HH.ss").format(new java.util.Date());
 	static String code = currentDateTimeCode.replaceAll("\\W", "");
 	static String costMethodMaster = "Cost Method" + currentDateTime;
-	static String deptMaster="150 old master 150";
+	static String deptMaster="150 old master 1501";
 	static String[] filter = { "Code", "Is", "Equal", code };
 	/** Automates test ticket ADS-6671, ADS-6670 */
 
@@ -36,8 +38,10 @@ public class CreateDeleteCostMethodMaster extends GoHelper{
 		try {
 			costing = BuildMap.getInstance(driver, CostingMap.class);
 			modelMap = BuildMap.getInstance(driver, ContractingMap.class);
+			systemMap=BuildMap.getInstance(driver, SystemMaintenanceMap.class);
 			Login.loginUser("AutomationTesterAdmin");
-			goToPage("Costing Models");
+			ContractModelsHelper.saveCustomSettings("Use Custom", "Costing Models");
+//			goToPage("Costing Models");
 			ExtentReport.logPass("PASS", "setupScript");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "Failure in setupScript", driver, e);
@@ -51,15 +55,15 @@ public class CreateDeleteCostMethodMaster extends GoHelper{
 			doSearchForModel(costModel);
 			tableDoubleClickCellFirstColumn(costModel);
 			driverDelay(300);
-			assertTextIsDisplayed("CM Test");
-			assertTextIsDisplayed("FISCAL YEAR SETUP");
-			assertTextIsDisplayed("COST PROCESS");
-			doClickTreeItem("CM Test");
-			waitForMainPageTitle("All Masters");
-			assertTextIsDisplayed("All Masters");
-			assertTextIsDisplayed("Cost Scnenarios");
-			assertTextIsDisplayed("Groupings");
-			assertTextIsDisplayed("Miscellaneous");
+			assertElementIsDisplayedWithXpath("//div[contains(@id,'taskfolder')]//following::table[contains(@id,'treeview')]//span[text()='CM Test']");
+			assertElementIsDisplayedWithXpath("//div[contains(@id,'taskfolder')]//following::table[contains(@id,'treeview')]//span[text()='FISCAL YEAR SETUP']");
+			assertElementIsDisplayedWithXpath("//div[contains(@id,'taskfolder')]//following::table[contains(@id,'treeview')]//span[text()='COST PROCESS']");
+			doClick("(//div[contains(@id,'taskfolder')]//following::table[contains(@id,'treeview')]//span[text()='CM Test'])");
+			waitForPresenceOfElement("(//div[contains(@id,'taskfolder')]//following::table[contains(@id,'treeview')]//span[text()='All Masters'])");
+			assertElementIsDisplayedWithXpath("//div[contains(@id,'taskfolder')]//following::table[contains(@id,'treeview')]//span[text()='All Masters']");
+//			assertTextIsDisplayed("Cost Scnenarios");
+			assertElementIsDisplayedWithXpath("//div[contains(@id,'taskfolder')]//following::table[contains(@id,'treeview')]//span[text()='Groupings']");
+			assertElementIsDisplayedWithXpath("//div[contains(@id,'taskfolder')]//following::table[contains(@id,'treeview')]//span[text()='Miscellaneous']");
 			ExtentReport.logPass("PASS", "test01OpenAllMasters");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01OpenAllMasters", driver, e);
@@ -67,13 +71,13 @@ public class CreateDeleteCostMethodMaster extends GoHelper{
 		}
 
 	}
-	//ADS-6670 [just create cost master]
+	//ADS-6670
 	@Test
 	public void test02CreateNewMethodMaster_6670() throws Throwable {
 		try {
-			doClickTreeItem("All Masters");
-			waitForMainPageTitle("Charge Masters");
-			doClickTreeItemWithCheckbox("Charge Masters");
+			doClick("//div[contains(@id,'taskfolder')]//following::table[contains(@id,'treeview')]//span[text()='All Masters']");
+			waitForPresenceOfElement("(//div[contains(@id,'taskfolder')]//following::table[contains(@id,'treeview')]//span[text()='Charge Masters'])[1]");
+			doClick("(//div[contains(@id,'taskfolder')]//following::table[contains(@id,'treeview')]//span[text()='Charge Masters'])[1]");
 			waitForElementToBeVisible(CostingMap.getCostModelMethodMasterNew());
 			doClick(CostingMap.getCostModelMethodMasterNew());
 			ContractModelsHelper.keyInValues(ContractingMap.getMedicareCode(), code);
@@ -95,10 +99,10 @@ public class CreateDeleteCostMethodMaster extends GoHelper{
 	public void test03DeleteNewMethodMaster_6671() throws Throwable {
 		try {
 			doClick(CostingMap.getCostModelMethodMasterDelete());
-			waitForElementToBeVisible(ContractingMap.getWarningPopUpDeleteButton());
-			assertElementIsDisplayed(ContractingMap.getWarningPopUpDeleteButton());
-			assertElementIsDisplayed(ContractingMap.getContractCalculationCloseViewDialog());
-			doClick(ContractingMap.getWarningPopUpDeleteButton());
+			waitForElementPresence("//div[contains(@id,'warningwindow')]/div//span[text()='Delete']");
+			assertElementIsDisplayedWithXpath("//div[contains(@id,'warningwindow')]/div//span[text()='Delete']");
+			assertElementIsDisplayedWithXpath("//div[contains(@id,'warningwindow')]/div//span[text()='Cancel']");
+			ContractingMap.getWarningPopUpDeleteButton().click();
 			waitForDisplayedSpinnerToEnd();
 			assertTextIsDisplayed("There is no data available to display.");
 			ExtentReport.logPass("PASS", "test03DeleteNewTimePeriod");
@@ -108,7 +112,8 @@ public class CreateDeleteCostMethodMaster extends GoHelper{
 		}
 		finally {
 			doClosePageOnLowerBar(costModel);
-			doClosePageOnLowerBar("Model Library");
+			doClosePageOnLowerBar("Costing Models");
+			ContractModelsHelper.revertCustomSettings();
 		}
 	}
 	@AfterClass

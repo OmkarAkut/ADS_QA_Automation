@@ -1216,6 +1216,12 @@ public class CostingMap extends MapConfig {
 	public static WebElement getEncounterCalculateBtn() {
 		return getEncounterCalculateBtn;
 	}
+	
+	@FindBy(xpath = "//div[contains(@id,'costmodelscenarioform')]//following::span[text()='Calculate']")
+	private static WebElement getCostModelalculateBtn;
+	public static WebElement getCostModelalculateBtn() {
+		return getCostModelalculateBtn;
+	}
 
 //	@FindBy(xpath = "//span[text()='Save']//parent::button")
 	@FindBy(xpath = "//div[contains(@id,'encountercostcalculationform')]//following::span[text()='Save']")
@@ -1451,12 +1457,12 @@ public class CostingMap extends MapConfig {
 	public static WebElement getCostModelEndMonth() {
 		return getCostModelEndMonth;
 	}
-	@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='Jan']/..")
+	@FindBy(xpath = "//div[contains(@class,'boundlist')]/ul/li[text()='Jan']/..")
 	private static WebElement getCostModelTimePeriodMonthScenarioOptions;
 	public static WebElement getCostModelTimePeriodMonthScenarioOptions() {
 		return getCostModelTimePeriodMonthScenarioOptions;
 	}
-	@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='2013']/..")
+	@FindBy(xpath = "//div[contains(@class,'boundlist')]/ul/li[text()='2014']/..")
 	private static WebElement getCostModelTimePeriodYearScenarioOptions;
 	public static WebElement getCostModelTimePeriodYearScenarioOptions() {
 		return getCostModelTimePeriodYearScenarioOptions;
@@ -1468,26 +1474,31 @@ public class CostingMap extends MapConfig {
 	public static WebElement getCostModelMethodMasterNew() {
 		return getCostModelMethodMasterNew;
 	}
+	@FindBy(xpath = "//div[contains(@id,'dynamicwindow')]//following::span[text()='Cancel & Close']")
+	private static WebElement getNewTimePeriodCancel;
+	public static WebElement getNewTimePeriodCancel() {
+		return getNewTimePeriodCancel;
+	}
 //	Omkar 16/8/2023 : xpath changes for 11.2
 //	@FindBy(xpath = "(//h1[text()='Charge Masters']//following::span[text()='Delete']//parent::button)[1]")
-	@FindBy(xpath = "(//h1[text()='Charge Masters']//following::span[text()='Delete']//parent::button)[1]")
+	@FindBy(xpath = "(//h1[text()='Charge Masters']//following::span[text()='Delete'])[1]")
 	private static WebElement getCostModelMethodMasterDelete;
 	public static WebElement getCostModelMethodMasterDelete() {
 		return getCostModelMethodMasterDelete;
 	}
 //	Omkar 16/8/2023 : xpath changes for 11.2
 //	@FindBy(xpath = "(//h1[text()='Charge Masters']//following::span[text()='Filter']//parent::button)[1]")
-	@FindBy(xpath = "(//h1[text()='Charge Masters']//following::span[text()='Filter']//parent::button)[1]")
+	@FindBy(xpath = "(//h1[text()='Charge Masters']//following::span[text()='Filter'])[1]")
 	private static WebElement getCostModelMethodMasterFilter;
 	public static WebElement getCostModelMethodMasterFilter() {
 		return getCostModelMethodMasterFilter;
 	}
-	@FindBy(name = "deptMastCode")
+	@FindBy(xpath="//input[@name='deptMastCode']")
 	private static WebElement getCostModelMethodMasterDeptMasterdropdown;
 	public static WebElement getCostModelMethodMasterDeptMasterdropdown() {
 		return getCostModelMethodMasterDeptMasterdropdown;
 	}
-	@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='150 old master 150']/..")
+	@FindBy(xpath = "//div[contains(@class,'boundlist')]/ul/li[text()='150 old master 1501']/..")
 	private static WebElement getCostModelMethodMasterDeptMasterOptions;
 	public static WebElement getCostModelMethodMasterDeptMasterOptions() {
 		return getCostModelMethodMasterDeptMasterOptions;
@@ -1657,7 +1668,7 @@ public class CostingMap extends MapConfig {
 	public   WebElement getRvuCostCalcScenarioEntityDropdown() {
 		return getRvuCostCalcScenarioEntityDropdown;
 	}
-	@FindBy(xpath = "(//div[contains(@id,'boundlist')]/ul/li[text()='150 Marina Medical Center']/..)")
+	@FindBy(xpath = "((//div[contains(@class,'boundlist')]/ul/li[text()='150 Marina Medical Center']/..))[2]")
 	private  WebElement getRvuCostCalcScenarioEntityOptions;
 	public   WebElement getRvuCostCalcScenarioEntityOptions() {
 		return getRvuCostCalcScenarioEntityOptions;
@@ -1667,22 +1678,22 @@ public class CostingMap extends MapConfig {
 	public   WebElement getRvuCostCalcScenarioDeptDropdown() {
 		return getRvuCostCalcScenarioDeptDropdown;
 	}
-	@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='2110  ICU']/..")
+	@FindBy(xpath = "//div[contains(@class,'boundlist')]/ul/li[text()='2110  ICU']/..")
 	private  WebElement getRvuCostCalcScenarioDeptOptions;
 	public   WebElement getRvuCostCalcScenarioDeptOptions() {
 		return getRvuCostCalcScenarioDeptOptions;
 	}
-	@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='Apr 2004 to Mar 2005']/..")
+	@FindBy(xpath = "//div[contains(@class,'boundlist')]/ul/li[text()='Apr 2004 to Mar 2005']/..")
 	private  WebElement getRvuCostCalcScenarioResultsOptions;
 	public   WebElement getRvuCostCalcScenarioResultsOptions() {
 		return getRvuCostCalcScenarioResultsOptions;
 	}
-	@FindBy(xpath = "(//table[contains(@class,'x-field totalCost')]//following::label[text()='Total Costs']//following::div[1])")
+	@FindBy(xpath = "(//div[contains(@class,'totalCost')]//following::span[text()='Total Costs']//following::div/div)[1]")
 	private  WebElement getRvuCostCalcScenarioTotalCost;
 	public   WebElement getRvuCostCalcScenarioTotalCost() {
 		return getRvuCostCalcScenarioTotalCost;
 	}
-	@FindBy(xpath = "(//span[text()='Cost Details']//following::div[@class='x-btn x-btn-default-small x-noicon x-btn-noicon x-btn-default-small-noicon']//span[text()='Apply Selections']//parent::button)")
+	@FindBy(xpath = "(//div[text()='Cost Details']//following::span[text()='Apply Selections'])")
 	private  WebElement getRvuCostCalcScenarioApplySelection;
 	public   WebElement getRvuCostCalcScenarioApplySelection() {
 		return getRvuCostCalcScenarioApplySelection;
@@ -1797,7 +1808,7 @@ public class CostingMap extends MapConfig {
 	public   WebElement getCostModelFilterButton() {
 		return getCostModelFilterButton;
 	}
-	@FindBy(xpath = "(//label[text()='Cost Model Scenarios in Evaluation Order']//following::span[text()='Select']//parent::button)[1]")
+	@FindBy(xpath = "(//label[text()='Cost Model Scenarios in Evaluation Order']//following::span[text()='Select'])[1]")
 	private  WebElement getCostModelEvaluationOrderSelect;
 	public   WebElement getCostModelEvaluationOrderSelect() {
 		return getCostModelEvaluationOrderSelect;
@@ -1807,7 +1818,7 @@ public class CostingMap extends MapConfig {
 	public   WebElement getCostModelScenario() {
 		return getCostModelScenario;
 	}
-	@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='*USE CHC FY03 Total Cost Scenario']/..")
+	@FindBy(xpath = "//div[contains(@class,'boundlist')]/ul/li[text()='*USE CHC FY03 Total Cost Scenario']/..")
 	private  WebElement getCostModelScenarioOptions;
 	public   WebElement getCostModelScenarioOptions() {
 		return getCostModelScenarioOptions;
@@ -1817,17 +1828,17 @@ public class CostingMap extends MapConfig {
 	public   WebElement getCostModelScenarioMonthToUse() {
 		return getCostModelScenarioMonthToUse;
 	}
-	@FindBy(xpath = "(//div[contains(@id,'boundlist')]/ul/li[text()='May 2004']/..)[3]")
+	@FindBy(xpath = "(//div[contains(@class,'boundlist')]/ul/li[text()='May 2004']/..)[3]")
 	private  WebElement getCostModelScenarioMonthToUseOptions;
 	public   WebElement getCostModelScenarioMonthToUseOptions() {
 		return getCostModelScenarioMonthToUseOptions;
 	}
-	@FindBy(xpath = "(//div[contains(@id,'boundlist')]/ul/li[text()='May 2004']/..)[1]")
+	@FindBy(xpath = "(//div[contains(@class,'boundlist')]/ul/li[text()='May 2004']/..)[1]")
 	private  WebElement getCostModelScenarioFromOptions;
 	public   WebElement getCostModelScenarioFromOptions() {
 		return getCostModelScenarioFromOptions;
 	}
-	@FindBy(xpath = "(//div[contains(@id,'boundlist')]/ul/li[text()='May 2004']/..)[2]")
+	@FindBy(xpath = "(//div[contains(@class,'boundlist')]/ul/li[text()='May 2004']/..)[2]")
 	private  WebElement getCostModelScenarioToOptions;
 	public   WebElement getCostModelScenarioToOptions() {
 		return getCostModelScenarioToOptions;
@@ -1852,7 +1863,7 @@ public class CostingMap extends MapConfig {
 	public   WebElement getEncCostModelEvaluationSelectButton() {
 		return getEncCostModelEvaluationSelectButton;
 	}
-	@FindBy(xpath = "(//div[contains(@class,'x-docked-bottom x-toolbar')]//following::table//following::span[text()='Cancel & Close']//parent::button)[1]")
+	@FindBy(xpath = "(//div[contains(@class,'x-docked-bottom x-toolbar')]//following::table//following::span[text()='Cancel & Close'])[1]")
 	private  WebElement getEncCostModelCancelCloseButton;
 	public   WebElement getEncCostModelCancelCloseButton() {
 		return getEncCostModelCancelCloseButton;

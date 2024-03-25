@@ -63,7 +63,7 @@ public class ActualCostingMethodPatientChgsDateRange extends CalculationHelper {
 //			waitForMainPageTitle("Cost Model Calculation Scenarios");
 			// Shilpa added below lines for 11.2 on 12.4.2023
 			doClickTreeData("Assign Unit Costs");
-			doClickTreeItemWithCheckbox("Cost Model Calculation Scenarios");
+			doClickTreeItem("Cost Model Calculation Scenarios");
 			waitForMainPageTitle("Cost Model Calculation Scenarios");
 			ExtentReport.logPass("PASS", "test01OpenCostCalculationScenario");
 		} catch (Exception | AssertionError e) {
@@ -75,6 +75,7 @@ public class ActualCostingMethodPatientChgsDateRange extends CalculationHelper {
 	@Test
 	public void test02VerifyCalculationStatusForCostModelCalcScenarioApr() throws Throwable {
 		try {
+//			doClick("(//h1[(text()='Cost Model Calculation Scenarios')]//following::span[text()='Filter'])[1]");
 			doClick(costing.getCostModelCalcFilterButton());
 			doFilterCreate(filterCostModelScenarioApr);
 			tableClickCellFirstColumn(costModelCalcScenarioApr);
@@ -98,9 +99,7 @@ public class ActualCostingMethodPatientChgsDateRange extends CalculationHelper {
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test02VerifyCalculationStatusForCostModelCalcScenarioApr", driver, e);
 			fail(e.getMessage());
-		} finally {
-			doClosePageOnLowerBar("Calculation Status");
-		}
+		} 
 	}
 
 	@Test
@@ -170,7 +169,7 @@ public class ActualCostingMethodPatientChgsDateRange extends CalculationHelper {
 	@AfterClass
 	public static void endtest() throws Exception {
 		doClosePageOnLowerBar("v1024 REGRESSION...");
-		doClosePageOnLowerBar("Model Library");
+		doClosePageOnLowerBar("Costing Models");
 		ExtentReport.report.flush();
 
 	}

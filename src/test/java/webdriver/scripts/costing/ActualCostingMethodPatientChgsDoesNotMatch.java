@@ -138,7 +138,7 @@ public class ActualCostingMethodPatientChgsDoesNotMatch extends CalculationHelpe
 	public static void endtest() throws Exception {
 		doClosePageOnLowerBar("v1024 REGRESSION...");
 //		doClosePageOnLowerBar("Model Library");
-		doClosePageOnLowerBar("Model");
+		doClosePageOnLowerBar("Costing Models");
 		ExtentReport.report.flush();
 
 	}
