@@ -865,7 +865,7 @@ public class CostingMap extends MapConfig {
 	public WebElement getUnitCostQuickCalculationOverwriteRVUMaintenanceModalDropdownMonth() {
 		return unitCostQuickCalculationOverwriteRVUMaintenanceModalDropdownMonth;
 	}
-	@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='Jan']/..")
+	@FindBy(xpath = "//div[contains(@class,'boundlist')]/ul/li[text()='Jan']/..")
 	private WebElement unitCostQuickCalculationOverwriteRVUMaintenanceModalDropdownMonthOptions;
 
 	public WebElement unitCostQuickCalculationOverwriteRVUMaintenanceModalDropdownMonthOptions() {
@@ -878,7 +878,7 @@ public class CostingMap extends MapConfig {
 	public WebElement getUnitCostQuickCalculationOverwriteRVUMaintenanceModalDropdownYear() {
 		return unitCostQuickCalculationOverwriteRVUMaintenanceModalDropdownYear;
 	}
-	@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='2021']/..")
+	@FindBy(xpath = "//div[contains(@class,'boundlist')]/ul/li[text()='2021']/..")
 	private WebElement unitCostQuickCalculationOverwriteRVUMaintenanceModalDropdownYearOptions;
 
 	public WebElement unitCostQuickCalculationOverwriteRVUMaintenanceModalDropdownYearOptions() {
@@ -1639,6 +1639,11 @@ public class CostingMap extends MapConfig {
 	public  WebElement getRvuSecImportSelectButton() {
 		return getRvuSecImportSelectButton;
 	}
+	@FindBy(xpath = "//div[contains(@id,'filefield')]//following::input[@name='importdata']")
+	private  WebElement getImportSelectButton;
+	public  WebElement getImportSelectButton() {
+		return getImportSelectButton;
+	}
 	@FindBy(name = "sharedHostLocation")
 	private  WebElement getRvuSharedLocDropdown;
 	public  WebElement getRvuSharedLocDropdown() {
@@ -1662,6 +1667,11 @@ public class CostingMap extends MapConfig {
 	private  WebElement getRvuImportButton;
 	public   WebElement getRvuImportButton() {
 		return getRvuImportButton;
+	}
+	@FindBy(xpath = "//div[contains(@id,'importwindow')]//span[text()='Import']")
+	private  WebElement getImportButton;
+	public   WebElement getImportButton() {
+		return getImportButton;
 	}
 	@FindBy(name = "enttityCode")
 	private  WebElement getRvuCostCalcScenarioEntityDropdown;
@@ -1708,7 +1718,7 @@ public class CostingMap extends MapConfig {
 	public  WebElement getRvuDownloadSharedLocDropdown() {
 		return getRvuDownloadSharedLocDropdown;
 	}
-	@FindBy(xpath = "//span[text()='Cost Model General Information']")
+	@FindBy(xpath = "//h1[text()='Cost Model General Information']")
 	private  WebElement getCostModelGeneralInfo;
 	public   WebElement getCostModelGeneralInfo() {
 		return getCostModelGeneralInfo;
@@ -1718,7 +1728,7 @@ public class CostingMap extends MapConfig {
 	public    WebElement getSaveAsButton() {
 		return getSaveAsButton;
 	}
-	@FindBy(xpath = "//span[@class='x-window-header-text x-window-header-text-default'][text()='Save As']")
+	@FindBy(xpath = "//div[contains(@id,'dynamicwindow')][text()='Save As']")
 	private   WebElement getSaveAsPopup;
 	public    WebElement getSaveAsPopup() {
 		return getSaveAsPopup;
@@ -1728,7 +1738,7 @@ public class CostingMap extends MapConfig {
 	public    WebElement getRvuContainerFilterButton() {
 		return getRvuContainerFilterButton;
 	}
-	@FindBy(xpath = "//*[text()='RVU Container List']/ancestor::div/following-sibling::div/descendant::button/span[text()='Delete']")
+	@FindBy(xpath = "//*[text()='RVU Container List']/ancestor::div/following-sibling::div//span[text()='Delete']")
 	private   WebElement getRvuContainerDeleteButton;
 	public    WebElement getRvuContainerDeleteButton() {
 		return getRvuContainerDeleteButton;
@@ -1738,17 +1748,17 @@ public class CostingMap extends MapConfig {
 	public    List<WebElement> getRvuContainerList() {
 		return getRvuContainerList;
 	}
-	@FindBy(xpath = "//*[text()='RVU Container List']/ancestor::div/following-sibling::div/descendant::button/span[text()='Delete Filtered']")
+	@FindBy(xpath = "//*[text()='RVU Container List']/ancestor::div/following-sibling::div//span[text()='Delete Filtered']")
 	private   WebElement getRvuContainerDeleteFilteredButton;
 	public    WebElement getRvuContainerDeleteFilteredButton() {
 		return getRvuContainerDeleteFilteredButton;
 	}
-	@FindBy(xpath = "//*[text()='RVU Container List']/ancestor::div/following-sibling::div/descendant::button/span[text()='Clear Filter']")
+	@FindBy(xpath = "//*[text()='RVU Container List']/ancestor::div/following-sibling::div//span[text()='Clear Filter']")
 	private   WebElement getRvuContainerClearFilterButton;
 	public    WebElement getRvuContainerClearFilterButton() {
 		return getRvuContainerClearFilterButton;
 	}
-	@FindBy(xpath = "(//span[contains(@id,'filterwindow')]//following::table[contains(@class,'customComboTriggerCls')]//following::input[@class='x-form-field x-form-checkbox'])[1]")
+	@FindBy(xpath = "(//label[text()='Open'])[1]//preceding::*[1]")
 	private   WebElement getRvuContainerOpenCheckbox;
 	public    WebElement getRvuContainerOpenCheckbox() {
 		return getRvuContainerOpenCheckbox;
@@ -1867,6 +1877,11 @@ public class CostingMap extends MapConfig {
 	private  WebElement getEncCostModelCancelCloseButton;
 	public   WebElement getEncCostModelCancelCloseButton() {
 		return getEncCostModelCancelCloseButton;
+	}
+	@FindBy(xpath = "//div[contains(@id,'messagebox')]//span[text()='Delete']")
+	private  WebElement getWarningDeleteButton;
+	public   WebElement getWarningDeleteButton() {
+		return getWarningDeleteButton;
 	}
 	@FindBy(xpath = "(//div[@class='x-boundlist-list-ct'])[1]//li")
 	private  List<WebElement> getEncCostModelEvaluationOrderList;

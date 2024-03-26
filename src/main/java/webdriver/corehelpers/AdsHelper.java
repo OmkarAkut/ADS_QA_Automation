@@ -165,7 +165,7 @@ public class AdsHelper extends GetHelper {
 		try {
 			doClick(dialog.getFilterDialogButtonAdd());
 			waitForAjaxExtJs();
-
+			driverDelay(300);
 		} catch (Exception e) {
 
 		}

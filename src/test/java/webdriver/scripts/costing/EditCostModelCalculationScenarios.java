@@ -157,6 +157,7 @@ public class EditCostModelCalculationScenarios extends CalculationHelper {
 			assertElementIsDisplayed(costing.getRvuCostCalcScenarioTotalCost());
 			doClick(costing.getRvuCostCalcScenarioApplySelection());
 			waitForDisplayedSpinnerToEnd();
+			driverDelay();
 			assertTextIsDisplayed(resultAfterApply);
 			doClick(costing.getRvuCostCalcScenarioCloseButton());
 			ExtentReport.logPass("PASS", "test06ResultsForCostCalculationScenarios");

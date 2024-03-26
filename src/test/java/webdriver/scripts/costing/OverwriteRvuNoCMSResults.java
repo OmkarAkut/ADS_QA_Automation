@@ -7,6 +7,8 @@ import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import ExtentReport.ExtentReport;
@@ -64,9 +66,11 @@ public class OverwriteRvuNoCMSResults extends GoHelper {
 			doFilterCreate(filterByCostModel);
 			doClick(costing.getRvuMaintenanceButtonImport());
 			assertTextIsDisplayed("Import Data");
-			doClick(costing.getRvuSecImportSelectButton());
-			costing.getRvuSecImportSelectButton().sendKeys(Keys.ENTER);
-			;
+			JavascriptExecutor executor = (JavascriptExecutor)driver;
+			executor.executeScript("arguments[0].click();", driver.findElement(By.xpath("//div[contains(@id,'filefield')]//following::input[@name='importdata']")));
+//			doClick("//div[contains(@id,'filefield')]//following::input[@name='importdata']");
+//			costing.getImportSelectButton().sendKeys(Keys.ENTER);
+//			;
 			driverDelay(500);
 			ContractModelsHelper.uploadTheFileusingAutoIT(driver,
 					System.getProperty("user.dir") + "\\AutoIT\\UploadFile.exe",
@@ -75,8 +79,9 @@ public class OverwriteRvuNoCMSResults extends GoHelper {
 			driverDelay(300);
 			doClick(contractMap.getContractModelExportFileSharedLocOption());
 			ContractModelsHelper.keyInValues(costing.getRvuFileNameInput(), "Test");
-			doClick(costing.getRvuImportButton());
+			doClick(costing.getImportButton());
 			waitForSpinnerToEnd();
+			driverDelay();
 			assertElementIsDisplayed(contractMap.getContractModelImportExportstatusPage());
 			ContractModelsHelper.waitForFirstRowCalculationBarToReach100Percent();
 			doClosePageOnLowerBar("Import/Export Status");
@@ -196,8 +201,8 @@ public class OverwriteRvuNoCMSResults extends GoHelper {
 	public void test05FilterByDepartmentInRvuContainerList_5920() throws Throwable {
 		try {
 			doClick(costing.getRvuMaintenanceButtonRvuContainerList());
-			waitForElementToBeVisible(costing.getRvuContainerFilterButton());
-			doClick(costing.getRvuContainerFilterButton());
+			waitForElementPresence("//*[text()='RVU Container List']/ancestor::div/following-sibling::div//span[text()='Filter']");
+			doClick("//*[text()='RVU Container List']/ancestor::div/following-sibling::div//span[text()='Filter']");
 			doFilterSetFilterParameters("Department Code", "Is", "Equal To", "3110");
 			addFilter();
 			assertElementIsDisplayedWithXpath("//label[text()='Filter to Match These Criteria 14/68']");
@@ -272,7 +277,7 @@ public class OverwriteRvuNoCMSResults extends GoHelper {
 			ExtentReport.logFail("FAIL", "test08OverwriteRvuMaintenance", driver, e);
 			fail(e.getMessage());
 		} finally {
-			doClosePageOnLowerBar("Unit Cost Quick...");
+			doClosePageOnLowerBar("Unit Cost Quick Calculation");
 		}
 	}
 

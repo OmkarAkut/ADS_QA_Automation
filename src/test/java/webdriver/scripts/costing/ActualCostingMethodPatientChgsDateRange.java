@@ -95,11 +95,15 @@ public class ActualCostingMethodPatientChgsDateRange extends CalculationHelper {
 			checkForRecordsProcessed("  Sum Actual Costs = ");
 			checkForRecordsProcessed("  Department: D2115 DEPT D2115");
 			closeViewDialog();
+			
 			ExtentReport.logPass("PASS", "test02VerifyCalculationStatusForCostModelCalcScenarioApr");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test02VerifyCalculationStatusForCostModelCalcScenarioApr", driver, e);
 			fail(e.getMessage());
 		} 
+		finally {
+			doClosePageOnLowerBar("Calculation Status");
+		}
 	}
 
 	@Test

@@ -142,6 +142,7 @@ import webdriver.maps.mapbuilder.BuildMap;
 			Thread.sleep(500);
 			ContractModelsHelper.selectMultipleColumnsToDisplay(columnHeaderSubset);
 			doClick("//h1[text()='Add Cost Model Scenarios']//following::span[text()='Apply']");
+//			doClick("//label[text()='Include Acquisition Costs']//preceding-sibling::*[1]/input");
 			doDropdownSelectUsingOptionText(costing.getCostModelScenariosinEvaluationOrderFrom(),
 					costing.getCostModelScenarioFromOptions(), "Apr 2004");
 
@@ -162,10 +163,13 @@ import webdriver.maps.mapbuilder.BuildMap;
 			doClick("//div[text()='Add Entities']//following::span[text()='Apply']");
 			doClick(costing.getCostModelScenariosinEvaluationOrderDischargeCheck());
 			doClick(costing.getCostModelScenariosinEvaluationOrderAdmissionCheck());
-			doClick(CostingMap.getCostModelSharedLogCheckbox());
-			doClick(costing.getEncCostModelCancelCloseButton());
-			waitForElementToBeVisible(ContractingMap.getContractModelRiskLimiterMessageBoxCancelCloseBtn());
-			doClick(ContractingMap.getContractModelRiskLimiterMessageBoxCancelCloseBtn());
+			doClick("(//label[text()='Share Log in Selected Shared Location']//preceding-sibling::*[1]/input)");
+			doClick("//span[text()='Save & Close']");
+			doClick(costing.getEncCostModelClearFilterButton());
+			waitForDisplayedSpinnerToEnd();
+			doClick(costing.getEncCostModelFilterButton());
+			doFilterCreate(filterNewCostScenario);
+			tableClickCellFirstColumn(encCostModelName);
 			ExtentReport.logPass("PASS", "test05VerifyNewEncCostScenario");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test05VerifyNewEncCostScenario", driver, e);
@@ -175,29 +179,26 @@ import webdriver.maps.mapbuilder.BuildMap;
 	@Test
 	public void test06VerifyCreatedEncCostScenario_5982() throws Throwable {
 		try {
-			doClick(costing.getEncCostModelClearFilterButton());
-			waitForDisplayedSpinnerToEnd();
-			doClick(costing.getEncCostModelFilterButton());
-			doFilterCreate(filterNewCostScenario);
-			tableDoubleClickCellFirstColumn(encCostScenario);
-			assertElementIsDisplayedWithXpath("//label[text()='Cost Model Scenarios in Evaluation Order']//following::li[contains(text(),'"+costModelScenEvaluationOrder+"')]");
+			tableDoubleClickCellFirstColumn(encCostModelName);
+			ContractModelsHelper.CompareListToArray(driver.findElements(By.xpath("(//div[@class='x-boundlist-list-ct'])[1]//div")), columnHeaderSubset);
 			ContractModelsHelper.CompareListToArray(driver.findElements(By.xpath("(//div[@class='x-boundlist-list-ct'])[2]//div")), columns);
 			ContractModelsHelper.CompareListToArray(driver.findElements(By.xpath("(//div[@class='x-boundlist-list-ct'])[3]//div")), filterEntities);
-			doClick(costing.getEncCostModelCancelCloseButton());
-			waitForElementToBeVisible(ContractingMap.getContractModelRiskLimiterMessageBoxCancelCloseBtn());
-			doClick(ContractingMap.getContractModelRiskLimiterMessageBoxCancelCloseBtn());			
 			ExtentReport.logPass("PASS", "test06VerifyCreatedEncCostScenario");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test06VerifyCreatedEncCostScenario", driver, e);
 			fail(e.getMessage());
+		}
+		finally {
+			doClick(costing.getEncCostModelCancelCloseButton());
+
 		}
 	}
 	@Test
 	public void test07DeleteCreatedEncCostScenario_5982() throws Throwable {
 		try {
 			doClick(costing.getEncCostModelDeleteButton());
-			waitForElementToBeVisible(ContractingMap.getWarningPopUpDeleteButton());
-			doClick(ContractingMap.getWarningPopUpDeleteButton());
+			waitForElementToBeVisible(costing.getWarningDeleteButton());
+			doClick(costing.getWarningDeleteButton());
 			waitForDisplayedSpinnerToEnd();
 			assertTextIsDisplayed("There is no data available to display.");
 			ExtentReport.logPass("PASS", "test07DeleteCreatedEncCostScenario");

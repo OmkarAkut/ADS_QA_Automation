@@ -398,6 +398,10 @@ public class ContractingMap extends MapConfig {
 	private static WebElement ContractModelRiskLimiterCancelCloseBtn;
 	public static WebElement getContractModelRiskLimiterCancelCloseBtn() {return ContractModelRiskLimiterCancelCloseBtn;}
 	
+	@FindBy(xpath = "//div[text()='GL Adjustment and Reclassification Calculation Scenario']//following::span[text()='Cancel & Close']")
+	private static WebElement gLCancelCloseBtn;
+	public static WebElement getgLCancelCloseBtn() {return gLCancelCloseBtn;}
+	
 	@FindBy(xpath = "//div[contains(@id,'messagebox')]//span[text()='Cancel & Close']/../../..")
 	private static WebElement WarningCancelCloseBtn;
 	public static WebElement getWarningCancelCloseBtn() {return WarningCancelCloseBtn;}

@@ -105,7 +105,7 @@ public class PaginationInCostingModels extends GoHelper {
 	}
 	@AfterClass
 	public static void endtest() throws Exception {
-		doClosePageOnLowerBar("Model Library");
+		doClosePageOnLowerBar("Costing Models");
 		ExtentReport.report.flush();
 
 	}
