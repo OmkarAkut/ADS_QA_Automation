@@ -32,11 +32,11 @@ public class GeneralContractInfo extends ContractModelsHelper {
 	// String expectedNewestMedicareYearRange = "Oct 1, 2020 - Sept 30, 2021";
 	private static final String expectedMedicareYearRange = "Oct 1, 2019 - Sept 30, 2020";
 	// The values below have been changed in the application (12-14-2020)
-	private static final String nationalOperlaborRate = "3596.70";
-	private static final String nationalOperNonLaborRate = "2204.43";
-	private static final String nationalCapitalRate = "462.61";
-	private static final String costOutlierPaymentFixedLossThreshold = "26473";
-	private static final String CostOutlierPaymentSectionThresholdLaborPortion = "16413.26";
+	private static final String nationalOperlaborRate = "4028.62";
+	private static final String nationalOperNonLaborRate = "2469.15";
+	private static final String nationalCapitalRate = "503.83";
+	private static final String costOutlierPaymentFixedLossThreshold = "42909";
+	private static final String CostOutlierPaymentSectionThresholdLaborPortion = "26603.6";
 	private static String BackgroundColorTitleBarEditPopUp = "rgba(0, 0, 0, 0)";
 
 	// default values from ADS Help are in comments at the end of each line
@@ -223,7 +223,7 @@ public class GeneralContractInfo extends ContractModelsHelper {
 
 		try {
 			String checkboxStatus = driver
-					.findElement(By.xpath("//*[text()='Read Alternative DRG']/parent::td/../../.."))
+					.findElement(By.xpath("//*[text()='Read Alternative DRG']/../../.."))
 					.getAttribute("class");
 			assertFalse(checkboxStatus.contains("checked"));
 			assertThat(checkboxStatus, not(containsString("checked")));
@@ -243,13 +243,18 @@ public class GeneralContractInfo extends ContractModelsHelper {
 			throws InterruptedException, Throwable {
 		try {
 			waitForAjaxExtJs();
+			
 			String expectedText = "MS DRG1"; // MS DRG1
-			doClick(driver.findElement(By.xpath("//*[text()='Read Alternative DRG']/preceding-sibling::input")));
-			waitForAjaxExtJs();
+			driverDelay(2000);
+			JavascriptExecutor executor = (JavascriptExecutor)driver;
+			executor.executeScript("arguments[0].click();", driver.findElement(By.xpath("//*[text()='Read Alternative DRG']/../span/input")));
+//			doClick("//*[text()='Read Alternative DRG']/../span/input");
+//			waitForAjaxExtJs();
+			
 			driver.findElement(By.name("otherDrgIndex")).click();
 			waitForAjaxExtJs();
 			WebElement drgList = driver
-					.findElement(By.xpath("//div/following-sibling::div[contains(@class, 'boundlist')][4]/div/ul"));
+					.findElement(By.xpath("(//div[contains(@class, 'boundlist')]//ul)[4]"));
 			List<WebElement> drgListing = drgList.findElements(By.tagName("li"));
 			for (WebElement item : drgListing) {
 				String clss = item.getAttribute("class");
@@ -267,6 +272,7 @@ public class GeneralContractInfo extends ContractModelsHelper {
 					break;
 				}
 			}
+			
 		} catch (Exception e) {
 			ExtentReport.logFail("FAIL", "test06GeneralSectionReadAlternativeDrgDropdownDefaultValueIsMsDrg1", driver,
 					e);
@@ -377,7 +383,7 @@ public class GeneralContractInfo extends ContractModelsHelper {
 	@Test
 	public void test20OperatingPaymentNationalLaborRateField() throws InterruptedException, Throwable {
 		try {
-			navigateCloseGeneralSectionOpenNewSection("Operating Payment");
+			doClick("(//*[contains(@id, 'customaccordianpanel')][text()='Operating Payment'])[1]");
 			assertFieldValue("//*[@name='nationalOperlaborRate']", nationalOperlaborRate);
 			ExtentReport.logPass("PASS", "test20OperatingPaymentNationalLaborRateField PASS");
 
@@ -474,8 +480,8 @@ public class GeneralContractInfo extends ContractModelsHelper {
 	@Test
 	public void test30CapitalPaymentSectionAssertCapitalGeographicAdjustmentFactor() throws Throwable {
 		try {
-			navigateCloseSectionOpenNewSection("Operating Payment", "Capital Payment");
-
+//			navigateCloseSectionOpenNewSection("Operating Payment", "Capital Payment");
+			doClick("(//*[contains(@id, 'customaccordianpanel')][text()='Capital Payment'])[1]");
 			assertFieldValue("//*[@name='capitalGeographicAdjFactor']", "1");
 			ExtentReport.logPass("PASS", "test30CapitalPaymentSectionAssertCapitalGeographicAdjustmentFactor PASS");
 
@@ -508,8 +514,8 @@ public class GeneralContractInfo extends ContractModelsHelper {
 	public void test40CostOutlierPaymentSectionVerifyOperatingRatioOfCostChargeField()
 			throws InterruptedException, Throwable {
 		try {
-			navigateCloseSectionOpenNewSection("Capital Payment", "Cost Outlier Payment");
-
+//			navigateCloseSectionOpenNewSection("Capital Payment", "Cost Outlier Payment");
+			doClick("(//*[contains(@id, 'customaccordianpanel')][text()='Cost Outlier Payment'])[1]");
 			assertThatFieldValue(modelMap.getContractModelsCostOutlierPaymentOperatingRatioOfCostCharge(), "1");
 			ExtentReport.logPass("PASS", "test40CostOutlierPaymentSectionVerifyOperatingRatioOfCostChargeField PASS");
 
@@ -578,7 +584,8 @@ public class GeneralContractInfo extends ContractModelsHelper {
 	public void test51AddOnTechnologyPaymentSectionAssertSelectedServicesDisplayPaneIsEmptyByDefault()
 			throws Throwable {
 		try {
-			navigateCloseSectionOpenNewSection("Cost Outlier Payment", "Add On Technology Payment");
+//			navigateCloseSectionOpenNewSection("Cost Outlier Payment", "Add On Technology Payment");
+			doClick("(//*[contains(@id, 'customaccordianpanel')][text()='Add On Technology Payment'])[1]");
 			waitForAjaxExtJs();
 			Thread.sleep(2000);
 			boolean isDisplayed = false;
