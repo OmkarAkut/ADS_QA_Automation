@@ -660,6 +660,18 @@ public class AssertHelper extends AdsHelper {
 			fail(e.getMessage());
 		}
 	}
+	public static void assertTextIsDisplayedTaskFolder(String expectedText) {
+		try {
+
+			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);",
+					driver.findElement(By.xpath("//div[contains(@id,'taskfolder')]//*[text()='" + expectedText + "']")));
+			Thread.sleep(500);
+			WebElement element = driver.findElement(By.xpath("//div[contains(@id,'taskfolder')]//*[text()='" + expectedText + "']"));
+			assertTrue(element.isDisplayed());
+		} catch (Throwable e) {
+			fail(e.getMessage());
+		}
+	}
 
 	public static void assertTextIsNotDisplayed(String expectedText) {
 		try {

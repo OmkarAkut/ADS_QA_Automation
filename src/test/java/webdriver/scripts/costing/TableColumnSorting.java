@@ -65,6 +65,7 @@ public class TableColumnSorting extends GoHelper {
 	public void test03AssertTableOnSortByNameColumnEpisode() throws Throwable {
 		try {
 			goToPage("Episode Models");
+			waitForDisplayedSpinnerToEnd();
 			SortByNameColumn();
 			ExtentReport.logPass("PASS", "test03AssertTableOnSortByNameColumnEpisode");
 
@@ -127,7 +128,7 @@ public class TableColumnSorting extends GoHelper {
 
 	@AfterClass
 	public static void endtest() throws Exception {
-		doClosePageOnLowerBar("Model Library");
+		doClosePageOnLowerBar("Costing Models");
 		ExtentReport.report.flush();
 
 	}

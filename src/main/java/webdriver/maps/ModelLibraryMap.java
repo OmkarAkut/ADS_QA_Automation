@@ -155,23 +155,23 @@ public class ModelLibraryMap extends MapConfig {
     public WebElement getModelLibraryContractingButtonExport() {return modelLibraryContractingButtonExport;}
 
     // ===== Contracting Tab > Contract Models Page > Edit Price dialog ===== //
-    @FindBy(name = "operCostChargeRatio")
+    @FindBy(xpath = "(//div[text()='Cost Outlier Payment']//following::input[@name='operCostChargeRatio'])[1]")
     private WebElement contractModelsCostOutlierPaymentOperatingRatioOfCostCharge;
     public WebElement getContractModelsCostOutlierPaymentOperatingRatioOfCostCharge() {return contractModelsCostOutlierPaymentOperatingRatioOfCostCharge;}
 
-    @FindBy(name = "capitalCostChargeRatio")
+    @FindBy(xpath = "(//div[text()='Cost Outlier Payment']//following::input[@name='capitalCostChargeRatio'])[1]")
     private WebElement contractModelsCostOutlierPaymentCapitalRatioOfCostCharge;
     public WebElement getContractModelsCostOutlierPaymentCapitalRatioOfCostCharge() {return contractModelsCostOutlierPaymentCapitalRatioOfCostCharge;}
 
-    @FindBy(name = "paymentPercentage")
+    @FindBy(xpath = "(//div[text()='Cost Outlier Payment']//following::input[@name='paymentPercentage'])[1]")
     private WebElement contractModelsCostOutlierPaymentNonBurnMarginalCostFactor;
     public WebElement getContractModelsCostOutlierPaymentNonBurnMarginalCostFactor() {return contractModelsCostOutlierPaymentNonBurnMarginalCostFactor;}
 
-    @FindBy(name = "fixedLossThreshold")
+    @FindBy(xpath = "(//div[text()='Cost Outlier Payment']//following::input[@name='fixedLossThreshold'])[1]")
     private WebElement contractModelsCostOutlierPaymentFixedLossThreshold;
     public WebElement getContractModelsCostOutlierPaymentFixedLossThreshold() {return contractModelsCostOutlierPaymentFixedLossThreshold;}
 
-    @FindBy(name = "laborPortion")
+    @FindBy(xpath = "(//div[text()='Cost Outlier Payment']//following::input[@name='laborPortion'])[1]")
     private WebElement contractModelsCostOutlierPaymentThresholdLaborPortion;
     public WebElement getContractModelsCostOutlierPaymentThresholdLaborPortion() {return contractModelsCostOutlierPaymentThresholdLaborPortion;}
 

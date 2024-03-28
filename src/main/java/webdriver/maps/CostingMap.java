@@ -1295,19 +1295,19 @@ public class CostingMap extends MapConfig {
 	private static WebElement getEditButton;
 	public WebElement getEditButton() {return getEditButton;}
 
-	@FindBy(xpath = "//span[text()='Name']//following::span[@class='fas fa-angle-down']")
+	@FindBy(xpath = "//span[text()='Name']")
 	private WebElement landingPageNameSortAsc;
 	public WebElement getlandingPageNameSortAsc() {return landingPageNameSortAsc;}
 
-	@FindBy(xpath = "//span[text()='Date Created']//following::span[@class='fas fa-angle-down']")
+	@FindBy(xpath = "//span[text()='Date Created']")
 	private WebElement landingPageDateSortAsc;
 	public WebElement getlandingPageDateSortAsc() {return landingPageDateSortAsc;}
 
-	@FindBy(xpath = "//span[text()='Name']//following::span[@class='fas fa-angle-up']")
+	@FindBy(xpath = "//span[text()='Name']")
 	private WebElement landingPageNameSortDesc;
 	public WebElement getlandingPageNameSortDesc() {return landingPageNameSortDesc;}
 
-	@FindBy(xpath = "//span[text()='Date Created']//following::span[@class='fas fa-angle-up']")
+	@FindBy(xpath = "//span[text()='Date Created']")
 	private WebElement landingPageDateSortDesc;
 	public WebElement getlandingPageDateSortDesc() {return landingPageDateSortDesc;}
 
@@ -1656,14 +1656,14 @@ public class CostingMap extends MapConfig {
 	}
 //	Omkar 11/8/2023 : xpath changes for 11.2
 //	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer x-docked-bottom')]//div[contains(@class,'x-toolbar-item')]//span[text()='Export']//parent::button")
-	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer x-docked-bottom')]//div[contains(@class,'x-toolbar-item')]//span[text()='Export']//parent::span")
+	@FindBy(xpath = "//div[contains(@id,'exportwindow')]//following::span[text()='Export']")
 	private  WebElement getRvuExportButton;
 	public   WebElement getRvuExportButton() {
 		return getRvuExportButton;
 	}
 //	Omkar 11/8/2023 : xpath changes for 11.2
 //	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer x-docked-bottom')]//div[contains(@class,'x-toolbar-item')]//span[text()='Import']//parent::button")
-	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer x-docked-bottom')]//div[contains(@class,'x-toolbar-item')]//span[text()='Import']//parent::span")
+	@FindBy(xpath = "//div[contains(@id,'importwindow')]//following::span[text()='Import']")
 	private  WebElement getRvuImportButton;
 	public   WebElement getRvuImportButton() {
 		return getRvuImportButton;

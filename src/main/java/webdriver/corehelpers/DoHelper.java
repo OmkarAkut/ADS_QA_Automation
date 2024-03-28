@@ -506,6 +506,23 @@ public class DoHelper extends DriverHelper {
 		waitForAjaxExtJs();
 		waitForSpinnerToEnd();
 	}
+	
+	public static void doJsClick(WebElement element) {
+		try {
+			JavascriptExecutor executor = (JavascriptExecutor)driver;
+			executor.executeScript("arguments[0].click();", element);
+		} catch (Exception e) {
+			
+		}
+	}
+	public static void doactionClick(WebElement element) {
+		try {
+			Actions act=new Actions(driver);
+			act.moveToElement(element).click().build().perform();
+		} catch (Exception e) {
+			
+		}
+	}
 }
 
 

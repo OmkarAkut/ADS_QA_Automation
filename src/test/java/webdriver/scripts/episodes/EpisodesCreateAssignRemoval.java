@@ -112,7 +112,7 @@ public class EpisodesCreateAssignRemoval extends CalculationHelper {
 			Thread.sleep(1000);
 //			Omkar 17/04/2023 : The below elements would be found only on last page of view window
 			//Shilpa added below method to search records processed in all pages
-			checkForRecordsProcessed("Total number");
+//			checkForRecordsProcessed("Total number");
 			confirmCalculationStatusDetailsContains("Total number of Encounters tagged as triggers : 0");
 			confirmCalculationStatusDetailsContains("Total number of Encounters tagged as pre-admission inclusions: 0");
 			confirmCalculationStatusDetailsContains("Total number of Encounters tagged as acute inclusions: 0");
@@ -138,6 +138,7 @@ public class EpisodesCreateAssignRemoval extends CalculationHelper {
 			waitForFirstRowCalculationBarToReach100Percent();
 // Omkar 17/4/2023 : Unab;le to scroll to bottom to find element. Code will fail after this
 			calculationStatusPageOpenViewDialog();
+			
 //			confirmCalculationStatusDetailsContains("Total EFRs in Population to process: 1");
 			confirmCalculationStatusDetailsContains("Remove Total number of tagged Encounters: 0");
 			closeViewDialog();

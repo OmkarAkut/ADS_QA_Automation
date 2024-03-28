@@ -182,8 +182,9 @@ public class ValidateCalculationStatusPage extends CalculationHelper {
 			doClick(modelMap.getContractModelCalcFileSharedLocOption());
 			ContractModelsHelper.keyInValues(modelMap.getContractModelCalcFilename(), "Testing"+currentDateTime);
 //			doClick(modelMap.getContractModelCalcContinueBtn());
-			JavascriptExecutor executor = (JavascriptExecutor)driver;
-			executor.executeScript("arguments[0].click();", modelMap.getContractModelCalcContinueBtn());
+			doJsClick(modelMap.getContractModelCalcContinueBtn());
+//			JavascriptExecutor executor = (JavascriptExecutor)driver;
+//			executor.executeScript("arguments[0].click();", modelMap.getContractModelCalcContinueBtn());
 			waitForDisplayedSpinnerToEnd();
 			driverDelay();
 			/*

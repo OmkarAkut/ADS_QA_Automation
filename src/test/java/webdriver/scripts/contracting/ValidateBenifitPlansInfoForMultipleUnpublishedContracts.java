@@ -4,7 +4,9 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
@@ -13,7 +15,7 @@ import webdriver.helpers.ContractModelsHelper;
 import webdriver.maps.ContractingMap;
 import webdriver.maps.mapbuilder.BuildMap;
 
-
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ValidateBenifitPlansInfoForMultipleUnpublishedContracts extends CalculationHelper {
 
 	private static ContractingMap modelMap;

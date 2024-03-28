@@ -6,8 +6,10 @@ import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
@@ -60,7 +62,7 @@ public class RVUExportImportFunction extends GoHelper {
 	@Test
 	public void test02ExportRvuAndValidateImportExportStatus_6660() throws Throwable {
 		try {
-			doClick(costing.getRvuMaintenanceButtonExport());
+//			doClick(costing.getRvuMaintenanceButtonExport());
 			waitForPageTitle("Export Data");
 			assertTextIsDisplayed("Export Data");
 			doClick(costing.getRvuSecSelectorSelectButton());
@@ -80,9 +82,11 @@ public class RVUExportImportFunction extends GoHelper {
 			doClick(costing.getRvuMaintenanceButtonImport());
 			waitForPageTitle("Import Data");
 			assertTextIsDisplayed("Import Data");
-			doClick(costing.getRvuSecImportSelectButton());
-			costing.getRvuSecImportSelectButton().sendKeys(Keys.ENTER);;
-			driverDelay(500);
+//			doClick(costing.getRvuSecImportSelectButton());
+//			waitForMainPageTitle("Find Items");
+//			ContractModelsHelper.keyInValues(costing.getUnitCostQuickCalculationDepartmentField(), costModel);
+			doactionClick(driver.findElement(By.xpath("(//div[contains(@id,'importwindow')]//span[text()='Select'])[2]")));
+//			doJsClick(driver.findElement(By.xpath("(//div[contains(@id,'importwindow')]//span[text()='Select'])[2]")));
 			ContractModelsHelper.uploadTheFileusingAutoIT(driver,System.getProperty("user.dir") + "\\AutoIT\\UploadFile.exe",System.getProperty("user.dir")+"\\AutoIT\\RvuImportFie.txt");
 			selectFileLocAndaddFileName(costing.getRvuImportButton());
 			ExtentReport.logPass("PASS", "test03ImportRvuAndValidateImportExportStatus");

@@ -56,7 +56,7 @@ public class GeneralContractInfo extends ContractModelsHelper {
 	public static void setupScript() throws Exception, Throwable {
 		try {
 			ExtentReport.reportCreate("GeneralContractInfo", "webdriver.scripts.contracting", "GeneralContractInfo");
-//			modelMap = BuildMap.getInstance(driver, ModelLibraryMap.class);
+			modelMap = BuildMap.getInstance(driver, ModelLibraryMap.class);
 			editModelMap = BuildMap.getInstance(driver, EditContractingModelMap.class);
 //			helper=BuildMap.getInstance(driver, UcqcHelper.class);
 			System.out.println("Test Class: " + GeneralContractInfo.class.getSimpleName());
@@ -168,7 +168,8 @@ public class GeneralContractInfo extends ContractModelsHelper {
 			waitForAjaxExtJs();
 			String expectedText = "MSDRG1"; // HCFA DRG
 			try {
-				driver.findElement(By.name("drgTypeString")).click();
+				driver.findElement(By.xpath("//input[@name='drgTypeString']")).click();
+				driverDelay();
 			} catch (Exception | AssertionError e) {
 				ExtentReport.logFail("FAIL", "Cannot find element", driver, e);
 
@@ -202,14 +203,17 @@ public class GeneralContractInfo extends ContractModelsHelper {
 
 			}
 			try {
-				driver.findElement(By.name("drgTypeString")).click();
+				JavascriptExecutor executor = (JavascriptExecutor)driver;
+				executor.executeScript("arguments[0].click();", driver.findElement(By.xpath("//input[@name='drgTypeString']")));
+				driverDelay();
+				//				driver.findElement(By.name("drgTypeString")).click();
 			} catch (Exception e) {
 				ExtentReport.logFail("FAIL", "Element not found", driver, e);
 
 			}
 			waitForAjaxExtJs();
 		} catch (Exception e) {
-			webdriverClick(driver.findElement(By.xpath("//li[text()='Medicare Inpatient PPS']")));
+//			webdriverClick(driver.findElement(By.xpath("//li[text()='Medicare Inpatient PPS']")));
 			ExtentReport.logFail("FAIL",
 					"test04GeneralSectionAssertIndustryClassificationSchemeFieldDefaultValueIsMsdrg1", driver, e);
 			fail(e.getMessage());
@@ -245,13 +249,9 @@ public class GeneralContractInfo extends ContractModelsHelper {
 			waitForAjaxExtJs();
 			
 			String expectedText = "MS DRG1"; // MS DRG1
-			driverDelay(2000);
+			
 			JavascriptExecutor executor = (JavascriptExecutor)driver;
 			executor.executeScript("arguments[0].click();", driver.findElement(By.xpath("//*[text()='Read Alternative DRG']/../span/input")));
-//			doClick("//*[text()='Read Alternative DRG']/../span/input");
-//			waitForAjaxExtJs();
-			
-			driver.findElement(By.name("otherDrgIndex")).click();
 			waitForAjaxExtJs();
 			WebElement drgList = driver
 					.findElement(By.xpath("(//div[contains(@class, 'boundlist')]//ul)[4]"));
@@ -259,8 +259,6 @@ public class GeneralContractInfo extends ContractModelsHelper {
 			for (WebElement item : drgListing) {
 				String clss = item.getAttribute("class");
 				if (clss.contains("selected")) {
-//				AssertHelper.assertThatString(item.getText(), expectedText,
-//						"test06GeneralSectionReadAlternativeDrgDropdownDefaultValueIsMsDrg1");
 					try {
 						assertThat(item.getText(), equalTo(expectedText));
 						ExtentReport.logPass("PASS",

@@ -374,7 +374,7 @@ public class CalculationHelper extends GoHelper {
 	}
 
 	public void confirmCalculationStatusViewLogContains(String expectedViewLog) {
-		String viewLog = driver.findElement(By.xpath("//span[text()='View Log:']/../following::div[1]")).getText();
+		String viewLog = driver.findElement(By.xpath("//span[text()='View Log:']/../following::div[1]/div")).getText();
 		System.out.println("View Log: " + viewLog);
 		assertThat(viewLog, containsString(expectedViewLog));
 	}

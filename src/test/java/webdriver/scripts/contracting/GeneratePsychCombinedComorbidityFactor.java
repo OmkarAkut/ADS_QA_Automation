@@ -43,7 +43,8 @@ public class GeneratePsychCombinedComorbidityFactor extends CalculationHelper {
 		    waitForAjaxExtJs();
 		    doClick(ContractingMap.getContractModelApplyFilterButton());
 			waitForAjaxExtJs();
-			openMaintainDataBatch(batch);
+			tableDoubleClickCellFirstColumn(batch);
+//			openMaintainDataBatch(batch);
 			waitForDisplayedSpinnerToEnd();
 			waitForAjaxExtJs();
 			ExtentReport.logPass("PASS", "setupScript");
@@ -71,9 +72,9 @@ public class GeneratePsychCombinedComorbidityFactor extends CalculationHelper {
 			doClick(costingMap.getCostModelScenariosinEvaluationOrderSave());
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
-			driverDelay(200);
+			driverDelay();
 			assertViewLogTitle(viewLogTitleApply);
-			confirmCalculationStatusDetailsContains("Process Completed");
+			checkForRecordsProcessed("Process Completed");
 			doClick(ContractingMap.getContractCalculationCloseViewDialog());
 			deleteMyCalculationStatusFirstRow();
 			doClosePageOnLowerBar("Calculation Status");
