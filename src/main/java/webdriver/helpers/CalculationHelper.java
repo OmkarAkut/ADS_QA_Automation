@@ -574,7 +574,7 @@ public class CalculationHelper extends GoHelper {
 					assertTrue(printout);
 				}
 				
-			} catch (NoSuchElementException  e) {
+			} catch (Exception  e) {
 				try {
 					ContractModelsHelper.scrollToView("//*[contains(text(),'"+text+"')]");
 				} catch (Exception e1) {
