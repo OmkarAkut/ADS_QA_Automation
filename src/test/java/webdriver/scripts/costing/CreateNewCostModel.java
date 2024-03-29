@@ -10,7 +10,9 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
@@ -72,10 +74,43 @@ public class CreateNewCostModel extends GoHelper {
 			fail(e.getMessage());
 		}
 	}
-	public void OpenTreeItemThenValidate(String itemName, String assertValue,WebElement element) throws Throwable{
-		doClickTreeItem(itemName);
-		driverDelay();
+	
+	public void validateTreeItem(String itemName) throws Throwable {
 		
+	}
+
+	public static void OpenTreeItemThenValidate(String itemName) throws Throwable{
+			if(itemName.equals("General Information - Cost")) {
+				doClick("//span[text()='Cancel & Close']/../../..");
+			}
+			if(itemName.equals("RVU Maintenance")) {
+				assertTextIsDisplayed("Entity");
+			}
+			Actions act=new Actions(driver);
+			doClick("//tr[contains(@class,'x-grid-tree-node-leaf')]//span[text()='"+itemName+"']");
+
+			waitForElementsToBeVisible(driver.findElements(By.xpath("(//div[@class='x-grid-item-container'])[4]//tr//td[2]//div")));
+			act.moveToElement(driver.findElement(By.xpath("((//div[@class='x-grid-item-container'])[4]//tr//td[2]//div)[1]"))).doubleClick().build().perform();
+			driverDelay(1000);
+			try {
+				if(driver.findElement(By.xpath("//span[text()='Read Only']")).isDisplayed()) {
+					doClick("//span[text()='Read Only']");
+					assertElementIsDisplayed(driver.findElement(By.xpath("//span[text()='Cancel & Close']/../../..")));
+					doClick("//span[text()='Cancel & Close']/../../..");
+				}
+			} catch (Exception e2) {
+				
+					assertElementIsDisplayed(driver.findElement(By.xpath("//span[text()='Cancel & Close']/../../..")));
+					doClick("//span[text()='Cancel & Close']/../../..");
+		
+			}
+
+				
+			
+		
+
+		
+			
 	}
 	//ADS-6253
 	@Test
@@ -83,13 +118,73 @@ public class CreateNewCostModel extends GoHelper {
 		try {
 			tableDoubleClickCellFirstColumn(costModel);
 			doClickTreeItem("Prepare Costing Elements");
-			doClickTreeItem("Entities");
 			driverDelay();
-			
+			OpenTreeItemThenValidate("Encounters");
+			OpenTreeItemThenValidate("Entities");
+			OpenTreeItemThenValidate("Department Masters");
+			OpenTreeItemThenValidate("Department Hierarchies");
+			OpenTreeItemThenValidate("Department Groups");
+			OpenTreeItemThenValidate("GL Account Types");
+			OpenTreeItemThenValidate("GL Account Masters");
+			OpenTreeItemThenValidate("GL Account Hierarchies");
+			OpenTreeItemThenValidate("Product Types");
+			OpenTreeItemThenValidate("Charge Masters");
+			OpenTreeItemThenValidate("Chargeable Activity Groups");
+			OpenTreeItemThenValidate("Price Lists");
+			OpenTreeItemThenValidate("Price List Calculation Scenarios");
+			doClickTreeItem("Statistics");
+			driverDelay();
+			OpenTreeItemThenValidate("Activity Statistic Masters");
+			OpenTreeItemThenValidate("Ad Hoc Statistic Masters");
+			OpenTreeItemThenValidate("GL Statistic Masters");
+			OpenTreeItemThenValidate("Charge Masters");
+			OpenTreeItemThenValidate("Supply Code Masters");
+			OpenTreeItemThenValidate("Vendor Masters");
+			doClickTreeItem("Prepare Data");
+			driverDelay();
+			doClickTreeItem("Activity Volume Data Scenarios");
+			driverDelay();
+			OpenTreeItemThenValidate("Activity Volume Data Scenarios");
+			OpenTreeItemThenValidate("Activity Volume Data Calculation Scenarios");
+			OpenTreeItemThenValidate("GL Data Scenarios");
+			doClickTreeItem("Statistic Data Scenarios");
+			driverDelay();
+			OpenTreeItemThenValidate("Statistic Data Scenarios");
+			OpenTreeItemThenValidate("Statistic Data Calculation Scenarios");
+			doClickTreeItem("Perform GL Adjustments and Reclassifications");
+			driverDelay();
+			OpenTreeItemThenValidate("GL Adjustment Masters");
+			OpenTreeItemThenValidate("GL Reclassification Masters");
+			OpenTreeItemThenValidate("GL Adjustment and Reclassification Calculation Scenarios");
+			doClickTreeItem("Assign Unit Costs");
+			driverDelay();
+			OpenTreeItemThenValidate("Cost Component Masters");
+			OpenTreeItemThenValidate("Cost Component Variability Masters");
+			OpenTreeItemThenValidate("Cost Method Masters");
+			OpenTreeItemThenValidate("General Information - Cost");
+			OpenTreeItemThenValidate("RVU Calculation Scenarios");
+			OpenTreeItemThenValidate("RVU Maintenance");
+			OpenTreeItemThenValidate("Cost Model Calculation Scenarios");
+			OpenTreeItemThenValidate("Cost Model Scenario Results");
+			doClickTreeItem("Assign Costs to Encounters");
+			driverDelay();
+			OpenTreeItemThenValidate("Cost Component Group Masters");
+			OpenTreeItemThenValidate("Assigned Cost Destinations");
+			OpenTreeItemThenValidate("Encounter Cost Calculation Scenarios");
 			ExtentReport.logPass("PASS", "test02AssertNewCostModel_6253");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test02AssertNewCostModel_6253", driver, e);
 			fail(e.getMessage());
+		}
+		finally {
+			try {
+				doClick("//span[text()='Cancel & Close']");
+				doClick("//span[text()='Model Library']");
+			}
+			catch(Exception e) {
+				doClick("//span[text()='Model Library']");
+			}
+			
 		}
 	}
 	//ADS-6633
@@ -184,7 +279,7 @@ public class CreateNewCostModel extends GoHelper {
 	}
 	@AfterClass
 	public static void endtest() throws Exception {
-		doClosePageOnLowerBar("Model Library");
+		doClosePageOnLowerBar("Costing Models");
 
 		ExtentReport.report.flush();
 

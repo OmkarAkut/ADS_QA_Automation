@@ -1060,5 +1060,8 @@ public class ContractingMap extends MapConfig {
 	private static WebElement getGLFilterButton;
 	public static WebElement getGLFilterButton() {return getGLFilterButton;}
 
+	@FindBy(xpath = "(//div[@class='x-grid-item-container'])[4]//tr//td[2]//div")
+	private static List<WebElement> getGridElements;
+	public static List<WebElement> getGridElements() {return getGridElements;}
 
 }

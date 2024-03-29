@@ -1281,11 +1281,11 @@ public class CostingMap extends MapConfig {
 
 //	Omkar 16/8/2023 : xpath changes for 11.2
 //	@FindBy(xpath = "//div[contains(@class,'glFormCls')]//following::table//following::span[text()='Cancel & Close']//parent::button")
-	@FindBy(xpath = "//div[contains(@class,'glFormCls')]//following::table//following::span[text()='Cancel & Close']")
+	@FindBy(xpath = "//div[text()='New Cost Model']//following::span[text()='Cancel & Close']")
 	private static WebElement getCancelCostModel;
 	public WebElement getCancelCostModel() {return getCancelCostModel;}
 
-	@FindBy(xpath = "//td[contains(@id,'combobox')]/input")
+	@FindBy(xpath = "//input[@placeholder='Select Model Types']")
 	private static WebElement getModelTypedropdown;
 	public WebElement getModelTypedropdown() {return getModelTypedropdown;}
 

@@ -3,6 +3,8 @@ package webdriver.corehelpers;
 import static org.junit.Assert.fail;
 
 import java.time.Duration;
+import java.util.List;
+
 import junit.framework.TestCase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -201,7 +203,14 @@ public class WaitHelper extends JavaHelper {
 			wait.until(ExpectedConditions.visibilityOf(element));
 
 	}
+	public static void waitForElementsToBeVisible(List<WebElement> elements){
+		//Edited by Omkar on 22/6/22 as the old wait is depreciated
+		//WebDriverWait wait = new WebDriverWait(driver, 30);
 
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30,0));
+			wait.until(ExpectedConditions.visibilityOfAllElements(elements));
+
+	}
 	/** Uses WebDriverWait ExpectedConditions.elementToBeClickable but does not click. Timeout is 30s. */
 	public static void waitUntilElementIsClickable(WebElement element){
 		//Edited by Omkar on 22/6/22 as the old wait is depreciated
