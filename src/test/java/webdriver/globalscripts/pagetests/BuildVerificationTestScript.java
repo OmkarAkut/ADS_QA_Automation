@@ -272,7 +272,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 			fail(e.getMessage());
 		}
 	  }
-	//ADS-6495[add step 4-8],ADS-6642[add step 4-8]
+	//ADS-6495[add step 4-8],ADS-6642
 	  @Test
 	  public void test0006LandingPageCosting_ADS_6495_ADS_6642() throws Throwable {
 	    try {

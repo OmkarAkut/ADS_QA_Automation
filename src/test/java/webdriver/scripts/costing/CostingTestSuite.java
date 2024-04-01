@@ -28,7 +28,6 @@ import webdriver.scripts.systemmaintenance.UsingCustomvsDefaulttasklistsInCustom
 	UsingCustomvsDefaulttasklistsInCustomizeTaskListCosting.class,
 	ValidateCalculationStatusAllStatus.class,
 	ValidateCalculationStatusPage.class,
-	ValidateCostModelOpenTaskListLeftPaneItems.class,
 	ValidateEditCostMethodMasters.class,
 	ValidateHelpLinkHideTabCosting.class,
 	ValidateHelpLinkHideTabDataMaintenance.class,

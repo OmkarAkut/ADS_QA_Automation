@@ -191,6 +191,10 @@ public class ContractingMap extends MapConfig {
 	@FindBy(xpath = "//div[contains(@class,'x-box-target')]//following::span[text()='Save & Close']")
 	private static  WebElement getNewFolderNameSave;
 	public static  WebElement getNewFolderNameSave() {return getNewFolderNameSave;}
+	
+	@FindBy(xpath = "//span[text()='Rename']/../../..")
+	private static  WebElement getNewFolderRename;
+	public static  WebElement getNewFolderRename() {return getNewFolderRename;}
 
 //	Omkar 4/8/2023 : xpath changes for 11.2
 //	@FindBy(xpath = "(//td[contains(@class,'x-grid-cell-treecolumn')]/*[text()='Contracting']/img[@class='x-tree-elbow-end-plus x-tree-expander'])")

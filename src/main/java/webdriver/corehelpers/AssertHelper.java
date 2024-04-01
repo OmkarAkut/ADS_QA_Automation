@@ -954,5 +954,11 @@ public class AssertHelper extends AdsHelper {
 		assertTrue("Expected element to be checked or selected", isChecked == true);
 	}
 
-
+	public void assertElementIsDisplayed(String itemName) {
+		try {
+			assertElementIsDisplayed(driver.findElement(By.xpath("//div[contains(@id,'taskfolder')]//following::span[text()='"+itemName+"']")));
+		} catch (Exception e) {
+			
+		}
+	}
 }

@@ -1,5 +1,6 @@
 package webdriver.scripts.costing;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.text.SimpleDateFormat;
@@ -9,6 +10,7 @@ import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
+import org.openqa.selenium.By;
 
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
@@ -30,7 +32,7 @@ public class CreateDeleteCostMethodMaster extends GoHelper{
 	static String costMethodMaster = "Cost Method" + currentDateTime;
 	static String deptMaster="150 old master 1501";
 	static String[] filter = { "Code", "Is", "Equal", code };
-	/** Automates test ticket ADS-6671, ADS-6670 */
+	/** Automates test ticket ADS-6671, ADS-6670, ADS-6669 */
 
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
@@ -50,7 +52,7 @@ public class CreateDeleteCostMethodMaster extends GoHelper{
 	}
 
 	@Test
-	public void test01OpenAllMasters() throws Throwable {
+	public void test01OpenAllMasters_ADS_6669() throws Throwable {
 		try {
 			doSearchForModel(costModel);
 			tableDoubleClickCellFirstColumn(costModel);
@@ -62,6 +64,26 @@ public class CreateDeleteCostMethodMaster extends GoHelper{
 			waitForPresenceOfElement("(//div[contains(@id,'taskfolder')]//following::table[contains(@id,'treeview')]//span[text()='All Masters'])");
 			assertElementIsDisplayedWithXpath("//div[contains(@id,'taskfolder')]//following::table[contains(@id,'treeview')]//span[text()='All Masters']");
 //			assertTextIsDisplayed("Cost Scnenarios");
+			doClick("//div[contains(@id,'taskfolder')]//following::table[contains(@id,'treeview')]//span[text()='All Masters']");
+			waitForPresenceOfElement("(//div[contains(@id,'taskfolder')]//following::table[contains(@id,'treeview')]//span[text()='Charge Masters'])[1]");
+			assertElementIsDisplayed("Activity Statistic Masters");
+			assertElementIsDisplayed("Ad Hoc Statistic Masters");
+			assertElementIsDisplayed("Charge Masters");
+			assertElementIsDisplayed("Cost Component Group Masters");
+			assertElementIsDisplayed("Cost Component Masters");
+			assertElementIsDisplayed("Cost Component Variability Masters");
+			assertElementIsDisplayed("Charge Masters");
+			assertElementIsDisplayed("Cost Method Masters");
+			assertElementIsDisplayed("Department Groups");
+			assertElementIsDisplayed("Department Masters");
+			assertElementIsDisplayed("Department Hierarchies");
+			assertElementIsDisplayed("GL Account Masters");
+			assertElementIsDisplayed("GL Adjustment Masters");
+			assertElementIsDisplayed("Vendor Masters");
+			assertElementIsDisplayed("GL Statistic Masters");
+			assertElementIsDisplayed("Supply Code Masters");
+			assertElementIsDisplayed("GL Statistic Masters");
+			assertElementIsDisplayed("GL Adjustment and Reclassification Calculation Scenarios");
 			assertElementIsDisplayedWithXpath("//div[contains(@id,'taskfolder')]//following::table[contains(@id,'treeview')]//span[text()='Groupings']");
 			assertElementIsDisplayedWithXpath("//div[contains(@id,'taskfolder')]//following::table[contains(@id,'treeview')]//span[text()='Miscellaneous']");
 			ExtentReport.logPass("PASS", "test01OpenAllMasters");
@@ -73,10 +95,10 @@ public class CreateDeleteCostMethodMaster extends GoHelper{
 	}
 	//ADS-6670
 	@Test
-	public void test02CreateNewMethodMaster_6670() throws Throwable {
+	public void test02CreateNewMethodMaster_ADS_6670() throws Throwable {
 		try {
-			doClick("//div[contains(@id,'taskfolder')]//following::table[contains(@id,'treeview')]//span[text()='All Masters']");
-			waitForPresenceOfElement("(//div[contains(@id,'taskfolder')]//following::table[contains(@id,'treeview')]//span[text()='Charge Masters'])[1]");
+//			doClick("//div[contains(@id,'taskfolder')]//following::table[contains(@id,'treeview')]//span[text()='All Masters']");
+//			waitForPresenceOfElement("(//div[contains(@id,'taskfolder')]//following::table[contains(@id,'treeview')]//span[text()='Charge Masters'])[1]");
 			doClick("(//div[contains(@id,'taskfolder')]//following::table[contains(@id,'treeview')]//span[text()='Charge Masters'])[1]");
 			waitForElementToBeVisible(CostingMap.getCostModelMethodMasterNew());
 			doClick(CostingMap.getCostModelMethodMasterNew());
@@ -94,9 +116,33 @@ public class CreateDeleteCostMethodMaster extends GoHelper{
 			fail(e.getMessage());
 		} 
 			}
+	//ADS-6669
+		@Test
+		public void test03EditNewMethodMaster_ADS_6669() throws Throwable {
+			try {
+				doClick("(//div[contains(@id,'masterlist')]//h1[text()='Charge Masters']//following::span[text()='Edit'])[1]");
+				String chargeNameBeforeEdit=driver.findElement(By.xpath("(//h1[text()='Charge Masters']//following::table[@class='x-grid-item x-grid-item-selected']//td/div)[3]")).getText();
+				ContractModelsHelper.keyInValues(ContractingMap.getInputName(), costMethodMaster+" "+"Test");
+				doClick(ContractingMap.getContractFeeForServicePaymentSave());
+				waitForDisplayedSpinnerToEnd();
+				String chargeNameAfterEdit=driver.findElement(By.xpath("(//h1[text()='Charge Masters']//following::table[@class='x-grid-item x-grid-item-selected']//td/div)[3]")).getText();
+				if(!(chargeNameBeforeEdit.equals(chargeNameAfterEdit))){
+					assertTrue(printout);
+				}
+				else {
+					fail();
+				}
+				
+				
+				ExtentReport.logPass("PASS", "test03EditNewMethodMaster_ADS_6669");
+			} catch (Exception|AssertionError e) {
+				ExtentReport.logFail("FAIL", "test03EditNewMethodMaster_ADS_6669", driver, e);
+				fail(e.getMessage());
+			} 
+		}
 	//ADS-6671
 	@Test
-	public void test03DeleteNewMethodMaster_6671() throws Throwable {
+	public void test04DeleteNewMethodMaster_ADS_6671() throws Throwable {
 		try {
 			doClick(CostingMap.getCostModelMethodMasterDelete());
 			waitForElementPresence("//div[contains(@id,'warningwindow')]/div//span[text()='Delete']");

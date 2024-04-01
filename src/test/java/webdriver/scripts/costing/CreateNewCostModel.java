@@ -249,6 +249,10 @@ public class CreateNewCostModel extends GoHelper {
 			doSearchForContractModel(overheadModel);
 			driverDelay(2000);
 			assertTextIsDisplayed(overheadModel);
+			tableDoubleClickCellFirstColumn(costModel);
+			doClickTreeItem("Allocate Overhead");
+			driverDelay();
+			doClickTreeItem("Overhead Account Variability Masters");
 			ExtentReport.logPass("PASS", "test06AssertCreatedOverheadCostModel");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test06AssertCreatedOverheadCostModel", driver, e);

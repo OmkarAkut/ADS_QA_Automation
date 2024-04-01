@@ -44,7 +44,7 @@ public class ValidateOpenTaskList extends GoHelper {
 	}
 //ADS-6642
 	@Test
-	public void test01ExpandCosting_6642() throws Throwable {
+	public void test01ExpandCosting_ADS_6642() throws Throwable {
 		try {
 			ContractModelsHelper.doClickTreeData("Costing");
 			waitForElementPresence("//span[text()='Tinesha']");
@@ -61,7 +61,7 @@ public class ValidateOpenTaskList extends GoHelper {
 	}
 	//ADS-6642
 	@Test
-	public void test02OpenTaskList_6642() throws Throwable {
+	public void test02OpenTaskList_ADS_6642() throws Throwable {
 		try {
 			doSearchForModel(costModel);
 			tableClickCellFirstColumn(costModel);
@@ -77,7 +77,7 @@ public class ValidateOpenTaskList extends GoHelper {
 	}
 	//ADS-6668
 	@Test
-	public void test03ValidateTaskList_6668() throws Throwable {
+	public void test03ValidateTaskList_ADS_6668() throws Throwable {
 		try {
 			assertTextIsDisplayedTaskFolder("CM Test");
 			assertTextIsDisplayedTaskFolder("FISCAL YEAR SETUP");
