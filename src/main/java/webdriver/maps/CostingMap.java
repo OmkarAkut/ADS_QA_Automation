@@ -1778,7 +1778,7 @@ public class CostingMap extends MapConfig {
 	public    List<WebElement> getRvuContainerListStartMonth() {
 		return getRvuContainerListStartMonth;
 	}
-	@FindBy(xpath = "//span[text()='Add Value']//parent::button")
+	@FindBy(xpath = "//span[text()='Add Value']/../../..")
 	private  WebElement getRvuContainerAddValueButton;
 	public   WebElement getRvuContainerAddValueButton() {
 		return getRvuContainerAddValueButton;

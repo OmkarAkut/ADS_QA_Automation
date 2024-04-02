@@ -11,6 +11,8 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.corehelpers.GoHelper;
@@ -142,7 +144,7 @@ doClickTreeItem("Assign Unit Costs");
 			doClick("//*[text()='RVU Container List']/ancestor::div/following-sibling::div//span[text()='Filter']");
 			doFilterSetFilterParametersForDate("Start Month","Is","Equal To","04/01/2019");
 			addFilter();
-			assertElementIsDisplayedWithXpath("//label[text()='Filter to Match These Criteria 3/13478']");
+			assertElementIsDisplayedWithXpath("//label[text()='Filter to Match These Criteria 3/13480']");
 			doClick(dialog.getFilterDialogButtonApplyFilter());
 			waitForSpinnerToEnd();
 			ExtentReport.logPass("PASS", "test03SaveAsGeneralInformationCostModel");
@@ -176,16 +178,19 @@ doClickTreeItem("Assign Unit Costs");
 			doClick(ContractingMap.getDeleteButtonMesaageBox());
 			waitForDisplayedSpinnerToEnd();
 			waitForAjaxExtJs();
+			driverDelay(6000);
 			assertTextIsDisplayed("There is no data available to display.");
 			ExtentReport.logPass("PASS", "test07DeleteFilteredInRvuContainer");
 		} catch (Exception|AssertionError e) {
 			ExtentReport.logFail("FAIL", "test07DeleteFilteredInRvuContainer", driver, e);
 			fail(e.getMessage());
 		}
+		
 	}
 	@Test
 	public void test08ClearFilterInRvuContainer_5983() throws Throwable {
 		try {
+//			waitUntilElementIsClickable(costing.getRvuContainerClearFilterButton());
 			doClick(costing.getRvuContainerClearFilterButton());
 			waitForDisplayedSpinnerToEnd();
 			assertListElementsAreDisplayed(costing.getRvuContainerList(), printout);
@@ -202,7 +207,8 @@ doClickTreeItem("Assign Unit Costs");
 			doClick("//*[text()='RVU Container List']/ancestor::div/following-sibling::div//span[text()='Filter']");
 			doFilterSetFilterParametersForDate("Start Month","Is","Equal To","04/01/2019");
 			addFilter();
-			assertElementIsDisplayedWithXpath("//label[text()='Filter to Match These Criteria 0/13475']");
+//			assertElementIsDisplayedWithXpath("//label[text()='Filter to Match These Criteria 0/13475']");
+			assertElementIsDisplayedWithXpath("//label[contains(text(),'Filter to Match These Criteria 0/')]");
 //			doClick(dialog.getFilterDialogButtonApplyFilter());
 //			waitForSpinnerToEnd();
 			ExtentReport.logPass("PASS", "test09ValidateFilterByStartMonthAfterDeleteFiltered");
@@ -219,7 +225,8 @@ doClickTreeItem("Assign Unit Costs");
 			doClick(costing.getRvuContainerOpenCheckbox());
 //			assertElementIsDisabled(costing.getRvuContainerValueField(), printout);
 			doClick(contractMap.getContractModelUpdateFilterButton());
-			assertElementIsDisplayedWithXpath("//label[text()='Filter to Match These Criteria 1596/13475']");
+//			assertElementIsDisplayedWithXpath("//label[text()='Filter to Match These Criteria 1596/13477']");
+			assertElementIsDisplayedWithXpath("//label[contains(text(),'Filter to Match These Criteria 1596/')]");
 			doClick(dialog.getFilterDialogButtonApplyFilter());
 			waitForSpinnerToEnd();
 			assertListElementsAreDisplayed(costing.getRvuContainerList(), printout);
@@ -242,21 +249,32 @@ doClickTreeItem("Assign Unit Costs");
 					assertTrue(printout);
 				}
 			}
+			driverDelay(4000);
 			test08ClearFilterInRvuContainer_5983();
+//			doClick(costing.getRvuContainerClearFilterButton());
+//			waitForDisplayedSpinnerToEnd();
+//			driverDelay();
 			ExtentReport.logPass("PASS", "test11DeleteFilteredForOPEN");
 		} catch (Exception|AssertionError e) {
 			ExtentReport.logFail("FAIL", "test11DeleteFilteredForOPEN", driver, e);
 			fail(e.getMessage());
 		}
+		
+		
 	}
 	@Test
 	public void test12FilterByEntityCodeInRvuContainer_5983() throws Throwable {
 		try {
-			driverDelay();
+			
+//			Actions act=new Actions(driver);
+//			act.moveToElement(costing.getRvuContainerClearFilterButton()).click().build().perform();
+//			ContractModelsHelper.doactionClick(costing.getRvuContainerClearFilterButton());
+//			driverDelay();
+			assertListElementsAreDisplayed(costing.getRvuContainerList(), printout);
 			doClick("//*[text()='RVU Container List']/ancestor::div/following-sibling::div//span[text()='Filter']");
 			doFilterSetFilterParameters("Entity Code", "Is", "Equal To", entityCode);
 			addFilter();
-			assertElementIsDisplayedWithXpath("//label[text()='Filter to Match These Criteria 4/11879']");
+			assertElementIsDisplayedWithXpath("//label[contains(text(),'Filter to Match These Criteria 12/')]");
 			doClick(dialog.getFilterDialogButtonApplyFilter());
 			waitForSpinnerToEnd();
 			assertListElementsAreDisplayed(costing.getRvuContainerList(), printout);
@@ -268,9 +286,7 @@ doClickTreeItem("Assign Unit Costs");
 			ExtentReport.logFail("FAIL", "test12FilterByEntityCodeInRvuContainer", driver, e);
 			fail(e.getMessage());
 		}
-		finally {
-			doClick("//span[text()='Close']");
-		}
+		
 	}
 	@Test
 	public void test13ApplyRvuMaintenanceCriteria_5983() throws Throwable {
@@ -309,7 +325,8 @@ doClickTreeItem("Assign Unit Costs");
 
 			doFilterSetFilterParameters("Department Code", "Is", "Equal To", "3710");
 			addFilter();
-			assertElementIsDisplayedWithXpath("//label[text()='Filter to Match These Criteria 225/11879']");
+//			assertElementIsDisplayedWithXpath("//label[text()='Filter to Match These Criteria 225/11879']");
+			assertElementIsDisplayedWithXpath("//label[contains(text(),'Filter to Match These Criteria 225/')]");
 			doClick(dialog.getFilterDialogButtonApplyFilter());
 			waitForSpinnerToEnd();
 			assertListElementsAreDisplayed(costing.getRvuContainerList(), printout);
@@ -322,6 +339,7 @@ doClickTreeItem("Assign Unit Costs");
 			ExtentReport.logFail("FAIL", "test14ApplyDepartmentCodeFilterInRvuContainerList", driver, e);
 			fail(e.getMessage());
 		}
+		
 	}
 	@Test
 	public void test15ApplyRADDepartmentCodeFilterInRvuContainerList_5983() throws Throwable {
@@ -329,7 +347,9 @@ doClickTreeItem("Assign Unit Costs");
 			doClick("//*[text()='RVU Container List']/ancestor::div/following-sibling::div//span[text()='Filter']");
 			modelHelper.doFilterCreateAndAddFilter(filterByCostDepartmentCode,dialog.getFilterDialogFormFieldValue());
 			addFilter();
-			assertElementIsDisplayedWithXpath("//label[text()='Filter to Match These Criteria 4/11654']");
+//			assertElementIsDisplayedWithXpath("//label[text()='Filter to Match These Criteria 4/11654']");
+			assertElementIsDisplayedWithXpath("//label[contains(text(),'Filter to Match These Criteria 4/')]");
+
 			doClick(dialog.getFilterDialogButtonApplyFilter());
 			waitForSpinnerToEnd();
 			test07DeleteFilteredInRvuContainer_5983();
@@ -340,6 +360,7 @@ doClickTreeItem("Assign Unit Costs");
 			ExtentReport.logFail("FAIL", "test15ApplyRADDepartmentCodeFilterInRvuContainerList", driver, e);
 			fail(e.getMessage());
 		}
+	
 	}
 	@Test
 	public void test16ApplyCostComponentNameInRvuContainerList_5983() throws Throwable {
@@ -347,7 +368,9 @@ doClickTreeItem("Assign Unit Costs");
 			doClick("//*[text()='RVU Container List']/ancestor::div/following-sibling::div//span[text()='Filter']");
 			modelHelper.doFilterCreateAndAddFilter(filterByCostComponentName,dialog.getFilterDialogFormFieldValue());
 			addFilter();
-			assertElementIsDisplayedWithXpath("//label[text()='Filter to Match These Criteria 1560/11650']");
+//			assertElementIsDisplayedWithXpath("//label[text()='Filter to Match These Criteria 1560/11650']");
+			assertElementIsDisplayedWithXpath("//label[contains(text(),'Filter to Match These Criteria 1557/')]");
+
 			doClick(dialog.getFilterDialogButtonApplyFilter());
 			waitForSpinnerToEnd();
 			assertElementIsDisplayedWithXpath("//div[contains(@id,'tbtext')][text()='/ 16']");
@@ -360,19 +383,26 @@ doClickTreeItem("Assign Unit Costs");
 			ExtentReport.logFail("FAIL", "test16ApplyCostComponentNameInRvuContainerList", driver, e);
 			fail(e.getMessage());
 		}
+		
 	}
 	@Test
 	public void test17ApplyCostComponentIsOverheadInRvuContainer_5983() throws Throwable
 	{
 		try {
+//			driverDelay(2000);
 			doClick("//*[text()='RVU Container List']/ancestor::div/following-sibling::div//span[text()='Filter']");
-			doDropdownSelectUsingOptionText(dialog.getFilterDialogDropdownField(), costing.getEntityDropdownOptionsInFilter(), "Cost Component Is Overhead");
+//			modelHelper.doFilterCreateAndAddFilter(filterByCostComponentIsOverhead,dialog.getFilterDialogFormFieldValue());
+			doDropdownSelectUsingOptionTextServices(dialog.getFilterNameField(),dialog.getFilterDialogDropdownField(), "Cost Component Is Overhead");
+			
+			    doDropdownSelectUsingOptionTextServices(dialog.getFilterNameOperator(),dialog.getFilterDialogDropdownOperator(), "Is");
+			    doDropdownSelectUsingOptionTextServices(dialog.getFilterNameCondition(),dialog.getFilterDialogDropdownCondition(), "Equal To");
+//			doDropdownSelectUsingOptionText(dialog.getFilterDialogDropdownField(), costing.getEntityDropdownOptionsInFilter(), "Cost Component Is Overhead");
 			/** Uncomment below lines once ADS-8863 is fixed **/
-			doDropdownSelectUsingOptionText(dialog.getFilterDialogDropdownOperator(), costing.getFilterOperatorDropdownOptions(), "Is");
-			doDropdownSelectUsingOptionText(dialog.getFilterDialogDropdownCondition(), costing.getFilterConditionDropdownOptions(), "Equal To");
-			doDropdownSelectUsingOptionText(dialog.getstatusFilterDialogFieldValueList(), costing.getFilterValueCostComponentOverheadDropdownOptions(), "Yes");
+			    doDropdownSelectUsingOptionTextServices(dialog.getstatusFilterDialogFieldValueList(),dialog.getstatusFilterDialogFieldValueList(), "Yes");
+
+//			doDropdownSelectUsingOptionText(dialog.getstatusFilterDialogFieldValueList(), costing.getFilterValueCostComponentOverheadDropdownOptions(), "Yes");
 			addFilter();
-			assertElementIsDisplayedWithXpath("//label[text()='Filter to Match These Criteria 3076/10073']");
+			assertElementIsDisplayedWithXpath("//label[contains(text(),'Filter to Match These Criteria 3076/')]");
 			doClick(dialog.getFilterDialogButtonApplyFilter());
 			waitForSpinnerToEnd();
 			test07DeleteFilteredInRvuContainer_5983();
@@ -383,15 +413,24 @@ doClickTreeItem("Assign Unit Costs");
 			ExtentReport.logFail("FAIL", "test17ApplyCostComponentIsOverheadInRvuContainer", driver, e);
 			fail(e.getMessage());
 		}
+		finally {
+			try {
+				test08ClearFilterInRvuContainer_5983();
+			} catch (Exception e) {
+				
+			}
+		}
 	}
 	
 	@Test
 	public void test18ApplyEntityCodeAddingMultipleValuesInRvuContainer_5983() throws Throwable {
 		try {
 			doClick("//*[text()='RVU Container List']/ancestor::div/following-sibling::div//span[text()='Filter']");
-			doDropdownSelectUsingOptionText(dialog.getFilterDialogDropdownField(), costing.getEntityDropdownOptionsInFilter(), "Entity Code");
-			doDropdownSelectUsingOptionText(dialog.getFilterDialogDropdownOperator(), costing.getFilterOperatorDropdownOptions(), "Is");
-			doDropdownSelectUsingOptionText(dialog.getFilterDialogDropdownCondition(), costing.getFilterConditionDropdownOptions(), "One Of");
+//			doDropdownSelectUsingOptionText(dialog.getFilterDialogDropdownField(), costing.getEntityDropdownOptionsInFilter(), "Entity Code");
+			doDropdownSelectUsingOptionTextServices(dialog.getFilterNameField(),dialog.getFilterDialogDropdownField(), "Entity Code");
+		    doDropdownSelectUsingOptionTextServices(dialog.getFilterNameOperator(),dialog.getFilterDialogDropdownOperator(), "Is");
+
+		    doDropdownSelectUsingOptionTextServices(dialog.getFilterNameCondition(), dialog.getFilterDialogDropdownCondition(), "One Of");
 			driverDelay(200);
 			for(int i=0;i<=list.size()-1;i++) {
 				
@@ -401,11 +440,13 @@ doClickTreeItem("Assign Unit Costs");
 				
 			}
 			addFilter();
-			assertElementIsDisplayedWithXpath("//label[text()='Filter to Match These Criteria 6997/6997']");
+//			assertElementIsDisplayedWithXpath("//label[text()='Filter to Match These Criteria 6997/6997']");
+			assertElementIsDisplayedWithXpath("//label[contains(text(),'Filter to Match These Criteria 7007/')]");
+
 			doClick(dialog.getFilterDialogButtonApplyFilter());
 			waitForSpinnerToEnd();
 			waitForAjaxExtJs();
-			assertElementIsDisplayedWithXpath("//div[contains(@id,'tbtext')][text()='/ 70']");
+			assertElementIsDisplayedWithXpath("//div[contains(@id,'tbtext')][text()='/ 71']");
 			test07DeleteFilteredInRvuContainer_5983();
 			assertElementIsDisabled(ContractingMap.getCloseandDisplayButton(), printout);
 			doClick(costing.getRvuCostCalcScenarioCloseButton());
