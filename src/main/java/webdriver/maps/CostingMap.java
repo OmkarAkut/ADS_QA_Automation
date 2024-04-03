@@ -2051,4 +2051,49 @@ public class CostingMap extends MapConfig {
 	public static WebElement getDepartmentCodeFilterButton() {
 		return getDepartmentCodeFilterButton;
 	}
+	
+	@FindBy(xpath = "//span[text()='Cancel & Close']/../../..")
+	private static WebElement getOverheadCancelClose;
+	public static WebElement getOverheadCancelClose() {
+		return getOverheadCancelClose;
+	}
+	
+	@FindBy(xpath = "(//div[@class='x-grid-item-container'])[4]//tr//td[2]//div")
+	private static List<WebElement> getOverheadGridElement;
+	public static List<WebElement> getOverheadGridElement() {
+		return getOverheadGridElement;
+	}
+	
+	@FindBy(xpath = "((//div[@class='x-grid-item-container'])[4]//tr//td[2]//div)[1]")
+	private static WebElement getfirstOverheadGridElement;
+	public static WebElement getfirstOverheadGridElement() {
+		return getfirstOverheadGridElement;
+	}
+	
+	@FindBy(xpath = "//span[text()='Read Only']")
+	private static WebElement getReadOnlyBtn;
+	public static WebElement getReadOnlyBtn() {
+		return getReadOnlyBtn;
+	}
+	
+	@FindBy(xpath = "//div[contains(@id,'overheadexceptionlist')]//span[text()='New']")
+	private static WebElement getAllocExcepNewBtn;
+	public static WebElement getAllocExcepNewBtn() {
+		return getAllocExcepNewBtn;
+	}
+	@FindBy(xpath = "//div[contains(@id,'overheadmodelscenariolist')]//span[text()='New']")
+	private static WebElement getOverheadModelCalcScen;
+	public static WebElement getOverheadModelCalcScen() {
+		return getOverheadModelCalcScen;
+	}
+	@FindBy(xpath = "//div[contains(@id,'overheadmodelscenarioresultpanel')]//span[text()='Close']")
+	private static WebElement getOverheadModelScenResultsCloseBtn;
+	public static WebElement getOverheadModelScenResultsCloseBtn() {
+		return getOverheadModelScenResultsCloseBtn;
+	}
+	@FindBy(xpath = "//span[contains(@id,'dynamicwindow')]//following::span[text()='Cancel & Close']")
+	private static WebElement getOverheadModelDynamicCloseBtn;
+	public static WebElement getOverheadModelDynamicCloseBtn() {
+		return getOverheadModelDynamicCloseBtn;
+	}
 }

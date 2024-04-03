@@ -460,9 +460,13 @@ public class UnitCostQuickCalculationHelperStatic extends LoginStatic {
     }
     //click in cell and update
 
-    driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')]["+row+"]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-"+columnIdDigits+"')]")).click();
+//    driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')]["+row+"]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-"+columnIdDigits+"')]")).click();
+   //Shilpa updated xpath for 11.2 on 2.04.2024
+    driver.findElement(By.xpath("(//tr[contains(@class,'x-grid-row')]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-"+columnIdDigits+"')])["+row+"]")).click();
+
     waitForAjaxExtJs();
-    WebElement editCell = driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')]["+row+"]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-"+columnIdDigits+"')]/div/table"));
+//    WebElement editCell = driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')]["+row+"]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-"+columnIdDigits+"')]/div/table"));
+    WebElement editCell=    driver.findElement(By.xpath("(//tr[contains(@class,'x-grid-row')]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-"+columnIdDigits+"')])["+row+"]"));
     Thread.sleep(500);
     Actions action = new Actions(driver);
    
@@ -578,7 +582,7 @@ public class UnitCostQuickCalculationHelperStatic extends LoginStatic {
 
   //similar to setDepartment, but uses more precise xpath for departmentText element by adding x-grid-cell-inner section
   public static void updateDepartment(String departmentText) throws InterruptedException {
-	  doClickButton("Select");
+	  doClick("//div[contains(@id,'singleselectorform')]//span[text()='Select']");
 	    ucqcWaitForSpinnerToEnd();
 	    waitForAjaxExtJs();
 	    //Thread.sleep(1100);  //original value, which works
@@ -591,10 +595,14 @@ public class UnitCostQuickCalculationHelperStatic extends LoginStatic {
 			Thread.sleep(1500);
 			driver.findElement(By.name("carrierfield")).sendKeys(Keys.BACK_SPACE);
 			Thread.sleep(1500);
-
-			doClick(driver.findElement(By.xpath("//div[contains(@class,'x-grid-cell-inner') and contains(text()," + departmentText +")]")));
+			Actions act=new Actions(driver);
+			act.moveToElement(driver.findElement(By.xpath("//div[contains(@class,'x-grid-cell-inner') and contains(text()," + departmentText +")]"))).click().perform();
+//			doClick(driver.findElement(By.xpath("//div[contains(@class,'x-grid-cell-inner') and contains(text()," + departmentText +")]")));
 			waitForAjaxExtJs();
-			doClick(driver.findElement(By.xpath("//*[contains(@class,'docked-bottom')]/descendant::span[text()='Apply']")));
+			//Shilpa updated to js click, normal click not working 2.4.2024
+//			doClick(driver.findElement(By.xpath("//*[contains(@class,'docked-bottom')]/descendant::span[text()='Apply']")));
+			JavascriptExecutor executor = (JavascriptExecutor)driver;
+			executor.executeScript("arguments[0].click();", driver.findElement(By.xpath("//*[contains(@class,'docked-bottom')]/descendant::span[text()='Apply']/../../..")));
 			Thread.sleep(2000);
 			waitForAjaxExtJs();
 			
