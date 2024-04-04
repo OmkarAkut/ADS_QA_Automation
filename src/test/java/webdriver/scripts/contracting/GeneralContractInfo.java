@@ -32,11 +32,11 @@ public class GeneralContractInfo extends ContractModelsHelper {
 	// String expectedNewestMedicareYearRange = "Oct 1, 2020 - Sept 30, 2021";
 	private static final String expectedMedicareYearRange = "Oct 1, 2019 - Sept 30, 2020";
 	// The values below have been changed in the application (12-14-2020)
-	private static final String nationalOperlaborRate = "4028.62";
-	private static final String nationalOperNonLaborRate = "2469.15";
-	private static final String nationalCapitalRate = "503.83";
-	private static final String costOutlierPaymentFixedLossThreshold = "42909";
-	private static final String CostOutlierPaymentSectionThresholdLaborPortion = "26603.6";
+	private static final String nationalOperlaborRate = "3596.70";
+	private static final String nationalOperNonLaborRate = "2204.43";
+	private static final String nationalCapitalRate = "462.61";
+	private static final String costOutlierPaymentFixedLossThreshold = "26473";
+	private static final String CostOutlierPaymentSectionThresholdLaborPortion = "16413.26";
 	private static String BackgroundColorTitleBarEditPopUp = "rgba(0, 0, 0, 0)";
 
 	// default values from ADS Help are in comments at the end of each line

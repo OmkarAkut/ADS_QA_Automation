@@ -287,7 +287,7 @@ public class CalculationsHelper extends AssertStatic {
     byte counter = 0;
     while (calculate) {
       try {
-        driver.findElement(By.xpath("//button/span[text()='Refresh']")).click();
+        driver.findElement(By.xpath("//span[text()='Refresh']")).click();
         waitForSpinnerToEnd();
         percent = driver.findElement(By.xpath("//*[contains(@class,'x-progress-text-back')]")).getText();
         System.out.println("Percent complete: " + percent);
