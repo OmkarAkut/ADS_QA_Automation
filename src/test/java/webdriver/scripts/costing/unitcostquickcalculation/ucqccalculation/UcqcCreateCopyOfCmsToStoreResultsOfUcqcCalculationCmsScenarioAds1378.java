@@ -58,7 +58,7 @@ public class UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds137
    * "name_ucqc_ucqc".  If the name of the original "name" model is updated,
    * "name_ucqc" will be updated as well (? - need to confirm this).
  * @throws Throwable */
-  /** Regression test case ADS-5987 **/
+ 
   
   @BeforeClass
   public static void setupScript() throws Throwable {
@@ -134,7 +134,7 @@ public class UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds137
   }
 //ADS-5987
   @Test
-  public void test04CostModelCalculationScenarioPageVerifyNameField_5987() throws Throwable {
+  public void test04CostModelCalculationScenarioPageVerifyNameField() throws Throwable {
     try {
     	
       goToPage("Costing Models");

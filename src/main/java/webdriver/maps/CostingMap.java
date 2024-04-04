@@ -61,7 +61,6 @@ public class CostingMap extends MapConfig {
 	//Shilpa update xpath for 11.2 on 12.07.2023
 	@FindBy(xpath = "//span[text()='Apply Selections']/../../..")
 	private WebElement rvuMaintenanceButtonApplySelections;
-
 	public WebElement getRvuMaintenanceButtonApplySelections() {
 		return rvuMaintenanceButtonApplySelections;
 	}
@@ -1960,6 +1959,7 @@ public class CostingMap extends MapConfig {
 	private WebElement getUcqcDeptFieldNone;
 
 	public WebElement getUcqcDeptFieldNone() {
+	
 		return getUcqcDeptFieldNone;
 	}
 	@FindBy(xpath = "(//div[contains(@id,'ucqcform')]//label[text()='Department']//following::span[text()='Select']//parent::button)[1]")
@@ -2095,5 +2095,26 @@ public class CostingMap extends MapConfig {
 	private static WebElement getOverheadModelDynamicCloseBtn;
 	public static WebElement getOverheadModelDynamicCloseBtn() {
 		return getOverheadModelDynamicCloseBtn;
+	}
+	@FindBy(xpath = "//div[contains(@id,'modellibgrid')]//*[./text()='Filter']")
+	private static WebElement getCostModelFilterBtn;
+	public static WebElement getCostModelFilterBtn() {
+		return getCostModelFilterBtn;
+	}
+	
+	@FindBy(xpath = "//span[text()='Costing']//preceding::div[contains(@class,'x-tree-elbow-plus')]")
+	private static WebElement getCostingBtn;
+	public static WebElement getCostingBtn() {
+		return getCostingBtn;
+	}
+	@FindBy(xpath = "//div[contains(@id,'masterlist')]//*[./text()='Filter']")
+	private static WebElement getrvuCalcFilterBtn;
+	public static WebElement getrvuCalcFilterBtn() {
+		return getrvuCalcFilterBtn;
+	}
+	@FindBy(xpath = "//div[contains(@id,'masterlist')]//*[./text()='Calculate']")
+	private static WebElement getrvuCalcBtn;
+	public static WebElement getrvuCalcBtn() {
+		return getrvuCalcBtn;
 	}
 }
