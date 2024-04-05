@@ -21,6 +21,7 @@ import webdriver.scripts.systemmaintenance.UsingCustomvsDefaulttasklistsInCustom
 	PaginationInCostingModels.class,
 	RunGLAdjustmentAndReclassifications.class,
 	RVUContainerDeleteFilteredData.class,
+	RVUCalculationScenario.class,
 	RVUExportImportFunction.class,
 	RvuMaintenanceAds1492.class,
 	TableColumnSorting.class,

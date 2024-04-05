@@ -1163,7 +1163,7 @@ public class ContractModelsHelper extends GoHelper {
 			doClick(SystemMaintenanceMap.getTaskListSaveButton());
 			doClick("//div[contains(@id,'messagebox')]//span[text()='Save']");
 			waitForDisplayedSpinnerToEnd();
-			driverDelay(5000);
+			driverDelay(10000);
 			goToPage(modelName);
 			
 		} catch (Exception e) {

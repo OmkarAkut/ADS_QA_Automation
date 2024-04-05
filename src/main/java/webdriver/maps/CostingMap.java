@@ -2117,4 +2117,135 @@ public class CostingMap extends MapConfig {
 	public static WebElement getrvuCalcBtn() {
 		return getrvuCalcBtn;
 	}
+	@FindBy(xpath = "//div[contains(@id,'activityvolumedatalist')]//span[text()='New']")
+	private static WebElement getActivityVolNew;
+	public static WebElement getActivityVolNew() {
+		return getActivityVolNew;
+	}
+	@FindBy(xpath = "//div[contains(@id,'activityvolumedatalist')]//span[text()='Filter']")
+	private static WebElement getActivityVolFilter;
+	public static WebElement getActivityVolFilter() {
+		return getActivityVolFilter;
+	}
+	@FindBy(xpath = "//div[contains(@id,'activityvolumedatagrid')]//span[text()='Filter']")
+	private static WebElement getActivityVolDataGridFilter;
+	public static WebElement getActivityVolDataGridFilter() {
+		return getActivityVolDataGridFilter;
+	}
+	
+	@FindBy(xpath = "//div[contains(@id,'activityvolumedataform')]//span[text()='Cancel & Close']")
+	private static WebElement getActivityVolDataCancelClose;
+	public static WebElement getActivityVolDataCancelClose() {
+		return getActivityVolDataCancelClose;
+	}
+	@FindBy(xpath = "//div[text()='Filter Activity Volume Data']//following::span[text()='Cancel & Close']")
+	private static WebElement getActivityVolDataCloseFilter;
+	public static WebElement getActivityVolDataCloseFilter() {
+		return getActivityVolDataCloseFilter;
+	}
+	@FindBy(xpath = "//div[contains(@id,'activityvolumedataform')]//input[@name='code']")
+	private static WebElement getActivityVolCode;
+	public static WebElement getActivityVolCode() {
+		return getActivityVolCode;
+	}
+	@FindBy(xpath = "//div[contains(@id,'activityvolumedataform')]//input[@name='name']")
+	private static WebElement getActivityVolName;
+	public static WebElement getActivityVolName() {
+		return getActivityVolName;
+	}
+	@FindBy(xpath = "(//div[contains(@id,'activityvolumedataform')]//input[@name='timePeriodName'])[2]")
+	private static WebElement getActivityVolFiscalYear;
+	public static WebElement getActivityVolFiscalYear() {
+		return getActivityVolFiscalYear;
+	}
+	@FindBy(xpath = "//span[text()='Fiscal Year']/ancestor::div/following-sibling::div[contains(@class,'boundlist')]/div/ul")
+	private static WebElement getActivityVolFiscalYearList;
+	public static WebElement getActivityVolFiscalYearList() {
+		return getActivityVolFiscalYearList;
+	}
+	@FindBy(xpath = "//div[contains(@id,'activityvolumedataform')]//span[text()='Save & Close']")
+	private static WebElement getActivityVolSaveBtn;
+	public static WebElement getActivityVolSaveBtn() {
+		return getActivityVolSaveBtn;
+	}
+	@FindBy(xpath = "//div[contains(@id,'activityvolumecalcdatalist')]//span[text()='Filter']")
+	private static WebElement getActivityVolCalcFilterBtn;
+	public static WebElement getActivityVolCalcFilterBtn() {
+		return getActivityVolCalcFilterBtn;
+	}
+	@FindBy(xpath = "//div[contains(@id,'activityvolumecalcdatalist')]//span[text()='Delete']")
+	private static WebElement getActivityVolCalcDeleteBtn;
+	public static WebElement getActivityVolCalcDeleteBtn() {
+		return getActivityVolCalcDeleteBtn;
+	}
+	@FindBy(xpath = "//div[contains(@id,'messagebox')]//span[text()='Delete']")
+	private static WebElement getActivityVolCalcDeletePopupBtn;
+	public static WebElement getActivityVolCalcDeletePopupBtn() {
+		return getActivityVolCalcDeletePopupBtn;
+	}
+	@FindBy(xpath = "//span[text()='Activity Volume Data Destination Scenario']//following::input[@name='actStatCalcScenId']")
+	private static WebElement getActivityVolCalcDestScenBtn;
+	public static WebElement getActivityVolCalcDestScenBtn() {
+		return getActivityVolCalcDestScenBtn;
+	}
+	@FindBy(xpath = "//span[text()='Activity Volume Data Destination Scenario']/ancestor::div/following-sibling::div[contains(@class,'boundlist')]/div/ul")
+	private static WebElement getActivityVolDataSCenarioList;
+	public static WebElement getActivityVolDataSCenarioList() {
+		return getActivityVolDataSCenarioList;
+	}
+	@FindBy(xpath = "//div[contains(@id,'activityvolumecalcdataform')]//span[text()='Save & Close']")
+	private static WebElement getActivityVolDataSCenarioSaveClose;
+	public static WebElement getActivityVolDataSCenarioSaveClose() {
+		return getActivityVolDataSCenarioSaveClose;
+	}
+	@FindBy(xpath = "//div[contains(@id,'activityvolumecalcdataform')]//input[@name='name']")
+	private static WebElement getActivityVolDataCalcScenarioName;
+	public static WebElement getActivityVolDataCalcScenarioName() {
+		return getActivityVolDataCalcScenarioName;
+	}
+	@FindBy(xpath = "//div[contains(@id,'activityvolumecalcdataform')]//span[text()='Save As']")
+	private static WebElement getActivityVolDataCalcScenarioSaveAS;
+	public static WebElement getActivityVolDataCalcScenarioSaveAS() {
+		return getActivityVolDataCalcScenarioSaveAS;
+	}
+	@FindBy(xpath = "//div[contains(@id,'activityvolumecalcdataform')]//span[text()='Cancel & Close']")
+	private static WebElement getActivityVolDataCalcScenarioCancelClose;
+	public static WebElement getActivityVolDataCalcScenarioCancelClose() {
+		return getActivityVolDataCalcScenarioCancelClose;
+	}
+	@FindBy(xpath = "//div[contains(@id,'activityvolumecalcdataform')]//span[text()='Calculate']")
+	private static WebElement getActivityVolDataCalcScenarioCalculate;
+	public static WebElement getActivityVolDataCalcScenarioCalculate() {
+		return getActivityVolDataCalcScenarioCalculate;
+	}
+	@FindBy(xpath = "//div[contains(@id,'activityvolumecalcdataform')]//input[@name='startDate']")
+	private static WebElement getActivityVolDataCalcScenarioCalculateStart;
+	public static WebElement getActivityVolDataCalcScenarioCalculateStart() {
+		return getActivityVolDataCalcScenarioCalculateStart;
+	}
+	@FindBy(xpath = "//div[contains(@id,'activityvolumecalcdataform')]//input[@name='endDate']")
+	private static WebElement getActivityVolDataCalcScenarioCalculateEnd;
+	public static WebElement getActivityVolDataCalcScenarioCalculateEnd() {
+		return getActivityVolDataCalcScenarioCalculateEnd;
+	}
+	@FindBy(xpath = "//span[contains(text(),'Start Month')]/ancestor::div/following-sibling::div[contains(@class,'boundlist')]/div/ul")
+	private static WebElement getActivityVolDataCalcScenarioCalculateStartList;
+	public static WebElement getActivityVolDataCalcScenarioCalculateStartList() {
+		return getActivityVolDataCalcScenarioCalculateStartList;
+	}
+	@FindBy(xpath = "//span[contains(text(),'End Month')]/ancestor::div/following-sibling::div[contains(@class,'boundlist')]/div/ul")
+	private static WebElement getActivityVolDataCalcScenarioCalculateEndList;
+	public static WebElement getActivityVolDataCalcScenarioCalculateEndList() {
+		return getActivityVolDataCalcScenarioCalculateEndList;
+	}
+	@FindBy(xpath = "//div[text()='Departments ']//following::li[@class='x-boundlist-item']")
+	private static List<WebElement> getActivityVolDeptList;
+	public static List<WebElement> getActivityVolDeptList() {
+		return getActivityVolDeptList;
+	}
+	@FindBy(xpath = "//div[text()='Charge Codes ']//following::li[@class='x-boundlist-item']")
+	private static List<WebElement> getActivityVolChargeCodes;
+	public static List<WebElement> getActivityVolChargeCodes() {
+		return getActivityVolChargeCodes;
+	}
 }

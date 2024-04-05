@@ -17,6 +17,7 @@ import webdriver.helpers.CalculationHelper;
 import webdriver.helpers.ContractModelsHelper;
 import webdriver.maps.ContractingMap;
 import webdriver.maps.CostingMap;
+import webdriver.maps.DialogsMap;
 import webdriver.maps.ModelLibraryMap;
 import webdriver.maps.mapbuilder.BuildMap;
 
@@ -24,7 +25,7 @@ import webdriver.maps.mapbuilder.BuildMap;
 	/** Regression test case ADS-5982 **/
 	public class EncCostCalcScenarioSelectedCostModelScenariosdisplayed extends CalculationHelper {
 		static String costModel = "0-MarinaCostModel";
-		static String encCostScenario="#ADS-1533 Enc Cost performance issue";
+		static String encCostScenario="#ADS-1533 Enc Cost performance issue AC";
 		static String costModelScenEvaluationOrder="1: *USE SG FY05 Total Cost Scenario";
 		static String costModelScenEvaluationOrderTest="*USE CHC FY03 Total Cost Scenario";
 		  String[] columnHeaderSubset = {"*USE CHC FY05 Total Cost Scenario",
@@ -41,6 +42,7 @@ import webdriver.maps.mapbuilder.BuildMap;
 	    static CostingMap costing;
 		static ContractingMap contractMap;
 		static ModelLibraryMap modelMap;
+		private static DialogsMap dialog;
 		static String[] filter = { "Name", "Is", "Equal To", costModel };
 		static String[] filterEncCostScenario = { "Name", "Is", "Equal To", encCostScenario };
 		static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
@@ -52,6 +54,7 @@ import webdriver.maps.mapbuilder.BuildMap;
 			ExtentReport.reportCreate("EncCostCalcScenarioSelectedCostModelScenariosdisplayed", "webdriver.scripts.costing",
 					"EncCostCalcScenarioSelectedCostModelScenariosdisplayed");
 			try {
+				dialog = BuildMap.getInstance(driver, DialogsMap.class);
 				costing = BuildMap.getInstance(driver, CostingMap.class);
 				contractMap = BuildMap.getInstance(driver, ContractingMap.class);
 				modelMap = BuildMap.getInstance(driver, ModelLibraryMap.class);
@@ -87,7 +90,12 @@ import webdriver.maps.mapbuilder.BuildMap;
 	public void test02OpenEncounterCostScenario_5982() throws Throwable {
 		try {
 			doClick(costing.getEncCostModelFilterButton());
+//			doFilterSetFilterParameters("Name", "Is", "Contains", encCostScenario);
+//			addFilter();
+//			doClick(dialog.getFilterDialogButtonApplyFilter());
+//			waitForSpinnerToEnd();
 			doFilterCreate(filterEncCostScenario);
+			waitForSpinnerToEnd();
 			tableDoubleClickCellFirstColumn(encCostScenario);
 			ExtentReport.logPass("PASS", "test02OpenEncounterCostScenario");
 		} catch (Exception | AssertionError e) {
@@ -122,6 +130,7 @@ import webdriver.maps.mapbuilder.BuildMap;
 			doClick("//h1[text()='Add Cost Model Scenarios']//following::span[text()='Apply']");
 			assertElementIsDisplayedWithXpath("//label[text()='Cost Model Scenarios in Evaluation Order']//following::li[contains(text(),'"+costModelScenEvaluationOrder+"')]");
 			assertElementIsDisplayedWithXpath("//label[text()='Cost Model Scenarios in Evaluation Order']//following::li[contains(text(),'"+costModelScenEvaluationOrderTest+"')]");
+			doactionClick(costing.getRvuMaintenanceFilterButtonCancelAndClose());
 			doClick(costing.getRvuMaintenanceFilterButtonCancelAndClose());
 			waitForElementToBeVisible(costing.getCostModelScenarioCalculationFilterButtonCancelAndClose());
 			doClick(costing.getCostModelScenarioCalculationFilterButtonCancelAndClose());

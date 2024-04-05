@@ -11,6 +11,8 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.corehelpers.GoHelper;
@@ -242,13 +244,14 @@ doClickTreeItem("Assign Unit Costs");
 			waitForElementToBeVisible(contractMap.getContractModelDeletePopUp());
 			doClick(ContractingMap.getDeleteButtonMesaageBox());
 			waitForDisplayedSpinnerToEnd();
+			waitForAjaxExtJs();
 			for(WebElement element:costing.getRvuContainerListEndMonth()) {
 				if(element.getText().equals("Open")) {
 					assertTrue(printout);
 				}
 			}
-			driverDelay(4000);
-			test08ClearFilterInRvuContainer_5983();
+//			driverDelay(4000);
+//			test08ClearFilterInRvuContainer_5983();
 //			doClick(costing.getRvuContainerClearFilterButton());
 //			waitForDisplayedSpinnerToEnd();
 //			driverDelay();
@@ -257,17 +260,20 @@ doClickTreeItem("Assign Unit Costs");
 			ExtentReport.logFail("FAIL", "test11DeleteFilteredForOPEN", driver, e);
 			fail(e.getMessage());
 		}
-		
+		finally {
+			Actions act=new Actions(driver);
+			waitUntilElementIsClickable(costing.getRvuContainerClearFilterButton());
+			act.moveToElement(costing.getRvuContainerClearFilterButton()).click().build().perform();
+//			ContractModelsHelper.doactionClick(costing.getRvuContainerClearFilterButton());
+			driverDelay();
+		}
 		
 	}
 	@Test
 	public void test12FilterByEntityCodeInRvuContainer_5983() throws Throwable {
 		try {
 			
-//			Actions act=new Actions(driver);
-//			act.moveToElement(costing.getRvuContainerClearFilterButton()).click().build().perform();
-//			ContractModelsHelper.doactionClick(costing.getRvuContainerClearFilterButton());
-//			driverDelay();
+			
 			assertListElementsAreDisplayed(costing.getRvuContainerList(), printout);
 			doClick("//*[text()='RVU Container List']/ancestor::div/following-sibling::div//span[text()='Filter']");
 			doFilterSetFilterParameters("Entity Code", "Is", "Equal To", entityCode);

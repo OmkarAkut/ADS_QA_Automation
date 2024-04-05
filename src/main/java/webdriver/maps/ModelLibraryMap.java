@@ -120,7 +120,7 @@ public class ModelLibraryMap extends MapConfig {
     private WebElement modelLibraryTableButtonLast;
     public WebElement getModelLibraryTableButtonLast() {return modelLibraryTableButtonLast;}
 
-    @FindBy(xpath = "//div[text()='/ 3']")
+    @FindBy(xpath = "//div[text()='/ 4']")
     private WebElement modelLibraryTableText3PageShown;
     public WebElement getmodelLibraryTableText3PageShown() {return modelLibraryTableText3PageShown;}
    

@@ -84,7 +84,7 @@ public class RVUCalculationScenario extends CalculationHelper {
 
 	@AfterClass
 	public static void endtest() throws Exception {
-		doClosePageOnLowerBar("Cost Model Calculation Scenarios");
+		doClosePageOnLowerBar("Costing Models");
 		ExtentReport.report.flush();
 
 	}
