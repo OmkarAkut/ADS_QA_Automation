@@ -7,10 +7,10 @@ import webdriver.scripts.systemmaintenance.UsingCustomvsDefaulttasklistsInCustom
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-//	ActualCostingMethodPatientChgsDateRange.class,
-//	ActualCostingMethodPatientChgsDoesNotMatch.class,
-//	ActualCostingMethodPatientChgsTimestamp.class,
-//	ConfirmDepartmentFilterSortOrder.class,
+	ActualCostingMethodPatientChgsDateRange.class,
+	ActualCostingMethodPatientChgsDoesNotMatch.class,
+	ActualCostingMethodPatientChgsTimestamp.class,
+	ConfirmDepartmentFilterSortOrder.class,
 	CreateDeleteCostMethodMaster.class,
 //	CreateNewCostModel.class,
 	CreateNewEditDeleteTimePeriod.class,
@@ -34,7 +34,7 @@ import webdriver.scripts.systemmaintenance.UsingCustomvsDefaulttasklistsInCustom
 //	ValidateHelpLinkHideTabDataMaintenance.class,
 //	ValidateHelpLinkHideTabRvuMaintenance.class,
 	ValidateOpenTaskList.class,
-	ValidatePaginationOnTheCostingRVUMaintenancepage.class,
+//	ValidatePaginationOnTheCostingRVUMaintenancepage.class,
 
 })
 

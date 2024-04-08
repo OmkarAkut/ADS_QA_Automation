@@ -80,7 +80,7 @@ public class RunGLAdjustmentAndReclassifications extends CalculationHelper {
 			doClosePageOnLowerBar(costModel);
 			driverDelay(100);
 			doClosePageOnLowerBar("Costing Models");
-			ContractModelsHelper.revertCustomSettings();
+			
 			ExtentReport.logPass("PASS", "test01OpenGLAdjustmentAndReclassification");
 
 		} catch (Exception | AssertionError e) {
@@ -91,7 +91,7 @@ public class RunGLAdjustmentAndReclassifications extends CalculationHelper {
 
 	@AfterClass
 	public static void endtest() throws Exception {
-
+		ContractModelsHelper.revertCustomSettings();
 		ExtentReport.report.flush();
 
 	}

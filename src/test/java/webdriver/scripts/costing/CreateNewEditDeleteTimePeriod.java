@@ -132,12 +132,13 @@ public class CreateNewEditDeleteTimePeriod extends GoHelper {
 		finally {
 			doClosePageOnLowerBar(costModel);
 			doClosePageOnLowerBar("Costing Models");
-			ContractModelsHelper.revertCustomSettings();
+			
 		}
 	}
 
 	@AfterClass
 	public static void endtest() {
+		ContractModelsHelper.revertCustomSettings();
 		ExtentReport.report.flush();
 	}
 }
