@@ -31,7 +31,7 @@ public class CreateDeleteCostMethodDeptMasterDischargeStatus extends Calculation
 	static String deptCode = currentDateCode.replaceAll("\\W", "");
 	static String costModel = "Model " + currentDateTime;
 	static String costDeptModel = "Model " + currentDateTime;
-	static String costComponentMaster="Actual CCM";
+	static String costComponentMaster="ASESC-1832 Hospital CCM";
 	static CostingMap costing;
 	static String encounterName="Model"+currentDateTime;
 	static String encounterShortName="Test";
@@ -40,7 +40,7 @@ public class CreateDeleteCostMethodDeptMasterDischargeStatus extends Calculation
 	static String encounterNameAfterEdit;
 	static String encounterShortNameAfterEdit;
 	static String dischargeStatusName="Status"+currentDateTime;
-	static int dischargeCode=javaGetRandomNumber(56,printout);
+	static int dischargeCode=javaGetRandomNumber(121,printout);
 	static String[] filter= {"Name of the Cost Method Master","Is","Equal To",costModel};
 	static String[] filterDeptMaster= {"Name","Is","Equal To",costModel};
 	static String[] filterDichargeStatus= {"Name","Is","Equal To",dischargeStatusName};
@@ -170,7 +170,7 @@ public class CreateDeleteCostMethodDeptMasterDischargeStatus extends Calculation
 //			doClick("//div[@id='treepanelId-body']//following::div[text()='Discharge Statuses']/img[contains(@class,'x-tree-icon')]");
 			doClick("//div[@id='treepanelId-body']//following::span[text()='Discharge Statuses']/../div[5]");
 			doClick(CostingMap.getCostDischargeStatusNewButton());
-			ContractModelsHelper.keyInValues(ContractingMap.getMedicareCode(),String.valueOf(dischargeCode)+"D");
+			ContractModelsHelper.keyInValues(ContractingMap.getMedicareCode(),deptCode);
 			ContractModelsHelper.keyInValues(ContractingMap.getInputName(), dischargeStatusName);
 			doClick(ContractingMap.getContractFeeForServicePaymentSave());
 			waitForDisplayedSpinnerToEnd();

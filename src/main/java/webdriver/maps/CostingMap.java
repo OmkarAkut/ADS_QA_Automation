@@ -1277,6 +1277,10 @@ public class CostingMap extends MapConfig {
 	@FindBy(xpath = "//div[text()='New Cost Model']//following::span[text()='Save & Close']")
 	private static WebElement getSaveCostModel;
 	public WebElement getSaveCostModel() {return getSaveCostModel;}
+	
+	@FindBy(xpath = "//div[contains(@id,'populationsform')]//following::span//span[text()='Save & Close']")
+	private static WebElement getSavePopulation;
+	public WebElement getSavePopulation() {return getSavePopulation;}
 
 //	Omkar 16/8/2023 : xpath changes for 11.2
 //	@FindBy(xpath = "//div[contains(@class,'glFormCls')]//following::table//following::span[text()='Cancel & Close']//parent::button")
@@ -1516,7 +1520,7 @@ public class CostingMap extends MapConfig {
 	}
 //	Omkar 16/8/2023 : xpath changes for 11.2
 //	@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='00 Test CCM']/..")
-	@FindBy(xpath = "//div[contains(@id,'dynamiccombo')]/ul/li[text()='00 Test CCM']/..")	
+	@FindBy(xpath = "//div[contains(@id,'dynamiccombo')]/ul/li[text()='00 Test CCM D']/..")	
 	private static WebElement getCostMethodMasterCostComponentMasterScenarioOptions;
 	public static WebElement getCostMethodMasterCostComponentMasterScenarioOptions() {
 		return getCostMethodMasterCostComponentMasterScenarioOptions;
