@@ -1160,10 +1160,11 @@ public class ContractModelsHelper extends GoHelper {
 		try {
 			goToPage("Customize Task Lists");
 			doClick("//label[text()='"+setName+"']//preceding-sibling::span");
+			driverDelay(1000);
 			doClick(SystemMaintenanceMap.getTaskListSaveButton());
 			driverDelay(1000);
 			doClick("//div[contains(@id,'messagebox')]//span[text()='Save']");
-			waitForDisplayedSpinnerToEnd();
+//			waitForDisplayedSpinnerToEnd();
 			waitForAjaxExtJs();
 			driverDelay(10000);
 			goToPage(modelName);

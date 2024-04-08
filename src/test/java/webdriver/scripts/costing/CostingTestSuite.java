@@ -15,11 +15,11 @@ import webdriver.scripts.systemmaintenance.UsingCustomvsDefaulttasklistsInCustom
 //	CreateNewCostModel.class,
 	CreateNewEditDeleteTimePeriod.class,
 //	EditCostModelCalculationScenarios.class,
-//	EncCostCalcScenarioSelectedCostModelScenariosdisplayed.class,
+	EncCostCalcScenarioSelectedCostModelScenariosdisplayed.class,
 //	EntityLevelSecurityCosting.class,
 //	OverwriteRvuNoCMSResults.class,
 //	PaginationInCostingModels.class,
-//	RunGLAdjustmentAndReclassifications.class,
+	RunGLAdjustmentAndReclassifications.class,
 //	RVUContainerDeleteFilteredData.class,
 //	RVUCalculationScenario.class,
 //	RVUExportImportFunction.class,
@@ -33,8 +33,8 @@ import webdriver.scripts.systemmaintenance.UsingCustomvsDefaulttasklistsInCustom
 //	ValidateHelpLinkHideTabCosting.class,
 //	ValidateHelpLinkHideTabDataMaintenance.class,
 //	ValidateHelpLinkHideTabRvuMaintenance.class,
-//	ValidateOpenTaskList.class,
-//	ValidatePaginationOnTheCostingRVUMaintenancepage.class,
+	ValidateOpenTaskList.class,
+	ValidatePaginationOnTheCostingRVUMaintenancepage.class,
 
 })
 

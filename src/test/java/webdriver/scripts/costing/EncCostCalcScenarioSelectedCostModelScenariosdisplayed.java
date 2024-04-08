@@ -25,7 +25,7 @@ import webdriver.maps.mapbuilder.BuildMap;
 	/** Regression test case ADS-5982 **/
 	public class EncCostCalcScenarioSelectedCostModelScenariosdisplayed extends CalculationHelper {
 		static String costModel = "0-MarinaCostModel";
-		static String encCostScenario="#ADS-1533 Enc Cost performance issue AC";
+		static String encCostScenario="#ADS-5982 Enc Cost performance issue";
 		static String costModelScenEvaluationOrder="1: *USE SG FY05 Total Cost Scenario";
 		static String costModelScenEvaluationOrderTest="*USE CHC FY03 Total Cost Scenario";
 		  String[] columnHeaderSubset = {"*USE CHC FY05 Total Cost Scenario",
@@ -132,6 +132,7 @@ import webdriver.maps.mapbuilder.BuildMap;
 			assertElementIsDisplayedWithXpath("//label[text()='Cost Model Scenarios in Evaluation Order']//following::li[contains(text(),'"+costModelScenEvaluationOrderTest+"')]");
 			doactionClick(costing.getRvuMaintenanceFilterButtonCancelAndClose());
 			doClick(costing.getRvuMaintenanceFilterButtonCancelAndClose());
+//			driverDelay(5000);
 			waitForElementToBeVisible(costing.getCostModelScenarioCalculationFilterButtonCancelAndClose());
 			doClick(costing.getCostModelScenarioCalculationFilterButtonCancelAndClose());
 			ExtentReport.logPass("PASS", "test04CostModelEvaluationOrder");
@@ -144,8 +145,18 @@ import webdriver.maps.mapbuilder.BuildMap;
 	}
 	@Test
 	public void test05CreateNewEncCostScenario_5982() throws Throwable {
+		
 		try {
 			doClick(CostingMap.getEncounterNewBtn());
+			try {
+				waitForElementToBeVisible(driver.findElement(By.xpath("(//span[text()='Cancel & Close'])[2]")));
+				if(driver.findElement(By.xpath("(//span[text()='Cancel & Close'])[2]")).isDisplayed()) {
+					doClick("(//span[text()='Cancel & Close'])[2]");
+				}
+			}
+			catch(Exception e) {
+				
+			}
 			ContractModelsHelper.keyInValues(ContractingMap.getInputName(), encCostModelName);
 			doClick(costing.getEncCostModelEvaluationSelectButton());
 			Thread.sleep(500);

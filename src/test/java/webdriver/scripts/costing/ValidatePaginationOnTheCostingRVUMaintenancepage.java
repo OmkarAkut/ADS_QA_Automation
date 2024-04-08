@@ -43,7 +43,7 @@ public class ValidatePaginationOnTheCostingRVUMaintenancepage  extends GoHelper{
 	public void test01AssertPaginationAvailableInRVU_6508() throws Throwable {
 		  try {
 			WebElement[] modelLibraryElements = {
-			          modelLibrary.modelLibraryTableText4PageShown(),
+//			          modelLibrary.modelLibraryTableText4PageShown(),//not required as page count keeps changing
 			          modelLibrary.getModelLibraryTableButtonFirst(),
 			          modelLibrary.getModelLibraryTableButtonPrevious(),
 			          modelLibrary.getModelLibraryFieldInputNumber(),
