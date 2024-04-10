@@ -15,6 +15,7 @@ import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.corehelpers.DoHelper;
 import webdriver.helpers.CalculationHelper;
+import webdriver.helpers.ContractModelsHelper;
 import webdriver.helpers.UcqcHelper;
 import webdriver.maps.CostingMap;
 import webdriver.maps.GeneralElementsMap;
@@ -31,7 +32,7 @@ public class EncounterCost extends UcqcHelper {
 	static String dischargeDateTo = "01/01/1800";
 	static String postingDateFrom = "04/01/2012";
 	static String postingDateTo = "03/31/2013";
-
+	String[] columnsToSelect = { "I Inpatient", "O Outpatient" };
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
 		ExtentReport.reportCreate("Encounter", "webdriver.scripts.costing.costingmodels", "Encounter");
@@ -110,10 +111,11 @@ public class EncounterCost extends UcqcHelper {
 //					selectColumn.getCostModelScenariosinEvaluationOrderAssignedCostList(), "10 : BC Destination");
 			doDropdownSelectUsingOptionText(selectColumn.getCostModelScenariosinEvaluationOrderAssignedCost(),
 					selectColumn.getCostModelScenariosinEvaluationOrderAssignedCostList(), "12 : Actual Cost Destination");
-			doClick(selectColumn.getCostModelScenariosinEvaluationOrderEncounterSelect());
+//			doClick(selectColumn.getCostModelScenariosinEvaluationOrderEncounterSelect());
+//
+//			doClick(selectColumn.getCostModelScenariosinEvaluationOrderEncounterSelectAll());
 
-			doClick(selectColumn.getCostModelScenariosinEvaluationOrderEncounterSelectAll());
-
+			ContractModelsHelper.selectMultipleColumnsToDisplay(columnsToSelect);
 			doClick(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalApply());
 
 			doClick(selectColumn.getCostModelScenariosinEvaluationOrderEntitiesSelect());

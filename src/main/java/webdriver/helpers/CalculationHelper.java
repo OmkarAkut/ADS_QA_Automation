@@ -527,7 +527,7 @@ public class CalculationHelper extends GoHelper {
 			} catch (Throwable e) {
 				System.out.println("percent less than 100");
 				Thread.sleep(1000);
-				if (counter == 1000) {
+				if (counter == 120) {
 					fail("Calculation did not finish in allotted time");
 				}
 				counter++;
