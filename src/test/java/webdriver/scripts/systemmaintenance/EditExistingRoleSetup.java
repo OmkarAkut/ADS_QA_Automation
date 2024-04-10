@@ -173,7 +173,7 @@ public class EditExistingRoleSetup extends GoHelper {
 //			doClick("//div[text()='Costing']");
 			//Shilpa updated xpath for 11.2 on 12.20.2023
 			doClick("//span[text()='Costing']");
-			doClick(ContractingMap.getContractModelRiskLimiterCancelCloseBtn());
+			doClick(ContractingMap.userRoleCancelCloseBtn());
 			ExtentReport.logPass("PASS", "test04VerifyUpdatedRole");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test04VerifyUpdatedRole", driver, e);

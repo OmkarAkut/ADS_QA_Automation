@@ -1248,7 +1248,9 @@ public class BuildVerificationTestScript extends UcqcHelper {
 		try {
 			try {
 				waitForAjaxExtJs();
-				costingMap.getUnitCostQuickCalculationButtonHide().click();
+				driverDelay();
+				doClick(costingMap.getUnitCostQuickCalculationButtonHide());
+//				costingMap.getUnitCostQuickCalculationButtonHide().click();
 				waitForAjaxExtJs();
 				assertElementIsDisplayed(costingMap.getUnitCostQuickCalculationButtonShow(), printout);
 			} catch (Throwable e) {

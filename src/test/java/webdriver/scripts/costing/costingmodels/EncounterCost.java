@@ -32,7 +32,7 @@ public class EncounterCost extends UcqcHelper {
 	static String dischargeDateTo = "01/01/1800";
 	static String postingDateFrom = "04/01/2012";
 	static String postingDateTo = "03/31/2013";
-	String[] columnsToSelect = { "I Inpatient", "O Outpatient" };
+	String[] columnsToSelect = { "1S1 Office ", "1S2 Clinic " ,"1S3 Hospital "};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
 		ExtentReport.reportCreate("Encounter", "webdriver.scripts.costing.costingmodels", "Encounter");
@@ -111,9 +111,9 @@ public class EncounterCost extends UcqcHelper {
 //					selectColumn.getCostModelScenariosinEvaluationOrderAssignedCostList(), "10 : BC Destination");
 			doDropdownSelectUsingOptionText(selectColumn.getCostModelScenariosinEvaluationOrderAssignedCost(),
 					selectColumn.getCostModelScenariosinEvaluationOrderAssignedCostList(), "12 : Actual Cost Destination");
-//			doClick(selectColumn.getCostModelScenariosinEvaluationOrderEncounterSelect());
+			doClick(selectColumn.getCostModelScenariosinEvaluationOrderEncounterSelect());
 //
-//			doClick(selectColumn.getCostModelScenariosinEvaluationOrderEncounterSelectAll());
+//			doClick(selectColumn.getCostModelScenariosinEvaluationOrderEncounterSelectAll()); //Selecting all entities lead to have more records for calculation so commented out
 
 			ContractModelsHelper.selectMultipleColumnsToDisplay(columnsToSelect);
 			doClick(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalApply());

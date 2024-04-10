@@ -30,7 +30,7 @@ public class EditAnExistingUserSetup extends GoHelper {
 //	Omkar 12/10/2023 : Removing 0008 PAYMENT PLAN as scrolling action is not working for 11.2
 //	private static String[] entities = { "0000 PRIVATE PAY", "0001 PRIVATE PAY PENDING", "0008 PAYMENT PLAN" };
 	private static String[] entities = { "0000 PRIVATE PAY", "0001 PRIVATE PAY PENDING"};
-	private static String dept = "150 - old master 150";
+	private static String dept = "150 - old master 1501";
 	private static String[] filters = { "ID", "Is", "Equal To", userID };
 	private static String firstName = "TestName2";
 	private static String lastName = "LastName2";

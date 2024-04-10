@@ -208,12 +208,14 @@ public class UcqcUndoAndSaveQuickRvusAds1151 extends UcqcHelper {
       assertElementIsDisabled(overwriteRVUMaintenance.getUnitCostQuickCalculationButtonSaveQuickRVUs(),printout);
       ucqcGridAssertCellValueIsNotHighlighted("2601201", "Quick Salaries and Wages RVU", printout);
 
-      driver.findElement(By.xpath("//*[@class='x-btn-icon pagging-tbar-next-button']")).click();
+//      driver.findElement(By.xpath("//*[@class='x-btn-icon-el x-btn-icon-el-plain-toolbar-small pagging-tbar-next-button ']")).click();
+      goToNextPage();
       waitForSpinnerToEnd();
       waitForAjaxExtJs();
       assertEquals(101, ucqcGridGetFirstRowNumberOnPage(printout)); //verifies new page is displayed
       assertElementIsDisabled(overwriteRVUMaintenance.getUnitCostQuickCalculationButtonUndo(),printout);
       assertElementIsDisabled(overwriteRVUMaintenance.getUnitCostQuickCalculationButtonSaveQuickRVUs(),printout);
+//      goToFirstPage();
       ExtentReport.logPass("PASS", "test08ClickUndoButtonAndVerifyOverwriteRvuMaintenanceButtonIsDisabledAndEditedCellsOnBothPagesAreNotHighlighted");
 
     } catch (Exception|AssertionError e) {
@@ -277,20 +279,20 @@ public class UcqcUndoAndSaveQuickRvusAds1151 extends UcqcHelper {
     String columnID;
     columnID = driver.findElement(By.xpath("//*[contains(@class,'column-header-text')][text()='" + headerName + "']")).getAttribute("id");
     int columnIdDigits = Integer.parseInt(getNumbersFromStringWithRegex(columnID));
-    String columnValue = driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')][" + row + "]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-" + columnIdDigits + "')]")).getText();
+    String columnValue = driver.findElement(By.xpath("(//tr[contains(@class,'x-grid-row')]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-" + columnIdDigits + "')])[" + row + "]")).getText();
     System.out.println("Value: " + columnValue);
     return columnValue;
   }
 
   private void goToFirstPage() throws InterruptedException {
-    driver.findElement(By.xpath("//*[@class='x-btn-icon pagging-tbar-previous-button']")).click();
+    driver.findElement(By.xpath("//*[@class='x-btn-icon-el x-btn-icon-el-plain-toolbar-small pagging-tbar-previous-button ']")).click();
     ucqcWaitForSpinnerToEnd();
     waitForAjaxExtJs();
     assertEquals(1, ucqcGridGetFirstRowNumberOnPage(printout)); //verifies new page is displayed
   }
 
   private void goToNextPage() throws InterruptedException {
-    driver.findElement(By.xpath("//*[@class='x-btn-icon pagging-tbar-next-button']")).click();
+    driver.findElement(By.xpath("//*[@class='x-btn-icon-el x-btn-icon-el-plain-toolbar-small pagging-tbar-next-button ']")).click();
     waitForSpinnerToEnd();
     waitForAjaxExtJs();
     assertEquals(101, ucqcGridGetFirstRowNumberOnPage(printout)); //verifies new page is displayed

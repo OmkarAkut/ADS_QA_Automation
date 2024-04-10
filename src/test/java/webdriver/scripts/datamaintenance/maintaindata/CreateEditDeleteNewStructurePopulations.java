@@ -56,7 +56,7 @@ public class CreateEditDeleteNewStructurePopulations extends GoHelper{
 	}
 	//ADS-6396 all steps
 	@Test
-	public void test01CreateNewPopulationStructure_6396() throws Throwable {
+	public void test01CreateNewPopulationStructure_ADS_6396() throws Throwable {
 		try {
 			doMaintainDataPageSelectAtoZOption(aTozPage);
 			doClick(DataMaintenanceMap.getLoadDataNewButton());
@@ -87,7 +87,7 @@ public class CreateEditDeleteNewStructurePopulations extends GoHelper{
 		}
 	}
 	@Test
-	public void test02EditCreatedPopulation_6396() throws Throwable {
+	public void test02EditCreatedPopulation_ADS_6396() throws Throwable {
 		try {
 			doClick(DataMaintenanceMap.getLoadDataEditButton());
 //			doClick(ContractingMap.getASCFilterEditButton());
@@ -107,7 +107,7 @@ public class CreateEditDeleteNewStructurePopulations extends GoHelper{
 		}
 	}
 	@Test
-	public void test03DeleteCreatedPopulation_6396() throws Throwable {
+	public void test03DeleteCreatedPopulation_ADS_6396() throws Throwable {
 		try {
 			doClick(DataMaintenanceMap.getLoadDataDeleteButton());
 			waitForElementToBeVisible(contractMap.getContractModelDeleteButtonInPopUp());
