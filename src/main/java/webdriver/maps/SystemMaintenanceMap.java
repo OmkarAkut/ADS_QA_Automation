@@ -635,7 +635,7 @@ public class SystemMaintenanceMap extends MapConfig {
 		return getTaskListRemoveButton;
 	}
 	
-	@FindBy(xpath = "//div[contains(@class,'panel')]//span[text()='Save & Close']")
+	@FindBy(xpath = "//div[contains(@class,'panel')]//span[text()='Save & Close']/../../..")
 	private static WebElement getTaskListSaveButton;
 
 	public static WebElement getTaskListSaveButton() {

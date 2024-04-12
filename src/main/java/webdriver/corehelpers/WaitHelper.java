@@ -193,6 +193,29 @@ public class WaitHelper extends JavaHelper {
 			}
 		}
 	}
+	public static void waitForDisplayedSavingSpinnerToEnd() {
+		boolean spinner = true;
+		int count=0;
+		while(spinner){
+			try {
+				spinner = driver.findElement(By.xpath("//div[contains(@id,'loadmask')][text()='Saving...']")).isDisplayed();
+				if (spinner) {
+					
+					count++;
+					Thread.sleep(1000);
+					if(count==70) {
+						break;
+					}
+					continue;
+					
+				} else {
+					break;
+				}
+			} catch (Throwable e) {
+				break;
+			}
+		}
+	}
 
 	/** Uses WebDriverWait ExpectedConditions.visibilityOf but does not click. Timeout is 30s. */
 	public static void waitForElementToBeVisible(WebElement element){

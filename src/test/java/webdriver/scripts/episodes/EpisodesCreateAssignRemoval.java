@@ -107,6 +107,7 @@ public class EpisodesCreateAssignRemoval extends CalculationHelper {
 			waitForSpinnerToEnd();
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
+			driverDelay();
 			clickLastPageIconOnCalculationStatusViewLog();
 			System.out.println("Waiting");
 			Thread.sleep(1000);
@@ -138,7 +139,7 @@ public class EpisodesCreateAssignRemoval extends CalculationHelper {
 			waitForFirstRowCalculationBarToReach100Percent();
 // Omkar 17/4/2023 : Unab;le to scroll to bottom to find element. Code will fail after this
 			calculationStatusPageOpenViewDialog();
-			
+			driverDelay();
 //			confirmCalculationStatusDetailsContains("Total EFRs in Population to process: 1");
 			confirmCalculationStatusDetailsContains("Remove Total number of tagged Encounters: 0");
 			closeViewDialog();
