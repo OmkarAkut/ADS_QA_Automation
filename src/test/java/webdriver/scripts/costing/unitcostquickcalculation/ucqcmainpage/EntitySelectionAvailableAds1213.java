@@ -90,8 +90,8 @@ public class EntitySelectionAvailableAds1213 extends UcqcHelper {
       //Changed Cost Model Scenario to one that had multiple Entities to verify test05 below
     	//venkat updated Cost Model Scenario text data 19.09.2022
       doDropdownSelectUsingOptionText(entity.getUnitCostQuickCalculationDropdownCostModel(), entity.getUnitCostQuickCalculationDropdownCostModelMenuList(), "Marina");
-      doDropdownSelectUsingOptionText(entity.getUnitCostQuickCalculationDropdownCostModelScenario(), entity.getUnitCostQuickCalculationDropdownCostModelScenarioMenuList(), "*CM2 TB MHFY05 No Price List");
-//      doDropdownSelectUsingOptionText(entity.getUnitCostQuickCalculationDropdownCostModelScenario(), entity.getUnitCostQuickCalculationDropdownCostModelScenarioMenuList(), "*CM2 TB MHFY05 No Price List - 2");
+//      doDropdownSelectUsingOptionText(entity.getUnitCostQuickCalculationDropdownCostModelScenario(), entity.getUnitCostQuickCalculationDropdownCostModelScenarioMenuList(), "*CM2 TB MHFY05 No Price List");
+      doDropdownSelectUsingOptionText(entity.getUnitCostQuickCalculationDropdownCostModelScenario(), entity.getUnitCostQuickCalculationDropdownCostModelScenarioMenuList(), "*CM2 TB MHFY05 No Price List - 2");
       
       
       

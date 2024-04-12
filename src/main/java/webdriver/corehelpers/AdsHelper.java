@@ -198,6 +198,8 @@ public class AdsHelper extends GetHelper {
 		for(WebElement option : menu) {
 			System.out.println("Value"+option.getText());
 			if(option.getText().equals(optionText)) {
+//				Actions act=new Actions(driver);
+//				act.moveToElement(option).click().perform();
 				option.click();
 				break;
 			}

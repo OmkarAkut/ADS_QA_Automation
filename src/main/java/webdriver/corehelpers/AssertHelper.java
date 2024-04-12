@@ -577,7 +577,31 @@ public class AssertHelper extends AdsHelper {
 		// throw new Exception();
 		// }
 	}
-
+	public static void assertElementIsEnabled(String xpath, boolean printout) throws Exception {
+		String classText = null;
+		try {
+			waitForAjaxExtJs();
+			classText = driver.findElement(By.xpath(xpath)).getAttribute("class");
+			boolean isEnabled=classText.contains("disabled");
+			if(printout) {
+				System.out.println("Element class text: " + classText);
+				System.out.println("IsEnabled: " + isEnabled);
+			}
+			else {
+				fail();
+			}
+		} catch (Throwable e) {
+			System.out.println("Element Not Found");
+			fail("element not found");
+		}
+		
+		// try {
+		// assertTrue(isEnabled);
+		// } catch(Throwable e){
+		// System.out.println("TEST FAILED: Element is Not Enabled");
+		// throw new Exception();
+		// }
+	}
 	public static void assertArraysAreEqual(String[] expectedValues, String[] actualValues, boolean printout)
 			throws InterruptedException {
 		if (printout) {
