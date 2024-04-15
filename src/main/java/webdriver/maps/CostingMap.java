@@ -2252,4 +2252,16 @@ public class CostingMap extends MapConfig {
 	public static List<WebElement> getActivityVolChargeCodes() {
 		return getActivityVolChargeCodes;
 	}
+	@FindBy(xpath = "//div[contains(@class,'x-box')]/descendant::*[contains(text(),'Select')][2]/../../..")
+	private WebElement unitCostQuickCalculationButtonColumnsToDisplaySelectBtn;
+
+	public WebElement unitCostQuickCalculationButtonColumnsToDisplaySelectBtn() {
+		return unitCostQuickCalculationButtonColumnsToDisplaySelectBtn;
+	}
+	@FindBy(xpath = "//label[text()='All']/preceding::input[@name='useAllColumns']")
+	private WebElement unitCostQuickCalculationAllcheckbx;
+
+	public WebElement unitCostQuickCalculationAllcheckbx() {
+		return unitCostQuickCalculationAllcheckbx;
+	}
 }
