@@ -31,7 +31,7 @@ public class CreateNewEditDeleteTimePeriod extends GoHelper {
 	static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
 	static String costTimePeriod = "Time Period" + currentDateTime;
 	static String[] filter = { "Name", "Is", "Equal", costTimePeriod };
-
+	static saveSystemSettings settings=new saveSystemSettings();
 
 	/** Automates test ticket ADS-6673, ADS-6675 ,ADS-6672*/
 
@@ -43,7 +43,7 @@ public class CreateNewEditDeleteTimePeriod extends GoHelper {
 			modelMap = BuildMap.getInstance(driver, ContractingMap.class);
 			systemMap=BuildMap.getInstance(driver, SystemMaintenanceMap.class);
 			Login.loginUser("AutomationTesterAdmin");
-			ContractModelsHelper.saveCustomSettings("Use Custom", "Costing Models");
+			settings.saveCustomSettings("Use Custom", "Costing Models");
 			ExtentReport.logPass("PASS", "setupScript");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "Failure in setupScript", driver, e);
@@ -138,7 +138,7 @@ public class CreateNewEditDeleteTimePeriod extends GoHelper {
 
 	@AfterClass
 	public static void endtest() {
-		ContractModelsHelper.revertCustomSettings();
+		settings.revertCustomSettings();
 		ExtentReport.report.flush();
 	}
 }

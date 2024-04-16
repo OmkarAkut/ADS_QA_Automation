@@ -440,7 +440,7 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
   }
 
   
-//  @Test
+  @Test
   public void test26CloseTheUcqcSessionAndAssertColumnSelectionDoesNotSaveUponReopen() throws Throwable {
     try {
       doClick(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalCancel());

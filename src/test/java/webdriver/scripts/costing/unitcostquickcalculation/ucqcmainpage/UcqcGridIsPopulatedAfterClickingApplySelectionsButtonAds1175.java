@@ -44,9 +44,9 @@ public class UcqcGridIsPopulatedAfterClickingApplySelectionsButtonAds1175 extend
 	}
     
   }
-//ADS-5927 , all steps , ADS-6644 [also covered]
+//ADS-5927 
   @Test
-  public void testUcqcGridDisplaysAfterClickingApplySelectionsButton_5927_6644() throws Throwable{
+  public void testUcqcGridDisplaysAfterClickingApplySelectionsButton_ADS_5927() throws Throwable{
     try {
       waitForAjaxExtJs();
 //      ucqcPopulateRequiredFieldsToDisplayGrid("QA Cost Model", "QA MHFY05 After Vol Change", "150 Marina Medical Center", "2110  ICU", "Apr 2004 to Mar 2005");
@@ -56,7 +56,7 @@ public class UcqcGridIsPopulatedAfterClickingApplySelectionsButtonAds1175 extend
       applySelections("0ALL");
       ucqcPopulateRequiredFieldsToDisplayGrid("QA Cost Model", "QA ADS-1341 By Month/ ADS-660 CDEF Jun 4", "150 Marina Medical Center", "3311", "Dec 2004 to Dec 2004");
       applySelections("4099909");
-      ucqcPopulateRequiredFieldsToDisplayGrid("0-MarinaCostModel", "entity 150 dept 2016 2110 3520", "150 Marina Medical Center", "2016", "Apr 2004 to Jun 2004");
+      ucqcPopulateRequiredFieldsToDisplayGrid("0-MarinaCostModel", "entity 150 dept 2016 2110 3520", "150 Marina Medical Center", "3010", "Oct 2004 to Oct 2004");
       applySelections("0ALL");
       ucqcPopulateRequiredFieldsToDisplayGrid("Marina", "*DM ADS-673 A", "150 Marina Medical Center", "2016", "Apr 2004 to Mar 2005");
       applySelections("8195307");
@@ -64,15 +64,25 @@ public class UcqcGridIsPopulatedAfterClickingApplySelectionsButtonAds1175 extend
       applySelections("1100049");
       ucqcPopulateRequiredFieldsToDisplayGrid("QA Cost Model", "ADS-931 By Month", "150 Marina Medical Center", "2140", "Jun 2004 to Jun 2004");
       applySelections("1100569");
-      ucqcPopulateRequiredFieldsToDisplayGrid("QA Cost Model", "ADS-931 By Month", "150 Marina Medical Center", "2140", "Feb 2005 to Feb 2005");
-      applySelections("1100569");
+      
       ExtentReport.logPass("PASS", "testUcqcGridDisplaysAfterClickingApplySelectionsButton");
     } catch (Exception|AssertionError e){
     	ExtentReport.logFail("FAIL","testUcqcGridDisplaysAfterClickingApplySelectionsButton", driver,e);
       fail(e.getMessage());
     }
   }
-  
+  //ADS-6644
+  @Test
+  public void testUcqcGridDisplaysAfterClickingApplySelectionsButton_ADS_6644() throws Throwable{
+    try {
+    	ucqcPopulateRequiredFieldsToDisplayGrid("QA Cost Model", "ADS-931 By Month", "150 Marina Medical Center", "2140", "Feb 2005 to Feb 2005");
+        applySelections("1100569");
+    	ExtentReport.logPass("PASS", "testUcqcGridDisplaysAfterClickingApplySelectionsButton");
+    } catch (Exception|AssertionError e){
+    	ExtentReport.logFail("FAIL","testUcqcGridDisplaysAfterClickingApplySelectionsButton", driver,e);
+      fail(e.getMessage());
+    }
+  }
   public void applySelections(String chargeCode) throws Exception {
 	  assertElementIsEnabled(ucqcMap.getUnitCostQuickCalculationButtonApplySelections(),printout);
       doClick(ucqcMap.getUnitCostQuickCalculationButtonApplySelections());

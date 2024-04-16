@@ -26,6 +26,8 @@ public class RunGLAdjustmentAndReclassifications extends CalculationHelper {
 	static String[] filterGLModel = { "Name", "Is", "Equal To", glModel };
 	static ContractingMap contractMap;
 	static SystemMaintenanceMap systemMap;
+	static saveSystemSettings settings=new saveSystemSettings();
+
 	/** Automates test ticket ADS-5988. */
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
@@ -35,7 +37,7 @@ public class RunGLAdjustmentAndReclassifications extends CalculationHelper {
 			contractMap = BuildMap.getInstance(driver, ContractingMap.class);
 			systemMap=BuildMap.getInstance(driver, SystemMaintenanceMap.class);
 			Login.loginUser("AutomationTesterAdmin");
-			ContractModelsHelper.saveCustomSettings("Use Custom", "Costing Models");
+			settings.saveCustomSettings("Use Custom", "Costing Models");
 //			waitForDisplayedSpinnerToEnd();
 //			goToPage("Costing Models");
 //			waitForDisplayedSpinnerToEnd();
@@ -91,7 +93,7 @@ public class RunGLAdjustmentAndReclassifications extends CalculationHelper {
 
 	@AfterClass
 	public static void endtest() throws Exception {
-		ContractModelsHelper.revertCustomSettings();
+		settings.revertCustomSettings();
 		ExtentReport.report.flush();
 
 	}

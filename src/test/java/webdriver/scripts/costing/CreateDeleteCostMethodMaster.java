@@ -33,7 +33,7 @@ public class CreateDeleteCostMethodMaster extends GoHelper{
 	static String deptMaster="150 old master 1501";
 	static String[] filter = { "Code", "Is", "Equal", code };
 	/** Automates test ticket ADS-6671, ADS-6670, ADS-6669 */
-
+	static saveSystemSettings settings=new saveSystemSettings();
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
 		ExtentReport.reportCreate("CreateDeleteCostMethodMaster", "webdriver.scripts.costing", "CreateDeleteCostMethodMaster");
@@ -42,7 +42,7 @@ public class CreateDeleteCostMethodMaster extends GoHelper{
 			modelMap = BuildMap.getInstance(driver, ContractingMap.class);
 			systemMap=BuildMap.getInstance(driver, SystemMaintenanceMap.class);
 			Login.loginUser("AutomationTesterAdmin");
-			ContractModelsHelper.saveCustomSettings("Use Custom", "Costing Models");
+			settings.saveCustomSettings("Use Custom", "Costing Models");
 //			goToPage("Costing Models");
 			ExtentReport.logPass("PASS", "setupScript");
 		} catch (Exception | AssertionError e) {
@@ -50,7 +50,23 @@ public class CreateDeleteCostMethodMaster extends GoHelper{
 			fail(e.getMessage());
 		}
 	}
-
+	public static void saveCustomSettings(String setName,String modelName) {
+		try {
+			goToPage("Customize Task Lists");
+			doClick("//label[text()='"+setName+"']//preceding-sibling::span");
+			driverDelay(1000);
+			doClick(SystemMaintenanceMap.getTaskListSaveButton());
+			driverDelay(1000);
+			doClick("//div[contains(@id,'messagebox')]//span[text()='Save']");
+			waitForDisplayedSavingSpinnerToEnd();
+//			waitForAjaxExtJs();
+			driverDelay(3000);
+			goToPage(modelName);
+			
+		} catch (Exception e) {
+			
+		}
+	}
 	@Test
 	public void test01OpenAllMasters_ADS_6669() throws Throwable {
 		try {
@@ -164,7 +180,7 @@ public class CreateDeleteCostMethodMaster extends GoHelper{
 	}
 	@AfterClass
 	public static void endtest() {
-		ContractModelsHelper.revertCustomSettings();
+		settings.revertCustomSettings();
 		ExtentReport.report.flush();
 	}
 }

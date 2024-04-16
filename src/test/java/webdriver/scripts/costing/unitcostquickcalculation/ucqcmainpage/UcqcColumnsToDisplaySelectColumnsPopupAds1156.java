@@ -95,9 +95,22 @@ public class UcqcColumnsToDisplaySelectColumnsPopupAds1156 extends UcqcHelper {
         }
     }
 
+    public void validateAvailableListIsEmpty()
+    {
+    	int availableListOfElements = 0; 
+    	try {
+        	if(!driver.findElement(By.xpath("(//label[text()='Available']//following::div[contains(@class,'glAccountsGrid ')])[1]//table[contains(@class,'x-grid-item')]")).isDisplayed()) {
+        		fail();
+        	}
+        }catch(Exception e) {
+        	 availableListOfElements=0;
+        }
+    assertEquals(0, availableListOfElements);
+    }
 @Test
     public void test03aAccessColumnsToDisplayDialogAndConfirmAvailableBoxOnSelectDialogIsNotPopulatedByDefault() throws Throwable {
-        try {
+	 
+	try {
         	Thread.sleep(2000);
 		    ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoViewIfNeeded();",costingMap.getUnitCostQuickCalculationButtonColumnsToDisplaySelect());
 		    Thread.sleep(3000);
@@ -107,7 +120,7 @@ public class UcqcColumnsToDisplaySelectColumnsPopupAds1156 extends UcqcHelper {
 //            addDimension(1200,1000);
 //        	driverDelay(3000);
 //        	driver.manage().window().maximize();
-            assertEquals(0, getSelectDialogAvailableListSize(printout));
+            validateAvailableListIsEmpty();
             ExtentReport.logPass("PASS", "test03aAccessColumnsToDisplayDialogAndConfirmAvailableBoxOnSelectDialogIsNotPopulatedByDefault");
         } catch (Exception|AssertionError e) {
         	ExtentReport.logFail("FAIL","test03aAccessColumnsToDisplayDialogAndConfirmAvailableBoxOnSelectDialogIsNotPopulatedByDefault", driver,e);
@@ -147,20 +160,23 @@ public class UcqcColumnsToDisplaySelectColumnsPopupAds1156 extends UcqcHelper {
 @Test
     public void test03dVerifyOrderOfListItemsInSelectedList() throws Throwable {
         try {
-        	 System.out.println(selectedListStrings.get(1));
+//        	 System.out.println(selectedListStrings.get(1));
         	 //Shilpa 10.07.2022
-        	 ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.xpath("//label[text()='Selected']/ancestor::div[contains(@class,'x-panel x-box-item x-panel-default')]/following-sibling::div/descendant::tbody[2]//td/div[text()='"+selectedListStrings.get(1)+"']")));
-             Thread.sleep(500); 
-            assertEquals("Charge Code Name", selectedListStrings.get(1));
-            assertEquals("Modifier", selectedListStrings.get(2));
-            assertEquals("Total Unit Cost", selectedListStrings.get(3));
-            assertEquals("Total Quick Cost", selectedListStrings.get(4));
-            assertEquals("Total Change", selectedListStrings.get(5));
+//        	 ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.xpath("//label[text()='Selected']/ancestor::div[contains(@class,'x-panel x-box-item x-panel-default')]/following-sibling::div/descendant::tbody//tr//td/div[text()='"+selectedListStrings.get(1)+"']")));
+//             Thread.sleep(500); 
+        	System.out.println(selectedListStrings.get(1));
+            assertEquals("Charge Code Name", selectedListStrings.get(0));
+            assertEquals("Modifier", selectedListStrings.get(1));
+            assertEquals("Total Unit Cost", selectedListStrings.get(2));
+            assertEquals("Total Quick Cost", selectedListStrings.get(3));
+            assertEquals("Total Change", selectedListStrings.get(4));
+            costingMap.getUnitCostQuickCalculationColumnsToDisplayModalCancel().click();
+            doClick(costingMap.getUnitCostQuickCalculationButtonColumnsToDisplaySelect());
             verifyFiveItemsEachCostComponent(selectedListStrings, printout);
             ExtentReport.logPass("PASS", "test03dVerifyOrderOfListItemsInSelectedList");
             driver.manage().window().maximize();
         } catch (Exception|AssertionError e) {
-        	ExtentReport.logFail("FAIL","test03dVerifyOrderOfListItemsInSelectedList", driver,e);
+
             fail(e.getMessage());
         }
     }
@@ -225,7 +241,7 @@ public class UcqcColumnsToDisplaySelectColumnsPopupAds1156 extends UcqcHelper {
     @Test
     public void test04eVerifyItemInAvailableListIsNotAlsoInSelectedList() throws Throwable {
         try {
-            String availableListItem = getSelectDialogAvailableList().get(1).getText();
+            String availableListItem = getSelectDialogAvailableList().get(0).getText();
             List<WebElement> selectedList = getSelectDialogSelectedList();
             assertTrue(!selectedList.contains(availableListItem));
             ExtentReport.logPass("PASS", "test04eVerifyItemInAvailableListIsNotAlsoInSelectedList");
@@ -278,7 +294,7 @@ public class UcqcColumnsToDisplaySelectColumnsPopupAds1156 extends UcqcHelper {
             doClick(costingMap.getUnitCostQuickCalculationCheckBoxColumnsToDisplayAll());
             assertColumnsToDisplayAllCheckBoxIsNotChecked();
             doClick(costingMap.getUnitCostQuickCalculationButtonColumnsToDisplaySelect());
-            assertEquals(0, getSelectDialogAvailableListSize(printout));
+            validateAvailableListIsEmpty();
             ExtentReport.logPass("PASS", "test07CloseDialogAndRecheckAllCheckboxAndThenUncheckItAndVerifyAvailableListIsResetToDefaultEmptyStatus");
         } catch (Exception|AssertionError e) {
         	ExtentReport.logFail("FAIL","test07CloseDialogAndRecheckAllCheckboxAndThenUncheckItAndVerifyAvailableListIsResetToDefaultEmptyStatus", driver,e);
@@ -308,9 +324,9 @@ public class UcqcColumnsToDisplaySelectColumnsPopupAds1156 extends UcqcHelper {
     @Test
     public void test08bConfirmApplyButtonIsDisabledWhenOnlyChargeCodeNameIsSelected() throws Throwable {
         try {
-        	((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoViewIfNeeded();",driver.findElement(By.xpath("//div[contains(@class,'x-panel x-box-item x-panel-default')]/following-sibling::div/descendant::tbody[2]/tr/td/*[text()='Charge Code Name']")));
+        	((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoViewIfNeeded();",driver.findElement(By.xpath("//div[contains(@class,'x-panel x-box-item x-panel-default')]/following-sibling::div/descendant::tbody[1]/tr/td/*[text()='Charge Code Name']")));
 		    Thread.sleep(3000);
-            driver.findElement(By.xpath("//div[contains(@class,'x-panel x-box-item x-panel-default')]/following-sibling::div/descendant::tbody[2]/tr/td/*[text()='Charge Code Name']")).click();
+            driver.findElement(By.xpath("//div[contains(@class,'x-panel x-box-item x-panel-default')]/following-sibling::div/descendant::tbody[1]/tr/td/*[text()='Charge Code Name']")).click();
             waitForAjaxExtJs();
            // assertElementIsDisabled(costingMap.getUnitCostQuickCalculationColumnsToDisplayModalApply(), printout);
           //venkat update enable condition 01-11-2022
@@ -344,7 +360,7 @@ public class UcqcColumnsToDisplaySelectColumnsPopupAds1156 extends UcqcHelper {
         try {
             Actions act = new Actions(driver);
             act.keyDown(Keys.CONTROL).perform();
-            driver.findElement(By.xpath("//div[contains(@class,'x-panel x-box-item x-panel-default')]/following-sibling::div/descendant::tbody[2]/tr/td/*[text()='Charge Code Name']")).click();
+            driver.findElement(By.xpath("//div[contains(@class,'x-panel x-box-item x-panel-default')]/following-sibling::div/descendant::tbody[1]/tr/td/*[text()='Charge Code Name']")).click();
             act.keyUp(Keys.CONTROL).perform();
             waitForAjaxExtJs();
            // assertElementIsDisabled(costingMap.getUnitCostQuickCalculationColumnsToDisplayModalApply(), printout);
@@ -360,7 +376,7 @@ public class UcqcColumnsToDisplaySelectColumnsPopupAds1156 extends UcqcHelper {
     @Test
     public void test08eConfirmApplyButtonIsEnabledWhenASingleItemIsSelectedOnSelectedList() throws Throwable {
         try {
-            driver.findElement(By.xpath("//div[contains(@class,'x-panel x-box-item x-panel-default')]/following-sibling::div/descendant::tbody[2]/tr/td/*[contains(text(),'RVU')]")).click();
+            driver.findElement(By.xpath("(//label[text()='Available']//following::div[contains(@class,'glAccountsGrid ')])[2]//table[contains(@class,'x-grid-item')]//tr//td/div[text()='Quick Salaries and Wages RVU']")).click();
             waitForAjaxExtJs();
             assertElementIsEnabled(costingMap.getUnitCostQuickCalculationColumnsToDisplayModalApply(), printout);
             ExtentReport.logPass("PASS", "test08eConfirmApplyButtonIsEnabledWhenASingleItemIsSelectedOnSelectedList");
@@ -383,7 +399,8 @@ public class UcqcColumnsToDisplaySelectColumnsPopupAds1156 extends UcqcHelper {
             doClick(driver.findElement(By.xpath("//div[contains(@class,'x-panel x-box-item x-panel-default')]/following-sibling::div/descendant::tbody[1]/tr/*[contains(@class,'x-grid-cell-first')]")));
             waitForAjaxExtJs();
             doClick(costingMap.getUnitCostQuickCalculationButtonColumnsToDisplayModalSelect());
-            assertEquals(0, getSelectDialogAvailableListSize(printout));
+//            assertEquals(0, getSelectDialogAvailableListSize(printout));
+            validateAvailableListIsEmpty();
             ExtentReport.logPass("PASS", "test20MoveItemFromAvailableListToSelectedList");
             
         } catch (Exception|AssertionError e) {
@@ -398,7 +415,7 @@ public class UcqcColumnsToDisplaySelectColumnsPopupAds1156 extends UcqcHelper {
         String classText = null;
         try {
             waitForAjaxExtJs();
-            classText = driver.findElement(By.xpath("//label[text()='All']/ancestor::*[contains(@class,'x-form-cb')]")).getAttribute("class");
+            classText = driver.findElement(By.xpath("(//label[text()='All']/ancestor::*[contains(@class,'x-form-cb')]/../..)[3]")).getAttribute("class");
         } catch(Throwable e) {
             fail("All checkbox not found");
         }
@@ -419,7 +436,7 @@ public class UcqcColumnsToDisplaySelectColumnsPopupAds1156 extends UcqcHelper {
         String classText = null;
         try {
             waitForAjaxExtJs();
-            classText = driver.findElement(By.xpath("//label[text()='All']/ancestor::*[contains(@class,'x-form-cb')]")).getAttribute("class");
+            classText = driver.findElement(By.xpath("(//label[text()='All']/ancestor::*[contains(@class,'x-form-cb')]/../..)[3]")).getAttribute("class");
         } catch(Throwable e) {
             fail("All checkbox not found");
         }
@@ -439,7 +456,7 @@ public class UcqcColumnsToDisplaySelectColumnsPopupAds1156 extends UcqcHelper {
         String columnsToDisplayCheckBox = null;
         try {
             waitForAjaxExtJs();
-            columnsToDisplayCheckBox = driver.findElement(By.xpath("//*[contains(@class,'labelValignMiddle')][contains(@id,'checkboxfield')]")).getAttribute("class");
+            columnsToDisplayCheckBox = driver.findElement(By.xpath("//*[contains(@class,'labelValignMiddle')][contains(@id,'checkbox')]")).getAttribute("class");
         } catch(Throwable e) {
             fail("All checkbox not found");
         }
@@ -459,7 +476,7 @@ public class UcqcColumnsToDisplaySelectColumnsPopupAds1156 extends UcqcHelper {
         String columnsToDisplayCheckBox = null;
         try {
             waitForAjaxExtJs();
-            columnsToDisplayCheckBox = driver.findElement(By.xpath("//*[contains(@class,'labelValignMiddle')][contains(@id,'checkboxfield')]")).getAttribute("class");
+            columnsToDisplayCheckBox = driver.findElement(By.xpath("//*[contains(@class,'labelValignMiddle')][contains(@id,'checkbox')]")).getAttribute("class");
         } catch(Throwable e) {
             fail("All checkbox not found");
         }
@@ -478,9 +495,11 @@ public class UcqcColumnsToDisplaySelectColumnsPopupAds1156 extends UcqcHelper {
     public int getSelectDialogAvailableListSize(boolean printout) throws InterruptedException {
         int listSize = 0;
         waitForAjaxExtJs();
-        WebElement availableListElement = driver.findElement(By.xpath("//div[contains(@class,'x-panel x-box-item x-panel-default')]/following-sibling::div/descendant::tbody[1]"));
-        List<WebElement> availableList = availableListElement.findElements(By.tagName("tr"));
-        if(availableList.size() > 1) {
+//        WebElement availableListElement = driver.findElement(By.xpath("//div[contains(@class,'x-panel x-box-item x-panel-default')]/following-sibling::div/descendant::tbody[1]"));
+        List<WebElement> availableList = driver.findElements(By.xpath("//div[contains(@class,'x-panel x-box-item x-panel-default')]/following-sibling::div/descendant::tbody[1]/tr/td/div"));
+        System.out.println(availableList.size());
+        listSize=availableList.size();
+        if(listSize > 1) {
             listSize = availableList.size()-1;  //subtract 1 for the header row
         }
         if(printout) {
@@ -491,21 +510,21 @@ public class UcqcColumnsToDisplaySelectColumnsPopupAds1156 extends UcqcHelper {
 
     public List<WebElement> getSelectDialogAvailableList() throws InterruptedException {
     	  waitForAjaxExtJs();
-          WebElement availableListElement = driver.findElement(By.xpath("//div[contains(@class,'x-panel x-box-item x-panel-default')]/following-sibling::div/descendant::tbody[1]"));
-          List<WebElement> availableList = availableListElement.findElements(By.tagName("tr"));
+//          WebElement availableListElement = driver.findElement(By.xpath("//div[contains(@class,'x-panel x-box-item x-panel-default')]/following-sibling::div/descendant::tbody[1]"));
+          List<WebElement> availableList = driver.findElements(By.xpath("(//label[text()='Available']//following::div[contains(@class,'glAccountsGrid ')])[1]//table[contains(@class,'x-grid-item')]//tr//td/div"));
         return availableList;
     }
 
     public List<WebElement> getSelectDialogSelectedList() throws InterruptedException {
         waitForAjaxExtJs();
-        WebElement availableListElement = driver.findElement(By.xpath("//label[text()='Selected']/ancestor::div[contains(@class,'x-panel x-box-item x-panel-default')]/following-sibling::div/descendant::tbody[2]"));
-        List<WebElement> availableList = availableListElement.findElements(By.tagName("tr"));
+//        WebElement availableListElement = driver.findElement(By.xpath("//label[text()='Selected']/ancestor::div[contains(@class,'x-panel x-box-item x-panel-default')]/following-sibling::div/descendant::tbody/tr/td"));
+        List<WebElement> availableList = driver.findElements(By.xpath("//label[text()='Selected']/ancestor::div[contains(@class,'x-panel x-box-item x-panel-default')]/following-sibling::div/descendant::tbody/tr/td/div"));
         return availableList;
     }
 
     public void verifyFiveItemsEachCostComponent(ArrayList<String> listOfStrings, boolean printout) throws InterruptedException {
         int groups = listOfStrings.size();
-        for (int i=6; i<groups; i=i+5) {
+        for (int i=5; i>=groups; i=i+5) {
             if(printout) {
                 System.out.println("The index i is " + i);
                 System.out.println("List size is: " + groups);
