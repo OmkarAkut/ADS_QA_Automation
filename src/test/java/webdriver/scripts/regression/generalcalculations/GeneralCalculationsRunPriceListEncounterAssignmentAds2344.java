@@ -87,7 +87,8 @@ public class GeneralCalculationsRunPriceListEncounterAssignmentAds2344 extends C
 			confirmCalculationStatusDetailsContains("Process Completed");
 			confirmCalculationStatusDetailsContains("Total number of charge items reset: 25");
 			closeViewDialog();
-			deleteMyCalculationStatusFirstRow();
+			deleteFirstRow();
+//			deleteMyCalculationStatusFirstRow();
 			ExtentReport.logPass("PASS", "test01ClickClearResultsButtonAndVerifyCalculationStatusPageDetails");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01ClickClearResultsButtonAndVerifyCalculationStatusPageDetails", driver,
@@ -134,7 +135,8 @@ public class GeneralCalculationsRunPriceListEncounterAssignmentAds2344 extends C
 			driverDelay(5000);
 			confirmCalculationStatusDetailsContains("Process Completed");
 			closeViewDialog();
-			deleteMyCalculationStatusFirstRow();
+			deleteFirstRow();
+//			deleteMyCalculationStatusFirstRow();
 			ExtentReport.logPass("PASS", "test02ClickAssignButtonAndAssertCalculationStatusPageDetails");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test02ClickAssignButtonAndAssertCalculationStatusPageDetails", driver, e);

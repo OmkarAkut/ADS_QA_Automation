@@ -15,9 +15,9 @@ public class saveSystemSettings extends GoHelper{
 			doClick("//div[contains(@id,'messagebox')]//span[text()='Save']");
 			waitForDisplayedSavingSpinnerToEnd();
 //			waitForAjaxExtJs();
-			driverDelay(10000);
+			driverDelay(5000);
 			goToPage(modelName);
-			
+			driverDelay();
 		} catch (Exception e) {
 			
 		}
@@ -30,7 +30,7 @@ public class saveSystemSettings extends GoHelper{
 			doClick(SystemMaintenanceMap.getTaskListSaveButton());
 			doClick("//div[contains(@id,'messagebox')]//span[text()='Save']");
 			waitForDisplayedSpinnerToEnd();
-			driverDelay(10000);
+			driverDelay(5000);
 			doClosePageOnLowerBar("Customize Task Lists");
 		} catch (Exception e) {
 		

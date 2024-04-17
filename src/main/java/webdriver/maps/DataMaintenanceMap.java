@@ -166,7 +166,7 @@ public class DataMaintenanceMap extends MapConfig {
 	private static WebElement getChargeMaster;
 	public static WebElement getChargeMaster() {return getChargeMaster;}
 	
-	@FindBy(xpath = "//span[text()='Price List Master']//following::input[@name='priceListId']")
+	@FindBy(xpath = "(//input[@name='priceListId']//following::div[contains(@class,'x-form-trigger')])[1]")
 	private static WebElement getPriceListMaster;
 	public static WebElement getPriceListMaster() {return getPriceListMaster;}
 	

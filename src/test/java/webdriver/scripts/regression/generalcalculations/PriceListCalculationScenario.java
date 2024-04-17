@@ -58,7 +58,7 @@ public class PriceListCalculationScenario extends CalculationHelper {
 	}
 //ADS-6103 all steps
 	@Test
-	public void test01AddNewPriceList_6103() throws Throwable {
+	public void test01AddNewPriceList_ADS_6103() throws Throwable {
 		try {
 			doClick(DataMaintenanceMap.getLoadDataNewButton());
 			ContractingMap.getMedicareCode().sendKeys(currentDateTime.replaceAll("\\W", ""));
@@ -89,7 +89,7 @@ public class PriceListCalculationScenario extends CalculationHelper {
 	}
 
 	@Test
-	public void test03ValidateBatch2PriceValues_6103() throws Throwable {
+	public void test03ValidateBatch2PriceValues_ADS_6103() throws Throwable {
 		try {
 			ChangeResultsDestinationPriceLists(aTozPage2, batch2, filterPriceScenario2);
 			ValidateCalculationStatus("6443", "4185640");
@@ -104,7 +104,7 @@ public class PriceListCalculationScenario extends CalculationHelper {
 	}
 
 	@Test
-	public void test04ValidateBatch3PriceValues_6103() throws Throwable {
+	public void test04ValidateBatch3PriceValues_ADS_6103() throws Throwable {
 		try {
 			ChangeResultsDestinationPriceLists(aTozPage2, batch3, filterPriceScenario3);
 			ValidateCalculationStatus("6443", "4185640");
@@ -125,9 +125,10 @@ public class PriceListCalculationScenario extends CalculationHelper {
 			driverDelay(100);
 			doFilterCreate(filterPriceScenario);
 			tableDoubleClickCellFirstColumn(batch);
+			String priceName=currentDateTime.replaceAll("\\W", "") + " " + priceList;
 			System.out.println(currentDateTime.replaceAll("\\W", "") + " " + priceList);
 			doDropdownSelectUsingOptionText(DataMaintenanceMap.getPriceListMaster(),
-					currentDateTime.replaceAll("\\W", "") + " " + priceList);
+					priceName);
 			ContractModelsHelper.scrollToView(DataMaintenanceMap.getLogLoc());
 			DataMaintenanceMap.getLogLoc().clear();
 			DataMaintenanceMap.getLogLoc().sendKeys(priceListName);

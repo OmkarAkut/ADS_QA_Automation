@@ -93,7 +93,8 @@ public class GeneralCalculationsChargeItemServiceClassificationSchemeAds2342 ext
 			assertViewLogTitle(viewLogTitleRemove);
 			confirmCalculationStatusDetailsContains("Process Completed");
 			closeViewDialog();
-			deleteMyCalculationStatusFirstRow();
+//			deleteMyCalculationStatusFirstRow();
+			deleteFirstRow();
 			ExtentReport.logPass("PASS", "test01ClickRemoveButtonAndVerifyRemoveProcessRanSuccessfully");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01ClickRemoveButtonAndVerifyRemoveProcessRanSuccessfully", driver, e);
@@ -176,7 +177,8 @@ public class GeneralCalculationsChargeItemServiceClassificationSchemeAds2342 ext
 			confirmCalculationStatusDetailsContains("Process Completed");
 			closeViewDialog();
 			driverDelay(3000);
-			deleteMyCalculationStatusFirstRow();
+			deleteFirstRow();
+//			deleteMyCalculationStatusFirstRow();
 			ExtentReport.logPass("PASS", "test04ClickAssignButtonAndAssertCalculationSummaryDetailsMatchExpected");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test04ClickAssignButtonAndAssertCalculationSummaryDetailsMatchExpected",

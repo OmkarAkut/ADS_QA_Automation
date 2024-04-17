@@ -37,6 +37,7 @@ public class RunGLAdjustmentAndReclassifications extends CalculationHelper {
 			contractMap = BuildMap.getInstance(driver, ContractingMap.class);
 			systemMap=BuildMap.getInstance(driver, SystemMaintenanceMap.class);
 			Login.loginUser("AutomationTesterAdmin");
+			driverDelay(5000);
 			settings.saveCustomSettings("Use Custom", "Costing Models");
 //			waitForDisplayedSpinnerToEnd();
 //			goToPage("Costing Models");

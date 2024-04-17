@@ -203,7 +203,7 @@ public class WaitHelper extends JavaHelper {
 					
 					count++;
 					Thread.sleep(1000);
-					if(count==70) {
+					if(count==120) {
 						break;
 					}
 					continue;

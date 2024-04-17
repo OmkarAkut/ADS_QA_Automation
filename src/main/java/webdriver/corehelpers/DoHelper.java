@@ -353,6 +353,7 @@ public class DoHelper extends DriverHelper {
 		ContractModelsHelper.scrollToView(element);
 		driverDelay(500);
 		doClick(element);
+		driverDelay();
 		waitForAjaxExtJs();
 //		driverDelay(500);
 //		Omkar 14/04/2023 : xpath changes for 11.2

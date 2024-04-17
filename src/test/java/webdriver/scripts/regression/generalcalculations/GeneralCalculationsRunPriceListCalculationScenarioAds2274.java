@@ -94,7 +94,8 @@ public class GeneralCalculationsRunPriceListCalculationScenarioAds2274 extends C
 			confirmCalculationStatusDetailsContains("Total number of charge items reset: 25");
 
 			closeViewDialog();
-			deleteMyCalculationStatusFirstRow();
+			deleteFirstRow();
+//			deleteMyCalculationStatusFirstRow();
 			ExtentReport.logPass("PASS", "test01ClickClearResultsButtonAndVerifyCalculationStatusPageDetails");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01ClickClearResultsButtonAndVerifyCalculationStatusPageDetails", driver,
@@ -139,7 +140,8 @@ public class GeneralCalculationsRunPriceListCalculationScenarioAds2274 extends C
 			clickLastPageIconOnCalculationStatusViewLog();
 			confirmCalculationStatusDetailsContains("Process Completed");
 			closeViewDialog();
-			deleteMyCalculationStatusFirstRow();
+			deleteFirstRow();
+//			deleteMyCalculationStatusFirstRow();
 			ExtentReport.logPass("PASS",
 					"test02ClickCalculateButtonAndAssertCalculationStatusSummaryDetailsMatchExpected");
 		} catch (Exception | AssertionError e) {

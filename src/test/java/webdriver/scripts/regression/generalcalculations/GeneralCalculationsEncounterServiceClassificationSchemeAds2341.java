@@ -64,9 +64,9 @@ public class GeneralCalculationsEncounterServiceClassificationSchemeAds2341 exte
 		fail(e.getMessage());
 	}
   }
-//ADS-6101 all steps
+//ADS-6102 all steps
   @Test
-  public void test01ClickRemoveButtonAndVerifyRemoveProcessRanSuccessfully_6101()
+  public void test01ClickRemoveButtonAndVerifyRemoveProcessRanSuccessfully_ADS_6102()
           throws InterruptedException,Throwable {
     try {
     	doClick(DataMaintenanceMap.getLoadDataFilterButton());
@@ -85,6 +85,7 @@ public class GeneralCalculationsEncounterServiceClassificationSchemeAds2341 exte
       assertViewLogTitle(viewLogTitleRemove);
       confirmCalculationStatusDetailsContains("Process Completed");
       closeViewDialog();
+      deleteFirstRow();
       deleteMyCalculationStatusFirstRow();
       ExtentReport.logPass("PASS", "test01ClickRemoveButtonAndVerifyRemoveProcessRanSuccessfully");
 	} catch (Exception|AssertionError e) {
@@ -120,7 +121,7 @@ public class GeneralCalculationsEncounterServiceClassificationSchemeAds2341 exte
 //  }
 
   @Test
-  public void test03VerifyNoServicesAppearOnEncountersPage_6101()
+  public void test03VerifyNoServicesAppearOnEncountersPage_ADS_6102()
           throws InterruptedException,Throwable {
     try {
 		doMaintainDataPageSelectAtoZOption("Encounters");
@@ -146,7 +147,7 @@ public class GeneralCalculationsEncounterServiceClassificationSchemeAds2341 exte
   }
 
   @Test
-  public void test04ClickAssignButtonAndAssertCalculationSummaryDetailsMatchExpected_6101()
+  public void test04ClickAssignButtonAndAssertCalculationSummaryDetailsMatchExpected_ADS_6102()
           throws InterruptedException,Throwable {
     try {
       //goToPage("Maintain Data");
@@ -167,7 +168,7 @@ public class GeneralCalculationsEncounterServiceClassificationSchemeAds2341 exte
       confirmCalculationStatusDetailsContains("Total Encounters Processed: 40");
       confirmCalculationStatusDetailsContains("Process Completed");
       closeViewDialog();
-      deleteMyCalculationStatusFirstRow();
+      deleteFirstRow();
       ExtentReport.logPass("PASS", "test04ClickAssignButtonAndAssertCalculationSummaryDetailsMatchExpected");
      	} catch (Exception|AssertionError e) {
      		ExtentReport.logFail("FAIL", "test04ClickAssignButtonAndAssertCalculationSummaryDetailsMatchExpected", driver, e);
@@ -186,7 +187,7 @@ public class GeneralCalculationsEncounterServiceClassificationSchemeAds2341 exte
   }
 
   @Test
-  public void test05AssertServicesCountOnEncountersPage_6101() throws InterruptedException,Throwable{
+  public void test05AssertServicesCountOnEncountersPage_ADS_6102() throws InterruptedException,Throwable{
       try {
 		goToPage("Maintain Data");
 		  doMaintainDataPageSelectAtoZOption("Encounters");
@@ -223,10 +224,10 @@ public class GeneralCalculationsEncounterServiceClassificationSchemeAds2341 exte
   }
 
   @Test
-  public void test06VerifyServicesNowAppearOnEncountersPage_6101() throws Throwable {
+  public void test06VerifyServicesNowAppearOnEncountersPage_ADS_6102() throws Throwable {
     try {
 //		  List<WebElement> ele=driver.findElements(By.xpath("//*[text()='Service Scheme']/ancestor::div[contains(@class,'x-grid-header')]//following-sibling::div/descendant::table//tbody/tr"));
-
+    	System.out.println();
 		List<String> encountersTableStrings =
 		        javaMakeListOfStrings(encountersTable, "//td[6]/div");
 		//assertListOfStringsContainsExpectedStrings(encountersTableStrings, expectedEncounters);

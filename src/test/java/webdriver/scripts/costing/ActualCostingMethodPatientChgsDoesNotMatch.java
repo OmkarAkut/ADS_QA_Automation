@@ -59,6 +59,7 @@ public class ActualCostingMethodPatientChgsDoesNotMatch extends CalculationHelpe
 			doClickTreeData("Assign Unit Costs");
 			waitForMainPageTitle("Cost Model Calculation Scenarios");
 			doClickTreeItem("Cost Model Calculation Scenarios");
+			waitForElementToBeVisible(costing.getCostModelCalcFilterButton());
 			ExtentReport.logPass("PASS", "test01OpenCostCalculationScenario");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01OpenCostCalculationScenario", driver, e);

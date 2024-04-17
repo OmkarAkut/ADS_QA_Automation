@@ -67,7 +67,8 @@ public class GeneralCalculationsRunMedicalServiceAssignmentAds2343 extends Calcu
 			confirmCalculationStatusDetailsContains("Number of batches to process: 1");
 			confirmCalculationStatusDetailsContains("Process Completed");
 			closeViewDialog();
-			deleteMyCalculationStatusFirstRow();
+//			deleteMyCalculationStatusFirstRow();
+			deleteFirstRow();
 			ExtentReport.logPass("PASS", "test01ClickClearResultsButtonAndVerifyCalculationStatusDetails");
 		}  catch (Exception|AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01ClickClearResultsButtonAndVerifyCalculationStatusDetails", driver, e);
@@ -117,7 +118,8 @@ public class GeneralCalculationsRunMedicalServiceAssignmentAds2343 extends Calcu
 			driverDelay(4000);
 			confirmCalculationStatusDetailsContains("Process Completed");
 			closeViewDialog();
-			deleteMyCalculationStatusFirstRow();
+			deleteFirstRow();
+//			deleteMyCalculationStatusFirstRow();
 			ExtentReport.logPass("PASS", "test02ClickAssignButtonAndAssertCalculationStatusPageDetails");
 		}  catch (Exception|AssertionError e) {
 			ExtentReport.logFail("FAIL", "test02ClickAssignButtonAndAssertCalculationStatusPageDetails", driver, e);

@@ -71,7 +71,8 @@ public class GeneralCalculationsRunContractualAllowancesScenarioAds2163 extends 
 				waitForCalculationToEndAndVerifySummaryDetailsStringOnDialogAndCloseDialog(
 						"Selection Criteria:");//Shilpa 20.09.2022 added assert value
 				assertCalcStatusColumnForFirstRowOfStatusTableIsCompleted();
-				deleteMyCalculationStatusFirstRow();
+//				deleteMyCalculationStatusFirstRow();
+				deleteFirstRow();
 				//Shilpa 20.09.2022 added below lines to complete the tc
 				doClosePageOnLowerBar("Calculation Status");
 //				driver.findElement(By.xpath("//button/span[text()='Cancel & Close']")).click();

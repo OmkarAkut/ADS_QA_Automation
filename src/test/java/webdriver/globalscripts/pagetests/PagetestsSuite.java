@@ -6,10 +6,10 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-//	AllPageTestsStatic.class,
+	AllPageTestsStatic.class,
 	BuildVerificationTestScript.class,
-//	ChangePasswordDialogTest.class,
-//	GlobalHeaderPageTest.class,
+	ChangePasswordDialogTest.class,
+	GlobalHeaderPageTest.class,
 
 })
 public class PagetestsSuite {
