@@ -406,6 +406,12 @@ public class AdsHelper extends GetHelper {
 		String cellValue = tableGetCellValueFromFirstRow(tableHeading, headerIdDigits, printout);
 		assertEquals(expectedValue, cellValue);
 	}
-
+	public static void keyInDates(String date,WebElement dateField) throws InterruptedException {
+		for(int i=0;i<=9;i++) {
+			dateField.click();
+			dateField.sendKeys(Keys.BACK_SPACE);
+		}
+		dateField.sendKeys(date);
+	}
 }
 

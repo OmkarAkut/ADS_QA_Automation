@@ -3,12 +3,18 @@ package webdriver.scripts.regression.generalcalculations;
 import static org.junit.Assert.fail;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
+import java.util.List;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.helpers.CalculationHelper;
@@ -34,6 +40,8 @@ public class PriceListCalculationScenario extends CalculationHelper {
 	static String[] filterPriceScenario1 = { "Name", "Is", "Equal To", batch1 };
 	static String[] filterPriceScenario2 = { "Name", "Is", "Equal To", batch2 };
 	static String[] filterPriceScenario3 = { "Name", "Is", "Equal To", batch3 };
+	static String startDate="01/01/2004";
+	static String endDate="01/01/2024";
 
 	static String[] filterPriceList = { "Name", "Is", "Equal To", priceList };
 	static HashMap<String, String> filters = new HashMap<>();
@@ -77,10 +85,12 @@ public class PriceListCalculationScenario extends CalculationHelper {
 	public void test02ValidateBatch1PriceValues_6103() throws Throwable {
 		try {
 			ChangeResultsDestinationPriceLists(aTozPage2, batch1, filterPriceScenario1);
-			ValidateCalculationStatus("6443", "4185640");
+			ValidateCalculationStatus("10081", "9471569");
+//			helper.FilterByChargeCode(aTozPage1, filterPriceList, priceList, DataMaintenanceMap.getPriceItemDeptCode(),
+//					"26.25", "482.35", "1,121.86", "684.72", "106.59", "248", "145", "25.84");
 			helper.FilterByChargeCode(aTozPage1, filterPriceList, priceList, DataMaintenanceMap.getPriceItemDeptCode(),
-					"26.25", "482.35", "1,121.86", "684.72", "106.59", "248", "145", "25.84");
-			doClick(ContractingMap.getContractModelRiskLimiterCancelCloseBtn());
+					"21.66", "67.10", "24.00", "128.10", "827.40", "208.95", "38.85", "68.25");
+			doClick(ContractingMap.getFeeForPaymentCancelClose());
 			ExtentReport.logPass("PASS", "test02ValidateBatch1PriceValues");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test02ValidateBatch1PriceValues", driver, e);
@@ -125,10 +135,39 @@ public class PriceListCalculationScenario extends CalculationHelper {
 			driverDelay(100);
 			doFilterCreate(filterPriceScenario);
 			tableDoubleClickCellFirstColumn(batch);
+			
 			String priceName=currentDateTime.replaceAll("\\W", "") + " " + priceList;
 			System.out.println(currentDateTime.replaceAll("\\W", "") + " " + priceList);
-			doDropdownSelectUsingOptionText(DataMaintenanceMap.getPriceListMaster(),
-					priceName);
+			for(int i=0;i<=5;i++) {
+				doClick(DataMaintenanceMap.getPriceListMaster());
+				try {
+					if(driver.findElement(By.xpath("//div[contains(@class,'floating')]//div[contains(@id,'listWrap')]/ul")).isDisplayed()) {
+						break;
+					}
+				} catch (Exception e) {
+					continue;
+				}
+			}
+//			doDropdownSelectUsingOptionText(DataMaintenanceMap.getPriceListMaster(),
+//					priceName);
+			WebElement list = driver.findElement(By.xpath("//div[contains(@class,'floating')]//div[contains(@id,'listWrap')]/ul"));
+			
+			List<WebElement> menu = list.findElements(By.tagName("li"));
+			System.out.println(menu.size());
+			for(WebElement option : menu) {
+				ContractModelsHelper.scrollToView(option);
+				System.out.println(option.getText());
+				if(option.getText().equals(priceName)) {
+
+					option.click();
+					break;
+				}
+			}
+			
+			Actions act=new Actions(driver);
+			ContractModelsHelper.scrollToView("//label[text()='Discharge']//preceding::span[contains(@id,'checkbox')]/input[@name='useDischargeTimePeriod']");
+			keyInDates(startDate,ContractingMap.getDischargeDateFrom());
+//			keyInDates(endDate,ContractingMap.getDischargeDateTo());
 			ContractModelsHelper.scrollToView(DataMaintenanceMap.getLogLoc());
 			DataMaintenanceMap.getLogLoc().clear();
 			DataMaintenanceMap.getLogLoc().sendKeys(priceListName);
@@ -143,7 +182,7 @@ public class PriceListCalculationScenario extends CalculationHelper {
 	public void ValidateCalculationStatus(String priceVal, String chargeVal) throws Throwable {
 		try {
 			doClick(DataMaintenanceMap.getCalculateButton());
-			doClick(DataMaintenanceMap.getSaveContinueButton());
+//			doClick(DataMaintenanceMap.getSaveContinueButton());
 			waitForPageTitle("Calculation Status");
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
@@ -151,11 +190,11 @@ public class PriceListCalculationScenario extends CalculationHelper {
 			clickLastPageIconOnCalculationStatusViewLog();
 			waitForSpinnerToEnd();
 			driverDelay(2000);
-			confirmCalculationStatusDetailsContains("Total number of price items inserted/updated: " + priceVal + "");
-			confirmCalculationStatusDetailsContains("Total number of charge items processed: " + chargeVal + "");
+			checkForRecordsProcessed("Total number of price items inserted/updated: " + priceVal + "");
+			checkForRecordsProcessed("Total number of charge items processed: " + chargeVal + "");
 			closeViewDialog();
 			doClosePageOnLowerBar("Calculation Status");
-			doClick(ContractingMap.getContractFeeForServicePaymentSave());
+			doClick(ContractingMap.getFeeForPaymentSaveClose());
 			ExtentReport.logPass("PASS", "test03ValidateCalculationStatus");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test03ValidateCalculationStatus", driver, e);

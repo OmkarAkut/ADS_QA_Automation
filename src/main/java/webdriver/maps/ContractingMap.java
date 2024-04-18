@@ -398,7 +398,6 @@ public class ContractingMap extends MapConfig {
 //	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//span[text()='Cancel & Close']")
 	//Shilpa update xpath for 11.2 on 11.27.2023
 	//Shilpa update xpath for 11.2 on 3.1.2024
-	@FindBy(xpath = "(//span[text()='Risk Limiter Model']//following::span[text()='Cancel & Close']/../../..)[1]")
 	private static WebElement ContractModelRiskLimiterCancelCloseBtn;
 	public static WebElement getContractModelRiskLimiterCancelCloseBtn() {return ContractModelRiskLimiterCancelCloseBtn;}
 	
@@ -1071,5 +1070,13 @@ public class ContractingMap extends MapConfig {
 	@FindBy(xpath = "(//div[@class='x-grid-item-container'])[4]//tr//td[2]//div")
 	private static List<WebElement> getGridElements;
 	public static List<WebElement> getGridElements() {return getGridElements;}
+	
+	@FindBy(xpath = "//input[@name='dischargeStartDate']")
+	private static WebElement getDischargeDateFrom;
+	public static WebElement getDischargeDateFrom() {return getDischargeDateFrom;}
+	
+	@FindBy(xpath = "//input[@name='dischargeEndDate']")
+	private static WebElement getDischargeDateTo;
+	public static WebElement getDischargeDateTo() {return getDischargeDateTo;}
 
 }

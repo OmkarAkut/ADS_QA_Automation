@@ -188,6 +188,7 @@ public class DataMaintenanceHelper extends GoHelper {
 		ads.doFilterCreate(filterPriceList);
 		tableDoubleClickCellFirstColumn(priceList);
 		Multimap<String, String> multimap = ArrayListMultimap.create();
+		/*
 		multimap.put("Charge Code", "5465158");
 		multimap.put("Charge Code", "8460206");
 		multimap.put("Charge Code", "90118");
@@ -196,8 +197,73 @@ public class DataMaintenanceHelper extends GoHelper {
 		multimap.put("Charge Code", "7715139");
 		multimap.put("Charge Code", "2783033");
 		multimap.put("Charge Code", "8407066");
+		*/
+		multimap.put("Charge Code", "8171027");
+		multimap.put("Charge Code", "99231");
+		multimap.put("Charge Code", "4034112");
+		multimap.put("Charge Code", "4059358");
+		multimap.put("Charge Code", "2772325");
+		multimap.put("Charge Code", "2783728");
+		multimap.put("Charge Code", "4059234");
+		multimap.put("Charge Code", "4056750");
 		for (Map.Entry<String, String> entry : multimap.entries()) {
 			doClick(DataMaintenanceMap.getPriceItemFilterButton());
+			if (entry.getKey().equals("Charge Code")) {
+				if (entry.getValue().equals("8171027")) {
+					doFilterSetFilterParameters("Department Code", "Is", "Equal To", "1111");
+					doClick(dialog.getFilterDialogButtonAdd());
+					waitForAjaxExtJs();
+					doFilterSetFilterParameters("Charge Code", "Is", "Equal To", "8171027");
+
+				} else if (entry.getValue().equals("99231")) {
+					doFilterSetFilterParameters("Department Code", "Is", "Equal To", "2016");
+					doClick(dialog.getFilterDialogButtonAdd());
+					waitForAjaxExtJs();
+					doFilterSetFilterParameters("Charge Code", "Is", "Equal To", "99231");
+
+				}
+				else if (entry.getValue().equals("4034112")) {
+					doFilterSetFilterParameters("Department Code", "Is", "Equal To", "2111");
+					doClick(dialog.getFilterDialogButtonAdd());
+					waitForAjaxExtJs();
+					doFilterSetFilterParameters("Charge Code", "Is", "Equal To", "4034112");
+
+				}
+				else if  (entry.getValue().equals("4059358")) {
+					doFilterSetFilterParameters("Department Code", "Is", "Equal To", "2115");
+					doClick(dialog.getFilterDialogButtonAdd());
+					waitForAjaxExtJs();
+					doFilterSetFilterParameters("Charge Code", "Is", "Equal To", "4059358");
+
+				} 
+				else if  (entry.getValue().equals("2772325")) {
+					doFilterSetFilterParameters("Department Code", "Is", "Equal To", "2342");
+					doClick(dialog.getFilterDialogButtonAdd());
+					waitForAjaxExtJs();
+					doFilterSetFilterParameters("Charge Code", "Is", "Equal To", "4059358");
+
+				} else if (entry.getValue().equals("2783728")) {
+					doFilterSetFilterParameters("Department Code", "Is", "Equal To", "3010");
+					doClick(dialog.getFilterDialogButtonAdd());
+					waitForAjaxExtJs();
+					doFilterSetFilterParameters("Charge Code", "Is", "Equal To", "2783728");
+
+				}
+				 else if (entry.getValue().equals("4059234")) {
+						doFilterSetFilterParameters("Department Code", "Is", "Equal To", "3047");
+						doClick(dialog.getFilterDialogButtonAdd());
+						waitForAjaxExtJs();
+						doFilterSetFilterParameters("Charge Code", "Is", "Equal To", "4059234");
+
+					}
+				 else if (entry.getValue().equals("4056750")) {
+						doFilterSetFilterParameters("Department Code", "Is", "Equal To", "3110");
+						doClick(dialog.getFilterDialogButtonAdd());
+						waitForAjaxExtJs();
+						doFilterSetFilterParameters("Charge Code", "Is", "Equal To", "4056750");
+
+					}
+			/*
 			if (entry.getKey().equals("Charge Code")) {
 				if (entry.getValue().equals("5465158")) {
 					doFilterSetFilterParameters("Department Code", "Is", "Equal To", "1111");
@@ -248,6 +314,8 @@ public class DataMaintenanceHelper extends GoHelper {
 					doFilterSetFilterParameters("Charge Code", "Is", "Equal To", "8407066");
 
 				}
+				*/
+			
 			}
 			waitForAjaxExtJs();
 			waitUntilElementIsClickable(dialog.getFilterDialogButtonAdd());
@@ -258,7 +326,7 @@ public class DataMaintenanceHelper extends GoHelper {
 			List<WebElement> listCode = DataMaintenanceMap.getPriceItemDeptCode();
 			for (int i = 2; i <= listCode.size(); i++) {
 				String deptCode = "//span[text()='Department Code']//following::div[contains(@id,'dynamicGrid')]//table//tr["
-						+ i + "]/td[5]/div";
+						+ i + "]/td[2]/div";
 				if (driver.findElement(By.xpath(deptCode)).getText().equals("1111")) {
 					assertElementText(driver.findElement(By.xpath(deptCode + "//following::td[6]/div")), price01,
 							printout);
@@ -274,27 +342,27 @@ public class DataMaintenanceHelper extends GoHelper {
 							printout);
 					break;
 				}
-				if (driver.findElement(By.xpath(deptCode)).getText().equals("2220")) {
+				if (driver.findElement(By.xpath(deptCode)).getText().equals("2115")) {
 					assertElementText(driver.findElement(By.xpath(deptCode + "//following::td[6]/div")), price04,
 							printout);
 					break;
 				}
-				if (driver.findElement(By.xpath(deptCode)).getText().equals("2269")) {
+				if (driver.findElement(By.xpath(deptCode)).getText().equals("3010")) {
 					assertElementText(driver.findElement(By.xpath(deptCode + "//following::td[6]/div")), price05,
 							printout);
 					break;
 				}
-				if (driver.findElement(By.xpath(deptCode)).getText().equals("2330")) {
+				if (driver.findElement(By.xpath(deptCode)).getText().equals("3047")) {
 					assertElementText(driver.findElement(By.xpath(deptCode + "//following::td[6]/div")), price06,
 							printout);
 					break;
 				}
-				if (driver.findElement(By.xpath(deptCode)).getText().equals("3030")) {
+				if (driver.findElement(By.xpath(deptCode)).getText().equals("3110")) {
 					assertElementText(driver.findElement(By.xpath(deptCode + "//following::td[6]/div")), price07,
 							printout);
 					break;
 				}
-				if (driver.findElement(By.xpath(deptCode)).getText().equals("4021")) {
+				if (driver.findElement(By.xpath(deptCode)).getText().equals("2342")) {
 					assertElementText(driver.findElement(By.xpath(deptCode + "//following::td[6]/div")), price08,
 							printout);
 					break;
