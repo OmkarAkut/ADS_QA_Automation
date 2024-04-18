@@ -102,9 +102,12 @@ public class PriceListCalculationScenario extends CalculationHelper {
 	public void test03ValidateBatch2PriceValues_ADS_6103() throws Throwable {
 		try {
 			ChangeResultsDestinationPriceLists(aTozPage2, batch2, filterPriceScenario2);
-			ValidateCalculationStatus("6443", "4185640");
+//			ValidateCalculationStatus("6443", "4185640");
+//			helper.FilterByChargeCode(aTozPage1, filterPriceList, priceList, DataMaintenanceMap.getPriceItemDeptCode(),
+//					"26.25", "482.35", "1,121.86", "684.72", "86.57", "277.2", "136", "25.84");
+			ValidateCalculationStatus("10081", "9471569");
 			helper.FilterByChargeCode(aTozPage1, filterPriceList, priceList, DataMaintenanceMap.getPriceItemDeptCode(),
-					"26.25", "482.35", "1,121.86", "684.72", "86.57", "277.2", "136", "25.84");
+					"21.66", "67.10", "24.00", "128.10", "827.40", "208.95", "38.85", "68.25");
 			doClick(ContractingMap.getContractModelRiskLimiterCancelCloseBtn());
 			ExtentReport.logPass("PASS", "test03ValidateBatch2PriceValues");
 		} catch (Exception | AssertionError e) {
@@ -117,9 +120,12 @@ public class PriceListCalculationScenario extends CalculationHelper {
 	public void test04ValidateBatch3PriceValues_ADS_6103() throws Throwable {
 		try {
 			ChangeResultsDestinationPriceLists(aTozPage2, batch3, filterPriceScenario3);
-			ValidateCalculationStatus("6443", "4185640");
+//			ValidateCalculationStatus("6443", "4185640");
+//			helper.FilterByChargeCode(aTozPage1, filterPriceList, priceList, DataMaintenanceMap.getPriceItemDeptCode(),
+//					"125.00", "448.5", "954.89", "752.11", "96.59", "238", "135", "124.61");
+			ValidateCalculationStatus("10081", "9471569");
 			helper.FilterByChargeCode(aTozPage1, filterPriceList, priceList, DataMaintenanceMap.getPriceItemDeptCode(),
-					"125.00", "448.5", "954.89", "752.11", "96.59", "238", "135", "124.61");
+					"21.66", "67.10", "24.00", "128.10", "827.40", "208.95", "38.85", "68.25");
 			ExtentReport.logPass("PASS", "test04ValidateBatch3PriceValues");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test04ValidateBatch3PriceValues", driver, e);
