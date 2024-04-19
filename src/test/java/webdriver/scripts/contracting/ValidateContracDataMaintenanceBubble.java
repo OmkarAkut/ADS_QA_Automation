@@ -42,7 +42,7 @@ public class ValidateContracDataMaintenanceBubble extends CalculationHelper {
 	}
 //ADS-6430,ADS-6428[color verification ]
 	@Test
-	public void test01ValidateContractingBubleColor_6430_6428_6429() throws Throwable {
+	public void test01ValidateContractingBubleColor_ADS_6430_ADS_6428_ADS_6429() throws Throwable {
 		try {
 			UcqcHelper.validateBackgroundColor(bubbleColorExpected,ContractingMap.getContractingBubble());
 			assertElementIsDisplayed(ContractingMap.getContractingBubble());

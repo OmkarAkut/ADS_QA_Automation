@@ -92,13 +92,55 @@ public class CreateNewCostModel extends GoHelper {
 			break;
 
 		case "General Information - Cost":
+			doClickTreeItem("General Information - Cost");
+			driverDelay();
 			doClick(CostingMap.getOverheadCancelClose());
 			break;
 
 		case "RVU Maintenance":
+			doClickTreeItem("RVU Maintenance");
 			assertTextIsDisplayed("Entity");
 			break;
 
+		case "RVU Calculation Scenarios":
+			doClickTreeItem("Assign Unit Costs");
+			doClickTreeItem("RVU Calculation Scenarios");
+			doClick("(//h1[text()='RVU Calculation Scenarios']//following::span[text()='New'])[1]");
+			doClick(CostingMap.getOverheadCancelClose());
+			break;
+		case "Cost Model Calculation Scenarios":
+			doClickTreeItem("Cost Model Calculation Scenarios");
+			doClick("(//h1[text()='Cost Model Calculation Scenarios']//following::span[text()='New'])[1]");
+			doClick(CostingMap.getOverheadCancelClose());
+			break;
+		case "Cost Model Scenario Results":
+			doClickTreeItem("Cost Model Scenario Results");
+			assertElementIsDisplayedWithXpath("//div[text()='There is no data available to display.']");
+			break;
+		case "Encounter Cost Calculation Scenarios":
+			doClick("(//span[@class='x-tree-node-text '][contains(text(),'Encounter Cost')])[1]");
+			act.moveToElement(CostingMap.getfirstOverheadGridElement()).doubleClick().build().perform();
+			driverDelay(1200);
+			try {
+				if (CostingMap.getReadOnlyBtn().isDisplayed()) {
+					doClick(CostingMap.getReadOnlyBtn());
+					assertElementIsDisplayed(CostingMap.getOverheadCancelClose());
+					doClick(CostingMap.getOverheadCancelClose());
+					driverDelay();
+				}
+			} catch (Exception e2) {
+
+				assertElementIsDisplayed(CostingMap.getOverheadCancelClose());
+				doClick(CostingMap.getOverheadCancelClose());
+				driverDelay();
+			} finally {
+				try {
+					doClick("//span[contains(@id,'messagebox')]//following::span[text()='Cancel & Close']");
+				} catch (Exception e) {
+
+				}
+			}
+			break;
 		case "General Information - Overhead":
 			doClick("//tr[contains(@class,'x-grid-tree-node-leaf')]//span[text()='" + itemName + "']");
 			doClick(CostingMap.getOverheadCancelClose());
@@ -119,41 +161,43 @@ public class CreateNewCostModel extends GoHelper {
 			break;
 		case "Overhead Model Scenario Results":
 			doClickTreeItem("Overhead Model Scenario Results");
-			act.moveToElement(driver.findElement(By.xpath("((//h1[text()='Overhead Model Scenario Results']//following::div[@class='x-grid-item-container'])//tr//td[2]//div)[1]"))).doubleClick().build().perform();
+			act.moveToElement(driver.findElement(By.xpath(
+					"((//h1[text()='Overhead Model Scenario Results']//following::div[@class='x-grid-item-container'])//tr//td[2]//div)[1]")))
+					.doubleClick().build().perform();
 			driverDelay(1000);
 			doClick(CostingMap.getOverheadModelScenResultsCloseBtn());
 			break;
-			
+
 		case "Product Types":
 			doClickTreeItem("Product Types");
 			act.moveToElement(CostingMap.getfirstOverheadGridElement()).doubleClick().build().perform();
 			driverDelay(1000);
 			doClick(CostingMap.getOverheadModelDynamicCloseBtn());
 			break;
-			
-		case "Overhead Account Variability Masters":
-		
-				doClickTreeItem("Overhead Account Variability Masters");
-				act.moveToElement(driver.findElement(By.xpath("((//h1[text()='Overhead Account Variability Masters']//following::div[@class='x-grid-item-container'])//tr//td[2]//div)[1]"))).doubleClick().build().perform();
-				driverDelay(1000);
-				try {
-					if (CostingMap.getReadOnlyBtn().isDisplayed()) {
-						doClick(CostingMap.getReadOnlyBtn());
-						assertElementIsDisplayed(CostingMap.getOverheadCancelClose());
-						doClick(CostingMap.getOverheadCancelClose());
-						driverDelay();
-					}
-				} catch (Exception e2) {
 
+		case "Overhead Account Variability Masters":
+
+			doClickTreeItem("Overhead Account Variability Masters");
+			act.moveToElement(driver.findElement(By.xpath(
+					"((//h1[text()='Overhead Account Variability Masters']//following::div[@class='x-grid-item-container'])//tr//td[2]//div)[1]")))
+					.doubleClick().build().perform();
+			driverDelay(1000);
+			try {
+				if (CostingMap.getReadOnlyBtn().isDisplayed()) {
+					doClick(CostingMap.getReadOnlyBtn());
 					assertElementIsDisplayed(CostingMap.getOverheadCancelClose());
 					doClick(CostingMap.getOverheadCancelClose());
 					driverDelay();
 				}
-				
-			
+			} catch (Exception e2) {
+
+				assertElementIsDisplayed(CostingMap.getOverheadCancelClose());
+				doClick(CostingMap.getOverheadCancelClose());
+				driverDelay();
+			}
+
 			break;
-			
-			
+
 		default:
 			doClick("//tr[contains(@class,'x-grid-tree-node-leaf')]//span[text()='" + itemName + "']");
 
@@ -172,12 +216,11 @@ public class CreateNewCostModel extends GoHelper {
 				assertElementIsDisplayed(CostingMap.getOverheadCancelClose());
 				doClick(CostingMap.getOverheadCancelClose());
 				driverDelay();
-			}
-			finally {
+			} finally {
 				try {
 					doClick("//span[contains(@id,'messagebox')]//following::span[text()='Cancel & Close']");
-				}catch(Exception e) {
-					
+				} catch (Exception e) {
+
 				}
 			}
 			break;
@@ -219,7 +262,7 @@ public class CreateNewCostModel extends GoHelper {
 			driverDelay();
 			OpenTreeItemThenValidate("Activity Volume Data Scenarios");
 			OpenTreeItemThenValidate("Activity Volume Data Calculation Scenarios");
-//			OpenTreeItemThenValidate("GL Data Scenarios"); //doubleclick to open for edit is not working ADS-12368
+////			OpenTreeItemThenValidate("GL Data Scenarios"); //doubleclick to open for edit is not working ADS-12368
 			doClickTreeItem("Statistic Data Scenarios");
 			driverDelay();
 			OpenTreeItemThenValidate("Statistic Data Scenarios");
@@ -250,7 +293,7 @@ public class CreateNewCostModel extends GoHelper {
 			fail(e.getMessage());
 		} finally {
 			try {
-				
+
 				doClick("//span[text()='Model Library']");
 			} catch (Exception e) {
 				doClick("//span[text()='Model Library']");
@@ -307,7 +350,8 @@ public class CreateNewCostModel extends GoHelper {
 			waitUntilElementIsVisible(CostingMap.getNewCostModelPopUp());
 			doDropdownSelectUsingOptionText(costing.getModelTypedropdown(), "Overhead");
 			doClick("//div[contains(@id,'dynamicwindow')]//input[@name='name']");
-			driver.findElement(By.xpath("//div[contains(@id,'dynamicwindow')]//input[@name='name']")).sendKeys(overheadModel);
+			driver.findElement(By.xpath("//div[contains(@id,'dynamicwindow')]//input[@name='name']"))
+					.sendKeys(overheadModel);
 			doClick(costing.getSaveCostModel());
 			driverDelay(200);
 			ExtentReport.logPass("PASS", "test05CreateOverheadCostModel");

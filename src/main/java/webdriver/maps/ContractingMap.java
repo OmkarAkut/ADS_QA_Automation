@@ -1001,11 +1001,16 @@ public class ContractingMap extends MapConfig {
 	private static WebElement ContractTypeColName;
 	public static WebElement getContractTypeColName() {return ContractTypeColName;}
 
-	@FindBy(xpath = "//div[@class='bubble bubble2 large contracting']")
+	//Shilpa updated xpath 4.19.2024
+//	@FindBy(xpath = "//div[@class='bubble bubble3 large contracting']")
+//	private static WebElement ContractingBubble;
+//	public static WebElement getContractingBubble() {return ContractingBubble;}
+	
+	@FindBy(xpath = "//div[@class='bubble bubble3 medium contracting']")
 	private static WebElement ContractingBubble;
 	public static WebElement getContractingBubble() {return ContractingBubble;}
 
-	@FindBy(xpath = "//div[@class='bubble bubble2 large contracting']//*[text()='Contract Models']")
+	@FindBy(xpath = "//div[@class='bubble bubble3 medium contracting']//*[text()='Contract Models']")
 	private static WebElement ContractModelsBubble;
 	public static WebElement getLandingPageContractModelBubble() {return ContractingBubble;}
 

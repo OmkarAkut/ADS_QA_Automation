@@ -27,7 +27,7 @@ public class TestAbilityToCreateNewStandardCostingReport extends GoHelper{
 	static String reportName = "Cost per RVU";
 	static String entity="150 PRIVATE PAY";
 	static String deptHierarchy="Marina Department Hierarchy";
-	static String deptGroup="PATCARE";
+	static String deptGroup="TBDEPTGRP  TB Dept Group";
 	static String directory="Templates";
 	static String subDirectory="Costing";
 	static String newReportName = "CM1 Cost";
@@ -98,8 +98,8 @@ public class TestAbilityToCreateNewStandardCostingReport extends GoHelper{
 			//			ContractModelsHelper.ChooseOptionFromSelectDropdown(reportMap.reportLibraryPageEntitySelectDropdown(),1);
 			//			ContractModelsHelper.keyInValues(reportMap.reportLibraryPageEntitySearch(), deptGroup);
 			//			doClick("//div[text()='PATCARE  PATCARE']");
-			doClick("//div[text()='PRATEST1']");
-			doClick("//div[text()='PRATEST1']");
+			doClick("//div[text()='"+deptGroup+"']");
+			doClick("//div[text()='"+deptGroup+"']");
 			driverDelay(1000);
 			doClick(reportMap.reportLibraryPageEntityOkButton());
 			driverDelay(1000);
@@ -114,7 +114,7 @@ public class TestAbilityToCreateNewStandardCostingReport extends GoHelper{
 					
 						for(int i=0;i<=5;i++) {
 							doClick(reportMap.reportLibraryPageEntityRefreshButton());
-							Thread.sleep(1000);
+							driverDelay();
 							if(driver.findElement(By.xpath("(//span[text()='CM1 Cost']//following::div[5]/a)[1]")).getText().equals("COMPLETED")) {
 								ExtentReport.logPass("PASS", "test02OpenCostingReport");
 								break;
@@ -123,54 +123,23 @@ public class TestAbilityToCreateNewStandardCostingReport extends GoHelper{
 								ExtentReport.logFail("FAIL", "test02OpenCostingReport", driver);
 								break;
 							}
+							else if(driver.findElement(By.xpath("(//span[text()='CM1 Cost']//following::div[5]/a)[1]")).getText().equals("PENDING")) {
+								continue;
+							}
+							
 						}
 
-//			try {
-//				for (int i = 0; i <= refreshTime; i++) {
-//					waitForPresenceOfElement(("//span[text()='" + newReportName + "']"));
-//					try {
-//						doClick(reportMap.reportLibraryPageEntityRefreshButton());
-//						waitForPresenceOfElement(("//span[text()='" + newReportName + "']"));
-//
-//						if (driver
-//								.findElement(By.xpath("(//span[text()='" + newReportName + "']//following::div/a)[1]"))
-//								.getText().equals("COMPLETED")) {
-//							assertTrue(printout);
-//							break;
-//						}
-//						else if (driver
-//								.findElement(By.xpath("(//span[text()='" + newReportName + "']//following::div/a)[1]"))
-//								.getText().equals("FAILED")) {
-//							ExtentReport.logFail("FAIL", "test02OpenCostingReport", driver);
-//							break;
-//						}
-//
-//						continue;
-//					} catch (Exception | AssertionError e) {
-//						continue;
-//					}
-//				}
-//			} 
-//			catch (Exception e) {
-//
-//			}
-//			driverDelay(1000);
-//						String status = driver.findElement(By.xpath("(//span[text()='CM1 Cost']//following::div[5]/a)[1]")).getText();
-//						assertEquals("Status of report is COMPLETED", Status, COMPLETED);
-//						assertElementText(status, "COMPLETED", printout);
+
 						assertElementTextWithXpath("(//span[text()='CM1 Cost']//following::div[5]/a)[1]","COMPLETED" , printout);
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test02OpenCostingReport", driver, e);
 			fail(e.getMessage());
 		}
 	}
-	private void elseif() {
-		// TODO Auto-generated method stub
-
-	}
+	
 	@AfterClass
 	public static void endtest() throws Exception {
-		doClosePageOnLowerBar(" Close Report Library");
+		doClosePageOnLowerBar("Report Library");
 		ExtentReport.report.flush();
 	}
 }

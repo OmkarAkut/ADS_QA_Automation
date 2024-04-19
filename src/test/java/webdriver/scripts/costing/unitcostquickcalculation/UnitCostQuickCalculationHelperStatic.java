@@ -267,7 +267,7 @@ public class UnitCostQuickCalculationHelperStatic extends LoginStatic {
 
     columnID = driver.findElement(By.xpath("//*[contains(@class,'column-header-text')][text()='" + headerName + "']")).getAttribute("id");
     int columnIDDigits = Integer.parseInt(getNumbersFromStringWithRegex(columnID));
-    String columnXpath = "//tr[contains(@class,'x-grid-row')][" + row + "]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-" + columnIDDigits + "')]";
+    String columnXpath = "(//tr[contains(@class,'x-grid-row')]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-" + columnIDDigits + "')])[" + row + "]";
     String columnValue = driver.findElement(By.xpath(columnXpath)).getText();
     System.out.println("Value: " + columnValue);
 

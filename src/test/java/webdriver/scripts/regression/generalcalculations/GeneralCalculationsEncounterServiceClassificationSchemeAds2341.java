@@ -86,7 +86,7 @@ public class GeneralCalculationsEncounterServiceClassificationSchemeAds2341 exte
       confirmCalculationStatusDetailsContains("Process Completed");
       closeViewDialog();
       deleteFirstRow();
-      deleteMyCalculationStatusFirstRow();
+//      deleteMyCalculationStatusFirstRow();
       ExtentReport.logPass("PASS", "test01ClickRemoveButtonAndVerifyRemoveProcessRanSuccessfully");
 	} catch (Exception|AssertionError e) {
 		ExtentReport.logFail("FAIL", "test01ClickRemoveButtonAndVerifyRemoveProcessRanSuccessfully", driver, e);

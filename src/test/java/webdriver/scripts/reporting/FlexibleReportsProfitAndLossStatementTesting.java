@@ -164,8 +164,9 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 
 			for (int i = 0; i <= denominator; i++) {
 				try {
-					Thread.sleep(2000);
+					
 					doClick(reportMap.reportLibraryPageEntityRefreshButton());
+					Thread.sleep(2000);
 					waitForPresenceOfElement(("//span[text()='" + orgName + "']"));
 					String[] staNumber=status.replaceAll("Step ", "").split("/");
 					int numeratorNum=Integer.parseInt(staNumber[0]);

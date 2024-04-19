@@ -2,6 +2,7 @@ package webdriver.scripts.costing;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import java.text.DecimalFormat;
 import org.junit.AfterClass;
@@ -10,6 +11,7 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import ExtentReport.ExtentReport;
 
@@ -330,11 +332,12 @@ public class RvuMaintenanceAds1492 extends GoHelper {
 	public void test10bAssertCostModelScenarioFieldsHaveBeenClearedOfValuesAndDisabled_5993() throws Throwable {
 		try {
 			assertValueAttributeValue(costing.getRvuMaintenanceDropdownCostModelScenarioNone(), "<None>");
-			assertElementContainsDisabledAttribute(costing.getRvuMaintenanceDropdownCostModelScenario());
+//			assertElementContainsDisabledAttribute(costing.getRvuMaintenanceDropdownCostModelScenario());//Only this class dont have disabled attribute in class so generic method cannot be used
+			assertdropdownDisabled(costing.getRvuMaintenanceDropdownCostModelScenario());
 			assertValueAttributeValue(costing.getRvuMaintenanceDropdownActivityVolumeScenarioNone(), "<None>");
-			assertElementContainsDisabledAttribute(costing.getRvuMaintenanceDropdownActivityVolumeScenario());
+			assertdropdownDisabled(costing.getRvuMaintenanceDropdownActivityVolumeScenario());
 //			assertValueAttributeValue(costing.getRvuMaintenanceDropdownPriceListNone(), "<None>"); this element is not showing in DOM Issue https://harrisaffinity.atlassian.net/browse/ADS-11871
-			assertElementContainsDisabledAttribute(costing.getRvuMaintenanceDropdownPriceList());
+			assertdropdownDisabled(costing.getRvuMaintenanceDropdownPriceList());
 			ExtentReport.logPass("PASS", "test10bAssertCostModelScenarioFieldsHaveBeenClearedOfValuesAndDisabled");
 
 		} catch (Exception|AssertionError e) {
@@ -439,7 +442,23 @@ public class RvuMaintenanceAds1492 extends GoHelper {
 			fail(e.getMessage());
 		}
 	}
-
+	public void assertdropdownDisabled(WebElement element) {
+		String disabledAttributeText=null;
+		try {
+			waitForAjaxExtJs();
+			disabledAttributeText = element.getAttribute("class");
+			
+		} catch (Throwable e) {
+			System.out.println("Element Not Found");
+			fail("element not found");
+		}
+		boolean isDisabled = disabledAttributeText.contains("disablField");
+		if (printout) {
+			System.out.println("Element class text: " + disabledAttributeText);
+			System.out.println("IsDisabled: " + isDisabled);
+		}
+		assertTrue(disabledAttributeText, isDisabled);
+	}
 	private void setDepartmentGroup(String groupId) throws InterruptedException {
 		UcqcHelper.updateDepartment(groupId);
 		//Shilpa 13.09.2022 commented below lines search by department group not working in UI

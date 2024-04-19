@@ -194,6 +194,7 @@ public class WaitHelper extends JavaHelper {
 		}
 	}
 	public static void waitForDisplayedSavingSpinnerToEnd() {
+		
 		boolean spinner = true;
 		int count=0;
 		while(spinner){

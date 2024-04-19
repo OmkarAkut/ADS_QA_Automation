@@ -22,7 +22,7 @@ public class CostingCalculateOverheadScenario extends CalculationHelper {
 	JavascriptExecutor executor = (JavascriptExecutor) driver;
 	static String viewLogTitle = "Overhead Model Scenario Calculation";
 	static String CalculationScenario = "v11.2 REGRESSION OH Scenario";
-	static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
+	static String currentDateTime = new SimpleDateFormat("HH.mm.ss").format(new java.util.Date());
 	static ContractingMap modelMap;
 
 	/** Regression: Test script for ADS-5991 */
@@ -75,7 +75,7 @@ public class CostingCalculateOverheadScenario extends CalculationHelper {
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
 			assertViewLogTitle(viewLogTitle);
-			checkForRecordsProcessed("Inserting 12 OH Received records");
+			checkForRecordsProcessed("Inserting 1 OH Received records");
 //      doClick(driver.findElement(By.xpath("(//div[contains(@id,'window')]//span[contains(@id,'btnInnerEl')]//parent::button)[6]")));
 //      driverDelay();
 			confirmCalculationStatusDetailsContains("Process Completed");

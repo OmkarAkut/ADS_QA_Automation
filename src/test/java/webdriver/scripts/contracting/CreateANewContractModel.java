@@ -31,7 +31,7 @@ public class CreateANewContractModel extends CalculationHelper {
 	String[] columns = { "100  Pacific Hospital", "151  Copy of Marina Medical Center" };
 	String[] columnsToSelect = { "100  Pacific Hospital", "151  Copy of Marina Medical Center", "150  Marina Medical Center" };
 	String[] columnsToRemove = { "100  Pacific Hospital", "151  Copy of Marina Medical Center" };
-	String addProvider = "150 Marina Medical Center";
+	String addProvider = "150  Marina Medical Center";
 	static String[] filter = { "Name", "Is", "Equal To", serviceName };
 	
 
@@ -71,7 +71,8 @@ public class CreateANewContractModel extends CalculationHelper {
 			doClick(modelMap.getApplySelections());
 			waitForElementToBeVisible(ContractingMap.getNewContractModelPopUp());
 			// Validate model name and providers
-			assertElementTextContains(ContractingMap.getProviderText(), addProvider, printout);
+			assertElementIsDisplayedWithXpath("//div[contains(@class,'contractFrmCls')]//ul/li[contains(text(),'"+addProvider+"')]");
+//			assertElementTextContains(ContractingMap.getProviderText(), addProvider, printout);
 			doClick(modelMap.getSaveContractModel());
 			goToPage("Contract Models");
 			doSearchForContractModel(contractModelName);

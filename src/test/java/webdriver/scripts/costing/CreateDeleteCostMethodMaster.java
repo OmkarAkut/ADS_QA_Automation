@@ -51,27 +51,12 @@ public class CreateDeleteCostMethodMaster extends GoHelper{
 			fail(e.getMessage());
 		}
 	}
-	public static void saveCustomSettings(String setName,String modelName) {
-		try {
-			goToPage("Customize Task Lists");
-			doClick("//label[text()='"+setName+"']//preceding-sibling::span");
-			driverDelay(1000);
-			doClick(SystemMaintenanceMap.getTaskListSaveButton());
-			driverDelay(1000);
-			doClick("//div[contains(@id,'messagebox')]//span[text()='Save']");
-			waitForDisplayedSavingSpinnerToEnd();
-//			waitForAjaxExtJs();
-			driverDelay(3000);
-			goToPage(modelName);
-			
-		} catch (Exception e) {
-			
-		}
-	}
+	
 	@Test
 	public void test01OpenAllMasters_ADS_6669() throws Throwable {
 		try {
 			doSearchForModel(costModel);
+			
 			tableDoubleClickCellFirstColumn(costModel);
 			driverDelay(300);
 			assertElementIsDisplayedWithXpath("//div[contains(@id,'taskfolder')]//following::table[contains(@id,'treeview')]//span[text()='CM Test']");
@@ -104,6 +89,7 @@ public class CreateDeleteCostMethodMaster extends GoHelper{
 			assertElementIsDisplayedWithXpath("//div[contains(@id,'taskfolder')]//following::table[contains(@id,'treeview')]//span[text()='Groupings']");
 			assertElementIsDisplayedWithXpath("//div[contains(@id,'taskfolder')]//following::table[contains(@id,'treeview')]//span[text()='Miscellaneous']");
 			ExtentReport.logPass("PASS", "test01OpenAllMasters");
+			
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01OpenAllMasters", driver, e);
 			fail(e.getMessage());
