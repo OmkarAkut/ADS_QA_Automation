@@ -7,12 +7,13 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.interactions.Actions;
 
 import webdriver.corehelpers.GoHelper;
 import webdriver.maps.SystemMaintenanceMap;
 
 public class saveSystemSettings extends GoHelper{
-	
+	Actions act=new Actions(driver);
 	public void saveScreenshot(String name) {
 		 File screenshotFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 	        try {
@@ -26,7 +27,9 @@ public class saveSystemSettings extends GoHelper{
 			goToPage("Customize Task Lists");
 			driverDelay();
 			saveScreenshot("Before");
-			doJsClick(driver.findElement(By.xpath("//label[text()='"+setName+"']//preceding-sibling::span")));
+			
+			act.moveToElement(driver.findElement(By.xpath("//label[text()='"+setName+"']//preceding-sibling::span"))).click().perform();
+//			doClick(driver.findElement(By.xpath("//label[text()='"+setName+"']//preceding-sibling::span")));
 			saveScreenshot("selectCustom");
 			driverDelay(1000);
 			doClick(SystemMaintenanceMap.getTaskListSaveButton());
@@ -53,7 +56,8 @@ public class saveSystemSettings extends GoHelper{
 		try {
 			goToPage("Customize Task Lists");
 			driverDelay();
-			doJsClick(driver.findElement(By.xpath("//label[text()='Use Default']//preceding-sibling::span")));
+			act.moveToElement(driver.findElement(By.xpath("//label[text()='Use Default']//preceding-sibling::span"))).click().perform();
+//			doJsClick(driver.findElement(By.xpath("//label[text()='Use Default']//preceding-sibling::span")));
 //			doClick("//label[text()='Use Default']//preceding-sibling::span");
 			doClick(SystemMaintenanceMap.getTaskListSaveButton());
 			doClick("//div[contains(@id,'messagebox')]//span[text()='Save']");
