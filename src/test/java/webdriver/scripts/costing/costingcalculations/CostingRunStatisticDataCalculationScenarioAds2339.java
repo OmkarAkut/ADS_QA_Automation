@@ -19,6 +19,7 @@ public class CostingRunStatisticDataCalculationScenarioAds2339 extends Calculati
   private final String costModel = "QA Marina";
   String statisticDataScenario = "Automated REGRESSION Stat Data Scenario";
   String statisticDataCalculationScenario = "Automated REGRESSION Stat Data Calc FY05";
+//  String statisticDataCalculationScenario = "QA REGRESSION Stat Data Calc FY05";
   String expectedFilterTotal = "1237";
   /** Regression: Test script for ADS-5989 */
   @BeforeClass

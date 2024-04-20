@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
@@ -25,7 +26,7 @@ public class saveSystemSettings extends GoHelper{
 			goToPage("Customize Task Lists");
 			driverDelay();
 			saveScreenshot("Before");
-			doClick("//label[text()='"+setName+"']//preceding-sibling::span");
+			doJsClick(driver.findElement(By.xpath("//label[text()='"+setName+"']//preceding-sibling::span")));
 			saveScreenshot("selectCustom");
 			driverDelay(1000);
 			doClick(SystemMaintenanceMap.getTaskListSaveButton());
@@ -52,7 +53,8 @@ public class saveSystemSettings extends GoHelper{
 		try {
 			goToPage("Customize Task Lists");
 			driverDelay();
-			doClick("//label[text()='Use Default']//preceding-sibling::span");
+			doJsClick(driver.findElement(By.xpath("//label[text()='Use Default']//preceding-sibling::span")));
+//			doClick("//label[text()='Use Default']//preceding-sibling::span");
 			doClick(SystemMaintenanceMap.getTaskListSaveButton());
 			doClick("//div[contains(@id,'messagebox')]//span[text()='Save']");
 			waitForDisplayedSpinnerToEnd();
