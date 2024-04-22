@@ -75,35 +75,42 @@ public class TestAbilitytoCreateExistingStandardCostingReport extends GoHelper {
 			doClick(reportMap.reportLibraryPageEntityOkButton());
 			doClick(reportMap.reportLibraryPageEntityRunButton());
 			waitForElementToBeVisible(reportMap.reportLibraryPageEntityRefreshButton());
-			try {
-				for (int i = 0; i <= refreshTime; i++) {
-					waitForPresenceOfElement(("//span[text()='" + newReportName + "']"));
-					try {
-						doClick(reportMap.reportLibraryPageEntityRefreshButton());
-						waitForPresenceOfElement(("//span[text()='" + newReportName + "']"));
 
-						if (driver
-								.findElement(By.xpath("(//span[text()='" + newReportName + "']//following::div/a)[1]"))
-								.getText().equals("COMPLETED")) {
-							assertTrue(printout);
-							break;
-						}
-						else if (driver
-								.findElement(By.xpath("(//span[text()='" + newReportName + "']//following::div/a)[1]"))
-								.getText().equals("FAILED")) {
-							assertTrue(printout);
-							break;
-						}
+			//Shilpaa updated script for 11.2 on 22.4.2024
+			for (int i = 0; i < refreshTime; i++) {
+				doClick(reportMap.reportLibraryPageEntityRefreshButton());
+				driverDelay(2500);
+				if (i == 4) {
+					System.out.println("Status is not updated to COMPLETED");
+					fail();
+					break;
+				}
+				try {
+					if (driver.findElement(By.xpath("(//div[@class='GJT013UBH']//tbody//td/div)[7]/a")).getText()
+							.equals("COMPLETED")) {
+						assertElementTextWithXpath("(//div[@class='GJT013UBH']//tbody//td/div)[7]/a", "COMPLETED",
+								printout);
+						ExtentReport.logPass("PASS", "test02OpenCostingReport");
+						break;
 
-						continue;
-					} catch (Exception | AssertionError e) {
+					}
+				} catch (Exception e1) {
+					if (driver.findElement(By.xpath("(//div[@class='GJT013UBH']//tbody//td/div)[7]")).isDisplayed()) {
+						System.out.println(i);
+
 						continue;
 					}
+					if (driver.findElement(By.xpath("(//div[@class='GJT013UBH']//tbody//td/div)[7]/a")).getText()
+							.contains("FAILED")) {
+						fail();
+						ExtentReport.logFail("FAIL", "test02OpenCostingReport", driver, e1);
+					}
+
 				}
-			} 
-			catch (Exception e) {
 
 			}
+
+		
 			driverDelay(1000);
 			driver.findElement(By.xpath("(//span[text()='" + newReportName + "']//following::div/a)[1]")).click();
 			driverDelay(1000);

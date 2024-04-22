@@ -66,10 +66,15 @@ public class GeneralCalculationsRunContractualAllowancesScenarioAds2163 extends 
 				doClick(driver.findElement(By.xpath("//div[text()='Contractual Allowance']//following::span[text()='Export']")));
 				waitForSpinnerToEnd();
 				driverDelay(2000);
+				//Shilpa updated below lines on 22.4.2024
+				waitForFirstRowCalculationBarToReach100Percent();
+				calculationStatusPageOpenViewDialog();
+				checkForRecordsProcessed("Selection Criteria:");
+				closeViewDialog();
 //				calculationStatusPageOpenViewDialog();
 //				waitForCalculationToEndAndVerifyViewLogContainsOnViewDialogAndCloseDialog("Selection Criteria:");
-				waitForCalculationToEndAndVerifySummaryDetailsStringOnDialogAndCloseDialog(
-						"Selection Criteria:");//Shilpa 20.09.2022 added assert value
+//				waitForCalculationToEndAndVerifySummaryDetailsStringOnDialogAndCloseDialog(
+//						"Selection Criteria:");//Shilpa 20.09.2022 added assert value
 				assertCalcStatusColumnForFirstRowOfStatusTableIsCompleted();
 //				deleteMyCalculationStatusFirstRow();
 				deleteFirstRow();

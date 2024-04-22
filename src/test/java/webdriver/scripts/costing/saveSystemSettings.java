@@ -27,7 +27,6 @@ public class saveSystemSettings extends GoHelper{
 			goToPage("Customize Task Lists");
 			driverDelay();
 			saveScreenshot("Before");
-			
 			act.moveToElement(driver.findElement(By.xpath("//label[text()='"+setName+"']//preceding-sibling::span"))).click().perform();
 //			doClick(driver.findElement(By.xpath("//label[text()='"+setName+"']//preceding-sibling::span")));
 			saveScreenshot("selectCustom");
@@ -40,7 +39,7 @@ public class saveSystemSettings extends GoHelper{
 			waitForDisplayedSavingSpinnerToEnd();
 			
 //			waitForAjaxExtJs();
-			driverDelay(10000);
+			driverDelay(5000);
 			
 			goToPage("Customize Task Lists");
 			
