@@ -75,11 +75,11 @@ public class TestAbilitytoCreateExistingStandardCostingReport extends GoHelper {
 			doClick(reportMap.reportLibraryPageEntityOkButton());
 			doClick(reportMap.reportLibraryPageEntityRunButton());
 			waitForElementToBeVisible(reportMap.reportLibraryPageEntityRefreshButton());
-
+			driverDelay(2000);
 			//Shilpaa updated script for 11.2 on 22.4.2024
 			for (int i = 0; i < refreshTime; i++) {
 				doClick(reportMap.reportLibraryPageEntityRefreshButton());
-				driverDelay(2500);
+				driverDelay(3000);
 				if (i == 4) {
 					System.out.println("Status is not updated to COMPLETED");
 					fail();

@@ -459,7 +459,7 @@ public class ContractingMap extends MapConfig {
 	private static WebElement ContractFeeForServicePaymentFilter;
 	public static WebElement getContractFeeForServicePaymentFilter() {return ContractFeeForServicePaymentFilter;}
 
-	@FindBy(xpath = "//span[contains(@class,'x-panel-header-text')][text()='Service Model']/../following-sibling::div")
+	@FindBy(xpath = "//div[contains(@class,'x-title-text')][text()='Service Model']/../following-sibling::div")
 	private static WebElement ContractFeeForServicePaymentFilterServiceModel;
 	public static WebElement getContractFeeForServicePaymentFilterServiceModel() {return ContractFeeForServicePaymentFilterServiceModel;}
 
@@ -471,27 +471,35 @@ public class ContractingMap extends MapConfig {
 	private static WebElement ContractFeeForServicePaymentServiceModel;
 	public WebElement getContractFeeForServicePaymentServiceModel() {return ContractFeeForServicePaymentServiceModel;}
 
-	@FindBy(xpath = "//span[contains(@id,'medicareinpatientpps')]")
+	@FindBy(xpath = "//div[contains(text(),'Edit Price for')]")
 	private static WebElement ContractEditPricePopUp;
 	public WebElement getContractEditPricePopUp() {return ContractEditPricePopUp;}
 
-	@FindBy(xpath = "//span[contains(@id,'medicareinpatientpps')]//following::span[text()='General']//following::span[text()='Select'][1]")
+//	@FindBy(xpath = "//span[contains(@id,'medicareinpatientpps')]//following::span[text()='General']//following::span[text()='Select'][1]")
+	//Shilpa updated 24.4.2024
+	@FindBy(xpath = "//span[contains(@id,'medicareinpatientpps')]//following::div[text()='General']//following::span[text()='Select'][1]")
 	private static WebElement ContractEditPricePopUpDischargeStatus;
 	public WebElement getContractEditPricePopUpDischargeStatus() {return ContractEditPricePopUpDischargeStatus;}
 
-	@FindBy(xpath = "//span[text()='Selector on: Discharge Status Code for Transfers']")
+//	@FindBy(xpath = "//span[text()='Selector on: Discharge Status Code for Transfers']")
+	@FindBy(xpath = "//div[text()='Selector on: Discharge Status Code for Transfers']")
 	private static WebElement ContractEditPricePopUpDischargeStatusPopUp;
 	public WebElement getContractEditPricePopUpDischargeStatusPopUp() {return ContractEditPricePopUpDischargeStatusPopUp;}
 
-	@FindBy(xpath = "//span[text()='Selector on: Discharge Status Code for Transfers']//following::label[text()='Select All']/parent::td/input")
+//	@FindBy(xpath = "//span[text()='Selector on: Discharge Status Code for Transfers']//following::label[text()='Select All']/parent::td/input")
+	//Shilpa updated 24.4.2024
+	@FindBy(xpath = "//div[text()='Selector on: Discharge Status Code for Transfers']//following::label[text()='Select All']/preceding::input[1]")
 	private static WebElement ContractEditPricePopUpDischargeStatusSelectAll;
 	public WebElement getContractEditPricePopUpDischargeStatusSelectAll() {return ContractEditPricePopUpDischargeStatusSelectAll;}
 
-	@FindBy(xpath = "//span[text()='Selector on: Discharge Status Code for Transfers']//following::span[text()='Apply']")
+//	@FindBy(xpath = "//span[text()='Selector on: Discharge Status Code for Transfers']//following::span[text()='Apply']")
+	//Shilpa updated xpath for 11.2 on 24.4.2024
+	@FindBy(xpath = "//div[text()='Selector on: Discharge Status Code for Transfers']//following::span[text()='Apply']")
+
 	private static WebElement ContractEditPricePopUpDischargeStatusApply;
 	public WebElement getContractEditPricePopUpDischargeStatusApply() {return ContractEditPricePopUpDischargeStatusApply;}
 
-	@FindBy(xpath = "(//div[contains(@id,'boundlist')])[3]/div/div")
+	@FindBy(xpath = "(//div[contains(@id,'boundlist')])/ul/div")
 	private static List<WebElement> ContractEditPricePopUpDischargeStatusItemCount;
 	public static List<WebElement> getContractEditPricePopUpDischargeStatusItemCount() {return ContractEditPricePopUpDischargeStatusItemCount;}
 
@@ -503,7 +511,9 @@ public class ContractingMap extends MapConfig {
 	private static WebElement ContractEditPricePopUpDischargeStatusMedicareYearDrpdwn;
 	public static WebElement getContractEditPricePopUpDischargeStatusMedicareYearDrpdwn() {return ContractEditPricePopUpDischargeStatusMedicareYearDrpdwn;}
 
-	@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='Oct 1, 2022 - Sept 30, 2023']/..")
+//	@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='Oct 1, 2022 - Sept 30, 2023']/..")
+	//Shilpa update xpath for 11.2 on 24.4.2024
+	@FindBy(xpath = "//div[contains(@class,'boundlist')]/ul/li[text()='Oct 1, 2022 - Sept 30, 2023']/..")
 	private static WebElement ContractEditPricePopUpDischargeStatusMedicareYearDrpdwnList;
 	public static WebElement getContractEditPricePopUpDischargeStatusMedicareYearDrpdwnList() {return ContractEditPricePopUpDischargeStatusMedicareYearDrpdwnList;}
 
@@ -529,7 +539,10 @@ public class ContractingMap extends MapConfig {
 
 //	Omkar 26/6/2023 : xpath changes for 11.2
 //	@FindBy(xpath = "//div[contains(@class,'horzOverflow')]/div//span[text()='Calculate']//parent::button")
-	@FindBy(xpath = "//div[contains(@class,'horzOverflow')]/div//span[text()='Calculate']//parent::button")
+//	@FindBy(xpath = "//div[contains(@class,'horzOverflow')]/div//span[text()='Calculate']//parent::button")
+	//Shilpa 24.4.2024 xpath changes for 11.2
+	@FindBy(xpath = "//div[contains(@class,'horzOverflow')]/div//span[text()='Calculate']")
+
 	private static WebElement ContractFeeForServicePaymentCalculateButton;
 	public static WebElement getContractFeeForServicePaymentCalculateButton() {return ContractFeeForServicePaymentCalculateButton;}
 

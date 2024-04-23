@@ -417,13 +417,23 @@ public class GoHelper extends AssertHelper {
 
 	public static void navigateCloseSectionOpenNewSection(String closeSection, String newSection) throws InterruptedException {
 		Thread.sleep(3000);  //was 5000
-		waitForPresenceOfElement("//*[contains(@id, 'customaccordianpanel')][text()='" + closeSection + "']/parent::div/following-sibling::div/img");
+//		waitForPresenceOfElement("//*[contains(@id, 'customaccordianpanel')][text()='" + closeSection + "']/parent::div/following-sibling::div/img");
+		//Shilpa updated for 11.2 on 24.4.2024
+		waitForPresenceOfElement("//*[contains(@id, 'customaccordianpanel')][text()='" + closeSection + "']/parent::div/following-sibling::div");
+
+//		driver
+//		.findElement(By.xpath("//*[contains(@id, 'customaccordianpanel')][text()='" + closeSection + "']/parent::div/following-sibling::div/img"))
+//		.click();
+		//Shilpa updated for 11.2 on 24.4.2024
+
 		driver
-		.findElement(By.xpath("//*[contains(@id, 'customaccordianpanel')][text()='" + closeSection + "']/parent::div/following-sibling::div/img"))
+		.findElement(By.xpath("//*[contains(@id, 'customaccordianpanel')][text()='" + closeSection + "']/parent::div/following-sibling::div"))
 		.click();
 		Thread.sleep(2000); //was 3000
 		waitForAjaxExtJs();
-		driver.findElement(By.xpath("//*[contains(@id, 'customaccordianpanel')][text()='" + newSection + "']/parent::div/following-sibling::div/img")).click();
+		//Shilpa updated for 11.2 on 24.4.2024
+
+		driver.findElement(By.xpath("//*[contains(@id, 'customaccordianpanel')][text()='" + newSection + "']/parent::div/following-sibling::div")).click();
 		waitForAjaxExtJs();
 		Thread.sleep(2000); //was 3000
 	}
@@ -451,7 +461,9 @@ public class GoHelper extends AssertHelper {
 	public static void navigateOpenNewSection(String newSection) throws InterruptedException {
 		Thread.sleep(3000);  //was 5000
 		waitForAjaxExtJs();
-		driver.findElement(By.xpath("//*[contains(@id, 'customaccordianpanel')][text()='" + newSection + "']/parent::div/following-sibling::div/img")).click();
+		//Shilpa updated for 11.2 on 24.4.2024
+
+		driver.findElement(By.xpath("//*[contains(@id, 'customaccordianpanel')][text()='" + newSection + "']/parent::div/following-sibling::div")).click();
 		waitForAjaxExtJs();
 		Thread.sleep(2000); //was 3000
 	}

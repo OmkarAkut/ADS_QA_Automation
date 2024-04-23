@@ -997,13 +997,18 @@ public class ContractModelsHelper extends GoHelper {
 			  for (Map.Entry<String, String> set :
 				  services.entrySet()) {
 				  System.out.println(set.getKey().toString());
+				 
 				  scrollToView("(//div[text()='" + set.getKey().toString() + "']//following::td/div)[1]");
 				  System.out.println(driver.findElement(By.xpath("(//div[text()='"+set.getKey().toString() +"']//following::td/div)[1]")).getText());
 				  	if(!((driver.findElement(By.xpath("(//div[text()='"+set.getKey().toString() +"']//following::td/div)[1]")).getText().equals(set.getValue().toString())))) {
-					  driver.findElement(By.xpath("(//div[text()='"+set.getKey().toString() +"']//following::td/div)[1]")).click();
+//					  driver.findElement(By.xpath("(//div[text()='"+set.getKey().toString() +"']//following::td/div)[1]")).click();
 					  Thread.sleep(1500);
-					  keyInValues(driver.findElement(By.xpath("//div[text()='"+set.getKey().toString()+"']//following::input[@name='amount']")), 
-								set.getValue().toString());
+					  Actions act=new Actions(driver);
+					  System.out.println(set.getValue().toString());
+					  //Shilpa updated for 11.2 on 24.2.2024
+					  act.moveToElement(driver.findElement(By.xpath("(//div[text()='"+set.getKey().toString() +"']//following::td/div)[1]"))).click().sendKeys(Keys.BACK_SPACE).sendKeys(set.getValue().toString()).sendKeys(Keys.ENTER).perform();
+//					  keyInValues(driver.findElement(By.xpath("(//div[text()='"+set.getKey().toString() +"']//following::td/div)[1]")), 
+//								set.getValue().toString());
 				  }
 				
 			  }

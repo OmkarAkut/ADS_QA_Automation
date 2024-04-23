@@ -160,8 +160,41 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 			String[] staNum=status.replaceAll("Step ", "").split("/");
 			int numerator=Integer.parseInt(staNum[0]);
 			int denominator=Integer.parseInt(staNum[1]);
-			String reportStatus=driver.findElement(By.xpath("//span[text()='" + orgName + "']//following::td[5]/div/a")).getText();
+//			String reportStatus=driver.findElement(By.xpath("//span[text()='" + orgName + "']//following::td[5]/div/a")).getText();
+			//Shilpa update code on 24.4.2024
+			for (int i = 0; i < denominator; i++) {
+				doClick(reportMap.reportLibraryPageEntityRefreshButton());
+				Thread.sleep(2000);
+				if (i == denominator) {
+					System.out.println("Status is not updated to COMPLETED");
+					fail();
+					break;
+				}
+				try {
+					if (driver.findElement(By.xpath("(//div[@class='GJT013UBLJB']//tbody//td/div)[7]/a")).getText()
+							.equals("COMPLETED")) {
+						assertElementTextWithXpath("(//div[@class='GJT013UBLJB']//tbody//td/div)[7]/a", "COMPLETED",
+								printout);
+						ExtentReport.logPass("PASS", "test02OpenCostingReport");
+						break;
 
+					}
+				} catch (Exception e1) {
+					if (driver.findElement(By.xpath("(//div[@class='GJT013UBH']//tbody//td/div)[7]")).isDisplayed()) {
+						System.out.println(i);
+
+						continue;
+					}
+					if (driver.findElement(By.xpath("(//div[@class='GJT013UBLJB']//tbody//td/div)[7]/a")).getText()
+							.contains("FAILED")) {
+						fail();
+						ExtentReport.logFail("FAIL", "test02OpenCostingReport", driver, e1);
+					}
+
+				}
+
+			}
+			/* Shilpa commented below lines, not required on 24.4.2024
 			for (int i = 0; i <= denominator; i++) {
 				try {
 					
@@ -214,7 +247,7 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 				}
 				
 //				ExtentReport.logPass("PASS", "test06SaveReportAndAssertStatus");
-			}	
+			}	*/
 			ExtentReport.logPass("PASS", "test06SaveReportAndAssertStatus");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test06SaveReportAndAssertStatus", driver, e);
