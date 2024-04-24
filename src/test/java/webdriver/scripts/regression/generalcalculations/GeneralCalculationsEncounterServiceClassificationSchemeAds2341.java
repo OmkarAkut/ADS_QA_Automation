@@ -25,12 +25,17 @@ import webdriver.maps.mapbuilder.BuildMap;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class GeneralCalculationsEncounterServiceClassificationSchemeAds2341 extends CalculationHelper {
 
-  static String encounter = "OPPS2020DCA001";
-  static String encounterNoServices = "OPPS2020DCA002";
+  static String encounter = "OPPS2021DRUGRA001";
+//  static String encounterNoServices = "OPPS2020DCA002";
   //Encounter Services
+//  List<String> expectedEncounters = Arrays.asList(
+//          "QAREGRESSION34567890123456789012345678901", //"PC Pop Fac or Non F"
+//          "OPPS 2020"
+//  );
+  //Shilpa updated for 11.2 on 24.4.2024
   List<String> expectedEncounters = Arrays.asList(
           "QAREGRESSION34567890123456789012345678901", //"PC Pop Fac or Non F"
-          "OPPS 2020"
+          "OPPS 2021"
   );
   static String viewLogTitleRemove = "Remove Encounter Service Classification";
   static String viewLogTitleApply = "Encounter Service Classification Scheme";
@@ -66,7 +71,7 @@ public class GeneralCalculationsEncounterServiceClassificationSchemeAds2341 exte
   }
 //ADS-6102 all steps
   @Test
-  public void test01ClickRemoveButtonAndVerifyRemoveProcessRanSuccessfully_ADS_6102()
+  public void test01ClickRemoveButtonAndVerifyRemoveProcessRanSuccessfully()
           throws InterruptedException,Throwable {
     try {
     	doClick(DataMaintenanceMap.getLoadDataFilterButton());
@@ -121,12 +126,14 @@ public class GeneralCalculationsEncounterServiceClassificationSchemeAds2341 exte
 //  }
 
   @Test
-  public void test03VerifyNoServicesAppearOnEncountersPage_ADS_6102()
+  public void test03VerifyNoServicesAppearOnEncountersPage()
           throws InterruptedException,Throwable {
     try {
 		doMaintainDataPageSelectAtoZOption("Encounters");
-		doSearchForModel(encounterNoServices);
-		tableDoubleClickCellFirstColumn(encounterNoServices);
+//		doSearchForModel(encounterNoServices);
+//		tableDoubleClickCellFirstColumn(encounterNoServices);
+		doSearchForModel(encounter);
+		tableDoubleClickCellFirstColumn(encounter);
 //		openMaintainDataBatch(encounterNoServices);
 		waitForAjaxExtJs();
 		waitForSpinnerToEnd();
@@ -147,7 +154,7 @@ public class GeneralCalculationsEncounterServiceClassificationSchemeAds2341 exte
   }
 
   @Test
-  public void test04ClickAssignButtonAndAssertCalculationSummaryDetailsMatchExpected_ADS_6102()
+  public void test04ClickAssignButtonAndAssertCalculationSummaryDetailsMatchExpected()
           throws InterruptedException,Throwable {
     try {
       //goToPage("Maintain Data");
@@ -187,7 +194,7 @@ public class GeneralCalculationsEncounterServiceClassificationSchemeAds2341 exte
   }
 
   @Test
-  public void test05AssertServicesCountOnEncountersPage_ADS_6102() throws InterruptedException,Throwable{
+  public void test05AssertServicesCountOnEncountersPage() throws InterruptedException,Throwable{
       try {
 		goToPage("Maintain Data");
 		  doMaintainDataPageSelectAtoZOption("Encounters");
@@ -224,12 +231,15 @@ public class GeneralCalculationsEncounterServiceClassificationSchemeAds2341 exte
   }
 
   @Test
-  public void test06VerifyServicesNowAppearOnEncountersPage_ADS_6102() throws Throwable {
+  public void test06VerifyServicesNowAppearOnEncountersPage() throws Throwable {
     try {
 //		  List<WebElement> ele=driver.findElements(By.xpath("//*[text()='Service Scheme']/ancestor::div[contains(@class,'x-grid-header')]//following-sibling::div/descendant::table//tbody/tr"));
     	System.out.println();
-		List<String> encountersTableStrings =
-		        javaMakeListOfStrings(encountersTable, "//td[6]/div");
+//		List<String> encountersTableStrings =
+//		        javaMakeListOfStrings(encountersTable, "//td[6]/div");
+    	//Shilpa:xpath update for 11.2 on 24.4.2024
+    	List<String> encountersTableStrings =
+		        javaMakeListOfStrings(encountersTable, "//td[3]/div");
 		//assertListOfStringsContainsExpectedStrings(encountersTableStrings, expectedEncounters);
 		assertThat(encountersTableStrings, equalTo(expectedEncounters));
 		doClick(driver.findElement(By.xpath("//button/span[text()='Cancel & Close']")));

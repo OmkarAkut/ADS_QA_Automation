@@ -1738,11 +1738,20 @@ public class CostingMap extends MapConfig {
 	public    WebElement getSaveAsPopup() {
 		return getSaveAsPopup;
 	}
-	@FindBy(xpath = "//*[text()='RVU Container List']/ancestor::div/following-sibling::div/descendant::button/span[text()='Filter']")
+//	@FindBy(xpath = "//*[text()='RVU Container List']/ancestor::div/following-sibling::div/descendant::button/span[text()='Filter']")
+	//Shilpa update xpath for 11.2 on 24.4.2024
+	@FindBy(xpath = "//*[text()='RVU Container List']/ancestor::div/following-sibling::div/descendant::span[text()='Filter']")
 	private   WebElement getRvuContainerFilterButton;
 	public    WebElement getRvuContainerFilterButton() {
 		return getRvuContainerFilterButton;
 	}
+	//Shilpa added xpath 24.4.2024
+	@FindBy(xpath = "//div[contains(@id,'rvucontainerlist')]//following::span[text()='Close & Display']")
+	private   WebElement getRvuContainerCloseDisplayButton;
+	public    WebElement getRvuContainerCloseDisplayButton() {
+		return getRvuContainerCloseDisplayButton;
+	}
+	
 	@FindBy(xpath = "//*[text()='RVU Container List']/ancestor::div/following-sibling::div//span[text()='Delete']")
 	private   WebElement getRvuContainerDeleteButton;
 	public    WebElement getRvuContainerDeleteButton() {
@@ -1908,18 +1917,27 @@ public class CostingMap extends MapConfig {
 	public   WebElement getRvuEntityDropdown() {
 		return getRvuEntityDropdown;
 	}
-	@FindBy(xpath = "(//div[contains(@id,'boundlist')]/ul/li[text()='150 Marina Medical Center']/..)[2]")
+//	@FindBy(xpath = "(//div[contains(@id,'boundlist')]/ul/li[text()='150 Marina Medical Center']/..)[2]")
+	//Shilpa:xpath update for 11.2 on 24.4.2024
+	@FindBy(xpath = "(//div[contains(@class,'boundlist')]/ul/li[text()='150 Marina Medical Center']/..)")
+
 	private  WebElement getRvuEntityDropdownOptions;
 	public   WebElement getRvuEntityDropdownOptions() {
 		return getRvuEntityDropdownOptions;
 	}
-	@FindBy(xpath = "(//div[contains(@class,'x-toolbar-docked-top')]//span[text()='Apply Selections']//parent::button)[2]")
+//	@FindBy(xpath = "(//div[contains(@class,'x-toolbar-docked-top')]//span[text()='Apply Selections']//parent::button)[2]")
+	//Shilpa:xpath update 24.4.2024 for 11.2
+	@FindBy(xpath = "//div[contains(@id,'rvumaintenancedetails')]//span[text()='Apply Selections']")
+
 	private WebElement getRvuApplySelections;
 
 	public WebElement getRvuApplySelections() {
 		return getRvuApplySelections;
 	}
-	@FindBy(xpath = "(//div[contains(@class,'gridClsCondensed')]//*[@data-qtip = 'Next Page'])[2]")
+//	@FindBy(xpath = "(//div[contains(@class,'gridClsCondensed')]//*[@data-qtip = 'Next Page'])[2]")
+	//Shilpa:xpath update for 11.2 on 24.4.2024
+	@FindBy(xpath = "(//div[contains(@id,'custompagingtoolbar')]//*[@data-qtip = 'Next Page'])[3]")
+
 	private WebElement getRvuNextPageButton;
 
 	public WebElement getRvuNextPageButton() {

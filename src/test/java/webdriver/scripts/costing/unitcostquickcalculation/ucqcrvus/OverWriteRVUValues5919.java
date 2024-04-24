@@ -6,6 +6,8 @@ import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
@@ -37,7 +39,7 @@ public class OverWriteRVUValues5919 extends UcqcHelper {
 			costing = BuildMap.getInstance(driver, CostingMap.class);
 			contracting = BuildMap.getInstance(driver, ContractingMap.class);
 			Login.loginUser("CostingDepartmentManager1");
-			goToPage("RVU Maintenance");
+			
 			ExtentReport.logPass("PASS", "setupScript");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "Failure in setupScript", driver, e);
@@ -46,8 +48,9 @@ public class OverWriteRVUValues5919 extends UcqcHelper {
 	}
 //ADS-5919
 	@Test
-	public void test01OpenRvuCostModelAndImport_5919() throws Throwable {
+	public void test07OpenRvuCostModelAndImport_5919() throws Throwable {
 		try {
+			goToPage("RVU Maintenance");
 			doClick(costing.getRvuMaintenanceButtonFilter());
 			doFilterCreate(filter);
 			doClick(costing.getRvuMaintenanceButtonImport());
@@ -74,7 +77,7 @@ public class OverWriteRVUValues5919 extends UcqcHelper {
 			fail(e.getMessage());
 		} finally {
 			doClosePageOnLowerBar("Import/Export Status");
-//			doClosePageOnLowerBar("RVU Maintenance"); uncomment this once ADS-17819 is fixed
+			doClosePageOnLowerBar("RVU Maintenance"); //uncomment this once ADS-17819 is fixed
 
 		}
 	}
@@ -134,6 +137,9 @@ public class OverWriteRVUValues5919 extends UcqcHelper {
 			ExtentReport.logFail("FAIL", "test02ApplyRvuSelections", driver, e);
 			fail(e.getMessage());
 		}
+		finally {
+			doClosePageOnLowerBar("Unit Cost Quick Calculation");
+		}
 	}
 
 	@Test
@@ -149,7 +155,7 @@ public class OverWriteRVUValues5919 extends UcqcHelper {
 			waitForAjaxExtJs();
 			doDropdownSelectUsingOptionText(costing.getRvuEntityDropdown(), costing.getRvuEntityDropdownOptions(),
 					"150 Marina Medical Center");
-			ContractModelsHelper.updateDepartment("3120");
+			updateDepartment("3120");
 			doDropdownSelectUsingOptionText(costing.getRvuMaintenanceDropdownEffectiveMonthStartMonthDropdown(),
 					costing.getRvuMaintenanceDropdownEffectiveMonthStartMonthOptions(), "Apr");
 			doDropdownSelectUsingOptionText(costing.getRvuMaintenanceDropdownEffectiveMonthStartYearDropdown(),
@@ -200,17 +206,47 @@ public class OverWriteRVUValues5919 extends UcqcHelper {
 			waitForDisplayedSpinnerToEnd();
 			doClick(costing.getRvuContainerFilterButton());
 			doFilterCreate(filterByDeptCode);
+			assertElementIsDisplayedWithXpath("//div[contains(@id,'rvucontainerlist')]//following::div[text()='Salaries and Wages']//following::div[text()='Apr 2004']");
+			doClick(costing.getRvuContainerCloseDisplayButton());
 			ExtentReport.logPass("PASS", "test06FilterByDepartmentCodeInRvuContainer");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test06FilterByDepartmentCodeInRvuContainer", driver, e);
 			fail(e.getMessage());
 		}
+		finally {
+			doClosePageOnLowerBar("RVU Maintenance");
+		}
 	}
+	public static void updateDepartment(String departmentText) throws InterruptedException {
+	     doClick("((//label[contains(@id,'singleselectorform')])[1]//following::span[text()='Select'])[1]");
+	   waitForDisplayedSpinnerToEnd();
+	    waitForAjaxExtJs();
+	    //Thread.sleep(1100);  //original value, which works
+	    Thread.sleep(500);  //alternative value, to reduce run time - reset to original value if there are false positives with this one
+	    JavascriptExecutor jse = (JavascriptExecutor)driver;
+		   jse.executeScript("arguments[0].value='"+ departmentText +"';",  driver.findElement(By.name("carrierfield")));
+			waitForSpinnerToEnd();
+			try {
+				driver.findElement(By.name("carrierfield")).sendKeys(" ");
+				Thread.sleep(1000);
+				driver.findElement(By.name("carrierfield")).sendKeys(Keys.BACK_SPACE);
+				Thread.sleep(1000);
 
+			doClick(driver.findElement(By.xpath("//div[contains(@class,'x-grid-cell-inner') and contains(text()," + departmentText +")]")));
+			waitForAjaxExtJs();
+			doClick(driver.findElement(By.xpath("//*[contains(@class,'docked-bottom')]/descendant::span[text()='Apply']")));
+			waitForAjaxExtJs();
+		} catch (Exception|AssertionError e) {
+			doClick(driver.findElement(By.xpath("//div[contains(@class,'x-grid-cell-inner') and contains(text()," + departmentText +")]")));
+
+			doClick(driver.findElement(By.xpath("//*[contains(@class,'docked-bottom')]/descendant::span[text()='Apply']")));
+			waitForAjaxExtJs();
+		}
+	  }
 	@AfterClass
 	public static void endtest() throws Exception {
-		doClosePageOnLowerBar("RVU Maintenance");
-		doClosePageOnLowerBar("Unit Cost Quick...");
+//		doClosePageOnLowerBar("RVU Maintenance");
+		
 		ExtentReport.report.flush();
 
 	}

@@ -100,6 +100,14 @@ public class Login extends Driver {
 			} catch (Exception e) {
 				
 			}
+			try {
+				if(driver.findElement(By.xpath("//*[contains('site can’t be reached')]")).isDisplayed()) {
+					driver.navigate().refresh();
+				}
+			}
+			catch(Exception e) {
+				
+			}
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='username-inputEl']")));
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='password-inputEl']")));
 			driver.findElement(By.id("username-inputEl")).sendKeys(username);

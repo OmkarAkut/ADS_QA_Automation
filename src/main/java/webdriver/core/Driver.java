@@ -187,9 +187,9 @@ public class Driver {
       } else if (browser.equals("firefox")) {
         System.setProperty("webdriver.firefox.driver", drivers + geckoDriver + ".exe");
       }
-    //Shilpa added below line for 11.2 on 12.12.2023
+    //Shilpa added below line for 11.2 on 12.02.2024
       else if (browser.equals("edge")) {
-    	  WebDriverManager.chromedriver().setup();
+    	  WebDriverManager.edgedriver().setup();
           System.setProperty("webdriver.edge.driver", drivers + edgeDriver + ".exe");
         } else {
         fail("ERROR: Driver object not set.");
@@ -205,9 +205,9 @@ public class Driver {
       } else if (browser.equals("firefox")) {
         System.setProperty("webdriver.firefox.driver", drivers + geckoDriver);
       }
-    //Shilpa added below line for 11.2 on 12.12.2023
+    //Shilpa added below line for 11.2 on 12.02.2023
       else if (browser.equals("edge")) {
-    	  WebDriverManager.chromedriver().setup();
+    	  WebDriverManager.edgedriver().setup();
           System.setProperty("webdriver.edge.driver", drivers + edgeDriver);
         }else {
         fail("ERROR: Browser driver not set.");

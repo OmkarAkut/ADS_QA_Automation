@@ -73,6 +73,7 @@ public class EncounterCost extends UcqcHelper {
 //			waitUntilTreeOptionIsClickable("Encounter Cost Calculation Scenarios");
 			driverDelay();
 			doClickTreeItemUsingXpathLocator("//span[text()='Encounter Cost Calculation Scenarios']/..");
+			driverDelay();
 //			doClick(CostingMap.getCalculateEncounterCostItem());
 			doClick(CostingMap.getEncounterNewBtn());
 			waitForElementToBeVisible(CostingMap.getEncounterPageText());

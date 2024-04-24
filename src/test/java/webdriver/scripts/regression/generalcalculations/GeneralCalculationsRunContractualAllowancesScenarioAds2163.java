@@ -108,8 +108,13 @@ public class GeneralCalculationsRunContractualAllowancesScenarioAds2163 extends 
 //				driver.findElement(By.xpath("//table/tbody/tr[2]/td[contains(@class,'x-grid-cell')]/div[text()='Completed']"))
 //				.isDisplayed()
 //				);
+//		assertTrue(
+//				driver.findElement(By.xpath("(//table/tbody/tr[1]/td[contains(@class,'x-grid-cell')]/div[text()='Completed'])[5]"))
+//				.isDisplayed()
+//				);
+		//Shilpa:xpath update on 24.4.2024 for 11.2
 		assertTrue(
-				driver.findElement(By.xpath("(//table/tbody/tr[1]/td[contains(@class,'x-grid-cell')]/div[text()='Completed'])[5]"))
+				driver.findElement(By.xpath("(//table/tbody/tr[1]/td[contains(@class,'x-grid-cell')]/div[text()='Completed'])[1]"))
 				.isDisplayed()
 				);
 	}
