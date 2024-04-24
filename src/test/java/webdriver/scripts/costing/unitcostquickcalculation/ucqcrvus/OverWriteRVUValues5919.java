@@ -51,13 +51,15 @@ public class OverWriteRVUValues5919 extends UcqcHelper {
 			doClick(costing.getRvuMaintenanceButtonFilter());
 			doFilterCreate(filter);
 			doClick(costing.getRvuMaintenanceButtonImport());
-			doClick(costing.getRvuSecImportSelectButton());
-			costing.getRvuSecImportSelectButton().sendKeys(Keys.ENTER);
-			;
-			driverDelay(500);
+//			doClick(costing.getRvuSecImportSelectButton());
+			doactionClick(costing.getRvuSecImportSelectButton());
+//			costing.getRvuSecImportSelectButton().sendKeys(Keys.ENTER);
+//			;
+//			driverDelay(500);
 			ContractModelsHelper.uploadTheFileusingAutoIT(driver,
 					System.getProperty("user.dir") + "\\AutoIT\\UploadFile.exe",
-					System.getProperty("user.dir") + "\\AutoIT\\ADS1238PreConditionRVUs.txt");
+//					System.getProperty("user.dir") + "\\AutoIT\\ADS1238PreConditionRVUs.txt");
+					System.getProperty("user.dir") + "\\AutoIT\\ADS1309PreConditionsRVUImport.txt");
 			driverDelay(1200);
 			doClick(costing.getRvuSharedLocDropdown());
 			driverDelay(300);
@@ -72,7 +74,7 @@ public class OverWriteRVUValues5919 extends UcqcHelper {
 			fail(e.getMessage());
 		} finally {
 			doClosePageOnLowerBar("Import/Export Status");
-			doClosePageOnLowerBar("RVU Maintenance");
+//			doClosePageOnLowerBar("RVU Maintenance"); uncomment this once ADS-17819 is fixed
 
 		}
 	}

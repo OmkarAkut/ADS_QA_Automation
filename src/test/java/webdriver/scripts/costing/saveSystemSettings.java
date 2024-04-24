@@ -10,10 +10,13 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.interactions.Actions;
 
 import webdriver.corehelpers.GoHelper;
+import webdriver.maps.GeneralElementsMap;
 import webdriver.maps.SystemMaintenanceMap;
+import webdriver.maps.mapbuilder.BuildMap;
 
 public class saveSystemSettings extends GoHelper{
 	Actions act=new Actions(driver);
+	
 	public void saveScreenshot(String name) {
 		 File screenshotFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 	        try {
@@ -25,10 +28,12 @@ public class saveSystemSettings extends GoHelper{
 	public void saveCustomSettings(String setName,String modelName) {
 		try {
 			goToPage("Customize Task Lists");
+//			act.moveToElement(driver.findElement(By.id("systemmaintenance"))).click().perform();
+//			act.moveToElement(driver.findElement(By.id("customizetasklist"))).click().perform();
 			driverDelay();
 			saveScreenshot("Before");
-			act.moveToElement(driver.findElement(By.xpath("//label[text()='"+setName+"']//preceding-sibling::span"))).click().perform();
-//			doClick(driver.findElement(By.xpath("//label[text()='"+setName+"']//preceding-sibling::span")));
+			act.moveToElement(driver.findElement(By.xpath("//label[text()='Use Default']//preceding-sibling::span"))).click().pause(1000).perform();
+			act.moveToElement(driver.findElement(By.xpath("//label[text()='"+setName+"']//preceding-sibling::span"))).click().pause(1000).perform();
 			saveScreenshot("selectCustom");
 			driverDelay(1000);
 			doClick(SystemMaintenanceMap.getTaskListSaveButton());
@@ -53,11 +58,9 @@ public class saveSystemSettings extends GoHelper{
 	}
 	public  void revertCustomSettings() {
 		try {
-			goToPage("Customize Task Lists");
+			goToPage("Customize Task List");
 			driverDelay();
-			act.moveToElement(driver.findElement(By.xpath("//label[text()='Use Default']//preceding-sibling::span"))).click().perform();
-//			doJsClick(driver.findElement(By.xpath("//label[text()='Use Default']//preceding-sibling::span")));
-//			doClick("//label[text()='Use Default']//preceding-sibling::span");
+			act.moveToElement(driver.findElement(By.xpath("//label[text()='Use Default']//preceding-sibling::span"))).click().pause(1000).perform();
 			doClick(SystemMaintenanceMap.getTaskListSaveButton());
 			doClick("//div[contains(@id,'messagebox')]//span[text()='Save']");
 			waitForDisplayedSpinnerToEnd();

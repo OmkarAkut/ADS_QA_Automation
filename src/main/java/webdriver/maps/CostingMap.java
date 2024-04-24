@@ -1637,7 +1637,9 @@ public class CostingMap extends MapConfig {
 	}
 //	Omkar 11/8/2023 : xpath changes for 11.2
 //	@FindBy(xpath = "(//input[@name='singleSelectorName']//following::span[text()='Select']//parent::button)[2]")
-	@FindBy(xpath = "(//input[@name='singleSelectorName']//following::span[text()='Select']//parent::span)[2]")
+//	@FindBy(xpath = "(//input[@name='singleSelectorName']//following::span[text()='Select']//parent::span)[2]")
+	//Shilpa 23.4.2024 : xpath update for 11.2
+	@FindBy(xpath = "(//input[@name='singleSelectorName']//following::span[text()='Select']//parent::span)[3]")
 	private  WebElement getRvuSecImportSelectButton;
 	public  WebElement getRvuSecImportSelectButton() {
 		return getRvuSecImportSelectButton;
