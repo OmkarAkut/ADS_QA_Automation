@@ -239,10 +239,12 @@ public class GeneralCalculationsEncounterServiceClassificationSchemeAds2341 exte
 //		        javaMakeListOfStrings(encountersTable, "//td[6]/div");
     	//Shilpa:xpath update for 11.2 on 24.4.2024
     	List<String> encountersTableStrings =
-		        javaMakeListOfStrings(encountersTable, "//td[3]/div");
+    			javaMakeListOfStrings(driver.findElements(By.xpath("//*[text()='Service Scheme']/ancestor::div[contains(@class,'x-grid-header')]//following-sibling::div/descendant::table//tbody//td[3]/div")));
 		//assertListOfStringsContainsExpectedStrings(encountersTableStrings, expectedEncounters);
 		assertThat(encountersTableStrings, equalTo(expectedEncounters));
-		doClick(driver.findElement(By.xpath("//button/span[text()='Cancel & Close']")));
+		//Shilpa:xpath update for 11.2 on 24.4.2024
+		doClick("//span[text()='Cancel & Close']");
+		doClosePageOnLowerBar("Maintain Data");
 		  ExtentReport.logPass("PASS", "test06VerifyServicesNowAppearOnEncountersPage");
    	} catch (Exception|AssertionError e) {
    		ExtentReport.logFail("FAIL", "test06VerifyServicesNowAppearOnEncountersPage", driver, e);
