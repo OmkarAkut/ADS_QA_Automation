@@ -58,9 +58,8 @@ public class saveSystemSettings extends GoHelper{
 	}
 	public  void revertCustomSettings() {
 		try {
-			goToPage("Customize Task List");
+			goToPage("Customize Task Lists");
 			driverDelay();
-		
 			act.moveToElement(driver.findElement(By.xpath("//label[text()='Use Default']//preceding-sibling::span"))).click().pause(1000).perform();
 			doClick(SystemMaintenanceMap.getTaskListSaveButton());
 			doClick("//div[contains(@id,'messagebox')]//span[text()='Save']");
