@@ -162,12 +162,13 @@ public class CreateDeleteCostMethodMaster extends GoHelper{
 		finally {
 			doClosePageOnLowerBar(costModel);
 			doClosePageOnLowerBar("Costing Models");
+			settings.revertCustomSettings();
 			
 		}
 	}
 	@AfterClass
 	public static void endtest() {
-		settings.revertCustomSettings();
+		
 		ExtentReport.report.flush();
 	}
 }
