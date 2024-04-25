@@ -1091,6 +1091,8 @@ public class ContractModelsHelper extends GoHelper {
 		doClick(ContractingMap.getContractModelApplyFilterButton());
 //		ContractingMap.getFilterDialogButtonApplyFilter();
 		ContractModelsHelper.highlightColumnsToDisplayColumnServices();
+		//Shilpa updated for 11.2 on 25.4.2024
+		doClick("(//span[text()='All']/..)[1]");
 	    doClick("//div[contains(@class,'x-toolbar-footer')]//span[text()='Apply']");
 	}
 	

@@ -77,10 +77,10 @@ public class TestAbilitytoCreateExistingStandardCostingReport extends GoHelper {
 			waitForElementToBeVisible(reportMap.reportLibraryPageEntityRefreshButton());
 			driverDelay(2000);
 			//Shilpaa updated script for 11.2 on 22.4.2024
-			for (int i = 0; i < refreshTime; i++) {
+			for (int i = 0; i <=refreshTime; i++) {
 				doClick(reportMap.reportLibraryPageEntityRefreshButton());
 				driverDelay(3000);
-				if (i == 4) {
+				if (i == refreshTime) {
 					System.out.println("Status is not updated to COMPLETED");
 					fail();
 					break;
@@ -94,17 +94,18 @@ public class TestAbilitytoCreateExistingStandardCostingReport extends GoHelper {
 						break;
 
 					}
-				} catch (Exception e1) {
-					if (driver.findElement(By.xpath("(//div[@class='GJT013UBH']//tbody//td/div)[7]")).isDisplayed()) {
-						System.out.println(i);
-
-						continue;
-					}
 					if (driver.findElement(By.xpath("(//div[@class='GJT013UBH']//tbody//td/div)[7]/a")).getText()
 							.contains("FAILED")) {
 						fail();
-						ExtentReport.logFail("FAIL", "test02OpenCostingReport", driver, e1);
 					}
+				} catch (Exception e1) {
+					if (driver.findElement(By.xpath("(//div[@class='GJT013UBH']//tbody//td/div)[7]")).isDisplayed()) {
+						System.out.println(i);
+						doClick(reportMap.reportLibraryPageEntityRefreshButton());
+						driverDelay(3000);
+						continue;
+					}
+					
 
 				}
 

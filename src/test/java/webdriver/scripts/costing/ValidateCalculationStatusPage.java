@@ -175,7 +175,7 @@ public class ValidateCalculationStatusPage extends CalculationHelper {
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
 			doClick("(//div[text()='View Log']//following::span[text()='Cancel'])[1]");
-			doClick("(//div[text()='"+costModel+"']//following::span[text()='Download'])[2]");
+			doClick("(//div[text()='"+costModel+"']//following::span[text()='Download'])[1]");
 			waitForPresenceOfElementText("Download Log");
 			doClick(modelMap.getContractModelDownloadFileSharedLoc());
 			

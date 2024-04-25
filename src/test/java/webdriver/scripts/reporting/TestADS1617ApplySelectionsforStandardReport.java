@@ -72,6 +72,7 @@ public class TestADS1617ApplySelectionsforStandardReport extends GoHelper {
 	public void test03assertContractNamesPopUp_ADS_5657() throws Throwable {
 		try {
 			doClick(reportMap.reportContractNameLink());
+			driverDelay();
 			waitForElementToBeVisible(reportMap.reportContractNamePopUp());
 			assertElementIsDisplayed(reportMap.reportContractNamePopUp());
 			String contractName = reportMap.reportContractNameLink().getText();

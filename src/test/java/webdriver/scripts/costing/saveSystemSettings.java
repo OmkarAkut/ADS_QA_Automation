@@ -28,29 +28,16 @@ public class saveSystemSettings extends GoHelper{
 	public void saveCustomSettings(String setName,String modelName) {
 		try {
 			goToPage("Customize Task Lists");
-//			act.moveToElement(driver.findElement(By.id("systemmaintenance"))).click().perform();
-//			act.moveToElement(driver.findElement(By.id("customizetasklist"))).click().perform();
 			driverDelay();
-			saveScreenshot("Before");
 			act.moveToElement(driver.findElement(By.xpath("//label[text()='Use Default']//preceding-sibling::span"))).click().pause(1000).perform();
 			act.moveToElement(driver.findElement(By.xpath("//label[text()='"+setName+"']//preceding-sibling::span"))).click().pause(1000).perform();
-			saveScreenshot("selectCustom");
 			driverDelay(1000);
 			doClick(SystemMaintenanceMap.getTaskListSaveButton());
 			driverDelay(1000);
-			saveScreenshot("ClickSave");
 			doClick("//div[contains(@id,'messagebox')]//span[text()='Save']");
-			
 			waitForDisplayedSavingSpinnerToEnd();
-			
-//			waitForAjaxExtJs();
 			driverDelay(5000);
-			
-			goToPage("Customize Task Lists");
-			
-			 driverDelay();
-			 saveScreenshot("CrossVerifySettingsSaved");
-			 doClosePageOnLowerBar("Customize Task Lists");
+			doClosePageOnLowerBar("Customize Task Lists");
 			goToPage(modelName);
 		} catch (Exception e) {
 			
@@ -65,11 +52,6 @@ public class saveSystemSettings extends GoHelper{
 			doClick("//div[contains(@id,'messagebox')]//span[text()='Save']");
 			waitForDisplayedSpinnerToEnd();
 			driverDelay(5000);
-			goToPage("Customize Task Lists");
-		
-			 driverDelay();
-			 saveScreenshot("revert");
-			
 			doClosePageOnLowerBar("Customize Task Lists");
 		} catch (Exception e) {
 		

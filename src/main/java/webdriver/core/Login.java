@@ -3,11 +3,16 @@ package webdriver.core;
 import static org.junit.Assert.*;
 import static webdriver.helperstatic.WaitStatic.waitForSpinnerToEnd;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.NoSuchElementException;
 
+import org.apache.commons.io.FileUtils;
 //import java.lang.Enum;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -85,7 +90,14 @@ public class Login extends Driver {
 	public static void loginUserRole(Roles role) {
 		login(role.getUsername(), role.getPassword());
 	}
-
+public static void saveSnapshot(String name) {
+	 File screenshotFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+     try {
+         FileUtils.copyFile(screenshotFile, new File(name+"."+"png"));
+     } catch (IOException e) {
+         e.printStackTrace();
+     }
+}
 	private static void login(String username, String password) {
 		Actions action = new Actions(driver);
 		WebDriverWait wait = new WebDriverWait(driver, 30);
@@ -103,10 +115,11 @@ public class Login extends Driver {
 			try {
 				if(driver.findElement(By.xpath("//*[contains('site can’t be reached')]")).isDisplayed()) {
 					driver.navigate().refresh();
+					saveSnapshot("error");
 				}
 			}
 			catch(Exception e) {
-				
+				saveSnapshot("error2");
 			}
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='username-inputEl']")));
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='password-inputEl']")));

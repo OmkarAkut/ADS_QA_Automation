@@ -141,7 +141,31 @@ public class CreateNewCostModel extends GoHelper {
 				}
 			}
 			break;
+		case "Overhead Account Variability Masters":
+
+			doClickTreeItem("Overhead Account Variability Masters");
+			driverDelay();
+			act.moveToElement(driver.findElement(By.xpath(
+					"((//h1[text()='Overhead Account Variability Masters']//following::div[@class='x-grid-item-container'])//tr//td[2]//div)[1]")))
+					.doubleClick().build().perform();
+			driverDelay(1000);
+			try {
+				if (CostingMap.getReadOnlyBtn().isDisplayed()) {
+					doClick(CostingMap.getReadOnlyBtn());
+					assertElementIsDisplayed(CostingMap.getOverheadCancelClose());
+					doClick(CostingMap.getOverheadCancelClose());
+					driverDelay(1200);
+				}
+			} catch (Exception e2) {
+
+				assertElementIsDisplayed(CostingMap.getOverheadCancelClose());
+				doClick(CostingMap.getOverheadCancelClose());
+				driverDelay(1200);
+			}
+
+			break;
 		case "General Information - Overhead":
+			driverDelay();
 			doClick("//tr[contains(@class,'x-grid-tree-node-leaf')]//span[text()='" + itemName + "']");
 			doClick(CostingMap.getOverheadCancelClose());
 			doClickTreeItem("Allocate Overhead");
@@ -149,17 +173,20 @@ public class CreateNewCostModel extends GoHelper {
 			break;
 
 		case "Allocation Statistic Assignments":
+			driverDelay();
 			doClick("//tr[contains(@class,'x-grid-tree-node-leaf')]//span[text()='" + itemName + "']");
 			doClick(CostingMap.getOverheadCancelClose());
 			doClickTreeItem("Allocate Overhead");
 			driverDelay();
 			break;
 		case "Overhead Model Calculation Scenarios":
+			driverDelay();
 			doClick("//tr[contains(@class,'x-grid-tree-node-leaf')]//span[text()='" + itemName + "']");
 			doClick(CostingMap.getOverheadModelCalcScen());
 			doClick(CostingMap.getOverheadCancelClose());
 			break;
 		case "Overhead Model Scenario Results":
+			driverDelay();
 			doClickTreeItem("Overhead Model Scenario Results");
 			act.moveToElement(driver.findElement(By.xpath(
 					"((//h1[text()='Overhead Model Scenario Results']//following::div[@class='x-grid-item-container'])//tr//td[2]//div)[1]")))
@@ -173,29 +200,6 @@ public class CreateNewCostModel extends GoHelper {
 			act.moveToElement(CostingMap.getfirstOverheadGridElement()).doubleClick().build().perform();
 			driverDelay(1000);
 			doClick(CostingMap.getOverheadModelDynamicCloseBtn());
-			break;
-
-		case "Overhead Account Variability Masters":
-
-			doClickTreeItem("Overhead Account Variability Masters");
-			act.moveToElement(driver.findElement(By.xpath(
-					"((//h1[text()='Overhead Account Variability Masters']//following::div[@class='x-grid-item-container'])//tr//td[2]//div)[1]")))
-					.doubleClick().build().perform();
-			driverDelay(1000);
-			try {
-				if (CostingMap.getReadOnlyBtn().isDisplayed()) {
-					doClick(CostingMap.getReadOnlyBtn());
-					assertElementIsDisplayed(CostingMap.getOverheadCancelClose());
-					doClick(CostingMap.getOverheadCancelClose());
-					driverDelay();
-				}
-			} catch (Exception e2) {
-
-				assertElementIsDisplayed(CostingMap.getOverheadCancelClose());
-				doClick(CostingMap.getOverheadCancelClose());
-				driverDelay();
-			}
-
 			break;
 
 		default:
@@ -235,6 +239,7 @@ public class CreateNewCostModel extends GoHelper {
 			tableDoubleClickCellFirstColumn(costModel);
 			doClickTreeItem("Prepare Costing Elements");
 			driverDelay();
+
 			OpenTreeItemThenValidate("Encounters");
 			OpenTreeItemThenValidate("Entities");
 			OpenTreeItemThenValidate("Department Masters");
@@ -282,6 +287,7 @@ public class CreateNewCostModel extends GoHelper {
 			OpenTreeItemThenValidate("RVU Maintenance");
 			OpenTreeItemThenValidate("Cost Model Calculation Scenarios");
 			OpenTreeItemThenValidate("Cost Model Scenario Results");
+
 			doClickTreeItem("Assign Costs to Encounters");
 			driverDelay();
 			OpenTreeItemThenValidate("Cost Component Group Masters");
@@ -292,12 +298,9 @@ public class CreateNewCostModel extends GoHelper {
 			ExtentReport.logFail("FAIL", "test02AssertNewCostModel_6253", driver, e);
 			fail(e.getMessage());
 		} finally {
-			try {
 
-				doClick("//span[text()='Model Library']");
-			} catch (Exception e) {
-				doClick("//span[text()='Model Library']");
-			}
+			doClosePageOnLowerBar("Model 2024.04.25...");
+//				
 
 		}
 	}
@@ -378,11 +381,13 @@ public class CreateNewCostModel extends GoHelper {
 			OpenTreeItemThenValidate("Allocation Exceptions");
 			OpenTreeItemThenValidate("Overhead Model Calculation Scenarios");
 			OpenTreeItemThenValidate("Overhead Model Scenario Results");
-			doClosePageOnLowerBar("OverheadModel...");
-			ExtentReport.logPass("PASS", "test06AssertCreatedOverheadCostModel");
+
+			ExtentReport.logPass("PASS", "test07AssertCreatedOverheadCostModel_ADS_6254");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test06AssertCreatedOverheadCostModel", driver, e);
+			ExtentReport.logFail("FAIL", "test07AssertCreatedOverheadCostModel_ADS_6254", driver, e);
 			fail(e.getMessage());
+		} finally {
+			doClosePageOnLowerBar("OverheadModel...");
 		}
 	}
 

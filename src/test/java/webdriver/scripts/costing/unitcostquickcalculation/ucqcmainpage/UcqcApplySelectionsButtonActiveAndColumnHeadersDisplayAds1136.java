@@ -104,7 +104,9 @@ public class UcqcApplySelectionsButtonActiveAndColumnHeadersDisplayAds1136 exten
       ucqcPopulateRequiredFieldsToDisplayGrid(requiredFields);
       assertElementIsEnabled(ucqcMap.getUnitCostQuickCalculationButtonApplySelections(),printout);
       selectDepartment("<None>");
-      assertElementIsDisabled(ucqcMap.getUnitCostQuickCalculationButtonApplySelections(),printout);
+//      assertThElementIsDisabled(ucqcMap.getUnitCostQuickCalculationButtonApplySelections(),printout);
+//Shilpa xpath update for 11.2 on 25.4.2024
+      assertTheElementIsDisabled(driver.findElement(By.xpath("//*[contains(text(),'Apply Selections')]/../../..")), printout);
       ExtentReport.logPass("PASS", "test04UcqcPageUndoDepartmentFieldApplySelectionsButtonDisabled");
     } catch (Exception|AssertionError e) {
     	ExtentReport.logFail("FAIL","test04UcqcPageUndoDepartmentFieldApplySelectionsButtonDisabled", driver,e);

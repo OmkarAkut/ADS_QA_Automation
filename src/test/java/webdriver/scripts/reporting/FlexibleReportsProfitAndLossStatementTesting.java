@@ -162,9 +162,10 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 			int denominator=Integer.parseInt(staNum[1]);
 //			String reportStatus=driver.findElement(By.xpath("//span[text()='" + orgName + "']//following::td[5]/div/a")).getText();
 			//Shilpa update code on 24.4.2024
+			System.out.println(denominator);
 			for (int i = 0; i < denominator; i++) {
 				doClick(reportMap.reportLibraryPageEntityRefreshButton());
-				Thread.sleep(2000);
+				driverDelay(3000);
 				if (i == denominator) {
 					System.out.println("Status is not updated to COMPLETED");
 					fail();
@@ -179,20 +180,23 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 						break;
 
 					}
-				} catch (Exception e1) {
-					if (driver.findElement(By.xpath("(//div[@class='GJT013UBH']//tbody//td/div)[7]")).isDisplayed()) {
-						System.out.println(i);
-
-						continue;
-					}
+					//iF STATUS IS FAILED EXIT
 					if (driver.findElement(By.xpath("(//div[@class='GJT013UBLJB']//tbody//td/div)[7]/a")).getText()
 							.contains("FAILED")) {
 						fail();
-						ExtentReport.logFail("FAIL", "test02OpenCostingReport", driver, e1);
+//						ExtentReport.logFail("FAIL", "test02OpenCostingReport", driver, e1);
 					}
+				} catch (Exception e1) {
+					if (driver.findElement(By.xpath("(//div[@class='GJT013UBH']//tbody//td/div)[7]")).isDisplayed()) {
+						System.out.println(i);
+						doClick(reportMap.reportLibraryPageEntityRefreshButton());
+						driverDelay(3000);						
+						continue;
+					}
+					
 
 				}
-
+				
 			}
 			/* Shilpa commented below lines, not required on 24.4.2024
 			for (int i = 0; i <= denominator; i++) {
