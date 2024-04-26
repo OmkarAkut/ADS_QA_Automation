@@ -699,19 +699,27 @@ public class ContractingMap extends MapConfig {
 	private static WebElement industryClassificationInputList;
 	public static WebElement industryClassificationInputList() {return industryClassificationInputList;}
 
-	@FindBy(xpath = "//label[text()='COLA Wage Adjusted Rate']//following::div[1]")
+//	@FindBy(xpath = "//label[text()='COLA Wage Adjusted Rate']//following::div[1]")
+	//Shilpa xpath update for 11.2 on 26.4.2024
+	@FindBy(xpath = "//span[text()='COLA Wage Adjusted Rate']//following::div[1]")
+
 	private static WebElement colaWageAdjustedRate;
 	public static WebElement getcolaWageAdjustedRate() {return colaWageAdjustedRate;}
 
-	@FindBy(xpath = "//label[text()='Wage Adjusted Rate']//following::div[1]")
+//	@FindBy(xpath = "//label[text()='Wage Adjusted Rate']//following::div[1]")
+	//Shilpa xpath update for 11.2 on 26.4.2024
+	@FindBy(xpath = "//span[text()='Wage Adjusted Rate']//following::div[1]")
 	private static WebElement WageAdjustedRate;
 	public static WebElement getWageAdjustedRate() {return WageAdjustedRate;}
 
-	@FindBy(xpath = "//label[text()='COLA Geographic Adjusted Rate']//following::div[1]")
+//	@FindBy(xpath = "//label[text()='COLA Geographic Adjusted Rate']//following::div[1]")
+	//Shilpa xpath update for 11.2 on 26.4.2024
+	@FindBy(xpath = "//span[text()='COLA Geographic Adjusted Rate']//following::div[1]")
 	private static WebElement colaGeographicAdjustedRate;
 	public static WebElement getcolaGeographicAdjustedRate() {return colaGeographicAdjustedRate;}
 
-	@FindBy(xpath = "//label[text()='Industry Classification Scheme']/ancestor::div/following-sibling::div[contains(@class,'boundlist')]/div/ul")
+//	@FindBy(xpath = "//label[text()='Industry Classification Scheme']/ancestor::div/following-sibling::div[contains(@class,'boundlist')]/div/ul")
+	@FindBy(xpath = "//span[text()='Industry Classification Scheme']/ancestor::div/following-sibling::div[contains(@class,'boundlist')]/div/ul")
 	private static WebElement industryClassificationList;
 	public static WebElement industryClassificationList() {return industryClassificationList;}
 

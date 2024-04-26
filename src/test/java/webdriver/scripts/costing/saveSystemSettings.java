@@ -37,7 +37,7 @@ public class saveSystemSettings extends GoHelper{
 			doClick("//div[contains(@id,'messagebox')]//span[text()='Save']");
 			waitForDisplayedSavingSpinnerToEnd();
 			driverDelay(5000);
-			doClosePageOnLowerBar("Customize Task Lists");
+			driverDelay();
 			goToPage(modelName);
 		} catch (Exception e) {
 			
@@ -52,7 +52,6 @@ public class saveSystemSettings extends GoHelper{
 			doClick("//div[contains(@id,'messagebox')]//span[text()='Save']");
 			waitForDisplayedSpinnerToEnd();
 			driverDelay(5000);
-			doClosePageOnLowerBar("Customize Task Lists");
 		} catch (Exception e) {
 		
 		}

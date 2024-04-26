@@ -419,7 +419,9 @@ public class GoHelper extends AssertHelper {
 		Thread.sleep(3000);  //was 5000
 //		waitForPresenceOfElement("//*[contains(@id, 'customaccordianpanel')][text()='" + closeSection + "']/parent::div/following-sibling::div/img");
 		//Shilpa updated for 11.2 on 24.4.2024
-		waitForPresenceOfElement("//*[contains(@id, 'customaccordianpanel')][text()='" + closeSection + "']/parent::div/following-sibling::div");
+//		waitForPresenceOfElement("//*[contains(@id, 'customaccordianpanel')][text()='" + closeSection + "']/parent::div/following-sibling::div");
+
+		waitForPresenceOfElement("(//*[contains(@id, 'customaccordianpanel')][text()='" + closeSection + "']/parent::div/following-sibling::div)[1]");
 
 //		driver
 //		.findElement(By.xpath("//*[contains(@id, 'customaccordianpanel')][text()='" + closeSection + "']/parent::div/following-sibling::div/img"))
@@ -427,7 +429,7 @@ public class GoHelper extends AssertHelper {
 		//Shilpa updated for 11.2 on 24.4.2024
 
 		driver
-		.findElement(By.xpath("//*[contains(@id, 'customaccordianpanel')][text()='" + closeSection + "']/parent::div/following-sibling::div"))
+		.findElement(By.xpath("(//*[contains(@id, 'customaccordianpanel')][text()='" + closeSection + "']/parent::div/following-sibling::div)[1]"))
 		.click();
 		Thread.sleep(2000); //was 3000
 		waitForAjaxExtJs();

@@ -1,5 +1,4 @@
 package webdriver.scripts.contracting;
-
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertFalse;
@@ -9,6 +8,9 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import ExtentReport.ExtentReport;
 import webdriver.helpers.CalculationHelper;
 import webdriver.helpers.ContractModelsHelper;
@@ -16,15 +18,14 @@ import webdriver.maps.ContractingMap;
 import webdriver.maps.CostingMap;
 import webdriver.maps.mapbuilder.BuildMap;
 import webdriver.users.Users;
-
 public class ConfirmFY2023MedicareYearisAvailableForMedIPPS extends CalculationHelper {
-
 //	private static final String contractModelName = "Contract Model 6278";
 	private static final String contractModelName = "10.2.1 Medicare IPPS FY2020";
-
+//	private static final String serviceModel = "MCR IPPS 2021";
+//	private static final String serviceName = "MCR IPPS 2021";
+//Shilpa updated for 11.2 on 26.4.2024
 	private static final String serviceModel = "MCR IPPS 2023";
 	private static final String serviceName = "MCR IPPS 2023";
-
 	private static final String priceMethodOption = "Medicare Inpatient PPS";
 	private static final String medicareYear = "Oct 1, 2022 - Sept 30, 2023";
 	private static ContractingMap modelMap;
@@ -102,21 +103,28 @@ public class ConfirmFY2023MedicareYearisAvailableForMedIPPS extends CalculationH
 		try {
 			doSearchForContractModel(contractModelName);
 			tableDoubleClickCellFirstColumn(contractModelName);
-			waitForPageTitle(contractModelName);
+//			waitForPageTitle(contractModelName);
 			assertTextIsDisplayed("Unpublished Contract Task List");
-			contractModelsHelper.navigateFeeForServicePaymentTerms();
+			doClickTreeItem("Model Contract");
+			driverDelay();
+			doClickTreeItem("Define Payment Terms");driverDelay();
+			doClickTreeItem("Fee For Service Payment Terms");driverDelay();
+//			contractModelsHelper.navigateFeeForServicePaymentTerms();
+			ContractModelsHelper.navigateFeeForServicePaymentTermsScreenSelectionPanel("Service Model");
 			assertElementIsDisplayed(modelMap.getContractServiceModel());
 			assertElementIsDisplayed(modelMap.getContractPricingMethod());
 			assertElementIsDisplayed(modelMap.getContractRiskLimiterModel());
-			doClick(ContractingMap.getContractFeeForServicePaymentFilterServiceModel());
-			waitForAjaxExtJs();
-			Thread.sleep(200);
+			//Shilpa updated for 11.2 on 26.4.2024
+//			doClick(ContractingMap.getContractFeeForServicePaymentFilterServiceModel());
+//			waitForAjaxExtJs();
+//			Thread.sleep(200);
 			assertElementIsDisplayed(modelMap.getContractFeeForServicePaymentServices());
 			assertElementIsDisplayed(modelMap.getContractFeeForServicePaymentServiceModel());
-			contractModelsHelper.navigateFeeForServicePaymentTermsPageServiceModel(filter);
-			driver.findElement(By.xpath(
-					"//label[text()='Service Model']/ancestor::div/descendant::div[text() = '" + serviceModel + "']"))
-					.click();
+			//Shilpa updated for 11.2 on 26.4.2024
+//			contractModelsHelper.navigateFeeForServicePaymentTermsPageServiceModel(filter);
+//			driver.findElement(By.xpath(
+//					"//label[text()='Service Model']/ancestor::div/descendant::div[text() = '" + serviceModel + "']"))
+//					.click();
 			contractModelsHelper
 					.navigateCloseOpenSection(ContractingMap.getContractFeeForServicePaymentFilterServiceModel());
 			navigateFeeForServicePaymentTermsPagePricingMethodSectionSelectServiceModel(serviceModel);
@@ -131,9 +139,20 @@ public class ConfirmFY2023MedicareYearisAvailableForMedIPPS extends CalculationH
 			// Edit price method option
 			webdriverClick(driver.findElement(By.name("pricemethodoption")));
 			waitForAjaxExtJs();
-			webdriverClick(driver.findElement(
-					By.xpath("//div[@class='x-boundlist-list-ct']/ul/li[text()='" + priceMethodOption + "']")));
+			WebElement optionToSelect = driver.findElement(By.xpath(
+					"//div[contains(@class,'x-boundlist x-boundlist-floating')]//ul/li[text()='Medicare Inpatient PPS']"));
+//			webdriverClick(driver
+//					.findElement(By.xpath("//div[contains(@class,'x-boundlist x-boundlist-floating')]//ul/li[text()='Medicare Inpatient PPS']")));
+			Actions action = new Actions(driver);
+			action.moveToElement(optionToSelect).doubleClick().pause(20).perform();
 			Thread.sleep(200);
+			 JavascriptExecutor js = (JavascriptExecutor) driver;
+		        
+		        // Execute JavaScript to perform the click
+		        js.executeScript("arguments[0].click();", optionToSelect);
+//			webdriverClick(driver.findElement(
+//					By.xpath("//div[@class='x-boundlist-list-ct']/ul/li[text()='" + priceMethodOption + "']")));
+//			Thread.sleep(200);
 			// shilpa 01.08.2022 added above steps
 			navigateFeeForServicePaymentTermsPagePricingMethodSectionClickEditButtonToOpenEditDialog();
 			assertElementIsDisplayed(modelMap.getContractEditPricePopUp());
@@ -153,16 +172,17 @@ public class ConfirmFY2023MedicareYearisAvailableForMedIPPS extends CalculationH
 			}
 			doClick(modelMap.getContractEditPricePopUpDischargeStatusApply());
 			driverDelay(100);
-			int expectedDischargeItems = 159;
+//			int expectedDischargeItems = 159;
+			int expectedDischargeItems = 100;//grid can have only 100 elements even if we select all
 			int dischargeItems = ContractingMap.getContractEditPricePopUpDischargeStatusItemCount().size();
 			System.out.println(dischargeItems);
-			doClick(ContractingMap.getContractEditPricePopUpDischargeStatusLastPage());
-			int dischargeItemsLastPage = ContractingMap.getContractEditPricePopUpDischargeStatusItemCount().size();
-			int totalDischargeItems = dischargeItems + dischargeItemsLastPage;
-			System.out.println(totalDischargeItems);
-			System.out.println(dischargeItems);
+//			doClick(ContractingMap.getContractEditPricePopUpDischargeStatusLastPage());
+//			int dischargeItemsLastPage = ContractingMap.getContractEditPricePopUpDischargeStatusItemCount().size();
+//			int totalDischargeItems = dischargeItems + dischargeItemsLastPage;
+//			System.out.println(totalDischargeItems);
+//			System.out.println(dischargeItems);
 
-			if (expectedDischargeItems == totalDischargeItems) {
+			if (expectedDischargeItems == dischargeItems) {
 				assertTrue("All discharge items has been added", printout);
 			} else {
 				assertFalse(printout);
@@ -238,19 +258,25 @@ public class ConfirmFY2023MedicareYearisAvailableForMedIPPS extends CalculationH
 			doClick(ContractingMap.getContractFeeForServicePaymentSave());
 			waitForElementToBeVisible(ContractingMap.getContractFeeForServicePaymentWarningPopUpContinueButton());
 			doClick(ContractingMap.getContractFeeForServicePaymentWarningPopUpContinueButton());
-			doClick(ContractingMap.getfeeForServicePayementTerms());
+			driverDelay();
+			doClickTreeItem("Fee For Service Payment Terms");
+//			doClick(ContractingMap.getfeeForServicePayementTerms());
 			driverDelay(1000);
-			doClick(ContractingMap.getpricingMethod());
-			driverDelay(1000);
-			driver.findElement(By.xpath("(//div[text()='" + serviceModel + "'])[2]")).click();
+			ContractModelsHelper.navigateFeeForServicePaymentTermsScreenSelectionPanel("Service Model");
+//			doClick(ContractingMap.getpricingMethod());
+//			driverDelay(1000);
+			navigateFeeForServicePaymentTermsPagePricingMethodSectionSelectServiceModel(serviceModel);
+			//Shilpa updated for 11.2 on 26.4.2024
+//			driver.findElement(By.xpath("(//div[text()='" + serviceModel + "'])[2]")).click();
+			doClick("(//span[text()='MCR IPPS 2023'])[2]");
 			assertElementIsDisplayed(ContractingMap.getCriteriaBox());
 			ExtentReport.logPass("PASS", "ConfirmMedicareYearForMedIPPS");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "ConfirmMedicareYearForMedIPPS", driver, e);
 			fail(e.getMessage());
 		} finally {
-			doClosePageOnLowerBar(contractModelName);
-			doClosePageOnLowerBar("Model Library");
+			doClick("(//span[@class='x-tab-close-btn'])[2]");
+			doClosePageOnLowerBar("Contract Models");
 		}
 	}
 
