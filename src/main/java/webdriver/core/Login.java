@@ -124,7 +124,7 @@ public static void saveSnapshot(String name) {
 			}
 			catch(Exception e) {
 				
-				driver.quit();
+				driver.close();
 				FileInputStream str = null;
 			    System.out.println(projectPath+ " this is path");
 			    try {
