@@ -120,7 +120,9 @@ public class ModelLibraryMap extends MapConfig {
     private WebElement modelLibraryTableButtonLast;
     public WebElement getModelLibraryTableButtonLast() {return modelLibraryTableButtonLast;}
 
-    @FindBy(xpath = "//div[text()='/ 4']")
+//    @FindBy(xpath = "//div[text()='/ 4']")
+    //Shilpa:xpath update for 11.2 cannot validate for static page count which keep increasing
+    @FindBy(xpath = "(//div[contains(@id,'custompagingtoolbar')]//div[@class='x-toolbar-text x-box-item x-toolbar-item x-toolbar-text-default'])[2]")
     private WebElement modelLibraryTableText3PageShown;
     public WebElement getmodelLibraryTableText3PageShown() {return modelLibraryTableText3PageShown;}
    

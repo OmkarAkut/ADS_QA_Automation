@@ -299,7 +299,7 @@ public class CreateNewCostModel extends GoHelper {
 			fail(e.getMessage());
 		} finally {
 
-			doClosePageOnLowerBar("Model 2024.04.25...");
+			doClick("(//SPAN[@CLASS='x-tab-close-btn'])[2]");
 //				
 
 		}

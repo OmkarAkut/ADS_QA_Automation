@@ -108,9 +108,9 @@ public class EpisodesCreateAssignRemoval extends CalculationHelper {
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
 			driverDelay();
-			clickLastPageIconOnCalculationStatusViewLog();
-			System.out.println("Waiting");
-			Thread.sleep(1000);
+//			clickLastPageIconOnCalculationStatusViewLog();
+//			System.out.println("Waiting");
+//			Thread.sleep(1000);
 //			Omkar 17/04/2023 : The below elements would be found only on last page of view window
 			//Shilpa added below method to search records processed in all pages
 //			checkForRecordsProcessed("Total number");

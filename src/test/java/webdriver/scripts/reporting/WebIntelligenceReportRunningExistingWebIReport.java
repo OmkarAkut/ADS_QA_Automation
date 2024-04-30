@@ -48,9 +48,16 @@ public class WebIntelligenceReportRunningExistingWebIReport extends GoHelper {
 //			Omkar 19/04/2023 : xpath changes for ADS-11.2
 //			waitForPresenceOfElement("//a[text()='Documents']");
 //			doClick("//a[text()='Documents']");
+			/*
 			waitForPresenceOfElement("//span[@id='Documents-title']");
 			doClick("//span[@id='Documents-title']");
 			waitForElementPresence("//a[@title='Expand Folders']");
+			*/
+			//Shilpa updatd tc on 30.4.2024
+			waitForElementToBeVisible(reportMap.reportFolders());
+			
+			
+			
 			ExtentReport.logPass("PASS", "testWebiPageLoads");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "testWebiPageLoads", driver, e);
@@ -62,6 +69,7 @@ public class WebIntelligenceReportRunningExistingWebIReport extends GoHelper {
 	@Test
 	public void test02MoveToPublicFolders_6638() throws Throwable {
 		try {
+			/*
 			driver.switchTo().frame(driver.findElement(By.xpath("(//iframe[contains(@id,'iframe')])[2]")));
 			doClick("//a[@title='Expand Folders']");
 			waitForElementPresence("//span[contains(text(),'Public Folders')]");
@@ -73,6 +81,14 @@ public class WebIntelligenceReportRunningExistingWebIReport extends GoHelper {
 			act.moveToElement(reportMap.reportConversionToolDoc()).doubleClick().pause(1000).perform();
 			waitForDisplayedSpinnerToEnd();
 			driver.switchTo().defaultContent();
+			*/
+			//Shilpa updatd tc on 30.4.2024
+			doClick(reportMap.reportFolders());
+			waitForElementToBeVisible(reportMap.publicFolders());
+			doClick(reportMap.publicFolders());
+			waitForElementToBeVisible(reportMap.webSample());
+			doClick(reportMap.webSample());
+			driverDelay(200);
 			ExtentReport.logPass("PASS", "test02MoveToPuublicFolders");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test02MoveToPuublicFolders", driver, e);
@@ -81,14 +97,36 @@ public class WebIntelligenceReportRunningExistingWebIReport extends GoHelper {
 	}
 
 	@Test
-	public void test03OpenConversionToolReport_6638() throws Throwable {
+//	public void test03OpenConversionToolReport_6638() throws Throwable {
+		public void test03ValidateChartingSamples_6638() throws Throwable {
+
 		try {
+			/*
 			webdriverSwitchToFrame("servletBridgeIframe");
 			driver.switchTo().frame(driver.findElement(By.xpath("(//iframe[contains(@id,'iframe')])[3]")));
 			driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@id='webiViewFrame']")));
 			doClick(reportMap.reportToolOkBtn());
 			driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@class='persFrame']")));
 			assertElementIsDisplayed(reportMap.reportToolPieChart());
+			*/
+			//Shilpa updatd tc on 30.4.2024
+			doClick(reportMap.webchartSample());
+			driverDelay(2000);
+//			webdriverSwitchToFrame("servletBridgeIframe");
+//			waitForElementToBeVisible(reportMap.reportTab2());
+			doClick(reportMap.reportTab2());
+			driverDelay(300);
+			waitForElementToBeVisible(reportMap.reportChart());
+			doClick(reportMap.reportTab3());
+			driverDelay(300);
+			waitForElementToBeVisible(reportMap.reportChart());
+			doClick(reportMap.reportTab4());
+			driverDelay(300);
+			waitForElementToBeVisible(reportMap.reportChart());
+			doClick(reportMap.reportTab5());
+			driverDelay(300);
+			waitForElementToBeVisible(reportMap.reportChart());
+			driver.switchTo().defaultContent();
 			ExtentReport.logPass("PASS", "test03OpenConversionToolReport");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test03OpenConversionToolReport", driver, e);

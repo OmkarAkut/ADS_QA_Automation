@@ -322,7 +322,9 @@ public class Driver {
 
     }
     else if(testEnvironment.equals("qastage")) {
-    	dbUrl = "jdbc:oracle:thin:@10.204.20.120:1522:qadb01"; //"jdbc:oracle:thin:@192.168.210.100:1540:qav8";
+//    	dbUrl = "jdbc:oracle:thin:@10.204.20.120:1522:qadb01"; //"jdbc:oracle:thin:@192.168.210.100:1540:qav8";
+    //Shilpa update dburl for 11.2 on 30.4.2024
+    	dbUrl = "jdbc:oracle:thin:@10.204.20.101:1529:qareborn";
     	System.out.println(dbUrl);
 
     }
