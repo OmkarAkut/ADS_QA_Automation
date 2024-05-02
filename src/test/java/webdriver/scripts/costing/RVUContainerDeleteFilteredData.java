@@ -144,7 +144,9 @@ doClickTreeItem("Assign Unit Costs");
 			doClick("//*[text()='RVU Container List']/ancestor::div/following-sibling::div//span[text()='Filter']");
 			doFilterSetFilterParametersForDate("Start Month","Is","Equal To","04/01/2019");
 			addFilter();
-			assertElementIsDisplayedWithXpath("//label[text()='Filter to Match These Criteria 3/13480']");
+//			assertElementIsDisplayedWithXpath("//label[text()='Filter to Match These Criteria 3/13480']");
+			//Shilpa xpath update on 2.5.2024
+			assertElementIsDisplayedWithXpath("//label[contains(text(),'Filter to Match These Criteria')and('/13480')]");
 			doClick(dialog.getFilterDialogButtonApplyFilter());
 			waitForSpinnerToEnd();
 			ExtentReport.logPass("PASS", "test03SaveAsGeneralInformationCostModel");

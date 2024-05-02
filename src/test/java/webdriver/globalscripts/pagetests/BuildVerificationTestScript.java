@@ -22,6 +22,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.data.AdsStandardData;
+import webdriver.helpers.ContractModelsHelper;
 import webdriver.helpers.UcqcHelper;
 import webdriver.maps.AnalyticsMap;
 import webdriver.maps.ContractingMap;
@@ -136,10 +137,14 @@ public class BuildVerificationTestScript extends UcqcHelper {
 //					.contains("Contents Copyright © 2023 Picis Clinical Solutions, Inc. All rights reserved."));
 			// Shilpa updated text for 11.2 on 1.2.2024
 			System.out.println(driver.findElement(By.xpath("//div[@class='footerText']/span")).getText());
-			assertTrue(driver.findElement(By.xpath("//div[@class='footerText']/span")).getText()
+			String copyright="Contents Copyright © 2024 Picis Clinical Solutions, Inc. All rights reserved.";
+//			ContractModelsHelper.scrollToView("//div[@class='footerText']/span");
+			assertTrue(driver.findElement(By.xpath("//div[@class='footerText']/span")).getText().replaceAll(" ", "")
 //					 Omkar 20/2/2024 : Extra spaces added in 11.2
-					.contains("Contents Copyright © 2024 Picis Clinical Solutions, Inc. All rights reserved."));
+//					.contains("Contents Copyright © 2024 Picis Clinical Solutions, Inc. All rights reserved."));
 //					.contains("Contents Copyright © 2024 Picis Clinical Solutions, Inc.  All rights reserved. "));
+					//Shilpa 2.5.2024 : Updated the script 
+					.contains(copyright.replaceAll(" ", "")));
 			System.out.println("Testing Global Pages");
 			WebElement[] landingPageSystemMaintenanceElements = {
 					generalElement.getLandingPageBubbleSystemMaintenance(),

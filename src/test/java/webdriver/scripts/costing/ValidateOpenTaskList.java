@@ -34,7 +34,7 @@ public class ValidateOpenTaskList extends GoHelper {
 			modelMap=BuildMap.getInstance(driver, ContractingMap.class);
 			systemMap=BuildMap.getInstance(driver, SystemMaintenanceMap.class);
 			Login.loginUser("AutomationTesterAdmin");
-			settings.saveCustomSettings("Use Custom", "Costing Models");
+			ContractModelsHelper.saveCustomSettings("Use Custom", "Costing Models");
 //			goToPage("Costing Models");
 			ExtentReport.logPass("PASS", "setupScript");
 		} catch (Exception|AssertionError e) {
@@ -145,7 +145,7 @@ public class ValidateOpenTaskList extends GoHelper {
 	public static void endtest() throws Exception {
 		doClosePageOnLowerBar(costModel);
 		doClosePageOnLowerBar("Costing Models");
-		settings.revertCustomSettings();
+		ContractModelsHelper.revertCustomSettings();
 		ExtentReport.report.flush();
 
 	}

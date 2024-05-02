@@ -28,8 +28,9 @@ public class Login extends Driver {
 	private static String username;
 	private static String password;
 	static String projectPath = System.getProperty("user.dir");
-	 // protected static String PROPS = "/selenium/webdriver.properties"; //external-should work for win and unix
-	  protected static String PROPS = projectPath + "/src/selenium/webdriver.properties";
+	// protected static String PROPS = "/selenium/webdriver.properties";
+	// //external-should work for win and unix
+	protected static String PROPS = projectPath + "/src/selenium/webdriver.properties";
 
 	public static void loginUser(String user) throws Exception {
 		if (testEnvironment.contains("auto")) {
@@ -56,24 +57,21 @@ public class Login extends Driver {
 		} else if (testEnvironment.contains("qa3")) {
 			username = Usersqa3.valueOf(user).getUsername();
 			password = Usersqa3.valueOf(user).getPassword();
-		} 
-		else if (testEnvironment.contains("devstage")) {
+		} else if (testEnvironment.contains("devstage")) {
 			username = Usersqa3.valueOf(user).getUsername();
 			password = Usersqa3.valueOf(user).getPassword();
-		}
-		else if (testEnvironment.contains("qaprod")) {
+		} else if (testEnvironment.contains("qaprod")) {
 			username = Usersqa3.valueOf(user).getUsername();
 			password = Usersqa3.valueOf(user).getPassword();
-		}
-		else if (testEnvironment.contains("qastage")) {
+		} else if (testEnvironment.contains("qastage")) {
 			username = Usersqa3.valueOf(user).getUsername();
 			password = Usersqa3.valueOf(user).getPassword();
-		}
-		else {
+		} else {
 			throw new Exception("ERROR: login credentials - environment name not recognized.");
 		}
 		login(username, password);
-		//Below code is temporarily added by Omkar on 31/5/2022 as qa3 response time is more than expected
+		// Below code is temporarily added by Omkar on 31/5/2022 as qa3 response time is
+		// more than expected
 		Thread.sleep(5000);
 		waitForSpinnerToEnd();
 		WaitHelper.waitForJsWindowOnload();
@@ -94,14 +92,7 @@ public class Login extends Driver {
 	public static void loginUserRole(Roles role) {
 		login(role.getUsername(), role.getPassword());
 	}
-public static void saveSnapshot(String name) {
-	 File screenshotFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-     try {
-         FileUtils.copyFile(screenshotFile, new File(name+"."+"png"));
-     } catch (IOException e) {
-         e.printStackTrace();
-     }
-}
+
 	private static void login(String username, String password) {
 		Actions action = new Actions(driver);
 		WebDriverWait wait = new WebDriverWait(driver, 30);
@@ -110,56 +101,53 @@ public static void saveSnapshot(String name) {
 				System.out.println("Login Username: " + username);
 			}
 			try {
-				if(driver.findElement(By.xpath("//div[text()='Application Update']")).isDisplayed()) {
+				if (driver.findElement(By.xpath("//div[text()='Application Update']")).isDisplayed()) {
 					driver.findElement(By.xpath("//span[text()='Yes']")).click();
 				}
 			} catch (Exception e) {
-				
+
 			}
 			try {
-				
-			if((driver.findElement(By.xpath("//*[@id='username-inputEl']")).isDisplayed())) {
-				
-			}
-			}
-			catch(Exception e) {
-				
+
+				if ((driver.findElement(By.xpath("//*[@id='username-inputEl']")).isDisplayed())) {
+
+				}
+			} catch (Exception e) {
+
 				driver.close();
 				FileInputStream str = null;
-			    System.out.println(projectPath+ " this is path");
-			    try {
-			      str = new FileInputStream(PROPS);
-			    } catch (Exception e1) {
-			      fail("Cannot locate properties file");
-			    }
-			    Properties props = new Properties();
-			    props.load(str);
-			    browser=props.getProperty("BROWSER").toLowerCase();
-			    try {
-			        testEnvironment = props.getProperty("TEST_ENVIRONMENT").toLowerCase();
-			      } catch (Exception e2) {
-			        e.printStackTrace();
-			      }
+				System.out.println(projectPath + " this is path");
+				try {
+					str = new FileInputStream(PROPS);
+				} catch (Exception e1) {
+					fail("Cannot locate properties file");
+				}
+				Properties props = new Properties();
+				props.load(str);
+				browser = props.getProperty("BROWSER").toLowerCase();
+				try {
+					testEnvironment = props.getProperty("TEST_ENVIRONMENT").toLowerCase();
+				} catch (Exception e2) {
+					e.printStackTrace();
+				}
 //			    setBrowserDriver(browser);
 //			    setDriver(browser);
-			    getTestEnvironmentUrl(testEnvironment);
-			    setup();
-			    
+				getTestEnvironmentUrl(testEnvironment);
+				setup();
+
 //			    wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='username-inputEl']")));
 //				wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='password-inputEl']")));
-			   saveSnapshot("new driver");
-			    driver.findElement(By.id("username-inputEl")).click();
+				driver.findElement(By.id("username-inputEl")).click();
 				driver.findElement(By.id("username-inputEl")).sendKeys(username);
 				driver.findElement(By.id("password-inputEl")).sendKeys(password);
 				driver.findElement(By.id("loginBtn-btnInnerEl")).click();
 //				action.sendKeys(Keys.ENTER).perform();
 				waitForSpinnerToEnd();
 				Thread.sleep(500);
-				 saveSnapshot("logged in");
 				WebElement iAgree;
-				if(driver.findElement(By.xpath("//*[normalize-space()='I Agree']"
-						+ "[@class='x-btn btnCls x-box-item x-toolbar-item x-btn-default-small x-noicon x-btn-noicon x-btn-default-small-noicon']")).isDisplayed()) 
-				{
+				if (driver.findElement(By.xpath("//*[normalize-space()='I Agree']"
+						+ "[@class='x-btn btnCls x-box-item x-toolbar-item x-btn-default-small x-noicon x-btn-noicon x-btn-default-small-noicon']"))
+						.isDisplayed()) {
 					iAgree = driver.findElement(By.xpath("//*[normalize-space()='I Agree']"
 							+ "[@class='x-btn btnCls x-box-item x-toolbar-item x-btn-default-small x-noicon x-btn-noicon x-btn-default-small-noicon']"));
 					iAgree.click();
@@ -173,13 +161,15 @@ public static void saveSnapshot(String name) {
 //							driver.findElement(By.className("footerText")).getText()
 //							.contains("Picis Clinical Solutions, Inc. All rights reserved.")
 //							);
-					wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[contains(@class,'reporting')]/h1")));
-					assertTrue(driver.findElement(By.xpath("//div[contains(@class,'reporting')]/h1")).getText().contains("Reporting"));
+					wait.until(ExpectedConditions
+							.presenceOfElementLocated(By.xpath("//div[contains(@class,'reporting')]/h1")));
+					assertTrue(driver.findElement(By.xpath("//div[contains(@class,'reporting')]/h1")).getText()
+							.contains("Reporting"));
 					System.out.println("Login Time: " + setupFinalTimerResult(timerStart, false));
 				} catch (Exception e1) {
-					
+
 				}
-				
+
 			}
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='username-inputEl']")));
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='password-inputEl']")));
@@ -190,9 +180,9 @@ public static void saveSnapshot(String name) {
 			waitForSpinnerToEnd();
 			Thread.sleep(500);
 			WebElement iAgree;
-			if(driver.findElement(By.xpath("//*[normalize-space()='I Agree']"
-					+ "[@class='x-btn btnCls x-box-item x-toolbar-item x-btn-default-small x-noicon x-btn-noicon x-btn-default-small-noicon']")).isDisplayed()) 
-			{
+			if (driver.findElement(By.xpath("//*[normalize-space()='I Agree']"
+					+ "[@class='x-btn btnCls x-box-item x-toolbar-item x-btn-default-small x-noicon x-btn-noicon x-btn-default-small-noicon']"))
+					.isDisplayed()) {
 				iAgree = driver.findElement(By.xpath("//*[normalize-space()='I Agree']"
 						+ "[@class='x-btn btnCls x-box-item x-toolbar-item x-btn-default-small x-noicon x-btn-noicon x-btn-default-small-noicon']"));
 				iAgree.click();
@@ -206,37 +196,36 @@ public static void saveSnapshot(String name) {
 //						driver.findElement(By.className("footerText")).getText()
 //						.contains("Picis Clinical Solutions, Inc. All rights reserved.")
 //						);
-				wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[contains(@class,'reporting')]/h1")));
-				assertTrue(driver.findElement(By.xpath("//div[contains(@class,'reporting')]/h1")).getText().contains("Reporting"));
+				wait.until(ExpectedConditions
+						.presenceOfElementLocated(By.xpath("//div[contains(@class,'reporting')]/h1")));
+				assertTrue(driver.findElement(By.xpath("//div[contains(@class,'reporting')]/h1")).getText()
+						.contains("Reporting"));
 				System.out.println("Login Time: " + setupFinalTimerResult(timerStart, false));
 			} catch (Exception e1) {
-				
+
 			}
 
 		}
-		
+
 	}
 
 	public static void isInvalid() {
 		try {
 			waitForSpinnerToEnd();
-			assertFalse(driver.findElement(By.xpath(
-					"//*[contains(@id, 'errorWindow')]" +
-							"/descendant::*[text()='You have typed an invalid username or password. " +
-					"Please retype your information.']"))
-					.isDisplayed());
-		} catch (Throwable e) {}
+			assertFalse(driver.findElement(By.xpath("//*[contains(@id, 'errorWindow')]"
+					+ "/descendant::*[text()='You have typed an invalid username or password. "
+					+ "Please retype your information.']")).isDisplayed());
+		} catch (Throwable e) {
+		}
 	}
 
 	public static void isLoggedIn() {
 		try {
 			waitForSpinnerToEnd();
-			//wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@class='footerText']")));
+			// wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@class='footerText']")));
 			assertTrue(driver.findElement(By.className("footerText")).isDisplayed());
-			assertTrue(
-					driver.findElement(By.className("footerText")).getText()
-					.contains("Picis Clinical Solutions, Inc. All rights reserved.")
-					);
+			assertTrue(driver.findElement(By.className("footerText")).getText()
+					.contains("Picis Clinical Solutions, Inc. All rights reserved."));
 		} catch (Throwable e) {
 			fail("isLoggedIn Failed");
 		}
@@ -257,6 +246,3 @@ public static void saveSnapshot(String name) {
 //    this.password = role.getPassword();
 //    login(username, password);
 //  }
-
-
-

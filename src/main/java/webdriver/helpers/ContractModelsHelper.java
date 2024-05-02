@@ -41,7 +41,7 @@ public class ContractModelsHelper extends GoHelper {
   private static ModelLibraryMap modelMap;
   private static EditContractingModelMap editModelMap;
   private static ContractingMap contractMap;
-
+  private static Actions act=new Actions(driver);
 
   /** Helper Class for Contract Models pages - individual test scripts should extend this one to use it.
    */
@@ -1164,43 +1164,47 @@ public class ContractModelsHelper extends GoHelper {
 	  }
 
 	public static void saveCustomSettings(String setName,String modelName) {
+		
 		try {
 			goToPage("Customize Task Lists");
-			doClick("//label[text()='"+setName+"']//preceding-sibling::span");
+			driverDelay();
+			act.moveToElement(driver.findElement(By.xpath("//label[text()='Use Default']//preceding-sibling::span"))).click().pause(1000).perform();
+			act.moveToElement(driver.findElement(By.xpath("//label[text()='"+setName+"']//preceding-sibling::span"))).click().pause(1000).perform();
 			driverDelay(1000);
 			doClick(SystemMaintenanceMap.getTaskListSaveButton());
 			driverDelay(1000);
 			doClick("//div[contains(@id,'messagebox')]//span[text()='Save']");
 			waitForDisplayedSavingSpinnerToEnd();
-//			waitForAjaxExtJs();
-			driverDelay(3000);
+			driverDelay(5000);
+			driverDelay();
 			goToPage(modelName);
-			
 		} catch (Exception e) {
 			
 		}
 	}
 	public static void saveCustomSettingsLogOut(String setName,String modelName) {
 		try {
-			goToPage("Customize Task Lists");
-			doClick("//label[text()='"+setName+"']//preceding-sibling::span");
+			goToPage("Customize Task Lists"); 
+			driverDelay();
+			act.moveToElement(driver.findElement(By.xpath("//label[text()='Use Default']//preceding-sibling::span"))).click().pause(1000).perform();
 			doClick(SystemMaintenanceMap.getTaskListSaveButton());
 			doClick("//div[contains(@id,'messagebox')]//span[text()='Save']");
 			waitForDisplayedSpinnerToEnd();
-			doClick("//div[text()='Log Out']");
-			
+			driverDelay(5000);
 		} catch (Exception e) {
-			
+		
 		}
 	}
+	
 	public static void revertCustomSettings() {
 		try {
-			goToPage("Customize Task Lists");
-			doClick("//label[text()='Use Default']//preceding-sibling::span");
+			goToPage("Customize Task Lists"); 
+			driverDelay();
+			act.moveToElement(driver.findElement(By.xpath("//label[text()='Use Default']//preceding-sibling::span"))).click().pause(1000).perform();
 			doClick(SystemMaintenanceMap.getTaskListSaveButton());
 			doClick("//div[contains(@id,'messagebox')]//span[text()='Save']");
 			waitForDisplayedSpinnerToEnd();
-			doClosePageOnLowerBar("Customize Task Lists");
+			driverDelay(5000);
 		} catch (Exception e) {
 		
 		}

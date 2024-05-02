@@ -16,15 +16,6 @@ import webdriver.maps.mapbuilder.BuildMap;
 
 public class saveSystemSettings extends GoHelper{
 	Actions act=new Actions(driver);
-	
-	public void saveScreenshot(String name) {
-		 File screenshotFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-	        try {
-	            FileUtils.copyFile(screenshotFile, new File(name+"."+"png"));
-	        } catch (IOException e) {
-	            e.printStackTrace();
-	        }
-	}
 	public void saveCustomSettings(String setName,String modelName) {
 		try {
 			goToPage("Customize Task Lists");

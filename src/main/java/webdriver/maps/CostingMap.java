@@ -2284,4 +2284,134 @@ public class CostingMap extends MapConfig {
 	public WebElement unitCostQuickCalculationAllcheckbx() {
 		return unitCostQuickCalculationAllcheckbx;
 	}
+	//Shilpa: 2.5.2024 
+	@FindBy(xpath = "//div[text()='Statistic Data Scenarios']//following::span[text()='New']")
+	private WebElement statisticDataScenarionNewBtn;
+	public WebElement statisticDataScenarionNewBtn() {
+		return statisticDataScenarionNewBtn;
+	}
+	@FindBy(name = "name")
+	private WebElement statisticDataScenarionName;
+	public WebElement statisticDataScenarionName() {
+		return statisticDataScenarionName;
+	}
+	@FindBy(xpath= "(//div[contains(@id,'dynamiccombo')]//input[@name='timePeriodName'])[2]")
+	private WebElement statisticDataFiscalYear;
+	public WebElement statisticDataFiscalYear() {
+		return statisticDataFiscalYear;
+	}
+	
+	@FindBy(xpath = "(//div[contains(@class,'x-boundlist-floating x-layer')])[1]//ul")
+	private static WebElement getFiscalYearList;
+	public static WebElement getFiscalYearList() {
+		return getFiscalYearList;
+	}
+	@FindBy(xpath = "//div[text()='Statistic Data Scenario']//following::span[text()='Save & Close']")
+	private static WebElement getSaveStatisticScenario;
+	public WebElement getSaveStatisticScenario() {return getSaveStatisticScenario;}
+	
+	@FindBy(xpath = "//div[text()='Statistic Data Scenario']//following::span[text()='Cancel & Close']")
+	private static WebElement getCancelCloseStatisticScenario;
+	public WebElement getCancelCloseStatisticScenario() {return getCancelCloseStatisticScenario;}
+	
+	@FindBy(xpath = "//div[text()='Statistic Data Scenarios']//following::span[text()='Filter']")
+	private WebElement statisticDataScenarionFilterBtn;
+	public WebElement statisticDataScenarionFilterBtn() {
+		return statisticDataScenarionFilterBtn;
+	}
+	@FindBy(xpath = "//div[text()='Statistic Data Scenarios']//following::span[text()='Delete']")
+	private WebElement statisticDataScenarionDeleteBtn;
+	public WebElement statisticDataScenarionDeleteBtn() {
+		return statisticDataScenarionDeleteBtn;
+	}
+	@FindBy(xpath = "//h1[text()='Statistic Data Calculation Scenarios']//following::span[text()='Filter']")
+	private WebElement statisticDataCalcScenarionFilterBtn;
+	public WebElement statisticDataCalcScenarionFilterBtn() {
+		return statisticDataCalcScenarionFilterBtn;
+	}
+	@FindBy(xpath = "//div[text()='Statistic Data Calculation Scenario']//following::span[text()='Save As']")
+	private WebElement statisticDataCalcScenarionSaveAsBtn;
+	public WebElement statisticDataCalcScenarionSaveAsBtn() {
+		return statisticDataCalcScenarionSaveAsBtn;
+	}
+	@FindBy(name = "gLStatMastId")
+	private WebElement glStatisticMaster;
+	public WebElement glStatisticMaster() {
+		return glStatisticMaster;
+	}
+	@FindBy(name = "generalLedgerDataScenario")
+	private WebElement glDataScenario;
+	public WebElement glDataScenario() {
+		return glDataScenario;
+	}
+	@FindBy(name = "actStatMastId")
+	private WebElement activityStatsMaster;
+	public WebElement activityStatsMaster() {
+		return activityStatsMaster;
+	}
+	@FindBy(name = "activityStatisticCalcScenario")
+	private WebElement activityVolDataScenario;
+	public WebElement activityVolDataScenario() {
+		return activityVolDataScenario;
+	}
+	@FindBy(xpath = "(//input[@name='startDate'])[2]")
+	private WebElement statisticStartMonth;
+	public WebElement statisticStartMonth() {
+		return statisticStartMonth;
+	}
+	@FindBy(xpath = "(//input[@name='endDate'])[2]")
+	private WebElement statisticEndMonth;
+	public WebElement statisticEndMonth() {
+		return statisticEndMonth;
+	}
+	@FindBy(xpath = "(//div[contains(@class,'x-boundlist-list-ct')])[3]//ul")
+	private WebElement statisticVolDataScenarioList;
+	public WebElement statisticVolDataScenarioList() {
+		return statisticVolDataScenarioList;
+	}
+	@FindBy(name = "costingActivityDataScenario")
+	private WebElement statisticVolDataScenarioDropdown;
+	public WebElement statisticVolDataScenarioDropdown() {
+		return statisticVolDataScenarioDropdown;
+	}
+	@FindBy(xpath = "(//input[@name='deleteExistData'])[1]")
+	private WebElement deleteAndRecalculateOption;
+	public WebElement deleteAndRecalculateOption() {
+		return deleteAndRecalculateOption;
+	}
+	@FindBy(xpath = "(//input[@name='shareLog'])[1]/../../../..")
+	private WebElement shareLogCheck;
+	public WebElement shareLogCheck() {
+		return shareLogCheck;
+	}
+	@FindBy(xpath = "(//input[@name='shareLog'])[1]")
+	private WebElement shareLog;
+	public WebElement shareLog() {
+		return shareLog;
+	}
+	@FindBy(xpath = "//div[text()='Statistic Data Calculation Scenario']//following::span[text()='Save']")
+	private WebElement statisticDataCalcScenarionSaveBtn;
+	public WebElement statisticDataCalcScenarionSaveBtn() {
+		return statisticDataCalcScenarionSaveBtn;
+	}
+	@FindBy(xpath = "//div[text()='Statistic Data Calculation Scenario']//following::span[text()='Calculate']")
+	private WebElement statisticDataCalcScenarionCalculateBtn;
+	public WebElement statisticDataCalcScenarionCalculateBtn() {
+		return statisticDataCalcScenarionCalculateBtn;
+	}
+	@FindBy(xpath = "//div[text()='Statistic Data Calculation Scenario']//following::span[text()='Save & Close']")
+	private WebElement statisticDataCalcScenarioSaveCloseBtn;
+	public WebElement statisticDataCalcScenarioSaveCloseBtn() {
+		return statisticDataCalcScenarioSaveCloseBtn;
+	}
+	@FindBy(xpath = "//div[text()='Statistic Data']//following::span[text()='Filter']")
+	private WebElement statisticDataFilterBtn;
+	public WebElement statisticDataFilterBtn() {
+		return statisticDataFilterBtn;
+	}
+	@FindBy(xpath = "//span[text()='Filter Statistic Data']//following::span[text()='Cancel & Close']")
+	private WebElement statisticDataFilterCancelClose;
+	public WebElement statisticDataFilterCancelClose() {
+		return statisticDataFilterCancelClose;
+	}
 }
