@@ -44,7 +44,7 @@ public class CreateNewEditDeleteTimePeriod extends GoHelper {
 			systemMap=BuildMap.getInstance(driver, SystemMaintenanceMap.class);
 			Login.loginUser("AutomationTesterAdmin");
 			driverDelay(5000);
-			ContractModelsHelper.saveCustomSettings("Use Custom", "Costing Models");
+			settings.saveCustomSettings("Use Custom", "Costing Models");
 			ExtentReport.logPass("PASS", "setupScript");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "Failure in setupScript", driver, e);
@@ -139,7 +139,7 @@ public class CreateNewEditDeleteTimePeriod extends GoHelper {
 
 	@AfterClass
 	public static void endtest() {
-		ContractModelsHelper.revertCustomSettings();
+		settings.revertCustomSettings();
 		ExtentReport.report.flush();
 	}
 }

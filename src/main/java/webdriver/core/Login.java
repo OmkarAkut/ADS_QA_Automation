@@ -13,6 +13,7 @@ import org.apache.commons.io.FileUtils;
 //import java.lang.Enum;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchSessionException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
@@ -93,7 +94,7 @@ public class Login extends Driver {
 		login(role.getUsername(), role.getPassword());
 	}
 
-	private static void login(String username, String password) {
+	private static void login(String username, String password) throws NoSuchSessionException {
 		Actions action = new Actions(driver);
 		WebDriverWait wait = new WebDriverWait(driver, 30);
 		try {
@@ -115,6 +116,7 @@ public class Login extends Driver {
 			} catch (Exception e) {
 
 				driver.close();
+				System.out.println("DRIVER CLOSED!!!!");
 				FileInputStream str = null;
 				System.out.println(projectPath + " this is path");
 				try {

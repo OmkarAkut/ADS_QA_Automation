@@ -38,7 +38,7 @@ public class RunGLAdjustmentAndReclassifications extends CalculationHelper {
 			systemMap=BuildMap.getInstance(driver, SystemMaintenanceMap.class);
 			Login.loginUser("AutomationTesterAdmin");
 			driverDelay(5000);
-			ContractModelsHelper.saveCustomSettings("Use Custom", "Costing Models");
+			settings.saveCustomSettings("Use Custom", "Costing Models");
 //			waitForDisplayedSpinnerToEnd();
 //			goToPage("Costing Models");
 //			waitForDisplayedSpinnerToEnd();
@@ -94,7 +94,7 @@ public class RunGLAdjustmentAndReclassifications extends CalculationHelper {
 
 	@AfterClass
 	public static void endtest() throws Exception {
-		ContractModelsHelper.revertCustomSettings();
+		settings.revertCustomSettings();
 		ExtentReport.report.flush();
 
 	}

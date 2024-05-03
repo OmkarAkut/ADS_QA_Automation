@@ -43,7 +43,7 @@ public class CreateDeleteCostMethodMaster extends GoHelper{
 			systemMap=BuildMap.getInstance(driver, SystemMaintenanceMap.class);
 			Login.loginUser("AutomationTesterAdmin");
 			driverDelay(5000);
-			ContractModelsHelper.saveCustomSettings("Use Custom", "Costing Models");
+			settings.saveCustomSettings("Use Custom", "Costing Models");
 //			goToPage("Costing Models");
 			ExtentReport.logPass("PASS", "setupScript");
 		} catch (Exception | AssertionError e) {
@@ -168,7 +168,7 @@ public class CreateDeleteCostMethodMaster extends GoHelper{
 	}
 	@AfterClass
 	public static void endtest() {
-		ContractModelsHelper.revertCustomSettings();
+		settings.revertCustomSettings();
 		ExtentReport.report.flush();
 	}
 }

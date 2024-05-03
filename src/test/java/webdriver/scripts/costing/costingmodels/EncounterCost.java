@@ -91,7 +91,8 @@ public class EncounterCost extends UcqcHelper {
 	@Test
 	public void test02EnterEncounterCostModelScenarioDetails() throws Throwable {
 		try {
-			DoHelper.doEnterModelName(costModelName);
+			waitUntilElementIsClickable(CostingMap.getEncounterName());
+			CostingMap.getEncounterName().sendKeys(costModelName);
 			Thread.sleep(400);
 			doClick(selectColumn.getSelctCostModelScenariosInEvaluationOrder());
 //			highlightColumnsToDisplayColumn("BC REGRESSION CMS");
@@ -155,9 +156,9 @@ public class EncounterCost extends UcqcHelper {
 //			doClick("//span[text()='Save & Continue']");
 			waitForSpinnerToEnd();
 			CalculationHelper.waitForFirstRowCalculationBarToReach100Percent();
-			ExtentReport.logPass("PASS", "test01AssertCostModelPageHeader");
+			ExtentReport.logPass("PASS", "test02EnterEncounterCostModelScenarioDetails");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test01AssertCostModelPageHeader", driver, e);
+			ExtentReport.logFail("FAIL", "test02EnterEncounterCostModelScenarioDetails", driver, e);
 			fail(e.getMessage());
 		}
 	}
