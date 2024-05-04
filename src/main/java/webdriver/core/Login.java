@@ -115,47 +115,91 @@ public class Login extends Driver {
 				}
 			} catch (Exception e) {
 
-				driver.close();
-				System.out.println("DRIVER CLOSED!!!!");
-				FileInputStream str = null;
-				System.out.println(projectPath + " this is path");
 				try {
-					str = new FileInputStream(PROPS);
-				} catch (Exception e1) {
-					fail("Cannot locate properties file");
-				}
-				Properties props = new Properties();
-				props.load(str);
-				browser = props.getProperty("BROWSER").toLowerCase();
-				try {
-					testEnvironment = props.getProperty("TEST_ENVIRONMENT").toLowerCase();
-				} catch (Exception e2) {
-					e.printStackTrace();
-				}
+					driver.close();
+					System.out.println("DRIVER CLOSED!!!!");
+					FileInputStream str = null;
+					System.out.println(projectPath + " this is path");
+					try {
+						str = new FileInputStream(PROPS);
+					} catch (Exception e1) {
+						fail("Cannot locate properties file");
+					}
+					Properties props = new Properties();
+					props.load(str);
+					browser = props.getProperty("BROWSER").toLowerCase();
+					try {
+						testEnvironment = props.getProperty("TEST_ENVIRONMENT").toLowerCase();
+					} catch (Exception e2) {
+						e.printStackTrace();
+					}
 //			    setBrowserDriver(browser);
 //			    setDriver(browser);
-				getTestEnvironmentUrl(testEnvironment);
-				setup();
+					getTestEnvironmentUrl(testEnvironment);
+					setup();
 
 //			    wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='username-inputEl']")));
 //				wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='password-inputEl']")));
-				driver.findElement(By.id("username-inputEl")).click();
-				driver.findElement(By.id("username-inputEl")).sendKeys(username);
-				driver.findElement(By.id("password-inputEl")).sendKeys(password);
-				driver.findElement(By.id("loginBtn-btnInnerEl")).click();
+					driver.findElement(By.id("username-inputEl")).click();
+					driver.findElement(By.id("username-inputEl")).sendKeys(username);
+					driver.findElement(By.id("password-inputEl")).sendKeys(password);
+					driver.findElement(By.id("loginBtn-btnInnerEl")).click();
 //				action.sendKeys(Keys.ENTER).perform();
-				waitForSpinnerToEnd();
-				Thread.sleep(500);
-				WebElement iAgree;
-				if (driver.findElement(By.xpath("//*[normalize-space()='I Agree']"
-						+ "[@class='x-btn btnCls x-box-item x-toolbar-item x-btn-default-small x-noicon x-btn-noicon x-btn-default-small-noicon']"))
-						.isDisplayed()) {
-					iAgree = driver.findElement(By.xpath("//*[normalize-space()='I Agree']"
-							+ "[@class='x-btn btnCls x-box-item x-toolbar-item x-btn-default-small x-noicon x-btn-noicon x-btn-default-small-noicon']"));
-					iAgree.click();
+					waitForSpinnerToEnd();
+					Thread.sleep(500);
+					WebElement iAgree;
+					if (driver.findElement(By.xpath("//*[normalize-space()='I Agree']"
+							+ "[@class='x-btn btnCls x-box-item x-toolbar-item x-btn-default-small x-noicon x-btn-noicon x-btn-default-small-noicon']"))
+							.isDisplayed()) {
+						iAgree = driver.findElement(By.xpath("//*[normalize-space()='I Agree']"
+								+ "[@class='x-btn btnCls x-box-item x-toolbar-item x-btn-default-small x-noicon x-btn-noicon x-btn-default-small-noicon']"));
+						iAgree.click();
+					}
+				} catch (NoSuchSessionException e1) {
+					driver.close();
+					System.out.println("DRIVER CLOSED!!!!");
+					FileInputStream str = null;
+					System.out.println(projectPath + " this is path");
+					try {
+						str = new FileInputStream(PROPS);
+					} catch (Exception e2) {
+						fail("Cannot locate properties file");
+					}
+					Properties props = new Properties();
+					props.load(str);
+					browser = props.getProperty("BROWSER").toLowerCase();
+					try {
+						testEnvironment = props.getProperty("TEST_ENVIRONMENT").toLowerCase();
+					} catch (Exception e2) {
+						e.printStackTrace();
+					}
+//			    setBrowserDriver(browser);
+//			    setDriver(browser);
+					getTestEnvironmentUrl(testEnvironment);
+					setup();
+
+//			    wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='username-inputEl']")));
+//				wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='password-inputEl']")));
+					driver.findElement(By.id("username-inputEl")).click();
+					driver.findElement(By.id("username-inputEl")).sendKeys(username);
+					driver.findElement(By.id("password-inputEl")).sendKeys(password);
+					driver.findElement(By.id("loginBtn-btnInnerEl")).click();
+//				action.sendKeys(Keys.ENTER).perform();
+					waitForSpinnerToEnd();
+					Thread.sleep(500);
+					WebElement iAgree;
+					if (driver.findElement(By.xpath("//*[normalize-space()='I Agree']"
+							+ "[@class='x-btn btnCls x-box-item x-toolbar-item x-btn-default-small x-noicon x-btn-noicon x-btn-default-small-noicon']"))
+							.isDisplayed()) {
+						iAgree = driver.findElement(By.xpath("//*[normalize-space()='I Agree']"
+								+ "[@class='x-btn btnCls x-box-item x-toolbar-item x-btn-default-small x-noicon x-btn-noicon x-btn-default-small-noicon']"));
+						iAgree.click();
+					}
 				}
 
-			} catch (Throwable e) {
+			} 
+			
+			catch (Throwable e) {
 				try {
 //					wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@class='footerText']")));
 //					assertTrue(driver.findElement(By.className("footerText")).isDisplayed());
@@ -208,7 +252,7 @@ public class Login extends Driver {
 			}
 
 		}
-
+	
 	}
 
 	public static void isInvalid() {

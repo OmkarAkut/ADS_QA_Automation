@@ -81,6 +81,7 @@ public class EncounterCost extends UcqcHelper {
 			waitForElementToBeVisible(CostingMap.getEncounterPageText());
 			// Encounter Cost Calculation Scenario page is shown
 			assertTextIsDisplayed("Encounter Cost Calculation Scenario");
+			test02EnterEncounterCostModelScenarioDetails();
 			ExtentReport.logPass("PASS", "test01AssertCostModelPageHeader");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01AssertCostModelPageHeader", driver, e);
@@ -88,7 +89,7 @@ public class EncounterCost extends UcqcHelper {
 		}
 	}
 
-	@Test
+	
 	public void test02EnterEncounterCostModelScenarioDetails() throws Throwable {
 		try {
 			waitUntilElementIsClickable(CostingMap.getEncounterName());
