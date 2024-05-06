@@ -9,6 +9,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchSessionException;
 import org.openqa.selenium.WebElement;
 
 import ExtentReport.ExtentReport;
@@ -81,7 +82,6 @@ public class EncounterCost extends UcqcHelper {
 			waitForElementToBeVisible(CostingMap.getEncounterPageText());
 			// Encounter Cost Calculation Scenario page is shown
 			assertTextIsDisplayed("Encounter Cost Calculation Scenario");
-			test02EnterEncounterCostModelScenarioDetails();
 			ExtentReport.logPass("PASS", "test01AssertCostModelPageHeader");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01AssertCostModelPageHeader", driver, e);
@@ -89,8 +89,8 @@ public class EncounterCost extends UcqcHelper {
 		}
 	}
 
-	
-	public void test02EnterEncounterCostModelScenarioDetails() throws Throwable {
+	@Test
+	public void test02EnterEncounterCostModelScenarioDetails() throws NoSuchSessionException, Throwable {
 		try {
 			waitUntilElementIsClickable(CostingMap.getEncounterName());
 			CostingMap.getEncounterName().sendKeys(costModelName);

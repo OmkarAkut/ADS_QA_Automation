@@ -15,6 +15,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchSessionException;
 import org.openqa.selenium.OutputType;
+import org.openqa.selenium.SessionNotCreatedException;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -93,9 +94,66 @@ public class Login extends Driver {
 	public static void loginUserRole(Roles role) {
 		login(role.getUsername(), role.getPassword());
 	}
+	
+	public static void retryLogin() throws NoSuchSessionException, SessionNotCreatedException, IOException, InterruptedException {
+		int retries = 3;
+		boolean success = false;
+		while (!success && retries > 0) {
+		    try {
+		        // Your Selenium actions here
+		        success = true; // If the actions succeed without throwing an exception
+		    } catch (Exception e) {
+		        // Handle session invalid exception
+		        // For example, re-authenticate or restart session
+//		        logger.error("Session invalidated. Re-authenticating...");
+		        driver.quit();
+		        driver.close();
+				System.out.println("DRIVER CLOSED!!!!");
+				FileInputStream str = null;
+				System.out.println(projectPath + " this is path");
+				try {
+					str = new FileInputStream(PROPS);
+				} catch (Exception e1) {
+					fail("Cannot locate properties file");
+				}
+				Properties props = new Properties();
+				props.load(str);
+				browser = props.getProperty("BROWSER").toLowerCase();
+				try {
+					testEnvironment = props.getProperty("TEST_ENVIRONMENT").toLowerCase();
+				} catch (Exception e2) {
+					e.printStackTrace();
+				}
+//		    setBrowserDriver(browser);
+//		    setDriver(browser);
+				getTestEnvironmentUrl(testEnvironment);
+				setup();
+
+//		    wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='username-inputEl']")));
+//			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='password-inputEl']")));
+				driver.findElement(By.id("username-inputEl")).click();
+				driver.findElement(By.id("username-inputEl")).sendKeys(username);
+				driver.findElement(By.id("password-inputEl")).sendKeys(password);
+				driver.findElement(By.id("loginBtn-btnInnerEl")).click();
+//			action.sendKeys(Keys.ENTER).perform();
+				waitForSpinnerToEnd();
+				Thread.sleep(500);
+				WebElement iAgree;
+				if (driver.findElement(By.xpath("//*[normalize-space()='I Agree']"
+						+ "[@class='x-btn btnCls x-box-item x-toolbar-item x-btn-default-small x-noicon x-btn-noicon x-btn-default-small-noicon']"))
+						.isDisplayed()) {
+					iAgree = driver.findElement(By.xpath("//*[normalize-space()='I Agree']"
+							+ "[@class='x-btn btnCls x-box-item x-toolbar-item x-btn-default-small x-noicon x-btn-noicon x-btn-default-small-noicon']"));
+					iAgree.click();
+				}
+		        retries--;
+		    }
+		}
+	}
 
 	private static void login(String username, String password) throws NoSuchSessionException {
 		Actions action = new Actions(driver);
+		
 		WebDriverWait wait = new WebDriverWait(driver, 30);
 		try {
 			if (printout) {
@@ -108,115 +166,17 @@ public class Login extends Driver {
 			} catch (Exception e) {
 
 			}
+			
 			try {
 
 				if ((driver.findElement(By.xpath("//*[@id='username-inputEl']")).isDisplayed())) {
 
 				}
 			} catch (Exception e) {
-
-				try {
-					driver.close();
-					System.out.println("DRIVER CLOSED!!!!");
-					FileInputStream str = null;
-					System.out.println(projectPath + " this is path");
-					try {
-						str = new FileInputStream(PROPS);
-					} catch (Exception e1) {
-						fail("Cannot locate properties file");
-					}
-					Properties props = new Properties();
-					props.load(str);
-					browser = props.getProperty("BROWSER").toLowerCase();
-					try {
-						testEnvironment = props.getProperty("TEST_ENVIRONMENT").toLowerCase();
-					} catch (Exception e2) {
-						e.printStackTrace();
-					}
-//			    setBrowserDriver(browser);
-//			    setDriver(browser);
-					getTestEnvironmentUrl(testEnvironment);
-					setup();
-
-//			    wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='username-inputEl']")));
-//				wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='password-inputEl']")));
-					driver.findElement(By.id("username-inputEl")).click();
-					driver.findElement(By.id("username-inputEl")).sendKeys(username);
-					driver.findElement(By.id("password-inputEl")).sendKeys(password);
-					driver.findElement(By.id("loginBtn-btnInnerEl")).click();
-//				action.sendKeys(Keys.ENTER).perform();
-					waitForSpinnerToEnd();
-					Thread.sleep(500);
-					WebElement iAgree;
-					if (driver.findElement(By.xpath("//*[normalize-space()='I Agree']"
-							+ "[@class='x-btn btnCls x-box-item x-toolbar-item x-btn-default-small x-noicon x-btn-noicon x-btn-default-small-noicon']"))
-							.isDisplayed()) {
-						iAgree = driver.findElement(By.xpath("//*[normalize-space()='I Agree']"
-								+ "[@class='x-btn btnCls x-box-item x-toolbar-item x-btn-default-small x-noicon x-btn-noicon x-btn-default-small-noicon']"));
-						iAgree.click();
-					}
-				} catch (NoSuchSessionException e1) {
-					driver.close();
-					System.out.println("DRIVER CLOSED!!!!");
-					FileInputStream str = null;
-					System.out.println(projectPath + " this is path");
-					try {
-						str = new FileInputStream(PROPS);
-					} catch (Exception e2) {
-						fail("Cannot locate properties file");
-					}
-					Properties props = new Properties();
-					props.load(str);
-					browser = props.getProperty("BROWSER").toLowerCase();
-					try {
-						testEnvironment = props.getProperty("TEST_ENVIRONMENT").toLowerCase();
-					} catch (Exception e2) {
-						e.printStackTrace();
-					}
-//			    setBrowserDriver(browser);
-//			    setDriver(browser);
-					getTestEnvironmentUrl(testEnvironment);
-					setup();
-
-//			    wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='username-inputEl']")));
-//				wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='password-inputEl']")));
-					driver.findElement(By.id("username-inputEl")).click();
-					driver.findElement(By.id("username-inputEl")).sendKeys(username);
-					driver.findElement(By.id("password-inputEl")).sendKeys(password);
-					driver.findElement(By.id("loginBtn-btnInnerEl")).click();
-//				action.sendKeys(Keys.ENTER).perform();
-					waitForSpinnerToEnd();
-					Thread.sleep(500);
-					WebElement iAgree;
-					if (driver.findElement(By.xpath("//*[normalize-space()='I Agree']"
-							+ "[@class='x-btn btnCls x-box-item x-toolbar-item x-btn-default-small x-noicon x-btn-noicon x-btn-default-small-noicon']"))
-							.isDisplayed()) {
-						iAgree = driver.findElement(By.xpath("//*[normalize-space()='I Agree']"
-								+ "[@class='x-btn btnCls x-box-item x-toolbar-item x-btn-default-small x-noicon x-btn-noicon x-btn-default-small-noicon']"));
-						iAgree.click();
-					}
-				}
-
+				retryLogin();
 			} 
 			
-			catch (Throwable e) {
-				try {
-//					wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@class='footerText']")));
-//					assertTrue(driver.findElement(By.className("footerText")).isDisplayed());
-//					assertTrue(
-//							driver.findElement(By.className("footerText")).getText()
-//							.contains("Picis Clinical Solutions, Inc. All rights reserved.")
-//							);
-					wait.until(ExpectedConditions
-							.presenceOfElementLocated(By.xpath("//div[contains(@class,'reporting')]/h1")));
-					assertTrue(driver.findElement(By.xpath("//div[contains(@class,'reporting')]/h1")).getText()
-							.contains("Reporting"));
-					System.out.println("Login Time: " + setupFinalTimerResult(timerStart, false));
-				} catch (Exception e1) {
-
-				}
-
-			}
+			
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='username-inputEl']")));
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='password-inputEl']")));
 			driver.findElement(By.id("username-inputEl")).sendKeys(username);

@@ -56,6 +56,7 @@ public class UtilitiesEncountersWithNegativeChargeBalanceReportAds2427 extends U
 			// loginUser(Users.ApplicationAdministrator1);
 			loginUser(Users.ApplicationAdministrator1);
 			goToPage("Utilities");
+			waitForAjaxExtJs();
 			ExtentReport.logPass("PASS", "setupScript");
 		} catch (Exception|AssertionError e) {
 			ExtentReport.logFail("FAIL", "Failure in setupScript", driver, e);

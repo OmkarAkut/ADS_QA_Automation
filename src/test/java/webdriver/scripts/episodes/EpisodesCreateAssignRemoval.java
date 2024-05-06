@@ -107,7 +107,7 @@ public class EpisodesCreateAssignRemoval extends CalculationHelper {
 			waitForSpinnerToEnd();
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
-			driverDelay(3000);
+			driverDelay(7000);
 //			clickLastPageIconOnCalculationStatusViewLog();
 //			System.out.println("Waiting");
 //			Thread.sleep(1000);

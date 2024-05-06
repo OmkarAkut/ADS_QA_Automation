@@ -128,7 +128,7 @@ public class EditCostModelCalculationScenarios extends CalculationHelper {
 //			 clickLastPageIconOnCalculationStatusViewLog();
 			 checkForRecordsProcessed("Studied Allocation Percent = 100");
 //			confirmCalculationStatusDetailsContains("Studied Allocation Percent = 100");
-			driverDelay();
+			driverDelay(3000);
 			closeViewDialog();
 			ExtentReport.logPass("PASS", "test05CalculateCostCalcultionScenario");
 		} catch (Exception | AssertionError e) {

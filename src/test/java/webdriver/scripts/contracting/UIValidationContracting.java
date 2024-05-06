@@ -90,7 +90,7 @@ public class UIValidationContracting extends CalculationHelper{
 			doClick(ContractingMap.getNewRiskLimiterPopUpCancelClose());
 			doClick(ContractingMap.getSaveButtonFeePaymentTerm());
 			doClick(ContractingMap.getFeeForPaymentCancelClose());
-			doClick(ContractingMap.getWarningCancelCloseBtn());
+//			doClick(ContractingMap.getWarningCancelCloseBtn());
 			ExtentReport.logPass("PASS", "AssertContractModelPage");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "AssertContractModelPage", driver, e);
