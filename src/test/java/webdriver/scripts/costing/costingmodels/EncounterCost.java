@@ -90,7 +90,7 @@ public class EncounterCost extends UcqcHelper {
 	}
 
 	@Test
-	public void test02EnterEncounterCostModelScenarioDetails() throws NoSuchSessionException, Throwable {
+	public void test02EnterEncounterCostModelScenarioDetails() throws org.openqa.selenium.NoSuchSessionException, Throwable {
 		try {
 			waitUntilElementIsClickable(CostingMap.getEncounterName());
 			CostingMap.getEncounterName().sendKeys(costModelName);
@@ -119,8 +119,8 @@ public class EncounterCost extends UcqcHelper {
 			doClick(selectColumn.getCostModelScenariosinEvaluationOrderEncounterSelect());
 //
 //			doClick(selectColumn.getCostModelScenariosinEvaluationOrderEncounterSelectAll()); //Selecting all entities lead to have more records for calculation so commented out
-
-			ContractModelsHelper.selectMultipleColumnsToDisplay(columnsToSelect);
+			ContractModelsHelper helper=new ContractModelsHelper();
+			helper.selectMultipleColumnsToDisplay(columnsToSelect);
 			doClick(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalApply());
 
 			doClick(selectColumn.getCostModelScenariosinEvaluationOrderEntitiesSelect());

@@ -172,8 +172,11 @@ import webdriver.maps.mapbuilder.BuildMap;
 					costing.getCostModelScenarioOptions(), "4.2 CMS 3520 & 3522 with OH by month");
 			doDropdownSelectUsingOptionText(costing.getCostModelScenarioMonthToUse(),
 					costing.getCostModelScenarioMonthToUseOptions(), "Aug 2004");
+//			doDropdownSelectUsingOptionText(costing.getCostModelScenariosinEvaluationOrderAssignedCost(),
+//					costing.getCostModelScenariosinEvaluationOrderAssignedCostList(), "6 : Multiple CC Masters");
 			doDropdownSelectUsingOptionText(costing.getCostModelScenariosinEvaluationOrderAssignedCost(),
-					costing.getCostModelScenariosinEvaluationOrderAssignedCostList(), "6 : Multiple CC Masters");
+					costing.getCostModelScenariosinEvaluationOrderAssignedCostList(), "6 : Multiple CC Masters4567");
+			
 			doClick(costing.getCostModelScenariosinEvaluationOrderEncounterSelect());
 			ContractModelsHelper.selectMultipleColumnsToDisplay(columns);
 			assertElementIsDisplayedWithXpath("//*[text()='2 Item(s) Selected']");

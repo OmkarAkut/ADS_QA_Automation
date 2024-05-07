@@ -94,20 +94,29 @@ public class Login extends Driver {
 	public static void loginUserRole(Roles role) {
 		login(role.getUsername(), role.getPassword());
 	}
-	
-	public static void retryLogin() throws NoSuchSessionException, SessionNotCreatedException, IOException, InterruptedException {
-		int retries = 3;
-		boolean success = false;
-		while (!success && retries > 0) {
-		    try {
-		        // Your Selenium actions here
-		        success = true; // If the actions succeed without throwing an exception
-		    } catch (Exception e) {
-		        // Handle session invalid exception
-		        // For example, re-authenticate or restart session
-//		        logger.error("Session invalidated. Re-authenticating...");
-		        driver.quit();
-		        driver.close();
+
+	private static void login(String username, String password) throws NoSuchSessionException, SessionNotCreatedException {
+		Actions action = new Actions(driver);
+		WebDriverWait wait = new WebDriverWait(driver, 30);
+		try {
+			if (printout) {
+				System.out.println("Login Username: " + username);
+			}
+			try {
+				if (driver.findElement(By.xpath("//div[text()='Application Update']")).isDisplayed()) {
+					driver.findElement(By.xpath("//span[text()='Yes']")).click();
+				}
+			} catch (Exception e) {
+
+			}
+			try {
+
+				if ((driver.findElement(By.xpath("//*[@id='username-inputEl']")).isDisplayed())) {
+
+				}
+			} catch (Exception e) {
+
+				driver.close();
 				System.out.println("DRIVER CLOSED!!!!");
 				FileInputStream str = null;
 				System.out.println(projectPath + " this is path");
@@ -124,18 +133,18 @@ public class Login extends Driver {
 				} catch (Exception e2) {
 					e.printStackTrace();
 				}
-//		    setBrowserDriver(browser);
-//		    setDriver(browser);
+//			    setBrowserDriver(browser);
+//			    setDriver(browser);
 				getTestEnvironmentUrl(testEnvironment);
 				setup();
 
-//		    wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='username-inputEl']")));
-//			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='password-inputEl']")));
+//			    wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='username-inputEl']")));
+//				wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='password-inputEl']")));
 				driver.findElement(By.id("username-inputEl")).click();
 				driver.findElement(By.id("username-inputEl")).sendKeys(username);
 				driver.findElement(By.id("password-inputEl")).sendKeys(password);
 				driver.findElement(By.id("loginBtn-btnInnerEl")).click();
-//			action.sendKeys(Keys.ENTER).perform();
+//				action.sendKeys(Keys.ENTER).perform();
 				waitForSpinnerToEnd();
 				Thread.sleep(500);
 				WebElement iAgree;
@@ -146,37 +155,20 @@ public class Login extends Driver {
 							+ "[@class='x-btn btnCls x-box-item x-toolbar-item x-btn-default-small x-noicon x-btn-noicon x-btn-default-small-noicon']"));
 					iAgree.click();
 				}
-		        retries--;
-		    }
-		}
-	}
 
-	private static void login(String username, String password) throws NoSuchSessionException {
-		Actions action = new Actions(driver);
-		
-		WebDriverWait wait = new WebDriverWait(driver, 30);
-		try {
-			if (printout) {
-				System.out.println("Login Username: " + username);
-			}
-			try {
-				if (driver.findElement(By.xpath("//div[text()='Application Update']")).isDisplayed()) {
-					driver.findElement(By.xpath("//span[text()='Yes']")).click();
-				}
-			} catch (Exception e) {
+			} catch (Throwable e) {
+				try {
 
-			}
-			
-			try {
-
-				if ((driver.findElement(By.xpath("//*[@id='username-inputEl']")).isDisplayed())) {
+					wait.until(ExpectedConditions
+							.presenceOfElementLocated(By.xpath("//div[contains(@class,'reporting')]/h1")));
+					assertTrue(driver.findElement(By.xpath("//div[contains(@class,'reporting')]/h1")).getText()
+							.contains("Reporting"));
+					System.out.println("Login Time: " + setupFinalTimerResult(timerStart, false));
+				} catch (Exception e1) {
 
 				}
-			} catch (Exception e) {
-				retryLogin();
-			} 
-			
-			
+
+			}
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='username-inputEl']")));
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='password-inputEl']")));
 			driver.findElement(By.id("username-inputEl")).sendKeys(username);
@@ -196,12 +188,6 @@ public class Login extends Driver {
 
 		} catch (Throwable e) {
 			try {
-//				wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@class='footerText']")));
-//				assertTrue(driver.findElement(By.className("footerText")).isDisplayed());
-//				assertTrue(
-//						driver.findElement(By.className("footerText")).getText()
-//						.contains("Picis Clinical Solutions, Inc. All rights reserved.")
-//						);
 				wait.until(ExpectedConditions
 						.presenceOfElementLocated(By.xpath("//div[contains(@class,'reporting')]/h1")));
 				assertTrue(driver.findElement(By.xpath("//div[contains(@class,'reporting')]/h1")).getText()
@@ -212,7 +198,7 @@ public class Login extends Driver {
 			}
 
 		}
-	
+
 	}
 
 	public static void isInvalid() {
