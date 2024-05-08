@@ -64,7 +64,7 @@ public class Driver {
     System.out.println("Printout: " + printout);
     System.out.println("Downloads: " + downloads);
     System.out.println("Version: " + version);
-    setBrowserDriver(browser);
+//    setBrowserDriver(browser);
     driver = setDriver(browser);
     System.out.println("Screen Resolution: " + driver.manage().window().getSize());
     timerStart = setupStartTimer();

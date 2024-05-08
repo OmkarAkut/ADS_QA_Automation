@@ -115,7 +115,27 @@ public class Login extends Driver {
 
 				}
 			} catch (Exception e) {
-
+				FileInputStream str = null;
+				System.out.println(projectPath + " this is path");
+				try {
+					str = new FileInputStream(PROPS);
+				} catch (Exception e1) {
+					fail("Cannot locate properties file");
+				}
+				Properties props = new Properties();
+				props.load(str);
+				browser = props.getProperty("BROWSER").toLowerCase();
+				try {
+					testEnvironment = props.getProperty("TEST_ENVIRONMENT").toLowerCase();
+				} catch (Exception e2) {
+					e.printStackTrace();
+				}
+				String url=getTestEnvironmentUrl(testEnvironment);
+				driver.navigate().refresh();
+				Thread.sleep(5000);
+				driver.navigate().to(url);
+				Thread.sleep(5000);
+				/*
 				driver.close();
 				System.out.println("DRIVER CLOSED!!!!");
 				FileInputStream str = null;
@@ -167,7 +187,7 @@ public class Login extends Driver {
 				} catch (Exception e1) {
 
 				}
-
+	*/
 			}
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='username-inputEl']")));
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='password-inputEl']")));
