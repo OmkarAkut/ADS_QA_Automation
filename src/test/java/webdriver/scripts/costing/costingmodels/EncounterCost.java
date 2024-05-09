@@ -169,7 +169,7 @@ public class EncounterCost extends CalculationHelper {
 		}
 	}
 
-	public static void highlightColumnsToDisplayColumn(String column) throws InterruptedException, Throwable {
+	public  void highlightColumnsToDisplayColumn(String column) throws InterruptedException, Throwable {
 		String columnPath = "//*[contains(@class,'glAccountsGrid')]/descendant::*[text()='" + column + "']";
 		// Shilpa 02.09.2022 added dimension , scroll to element
 		addDimension(1000, 1000);
@@ -181,7 +181,7 @@ public class EncounterCost extends CalculationHelper {
 		Thread.sleep(2000);
 		waitForAjaxExtJs();
 	}
-	 public static void assertColumnsToDisplayColumnIsSelected(String column) throws Exception {
+	 public  void assertColumnsToDisplayColumnIsSelected(String column) throws Exception {
 		    String columnIsSelected = null;
 		    try {
 		      waitForAjaxExtJs();
@@ -196,7 +196,7 @@ public class EncounterCost extends CalculationHelper {
 		    }
 
 		  }
-	 public static void selectMultipleColumnsToDisplay(String[] columnsToSelect) throws InterruptedException,Throwable{
+	 public  void selectMultipleColumnsToDisplay(String[] columnsToSelect) throws InterruptedException,Throwable{
 		    for (String selectedColumns: columnsToSelect) {
 		    	System.out.println(selectedColumns);
 		      highlightColumnsToDisplayColumn(selectedColumns);
