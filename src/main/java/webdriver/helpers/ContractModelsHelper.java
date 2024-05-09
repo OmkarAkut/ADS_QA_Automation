@@ -446,7 +446,7 @@ public class ContractModelsHelper extends GoHelper {
 	    for (String selectedColumns: columnsToSelect) {
 	    	System.out.println(selectedColumns);
 	      highlightColumnsToDisplayColumn(selectedColumns);
-	      doClick(selectColumn.getSelectItem());
+	      doClick(ContractingMap.getSelectItem());
 	      assertColumnsToDisplayColumnIsSelected(selectedColumns);
 	      Thread.sleep(300);
 	    }

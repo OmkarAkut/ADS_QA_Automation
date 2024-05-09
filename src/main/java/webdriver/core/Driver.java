@@ -92,8 +92,9 @@ public class Driver {
       System.out.println("WARNING: Logout was not successful");
     } finally {
       System.out.println("Closing Driver");
+//      driver = null;
       driver.quit();
-      driver = null;
+     
     }
   }
 

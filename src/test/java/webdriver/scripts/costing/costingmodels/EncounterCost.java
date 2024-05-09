@@ -18,11 +18,12 @@ import webdriver.corehelpers.DoHelper;
 import webdriver.helpers.CalculationHelper;
 import webdriver.helpers.ContractModelsHelper;
 import webdriver.helpers.UcqcHelper;
+import webdriver.maps.ContractingMap;
 import webdriver.maps.CostingMap;
 import webdriver.maps.GeneralElementsMap;
 import webdriver.maps.mapbuilder.BuildMap;
 
-public class EncounterCost extends UcqcHelper {
+public class EncounterCost extends CalculationHelper {
 	static GeneralElementsMap generalMap;
 	static CostingMap costing;
 	static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
@@ -36,7 +37,7 @@ public class EncounterCost extends UcqcHelper {
 	String[] columnsToSelect = { "1S1 Office ", "1S2 Clinic " ,"1S3 Hospital "};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("Encounter", "webdriver.scripts.costing.costingmodels", "Encounter");
+		ExtentReport.reportCreate("EncounterCost", "webdriver.scripts.costing.costingmodels", "EncounterCost");
 
 		try {
 			selectColumn = BuildMap.getInstance(driver, CostingMap.class);
@@ -90,7 +91,7 @@ public class EncounterCost extends UcqcHelper {
 	}
 
 	@Test
-	public void test02EnterEncounterCostModelScenarioDetails() throws org.openqa.selenium.NoSuchSessionException, Throwable {
+	public void test02EnterEncounterCostModelScenarioDetails() throws Throwable {
 		try {
 			waitUntilElementIsClickable(CostingMap.getEncounterName());
 			CostingMap.getEncounterName().sendKeys(costModelName);
@@ -119,8 +120,7 @@ public class EncounterCost extends UcqcHelper {
 			doClick(selectColumn.getCostModelScenariosinEvaluationOrderEncounterSelect());
 //
 //			doClick(selectColumn.getCostModelScenariosinEvaluationOrderEncounterSelectAll()); //Selecting all entities lead to have more records for calculation so commented out
-			ContractModelsHelper helper=new ContractModelsHelper();
-			helper.selectMultipleColumnsToDisplay(columnsToSelect);
+			selectMultipleColumnsToDisplay(columnsToSelect);
 			doClick(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalApply());
 
 			doClick(selectColumn.getCostModelScenariosinEvaluationOrderEntitiesSelect());
@@ -129,6 +129,7 @@ public class EncounterCost extends UcqcHelper {
 
 			doClick(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalApply());
 			doClick("//span[text()='Continue']");
+			driverDelay();
 			doClick(selectColumn.getCostModelScenariosinEvaluationOrderAdmissionCheck());
 
 			doClick(selectColumn.getCostModelScenariosinEvaluationOrderDischargeCheck());
@@ -162,9 +163,13 @@ public class EncounterCost extends UcqcHelper {
 			ExtentReport.logFail("FAIL", "test02EnterEncounterCostModelScenarioDetails", driver, e);
 			fail(e.getMessage());
 		}
+		finally {
+			doClosePageOnLowerBar("Calculation Status");
+			doClosePageOnLowerBar(costModel);
+		}
 	}
 
-	public void highlightColumnsToDisplayColumn(String column) throws InterruptedException, Throwable {
+	public static void highlightColumnsToDisplayColumn(String column) throws InterruptedException, Throwable {
 		String columnPath = "//*[contains(@class,'glAccountsGrid')]/descendant::*[text()='" + column + "']";
 		// Shilpa 02.09.2022 added dimension , scroll to element
 		addDimension(1000, 1000);
@@ -176,7 +181,30 @@ public class EncounterCost extends UcqcHelper {
 		Thread.sleep(2000);
 		waitForAjaxExtJs();
 	}
+	 public static void assertColumnsToDisplayColumnIsSelected(String column) throws Exception {
+		    String columnIsSelected = null;
+		    try {
+		      waitForAjaxExtJs();
+//		      Omkar 30/5/2023 : xpath chages for 11.2
+//		      scrollToView("//*[contains(@class,'x-grid-table')]/descendant::*[text()='"+column+"']/../..");
+//		      columnIsSelected = driver.findElement(By.xpath("//*[contains(@class,'x-grid-table')]/descendant::*[text()='"+column+"']/../..")).getAttribute("class");
+		      scrollToView("//*[text()='"+column+"']/../..");
+		      columnIsSelected = driver.findElement(By.xpath("//*[text()='"+column+"']/../..")).getAttribute("class");
+		    } catch (Throwable e) {
+		      System.out.println("Element Not Found");
+		      fail("element not found");
+		    }
 
+		  }
+	 public static void selectMultipleColumnsToDisplay(String[] columnsToSelect) throws InterruptedException,Throwable{
+		    for (String selectedColumns: columnsToSelect) {
+		    	System.out.println(selectedColumns);
+		      highlightColumnsToDisplayColumn(selectedColumns);
+		      doClick(ContractingMap.getSelectItem());
+		      assertColumnsToDisplayColumnIsSelected(selectedColumns);
+		      Thread.sleep(300);
+		    }
+		  }
 	@AfterClass
 	public static void endtest() throws Exception {
 

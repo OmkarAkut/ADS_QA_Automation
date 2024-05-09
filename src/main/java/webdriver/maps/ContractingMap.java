@@ -134,7 +134,7 @@ public class ContractingMap extends MapConfig {
 //	@FindBy(xpath = "//div[contains(@class,'x-window-header-draggable')]//following::span[text()='Select']//parent::button")
 	@FindBy(xpath = "//span[(@class ='x-btn-button x-btn-button-default-small x-btn-text  x-btn-icon x-btn-icon-left x-btn-button-center ')]//span[text()='Select']")
 	private static WebElement getSelectItem;
-	public WebElement getSelectItem() {return getSelectItem;}
+	public static WebElement getSelectItem() {return getSelectItem;}
 
 	//	Omkar 18/5/2023 : xpath changes for 11.2
 	//	@FindBy(xpath = "(//div[contains(@id,'dynamicwindow')])//div[contains(@class,'multiSelPneCls')]//following::span[text()='Remove']//parent::button")
