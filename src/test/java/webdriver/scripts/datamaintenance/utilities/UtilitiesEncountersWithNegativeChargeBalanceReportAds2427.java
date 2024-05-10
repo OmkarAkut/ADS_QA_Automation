@@ -69,6 +69,7 @@ public class UtilitiesEncountersWithNegativeChargeBalanceReportAds2427 extends U
 		try {
 			waitForAjaxExtJs();
 			doClick(dm.getUtilitiesPageEncountersWithNegativeChargeBalanceReport());
+			driverDelay();
 			runReport(startDate, endDate, codes);
 			ExtentReport.logPass("PASS", "test01SetParametersAndRunReport : PASS");
 

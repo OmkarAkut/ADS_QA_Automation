@@ -81,6 +81,7 @@ public class UtilitiesPageHelper extends LoginStatic {
 //		driver.findElement(By.xpath("//tbody/tr[2]/td/div/a[@class='stLinks' and text()='Download']")).click();
 //		Omkar 11/10/2023 : xpath changes for 11.2
 //		driver.findElement(By.xpath("(//table/tbody/tr[1]/td)[5]/div/a")).click();
+		driverDelay(1200);
 		driver.findElement(By.xpath("(//table/tbody/tr[1]/td)[5]/div")).click();
 		Thread.sleep(1000);
 		deleteUtilityStatusPageMyStatusFirstRow();

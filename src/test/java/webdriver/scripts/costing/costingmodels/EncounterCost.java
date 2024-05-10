@@ -29,7 +29,7 @@ public class EncounterCost extends CalculationHelper {
 	static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
 	static String costModel = "BC COST MODEL";
 	static String costModelName = "Model" + currentDateTime;
-	private static CostingMap selectColumn;
+//	private static CostingMap selectColumn;
 	static String dischargeDateFrom = "01/01/1800";
 	static String dischargeDateTo = "01/01/1800";
 	static String postingDateFrom = "04/01/2012";
@@ -40,7 +40,7 @@ public class EncounterCost extends CalculationHelper {
 		ExtentReport.reportCreate("EncounterCost", "webdriver.scripts.costing.costingmodels", "EncounterCost");
 
 		try {
-			selectColumn = BuildMap.getInstance(driver, CostingMap.class);
+			costing = BuildMap.getInstance(driver, CostingMap.class);
 			System.out.println("Test Class: " + EncounterCost.class.getSimpleName());
 			Login.loginUser("AutomationTesterAdmin");
 //			waitForDisplayedSpinnerToEnd();
@@ -96,43 +96,43 @@ public class EncounterCost extends CalculationHelper {
 			waitUntilElementIsClickable(CostingMap.getEncounterName());
 			CostingMap.getEncounterName().sendKeys(costModelName);
 			Thread.sleep(400);
-			doClick(selectColumn.getSelctCostModelScenariosInEvaluationOrder());
+			doClick(costing.getSelctCostModelScenariosInEvaluationOrder());
 //			highlightColumnsToDisplayColumn("BC REGRESSION CMS");
 			//Shilpa update test data
 			highlightColumnsToDisplayColumn("*USE MHC FY05 Total Cost Scenario");
 
-			doClick(selectColumn.getcostModelButtonColumnsToDisplayModalSelect());
+			doClick(costing.getcostModelButtonColumnsToDisplayModalSelect());
 			Thread.sleep(500);
-			doClick(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalApply());
+			doClick(costing.getUnitCostQuickCalculationColumnsToDisplayModalApply());
 			Thread.sleep(500);
 //			doDropdownSelectUsingOptionText(selectColumn.getCostModelScenariosinEvaluationOrderFrom(),
 //					selectColumn.getCostModelScenariosinEvaluationOrderFromList(), "Apr 2012");
-			doDropdownSelectUsingOptionText(selectColumn.getCostModelScenariosinEvaluationOrderFrom(),
-					selectColumn.getCostModelScenariosinEvaluationOrderFromList(), "Apr 2004");
+			doDropdownSelectUsingOptionText(costing.getCostModelScenariosinEvaluationOrderFrom(),
+					costing.getCostModelScenariosinEvaluationOrderFromList(), "Apr 2004");
 //			doDropdownSelectUsingOptionText(selectColumn.getCostModelScenariosinEvaluationOrderTo(),
 //					selectColumn.getCostModelScenariosinEvaluationOrderToList(), "Mar 2013");
-			doDropdownSelectUsingOptionText(selectColumn.getCostModelScenariosinEvaluationOrderTo(),
-					selectColumn.getCostModelScenariosinEvaluationOrderToList(), "Mar 2005");
+			doDropdownSelectUsingOptionText(costing.getCostModelScenariosinEvaluationOrderTo(),
+					costing.getCostModelScenariosinEvaluationOrderToList(), "Mar 2005");
 //			doDropdownSelectUsingOptionText(selectColumn.getCostModelScenariosinEvaluationOrderAssignedCost(),
 //					selectColumn.getCostModelScenariosinEvaluationOrderAssignedCostList(), "10 : BC Destination");
-			doDropdownSelectUsingOptionText(selectColumn.getCostModelScenariosinEvaluationOrderAssignedCost(),
-					selectColumn.getCostModelScenariosinEvaluationOrderAssignedCostList(), "12 : Actual Cost Destination");
-			doClick(selectColumn.getCostModelScenariosinEvaluationOrderEncounterSelect());
+			doDropdownSelectUsingOptionText(costing.getCostModelScenariosinEvaluationOrderAssignedCost(),
+					costing.getCostModelScenariosinEvaluationOrderAssignedCostList(), "12 : Actual Cost Destination");
+			doClick(costing.getCostModelScenariosinEvaluationOrderEncounterSelect());
 //
 //			doClick(selectColumn.getCostModelScenariosinEvaluationOrderEncounterSelectAll()); //Selecting all entities lead to have more records for calculation so commented out
 			selectMultipleColumnsToDisplay(columnsToSelect);
-			doClick(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalApply());
+			doClick(costing.getUnitCostQuickCalculationColumnsToDisplayModalApply());
 
-			doClick(selectColumn.getCostModelScenariosinEvaluationOrderEntitiesSelect());
+			doClick(costing.getCostModelScenariosinEvaluationOrderEntitiesSelect());
 
-			doClick(selectColumn.getCostModelScenariosinEvaluationOrderEncounterSelectAll());
+			doClick(costing.getCostModelScenariosinEvaluationOrderEncounterSelectAll());
 
-			doClick(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalApply());
+			doClick(costing.getUnitCostQuickCalculationColumnsToDisplayModalApply());
 			doClick("//span[text()='Continue']");
 			driverDelay();
-			doClick(selectColumn.getCostModelScenariosinEvaluationOrderAdmissionCheck());
+			doClick(costing.getCostModelScenariosinEvaluationOrderAdmissionCheck());
 
-			doClick(selectColumn.getCostModelScenariosinEvaluationOrderDischargeCheck());
+			doClick(costing.getCostModelScenariosinEvaluationOrderDischargeCheck());
 			scrollToView(driver.findElement(By.name("admStartDate")));
 //			driver.findElement(By.name("admStartDate")).click();
 
@@ -140,7 +140,7 @@ public class EncounterCost extends CalculationHelper {
 
 			driver.findElement(By.name("dsChgEndDate")).sendKeys(dischargeDateFrom);
 
-			doClick(selectColumn.getCostModelScenariosinEvaluationOrderPostingCheck());
+			doClick(costing.getCostModelScenariosinEvaluationOrderPostingCheck());
 
 			driver.findElement(By.name("postStartDate")).sendKeys(postingDateFrom);
 
@@ -200,7 +200,7 @@ public class EncounterCost extends CalculationHelper {
 		    for (String selectedColumns: columnsToSelect) {
 		    	System.out.println(selectedColumns);
 		      highlightColumnsToDisplayColumn(selectedColumns);
-		      doClick(ContractingMap.getSelectItem());
+		      doClick("//span[(@class ='x-btn-button x-btn-button-default-small x-btn-text  x-btn-icon x-btn-icon-left x-btn-button-center ')]//span[text()='Select']");
 		      assertColumnsToDisplayColumnIsSelected(selectedColumns);
 		      Thread.sleep(300);
 		    }
