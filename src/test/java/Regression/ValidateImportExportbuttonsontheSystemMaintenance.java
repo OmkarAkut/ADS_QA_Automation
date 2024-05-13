@@ -38,7 +38,7 @@ public class ValidateImportExportbuttonsontheSystemMaintenance extends GoHelper{
 	}
 	//ADS-6511
 	@Test
-	public void test01ValidateImportOption() throws Throwable {
+	public void test01ValidateImportOption_6511() throws Throwable {
 		try {
 			doClick(sysmaint.getUsersPageButtonImport());
 			waitForMainPageTitle("Multiple File Import");
@@ -52,7 +52,7 @@ public class ValidateImportExportbuttonsontheSystemMaintenance extends GoHelper{
 		}
 	}
 	@Test
-	public void test02ValidateExportOption() throws Throwable {
+	public void test02ValidateExportOption_6511() throws Throwable {
 		try {
 			doClick(sysmaint.getUsersPageButtonExport());
 			waitForMainPageTitle("Multiple File Export");

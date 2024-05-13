@@ -65,7 +65,7 @@ import webdriver.maps.mapbuilder.BuildMap;
 		}
 		//ADS-5982 all steps
 	@Test
-	public void test01OpenCostModel() throws Throwable {
+	public void test01OpenCostModel_5982() throws Throwable {
 		try {
 			doSearchForModel("");
 			doClick(costing.getCostModelFilterButton());
@@ -84,7 +84,7 @@ import webdriver.maps.mapbuilder.BuildMap;
 		}
 	}
 	@Test
-	public void test02OpenEncounterCostScenario() throws Throwable {
+	public void test02OpenEncounterCostScenario_5982() throws Throwable {
 		try {
 			doClick(costing.getEncCostModelFilterButton());
 			doFilterCreate(filterEncCostScenario);
@@ -96,7 +96,7 @@ import webdriver.maps.mapbuilder.BuildMap;
 		}
 	}
 	@Test
-	public void test03AssertCostScenario() throws Throwable {
+	public void test03AssertCostScenario_5982() throws Throwable {
 		try {
 			assertElementIsDisplayedWithXpath("//label[text()='Cost Model Scenarios in Evaluation Order']//following::li[contains(text(),'"+costModelScenEvaluationOrder+"')]");
 
@@ -108,7 +108,7 @@ import webdriver.maps.mapbuilder.BuildMap;
 		}
 	}
 	@Test
-	public void test04VerifyCancelAndCloseCostScenario() throws Throwable {
+	public void test04VerifyCancelAndCloseCostScenario_5982() throws Throwable {
 		try {
 			doClick(costing.getCostModelEvaluationOrderSelect());
 			waitForMainPageTitle("Add Cost Model Scenarios");
@@ -134,7 +134,7 @@ import webdriver.maps.mapbuilder.BuildMap;
 		
 	}
 	@Test
-	public void test05CreateNewEncCostScenario() throws Throwable {
+	public void test05CreateNewEncCostScenario_5982() throws Throwable {
 		try {
 			doClick(CostingMap.getEncounterNewBtn());
 			ContractModelsHelper.keyInValues(ContractingMap.getInputName(), encCostModelName);
@@ -173,7 +173,7 @@ import webdriver.maps.mapbuilder.BuildMap;
 		}
 	}
 	@Test
-	public void test06VerifyCreatedEncCostScenario() throws Throwable {
+	public void test06VerifyCreatedEncCostScenario_5982() throws Throwable {
 		try {
 			doClick(costing.getEncCostModelClearFilterButton());
 			waitForDisplayedSpinnerToEnd();
@@ -193,7 +193,7 @@ import webdriver.maps.mapbuilder.BuildMap;
 		}
 	}
 	@Test
-	public void test07DeleteCreatedEncCostScenario() throws Throwable {
+	public void test07DeleteCreatedEncCostScenario_5982() throws Throwable {
 		try {
 			doClick(costing.getEncCostModelDeleteButton());
 			waitForElementToBeVisible(ContractingMap.getWarningPopUpDeleteButton());

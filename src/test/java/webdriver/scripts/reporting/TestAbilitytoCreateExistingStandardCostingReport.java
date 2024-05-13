@@ -48,9 +48,9 @@ public class TestAbilitytoCreateExistingStandardCostingReport extends GoHelper {
 			fail(e.getMessage());
 		}
 	}
-
+//ADS-5659
 	@Test
-	public void test01SearchReport() throws Throwable {
+	public void test01SearchReport_ADS_5659() throws Throwable {
 		try {
 			doClick(reportMap.getReportLibraryPageFormFieldSearch());
 			doClick("//div[contains(text(),'" + directory
@@ -75,35 +75,43 @@ public class TestAbilitytoCreateExistingStandardCostingReport extends GoHelper {
 			doClick(reportMap.reportLibraryPageEntityOkButton());
 			doClick(reportMap.reportLibraryPageEntityRunButton());
 			waitForElementToBeVisible(reportMap.reportLibraryPageEntityRefreshButton());
-			try {
-				for (int i = 0; i <= refreshTime; i++) {
-					waitForPresenceOfElement(("//span[text()='" + newReportName + "']"));
-					try {
+			driverDelay(2000);
+			//Shilpaa updated script for 11.2 on 22.4.2024
+			for (int i = 0; i <=refreshTime; i++) {
+				doClick(reportMap.reportLibraryPageEntityRefreshButton());
+				driverDelay(3000);
+				if (i == refreshTime) {
+					System.out.println("Status is not updated to COMPLETED");
+					fail();
+					break;
+				}
+				try {
+					if (driver.findElement(By.xpath("(//div[@class='GJT013UBH']//tbody//td/div)[7]/a")).getText()
+							.equals("COMPLETED")) {
+						assertElementTextWithXpath("(//div[@class='GJT013UBH']//tbody//td/div)[7]/a", "COMPLETED",
+								printout);
+						ExtentReport.logPass("PASS", "test02OpenCostingReport");
+						break;
+
+					}
+					if (driver.findElement(By.xpath("(//div[@class='GJT013UBH']//tbody//td/div)[7]/a")).getText()
+							.contains("FAILED")) {
+						fail();
+					}
+				} catch (Exception e1) {
+					if (driver.findElement(By.xpath("(//div[@class='GJT013UBH']//tbody//td/div)[7]")).isDisplayed()) {
+						System.out.println(i);
 						doClick(reportMap.reportLibraryPageEntityRefreshButton());
-						waitForPresenceOfElement(("//span[text()='" + newReportName + "']"));
-
-						if (driver
-								.findElement(By.xpath("(//span[text()='" + newReportName + "']//following::div/a)[1]"))
-								.getText().equals("COMPLETED")) {
-							assertTrue(printout);
-							break;
-						}
-						else if (driver
-								.findElement(By.xpath("(//span[text()='" + newReportName + "']//following::div/a)[1]"))
-								.getText().equals("FAILED")) {
-							assertTrue(printout);
-							break;
-						}
-
-						continue;
-					} catch (Exception | AssertionError e) {
+						driverDelay(3000);
 						continue;
 					}
+					
+
 				}
-			} 
-			catch (Exception e) {
 
 			}
+
+		
 			driverDelay(1000);
 			driver.findElement(By.xpath("(//span[text()='" + newReportName + "']//following::div/a)[1]")).click();
 			driverDelay(1000);

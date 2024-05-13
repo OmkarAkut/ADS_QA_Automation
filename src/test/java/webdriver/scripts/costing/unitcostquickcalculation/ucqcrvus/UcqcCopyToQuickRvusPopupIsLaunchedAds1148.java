@@ -38,9 +38,9 @@ public class UcqcCopyToQuickRvusPopupIsLaunchedAds1148 extends UcqcHelper {
 				fail(e.getMessage());
 			}
   }
-
+//ADS-6666
   @Test
-  public void testUcqcCopyToQuickRvusPopupIsLaunched() throws Throwable {
+  public void testUcqcCopyToQuickRvusPopupIsLaunched_6666() throws Throwable {
     try {
       waitForAjaxExtJs();
       //Shilpa 19.09.2022 updated below line
@@ -52,34 +52,35 @@ public class UcqcCopyToQuickRvusPopupIsLaunchedAds1148 extends UcqcHelper {
       waitForAjaxExtJs();
       doClick(ucqcMap.getUnitCostQuickCalculationButtonCopyToQuickRVUs());
       waitForAjaxExtJs();
-//      Omkar 18/1/2024 : xpath changes for 11.2
 //      assertElementIsDisplayed(driver.findElement(By.xpath("//*[@class='x-window-header-text x-window-header-text-default' and text()='Copy to Quick RVUs']")), printout);
+     //Shilpa xpath update on 23.4.2024
       assertElementIsDisplayed(driver.findElement(By.xpath("//*[@class='x-title-text x-title-text-default x-title-item' and text()='Copy to Quick RVUs']")), printout);
       assertElementIsDisplayed(driver.findElement(By.xpath("//*[@class='listhelpLnk' and contains(@onclick, 'costing/Content/csucqccpfd.htm')]")), printout);
       assertElementIsDisplayed(driver.findElement(By.xpath("//*[contains(@class,'x-tool-close')]")), printout);
-//      Omkar 18/1/2024 : xpath changes for 11.2
+
 //      assertElementIsDisplayed(driver.findElement(By.xpath("//label[contains(@class,'fieldLabelCls') and text()='Copy Options']")), printout);
+      //Shilpa xpath update on 23.4.2024
       assertElementIsDisplayed(driver.findElement(By.xpath("//span[contains(@class,'x-form-item-label-text') and text()='Copy Options']")), printout);
-      
+
       assertElementIsDisplayed(driver.findElement(By.xpath("//*[@name='copyType']")), printout);
 
-//      Omkar 18/1/2024 : xpath changes for 11.2
 //      assertElementIsDisplayed(driver.findElement(By.xpath("//label[contains(@class,'x-form-item-label') and text()='Destination Cost Components']")), printout);
-      assertElementIsDisplayed(driver.findElement(By.xpath("//span[contains(@class,'x-form-item-label-text') and text()='Destination Cost Components']")), printout);
+    //Shilpa xpath update on 23.4.2024
+      assertElementIsDisplayed(driver.findElement(By.xpath("//span[contains(@class,'x-form-item-label') and text()='Destination Cost Components']")), printout);
+
       assertElementIsDisplayed(driver.findElement(By.xpath("//label[contains(@class,'x-component') and text()='Cost Components']")), printout);
       assertElementIsDisplayed(driver.findElement(By.xpath("//span[contains(@id,'button') and text()='Select All']")), printout);
       assertElementIsDisplayed(driver.findElement(By.xpath("//span[contains(@id,'button') and text()='Remove All']")), printout);
-//      Omkar 18/1/2024 : xpath changes for 11.2
 //      assertElementIsDisplayed(driver.findElement(By.xpath("//*[contains(@id,'ucqcgrid')]/div[@class='x-grid-view x-fit-item x-grid-view-default x-unselectable'] ")), printout);
-      assertElementIsDisplayed(driver.findElement(By.xpath("//*[contains(@id,'ucqcgrid')]/div[contains(@class,'view-default x-unselectable x-scroller')]")), printout);
+    //Shilpa xpath update on 23.4.2024
+      assertElementIsDisplayed(driver.findElement(By.xpath("//*[contains(@id,'ucqcgrid')]/div[contains(@class,'x-grid-view-default x-unselectable')]")), printout);
 
       assertElementIsDisplayed(driver.findElement(By.xpath("//span[contains(@id,'button') and text()='Copy and Save']")), printout);
       doClick(driver.findElement(By.xpath("//span[contains(@id,'button') and contains (text(),'Cancel & Close')]")));
       waitForAjaxExtJs();
-//      Omkar 18/1/2024 : xpath changes for 11.2
 //      doClosePageOnLowerBar("Unit Cost Quick...");
+      //Shilpa xpath update on 23.4.2024
       doClosePageOnLowerBar("Unit Cost Quick Calculation");
-      
       ExtentReport.logPass("PASS", "testUcqcCopyToQuickRvusPopupIsLaunched");
 	} catch (Exception|AssertionError e) {
 		ExtentReport.logFail("FAIL", "testUcqcCopyToQuickRvusPopupIsLaunched", driver, e);

@@ -9,6 +9,7 @@ import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
+import org.openqa.selenium.By;
 
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
@@ -17,6 +18,7 @@ import webdriver.helpers.ContractModelsHelper;
 import webdriver.maps.ContractingMap;
 import webdriver.maps.CostingMap;
 import webdriver.maps.DataMaintenanceMap;
+import webdriver.maps.SystemMaintenanceMap;
 import webdriver.maps.mapbuilder.BuildMap;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -39,7 +41,22 @@ public class CreateNewEditDeleteTimePeriod extends GoHelper {
 		try {
 			costing = BuildMap.getInstance(driver, CostingMap.class);
 			modelMap = BuildMap.getInstance(driver, ContractingMap.class);
+			
 			Login.loginUser("AutomationTesterAdmin");
+			goToPage("Customize Task Lists");
+			waitForDisplayedSpinnerToEnd();
+			driver.findElement(By.xpath("(//input[@name='costingOption'])[2]")).click();
+			driver.findElement(By.xpath("//div[contains(@class,'panel')]//span[text()='Save']")).click();
+//			doClick(SystemMaintenanceMap.getTaskListSaveButton());
+			try {
+				doClick("//div[contains(@id,'button')]//following::span[text()='Save']");
+				doClick("(//div[contains(@id,'button')]//following::span[text()='Save'])[2]");
+				waitForAjaxExtJs();
+			} catch (Exception e) {
+				
+			}
+			
+//			doClick("//div[text()='Log Out']");
 			goToPage("Costing Models");
 			ExtentReport.logPass("PASS", "setupScript");
 		} catch (Exception | AssertionError e) {
@@ -49,7 +66,7 @@ public class CreateNewEditDeleteTimePeriod extends GoHelper {
 	}
 //ADS-6673
 	@Test
-	public void test01OpenCostModel() throws Throwable {
+	public void test01OpenCostModel_6673() throws Throwable {
 		try {
 			doSearchForModel(costModel);
 			tableDoubleClickCellFirstColumn(costModel);
@@ -66,7 +83,7 @@ public class CreateNewEditDeleteTimePeriod extends GoHelper {
 	}
 	//ADS-6673
 	@Test
-	public void test02CreateNewTimePeriod() throws Throwable {
+	public void test02CreateNewTimePeriod_6673() throws Throwable {
 		try {
 			doClickTreeItem("FISCAL YEAR SETUP");
 			waitForMainPageTitle("Creat new Time Period");
@@ -90,7 +107,7 @@ public class CreateNewEditDeleteTimePeriod extends GoHelper {
 	}
 //ADS-6672
 	@Test
-	public void test02EditNewTimePeriod() throws Throwable {
+	public void test02EditNewTimePeriod_6672() throws Throwable {
 		try {
 			doClick(CostingMap.getCostModelTimePeriodFilterButton());
 			doFilterCreate(filter);
@@ -111,7 +128,7 @@ public class CreateNewEditDeleteTimePeriod extends GoHelper {
 	}
 //ADS-6675
 	@Test
-	public void test03DeleteNewTimePeriod() throws Throwable {
+	public void test03DeleteNewTimePeriod_6675() throws Throwable {
 		try {
 			doClick(CostingMap.getCostModelTimePeriodDeleteButton());
 			waitForElementToBeVisible(ContractingMap.getWarningPopUpDeleteButton());

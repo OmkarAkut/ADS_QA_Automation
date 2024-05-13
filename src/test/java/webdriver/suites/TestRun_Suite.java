@@ -3,7 +3,7 @@ package webdriver.suites;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
-
+import webdriver.deployment.SmokeTest;
 import webdriver.globalscripts.accessibilitytests.TestSuiteAXE;
 import webdriver.globalscripts.checktests.ChecktestsSuite;
 import webdriver.globalscripts.help.HelpSuite;
@@ -32,11 +32,11 @@ import webdriver.scripts.systemmaintenance.SystemMaintenanceTestSuite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-	
+	CostingTestSuite.class,
+	ContractingSuite.class,
 	SystemMaintenanceTestSuite.class,
 	EpisodesTestSuite.class,
 	ReportingTestSuite.class,
-	ContractingSuite.class,
 	UtilitiesTestSuite.class,
 	MaintaindataTestSuite.class,
 	TestSuiteAXE.class,
@@ -44,19 +44,15 @@ import webdriver.scripts.systemmaintenance.SystemMaintenanceTestSuite;
 	HelpSuite.class,
 	SecurityTestsSuite.class,
 	ChecktestsSuite.class,
-	CostingTestSuite.class,
 	CostingCalculationsTestSuite.class,
 	CostingModelsTestSuite.class,
 	CalculationStatusSuite.class,
-////	UnitCostQuickCalculationSuite.class,
-////	UcqcCalculationTestSuite.class,
+	UnitCostQuickCalculationSuite.class,
 	UcqcMainpageTestSuite.class,
 	UcqcRvusSuite.class,
 	UcqcRoleBasedTestSuite.class,
 	GeneralCalculationsTestSuite.class,
-	ReportingTestSuite.class,
-	
-//	Regression_suite.class
+
 })
 
 public class TestRun_Suite {

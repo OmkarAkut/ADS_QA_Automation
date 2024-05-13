@@ -11,6 +11,7 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -68,10 +69,17 @@ public class AssociateOverheadModeltoCostModelCustomTaskList extends GoHelper {
 				 String folderName=currentDateTime+name;
 			 act.moveToElement(driver.findElement(By.xpath("(//div[@id='ctlCostingTree-body']//div[@class='x-grid-item-container']//table//tr//td//div/span[text()='Folder Name'])["+i+"]"))).sendKeys(Keys.DELETE).sendKeys(Keys.chord(folderName)).pause(1000).sendKeys(Keys.ENTER).perform();
 				driverDelay(200);
-				doClick(SystemMaintenanceMap.getTaskListSaveButton());
-				doClick(ContractingMap.getSaveBenefitPlan());
-				waitForAjaxExtJs();
-				Thread.sleep(4000);
+//				doClick(SystemMaintenanceMap.getTaskListSaveButton());
+//				doClick(ContractingMap.getSaveButtonMesaageBox());
+//				waitForAjaxExtJs();
+//				Thread.sleep(4000);
+				doClick("((//div[@id='ctlCostingTree-body']//div[@class='x-grid-item-container']//table//tr//td//div/span[text()='"+folderName+"'])//parent::div//div[@class=' x-tree-elbow-img x-tree-elbow-plus x-tree-expander'])[1]");
+				Thread.sleep(500);
+	
+										act.dragAndDrop(driver.findElement(By.xpath("(//div[@class='x-grid-item-container'])[2]//div[text()='Allocation Exceptions']")), 
+						driver.findElement(By.xpath("//span[text()='"+folderName+"']//parent::div//parent::td//parent::tr"))).pause(1000).build().perform();
+				
+				/*
 				String deleteFolder=currentDateTime+name;
 				System.out.println(deleteFolder);
 				act.moveToElement(driver.findElement(By.xpath("(//div[@id='ctlCostingTree-body']//div[@class='x-grid-item-container']//table//tr//td//div/span[text()='"+folderName+"'])"))).click().perform();
@@ -79,20 +87,21 @@ public class AssociateOverheadModeltoCostModelCustomTaskList extends GoHelper {
 				doClick(contractMap.getContractModelDeleteButtonInPopUp());
 				waitForAjaxExtJs();
 				Thread.sleep(4000);
+				*/
 			 }
 		 }
 
 	}
-	
+	//ADS-5798
 	@Test
-	public void test01AddScreens() throws Throwable {
+	public void test01AddScreens_5798() throws Throwable {
 		try {
 			clearNewFolderName("Allocation Exceptions");
-			clearNewFolderName("Allocation Statistic Assignments");
-			clearNewFolderName("Overhead Account Variability Masters");
-			clearNewFolderName("General Information Overhead");
-			doClick(contractMap.getContractModelSaveCopy());
-			doClick(ContractingMap.getSaveBenefitPlan());
+//			clearNewFolderName("Allocation Statistic Assignments");
+//			clearNewFolderName("Overhead Account Variability Masters");
+//			clearNewFolderName("General Information Overhead");
+//			doClick(contractMap.getContractModelSaveCopy());
+//			doClick(ContractingMap.getSaveBenefitPlan());
 			waitForAjaxExtJs();
 			
 			ExtentReport.logPass("PASS", "test01AddScreens");

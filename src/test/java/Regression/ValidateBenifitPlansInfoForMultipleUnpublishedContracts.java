@@ -1,12 +1,11 @@
 package Regression;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
-
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.helpers.CalculationHelper;
@@ -24,8 +23,9 @@ public class ValidateBenifitPlansInfoForMultipleUnpublishedContracts extends Cal
 	String[] columnsToSelect = { "0000 PRIVATE PAY", "0001 PRIVATE PAY PENDING", "0002 APP PENDING"};
 	static String[] filter = { "Code", "Is", "Equal To", "1950" };
 	static String[] filter1 = { "Code", "Is", "Equal To", "1951" };
+	static String[] benifitPlans= {"0000 PRIVATE PAY", "0001 PRIVATE PAY PENDING", "0002 APP PENDING","1950 CAL SECOND PAYMENT","1951 CAL LATE CHARGE CONTRA"};
 	ContractModelsHelper helper=new ContractModelsHelper();
-	/** Regression: Automated test script for ADS-6080, some steps need to be updated here  */
+	/** Regression: Automated test script for ADS-6080*/
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
 		ExtentReport.reportCreate("ValidateBenifitPlansInfoForMultipleUnpublishedContracts",
@@ -65,7 +65,7 @@ public class ValidateBenifitPlansInfoForMultipleUnpublishedContracts extends Cal
 	}
 
 	@Test
-	public void test01MoveToDefinitionElementsTabInMultipleContracts() throws Throwable {
+	public void test01MoveToDefinitionElementsTabInMultipleContracts6080() throws Throwable {
 		try {
 //			Omkar 7/7/2023 : xpath changes for 11.2
 //			ContractModelsHelper.toggleBetweenTheDockBar("(//span[text()='CM ADS1327...']//parent::button)[1]");
@@ -76,14 +76,22 @@ public class ValidateBenifitPlansInfoForMultipleUnpublishedContracts extends Cal
 //			ContractModelsHelper.toggleBetweenTheDockBar("(//span[text()='CM ADS1327...']//parent::button)[2]");
 			doClick("(//div[contains(text(),'Benefit Plans')]//following::div)[1]");
 			addBenifitPlan();
-
+			ContractModelsHelper.toggleBetweenTheDockBar("(//span[text()='CM ADS1327...'])[2]");
+			doClick(ContractingMap.getDefinitionElementC2());
+			doClick("(//div[contains(text(),'Benefit Plans')]//following::div[1])[2]");
+			ContractModelsHelper.toggleBetweenTheDockBar("(//span[text()='CM ADS1327...'])[1]");
+			assertBeneifitPlans();
+			doClick("//div[text()='Add Benefit Plans']//following::span[text()='Apply']");
 			ContractModelsHelper.toggleBetweenTheDockBar("(//span[text()='CM ADS1327...'])[2]");
 			
-			doClick(ContractingMap.getDefinitionElementC2());
 //			Omkar 7/7/2023 : xpath changes for 11.2
 //			doClick("(//span[contains(text(),'Benefit Plans')]//following::img[1])[2]");
-			doClick("(//div[contains(text(),'Benefit Plans')]//following::div[1])[2]");
+			
 			addBenifitPlan();
+			ContractModelsHelper.toggleBetweenTheDockBar("(//span[text()='CM ADS1327...'])[1]");
+			ContractModelsHelper.toggleBetweenTheDockBar("(//span[text()='CM ADS1327...'])[2]");
+			assertBeneifitPlans();
+			doClick("//div[text()='Add Benefit Plans']//following::span[text()='Apply']");
 			ExtentReport.logPass("PASS", "test02MoveToDefinitionElementsTabInMultipleContracts");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test02MoveToDefinitionElementsTabInMultipleContracts", driver, e);
@@ -92,7 +100,7 @@ public class ValidateBenifitPlansInfoForMultipleUnpublishedContracts extends Cal
 	}
 
 	@Test
-	public void test02RemoveBenefitPlanInMultipleContracts() throws Throwable {
+	public void test02RemoveBenefitPlanInMultipleContracts6080() throws Throwable {
 		try {
 //			Omkar 7/7/2023 : xpath changes for 11.2
 //			ContractModelsHelper.toggleBetweenTheDockBar("(//span[text()='CM ADS1327...']//parent::button)[1]");
@@ -123,7 +131,7 @@ public class ValidateBenifitPlansInfoForMultipleUnpublishedContracts extends Cal
 	}
 
 	@Test
-	public void test03ApplyBenefitPlanInMultipleContracts() throws Throwable {
+	public void test03ApplyBenefitPlanInMultipleContracts6080() throws Throwable {
 //		Omkar 7/7/2023 : xpath changes for 11.2
 //		ContractModelsHelper.toggleBetweenTheDockBar("(//span[text()='CM ADS1327...']//parent::button)[1]");
 				ContractModelsHelper.toggleBetweenTheDockBar("(//span[text()='CM ADS1327...'])[1]");
@@ -169,10 +177,10 @@ public class ValidateBenifitPlansInfoForMultipleUnpublishedContracts extends Cal
 		//Need to add benifit plans here
 		waitForMainPageTitle("Add Benefit Plans");
 		try {
-			doClick("//span[contains(@class,'icn-doubleLArr')]");
+			doClick("(//span[contains(@class,'icn-doubleLArr')])[1]");
+			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			
 		}
 		ContractModelsHelper.selectMultipleColumnsToDisplay(columnsToSelect);
 		doClick("(//span[text()='Filter'])[2]");
@@ -186,7 +194,19 @@ public class ValidateBenifitPlansInfoForMultipleUnpublishedContracts extends Cal
 		doClick("//div[text()='Add Benefit Plans']//following::span[text()='Add']");
 		doClick("//div[text()='Add Benefit Plans']//following::span[text()='Apply Filter']");
 		doClick("//div[text()='Add Benefit Plans']//following::span[text()='Select']");
-		doClick("//div[text()='Add Benefit Plans']//following::span[text()='Apply']");
+//		doClick("//div[text()='Add Benefit Plans']//following::span[text()='Apply']");
+	}
+	
+	public void assertBeneifitPlans() {
+		 for(String ele: benifitPlans) {
+			 if(driver.findElement(By.xpath("(//div[@class='x-grid-item-container'])//td[1]//div[@class='x-grid-cell-inner 'and text()='"+ele+"']")).isDisplayed()) {
+				 assertTrue(printout);
+				 System.out.println("The benefit plans are intact when we dock between the contracts");
+			 }
+			 else {
+				 fail();
+			 }
+		 }
 	}
 	@AfterClass
 	public static void endtest() throws Exception {

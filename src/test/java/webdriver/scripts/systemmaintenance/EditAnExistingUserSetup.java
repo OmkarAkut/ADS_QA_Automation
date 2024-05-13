@@ -26,11 +26,11 @@ public class EditAnExistingUserSetup extends GoHelper {
 	static ContractingMap contractMap;
 	static ModelLibraryMap modelMap;
 	private static SystemMaintenanceMap systemMap;
-	private static String userID = "testuser";
+	private static String userID = "ads5781";
 //	Omkar 12/10/2023 : Removing 0008 PAYMENT PLAN as scrolling action is not working for 11.2
 //	private static String[] entities = { "0000 PRIVATE PAY", "0001 PRIVATE PAY PENDING", "0008 PAYMENT PLAN" };
 	private static String[] entities = { "0000 PRIVATE PAY", "0001 PRIVATE PAY PENDING"};
-	private static String dept = "150 - old master 150";
+	private static String dept = "150 - old master 1501";
 	private static String[] filters = { "ID", "Is", "Equal To", userID };
 	private static String firstName = "TestName2";
 	private static String lastName = "LastName2";
@@ -61,9 +61,9 @@ public class EditAnExistingUserSetup extends GoHelper {
 			fail(e.getMessage());
 		}
 	}
-
+//ADS-5781
 	@Test
-	public void test01OpenUserID() throws Throwable {
+	public void test01OpenUserID_5781() throws Throwable {
 		try {
 			doClick(systemMap.getUsersPageButtonFilter());
 			driverDelay(100);
@@ -78,7 +78,7 @@ public class EditAnExistingUserSetup extends GoHelper {
 	}
 
 	@Test
-	public void test02VerifyDisabledFields() throws Throwable {
+	public void test02VerifyDisabledFields_5781() throws Throwable {
 		try {
 			assertElementForAttributeContains(systemMap.getUserID(), printout);
 			assertElementForAttributeContains(systemMap.getDbUsername(), printout);
@@ -90,7 +90,7 @@ public class EditAnExistingUserSetup extends GoHelper {
 	}
 
 	@Test
-	public void test03AddUserDetails() throws Throwable {
+	public void test03AddUserDetails_5781() throws Throwable {
 		try {
 			ContractModelsHelper.keyInValues(systemMap.getUserFirstName(), firstName);
 			ContractModelsHelper.keyInValues(systemMap.getUserLastName(), lastName);
@@ -114,7 +114,7 @@ public class EditAnExistingUserSetup extends GoHelper {
 	}
 
 //	@Test
-	public void test04SelectUserRoleThenVerifyMenuItems() throws Throwable {
+	public void test04SelectUserRoleThenVerifyMenuItems_5781() throws Throwable {
 		try {
 			doClick(systemMap.getUserRoleSelect());
 			waitForElementPresence("//span[contains(@id,'dynamicwindow')][text()='Roles']");
@@ -174,8 +174,8 @@ public class EditAnExistingUserSetup extends GoHelper {
 		}
 	}
 
-//	@Test
-	public void test05SelectEntity() throws Throwable {
+	@Test
+	public void test05SelectEntity_5781() throws Throwable {
 		try {
 			if (systemMap.getUserEntitySelect().getAttribute("class").contains("disabled")) {
 //				Omkar 18/5/2023 : xpath changes for 11.2
@@ -202,7 +202,7 @@ public class EditAnExistingUserSetup extends GoHelper {
 	}
 
 	@Test
-	public void test06SelectMasterDepartments() throws Throwable {
+	public void test06SelectMasterDepartments_5781() throws Throwable {
 		try {
 			Actions act=new Actions(driver);
 			//Shilpa updated code for 11.2
@@ -230,6 +230,7 @@ public class EditAnExistingUserSetup extends GoHelper {
 					"130 EMERGENCY ROOM PHYSICIANS");
 			doClick(systemMap.getUserSelectButtonInPopUp());
 			doClick(contractMap.getApplySelections());
+			driverDelay(500);
 			assertElementText(driver.findElement(By.xpath("(//div[text()='"+dept+"']//following::div[4]//following::div[contains(@class,'x-grid-cell-inner ')])[1]")),
 					"2 Selected", printout);
 			driverDelay(500);
@@ -242,9 +243,9 @@ public class EditAnExistingUserSetup extends GoHelper {
 	}
 
 	@Test
-	public void test07VerifyUpdatedDetailsOfUser() throws Throwable {
+	public void test07VerifyUpdatedDetailsOfUser_5781() throws Throwable {
 		try {
-			test01OpenUserID();
+			test01OpenUserID_5781();
 			assertThatAttributeValue(systemMap.getUserFirstName(), firstName, printout);
 			assertThatAttributeValue(systemMap.getUserLastName(), lastName, printout);
 			assertThatAttributeValue(systemMap.getUserDisplayName(), displayName, printout);
@@ -287,11 +288,12 @@ public class EditAnExistingUserSetup extends GoHelper {
 			assertElementIsDisplayedWithXpath("//label[text()='Menu Items']//following::*[text()='Utility Status']");
 			assertTextIsDisplayed("0000 PRIVATE PAY");
 			assertTextIsDisplayed("0001 PRIVATE PAY PENDING");
-			assertTextIsDisplayed("0008 PAYMENT PLAN");
-			assertElementText(driver.findElement(By.xpath("//div[text()='" + dept + "']//following::div[4]")),
+//			assertTextIsDisplayed("0008 PAYMENT PLAN");
+			driverDelay(500);
+			ContractModelsHelper.scrollToView("//div[text()='" + dept + "']//following::div[4]");
+			assertElementText(driver.findElement(By.xpath("(//div[text()='"+dept+"']//following::div[4]//following::td/div)[1]")),
 					"2 Selected", printout);
-			doClick(ContractingMap.getContractModelRiskLimiterCancelCloseBtn());
-			doClick(ContractingMap.getNewRiskLimiterPopUpCancelClose());
+			doClick(ContractingMap.getFeeForPaymentCancelClose());
 			ExtentReport.logPass("PASS", "test07VerifyUpdatedDetailsOfUser");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test07VerifyUpdatedDetailsOfUser", driver, e);

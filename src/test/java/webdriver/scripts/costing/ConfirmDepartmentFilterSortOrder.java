@@ -36,9 +36,9 @@ public class ConfirmDepartmentFilterSortOrder extends GoHelper {
 			fail(e.getMessage());
 		}
 	}
-
+//ADS-5922
 	@Test
-	public void test01ConfirmDepartmentFilterSort() throws Throwable {
+	public void test01ConfirmDepartmentFilterSort_5922() throws Throwable {
 		try {
 			doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationDropdownCostModel(),
 					costingMap.getUnitCostQuickCalculationDropdownCostModelMenuList(), costModel);
@@ -49,7 +49,7 @@ public class ConfirmDepartmentFilterSortOrder extends GoHelper {
 			doClickButton("Select");
 			waitForDisplayedSpinnerToEnd();
 			waitForAjaxExtJs();
-			doClick("//div[contains(@class,'dynamicformCls')]//span[text()='Filter']//parent::button");
+			doClick("//div[contains(@class,'dynamicformCls')]//following::span[text()='Filter']");
 			assertTextIsDisplayed("Filter to Match These Criteria 300/300");
 			doFilterSetFilterParameters("Department Code", "Is", "Contains", "0");
 			doClick(costingMap.getCostModelScenarioCalculationFilterButtonAdd());

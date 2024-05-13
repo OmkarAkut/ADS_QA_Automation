@@ -46,7 +46,7 @@ public class ModelContractPatientFinancialResponsibility extends CalculationHelp
 	/** Regression: Automated test script for ADS-6467 */
 	//ADS-6467
 	@Test
-	public void test01VerifyNewPatientFinancialResponsibility() throws Throwable {
+	public void test01VerifyNewPatientFinancialResponsibility_6467() throws Throwable {
 		try {
 			doClickTreeItem("Contracting");
 			doSearchForContractModel(ContractModelName);

@@ -326,6 +326,7 @@ public class DoHelper extends DriverHelper {
 		List<WebElement> menu = elementList.findElements(By.tagName("li"));
 		for(WebElement option : menu) {
 			if(option.getText().equals(optionText)) {
+//				ContractModelsHelper.doactionClick(option);
 				option.click();
 				break;
 			}
@@ -349,12 +350,16 @@ public class DoHelper extends DriverHelper {
 
 	public void doDropdownSelectUsingOptionText(WebElement element, String optionText) throws Exception {
 		waitForAjaxExtJs();
+		ContractModelsHelper.scrollToView(element);
+		driverDelay(500);
 		doClick(element);
+		driverDelay();
 		waitForAjaxExtJs();
-		driverDelay(200);
+//		driverDelay(500);
 //		Omkar 14/04/2023 : xpath changes for 11.2
 //		WebElement list = driver.findElement(By.xpath("//div[contains(@class,'floating')]/div[contains(@id,'listEl')]/ul"));
 		WebElement list = driver.findElement(By.xpath("//div[contains(@class,'floating')]//div[contains(@id,'listWrap')]/ul"));
+		
 		List<WebElement> menu = list.findElements(By.tagName("li"));
 		System.out.println(menu.size());
 		for(WebElement option : menu) {
@@ -503,6 +508,24 @@ public class DoHelper extends DriverHelper {
 		waitForAjaxExtJs();
 		waitForSpinnerToEnd();
 	}
+	
+	public static void doJsClick(WebElement element) {
+		try {
+			JavascriptExecutor executor = (JavascriptExecutor)driver;
+			executor.executeScript("arguments[0].click();", element);
+		} catch (Exception e) {
+			
+		}
+	}
+	public static void doactionClick(WebElement element) {
+		try {
+			Actions act=new Actions(driver);
+			act.moveToElement(element).click().build().perform();
+		} catch (Exception e) {
+			
+		}
+	}
+	
 }
 
 

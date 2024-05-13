@@ -77,12 +77,13 @@ public class UcqcIncludeInGridOnlyChargeCodesWithResultsInSelectedCmsAds1115
       ucqcDisplayChargeCodeGrid(requiredFields);
       waitForSpinnerToEnd();
       waitForAjaxExtJs();
-
-      List<WebElement> chargeCodes = javaMakeListOfWebElements2(driver.findElement(By.xpath("//div[2]/div[2]/div[2]/div/div/div[1]/div[2]"+"/div[contains(@class, 'x-grid-view')]/table/tbody")),"//tr[contains(@class,'x-grid-row')]/td[2][contains(@class,'x-grid-cell-gridcolumn')]"+ "/div[contains(@class,'x-grid-cell-inner')]");
+//Shilpa : commented below lines 16.04.2024
+//      List<WebElement> chargeCodes = javaMakeListOfWebElements2(driver.findElement(By.xpath("//div[2]/div[2]/div[2]/div/div/div[1]/div[2]"+"/div[contains(@class, 'x-grid-view')]/table/tbody")),"//tr[contains(@class,'x-grid-row')]/td[2][contains(@class,'x-grid-cell-gridcolumn')]"+ "/div[contains(@class,'x-grid-cell-inner')]");
       
     
      
-      chargeCodesStrings = javaListConvertListOfWebElementsToStrings(chargeCodes, printout);
+//      chargeCodesStrings = javaListConvertListOfWebElementsToStrings(chargeCodes, printout);
+      chargeCodesStrings=javaMakeListOfStrings(driver.findElements(By.xpath("(//div[@id='ucqcgrid-body']//div[@class='x-grid-item-container']/table//tr//td[contains(@class,'x-grid-cell-gridcolumn')][1]/div)")));
       System.out.println("chargeCodesStrings:"+chargeCodesStrings);
       assertThat(chargeCodesStrings.size(), equalTo(UcqcData.ucqcChargeCodesExpectedList.size()));
       ExtentReport.logPass("PASS", "test01AssertUcqcGridDisplaysExpectedNumberOfChargeCodes");
@@ -105,7 +106,7 @@ public class UcqcIncludeInGridOnlyChargeCodesWithResultsInSelectedCmsAds1115
 	}
   }
 
-  @Test
+//  @Test tc- related to query db
   public void test03QueryDatabaseAndAssertResultsMatchDisplayedChargeCodes()throws Throwable {
 	  
     try {

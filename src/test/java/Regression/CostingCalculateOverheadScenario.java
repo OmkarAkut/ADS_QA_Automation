@@ -27,7 +27,7 @@ public class CostingCalculateOverheadScenario extends CalculationHelper {
   }
 //ADS-5991, covered only for Costing , need to add steps[from step16] for Report library Costing for overhead cost model
   @Test
-    public void testAdsLoginLogout() throws Throwable {
+    public void test01AdsLoginLogout5991() throws Throwable {
     try {
 //      doSearchForModel("v102 REGRESSION Overhead Model");
     	 doSearchForModel("2005 Overhead Allocation-Test2023");
@@ -88,7 +88,7 @@ public class CostingCalculateOverheadScenario extends CalculationHelper {
 
     //Shilpa 27.07.2022, some wait is added and updated to click element inside frame
   @Test //(Omkar 24/5/22 : Need to review which objectr needs to be clicked in tree in step 2.The test is failing saying that object is not clickable)
-  public void testAssertReportLibrary() throws InterruptedException,Throwable {
+  public void test02AssertReportLibrary5991() throws InterruptedException,Throwable {
     try {
 		goToPage("Report Library");
 waitForSpinnerToEnd();

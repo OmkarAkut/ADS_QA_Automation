@@ -42,9 +42,9 @@ public class GeneralCalculationsRunMedicalServiceAssignmentAds2343 extends Calcu
 		}
 
 	}
-
+//ADS-6100 all steps
 	@Test
-	public void test01ClickClearResultsButtonAndVerifyCalculationStatusDetails()
+	public void test01ClickClearResultsButtonAndVerifyCalculationStatusDetails_6100()
 			throws InterruptedException,Throwable {
 		try {
 			
@@ -67,7 +67,8 @@ public class GeneralCalculationsRunMedicalServiceAssignmentAds2343 extends Calcu
 			confirmCalculationStatusDetailsContains("Number of batches to process: 1");
 			confirmCalculationStatusDetailsContains("Process Completed");
 			closeViewDialog();
-			deleteMyCalculationStatusFirstRow();
+//			deleteMyCalculationStatusFirstRow();
+			deleteFirstRow();
 			ExtentReport.logPass("PASS", "test01ClickClearResultsButtonAndVerifyCalculationStatusDetails");
 		}  catch (Exception|AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01ClickClearResultsButtonAndVerifyCalculationStatusDetails", driver, e);
@@ -93,7 +94,7 @@ public class GeneralCalculationsRunMedicalServiceAssignmentAds2343 extends Calcu
 	//  }
 
 	@Test
-	public void test02ClickAssignButtonAndAssertCalculationStatusPageDetails()
+	public void test02ClickAssignButtonAndAssertCalculationStatusPageDetails_6100()
 			throws InterruptedException ,Throwable{
 		try {
 			waitForAjaxExtJs();
@@ -117,7 +118,8 @@ public class GeneralCalculationsRunMedicalServiceAssignmentAds2343 extends Calcu
 			driverDelay(4000);
 			confirmCalculationStatusDetailsContains("Process Completed");
 			closeViewDialog();
-			deleteMyCalculationStatusFirstRow();
+			deleteFirstRow();
+//			deleteMyCalculationStatusFirstRow();
 			ExtentReport.logPass("PASS", "test02ClickAssignButtonAndAssertCalculationStatusPageDetails");
 		}  catch (Exception|AssertionError e) {
 			ExtentReport.logFail("FAIL", "test02ClickAssignButtonAndAssertCalculationStatusPageDetails", driver, e);

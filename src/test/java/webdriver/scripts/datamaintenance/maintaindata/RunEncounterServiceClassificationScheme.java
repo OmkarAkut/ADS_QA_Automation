@@ -60,7 +60,7 @@ public class RunEncounterServiceClassificationScheme extends CalculationHelper {
 	}
 
 	@Test
-	public void test01AssertPopulationAndServiceModelsForEncounterClassificationScheme() throws Throwable {
+	public void test01AssertPopulationAndServiceModelsForEncounterClassificationScheme_ADS_6102() throws Throwable {
 		try {
 			assertThatString(DataMaintenanceMap.getPopulationValue(), population, printout);
 			ContractModelsHelper.CompareListToArray(dmMap.getServiceModelList(), serviceModels);
@@ -73,7 +73,7 @@ public class RunEncounterServiceClassificationScheme extends CalculationHelper {
 	}
 
 	@Test
-	public void test02ValidateRemoveButtonForEncounterClassificationScheme() throws Throwable {
+	public void test02ValidateRemoveButtonForEncounterClassificationScheme_ADS_6102() throws Throwable {
 		try {
 			waitUntilElementIsClickable(contractMap.getContractModelButtonColumnsToDisplayModalRemove());
 			doClick(contractMap.getContractModelButtonColumnsToDisplayModalRemove());
@@ -98,7 +98,7 @@ public class RunEncounterServiceClassificationScheme extends CalculationHelper {
 	}
 
 	@Test
-	public void test03ValidateSaveAndEditEncounterClassificationScheme() throws Throwable {
+	public void test03ValidateSaveAndEditEncounterClassificationScheme_ADS_6102() throws Throwable {
 		try {
 			selectMaintainDataAtoZ(aToZPage2);
 			waitForDisplayedSpinnerToEnd();
@@ -109,7 +109,7 @@ public class RunEncounterServiceClassificationScheme extends CalculationHelper {
 			driverDelay(300);
 			doClick(DataMaintenanceMap.getServicesTabEncounter());
 			assertTextIsDisplayed("There is no data available to display.");
-			doClick(ContractingMap.getContractModelRiskLimiterCancelCloseBtn());
+			doClick("//span[text()='Cancel & Close']");
 			ExtentReport.logPass("PASS", "test03ValidateSaveAndEditEncounterClassificationScheme");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test03ValidateSaveAndEditEncounterClassificationScheme", driver, e);
@@ -118,7 +118,7 @@ public class RunEncounterServiceClassificationScheme extends CalculationHelper {
 	}
 
 	@Test
-	public void test04ValidateAssignOptionForEncounterScheme() throws Throwable {
+	public void test04ValidateAssignOptionForEncounterScheme_ADS_6102() throws Throwable {
 		try {
 			selectMaintainDataAtoZ(aTozPage);
 			doClick(ContractingMap.getContractModelButtonFilter());
@@ -145,7 +145,7 @@ public class RunEncounterServiceClassificationScheme extends CalculationHelper {
 	}
 
 	@Test
-	public void test05VerifyServicesAssignedToEncounter() throws Throwable {
+	public void test05VerifyServicesAssignedToEncounter_ADS_6102() throws Throwable {
 		try {
 			selectMaintainDataAtoZ(aToZPage2);
 			waitForDisplayedSpinnerToEnd();
@@ -156,9 +156,9 @@ public class RunEncounterServiceClassificationScheme extends CalculationHelper {
 			doClick(DataMaintenanceMap.getServicesTabEncounter());
 			driverDelay(200);
 			ContractModelsHelper.CompareListToArray(
-					driver.findElements(By.xpath("//*[text()='" + batch + "']//following::div[1]")),
+					driver.findElements(By.xpath("//span[text()='Cancel & Close']")),
 					serviceModelsAfterAssign);
-			doClick(ContractingMap.getContractModelRiskLimiterCancelCloseBtn());
+			doClick("//span[text()='Cancel & Close']");
 			doClosePageOnLowerBar("Maintain Data");
 			ExtentReport.logPass("PASS", "test05VerifyServicesAssignedToEncounter");
 		} catch (Exception | AssertionError e) {

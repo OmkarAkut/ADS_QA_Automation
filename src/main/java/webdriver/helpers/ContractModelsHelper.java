@@ -33,6 +33,7 @@ import webdriver.maps.CostingMap;
 import webdriver.maps.DialogsMap;
 import webdriver.maps.EditContractingModelMap;
 import webdriver.maps.ModelLibraryMap;
+import webdriver.maps.SystemMaintenanceMap;
 import webdriver.maps.mapbuilder.BuildMap;
 
 public class ContractModelsHelper extends GoHelper {
@@ -40,7 +41,7 @@ public class ContractModelsHelper extends GoHelper {
   private static ModelLibraryMap modelMap;
   private static EditContractingModelMap editModelMap;
   private static ContractingMap contractMap;
-
+  private static Actions act=new Actions(driver);
 
   /** Helper Class for Contract Models pages - individual test scripts should extend this one to use it.
    */
@@ -445,7 +446,7 @@ public class ContractModelsHelper extends GoHelper {
 	    for (String selectedColumns: columnsToSelect) {
 	    	System.out.println(selectedColumns);
 	      highlightColumnsToDisplayColumn(selectedColumns);
-	      doClick(selectColumn.getSelectItem());
+	      doClick(ContractingMap.getSelectItem());
 	      assertColumnsToDisplayColumnIsSelected(selectedColumns);
 	      Thread.sleep(300);
 	    }
@@ -996,13 +997,18 @@ public class ContractModelsHelper extends GoHelper {
 			  for (Map.Entry<String, String> set :
 				  services.entrySet()) {
 				  System.out.println(set.getKey().toString());
+				 
 				  scrollToView("(//div[text()='" + set.getKey().toString() + "']//following::td/div)[1]");
 				  System.out.println(driver.findElement(By.xpath("(//div[text()='"+set.getKey().toString() +"']//following::td/div)[1]")).getText());
 				  	if(!((driver.findElement(By.xpath("(//div[text()='"+set.getKey().toString() +"']//following::td/div)[1]")).getText().equals(set.getValue().toString())))) {
-					  driver.findElement(By.xpath("(//div[text()='"+set.getKey().toString() +"']//following::td/div)[1]")).click();
+//					  driver.findElement(By.xpath("(//div[text()='"+set.getKey().toString() +"']//following::td/div)[1]")).click();
 					  Thread.sleep(1500);
-					  keyInValues(driver.findElement(By.xpath("//div[text()='"+set.getKey().toString()+"']//following::input[@name='amount']")), 
-								set.getValue().toString());
+					  Actions act=new Actions(driver);
+					  System.out.println(set.getValue().toString());
+					  //Shilpa updated for 11.2 on 24.2.2024
+					  act.moveToElement(driver.findElement(By.xpath("(//div[text()='"+set.getKey().toString() +"']//following::td/div)[1]"))).click().sendKeys(Keys.BACK_SPACE).sendKeys(set.getValue().toString()).sendKeys(Keys.ENTER).perform();
+//					  keyInValues(driver.findElement(By.xpath("(//div[text()='"+set.getKey().toString() +"']//following::td/div)[1]")), 
+//								set.getValue().toString());
 				  }
 				
 			  }
@@ -1085,6 +1091,8 @@ public class ContractModelsHelper extends GoHelper {
 		doClick(ContractingMap.getContractModelApplyFilterButton());
 //		ContractingMap.getFilterDialogButtonApplyFilter();
 		ContractModelsHelper.highlightColumnsToDisplayColumnServices();
+		//Shilpa updated for 11.2 on 25.4.2024
+		doClick("(//span[text()='All']/..)[1]");
 	    doClick("//div[contains(@class,'x-toolbar-footer')]//span[text()='Apply']");
 	}
 	
@@ -1155,4 +1163,50 @@ public class ContractModelsHelper extends GoHelper {
 		}
 	  }
 
+	public static void saveCustomSettings(String setName,String modelName) {
+		
+		try {
+			goToPage("Customize Task Lists");
+			driverDelay();
+			act.moveToElement(driver.findElement(By.xpath("//label[text()='Use Default']//preceding-sibling::span"))).click().pause(1000).perform();
+			act.moveToElement(driver.findElement(By.xpath("//label[text()='"+setName+"']//preceding-sibling::span"))).click().pause(1000).perform();
+			driverDelay(1000);
+			doClick(SystemMaintenanceMap.getTaskListSaveButton());
+			driverDelay(1000);
+			doClick("//div[contains(@id,'messagebox')]//span[text()='Save']");
+			waitForDisplayedSavingSpinnerToEnd();
+			driverDelay(5000);
+			driverDelay();
+			goToPage(modelName);
+		} catch (Exception e) {
+			
+		}
+	}
+	public static void saveCustomSettingsLogOut(String setName,String modelName) {
+		try {
+			goToPage("Customize Task Lists"); 
+			driverDelay();
+			act.moveToElement(driver.findElement(By.xpath("//label[text()='Use Default']//preceding-sibling::span"))).click().pause(1000).perform();
+			doClick(SystemMaintenanceMap.getTaskListSaveButton());
+			doClick("//div[contains(@id,'messagebox')]//span[text()='Save']");
+			waitForDisplayedSpinnerToEnd();
+			driverDelay(5000);
+		} catch (Exception e) {
+		
+		}
+	}
+	
+	public static void revertCustomSettings() {
+		try {
+			goToPage("Customize Task Lists"); 
+			driverDelay();
+			act.moveToElement(driver.findElement(By.xpath("//label[text()='Use Default']//preceding-sibling::span"))).click().pause(1000).perform();
+			doClick(SystemMaintenanceMap.getTaskListSaveButton());
+			doClick("//div[contains(@id,'messagebox')]//span[text()='Save']");
+			waitForDisplayedSpinnerToEnd();
+			driverDelay(5000);
+		} catch (Exception e) {
+		
+		}
+	}
 }

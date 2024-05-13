@@ -61,9 +61,9 @@ public class GeneralCalculationsRunPriceListEncounterAssignmentAds2344 extends C
 		assertThat(sourcePriceList, equalTo(xSourcePriceList));
 		assertThat(destinationChargeScenario, equalTo(xDestinationChargeScenario));
 	}
-
+//ADS-6099
 	@Test
-	public void test01ClickClearResultsButtonAndVerifyCalculationStatusPageDetails()
+	public void test01ClickClearResultsButtonAndVerifyCalculationStatusPageDetails_6099()
 			throws InterruptedException, Throwable {
 		try {
 			doClick(DataMaintenanceMap.getLoadDataFilterButton());
@@ -87,7 +87,8 @@ public class GeneralCalculationsRunPriceListEncounterAssignmentAds2344 extends C
 			confirmCalculationStatusDetailsContains("Process Completed");
 			confirmCalculationStatusDetailsContains("Total number of charge items reset: 25");
 			closeViewDialog();
-			deleteMyCalculationStatusFirstRow();
+			deleteFirstRow();
+//			deleteMyCalculationStatusFirstRow();
 			ExtentReport.logPass("PASS", "test01ClickClearResultsButtonAndVerifyCalculationStatusPageDetails");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01ClickClearResultsButtonAndVerifyCalculationStatusPageDetails", driver,
@@ -114,7 +115,7 @@ public class GeneralCalculationsRunPriceListEncounterAssignmentAds2344 extends C
 	}
 
 	@Test
-	public void test02ClickAssignButtonAndAssertCalculationStatusPageDetails() throws InterruptedException, Throwable {
+	public void test02ClickAssignButtonAndAssertCalculationStatusPageDetails_6099() throws InterruptedException, Throwable {
 		try {
 			waitForAjaxExtJs();
 //      waitForPresenceOfElement("(//span[text()='Assign'])");
@@ -134,7 +135,8 @@ public class GeneralCalculationsRunPriceListEncounterAssignmentAds2344 extends C
 			driverDelay(5000);
 			confirmCalculationStatusDetailsContains("Process Completed");
 			closeViewDialog();
-			deleteMyCalculationStatusFirstRow();
+			deleteFirstRow();
+//			deleteMyCalculationStatusFirstRow();
 			ExtentReport.logPass("PASS", "test02ClickAssignButtonAndAssertCalculationStatusPageDetails");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test02ClickAssignButtonAndAssertCalculationStatusPageDetails", driver, e);

@@ -12,6 +12,8 @@ import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 public class DriverStatic extends SetupStatic {
 
 	public static WebDriver driver;
@@ -46,10 +48,14 @@ public class DriverStatic extends SetupStatic {
 			browser = browser.toLowerCase();
 			if (browser.contains("headless")) {
 				System.out.println("Chrome is running in headless mode");
+				//Shilpa added below line for 11.2 on 12.12.2023
+				 WebDriverManager.chromedriver().setup();
 				ChromeOptions options = new ChromeOptions();
 				options.addArguments("--window-size=1920,1080", "--ignore-certificate-errors", "--headless");
 				driver = new ChromeDriver(options);
 			} else if (browser.equals("chrome")) {
+				//Shilpa added below line for 11.2 on 12.12.2023
+				 WebDriverManager.chromedriver().setup();
 				ChromeOptions options = new ChromeOptions();
 				options.addArguments("--ignore-certificate-errors", "start-maximized");
 				options.addArguments("--remote-allow-origins=*");
@@ -59,7 +65,9 @@ public class DriverStatic extends SetupStatic {
 			} else if (browser.equals("ie")) {
 				driver = new InternetExplorerDriver();
 				//			  Omkar 15/12/2023 : Code addition for edge browser execution
-			}  else if (browser.equals("edge")) {				  
+				//Shilpa added below line for 11.2 on 12.12.2023
+			}  else if (browser.equals("edge")) {	
+				 WebDriverManager.edgedriver().setup();
 				EdgeOptions options =new EdgeOptions();
 				options.addArguments("--remote-allow-origins=*");
 				options.addArguments("--ignore-certificate-errors", "start-maximized");
@@ -92,11 +100,13 @@ public class DriverStatic extends SetupStatic {
 		}
 //		Omkar 15/12/2023 : addition of edge driver
 		else if (browser.equals("edge")) {
+			 WebDriverManager.edgedriver().setup();
 			System.setProperty("webdriver.edge.driver", "src/main/resources/drivers/" + edgeDriver + ".exe");
 			browserDriver = System.getProperty("webdriver.edge.driver");
 		} else {
 			//      System.setProperty("webdriver.chrome.driver",
 			//              "src/main/resources/drivers/" + chromeDriver + ".exe");
+			 WebDriverManager.chromedriver().setup();
 			System.setProperty("webdriver.chrome.driver",
 					"src/main/resources/drivers/" + chromeDriver + ".exe");
 			browserDriver = System.getProperty("webdriver.chrome.driver");

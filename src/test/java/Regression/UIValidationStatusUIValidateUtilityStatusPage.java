@@ -49,7 +49,7 @@ public class UIValidationStatusUIValidateUtilityStatusPage extends CalculationHe
 			}
 		//ADS-6621	
 			@Test
-			public void test01ValidateSearchCriteriaUnderUtilityStatusPage() throws Throwable {
+			public void test01ValidateSearchCriteriaUnderUtilityStatusPage_6621() throws Throwable {
 				try {
 					doSearchForContractModel(searchText.toUpperCase());
 					waitForDisplayedSpinnerToEnd();
@@ -64,7 +64,7 @@ public class UIValidationStatusUIValidateUtilityStatusPage extends CalculationHe
 			}
 			//ADS-6620
 			@Test
-			public void test02ValidateDeleteFilteredUnderUtilityStatusPage() throws Throwable {
+			public void test02ValidateDeleteFilteredUnderUtilityStatusPage_6620() throws Throwable {
 				try {
 					doClick(statusMap.getUtilityStatusPageButtonDeleteFiltered());
 					waitForElementToBeVisible(statusMap.calcStatusDeleteFilteredButton());
@@ -80,7 +80,7 @@ public class UIValidationStatusUIValidateUtilityStatusPage extends CalculationHe
 			}
 			//ADS-6619
 			@Test
-			public void test03ValidateRefreshUnderUtilityStatusPage() throws Throwable {
+			public void test03ValidateRefreshUnderUtilityStatusPage_6619() throws Throwable {
 				try {
 					doClick(statusMap.getUtilityStatusPageButtonRefresh());
 					waitForAjaxExtJs();
@@ -95,7 +95,7 @@ public class UIValidationStatusUIValidateUtilityStatusPage extends CalculationHe
 			}
 			//ADS-6518
 			@Test
-			public void test04ValidateDefaultTabInUtilityStatusPage() throws Throwable {
+			public void test04ValidateDefaultTabInUtilityStatusPage_6518() throws Throwable {
 				try {
 					assertElementIsDisplayed(statusMap.getUtilityStatusPageButtonMyStatus());
 					assertElementIsDisplayed(statusMap.utilityStatusPageScenarioNameColumnName());
@@ -108,7 +108,7 @@ public class UIValidationStatusUIValidateUtilityStatusPage extends CalculationHe
 			}
 			//ADS-6517
 			@Test
-			public void test05ValidateAllStatusInUtilityStatusPage() throws Throwable {
+			public void test05ValidateAllStatusInUtilityStatusPage_6517() throws Throwable {
 				try {
 					doClick(statusMap.getUtilityStatusPageButtonAllStatus());
 					assertListElementsAreDisplayed(statusMap.utilityStatusDurationGridElements(), printout);
@@ -121,7 +121,7 @@ public class UIValidationStatusUIValidateUtilityStatusPage extends CalculationHe
 			}
 			//ADS-6518
 			@Test
-			public void test06ValidateAllStatusByPaginationInUtilityStatusPage() throws Throwable {
+			public void test06ValidateAllStatusByPaginationInUtilityStatusPage_6518() throws Throwable {
 				try {
 					doClick(modelMap.getModelLibraryTableButtonLast());
 					assertListElementsAreDisplayed(statusMap.utilityStatusDurationGridElements(), printout);

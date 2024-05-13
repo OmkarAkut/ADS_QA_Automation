@@ -425,8 +425,8 @@ public class AssertHelper extends AdsHelper {
 //		Omkar 19/2/2024 : xpath changes for 11.2
 //		asterisk = driver.findElement(By.xpath(labelXpath)).getText();
 //		asteriskColor = driver.findElement(By.xpath(labelXpath)).getAttribute("style");
-		asterisk = driver.findElement(By.xpath(labelXpath+"/following-sibling::span")).getText();
-		asteriskColor = driver.findElement(By.xpath(labelXpath+"/following-sibling::span")).getAttribute("style");
+		asterisk = driver.findElement(By.xpath(labelXpath+"//following-sibling::span")).getText();
+		asteriskColor = driver.findElement(By.xpath(labelXpath+"//following-sibling::span")).getAttribute("style");
 		System.out.println(asterisk);
 		System.out.println(asteriskColor);
 		if (asterisk.contains("*")) {
@@ -443,7 +443,7 @@ public class AssertHelper extends AdsHelper {
 		}
 
 	}
-
+	
 	public void assertThatValueHasRequiredDecimalPlaces(String valueToConsider, int numberOfDecimalPlaces,
 			boolean printout) {
 		String[] decimalPlaces = valueToConsider.split("\\.");
@@ -577,7 +577,31 @@ public class AssertHelper extends AdsHelper {
 		// throw new Exception();
 		// }
 	}
-
+	public static void assertElementIsEnabled(String xpath, boolean printout) throws Exception {
+		String classText = null;
+		try {
+			waitForAjaxExtJs();
+			classText = driver.findElement(By.xpath(xpath)).getAttribute("class");
+			boolean isEnabled=classText.contains("disabled");
+			if(printout) {
+				System.out.println("Element class text: " + classText);
+				System.out.println("IsEnabled: " + isEnabled);
+			}
+			else {
+				fail();
+			}
+		} catch (Throwable e) {
+			System.out.println("Element Not Found");
+			fail("element not found");
+		}
+		
+		// try {
+		// assertTrue(isEnabled);
+		// } catch(Throwable e){
+		// System.out.println("TEST FAILED: Element is Not Enabled");
+		// throw new Exception();
+		// }
+	}
 	public static void assertArraysAreEqual(String[] expectedValues, String[] actualValues, boolean printout)
 			throws InterruptedException {
 		if (printout) {
@@ -633,6 +657,7 @@ public class AssertHelper extends AdsHelper {
 		boolean checkElement = element.isDisplayed();
 		assertTrue(checkElement);
 	}
+	
 
 	public static void assertElementIsDisplayed(WebElement element, boolean printout) {
 		WebElement checkElement = element;
@@ -654,6 +679,18 @@ public class AssertHelper extends AdsHelper {
 					driver.findElement(By.xpath("//*[text()='" + expectedText + "']")));
 			Thread.sleep(500);
 			WebElement element = driver.findElement(By.xpath("//*[text()='" + expectedText + "']"));
+			assertTrue(element.isDisplayed());
+		} catch (Throwable e) {
+			fail(e.getMessage());
+		}
+	}
+	public static void assertTextIsDisplayedTaskFolder(String expectedText) {
+		try {
+
+			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);",
+					driver.findElement(By.xpath("//div[contains(@id,'taskfolder')]//*[text()='" + expectedText + "']")));
+			Thread.sleep(500);
+			WebElement element = driver.findElement(By.xpath("//div[contains(@id,'taskfolder')]//*[text()='" + expectedText + "']"));
 			assertTrue(element.isDisplayed());
 		} catch (Throwable e) {
 			fail(e.getMessage());
@@ -931,6 +968,21 @@ public class AssertHelper extends AdsHelper {
 			assertTrue(true);
 		}
 	}
+	//Shilpa added method 3.1.2024 
+	public void assertThatElementIsChecked(WebElement webelement) {
+		String checkbox=webelement.getAttribute("checked");
+		boolean isChecked = checkbox.contains("true");
+		if (printout) {
+			System.out.println("IsChecked: " + isChecked);
+		}
+		assertTrue("Expected element to be checked or selected", isChecked == true);
+	}
 
-
+	public void assertElementIsDisplayed(String itemName) {
+		try {
+			assertElementIsDisplayed(driver.findElement(By.xpath("//div[contains(@id,'taskfolder')]//following::span[text()='"+itemName+"']")));
+		} catch (Exception e) {
+			
+		}
+	}
 }

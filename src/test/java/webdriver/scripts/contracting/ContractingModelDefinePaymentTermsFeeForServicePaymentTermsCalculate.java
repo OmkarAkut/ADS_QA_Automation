@@ -22,9 +22,11 @@ public class ContractingModelDefinePaymentTermsFeeForServicePaymentTermsCalculat
 
 	private static ContractingMap modelMap;
 	private static EditContractingModelMap editModelMap;
-	private static final String contractFolder = "Test Imran Folder 2";// Shilpa: 1.08.2022 updated test data
-	private static final String contractModelName = "v105 REGRESSION 2021 IPPS DC A1";
-	private static final String serviceName = "MCR IPPS 2021";
+	private static final String contractFolder = "Imran - Test Folder";// Shilpa: 1.08.2022 updated test data, updated
+																		// again on 24.2.2024
+	private static final String contractModelName = "v10.5 REGRESSION 2023 IPPS DC A";// Shilpa updated data 24.4.2024
+//	private static final String serviceName = "MCR IPPS 2021";
+	private static final String serviceName = "MCR IPPS 2020";// Shilpa updated to 24.4.2026
 	private static final String serviceName1 = "ASESC-2836 IPPS KCentra A1";
 	private static final String serviceName2 = "ASESC-2836 IPPS KCentra A2";
 
@@ -33,7 +35,8 @@ public class ContractingModelDefinePaymentTermsFeeForServicePaymentTermsCalculat
 	final static String[] columnsToSelect = { "ASESC-2836 IPPS KCentra A1", "ASESC-2836 IPPS KCentra A2",
 			"ASESC-2836 IPPS KCentra A3" };
 
-	private static final String serviceModel = "MCR IPPS 2021";
+//	private static final String serviceModel = "MCR IPPS 2021";
+	private static final String serviceModel = "MCR IPPS 2020";// Shilpa updated 24.4.2024
 	private static final String priceMethodOption = "Medicare Inpatient PPS";
 	static String[] filter = { "Name", "Is", "Equal To", serviceName };
 	static String[] filterServiceASESC2836IPPSKCentraA1 = { "Name", "Is", "Equal To", serviceName1 };
@@ -64,13 +67,13 @@ public class ContractingModelDefinePaymentTermsFeeForServicePaymentTermsCalculat
 	private static String validateService01MaxValue = "1537.50";
 	private static String validateService02MaxValue = "153.75";
 	private static String validateService03MaxValue = "153750.00";
-	static String viewLogTitleApply = "v105 REGRESSION 2021 IPPS DC A1";
+	static String viewLogTitleApply = "v105 REGRESSION 2021 IPPS DC A";
 
 	ContractModelsHelper contractModelsHelper = new ContractModelsHelper();
 
 	/**
 	 * Test - [CMS Regs: FY2023 IPPS] - Create New Contracting Model with FY2023
-	 * Medicare Year ADS-6277 ,ADS-6775,ADS-6782
+	 * Medicare Year ADS-6277 ,ADS-6775
 	 **/
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
@@ -96,13 +99,16 @@ public class ContractingModelDefinePaymentTermsFeeForServicePaymentTermsCalculat
 
 	}
 
+//ADS-6775,ADS-6782 [both test cases covered here]
 	@Test
-	public void FeeForServicePaymentTermsCalculate() throws Throwable {
+	public void FeeForServicePaymentTermsCalculate_ADS_6775_ADS_6782() throws Throwable {
 		try {
-			ContractModelsHelper.scrollToView("//div[text()='" + contractFolder + "']//img[3]");
-			doClick("//div[text()='" + contractFolder + "']/img[2]");
+			//Shilpa commented 24.4.2026 has scroll issue, once scroll issue is fixed below lines can be uncommented
+//			ContractModelsHelper.scrollToView("(//span[text()='Imran - Test Folder'])[2]");
+//			doClick("//div[text()='" + contractFolder + "']/img[2]");
+			doSearchForContractModel(contractModelName);
 			tableDoubleClickCellFirstColumn(contractModelName);
-			waitForPageTitle(contractModelName);
+//			waitForPageTitle(contractModelName);
 			assertTextIsDisplayed("Unpublished Contract Task List");
 			contractModelsHelper.navigateFeeForServicePaymentTerms();
 			assertElementIsDisplayed(modelMap.getContractServiceModel());
@@ -114,9 +120,9 @@ public class ContractingModelDefinePaymentTermsFeeForServicePaymentTermsCalculat
 			assertElementIsDisplayed(modelMap.getContractFeeForServicePaymentServices());
 			assertElementIsDisplayed(modelMap.getContractFeeForServicePaymentServiceModel());
 			contractModelsHelper.navigateFeeForServicePaymentTermsPageServiceModel(filter);
-
+			// Shilpa updated xpath 23.4.2024
 			driver.findElement(By.xpath(
-					"//label[text()='Service Model']/ancestor::div/descendant::div[text() = '" + serviceModel + "']"))
+					"//label[text()='Service Model']/ancestor::div/descendant::span[text() = '" + serviceModel + "']"))
 					.click();
 			contractModelsHelper
 					.navigateCloseOpenSection(ContractingMap.getContractFeeForServicePaymentFilterServiceModel());
@@ -132,8 +138,8 @@ public class ContractingModelDefinePaymentTermsFeeForServicePaymentTermsCalculat
 			// Edit price method option
 			webdriverClick(driver.findElement(By.name("pricemethodoption")));
 			waitForAjaxExtJs();
-			webdriverClick(driver.findElement(
-					By.xpath("//div[@class='x-boundlist-list-ct']/ul/li[text()='" + priceMethodOption + "']")));
+			webdriverClick(driver.findElement(By
+					.xpath("//div[contains(@class,'x-boundlist-list-ct')]/ul/li[text()='" + priceMethodOption + "']")));
 			Thread.sleep(200);
 			// shilpa 01.08.2022 added above steps
 			navigateFeeForServicePaymentTermsPagePricingMethodSectionClickEditButtonToOpenEditDialog();
@@ -145,21 +151,24 @@ public class ContractingModelDefinePaymentTermsFeeForServicePaymentTermsCalculat
 				doClick(modelMap.getContractEditPricePopUpDischargeStatusSelectAll());
 				driverDelay(1000);
 			} catch (Exception | AssertionError e1) {
-				assertTextIsDisplayed("159 Item(s) Selected");
+//				assertTextIsDisplayed("159 Item(s) Selected");
+				assertTextIsDisplayed("191 Item(s) Selected");// Shilpa updated 24.4.2024 for 11.2
 
 			}
 			doClick(modelMap.getContractEditPricePopUpDischargeStatusApply());
 			driverDelay(100);
-			int expectedDischargeItems = 159;
+//			int expectedDischargeItems = 159;
+			int expectedDischargeItems = 100;// Shilpa updated 23.4.2024 for 11.2 can have only 100 elements in dialog
+												// due to limitation
 			int dischargeItems = ContractingMap.getContractEditPricePopUpDischargeStatusItemCount().size();
 			System.out.println(dischargeItems);
-			doClick(ContractingMap.getContractEditPricePopUpDischargeStatusLastPage());
-			int dischargeItemsLastPage = ContractingMap.getContractEditPricePopUpDischargeStatusItemCount().size();
-			int totalDischargeItems = dischargeItems + dischargeItemsLastPage;
-			System.out.println(totalDischargeItems);
-			System.out.println(dischargeItems);
+//			doClick(ContractingMap.getContractEditPricePopUpDischargeStatusLastPage());
+//			int totalDischargeItems = ContractingMap.getContractEditPricePopUpDischargeStatusItemCount().size();
+//			int totalDischargeItems = dischargeItems + dischargeItemsLastPage;
+//			System.out.println(totalDischargeItems);
+//			System.out.println(dischargeItems);
 
-			if (expectedDischargeItems == totalDischargeItems) {
+			if (expectedDischargeItems == dischargeItems) {
 				assertTrue("All discharge items has been added", printout);
 			} else {
 				assertFalse(printout);
@@ -177,14 +186,10 @@ public class ContractingModelDefinePaymentTermsFeeForServicePaymentTermsCalculat
 					capitalDSHAdjustmentFactor);
 			navigateCloseSectionOpenNewSection("General", "Operating Payment");
 			ContractModelsHelper.keyInValues(ContractingMap.getareaWageIndex(), areaWageIndex);
-			ContractModelsHelper.keyInValues(ContractingMap.getnationalLaborRate(),
-					nationalLaborRate);
-			ContractModelsHelper.keyInValues(ContractingMap.getnationalNonLaborRate(),
-					nationalNonLaborRate);
-			ContractModelsHelper.keyInValues(ContractingMap.gethospitalReadmissionFactor(),
-					hospitalReadmissionFactor);
-			ContractModelsHelper.keyInValues(ContractingMap.getuncompensatedCarePayment(),
-					uncompensatedCarePayment);
+			ContractModelsHelper.keyInValues(ContractingMap.getnationalLaborRate(), nationalLaborRate);
+			ContractModelsHelper.keyInValues(ContractingMap.getnationalNonLaborRate(), nationalNonLaborRate);
+			ContractModelsHelper.keyInValues(ContractingMap.gethospitalReadmissionFactor(), hospitalReadmissionFactor);
+			ContractModelsHelper.keyInValues(ContractingMap.getuncompensatedCarePayment(), uncompensatedCarePayment);
 			ContractModelsHelper.keyInValues(ContractingMap.getvalueBasedPurchasingFactor(),
 					valueBasedPurchasingFactor);
 			ContractModelsHelper.keyInValues(ContractingMap.getReduction(), Reduction);
@@ -193,21 +198,15 @@ public class ContractingModelDefinePaymentTermsFeeForServicePaymentTermsCalculat
 			navigateCloseSectionOpenNewSection("Operating Payment", "Capital Payment");
 			ContractModelsHelper.keyInValues(ContractingMap.getcapitalGeographicAdjustmentFactor(),
 					capitalGeographicAdjustmentFactor);
-			ContractModelsHelper.keyInValues(ContractingMap.getcapitalColaFactor(),
-					capitalColaFactor);
-			ContractModelsHelper.keyInValues(ContractingMap.getnationalCapitalRate(),
-					nationalCapitalRate);
+			ContractModelsHelper.keyInValues(ContractingMap.getcapitalColaFactor(), capitalColaFactor);
+			ContractModelsHelper.keyInValues(ContractingMap.getnationalCapitalRate(), nationalCapitalRate);
 			navigateCloseSectionOpenNewSection("Capital Payment", "Cost Outlier Payment");
 			ContractModelsHelper.keyInValues(ContractingMap.getoperatingRatioOfCostCharge(),
 					operatingRatioOfCostCharge);
-			ContractModelsHelper.keyInValues(ContractingMap.getcapitalRatioOfCostCharge(),
-					capitalRatioOfCostCharge);
-			ContractModelsHelper.keyInValues(ContractingMap.getnonBurnMarginalCostFactor(),
-					nonBurnMarginalCostFactor);
-			ContractModelsHelper.keyInValues(ContractingMap.getfixedLossThreshold(),
-					fixedLossThreshold);
-			ContractModelsHelper.keyInValues(ContractingMap.getthresholdLaborPortion(),
-					thresholdLaborPortion);
+			ContractModelsHelper.keyInValues(ContractingMap.getcapitalRatioOfCostCharge(), capitalRatioOfCostCharge);
+			ContractModelsHelper.keyInValues(ContractingMap.getnonBurnMarginalCostFactor(), nonBurnMarginalCostFactor);
+			ContractModelsHelper.keyInValues(ContractingMap.getfixedLossThreshold(), fixedLossThreshold);
+			ContractModelsHelper.keyInValues(ContractingMap.getthresholdLaborPortion(), thresholdLaborPortion);
 			navigateCloseSectionOpenNewSection("Cost Outlier Payment", "Add On Technology Payment");
 			contractModelsHelper.AssertAddOnPaymentTechnologyServicesDisplayed(
 					ContractingMap.getContractEditPricePopUpAddPaymentServicesSelectButton(), serviceName1,
@@ -229,18 +228,22 @@ public class ContractingModelDefinePaymentTermsFeeForServicePaymentTermsCalculat
 			assertElementIsDisplayed(ContractingMap.getContractFeeForServicePaymentWarningPopUpContinueButton());
 			driverDelay(3000);
 			doClick(ContractingMap.getContractFeeForServicePaymentWarningPopUpContinueButton());
-			doClosePageOnLowerBar("v105 REGRESSION...");
-			doClick(ContractingMap.getContractModelButtonFilter());
-			waitForAjaxExtJs();
-			Thread.sleep(200);
-			doFilterCreate(filterContractModel);
+//			doClosePageOnLowerBar("v105 REGRESSION...");//Shilpa updated for 11.2 on 24.2.2024
+			doClick("(//span[@class='x-tab-close-btn'])[2]");
+			/*
+			 * doClick(ContractingMap.getContractModelButtonFilter()); waitForAjaxExtJs();
+			 * Thread.sleep(200); doFilterCreate(filterContractModel);
+			 */
 			doClick(ContractingMap.getContractFeeForServicePaymentCalculateButton());
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
-			assertViewLogTitle(viewLogTitleApply);
-			confirmCalculationStatusDetailsContains("Total Items Processed: 12");
-			confirmCalculationStatusDetailsContains("Process Completed");
-			doClick(ContractingMap.getContractCalculationCloseViewDialog());
+			assertViewLogTitle(contractModelName);
+//			confirmCalculationStatusDetailsContains("Total Items Processed: 12");
+//			confirmCalculationStatusDetailsContains("Process Completed");
+			checkForRecordsProcessed("Total Items Processed: 7");
+			checkForRecordsProcessed("Process Completed");
+//			closeViewDialog();
+			doClick("(//div[contains(@class,'x-toolbar x-docked')]//span[text()='Cancel'])[3]");
 			deleteMyCalculationStatusFirstRow();
 			ExtentReport.logPass("PASS", "FeeForServicePaymentTermsCalculate");
 		} catch (Exception | AssertionError e) {
@@ -249,7 +252,6 @@ public class ContractingModelDefinePaymentTermsFeeForServicePaymentTermsCalculat
 		}
 		finally {
 			doClosePageOnLowerBar("Calculation Status");
-			doClosePageOnLowerBar("Model Library");
 		}
 	}
 

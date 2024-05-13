@@ -4,6 +4,7 @@ import static org.junit.Assert.fail;
 
 import java.text.SimpleDateFormat;
 
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -26,7 +27,7 @@ public class ContractingDataMaintenanceNewItem extends CalculationHelper {
 	static String timePeriodMonth="Sep";
 	static String timePeriodYear="2023";
 	static String[] filter= {"Name","Is","Equal To",timePeriod};
-	/**Regression test ADS-6443,ADS-6445*/
+	/**Regression test ADS-6443*/
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
 		try {
@@ -45,9 +46,9 @@ public class ContractingDataMaintenanceNewItem extends CalculationHelper {
 		}
 
 	}
-
+//ADS-6443 all steps
 	@Test
-	public void test01ContractingDataMaintenanceNewItem() throws Throwable {
+	public void test01ContractingDataMaintenanceNewItem_ADS_6443() throws Throwable {
 		try {
 			doClick(ContractingMap.getContractDataMaintenanceNewButton());
 			waitUntilElementIsVisible(ContractingMap.getNewTimePeriodPopUp());
@@ -64,7 +65,7 @@ public class ContractingDataMaintenanceNewItem extends CalculationHelper {
 			//ADS-6443
 			doClick(ContractingMap.getContractDataMaintenanceEditButton());
 			assertThatAttributeValue(ContractingMap.getInputName(), timePeriod, printout);
-			doClick(ContractingMap.getContractModelRiskLimiterCancelCloseBtn());
+			doClick("//div[text()='"+timePeriod+"']//following::span[text()='Cancel & Close']");
 			assertElementIsDisplayedWithXpath("//div[text()='"+timePeriod+"']");
 			ExtentReport.logPass("PASS", "test01ContractingDataMaintenanceNewItem");
 		} catch (Exception|AssertionError e) {
@@ -74,5 +75,11 @@ public class ContractingDataMaintenanceNewItem extends CalculationHelper {
 		finally {
 			doClosePageOnLowerBar("Maintain Data");
 		}
+	}
+	@AfterClass
+	public static void endtest() throws Exception {
+
+		ExtentReport.report.flush();
+
 	}
 }

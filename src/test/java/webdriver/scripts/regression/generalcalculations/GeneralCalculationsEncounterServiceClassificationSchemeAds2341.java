@@ -25,12 +25,17 @@ import webdriver.maps.mapbuilder.BuildMap;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class GeneralCalculationsEncounterServiceClassificationSchemeAds2341 extends CalculationHelper {
 
-  static String encounter = "OPPS2020DCA001";
-  static String encounterNoServices = "OPPS2020DCA002";
+  static String encounter = "OPPS2021DRUGRA001";
+//  static String encounterNoServices = "OPPS2020DCA002";
   //Encounter Services
+//  List<String> expectedEncounters = Arrays.asList(
+//          "QAREGRESSION34567890123456789012345678901", //"PC Pop Fac or Non F"
+//          "OPPS 2020"
+//  );
+  //Shilpa updated for 11.2 on 24.4.2024
   List<String> expectedEncounters = Arrays.asList(
           "QAREGRESSION34567890123456789012345678901", //"PC Pop Fac or Non F"
-          "OPPS 2020"
+          "OPPS 2021"
   );
   static String viewLogTitleRemove = "Remove Encounter Service Classification";
   static String viewLogTitleApply = "Encounter Service Classification Scheme";
@@ -64,7 +69,7 @@ public class GeneralCalculationsEncounterServiceClassificationSchemeAds2341 exte
 		fail(e.getMessage());
 	}
   }
-
+//ADS-6102 all steps
   @Test
   public void test01ClickRemoveButtonAndVerifyRemoveProcessRanSuccessfully()
           throws InterruptedException,Throwable {
@@ -85,7 +90,8 @@ public class GeneralCalculationsEncounterServiceClassificationSchemeAds2341 exte
       assertViewLogTitle(viewLogTitleRemove);
       confirmCalculationStatusDetailsContains("Process Completed");
       closeViewDialog();
-      deleteMyCalculationStatusFirstRow();
+      deleteFirstRow();
+//      deleteMyCalculationStatusFirstRow();
       ExtentReport.logPass("PASS", "test01ClickRemoveButtonAndVerifyRemoveProcessRanSuccessfully");
 	} catch (Exception|AssertionError e) {
 		ExtentReport.logFail("FAIL", "test01ClickRemoveButtonAndVerifyRemoveProcessRanSuccessfully", driver, e);
@@ -124,8 +130,10 @@ public class GeneralCalculationsEncounterServiceClassificationSchemeAds2341 exte
           throws InterruptedException,Throwable {
     try {
 		doMaintainDataPageSelectAtoZOption("Encounters");
-		doSearchForModel(encounterNoServices);
-		tableDoubleClickCellFirstColumn(encounterNoServices);
+//		doSearchForModel(encounterNoServices);
+//		tableDoubleClickCellFirstColumn(encounterNoServices);
+		doSearchForModel(encounter);
+		tableDoubleClickCellFirstColumn(encounter);
 //		openMaintainDataBatch(encounterNoServices);
 		waitForAjaxExtJs();
 		waitForSpinnerToEnd();
@@ -167,7 +175,7 @@ public class GeneralCalculationsEncounterServiceClassificationSchemeAds2341 exte
       confirmCalculationStatusDetailsContains("Total Encounters Processed: 40");
       confirmCalculationStatusDetailsContains("Process Completed");
       closeViewDialog();
-      deleteMyCalculationStatusFirstRow();
+      deleteFirstRow();
       ExtentReport.logPass("PASS", "test04ClickAssignButtonAndAssertCalculationSummaryDetailsMatchExpected");
      	} catch (Exception|AssertionError e) {
      		ExtentReport.logFail("FAIL", "test04ClickAssignButtonAndAssertCalculationSummaryDetailsMatchExpected", driver, e);
@@ -226,12 +234,17 @@ public class GeneralCalculationsEncounterServiceClassificationSchemeAds2341 exte
   public void test06VerifyServicesNowAppearOnEncountersPage() throws Throwable {
     try {
 //		  List<WebElement> ele=driver.findElements(By.xpath("//*[text()='Service Scheme']/ancestor::div[contains(@class,'x-grid-header')]//following-sibling::div/descendant::table//tbody/tr"));
-
-		List<String> encountersTableStrings =
-		        javaMakeListOfStrings(encountersTable, "//td[6]/div");
+    	System.out.println();
+//		List<String> encountersTableStrings =
+//		        javaMakeListOfStrings(encountersTable, "//td[6]/div");
+    	//Shilpa:xpath update for 11.2 on 24.4.2024
+    	List<String> encountersTableStrings =
+    			javaMakeListOfStrings(driver.findElements(By.xpath("//*[text()='Service Scheme']/ancestor::div[contains(@class,'x-grid-header')]//following-sibling::div/descendant::table//tbody//td[3]/div")));
 		//assertListOfStringsContainsExpectedStrings(encountersTableStrings, expectedEncounters);
 		assertThat(encountersTableStrings, equalTo(expectedEncounters));
-		doClick(driver.findElement(By.xpath("//button/span[text()='Cancel & Close']")));
+		//Shilpa:xpath update for 11.2 on 24.4.2024
+		doClick("//span[text()='Cancel & Close']");
+		doClosePageOnLowerBar("Maintain Data");
 		  ExtentReport.logPass("PASS", "test06VerifyServicesNowAppearOnEncountersPage");
    	} catch (Exception|AssertionError e) {
    		ExtentReport.logFail("FAIL", "test06VerifyServicesNowAppearOnEncountersPage", driver, e);

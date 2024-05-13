@@ -497,19 +497,19 @@ public class SystemMaintenanceMap extends MapConfig {
 	private WebElement customizeMaintainDataCollapsibleMaintainDataButtonClearFilter;
 	public WebElement getCustomizeMaintainDataCollapsibleMaintainDataButtonClearFilter() {return customizeMaintainDataCollapsibleMaintainDataButtonClearFilter;}
 
-	@FindBy(xpath = "//div[text()='Maintain Data Screen Selections']/../descendant::div[contains(text(),'Show Screen')]/following-sibling::div[contains(@class,'maintaindatagridheader')]")
+	@FindBy(xpath = "(//div[text()='Maintain Data Screen Selections']/../../following::div[contains(text(),'Show Screen?')]//following::div[contains(@class,'maintaindatagridheader')])[1]")
 	private WebElement customizeMaintainDataCollapsibleMaintainDataCheckBoxShowScreenSelectAll;
 	public WebElement getCustomizeMaintainDataCollapsibleMaintainDataCheckBoxShowScreenSelectAll() {return customizeMaintainDataCollapsibleMaintainDataCheckBoxShowScreenSelectAll;}
 
-	@FindBy(xpath = "//div[text()='Maintain Data Screen Selections']/../descendant::div[contains(text(),'Read-Only')]/following-sibling::div[contains(@class,'maintaindatagridheader')]")
+	@FindBy(xpath = "(//div[text()='Maintain Data Screen Selections']/../../following::div[contains(text(),'Show Screen?')]//following::div[contains(@class,'maintaindatagridheader')])[2]")
 	private WebElement customizeMaintainDataCollapsibleMaintainDataCheckBoxReadOnlySelectAll;
 	public WebElement getCustomizeMaintainDataCollapsibleMaintainDataCheckBoxReadOnlySelectAll() {return customizeMaintainDataCollapsibleMaintainDataCheckBoxReadOnlySelectAll;}
 
-	@FindBy(xpath = "//div[@class='x-grid-view x-fit-item x-grid-view-default x-unselectable']//div[contains(text(),'Activity Statistic Masters')]/..//div[contains(@class,'checkheader')]")
+	@FindBy(xpath = "//td[contains(@class,'x-grid-cell-first x-unselectable')]//div[contains(text(),'Activity Statistic Masters')]/..//div[contains(@class,'checkheader')]")
 	private WebElement customizeMaintainDataCollapsibleMaintainDataCheckBoxActivityStatisticMasters;
 	public WebElement getCustomizeMaintainDataCollapsibleMaintainDataCheckBoxActivityStatisticMasters() {return customizeMaintainDataCollapsibleMaintainDataCheckBoxActivityStatisticMasters;}
 
-	@FindBy(xpath = "//*[text()='Encounter Tabs']/ancestor::div/descendant::div[contains(text(),'Show Tab')]/following-sibling::div[contains(@class,'maintaindatagridheader')]")
+	@FindBy(xpath = "(//div[text()='Maintain Data Screen Selections']/../../following::div[contains(text(),'Show Screen?')]//following::div[contains(@class,'maintaindatagridheader')])[3]")
 	private WebElement customizeMaintainDataCollapsibleEncounterTabsCheckBoxShowTabSelectAll;
 	public WebElement getCustomizeMaintainDataCollapsibleEncounterTabsCheckBoxShowTabSelectAll() {return customizeMaintainDataCollapsibleEncounterTabsCheckBoxShowTabSelectAll;}
 
@@ -544,8 +544,9 @@ public class SystemMaintenanceMap extends MapConfig {
 	@FindBy(xpath = "//*[contains(@id,'customizetasklists')]/descendant::span[text()='Episode']")
 	private WebElement customizeTaskListsPageSubTabEpisode;
 	public WebElement getCustomizeTaskListsPageSubTabEpisode() {return customizeTaskListsPageSubTabEpisode;}
-
-	@FindBy(xpath = "(//h1[text()='Department Hierarchies']//following::span[text()='Filter']//parent::button)[1]")
+	
+	
+	@FindBy(xpath = "(//h1[text()='Department Hierarchies']//following::span[text()='Filter'])[1]")
 	private WebElement getDeptHierarchyFilterButton;
 	public WebElement getDeptHierarchyFilterButton() {
 		return getDeptHierarchyFilterButton;
@@ -634,7 +635,7 @@ public class SystemMaintenanceMap extends MapConfig {
 		return getTaskListRemoveButton;
 	}
 	
-	@FindBy(xpath = "//div[contains(@class,'panel')]//span[text()='Save']")
+	@FindBy(xpath = "//div[contains(@class,'panel')]//span[text()='Save & Close']/../../..")
 	private static WebElement getTaskListSaveButton;
 
 	public static WebElement getTaskListSaveButton() {

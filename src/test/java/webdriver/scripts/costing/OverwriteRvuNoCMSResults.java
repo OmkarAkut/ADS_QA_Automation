@@ -7,6 +7,8 @@ import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import ExtentReport.ExtentReport;
@@ -56,17 +58,19 @@ public class OverwriteRvuNoCMSResults extends GoHelper {
 			fail(e.getMessage());
 		}
 	}
-
+//ADS-5920
 	@Test
-	public void test01OpenCostModel() throws Throwable {
+	public void test01OpenCostModel_5920() throws Throwable {
 		try {
 			doClick(costing.getRvuMaintenanceButtonFilter());
 			doFilterCreate(filterByCostModel);
 			doClick(costing.getRvuMaintenanceButtonImport());
 			assertTextIsDisplayed("Import Data");
-			doClick(costing.getRvuSecImportSelectButton());
-			costing.getRvuSecImportSelectButton().sendKeys(Keys.ENTER);
-			;
+			JavascriptExecutor executor = (JavascriptExecutor)driver;
+			executor.executeScript("arguments[0].click();", driver.findElement(By.xpath("//div[contains(@id,'filefield')]//following::input[@name='importdata']")));
+//			doClick("//div[contains(@id,'filefield')]//following::input[@name='importdata']");
+//			costing.getImportSelectButton().sendKeys(Keys.ENTER);
+//			;
 			driverDelay(500);
 			ContractModelsHelper.uploadTheFileusingAutoIT(driver,
 					System.getProperty("user.dir") + "\\AutoIT\\UploadFile.exe",
@@ -75,8 +79,9 @@ public class OverwriteRvuNoCMSResults extends GoHelper {
 			driverDelay(300);
 			doClick(contractMap.getContractModelExportFileSharedLocOption());
 			ContractModelsHelper.keyInValues(costing.getRvuFileNameInput(), "Test");
-			doClick(costing.getRvuImportButton());
+			doClick(costing.getImportButton());
 			waitForSpinnerToEnd();
+			driverDelay();
 			assertElementIsDisplayed(contractMap.getContractModelImportExportstatusPage());
 			ContractModelsHelper.waitForFirstRowCalculationBarToReach100Percent();
 			doClosePageOnLowerBar("Import/Export Status");
@@ -89,7 +94,7 @@ public class OverwriteRvuNoCMSResults extends GoHelper {
 	}
 
 	@Test
-	public void test02ApplyRvuFiltersAndVerifyHeaders() throws Throwable {
+	public void test02ApplyRvuFiltersAndVerifyHeaders_5920() throws Throwable {
 		try {
 			doClick(costing.getRvuMaintenanceButtonMaintainRVUs());
 			doDropdownSelectUsingOptionText(costing.getRvuMaintenanceDropdownEntity(),
@@ -121,7 +126,7 @@ public class OverwriteRvuNoCMSResults extends GoHelper {
 	}
 
 	@Test
-	public void test03VerifyGridParametersforChargeCode2100048() throws Throwable {
+	public void test03VerifyGridParametersforChargeCode2100048_5920() throws Throwable {
 		try {
 			ucqcHelper.VerifyCellValue("2100048", "", costing.SalariesAndWagesXpath);
 			ucqcHelper.VerifyCellValue("2100048", "0.000000", costing.EmployeeBenifitsXpath);
@@ -145,7 +150,7 @@ public class OverwriteRvuNoCMSResults extends GoHelper {
 	}
 
 	@Test
-	public void test04VerifyGridParametersforChargeCode2100055() throws Throwable {
+	public void test04VerifyGridParametersforChargeCode2100055_5920() throws Throwable {
 		try {
 			ucqcHelper.VerifyCellValue("2100055", "", costing.SalariesAndWagesXpath);
 			ucqcHelper.VerifyCellValue("2100055", "0.000000", costing.EmployeeBenifitsXpath);
@@ -169,7 +174,7 @@ public class OverwriteRvuNoCMSResults extends GoHelper {
 	}
 
 	@Test
-	public void test04VerifyGridParametersforChargeCode2100089() throws Throwable {
+	public void test04VerifyGridParametersforChargeCode2100089_5920() throws Throwable {
 		try {
 			ucqcHelper.VerifyCellValue("2100089", "0.000003", costing.SalariesAndWagesXpath);
 			ucqcHelper.VerifyCellValue("2100089", "-0.000004", costing.EmployeeBenifitsXpath);
@@ -193,11 +198,11 @@ public class OverwriteRvuNoCMSResults extends GoHelper {
 	}
 
 	@Test
-	public void test05FilterByDepartmentInRvuContainerList() throws Throwable {
+	public void test05FilterByDepartmentInRvuContainerList_5920() throws Throwable {
 		try {
 			doClick(costing.getRvuMaintenanceButtonRvuContainerList());
-			waitForElementToBeVisible(costing.getRvuContainerFilterButton());
-			doClick(costing.getRvuContainerFilterButton());
+			waitForElementPresence("//*[text()='RVU Container List']/ancestor::div/following-sibling::div//span[text()='Filter']");
+			doClick("//*[text()='RVU Container List']/ancestor::div/following-sibling::div//span[text()='Filter']");
 			doFilterSetFilterParameters("Department Code", "Is", "Equal To", "3110");
 			addFilter();
 			assertElementIsDisplayedWithXpath("//label[text()='Filter to Match These Criteria 14/68']");
@@ -212,7 +217,7 @@ public class OverwriteRvuNoCMSResults extends GoHelper {
 	}
 
 	@Test
-	public void test06VerifyResultsInRvuContainerListMatchTheYear2004() throws Throwable {
+	public void test06VerifyResultsInRvuContainerListMatchTheYear2004_5920() throws Throwable {
 		try {
 			for (WebElement element : costing.getRvuContainerListStartMonth()) {
 				if (element.getText().equals("Apr 2004")) {
@@ -230,7 +235,7 @@ public class OverwriteRvuNoCMSResults extends GoHelper {
 	}
 
 	@Test
-	public void test07VerifyChargeCodesDisplayedInUcQCGrid() throws Throwable {
+	public void test07VerifyChargeCodesDisplayedInUcQCGrid_5920() throws Throwable {
 		try {
 			goToPage("Unit Cost Quick Calculation");
 			waitForDisplayedSpinnerToEnd();
@@ -249,7 +254,7 @@ public class OverwriteRvuNoCMSResults extends GoHelper {
 	}
 
 	@Test
-	public void test08OverwriteRvuMaintenance() throws Throwable {
+	public void test08OverwriteRvuMaintenance_5920() throws Throwable {
 		try {
 			doClick(costing.getUnitCostQuickCalculationButtonOverwriteRVUMaintenance());
 			waitForDisplayedSpinnerToEnd();
@@ -272,12 +277,12 @@ public class OverwriteRvuNoCMSResults extends GoHelper {
 			ExtentReport.logFail("FAIL", "test08OverwriteRvuMaintenance", driver, e);
 			fail(e.getMessage());
 		} finally {
-			doClosePageOnLowerBar("Unit Cost Quick...");
+			doClosePageOnLowerBar("Unit Cost Quick Calculation");
 		}
 	}
 
 	@Test
-	public void test09ApplyFiltersInRvuMaintenance() throws Throwable {
+	public void test09ApplyFiltersInRvuMaintenance_5920() throws Throwable {
 		try {
 			goToPage("RVU Maintenance");
 			waitForDisplayedSpinnerToEnd();
@@ -302,9 +307,9 @@ public class OverwriteRvuNoCMSResults extends GoHelper {
 	}
 
 	@Test
-	public void test10ConfirmRvuValuesForChargeCode2100055() throws Throwable {
+	public void test10ConfirmRvuValuesForChargeCode2100055_5920() throws Throwable {
 		try {
-			test04VerifyGridParametersforChargeCode2100055();
+			test04VerifyGridParametersforChargeCode2100055_5920();
 			ExtentReport.logPass("PASS", "test10ConfirmRvuValuesForChargeCode2100055");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test10ConfirmRvuValuesForChargeCode2100055", driver, e);
@@ -313,9 +318,9 @@ public class OverwriteRvuNoCMSResults extends GoHelper {
 	}
 
 	@Test
-	public void test10ConfirmRvuValuesForChargeCode2100089() throws Throwable {
+	public void test10ConfirmRvuValuesForChargeCode2100089_5920() throws Throwable {
 		try {
-			test04VerifyGridParametersforChargeCode2100089();
+			test04VerifyGridParametersforChargeCode2100089_5920();
 			ExtentReport.logPass("PASS", "test10ConfirmRvuValuesForChargeCode2100055");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test10ConfirmRvuValuesForChargeCode2100055", driver, e);
@@ -324,10 +329,10 @@ public class OverwriteRvuNoCMSResults extends GoHelper {
 	}
 
 	@Test
-	public void test11FilterByDeptInRvuContinerList() throws Throwable {
+	public void test11FilterByDeptInRvuContinerList_5920() throws Throwable {
 		try {
-			test05FilterByDepartmentInRvuContainerList();
-			test06VerifyResultsInRvuContainerListMatchTheYear2004();
+			test05FilterByDepartmentInRvuContainerList_5920();
+			test06VerifyResultsInRvuContainerListMatchTheYear2004_5920();
 			ExtentReport.logPass("PASS", "test11FilterByDeptInRvuContinerList");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test11FilterByDeptInRvuContinerList", driver, e);

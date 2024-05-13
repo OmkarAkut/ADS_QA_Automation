@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.openqa.selenium.By;
 
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
@@ -20,8 +21,6 @@ public class UIValidationPrepareTables extends CalculationHelper{
 	static String currentDateTime = new SimpleDateFormat("MM.HH.ss").format(new java.util.Date());
 	static String medicareCode = currentDateTime.replaceAll("\\W", "");
 	static String filter[]= {"Code","Is","Equal To",medicareCode};
-	/** Regression: Automated test script for ADS-6466 ,,ADS-6461,ADS-6455,ADS-6442 ,ADS-6462,ADS-6463*/
-
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
 		ExtentReport.reportCreate("UIValidationPrepareTables",
@@ -42,7 +41,7 @@ public class UIValidationPrepareTables extends CalculationHelper{
 	}
 //ADS-6463
 	@Test
-	public void AssertPrepareTables() throws Throwable {
+	public void AssertPrepareTables_6463_6461_6462() throws Throwable {
 		try {
 			doSearchForContractModel(ContractModelName);
 			tableDoubleClickCellFirstColumn(ContractModelName);
@@ -64,18 +63,32 @@ public class UIValidationPrepareTables extends CalculationHelper{
 			assertTextIsDisplayed("RBRVS RVU Tables");
 			assertTextIsDisplayed("RBRVS Conversion Factor Tables");
 			assertTextIsDisplayed("RBRVS DRA Outpatient Cap Tables");
+			//ADS-6462
+			doClickTreeItem("Global Periods");
+			waitForPresenceOfElementText("Global Periods");
+			doClick("//h1[text()='Global Periods']//following::span[text()='New']");
+			ContractModelsHelper.keyInValues(driver.findElement(By.name("code")), medicareCode);
+			ContractModelsHelper.keyInValues(driver.findElement(By.name("name")),medicareCode+"Name");
+			doClick(ContractingMap.getContractSaveCloseButton());
+			doClick("//h1[text()='Global Periods']//following::span[text()='Filter']");
+			doFilterCreate(filter);
+			doClick(ContractingMap.NewPeriodDeleteButton());
+			waitForElementToBeVisible(ContractingMap.getWarningPopUpDeleteButton());
+			doClick(ContractingMap.getWarningPopUpDeleteButton());
 			doClickTreeItem("Prepare GPCI Tables");
 			waitForPresenceOfElementText("Medicare Carriers");
 			assertTextIsDisplayed("Medicare Carriers");
 			assertTextIsDisplayed("Medicare Localities");
 			assertTextIsDisplayed("GPCI Tables");
 			assertTextIsDisplayed("Site of Service Tables");
+			//ADS-6462
+			
 			doClickTreeItem("Update Indicators");
 			assertElementIsDisplayed(ContractingMap.getUpdateIndicatorsPage());
 			doClick(ContractingMap.getUpdateIndicatorsEditButton());
 			waitForElementToBeVisible(ContractingMap.getUpdateIndicatorsEditPopUp());
 			assertElementIsDisplayed(ContractingMap.getUpdateIndicatorsEditPopUp());
-			doClick(modelMap.getContractModelRiskLimiterCancelCloseBtn());
+			doClick("//div[text()='Update Indicator']//following::span[text()='Cancel & Close']");
 			doClickTreeItem("Medicare Carriers");
 			waitForElementToBeVisible(ContractingMap.getNewButtonMedicare());
 			doClick(ContractingMap.getNewButtonMedicare());

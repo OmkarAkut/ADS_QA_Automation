@@ -6,7 +6,9 @@ import java.text.SimpleDateFormat;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 
 import ExtentReport.ExtentReport;
@@ -16,7 +18,7 @@ import webdriver.helpers.ContractModelsHelper;
 import webdriver.maps.ContractingMap;
 import webdriver.maps.CostingMap;
 import webdriver.maps.mapbuilder.BuildMap;
-
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class CreateANewContractModel extends CalculationHelper {
 
 	private static ContractingMap modelMap;
@@ -29,7 +31,7 @@ public class CreateANewContractModel extends CalculationHelper {
 	String[] columns = { "100  Pacific Hospital", "151  Copy of Marina Medical Center" };
 	String[] columnsToSelect = { "100  Pacific Hospital", "151  Copy of Marina Medical Center", "150  Marina Medical Center" };
 	String[] columnsToRemove = { "100  Pacific Hospital", "151  Copy of Marina Medical Center" };
-	String addProvider = "150 Marina Medical Center";
+	String addProvider = "150  Marina Medical Center";
 	static String[] filter = { "Name", "Is", "Equal To", serviceName };
 	
 
@@ -55,7 +57,7 @@ public class CreateANewContractModel extends CalculationHelper {
 
 	/**Test - UI Validation [Contracting] â€œCreate a New Contract Model ADS-6413 **/
 	@Test
-	public void test01CreateNewContractModel() throws Throwable {
+	public void test01CreateNewContractModel_6413() throws Throwable {
 		try {
 			doClick(modelMap.getNewContractModelButton());
 			waitForElementToBeVisible(ContractingMap.getNewContractModelPopUp());
@@ -69,7 +71,8 @@ public class CreateANewContractModel extends CalculationHelper {
 			doClick(modelMap.getApplySelections());
 			waitForElementToBeVisible(ContractingMap.getNewContractModelPopUp());
 			// Validate model name and providers
-			assertElementTextContains(ContractingMap.getProviderText(), addProvider, printout);
+			assertElementIsDisplayedWithXpath("//div[contains(@class,'contractFrmCls')]//ul/li[contains(text(),'"+addProvider+"')]");
+//			assertElementTextContains(ContractingMap.getProviderText(), addProvider, printout);
 			doClick(modelMap.getSaveContractModel());
 			goToPage("Contract Models");
 			doSearchForContractModel(contractModelName);
@@ -103,10 +106,10 @@ public class CreateANewContractModel extends CalculationHelper {
 			
 		}
 	}
-/*TestUIValidationContractingValidateContractingModelDeletebutton : ADS-6435*/
-//	@Test
-	public void test02DeleteContractModel() throws Throwable {
-		
+/*TestUIValidationContractingValidateContractingModelDeletebutton : ADS-6435,ADS-6412*/
+	@Test
+	public void test02DeleteContractModel_ADS6435_ADS6412() throws Throwable {
+	
 		try {
 			doClick(modelMap.getContractModelDeleteButton());
 			waitForElementToBeVisible(modelMap.getContractModelDeletePopUp());
@@ -119,7 +122,7 @@ public class CreateANewContractModel extends CalculationHelper {
 			doClick(modelMap.getContractModelDeleteButtonInPopUp());
 			waitForElementToBeVisible(driver.findElement(By.xpath("//*[text()='There is no data available to display.']")));
 			assertTextIsDisplayed("There is no data available to display.");
-			doClosePageOnLowerBar("Model Library");
+			doClosePageOnLowerBar("Contract Models");
 			ExtentReport.logPass("PASS", "test02DeleteContractModel");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test02DeleteContractModel", driver, e);

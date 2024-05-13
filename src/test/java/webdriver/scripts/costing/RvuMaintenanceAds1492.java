@@ -2,6 +2,7 @@ package webdriver.scripts.costing;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import java.text.DecimalFormat;
 import org.junit.AfterClass;
@@ -10,6 +11,7 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import ExtentReport.ExtentReport;
 
@@ -59,9 +61,9 @@ public class RvuMaintenanceAds1492 extends GoHelper {
 		value = df.format(dval);
 		return value;
 	}
-	
+	//ADS-5993 all steps
 	@Test
-	public void test01FilterCostModelAndVerifyCostModelAndCostModelMasterValues() throws Throwable {
+	public void test01FilterCostModelAndVerifyCostModelAndCostModelMasterValues_5993() throws Throwable {
 		try {
 			waitForAjaxExtJs();
 			costing.getRvuMaintenanceButtonFilter().click();
@@ -80,9 +82,9 @@ public class RvuMaintenanceAds1492 extends GoHelper {
 			fail(e.getMessage());
 		}
 	}
-	
+	//ADS-6646
 	@Test
-	public void test02SetPageParametersAndAssertColumnsToDisplayIsUncheckedAndSelectButtonEnabled() throws Throwable {
+	public void test02SetPageParametersAndAssertColumnsToDisplayIsUncheckedAndSelectButtonEnabled_6646_5993() throws Throwable {
 		try {
 			doDropdownSelectUsingOptionText(
 					costing.getRvuMaintenanceDropdownEntity(),
@@ -118,7 +120,7 @@ public class RvuMaintenanceAds1492 extends GoHelper {
 	}
 
 	@Test
-	public void test03ColumnsToDisplaySectionCheckAllCheckboxAndAssertSelectButtonIsDisabled() throws Throwable {
+	public void test03ColumnsToDisplaySectionCheckAllCheckboxAndAssertSelectButtonIsDisabled_5993() throws Throwable {
 		try {
 //			driver.findElement(By.xpath("//label[text()='Columns to Display']/../following-sibling::td/label[text()='All']/preceding-sibling::input")).click();
 			//Shilpa update xpath for 11.2 on 12.06.2023
@@ -143,7 +145,7 @@ public class RvuMaintenanceAds1492 extends GoHelper {
 	}
 
 	@Test
-	public void test04aAssertRedBoxAroundCostModelScenarioDropdownsAfterAllButtonIsChecked() throws Throwable {
+	public void test04aAssertRedBoxAroundCostModelScenarioDropdownsAfterAllButtonIsChecked_5993() throws Throwable {
 		try {
 			String cmsClass = driver.findElement(By.name("costModelScenarioId")).getAttribute("class");
 			assertThat(cmsClass, containsString("invalid-field"));
@@ -155,7 +157,7 @@ public class RvuMaintenanceAds1492 extends GoHelper {
 	}
 
 	@Test
-	public void test04bAssertRedBoxAroundActivityVolumeScenarioDropdownAfterAllButtonIsChecked() throws Throwable {
+	public void test04bAssertRedBoxAroundActivityVolumeScenarioDropdownAfterAllButtonIsChecked_5993() throws Throwable {
 		try {
 			String avsClass = driver.findElement(By.name("activityVolumeScenarioId")).getAttribute("class");
 			assertThat(avsClass, containsString("invalid-field"));
@@ -167,7 +169,7 @@ public class RvuMaintenanceAds1492 extends GoHelper {
 	}
 
 	@Test
-	public void test04cAssertRedBoxAroundPriceListDropdownAfterAllButtonIsChecked() throws Throwable {
+	public void test04cAssertRedBoxAroundPriceListDropdownAfterAllButtonIsChecked_5993() throws Throwable {
 		try {
 			String plClass = driver.findElement(By.name("priceListId")).getAttribute("class");
 			assertThat(plClass, containsString("invalid-field"));
@@ -180,7 +182,7 @@ public class RvuMaintenanceAds1492 extends GoHelper {
 	}
 
 	@Test
-	public void test05VerifyBasedOnDropdownMenusDefaultAccordingly() throws Throwable {
+	public void test05VerifyBasedOnDropdownMenusDefaultAccordingly_5993() throws Throwable {
 		try {
 			setDropdownValue(
 					costing.getRvuMaintenanceDropdownBasedOn(),
@@ -210,7 +212,7 @@ public class RvuMaintenanceAds1492 extends GoHelper {
 
 	// other 2 dropdowns are not auto selected as expected. Mail sent to Ruchi on 29/6/2022
 	@Test
-	public void test06SelectCostModelScenarioAndAssertOtherDropdownsAreSetAccordingly() throws Throwable {
+	public void test06SelectCostModelScenarioAndAssertOtherDropdownsAreSetAccordingly_5993() throws Throwable {
 		try {
 			doDropdownSelectUsingOptionText(
 					costing.getRvuMaintenanceDropdownCostModelScenario(),
@@ -237,7 +239,7 @@ public class RvuMaintenanceAds1492 extends GoHelper {
 	}
 
 	@Test
-	public void test07ClickApplySelectionsAndAssertDataGridDisplays() throws Throwable {
+	public void test07ClickApplySelectionsAndAssertDataGridDisplays_5993() throws Throwable {
 		try {
 //			doClick(driver.findElement(By.xpath("//button/span[text()='Apply Selections']")));
 			//shilpa update xpath for 11.2 on 12.07.2023
@@ -252,7 +254,7 @@ public class RvuMaintenanceAds1492 extends GoHelper {
 	}
 
 	@Test
-	public void test08ClickRvuContainerListButtonAndAssert() throws Throwable {
+	public void test08ClickRvuContainerListButtonAndAssert_5993() throws Throwable {
 		try {
 			Thread.sleep(3000);
 //			doClick(driver.findElement(By.xpath("//button/span[text()='RVU Container List']")));
@@ -268,7 +270,7 @@ public class RvuMaintenanceAds1492 extends GoHelper {
 	}
 
 	@Test
-	public void test09DoFilterBuilder() throws Throwable {
+	public void test09DoFilterBuilder_5993() throws Throwable {
 		String[][] filterStatements = {
 				{"Department Code", "Is", "Equal To", "2130"},
 				{"Cost Component Name", "Is", "Equal To", "Salaries and Wages"},
@@ -302,7 +304,7 @@ public class RvuMaintenanceAds1492 extends GoHelper {
 	}
 
 	@Test
-	public void test10aAssertEffectiveStartDateHasBeenUpdated() throws Throwable {
+	public void test10aAssertEffectiveStartDateHasBeenUpdated_5993() throws Throwable {
 		try {
 			assertThatDropdownSelectedValue(
 					costing.getRvuMaintenanceDropdownEffectiveMonthStartMonthDropdown(),
@@ -327,14 +329,15 @@ public class RvuMaintenanceAds1492 extends GoHelper {
 	}
 
 	@Test
-	public void test10bAssertCostModelScenarioFieldsHaveBeenClearedOfValuesAndDisabled() throws Throwable {
+	public void test10bAssertCostModelScenarioFieldsHaveBeenClearedOfValuesAndDisabled_5993() throws Throwable {
 		try {
 			assertValueAttributeValue(costing.getRvuMaintenanceDropdownCostModelScenarioNone(), "<None>");
-			assertElementContainsDisabledAttribute(costing.getRvuMaintenanceDropdownCostModelScenario());
+//			assertElementContainsDisabledAttribute(costing.getRvuMaintenanceDropdownCostModelScenario());//Only this class dont have disabled attribute in class so generic method cannot be used
+			assertdropdownDisabled(costing.getRvuMaintenanceDropdownCostModelScenario());
 			assertValueAttributeValue(costing.getRvuMaintenanceDropdownActivityVolumeScenarioNone(), "<None>");
-			assertElementContainsDisabledAttribute(costing.getRvuMaintenanceDropdownActivityVolumeScenario());
+			assertdropdownDisabled(costing.getRvuMaintenanceDropdownActivityVolumeScenario());
 //			assertValueAttributeValue(costing.getRvuMaintenanceDropdownPriceListNone(), "<None>"); this element is not showing in DOM Issue https://harrisaffinity.atlassian.net/browse/ADS-11871
-			assertElementContainsDisabledAttribute(costing.getRvuMaintenanceDropdownPriceList());
+			assertdropdownDisabled(costing.getRvuMaintenanceDropdownPriceList());
 			ExtentReport.logPass("PASS", "test10bAssertCostModelScenarioFieldsHaveBeenClearedOfValuesAndDisabled");
 
 		} catch (Exception|AssertionError e) {
@@ -344,7 +347,7 @@ public class RvuMaintenanceAds1492 extends GoHelper {
 	}
 
 	@Test
-	public void test10cAssertAllCheckboxIsUnchecked() throws Throwable {
+	public void test10cAssertAllCheckboxIsUnchecked_5993() throws Throwable {
 		try {
 			assertThatCheckBoxIsNotChecked("Columns to Display", "All");
 			ExtentReport.logPass("PASS", "test10cAssertAllCheckboxIsUnchecked");
@@ -356,7 +359,7 @@ public class RvuMaintenanceAds1492 extends GoHelper {
 	}
 
 	@Test
-	public void test15aAssertCopyRvusExportToSpreadsheetImportAndExportButtonsAreEnabled() throws Throwable {
+	public void test15aAssertCopyRvusExportToSpreadsheetImportAndExportButtonsAreEnabled_5993() throws Throwable {
 		try {
 			assertElementIsEnabled(costing.getRvuMaintenanceButtonCopyRvus(), printout);
 			assertElementIsEnabled(costing.getRvuMaintenanceButtonExportToSpreadsheet(), printout);
@@ -372,7 +375,7 @@ public class RvuMaintenanceAds1492 extends GoHelper {
 	}
 
 	@Test
-	public void test15bAssertClearRvusAndSaveAndUndoAndSaveRvusButtonsAreDisabled() throws Throwable {
+	public void test15bAssertClearRvusAndSaveAndUndoAndSaveRvusButtonsAreDisabled_5993() throws Throwable {
 		try {
 //			assertElementIsDisabled(costing.getRvuMaintenanceButtonClearRvusAndSave(), printout);
 			//shilpa 12.12.2022
@@ -389,7 +392,7 @@ public class RvuMaintenanceAds1492 extends GoHelper {
 	}
 
 	@Test
-	public void test16EditDataGridCellAndAssertClearRvusAndSaveAndUndoAndSaveRvusButtonsAreEnabled() throws Throwable {
+	public void test16EditDataGridCellAndAssertClearRvusAndSaveAndUndoAndSaveRvusButtonsAreEnabled_5993() throws Throwable {
 		try {
 			setDataGridCellValue("1100247", "Salaries and Wages", newCellValue, printout);
 			assertElementIsEnabled(costing.getRvuMaintenanceButtonClearRvusAndSave(), printout);
@@ -405,7 +408,7 @@ public class RvuMaintenanceAds1492 extends GoHelper {
 	}
 
 	@Test
-	public void test18ClickSaveRvusButtonAndAssertValueWasSavedInCell() throws Throwable {
+	public void test18ClickSaveRvusButtonAndAssertValueWasSavedInCell_5993() throws Throwable {
 		try {
 			doClick(costing.getRvuMaintenanceButtonSaveRvus());
 			waitForDisplayedSpinnerToEnd();
@@ -423,7 +426,7 @@ public class RvuMaintenanceAds1492 extends GoHelper {
 	}
 
 	@Test
-	public void test19AssertClearRvusAndSaveAndUndoAndSaveRvusButtonsAreDisabled() throws Throwable {
+	public void test19AssertClearRvusAndSaveAndUndoAndSaveRvusButtonsAreDisabled_5993() throws Throwable {
 		try {
 //			assertElementIsDisabled(costing.getRvuMaintenanceButtonClearRvusAndSave(), printout);
 			//shilpa 12.12.2022
@@ -439,7 +442,23 @@ public class RvuMaintenanceAds1492 extends GoHelper {
 			fail(e.getMessage());
 		}
 	}
-
+	public void assertdropdownDisabled(WebElement element) {
+		String disabledAttributeText=null;
+		try {
+			waitForAjaxExtJs();
+			disabledAttributeText = element.getAttribute("class");
+			
+		} catch (Throwable e) {
+			System.out.println("Element Not Found");
+			fail("element not found");
+		}
+		boolean isDisabled = disabledAttributeText.contains("disablField");
+		if (printout) {
+			System.out.println("Element class text: " + disabledAttributeText);
+			System.out.println("IsDisabled: " + isDisabled);
+		}
+		assertTrue(disabledAttributeText, isDisabled);
+	}
 	private void setDepartmentGroup(String groupId) throws InterruptedException {
 		UcqcHelper.updateDepartment(groupId);
 		//Shilpa 13.09.2022 commented below lines search by department group not working in UI

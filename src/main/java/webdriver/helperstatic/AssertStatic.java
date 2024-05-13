@@ -370,8 +370,8 @@ public class AssertStatic extends TableStatic {
     String disabledText = null;
     try {
       waitForAjaxExtJs();
-      disabledText = element.findElement(By.xpath("./ancestor::div[contains(@class,'x-btn')]")).getAttribute("class");
-      //disabledText = element.findElement(By.xpath("./../../..")).getAttribute("class");
+//      disabledText = element.findElement(By.xpath("//../../..//ancestor::a[contains(@class,'x-btn')]")).getAttribute("class");
+      disabledText = element.findElement(By.xpath("./../../..")).getAttribute("class");
     } catch(Throwable e) {
       System.out.println("Element Not Found");
       fail("element not found");

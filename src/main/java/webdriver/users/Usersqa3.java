@@ -3,6 +3,7 @@ package webdriver.users;
 public enum Usersqa3 {
 	AutomationTesterAdmin("aadmin", "password"),
 	AutomationTester1("automationappadmin1", "password"),
+	AutomationTester2("automationappadmin2", "ZAQ!2wsx@123"),
     ApplicationAdministrator1("automationappadmin1", "password"),
     SystemAdministrator1("automationsysadmin1", "password"),
     SecurityAdministrator1("automationsecuradmin1", "password"),

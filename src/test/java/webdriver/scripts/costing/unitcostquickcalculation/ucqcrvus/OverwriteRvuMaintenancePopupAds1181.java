@@ -66,9 +66,9 @@ public class OverwriteRvuMaintenancePopupAds1181 extends UcqcHelper {
 		fail(e.getMessage());
 	}
   }
-
+//ADS-6667
   @Test
-  public void test00VerifyUcqcGridDisplaysOverwriteRvuMaintenancePopup() throws Throwable {
+  public void test00VerifyUcqcGridDisplaysOverwriteRvuMaintenancePopup_6667() throws Throwable {
     try {
       waitForAjaxExtJs();
       //Shilpa 19.09.2022 updated below line
@@ -85,9 +85,9 @@ public class OverwriteRvuMaintenancePopupAds1181 extends UcqcHelper {
 		fail(e.getMessage());
 	}
   }
-
+//ADS-6667
   @Test
-  public void test01ClickOverwriteRvuMaintenanceButtonAndAssertThatDestinationEffectiveMonthStartHasMonthAndYearDropdownMenus() throws Throwable {
+  public void test01ClickOverwriteRvuMaintenanceButtonAndAssertThatDestinationEffectiveMonthStartHasMonthAndYearDropdownMenus_6667() throws Throwable {
     try {
 		doClick(overwriteRvuMaint.getUnitCostQuickCalculationButtonOverwriteRVUMaintenance());
 		/**Confirm that Destination Effective Month Start selections are provided in a Month drop down and Year drop down.*/

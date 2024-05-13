@@ -28,7 +28,7 @@ public class ValidateSecuritySettingsGeneralSettingspagesintheSystemMaintenance 
 	}
 	//ADS-6512
 	@Test
-	public void test01AssertSystemSettingsPageIsShown() throws Throwable {
+	public void test01AssertSystemSettingsPageIsShown_6512() throws Throwable {
 		try {
 //			Omkar 29/5/2023 : xpath changes for 11.2
 //			assertElementIsDisplayedWithXpath("//div[contains(@class,'x-container areaTitle')][text()='Security Settings']");
@@ -40,7 +40,7 @@ public class ValidateSecuritySettingsGeneralSettingspagesintheSystemMaintenance 
 		}
 	}
 	@Test
-	public void test02ValidateSystemSettingParameters() throws Throwable {
+	public void test02ValidateSystemSettingParameters_6512() throws Throwable {
 		try {
 			assertTextIsDisplayed("Authentication");
 			assertTextIsDisplayed("Password Policies");
@@ -57,7 +57,7 @@ public class ValidateSecuritySettingsGeneralSettingspagesintheSystemMaintenance 
 		}
 	}
 	@Test
-	public void test03AssertGeneralSettingsPageIsShown() throws Throwable {
+	public void test03AssertGeneralSettingsPageIsShown_6512() throws Throwable {
 		try {
 			goToPage("General Settings");
 			waitForDisplayedSpinnerToEnd();
@@ -71,7 +71,7 @@ public class ValidateSecuritySettingsGeneralSettingspagesintheSystemMaintenance 
 		}
 	}
 	@Test
-	public void test04ValidateGeneralSettingParameters() throws Throwable {
+	public void test04ValidateGeneralSettingParameters_6512() throws Throwable {
 		try {
 //			Omkar 29/5/2023 : xpath changes for 11.2
 //			assertElementIsDisplayedWithXpath("//div[contains(@class,'x-panel-header-text-container')]/span[text()='General Settings']");

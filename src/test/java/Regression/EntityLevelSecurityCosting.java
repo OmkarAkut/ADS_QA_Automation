@@ -42,7 +42,7 @@ public class EntityLevelSecurityCosting extends CalculationHelper {
 	}
 //ADS-5793
 	@Test
-	public void test01VerifyHomePageIsShown() throws Throwable {
+	public void test01VerifyHomePageIsShown_5793() throws Throwable {
 		try {
 			try {
 				if (costing.getIgreeButton().isDisplayed()) {
@@ -64,7 +64,7 @@ public class EntityLevelSecurityCosting extends CalculationHelper {
 	}
 
 	@Test
-	public void test02VerifyDataMaintenanceTab() throws Throwable {
+	public void test02VerifyDataMaintenanceTab_5783() throws Throwable {
 		try {
 			goToPage("Maintain Data");
 			waitForDisplayedSpinnerToEnd();
@@ -85,7 +85,7 @@ public class EntityLevelSecurityCosting extends CalculationHelper {
 	}
 
 	@Test
-	public void test03VerifyEntityUnderGeneralInformationCost() throws Throwable {
+	public void test03VerifyEntityUnderGeneralInformationCost_5793() throws Throwable {
 		try {
 			goToPage("Costing Models");
 			waitForDisplayedSpinnerToEnd();
@@ -93,9 +93,9 @@ public class EntityLevelSecurityCosting extends CalculationHelper {
 			doClick(modelMap.getModelLibraryButtonFilter());
 			doFilterCreate(filter);
 			tableDoubleClickCellFirstColumn(costModel);
-			doClickTreeData("Assign Unit Costs");
+			doClickTreeItem("Assign Unit Costs");
 			waitForMainPageTitle("General Information - Cost");
-			doClickTreeItemWithCheckbox("General Information - Cost");
+			doClickTreeItem("General Information - Cost");
 			assertElementIsDisplayedWithXpath("//li[text()='150 Marina Medical Center']");
 			doClick(costing.getRvuMaintenanceFilterButtonCancelAndClose());
 			ExtentReport.logPass("PASS", "test03VerifyCostingModel");
@@ -107,11 +107,11 @@ public class EntityLevelSecurityCosting extends CalculationHelper {
 	}
 
 	@Test
-	public void test04VerifyEntityCostComponentMaster() throws Throwable {
+	public void test04VerifyEntityCostComponentMaster_5793() throws Throwable {
 		try {
-			doClickTreeData("Assign Unit Costs");
+			doClickTreeItem("Assign Unit Costs");
 			waitForMainPageTitle("Cost Component Masters");
-			doClickTreeItemWithCheckbox("Cost Component Masters");
+			doClickTreeItem("Cost Component Masters");
 			tableDoubleClickCellFirstColumn(costCompMaster);
 			assertElementIsDisplayedWithXpath("//li[text()='150 Marina Medical Center']");
 			doClick(costing.getRvuMaintenanceFilterButtonCancelAndClose());
@@ -120,7 +120,7 @@ public class EntityLevelSecurityCosting extends CalculationHelper {
 			ExtentReport.logFail("FAIL", "test03VerifyCostingModel", driver, e);
 			fail(e.getMessage());
 		} finally {
-			doClosePageOnLowerBar("Model Library");
+			doClosePageOnLowerBar("Costing Models");
 		}
 	}
 

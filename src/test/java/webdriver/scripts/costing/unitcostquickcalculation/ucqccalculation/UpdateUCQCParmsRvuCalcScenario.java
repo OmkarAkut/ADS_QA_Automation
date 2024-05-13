@@ -5,6 +5,7 @@ import static org.junit.Assert.fail;
 import java.util.Arrays;
 import java.util.List;
 
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -18,6 +19,7 @@ import webdriver.maps.ContractingMap;
 import webdriver.maps.CostingMap;
 import webdriver.maps.ModelLibraryMap;
 import webdriver.maps.mapbuilder.BuildMap;
+import webdriver.scripts.costing.unitcostquickcalculation.ucqccalculation.CostChangeColumnsPopulateAfterCalculateAds1230;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 /** Regression test ADS-5925 */
 public class UpdateUCQCParmsRvuCalcScenario extends UcqcHelper {
@@ -59,8 +61,9 @@ public class UpdateUCQCParmsRvuCalcScenario extends UcqcHelper {
 	    	fail(e.getMessage());
 		} 
 	}
+	//ADS-5925, all steps
 	@Test
-	public void test01OpenCostModelCalculationScenario() throws Throwable {
+	public void test01OpenCostModelCalculationScenario_5925() throws Throwable {
 		try {
 			doClick(modelMap.getModelLibraryButtonFilter());
 			doFilterCreate(filterCostModel);
@@ -77,7 +80,7 @@ public class UpdateUCQCParmsRvuCalcScenario extends UcqcHelper {
 		}
 	}
 	@Test
-	public void test02OpenCostModelCalculationScenario() throws Throwable {
+	public void test02OpenCostModelCalculationScenario_5925() throws Throwable {
 		try {
 			doClick(costingMap.getCostModelCalcFilterButton());
 			doFilterCreate(filterCostModelCalcScenario);
@@ -89,7 +92,7 @@ public class UpdateUCQCParmsRvuCalcScenario extends UcqcHelper {
 		}
 	}
 	@Test
-	public void test03UpdateCostModelScenarioName() throws Throwable {
+	public void test03UpdateCostModelScenarioName_5925() throws Throwable {
 		try {
 			ContractModelsHelper.keyInValues(CostingMap.getCostScenarioName(),costModelScenarioUpdate);
 			doClick(CostingMap.getDeptGroupsSelect());
@@ -105,4 +108,10 @@ public class UpdateUCQCParmsRvuCalcScenario extends UcqcHelper {
 			fail(e.getMessage());
 		}
 	}
+	 @AfterClass
+		public static void endtest() throws Exception {
+
+			ExtentReport.report.flush();
+
+		}
 }

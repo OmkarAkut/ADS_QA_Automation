@@ -36,7 +36,7 @@ public class ValidateCalculationStatusAllStatus extends CalculationHelper{
 	static String name = "Folder Name" + currentDateTime;
 	static String userRole = "ASEC2310 CustomRole9";
 	static String assignedUserSelect = "AdHoc_Report_Designer   automationadhocrepdes1";
-	static String searchText;
+	static String searchText="test";
 	static String[] filter;
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
@@ -57,7 +57,7 @@ public class ValidateCalculationStatusAllStatus extends CalculationHelper{
 	}
 //ADS-6603
 	@Test
-	public void test01ValidateDefaultTabInCalculationStatus() throws Throwable {
+	public void test01ValidateDefaultTabInCalculationStatus_6603() throws Throwable {
 		try {
 			assertElementIsDisplayed(statusMap.getCalculationStatusPageButtonMyStatus());
 			assertElementIsDisplayed(statusMap.calculationStatusPageScenarioNameColumnName());
@@ -70,7 +70,7 @@ public class ValidateCalculationStatusAllStatus extends CalculationHelper{
 	}
 	//ADS-6602
 	@Test
-	public void test02ValidateAllStatus() throws Throwable {
+	public void test02ValidateAllStatus_6602() throws Throwable {
 		try {
 			doClick(statusMap.getCalculationStatusPageButtonAllStatus());
 			assertListElementsAreDisplayed(statusMap.calculationStatusPageGridElements(), printout);
@@ -102,7 +102,7 @@ public class ValidateCalculationStatusAllStatus extends CalculationHelper{
 	}
 	//ADS-6604
 	@Test
-	public void test04ValidateCalculationStatusPageAfterRefresh() throws Throwable {
+	public void test04ValidateCalculationStatusPageAfterRefresh_6604() throws Throwable {
 		try {
 			doClick(statusMap.getCalculationStatusPageButtonRefresh());
 			assertListElementsAreDisplayed(statusMap.calculationStatusProgressBarPageGridElements(),printout);
@@ -117,7 +117,7 @@ public class ValidateCalculationStatusAllStatus extends CalculationHelper{
 	}
 	//ADS-6605
 	@Test
-	public void test05ValidateSearchUnderCalcStatusPage() throws Throwable {
+	public void test05ValidateSearchUnderCalcStatusPage_6605() throws Throwable {
 		try {
 			doSearchForContractModel(searchText.toUpperCase());
 			waitForAjaxExtJs();
@@ -142,7 +142,7 @@ public class ValidateCalculationStatusAllStatus extends CalculationHelper{
 	}
 	//ADS-6606
 	@Test
-	public void test07ValidateFilter() throws Throwable {
+	public void test07ValidateFilter_6606() throws Throwable {
 		try {
 			Actions action=new Actions(driver);
 			doClick(statusMap.getCalculationStatusPageButtonFilter());
@@ -167,7 +167,7 @@ public class ValidateCalculationStatusAllStatus extends CalculationHelper{
 	}
 	//ADS-6607
 	@Test
-	public void test08ClearFilter() throws Throwable {
+	public void test08ClearFilter_6607() throws Throwable {
 		try {
 			doClick(statusMap.getCalculationStatusPageButtonClearFilter());
 			waitForAjaxExtJs();
@@ -179,7 +179,7 @@ public class ValidateCalculationStatusAllStatus extends CalculationHelper{
 		}
 	}
 	@Test
-	public void test09ValidateDefaultSort() throws Throwable {
+	public void test09ValidateDefaultSort_6609() throws Throwable {
 		try {
 			scrollToView(statusMap.calcStatusDefaultSortColumn());
 			assertElementIsDisplayed(statusMap.calcStatusDefaultSortColumn());
@@ -192,7 +192,7 @@ public class ValidateCalculationStatusAllStatus extends CalculationHelper{
 	}
 
 	@Test
-	public void test10ValidateSortByScenarioName() throws Throwable {
+	public void test10ValidateSortByScenarioName_6609() throws Throwable {
 		try {
 			scrollToView(statusMap.calculationStatusPageScenarioNameColumnName());
 			doClick(statusMap.calculationStatusPageScenarioNameColumnName());
@@ -205,7 +205,7 @@ public class ValidateCalculationStatusAllStatus extends CalculationHelper{
 	}
 //ADS-6609
 	@Test
-	public void test11ValidateSortByCalcStartTime() throws Throwable {
+	public void test11ValidateSortByCalcStartTime_6609() throws Throwable {
 		try {
 			scrollToView(statusMap.calcStatusCalcStartTimeSortColumn());
 			doClick(statusMap.calcStatusCalcStartTimeSortColumn());
@@ -218,10 +218,11 @@ public class ValidateCalculationStatusAllStatus extends CalculationHelper{
 	}
 	//ADS-6610
 	@Test
-	public void test12ValidateDeleteFiltered() throws Throwable {
+	public void test12ValidateDeleteFiltered_6610() throws Throwable {
 		try {
 			doClick(statusMap.getCalculationStatusPageButtonDeleteFiltered());
 			waitForElementToBeVisible(statusMap.calcStatusDeleteFilteredButton());
+			assertElementTextContains(driver.findElement(By.xpath("//div[contains(@class,'errorMsg')]//div[@class='x-autocontainer-innerCt']")),"Click Delete Filtered to remove the rows; or, click Cancel to return to the previous screen without deleting the rows.",printout);
 			assertElementIsDisplayed(statusMap.calcStatusDeleteFilteredCancelButton());
 			assertElementIsDisplayed(statusMap.calcStatusDeleteFilteredButton());
 			doClick(statusMap.calcStatusDeleteFilteredButton());

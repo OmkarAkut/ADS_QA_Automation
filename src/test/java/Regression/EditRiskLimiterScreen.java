@@ -23,7 +23,7 @@ public class EditRiskLimiterScreen extends GoHelper{
 	static String serviceModel="ADS2371 Test";
 	static String availableService="OPPS 2020";
 
-	/** Regression: Automated test script for ADS-6079 */
+	/** Regression: Automated test script for ADS-6079, has issue ADS-12487 */
 
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
@@ -43,7 +43,7 @@ public class EditRiskLimiterScreen extends GoHelper{
 	}
 	//ADS-6079[all steps]
 	@Test
-	public void test01ContractModelEditRiskLimiterScreen() throws Throwable {
+	public void test01ContractModelEditRiskLimiterScreen6079() throws Throwable {
 		try {
 			doSearchForContractModel(contractModelName);
 			tableDoubleClickCellFirstColumn(contractModelName);
@@ -58,17 +58,17 @@ public class EditRiskLimiterScreen extends GoHelper{
 //			assertElementText(driver.findElement(By.xpath("//span[text()='Edit Risk Limiter - "+serviceModel+"']")), "Edit Risk Limiter - "+serviceModel, printout);
 			assertElementText(driver.findElement(By.xpath("//div[text()='Edit Risk Limiter - "+serviceModel+"']")), "Edit Risk Limiter - "+serviceModel, printout);
 			navigateCloseGeneralSectionOpenNewSection("Advanced Options");
-			assertThatElementIsChecked("Apply to Included/Excluded Services");
-			assertElementText(driver.findElement(By.xpath("(//span[contains(text(),'Edit Risk Limiter')]//following::div[contains(@id,'gridpanel')]//td/div[text()='"+availableService+"'])[2]")), availableService, printout);
-			DoHelper.scrollToView("(//span[contains(text(),'Edit Risk Limiter')]//following::div[contains(@id,'gridpanel')]//td/div[text()='"+availableService+"'])[3]");
-			assertElementText(driver.findElement(By.xpath("(//span[contains(text(),'Edit Risk Limiter')]//following::div[contains(@id,'gridpanel')]//td/div[text()='"+availableService+"'])[3]")), availableService, printout);
-			doClick(modelMap.getContractModelRiskLimiterContinueCloseBtn());
+			assertThatElementIsChecked(driver.findElement(By.xpath("//label[text()='Apply to Included/Excluded Services']//preceding::input[@name='applyToPatientsInTotal'][1]")));
+			assertElementText(driver.findElement(By.xpath("(//div[contains(text(),'Edit Risk Limiter')]//following::div[contains(@class,'glAccountsGrid')]//td/div[text()='"+availableService+"'])[2]")), availableService, printout);
+			DoHelper.scrollToView("(//div[contains(text(),'Edit Risk Limiter')]//following::div[contains(@class,'glAccountsGrid')]//td/div[text()='"+availableService+"'])[3]");
+			assertElementText(driver.findElement(By.xpath("(//div[contains(text(),'Edit Risk Limiter')]//following::div[contains(@class,'glAccountsGrid')]//td/div[text()='"+availableService+"'])[3]")), availableService, printout);
+			doClick("//a[contains(@class,'x-btn windowbtn')]//span[text()='Continue & Close']");//has issue  ADS-12487
 			assertElementIsDisplayed(driver.findElement(By.xpath("//span[contains(@class,'x-panel-header-text')][text()='Risk Limiter Model']/../following-sibling::div")));
-			doClick(modelMap.getContractModelRiskLimiterCancelCloseBtn());
+			doClick(ContractingMap.getContractModelRiskLimiterCancelCloseBtn());
 			waitForElementToBeVisible(modelMap.getContractModelRiskLimiterMessageBox());
-			doClick(modelMap.getContractModelRiskLimiterMessageBoxCancelCloseBtn());
-			doClosePageOnLowerBar(serviceModel);
-			doClosePageOnLowerBar("Model Library");
+			doClick(ContractingMap.getContractModelRiskLimiterMessageBoxCancelCloseBtn());
+			doClick("//span[text()='ADS2371 Test...']//following::a");
+			doClosePageOnLowerBar("Costing Models");
 			ExtentReport.logPass("PASS", "setupScript");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "setupScript", driver, e);

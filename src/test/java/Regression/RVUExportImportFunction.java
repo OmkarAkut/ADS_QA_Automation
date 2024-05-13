@@ -45,7 +45,7 @@ public class RVUExportImportFunction extends GoHelper {
 	}
 	//ADS-6659
 	@Test
-	public void test01VerifyRVUExportPopUp() throws Throwable {
+	public void test01VerifyRVUExportPopUp_6660() throws Throwable {
 		try {
 			doClick(costing.getRvuMaintenanceButtonExport());
 			waitForPageTitle("Export Data");
@@ -58,7 +58,7 @@ public class RVUExportImportFunction extends GoHelper {
 		}
 	}
 	@Test
-	public void test02ExportRvuAndValidateImportExportStatus() throws Throwable {
+	public void test02ExportRvuAndValidateImportExportStatus_6660() throws Throwable {
 		try {
 			doClick(costing.getRvuMaintenanceButtonExport());
 			waitForPageTitle("Export Data");
@@ -75,7 +75,7 @@ public class RVUExportImportFunction extends GoHelper {
 		}
 	}
 	@Test
-	public void test03ImportRvuAndValidateImportExportStatus() throws Throwable {
+	public void test03ImportRvuAndValidateImportExportStatus_6659() throws Throwable {
 		try {
 			doClick(costing.getRvuMaintenanceButtonImport());
 			waitForPageTitle("Import Data");

@@ -66,7 +66,7 @@ public class CostingAXE extends LoginStatic {
 		}
 	}
 
-	//  @Test
+	  @Test
 	//venkat updated method name
 	//public void testCostingxCostModelScenarioCalculation() throws InterruptedException,Throwable {
 	public void testCostingxZCostModelScenarioCalculation() throws InterruptedException,Throwable {

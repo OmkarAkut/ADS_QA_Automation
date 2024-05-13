@@ -5,6 +5,8 @@ import static org.junit.Assert.fail;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.openqa.selenium.By;
+
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.helpers.CalculationHelper;
@@ -43,7 +45,7 @@ public class UIValidationContracting extends CalculationHelper{
 	}
 	//ADS-6465
 	@Test
-	public void AssertContractModelPage() throws Throwable {
+	public void AssertContractModelPage_6465() throws Throwable {
 		try {
 			doSearchForContractModel(ContractModelName);
 			tableDoubleClickCellFirstColumn(ContractModelName);
@@ -58,6 +60,17 @@ public class UIValidationContracting extends CalculationHelper{
 			assertTextIsDisplayed("General Information - Unpublished Contract");
 			assertTextIsDisplayed("Define Payment Terms");
 			assertElementIsDisplayed(ContractingMap.getAssertCalculateOption());
+			doClick(ContractingMap.getAssertCalculateOption());
+			assertTextIsDisplayed("General");
+			assertTextIsDisplayed("Fee for Service/Lump Sum");
+			assertTextIsDisplayed("Error Options");
+			doClick(driver.findElement(By.xpath("//input[@name='calcLumpSum']")));
+			doClick("(//*[text()='Fee for Service/Lump Sum']//following::div[contains(@class,'expand-bottom')])[1]");
+			assertTextIsDisplayed("Enter Lump Sum Amounts");
+			doClick("(//*[text()='Error Options']//following::div[contains(@class,'expand-bottom')])[1]");
+			assertTextIsDisplayed("Recalculate Encounters with Errors/Warnings");
+			assertTextIsDisplayed("Calculation Log");
+			doClick("//div[text()='Calculate Contract Model']//following::span[text()='Cancel & Close']");
 			//ADS-6466
 			doClickTreeItem("Define Payment Terms");
 			driverDelay(200);
@@ -68,7 +81,7 @@ public class UIValidationContracting extends CalculationHelper{
 			assertElementIsDisplayed(modelMap.getContractServiceModel());
 			assertElementIsDisplayed(modelMap.getContractPricingMethod());
 			assertElementIsDisplayed(modelMap.getContractRiskLimiterModel());
-//			doClick(ContractingMap.getContractFeeForServicePaymentFilterServiceModel());
+//			doClick("(//div[text()='Service Model']//following::div)[1]");
 //			waitForAjaxExtJs();
 			assertElementIsDisplayed(modelMap.getContractFeeForServicePaymentServices());
 			assertElementIsDisplayed(modelMap.getContractFeeForServicePaymentServiceModel());
@@ -77,39 +90,72 @@ public class UIValidationContracting extends CalculationHelper{
 			waitForAjaxExtJs();			
 			assertElementIsDisplayed(ContractingMap.getPricingLabelServiceModel());
 			assertElementIsDisplayed(ContractingMap.getPricingLabelPricingMethods());
+			doClick(ContractingMap.SaveOption());
 			ContractModelsHelper.navigateFeeForServicePaymentTermsScreenSelectionPanel("Risk Limiter Model");
 			assertElementIsDisplayed(ContractingMap.getPricingNewButton());
 			doClick(ContractingMap.getPricingNewButton());
 			waitUntilElementIsVisible(ContractingMap.getNewRiskLimiterPopUp());		
 			assertElementIsDisplayed(ContractingMap.getNewRiskLimiterPopUp());
+			doClick(ContractingMap.SaveOption());
 			doClick(ContractingMap.getNewRiskLimiterPopUpCancelClose());
-			doClick(modelMap.getContractModelRiskLimiterCancelCloseBtn());
-			assertTextIsDisplayed("Complete a model using a list of assignments.");
+//			assertTextIsDisplayed("Complete a model using a list of assignments.");
 			doClickTreeItemWithCheckbox("Fee For Service Payment Terms");
 			doClick(ContractingMap.getContractFeeForServicePaymentSave());
 			doClickTreeItemWithCheckbox("Fee For Service Payment Terms");
-			//ADS-6465
-			doClickTreeItem("Calculate");
-			driverDelay(100);
-			assertTextIsDisplayed("General");
-			assertTextIsDisplayed("Fee for Service/Lump Sum");
-			assertTextIsDisplayed("Error Options");
-			ContractModelsHelper.navigateFeeForServicePaymentTermsScreenSelectionPanel("Error Options");
-			assertTextIsDisplayed("Fee for Service error options");
-			assertTextIsDisplayed("Recalculate Encounters with Errors/Warnings");
-			assertTextIsDisplayed("Fee for Service/Lump Sum");
-			assertTextIsDisplayed("Calculation Log");
-			doClick(modelMap.getContractModelRiskLimiterCancelCloseBtn());
-			assertTextIsDisplayed("Complete a model using a list of assignments.");
+			doClick(ContractingMap.getFeeForPaymentCancelClose());
 //			doClosePageOnLowerBar("ADS-1320 Contract...");
 			//shilpa updated xpath for 11.2
 //			driverDelay(500);
-			doClick("//span[text()='ADS-1320 Contract Model D']//following::span[@class='x-tab-close-btn']");
+//			doClick("//span[text()='ADS-1320 Contract Model D']//following::span[@class='x-tab-close-btn']");
 			ExtentReport.logPass("PASS", "AssertContractModelPage");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "AssertContractModelPage", driver, e);
 			fail(e.getMessage());
 		} 
+		
+		
+	}
+	@Test
+	public void AssertContractModelPage_6466() throws Throwable {
+		try {
+		assertTextIsDisplayed("Fee For Service Payment Terms");
+		assertTextIsDisplayed("Patient Financial Responsibility");
+		assertTextIsDisplayed("Lump Sum Payment Allocation Rules");
+		doClickTreeItem("Fee For Service Payment Terms");
+		assertElementIsDisplayed(modelMap.getContractServiceModel());
+		assertElementIsDisplayed(modelMap.getContractPricingMethod());
+		assertElementIsDisplayed(modelMap.getContractRiskLimiterModel());
+//		doClick("(//div[text()='Service Model']//following::div)[1]");
+//		waitForAjaxExtJs();
+		assertElementIsDisplayed(modelMap.getContractFeeForServicePaymentServices());
+		assertElementIsDisplayed(modelMap.getContractFeeForServicePaymentServiceModel());
+		ContractModelsHelper.navigateFeeForServicePaymentTermsScreenSelectionPanel("Pricing Method");
+		driverDelay(200);
+		waitForAjaxExtJs();			
+		assertElementIsDisplayed(ContractingMap.getPricingLabelServiceModel());
+		assertElementIsDisplayed(ContractingMap.getPricingLabelPricingMethods());
+		doClick(ContractingMap.SaveOption());
+		ContractModelsHelper.navigateFeeForServicePaymentTermsScreenSelectionPanel("Risk Limiter Model");
+		assertElementIsDisplayed(ContractingMap.getPricingNewButton());
+		doClick(ContractingMap.getPricingNewButton());
+		waitUntilElementIsVisible(ContractingMap.getNewRiskLimiterPopUp());		
+		assertElementIsDisplayed(ContractingMap.getNewRiskLimiterPopUp());
+		doClick(ContractingMap.SaveOption());
+		doClick(ContractingMap.getNewRiskLimiterPopUpCancelClose());
+//		assertTextIsDisplayed("Complete a model using a list of assignments.");
+		doClickTreeItem("Fee For Service Payment Terms");
+		doClick(ContractingMap.getContractFeeForServicePaymentSave());
+		doClickTreeItem("Fee For Service Payment Terms");
+		doClick(ContractingMap.getFeeForPaymentCancelClose());
+//		doClosePageOnLowerBar("ADS-1320 Contract...");
+		//shilpa updated xpath for 11.2
+//		driverDelay(500);
+		doClick("//span[text()='ADS-1320 Contract Model D']//following::span[@class='x-tab-close-btn']");
+		ExtentReport.logPass("PASS", "AssertContractModelPage");
+	} catch (Exception | AssertionError e) {
+		ExtentReport.logFail("FAIL", "AssertContractModelPage", driver, e);
+		fail(e.getMessage());
+	} 
 		finally{
 			doClosePageOnLowerBar("Contract Models");
 

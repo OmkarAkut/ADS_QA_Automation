@@ -61,7 +61,6 @@ public class CostingMap extends MapConfig {
 	//Shilpa update xpath for 11.2 on 12.07.2023
 	@FindBy(xpath = "//span[text()='Apply Selections']/../../..")
 	private WebElement rvuMaintenanceButtonApplySelections;
-
 	public WebElement getRvuMaintenanceButtonApplySelections() {
 		return rvuMaintenanceButtonApplySelections;
 	}
@@ -865,7 +864,7 @@ public class CostingMap extends MapConfig {
 	public WebElement getUnitCostQuickCalculationOverwriteRVUMaintenanceModalDropdownMonth() {
 		return unitCostQuickCalculationOverwriteRVUMaintenanceModalDropdownMonth;
 	}
-	@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='Jan']/..")
+	@FindBy(xpath = "//div[contains(@class,'boundlist')]/ul/li[text()='Jan']/..")
 	private WebElement unitCostQuickCalculationOverwriteRVUMaintenanceModalDropdownMonthOptions;
 
 	public WebElement unitCostQuickCalculationOverwriteRVUMaintenanceModalDropdownMonthOptions() {
@@ -878,7 +877,7 @@ public class CostingMap extends MapConfig {
 	public WebElement getUnitCostQuickCalculationOverwriteRVUMaintenanceModalDropdownYear() {
 		return unitCostQuickCalculationOverwriteRVUMaintenanceModalDropdownYear;
 	}
-	@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='2021']/..")
+	@FindBy(xpath = "//div[contains(@class,'boundlist')]/ul/li[text()='2021']/..")
 	private WebElement unitCostQuickCalculationOverwriteRVUMaintenanceModalDropdownYearOptions;
 
 	public WebElement unitCostQuickCalculationOverwriteRVUMaintenanceModalDropdownYearOptions() {
@@ -1216,6 +1215,12 @@ public class CostingMap extends MapConfig {
 	public static WebElement getEncounterCalculateBtn() {
 		return getEncounterCalculateBtn;
 	}
+	
+	@FindBy(xpath = "//div[contains(@id,'costmodelscenarioform')]//following::span[text()='Calculate']")
+	private static WebElement getCostModelalculateBtn;
+	public static WebElement getCostModelalculateBtn() {
+		return getCostModelalculateBtn;
+	}
 
 //	@FindBy(xpath = "//span[text()='Save']//parent::button")
 	@FindBy(xpath = "//div[contains(@id,'encountercostcalculationform')]//following::span[text()='Save']")
@@ -1263,23 +1268,27 @@ public class CostingMap extends MapConfig {
 	public static WebElement getHelpGlossarySearch() {return getHelpGlossarySearch;}
 
 	//Shilpa
-	@FindBy(xpath = "//div[contains(@class,'x-window-closable ')]//div[contains(@id,'window')]//span[text()='New Cost Model']")
+	@FindBy(xpath = "//div[contains(@id,'window')]//div[text()='New Cost Model']")
 	public static WebElement getNewCostModelPopUp;
 	public static WebElement getNewCostModelPopUp() { return getNewCostModelPopUp;}
 
 //	Omkar 16/8/2023 : xpath changes for 11.2
 //	@FindBy(xpath = "//div[contains(@class,'glFormCls')]//following::table//following::span[text()='Save & Close']//parent::button")
-	@FindBy(xpath = "//div[contains(@class,'glFormCls')]//following::table//following::span[text()='Save & Close']")
+	@FindBy(xpath = "//div[text()='New Cost Model']//following::span[text()='Save & Close']")
 	private static WebElement getSaveCostModel;
 	public WebElement getSaveCostModel() {return getSaveCostModel;}
+	
+	@FindBy(xpath = "//div[contains(@id,'populationsform')]//following::span//span[text()='Save & Close']")
+	private static WebElement getSavePopulation;
+	public WebElement getSavePopulation() {return getSavePopulation;}
 
 //	Omkar 16/8/2023 : xpath changes for 11.2
 //	@FindBy(xpath = "//div[contains(@class,'glFormCls')]//following::table//following::span[text()='Cancel & Close']//parent::button")
-	@FindBy(xpath = "//div[contains(@class,'glFormCls')]//following::table//following::span[text()='Cancel & Close']")
+	@FindBy(xpath = "//div[text()='New Cost Model']//following::span[text()='Cancel & Close']")
 	private static WebElement getCancelCostModel;
 	public WebElement getCancelCostModel() {return getCancelCostModel;}
 
-	@FindBy(xpath = "//td[contains(@id,'combobox')]/input")
+	@FindBy(xpath = "//input[@placeholder='Select Model Types']")
 	private static WebElement getModelTypedropdown;
 	public WebElement getModelTypedropdown() {return getModelTypedropdown;}
 
@@ -1289,19 +1298,19 @@ public class CostingMap extends MapConfig {
 	private static WebElement getEditButton;
 	public WebElement getEditButton() {return getEditButton;}
 
-	@FindBy(xpath = "//span[text()='Name']//following::span[@class='fas fa-angle-down']")
+	@FindBy(xpath = "//span[text()='Name']")
 	private WebElement landingPageNameSortAsc;
 	public WebElement getlandingPageNameSortAsc() {return landingPageNameSortAsc;}
 
-	@FindBy(xpath = "//span[text()='Date Created']//following::span[@class='fas fa-angle-down']")
+	@FindBy(xpath = "//span[text()='Date Created']")
 	private WebElement landingPageDateSortAsc;
 	public WebElement getlandingPageDateSortAsc() {return landingPageDateSortAsc;}
 
-	@FindBy(xpath = "//span[text()='Name']//following::span[@class='fas fa-angle-up']")
+	@FindBy(xpath = "//span[text()='Name']")
 	private WebElement landingPageNameSortDesc;
 	public WebElement getlandingPageNameSortDesc() {return landingPageNameSortDesc;}
 
-	@FindBy(xpath = "//span[text()='Date Created']//following::span[@class='fas fa-angle-up']")
+	@FindBy(xpath = "//span[text()='Date Created']")
 	private WebElement landingPageDateSortDesc;
 	public WebElement getlandingPageDateSortDesc() {return landingPageDateSortDesc;}
 
@@ -1451,12 +1460,12 @@ public class CostingMap extends MapConfig {
 	public static WebElement getCostModelEndMonth() {
 		return getCostModelEndMonth;
 	}
-	@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='Jan']/..")
+	@FindBy(xpath = "//div[contains(@class,'boundlist')]/ul/li[text()='Jan']/..")
 	private static WebElement getCostModelTimePeriodMonthScenarioOptions;
 	public static WebElement getCostModelTimePeriodMonthScenarioOptions() {
 		return getCostModelTimePeriodMonthScenarioOptions;
 	}
-	@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='2013']/..")
+	@FindBy(xpath = "//div[contains(@class,'boundlist')]/ul/li[text()='2014']/..")
 	private static WebElement getCostModelTimePeriodYearScenarioOptions;
 	public static WebElement getCostModelTimePeriodYearScenarioOptions() {
 		return getCostModelTimePeriodYearScenarioOptions;
@@ -1468,26 +1477,31 @@ public class CostingMap extends MapConfig {
 	public static WebElement getCostModelMethodMasterNew() {
 		return getCostModelMethodMasterNew;
 	}
+	@FindBy(xpath = "//div[contains(@id,'dynamicwindow')]//following::span[text()='Cancel & Close']")
+	private static WebElement getNewTimePeriodCancel;
+	public static WebElement getNewTimePeriodCancel() {
+		return getNewTimePeriodCancel;
+	}
 //	Omkar 16/8/2023 : xpath changes for 11.2
 //	@FindBy(xpath = "(//h1[text()='Charge Masters']//following::span[text()='Delete']//parent::button)[1]")
-	@FindBy(xpath = "(//h1[text()='Charge Masters']//following::span[text()='Delete']//parent::button)[1]")
+	@FindBy(xpath = "(//h1[text()='Charge Masters']//following::span[text()='Delete'])[1]")
 	private static WebElement getCostModelMethodMasterDelete;
 	public static WebElement getCostModelMethodMasterDelete() {
 		return getCostModelMethodMasterDelete;
 	}
 //	Omkar 16/8/2023 : xpath changes for 11.2
 //	@FindBy(xpath = "(//h1[text()='Charge Masters']//following::span[text()='Filter']//parent::button)[1]")
-	@FindBy(xpath = "(//h1[text()='Charge Masters']//following::span[text()='Filter']//parent::button)[1]")
+	@FindBy(xpath = "(//h1[text()='Charge Masters']//following::span[text()='Filter'])[1]")
 	private static WebElement getCostModelMethodMasterFilter;
 	public static WebElement getCostModelMethodMasterFilter() {
 		return getCostModelMethodMasterFilter;
 	}
-	@FindBy(name = "deptMastCode")
+	@FindBy(xpath="//input[@name='deptMastCode']")
 	private static WebElement getCostModelMethodMasterDeptMasterdropdown;
 	public static WebElement getCostModelMethodMasterDeptMasterdropdown() {
 		return getCostModelMethodMasterDeptMasterdropdown;
 	}
-	@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='150 old master 150']/..")
+	@FindBy(xpath = "//div[contains(@class,'boundlist')]/ul/li[text()='150 old master 1501']/..")
 	private static WebElement getCostModelMethodMasterDeptMasterOptions;
 	public static WebElement getCostModelMethodMasterDeptMasterOptions() {
 		return getCostModelMethodMasterDeptMasterOptions;
@@ -1506,7 +1520,7 @@ public class CostingMap extends MapConfig {
 	}
 //	Omkar 16/8/2023 : xpath changes for 11.2
 //	@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='00 Test CCM']/..")
-	@FindBy(xpath = "//div[contains(@id,'dynamiccombo')]/ul/li[text()='00 Test CCM']/..")	
+	@FindBy(xpath = "//div[contains(@id,'dynamiccombo')]/ul/li[text()='00 Test CCM D']/..")	
 	private static WebElement getCostMethodMasterCostComponentMasterScenarioOptions;
 	public static WebElement getCostMethodMasterCostComponentMasterScenarioOptions() {
 		return getCostMethodMasterCostComponentMasterScenarioOptions;
@@ -1623,10 +1637,17 @@ public class CostingMap extends MapConfig {
 	}
 //	Omkar 11/8/2023 : xpath changes for 11.2
 //	@FindBy(xpath = "(//input[@name='singleSelectorName']//following::span[text()='Select']//parent::button)[2]")
-	@FindBy(xpath = "(//input[@name='singleSelectorName']//following::span[text()='Select']//parent::span)[2]")
+//	@FindBy(xpath = "(//input[@name='singleSelectorName']//following::span[text()='Select']//parent::span)[2]")
+	//Shilpa 23.4.2024 : xpath update for 11.2
+	@FindBy(xpath = "(//input[@name='singleSelectorName']//following::span[text()='Select']//parent::span)[3]")
 	private  WebElement getRvuSecImportSelectButton;
 	public  WebElement getRvuSecImportSelectButton() {
 		return getRvuSecImportSelectButton;
+	}
+	@FindBy(xpath = "//div[contains(@id,'filefield')]//following::input[@name='importdata']")
+	private  WebElement getImportSelectButton;
+	public  WebElement getImportSelectButton() {
+		return getImportSelectButton;
 	}
 	@FindBy(name = "sharedHostLocation")
 	private  WebElement getRvuSharedLocDropdown;
@@ -1640,24 +1661,29 @@ public class CostingMap extends MapConfig {
 	}
 //	Omkar 11/8/2023 : xpath changes for 11.2
 //	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer x-docked-bottom')]//div[contains(@class,'x-toolbar-item')]//span[text()='Export']//parent::button")
-	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer x-docked-bottom')]//div[contains(@class,'x-toolbar-item')]//span[text()='Export']//parent::span")
+	@FindBy(xpath = "//div[contains(@id,'exportwindow')]//following::span[text()='Export']")
 	private  WebElement getRvuExportButton;
 	public   WebElement getRvuExportButton() {
 		return getRvuExportButton;
 	}
 //	Omkar 11/8/2023 : xpath changes for 11.2
 //	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer x-docked-bottom')]//div[contains(@class,'x-toolbar-item')]//span[text()='Import']//parent::button")
-	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer x-docked-bottom')]//div[contains(@class,'x-toolbar-item')]//span[text()='Import']//parent::span")
+	@FindBy(xpath = "//div[contains(@id,'importwindow')]//following::span[text()='Import']")
 	private  WebElement getRvuImportButton;
 	public   WebElement getRvuImportButton() {
 		return getRvuImportButton;
+	}
+	@FindBy(xpath = "//div[contains(@id,'importwindow')]//span[text()='Import']")
+	private  WebElement getImportButton;
+	public   WebElement getImportButton() {
+		return getImportButton;
 	}
 	@FindBy(name = "enttityCode")
 	private  WebElement getRvuCostCalcScenarioEntityDropdown;
 	public   WebElement getRvuCostCalcScenarioEntityDropdown() {
 		return getRvuCostCalcScenarioEntityDropdown;
 	}
-	@FindBy(xpath = "(//div[contains(@id,'boundlist')]/ul/li[text()='150 Marina Medical Center']/..)")
+	@FindBy(xpath = "((//div[contains(@class,'boundlist')]/ul/li[text()='150 Marina Medical Center']/..))[2]")
 	private  WebElement getRvuCostCalcScenarioEntityOptions;
 	public   WebElement getRvuCostCalcScenarioEntityOptions() {
 		return getRvuCostCalcScenarioEntityOptions;
@@ -1667,22 +1693,22 @@ public class CostingMap extends MapConfig {
 	public   WebElement getRvuCostCalcScenarioDeptDropdown() {
 		return getRvuCostCalcScenarioDeptDropdown;
 	}
-	@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='2110  ICU']/..")
+	@FindBy(xpath = "//div[contains(@class,'boundlist')]/ul/li[text()='2110  ICU']/..")
 	private  WebElement getRvuCostCalcScenarioDeptOptions;
 	public   WebElement getRvuCostCalcScenarioDeptOptions() {
 		return getRvuCostCalcScenarioDeptOptions;
 	}
-	@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='Apr 2004 to Mar 2005']/..")
+	@FindBy(xpath = "//div[contains(@class,'boundlist')]/ul/li[text()='Apr 2004 to Mar 2005']/..")
 	private  WebElement getRvuCostCalcScenarioResultsOptions;
 	public   WebElement getRvuCostCalcScenarioResultsOptions() {
 		return getRvuCostCalcScenarioResultsOptions;
 	}
-	@FindBy(xpath = "(//table[contains(@class,'x-field totalCost')]//following::label[text()='Total Costs']//following::div[1])")
+	@FindBy(xpath = "(//div[contains(@class,'totalCost')]//following::span[text()='Total Costs']//following::div/div)[1]")
 	private  WebElement getRvuCostCalcScenarioTotalCost;
 	public   WebElement getRvuCostCalcScenarioTotalCost() {
 		return getRvuCostCalcScenarioTotalCost;
 	}
-	@FindBy(xpath = "(//span[text()='Cost Details']//following::div[@class='x-btn x-btn-default-small x-noicon x-btn-noicon x-btn-default-small-noicon']//span[text()='Apply Selections']//parent::button)")
+	@FindBy(xpath = "(//div[text()='Cost Details']//following::span[text()='Apply Selections'])")
 	private  WebElement getRvuCostCalcScenarioApplySelection;
 	public   WebElement getRvuCostCalcScenarioApplySelection() {
 		return getRvuCostCalcScenarioApplySelection;
@@ -1697,7 +1723,7 @@ public class CostingMap extends MapConfig {
 	public  WebElement getRvuDownloadSharedLocDropdown() {
 		return getRvuDownloadSharedLocDropdown;
 	}
-	@FindBy(xpath = "//span[text()='Cost Model General Information']")
+	@FindBy(xpath = "//h1[text()='Cost Model General Information']")
 	private  WebElement getCostModelGeneralInfo;
 	public   WebElement getCostModelGeneralInfo() {
 		return getCostModelGeneralInfo;
@@ -1707,17 +1733,26 @@ public class CostingMap extends MapConfig {
 	public    WebElement getSaveAsButton() {
 		return getSaveAsButton;
 	}
-	@FindBy(xpath = "//span[@class='x-window-header-text x-window-header-text-default'][text()='Save As']")
+	@FindBy(xpath = "//div[contains(@id,'dynamicwindow')][text()='Save As']")
 	private   WebElement getSaveAsPopup;
 	public    WebElement getSaveAsPopup() {
 		return getSaveAsPopup;
 	}
-	@FindBy(xpath = "//*[text()='RVU Container List']/ancestor::div/following-sibling::div/descendant::button/span[text()='Filter']")
+//	@FindBy(xpath = "//*[text()='RVU Container List']/ancestor::div/following-sibling::div/descendant::button/span[text()='Filter']")
+	//Shilpa update xpath for 11.2 on 24.4.2024
+	@FindBy(xpath = "//*[text()='RVU Container List']/ancestor::div/following-sibling::div/descendant::span[text()='Filter']")
 	private   WebElement getRvuContainerFilterButton;
 	public    WebElement getRvuContainerFilterButton() {
 		return getRvuContainerFilterButton;
 	}
-	@FindBy(xpath = "//*[text()='RVU Container List']/ancestor::div/following-sibling::div/descendant::button/span[text()='Delete']")
+	//Shilpa added xpath 24.4.2024
+	@FindBy(xpath = "//div[contains(@id,'rvucontainerlist')]//following::span[text()='Close & Display']")
+	private   WebElement getRvuContainerCloseDisplayButton;
+	public    WebElement getRvuContainerCloseDisplayButton() {
+		return getRvuContainerCloseDisplayButton;
+	}
+	
+	@FindBy(xpath = "//*[text()='RVU Container List']/ancestor::div/following-sibling::div//span[text()='Delete']")
 	private   WebElement getRvuContainerDeleteButton;
 	public    WebElement getRvuContainerDeleteButton() {
 		return getRvuContainerDeleteButton;
@@ -1727,17 +1762,17 @@ public class CostingMap extends MapConfig {
 	public    List<WebElement> getRvuContainerList() {
 		return getRvuContainerList;
 	}
-	@FindBy(xpath = "//*[text()='RVU Container List']/ancestor::div/following-sibling::div/descendant::button/span[text()='Delete Filtered']")
+	@FindBy(xpath = "//*[text()='RVU Container List']/ancestor::div/following-sibling::div//span[text()='Delete Filtered']")
 	private   WebElement getRvuContainerDeleteFilteredButton;
 	public    WebElement getRvuContainerDeleteFilteredButton() {
 		return getRvuContainerDeleteFilteredButton;
 	}
-	@FindBy(xpath = "//*[text()='RVU Container List']/ancestor::div/following-sibling::div/descendant::button/span[text()='Clear Filter']")
+	@FindBy(xpath = "//*[text()='RVU Container List']/ancestor::div/following-sibling::div//span[text()='Clear Filter']")
 	private   WebElement getRvuContainerClearFilterButton;
 	public    WebElement getRvuContainerClearFilterButton() {
 		return getRvuContainerClearFilterButton;
 	}
-	@FindBy(xpath = "(//span[contains(@id,'filterwindow')]//following::table[contains(@class,'customComboTriggerCls')]//following::input[@class='x-form-field x-form-checkbox'])[1]")
+	@FindBy(xpath = "(//label[text()='Open'])[1]//preceding::*[1]")
 	private   WebElement getRvuContainerOpenCheckbox;
 	public    WebElement getRvuContainerOpenCheckbox() {
 		return getRvuContainerOpenCheckbox;
@@ -1757,7 +1792,7 @@ public class CostingMap extends MapConfig {
 	public    List<WebElement> getRvuContainerListStartMonth() {
 		return getRvuContainerListStartMonth;
 	}
-	@FindBy(xpath = "//span[text()='Add Value']//parent::button")
+	@FindBy(xpath = "//span[text()='Add Value']/../../..")
 	private  WebElement getRvuContainerAddValueButton;
 	public   WebElement getRvuContainerAddValueButton() {
 		return getRvuContainerAddValueButton;
@@ -1797,7 +1832,7 @@ public class CostingMap extends MapConfig {
 	public   WebElement getCostModelFilterButton() {
 		return getCostModelFilterButton;
 	}
-	@FindBy(xpath = "(//label[text()='Cost Model Scenarios in Evaluation Order']//following::span[text()='Select']//parent::button)[1]")
+	@FindBy(xpath = "(//label[text()='Cost Model Scenarios in Evaluation Order']//following::span[text()='Select'])[1]")
 	private  WebElement getCostModelEvaluationOrderSelect;
 	public   WebElement getCostModelEvaluationOrderSelect() {
 		return getCostModelEvaluationOrderSelect;
@@ -1807,7 +1842,7 @@ public class CostingMap extends MapConfig {
 	public   WebElement getCostModelScenario() {
 		return getCostModelScenario;
 	}
-	@FindBy(xpath = "//div[contains(@id,'boundlist')]/ul/li[text()='*USE CHC FY03 Total Cost Scenario']/..")
+	@FindBy(xpath = "//div[contains(@class,'boundlist')]/ul/li[text()='*USE CHC FY03 Total Cost Scenario']/..")
 	private  WebElement getCostModelScenarioOptions;
 	public   WebElement getCostModelScenarioOptions() {
 		return getCostModelScenarioOptions;
@@ -1817,17 +1852,17 @@ public class CostingMap extends MapConfig {
 	public   WebElement getCostModelScenarioMonthToUse() {
 		return getCostModelScenarioMonthToUse;
 	}
-	@FindBy(xpath = "(//div[contains(@id,'boundlist')]/ul/li[text()='May 2004']/..)[3]")
+	@FindBy(xpath = "(//div[contains(@class,'boundlist')]/ul/li[text()='May 2004']/..)[3]")
 	private  WebElement getCostModelScenarioMonthToUseOptions;
 	public   WebElement getCostModelScenarioMonthToUseOptions() {
 		return getCostModelScenarioMonthToUseOptions;
 	}
-	@FindBy(xpath = "(//div[contains(@id,'boundlist')]/ul/li[text()='May 2004']/..)[1]")
+	@FindBy(xpath = "(//div[contains(@class,'boundlist')]/ul/li[text()='May 2004']/..)[1]")
 	private  WebElement getCostModelScenarioFromOptions;
 	public   WebElement getCostModelScenarioFromOptions() {
 		return getCostModelScenarioFromOptions;
 	}
-	@FindBy(xpath = "(//div[contains(@id,'boundlist')]/ul/li[text()='May 2004']/..)[2]")
+	@FindBy(xpath = "(//div[contains(@class,'boundlist')]/ul/li[text()='May 2004']/..)[2]")
 	private  WebElement getCostModelScenarioToOptions;
 	public   WebElement getCostModelScenarioToOptions() {
 		return getCostModelScenarioToOptions;
@@ -1852,10 +1887,15 @@ public class CostingMap extends MapConfig {
 	public   WebElement getEncCostModelEvaluationSelectButton() {
 		return getEncCostModelEvaluationSelectButton;
 	}
-	@FindBy(xpath = "(//div[contains(@class,'x-docked-bottom x-toolbar')]//following::table//following::span[text()='Cancel & Close']//parent::button)[1]")
+	@FindBy(xpath = "(//div[contains(@class,'x-docked-bottom x-toolbar')]//following::table//following::span[text()='Cancel & Close'])[1]")
 	private  WebElement getEncCostModelCancelCloseButton;
 	public   WebElement getEncCostModelCancelCloseButton() {
 		return getEncCostModelCancelCloseButton;
+	}
+	@FindBy(xpath = "//div[contains(@id,'messagebox')]//span[text()='Delete']")
+	private  WebElement getWarningDeleteButton;
+	public   WebElement getWarningDeleteButton() {
+		return getWarningDeleteButton;
 	}
 	@FindBy(xpath = "(//div[@class='x-boundlist-list-ct'])[1]//li")
 	private  List<WebElement> getEncCostModelEvaluationOrderList;
@@ -1877,18 +1917,27 @@ public class CostingMap extends MapConfig {
 	public   WebElement getRvuEntityDropdown() {
 		return getRvuEntityDropdown;
 	}
-	@FindBy(xpath = "(//div[contains(@id,'boundlist')]/ul/li[text()='150 Marina Medical Center']/..)[2]")
+//	@FindBy(xpath = "(//div[contains(@id,'boundlist')]/ul/li[text()='150 Marina Medical Center']/..)[2]")
+	//Shilpa:xpath update for 11.2 on 24.4.2024
+	@FindBy(xpath = "(//div[contains(@class,'boundlist')]/ul/li[text()='150 Marina Medical Center']/..)")
+
 	private  WebElement getRvuEntityDropdownOptions;
 	public   WebElement getRvuEntityDropdownOptions() {
 		return getRvuEntityDropdownOptions;
 	}
-	@FindBy(xpath = "(//div[contains(@class,'x-toolbar-docked-top')]//span[text()='Apply Selections']//parent::button)[2]")
+//	@FindBy(xpath = "(//div[contains(@class,'x-toolbar-docked-top')]//span[text()='Apply Selections']//parent::button)[2]")
+	//Shilpa:xpath update 24.4.2024 for 11.2
+	@FindBy(xpath = "//div[contains(@id,'rvumaintenancedetails')]//span[text()='Apply Selections']")
+
 	private WebElement getRvuApplySelections;
 
 	public WebElement getRvuApplySelections() {
 		return getRvuApplySelections;
 	}
-	@FindBy(xpath = "(//div[contains(@class,'gridClsCondensed')]//*[@data-qtip = 'Next Page'])[2]")
+//	@FindBy(xpath = "(//div[contains(@class,'gridClsCondensed')]//*[@data-qtip = 'Next Page'])[2]")
+	//Shilpa:xpath update for 11.2 on 24.4.2024
+	@FindBy(xpath = "(//div[contains(@id,'custompagingtoolbar')]//*[@data-qtip = 'Next Page'])[3]")
+
 	private WebElement getRvuNextPageButton;
 
 	public WebElement getRvuNextPageButton() {
@@ -1934,6 +1983,7 @@ public class CostingMap extends MapConfig {
 	private WebElement getUcqcDeptFieldNone;
 
 	public WebElement getUcqcDeptFieldNone() {
+	
 		return getUcqcDeptFieldNone;
 	}
 	@FindBy(xpath = "(//div[contains(@id,'ucqcform')]//label[text()='Department']//following::span[text()='Select']//parent::button)[1]")
@@ -1957,12 +2007,12 @@ public class CostingMap extends MapConfig {
 	public  String DepreciationXpath="//*[contains(@class,'column-header-text')][text()='Depreciation'][text()='Apr 2004']";
 	public  String TechXpath="//*[contains(@class,'column-header-text')][text()='Tech'][text()='Apr 2004']";
 
-	@FindBy(xpath = "//div[contains(@class,'hidetoppx expand-icon')]//span[text()='Hide']//parent::button")
+	@FindBy(xpath = "//a[contains(@class,'expand-icon')]//span[text()='Hide']")
 	private WebElement getRvuHideButton;
 	public WebElement getRvuHideButton() {
 		return getRvuHideButton;
 	}
-	@FindBy(xpath = "//div[contains(@class,'hidetoppx collapse-icon')]//span[text()='Show']//parent::button")
+	@FindBy(xpath = "//a[contains(@class,'showHideBtnRVU ')]//span[text()='Show']")
 	private WebElement getRvuShowButton;
 	public WebElement getRvuShowButton() {
 		return getRvuShowButton;
@@ -1996,7 +2046,8 @@ public class CostingMap extends MapConfig {
 	public List<WebElement> getProviderEntityList() {
 		return getProviderEntityList;
 	}
-	@FindBy(xpath = "(//div[contains(@id,'dynamicGrid')]//table[@class='x-grid-table x-grid-table-resizer'])//tr/td[3]/div")
+	//Shilpa updated xpath : 3.11.2024
+	@FindBy(xpath = "//div[contains(@id,'codenomaster')]//div//table//tr//td[3]/div")
 	private static List<WebElement> getEntitiesPageElementList;
 	public static List<WebElement> getEntitiesPageElementList() {return getEntitiesPageElementList;}
 
@@ -2023,5 +2074,344 @@ public class CostingMap extends MapConfig {
 	private static WebElement getDepartmentCodeFilterButton;
 	public static WebElement getDepartmentCodeFilterButton() {
 		return getDepartmentCodeFilterButton;
+	}
+	
+	@FindBy(xpath = "//span[text()='Cancel & Close']/../../..")
+	private static WebElement getOverheadCancelClose;
+	public static WebElement getOverheadCancelClose() {
+		return getOverheadCancelClose;
+	}
+	
+	@FindBy(xpath = "(//div[@class='x-grid-item-container'])[4]//tr//td[2]//div")
+	private static List<WebElement> getOverheadGridElement;
+	public static List<WebElement> getOverheadGridElement() {
+		return getOverheadGridElement;
+	}
+	
+	@FindBy(xpath = "((//div[@class='x-grid-item-container'])[4]//tr//td[2]//div)[1]")
+	private static WebElement getfirstOverheadGridElement;
+	public static WebElement getfirstOverheadGridElement() {
+		return getfirstOverheadGridElement;
+	}
+	
+	@FindBy(xpath = "//span[text()='Read Only']")
+	private static WebElement getReadOnlyBtn;
+	public static WebElement getReadOnlyBtn() {
+		return getReadOnlyBtn;
+	}
+	
+	@FindBy(xpath = "//div[contains(@id,'overheadexceptionlist')]//span[text()='New']")
+	private static WebElement getAllocExcepNewBtn;
+	public static WebElement getAllocExcepNewBtn() {
+		return getAllocExcepNewBtn;
+	}
+	@FindBy(xpath = "//div[contains(@id,'overheadmodelscenariolist')]//span[text()='New']")
+	private static WebElement getOverheadModelCalcScen;
+	public static WebElement getOverheadModelCalcScen() {
+		return getOverheadModelCalcScen;
+	}
+	@FindBy(xpath = "//div[contains(@id,'overheadmodelscenarioresultpanel')]//span[text()='Close']")
+	private static WebElement getOverheadModelScenResultsCloseBtn;
+	public static WebElement getOverheadModelScenResultsCloseBtn() {
+		return getOverheadModelScenResultsCloseBtn;
+	}
+	@FindBy(xpath = "//span[contains(@id,'dynamicwindow')]//following::span[text()='Cancel & Close']")
+	private static WebElement getOverheadModelDynamicCloseBtn;
+	public static WebElement getOverheadModelDynamicCloseBtn() {
+		return getOverheadModelDynamicCloseBtn;
+	}
+	@FindBy(xpath = "//div[contains(@id,'modellibgrid')]//*[./text()='Filter']")
+	private static WebElement getCostModelFilterBtn;
+	public static WebElement getCostModelFilterBtn() {
+		return getCostModelFilterBtn;
+	}
+	
+	@FindBy(xpath = "//span[text()='Costing']//preceding::div[contains(@class,'x-tree-elbow-plus')]")
+	private static WebElement getCostingBtn;
+	public static WebElement getCostingBtn() {
+		return getCostingBtn;
+	}
+	@FindBy(xpath = "//div[contains(@id,'masterlist')]//*[./text()='Filter']")
+	private static WebElement getrvuCalcFilterBtn;
+	public static WebElement getrvuCalcFilterBtn() {
+		return getrvuCalcFilterBtn;
+	}
+	@FindBy(xpath = "//div[contains(@id,'masterlist')]//*[./text()='Calculate']")
+	private static WebElement getrvuCalcBtn;
+	public static WebElement getrvuCalcBtn() {
+		return getrvuCalcBtn;
+	}
+	@FindBy(xpath = "//div[contains(@id,'activityvolumedatalist')]//span[text()='New']")
+	private static WebElement getActivityVolNew;
+	public static WebElement getActivityVolNew() {
+		return getActivityVolNew;
+	}
+	@FindBy(xpath = "//div[contains(@id,'activityvolumedatalist')]//span[text()='Filter']")
+	private static WebElement getActivityVolFilter;
+	public static WebElement getActivityVolFilter() {
+		return getActivityVolFilter;
+	}
+	@FindBy(xpath = "//div[contains(@id,'activityvolumedatagrid')]//span[text()='Filter']")
+	private static WebElement getActivityVolDataGridFilter;
+	public static WebElement getActivityVolDataGridFilter() {
+		return getActivityVolDataGridFilter;
+	}
+	
+	@FindBy(xpath = "//div[contains(@id,'activityvolumedataform')]//span[text()='Cancel & Close']")
+	private static WebElement getActivityVolDataCancelClose;
+	public static WebElement getActivityVolDataCancelClose() {
+		return getActivityVolDataCancelClose;
+	}
+	@FindBy(xpath = "//div[text()='Filter Activity Volume Data']//following::span[text()='Cancel & Close']")
+	private static WebElement getActivityVolDataCloseFilter;
+	public static WebElement getActivityVolDataCloseFilter() {
+		return getActivityVolDataCloseFilter;
+	}
+	@FindBy(xpath = "//div[contains(@id,'activityvolumedataform')]//input[@name='code']")
+	private static WebElement getActivityVolCode;
+	public static WebElement getActivityVolCode() {
+		return getActivityVolCode;
+	}
+	@FindBy(xpath = "//div[contains(@id,'activityvolumedataform')]//input[@name='name']")
+	private static WebElement getActivityVolName;
+	public static WebElement getActivityVolName() {
+		return getActivityVolName;
+	}
+	@FindBy(xpath = "(//div[contains(@id,'activityvolumedataform')]//input[@name='timePeriodName'])[2]")
+	private static WebElement getActivityVolFiscalYear;
+	public static WebElement getActivityVolFiscalYear() {
+		return getActivityVolFiscalYear;
+	}
+	@FindBy(xpath = "//span[text()='Fiscal Year']/ancestor::div/following-sibling::div[contains(@class,'boundlist')]/div/ul")
+	private static WebElement getActivityVolFiscalYearList;
+	public static WebElement getActivityVolFiscalYearList() {
+		return getActivityVolFiscalYearList;
+	}
+	@FindBy(xpath = "//div[contains(@id,'activityvolumedataform')]//span[text()='Save & Close']")
+	private static WebElement getActivityVolSaveBtn;
+	public static WebElement getActivityVolSaveBtn() {
+		return getActivityVolSaveBtn;
+	}
+	@FindBy(xpath = "//div[contains(@id,'activityvolumecalcdatalist')]//span[text()='Filter']")
+	private static WebElement getActivityVolCalcFilterBtn;
+	public static WebElement getActivityVolCalcFilterBtn() {
+		return getActivityVolCalcFilterBtn;
+	}
+	@FindBy(xpath = "//div[contains(@id,'activityvolumecalcdatalist')]//span[text()='Delete']")
+	private static WebElement getActivityVolCalcDeleteBtn;
+	public static WebElement getActivityVolCalcDeleteBtn() {
+		return getActivityVolCalcDeleteBtn;
+	}
+	@FindBy(xpath = "//div[contains(@id,'messagebox')]//span[text()='Delete']")
+	private static WebElement getActivityVolCalcDeletePopupBtn;
+	public static WebElement getActivityVolCalcDeletePopupBtn() {
+		return getActivityVolCalcDeletePopupBtn;
+	}
+	@FindBy(xpath = "//span[text()='Activity Volume Data Destination Scenario']//following::input[@name='actStatCalcScenId']")
+	private static WebElement getActivityVolCalcDestScenBtn;
+	public static WebElement getActivityVolCalcDestScenBtn() {
+		return getActivityVolCalcDestScenBtn;
+	}
+	@FindBy(xpath = "//span[text()='Activity Volume Data Destination Scenario']/ancestor::div/following-sibling::div[contains(@class,'boundlist')]/div/ul")
+	private static WebElement getActivityVolDataSCenarioList;
+	public static WebElement getActivityVolDataSCenarioList() {
+		return getActivityVolDataSCenarioList;
+	}
+	@FindBy(xpath = "//div[contains(@id,'activityvolumecalcdataform')]//span[text()='Save & Close']")
+	private static WebElement getActivityVolDataSCenarioSaveClose;
+	public static WebElement getActivityVolDataSCenarioSaveClose() {
+		return getActivityVolDataSCenarioSaveClose;
+	}
+	@FindBy(xpath = "//div[contains(@id,'activityvolumecalcdataform')]//input[@name='name']")
+	private static WebElement getActivityVolDataCalcScenarioName;
+	public static WebElement getActivityVolDataCalcScenarioName() {
+		return getActivityVolDataCalcScenarioName;
+	}
+	@FindBy(xpath = "//div[contains(@id,'activityvolumecalcdataform')]//span[text()='Save As']")
+	private static WebElement getActivityVolDataCalcScenarioSaveAS;
+	public static WebElement getActivityVolDataCalcScenarioSaveAS() {
+		return getActivityVolDataCalcScenarioSaveAS;
+	}
+	@FindBy(xpath = "//div[contains(@id,'activityvolumecalcdataform')]//span[text()='Cancel & Close']")
+	private static WebElement getActivityVolDataCalcScenarioCancelClose;
+	public static WebElement getActivityVolDataCalcScenarioCancelClose() {
+		return getActivityVolDataCalcScenarioCancelClose;
+	}
+	@FindBy(xpath = "//div[contains(@id,'activityvolumecalcdataform')]//span[text()='Calculate']")
+	private static WebElement getActivityVolDataCalcScenarioCalculate;
+	public static WebElement getActivityVolDataCalcScenarioCalculate() {
+		return getActivityVolDataCalcScenarioCalculate;
+	}
+	@FindBy(xpath = "//div[contains(@id,'activityvolumecalcdataform')]//input[@name='startDate']")
+	private static WebElement getActivityVolDataCalcScenarioCalculateStart;
+	public static WebElement getActivityVolDataCalcScenarioCalculateStart() {
+		return getActivityVolDataCalcScenarioCalculateStart;
+	}
+	@FindBy(xpath = "//div[contains(@id,'activityvolumecalcdataform')]//input[@name='endDate']")
+	private static WebElement getActivityVolDataCalcScenarioCalculateEnd;
+	public static WebElement getActivityVolDataCalcScenarioCalculateEnd() {
+		return getActivityVolDataCalcScenarioCalculateEnd;
+	}
+	@FindBy(xpath = "//span[contains(text(),'Start Month')]/ancestor::div/following-sibling::div[contains(@class,'boundlist')]/div/ul")
+	private static WebElement getActivityVolDataCalcScenarioCalculateStartList;
+	public static WebElement getActivityVolDataCalcScenarioCalculateStartList() {
+		return getActivityVolDataCalcScenarioCalculateStartList;
+	}
+	@FindBy(xpath = "//span[contains(text(),'End Month')]/ancestor::div/following-sibling::div[contains(@class,'boundlist')]/div/ul")
+	private static WebElement getActivityVolDataCalcScenarioCalculateEndList;
+	public static WebElement getActivityVolDataCalcScenarioCalculateEndList() {
+		return getActivityVolDataCalcScenarioCalculateEndList;
+	}
+	@FindBy(xpath = "//div[text()='Departments ']//following::li[@class='x-boundlist-item']")
+	private static List<WebElement> getActivityVolDeptList;
+	public static List<WebElement> getActivityVolDeptList() {
+		return getActivityVolDeptList;
+	}
+	@FindBy(xpath = "//div[text()='Charge Codes ']//following::li[@class='x-boundlist-item']")
+	private static List<WebElement> getActivityVolChargeCodes;
+	public static List<WebElement> getActivityVolChargeCodes() {
+		return getActivityVolChargeCodes;
+	}
+	@FindBy(xpath = "//div[contains(@class,'x-box')]/descendant::*[contains(text(),'Select')][2]/../../..")
+	private WebElement unitCostQuickCalculationButtonColumnsToDisplaySelectBtn;
+
+	public WebElement unitCostQuickCalculationButtonColumnsToDisplaySelectBtn() {
+		return unitCostQuickCalculationButtonColumnsToDisplaySelectBtn;
+	}
+	@FindBy(xpath = "//label[text()='All']/preceding::input[@name='useAllColumns']")
+	private WebElement unitCostQuickCalculationAllcheckbx;
+
+	public WebElement unitCostQuickCalculationAllcheckbx() {
+		return unitCostQuickCalculationAllcheckbx;
+	}
+	//Shilpa: 2.5.2024 
+	@FindBy(xpath = "//div[text()='Statistic Data Scenarios']//following::span[text()='New']")
+	private WebElement statisticDataScenarionNewBtn;
+	public WebElement statisticDataScenarionNewBtn() {
+		return statisticDataScenarionNewBtn;
+	}
+	@FindBy(name = "name")
+	private WebElement statisticDataScenarionName;
+	public WebElement statisticDataScenarionName() {
+		return statisticDataScenarionName;
+	}
+	@FindBy(xpath= "(//div[contains(@id,'dynamiccombo')]//input[@name='timePeriodName'])[2]")
+	private WebElement statisticDataFiscalYear;
+	public WebElement statisticDataFiscalYear() {
+		return statisticDataFiscalYear;
+	}
+	
+	@FindBy(xpath = "(//div[contains(@class,'x-boundlist-floating x-layer')])[1]//ul")
+	private static WebElement getFiscalYearList;
+	public static WebElement getFiscalYearList() {
+		return getFiscalYearList;
+	}
+	@FindBy(xpath = "//div[text()='Statistic Data Scenario']//following::span[text()='Save & Close']")
+	private static WebElement getSaveStatisticScenario;
+	public WebElement getSaveStatisticScenario() {return getSaveStatisticScenario;}
+	
+	@FindBy(xpath = "//div[text()='Statistic Data Scenario']//following::span[text()='Cancel & Close']")
+	private static WebElement getCancelCloseStatisticScenario;
+	public WebElement getCancelCloseStatisticScenario() {return getCancelCloseStatisticScenario;}
+	
+	@FindBy(xpath = "//div[text()='Statistic Data Scenarios']//following::span[text()='Filter']")
+	private WebElement statisticDataScenarionFilterBtn;
+	public WebElement statisticDataScenarionFilterBtn() {
+		return statisticDataScenarionFilterBtn;
+	}
+	@FindBy(xpath = "//div[text()='Statistic Data Scenarios']//following::span[text()='Delete']")
+	private WebElement statisticDataScenarionDeleteBtn;
+	public WebElement statisticDataScenarionDeleteBtn() {
+		return statisticDataScenarionDeleteBtn;
+	}
+	@FindBy(xpath = "//h1[text()='Statistic Data Calculation Scenarios']//following::span[text()='Filter']")
+	private WebElement statisticDataCalcScenarionFilterBtn;
+	public WebElement statisticDataCalcScenarionFilterBtn() {
+		return statisticDataCalcScenarionFilterBtn;
+	}
+	@FindBy(xpath = "//div[text()='Statistic Data Calculation Scenario']//following::span[text()='Save As']")
+	private WebElement statisticDataCalcScenarionSaveAsBtn;
+	public WebElement statisticDataCalcScenarionSaveAsBtn() {
+		return statisticDataCalcScenarionSaveAsBtn;
+	}
+	@FindBy(name = "gLStatMastId")
+	private WebElement glStatisticMaster;
+	public WebElement glStatisticMaster() {
+		return glStatisticMaster;
+	}
+	@FindBy(name = "generalLedgerDataScenario")
+	private WebElement glDataScenario;
+	public WebElement glDataScenario() {
+		return glDataScenario;
+	}
+	@FindBy(name = "actStatMastId")
+	private WebElement activityStatsMaster;
+	public WebElement activityStatsMaster() {
+		return activityStatsMaster;
+	}
+	@FindBy(name = "activityStatisticCalcScenario")
+	private WebElement activityVolDataScenario;
+	public WebElement activityVolDataScenario() {
+		return activityVolDataScenario;
+	}
+	@FindBy(xpath = "(//input[@name='startDate'])[2]")
+	private WebElement statisticStartMonth;
+	public WebElement statisticStartMonth() {
+		return statisticStartMonth;
+	}
+	@FindBy(xpath = "(//input[@name='endDate'])[2]")
+	private WebElement statisticEndMonth;
+	public WebElement statisticEndMonth() {
+		return statisticEndMonth;
+	}
+	@FindBy(xpath = "(//div[contains(@class,'x-boundlist-list-ct')])[3]//ul")
+	private WebElement statisticVolDataScenarioList;
+	public WebElement statisticVolDataScenarioList() {
+		return statisticVolDataScenarioList;
+	}
+	@FindBy(name = "costingActivityDataScenario")
+	private WebElement statisticVolDataScenarioDropdown;
+	public WebElement statisticVolDataScenarioDropdown() {
+		return statisticVolDataScenarioDropdown;
+	}
+	@FindBy(xpath = "(//input[@name='deleteExistData'])[1]")
+	private WebElement deleteAndRecalculateOption;
+	public WebElement deleteAndRecalculateOption() {
+		return deleteAndRecalculateOption;
+	}
+	@FindBy(xpath = "(//input[@name='shareLog'])[1]/../../../..")
+	private WebElement shareLogCheck;
+	public WebElement shareLogCheck() {
+		return shareLogCheck;
+	}
+	@FindBy(xpath = "(//input[@name='shareLog'])[1]")
+	private WebElement shareLog;
+	public WebElement shareLog() {
+		return shareLog;
+	}
+	@FindBy(xpath = "//div[text()='Statistic Data Calculation Scenario']//following::span[text()='Save']")
+	private WebElement statisticDataCalcScenarionSaveBtn;
+	public WebElement statisticDataCalcScenarionSaveBtn() {
+		return statisticDataCalcScenarionSaveBtn;
+	}
+	@FindBy(xpath = "//div[text()='Statistic Data Calculation Scenario']//following::span[text()='Calculate']")
+	private WebElement statisticDataCalcScenarionCalculateBtn;
+	public WebElement statisticDataCalcScenarionCalculateBtn() {
+		return statisticDataCalcScenarionCalculateBtn;
+	}
+	@FindBy(xpath = "//div[text()='Statistic Data Calculation Scenario']//following::span[text()='Save & Close']")
+	private WebElement statisticDataCalcScenarioSaveCloseBtn;
+	public WebElement statisticDataCalcScenarioSaveCloseBtn() {
+		return statisticDataCalcScenarioSaveCloseBtn;
+	}
+	@FindBy(xpath = "//div[text()='Statistic Data']//following::span[text()='Filter']")
+	private WebElement statisticDataFilterBtn;
+	public WebElement statisticDataFilterBtn() {
+		return statisticDataFilterBtn;
+	}
+	@FindBy(xpath = "//span[text()='Filter Statistic Data']//following::span[text()='Cancel & Close']")
+	private WebElement statisticDataFilterCancelClose;
+	public WebElement statisticDataFilterCancelClose() {
+		return statisticDataFilterCancelClose;
 	}
 }

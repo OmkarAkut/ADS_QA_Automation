@@ -58,7 +58,7 @@ public class UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds137
    * "name_ucqc_ucqc".  If the name of the original "name" model is updated,
    * "name_ucqc" will be updated as well (? - need to confirm this).
  * @throws Throwable */
-  /** Regression test case ADS-5987 **/
+ 
   
   @BeforeClass
   public static void setupScript() throws Throwable {

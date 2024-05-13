@@ -20,7 +20,7 @@ public class ValidateEditCostMethodMasters extends GoHelper{
 	static ContractingMap modelMap;
 	static String costModel="Actual Cost Model";
 
-	/** Automates test ticket ADS-6643,ADS-6669*/
+	/** Automates test ticket ADS-6643,*/
 	@BeforeClass
 	public static void setupScript() throws Exception,Throwable {
 		ExtentReport.reportCreate("ValidateEditCostMethodMasters", "webdriver.scripts.costing", "ValidateEditCostMethodMasters");
@@ -35,8 +35,9 @@ public class ValidateEditCostMethodMasters extends GoHelper{
 			fail(e.getMessage());
 		}
 	}
+	//ADS-6643 all steps
 	@Test
-	public void test01ExpandToCostMethodMasters() throws Throwable {
+	public void test01ExpandToCostMethodMasters_ADS_6643() throws Throwable {
 		try {
 			doClickTreeData("Costing");
 			driverDelay(200);
@@ -52,12 +53,25 @@ public class ValidateEditCostMethodMasters extends GoHelper{
 	}
 	
 	@Test
-	public void test02EditCostMethodModel() throws Throwable {
+	public void test02EditCostMethodModel_ADS_6643() throws Throwable {
 		try {
 			doClick(costing.getEditButton());
 			driverDelay(200);
 			assertTextIsDisplayed("Cost Method Master");
-			doClick(ContractingMap.getContractModelRiskLimiterCancelCloseBtn());
+			try {
+				if (CostingMap.getReadOnlyBtn().isDisplayed()) {
+					doClick(CostingMap.getReadOnlyBtn());
+					assertElementIsDisplayed(CostingMap.getOverheadCancelClose());
+					doClick(CostingMap.getOverheadCancelClose());
+					driverDelay();
+				}
+			} catch (Exception e2) {
+
+				assertElementIsDisplayed(CostingMap.getOverheadCancelClose());
+				doClick(CostingMap.getOverheadCancelClose());
+				driverDelay();
+			}
+//			doClick("//div[text()='Cost Method Master']//following::span[text()='Cancel & Close']");
 			ExtentReport.logPass("PASS", "test02EditCostMethodModel");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test02EditCostMethodModel", driver, e);

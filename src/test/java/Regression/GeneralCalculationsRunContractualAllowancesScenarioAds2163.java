@@ -53,7 +53,7 @@ public class GeneralCalculationsRunContractualAllowancesScenarioAds2163 extends 
 	}
 //ADS-6104 only test01 db verification is ignored
 	@Test
-	public void test01ExportContractualAllowanceScenarios()
+	public void test01ExportContractualAllowanceScenarios_6104()
 			throws InterruptedException,Throwable {
 		try {
 //			doClick(driver.findElement(By.xpath("//span[@class='x-btn-icon pagging-tbar-last-button']")));

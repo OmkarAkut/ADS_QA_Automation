@@ -38,11 +38,12 @@ public class ValidatePaginationOnTheCostingRVUMaintenancepage  extends GoHelper{
 			fail(e.getMessage());
 		}
 	}
+	//ADS-6508
 	@Test
-	public void test01AssertPaginationAvailableInRVU() throws Throwable {
+	public void test01AssertPaginationAvailableInRVU_6508() throws Throwable {
 		  try {
 			WebElement[] modelLibraryElements = {
-			          modelLibrary.modelLibraryTableText4PageShown(),
+//			          modelLibrary.modelLibraryTableText4PageShown(),//not required as page count keeps changing
 			          modelLibrary.getModelLibraryTableButtonFirst(),
 			          modelLibrary.getModelLibraryTableButtonPrevious(),
 			          modelLibrary.getModelLibraryFieldInputNumber(),
@@ -59,7 +60,7 @@ public class ValidatePaginationOnTheCostingRVUMaintenancepage  extends GoHelper{
 	}
 	
 	@Test
-	public void test02ValidateNextPageAndPreviousPage() throws Throwable {
+	public void test02ValidateNextPageAndPreviousPage_6508() throws Throwable {
 		try {
 			doClick(modelLibrary.getModelLibraryTableButtonNext());
 			assertElementIsEnabled( modelLibrary.getModelLibraryTableButtonPrevious(), printout);
@@ -72,7 +73,7 @@ public class ValidatePaginationOnTheCostingRVUMaintenancepage  extends GoHelper{
 		}
 }
 	@Test
-	public void test03ValidateFirstPageAndLastPage() throws Throwable {
+	public void test03ValidateFirstPageAndLastPage_6508() throws Throwable {
 		try {
 			doClick(modelLibrary.getModelLibraryTableButtonLast());
 			assertElementIsDisabled( modelLibrary.getModelLibraryTableButtonLast(), printout);
@@ -86,7 +87,7 @@ public class ValidatePaginationOnTheCostingRVUMaintenancepage  extends GoHelper{
 
 	}
 	@Test
-	public void test04ValidateGoButtonInPagination() throws Throwable {
+	public void test04ValidateGoButtonInPagination_6508() throws Throwable {
 		try {
 			modelLibrary.getModelLibraryFieldInputNumber().clear();
 			modelLibrary.getModelLibraryFieldInputNumber().sendKeys("2");

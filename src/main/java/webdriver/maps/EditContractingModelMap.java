@@ -71,7 +71,7 @@ public class EditContractingModelMap extends MapConfig {
     private WebElement colaFactor;
     public WebElement getGeneralSectionColaFactorField() {return colaFactor;}
 
-    @FindBy(xpath = "//label[text()='Medicare Year']/parent::td/following-sibling::td/descendant::div[contains(@class,'x-form-arrow-trigger')]")
+    @FindBy(xpath = "(//span[text()='Medicare Year']//following::div[contains(@id,'dynamiccombo')]//div//div)[1]")
     private WebElement medicareYearDropdown;
     public WebElement getGeneralSectionMedicareYearDropdown() {return medicareYearDropdown;}
 

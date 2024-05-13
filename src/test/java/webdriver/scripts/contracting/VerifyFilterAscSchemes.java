@@ -37,8 +37,9 @@ public class VerifyFilterAscSchemes extends CalculationHelper{
 			fail(e.getMessage());
 		}
 	}
+	//ADS-6447
 	@Test
-	public void test01VerifyFilterByAscSchemes() throws Throwable {
+	public void test01VerifyFilterByAscSchemes_6447() throws Throwable {
 		try {
 			doSearchForContractModel(ContractModelName);
 			tableDoubleClickCellFirstColumn(ContractModelName);

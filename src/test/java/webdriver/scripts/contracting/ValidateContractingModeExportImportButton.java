@@ -2,7 +2,9 @@ package webdriver.scripts.contracting;
 import static org.junit.Assert.fail;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
@@ -10,7 +12,7 @@ import webdriver.corehelpers.GoHelper;
 import webdriver.helpers.ContractModelsHelper;
 import webdriver.maps.ContractingMap;
 import webdriver.maps.mapbuilder.BuildMap;
-
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ValidateContractingModeExportImportButton extends GoHelper{
 
 	private static ContractingMap modelMap;
@@ -37,7 +39,7 @@ public class ValidateContractingModeExportImportButton extends GoHelper{
 	}
 	/*Test - UI Validation [Contracting] Validate Contracting Model � �Export� button; ADS-6437*/
 	@Test
-	public void test01FileExportContractModel() throws Throwable {
+	public void test01FileExportContractModel_6437() throws Throwable {
 		try {
 			doClick(modelMap.getContractModelExportButton());
 			waitForElementToBeVisible(modelMap.getContractModelExportPopUp());
@@ -64,7 +66,7 @@ public class ValidateContractingModeExportImportButton extends GoHelper{
 	}
 	/** Test - UI Validation [Contracting] Validate Contracting Model � �Import� button; ADS-6436*/
 	@Test
-	public void test02FileImportContractModel() throws Throwable {
+	public void test02FileImportContractModel_6436() throws Throwable {
 		try {
 			doClick(modelMap.getContractModelImportButton());
 			waitForElementToBeVisible(modelMap.getContractModelImportSelectFileButton());

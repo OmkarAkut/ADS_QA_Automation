@@ -32,7 +32,7 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
   String[] defaultColumnHeaderSubset = {"Charge Code","Charge Code Name","Modifier","Total Unit Cost","Total Quick Cost","Total Change"};
   String[] columnsHeaderSubsetRvu = {"Charge Code Name","Modifier","Total Unit Cost","Total Quick Cost","Total Change","Quick Salaries and Wages RVU"};
   String[] columnsChargeCodeNameOnly = {"Modifier","Total Unit Cost","Total Quick Cost","Total Change"};
-  String[] columns = {"Charge Code Name","Modifier"};
+  String[] columns = {"Salaries and Wages RVU","Quick Salaries and Wages Cost"};
 
   /**
    ADS-1083 (Dev Story ADS-739).
@@ -242,8 +242,8 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
     try {
       highlightColumnsToDisplayColumn("Charge Code Name");
       highlightColumnsToDisplayColumn("Modifier");
-      assertElementIsEnabled(selectColumn.getUnitCostQuickCalculationButtonColumnsToDisplayModalRemove(),printout);
-      assertElementIsEnabled(selectColumn.getUnitCostQuickCalculationButtonColumnsToDisplayModalSelect(),printout);
+      assertElementIsEnabled("//*[contains(@id,'button')][text()='Remove']/./../../..",printout);
+      assertElementIsEnabled("//*[contains(@id,'button')][text()='Select']/./../../..",printout);
       assertElementIsEnabled(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalCancel(),printout);
       ExtentReport.logPass("PASS", "test14ConfirmColumnsCanBeHighlightedInAvailableAndSelectedBoxesAndAssertRemoveSelctonCancelButtonsEnabled");
     } catch (Exception|AssertionError e) {
@@ -322,10 +322,13 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
   public void test20AssertApplyButtonDisabledWhenChargeCodeNameAndModifierSelected() throws Throwable {
     try {
     driver.manage().window().maximize();
-      removeAllColumnsToDisplayColumns(); //redo to just remove only the Selected items, not all of them
+    String[] columnsToRemove= {"Charge Code Name","Salaries and Wages RVU"};
+    removeMultipleColumnsToDisplay(columnsToRemove);
+//      removeAllColumnsToDisplayColumns(); //redo to just remove only the Selected items, not all of them
       selectMultipleColumnsToDisplay(columns);
-      assertElementIsDisabled(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalApply(),printout);
+      assertTheElementIsDisabled(driver.findElement(By.xpath("//*[contains(@class,'x-box')]/descendant::*[text()='Apply']/../../..")),printout);
       assertElementIsEnabled(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalCancel(),printout);
+//      doClick(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalCancel());
       ExtentReport.logPass("PASS", "test20AssertApplyButtonDisabledWhenChargeCodeNameAndModifierSelected");
     } catch (Exception|AssertionError e) {
     	ExtentReport.logFail("FAIL", "test20AssertApplyButtonDisabledWhenChargeCodeNameAndModifierSelected", driver, e);
@@ -336,7 +339,9 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
   @Test
   public void test21AssertApplyButtonIsEnabledWhenAtLeastOneQuickRvuColumnIsMovedToSelectedSide() throws Throwable {
     try {
-      highlightColumnsToDisplayColumn("Quick Salaries and Wages RVU");
+//    	 doClick(selectColumn.getUnitCostQuickCalculationButtonColumnsToDisplaySelect());
+//         Thread.sleep(1000);
+      highlightColumnsToDisplayColumn("Quick Employee Benefits RVU");
       doClick(selectColumn.getUnitCostQuickCalculationButtonColumnsToDisplayModalSelect());
       assertElementIsEnabled(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalApply(),printout);
       assertElementIsEnabled(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalCancel(),printout);
@@ -350,6 +355,10 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
   @Test
   public void test22AssertApplyButtonEnabledWhenAllColumnsMovedToSelectedSide() throws Throwable {
     try {
+    	doClick(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalCancel());
+    	doClick(selectColumn.getUnitCostQuickCalculationButtonColumnsToDisplaySelect());
+        Thread.sleep(1000);
+      removeAllColumnsToDisplayColumns();
       selectAllColumnsToDisplayColumns();
       assertElementIsEnabled(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalApply(),printout);
       assertElementIsEnabled(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalCancel(),printout);
@@ -414,8 +423,9 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
       waitForAjaxExtJs();
       doClick(selectColumn.getUnitCostQuickCalculationButtonColumnsToDisplaySelect());
       waitForAjaxExtJs();
-      List<String> selectedColumnsSubset = getSelectedColumnList();
-      for (int i = 0; i < columnsHeaderSubsetRvu.length; i++) {
+    List<WebElement> selectedColumnsSubset = driver.findElements(By.xpath("//*[contains(@class,'glAccountsGrid')][2]/descendant::tbody//tr//td/div"));
+   
+    for (int i = 0; i <columnsHeaderSubsetRvu.length; i++) {
         if (selectedColumnsSubset.get(i).equals(columnsHeaderSubsetRvu[i])) {
           System.out.println(columnsHeaderSubsetRvu[i] + " = " + selectedColumnsSubset.get(i));
         } else {
@@ -434,7 +444,7 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
   public void test26CloseTheUcqcSessionAndAssertColumnSelectionDoesNotSaveUponReopen() throws Throwable {
     try {
       doClick(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalCancel());
-      doClosePageOnLowerBar("Unit Cost Quick...");
+      doClosePageOnLowerBar("Unit Cost Quick Calculation");
       goToPage("Unit Cost Quick Calculation");
       assertColumnHeaderSubsetDisplays(defaultColumnHeaderSubset);
       ExtentReport.logPass("PASS", "test26CloseTheUcqcSessionAndAssertColumnSelectionDoesNotSaveUponReopen");
@@ -553,7 +563,7 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
       //venkat commented below line 03-11-2022
      // doClick(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalCancel());
       waitForAjaxExtJs();
-      doClosePageOnLowerBar("Unit Cost Quick...");
+      doClosePageOnLowerBar("Unit Cost Quick Calculation");
       goToPage("Unit Cost Quick Calculation");
      // setUcqcCriteria("Marina", "*CM1 TB MHFY05 After Vol Change", "150 Marina Medical Center", "2130  PED ICU", "Jan 2005 to Jan 2005");
       setUcqcCriteria("Marina", "*CM1 TB MHFY05 After Vol Change", "150 Marina Medical Center", "2130", "Jan 2005 to Jan 2005");
@@ -578,9 +588,9 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
     try {
       doClick(selectColumn.getUnitCostQuickCalculationButtonApplySelections());
       waitForSpinnerToEnd();
-      String columnID = driver.findElement(By.xpath("//div[@id='ucqcgrid-targetEl']/descendant::div[contains(@id,'gridpanel')][1]/div[contains(@id,'headercontainer')]/..")).getAttribute("id");
+      String columnID = driver.findElement(By.xpath("(//div[@id='ucqcgrid-targetEl']/descendant::div[contains(@id,'gridcolumn')]/span[contains(@id,'gridcolumn')]/..)[2]")).getAttribute("id");
       int columnIdDigits = Integer.parseInt(getNumbersFromStringWithRegex(columnID));
-      String headerPanel = driver.findElement(By.xpath("//div[@id='ucqcgrid-targetEl']/descendant::div[contains(@id,'gridpanel')][1]/div[contains(@id,'headercontainer')]/ancestor::div[@id=\"gridpanel-" + columnIdDigits + "\"]")).getAttribute("class");
+      String headerPanel = driver.findElement(By.xpath("((//div[@id='ucqcgrid-targetEl']/descendant::div[contains(@id,'gridcolumn')]/span[contains(@id,'gridcolumn')]/..)[2]/ancestor::div[contains(@id,'ucqcgrid')])[6]")).getAttribute("class");
       boolean isLocked = headerPanel.contains("locked");
       if (printout) {
         System.out.println("Element class text: " + headerPanel);
@@ -603,11 +613,11 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
   @Test
   public void test34AssertChargeCodeIsDisplayedAndNotAvailableInSelectColumnWindow() throws Throwable {
     try {
-    	 doClick(selectColumn.getUnitCostQuickCalculationButtonColumnsToDisplaySelect());
+//    	 doClick(selectColumn.getUnitCostQuickCalculationButtonColumnsToDisplaySelect());
       assertColumnHeaderIsDisplayed("Charge Code");
-      /*doDropdownSelectUsingOptionText(selectColumn.getUnitCostQuickCalculationDropdownCostModel(),selectColumn.getUnitCostQuickCalculationDropdownCostModelMenuList(),"Marina");
-      waitForAjaxExtJs();*/
-      doClick(selectColumn.getUnitCostQuickCalculationCheckBoxColumnsToDisplayAll());
+      doDropdownSelectUsingOptionText(selectColumn.getUnitCostQuickCalculationDropdownCostModel(),selectColumn.getUnitCostQuickCalculationDropdownCostModelMenuList(),"Marina");
+      waitForAjaxExtJs();
+//      doClick(selectColumn.getUnitCostQuickCalculationCheckBoxColumnsToDisplayAll());
       doClick(selectColumn.getUnitCostQuickCalculationButtonColumnsToDisplaySelect());
       waitForAjaxExtJs();
       assertColumnIsNotDisplayedInSelectBox("Charge Code");
@@ -646,12 +656,12 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
 
   public void assertColumnHeaderSubsetDisplays(String[] columnHeaderSubset) {
     for (String headerNames: columnHeaderSubset) {
-      assertElementIsDisplayed(driver.findElement(By.xpath("//span[@class=\"x-column-header-text\"][text()='" + headerNames + "']")),printout);
+      assertElementIsDisplayed(driver.findElement(By.xpath("//span[@class='x-column-header-text-inner'][text()='" + headerNames + "']")),printout);
     }
   }
 
   public void assertColumnHeaderIsDisplayed(String columnHeader) {
-    assertElementIsDisplayed(driver.findElement(By.xpath("//span[@class=\"x-column-header-text\"][text()='" + columnHeader + "']")),printout);
+    assertElementIsDisplayed(driver.findElement(By.xpath("//span[@class='x-column-header-text-inner'][text()='" + columnHeader + "']")),printout);
   }
 
   public void assertFiveColumnsForEachCostComponent() {
@@ -701,6 +711,7 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
     WebElement element = driver.findElement(By.xpath(columnPath));
     ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
     Thread.sleep(500); 
+//    doJsClick(element);
 	doClick(columnPath);
 	driver.manage().window().maximize();
 	Thread.sleep(2000);
@@ -757,23 +768,33 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
   }
 
   public void compareAvailableColumnToSelectedColumn() {
-    String availableColumnsXpath = "//*[contains(@class,'glAccountsGrid')][1]/descendant::tbody";
+    String availableColumnsXpath = "//*[contains(@class,'glAccountsGrid')][1]/descendant::tbody//tr//td";
     WebElement availableMenu = driver.findElement(By.xpath(availableColumnsXpath));
-    List<WebElement> actualAvailableColumns = availableMenu.findElements(By.tagName("tr"));
+    List<WebElement> actualAvailableColumns = driver.findElements(By.xpath("//*[contains(@class,'glAccountsGrid')][1]/descendant::tbody//tr//td/div"));
     List<String> actualAvailableColumnNames = new ArrayList<>();
-
+    for (WebElement availableColumns: actualAvailableColumns) {
+    	actualAvailableColumnNames.add(availableColumns.getText());
+        /*
+        if (selectedColumns.getText().equals("")) {
+          continue;
+        }
+        */
+      }
     String selectedColumnsXpath = "//label[text()='Selected']/following::*[contains(@class,'glAccountsGrid')][2]/descendant::tbody";
-    WebElement selectedMenu = driver.findElement(By.xpath(selectedColumnsXpath));
-    List<WebElement> actualSelectedColumns = selectedMenu.findElements(By.tagName("tr"));
+//    WebElement selectedMenu = driver.findElement(By.xpath(selectedColumnsXpath));
+    List<WebElement> actualSelectedColumns = driver.findElements(By.xpath("//label[text()='Selected']/following::*[contains(@class,'glAccountsGrid')][2]/descendant::tbody//tr//td/div"));
     List<String> actualSelectedColumnNames = new ArrayList<>();
+    System.out.println(actualSelectedColumns.size());
     for (WebElement selectedColumns: actualSelectedColumns) {
       actualSelectedColumnNames.add(selectedColumns.getText());
+      /*
       if (selectedColumns.getText().equals("")) {
         continue;
       }
+      */
     }
-    actualSelectedColumnNames.remove(0);
-    if (actualAvailableColumnNames.equals(actualSelectedColumnNames)) {
+//  99  actualSelectedColumnNames.remove(0);
+    if ((actualAvailableColumnNames.equals(actualSelectedColumnNames))) {
       System.out.println("The Available and Selected Columns have elements in common.");
       fail();
     } else {
@@ -784,7 +805,7 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
   public List<String> getSelectedColumnList() {
     String selectedColumnsXpath = "//*[contains(@class,'glAccountsGrid')][2]/descendant::tbody";
     WebElement selectedMenu = driver.findElement(By.xpath(selectedColumnsXpath));
-    List<WebElement> actualSelectedColumns = selectedMenu.findElements(By.tagName("tr"));
+    List<WebElement> actualSelectedColumns = driver.findElements(By.xpath("//*[contains(@class,'glAccountsGrid')][2]/descendant::tbody//tr//td/div"));
     List<String> actualSelectedColumnNames = new ArrayList<>();
     for (WebElement selectedColumns: actualSelectedColumns) {
       actualSelectedColumnNames.add(selectedColumns.getText());
@@ -815,8 +836,9 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
   }
 
   public void assertAvailableColumnIsEmpty() {
-    String availableColumnsXpath = "//*[contains(@class,'glAccountsGrid')][1]/descendant::tbody";
+    String availableColumnsXpath = "//*[contains(@class,'glAccountsGrid')][1]/descendant::tbody//div[contains(@class,'x-grid-cell')]";
     //        String availableColumnsXpath = "//*[contains(@class,'glAccountsGrid')][1]/descendant::tbody/tr/th";
+    /*
     WebElement availableMenu = driver.findElement(By.xpath(availableColumnsXpath));
     List<WebElement> actualAvailableColumns = availableMenu.findElements(By.tagName("tr"));
     List<String> actualAvailableColumnNames = new ArrayList<>();
@@ -836,12 +858,22 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
       System.out.println("The Available box in the Select Columns window is not empty.");
       fail();
     }
+    */
+    try {
+		if(!(driver.findElement(By.xpath("//*[contains(@class,'glAccountsGrid')][1]/descendant::tbody//div[contains(@class,'x-grid-cell')]")).isDisplayed())) {
+			 System.out.println("The Available box in the Select Columns window is not empty.");
+		      fail();
+		}
+	} catch (Exception e) {
+		 System.out.println("The Available box in the Select Columns window is empty.");
+
+	}
   }
 
   public void assertAvailableColumnIsNotEmpty() {
-    String availableColumnsXpath = "//*[contains(@class,'glAccountsGrid')][1]/descendant::tbody";
+    String availableColumnsXpath = "//*[contains(@class,'glAccountsGrid')][1]/descendant::tbody//tr//td";
     WebElement availableMenu = driver.findElement(By.xpath(availableColumnsXpath));
-    List<WebElement> actualAvailableColumns = availableMenu.findElements(By.tagName("tr"));
+    List<WebElement> actualAvailableColumns = availableMenu.findElements(By.tagName("div"));
     List<String> actualAvailableColumnNames = new ArrayList<>();
     //Not Empty
     for (WebElement availableColumns: actualAvailableColumns) {
@@ -851,10 +883,10 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
       }
       System.out.println(availableColumns.getText());
     }
-    actualAvailableColumnNames.remove(0);
+//    actualAvailableColumnNames.remove(0);
     System.out.println(actualAvailableColumnNames.size());
 
-    if (actualAvailableColumnNames.size() != 0) {
+    if (actualAvailableColumnNames.size() == 1) {
       System.out.println("The Available box in the Select Columns window is not empty.");
     } else {
       System.out.println("The Available box in the Select Columns window is empty.");
@@ -866,7 +898,7 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
     String columnsToDisplayCheckBox = null;
     try {
       waitForAjaxExtJs();
-      columnsToDisplayCheckBox = driver.findElement(By.xpath("//*[contains(@class,'labelValignMiddle')][contains(@id,'checkboxfield')]")).getAttribute("class");
+      columnsToDisplayCheckBox = driver.findElement(By.xpath("//*[contains(@class,'labelValignMiddle')][contains(@id,'checkbox')]")).getAttribute("class");
     } catch (Throwable e) {
       System.out.println("Element Not Found");
       fail("element not found");
@@ -888,7 +920,7 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
     String columnsToDisplayCheckBox = null;
     try {
       waitForAjaxExtJs();
-      columnsToDisplayCheckBox = driver.findElement(By.xpath("//*[contains(@class,'labelValignMiddle')][contains(@id,'checkboxfield')]")).getAttribute("class");
+      columnsToDisplayCheckBox = driver.findElement(By.xpath("//*[contains(@class,'labelValignMiddle')][contains(@id,'checkbox')]")).getAttribute("class");
     } catch (Throwable e) {
       System.out.println("Element Not Found");
       fail("element not found");
@@ -910,7 +942,7 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
     String columnsToDisplayCheckBox = null;
     try {
       waitForAjaxExtJs();
-      columnsToDisplayCheckBox = driver.findElement(By.xpath("//*[contains(@class,'labelValignMiddle')][contains(@id,'checkboxfield')]")).getAttribute("class");
+      columnsToDisplayCheckBox = driver.findElement(By.xpath("//*[contains(@class,'labelValignMiddle')][contains(@id,'checkbox')]")).getAttribute("class");
     } catch (Throwable e) {
       System.out.println("Element Not Found");
       fail("element not found");
@@ -932,7 +964,7 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
     String columnIsSelected = null;
     try {
       waitForAjaxExtJs();
-      columnIsSelected = driver.findElement(By.xpath("//*[contains(@class,'x-grid-table')]/descendant::*[text()='Charge Code Name']/../..")).getAttribute("class");
+      columnIsSelected = driver.findElement(By.xpath("//*[contains(@class,'x-grid-item')]/descendant::*[text()='Charge Code Name']/../../../..")).getAttribute("class");
     } catch (Throwable e) {
       System.out.println("Element Not Found");
       fail("element not found");
@@ -968,10 +1000,10 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
     }*/
 
   public void assertColumnsToDisplayColumn(String column) {
-    String selectedColumnsXpath = "//label[text()='Selected']/following::*[contains(@class,'glAccountsGrid')][1]/descendant::tbody";
+    String selectedColumnsXpath = "//label[text()='Selected']/following::*[contains(@class,'glAccountsGrid')][2]/descendant::tbody//tr//td";
     //        String selectedColumnsXpath = "//*[contains(@class,'glAccountsGrid')][1]/descendant::tbody";
     WebElement selectedMenu = driver.findElement(By.xpath(selectedColumnsXpath));
-    List<WebElement> actualSelectedColumns = selectedMenu.findElements(By.tagName("tr"));
+    List<WebElement> actualSelectedColumns = selectedMenu.findElements(By.tagName("div"));
     List<String> actualSelectedColumnNames = new ArrayList<>();
 
 //        String columnPath = "//label[text()='Available']/following::*[contains(@class,'glAccountsGrid')]/descendant::*[text()='" + column + "']";

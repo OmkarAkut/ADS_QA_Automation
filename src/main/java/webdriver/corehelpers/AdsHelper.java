@@ -165,7 +165,7 @@ public class AdsHelper extends GetHelper {
 		try {
 			doClick(dialog.getFilterDialogButtonAdd());
 			waitForAjaxExtJs();
-
+			driverDelay(300);
 		} catch (Exception e) {
 
 		}
@@ -198,6 +198,8 @@ public class AdsHelper extends GetHelper {
 		for(WebElement option : menu) {
 			System.out.println("Value"+option.getText());
 			if(option.getText().equals(optionText)) {
+//				Actions act=new Actions(driver);
+//				act.moveToElement(option).click().perform();
 				option.click();
 				break;
 			}
@@ -380,7 +382,7 @@ public class AdsHelper extends GetHelper {
 		//            "//td[contains(@class,'x-grid-cell x-grid-cell-gridcolumn')]/*[text()='" + cellValue + "']"));
 		WebElement element = driver.findElement(By.xpath(
 				"//td[contains(@class,'x-grid-cell x-grid-td x-grid-cell-gridcolumn')]/*[text()='" + cellValue + "']"));
-		act.doubleClick(element).perform();
+		act.doubleClick(element).pause(500).perform();
 
 		waitForSpinnerToEnd();
 		waitForAjaxExtJs();
@@ -404,6 +406,12 @@ public class AdsHelper extends GetHelper {
 		String cellValue = tableGetCellValueFromFirstRow(tableHeading, headerIdDigits, printout);
 		assertEquals(expectedValue, cellValue);
 	}
-
+	public static void keyInDates(String date,WebElement dateField) throws InterruptedException {
+		for(int i=0;i<=9;i++) {
+			dateField.click();
+			dateField.sendKeys(Keys.BACK_SPACE);
+		}
+		dateField.sendKeys(date);
+	}
 }
 

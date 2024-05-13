@@ -68,8 +68,9 @@ public class UtilitiesEncountersWithZeroChargeBalanceReportAds2428 extends Utili
   public void test01SetParametersAndRunReport() throws Throwable {
     try {
       waitForAjaxExtJs();
-      Thread.sleep(1000);
+      driverDelay();
       doClick(dm.getUtilitiesPageEncountersWithZeroChargeBalanceReport());
+      driverDelay();
       runReport(startDate, endDate, codes);
 		ExtentReport.logPass("PASS", "test01SetParametersAndRunReport : PASS");
 

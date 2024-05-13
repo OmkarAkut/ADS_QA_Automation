@@ -31,8 +31,9 @@ public class ValidateHelpLinkHideTabRvuMaintenance extends GoHelper {
 			fail(e.getMessage());
 		}
 	}
+	//ADS-5992 for RVU all steps
 	@Test
-	public void test01ValidateHelpAndHideOptions() throws Throwable {
+	public void test01ValidateHelpAndHideOptions_ADS_5992() throws Throwable {
 		try {
 			costing.getRvuMaintenanceButtonFilter().click();
 			doFilterCreate(filter);
@@ -41,7 +42,7 @@ public class ValidateHelpLinkHideTabRvuMaintenance extends GoHelper {
 			waitForAjaxExtJs();
 			doClick(costing.getRvuMaintenanceButtonMaintainRVUs());
 			assertElementIsDisplayedWithXpath("//*[contains(@onclick,'csrvumfd.htm') and @class='listhelpLnk']");		
-			assertElementIsDisplayedWithXpath("//div[contains(@class,'hidetoppx expand-icon')]//span[text()='Hide']");
+			assertElementIsDisplayedWithXpath("//a[contains(@class,'expand-icon')]//span[text()='Hide']");
 			ExtentReport.logPass("PASS", "test01ValidateHelpAndHideOptions");
 		} catch (Exception|AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01ValidateHelpAndHideOptions", driver, e);
@@ -50,7 +51,7 @@ public class ValidateHelpLinkHideTabRvuMaintenance extends GoHelper {
 		}
 	}
 	@Test
-	public void test02ValidateHideAndShowFunctions() throws Throwable {
+	public void test02ValidateHideAndShowFunctions_ADS_5992() throws Throwable {
 		try {
 			doClick(costing.getRvuHideButton());
 			assertElementIsDisplayed(costing.getRvuShowButton());

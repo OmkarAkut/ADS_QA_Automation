@@ -482,11 +482,13 @@ public class UcqcHelper extends GoHelper {
       System.out.println("For cell update, columnIdDigits: " + columnIdDigits);
     }
     //click in cell and update
-    driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')]["+row+"]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-"+columnIdDigits+"')]")).click();
+//    driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')]["+row+"]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-"+columnIdDigits+"')]")).click();
+    driver.findElement(By.xpath("(//tr[contains(@class,'x-grid-row')]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-"+columnIdDigits+"')])["+row+"]")).click();
+
     waitForAjaxExtJs();
 //	Omkar 28/12/2023 : xpath changes for 11.2
 //    WebElement editCell = driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')]["+row+"]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-"+columnIdDigits+"')]/div/table"));
-    WebElement editCell = driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')]["+row+"]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-"+columnIdDigits+"')]/div"));
+    WebElement editCell = driver.findElement(By.xpath("(//tr[contains(@class,'x-grid-row')]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-"+columnIdDigits+"')]/div)["+row+"]"));
     Actions action = new Actions(driver);
     //Shilpa updated : below lines wont work : 15.09.2022
 //    action.moveToElement(editCell).sendKeys(newValue).perform();
@@ -518,9 +520,12 @@ public class UcqcHelper extends GoHelper {
       System.out.println("For cell update, columnIdDigits: " + columnIdDigits);
     }
     //click in cell and update
-    driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')]["+row+"]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-"+columnIdDigits+"')]")).click();
+//    driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')]["+row+"]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-"+columnIdDigits+"')]")).click();
+    //Shilpa:xpath update for 11.2 24.4.2024
+    driver.findElement(By.xpath("(//tr[contains(@class,'x-grid-row')]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-"+columnIdDigits+"')])["+row+"]")).click();
     waitForAjaxExtJs();
-    WebElement editCell = driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')]["+row+"]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-"+columnIdDigits+"')]/div/table"));
+//    WebElement editCell = driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')]["+row+"]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-"+columnIdDigits+"')]/div/table"));
+    WebElement editCell = driver.findElement(By.xpath("((//tr[contains(@class,'x-grid-row')]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-"+columnIdDigits+"')]/div/table)["+row+"]"));
     Actions action = new Actions(driver);
     action.moveToElement(editCell).sendKeys(newValue).perform();
     Thread.sleep(500);
@@ -794,8 +799,10 @@ public class UcqcHelper extends GoHelper {
 				.getText();
 		System.out.println(row);
 		System.out.println(columnIdDigits);
-		WebElement editCell = driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')][" + row
-				+ "]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-" + columnIdDigits + "')]/div"));
+//		WebElement editCell = driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')][" + row
+//				+ "]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-" + columnIdDigits + "')]/div"));
+		//Shilpa: xpath update on 24.4.2024for 11.2
+		WebElement editCell = driver.findElement(By.xpath("(//tr[contains(@class,'x-grid-row')]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-" + columnIdDigits + "')]/div)["+row+"]"));
 		if (!editCell.getText().equals(value)) {
 			ucqcUpdateGridCellValue(chargeCode, headerName, String.valueOf(value), printout);
 

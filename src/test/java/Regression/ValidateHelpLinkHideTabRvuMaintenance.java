@@ -33,7 +33,7 @@ public class ValidateHelpLinkHideTabRvuMaintenance extends GoHelper {
 	}
 	//ADS-5992 for RVU all steps
 	@Test
-	public void test01ValidateHelpAndHideOptions() throws Throwable {
+	public void test01ValidateHelpAndHideOptions_ADS_5992() throws Throwable {
 		try {
 			costing.getRvuMaintenanceButtonFilter().click();
 			doFilterCreate(filter);
@@ -51,7 +51,7 @@ public class ValidateHelpLinkHideTabRvuMaintenance extends GoHelper {
 		}
 	}
 	@Test
-	public void test02ValidateHideAndShowFunctions() throws Throwable {
+	public void test02ValidateHideAndShowFunctions_ADS_5992() throws Throwable {
 		try {
 			doClick(costing.getRvuHideButton());
 			assertElementIsDisplayed(costing.getRvuShowButton());

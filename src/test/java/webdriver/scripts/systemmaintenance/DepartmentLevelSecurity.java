@@ -47,7 +47,7 @@ public class DepartmentLevelSecurity extends CalculationHelper{
 			}
 		}
 		@Test
-		public void test01DepartmentMasters() throws Throwable {
+		public void test01DepartmentMasters_5791() throws Throwable {
 			try {
 				doClick(CostingMap.getCostDeptMasterFilterButton());
 				doFilterCreate(filter);

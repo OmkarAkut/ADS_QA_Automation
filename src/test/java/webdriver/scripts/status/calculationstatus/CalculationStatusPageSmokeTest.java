@@ -396,7 +396,9 @@ public class CalculationStatusPageSmokeTest extends CalculationHelper {
     try {
 		status.getCalculationStatusPageFormFieldSearch().clear();
 		status.getCalculationStatusPageButtonSearchGlass().click();
-		deleteCalculationStatusMyStatusPageFirstRow();
+		String xpath ="(//*[contains(@id,'calculationstatus') and contains(@id,'header')]/..//span[contains(@class,'x-btn-icon-el x-btn-icon-el-default-small delBtn')])[1]";
+		doClick(xpath);
+		doClick("//a[contains(@class,'x-btn windowbtn')]//span[text()='Delete']");
 		ExtentReport.logPass("PASS", "test19DeleteNewCalculatedRowOnStatusPage");
 
 	} catch(Exception|AssertionError e) {

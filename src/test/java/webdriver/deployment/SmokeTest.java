@@ -5,8 +5,10 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.*;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.AfterClass;
@@ -23,6 +25,8 @@ import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.data.AdsStandardData;
 import webdriver.globalscripts.pagetests.BuildVerificationTestScript;
+import webdriver.globalscripts.pagetests.PageTestHelperStatic;
+import webdriver.helpers.PageTestHelper;
 import webdriver.helpers.UcqcHelper;
 import webdriver.maps.*;
 import webdriver.maps.mapbuilder.BuildMap;
@@ -42,7 +46,8 @@ public class SmokeTest extends UcqcHelper {
 	  WebDriverWait wait = new WebDriverWait(driver, 30);
 	  String expectedReleaseVersion = version;
 	  private static String BackgroundColorCosting= "rgba(0, 86, 26, 1)";
-
+	 
+//	  private static String BackgroundColorDockBarRoles= "rgba(101, 55, 47, 1)";
 	  /** Automates test ticket ADS-6642(test0006LandingPageCosting(): includes only costing bubble validation and color in this)*/
 	 @BeforeClass
 	  public static void setupScript() throws Throwable {
@@ -231,6 +236,9 @@ public class SmokeTest extends UcqcHelper {
 	      }
 	    }
 	  }
+	 
+
+	
 	  @Test
 	  public void test0001LandingPageSystemMaintenance() throws Throwable {
 	    try {
@@ -260,25 +268,26 @@ public class SmokeTest extends UcqcHelper {
 			fail(e.getMessage());
 		}
 	  }
+	 
 
 	  @Test
 	  public void test0002LandingPageDataMaintenance() throws Throwable {
-	    try {
-			WebElement[] landingPageDataMaintenanceElements = {
-			        generalElement.getLandingPageBubbleDataMaintenance(),
-			        generalElement.getLandingPageBubbleDataMaintenanceHeader(),
-			        generalElement.getLandingPageBubbleDataMaintenanceImage(),
-			        generalElement.getLandingPageBubbleDataMaintenanceQuickLinkMaintainData(),
-			        generalElement.getLandingPageBubbleDataMaintenanceQuickLinkLoadData(),
-			        generalElement.getLandingPageBubbleDataMaintenanceQuickLinkUtilities()
-			};
-			assertElementsAreDisplayed(landingPageDataMaintenanceElements,printout);
-			ExtentReport.logPass("PASS", "test0002LandingPageDataMaintenance");
-	    } catch (Exception|AssertionError e) {
-			ExtentReport.logFail("FAIL", "test0002LandingPageDataMaintenance", driver, e);
-			fail(e.getMessage());
-		}
-	  }
+		  try {
+				WebElement[] landingPageDataMaintenanceElements = {
+				        generalElement.getLandingPageBubbleDataMaintenance(),
+				        generalElement.getLandingPageBubbleDataMaintenanceHeader(),
+				        generalElement.getLandingPageBubbleDataMaintenanceImage(),
+				        generalElement.getLandingPageBubbleDataMaintenanceQuickLinkMaintainData(),
+				        generalElement.getLandingPageBubbleDataMaintenanceQuickLinkLoadData(),
+				        generalElement.getLandingPageBubbleDataMaintenanceQuickLinkUtilities()
+				};
+				assertElementsAreDisplayed(landingPageDataMaintenanceElements,printout);
+				ExtentReport.logPass("PASS", "test0002LandingPageDataMaintenance");
+		    } catch (Exception|AssertionError e) {
+				ExtentReport.logFail("FAIL", "test0002LandingPageDataMaintenance", driver, e);
+				fail(e.getMessage());
+			}
+		  }
 
 	  @Test
 	  public void test0003LandingPageBudgeting() throws Throwable {
@@ -297,7 +306,7 @@ public class SmokeTest extends UcqcHelper {
 			fail(e.getMessage());
 		}
 	  }
-
+	
 	  @Test
 	  public void test0004LandingPageEpisodes() throws Throwable {
 	    try {
@@ -337,7 +346,7 @@ public class SmokeTest extends UcqcHelper {
 			fail(e.getMessage());
 		}
 	  }
-
+	
 	  @Test
 	  public void test0006LandingPageCosting() throws Throwable {
 	    try {
@@ -361,48 +370,48 @@ public class SmokeTest extends UcqcHelper {
 			fail(e.getMessage());
 		}
 	  }
-
+	  //ADS-6502[add step 4-11]
 	  @Test
-	  public void test0007LandingPageReporting() throws Throwable {
-	    try {
-	      WebElement[] landingPageReportingElements = {
-	              generalElement.getLandingPageBubbleReporting(),
-	              generalElement.getLandingPageBubbleReportingHeader(),
-	              generalElement.getLandingPageBubbleReportingContent(),
-	              generalElement.getLandingPageBubbleReportingContentText(),
-	              generalElement.getLandingPageBubbleReportingImage(),
-	              generalElement.getLandingPageBubbleReportingQuickLinkReportLibrary(),
-	              generalElement.getLandingPageBubbleReportingQuickLinkWebIntelligence(),
-	              generalElement.getLandingPageBubbleReportingQuickLinkAdHocReportDesign()
-	      };
-	      assertElementsAreDisplayed(landingPageReportingElements,printout);
-	      ExtentReport.logPass("PASS", "test0007LandingPageReporting");
-	    } catch (Exception|AssertionError e) {
-			ExtentReport.logFail("FAIL", "test0007LandingPageReporting", driver, e);
-			fail(e.getMessage());
-		}
-	  }
-
+	  public void test0007LandingPageReporting_ADS_6502() throws Throwable {
+		  try {
+		      WebElement[] landingPageReportingElements = {
+		              generalElement.getLandingPageBubbleReporting(),
+		              generalElement.getLandingPageBubbleReportingHeader(),
+		              generalElement.getLandingPageBubbleReportingContent(),
+		              generalElement.getLandingPageBubbleReportingContentText(),
+		              generalElement.getLandingPageBubbleReportingImage(),
+		              generalElement.getLandingPageBubbleReportingQuickLinkReportLibrary(),
+		              generalElement.getLandingPageBubbleReportingQuickLinkWebIntelligence(),
+		              generalElement.getLandingPageBubbleReportingQuickLinkAdHocReportDesign()
+		      };
+		      assertElementsAreDisplayed(landingPageReportingElements,printout);
+		      ExtentReport.logPass("PASS", "test0007LandingPageReporting");
+		    } catch (Exception|AssertionError e) {
+				ExtentReport.logFail("FAIL", "test0007LandingPageReporting", driver, e);
+				fail(e.getMessage());
+			}
+		  }
+	
 	  @Test
 	  public void test0008LandingPageAnalytics() throws Throwable {
-	    try {
-	      WebElement[] landingPageAnalyticsElements = {
-	              generalElement.getLandingPageBubbleAnalytics(),
-	              generalElement.getLandingPageBubbleAnalyticsHeader(),
-	              generalElement.getLandingPageBubbleAnalyticsContent(),
-	              generalElement.getLandingPageBubbleAnalyticsContentText(),
-	              generalElement.getLandingPageBubbleAnalyticsImage(),
-	              generalElement.getLandingPageBubbleAnalyticsQuickLinkExecutiveDashboard(),
-	              generalElement.getLandingPageBubbleAnayticsQuickLinkAnalyticDashobaords()
-	      };
-	      assertElementsAreDisplayed(landingPageAnalyticsElements,printout);
-	      ExtentReport.logPass("PASS", "test0008LandingPageAnalytics");
+		  try {
+		      WebElement[] landingPageAnalyticsElements = {
+		              generalElement.getLandingPageBubbleAnalytics(),
+		              generalElement.getLandingPageBubbleAnalyticsHeader(),
+		              generalElement.getLandingPageBubbleAnalyticsContent(),
+		              generalElement.getLandingPageBubbleAnalyticsContentText(),
+		              generalElement.getLandingPageBubbleAnalyticsImage(),
+		              generalElement.getLandingPageBubbleAnalyticsQuickLinkExecutiveDashboard(),
+		              generalElement.getLandingPageBubbleAnayticsQuickLinkAnalyticDashobaords()
+		      };
+		      assertElementsAreDisplayed(landingPageAnalyticsElements,printout);
+		      ExtentReport.logPass("PASS", "test0008LandingPageAnalytics");
 
-	    } catch (Exception|AssertionError e) {
-			ExtentReport.logFail("FAIL", "test0008LandingPageAnalytics", driver, e);
-			fail(e.getMessage());
-		}
-	  }
+		    } catch (Exception|AssertionError e) {
+				ExtentReport.logFail("FAIL", "test0008LandingPageAnalytics", driver, e);
+				fail(e.getMessage());
+			}
+		  }
 
 	  @Test
 	  public void test0009aGlobalHeader() throws Throwable {
@@ -421,7 +430,7 @@ public class SmokeTest extends UcqcHelper {
 			fail(e.getMessage());
 		}
 	  }
-
+	 
 	 
 	  @AfterClass
 	  public static void teardown() {

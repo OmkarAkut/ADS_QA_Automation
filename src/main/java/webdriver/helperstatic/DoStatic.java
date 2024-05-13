@@ -13,11 +13,13 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 import com.aventstack.extentreports.Status;
 
 import ExtentReport.ExtentReport;
+import webdriver.helpers.ContractModelsHelper;
 import webdriver.maps.DataMaintenanceMap;
 import webdriver.maps.ModelLibraryMap;
 import webdriver.maps.mapbuilder.BuildMap;
@@ -228,7 +230,16 @@ public class DoStatic extends GetStatic {
 			List<WebElement> menu = elementList.findElements(By.tagName("li"));
 			for(WebElement option : menu) {
 			    if(option.getText().equals(optionText)) {
-			        option.click();
+			    System.out.println(option.getText());
+			    System.out.println(optionText);
+			    	ContractModelsHelper.doactionClick(option);
+			    	((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);",
+							option);
+			    	JavascriptExecutor executor = (JavascriptExecutor)driver;
+					executor.executeScript("arguments[0].click();", option);
+//			    Actions act=new Actions(driver);
+//			    		act.moveToElement(option).sendKeys(Keys.ENTER).perform();
+//			        option.sendKeys(Keys.ENTER);
 			        break;
 			    }
 			}

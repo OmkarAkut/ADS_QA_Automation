@@ -42,9 +42,9 @@ public class UcqcApplySelectionsButtonActiveAndColumnHeadersDisplayAds1136 exten
 		fail(e.getMessage());
 	} 
   }
-
+//ADS-5926 all steps
   @Test
-  public void test01UcqcPageUndoCostModelApplySelectionsButtonDisabled() throws Throwable {
+  public void test01UcqcPageUndoCostModelApplySelectionsButtonDisabled_5926() throws Throwable {
     try {
 		try {
 		  waitForAjaxExtJs();
@@ -70,7 +70,7 @@ public class UcqcApplySelectionsButtonActiveAndColumnHeadersDisplayAds1136 exten
   }
 
   @Test
-  public void test02UcqcPageUndoCostModelScenarioApplySelectionsButtonDisabled() throws Throwable {
+  public void test02UcqcPageUndoCostModelScenarioApplySelectionsButtonDisabled_5926() throws Throwable {
     try {
       ucqcPopulateRequiredFieldsToDisplayGrid(requiredFields);
       assertElementIsEnabled(ucqcMap.getUnitCostQuickCalculationButtonApplySelections(),printout);
@@ -85,7 +85,7 @@ public class UcqcApplySelectionsButtonActiveAndColumnHeadersDisplayAds1136 exten
   }
 
   @Test
-  public void test03UcqcPageUndoEntityFieldApplySelectionsButtonDisabled() throws Throwable {
+  public void test03UcqcPageUndoEntityFieldApplySelectionsButtonDisabled_5926() throws Throwable {
     try {
       ucqcPopulateRequiredFieldsToDisplayGrid(requiredFields);
       assertElementIsEnabled(ucqcMap.getUnitCostQuickCalculationButtonApplySelections(),printout);
@@ -99,12 +99,14 @@ public class UcqcApplySelectionsButtonActiveAndColumnHeadersDisplayAds1136 exten
   }
 
   @Test
-  public void test04UcqcPageUndoDepartmentFieldApplySelectionsButtonDisabled() throws Throwable {
+  public void test04UcqcPageUndoDepartmentFieldApplySelectionsButtonDisabled_5926() throws Throwable {
     try {
       ucqcPopulateRequiredFieldsToDisplayGrid(requiredFields);
       assertElementIsEnabled(ucqcMap.getUnitCostQuickCalculationButtonApplySelections(),printout);
       selectDepartment("<None>");
-      assertElementIsDisabled(ucqcMap.getUnitCostQuickCalculationButtonApplySelections(),printout);
+//      assertThElementIsDisabled(ucqcMap.getUnitCostQuickCalculationButtonApplySelections(),printout);
+//Shilpa xpath update for 11.2 on 25.4.2024
+      assertTheElementIsDisabled(driver.findElement(By.xpath("//*[contains(text(),'Apply Selections')]/../../..")), printout);
       ExtentReport.logPass("PASS", "test04UcqcPageUndoDepartmentFieldApplySelectionsButtonDisabled");
     } catch (Exception|AssertionError e) {
     	ExtentReport.logFail("FAIL","test04UcqcPageUndoDepartmentFieldApplySelectionsButtonDisabled", driver,e);
@@ -113,7 +115,7 @@ public class UcqcApplySelectionsButtonActiveAndColumnHeadersDisplayAds1136 exten
   }
 
   @Test
-  public void test05UcqcPageUndoResultsStoredForFieldApplySelectionsButtonDisabled() throws Throwable {
+  public void test05UcqcPageUndoResultsStoredForFieldApplySelectionsButtonDisabled_5926() throws Throwable {
     try {
       ucqcPopulateRequiredFieldsToDisplayGrid(requiredFields);
       assertElementIsEnabled(ucqcMap.getUnitCostQuickCalculationButtonApplySelections(),printout);
@@ -127,7 +129,7 @@ public class UcqcApplySelectionsButtonActiveAndColumnHeadersDisplayAds1136 exten
   }
 
   @Test
-  public void test06UcqcPagePopulateRequiredFieldsAndClickApplySelectionsButtonToDisplayGrid() throws Throwable {
+  public void test06UcqcPagePopulateRequiredFieldsAndClickApplySelectionsButtonToDisplayGrid_5926() throws Throwable {
     try {
       ucqcPopulateRequiredFieldsToDisplayGrid(requiredFields);
       assertElementIsEnabled(ucqcMap.getUnitCostQuickCalculationButtonApplySelections(),printout);

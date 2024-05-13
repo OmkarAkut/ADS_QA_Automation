@@ -52,8 +52,9 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 			fail(e.getMessage());
 		}
 	}
+	//ADS-5660
 	@Test
-	public void test01OpenFlexibleReports() throws Throwable {
+	public void test01OpenFlexibleReports_5660() throws Throwable {
 		try {
 			doClick(reportMap.getReportLibraryPageFormFieldSearch());
 			Thread.sleep(2000);
@@ -70,7 +71,7 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 		}
 	}
 	@Test
-	public void test02GoToSelectionsTab() throws Throwable {
+	public void test02GoToSelectionsTab_5660() throws Throwable {
 		try {
 			doClick(reportMap.reportSelectionTab());
 			doClick(reportMap.reportSelectionDate());
@@ -91,7 +92,7 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 
 	}
 	@Test
-	public void test03GoToDetailsTab() throws Throwable {
+	public void test03GoToDetailsTab_5660() throws Throwable {
 		try {
 			doClick(reportMap.reportDetailsButton());
 
@@ -111,7 +112,7 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 	}
 
 	@Test
-	public void test04GoToSortsTab() throws Throwable {
+	public void test04GoToSortsTab_5660() throws Throwable {
 		try {
 			doClick(reportMap.reportSortTab());
 			doClick(reportMap.reportCareDeliveryFacility());
@@ -129,7 +130,7 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 		}
 	}
 	@Test
-	public void test05GoToSelectionsTab() throws Throwable {
+	public void test05GoToSelectionsTab_5660() throws Throwable {
 		try {
 			doClick(reportMap.reportAdditionalSelectionTab());
 			driverDelay(300);
@@ -147,7 +148,7 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 		}
 	}
 	@Test
-	public void test06SaveReportAndAssertStatus() throws Throwable {
+	public void test06SaveReportAndAssertStatus_5660() throws Throwable {
 		try {
 			doClick(reportMap.reportLibraryPageEntityRunButton());
 			waitForElementToBeVisible(reportMap.reportLibraryPageEntityRefreshButton());
@@ -159,12 +160,50 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 			String[] staNum=status.replaceAll("Step ", "").split("/");
 			int numerator=Integer.parseInt(staNum[0]);
 			int denominator=Integer.parseInt(staNum[1]);
-			String reportStatus=driver.findElement(By.xpath("//span[text()='" + orgName + "']//following::td[5]/div/a")).getText();
+//			String reportStatus=driver.findElement(By.xpath("//span[text()='" + orgName + "']//following::td[5]/div/a")).getText();
+			//Shilpa update code on 24.4.2024
+			System.out.println(denominator);
+			for (int i = 0; i < denominator; i++) {
+				doClick(reportMap.reportLibraryPageEntityRefreshButton());
+				driverDelay(3000);
+				if (i == denominator) {
+					System.out.println("Status is not updated to COMPLETED");
+					fail();
+					break;
+				}
+				try {
+					if (driver.findElement(By.xpath("(//div[@class='GJT013UBLJB']//tbody//td/div)[7]/a")).getText()
+							.equals("COMPLETED")) {
+						assertElementTextWithXpath("(//div[@class='GJT013UBLJB']//tbody//td/div)[7]/a", "COMPLETED",
+								printout);
+						ExtentReport.logPass("PASS", "test02OpenCostingReport");
+						break;
 
+					}
+					//iF STATUS IS FAILED EXIT
+					if (driver.findElement(By.xpath("(//div[@class='GJT013UBLJB']//tbody//td/div)[7]/a")).getText()
+							.contains("FAILED")) {
+						fail();
+//						ExtentReport.logFail("FAIL", "test02OpenCostingReport", driver, e1);
+					}
+				} catch (Exception e1) {
+					if (driver.findElement(By.xpath("(//div[@class='GJT013UBH']//tbody//td/div)[7]")).isDisplayed()) {
+						System.out.println(i);
+						doClick(reportMap.reportLibraryPageEntityRefreshButton());
+						driverDelay(3000);						
+						continue;
+					}
+					
+
+				}
+				
+			}
+			/* Shilpa commented below lines, not required on 24.4.2024
 			for (int i = 0; i <= denominator; i++) {
 				try {
-					Thread.sleep(2000);
+					
 					doClick(reportMap.reportLibraryPageEntityRefreshButton());
+					Thread.sleep(2000);
 					waitForPresenceOfElement(("//span[text()='" + orgName + "']"));
 					String[] staNumber=status.replaceAll("Step ", "").split("/");
 					int numeratorNum=Integer.parseInt(staNumber[0]);
@@ -212,7 +251,7 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 				}
 				
 //				ExtentReport.logPass("PASS", "test06SaveReportAndAssertStatus");
-			}	
+			}	*/
 			ExtentReport.logPass("PASS", "test06SaveReportAndAssertStatus");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test06SaveReportAndAssertStatus", driver, e);
@@ -221,7 +260,7 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 	}
 
 	@Test
-	public void test07OpenCompletedReportAndVerifyReportNames() throws Throwable {
+	public void test07OpenCompletedReportAndVerifyReportNames_5660() throws Throwable {
 		try {
 			driver.findElement(By.xpath("(//span[text()='" + orgName + "']//following::td[5]/div)")).click();
 			driverDelay(1500);

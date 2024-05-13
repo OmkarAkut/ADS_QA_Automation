@@ -63,7 +63,7 @@ public class EditCostModelCalculationScenarios extends CalculationHelper {
 	}
 //ADS-6645
 	@Test
-	public void test02EditCostModelCalculationScenario() throws Throwable {
+	public void test02EditCostModelCalculationScenario_6645() throws Throwable {
 		try {
 			doClick(costing.getCostModelScenarioCalculationButtonEdit());
 			waitForMainPageTitle("Cost Model Calculation Scenario");
@@ -79,7 +79,7 @@ public class EditCostModelCalculationScenarios extends CalculationHelper {
 	}
 //ADS-6662
 	@Test
-	public void test03SaveCostCalculationScenario() throws Throwable {
+	public void test03SaveCostCalculationScenario_6662() throws Throwable {
 		try {
 			doClick(ContractingMap.getContractFeeForServicePaymentSave());
 			waitForDisplayedSpinnerToEnd();
@@ -105,7 +105,7 @@ public class EditCostModelCalculationScenarios extends CalculationHelper {
 	}
 	//ADS-6645
 	@Test
-	public void test04CancelCostModelCalculationScenario() throws Throwable {
+	public void test04CancelCostModelCalculationScenario_6645() throws Throwable {
 		try {
 			waitForDisplayedSpinnerToEnd();
 			test01OpenCostCalculationScenario();
@@ -119,7 +119,7 @@ public class EditCostModelCalculationScenarios extends CalculationHelper {
 	}
 //ADS-6663
 	@Test
-	public void test05CalculateCostCalcultionScenario() throws Throwable {
+	public void test05CalculateCostCalcultionScenario_6663() throws Throwable {
 		try {
 			doClick(costing.getCostModelScenarioCalculationButtonCalculate());
 			waitForFirstRowCalculationBarToReach100Percent();
@@ -139,7 +139,7 @@ public class EditCostModelCalculationScenarios extends CalculationHelper {
 	}
 	//ADS-6664
 	@Test
-	public void test06ResultsForCostCalculationScenarios() throws Throwable {
+	public void test06ResultsForCostCalculationScenarios_6664() throws Throwable {
 		try {
 			doClick(costing.getCostModelScenarioCalculationButtonClearFilter());
 			waitForDisplayedSpinnerToEnd();

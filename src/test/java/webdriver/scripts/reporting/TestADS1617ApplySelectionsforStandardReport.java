@@ -40,9 +40,9 @@ public class TestADS1617ApplySelectionsforStandardReport extends GoHelper {
 			fail(e.getMessage());
 		}
 	}
-
+//ADS-5657
 	@Test
-	public void test01SearchReport() throws Throwable {
+	public void test01SearchReport_ADS_5657() throws Throwable {
 		try {
 			doClick(reportMap.getReportLibraryPageFormFieldSearch());
 			doClick("//div[contains(text(),'" + directory
@@ -57,7 +57,7 @@ public class TestADS1617ApplySelectionsforStandardReport extends GoHelper {
 	}
 
 	@Test
-	public void test02OpenContractAndARManagementReport() throws Throwable {
+	public void test02OpenContractAndARManagementReport_ADS_5657() throws Throwable {
 		try {
 			doClick("//*[text()='" + reportName + "']");
 			assertElementIsDisplayedWithXpath("//div[text()='" + reportName + "']");
@@ -69,9 +69,10 @@ public class TestADS1617ApplySelectionsforStandardReport extends GoHelper {
 	}
 
 	@Test
-	public void test03assertContractNamesPopUp() throws Throwable {
+	public void test03assertContractNamesPopUp_ADS_5657() throws Throwable {
 		try {
 			doClick(reportMap.reportContractNameLink());
+			driverDelay();
 			waitForElementToBeVisible(reportMap.reportContractNamePopUp());
 			assertElementIsDisplayed(reportMap.reportContractNamePopUp());
 			String contractName = reportMap.reportContractNameLink().getText();
@@ -86,7 +87,7 @@ public class TestADS1617ApplySelectionsforStandardReport extends GoHelper {
 	}
 
 	@Test
-	public void test04assertCareDeliveryFacilitiesPopUp() throws Throwable {
+	public void test04assertCareDeliveryFacilitiesPopUp_ADS_5657() throws Throwable {
 		try {
 			doClick("//div[text()='Care Delivery Facilities']//following::a[1]/u");
 			waitForElementToBeVisible(reportMap.reportCareDeliveryFacilitiesPopUp());

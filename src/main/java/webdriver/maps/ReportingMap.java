@@ -218,6 +218,44 @@ public class ReportingMap extends MapConfig {
     @FindBy(xpath = "//div[text()='Organization Name']//following::input[1]")
     private WebElement reportOrganisationName;
     public WebElement reportOrganisationName() {return reportOrganisationName;}
+    
+    //Shilpa added xpath for 11.2 on 30.4.2024 as per updated test case
+    @FindBy(xpath = "//span[@id='Folders-title-inner']['Folders']")
+    private WebElement reportFolders;
+    public WebElement reportFolders() {return reportFolders;}
+    
+    @FindBy(xpath = "//div[@class='sapMLIBContent'] [text()='Public Folders']")
+    private WebElement publicFolders;
+    public WebElement publicFolders() {return publicFolders;}
+    
+    @FindBy(xpath = "//span[@title='Web Intelligence Samples']['Web Intelligence Samples']")
+    private WebElement webSample;
+    public WebElement webSample() {return webSample;}
+    
+    @FindBy(xpath = "//span[@title='Charting Samples']['Charting Samples']")
+    private WebElement webchartSample;
+    public WebElement webchartSample() {return webchartSample;}
+    
+    @FindBy(xpath = "//div[@class='sapMTabStripItemLabel'][text()='Report 2']")
+    private WebElement reportTab2;
+    public WebElement reportTab2() {return reportTab2;}
+    
+    @FindBy(xpath = "//div[@class='sapMTabStripItemLabel'][text()='Report 3']")
+    private WebElement reportTab3;
+    public WebElement reportTab3() {return reportTab3;}
+    
+    @FindBy(xpath = "//div[@class='sapMTabStripItemLabel'][text()='Report 4']")
+    private WebElement reportTab4;
+    public WebElement reportTab4() {return reportTab4;}
+    
+    @FindBy(xpath = "//div[@class='sapMTabStripItemLabel'][text()='Report 5']")
+    private WebElement reportTab5;
+    public WebElement reportTab5() {return reportTab5;}
+    
+    @FindBy(xpath = "(//div[@class='cvom-viewer'])[1]")
+    private WebElement reportChart;
+    public WebElement reportChart() {return reportChart;}
+
 
     // ===== End Report Library Page ===== //
 

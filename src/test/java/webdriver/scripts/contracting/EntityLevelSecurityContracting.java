@@ -42,8 +42,9 @@ public class EntityLevelSecurityContracting extends GoHelper{
 			fail(e.getMessage());
 		}
 	}
+	//ADS-5794
 	@Test
-	public void test01VerifyAddProviderCancelOption() throws Throwable {
+	public void test01VerifyAddProviderCancelOption_5794() throws Throwable {
 		try {
 			doClick(modelMap.getNewContractModelButton());
 			waitForElementToBeVisible(ContractingMap.getNewContractModelPopUp());
@@ -61,7 +62,7 @@ public class EntityLevelSecurityContracting extends GoHelper{
 		}
 }
 	@Test
-	public void test02VerifyDefinitionElementsforContractModel() throws Throwable {
+	public void test02VerifyDefinitionElementsforContractModel_5794() throws Throwable {
 		try {
 			doSearchForContractModel(contractModel);
 			tableDoubleClickCellFirstColumn(contractModel);
@@ -87,7 +88,7 @@ public class EntityLevelSecurityContracting extends GoHelper{
 		}
 	}
 	@Test
-	public void test03VeryThereisOneEntityUnderSelectedColumn() throws Throwable{
+	public void test03VeryThereisOneEntityUnderSelectedColumn_5794() throws Throwable{
 			try {
 //				Omkar 29/5/2023 : xpath changes for 11.2
 //				doClick("//button/span[text()='Add Providers']");

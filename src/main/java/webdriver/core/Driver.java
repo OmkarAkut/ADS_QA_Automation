@@ -21,6 +21,8 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 /** Saves properties from file as variables for test framework */
 public class Driver {
 
@@ -62,7 +64,7 @@ public class Driver {
     System.out.println("Printout: " + printout);
     System.out.println("Downloads: " + downloads);
     System.out.println("Version: " + version);
-    setBrowserDriver(browser);
+//    setBrowserDriver(browser);
     driver = setDriver(browser);
     System.out.println("Screen Resolution: " + driver.manage().window().getSize());
     timerStart = setupStartTimer();
@@ -90,8 +92,9 @@ public class Driver {
       System.out.println("WARNING: Logout was not successful");
     } finally {
       System.out.println("Closing Driver");
+//      driver = null;
       driver.quit();
-      driver = null;
+     
     }
   }
 
@@ -177,7 +180,7 @@ public class Driver {
     browser = browser.toLowerCase();
     if (System.getProperty("os.name").toLowerCase().contains("windows")) {
       if (browser.equals("chrome") || browser.contains("headless")) {
-    	  
+    	  WebDriverManager.chromedriver().setup();
         System.setProperty("webdriver.chrome.driver", drivers + chromeDriver + ".exe");
         System.setProperty("webdriver.chrome.silentOutput", "true"); //chromedriver logging to console
       } else if (browser.equals("ie")) {
@@ -185,14 +188,16 @@ public class Driver {
       } else if (browser.equals("firefox")) {
         System.setProperty("webdriver.firefox.driver", drivers + geckoDriver + ".exe");
       }
-    //Shilpa added below line for 11.2 on 12.12.2023
+    //Shilpa added below line for 11.2 on 12.02.2024
       else if (browser.equals("edge")) {
+    	  WebDriverManager.edgedriver().setup();
           System.setProperty("webdriver.edge.driver", drivers + edgeDriver + ".exe");
         } else {
         fail("ERROR: Driver object not set.");
       }
     } else {
       if (browser.equals("chrome") || browser.contains("headless")) {
+    	  WebDriverManager.chromedriver().setup();
     	 System.out.println(drivers + " " + chromeDriver);
         System.setProperty("webdriver.chrome.driver", drivers + chromeDriver);
         System.setProperty("webdriver.chrome.silentOutput", "true"); //chromedriver logging to console
@@ -201,8 +206,9 @@ public class Driver {
       } else if (browser.equals("firefox")) {
         System.setProperty("webdriver.firefox.driver", drivers + geckoDriver);
       }
-    //Shilpa added below line for 11.2 on 12.12.2023
+    //Shilpa added below line for 11.2 on 12.02.2023
       else if (browser.equals("edge")) {
+    	  WebDriverManager.edgedriver().setup();
           System.setProperty("webdriver.edge.driver", drivers + edgeDriver);
         }else {
         fail("ERROR: Browser driver not set.");
@@ -215,10 +221,12 @@ public class Driver {
 		browser = browser.toLowerCase();
 		if (browser.contains("headless")) {
 		  System.out.println("Chrome is running in headless mode");
+		  WebDriverManager.chromedriver().setup();
 		  ChromeOptions options = new ChromeOptions();
 		  options.addArguments("--window-size=1920,1080", "--ignore-certificate-errors", "--headless");
 		  driver = new ChromeDriver(options);
 		} else if (browser.equals("chrome")) {
+			 WebDriverManager.chromedriver().setup();
 		  ChromeOptions options = new ChromeOptions();
 		  options.addArguments("--ignore-certificate-errors", "start-maximized");
 		  options.addArguments("--remote-allow-origins=*");
@@ -234,7 +242,7 @@ public class Driver {
 		} 
 		//Shilpa added below line for 11.2 on 12.12.2023
 		else if (browser.equals("edge")) {
-			  
+			 WebDriverManager.edgedriver().setup();
 			  EdgeOptions options =new EdgeOptions();
 			  options.addArguments("--remote-allow-origins=*");
 			  options.addArguments("--ignore-certificate-errors", "start-maximized");
@@ -315,7 +323,9 @@ public class Driver {
 
     }
     else if(testEnvironment.equals("qastage")) {
-    	dbUrl = "jdbc:oracle:thin:@10.204.20.120:1522:qadb01"; //"jdbc:oracle:thin:@192.168.210.100:1540:qav8";
+//    	dbUrl = "jdbc:oracle:thin:@10.204.20.120:1522:qadb01"; //"jdbc:oracle:thin:@192.168.210.100:1540:qav8";
+    //Shilpa update dburl for 11.2 on 30.4.2024
+    	dbUrl = "jdbc:oracle:thin:@10.204.20.101:1529:qareborn";
     	System.out.println(dbUrl);
 
     }

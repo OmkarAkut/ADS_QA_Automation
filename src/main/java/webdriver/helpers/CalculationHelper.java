@@ -17,6 +17,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import webdriver.corehelpers.GoHelper;
+import webdriver.maps.ContractingMap;
 import webdriver.maps.CostingMap;
 import webdriver.maps.DataMaintenanceMap;
 import webdriver.maps.EditContractingModelMap;
@@ -373,12 +374,12 @@ public class CalculationHelper extends GoHelper {
 	}
 
 	public void confirmCalculationStatusViewLogContains(String expectedViewLog) {
-		String viewLog = driver.findElement(By.xpath("//span[text()='View Log:']/../following::div[1]")).getText();
+		String viewLog = driver.findElement(By.xpath("//span[text()='View Log:']/../following::div[1]/div")).getText();
 		System.out.println("View Log: " + viewLog);
 		assertThat(viewLog, containsString(expectedViewLog));
 	}
 
-	public void deleteMyCalculationStatusFirstRow() throws InterruptedException {
+	public void deleteMyCalculationStatusFirstRow() throws Throwable {
 //		String xpath = "//table/tbody/tr[2]/td[21]/div/div/em/button/span[2]";
 		//shilpa updated xpath for 11.2 on 11.23.2023
 		String xpath = "(//div[contains(@id,'calculationstatus')])//following::div[@class='x-grid-item-container']//table[1]/tbody/tr/td[18]";
@@ -386,15 +387,20 @@ public class CalculationHelper extends GoHelper {
 		deleteFirstRow(xpath);
 	}
 
-	public void deleteFirstRow(String xpath) throws InterruptedException {
+	public void deleteFirstRow(String xpath) throws Throwable {
 		waitForSpinnerToEnd();
 		waitForAjaxExtJs();
 		waitForPresenceOfElement(xpath);
 		//Thread.sleep(1000);
+		
 		WebElement firstRowDeleteIcon = driver.findElement(By.xpath(xpath));
 		firstRowDeleteIcon.click();
 		waitForAjaxExtJs();
-//		Omkar 18/8/2023 : xpath changes for 11.2
+		assertElementIsDisplayed(ContractingMap.getWarningPopUpDeleteButton(), printout);
+		assertElementIsDisplayed(driver.findElement(By.xpath("//div[contains(@id,'warningwindow')]//span[text()='Delete']")));
+		assertElementIsDisplayed(driver.findElement(By.xpath("//div[contains(@id,'warningwindow')]//span[text()='Cancel']")));
+
+		//		Omkar 18/8/2023 : xpath changes for 11.2
 //		driver.findElement(By.xpath("//div[contains(@class, 'windowbtn')]/descendant::button/span[text()='Delete']")).click();
 		driver.findElement(By.xpath("//div[contains(@id,'warningwindow')]//span[text()='Delete']")).click();
 		waitForSpinnerToEnd();
@@ -415,7 +421,7 @@ public class CalculationHelper extends GoHelper {
 		waitForAjaxExtJs();
 	}
 
-	public void deleteCalculationStatusMyStatusPageFirstRow() throws InterruptedException {
+	public void deleteCalculationStatusMyStatusPageFirstRow() throws Throwable {
 //		Omkar 18/8/2023 : xpath changes for 11.2
 //		String xpath = "//div[2]/div/div[4]/div/table/tbody/tr[2]/td[21]/descendant::button";  //"//div[2]/div/div[4]/div/table/tbody/tr[2]/td[21]/descendant::button"
 		String xpath ="(//*[contains(@id,'calculationstatus') and contains(@id,'header')]/..//span[contains(@class,'x-btn-icon-el x-btn-icon-el-default-small delBtn')])[1]";
@@ -559,24 +565,28 @@ public class CalculationHelper extends GoHelper {
 
 	//Check the records processed under View dialog
 	public static void checkForRecordsProcessed(String text) throws Exception {
-	int value=Integer.parseInt(modelMap.getpagination().getText().replaceAll("[^0-9]", ""));
-	for(int i=1;i<=value;i++) {
-		try {
-			ContractModelsHelper.scrollToView("//*[contains(text(),'"+text+"')]");
-			if(driver.findElement(By.xpath("//*[contains(text(),'"+text+"')]")).isDisplayed()) {
-				assertTrue(printout);
-			}
-			
-		} catch (NoSuchElementException e) {
+	try {
+		int value=Integer.parseInt(modelMap.getpagination().getText().replaceAll("[^0-9]", ""));
+		for(int i=1;i<=value;i++) {
 			try {
 				ContractModelsHelper.scrollToView("//*[contains(text(),'"+text+"')]");
-			} catch (Exception e1) {
-				ModelLibraryMap.getGoToNextPage().click();
-				Thread.sleep(1000);
-				continue;
+				if(driver.findElement(By.xpath("//*[contains(text(),'"+text+"')]")).isDisplayed()) {
+					assertTrue(printout);
+				}
+				
+			} catch (Exception  e) {
+				try {
+					ContractModelsHelper.scrollToView("//*[contains(text(),'"+text+"')]");
+				} catch (Exception e1) {
+					ModelLibraryMap.getGoToNextPage().click();
+					Thread.sleep(1000);
+					continue;
+				}
+				
 			}
-			
 		}
+	}catch (Exception e) {
+		ContractModelsHelper.scrollToView("//*[contains(text(),'"+text+"')]");
 	}
 	}
 	//number of checks is 10 - total run time can be controlled by setting refresh interval - longer interval, longer run time

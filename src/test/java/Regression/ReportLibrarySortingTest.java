@@ -40,7 +40,7 @@ public class ReportLibrarySortingTest extends GoHelper {
 	}
 //ADS-5662
 	@Test
-	public void test01TemplatesSortByColumnDescending() throws Throwable {
+	public void test01TemplatesSortByColumnDescending_5662() throws Throwable {
 		try {
 			doClick("//div[contains(text(),'" + directory1 + "')]");
 			assertElementIsDisplayedWithXpath("//div[contains(text(),'" + directory1
@@ -55,7 +55,7 @@ public class ReportLibrarySortingTest extends GoHelper {
 	}
 
 	@Test
-	public void test02TemplatesSortByColumnAscending() throws Throwable {
+	public void test02TemplatesSortByColumnAscending_5662() throws Throwable {
 		try {
 			doClick(reportMap.reportColumnName());
 			ContractModelsHelper.sortTableGridAscending(reportMap.reportTableElementList());
@@ -67,7 +67,7 @@ public class ReportLibrarySortingTest extends GoHelper {
 	}
 
 	@Test
-	public void test03ReportsSortByColumnDescending() throws Throwable {
+	public void test03ReportsSortByColumnDescending_5662() throws Throwable {
 		try {
 			doClick("//div[contains(text(),'" + directory2 + "')]");
 			assertElementIsDisplayedWithXpath("//div[contains(text(),'" + directory2
@@ -82,7 +82,7 @@ public class ReportLibrarySortingTest extends GoHelper {
 	}
 
 	@Test
-	public void test04ReportsSortByColumnAscending() throws Throwable {
+	public void test04ReportsSortByColumnAscending_5662() throws Throwable {
 		try {
 			doClick(reportMap.reportColumnName());
 			ContractModelsHelper.sortTableGridAscending(reportMap.reportTableElementList());
@@ -96,7 +96,8 @@ public class ReportLibrarySortingTest extends GoHelper {
 	@AfterClass
 	public static void endtest() throws Exception {
 		driver.switchTo().parentFrame();
-		doClick("//*[contains(@id,'tabbar')]//a[@title='Close Report Library']");
+		doClosePageOnLowerBar("Report Library");
+//		doClick("//*[contains(@id,'tabbar')]//a[@title='Close Report Library']");
 		ExtentReport.report.flush();
 
 	}

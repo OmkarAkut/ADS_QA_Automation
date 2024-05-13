@@ -31,7 +31,7 @@ public class CreateDeleteCostMethodDeptMasterDischargeStatus extends Calculation
 	static String deptCode = currentDateCode.replaceAll("\\W", "");
 	static String costModel = "Model " + currentDateTime;
 	static String costDeptModel = "Model " + currentDateTime;
-	static String costComponentMaster="Actual CCM";
+	static String costComponentMaster="ASESC-1832 Hospital CCM";
 	static CostingMap costing;
 	static String encounterName="Model"+currentDateTime;
 	static String encounterShortName="Test";
@@ -40,7 +40,7 @@ public class CreateDeleteCostMethodDeptMasterDischargeStatus extends Calculation
 	static String encounterNameAfterEdit;
 	static String encounterShortNameAfterEdit;
 	static String dischargeStatusName="Status"+currentDateTime;
-	static int dischargeCode=javaGetRandomNumber(56,printout);
+	static int dischargeCode=javaGetRandomNumber(121,printout);
 	static String[] filter= {"Name of the Cost Method Master","Is","Equal To",costModel};
 	static String[] filterDeptMaster= {"Name","Is","Equal To",costModel};
 	static String[] filterDichargeStatus= {"Name","Is","Equal To",dischargeStatusName};
@@ -98,8 +98,9 @@ public class CreateDeleteCostMethodDeptMasterDischargeStatus extends Calculation
 			fail(e.getMessage());
 		}
 	}
+	//ADS-6656
 	@Test
-	public void test03CreateDepartmentMaster() throws Throwable {
+	public void test03CreateDepartmentMaster_ADS_6656() throws Throwable {
 		try {
 			doClick(CostingMap.getCostDeptMasterNewButton());
 			ContractModelsHelper.keyInValues(ContractingMap.getMedicareCode(), deptCode);
@@ -131,8 +132,9 @@ public class CreateDeleteCostMethodDeptMasterDischargeStatus extends Calculation
 			fail(e.getMessage());
 		}
 	}
+	//ADS-6657
 	@Test
-	public void test05EditEncounterType() throws Throwable {
+	public void test05EditEncounterType_ADS_6657() throws Throwable {
 		try {
 			doClickTreeData("Encounters");
 			driverDelay(200);
@@ -160,14 +162,15 @@ public class CreateDeleteCostMethodDeptMasterDischargeStatus extends Calculation
 			fail(e.getMessage());
 		}
 	}
+	//ADS-6658
 	@Test
-	public void test06CreateNewDischargeStatus() throws Throwable {
+	public void test06CreateNewDischargeStatus_ADS_6658() throws Throwable {
 		try {
 //			Omkar 16/8/2023 : xpath changes for 11.2
 //			doClick("//div[@id='treepanelId-body']//following::div[text()='Discharge Statuses']/img[contains(@class,'x-tree-icon')]");
 			doClick("//div[@id='treepanelId-body']//following::span[text()='Discharge Statuses']/../div[5]");
 			doClick(CostingMap.getCostDischargeStatusNewButton());
-			ContractModelsHelper.keyInValues(ContractingMap.getMedicareCode(),String.valueOf(dischargeCode)+"D");
+			ContractModelsHelper.keyInValues(ContractingMap.getMedicareCode(),deptCode);
 			ContractModelsHelper.keyInValues(ContractingMap.getInputName(), dischargeStatusName);
 			doClick(ContractingMap.getContractFeeForServicePaymentSave());
 			waitForDisplayedSpinnerToEnd();
@@ -197,9 +200,9 @@ public class CreateDeleteCostMethodDeptMasterDischargeStatus extends Calculation
 		}
 	}
 	
-	
+	//ADS-6655
 	@Test
-	public void test07CreateCostMethodMaster() throws Throwable {
+	public void test07CreateCostMethodMaster_ADS_6655() throws Throwable {
 		try {
 			selectMaintainDataAtoZ(aTozPageCostMethodMaster);
 

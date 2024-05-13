@@ -61,9 +61,9 @@ public class EditCostModelCalculationScenarios extends CalculationHelper {
 			fail(e.getMessage());
 		}
 	}
-
+//ADS-6645
 	@Test
-	public void test02EditCostModelCalculationScenario() throws Throwable {
+	public void test02EditCostModelCalculationScenario_6645() throws Throwable {
 		try {
 			doClick(costing.getCostModelScenarioCalculationButtonEdit());
 			waitForMainPageTitle("Cost Model Calculation Scenario");
@@ -77,9 +77,9 @@ public class EditCostModelCalculationScenarios extends CalculationHelper {
 			fail(e.getMessage());
 		}
 	}
-
+//ADS-6662
 	@Test
-	public void test03SaveCostCalculationScenario() throws Throwable {
+	public void test03SaveCostCalculationScenario_6662() throws Throwable {
 		try {
 			doClick(ContractingMap.getContractFeeForServicePaymentSave());
 			waitForDisplayedSpinnerToEnd();
@@ -103,29 +103,32 @@ public class EditCostModelCalculationScenarios extends CalculationHelper {
 		}
 
 	}
-
+	//ADS-6645
 	@Test
-	public void test04CancelCostModelCalculationScenario() throws Throwable {
+	public void test04CancelCostModelCalculationScenario_6645() throws Throwable {
 		try {
 			waitForDisplayedSpinnerToEnd();
 			test01OpenCostCalculationScenario();
 			doClick(costing.getCostModelScenarioCalculationButtonEdit());
-			doClick(ContractingMap.getContractModelRiskLimiterCancelCloseBtn());
+			doClick("//h1[text()='Cost Model Calculation Scenario']//following::span[text()='Cancel & Close']");
 			ExtentReport.logPass("PASS", "test04CancelCostModelCalculationScenario");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test04CancelCostModelCalculationScenario", driver, e);
 			fail(e.getMessage());
 		}
 	}
-
+//ADS-6663
 	@Test
-	public void test05CalculateCostCalcultionScenario() throws Throwable {
+	public void test05CalculateCostCalcultionScenario_6663() throws Throwable {
 		try {
 			doClick(costing.getCostModelScenarioCalculationButtonCalculate());
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
-			 clickLastPageIconOnCalculationStatusViewLog();
-			confirmCalculationStatusDetailsContains("Studied Allocation Percent = 100");
+			driverDelay(500);
+//			 clickLastPageIconOnCalculationStatusViewLog();
+			 checkForRecordsProcessed("Studied Allocation Percent = 100");
+//			confirmCalculationStatusDetailsContains("Studied Allocation Percent = 100");
+			driverDelay(3000);
 			closeViewDialog();
 			ExtentReport.logPass("PASS", "test05CalculateCostCalcultionScenario");
 		} catch (Exception | AssertionError e) {
@@ -137,8 +140,9 @@ public class EditCostModelCalculationScenarios extends CalculationHelper {
 
 		}
 	}
+	//ADS-6664
 	@Test
-	public void test06ResultsForCostCalculationScenarios() throws Throwable {
+	public void test06ResultsForCostCalculationScenarios_6664() throws Throwable {
 		try {
 			doClick(costing.getCostModelScenarioCalculationButtonClearFilter());
 			waitForDisplayedSpinnerToEnd();
@@ -154,6 +158,7 @@ public class EditCostModelCalculationScenarios extends CalculationHelper {
 			assertElementIsDisplayed(costing.getRvuCostCalcScenarioTotalCost());
 			doClick(costing.getRvuCostCalcScenarioApplySelection());
 			waitForDisplayedSpinnerToEnd();
+			driverDelay();
 			assertTextIsDisplayed(resultAfterApply);
 			doClick(costing.getRvuCostCalcScenarioCloseButton());
 			ExtentReport.logPass("PASS", "test06ResultsForCostCalculationScenarios");
@@ -165,7 +170,7 @@ public class EditCostModelCalculationScenarios extends CalculationHelper {
 
 	@AfterClass
 	public static void endtest() throws Exception {
-		doClosePageOnLowerBar("Cost Model...");
+		doClosePageOnLowerBar("Cost Model Calculation Scenarios");
 		ExtentReport.report.flush();
 
 	}

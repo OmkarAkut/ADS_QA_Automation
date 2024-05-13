@@ -38,7 +38,7 @@ public class ConfirmDepartmentFilterSortOrder extends GoHelper {
 	}
 //ADS-5922
 	@Test
-	public void test01ConfirmDepartmentFilterSort() throws Throwable {
+	public void test01ConfirmDepartmentFilterSort_5922() throws Throwable {
 		try {
 			doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationDropdownCostModel(),
 					costingMap.getUnitCostQuickCalculationDropdownCostModelMenuList(), costModel);

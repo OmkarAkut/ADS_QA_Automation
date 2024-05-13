@@ -69,10 +69,10 @@ public class ValidateWarningForRvuMaintenancePopUpAds1249 extends UcqcHelper {
   @Test
   public void test01bOnOverwriteRvuDialogAssertDialogElementsAreDisplayed() throws Throwable {
     try {
-      assertElementIsDisplayedWithXpath("//span[contains(@id,'warningwindow') and text()='Warning']");
-      assertElementIsDisplayedWithXpath("//button/span[text()='Cancel']");
-      assertElementIsDisplayedWithXpath("//button/span[text()='Overwrite']");
-      assertElementIsDisplayedWithXpath("//div[contains(@id,'warningwindow')]/div/img[@class='x-tool-close']");
+      assertElementIsDisplayedWithXpath("//div[contains(@id,'warningwindow') and text()='Warning']");
+      assertElementIsDisplayedWithXpath("//a[contains(@class,'windowbtn')]//span[text()='Cancel']");
+      assertElementIsDisplayedWithXpath("//a[contains(@class,'windowbtn')]//span[text()='Overwrite']");
+//      assertElementIsDisplayedWithXpath("//div[contains(@id,'warningwindow')]/div/img[@class='x-tool-close']");
 //      doClick(costingMap.getUnitCostQuickCalculationOverwriteRVUMaintenanceModalWarningButtonCancel());
       waitForAjaxExtJs();
 //      doClick(costingMap.getUnitCostQuickCalculationOverwriteRVUMaintenanceModalButtonCancelAndClose());

@@ -58,7 +58,8 @@ public class ActualCostingMethodPatientChgsDoesNotMatch extends CalculationHelpe
 //			doClickTreeData("Cost Scnenarios");
 			doClickTreeData("Assign Unit Costs");
 			waitForMainPageTitle("Cost Model Calculation Scenarios");
-			doClickTreeItemWithCheckbox("Cost Model Calculation Scenarios");
+			doClickTreeItem("Cost Model Calculation Scenarios");
+			waitForElementToBeVisible(costing.getCostModelCalcFilterButton());
 			ExtentReport.logPass("PASS", "test01OpenCostCalculationScenario");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01OpenCostCalculationScenario", driver, e);
@@ -138,7 +139,7 @@ public class ActualCostingMethodPatientChgsDoesNotMatch extends CalculationHelpe
 	public static void endtest() throws Exception {
 		doClosePageOnLowerBar("v1024 REGRESSION...");
 //		doClosePageOnLowerBar("Model Library");
-		doClosePageOnLowerBar("Model");
+		doClosePageOnLowerBar("Costing Models");
 		ExtentReport.report.flush();
 
 	}

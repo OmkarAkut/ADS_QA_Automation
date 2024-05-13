@@ -38,7 +38,7 @@ public class TestGenericUIValidateCostingModelSearchTextbox extends GoHelper{
 	  }
 	 //ADS-6515
 	 @Test
-	 public void test01SearchCostModel() throws Throwable {
+	 public void test01SearchCostModel_6515() throws Throwable {
 		 try {
 			 waitForAjaxExtJs();
 			assertPageInformation("Costing Model Library");

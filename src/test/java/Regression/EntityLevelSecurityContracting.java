@@ -44,7 +44,7 @@ public class EntityLevelSecurityContracting extends GoHelper{
 	}
 	//ADS-5794
 	@Test
-	public void test01VerifyAddProviderCancelOption() throws Throwable {
+	public void test01VerifyAddProviderCancelOption_5794() throws Throwable {
 		try {
 			doClick(modelMap.getNewContractModelButton());
 			waitForElementToBeVisible(ContractingMap.getNewContractModelPopUp());

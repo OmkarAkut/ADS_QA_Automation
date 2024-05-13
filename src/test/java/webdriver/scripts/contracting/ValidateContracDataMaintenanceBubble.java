@@ -22,7 +22,7 @@ public class ValidateContracDataMaintenanceBubble extends CalculationHelper {
 	static final String ContractModel = "ASESC-20 1";
 	static final String ContractTypeAPC = "APC Fee Schedule Masters";
 	static String bubbleColorExpected="rgba(127, 35, 111, 1)";
-	/** Regression: Automated test script for ADS-6430 ,ADS-6428,ADS-6429 */
+	/** Regression: Automated test script for ADS-6430 ,ADS-6428 */
 
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
@@ -40,9 +40,9 @@ public class ValidateContracDataMaintenanceBubble extends CalculationHelper {
 			fail(e.getMessage());
 		}
 	}
-
+//ADS-6430,ADS-6428[color verification ]
 	@Test
-	public void test01ValidateContractingBubleColor() throws Throwable {
+	public void test01ValidateContractingBubleColor_ADS_6430_ADS_6428_ADS_6429() throws Throwable {
 		try {
 			UcqcHelper.validateBackgroundColor(bubbleColorExpected,ContractingMap.getContractingBubble());
 			assertElementIsDisplayed(ContractingMap.getContractingBubble());
@@ -63,7 +63,7 @@ public class ValidateContracDataMaintenanceBubble extends CalculationHelper {
 			assertElementIsDisplayed(ContractingMap.FieldSpecificationTab());
 			assertElementIsDisplayed(ContractingMap.TemplatesTab());
 			assertElementIsDisplayed(ContractingMap.SchedulesTab());
-			doClick(modelMap.getContractModelRiskLimiterCancelCloseBtn());
+			doClick("(//div[text()='APC Fee Schedule Master']//following::span[text()='Cancel & Close']/../../..)[1]");
 			goToPage("Contract Models");
 			waitForElementToBeVisible(modelMap.getContractingTreeExpand());
 			doClick(modelMap.getContractingTreeExpand());
@@ -83,7 +83,7 @@ public class ValidateContracDataMaintenanceBubble extends CalculationHelper {
 			fail(e.getMessage());
 		} 
 		finally {
-			doClosePageOnLowerBar("Contract Models");
+			doClosePageOnLowerBar("Maintain Data");
 		}
 	}
 	@AfterClass

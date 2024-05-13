@@ -9,35 +9,38 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchSessionException;
 import org.openqa.selenium.WebElement;
 
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.corehelpers.DoHelper;
 import webdriver.helpers.CalculationHelper;
+import webdriver.helpers.ContractModelsHelper;
 import webdriver.helpers.UcqcHelper;
+import webdriver.maps.ContractingMap;
 import webdriver.maps.CostingMap;
 import webdriver.maps.GeneralElementsMap;
 import webdriver.maps.mapbuilder.BuildMap;
 
-public class EncounterCost extends UcqcHelper {
+public class EncounterCost extends CalculationHelper {
 	static GeneralElementsMap generalMap;
 	static CostingMap costing;
 	static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
 	static String costModel = "BC COST MODEL";
 	static String costModelName = "Model" + currentDateTime;
-	private static CostingMap selectColumn;
+//	private static CostingMap selectColumn;
 	static String dischargeDateFrom = "01/01/1800";
 	static String dischargeDateTo = "01/01/1800";
 	static String postingDateFrom = "04/01/2012";
 	static String postingDateTo = "03/31/2013";
-
+	String[] columnsToSelect = { "1S1 Office ", "1S2 Clinic " ,"1S3 Hospital "};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("Encounter", "webdriver.scripts.costing.costingmodels", "Encounter");
+		ExtentReport.reportCreate("EncounterCost", "webdriver.scripts.costing.costingmodels", "EncounterCost");
 
 		try {
-			selectColumn = BuildMap.getInstance(driver, CostingMap.class);
+			costing = BuildMap.getInstance(driver, CostingMap.class);
 			System.out.println("Test Class: " + EncounterCost.class.getSimpleName());
 			Login.loginUser("AutomationTesterAdmin");
 //			waitForDisplayedSpinnerToEnd();
@@ -70,8 +73,11 @@ public class EncounterCost extends UcqcHelper {
 			doClickTreeItem("Assign Costs to Encounters");
 //			waitUntilTreeOptionIsClickable("ENCOUNTER COST");
 //			waitUntilTreeOptionIsClickable("Encounter Cost Calculation Scenarios");
-
-			doClickTreeItemUsingXpathLocator("//span[text()='Encounter Cost Calculation Scenarios']/..");
+			driverDelay();
+//			doClickTreeItemUsingXpathLocator("//span[text()='Encounter Cost Calculation Scenarios']/..");
+			//Shilpa xpath update for 11.2 on 2.5.2024
+			doClickTreeItemUsingXpathLocator("//span[contains(text(),'Encounter Cost')]/..");
+			driverDelay();
 //			doClick(CostingMap.getCalculateEncounterCostItem());
 			doClick(CostingMap.getEncounterNewBtn());
 			waitForElementToBeVisible(CostingMap.getEncounterPageText());
@@ -87,44 +93,46 @@ public class EncounterCost extends UcqcHelper {
 	@Test
 	public void test02EnterEncounterCostModelScenarioDetails() throws Throwable {
 		try {
-			DoHelper.doEnterModelName(costModelName);
+			waitUntilElementIsClickable(CostingMap.getEncounterName());
+			CostingMap.getEncounterName().sendKeys(costModelName);
 			Thread.sleep(400);
-			doClick(selectColumn.getSelctCostModelScenariosInEvaluationOrder());
+			doClick(costing.getSelctCostModelScenariosInEvaluationOrder());
 //			highlightColumnsToDisplayColumn("BC REGRESSION CMS");
 			//Shilpa update test data
 			highlightColumnsToDisplayColumn("*USE MHC FY05 Total Cost Scenario");
 
-			doClick(selectColumn.getcostModelButtonColumnsToDisplayModalSelect());
+			doClick(costing.getcostModelButtonColumnsToDisplayModalSelect());
 			Thread.sleep(500);
-			doClick(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalApply());
+			doClick(costing.getUnitCostQuickCalculationColumnsToDisplayModalApply());
 			Thread.sleep(500);
 //			doDropdownSelectUsingOptionText(selectColumn.getCostModelScenariosinEvaluationOrderFrom(),
 //					selectColumn.getCostModelScenariosinEvaluationOrderFromList(), "Apr 2012");
-			doDropdownSelectUsingOptionText(selectColumn.getCostModelScenariosinEvaluationOrderFrom(),
-					selectColumn.getCostModelScenariosinEvaluationOrderFromList(), "Apr 2004");
+			doDropdownSelectUsingOptionText(costing.getCostModelScenariosinEvaluationOrderFrom(),
+					costing.getCostModelScenariosinEvaluationOrderFromList(), "Apr 2004");
 //			doDropdownSelectUsingOptionText(selectColumn.getCostModelScenariosinEvaluationOrderTo(),
 //					selectColumn.getCostModelScenariosinEvaluationOrderToList(), "Mar 2013");
-			doDropdownSelectUsingOptionText(selectColumn.getCostModelScenariosinEvaluationOrderTo(),
-					selectColumn.getCostModelScenariosinEvaluationOrderToList(), "Mar 2005");
+			doDropdownSelectUsingOptionText(costing.getCostModelScenariosinEvaluationOrderTo(),
+					costing.getCostModelScenariosinEvaluationOrderToList(), "Mar 2005");
 //			doDropdownSelectUsingOptionText(selectColumn.getCostModelScenariosinEvaluationOrderAssignedCost(),
 //					selectColumn.getCostModelScenariosinEvaluationOrderAssignedCostList(), "10 : BC Destination");
-			doDropdownSelectUsingOptionText(selectColumn.getCostModelScenariosinEvaluationOrderAssignedCost(),
-					selectColumn.getCostModelScenariosinEvaluationOrderAssignedCostList(), "12 : Actual Cost Destination");
-			doClick(selectColumn.getCostModelScenariosinEvaluationOrderEncounterSelect());
+			doDropdownSelectUsingOptionText(costing.getCostModelScenariosinEvaluationOrderAssignedCost(),
+					costing.getCostModelScenariosinEvaluationOrderAssignedCostList(), "12 : Actual Cost Destination");
+			doClick(costing.getCostModelScenariosinEvaluationOrderEncounterSelect());
+//
+//			doClick(selectColumn.getCostModelScenariosinEvaluationOrderEncounterSelectAll()); //Selecting all entities lead to have more records for calculation so commented out
+			selectMultipleColumnsToDisplay(columnsToSelect);
+			doClick(costing.getUnitCostQuickCalculationColumnsToDisplayModalApply());
 
-			doClick(selectColumn.getCostModelScenariosinEvaluationOrderEncounterSelectAll());
+			doClick(costing.getCostModelScenariosinEvaluationOrderEntitiesSelect());
 
-			doClick(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalApply());
+			doClick(costing.getCostModelScenariosinEvaluationOrderEncounterSelectAll());
 
-			doClick(selectColumn.getCostModelScenariosinEvaluationOrderEntitiesSelect());
-
-			doClick(selectColumn.getCostModelScenariosinEvaluationOrderEncounterSelectAll());
-
-			doClick(selectColumn.getUnitCostQuickCalculationColumnsToDisplayModalApply());
+			doClick(costing.getUnitCostQuickCalculationColumnsToDisplayModalApply());
 			doClick("//span[text()='Continue']");
-			doClick(selectColumn.getCostModelScenariosinEvaluationOrderAdmissionCheck());
+			driverDelay();
+			doClick(costing.getCostModelScenariosinEvaluationOrderAdmissionCheck());
 
-			doClick(selectColumn.getCostModelScenariosinEvaluationOrderDischargeCheck());
+			doClick(costing.getCostModelScenariosinEvaluationOrderDischargeCheck());
 			scrollToView(driver.findElement(By.name("admStartDate")));
 //			driver.findElement(By.name("admStartDate")).click();
 
@@ -132,7 +140,7 @@ public class EncounterCost extends UcqcHelper {
 
 			driver.findElement(By.name("dsChgEndDate")).sendKeys(dischargeDateFrom);
 
-			doClick(selectColumn.getCostModelScenariosinEvaluationOrderPostingCheck());
+			doClick(costing.getCostModelScenariosinEvaluationOrderPostingCheck());
 
 			driver.findElement(By.name("postStartDate")).sendKeys(postingDateFrom);
 
@@ -147,17 +155,21 @@ public class EncounterCost extends UcqcHelper {
 			doClick("//span[text()='Continue']");
 			waitForDisplayedSpinnerToEnd();
 			doClick(CostingMap.getEncounterCalculateBtn());
-			doClick("//span[text()='Save & Continue']");
+//			doClick("//span[text()='Save & Continue']");
 			waitForSpinnerToEnd();
 			CalculationHelper.waitForFirstRowCalculationBarToReach100Percent();
-			ExtentReport.logPass("PASS", "test01AssertCostModelPageHeader");
+			ExtentReport.logPass("PASS", "test02EnterEncounterCostModelScenarioDetails");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test01AssertCostModelPageHeader", driver, e);
+			ExtentReport.logFail("FAIL", "test02EnterEncounterCostModelScenarioDetails", driver, e);
 			fail(e.getMessage());
+		}
+		finally {
+			doClosePageOnLowerBar("Calculation Status");
+			doClosePageOnLowerBar(costModel);
 		}
 	}
 
-	public void highlightColumnsToDisplayColumn(String column) throws InterruptedException, Throwable {
+	public  void highlightColumnsToDisplayColumn(String column) throws InterruptedException, Throwable {
 		String columnPath = "//*[contains(@class,'glAccountsGrid')]/descendant::*[text()='" + column + "']";
 		// Shilpa 02.09.2022 added dimension , scroll to element
 		addDimension(1000, 1000);
@@ -169,7 +181,30 @@ public class EncounterCost extends UcqcHelper {
 		Thread.sleep(2000);
 		waitForAjaxExtJs();
 	}
+	 public  void assertColumnsToDisplayColumnIsSelected(String column) throws Exception {
+		    String columnIsSelected = null;
+		    try {
+		      waitForAjaxExtJs();
+//		      Omkar 30/5/2023 : xpath chages for 11.2
+//		      scrollToView("//*[contains(@class,'x-grid-table')]/descendant::*[text()='"+column+"']/../..");
+//		      columnIsSelected = driver.findElement(By.xpath("//*[contains(@class,'x-grid-table')]/descendant::*[text()='"+column+"']/../..")).getAttribute("class");
+		      scrollToView("//*[text()='"+column+"']/../..");
+		      columnIsSelected = driver.findElement(By.xpath("//*[text()='"+column+"']/../..")).getAttribute("class");
+		    } catch (Throwable e) {
+		      System.out.println("Element Not Found");
+		      fail("element not found");
+		    }
 
+		  }
+	 public  void selectMultipleColumnsToDisplay(String[] columnsToSelect) throws InterruptedException,Throwable{
+		    for (String selectedColumns: columnsToSelect) {
+		    	System.out.println(selectedColumns);
+		      highlightColumnsToDisplayColumn(selectedColumns);
+		      doClick("//span[(@class ='x-btn-button x-btn-button-default-small x-btn-text  x-btn-icon x-btn-icon-left x-btn-button-center ')]//span[text()='Select']");
+		      assertColumnsToDisplayColumnIsSelected(selectedColumns);
+		      Thread.sleep(300);
+		    }
+		  }
 	@AfterClass
 	public static void endtest() throws Exception {
 

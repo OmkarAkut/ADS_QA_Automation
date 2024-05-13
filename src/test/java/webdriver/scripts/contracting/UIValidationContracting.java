@@ -4,14 +4,17 @@ import static org.junit.Assert.fail;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
+
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.helpers.CalculationHelper;
 import webdriver.helpers.ContractModelsHelper;
 import webdriver.maps.ContractingMap;
 import webdriver.maps.mapbuilder.BuildMap;
-
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class UIValidationContracting extends CalculationHelper{
 	
 	private static ContractingMap modelMap;
@@ -43,7 +46,7 @@ public class UIValidationContracting extends CalculationHelper{
 	}
 	
 	@Test
-	public void AssertContractModelPage() throws Throwable {
+	public void test01AssertContractModelPage_ADS_6466() throws Throwable {
 		try {
 			doSearchForContractModel(ContractModelName);
 			tableDoubleClickCellFirstColumn(ContractModelName);
@@ -67,11 +70,14 @@ public class UIValidationContracting extends CalculationHelper{
 			assertElementIsDisplayed(modelMap.getContractServiceModel());
 			assertElementIsDisplayed(modelMap.getContractPricingMethod());
 			assertElementIsDisplayed(modelMap.getContractRiskLimiterModel());
+			ContractModelsHelper.navigateFeeForServicePaymentTermsScreenSelectionPanel("Service Model");
 //			doClick(ContractingMap.getContractFeeForServicePaymentFilterServiceModel());
 //			waitForAjaxExtJs();
 			assertElementIsDisplayed(modelMap.getContractFeeForServicePaymentServices());
 			assertElementIsDisplayed(modelMap.getContractFeeForServicePaymentServiceModel());
+			doClick(ContractingMap.getSaveButtonFeePaymentTerm());
 			ContractModelsHelper.navigateFeeForServicePaymentTermsScreenSelectionPanel("Pricing Method");
+			doClick(ContractingMap.getSaveButtonFeePaymentTerm());
 			driverDelay(200);
 			waitForAjaxExtJs();			
 			assertElementIsDisplayed(ContractingMap.getPricingLabelServiceModel());
@@ -82,12 +88,20 @@ public class UIValidationContracting extends CalculationHelper{
 			waitUntilElementIsVisible(ContractingMap.getNewRiskLimiterPopUp());		
 			assertElementIsDisplayed(ContractingMap.getNewRiskLimiterPopUp());
 			doClick(ContractingMap.getNewRiskLimiterPopUpCancelClose());
-			doClick(modelMap.getContractModelRiskLimiterCancelCloseBtn());
-			assertTextIsDisplayed("Complete a model using a list of assignments.");
-			doClickTreeItemWithCheckbox("Fee For Service Payment Terms");
-			doClick(ContractingMap.getContractFeeForServicePaymentSave());
-			doClickTreeItemWithCheckbox("Fee For Service Payment Terms");
-			//ADS-6465
+			doClick(ContractingMap.getSaveButtonFeePaymentTerm());
+			doClick(ContractingMap.getFeeForPaymentCancelClose());
+//			doClick(ContractingMap.getWarningCancelCloseBtn());
+			ExtentReport.logPass("PASS", "AssertContractModelPage");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "AssertContractModelPage", driver, e);
+			fail(e.getMessage());
+		} 
+		
+	
+	}
+	@Test
+	public void test02AssertContractModelPage_ADS_6465() throws Throwable {
+		try {
 			doClickTreeItem("Calculate");
 			driverDelay(100);
 			assertTextIsDisplayed("General");
@@ -98,12 +112,12 @@ public class UIValidationContracting extends CalculationHelper{
 			assertTextIsDisplayed("Recalculate Encounters with Errors/Warnings");
 			assertTextIsDisplayed("Fee for Service/Lump Sum");
 			assertTextIsDisplayed("Calculation Log");
-			doClick(modelMap.getContractModelRiskLimiterCancelCloseBtn());
-			assertTextIsDisplayed("Complete a model using a list of assignments.");
+			doClick(ContractingMap.getFeeForPaymentCancelClose());
+//			assertTextIsDisplayed("Complete a model using a list of assignments.");
 //			doClosePageOnLowerBar("ADS-1320 Contract...");
 			//shilpa updated xpath for 11.2
 //			driverDelay(500);
-			doClick("//span[text()='ADS-1320 Contract Model D']//following::span[@class='x-tab-close-btn']");
+			doClick("//span[text()='ADS-1320 Contract...']//following::span[@class='x-tab-close-btn']");
 			ExtentReport.logPass("PASS", "AssertContractModelPage");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "AssertContractModelPage", driver, e);
@@ -114,6 +128,7 @@ public class UIValidationContracting extends CalculationHelper{
 
 		}
 	}
+	
 	@AfterClass
 	public static void endtest() throws Exception {
 

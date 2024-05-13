@@ -44,9 +44,9 @@ public class CreateUCQCLogMakeUCQCProcessAvailableCalculationPage extends UcqcHe
 		}
 
 	}
-
+//ADS-5923
 	@Test
-	public void test01ChangeValues() throws Throwable {
+	public void test01ChangeValues_ADS_5923() throws Throwable {
 		int value = JavaHelper.javaGetRandomNumber(12, printout);
 		ucqcUpdateGridCellValue("2200343", "Quick Salaries and Wages RVU", String.valueOf(value), printout);
 		doClick(costingMap.getUnitCostQuickCalculationButtonSaveQuickRVUs());
