@@ -21,8 +21,8 @@ public class Axe {
   //WCAG Compliance Standards - select one below or create a new configuration
   //static final String wcagStandard = "'wcag2a', 'wcag2aa', 'wcag2aaa', 'section508', 'best-practice'";
   //static final String wcagStandard = "'wcag2a', 'wcag2aa', 'best-practice'";
-  static final String wcagStandard = "'wcag2a', 'wcag2aa'";
-
+//  static final String wcagStandard = "'wcag2a', 'wcag2aa'";//Shilpa commented on request 11.2 5.15.2024
+  	String wcagStandard ="'section508'";
   @Rule
   private static final URL scriptUrl = Axe.class.getResource("/axe.min.js");
 

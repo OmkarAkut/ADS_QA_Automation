@@ -316,7 +316,9 @@ public class GeneralContractInfo extends ContractModelsHelper {
 		}
 
 		try {
-			doClick(driver.findElement(By.xpath("//*[text()='Discharge Status Code for Transfers']")));
+			//Shilpa updated xpath for 11.2 on 5.14.2024
+//			doClick(driver.findElement(By.xpath("//*[text()='Discharge Status Code for Transfers']")));
+			doClick(driver.findElement(By.xpath("//*[text()='Discharge Status Code for Transfers:']")));
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test08GeneralSectionMedicareYearRangeIsSelectedByDefault", driver, e);
 			fail(e.getMessage());
