@@ -1387,7 +1387,7 @@ public class CostingMap extends MapConfig {
 	public static WebElement getCostModelPriceListScenarioOptions() {
 		return getCostModelPriceListScenarioOptions;
 	}
-	@FindBy(name = "priceList")
+	@FindBy(xpath = "//input[@name='priceList']/../..")
 	private static WebElement getCostModelPriceListDrpdown;
 	public static WebElement getCostModelPriceListDrpdown() {
 		return getCostModelPriceListDrpdown;

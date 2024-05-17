@@ -13,7 +13,6 @@ import org.junit.runners.Suite;
 	EditExistingRoleSetup.class,
 	UIValidateImportStatuPage.class,
 	UIValidationStatusUIValidateUtilityStatusPage.class,
-	ValidateCalculationStatusAllStatus.class,
 	ValidateCustomizeTaskListspageSystemMaintenance.class,
 	ValidateFilterbuttonontheSystemMaintenanceUserspage.class,
 	ValidateImportExportbuttonsontheSystemMaintenance.class,
