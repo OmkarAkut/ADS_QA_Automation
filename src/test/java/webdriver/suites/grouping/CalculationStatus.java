@@ -17,7 +17,7 @@ import webdriver.scripts.status.calculationstatus.CalculationStatusPageSmokeTest
 	CalculationStatusPageSmokeTest.class,
 	
 })
-public class CalculationStatus_Suite {
+public class CalculationStatus {
 
 	
 

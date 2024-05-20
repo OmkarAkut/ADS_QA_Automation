@@ -11,6 +11,6 @@ import webdriver.scripts.systemmaintenance.UIValidationStatusUIValidateUtilitySt
 @Suite.SuiteClasses({
 	UIValidationStatusUIValidateUtilityStatusPage.class,
 })
-public class UtilityStatus_Suite {
+public class UtilityStatus {
 
 }

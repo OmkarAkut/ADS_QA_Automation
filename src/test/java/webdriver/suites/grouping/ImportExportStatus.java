@@ -11,6 +11,6 @@ import webdriver.scripts.systemmaintenance.UIValidateImportStatuPage;
 @Suite.SuiteClasses({
 	UIValidateImportStatuPage.class,
 })
-public class ImportExportStatus_Suite {
+public class ImportExportStatus {
 
 }
