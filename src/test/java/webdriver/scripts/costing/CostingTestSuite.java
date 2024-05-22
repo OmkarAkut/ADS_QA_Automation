@@ -3,7 +3,6 @@ package webdriver.scripts.costing;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
-import webdriver.scripts.systemmaintenance.UsingCustomvsDefaulttasklistsInCustomizeTaskListCosting;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({

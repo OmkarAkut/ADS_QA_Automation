@@ -1,0 +1,25 @@
+package webdriver.suites.grouping;
+
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+
+import webdriver.scripts.costing.UsingCustomvsDefaulttasklistsInCustomizeTaskListCosting;
+import webdriver.scripts.systemmaintenance.AssociateOverheadModeltoCostModelCustomTaskList;
+import webdriver.scripts.systemmaintenance.CreateCustomTaskListwithCostingTaskListSpecificScreens;
+import webdriver.scripts.systemmaintenance.CreateaCustomTaskListwithOverheadTaskListSpecificScreens;
+import webdriver.scripts.systemmaintenance.ValidateCustomizeTaskListspageSystemMaintenance;
+import webdriver.scripts.systemmaintenance.ValidateOverheadTaskListscreensAreAvailableforCost;
+
+@RunWith(Suite.class)
+@Suite.SuiteClasses({
+	UsingCustomvsDefaulttasklistsInCustomizeTaskListCosting.class,
+	AssociateOverheadModeltoCostModelCustomTaskList.class,
+	CreateaCustomTaskListwithOverheadTaskListSpecificScreens.class,
+	CreateCustomTaskListwithCostingTaskListSpecificScreens.class,
+	ValidateCustomizeTaskListspageSystemMaintenance.class,
+	ValidateOverheadTaskListscreensAreAvailableforCost.class,
+
+})
+public class CustomizeTaskLists {
+
+}

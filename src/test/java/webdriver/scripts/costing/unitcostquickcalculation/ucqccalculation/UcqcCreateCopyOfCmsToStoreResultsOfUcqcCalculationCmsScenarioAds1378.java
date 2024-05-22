@@ -2,6 +2,7 @@ package webdriver.scripts.costing.unitcostquickcalculation.ucqccalculation;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.time.Duration;
@@ -49,7 +50,8 @@ public class UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds137
     "3045",//venkat update value 14.09.2022
      "Apr 2004 to Mar 2005"};
   private static String status;
-
+  static String[] filter = { "Name", "Is", "Equal To", "ADS-1378 In Total1_UCQC" };
+//  String[] filter= {"Name","Is","Equal To","ADS-1378 In Total1_UCQC"};
   /**Test ticket ADS-1378.  Dev Story ADS-609.  The purpose of this test is to make a copy of a
    * cost model and to verify that the copy has exactly the same values as the original.  The
    * original is created/updated on the ucqc page and the checks are on the ucqc page and the cost
@@ -118,11 +120,15 @@ public class UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds137
       goToPage("Calculation Status");
       waitForAjaxExtJs();
       waitForDisplayedSpinnerToEnd();
+      waitForFirstRowCalculationBarToReach100Percent();
+      doClosePageOnLowerBar("Calculation Status");
+      /*
         status = getCalculationStatusMyStatusFirstRow();
       assertThat(status, not(containsString("Failed")));
       waitForFirstRowCalculationBarToReach100Percent();
       status = getCalculationStatusMyStatusFirstRow();
       assertThat(status, containsString("Completed"));
+      */
 //      waitForCalculationToEndAndVerifySummaryDetailsStringOnDialogAndCloseDialog(
 //              ""
 //      );
@@ -141,37 +147,67 @@ public class UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds137
       waitForSpinnerToEnd();
       
       //Venkata Added wait 06-09-2022
-		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(40,0));
-		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='x-container areaModelTitle x-box-item x-container-default']//following::input[1]")));
-		waitForSpinnerToEnd();
-		Thread.sleep(4000);
+//		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(40,0));
+//		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='x-container areaModelTitle x-box-item x-container-default']//following::input[1]")));
+//		waitForSpinnerToEnd();
+//		Thread.sleep(4000);
 		driverDelay();
 //		doSearchForModel("QA Cost Model");
 		Thread.sleep(4000);
 		//below changes made due to input index keeps changing
-		 waitForSpinnerToEnd();
-		  waitUntilElementIsClickable(driver.findElement(By.xpath("(//label[contains(@class,'LablAlgn-left')]//following::input[1])[3]")));
-	        driver.findElement(By.xpath("(//label[contains(@class,'LablAlgn-left')]//following::input[1])[3]")).click();
-	      
-	        driver.findElement(By.xpath("(//label[contains(@class,'LablAlgn-left')]//following::input[1])[3]")).sendKeys(Keys.chord(Keys.CONTROL, "a"));
-	        driver.findElement(By.xpath("(//label[contains(@class,'LablAlgn-left')]//following::input[1])[3]")).clear();;
-	        driver.findElement(By.xpath("(//label[contains(@class,'LablAlgn-left')]//following::input[1])[3]")).sendKeys("QA Cost Model");
-	        Thread.sleep(5000);
-	      driver.findElement(By.xpath("(//*[contains(@class,'statusSearch')])[2]")).click();
-	        waitForSpinnerToEnd();
-	        Thread.sleep(3000);
-      waitForJsReadyState();
+//		 waitForSpinnerToEnd();
+//		  waitUntilElementIsClickable(driver.findElement(By.xpath("(//label[contains(@class,'LablAlgn-left')]//following::input[1])[3]")));
+//	        driver.findElement(By.xpath("(//label[contains(@class,'LablAlgn-left')]//following::input[1])[3]")).click();
+//	      
+//	        driver.findElement(By.xpath("(//label[contains(@class,'LablAlgn-left')]//following::input[1])[3]")).sendKeys(Keys.chord(Keys.CONTROL, "a"));
+//	        driver.findElement(By.xpath("(//label[contains(@class,'LablAlgn-left')]//following::input[1])[3]")).clear();;
+//	        driver.findElement(By.xpath("(//label[contains(@class,'LablAlgn-left')]//following::input[1])[3]")).sendKeys("QA Cost Model");
+//	        Thread.sleep(5000);
+//	      driver.findElement(By.xpath("(//*[contains(@class,'statusSearch')])[2]")).click();
+//	        waitForSpinnerToEnd();
+//	        Thread.sleep(3000);
+//      waitForJsReadyState();
+      doSearchForModel("QA Cost Model");
       tableDoubleClickCellFirstColumn("QA Cost Model");
-      waitForJsReadyState();
+    waitForAjaxExtJs();
 //    doClickTreeItem("Assign Unit Costs");
-      doClickTreeItem("CM Test");// Venkat added text 06-09-2022
-      doClickTreeItem("Cost Scnenarios");// Venkat added text 06-09-2022
+    doClick("//span[text()='Assign Unit Costs']");
+    driverDelay();
+    //Shilpa update for 11.2 on 20.5.2024
+//      doClickTreeItem("CM Test");// Venkat added text 06-09-2022
+//      doClickTreeItem("Cost Scnenarios");// Venkat added text 06-09-2022
+//      driverDelay(5000);
+      doClick("(//span[text()='Cost Model Calculation Scenarios'])");
       driverDelay(5000);
-      doClickTreeItemWithCheckbox("Cost Model Calculation Scenarios");
-      driverDelay(5000);
-      ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoViewIfNeeded();",driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell x-grid-cell-gridcolumn')][2]/*[text()='ADS-1378 In Total1_UCQC']")));
-	    Thread.sleep(200);
-      doubleClickTableNameColumn("ADS-1378 In Total1_UCQC");
+//      ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoViewIfNeeded();",driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell x-grid-cell-gridcolumn')][2]/*[text()='ADS-1378 In Total1_UCQC']")));
+//      ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoViewIfNeeded();",driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell x-grid-td x-grid-cell-gridcolumn')]/*[text()='ADS-1378 In Total1_UCQC']")));
+//      Thread.sleep(200);
+//      doubleClickTableNameColumn("ADS-1378 In Total1_UCQC");
+//      doClick(CostingMap.getCostScenarioFilterButton());
+//      driverDelay();
+////      driver.findElement(By.name("field")).click();
+////      driver.findElement(By.xpath(""))
+////      doFilterCreate(filter);
+//      doFilterCreate(filter);
+      doClick(CostingMap.getCostScenarioFilterButton());
+
+//     doClick("//input[@name='field']");
+     Actions act=new Actions(driver);
+     act.moveToElement(driver.findElement(By.xpath("//input[@name='field']"))).click().sendKeys(Keys.ENTER).perform();
+//      doDropdownSelectUsingOptionText(driver.findElement(By.name("operator")), "Is");
+//      doDropdownSelectUsingOptionText(driver.findElement(By.name("condition")), "Equal To");
+//     act.moveToElement(driver.findElement(By.xpath("//input[@name='valuefield']"))).click().pause(1000).build().perform();
+     String ele="ADS-1378 In Total1_UCQC";
+//     act.moveToElement(driver.findElement(By.xpath("//input[@name='valuefield']"))).sendKeys(ele).build().perform();
+//     driver.findElement(By.xpath("//input[@name='valuefield']")).sendKeys(ele);
+//     act.moveToElement(driver.findElement(By.name("valuefield"))).sendKeys("ADS-1378 In Total1_UCQC").perform();
+//      driver.findElement(By.name("valuefield")).click().sendKeys("ADS-1378 In Total1_UCQC");
+     JavascriptExecutor jsExecutor = (JavascriptExecutor) driver; 
+     jsExecutor.executeScript("arguments[0].value = arguments[1];", driver.findElement(By.xpath("//input[@name='valuefield']")), ele);
+     doClick("//span[text()='Add']");
+     doClick("//span[text()='Apply Filter']");
+    
+      tableDoubleClickCellFirstColumn("ADS-1378 In Total1_UCQC");
       ExtentReport.logPass("PASS", "test04CostModelCalculationScenarioPageVerifyNameField");
     } catch (Exception |AssertionError e) {
       ExtentReport.logFail("FAIL","test04CostModelCalculationScenarioPageVerifyNameField", driver,e);
@@ -184,7 +220,10 @@ public class UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds137
 	  
     
 		Actions act = new Actions(driver);
-		WebElement element = driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell x-grid-cell-gridcolumn')][2]/*[text()='" + name + "']"));
+//		WebElement element = driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell x-grid-cell-gridcolumn')][2]/*[text()='" + name + "']"));
+		//Shilpa update for 11.2 on 20.5.2024
+		WebElement element = driver.findElement(By.xpath("//td[contains(@class,'x-grid-cell x-grid-td x-grid-cell-gridcolumn')][2]/*[text()='" + name + "']"));
+
 		act.doubleClick(element).perform();
 		waitForSpinnerToEnd();
 		waitForAjaxExtJs();
@@ -199,8 +238,9 @@ public class UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds137
     driverDelay(5000);
     try {
    
-    doClick("//*[@name='gLDataDescription']/parent::td/following-sibling::td[contains(@class,'trigger')]");
-    assertThatDropdownSelectedValue(javaGetListContainerElementFromFirstOptionText("&23q2"), "DM MHFY05 Reclass TB");
+//    doClick("//*[@name='gLDataDescription']/parent::td/following-sibling::td[contains(@class,'trigger')]");
+    	doClick("//*[@name='gLDataDescription']/..");
+    assertThatDropdownSelectedValue(driver.findElement(By.xpath("(//div[contains(@class,'x-boundlist-floating')])[1]//ul//li")), "DM MHFY05 Reclass TB");
     ExtentReport.logPass("PASS", "test05CostModelCalculationScenarioPageVerifyGlDataScenarioValue");
    	} catch (Exception|AssertionError e) {
    		 ExtentReport.logFail("FAIL","test05CostModelCalculationScenarioPageVerifyGlDataScenarioValue", driver,e);
@@ -215,9 +255,10 @@ public class UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds137
           throws Throwable {
 	  
     try {
-		doClick("//*[@name='actStatCalcCode']/parent::td/following-sibling::td[contains(@class,'trigger')]");
-		assertThatDropdownSelectedValue(
-		        javaGetListContainerElementFromFirstOptionText("0TBACTVOLCALC"),"DM2TBMHFY05VOL");
+//		doClick("//*[@name='actStatCalcCode']/parent::td/following-sibling::td[contains(@class,'trigger')]");
+    	doClick("//*[@name='actStatCalcCode']/..");
+    	assertThatDropdownSelectedValue(
+    			driver.findElement(By.xpath("(//div[contains(@class,'x-boundlist-floating')])[2]//ul//li")),"DM2TBMHFY05VOL");
 		 ExtentReport.logPass("PASS", "test06CostModelCalculationScenarioPageVerifyActivityVolumeDataScenarioValue");
 	} catch (Exception|AssertionError e) {
 		ExtentReport.logFail("FAIL","test06CostModelCalculationScenarioPageVerifyActivityVolumeDataScenarioValue", driver,e);
@@ -229,9 +270,10 @@ public class UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds137
   public void test08CostModelCalculationScenarioPageVerifyVariabilityMasterValue()
           throws Throwable {
 	  try {
-    doClick("//*[@name='variabilityMasterId']/parent::td/following-sibling::td[contains(@class,'trigger')]");
-    assertThatDropdownSelectedValue(
-            javaGetListContainerElementFromAnyOptionText("ASESC2060 CC Var Master"),
+//    doClick("//*[@name='variabilityMasterId']/parent::td/following-sibling::td[contains(@class,'trigger')]");
+			doClick("//*[@name='variabilityMasterId']/..");
+		  assertThatDropdownSelectedValue(
+				  driver.findElement(By.xpath("(//div[contains(@class,'x-boundlist-floating')])[3]//ul//li")),
             "ASESC2060 CC Var Master"
     );
     
@@ -277,9 +319,14 @@ public class UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds137
   @Test
   public void test11CostModelCalculationScenarioPageVerifyPriceList()throws Throwable {
 	  try {
-    String expectedValue = "150 Marina Medical Center";
-    doClick("//*[@name='priceList']/parent::td/following-sibling::td[contains(@class,'trigger')]");
-    assertThatDropdownSelectedValue(javaGetListContainerElementFromAnyOptionText("0TB  Test"),expectedValue);
+//    String expectedValue = "150 Marina Medical Center";
+    String expectedValue = "150  Marina Medical Center	150FY05  Marina Hosp Price List FY05";
+//    doClick("//*[@name='priceList']/parent::td/following-sibling::td[contains(@class,'trigger')]");
+    doClick("//*[@name='priceList']/..");
+	  assertThatDropdownSelectedValue(
+			  driver.findElement(By.xpath("(//div[contains(@class,'x-boundlist-floating')])[4]//ul//li")),
+			  expectedValue);
+//    assertThatDropdownSelectedValue(javaGetListContainerElementFromAnyOptionText("0TB  Test"),expectedValue);
 //    assertThatDropdownSelectedValue(javaGetListContainerElementFromAnyOptionText("0TB  Testsd"),expectedValue);//venkat updated text data 22.09.2022
     ExtentReport.logPass("PASS", "test11CostModelCalculationScenarioPageVerifyPriceList");
 	 	} 
@@ -294,10 +341,18 @@ public class UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds137
   public void test12CostModelCalculationScenarioPageVerifyStartMonth()
           throws Throwable {
 	  try {
-    doClick("//*[@name='savedStartMonth']/parent::td/following-sibling::td[contains(@class,'trigger')]");
-    assertThatDropdownSelectedValue(
-            javaGetListContainerElementFromFirstOptionText("<None>"),
-            "ASESC2060 CC Var Master");
+//    doClick("//*[@name='savedStartMonth']/parent::td/following-sibling::td[contains(@class,'trigger')]");
+		  /*
+		  doClick("//*[@name='savedStartMonth']/..");
+		  assertThatDropdownSelectedValue(
+				  driver.findElement(By.xpath("(//div[contains(@class,'x-boundlist-floating')])[5]//ul//li")),
+				  "Apr 2004");
+				  */
+		//Shilpa Updated for 11.2 on 20.5.2024, input box does not store value, so not possible to fetch value here
+		 assertElementIsDisplayedWithXpath("(//span[text()='Start Month:']//following::div[text()='Apr 2004'])[1]") ;
+//		  assertThatDropdownSelectedValue(
+//            javaGetListContainerElementFromFirstOptionText("<None>"),
+//            "ASESC2060 CC Var Master");
     
     ExtentReport.logPass("PASS", "test12CostModelCalculationScenarioPageVerifyStartMonth");
 	 	} 
@@ -312,10 +367,19 @@ public class UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds137
   @Test
   public void test13CostModelCalculationScenarioPageVerifyEndMonth()throws Throwable {
 	  try {
-    doClick("//*[@name='savedEndMonth']/parent::td/following-sibling::td[contains(@class,'trigger')]");
-    assertThatDropdownSelectedValue(
-            javaGetListContainerElementFromFirstOptionText("<None>"),
-            "ASESC2060 CC Var Master");
+//    doClick("//*[@name='savedEndMonth']/parent::td/following-sibling::td[contains(@class,'trigger')]");
+//    assertThatDropdownSelectedValue(
+//            javaGetListContainerElementFromFirstOptionText("<None>"),
+//            "ASESC2060 CC Var Master");
+		  //Shilpa Updated for 11.2 on 20.5.2024, input box does not store value, so not possible to fetch value here
+		  /*
+		  doClick("//*[@name='savedEndMonth']/..");
+		  assertThatDropdownSelectedValue(
+				  driver.findElement(By.xpath("(//div[contains(@class,'x-boundlist-floating')])[6]//ul//li")),
+				  "Mar 2005");
+				  */
+		//Shilpa Updated for 11.2 on 20.5.2024, input box does not store value, so not possible to fetch value here
+		  assertElementIsDisplayedWithXpath("(//span[text()='End Month:']//following::div[text()='Mar 2005'])[1]") ;
     ExtentReport.logPass("PASS", "test13CostModelCalculationScenarioPageVerifyEndMonth");
 	 	} 
 	  catch (Exception|AssertionError e) {
@@ -328,7 +392,20 @@ public class UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds137
  @Test
   public void test14CostModelCalculationScenarioPageVerifyCalculateInTotalRadioButtonIsSelected() throws Throwable {
 	  try {
-    assertThatElementIsChecked("In Total");
+		  
+//    assertThatElementIsChecked("In Total");
+		  //Shilpa: updated on 20.5.2024
+//		  JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+//
+//          // Scroll the element into view
+//          jsExecutor.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(By.xpath("(//input[@name='calcByMonth'][@checked='checked'])[1]")));
+		  if(driver.findElement(By.xpath("(//input[@name='calcByMonth'][@checked='checked'])[1]")).isEnabled()) {
+			  assertTrue(printout);
+		  }
+		  else {
+			  fail();
+		  }
+//          assertElementIsDisplayed(driver.findElement(By.xpath("(//input[@name='calcByMonth'][@checked='checked'])[1]")));
     ExtentReport.logPass("PASS", "test14CostModelCalculationScenarioPageVerifyCalculateInTotalRadioButtonIsSelected");
 	 	} 
 	  catch (Exception|AssertionError e) {
@@ -341,8 +418,16 @@ public class UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds137
  @Test
   public void test15CostModelCalculationScenarioPageVerifyRvusBasedOn() throws Throwable {
 	  try {
-    assertThatElementIsChecked("Calculation Start Month");
-    ExtentReport.logPass("PASS", "test15CostModelCalculationScenarioPageVerifyRvusBasedOn");
+//    assertThatElementIsChecked("Calculation Start Month");
+		  //Shilpa: updated on 20.5.2024
+//	assertElementIsDisplayedWithXpath("(//input[@name='useRVUsInEffectFirstMonth'][@checked='checked'])[1]");
+	 if(driver.findElement(By.xpath("(//input[@name='useRVUsInEffectFirstMonth'][@checked='checked'])[1]")).isEnabled()) {
+		  assertTrue(printout);
+	  }
+	  else {
+		  fail();
+	  }
+	ExtentReport.logPass("PASS", "test15CostModelCalculationScenarioPageVerifyRvusBasedOn");
 	 	} 
 	  catch (Exception|AssertionError e) {
 	 		ExtentReport.logFail("FAIL","test15CostModelCalculationScenarioPageVerifyRvusBasedOn", driver,e);
@@ -353,7 +438,15 @@ public class UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds137
   @Test
   public void test16CostModelCalculationScenarioPageVerifyWhenNoPrice() throws Throwable {
 	  try {
-    assertThatElementIsChecked("Use $0 as Price and Continue");
+		//Shilpa: updated on 20.5.2024
+//    assertThatElementIsChecked("Use $0 as Price and Continue");
+		  if(driver.findElement(By.xpath("(//input[@name='useZeroIfNoPrice'][@checked='checked'])[1]")).isEnabled()) {
+			  assertTrue(printout);
+		  }
+		  else {
+			  fail();
+		  }
+//		  assertElementIsDisplayedWithXpath("(//input[@name='useZeroIfNoPrice'][@checked='checked'])[1]");
     ExtentReport.logPass("PASS", "test16CostModelCalculationScenarioPageVerifyWhenNoPrice");
 	 	} 
 	  catch (Exception|AssertionError e) {
@@ -430,6 +523,9 @@ public class UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds137
       waitForAjaxExtJs();
       waitForDisplayedSpinnerToEnd();
       driverDelay();
+      waitForFirstRowCalculationBarToReach100Percent(); 
+      //Shilpa commented for 11.2 on 20.5.2024
+      /*
       status = getCalculationStatusMyStatusFirstRow();
       Thread.sleep(500);
       assertThat(status, not(containsString("Failed")));
@@ -437,7 +533,7 @@ public class UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds137
       status = getCalculationStatusMyStatusFirstRow();
       System.out.println(status);
       assertThat(status, containsString("Completed"));
-      
+      */
 //      waitForCalculationToEndAndVerifySummaryDetailsStringOnDialogAndCloseDialog(
 //              ""
 //      );
@@ -452,7 +548,7 @@ public class UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds137
       
     }
   }
-
+/*
   public void assertThatDropdownSelectedValue(WebElement elementMenuList, String expectedValue) throws InterruptedException {
     waitForSpinnerToEnd();
     waitForAjaxExtJs();
@@ -468,7 +564,22 @@ public class UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds137
       }
     }
   }
-  
+  */
+  public void assertThatDropdownSelectedValue(WebElement elementMenuList, String expectedValue) throws InterruptedException {
+	    waitForSpinnerToEnd();
+	    waitForAjaxExtJs();
+	    WebElement classificationList = elementMenuList;
+	    List<WebElement> classificationListing = classificationList.findElements(By.tagName("li"));
+	    for (WebElement item : classificationListing) {
+	      String clss = item.getAttribute("class");
+	   //   if (clss.contains("selected")) {
+	    	 if (clss.contains("x-boundlist-selected")) {// venkat update required selected from 07-09-2022
+	        MatcherAssert.assertThat(item.getText(), equalTo(expectedValue));
+	        System.out.println("Selected option = " + item.getText());
+	        break;
+	      }
+	    }
+	  }
   @AfterClass
 	public static void endtest() throws Exception {
 

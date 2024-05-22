@@ -202,7 +202,9 @@ public class UcqcHelper extends GoHelper {
       System.out.println("Row Number: " + row);
       columnID = driver.findElement(By.xpath("//*[contains(@class,'column-header-text')][text()='" + headerName + "']")).getAttribute("id");
       int columnIDDigits = Integer.parseInt(getNumbersFromStringWithRegex(columnID));
-      columnValue = driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')][" + row + "]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-" + columnIDDigits + "')]")).getText();
+//      columnValue = driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')][" + row + "]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-" + columnIDDigits + "')]")).getText();
+      //Shilpa Xpath update for 11.2 on 20.05.2024
+      columnValue = driver.findElement(By.xpath("(//tr[contains(@class,'x-grid-row')]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-" + columnIDDigits + "')])[" + row + "]")).getText();
       System.out.println("Value: " + columnValue);
     } catch (Throwable e) {
       e.getMessage();
@@ -218,11 +220,17 @@ public class UcqcHelper extends GoHelper {
       columnID = driver.findElement(By.xpath("//*[contains(@class,'column-header-text')][text()='" + headerName + "']")).getAttribute("id");
       int columnIDDigits = Integer.parseInt(getNumbersFromStringWithRegex(columnID));
       if (headerName.equals("Total Unit Cost") || headerName.equals("Total Quick Cost") ||headerName.equals("Total Change")) {
-        columnValue = driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')][" + rowNumber + "]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-" + columnIDDigits + "')]/div")).getText();
+//        columnValue = driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')][" + rowNumber + "]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-" + columnIDDigits + "')]/div")).getText();
+      //Shilpa Xpath update for 11.2 on 21.5.2024
+          columnValue = driver.findElement(By.xpath("(//tr[contains(@class,'x-grid-row')]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-" + columnIDDigits + "')]/div)[" + rowNumber + "]")).getText();
       } else if (headerName.equals("Charge Code") || headerName.equals("Charge Code Name") || headerName.equals("Modifier")) {
-        columnValue = driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')][" + rowNumber + "]/descendant::*[contains(@class,'x-grid-cell-gridcolumn-" + columnIDDigits + "')]/div")).getText();
+//        columnValue = driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')][" + rowNumber + "]/descendant::*[contains(@class,'x-grid-cell-gridcolumn-" + columnIDDigits + "')]/div")).getText();
+          //Shilpa Xpath update for 11.2 on 21.5.2024
+    	  columnValue = driver.findElement(By.xpath("(//tr[contains(@class,'x-grid-row')]/descendant::*[contains(@class,'x-grid-cell-gridcolumn-" + columnIDDigits + "')]/div)[" + rowNumber + "]")).getText();
       } else {
-        columnValue = driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')][" + rowNumber + "]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-" + columnIDDigits + "')]")).getText();
+//        columnValue = driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')][" + rowNumber + "]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-" + columnIDDigits + "')]")).getText();
+    	  //Shilpa Xpath update for 11.2 on 21.5.2024
+    	  columnValue = driver.findElement(By.xpath("(//tr[contains(@class,'x-grid-row')]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-" + columnIDDigits + "')])[" + rowNumber + "]")).getText(); 
       }
       if (printout) {
         System.out.println("Get Cell Value Row Number: " + rowNumber);
@@ -243,11 +251,19 @@ public class UcqcHelper extends GoHelper {
       columnID = driver.findElement(By.xpath("//*[contains(@class,'column-header-text')][text()='" + headerName + "']")).getAttribute("id");
       int columnIDDigits = Integer.parseInt(getNumbersFromStringWithRegex(columnID));
       if (headerName.equals("Total Unit Cost") || headerName.equals("Total Quick Cost") ||headerName.equals("Total Change")) {
-        columnValue = driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')][" + row + "]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-" + columnIDDigits + "')]/div")).getText();
+//        columnValue = driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')][" + row + "]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-" + columnIDDigits + "')]/div")).getText();
+    	  //Shilpa: xpath update for 11.2 on 20.5.2024
+          columnValue = driver.findElement(By.xpath("(//tr[contains(@class,'x-grid-row')]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-" + columnIDDigits + "')]/div)[" + row + "]")).getText();
+
       } else if (headerName.equals("Charge Code") || headerName.equals("Charge Code Name") || headerName.equals("Modifier")) {
-        columnValue = driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')][" + row + "]/descendant::*[contains(@class,'x-grid-cell-gridcolumn-" + columnIDDigits + "')]/div")).getText();
+//        columnValue = driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')][" + row + "]/descendant::*[contains(@class,'x-grid-cell-gridcolumn-" + columnIDDigits + "')]/div")).getText();
+    	  //Shilpa: xpath update for 11.2 on 20.5.2024
+    	  columnValue = driver.findElement(By.xpath("(//tr[contains(@class,'x-grid-row')]/descendant::*[contains(@class,'x-grid-cell-gridcolumn-" + columnIDDigits + "')]/div)[" + row + "]")).getText();
       } else {
-        columnValue = driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')][" + row + "]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-" + columnIDDigits + "')]")).getText();
+//        columnValue = driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')][" + row + "]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-" + columnIDDigits + "')]")).getText();
+    	  //Shilpa: xpath update for 11.2 on 20.5.2024
+    	  columnValue = driver.findElement(By.xpath("(//tr[contains(@class,'x-grid-row')]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-" + columnIDDigits + "')])[" + row + "]")).getText();
+
       }
       if (printout) {
         System.out.println("Get Cell Value Charge Code: " + chargeCode);
@@ -525,9 +541,10 @@ public class UcqcHelper extends GoHelper {
     driver.findElement(By.xpath("(//tr[contains(@class,'x-grid-row')]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-"+columnIdDigits+"')])["+row+"]")).click();
     waitForAjaxExtJs();
 //    WebElement editCell = driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')]["+row+"]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-"+columnIdDigits+"')]/div/table"));
-    WebElement editCell = driver.findElement(By.xpath("((//tr[contains(@class,'x-grid-row')]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-"+columnIdDigits+"')]/div/table)["+row+"]"));
+   //Shilpa update xpath for 11.2 on 21.05.2024
+    WebElement editCell = driver.findElement(By.xpath("(//tr[contains(@class,'x-grid-row')]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-"+columnIdDigits+"')])["+row+"]"));
     Actions action = new Actions(driver);
-    action.moveToElement(editCell).sendKeys(newValue).perform();
+    action.moveToElement(editCell).pause(1000).sendKeys(newValue).perform();
     Thread.sleep(500);
   }
 
@@ -571,7 +588,10 @@ public class UcqcHelper extends GoHelper {
         System.out.println("Get cell as WebElement, Header Name: " + headerName);
         System.out.println("Get cell as WebElement, Row Number: " + row);
       }
-      cellElement = driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')][" + row + "]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-" + columnIDDigits + "')]/div"));
+//      cellElement = driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')][" + row + "]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-" + columnIDDigits + "')]/div"));
+      //Shilpa:xpath update for 11.2 on 20.05.2024
+      cellElement = driver.findElement(By.xpath("(//tr[contains(@class,'x-grid-row')]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-" + columnIDDigits + "')]/div)[" + row + "]"));
+
     } catch (Throwable e) {
       e.getMessage();
     }
@@ -606,6 +626,12 @@ public class UcqcHelper extends GoHelper {
     waitForAjaxExtJs();
     //Thread.sleep(1100);  //original value, which works
     Thread.sleep(500);  //alternative value, to reduce run time - reset to original value if there are false positives with this one
+    //Shilpa added below line for <None> for 11.2 on 21.05.2024
+    if(departmentText.equals("<None>")) {
+	   doClick(driver.findElement(By.xpath("//*[contains(@class,'docked-bottom')]/descendant::span[text()='Apply']")));
+		waitForAjaxExtJs();
+   }
+   else {
     JavascriptExecutor jse = (JavascriptExecutor)driver;
 	   jse.executeScript("arguments[0].value='"+ departmentText +"';",  driver.findElement(By.name("carrierfield")));
 		waitForSpinnerToEnd();
@@ -619,10 +645,12 @@ public class UcqcHelper extends GoHelper {
 		waitForAjaxExtJs();
 		doClick(driver.findElement(By.xpath("//*[contains(@class,'docked-bottom')]/descendant::span[text()='Apply']")));
 		waitForAjaxExtJs();
+		
 	} catch (Exception|AssertionError e) {
 		doClick(driver.findElement(By.xpath("//*[contains(@class,'docked-bottom')]/descendant::span[text()='Apply']")));
 		waitForAjaxExtJs();
 	}
+   }
   }
 
   public static void setUcqcCriteria(String costModel, String costModelScenario, String entity, String department, String resultsStoredFor) throws InterruptedException {

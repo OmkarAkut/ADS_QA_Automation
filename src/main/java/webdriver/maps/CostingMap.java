@@ -1943,13 +1943,18 @@ public class CostingMap extends MapConfig {
 	public WebElement getRvuNextPageButton() {
 		return getRvuNextPageButton;
 	}
-	@FindBy(xpath = "//span[contains(@id,'warningwindow')]//following::span[text()='Cancel']//parent::button")
+//	@FindBy(xpath = "//span[contains(@id,'warningwindow')]//following::span[text()='Cancel']//parent::button")
+	//Shilpa xpath update for 11.2 on 20.5.2024
+	@FindBy(xpath = "//div[contains(@id,'warningwindow')]//following::span[text()='Cancel']/..")
+
 	private WebElement getRvuCancelButton;
 
 	public WebElement getRvuCancelButton() {
 		return getRvuCancelButton;
 	}
-	@FindBy(xpath = "//span[contains(@id,'window')][text()='Copy to Quick RVUs']")
+//	@FindBy(xpath = "//span[contains(@id,'window')][text()='Copy to Quick RVUs']")
+	//Shilpa xpath update for 11.2 on 20.5.2024
+	@FindBy(xpath = "//div[contains(@id,'window')][text()='Copy to Quick RVUs']")
 	private WebElement getCopyRvuWindow;
 
 	public WebElement getCopyRvuWindow() {
@@ -1967,28 +1972,36 @@ public class CostingMap extends MapConfig {
 	public WebElement getCopyandSaveRvuWarningPopUp() {
 		return getCopyandSaveRvuWarningPopUp;
 	}
-	@FindBy(xpath = "//span[contains(@id,'window')][text()='Overwrite RVU Maintenance']")
+//	@FindBy(xpath = "//span[contains(@id,'window')][text()='Overwrite RVU Maintenance']")
+	//Shilpa update xpath for 11.2 on 20.5.2024
+	@FindBy(xpath = "//div[contains(@id,'window')][text()='Overwrite RVU Maintenance']")
 	private WebElement getOverwriteRvuWarningPopUp;
 
 	public WebElement getOverwriteRvuWarningPopUp() {
 		return getOverwriteRvuWarningPopUp;
 	}
-	@FindBy(xpath = "//span[contains(@id,'messagebox')][text()='Warning']")
+//	@FindBy(xpath = "//span[contains(@id,'messagebox')][text()='Warning']")
+	//Shilpa Xpath update for 11.2 on 21.5.2024
+	@FindBy(xpath = "//div[contains(@id,'warningwindow')][text()='Warning']")
+
 	private WebElement getClearRvuWarningPopUp;
 
 	public WebElement getClearRvuWarningPopUp() {
 		return getClearRvuWarningPopUp;
 	}
-	@FindBy(xpath = "//label[text()='Department']//following::div[text()][1]")
+//	@FindBy(xpath = "//label[text()='Department']//following::div[text()][1]")
+	//Shilpa Xpath update for 11.2 on 20.5.2024
+	@FindBy(xpath = "//span[text()='Department']//following::div[text()][1]")
 	private WebElement getUcqcDeptFieldNone;
 
 	public WebElement getUcqcDeptFieldNone() {
 	
 		return getUcqcDeptFieldNone;
 	}
-	@FindBy(xpath = "(//div[contains(@id,'ucqcform')]//label[text()='Department']//following::span[text()='Select']//parent::button)[1]")
+//	@FindBy(xpath = "(//div[contains(@id,'ucqcform')]//label[text()='Department']//following::span[text()='Select']//parent::button)[1]")
+	//Shilpa Xpath update for 11.2 on 21.5.2024
+	@FindBy(xpath = "(//div[contains(@id,'ucqcform')]//span[text()='Department']//following::span[text()='Select']/../../..)[1]")
 	private WebElement getUcqcDeptSelectButton;
-
 	public WebElement getUcqcDeptSelectButton() {
 		return getUcqcDeptSelectButton;
 	}
@@ -2414,4 +2427,21 @@ public class CostingMap extends MapConfig {
 	public WebElement statisticDataFilterCancelClose() {
 		return statisticDataFilterCancelClose;
 	}
+	
+	@FindBy(xpath = "//h1[text()='Cost Model Calculation Scenarios']//following::span[text()='Filter']")
+	private static WebElement getCostScenarioFilterButton;
+	public static WebElement getCostScenarioFilterButton() {return getCostScenarioFilterButton;}
+	
+	//Shilpa Xpath update for 11.2 on 21.5.2024
+	@FindBy(xpath = "//h1[text()='Cost Model Calculation Scenarios']//following::span[text()='Save As']")
+	private static WebElement getCostScenarioSaveButton;
+	public static WebElement getCostScenarioSaveButton() {return getCostScenarioSaveButton;}
+	
+	@FindBy(xpath = "//h1[text()='Cost Model Calculation Scenarios']//following::span[text()='Calculate']")
+	private static WebElement getCostScenarioCalculateButton;
+	public static WebElement getCostScenarioCalculateButton() {return getCostScenarioCalculateButton;}
+	
+	@FindBy(xpath = "//h1[text()='Cost Model Calculation Scenarios']//following::span[text()='Cancel & Close']")
+	private static WebElement getCostScenarioSaveCloseButton;
+	public static WebElement getCostScenarioSaveCloseButton() {return getCostScenarioSaveCloseButton;}
 }

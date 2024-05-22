@@ -361,6 +361,10 @@ public class ContractingMap extends MapConfig {
 	private WebElement ContractModelCalcFilename;
 	public WebElement getContractModelCalcFilename() {return ContractModelCalcFilename;}
 	
+	@FindBy(xpath = "(//input[@name='logLocation'])")
+	private WebElement ContractCalcFilename;
+	public WebElement getContractCalcFilename() {return ContractCalcFilename;}
+	
 	@FindBy(xpath = "//span[text()='Continue']/../../..")
 	private WebElement ContractModelCalcContinueBtn;
 	public WebElement getContractModelCalcContinueBtn() {return ContractModelCalcContinueBtn;}
@@ -1104,5 +1108,7 @@ public class ContractingMap extends MapConfig {
 	@FindBy(xpath = "//input[@name='dischargeEndDate']")
 	private static WebElement getDischargeDateTo;
 	public static WebElement getDischargeDateTo() {return getDischargeDateTo;}
+	
+	
 
 }
