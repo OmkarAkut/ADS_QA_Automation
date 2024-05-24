@@ -196,9 +196,7 @@ public class CreateNewCostModel extends GoHelper {
 			break;
 
 		case "Product Types":
-//			doClickTreeItem("Product Types");
-			//Shilpa updated xpath for 11.2 on 23.5.2024
-			doClick("//span[text()='Product Types']");
+			doClickTreeItem("Product Types");
 			act.moveToElement(CostingMap.getfirstOverheadGridElement()).doubleClick().build().perform();
 			driverDelay(1000);
 			doClick(CostingMap.getOverheadModelDynamicCloseBtn());

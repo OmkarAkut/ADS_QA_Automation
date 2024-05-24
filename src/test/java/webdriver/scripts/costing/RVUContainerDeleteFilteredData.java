@@ -230,10 +230,9 @@ doClickTreeItem("Assign Unit Costs");
 //			assertElementIsDisplayedWithXpath("//label[text()='Filter to Match These Criteria 1596/13477']");
 			assertElementIsDisplayedWithXpath("//label[contains(text(),'Filter to Match These Criteria 1596/')]");
 			doClick(dialog.getFilterDialogButtonApplyFilter());
-			waitForDisplayedSpinnerToEnd();
-			driverDelay(10000);
+			waitForSpinnerToEnd();
 			assertListElementsAreDisplayed(costing.getRvuContainerList(), printout);
-//			assertElementIsDisplayedWithXpath("//div[contains(@id,'tbtext')][text()='"+TotalPages+"']");//Shilpa update on 23.5.2024 cannot be validated since page count keep changing
+			assertElementIsDisplayedWithXpath("//div[contains(@id,'tbtext')][text()='"+TotalPages+"']");
 			ExtentReport.logPass("PASS", "test10ValidateOpenInRvuFilterPopUp");
 		} catch (Exception|AssertionError e) {
 			ExtentReport.logFail("FAIL", "test10ValidateOpenInRvuFilterPopUp", driver, e);
@@ -264,20 +263,11 @@ doClickTreeItem("Assign Unit Costs");
 			fail(e.getMessage());
 		}
 		finally {
-			/*
 			Actions act=new Actions(driver);
 			waitUntilElementIsClickable(costing.getRvuContainerClearFilterButton());
 			act.moveToElement(costing.getRvuContainerClearFilterButton()).click().build().perform();
 //			ContractModelsHelper.doactionClick(costing.getRvuContainerClearFilterButton());
 			driverDelay();
-			*/
-			//Remove below lines once ADS-17843 and ADS-18038    are fixed
-
-			doClick("//*[text()='RVU Container List']/ancestor::div/following-sibling::div//span[text()='Filter']");
-			driverDelay();
-			doClick("//span[text()='Remove All']");
-			doClick(dialog.getFilterDialogButtonApplyFilter());
-			waitForDisplayedSpinnerToEnd();
 		}
 		
 	}
@@ -407,14 +397,6 @@ doClickTreeItem("Assign Unit Costs");
 			ExtentReport.logFail("FAIL", "test16ApplyCostComponentNameInRvuContainerList", driver, e);
 			fail(e.getMessage());
 		}
-		finally {
-			//Remove below lines once ADS-17843 and ADS-18038    are fixed
-			doClick("//*[text()='RVU Container List']/ancestor::div/following-sibling::div//span[text()='Filter']");
-			driverDelay();
-			doClick("//span[text()='Remove All']");
-			doClick(dialog.getFilterDialogButtonApplyFilter());
-			waitForDisplayedSpinnerToEnd();
-		}
 		
 	}
 	@Test
@@ -449,13 +431,7 @@ doClickTreeItem("Assign Unit Costs");
 		}
 		finally {
 			try {
-				//Remove below lines once ADS-17843 and ADS-18038    are fixed
-//				test08ClearFilterInRvuContainer_5983();
-				doClick("//*[text()='RVU Container List']/ancestor::div/following-sibling::div//span[text()='Filter']");
-				driverDelay();
-				doClick("//span[text()='Remove All']");
-				doClick(dialog.getFilterDialogButtonApplyFilter());
-				waitForDisplayedSpinnerToEnd();
+				test08ClearFilterInRvuContainer_5983();
 			} catch (Exception e) {
 				
 			}

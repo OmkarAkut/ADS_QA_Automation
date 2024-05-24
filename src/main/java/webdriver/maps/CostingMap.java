@@ -2347,17 +2347,6 @@ public class CostingMap extends MapConfig {
 	public WebElement statisticDataCalcScenarionSaveAsBtn() {
 		return statisticDataCalcScenarionSaveAsBtn;
 	}
-	
-	@FindBy(xpath = "//h1[text()='Statistic Data Calculation Scenarios']//following::span[text()='Delete']")
-	private WebElement statisticDataCalcScenarionDeleteBtn;
-	public WebElement statisticDataCalcScenarionDeleteBtn() {
-		return statisticDataCalcScenarionDeleteBtn;
-	}
-	@FindBy(xpath = "//div[contains(@id,'warningwindow')]//span[text()='Delete']")
-	private WebElement warningMessageDeleteBtn;
-	public WebElement warningMessageDeleteBtn() {
-		return warningMessageDeleteBtn;
-	}
 	@FindBy(name = "gLStatMastId")
 	private WebElement glStatisticMaster;
 	public WebElement glStatisticMaster() {
@@ -2433,10 +2422,7 @@ public class CostingMap extends MapConfig {
 	public WebElement statisticDataFilterBtn() {
 		return statisticDataFilterBtn;
 	}
-//	@FindBy(xpath = "//span[text()='Filter Statistic Data']//following::span[text()='Cancel & Close']")
-	//Shilpa update xpath for 11.2 on 23.5.2024
-	@FindBy(xpath = "//div[text()='Filter Statistic Data']//following::span[text()='Cancel & Close']")
-
+	@FindBy(xpath = "//span[text()='Filter Statistic Data']//following::span[text()='Cancel & Close']")
 	private WebElement statisticDataFilterCancelClose;
 	public WebElement statisticDataFilterCancelClose() {
 		return statisticDataFilterCancelClose;

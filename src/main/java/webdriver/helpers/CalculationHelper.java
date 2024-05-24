@@ -581,7 +581,7 @@ public class CalculationHelper extends GoHelper {
 					ContractModelsHelper.scrollToView("//*[contains(text(),'"+text+"')]");
 				} catch (Exception e1) {
 					ModelLibraryMap.getGoToNextPage().click();
-					Thread.sleep(1200);
+					Thread.sleep(1000);
 					continue;
 				}
 				

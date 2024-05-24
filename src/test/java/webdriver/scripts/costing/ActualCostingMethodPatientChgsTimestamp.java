@@ -82,10 +82,9 @@ public class ActualCostingMethodPatientChgsTimestamp extends CalculationHelper {
 			doClick(costing.getCostModelScenarioCalculationButtonCalculate());
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
-//			ContractModelsHelper.gotToSpecifiedPage(ModelLibraryMap.getInputNumberPage(), ModelLibraryMap.getGoToPage(), "2");
-//			driverDelay(700);
-//			confirmCalculationStatusDetailsContains("  Sum Actual Costs =         748.000");
-			checkForRecordsProcessed("  Sum Actual Costs =         748.000");
+			ContractModelsHelper.gotToSpecifiedPage(ModelLibraryMap.getInputNumberPage(), ModelLibraryMap.getGoToPage(), "2");
+			driverDelay(700);
+			confirmCalculationStatusDetailsContains("  Sum Actual Costs =         748.000");
 			closeViewDialog();
 			ExtentReport.logPass("PASS", "test02VerifyCalculationStatusPageForCostModelScenarioA");
 		} catch (Exception | AssertionError e) {
@@ -107,9 +106,8 @@ public class ActualCostingMethodPatientChgsTimestamp extends CalculationHelper {
 			doClick(costing.getCostModelScenarioCalculationButtonCalculate());
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
-//			ContractModelsHelper.gotToSpecifiedPage(ModelLibraryMap.getInputNumberPage(), ModelLibraryMap.getGoToPage(), "2");
-//			confirmCalculationStatusDetailsContains("  Sum Actual Costs =         748.000");
-			checkForRecordsProcessed("  Sum Actual Costs =         748.000");
+			ContractModelsHelper.gotToSpecifiedPage(ModelLibraryMap.getInputNumberPage(), ModelLibraryMap.getGoToPage(), "2");
+			confirmCalculationStatusDetailsContains("  Sum Actual Costs =         748.000");
 			closeViewDialog();
 			ExtentReport.logPass("PASS", "test03VerifyCalculationStatusPageForCostModelScenarioB");
 		} catch (Exception | AssertionError e) {
@@ -131,9 +129,8 @@ public class ActualCostingMethodPatientChgsTimestamp extends CalculationHelper {
 			doClick(costing.getCostModelScenarioCalculationButtonCalculate());
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
-//			ContractModelsHelper.gotToSpecifiedPage(ModelLibraryMap.getInputNumberPage(), ModelLibraryMap.getGoToPage(), "2");
-//			confirmCalculationStatusDetailsContains("  Sum Actual Costs =         748.000");
-			checkForRecordsProcessed("  Sum Actual Costs =         748.000");
+			ContractModelsHelper.gotToSpecifiedPage(ModelLibraryMap.getInputNumberPage(), ModelLibraryMap.getGoToPage(), "2");
+			confirmCalculationStatusDetailsContains("  Sum Actual Costs =         748.000");
 			closeViewDialog();
 			ExtentReport.logPass("PASS", "test04VerifyCalculationStatusPageForCostModelScenarioC");
 		} catch (Exception | AssertionError e) {
@@ -155,9 +152,8 @@ public class ActualCostingMethodPatientChgsTimestamp extends CalculationHelper {
 			doClick(costing.getCostModelScenarioCalculationButtonCalculate());
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
-//			ContractModelsHelper.gotToSpecifiedPage(ModelLibraryMap.getInputNumberPage(), ModelLibraryMap.getGoToPage(), "2");
-//			confirmCalculationStatusDetailsContains("  Sum Actual Costs =         848.000");
-			checkForRecordsProcessed("  Sum Actual Costs =         848.000");
+			ContractModelsHelper.gotToSpecifiedPage(ModelLibraryMap.getInputNumberPage(), ModelLibraryMap.getGoToPage(), "2");
+			confirmCalculationStatusDetailsContains("  Sum Actual Costs =         848.000");
 			closeViewDialog();
 			ExtentReport.logPass("PASS", "test05VerifyCalculationStatusPageForCostModelScenarioD");
 		} catch (Exception | AssertionError e) {
@@ -181,9 +177,8 @@ public class ActualCostingMethodPatientChgsTimestamp extends CalculationHelper {
 			doClick(CostingMap.getCostModelalculateBtn());
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
-//			ContractModelsHelper.gotToSpecifiedPage(ModelLibraryMap.getInputNumberPage(), ModelLibraryMap.getGoToPage(), "2");
-//			confirmCalculationStatusDetailsContains("  Sum Actual Costs =        1044.000");
-			checkForRecordsProcessed("  Sum Actual Costs =         1044.000");
+			ContractModelsHelper.gotToSpecifiedPage(ModelLibraryMap.getInputNumberPage(), ModelLibraryMap.getGoToPage(), "2");
+			confirmCalculationStatusDetailsContains("  Sum Actual Costs =        1044.000");
 			closeViewDialog();
 			ExtentReport.logPass("PASS", "test06VerifyCalculationStatusPageForCostModelScenarioE");
 		} catch (Exception | AssertionError e) {

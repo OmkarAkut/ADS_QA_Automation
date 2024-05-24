@@ -91,9 +91,7 @@ public class GeneralCalculationsChargeItemServiceClassificationSchemeAds2342 ext
 			// Log']")));
 			driverDelay(5000);
 			assertViewLogTitle(viewLogTitleRemove);
-//			confirmCalculationStatusDetailsContains("Process Completed");
-			//Shilpa update for 11.2 on 23.5.2024
-			checkForRecordsProcessed("Process Completed");
+			confirmCalculationStatusDetailsContains("Process Completed");
 			closeViewDialog();
 //			deleteMyCalculationStatusFirstRow();
 			deleteFirstRow();
@@ -176,9 +174,7 @@ public class GeneralCalculationsChargeItemServiceClassificationSchemeAds2342 ext
 			// Shilpa 16.09.2022
 			driverDelay(5000);
 			assertViewLogTitle(viewLogTitleAssign);
-//			confirmCalculationStatusDetailsContains("Process Completed");
-			//Shilpa update for 11.2 on 23.5.2024
-			checkForRecordsProcessed("Process Completed");
+			confirmCalculationStatusDetailsContains("Process Completed");
 			closeViewDialog();
 			driverDelay(3000);
 			deleteFirstRow();

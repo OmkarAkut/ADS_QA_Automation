@@ -64,11 +64,8 @@ public class GeneralCalculationsRunMedicalServiceAssignmentAds2343 extends Calcu
 			calculationStatusPageOpenViewDialog();
 			driverDelay(2000);//Shilpa 19.09.2022 requires wait
 			assertViewLogTitle(viewLogTitleClear);
-//			confirmCalculationStatusDetailsContains("Number of batches to process: 1");
-//			confirmCalculationStatusDetailsContains("Process Completed");
-			//Shilpa Updated for 11.2 on 23.5.2024
-			checkForRecordsProcessed("Number of batches to process: 1");
-			checkForRecordsProcessed("Process Completed");
+			confirmCalculationStatusDetailsContains("Number of batches to process: 1");
+			confirmCalculationStatusDetailsContains("Process Completed");
 			closeViewDialog();
 //			deleteMyCalculationStatusFirstRow();
 			deleteFirstRow();
@@ -113,17 +110,13 @@ public class GeneralCalculationsRunMedicalServiceAssignmentAds2343 extends Calcu
 			driverDelay(3000);
 			assertViewLogTitle(viewLogTitleAssign);
 			driverDelay(4000);
-//			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);",         	driver.findElement(By.xpath("//*[contains(text(),'Number of batches to process: 1')]"))
-//					);//Shilpa 19.09.2022 added this to make element visible
-//			driverDelay(4000);//Not required : Shilpa update for 11.2 on 23.5.2024
-//			confirmCalculationStatusDetailsContains("Number of batches to process: 1");
-			//Shilpa update for 11.2 on 23.5.2024
-			checkForRecordsProcessed("Number of batches to process: 1");
-//			clickLastPageIconOnCalculationStatusViewLog();
-//			driverDelay(4000);
-			//Shilpa update for 11.2 on 23.5.2024
-//			confirmCalculationStatusDetailsContains("Process Completed");
-			checkForRecordsProcessed("Process Completed");
+			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);",         	driver.findElement(By.xpath("//*[contains(text(),'Number of batches to process: 1')]"))
+					);//Shilpa 19.09.2022 added this to make element visible
+			driverDelay(4000);
+			confirmCalculationStatusDetailsContains("Number of batches to process: 1");
+			clickLastPageIconOnCalculationStatusViewLog();
+			driverDelay(4000);
+			confirmCalculationStatusDetailsContains("Process Completed");
 			closeViewDialog();
 			deleteFirstRow();
 //			deleteMyCalculationStatusFirstRow();
