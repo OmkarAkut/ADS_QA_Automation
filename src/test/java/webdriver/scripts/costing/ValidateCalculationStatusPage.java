@@ -182,9 +182,13 @@ public class ValidateCalculationStatusPage extends CalculationHelper {
 			doactionClick(driver.findElement(By.xpath("(//input[@name='hostLocation']/../..)[2]")));
 			doClick(modelMap.getContractModelCalcFileSharedLocOption());
 			doClick(modelMap.getContractModelCalcFilename());
-			ContractModelsHelper.keyInValues(modelMap.getContractModelCalcFilename(), "Testing"+currentDateTime);
+			driverDelay();
+			Actions act=new Actions(driver);
+			act.moveToElement(modelMap.getContractModelCalcFilename()).click().sendKeys("Testing"+currentDateTime).perform();
+//			ContractModelsHelper.keyInValues(modelMap.getContractModelCalcFilename(), "Testing"+currentDateTime);
 //			doClick(modelMap.getContractModelCalcContinueBtn());
-			doJsClick(modelMap.getContractModelCalcContinueBtn());
+			act.moveToElement(modelMap.getContractModelCalcContinueBtn()).click().perform();
+//			doJsClick(modelMap.getContractModelCalcContinueBtn());
 //			JavascriptExecutor executor = (JavascriptExecutor)driver;
 //			executor.executeScript("arguments[0].click();", modelMap.getContractModelCalcContinueBtn());
 			waitForDisplayedSpinnerToEnd();
@@ -196,7 +200,7 @@ public class ValidateCalculationStatusPage extends CalculationHelper {
 //			driver.findElement(By.xpath("(//div[text()='"+costModel+"']//following::span[text()='View'])[1]")).sendKeys(Keys.ARROW_LEFT);
 //			driver.findElement(By.xpath("(//div[text()='"+costModel+"']//following::span[text()='View'])[1]")).sendKeys(Keys.ENTER);
 
-			Actions act=new Actions(driver);
+			
 			driver.findElement(By.xpath("(//div[text()='"+costModel+"']//following::div[text()='Completed'])[1]/..")).click();
 			act.moveToElement(driver.findElement(By.xpath("(//div[text()='"+costModel+"']//following::span[text()='View'])[1]/.."))).sendKeys(Keys.ARROW_RIGHT).sendKeys(Keys.ARROW_RIGHT).sendKeys(Keys.ARROW_DOWN).build().perform();
 			act.moveToElement(driver.findElement(By.xpath("(//div[text()='"+costModel+"']//following::span[text()='View'])[1]/.."))).sendKeys(Keys.ARROW_UP).sendKeys(Keys.RIGHT).sendKeys(Keys.ENTER).perform();

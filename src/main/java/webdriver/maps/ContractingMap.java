@@ -365,7 +365,9 @@ public class ContractingMap extends MapConfig {
 	private WebElement ContractCalcFilename;
 	public WebElement getContractCalcFilename() {return ContractCalcFilename;}
 	
-	@FindBy(xpath = "//span[text()='Continue']/../../..")
+//	@FindBy(xpath = "//span[text()='Continue']/../../..")
+	//Shilpa xpath update for 11.2 on 24.5.2024
+	@FindBy(xpath = "(//span[text()='Continue']/../../..)[2]")
 	private WebElement ContractModelCalcContinueBtn;
 	public WebElement getContractModelCalcContinueBtn() {return ContractModelCalcContinueBtn;}
 	
