@@ -76,8 +76,11 @@ public class ActualCostingMethodPatientChgsDoesNotMatch extends CalculationHelpe
 			doClick(costing.getCostModelScenarioCalculationButtonCalculate());
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
-			confirmCalculationStatusDetailsContains("  Department: D3120 DEPT D3120");
-			confirmCalculationStatusDetailsContains("  Sum Actual Costs = ");
+//			confirmCalculationStatusDetailsContains("  Department: D3120 DEPT D3120");
+//			confirmCalculationStatusDetailsContains("  Sum Actual Costs = ");
+			//Shilpa Update for 11.2 on 23.5.2024
+			checkForRecordsProcessed("  Department: D3120 DEPT D3120");
+			checkForRecordsProcessed("  Sum Actual Costs = ");
 			closeViewDialog();
 			ExtentReport.logPass("PASS", "test02VerifyCalculationStatusForCostModelCalcScenarioEntity");
 		} catch (Exception | AssertionError e) {
@@ -100,8 +103,11 @@ public class ActualCostingMethodPatientChgsDoesNotMatch extends CalculationHelpe
 			doClick(costing.getCostModelScenarioCalculationButtonCalculate());
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
-			confirmCalculationStatusDetailsContains("  Department: D2265 DEPT D2265");
-			confirmCalculationStatusDetailsContains("  Sum Actual Costs = ");
+//			confirmCalculationStatusDetailsContains("  Department: D2265 DEPT D2265");
+//			confirmCalculationStatusDetailsContains("  Sum Actual Costs = ");
+			//Shilpa Update for 11.2 on 23.5.2024
+			checkForRecordsProcessed("  Department: D2265 DEPT D2265");
+			checkForRecordsProcessed("  Sum Actual Costs = ");
 			closeViewDialog();
 			ExtentReport.logPass("PASS", "test03VerifyCalculationStatusForCostModelCalcScenarioDept");
 		} catch (Exception | AssertionError e) {
@@ -123,8 +129,11 @@ public class ActualCostingMethodPatientChgsDoesNotMatch extends CalculationHelpe
 			doClick(costing.getCostModelScenarioCalculationButtonCalculate());
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
-			confirmCalculationStatusDetailsContains("  Department: D3047 DEPT D3047");
-			confirmCalculationStatusDetailsContains("  Sum Actual Costs = ");
+//			confirmCalculationStatusDetailsContains("  Department: D3047 DEPT D3047");
+//			confirmCalculationStatusDetailsContains("  Sum Actual Costs = ");
+			//Shilpa Update for 11.2 on 23.5.2024
+			checkForRecordsProcessed("  Department: D3047 DEPT D3047");
+			checkForRecordsProcessed("  Sum Actual Costs = ");
 			closeViewDialog();
 			ExtentReport.logPass("PASS", "test04VerifyCalculationStatusForCostModelCalcScenarioNoActCost");
 		} catch (Exception | AssertionError e) {

@@ -10,6 +10,8 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.interactions.Actions;
 
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
@@ -29,11 +31,14 @@ public class CostingRunStatisticDataCalculationScenarioAds2339 extends Calculati
 //  String statisticDataScenario = "Automated REGRESSION Stat Data Scenario";
 //  String statisticDataCalculationScenario = "Automated REGRESSION Stat Data Calc FY05";
 	// Shilpa: update test data for 11.2 on 2.5.2024
-	static String statisticDataCalculationScenario = "v105 REGRESSION Stat Data Calc Scenario";
-	static String updateStatisticDataCalculationScenari = "v11.2 REGRESSION Stat Data Calc Scenario";// Update as per
+//	static String statisticDataCalculationScenario = "v105 REGRESSION Stat Data Calc Scenario";
+	static String statisticDataCalculationScenario = "v11.2 REGRESSION Stat Data Calc Scenario";
+	static String updateStatisticDataCalculationScenari = "Updated v11.2 REGRESSION Stat Data Calc";// Update as per
 																										// version
 																										// number
 	static String[] filterCalcScenario = { "Name", "Is", "Equal To", statisticDataCalculationScenario };
+	static String[] updatedfilterCalcScenario = { "Name", "Is", "Equal To", updateStatisticDataCalculationScenari };
+
 	static String GLStatisticMaster = "GLSTATS General Ledger Statistics";
 	static String GLDataScenario = "MH FY05 Reclass";
 	static String ActivityStatisticMaster = "ACTSTATS Activity Statistics";
@@ -145,8 +150,24 @@ public class CostingRunStatisticDataCalculationScenarioAds2339 extends Calculati
 			doClick(costingMap.statisticDataCalcScenarionFilterBtn());
 			doFilterCreate(filterCalcScenario);
 			tableDoubleClickCellFirstColumn(statisticDataCalculationScenario);
-			ContractModelsHelper.keyInValues(costingMap.statisticDataScenarionName(),
-					updateStatisticDataCalculationScenari);
+//			Actions act=new Actions(driver);
+//			act.moveToElement(costingMap.statisticDataScenarionName()).click().sendKeys(Keys.CLEAR).sendKeys(updatedfilterCalcScenario).build().perform();
+			// Shilpa updated steps on 23.5.2024 normal sendkeys will send input but Save AS will not be enabled so sript to enter character by character
+			costingMap.statisticDataScenarionName().click();
+			costingMap.statisticDataScenarionName().clear();
+			for (char ch : updateStatisticDataCalculationScenari.toCharArray()) {
+				
+				  costingMap.statisticDataScenarionName().sendKeys(Character.toString(ch));
+		            // Optionally, add a small delay between keystrokes
+		            try {
+		                Thread.sleep(100); // 100 milliseconds
+		            } catch (InterruptedException e) {
+		                e.printStackTrace();
+		            }
+		        }
+//			ContractModelsHelper.keyInValues(costingMap.statisticDataScenarionName(),
+//					updateStatisticDataCalculationScenari+" ");
+			
 			assertElementValueAttribute(costingMap.glStatisticMaster(), GLStatisticMaster, printout);
 			assertElementValueAttribute(costingMap.glDataScenario(), GLDataScenario, printout);
 			assertElementValueAttribute(costingMap.activityStatsMaster(), ActivityStatisticMaster, printout);
@@ -157,6 +178,7 @@ public class CostingRunStatisticDataCalculationScenarioAds2339 extends Calculati
 			assertElementValueAttribute(costingMap.statisticEndMonth(), endMonth, printout);
 			doClick(costingMap.statisticDataCalcScenarionSaveAsBtn());
 			waitForDisplayedSpinnerToEnd();
+			
 			ExtentReport.logPass("PASS", "test02VerifyStaticDataCalculationScenarioPageConfigurationAndSave");
 
 		} catch (Exception | AssertionError e) {
@@ -229,9 +251,15 @@ public class CostingRunStatisticDataCalculationScenarioAds2339 extends Calculati
 			waitForDisplayedSavingSpinnerToEnd();
 			doClick(costingMap.statisticDataFilterBtn());
 			waitForElementPresence("//span[text()='Filter Statistic Data']");
-			assertElementIsDisplayedWithXpath("Filter to Match These Criteria 1237/1237");
+			assertElementIsDisplayedWithXpath("//label[text()='Filter to Match These Criteria 1237/1237']");
 			doClick(costingMap.statisticDataFilterCancelClose());
 			doClick(costingMap.getCancelCloseStatisticScenario());
+			doClickTreeItem("Statistic Data Calculation Scenarios");
+			waitForDisplayedSpinnerToEnd();
+			doClick(costingMap.statisticDataCalcScenarionFilterBtn());
+			doFilterCreate(updatedfilterCalcScenario);
+			doClick(costingMap.statisticDataCalcScenarionDeleteBtn());
+			doClick(costingMap.warningMessageDeleteBtn());
 			ExtentReport.logPass("PASS", "test04AssertActivityVolumeDataScenarioFilterResultsMatchExpected");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test04AssertActivityVolumeDataScenarioFilterResultsMatchExpected", driver, e);
@@ -239,5 +267,10 @@ public class CostingRunStatisticDataCalculationScenarioAds2339 extends Calculati
 
 		}
 	}
+	@AfterClass
+	public static void endtest() throws Exception {
 
+		ExtentReport.report.flush();
+
+	}
 }

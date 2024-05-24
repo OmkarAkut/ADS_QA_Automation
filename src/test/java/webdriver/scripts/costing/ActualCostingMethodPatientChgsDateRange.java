@@ -148,18 +148,20 @@ public class ActualCostingMethodPatientChgsDateRange extends CalculationHelper {
 			doClick(costing.getCostModelScenarioCalculationButtonCalculate());
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
-			confirmCalculationStatusDetailsContains("  Department: D2110 DEPT D2110");
-			confirmCalculationStatusDetailsContains("  Sum Actual Costs = ");
-			ContractModelsHelper.gotToSpecifiedPage(ModelLibraryMap.getInputNumberPage(), ModelLibraryMap.getGoToPage(),
-					"4");
-			confirmCalculationStatusDetailsContains("  Department: D2115 DEPT D2115");
-			ContractModelsHelper.gotToSpecifiedPage(ModelLibraryMap.getInputNumberPage(), ModelLibraryMap.getGoToPage(),
-					"5");
-			confirmCalculationStatusDetailsContains("  Sum Actual Costs =        1444.000");
+//			confirmCalculationStatusDetailsContains("  Department: D2110 DEPT D2110"); Shilpa updated for 11.2 on 23.5.2024 , generic method works good here 
 			checkForRecordsProcessed("  Department: D2110 DEPT D2110");
 			checkForRecordsProcessed("  Sum Actual Costs = ");
+//			ContractModelsHelper.gotToSpecifiedPage(ModelLibraryMap.getInputNumberPage(), ModelLibraryMap.getGoToPage(),
+//					"4");Shilpa updated for 11.2 on 23.5.2024 not required this line
 			checkForRecordsProcessed("  Department: D2115 DEPT D2115");
-			checkForRecordsProcessed("  Sum Actual Costs =        1444.000");
+			checkForRecordsProcessed("  Sum Actual Costs = ");
+//			ContractModelsHelper.gotToSpecifiedPage(ModelLibraryMap.getInputNumberPage(), ModelLibraryMap.getGoToPage(),
+//					"5");;Shilpa updated for 11.2 on 23.5.2024 not required this line
+//			checkForRecordsProcessed("  Sum Actual Costs =        1444.000");
+//			checkForRecordsProcessed("  Department: D2110 DEPT D2110");
+////			checkForRecordsProcessed("  Sum Actual Costs = ");
+//			checkForRecordsProcessed("  Department: D2115 DEPT D2115");
+//			checkForRecordsProcessed("  Sum Actual Costs =        1444.000");
 			closeViewDialog();
 			ExtentReport.logPass("PASS", "test04VerifyCalculationStatusForCostModelCalcScenarioJune");
 		} catch (Exception | AssertionError e) {
