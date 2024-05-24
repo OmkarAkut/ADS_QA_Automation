@@ -36,19 +36,34 @@ public class UpdateUCQCParmsRvuCalcScenario extends UcqcHelper {
 	static String costModel="Marina";
 	static String costModelScenario="*DM ADS-696 CMS";
 	static String costModelScenarioUpdate="*DM ADS-696 CMS Update";
+	static String costModelScenarioUCQC="DM ADS-696 CMS Update_UCQC";
 	static String[] filterCostModel= {"Name","Is","Equal To",costModel};
 	static String[] filterCostModelCalcScenario= {"Name","Is","Equal To",costModelScenario};
+	static String[] filterCostModelCalcUpdatedScenario= {"Name","Is","Equal To",costModelScenarioUpdate};
 	static String[] department= {"2016 CHILDREN'S DIABETES UNIT12345678901234567890123456789646596846516544351686565454",
 			"2110 ICU","2111 CCU","2115 ICU EAST","2130 PED ICU","2140 NICU","2159 ADULT PSYCHIATRY","2160 LONG BEACH BURN UNIT",
 			"2165 CHRONIC WOUND CARE CLINIC","3311 LAB CLINICAL LABORATORY","3520 MAMMOGRAPHY UNIT"};
 	static List<String> deptList=Arrays.asList(department);
-	 static final String[] requiredFields = {
+	 static final String[] requiredFields3520 = {
 			    "Marina",
 			    costModelScenarioUpdate,
 			    "150 Marina Medical Center",
-			   // "Q302  QA Dept for ADS-302",
-			    "3520", //Venkat updated Department filed 21.09.2022
-			    "Apr 2004 to Apr 2004"
+			    "3520", 
+			    "Apr 2004 to Mar 2004"
+			  };
+	 static final String[] requiredFields2140 = {
+			    "Marina",
+			    costModelScenarioUpdate,
+			    "150 Marina Medical Center",
+			    "3520", 
+			    "Apr 2004 to Mar 2004"
+			  };
+	 static final String[] requiredFields2111 = {
+			    "Marina",
+			    costModelScenarioUpdate,
+			    "200 Southgate",
+			    "2111", 
+			    "Apr 2004 to Mar 2004"
 			  };
 	@BeforeClass
 	  public static void setupScript() throws Throwable {
@@ -77,10 +92,52 @@ public class UpdateUCQCParmsRvuCalcScenario extends UcqcHelper {
 	    	fail(e.getMessage());
 		} 
 	}
+	public  void gotoCostingModel() throws Exception {
+		goToPage("Costing Models");
+		waitForAjaxExtJs();
+		doClickTreeData("Costing");
+		waitForMainPageTitle("Marina Health");
+		doClickTreeData(costingFolder);
+//		doClick("//div[text()='Marina Health']");
+		//Shilpa Xpath update for 11.2 on 21.5.2024
+		doClick("//span[text()='Marina Health']");
+		waitForDisplayedSpinnerToEnd();
+		doClick(modelMap.getModelLibraryButtonFilter());
+		doFilterCreate(filterCostModel);
+		tableDoubleClickCellFirstColumn(costModel);
+		doClickTreeData("Assign Unit Costs");
+		driverDelay();
+		waitForMainPageTitle("Cost Model Calculation Scenarios");
+		doClickTreeItem("Cost Model Calculation Scenarios");
+	}
+	public void gotoUCQC(String[] parameters,String chargeCode) throws Exception {
+		goToPage("Unit Cost Quick Calculation");
+		waitForAjaxExtJs();
+		ucqcDisplayChargeCodeGrid(parameters);
+		ucqcUpdateGridCellValue(chargeCode,"Quick Salaries and Wages RVU","15",printout); 
+		costingMap.getUnitCostQuickCalculationButtonSaveQuickRVUs().click();
+		ucqcWaitForSpinnerToEnd();
+		costingMap.getUnitCostQuickCalculationButtonCalculate();
+		ucqcWaitForSpinnerToEnd();
+		doClosePageOnLowerBar("Unit Cost Quick Calculation");
+		driverDelay();
+		goToPage("Calculation Status");
+		waitForAjaxExtJs();
+		waitForFirstRowCalculationBarToReach100Percent();
+		doClosePageOnLowerBar("Calculation Status");
+	}
+	public void filterCreate(String[] filterScenario,String scenario) throws Exception {
+		doClick(costingMap.getCostModelCalcFilterButton());
+		driverDelay();
+		doFilterCreate(filterScenario);
+		waitForAjaxExtJs();
+		tableDoubleClickCellFirstColumn(scenario);
+	}
 	//ADS-5925, all steps
 	@Test
 	public void test01OpenCostModelCalculationScenario_5925() throws Throwable {
 		try {
+			/*
 			doClick(modelMap.getModelLibraryButtonFilter());
 			doFilterCreate(filterCostModel);
 			tableDoubleClickCellFirstColumn(costModel);
@@ -91,6 +148,8 @@ public class UpdateUCQCParmsRvuCalcScenario extends UcqcHelper {
 			driverDelay();
 			waitForMainPageTitle("Cost Model Calculation Scenarios");
 			doClickTreeItem("Cost Model Calculation Scenarios");
+			*/
+			gotoCostingModel();
 			ExtentReport.logPass("PASS", "test01OpenCostModelCalculationScenario");
 		} catch (Exception|AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01OpenCostModelCalculationScenario", driver, e);
@@ -100,9 +159,7 @@ public class UpdateUCQCParmsRvuCalcScenario extends UcqcHelper {
 	@Test
 	public void test02OpenCostModelCalculationScenario_5925() throws Throwable {
 		try {
-			doClick(costingMap.getCostModelCalcFilterButton());
-			doFilterCreate(filterCostModelCalcScenario);
-			tableDoubleClickCellFirstColumn(costModelScenario);
+			filterCreate(filterCostModelCalcScenario,costModelScenario);
 			ExtentReport.logPass("PASS", "test01OpenCostModelCalculationScenario");
 		} catch (Exception|AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01OpenCostModelCalculationScenario", driver, e);
@@ -120,7 +177,7 @@ public class UpdateUCQCParmsRvuCalcScenario extends UcqcHelper {
 			doClick(CostingMap.getCostScenarioCalculateButton());
 			waitForFirstRowCalculationBarToReach100Percent();
 			doClosePageOnLowerBar("Calculation Status");
-			doClick(CostingMap.getCostScenarioSaveCloseButton());
+			doClick(CostingMap.getCostScenarioCancelCloseButton());
 			doClosePageOnLowerBar("Marina");
 			doClosePageOnLowerBar("Costing Models");
 //			waitForElementToBeVisible(costingMap.getCostModelScenariosinEvaluationOrderSave());
@@ -128,6 +185,30 @@ public class UpdateUCQCParmsRvuCalcScenario extends UcqcHelper {
 			ExtentReport.logPass("PASS", "test03UpdateCostModelScenarioName");
 		} catch (Exception|AssertionError e) {
 			ExtentReport.logFail("FAIL", "test03UpdateCostModelScenarioName", driver, e);
+			fail(e.getMessage());
+		}
+	}
+	
+	@Test
+	public void test04VerifyUpdatedCostModelScenarioNameInUCQC_5925() throws Throwable {
+		try {
+			gotoUCQC(requiredFields3520, "5800628");
+			ExtentReport.logPass("PASS", "test04VerifyUpdatedCostModelScenarioNameInUCQC_5925");
+		} catch (Exception|AssertionError e) {
+			ExtentReport.logFail("FAIL", "test04VerifyUpdatedCostModelScenarioNameInUCQC_5925", driver, e);
+			fail(e.getMessage());
+		}
+		}
+	
+	@Test
+	public void test05VerifyUpdatedParametersInCostModelScenarioNameInUCQC_5925() throws Throwable {
+		try {
+			gotoCostingModel();
+			filterCreate(filterCostModelCalcUpdatedScenario, costModelScenarioUpdate);
+			
+			ExtentReport.logPass("PASS", "test04VerifyUpdatedCostModelScenarioNameInUCQC_5925");
+		} catch (Exception|AssertionError e) {
+			ExtentReport.logFail("FAIL", "test04VerifyUpdatedCostModelScenarioNameInUCQC_5925", driver, e);
 			fail(e.getMessage());
 		}
 	}
@@ -173,42 +254,6 @@ public class UpdateUCQCParmsRvuCalcScenario extends UcqcHelper {
 			}
 		}
 		Thread.sleep(500);
-	}
-	@Test
-	public void test04VerifyUpdatedCostModelScenarioNameInUCQC_5925() throws Throwable {
-		try {
-			goToPage("Unit Cost Quick Calculation");
-			waitForAjaxExtJs();
-			ucqcDisplayChargeCodeGrid(requiredFields);
-			ucqcUpdateGridCellValue("5800628","Quick Salaries and Wages RVU","15",printout); //venkat update test data 07-09-2022
-			costingMap.getUnitCostQuickCalculationButtonSaveQuickRVUs().click();
-			ucqcWaitForSpinnerToEnd();
-			costingMap.getUnitCostQuickCalculationButtonCalculate();
-			ucqcWaitForSpinnerToEnd();
-			doClosePageOnLowerBar("Unit Cost Quick Calculation");
-			driverDelay();
-			goToPage("Calculation Status");
-			waitForAjaxExtJs();
-			waitForFirstRowCalculationBarToReach100Percent();
-			doClosePageOnLowerBar("Calculation Status");
-			ExtentReport.logPass("PASS", "test04VerifyUpdatedCostModelScenarioNameInUCQC_5925");
-		} catch (Exception|AssertionError e) {
-			ExtentReport.logFail("FAIL", "test04VerifyUpdatedCostModelScenarioNameInUCQC_5925", driver, e);
-			fail(e.getMessage());
-		}
-		}
-	
-	@Test
-	public void test05VerifyUpdatedCostModelScenarioNameInUCQC_5925() throws Throwable {
-		try {
-			goToPage("Costing Models");
-			waitForAjaxExtJs();
-			
-			ExtentReport.logPass("PASS", "test04VerifyUpdatedCostModelScenarioNameInUCQC_5925");
-		} catch (Exception|AssertionError e) {
-			ExtentReport.logFail("FAIL", "test04VerifyUpdatedCostModelScenarioNameInUCQC_5925", driver, e);
-			fail(e.getMessage());
-		}
 	}
 	 @AfterClass
 		public static void endtest() throws Exception {

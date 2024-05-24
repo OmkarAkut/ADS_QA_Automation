@@ -2458,4 +2458,8 @@ public class CostingMap extends MapConfig {
 	@FindBy(xpath = "//h1[text()='Cost Model Calculation Scenarios']//following::span[text()='Cancel & Close']")
 	private static WebElement getCostScenarioSaveCloseButton;
 	public static WebElement getCostScenarioSaveCloseButton() {return getCostScenarioSaveCloseButton;}
+	
+	@FindBy(xpath = "//h1[text()='Cost Model Calculation Scenarios']//following::span[text()='Cancel & Close']")
+	private static WebElement getCostScenarioCancelCloseButton;
+	public static WebElement getCostScenarioCancelCloseButton() {return getCostScenarioCancelCloseButton;}
 }
