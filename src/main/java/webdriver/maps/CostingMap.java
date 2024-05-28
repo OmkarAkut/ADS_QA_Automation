@@ -635,7 +635,7 @@ public class CostingMap extends MapConfig {
 
 //	Omkar 28/12/2023 : xpath changes for 11.2
 //	@FindBy(xpath = "//div[@class='x-panel gridCls gridClsCondensed lockCls ucqc-grid x-grid-with-row-lines x-grid-locked x-border-item x-box-item x-panel-default x-grid']//*[contains(text(),'Calculate')]")
-	@FindBy(xpath = "//span[contains(@class,'x-btn-button-center ')]//*[contains(text(),'Calculate')]") 
+	@FindBy(xpath = "(//div[text()='Unit Cost Quick Calculation']//following::span[text()='Calculate'])[1]") 
 
 	private WebElement unitCostQuickCalculationButtonCalculate;
 
@@ -2451,7 +2451,7 @@ public class CostingMap extends MapConfig {
 	private static WebElement getCostScenarioSaveButton;
 	public static WebElement getCostScenarioSaveButton() {return getCostScenarioSaveButton;}
 	
-	@FindBy(xpath = "//h1[text()='Cost Model Calculation Scenarios']//following::span[text()='Calculate']")
+	@FindBy(xpath = "(//h1[text()='Cost Model Calculation Scenarios']//following::span[text()='Calculate'])[2]")
 	private static WebElement getCostScenarioCalculateButton;
 	public static WebElement getCostScenarioCalculateButton() {return getCostScenarioCalculateButton;}
 	

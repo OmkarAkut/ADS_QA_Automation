@@ -70,7 +70,9 @@ public class CreateUCQCLogMakeUCQCProcessAvailableCalculationPage extends UcqcHe
 		doClick(contractingMap.getContractModelCalcFileSharedLocOption());
 		doClick("(//input[@name='logLocation'])");
 		ContractModelsHelper.keyInValues(contractingMap.getContractCalcFilename(), "Testing"+currentDateTime);
-		doJsClick(contractingMap.getContractModelCalcContinueBtn());
+//		doactionClick(contractingMap.getContractModelCalcContinueBtn());
+		//Shilpa Xpath update for 11.2 on 28.5.2024
+		doClick("(//span[text()='Continue']/../../..)");
 		waitForDisplayedSpinnerToEnd();
 		driverDelay();
 
