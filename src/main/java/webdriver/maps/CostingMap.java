@@ -2451,6 +2451,10 @@ public class CostingMap extends MapConfig {
 	private static WebElement getCostScenarioSaveButton;
 	public static WebElement getCostScenarioSaveButton() {return getCostScenarioSaveButton;}
 	
+	@FindBy(xpath = "//h1[text()='Cost Model Calculation Scenarios']//following::span[text()='Save']")
+	private static WebElement getCostScenarioSaveBtn;
+	public static WebElement getCostScenarioSaveBtn() {return getCostScenarioSaveBtn;}
+	
 	@FindBy(xpath = "(//h1[text()='Cost Model Calculation Scenarios']//following::span[text()='Calculate'])[2]")
 	private static WebElement getCostScenarioCalculateButton;
 	public static WebElement getCostScenarioCalculateButton() {return getCostScenarioCalculateButton;}

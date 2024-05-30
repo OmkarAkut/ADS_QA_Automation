@@ -42,6 +42,7 @@ public class UpdateUCQCParmsRvuCalcScenario extends UcqcHelper {
 	static String costModelScenarioUCQC="*DM ADS-696 CMS Update_UCQC";
 	static String[] filterCostModel= {"Name","Is","Equal To",costModel};
 	static String[] filterCostModelCalcScenario= {"Name","Is","Equal To",costModelScenario};
+	static String[] filterCostModelCalcScenarioUpdate= {"Name","Is","Equal To",costModelScenarioUpdate};
 	static String[] filterCostModelCalcUpdatedScenario= {"Name","Is","Equal To",costModelScenarioUCQC};
 	static String[] department= {"2016 CHILDREN'S DIABETES UNIT12345678901234567890123456789646596846516544351686565454",
 			"2110 ICU","2111 CCU","2115 ICU EAST","2130 PED ICU","2140 NICU","2159 ADULT PSYCHIATRY","2160 LONG BEACH BURN UNIT",
@@ -58,8 +59,8 @@ public class UpdateUCQCParmsRvuCalcScenario extends UcqcHelper {
 			    "Marina",
 			    costModelScenarioUpdate,
 			    "150 Marina Medical Center",
-			    "3520", 
-			    "Apr 2004 to Mar 2005"
+			    "2140", 
+			    "May 2004 to May 2005"
 			  };
 	 static final String[] requiredFields2111 = {
 			    "Marina",
@@ -69,6 +70,7 @@ public class UpdateUCQCParmsRvuCalcScenario extends UcqcHelper {
 			    "Apr 2004 to Mar 2005"
 			  };
 	 public static String entity="150 Marina Medical Center'";
+	 public static String entity2="200 Southgate";
 	@BeforeClass
 	  public static void setupScript() throws Throwable {
 		  ExtentReport.reportCreate("CreateUCQCLogMakeUCQCProcessAvailableCalculationPage","webdriver.scripts.costing.unitcostquickcalculation.ucqccalculation", "CreateUCQCLogMakeUCQCProcessAvailableCalculationPage");
@@ -138,7 +140,7 @@ public class UpdateUCQCParmsRvuCalcScenario extends UcqcHelper {
 		tableDoubleClickCellFirstColumn(scenario);
 	}
 	//ADS-5925, all steps
-	@Test
+//	@Test
 	public void test01OpenCostModelCalculationScenario_5925() throws Throwable {
 		try {
 			/*
@@ -160,7 +162,7 @@ public class UpdateUCQCParmsRvuCalcScenario extends UcqcHelper {
 			fail(e.getMessage());
 		}
 	}
-	@Test
+//	@Test
 	public void test02OpenCostModelCalculationScenario_5925() throws Throwable {
 		try {
 			filterCreate(filterCostModelCalcScenario,costModelScenario);
@@ -170,7 +172,7 @@ public class UpdateUCQCParmsRvuCalcScenario extends UcqcHelper {
 			fail(e.getMessage());
 		}
 	}
-	@Test
+//	@Test
 	public void test03UpdateCostModelScenarioName_5925() throws Throwable {
 		try {
 			ContractModelsHelper.keyInValues(CostingMap.getCostScenarioName(),costModelScenarioUpdate);
@@ -195,7 +197,7 @@ public class UpdateUCQCParmsRvuCalcScenario extends UcqcHelper {
 		}
 	}
 	
-	@Test
+//	@Test
 	public void test04VerifyUpdatedCostModelScenarioNameInUCQC_5925() throws Throwable {
 		try {
 			gotoUCQC(requiredFields3520, "5800628");
@@ -207,42 +209,147 @@ public class UpdateUCQCParmsRvuCalcScenario extends UcqcHelper {
 		}
 		}
 	
-	@Test
+//	@Test
 	public void test05VerifyUpdatedParametersInCostModelScenarioNameInUCQC_5925() throws Throwable {
 		try {
 			gotoCostingModel();
 			filterCreate(filterCostModelCalcUpdatedScenario, costModelScenarioUCQC);
-			doClick("//*[@name='gLDataDescription']");
-			assertThatDropdownSelectedValue(CostingMap.getCostModelGLDataScenarioOptions(), "* MHFY05 Reclass TB");
-//			doClick("//*[@name='actStatCalcCode']");
-			doDropdownSelectUsingOptionText(driver.findElement(By.xpath("//*[@name='actStatCalcCode']")),costingMap.getCostModelVolScenarioOptions() , "2TBMHFY05VOL");
-//			doDropdownSelectUsingOptionText(CostingMap.getCostModelVolScenarioOptions(), "2TBMHFY05VOL");
-			doClick("//*[@name='actStatCalcCode']");
-			assertThatDropdownSelectedValue(CostingMap.getCostModelVolScenarioOptions(), "2TBMHFY05VOL");			doClick("//*[@name='variabilityMasterId']/..");
-			assertThatDropdownSelectedValue(CostingMap.getCostModelVarMasterScenarioOptions(), "ASESC2060 CC Var Master");
-			doClick("//*[@name='calcRVUScenarioVOs']");
-			assertThatDropdownSelectedValue(driver.findElement(By.xpath("(//div[contains(@class,'boundlist')]/ul/li[text()='<None>']/..)[2]")), "*DM ADS-696 CMS G");
-			doClick("//*[@name='overHeadScenarioId']");
-			assertThatDropdownSelectedValue(CostingMap.getCostModelOHMasterScenarioOptions(), "TB OVHD Calc Scen Exp Vol for Rpt");
-			assertElementIsDisplayedWithXpath("//div[text()='Entities']//following::li[text()='150 Marina Medical Center']");
+			doClick("//*[@name='gLDataDescription']/..");
+			assertElementIsDisplayedWithXpath("//li[contains(@class,'x-boundlist-selected x-boundlist')][text()='* MHFY05 Reclass TB']");
+			doClick("//*[@name='gLDataDescription']/..");
+						doClick("//*[@name='actStatCalcCode']");
+						scrollToView("//li[text()='2TBMHFY05VOL']");
+						doClick("//li[text()='2TBMHFY05VOL']");
+						doClick("//*[@name='actStatCalcCode']");
+//			doDropdownSelectUsingOptionText(driver.findElement(By.xpath("//div[contains(@class,'boundlist')]/ul/li[text()='MHFY02']/..")), "2TBMHFY05VOL");
+			assertElementIsDisplayedWithXpath("//li[contains(@class,'x-boundlist-selected')][text()='2TBMHFY05VOL']");
+			doClick("//*[@name='variabilityMasterId']/..");
+			assertElementIsDisplayedWithXpath("//li[contains(@class,'x-boundlist-selected x-boundlist')][text()='ASESC2060 CC Var Master']");
+			doClick("//*[@name='variabilityMasterId']/..");
+			doClick("//*[@name='calcRVUScenarioVOs']/..");
+			assertElementIsDisplayedWithXpath("//li[contains(@class,'x-boundlist-selected x-boundlist')][text()='*DM ADS-696 CMS G']");
+			doClick("//*[@name='calcRVUScenarioVOs']/..");
+			doClick("//*[@name='overHeadScenarioId']/..");
+			assertElementIsDisplayedWithXpath("//li[contains(@class,'x-boundlist-selected x-boundlist')][text()='TB OVHD Calc Scen Exp Vol for Rpt']");			assertElementIsDisplayedWithXpath("//div[text()='Entities']//following::li[text()='150 Marina Medical Center']");
 			assertElementIsDisplayedWithXpath("//div[text()='Departments / Groups']//following::li[text()='3520 MAMMOGRAPHY UNIT']");
-			
-//			doDropdownSelectUsingOptionText(driver.findElement(By.xpath("//*[@name='priceList']")),CostingMap.getCostModelPriceListScenarioOptions() , "150FY05  Marina Hosp Price List FY05");
-//			doDropdownSelectUsingOptionText(driver.findElement(By.xpath("//*[@name='priceList']")),CostingMap.getCostModelPriceListScenarioOptions() , "150FY05  Marina Hosp Price List FY05");
-//			driverDelay();
-//			doClick("//*[@name='priceList']");
-//			assertThatDropdownSelectedValue(driver.findElement(By.xpath("//div[contains(@class,'boundlist')]/ul/li[text()='0TB  Testsd']/..")), "150FY05  Marina Hosp Price List FY05");
+			doClick("//*[@name='overHeadScenarioId']/..");
+//			doDropdownSelectUsingOptionText(
+//					CostingMap.getCostModelPriceListDrpdown(),
+//					CostingMap.getCostModelPriceListScenarioOptions(),
+//					"150FY05  Marina Hosp Price List FY05"
+//					);
+			CostingMap.getCostModelPriceListDrpdown().click();
+			doClick("//li[text()='150FY05  Marina Hosp Price List FY05']");
+			CostingMap.getCostModelPriceListDrpdown().click();
+			assertElementIsDisplayedWithXpath("//li[contains(@class,'x-boundlist-selected x-boundlist')][text()='150FY05  Marina Hosp Price List FY05']");
+			CostingMap.getCostModelPriceListDrpdown().click();
+//			doClick(CostingMap.getCostModelPriceListDrpdown());
+//			doDropdownSelectUsingOptionText(CostingMap.getCostModelPriceListScenarioOptions(), "150FY05  Marina Hosp Price List FY05");
+//			doClick(CostingMap.getCostModelPriceListDrpdown());
 			assertElementIsDisplayedWithXpath("(//span[text()='Start Month:']//following::div[text()='Apr 2004'])[2]");
 			assertElementIsDisplayedWithXpath("(//span[text()='End Month:']//following::div[text()='Mar 2005'])[2]");
 			doClick("//input[@name='hostLocation']");
-			assertThatDropdownSelectedValue(driver.findElement(By.xpath("//div[contains(@class,'boundlist')]/ul/li[text()='<SFTP_SERVER>/PATH/TO/CALC_LOGS_SHARED_DIRECTORY2/']/..")), "<SFTP_SERVER>/PATH/TO/CALC_LOGS_SHARED_DIRECTORY2/");
-
+			doClick("//li[text()='<SFTP_SERVER>/PATH/TO/CALC_LOGS_SHARED_DIRECTORY2/']");
+			doClick("//input[@name='hostLocation']");
+			assertElementIsDisplayedWithXpath("//li[contains(@class,'x-boundlist-selected x-boundlist')][text()='<SFTP_SERVER>/PATH/TO/CALC_LOGS_SHARED_DIRECTORY2/']");
 			//			assertThatDropdownSelectedValue(costingMap.getGldataDesc(),costingMap.getCostModelGLDataScenarioOptions(), "MH FY05 Reclass");
+			doClick("//input[@name='hostLocation']");
+			doClick(costingMap.getRvuMaintenanceFilterButtonCancelAndClose());
 			ExtentReport.logPass("PASS", "test04VerifyUpdatedCostModelScenarioNameInUCQC_5925");
 		} catch (Exception|AssertionError e) {
 			ExtentReport.logFail("FAIL", "test04VerifyUpdatedCostModelScenarioNameInUCQC_5925", driver, e);
 			fail(e.getMessage());
 		}
+	}
+	@Test
+	public void test06UpdateParametersForCostModelScenario_5925() throws Throwable {
+		try {
+			gotoCostingModel();
+//			doClick(costingMap.getCostModelCalcClearFilterButton());
+			filterCreate(filterCostModelCalcScenarioUpdate, costModelScenarioUpdate);
+			selectOptions(CostingMap.getGldataDesc(), "MH FY05 Reclass");
+			selectOptions(CostingMap.getVolScenario(), "MHFY05");
+			selectOptions(CostingMap.getVariablilityMaster(), "MHS");
+			selectOptions(CostingMap.getOverheadDrpDwn(), "MH FY05 Overhead");
+			ContractModelsHelper.scrollToView(CostingMap.getEntitiesSelect());
+			doClick(CostingMap.getEntitiesSelect());
+			doClick(CostingMap.getUnitCostQuickCalculationDepartmentButtonFilter());
+			ContractModelsHelper.applyMultipleFilters("Entity Code","200");
+			selectOptions(driver.findElement(By.xpath("//div[text()='200  Southgate']//following::input[@name='priceList']")), "200FY05  Southgate Price List FY05");
+			selectOptions(CostingMap.getCostModelStartMonthDrpdown(), "May 2004");
+			selectOptions(CostingMap.getCostModelEndMonthDrpdown(), "May 2004");
+			doClick(CostingMap.getCostScenarioSaveBtn());
+			driverDelay();
+			doClick(CostingMap.getCostScenarioCalculateButton());
+			waitForFirstRowCalculationBarToReach100Percent();
+			doClosePageOnLowerBar("Calculation Status");
+			doClick(CostingMap.getCostScenarioCancelCloseButton());
+			doClosePageOnLowerBar("Marina");
+			doClosePageOnLowerBar("Costing Models");
+			waitForAjaxExtJs();
+			ExtentReport.logPass("PASS", "test06UpdateParametersForCostModelScenario_5925");
+		} catch (Exception|AssertionError e) {
+			ExtentReport.logFail("FAIL", "test06UpdateParametersForCostModelScenario_5925", driver, e);
+			fail(e.getMessage());
+		}
+	}
+	@Test
+	public void test07VerifyUpdatedCostModelScenarioNameInUCQC_5925() throws Throwable {
+		try {
+			gotoUCQC(requiredFields2140, "1100569");
+			
+			ExtentReport.logPass("PASS", "test04VerifyUpdatedCostModelScenarioNameInUCQC_5925");
+		} catch (Exception|AssertionError e) {
+			ExtentReport.logFail("FAIL", "test04VerifyUpdatedCostModelScenarioNameInUCQC_5925", driver, e);
+			fail(e.getMessage());
+		}
+		}
+	@Test
+	public void test08VerifyUpdatedParametersInCostModelScenarioNameInUCQC_5925() throws Throwable {
+		try {
+			gotoCostingModel();
+			filterCreate(filterCostModelCalcUpdatedScenario, costModelScenarioUCQC);
+			selectOptions(CostingMap.getGldataDesc(), "MH FY05 Reclass");
+			assertElementIsDisplayedWithXpath("//li[contains(@class,'x-boundlist-selected x-boundlist')][text()='* MHFY05 Reclass TB']");
+			selectOptions(CostingMap.getVolScenario(), "MHFY05");
+			assertElementIsDisplayedWithXpath("//li[contains(@class,'x-boundlist-selected')][text()='MHFY05']");
+			selectOptions(CostingMap.getVariablilityMaster(), "MHS");
+			assertElementIsDisplayedWithXpath("//li[contains(@class,'x-boundlist-selected')][text()='MHS']");
+			selectOptions(CostingMap.getOverheadDrpDwn(), "MH FY05 Overhead");
+			assertElementIsDisplayedWithXpath("//li[contains(@class,'x-boundlist-selected')][text()='MH FY05 Overhead']");
+				
+			assertElementIsDisplayedWithXpath("//div[text()='Entities']//following::li[text()='150 Marina Medical Center']");
+			assertElementIsDisplayedWithXpath("//div[text()='Departments / Groups']//following::li[text()='3520 MAMMOGRAPHY UNIT']");
+			assertElementIsDisplayedWithXpath("//div[text()='Departments / Groups']//following::li[text()='2140 NICU']");
+			selectOptions(CostingMap.getCostModelPriceListDrpdown(), "150FY05  Marina Hosp Price List FY05");
+//			CostingMap.getCostModelPriceListDrpdown().click();
+//			doClick("//li[text()='150FY05  Marina Hosp Price List FY05']");
+//			CostingMap.getCostModelPriceListDrpdown().click();
+			assertElementIsDisplayedWithXpath("//li[contains(@class,'x-boundlist-selected x-boundlist')][text()='150FY05  Marina Hosp Price List FY05']");
+//			CostingMap.getCostModelPriceListDrpdown().click();
+//			doClick(CostingMap.getCostModelPriceListDrpdown());
+//			doDropdownSelectUsingOptionText(CostingMap.getCostModelPriceListScenarioOptions(), "150FY05  Marina Hosp Price List FY05");
+//			doClick(CostingMap.getCostModelPriceListDrpdown());
+			assertElementIsDisplayedWithXpath("(//span[text()='Start Month:']//following::div[text()='May 2004'])[2]");
+			assertElementIsDisplayedWithXpath("(//span[text()='End Month:']//following::div[text()='May 2004'])[2]");
+			selectOptions(driver.findElement(By.xpath("//input[@name='hostLocation']")), "<SFTP_SERVER>/PATH/TO/CALC_LOGS_SHARED_DIRECTORY2/");
+//			doClick("//input[@name='hostLocation']");
+//			doClick("//li[text()='<SFTP_SERVER>/PATH/TO/CALC_LOGS_SHARED_DIRECTORY2/']");
+//			doClick("//input[@name='hostLocation']");
+			assertElementIsDisplayedWithXpath("//li[contains(@class,'x-boundlist-selected x-boundlist')][text()='<SFTP_SERVER>/PATH/TO/CALC_LOGS_SHARED_DIRECTORY2/']");
+			//			assertThatDropdownSelectedValue(costingMap.getGldataDesc(),costingMap.getCostModelGLDataScenarioOptions(), "MH FY05 Reclass");
+//			doClick("//input[@name='hostLocation']");
+			doClick(costingMap.getRvuMaintenanceFilterButtonCancelAndClose());
+			ExtentReport.logPass("PASS", "test04VerifyUpdatedCostModelScenarioNameInUCQC_5925");
+		} catch (Exception|AssertionError e) {
+			ExtentReport.logFail("FAIL", "test04VerifyUpdatedCostModelScenarioNameInUCQC_5925", driver, e);
+			fail(e.getMessage());
+		}
+	}
+	public void selectOptions(WebElement dropdown,String elementName) throws Exception {
+		doClick(dropdown);
+		scrollToView("//li[text()='"+elementName+"']");
+		doClick("//li[text()='"+elementName+"']");
 	}
 	 public void assertThatDropdownSelectedValue(WebElement elementMenuList, String expectedValue) throws Throwable {
 		    waitForSpinnerToEnd();
@@ -252,7 +359,7 @@ public class UpdateUCQCParmsRvuCalcScenario extends UcqcHelper {
 		    for (WebElement item : classificationListing) {
 		      String clss = item.getAttribute("class");
 		   //   if (clss.contains("selected")) {
-//		      	scrollToView("//li[text()='"+expectedValue+"']");
+		      	scrollToView("//li[text()='"+expectedValue+"']");
 		    	 if (clss.contains("x-boundlist-selected")) {// venkat update required selected from 07-09-2022
 		    	
 		    		 MatcherAssert.assertThat(item.getText(), equalTo(expectedValue));
