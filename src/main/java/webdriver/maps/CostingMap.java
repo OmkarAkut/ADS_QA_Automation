@@ -2466,4 +2466,12 @@ public class CostingMap extends MapConfig {
 	@FindBy(xpath = "//h1[text()='Cost Model Calculation Scenarios']//following::span[text()='Cancel & Close']")
 	private static WebElement getCostScenarioCancelCloseButton;
 	public static WebElement getCostScenarioCancelCloseButton() {return getCostScenarioCancelCloseButton;}
+	//Shilpa added xpath for 11.2 on 31.5.2024
+	@FindBy(xpath = "//h1[text()='Cost Model Calculation Scenarios']//following::span[text()='Delete']")
+	private static WebElement getCostScenarioDeleteButton;
+	public static WebElement getCostScenarioDeleteButton() {return getCostScenarioDeleteButton;}
+	
+	@FindBy(xpath = "//h1[text()='Cost Model Calculation Scenarios']//following::span[text()='Clear Filter']")
+	private static WebElement getCostScenarioClearFilterButton;
+	public static WebElement getCostScenarioClearFilterButton() {return getCostScenarioClearFilterButton;}
 }

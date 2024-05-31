@@ -20,7 +20,7 @@ import org.junit.runners.Suite;
 		ValidateTotalChangeValueCalculationStaticAds1278.class,
 		VerifyUCQCButtonsBackgroundColor.class,
 		VerifyUCQCdropdownValuesForOptionNone.class,
-//		UpdateUCQCParmsRvuCalcScenario.class,
+		UpdateUCQCParmsRvuCalcScenario.class,
 })
 public class UcqcCalculationTestSuite {
 

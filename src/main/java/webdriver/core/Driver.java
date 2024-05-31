@@ -226,6 +226,7 @@ public class Driver {
 		  options.addArguments("--window-size=1920,1080", "--ignore-certificate-errors", "--headless");
 		  driver = new ChromeDriver(options);
 		} else if (browser.equals("chrome")) {
+		
 			 WebDriverManager.chromedriver().setup();
 		  ChromeOptions options = new ChromeOptions();
 		  options.addArguments("--ignore-certificate-errors", "start-maximized");
