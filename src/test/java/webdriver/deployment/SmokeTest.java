@@ -5,11 +5,13 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.*;
 
+import java.io.FileInputStream;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -82,8 +84,13 @@ public class SmokeTest extends UcqcHelper {
 	      wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//img[@alt = 'Harris Affinity Logo']")));
 	      ExtentReport.logPass("PASS", "test0000VerifyLoginPageIsDisplayed");
 	    } catch (Exception|AssertionError e) {
-	    	ExtentReport.logFail("FAIL", "test0000VerifyLoginPageIsDisplayed", driver, e);
-	      fail("LOGIN PAGE NOT DISPLAYED");
+	    	try {
+				pageRefresh();
+			} catch (Exception e1) {
+				ExtentReport.logFail("FAIL", "test0000VerifyLoginPageIsDisplayed", driver, e1);
+			      fail("LOGIN PAGE NOT DISPLAYED");
+			}
+	    	
 	    }
 	  }
 
@@ -430,8 +437,28 @@ public class SmokeTest extends UcqcHelper {
 			fail(e.getMessage());
 		}
 	  }
-	 
-	 
+	 //Shilpa added below lines to avoid page cannot be reached issue on 7.2.2024
+		 public static void pageRefresh() throws Exception {
+			  FileInputStream str = null;
+				try {
+					str = new FileInputStream(PROPS);
+				} catch (Exception e1) {
+					fail("Cannot locate properties file");
+				}
+				Properties props = new Properties();
+				props.load(str);
+				browser = props.getProperty("BROWSER").toLowerCase();
+				try {
+					testEnvironment = props.getProperty("TEST_ENVIRONMENT").toLowerCase();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				String url=getTestEnvironmentUrl(testEnvironment);
+				driver.navigate().refresh();
+				Thread.sleep(5000);
+				driver.navigate().to(url);
+				Thread.sleep(5000);
+		  }
 	  @AfterClass
 	  public static void teardown() {
 		    @SuppressWarnings("deprecation")

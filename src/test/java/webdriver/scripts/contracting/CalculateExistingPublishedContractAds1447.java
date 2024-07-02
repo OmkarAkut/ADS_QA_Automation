@@ -61,9 +61,11 @@ public class CalculateExistingPublishedContractAds1447 extends CalculationHelper
 		waitForSpinnerToEnd();
 		Thread.sleep(4000);
 		doSearchForContractModel(modelName);
-		doClick("//div[text()='"+modelName+"']");
+		driverDelay();
+//		doClick("//div[text()='"+modelName+"']");
 //		Actions act=new Actions(driver);
-//		act.doubleClick(driver.findElement(By.xpath("//div[text()="+modelName+"]"))).perform();
+//		act.moveToElement(driver.findElement(By.xpath("//div[text()="+modelName+"]"))).doubleClick().perform();
+		doClick(driver.findElement(By.xpath("//div[text()='"+modelName+"']")));
 		/* uncomment when scroll works
 		doClick(CostingMap.getContractingName);
 //		doClick(CostingMap.getContractingName());

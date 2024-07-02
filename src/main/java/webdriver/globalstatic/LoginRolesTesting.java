@@ -64,7 +64,7 @@ public class LoginRolesTesting extends BeforeAfterRolesTesting {
       //waitUntilElementIsVisible(driver.findElement(By.id("loginBtn")));
       //driver.findElement(By.id("loginBtn")).click();
       //verifyLogin();
-    } catch (Throwable e) {
+    } catch (Exception e) {
       System.out.println("WARNING: Login Attempt Failed");
     }
   }
