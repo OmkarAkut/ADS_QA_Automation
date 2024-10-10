@@ -160,7 +160,9 @@ public class Driver {
     	url = "http://qaprod-dev.harrispaas.com/alliance-webCont/login/index.jsp";  
       }
     else if(testEnvironment.equals("qastage")) {
-    	url = "http://qaapp-dev.harrispaas.com/alliance-webCont/login/index.jsp";  
+//    	url = "http://qaapp-dev.harrispaas.com/alliance-webCont/login/index.jsp";  
+    	//Shilpa updated to SSL url 10.10.2024
+   	 url = "https://qaapp-dev.harrispaas.com:8443/alliance-webCont/alliance/index.jsp";
       }
      else {
       url = "https://qaautomation.mdasdss.com/alliance-webCont/login/index.jsp";
