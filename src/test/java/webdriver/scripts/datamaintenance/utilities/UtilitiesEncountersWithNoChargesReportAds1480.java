@@ -40,8 +40,13 @@ public class UtilitiesEncountersWithNoChargesReportAds1480
   String currentDate = javaGetCurrentDate("MM/dd/yyyy");
   String nameDate = javaGetCurrentDate("MMddyyyy");
   List<String> summaryReport;
+//  List<String> expectedZipDirectoryName = Arrays.asList(
+//          "eolheiser_Encounters With No Charges Report_" + nameDate,
+//          ".zip"
+//  );
+  //Shilpa: updated 10.10.2024
   List<String> expectedZipDirectoryName = Arrays.asList(
-          "eolheiser_Encounters With No Charges Report_" + nameDate,
+          "aadmin_Encounters With No Charges Report_" + nameDate,
           ".zip"
   );
 
@@ -57,7 +62,9 @@ public class UtilitiesEncountersWithNoChargesReportAds1480
 		System.out.println(
 		        "Test Class: "
 		        + UtilitiesEncountersWithNoChargesReportAds1480.class.getSimpleName());
-		loginUser(Users.ApplicationAdministrator1);
+//		loginUser(Users.ApplicationAdministrator1);
+		//Shilpa: update user 10.10.2024
+		loginUser(Users.AutomationTesterAdmin);
 		goToPage("Utilities");
 		ExtentReport.logPass("PASS", "setupScript");
 	} catch (Exception|AssertionError e) {

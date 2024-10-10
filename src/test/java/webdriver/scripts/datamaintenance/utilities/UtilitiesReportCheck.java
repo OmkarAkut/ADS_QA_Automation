@@ -19,6 +19,7 @@ import webdriver.helpers.UtilitiesHelper;
 import webdriver.maps.DataMaintenanceMap;
 import webdriver.maps.StatusMap;
 import webdriver.maps.mapbuilder.BuildMap;
+import webdriver.users.Users;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class UtilitiesReportCheck
@@ -69,7 +70,9 @@ public class UtilitiesReportCheck
 		System.out.println(
 		        "Test Class: "
 		        + UtilitiesReportCheck.class.getSimpleName());
-		Login.loginUser("ApplicationAdministrator1");
+//		Login.loginUser("ApplicationAdministrator1");
+		//Shilpa: update user 10.10.2024
+				loginUser(Users.AutomationTesterAdmin);
 		goToPage("Utilities");
 		ExtentReport.logPass("PASS", "setupScript");
 	} catch (Exception|AssertionError e) {
@@ -85,9 +88,11 @@ public class UtilitiesReportCheck
 //            "/descendant::button/*[text()='Encounters With No Charges Report']"
 //    );
 	  try {
-		waitForPresenceOfElement("//div[contains(@class,'itemWrap x-item-selected')][text()='Encounters With No Charges Report']"
-		);
-		  
+//		waitForPresenceOfElement("//div[contains(@class,'itemWrap x-item-selected')][text()='Encounters With No Charges Report']"
+//		);
+	  //Shilpa updated xpath 10.10.2024
+	  waitForPresenceOfElement("//div[contains(@class,'itemWrap')][text()='Encounters With No Charges Report']"
+    ); 
   
 		doClick(dm.getUtilitiesPageEncountersWithNoChargesReport());
 //    waitForPresenceOfElement("//div[contains(@id, 'datamaintenanceutilities')]" +

@@ -36,9 +36,11 @@ public class UtilitiesEncountersWithNegativeChargeBalanceReportAds2427 extends U
 	String currentDate = javaGetCurrentDate("MM/dd/yyyy");
 	String nameDate = javaGetCurrentDate("MMddyyyy");
 	//Shilpa updated file name 11.08.2022
+//	List<String> expectedZipDirectoryName = Arrays
+//			.asList("eolheiser_Encounters With Negative Charge Balance Report_" + nameDate, ".zip");
+	//Shilpa : updated filepath name as per added user 10.10.2024
 	List<String> expectedZipDirectoryName = Arrays
-			.asList("eolheiser_Encounters With Negative Charge Balance Report_" + nameDate, ".zip");
-
+			.asList("aadmin_Encounters With Negative Charge Balance Report_" + nameDate, ".zip");
 	/**
 	 * Test script that verifies Encounters With Negative Charge Balance Report.
 	 * 
@@ -54,7 +56,8 @@ public class UtilitiesEncountersWithNegativeChargeBalanceReportAds2427 extends U
 			System.out.println(
 					"Test Class: " + UtilitiesEncountersWithNegativeChargeBalanceReportAds2427.class.getSimpleName());
 			// loginUser(Users.ApplicationAdministrator1);
-			loginUser(Users.ApplicationAdministrator1);
+			//Shilpa : updated user to AutomationTesterAdmin
+			loginUser(Users.AutomationTesterAdmin);
 			goToPage("Utilities");
 			waitForAjaxExtJs();
 			ExtentReport.logPass("PASS", "setupScript");
