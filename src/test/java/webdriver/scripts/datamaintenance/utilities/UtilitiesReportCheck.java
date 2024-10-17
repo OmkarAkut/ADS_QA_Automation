@@ -51,7 +51,7 @@ public class UtilitiesReportCheck
   static String utilityStatusDurationXpath = "//table/tbody/tr[2]/td[11]/div[contains(@class, 'grid-cell')]";
 	*/
   static String utilityStatusUtilityNameXpath = "(//table/tbody/tr[1]/td)[2]/div";
-  static String utilityStatusStatusXpath = "(//table/tbody/tr[1]/td)[3]/div";
+  static String utilityStatusStatusXpath = "(//table/tbody/tr[1]/td)[4]/div";//Shilpa updated xpath 10.17.2024
   static String utilityStatusLogStatusXpath = "(//table/tbody/tr[1]/td)[4]/div";
   static String utilityStatusDownloadXpath = "(//table/tbody/tr[1]/td)[5]/div/a";
   static String utilityStatusStartTimeXpath = "(//table/tbody/tr[1]/td)[6]/div";
