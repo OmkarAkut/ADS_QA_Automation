@@ -16,6 +16,7 @@ import ExtentReport.ExtentReport;
 import webdriver.scripts.costing.unitcostquickcalculation.UnitCostQuickCalculationHelperStatic;
 import webdriver.helpers.CalculationHelper;
 import webdriver.helpers.ContractModelsHelper;
+import webdriver.maps.ContractingMap;
 import webdriver.maps.CostingMap;
 import webdriver.maps.ModelLibraryMap;
 import webdriver.maps.mapbuilder.BuildMap;
@@ -26,6 +27,7 @@ public class QuickCcCostColumnsForEachCostComponentPopulateAfterCalculateAds1229
 
   private static CostingMap quickCostColumns;
   private static ModelLibraryMap modelMap;
+  String[] filterScenario = { "Scenario Name", "Is", "Equal To", "*CM1 TB MHFY05 After Vol Change_UCQC" };
   /** ADS-1229: Quick CC Cost columns for each cost component populate after Calculate (dev story ADS-672).
   This script confirms that quick cost component cost columns populate for each cost component after Calculate.
  * @throws Throwable */
@@ -80,6 +82,8 @@ public class QuickCcCostColumnsForEachCostComponentPopulateAfterCalculateAds1229
     try {
 		goToPage("Calculation Status");
 		waitForAjaxExtJs();
+		doClick(ContractingMap.getCalculationStatusButtonFilter());
+		doFilterCreate(filterScenario);
 		WebElement calculationStatusRow1ScenarioName = driver.findElement(By.xpath("//*[contains(@class,'x-grid-row')][1]/descendant::*[contains(@class,'x-grid-cell-inner')][2]"));
 		System.out.println(calculationStatusRow1ScenarioName.getText());
 		assertElementText(calculationStatusRow1ScenarioName, "*CM1 TB MHFY05 After Vol Change_UCQC", printout);
