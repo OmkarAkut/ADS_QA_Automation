@@ -97,21 +97,26 @@ public class UtilitiesHelper extends GoHelper {
 				System.out.println("Download: " + download);
 				assertTrue(download.contains("stLinks"));
 				break;
-			} catch (Throwable e) {
+			} catch (Exception|AssertionError e) {
 				System.out.println("Utility not complete");
 				Thread.sleep(5000);
-				if (counter == 30) {
-					try {
-						fail("Utility did not finish in allotted time");
-					} catch (AssertionError e1) {
+				//Shilpa updated below lines on 10.17.2024
+					if (counter == 30) {
 						ExtentReport.extenttest.log(Status.FAIL, "Utility did not finish in allotted time");
 
-						ExtentReport.extenttest.log(Status.INFO, e1);
+						ExtentReport.extenttest.log(Status.INFO, e);
+						fail();
+						break;
 					}
-				}
-				counter++;
+						
+				
+			
+					
+			
+				
 			}
-
+			counter++;
+			System.out.println(counter);
 		}
 		Thread.sleep(1000);
 	}

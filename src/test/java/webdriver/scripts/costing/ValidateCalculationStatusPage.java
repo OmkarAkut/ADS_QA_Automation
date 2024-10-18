@@ -122,15 +122,15 @@ public class ValidateCalculationStatusPage extends CalculationHelper {
 			doClick(CostingMap.getUnitCostQuickCalculationDepartmentButtonFilter());
 			ContractModelsHelper.applyMultipleFilters("Entity Code","150");
 			ContractModelsHelper.groupSelectApplyFilters("Department Code","2016");
-			ContractModelsHelper.groupSelectApplyFilters("Department Code","2110");
-			ContractModelsHelper.groupSelectApplyFilters("Department Code","2111");
-			ContractModelsHelper.groupSelectApplyFilters("Department Code","2115");
-			ContractModelsHelper.groupSelectApplyFilters("Department Code","2140");
-			ContractModelsHelper.groupSelectApplyFilters("Department Code","2159");
-			ContractModelsHelper.groupSelectApplyFilters("Department Code","2160");
-			ContractModelsHelper.groupSelectApplyFilters("Department Code","2165");
-			ContractModelsHelper.groupSelectApplyFilters("Department Code","3110");
-			ContractModelsHelper.groupSelectApplyFilters("Department Code","3120");
+//			ContractModelsHelper.groupSelectApplyFilters("Department Code","2110");
+//			ContractModelsHelper.groupSelectApplyFilters("Department Code","2111");
+//			ContractModelsHelper.groupSelectApplyFilters("Department Code","2115");
+//			ContractModelsHelper.groupSelectApplyFilters("Department Code","2140");
+//			ContractModelsHelper.groupSelectApplyFilters("Department Code","2159");
+//			ContractModelsHelper.groupSelectApplyFilters("Department Code","2160");
+//			ContractModelsHelper.groupSelectApplyFilters("Department Code","2165");
+//			ContractModelsHelper.groupSelectApplyFilters("Department Code","3110");
+//			ContractModelsHelper.groupSelectApplyFilters("Department Code","3120");
 			ExtentReport.logPass("PASS", "test02CreateCostModel");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test02CreateCostModel", driver, e);
@@ -177,12 +177,18 @@ public class ValidateCalculationStatusPage extends CalculationHelper {
 			doClick("(//div[text()='View Log']//following::span[text()='Cancel'])[1]");
 			doClick("(//div[text()='"+costModel+"']//following::span[text()='Download'])[1]");
 			waitForPresenceOfElementText("Download Log");
-			doClick(modelMap.getContractModelDownloadFileSharedLoc());
-			
+//			doClick(driver.findElement(By.xpath("(//input[@name='hostLocation']/../..)[2]")));
+			//Shilpa: xpath update for 11.2 on 5.17.2024
+			doactionClick(driver.findElement(By.xpath("(//input[@name='hostLocation']/../..)[2]")));
 			doClick(modelMap.getContractModelCalcFileSharedLocOption());
-			ContractModelsHelper.keyInValues(modelMap.getContractModelCalcFilename(), "Testing"+currentDateTime);
+			doClick(modelMap.getContractModelCalcFilename());
+			driverDelay();
+			Actions act=new Actions(driver);
+			act.moveToElement(modelMap.getContractModelCalcFilename()).click().sendKeys("Testing"+currentDateTime).perform();
+//			ContractModelsHelper.keyInValues(modelMap.getContractModelCalcFilename(), "Testing"+currentDateTime);
 //			doClick(modelMap.getContractModelCalcContinueBtn());
-			doJsClick(modelMap.getContractModelCalcContinueBtn());
+			act.moveToElement(modelMap.getContractModelCalcContinueBtn()).click().perform();
+//			doJsClick(modelMap.getContractModelCalcContinueBtn());
 //			JavascriptExecutor executor = (JavascriptExecutor)driver;
 //			executor.executeScript("arguments[0].click();", modelMap.getContractModelCalcContinueBtn());
 			waitForDisplayedSpinnerToEnd();
@@ -194,7 +200,7 @@ public class ValidateCalculationStatusPage extends CalculationHelper {
 //			driver.findElement(By.xpath("(//div[text()='"+costModel+"']//following::span[text()='View'])[1]")).sendKeys(Keys.ARROW_LEFT);
 //			driver.findElement(By.xpath("(//div[text()='"+costModel+"']//following::span[text()='View'])[1]")).sendKeys(Keys.ENTER);
 
-			Actions act=new Actions(driver);
+			
 			driver.findElement(By.xpath("(//div[text()='"+costModel+"']//following::div[text()='Completed'])[1]/..")).click();
 			act.moveToElement(driver.findElement(By.xpath("(//div[text()='"+costModel+"']//following::span[text()='View'])[1]/.."))).sendKeys(Keys.ARROW_RIGHT).sendKeys(Keys.ARROW_RIGHT).sendKeys(Keys.ARROW_DOWN).build().perform();
 			act.moveToElement(driver.findElement(By.xpath("(//div[text()='"+costModel+"']//following::span[text()='View'])[1]/.."))).sendKeys(Keys.ARROW_UP).sendKeys(Keys.RIGHT).sendKeys(Keys.ENTER).perform();

@@ -361,7 +361,13 @@ public class ContractingMap extends MapConfig {
 	private WebElement ContractModelCalcFilename;
 	public WebElement getContractModelCalcFilename() {return ContractModelCalcFilename;}
 	
-	@FindBy(xpath = "//span[text()='Continue']/../../..")
+	@FindBy(xpath = "(//input[@name='logLocation'])")
+	private WebElement ContractCalcFilename;
+	public WebElement getContractCalcFilename() {return ContractCalcFilename;}
+	
+//	@FindBy(xpath = "//span[text()='Continue']/../../..")
+	//Shilpa xpath update for 11.2 on 24.5.2024
+	@FindBy(xpath = "(//span[text()='Continue']/../../..)[2]")
 	private WebElement ContractModelCalcContinueBtn;
 	public WebElement getContractModelCalcContinueBtn() {return ContractModelCalcContinueBtn;}
 	
@@ -1104,5 +1110,10 @@ public class ContractingMap extends MapConfig {
 	@FindBy(xpath = "//input[@name='dischargeEndDate']")
 	private static WebElement getDischargeDateTo;
 	public static WebElement getDischargeDateTo() {return getDischargeDateTo;}
+	
+	//Shilpa added xpath 10.18.2024
+	@FindBy(xpath = "//div[text()='Calculation Status']//following::span[text()='Filter']")
+	private static WebElement CalculationStatusButtonFilter;
+	public static WebElement getCalculationStatusButtonFilter() {return CalculationStatusButtonFilter;}
 
 }

@@ -200,7 +200,8 @@ public class AdsHelper extends GetHelper {
 			if(option.getText().equals(optionText)) {
 //				Actions act=new Actions(driver);
 //				act.moveToElement(option).click().perform();
-				option.click();
+//				option.click();
+				doJsClick(option);
 				break;
 			}
 		}

@@ -5,6 +5,7 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 		CostChangeColumnsPopulateAfterCalculateAds1230.class,
+		CreateUCQCLogMakeUCQCProcessAvailableCalculationPage.class,
 		LoadingSpinnerDisplaysWhileCalculationIsRunningAds1231.class,
 		QuickCcCostColumnsForEachCostComponentPopulateAfterCalculateAds1229.class,
 		RunCalculationAndAssertTotalChangeColumnCalculatesProperlyAds1278.class,
@@ -17,7 +18,9 @@ import org.junit.runners.Suite;
 		UcqcCalculationFailsWhenDeptSelectedNoLongerExistsInSelectedCms.class,
 		UcqcCreateCopyOfCmsToStoreResultsOfUcqcCalculationCmsScenarioAds1378.class,
 		ValidateTotalChangeValueCalculationStaticAds1278.class,
-
+		VerifyUCQCButtonsBackgroundColor.class,
+		VerifyUCQCdropdownValuesForOptionNone.class,
+		UpdateUCQCParmsRvuCalcScenario.class,
 })
 public class UcqcCalculationTestSuite {
 

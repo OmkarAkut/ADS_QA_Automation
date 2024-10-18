@@ -497,6 +497,7 @@ public class CalculationHelper extends GoHelper {
 				Thread.sleep(1000);
 				if (counter == waitTimeInSeconds) {
 					fail("Calculation did not finish in allotted time");
+					break;
 				}
 				counter++;
 			}
@@ -529,6 +530,7 @@ public class CalculationHelper extends GoHelper {
 				Thread.sleep(1000);
 				if (counter == 120) {
 					fail("Calculation did not finish in allotted time");
+					break;
 				}
 				counter++;
 			}
@@ -579,7 +581,7 @@ public class CalculationHelper extends GoHelper {
 					ContractModelsHelper.scrollToView("//*[contains(text(),'"+text+"')]");
 				} catch (Exception e1) {
 					ModelLibraryMap.getGoToNextPage().click();
-					Thread.sleep(1000);
+					Thread.sleep(1200);
 					continue;
 				}
 				

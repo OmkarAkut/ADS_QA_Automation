@@ -38,10 +38,14 @@ public class UtilitiesEncountersWithNoEfrsReportAds2429 extends UtilitiesPageHel
   String endDate = "06/30/2019";
   String currentDate = javaGetCurrentDate("MM/dd/yyyy");
   String nameDate = javaGetCurrentDate("MMddyyyy");
+//  List<String> expectedZipDirectoryName = Arrays.asList(
+//      "eolheiser_" + reportName + "_" + nameDate,
+//      ".zip"
+//  );
   List<String> expectedZipDirectoryName = Arrays.asList(
-      "eolheiser_" + reportName + "_" + nameDate,
-      ".zip"
-  );
+	      "aadmin_" + reportName + "_" + nameDate,
+	      ".zip"
+	  );
 
   /** Test script that verifies Encounters With Zero Charge Balance Report. 
  * @throws Throwable */
@@ -56,7 +60,9 @@ public class UtilitiesEncountersWithNoEfrsReportAds2429 extends UtilitiesPageHel
 		System.out.println(
 		        "Test Class: "
 		        + UtilitiesEncountersWithNoEfrsReportAds2429.class.getSimpleName());
-		loginUser(Users.ApplicationAdministrator1);
+//		loginUser(Users.ApplicationAdministrator1);
+		//Shilpa: update user 10.10.2024
+		loginUser(Users.AutomationTesterAdmin);
 		goToPage("Utilities");
 		ExtentReport.logPass("PASS", "setupScript");
 	} catch (Exception|AssertionError e) {

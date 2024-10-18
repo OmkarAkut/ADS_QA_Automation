@@ -42,7 +42,9 @@ public class ValidateWarningForRvuMaintenancePopUpAds1249 extends UcqcHelper {
 		        "150 Marina Medical Center",
 		       // "3145  ENDOSCOPY",
 		        "3145", //venkat updated department filed data 21.09.2022
-		        "Jan 2005 to Jan 2005");
+//		        "Jan 2005 to Jan 2005"
+		        "Apr 2004 to Mar 2005"
+		        );
 		ExtentReport.logPass("PASS", "setupScript");
 	} catch (Exception|AssertionError e) {
 		ExtentReport.logFail("FAIL", "Failure in setupScript", driver, e);

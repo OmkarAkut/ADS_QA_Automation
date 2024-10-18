@@ -91,7 +91,9 @@ public class VerifyUCQCButtonsBackgroundColor extends UcqcHelper {
 			selectCostComponent("Salaries and Wages", printout);
 			assertElementIsEnabled(costingMap.getCopyandSaveRvuButton(), printout);
 			doClick(costingMap.getCopyandSaveRvuButton());
-			assertElementIsDisplayed(costingMap.getCopyandSaveRvuWarningPopUp());
+//			assertElementIsDisplayed(costingMap.getCopyandSaveRvuWarningPopUp());
+			//Shilpa update xpathfor 11.2 on 20.5.2024
+			assertElementIsDisplayed(costingMap.getRvuCancelButton());
 			doClick(costingMap.getRvuCancelButton());
 			doClick(costingMap.getRvuMaintenanceFilterButtonCancelAndClose());
 			doClick(costingMap.getUnitCostQuickCalculationButtonOverwriteRVUMaintenance());
@@ -118,7 +120,9 @@ public class VerifyUCQCButtonsBackgroundColor extends UcqcHelper {
 
 	@AfterClass
 	public static void endtest() throws Exception {
-		doClosePageOnLowerBar("Unit Cost Quick...");
+		doClosePageOnLowerBar("Unit Cost Quick Calculation");
+		//Shilpa Update on 21.5.2024 for 11.2
+		doClick(CostingMap.getOverheadCancelClose());
 		ExtentReport.report.flush();
 
 	}

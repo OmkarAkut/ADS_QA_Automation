@@ -263,6 +263,20 @@ public class DoStatic extends GetStatic {
             }
         }
     }
+    //Shilpa added method 18.10.2024, as the class name is different under Filters in calculation status page
+    public void doDropdownSelectUsingOptionTextValue(WebElement element, String optionText) throws InterruptedException {
+        waitForAjaxExtJs();
+        doClick(element);
+        waitForAjaxExtJs();
+        WebElement list = driver.findElement(By.xpath("//div[contains(@class,'floating')]/div[contains(@id,'specialtagcombo')]/ul"));
+        List<WebElement> menu = list.findElements(By.tagName("li"));
+        for(WebElement option : menu) {
+            if(option.getText().equals(optionText)) {
+                option.click();
+                break;
+            }
+        }
+    }
 
   
     public void doDropdownSelectUsingOptionText(WebElement element, WebElement menuOptionsUl, String optionText, boolean printout) throws InterruptedException {

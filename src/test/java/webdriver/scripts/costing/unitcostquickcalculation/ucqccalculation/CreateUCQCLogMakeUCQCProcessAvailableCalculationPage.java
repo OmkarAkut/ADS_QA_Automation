@@ -2,13 +2,18 @@ package webdriver.scripts.costing.unitcostquickcalculation.ucqccalculation;
 
 import static org.junit.Assert.fail;
 
+import java.text.SimpleDateFormat;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.openqa.selenium.By;
+
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.corehelpers.JavaHelper;
 import webdriver.helpers.CalculationHelper;
+import webdriver.helpers.ContractModelsHelper;
 import webdriver.helpers.UcqcHelper;
 import webdriver.maps.ContractingMap;
 import webdriver.maps.CostingMap;
@@ -20,7 +25,9 @@ public class CreateUCQCLogMakeUCQCProcessAvailableCalculationPage extends UcqcHe
 	static final String[] requiredFields = { "Marina", "*CM1 TB MHFY05 After Vol Change", "150 Marina Medical Center",
 			"2130", "Apr 2004 to Apr 2004" };
 	CalculationHelper calculationHelper = new CalculationHelper();
-
+	static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
+	static String costModel = "Testing" + currentDateTime;
+	String[] filterScenario = { "Scenario Name", "Is", "Equal To", "*CM1 TB MHFY05 After Vol Change_UCQC" };
 	// Regression Test ADS-5923 **/
 	@BeforeClass
 	public static void setupScript() throws Throwable {
@@ -55,17 +62,40 @@ public class CreateUCQCLogMakeUCQCProcessAvailableCalculationPage extends UcqcHe
 		waitForDisplayedSpinnerToEnd();
 		driverDelay(10000);
 		goToPage("Calculation Status");
+		waitForDisplayedSpinnerToEnd();
+		doClick(ContractingMap.getCalculationStatusButtonFilter());
+		doFilterCreate(filterScenario);
 		CalculationHelper.waitForFirstRowCalculationBarToReach100Percent();
 		driverDelay();
-		doClick("(//a[text()='Download'])[1]");
-		calculationHelper.calculationStatusPageOpenViewDialog();
-		calculationHelper.closeViewDialog();
+		//Shilpa updated 10.18.2024 ,sometimes file directly downloads 
+		try {
+			doClick("(//a[text()='Download'])[1]");
+			//Shilpa: script update 11.2 on 20.5.2024
+			waitForPresenceOfElementText("Download Log");
+			doactionClick(driver.findElement(By.xpath("(//input[@name='hostLocation']/../..)")));
+			doClick(contractingMap.getContractModelCalcFileSharedLocOption());
+			doClick("(//input[@name='logLocation'])");
+			ContractModelsHelper.keyInValues(contractingMap.getContractCalcFilename(), "Testing"+currentDateTime);
+//			doactionClick(contractingMap.getContractModelCalcContinueBtn());
+			//Shilpa Xpath update for 11.2 on 28.5.2024
+			doClick("(//span[text()='Continue']/../../..)");
+			waitForDisplayedSpinnerToEnd();
+			driverDelay();
+			calculationHelper.calculationStatusPageOpenViewDialog();
+			calculationHelper.closeViewDialog();
+		}catch(Exception e) {
+			calculationHelper.calculationStatusPageOpenViewDialog();
+			calculationHelper.closeViewDialog();
+		}
+		
+
+		
 	}
 
 	@AfterClass
 	public static void endtest() throws Exception {
 		doClosePageOnLowerBar("Calculation Status");
-		doClosePageOnLowerBar("Unit Cost Quick...");
+		doClosePageOnLowerBar("Unit Cost Quick Calculation");
 		ExtentReport.report.flush();
 
 	}

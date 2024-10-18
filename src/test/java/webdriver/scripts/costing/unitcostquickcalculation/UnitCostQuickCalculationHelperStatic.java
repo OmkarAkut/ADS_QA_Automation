@@ -238,11 +238,20 @@ public class UnitCostQuickCalculationHelperStatic extends LoginStatic {
       columnID = driver.findElement(By.xpath("//*[contains(@class,'column-header-text')][text()='" + headerName + "']")).getAttribute("id");
       int columnIDDigits = Integer.parseInt(getNumbersFromStringWithRegex(columnID));
       if (headerName.equals("Total Unit Cost") || headerName.equals("Total Quick Cost") ||headerName.equals("Total Change")) {
-        columnValue = driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')][" + row + "]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-" + columnIDDigits + "')]/div")).getText();
+//        columnValue = driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')][" + row + "]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-" + columnIDDigits + "')]/div")).getText();
+      //Shilpa:xpath update for 11.2 on 20.5.2024
+          columnValue = driver.findElement(By.xpath("(//tr[contains(@class,'x-grid-row')]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-" + columnIDDigits + "')]/div)[" + row + "]")).getText();
+
       } else if (headerName.equals("Charge Code") || headerName.equals("Charge Code Name") || headerName.equals("Modifier")) {
-        columnValue = driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')][" + row + "]/descendant::*[contains(@class,'x-grid-cell-gridcolumn-" + columnIDDigits + "')]/div")).getText();
+//        columnValue = driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')][" + row + "]/descendant::*[contains(@class,'x-grid-cell-gridcolumn-" + columnIDDigits + "')]/div")).getText();
+      //Shilpa: Xpath update for 11.2 on 20.05.2024
+          columnValue = driver.findElement(By.xpath("(//tr[contains(@class,'x-grid-row')]/descendant::*[contains(@class,'x-grid-cell-gridcolumn-" + columnIDDigits + "')]/div)[" + row + "]")).getText();
+
       } else {
-        columnValue = driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')][" + row + "]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-" + columnIDDigits + "')]")).getText();
+//        columnValue = driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')][" + row + "]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-" + columnIDDigits + "')]")).getText();
+      //Shilpa : xpath updated for 11.2 on 20.5.2024
+          columnValue = driver.findElement(By.xpath("(//tr[contains(@class,'x-grid-row')]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-" + columnIDDigits + "')])[" + row + "]")).getText();
+
       }
       if (printout) {
         System.out.println("Get Cell Value Charge Code: " + chargeCode);
@@ -500,9 +509,15 @@ public class UnitCostQuickCalculationHelperStatic extends LoginStatic {
       System.out.println("For cell update, columnIdDigits: " + columnIdDigits);
     }
     //click in cell and update
-    driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')]["+row+"]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-"+columnIdDigits+"')]")).click();
+//    driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')]["+row+"]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-"+columnIdDigits+"')]")).click();
+    //Shilpa Xpath update for 11.2 on 20.5.2024
+    driver.findElement(By.xpath("(//tr[contains(@class,'x-grid-row')]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-"+columnIdDigits+"')])["+row+"]")).click();
+
     waitForAjaxExtJs();
-    WebElement editCell = driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')]["+row+"]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-"+columnIdDigits+"')]/div/table"));
+//    WebElement editCell = driver.findElement(By.xpath("//tr[contains(@class,'x-grid-row')]["+row+"]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-"+columnIdDigits+"')]/div/table"));
+    //Shilpa Xpath update for 11.2 on 20.5.2024
+    WebElement editCell = driver.findElement(By.xpath("(//tr[contains(@class,'x-grid-row')]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-"+columnIdDigits+"')]/div/table)["+row+"]"));
+
     Actions action = new Actions(driver);
     action.moveToElement(editCell).clickAndHold().sendKeys(Keys.chord(Keys.CONTROL, "a")).sendKeys(Keys.chord(Keys.CLEAR));
     Thread.sleep(1000);

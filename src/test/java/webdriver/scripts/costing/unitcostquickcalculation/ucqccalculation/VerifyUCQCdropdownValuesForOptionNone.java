@@ -63,7 +63,9 @@ public class VerifyUCQCdropdownValuesForOptionNone extends UcqcHelper {
 			assertUCQCElementHasAttributeDisabled(costingMap.getUnitCostQuickCalculationDropdownEntity(), printout);
 			assertUCQCElementHasAttributeDisabled(costingMap.getUnitCostQuickCalculationFieldResultsStoredFor(),
 					printout);
-			assertUCQCElementHasAttributeDisabled(costingMap.getUcqcDeptSelectButton(), printout);
+//			assertUCQCElementHasAttributeDisabled(costingMap.getUcqcDeptSelectButton(), printout);
+			//Shilpa Update for 11.2 on 21.5.2024
+			assertTheElementIsDisabled(costingMap.getUcqcDeptSelectButton(), printout);
 			assertThatAttributeValue(costingMap.getUnitCostQuickCalculationDropdownCostModelScenario(), "<None>",
 					printout);
 			assertThatAttributeValue(costingMap.getUnitCostQuickCalculationDropdownEntity(), "<None>", printout);
@@ -84,7 +86,9 @@ public class VerifyUCQCdropdownValuesForOptionNone extends UcqcHelper {
 			doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationDropdownCostModelScenario(),
 					costingMap.getUnitCostQuickCalculationDropdownCostModelScenarioMenuList(), "<None>");
 			assertElementIsEnabled(costingMap.getUnitCostQuickCalculationDropdownCostModel(), printout);
-			assertUCQCElementHasAttributeDisabled(costingMap.getUcqcDeptSelectButton(), printout);
+//			assertUCQCElementHasAttributeDisabled(costingMap.getUcqcDeptSelectButton(), printout);
+			//Shilpa Update for 11.2 on 21.5.2024
+			assertTheElementIsDisabled(costingMap.getUcqcDeptSelectButton(), printout);
 			assertUCQCElementHasAttributeDisabled(costingMap.getUnitCostQuickCalculationDropdownEntity(), printout);
 			assertUCQCElementHasAttributeDisabled(costingMap.getUnitCostQuickCalculationFieldResultsStoredFor(),
 					printout);
@@ -107,7 +111,9 @@ public class VerifyUCQCdropdownValuesForOptionNone extends UcqcHelper {
 					costingMap.getUnitCostQuickCalculationDropdownEntityMenuList(), "<None>");
 			assertElementIsEnabled(costingMap.getUnitCostQuickCalculationDropdownCostModel(), printout);
 			assertElementIsEnabled(costingMap.getUnitCostQuickCalculationDropdownCostModelScenario(), printout);
-			assertUCQCElementHasAttributeDisabled(costingMap.getUcqcDeptSelectButton(), printout);
+//			assertUCQCElementHasAttributeDisabled(costingMap.getUcqcDeptSelectButton(), printout);
+			//Shilpa Update for 11.2 on 21.5.2024
+			assertTheElementIsDisabled(costingMap.getUcqcDeptSelectButton(), printout);
 			assertUCQCElementHasAttributeDisabled(costingMap.getUnitCostQuickCalculationFieldResultsStoredFor(),
 					printout);
 			assertThatAttributeValue(costingMap.getUnitCostQuickCalculationDropdownEntity(), "<None>", printout);
@@ -174,7 +180,9 @@ public class VerifyUCQCdropdownValuesForOptionNone extends UcqcHelper {
 		try {
 			ucqcDisplayChargeCodeGrid(requiredFields);
 		    doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationDropdownCostModel(),costingMap.getUnitCostQuickCalculationDropdownCostModelMenuList(),"Marina Clinics");
-		    assertUCQCElementHasAttributeDisabled(costingMap.getUcqcDeptSelectButton(), printout);
+//		    assertUCQCElementHasAttributeDisabled(costingMap.getUcqcDeptSelectButton(), printout);
+		  //Shilpa Update for 11.2 on 21.5.2024
+			assertTheElementIsDisabled(costingMap.getUcqcDeptSelectButton(), printout);
 			assertElementIsEnabled(costingMap.getUnitCostQuickCalculationDropdownCostModelScenario(), printout);
 			assertThatAttributeValue(costingMap.getUnitCostQuickCalculationDropdownCostModelScenario(), "<None>",
 					printout);
@@ -215,7 +223,9 @@ public class VerifyUCQCdropdownValuesForOptionNone extends UcqcHelper {
 			assertElementIsEnabled(costingMap.getUnitCostQuickCalculationDropdownCostModel(), printout);
 			assertElementIsEnabled(costingMap.getUnitCostQuickCalculationDropdownCostModelScenario(), printout);
 		    assertElementIsEnabled(costingMap.getUcqcDeptFieldNone(),printout);
-		    assertElementIsEnabled(costingMap.getUcqcDeptSelectButton(),printout);
+//		    assertElementIsEnabled(costingMap.getUcqcDeptSelectButton(),printout);
+		  //Shilpa Update for 11.2 on 21.5.2024
+		    assertElementIsEnabled(costingMap.getUcqcDeptSelectButton(), printout);
 		    assertThatString(costingMap.getUcqcDeptFieldNone(), "<None>", printout);
 		    assertUCQCElementHasAttributeDisabled(costingMap.getUnitCostQuickCalculationFieldResultsStoredFor(),
 					printout);
@@ -236,7 +246,9 @@ public class VerifyUCQCdropdownValuesForOptionNone extends UcqcHelper {
 			assertElementIsEnabled(costingMap.getUnitCostQuickCalculationDropdownCostModel(), printout);
 			assertElementIsEnabled(costingMap.getUnitCostQuickCalculationDropdownCostModelScenario(), printout);
 		    assertElementIsEnabled(costingMap.getUcqcDeptFieldNone(),printout);
-		    assertElementIsEnabled(costingMap.getUcqcDeptSelectButton(),printout);
+//		    assertElementIsEnabled(costingMap.getUcqcDeptSelectButton(),printout);
+		  //Shilpa Update for 11.2 on 21.5.2024
+		    assertElementIsEnabled(costingMap.getUcqcDeptSelectButton(), printout);
 		    assertThatAttributeValue(costingMap.getUnitCostQuickCalculationFieldResultsStoredFor(), "<None>", printout);
 		    assertElementIsEnabled(costingMap.getUnitCostQuickCalculationFieldResultsStoredFor(),
 					printout);
@@ -254,7 +266,9 @@ public class VerifyUCQCdropdownValuesForOptionNone extends UcqcHelper {
 			assertElementIsEnabled(costingMap.getUnitCostQuickCalculationDropdownCostModel(), printout);
 			assertElementIsEnabled(costingMap.getUnitCostQuickCalculationDropdownCostModelScenario(), printout);
 		    assertElementIsEnabled(costingMap.getUcqcDeptFieldNone(),printout);
-		    assertElementIsEnabled(costingMap.getUcqcDeptSelectButton(),printout);
+//		    assertElementIsEnabled(costingMap.getUcqcDeptSelectButton(),printout);
+		  //Shilpa Update for 11.2 on 21.5.2024
+		    assertElementIsEnabled(costingMap.getUcqcDeptSelectButton(), printout);
 		    assertThatAttributeValue(costingMap.getUnitCostQuickCalculationFieldResultsStoredFor(), "May 2004 to May 2004", printout);
 		    assertThatAttributeValue(costingMap.getUnitCostQuickCalculationDropdownEntity(), "200 Southgate", printout);
 		    assertThatAttributeValue(costingMap.getUnitCostQuickCalculationDropdownCostModel(), "Marina clinics", printout);

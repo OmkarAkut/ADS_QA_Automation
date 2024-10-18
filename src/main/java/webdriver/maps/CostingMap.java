@@ -635,7 +635,7 @@ public class CostingMap extends MapConfig {
 
 //	Omkar 28/12/2023 : xpath changes for 11.2
 //	@FindBy(xpath = "//div[@class='x-panel gridCls gridClsCondensed lockCls ucqc-grid x-grid-with-row-lines x-grid-locked x-border-item x-box-item x-panel-default x-grid']//*[contains(text(),'Calculate')]")
-	@FindBy(xpath = "//span[contains(@class,'x-btn-button-center ')]//*[contains(text(),'Calculate')]") 
+	@FindBy(xpath = "(//div[text()='Unit Cost Quick Calculation']//following::span[text()='Calculate'])[1]") 
 
 	private WebElement unitCostQuickCalculationButtonCalculate;
 
@@ -1387,7 +1387,7 @@ public class CostingMap extends MapConfig {
 	public static WebElement getCostModelPriceListScenarioOptions() {
 		return getCostModelPriceListScenarioOptions;
 	}
-	@FindBy(name = "priceList")
+	@FindBy(xpath = "//input[@name='priceList']/../..")
 	private static WebElement getCostModelPriceListDrpdown;
 	public static WebElement getCostModelPriceListDrpdown() {
 		return getCostModelPriceListDrpdown;
@@ -1943,13 +1943,18 @@ public class CostingMap extends MapConfig {
 	public WebElement getRvuNextPageButton() {
 		return getRvuNextPageButton;
 	}
-	@FindBy(xpath = "//span[contains(@id,'warningwindow')]//following::span[text()='Cancel']//parent::button")
+//	@FindBy(xpath = "//span[contains(@id,'warningwindow')]//following::span[text()='Cancel']//parent::button")
+	//Shilpa xpath update for 11.2 on 20.5.2024
+	@FindBy(xpath = "//div[contains(@id,'warningwindow')]//following::span[text()='Cancel']/..")
+
 	private WebElement getRvuCancelButton;
 
 	public WebElement getRvuCancelButton() {
 		return getRvuCancelButton;
 	}
-	@FindBy(xpath = "//span[contains(@id,'window')][text()='Copy to Quick RVUs']")
+//	@FindBy(xpath = "//span[contains(@id,'window')][text()='Copy to Quick RVUs']")
+	//Shilpa xpath update for 11.2 on 20.5.2024
+	@FindBy(xpath = "//div[contains(@id,'window')][text()='Copy to Quick RVUs']")
 	private WebElement getCopyRvuWindow;
 
 	public WebElement getCopyRvuWindow() {
@@ -1967,28 +1972,37 @@ public class CostingMap extends MapConfig {
 	public WebElement getCopyandSaveRvuWarningPopUp() {
 		return getCopyandSaveRvuWarningPopUp;
 	}
-	@FindBy(xpath = "//span[contains(@id,'window')][text()='Overwrite RVU Maintenance']")
+//	@FindBy(xpath = "//span[contains(@id,'window')][text()='Overwrite RVU Maintenance']")
+	//Shilpa update xpath for 11.2 on 20.5.2024
+	@FindBy(xpath = "//div[contains(@id,'window')][text()='Overwrite RVU Maintenance']")
 	private WebElement getOverwriteRvuWarningPopUp;
 
 	public WebElement getOverwriteRvuWarningPopUp() {
 		return getOverwriteRvuWarningPopUp;
 	}
-	@FindBy(xpath = "//span[contains(@id,'messagebox')][text()='Warning']")
+//	@FindBy(xpath = "//span[contains(@id,'messagebox')][text()='Warning']")
+	//Shilpa Xpath update for 11.2 on 21.5.2024
+//	@FindBy(xpath = "//div[contains(@id,'warningwindow')][text()='Warning']")
+	//Shilpa Xpath update for 11.2 on 10.18.2024
+	@FindBy(xpath = "//div[contains(@id,'messagebox')][text()='Warning']")
 	private WebElement getClearRvuWarningPopUp;
 
 	public WebElement getClearRvuWarningPopUp() {
 		return getClearRvuWarningPopUp;
 	}
-	@FindBy(xpath = "//label[text()='Department']//following::div[text()][1]")
+//	@FindBy(xpath = "//label[text()='Department']//following::div[text()][1]")
+	//Shilpa Xpath update for 11.2 on 20.5.2024
+	@FindBy(xpath = "//span[text()='Department']//following::div[text()][1]")
 	private WebElement getUcqcDeptFieldNone;
 
 	public WebElement getUcqcDeptFieldNone() {
 	
 		return getUcqcDeptFieldNone;
 	}
-	@FindBy(xpath = "(//div[contains(@id,'ucqcform')]//label[text()='Department']//following::span[text()='Select']//parent::button)[1]")
+//	@FindBy(xpath = "(//div[contains(@id,'ucqcform')]//label[text()='Department']//following::span[text()='Select']//parent::button)[1]")
+	//Shilpa Xpath update for 11.2 on 21.5.2024
+	@FindBy(xpath = "(//div[contains(@id,'ucqcform')]//span[text()='Department']//following::span[text()='Select']/../../..)[1]")
 	private WebElement getUcqcDeptSelectButton;
-
 	public WebElement getUcqcDeptSelectButton() {
 		return getUcqcDeptSelectButton;
 	}
@@ -2334,6 +2348,17 @@ public class CostingMap extends MapConfig {
 	public WebElement statisticDataCalcScenarionSaveAsBtn() {
 		return statisticDataCalcScenarionSaveAsBtn;
 	}
+	
+	@FindBy(xpath = "//h1[text()='Statistic Data Calculation Scenarios']//following::span[text()='Delete']")
+	private WebElement statisticDataCalcScenarionDeleteBtn;
+	public WebElement statisticDataCalcScenarionDeleteBtn() {
+		return statisticDataCalcScenarionDeleteBtn;
+	}
+	@FindBy(xpath = "//div[contains(@id,'warningwindow')]//span[text()='Delete']")
+	private WebElement warningMessageDeleteBtn;
+	public WebElement warningMessageDeleteBtn() {
+		return warningMessageDeleteBtn;
+	}
 	@FindBy(name = "gLStatMastId")
 	private WebElement glStatisticMaster;
 	public WebElement glStatisticMaster() {
@@ -2409,9 +2434,45 @@ public class CostingMap extends MapConfig {
 	public WebElement statisticDataFilterBtn() {
 		return statisticDataFilterBtn;
 	}
-	@FindBy(xpath = "//span[text()='Filter Statistic Data']//following::span[text()='Cancel & Close']")
+//	@FindBy(xpath = "//span[text()='Filter Statistic Data']//following::span[text()='Cancel & Close']")
+	//Shilpa update xpath for 11.2 on 23.5.2024
+	@FindBy(xpath = "//div[text()='Filter Statistic Data']//following::span[text()='Cancel & Close']")
+
 	private WebElement statisticDataFilterCancelClose;
 	public WebElement statisticDataFilterCancelClose() {
 		return statisticDataFilterCancelClose;
 	}
+	
+	@FindBy(xpath = "//h1[text()='Cost Model Calculation Scenarios']//following::span[text()='Filter']")
+	private static WebElement getCostScenarioFilterButton;
+	public static WebElement getCostScenarioFilterButton() {return getCostScenarioFilterButton;}
+	
+	//Shilpa Xpath update for 11.2 on 21.5.2024
+	@FindBy(xpath = "//h1[text()='Cost Model Calculation Scenarios']//following::span[text()='Save As']")
+	private static WebElement getCostScenarioSaveButton;
+	public static WebElement getCostScenarioSaveButton() {return getCostScenarioSaveButton;}
+	
+	@FindBy(xpath = "//h1[text()='Cost Model Calculation Scenarios']//following::span[text()='Save']")
+	private static WebElement getCostScenarioSaveBtn;
+	public static WebElement getCostScenarioSaveBtn() {return getCostScenarioSaveBtn;}
+	
+	@FindBy(xpath = "(//h1[text()='Cost Model Calculation Scenarios']//following::span[text()='Calculate'])[2]")
+	private static WebElement getCostScenarioCalculateButton;
+	public static WebElement getCostScenarioCalculateButton() {return getCostScenarioCalculateButton;}
+	
+	@FindBy(xpath = "//h1[text()='Cost Model Calculation Scenarios']//following::span[text()='Cancel & Close']")
+	private static WebElement getCostScenarioSaveCloseButton;
+	public static WebElement getCostScenarioSaveCloseButton() {return getCostScenarioSaveCloseButton;}
+	
+	@FindBy(xpath = "//h1[text()='Cost Model Calculation Scenarios']//following::span[text()='Cancel & Close']")
+	private static WebElement getCostScenarioCancelCloseButton;
+	public static WebElement getCostScenarioCancelCloseButton() {return getCostScenarioCancelCloseButton;}
+	//Shilpa added xpath for 11.2 on 31.5.2024
+	@FindBy(xpath = "//h1[text()='Cost Model Calculation Scenarios']//following::span[text()='Delete']")
+	private static WebElement getCostScenarioDeleteButton;
+	public static WebElement getCostScenarioDeleteButton() {return getCostScenarioDeleteButton;}
+	
+	@FindBy(xpath = "//h1[text()='Cost Model Calculation Scenarios']//following::span[text()='Clear Filter']")
+	private static WebElement getCostScenarioClearFilterButton;
+	public static WebElement getCostScenarioClearFilterButton() {return getCostScenarioClearFilterButton;}
 }

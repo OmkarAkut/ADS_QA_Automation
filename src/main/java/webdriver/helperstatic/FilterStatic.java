@@ -63,7 +63,7 @@ public class FilterStatic extends DoStatic {
         doClick(dialog.getFilterDialogButtonApplyFilter());
         waitForSpinnerToEnd();
     }
-
+  
     public void doFilterSetFilterParameters(String field, String operator, String condition, String value) throws InterruptedException {
         waitForAjaxExtJs();
         doDropdownSelectUsingOptionText(dialog.getFilterDialogDropdownField(), field);
@@ -119,5 +119,5 @@ public class FilterStatic extends DoStatic {
             doClick(driver.findElement(By.xpath("//div[contains(@class,'x-window winCls')]/following::div[contains(@class,'x-boundlist-floating')][2]/descendant::ul/li[text()='" + actualConditions.get(4) + "']")));
         }
     }
-
+  
 }

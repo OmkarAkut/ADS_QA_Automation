@@ -86,9 +86,10 @@ public class UsingCustomvsDefaulttasklistsInCustomizeTaskListCosting extends GoH
 			assertTextIsDisplayed("GL Reclassification Masters");
 			assertTextIsDisplayed("Vendor Masters");
 			assertTextIsDisplayed("GL Statistic Masters");
-			doClickTreeItemWithCheckbox("Department Masters");
+//			doClickTreeItemWithCheckbox("Department Masters");
+			doClickTreeItem("Department Masters");//Shilpa update on 24.5.2024
 //			assertElementIsDisplayedWithXpath("//div[contains(@id,'masterlist')]//following::div[contains(@id,'dynamicGrid')]//table//tr");
-			doClickTreeItem("All Masters");
+//			doClickTreeItem("All Masters");
 			doClickTreeItem("Groupings");// scroll issue
 			waitForMainPageTitle("Chargeable Activity Groups");
 			assertTextIsDisplayed("Chargeable Activity Groups");

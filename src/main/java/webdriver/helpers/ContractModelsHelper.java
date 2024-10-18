@@ -881,8 +881,10 @@ public class ContractModelsHelper extends GoHelper {
 		 try {
 //			 element.click();	
 //			 Thread.sleep(1000);
+			
 			 element.clear();
 			 Thread.sleep(1000);
+			 element.click();
 			 element.sendKeys(input);
 			 Thread.sleep(1000);
 			 element.sendKeys(Keys.ENTER);

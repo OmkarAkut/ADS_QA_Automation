@@ -153,7 +153,7 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 			doClick(reportMap.reportLibraryPageEntityRunButton());
 			waitForElementToBeVisible(reportMap.reportLibraryPageEntityRefreshButton());
 			waitForPresenceOfElement(("//span[text()='" + orgName + "']"));
-			Thread.sleep(2000);
+			Thread.sleep(4000);
 			doClick(reportMap.reportLibraryPageEntityRefreshButton());
 			waitForPresenceOfElement("//span[text()='" + orgName + "']//following::td[5]/div");
 			String status=driver.findElement(By.xpath("//span[text()='" + orgName + "']//following::td[5]/div")).getText();
