@@ -1982,8 +1982,9 @@ public class CostingMap extends MapConfig {
 	}
 //	@FindBy(xpath = "//span[contains(@id,'messagebox')][text()='Warning']")
 	//Shilpa Xpath update for 11.2 on 21.5.2024
-	@FindBy(xpath = "//div[contains(@id,'warningwindow')][text()='Warning']")
-
+//	@FindBy(xpath = "//div[contains(@id,'warningwindow')][text()='Warning']")
+	//Shilpa Xpath update for 11.2 on 10.18.2024
+	@FindBy(xpath = "//div[contains(@id,'messagebox')][text()='Warning']")
 	private WebElement getClearRvuWarningPopUp;
 
 	public WebElement getClearRvuWarningPopUp() {

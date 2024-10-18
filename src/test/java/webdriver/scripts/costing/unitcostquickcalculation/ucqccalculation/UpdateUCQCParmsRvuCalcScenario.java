@@ -116,7 +116,7 @@ public class UpdateUCQCParmsRvuCalcScenario extends UcqcHelper {
 		waitForMainPageTitle("Cost Model Calculation Scenarios");
 		doClickTreeItem("Cost Model Calculation Scenarios");
 	}
-	public void gotoUCQC(String[] parameters,String chargeCode) throws Exception {
+	public void gotoUCQC(String[] parameters,String chargeCode,String ScenarioName) throws Exception {
 		goToPage("Unit Cost Quick Calculation");
 		waitForAjaxExtJs();
 		ucqcDisplayChargeCodeGrid(parameters);
@@ -129,6 +129,10 @@ public class UpdateUCQCParmsRvuCalcScenario extends UcqcHelper {
 		driverDelay();
 		goToPage("Calculation Status");
 		waitForAjaxExtJs();
+		waitForDisplayedSpinnerToEnd();
+		String[] filterScenario = { "Scenario Name", "Is", "Equal To", ScenarioName };
+		doClick(contractingMap.getCalculationStatusButtonFilter());
+		doFilterCreate(filterScenario);
 		waitForFirstRowCalculationBarToReach100Percent();
 		assertElementIsDisplayedWithXpath("(//div[text()='"+costModelScenarioUCQC+"']//following::td[5]/div[contains(text(),'Completed')])[1]");
 		doClosePageOnLowerBar("Calculation Status");
@@ -171,6 +175,10 @@ public class UpdateUCQCParmsRvuCalcScenario extends UcqcHelper {
 			doClick(CostingMap.getCostScenarioSaveButton());
 			driverDelay();
 			doClick(CostingMap.getCostScenarioCalculateButton());
+			//Shilpa updated 10.18.2024
+			String[] filterScenario = { "Scenario Name", "Is", "Equal To", costModelScenarioUpdate };
+			doClick(contractingMap.getCalculationStatusButtonFilter());
+			doFilterCreate(filterScenario);
 			waitForFirstRowCalculationBarToReach100Percent();
 			doClosePageOnLowerBar("Calculation Status");
 			doClick(CostingMap.getCostScenarioCancelCloseButton());
@@ -187,7 +195,7 @@ public class UpdateUCQCParmsRvuCalcScenario extends UcqcHelper {
 	@Test
 	public void test04VerifyUpdatedCostModelScenarioNameInUCQC_5925() throws Throwable {
 		try {
-			gotoUCQC(requiredFields3520, "5800628");
+			gotoUCQC(requiredFields3520, "5800628",costModelScenarioUCQC);
 			
 			ExtentReport.logPass("PASS", "test04VerifyUpdatedCostModelScenarioNameInUCQC_5925");
 		} catch (Exception|AssertionError e) {
@@ -255,6 +263,9 @@ public class UpdateUCQCParmsRvuCalcScenario extends UcqcHelper {
 			doClick(CostingMap.getCostScenarioSaveBtn());
 			driverDelay();
 			doClick(CostingMap.getCostScenarioCalculateButton());
+			String[] filterScenario = { "Scenario Name", "Is", "Equal To", costModelScenarioUpdate };
+			doClick(contractingMap.getCalculationStatusButtonFilter());
+			doFilterCreate(filterScenario);
 			waitForFirstRowCalculationBarToReach100Percent();
 			doClosePageOnLowerBar("Calculation Status");
 			doClick(CostingMap.getCostScenarioCancelCloseButton());
@@ -270,7 +281,7 @@ public class UpdateUCQCParmsRvuCalcScenario extends UcqcHelper {
 	@Test
 	public void test07VerifyUpdatedCostModelScenarioNameInUCQC_5925() throws Throwable {
 		try {
-			gotoUCQC(requiredFields2140, "1100569");
+			gotoUCQC(requiredFields2140, "1100569",costModelScenarioUCQC);
 			
 			ExtentReport.logPass("PASS", "test04VerifyUpdatedCostModelScenarioNameInUCQC_5925");
 		} catch (Exception|AssertionError e) {
@@ -320,7 +331,7 @@ public class UpdateUCQCParmsRvuCalcScenario extends UcqcHelper {
 		try {
 			driver.navigate().refresh();
 			waitForDisplayedSpinnerToEnd();
-			gotoUCQC(requiredFields2110, "1100023");
+			gotoUCQC(requiredFields2110, "1100023",costModelScenarioUCQC);
 			ExtentReport.logPass("PASS", "test09UpdateUCQCForEntity200Southgate_5925");
 		} catch (Exception|AssertionError e) {
 			ExtentReport.logFail("FAIL", "test09UpdateUCQCForEntity200Southgate_5925", driver, e);
