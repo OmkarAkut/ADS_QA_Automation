@@ -27,6 +27,7 @@ public class CreateUCQCLogMakeUCQCProcessAvailableCalculationPage extends UcqcHe
 	CalculationHelper calculationHelper = new CalculationHelper();
 	static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
 	static String costModel = "Testing" + currentDateTime;
+	String[] filterScenario = { "Scenario Name", "Is", "Equal To", "*CM1 TB MHFY05 After Vol Change_UCQC" };
 	// Regression Test ADS-5923 **/
 	@BeforeClass
 	public static void setupScript() throws Throwable {
@@ -61,23 +62,34 @@ public class CreateUCQCLogMakeUCQCProcessAvailableCalculationPage extends UcqcHe
 		waitForDisplayedSpinnerToEnd();
 		driverDelay(10000);
 		goToPage("Calculation Status");
+		waitForDisplayedSpinnerToEnd();
+		doClick(ContractingMap.getCalculationStatusButtonFilter());
+		doFilterCreate(filterScenario);
 		CalculationHelper.waitForFirstRowCalculationBarToReach100Percent();
 		driverDelay();
-		doClick("(//a[text()='Download'])[1]");
-		//Shilpa: script update 11.2 on 20.5.2024
-		waitForPresenceOfElementText("Download Log");
-		doactionClick(driver.findElement(By.xpath("(//input[@name='hostLocation']/../..)")));
-		doClick(contractingMap.getContractModelCalcFileSharedLocOption());
-		doClick("(//input[@name='logLocation'])");
-		ContractModelsHelper.keyInValues(contractingMap.getContractCalcFilename(), "Testing"+currentDateTime);
-//		doactionClick(contractingMap.getContractModelCalcContinueBtn());
-		//Shilpa Xpath update for 11.2 on 28.5.2024
-		doClick("(//span[text()='Continue']/../../..)");
-		waitForDisplayedSpinnerToEnd();
-		driverDelay();
+		//Shilpa updated 10.18.2024 ,sometimes file directly downloads 
+		try {
+			doClick("(//a[text()='Download'])[1]");
+			//Shilpa: script update 11.2 on 20.5.2024
+			waitForPresenceOfElementText("Download Log");
+			doactionClick(driver.findElement(By.xpath("(//input[@name='hostLocation']/../..)")));
+			doClick(contractingMap.getContractModelCalcFileSharedLocOption());
+			doClick("(//input[@name='logLocation'])");
+			ContractModelsHelper.keyInValues(contractingMap.getContractCalcFilename(), "Testing"+currentDateTime);
+//			doactionClick(contractingMap.getContractModelCalcContinueBtn());
+			//Shilpa Xpath update for 11.2 on 28.5.2024
+			doClick("(//span[text()='Continue']/../../..)");
+			waitForDisplayedSpinnerToEnd();
+			driverDelay();
+			calculationHelper.calculationStatusPageOpenViewDialog();
+			calculationHelper.closeViewDialog();
+		}catch(Exception e) {
+			calculationHelper.calculationStatusPageOpenViewDialog();
+			calculationHelper.closeViewDialog();
+		}
+		
 
-		calculationHelper.calculationStatusPageOpenViewDialog();
-		calculationHelper.closeViewDialog();
+		
 	}
 
 	@AfterClass

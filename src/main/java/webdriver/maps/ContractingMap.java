@@ -1111,6 +1111,9 @@ public class ContractingMap extends MapConfig {
 	private static WebElement getDischargeDateTo;
 	public static WebElement getDischargeDateTo() {return getDischargeDateTo;}
 	
-	
+	//Shilpa added xpath 10.18.2024
+	@FindBy(xpath = "//div[text()='Calculation Status']//following::span[text()='Filter']")
+	private static WebElement CalculationStatusButtonFilter;
+	public static WebElement getCalculationStatusButtonFilter() {return CalculationStatusButtonFilter;}
 
 }
