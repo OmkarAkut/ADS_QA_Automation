@@ -130,6 +130,7 @@ public class UpdateUCQCParmsRvuCalcScenario extends UcqcHelper {
 		goToPage("Calculation Status");
 		waitForAjaxExtJs();
 		waitForDisplayedSpinnerToEnd();
+		//Shilpa added line to filter by scenario name and then validate the calculation status for scenario 18.10.2024
 		String[] filterScenario = { "Scenario Name", "Is", "Equal To", ScenarioName };
 		doClick(contractingMap.getCalculationStatusButtonFilter());
 		doFilterCreate(filterScenario);
