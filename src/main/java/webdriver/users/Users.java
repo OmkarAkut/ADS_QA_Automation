@@ -19,11 +19,12 @@ public enum Users {
                       role and changing the password as system does not allow with old password
     DataAdministrator1("automationdataadmin1", "password"), */
     DataAdministrator1("automationdataadmin1", "Pa$$w0rd"),
-    CostAnalyst1("automationcostanalyst1", "password"),
-    CostingDepartmentManager1("eolheiser", "password"),
+    CostAnalyst1("automationcostanalyst1", "password"),    
     /*Omkar 18/10/2024 : This user is not working in QAAPP so updating it based on other files 
      * such as UsersEvolve etc which has same roles
+     * CostingDepartmentManager1("eolheiser", "password"),
 	ContractAnalyst1("eolheiser", "password"), */
+    CostingDepartmentManager1("automationcostdeptmanag1", "password"),
     ContractAnalyst1("automationcontraanalyst1", "password"),
     ContractAdministrator1("automationcontradmin1", "password"),
     ContractReviewer1("automationcontrreviewer1", "password"),
