@@ -24,6 +24,7 @@ public class RunGLAdjustmentAndReclassifications extends CalculationHelper {
 	static AdsHelper adsHelper = new AdsHelper();
 	static String[] filter = { "Name", "Is", "Equal To", costModel };
 	static String[] filterGLModel = { "Name", "Is", "Equal To", glModel };
+	static String[] filterScenario = { "Scenario Name", "Is", "Equal To", glModel };
 	static ContractingMap contractMap;
 	static SystemMaintenanceMap systemMap;
 	static saveSystemSettings settings=new saveSystemSettings();
@@ -72,6 +73,9 @@ public class RunGLAdjustmentAndReclassifications extends CalculationHelper {
 			waitForElementToBeVisible(ContractingMap.getCalculateButton());
 			doClick(ContractingMap.getCalculateButton());
 			waitForPageTitle("Calculation Status");
+			//Shilpa: Update: 11.2 : 10.18.2024
+			doClick(ContractingMap.getCalculationStatusButtonFilter());
+			doFilterCreate(filterScenario);
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
 			waitForPresenceOfElement("//*[contains(text(),'Number of Reclassifications To Process: 6')]");

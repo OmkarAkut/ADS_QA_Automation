@@ -31,7 +31,10 @@ public class ActualCostingMethodPatientChgsDateRange extends CalculationHelper {
 	static String[] filterCostModelScenarioApr = { "Name", "Is", "Equal To", costModelCalcScenarioApr };
 	static String[] filterCostModelScenarioMay = { "Name", "Is", "Equal To", costModelCalcScenarioMay };
 	static String[] filterCostModelScenarioJune = { "Name", "Is", "Equal To", costModelCalcScenarioJune };
-
+	//Shilpa updated on 10.18.2024
+	static String[] filtercostModelScenarioCalApr= {"Scenario Name", "Is", "Equal To", costModelCalcScenarioApr};
+	static String[] filterCostModelScenarioCalMay= {"Scenario Name", "Is", "Equal To", costModelCalcScenarioMay};
+	static String[] filterCostModelScenarioCalJune= {"Scenario Name", "Is", "Equal To", costModelCalcScenarioJune};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
 		ExtentReport.reportCreate("ActualCostingMethodPatientChgsDateRange", "webdriver.scripts.costing",
@@ -80,6 +83,9 @@ public class ActualCostingMethodPatientChgsDateRange extends CalculationHelper {
 			doFilterCreate(filterCostModelScenarioApr);
 			tableClickCellFirstColumn(costModelCalcScenarioApr);
 			doClick(costing.getCostModelScenarioCalculationButtonCalculate());
+			//Shilpa : Updated: 11.2 : 10.18.2024
+			doClick(ContractingMap.getCalculationStatusButtonFilter());
+			doFilterCreate(filtercostModelScenarioCalApr);
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
 
@@ -116,6 +122,9 @@ public class ActualCostingMethodPatientChgsDateRange extends CalculationHelper {
 			waitForAjaxExtJs();
 			tableClickCellFirstColumn(costModelCalcScenarioMay);
 			doClick(costing.getCostModelScenarioCalculationButtonCalculate());
+			//Shilpa : Updated: 11.2 : 10.18.2024
+			doClick(ContractingMap.getCalculationStatusButtonFilter());
+			doFilterCreate(filterCostModelScenarioCalMay);
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
 //			confirmCalculationStatusDetailsContains("  Department: D2110 DEPT D2110");
@@ -146,6 +155,9 @@ public class ActualCostingMethodPatientChgsDateRange extends CalculationHelper {
 			doFilterCreate(filterCostModelScenarioJune);
 			tableClickCellFirstColumn(costModelCalcScenarioJune);
 			doClick(costing.getCostModelScenarioCalculationButtonCalculate());
+			//Shilpa : Updated: 11.2 : 10.18.2024
+			doClick(ContractingMap.getCalculationStatusButtonFilter());
+			doFilterCreate(filterCostModelScenarioCalJune);
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
 //			confirmCalculationStatusDetailsContains("  Department: D2110 DEPT D2110"); Shilpa updated for 11.2 on 23.5.2024 , generic method works good here 
