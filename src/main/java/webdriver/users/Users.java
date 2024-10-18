@@ -3,9 +3,15 @@ package webdriver.users;
 public enum Users {
 
 //Add login test users for test framework - test users are called in the test scripts
+	
     AppSupportUser("eoadmin", "password"),
-    AutomationTester1("eolheiser", "password"),
-    ApplicationAdministrator1("eolheiser", "password"),
+    
+    /*Omkar 18/10/2024 : This user is not working in QAAPP so updating it based on other files 
+     * such as UsersEvolve etc which has same roles
+     * AutomationTester1("eolheiser", "password"),
+	ApplicationAdministrator1("eolheiser", "password"), */
+    AutomationTester1("automationappadmin1", "password"),
+    ApplicationAdministrator1("automationappadmin1", "password"),
     SystemAdministrator1("automationsysadmin1", "password"),
     SecurityAdministrator1("automationsecuradmin1", "password"),
     /*
@@ -15,7 +21,10 @@ public enum Users {
     DataAdministrator1("automationdataadmin1", "Pa$$w0rd"),
     CostAnalyst1("automationcostanalyst1", "password"),
     CostingDepartmentManager1("eolheiser", "password"),
-    ContractAnalyst1("eolheiser", "password"),
+    /*Omkar 18/10/2024 : This user is not working in QAAPP so updating it based on other files 
+     * such as UsersEvolve etc which has same roles
+	ContractAnalyst1("eolheiser", "password"), */
+    ContractAnalyst1("automationcontraanalyst1", "password"),
     ContractAdministrator1("automationcontradmin1", "password"),
     ContractReviewer1("automationcontrreviewer1", "password"),
     EpisodeAnalyst1("automationepisanalyst1", "password"),
