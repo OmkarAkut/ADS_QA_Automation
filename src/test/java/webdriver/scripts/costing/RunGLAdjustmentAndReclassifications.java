@@ -74,8 +74,7 @@ public class RunGLAdjustmentAndReclassifications extends CalculationHelper {
 			doClick(ContractingMap.getCalculateButton());
 			waitForPageTitle("Calculation Status");
 			//Shilpa: Update: 11.2 : 10.18.2024
-			doClick(ContractingMap.getCalculationStatusButtonFilter());
-			doFilterCreate(filterScenario);
+			doFilterCalculationPage(filterScenario);
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
 			waitForPresenceOfElement("//*[contains(text(),'Number of Reclassifications To Process: 6')]");

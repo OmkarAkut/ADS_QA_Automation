@@ -180,7 +180,7 @@ doClickTreeItem("Assign Unit Costs");
 			doClick(ContractingMap.getDeleteButtonMesaageBox());
 			waitForDisplayedSpinnerToEnd();
 			waitForAjaxExtJs();
-			driverDelay(6000);
+			driverDelay(15000);
 			assertTextIsDisplayed("There is no data available to display.");
 			ExtentReport.logPass("PASS", "test07DeleteFilteredInRvuContainer");
 		} catch (Exception|AssertionError e) {
@@ -231,7 +231,7 @@ doClickTreeItem("Assign Unit Costs");
 			assertElementIsDisplayedWithXpath("//label[contains(text(),'Filter to Match These Criteria 1596/')]");
 			doClick(dialog.getFilterDialogButtonApplyFilter());
 			waitForDisplayedSpinnerToEnd();
-			driverDelay(10000);
+			driverDelay(35000);
 			assertListElementsAreDisplayed(costing.getRvuContainerList(), printout);
 //			assertElementIsDisplayedWithXpath("//div[contains(@id,'tbtext')][text()='"+TotalPages+"']");//Shilpa update on 23.5.2024 cannot be validated since page count keep changing
 			ExtentReport.logPass("PASS", "test10ValidateOpenInRvuFilterPopUp");
@@ -247,7 +247,7 @@ doClickTreeItem("Assign Unit Costs");
 			waitForElementToBeVisible(contractMap.getContractModelDeletePopUp());
 			doClick(ContractingMap.getDeleteButtonMesaageBox());
 			waitForDisplayedSpinnerToEnd();
-			waitForAjaxExtJs();
+			driverDelay(15000);
 			for(WebElement element:costing.getRvuContainerListEndMonth()) {
 				if(element.getText().equals("Open")) {
 					assertTrue(printout);
@@ -278,6 +278,7 @@ doClickTreeItem("Assign Unit Costs");
 			doClick("//span[text()='Remove All']");
 			doClick(dialog.getFilterDialogButtonApplyFilter());
 			waitForDisplayedSpinnerToEnd();
+			driverDelay(15000);
 		}
 		
 	}
@@ -374,6 +375,7 @@ doClickTreeItem("Assign Unit Costs");
 
 			doClick(dialog.getFilterDialogButtonApplyFilter());
 			waitForSpinnerToEnd();
+			driverDelay(25000);
 			test07DeleteFilteredInRvuContainer_5983();
 			assertElementIsDisabled(ContractingMap.getCloseandDisplayButton(), printout);
 			test08ClearFilterInRvuContainer_5983();
@@ -395,7 +397,8 @@ doClickTreeItem("Assign Unit Costs");
 			assertElementIsDisplayedWithXpath("//label[contains(text(),'Filter to Match These Criteria')]");
 
 			doClick(dialog.getFilterDialogButtonApplyFilter());
-			waitForSpinnerToEnd();
+			waitForDisplayedSpinnerToEnd();
+			driverDelay(30000);
 //			assertElementIsDisplayedWithXpath("//div[contains(@id,'tbtext')][text()='/ 16']");
 			//Shilpa updated for 11.2 , the page count might increase so not suggested to use the index
 			assertElementIsDisplayedWithXpath("(//div[text()='RVU Container List']//following::div[contains(@class,'x-toolbar-text-default')])[2]");
@@ -432,9 +435,9 @@ doClickTreeItem("Assign Unit Costs");
 			/** Uncomment below lines once ADS-8863 is fixed **/
 			    doDropdownSelectUsingOptionTextServices(dialog.getstatusFilterDialogFieldValueList(),dialog.getstatusFilterDialogFieldValueList(), "Yes");
 
-//			doDropdownSelectUsingOptionText(dialog.getstatusFilterDialogFieldValueList(), costing.getFilterValueCostComponentOverheadDropdownOptions(), "Yes");
+			doDropdownSelectUsingOptionText(dialog.getstatusFilterDialogFieldValueList(), costing.getFilterValueCostComponentOverheadDropdownOptions(), "Yes");
 			addFilter();
-//			assertElementIsDisplayedWithXpath("//label[contains(text(),'Filter to Match These Criteria 3076/')]");
+			assertElementIsDisplayedWithXpath("//label[contains(text(),'Filter to Match These Criteria 3076/')]");
 			//Shilpa updated for 11.2 , as the count keeps changing, not suggested to assert count
 			assertElementIsDisplayedWithXpath("//label[contains(text(),'Filter to Match These Criteria')]");
 			doClick(dialog.getFilterDialogButtonApplyFilter());

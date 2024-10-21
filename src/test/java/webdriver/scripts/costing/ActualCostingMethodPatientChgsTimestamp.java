@@ -37,6 +37,12 @@ public class ActualCostingMethodPatientChgsTimestamp extends CalculationHelper {
 	static String[] filterCostModelScenarioD= { "Name", "Is", "Equal To", costModelCalcScenarioD};
 	static String[] filterCostModelScenarioE= { "Name", "Is", "Equal To", costModelCalcScenarioE};
 	static String[] filterCostModelScenarioEdit= { "Name", "Is", "Equal To", costModelScenarioUpdate};
+	static String[] filterCostModelCalcScenarioA = { "Scenario Name", "Is", "Equal To", costModelCalcScenarioA };
+	static String[] filterCostModelCalcScenarioB = { "Scenario Name", "Is", "Equal To", costModelCalcScenarioB };
+	static String[] filterCostModelCalcScenarioC= { "Scenario Name", "Is", "Equal To", costModelCalcScenarioC };
+	static String[] filterCostModelCalcScenarioD= { "Scenario Name", "Is", "Equal To", costModelCalcScenarioD};
+	static String[] filterCostModelCalcScenarioE= { "Scenario Name", "Is", "Equal To", costModelCalcScenarioE};
+	static String[] filterCostModelCalcScenarioEdit= { "Scenario Name", "Is", "Equal To", costModelScenarioUpdate};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
 		ExtentReport.reportCreate("ActualCostingMethodPatientChgsTimestamp", "webdriver.scripts.costing", "ActualCostingMethodPatientChgsTimestamp");
@@ -80,6 +86,8 @@ public class ActualCostingMethodPatientChgsTimestamp extends CalculationHelper {
 			doFilterCreate(filterCostModelScenarioA);
 			tableClickCellFirstColumn(costModelCalcScenarioA);
 			doClick(costing.getCostModelScenarioCalculationButtonCalculate());
+			//Shilpa: Update for 11.2 : 10.21.2024
+			doFilterCalculationPage(filterCostModelCalcScenarioA);
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
 //			ContractModelsHelper.gotToSpecifiedPage(ModelLibraryMap.getInputNumberPage(), ModelLibraryMap.getGoToPage(), "2");
@@ -105,6 +113,8 @@ public class ActualCostingMethodPatientChgsTimestamp extends CalculationHelper {
 			doFilterCreate(filterCostModelScenarioB);
 			tableClickCellFirstColumn(costModelCalcScenarioB);
 			doClick(costing.getCostModelScenarioCalculationButtonCalculate());
+			//Shilpa: Update for 11.2 : 10.21.2024
+			doFilterCalculationPage(filterCostModelCalcScenarioB);
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
 //			ContractModelsHelper.gotToSpecifiedPage(ModelLibraryMap.getInputNumberPage(), ModelLibraryMap.getGoToPage(), "2");
@@ -129,6 +139,8 @@ public class ActualCostingMethodPatientChgsTimestamp extends CalculationHelper {
 			doFilterCreate(filterCostModelScenarioC);
 			tableClickCellFirstColumn(costModelCalcScenarioC);
 			doClick(costing.getCostModelScenarioCalculationButtonCalculate());
+			//Shilpa: Update for 11.2 : 10.21.2024
+			doFilterCalculationPage(filterCostModelCalcScenarioC);
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
 //			ContractModelsHelper.gotToSpecifiedPage(ModelLibraryMap.getInputNumberPage(), ModelLibraryMap.getGoToPage(), "2");
@@ -153,6 +165,8 @@ public class ActualCostingMethodPatientChgsTimestamp extends CalculationHelper {
 			doFilterCreate(filterCostModelScenarioD);
 			tableClickCellFirstColumn(costModelCalcScenarioD);
 			doClick(costing.getCostModelScenarioCalculationButtonCalculate());
+			//Shilpa: Update for 11.2 : 10.21.2024
+			doFilterCalculationPage(filterCostModelCalcScenarioD);
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
 //			ContractModelsHelper.gotToSpecifiedPage(ModelLibraryMap.getInputNumberPage(), ModelLibraryMap.getGoToPage(), "2");
@@ -179,6 +193,8 @@ public class ActualCostingMethodPatientChgsTimestamp extends CalculationHelper {
 			ContractModelsHelper.keyInValues(CostingMap.getCostScenarioName(), costModelScenarioUpdate);
 			doClick(costing.getSaveAsButton());
 			doClick(CostingMap.getCostModelalculateBtn());
+			//Shilpa: Update for 11.2 : 10.21.2024
+			doFilterCalculationPage(filterCostModelCalcScenarioEdit);
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
 //			ContractModelsHelper.gotToSpecifiedPage(ModelLibraryMap.getInputNumberPage(), ModelLibraryMap.getGoToPage(), "2");

@@ -689,5 +689,16 @@ public class CalculationHelper extends GoHelper {
 		Thread.sleep(1000);
 		doSearchForAndSelectContractModelFromContractModelLibrary(modelName);
 	}
+	//Shilpa: added method for 11.2 : 10.21.2024
 
+	public  void doFilterCalculationPage(String[] filter) throws Exception {
+		
+		try {
+			doClick(ContractingMap.getCalculationStatusButtonFilter());
+			doFilterCreate(filter);
+		} catch (InterruptedException e) {
+			waitForAjaxExtJs();
+		}
+	
+	}
 }

@@ -176,7 +176,7 @@ import webdriver.maps.mapbuilder.BuildMap;
 //					costing.getCostModelScenariosinEvaluationOrderAssignedCostList(), "6 : Multiple CC Masters");
 			doDropdownSelectUsingOptionText(costing.getCostModelScenariosinEvaluationOrderAssignedCost(),
 					costing.getCostModelScenariosinEvaluationOrderAssignedCostList(), "6 : Multiple CC Masters4567");
-			
+			doClick(CostingMap.getCostScenarioContinueButton());
 			doClick(costing.getCostModelScenariosinEvaluationOrderEncounterSelect());
 			ContractModelsHelper.selectMultipleColumnsToDisplay(columns);
 			assertElementIsDisplayedWithXpath("//*[text()='2 Item(s) Selected']");
@@ -188,6 +188,7 @@ import webdriver.maps.mapbuilder.BuildMap;
 			doClick(costing.getCostModelScenariosinEvaluationOrderAdmissionCheck());
 			doClick("(//label[text()='Share Log in Selected Shared Location']//preceding-sibling::*[1]/input)");
 			doClick("//span[text()='Save & Close']");
+			doClick(CostingMap.getCostScenarioContinueButton());
 			doClick(costing.getEncCostModelClearFilterButton());
 			waitForDisplayedSpinnerToEnd();
 			doClick(costing.getEncCostModelFilterButton());

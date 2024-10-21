@@ -28,7 +28,9 @@ public class ActualCostingMethodPatientChgsDoesNotMatch extends CalculationHelpe
 	static String[] filterCostModelScenarioEntity = { "Name", "Is", "Equal To", costModelCalcScenarioEntity };
 	static String[] filterCostModelScenarioDept = { "Name", "Is", "Equal To", costModelCalcScenarioDept };
 	static String[] filterCostModelScenarioNoActCost = { "Name", "Is", "Equal To", costModelCalcScenarioNoActCost };
-
+	static String[] filterCostModelCalcScenarioEntity = { "Scenario Name", "Is", "Equal To", costModelCalcScenarioEntity };
+	static String[] filterCostModelCalcScenarioDept = { "Scenario Name", "Is", "Equal To", costModelCalcScenarioDept };
+	static String[] filterCostModelCalcScenarioNoActCost  = { "Scenario Name", "Is", "Equal To", costModelCalcScenarioNoActCost };
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
 		ExtentReport.reportCreate("ActualCostingMethodPatientChgsDoesNotMatch", "webdriver.scripts.costing",
@@ -37,6 +39,7 @@ public class ActualCostingMethodPatientChgsDoesNotMatch extends CalculationHelpe
 			costing = BuildMap.getInstance(driver, CostingMap.class);
 			contractMap = BuildMap.getInstance(driver, ContractingMap.class);
 			modelMap = BuildMap.getInstance(driver, ModelLibraryMap.class);
+			CalculationHelper helper=new CalculationHelper();
 			Login.loginUser("AutomationTesterAdmin");
 			goToPage("Costing Models");
 			ExtentReport.logPass("PASS", "setupScript");
@@ -74,7 +77,8 @@ public class ActualCostingMethodPatientChgsDoesNotMatch extends CalculationHelpe
 			doFilterCreate(filterCostModelScenarioEntity);
 			tableClickCellFirstColumn(costModelCalcScenarioEntity);
 			doClick(costing.getCostModelScenarioCalculationButtonCalculate());
-			waitForFirstRowCalculationBarToReach100Percent();
+			//Shilpa :Update for 11.2 : 19.10.2024
+			doFilterCalculationPage(filterCostModelCalcScenarioEntity);
 			calculationStatusPageOpenViewDialog();
 //			confirmCalculationStatusDetailsContains("  Department: D3120 DEPT D3120");
 //			confirmCalculationStatusDetailsContains("  Sum Actual Costs = ");
@@ -101,6 +105,8 @@ public class ActualCostingMethodPatientChgsDoesNotMatch extends CalculationHelpe
 			waitForAjaxExtJs();
 			tableClickCellFirstColumn(costModelCalcScenarioDept);
 			doClick(costing.getCostModelScenarioCalculationButtonCalculate());
+			//Shilpa :Update for 11.2 : 19.10.2024
+			doFilterCalculationPage(filterCostModelCalcScenarioDept);
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
 //			confirmCalculationStatusDetailsContains("  Department: D2265 DEPT D2265");
@@ -127,6 +133,8 @@ public class ActualCostingMethodPatientChgsDoesNotMatch extends CalculationHelpe
 			doFilterCreate(filterCostModelScenarioNoActCost);
 			tableClickCellFirstColumn(costModelCalcScenarioNoActCost);
 			doClick(costing.getCostModelScenarioCalculationButtonCalculate());
+			//Shilpa :Update for 11.2 : 19.10.2024
+			doFilterCalculationPage(filterCostModelCalcScenarioNoActCost);
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
 //			confirmCalculationStatusDetailsContains("  Department: D3047 DEPT D3047");
