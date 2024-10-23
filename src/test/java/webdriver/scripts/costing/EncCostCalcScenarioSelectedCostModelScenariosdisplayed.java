@@ -25,7 +25,8 @@ import webdriver.maps.mapbuilder.BuildMap;
 	/** Regression test case ADS-5982 **/
 	public class EncCostCalcScenarioSelectedCostModelScenariosdisplayed extends CalculationHelper {
 		static String costModel = "0-MarinaCostModel";
-		static String encCostScenario="#ADS-5982 Enc Cost performance issue";
+//		static String encCostScenario="#ADS-5982 Enc Cost performance issue";
+		static String encCostScenario="#ADS-1533 Enc Cost performance issue";//Shilpa created test data for 11.2 on 10.23.2024
 		static String costModelScenEvaluationOrder="1: *USE SG FY05 Total Cost Scenario";
 		static String costModelScenEvaluationOrderTest="*USE CHC FY03 Total Cost Scenario";
 		  String[] columnHeaderSubset = {"*USE CHC FY05 Total Cost Scenario",

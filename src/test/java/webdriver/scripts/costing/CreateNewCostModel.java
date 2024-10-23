@@ -255,7 +255,7 @@ public class CreateNewCostModel extends GoHelper {
 			OpenTreeItemThenValidate("Chargeable Activity Groups");
 			OpenTreeItemThenValidate("Price Lists");
 			OpenTreeItemThenValidate("Price List Calculation Scenarios");
-			doClick("//span[text()='Statistics']");
+			doClick("//span[text()='Statistics']");//Shilpa added for 11.2 on 10.23.2024
 			driverDelay();
 			OpenTreeItemThenValidate("Activity Statistic Masters");
 			OpenTreeItemThenValidate("Ad Hoc Statistic Masters");
@@ -274,6 +274,7 @@ public class CreateNewCostModel extends GoHelper {
 			driverDelay();
 			OpenTreeItemThenValidate("Statistic Data Scenarios");
 			OpenTreeItemThenValidate("Statistic Data Calculation Scenarios");
+			doClick("//span[text()='Prepare Data']");
 			doClickTreeItem("Perform GL Adjustments and Reclassifications");
 			driverDelay();
 			OpenTreeItemThenValidate("GL Adjustment Masters");
@@ -299,7 +300,8 @@ public class CreateNewCostModel extends GoHelper {
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test02AssertNewCostModel_6253", driver, e);
 			fail(e.getMessage());
-		} finally {
+		} 
+		finally {
 
 			doClick("(//SPAN[@CLASS='x-tab-close-btn'])[2]");
 //				

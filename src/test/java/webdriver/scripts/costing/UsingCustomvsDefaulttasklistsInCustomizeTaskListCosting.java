@@ -7,6 +7,7 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
+import org.openqa.selenium.interactions.Actions;
 
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
@@ -24,6 +25,8 @@ public class UsingCustomvsDefaulttasklistsInCustomizeTaskListCosting extends GoH
 	private static String deptHierarchyName="BCDEPTHIERARCHY";
 	static String[] filter= {"Name","Is","Equal To",costModel};
 	static String[] filterByDeptHierarchy= {"Hierarchy Name","Is","Equal To",deptHierarchyName};
+	static Actions act=new Actions(driver);
+
 	/** Automates test ticket ADS-6589 */
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
@@ -41,7 +44,10 @@ public class UsingCustomvsDefaulttasklistsInCustomizeTaskListCosting extends GoH
 //			assertTextIsDisplayed("Cost Scenarios");
 			assertTextIsDisplayed("Groupings");
 			assertTextIsDisplayed("Miscellaneous");
-			driver.findElement(By.xpath("(//input[@name='costingOption'])[2]")).click();
+//			driver.findElement(By.xpath("(//input[@name='costingOption'])[2]")).click();
+			//Shilpa: update for 11.2 on 10.23.2024
+			act.moveToElement(driver.findElement(By.xpath("//label[text()='Use Default']//preceding-sibling::span"))).click().pause(1000).perform();
+			act.moveToElement(driver.findElement(By.xpath("//label[text()='Use Custom']//preceding-sibling::span"))).click().pause(1000).perform();
 			doClick(SystemMaintenanceMap.getTaskListSaveButton());
 			doClick(ContractingMap.getSaveBenefitPlan());
 			doClick("(//div[contains(@id,'button')]//following::span[text()='Save'])[2]");
@@ -127,10 +133,13 @@ public class UsingCustomvsDefaulttasklistsInCustomizeTaskListCosting extends GoH
 			Login.loginUser("AutomationTesterAdmin");
 			goToPage("Customize Task Lists");
 			waitForDisplayedSpinnerToEnd();
-			driver.findElement(By.xpath("(//input[@name='costingOption'])[1]")).click();
+			//Shilpa: update for 11.2 on 10.23.2024
+			act.moveToElement(driver.findElement(By.xpath("//label[text()='Use Default']//preceding-sibling::span"))).click().pause(1000).perform();
+//			driver.findElement(By.xpath("(//input[@name='costingOption'])[1]")).click();
 			doClick(SystemMaintenanceMap.getTaskListSaveButton());
 			doClick(ContractingMap.getSaveBenefitPlan());
 			doClick("(//div[contains(@id,'button')]//following::span[text()='Save'])[2]");
+			
 			waitForAjaxExtJs();
 			ExtentReport.logPass("PASS", "test02VerifyDepartmentHierarchy");
 		} catch (Exception | AssertionError e) {

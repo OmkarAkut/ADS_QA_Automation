@@ -34,7 +34,7 @@ public class ValidateCalculationStatusPage extends CalculationHelper {
 	static String OHMaster="TB OVHD Calc Scen Exp Vol for Rpt";
 	static String priceList="150FY05 Marina Hosp Price List FY05";
 	static String calcMonths="Apr 2004 to Mar 2005";
-	static String[] calcfilter= {"Scenario Name","Is","Equal To",glDataDescription};
+	static String[] calcfilter= {"Scenario Name","Is","Equal To",costModel};
 	AdsHelper adsHelper = new AdsHelper();
 	CalculationHelper calcHelper=new CalculationHelper();
 
