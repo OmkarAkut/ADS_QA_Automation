@@ -30,7 +30,7 @@ public class CreateDeleteCostMethodMaster extends GoHelper{
 	static String currentDateTimeCode = new SimpleDateFormat("MM.HH.ss").format(new java.util.Date());
 	static String code = currentDateTimeCode.replaceAll("\\W", "");
 	static String costMethodMaster = "Cost Method" + currentDateTime;
-	static String deptMaster="150 old master 1501";
+	static String deptMaster="150 old master 150";//Shilpa updated from 150 old master 15012 to 150 old master 150
 	static String[] filter = { "Code", "Is", "Equal", code };
 	/** Automates test ticket ADS-6671, ADS-6670, ADS-6669 */
 	static saveSystemSettings settings=new saveSystemSettings();

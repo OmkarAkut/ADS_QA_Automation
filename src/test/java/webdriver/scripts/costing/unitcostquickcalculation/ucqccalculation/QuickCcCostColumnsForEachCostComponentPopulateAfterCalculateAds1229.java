@@ -14,6 +14,7 @@ import org.openqa.selenium.WebElement;
 
 import ExtentReport.ExtentReport;
 import webdriver.scripts.costing.unitcostquickcalculation.UnitCostQuickCalculationHelperStatic;
+import webdriver.corehelpers.AdsHelper;
 import webdriver.helpers.CalculationHelper;
 import webdriver.helpers.ContractModelsHelper;
 import webdriver.maps.ContractingMap;
@@ -24,21 +25,24 @@ import webdriver.users.Users;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class QuickCcCostColumnsForEachCostComponentPopulateAfterCalculateAds1229 extends UnitCostQuickCalculationHelperStatic {
-
   private static CostingMap quickCostColumns;
   private static ModelLibraryMap modelMap;
-  String[] filterScenario = { "Scenario Name", "Is", "Equal To", "*CM1 TB MHFY05 After Vol Change_UCQC" };
+  private static ContractingMap contractMap;
+	String[] filter = { "Scenario Name", "Is", "Equal To", "*CM1 TB MHFY05 After Vol Change_UCQC" };
+
+ 
   /** ADS-1229: Quick CC Cost columns for each cost component populate after Calculate (dev story ADS-672).
   This script confirms that quick cost component cost columns populate for each cost component after Calculate.
  * @throws Throwable */
   /** Regression tc ADS-5924,ADS-6665 update tc  **/
   @BeforeClass
   public static void setupScript() throws Throwable {
-	  
+	 
 	  ExtentReport.reportCreate("QuickCcCostColumnsForEachCostComponentPopulateAfterCalculateAds1229","webdriver.scripts.costing.unitcostquickcalculation.ucqccalculation", "QuickCcCostColumnsForEachCostComponentPopulateAfterCalculateAds1229");
     try {
 		quickCostColumns = BuildMap.getInstance(driver, CostingMap.class);
 		modelMap = BuildMap.getInstance(driver, ModelLibraryMap.class);
+		contractMap=BuildMap.getInstance(driver, ContractingMap.class);
 		System.out.println("Test Class: " + QuickCcCostColumnsForEachCostComponentPopulateAfterCalculateAds1229.class.getSimpleName());
 		evolveLoginStaticUser(Users.CostingDepartmentManager1);
 		goToPage("Unit Cost Quick Calculation");
@@ -55,7 +59,7 @@ public class QuickCcCostColumnsForEachCostComponentPopulateAfterCalculateAds1229
   public void test00UpdateTotalQuickCostColumnPopulatesAfterCalculate_5924() throws Throwable {
     try {
       assertElementIsDisabled(quickCostColumns.getUnitCostQuickCalculationButtonApplySelections(), printout);
-      setUcqcCriteria("Marina", "*CM1 TB MHFY05 After Vol Change", "150 Marina Medical Center", "2130", "Jan 2005 to Jan 2005");//Shilpa 13.09.2022 updated depatment from 2130  PED ICU, issue with department grp pop up
+      setUcqcCriteria("Marina", "*CM1 TB MHFY05 After Vol Change", "150 Marina Medical Center", "2130", "Jan 2005 to Mar 2005");//Shilpa 13.09.2022 updated depatment from 2130  PED ICU, issue with department grp pop up
       doClick(quickCostColumns.getUnitCostQuickCalculationButtonApplySelections());
       waitForAjaxExtJs();
       //ucqcWaitForSpinnerToEnd();
@@ -82,8 +86,6 @@ public class QuickCcCostColumnsForEachCostComponentPopulateAfterCalculateAds1229
     try {
 		goToPage("Calculation Status");
 		waitForAjaxExtJs();
-		doClick(ContractingMap.getCalculationStatusButtonFilter());
-		doFilterCreate(filterScenario);
 		WebElement calculationStatusRow1ScenarioName = driver.findElement(By.xpath("//*[contains(@class,'x-grid-row')][1]/descendant::*[contains(@class,'x-grid-cell-inner')][2]"));
 		System.out.println(calculationStatusRow1ScenarioName.getText());
 		assertElementText(calculationStatusRow1ScenarioName, "*CM1 TB MHFY05 After Vol Change_UCQC", printout);

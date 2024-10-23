@@ -205,7 +205,9 @@ public class OverwriteRvuNoCMSResults extends GoHelper {
 			doClick("//*[text()='RVU Container List']/ancestor::div/following-sibling::div//span[text()='Filter']");
 			doFilterSetFilterParameters("Department Code", "Is", "Equal To", "3110");
 			addFilter();
-			assertElementIsDisplayedWithXpath("//label[text()='Filter to Match These Criteria 14/68']");
+//			assertElementIsDisplayedWithXpath("//label[text()='Filter to Match These Criteria 14/68']");
+			//Shilpa updated the data for 11.2 on 10.21.2024
+			assertElementIsDisplayedWithXpath("//label[text()='Filter to Match These Criteria 14/69']");
 			doClick(dialog.getFilterDialogButtonApplyFilter());
 			waitForSpinnerToEnd();
 

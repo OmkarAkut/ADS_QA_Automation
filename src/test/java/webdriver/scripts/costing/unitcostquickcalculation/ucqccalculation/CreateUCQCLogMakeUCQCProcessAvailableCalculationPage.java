@@ -28,6 +28,7 @@ public class CreateUCQCLogMakeUCQCProcessAvailableCalculationPage extends UcqcHe
 	static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
 	static String costModel = "Testing" + currentDateTime;
 	String[] filterScenario = { "Scenario Name", "Is", "Equal To", "*CM1 TB MHFY05 After Vol Change_UCQC" };
+	CalculationHelper helper=new CalculationHelper();
 	// Regression Test ADS-5923 **/
 	@BeforeClass
 	public static void setupScript() throws Throwable {
@@ -38,6 +39,7 @@ public class CreateUCQCLogMakeUCQCProcessAvailableCalculationPage extends UcqcHe
 		try {
 			costingMap = BuildMap.getInstance(driver, CostingMap.class);
 			contractingMap = BuildMap.getInstance(driver, ContractingMap.class);
+			
 //			Login.loginUser("CostingDepartmentManager1"); check in stage if calculation status updated
 			Login.loginUser("AutomationTesterAdmin");
 			webdriverMaximizeWindow();
@@ -63,8 +65,7 @@ public class CreateUCQCLogMakeUCQCProcessAvailableCalculationPage extends UcqcHe
 		driverDelay(10000);
 		goToPage("Calculation Status");
 		waitForDisplayedSpinnerToEnd();
-		doClick(ContractingMap.getCalculationStatusButtonFilter());
-		doFilterCreate(filterScenario);
+		helper.doFilterCalculationPage(filterScenario);
 		CalculationHelper.waitForFirstRowCalculationBarToReach100Percent();
 		driverDelay();
 		//Shilpa updated 10.18.2024 ,sometimes file directly downloads 

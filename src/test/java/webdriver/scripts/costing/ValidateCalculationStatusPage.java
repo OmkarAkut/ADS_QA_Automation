@@ -34,7 +34,9 @@ public class ValidateCalculationStatusPage extends CalculationHelper {
 	static String OHMaster="TB OVHD Calc Scen Exp Vol for Rpt";
 	static String priceList="150FY05 Marina Hosp Price List FY05";
 	static String calcMonths="Apr 2004 to Mar 2005";
+	static String[] calcfilter= {"Scenario Name","Is","Equal To",glDataDescription};
 	AdsHelper adsHelper = new AdsHelper();
+	CalculationHelper calcHelper=new CalculationHelper();
 
 	static String[] filterEntity= {"Entity Code","Is","Equal To","151 Copy of Marina Medical Center"};
 /** Automates test ticket ADS-5771*/
@@ -172,6 +174,7 @@ public class ValidateCalculationStatusPage extends CalculationHelper {
 //			doClick(driver.findElement(By.xpath("//div[text()='"+costModel+"']")));
 //			assertElementIsDisplayed(driver.findElement(By.xpath("(//span[text()='Cancel'])[2]")));
 			assertElementIsDisplayed(driver.findElement(By.xpath("(//div[text()='"+costModel+"']//following::span[text()='Cancel'])")));
+			calcHelper.doFilterCalculationPage(calcfilter);
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
 			doClick("(//div[text()='View Log']//following::span[text()='Cancel'])[1]");

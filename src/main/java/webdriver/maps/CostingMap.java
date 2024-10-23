@@ -1501,7 +1501,9 @@ public class CostingMap extends MapConfig {
 	public static WebElement getCostModelMethodMasterDeptMasterdropdown() {
 		return getCostModelMethodMasterDeptMasterdropdown;
 	}
-	@FindBy(xpath = "//div[contains(@class,'boundlist')]/ul/li[text()='150 old master 1501']/..")
+	//shilpa Updated for 11.2 on 10.21.2024
+//	@FindBy(xpath = "//div[contains(@class,'boundlist')]/ul/li[text()='150 old master 1501']/..")
+	@FindBy(xpath = "//div[contains(@class,'boundlist')]/ul/li[text()='150 old master 150']/..")
 	private static WebElement getCostModelMethodMasterDeptMasterOptions;
 	public static WebElement getCostModelMethodMasterDeptMasterOptions() {
 		return getCostModelMethodMasterDeptMasterOptions;
@@ -1982,8 +1984,9 @@ public class CostingMap extends MapConfig {
 	}
 //	@FindBy(xpath = "//span[contains(@id,'messagebox')][text()='Warning']")
 	//Shilpa Xpath update for 11.2 on 21.5.2024
-	@FindBy(xpath = "//div[contains(@id,'warningwindow')][text()='Warning']")
-
+//	@FindBy(xpath = "//div[contains(@id,'warningwindow')][text()='Warning']")
+	//Shilpa Xpath update for 11.2 on 10.18.2024
+	@FindBy(xpath = "//div[contains(@id,'messagebox')][text()='Warning']")
 	private WebElement getClearRvuWarningPopUp;
 
 	public WebElement getClearRvuWarningPopUp() {
@@ -2069,7 +2072,9 @@ public class CostingMap extends MapConfig {
 	public WebElement getIgreeButton() {
 		return getIgreeButton;
 	}
-	@FindBy(xpath = "//div[@id='entities-body']")
+	//sHILPA: xPATH UPDATE : 11.2 ON 10.21.2024
+//	@FindBy(xpath = "//div[@id='entities-body']")
+	@FindBy(xpath = "//div[@id='tabpaneviewId-body']")
 	private WebElement getEntitiesPage;
 	public WebElement getEntitiesPage() {
 		return getEntitiesPage;
@@ -2474,4 +2479,13 @@ public class CostingMap extends MapConfig {
 	@FindBy(xpath = "//h1[text()='Cost Model Calculation Scenarios']//following::span[text()='Clear Filter']")
 	private static WebElement getCostScenarioClearFilterButton;
 	public static WebElement getCostScenarioClearFilterButton() {return getCostScenarioClearFilterButton;}
+	
+	//Shilpa added xpath for 11.2 on 10.21.2024
+	@FindBy(xpath = "//span[text()='Continue']")
+	private static WebElement getCostScenarioContinueButton;
+	public static WebElement getCostScenarioContinueButton() {return getCostScenarioContinueButton;}
+	
+	@FindBy(xpath = "//span[contains(@class,'next-button-multiselect')]")
+	private static WebElement getEntitiesNextButton;
+	public static WebElement getEntitiesNextButton() {return getEntitiesNextButton;}
 }
