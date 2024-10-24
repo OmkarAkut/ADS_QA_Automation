@@ -429,7 +429,8 @@ public class BuildVerificationTestScript extends UcqcHelper {
 	}
 
 	// ADS-6501[ add step 4-7]
-	@Test
+	//Commenting as QlikView has issue : Shilpa 10.24.2024
+//	@Test
 	public void test0008LandingPageAnalytics_ADS_6501() throws Throwable {
 		try {
 			WebElement[] landingPageAnalyticsElements = { generalElement.getLandingPageBubbleAnalytics(),

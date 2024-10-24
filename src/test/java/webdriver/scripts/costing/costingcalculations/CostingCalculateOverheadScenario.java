@@ -33,7 +33,7 @@ public class CostingCalculateOverheadScenario extends CalculationHelper {
 		try {
 			modelMap = BuildMap.getInstance(driver, ContractingMap.class);
 			System.out.println("Test Class: " + CostingCalculateOverheadScenario.class.getSimpleName());
-			Login.loginUser("AutomationTester2");
+			Login.loginUser("AutomationTester1");
 			goToPage("Costing Models");
 			ExtentReport.logPass("PASS", "setupScript");
 		} catch (Exception | AssertionError e) {
@@ -139,6 +139,12 @@ public class CostingCalculateOverheadScenario extends CalculationHelper {
 
 			driverDelay();
 			doClick("//button[text()='Run']");
+			try {
+				doClick("//button[text()='OK']");//shilpa added line for 11.2 on 10.24.2024
+			} catch (Exception e) {
+				
+			}
+
 			waitForOverheadReceivedReport();
 			ExtentReport.logPass("PASS", "testAssertReportLibrary");
 		} catch (Exception | AssertionError e) {

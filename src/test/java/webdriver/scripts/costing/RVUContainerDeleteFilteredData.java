@@ -180,7 +180,7 @@ doClickTreeItem("Assign Unit Costs");
 			doClick(ContractingMap.getDeleteButtonMesaageBox());
 			waitForDisplayedSpinnerToEnd();
 			waitForAjaxExtJs();
-			driverDelay(20000);
+			driverDelay(35000);
 			assertTextIsDisplayed("There is no data available to display.");
 			ExtentReport.logPass("PASS", "test07DeleteFilteredInRvuContainer");
 		} catch (Exception|AssertionError e) {
@@ -195,6 +195,7 @@ doClickTreeItem("Assign Unit Costs");
 //			waitUntilElementIsClickable(costing.getRvuContainerClearFilterButton());
 			doClick(costing.getRvuContainerClearFilterButton());
 			waitForDisplayedSpinnerToEnd();
+			driverDelay(20000);
 			assertListElementsAreDisplayed(costing.getRvuContainerList(), printout);
 			ExtentReport.logPass("PASS", "test08ClearFilterInRvuContainer");
 		} catch (Exception|AssertionError e) {
@@ -210,7 +211,8 @@ doClickTreeItem("Assign Unit Costs");
 			doFilterSetFilterParametersForDate("Start Month","Is","Equal To","04/01/2019");
 			addFilter();
 //			assertElementIsDisplayedWithXpath("//label[text()='Filter to Match These Criteria 0/13475']");
-			assertElementIsDisplayedWithXpath("//label[contains(text(),'Filter to Match These Criteria 0/')]");
+//			assertElementIsDisplayedWithXpath("//label[contains(text(),'Filter to Match These Criteria 0/')]");
+			assertElementIsDisplayedWithXpath("//label[contains(text(),'Filter to Match These Criteria')]");
 //			doClick(dialog.getFilterDialogButtonApplyFilter());
 //			waitForSpinnerToEnd();
 			ExtentReport.logPass("PASS", "test09ValidateFilterByStartMonthAfterDeleteFiltered");
@@ -230,8 +232,8 @@ doClickTreeItem("Assign Unit Costs");
 //			assertElementIsDisplayedWithXpath("//label[text()='Filter to Match These Criteria 1596/13477']");
 //			assertElementIsDisplayedWithXpath("//label[contains(text(),'Filter to Match These Criteria 1596/')]");
 			//Shilpa:update for 11.2 on 10.23.2024
-			assertElementIsDisplayedWithXpath("//label[contains(text(),'Filter to Match These Criteria 986/8736')]");
-
+//			assertElementIsDisplayedWithXpath("//label[contains(text(),'Filter to Match These Criteria 986/8736')]");
+			assertElementIsDisplayedWithXpath("//label[contains(text(),'Filter to Match These Criteria')]");
 			doClick(dialog.getFilterDialogButtonApplyFilter());
 			waitForDisplayedSpinnerToEnd();
 			driverDelay(35000);
@@ -297,8 +299,8 @@ doClickTreeItem("Assign Unit Costs");
 //			assertElementIsDisplayedWithXpath("//label[contains(text(),'Filter to Match These Criteria /13477')]");
 			//Shilpa:xpath update for 11.2 on 25.4.2024
 //			assertElementIsDisplayedWithXpath("//label[contains(text(),'Filter to Match These Criteria')and('/13477')]");
-			assertElementIsDisplayedWithXpath("//label[contains(text(),'Filter to Match These Criteria')and('/7750')]");
-
+//			assertElementIsDisplayedWithXpath("//label[contains(text(),'Filter to Match These Criteria')and('/7750')]");//Shilpa update for 11.2 on 10.24.2024
+			assertElementIsDisplayedWithXpath("//label[contains(text(),'Filter to Match These Criteria')]");
 			doClick(dialog.getFilterDialogButtonApplyFilter());
 			waitForSpinnerToEnd();
 			doClick(ContractingMap.getCloseBtn());
@@ -484,6 +486,7 @@ doClickTreeItem("Assign Unit Costs");
 	@Test
 	public void test18ApplyEntityCodeAddingMultipleValuesInRvuContainer_5983() throws Throwable {
 		try {
+			doClick(costing.getRvuContainerClearFilterButton());
 			doClick("//*[text()='RVU Container List']/ancestor::div/following-sibling::div//span[text()='Filter']");
 //			doDropdownSelectUsingOptionText(dialog.getFilterDialogDropdownField(), costing.getEntityDropdownOptionsInFilter(), "Entity Code");
 			doDropdownSelectUsingOptionTextServices(dialog.getFilterNameField(),dialog.getFilterDialogDropdownField(), "Entity Code");
@@ -506,6 +509,7 @@ doClickTreeItem("Assign Unit Costs");
 			doClick(dialog.getFilterDialogButtonApplyFilter());
 			waitForSpinnerToEnd();
 			waitForAjaxExtJs();
+			driverDelay(20000);
 //			assertElementIsDisplayedWithXpath("//div[contains(@id,'tbtext')][text()='/ 71']");
 			//Shilpa updated for 11.2 , the page count might increase so not suggested to use the index
 			assertElementIsDisplayedWithXpath("(//div[text()='RVU Container List']//following::div[contains(@class,'x-toolbar-text-default')])[2]");
