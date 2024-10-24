@@ -35,7 +35,7 @@ public class EpisodesCreateAssignRemoval extends CalculationHelper {
 	static ModelLibraryMap modelMap;
 	private String serviceName = "CMS CJR Trigger";
 	ContractModelsHelper contractModelsHelper = new ContractModelsHelper();
-
+	static String[] filterEpisode= {"Scenario Name","Is","Equal To",episodeModelName};
 	/** Automates test ticket ADS-6296. */
 
 	@BeforeClass
@@ -100,11 +100,15 @@ public class EpisodesCreateAssignRemoval extends CalculationHelper {
 			doClick(modelMap.getModelEpisode());
 
 			doClickTreeItem("Assign Episode to Encounters");
-			doDropdownSelectUsingOptionText(modelMap.getEpisodePopulationDropdown(), populationName);
+			modelMap.getEpisodePopulationDropdown().click();
+			doClick("//li[text()='"+populationName+"']");
+//			doDropdownSelectUsingOptionText(modelMap.getEpisodePopulationDropdown(), populationName);
 			doClick(modelMap.getshareLogCheckbox());
 			doClick(modelMap.getSaveButton());
 			doClick(modelMap.getAssignButton());
 			waitForSpinnerToEnd();
+			//Shilpa update for 11.2 on 10.24.2024
+			doFilterCalculationPage(filterEpisode);
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
 			driverDelay(7000);
@@ -136,6 +140,8 @@ public class EpisodesCreateAssignRemoval extends CalculationHelper {
 			//Shilpa: below steps cannot be executed becoz of issue ADS-11770
 			doClick(contractingMap.getContractModelButtonColumnsToDisplayModalRemove());
 			waitForSpinnerToEnd();
+			//Shilpa update for 11.2 on 10.24.2024
+			doFilterCalculationPage(filterEpisode);
 			waitForFirstRowCalculationBarToReach100Percent();
 // Omkar 17/4/2023 : Unab;le to scroll to bottom to find element. Code will fail after this
 			calculationStatusPageOpenViewDialog();

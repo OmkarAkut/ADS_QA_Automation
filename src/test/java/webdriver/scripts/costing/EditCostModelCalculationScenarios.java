@@ -24,6 +24,7 @@ public class EditCostModelCalculationScenarios extends CalculationHelper {
 	static String[] filter = { "Name", "Is", "Equal To", "*CM1 TB MHFY05 After Vol Change" };
 	static String[] filterAfterEdit = { "Name", "Is", "Equal To", "*CM1 TB MHFY05 After Vol ChangeEdit" };
 	static String[] filterResults = { "Name", "Is", "Equal To", "*CMSR TXT IMP" };
+	static String[] filterCalcScenario = { "Scenario Name", "Is", "Equal To", "*CM1 TB MHFY05 After Vol Change" };
 	static String entity="150 Marina Medical Center";
 	static String department="2110 ICU";
 	static String results="Apr 2004 to Mar 2005";
@@ -122,6 +123,7 @@ public class EditCostModelCalculationScenarios extends CalculationHelper {
 	public void test05CalculateCostCalcultionScenario_6663() throws Throwable {
 		try {
 			doClick(costing.getCostModelScenarioCalculationButtonCalculate());
+			doFilterCalculationPage(filterCalcScenario);//Shilpa added for 11.2 on : 10.22.2024
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
 			driverDelay(500);

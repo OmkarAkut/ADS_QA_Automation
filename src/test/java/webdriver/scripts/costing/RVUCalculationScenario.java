@@ -22,6 +22,7 @@ public class RVUCalculationScenario extends CalculationHelper {
 	static ContractingMap modelMap;
 	static String[] filter = { "Name", "Is", "Equal To", "Marina" };
 	static String[] rvuFilter = { "Name", "Is", "Equal To", "*DM ADS-696 CMS G" };
+	static String[] rvuCalcFilter = { "Scenario Name", "Is", "Equal To", "*DM ADS-696 CMS G" };
 	static String costModel = "Marina";
 
 	@BeforeClass
@@ -65,6 +66,7 @@ public class RVUCalculationScenario extends CalculationHelper {
 			doClick(CostingMap.getrvuCalcFilterBtn());
 			doFilterCreate(rvuFilter);
 			doClick(CostingMap.getrvuCalcBtn());
+			doFilterCalculationPage(rvuCalcFilter);
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
 			driverDelay(500);

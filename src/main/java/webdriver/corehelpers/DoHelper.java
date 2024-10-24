@@ -105,7 +105,7 @@ public class DoHelper extends DriverHelper {
 		//    	boolean element = false;
 		//		
 		//    	waitForElementToBeVisible(driver.findElement(By.tagName("iframe")));
-		Thread.sleep(300);
+		Thread.sleep(1000);
 		List<WebElement> iframes=driver.findElements(By.tagName("iframe"));
 		System.out.println(iframes.size());
 		//Shilpa updated index on 12.1.2023

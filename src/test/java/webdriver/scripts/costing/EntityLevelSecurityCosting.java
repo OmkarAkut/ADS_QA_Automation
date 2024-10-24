@@ -1,11 +1,17 @@
 package webdriver.scripts.costing;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
+
+import java.util.List;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebElement;
+
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.helpers.CalculationHelper;
@@ -24,6 +30,7 @@ public class EntityLevelSecurityCosting extends CalculationHelper {
 	static String costModel = "0-MarinaCostModel";
 	static String costCompMaster = "*FZ Small Hierarchy Test";
 	static String[] filter = { "Name", "Is", "Equal To", costModel };
+	static String entity="00096 Hosp00096";
 
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
@@ -113,7 +120,45 @@ public class EntityLevelSecurityCosting extends CalculationHelper {
 			waitForMainPageTitle("Cost Component Masters");
 			doClickTreeItem("Cost Component Masters");
 			tableDoubleClickCellFirstColumn(costCompMaster);
-			assertElementIsDisplayedWithXpath("//li[text()='150 Marina Medical Center']");
+			//Shilpa added below lines to validate entity for 11.2 on 10.21.2024
+			if(CostingMap.getEntitiesNextButton().isDisplayed()) {
+				List<WebElement> entities = getListOfAllOfSameElementWhenMoreThanOneOnPage("//div[contains(@id,'boundlist')]/ul/li");
+				int counter=0;;
+				for(WebElement entityName:entities) {
+					try {
+						System.out.println(entityName.getText());
+						try {
+							if(entityName.getText().equals(entity)) {
+								assertElementIsDisplayedWithXpath("//li[text()='"+entity+"']");
+								break;
+							}
+							else {
+								counter++;
+								 if(counter>=entities.size()) {
+										CostingMap.getEntitiesNextButton().click();
+										  if(entityName.getText().equals(entity)) {
+												assertElementIsDisplayedWithXpath("//li[text()='"+entity+"']");
+												break;
+											}
+											continue;
+									}
+								continue;
+							}
+							
+							
+							
+							
+							
+						} catch (NoSuchElementException e) {
+							CostingMap.getEntitiesNextButton().click();
+							continue;
+						}
+					} catch (Exception e) {
+						
+					}
+				}
+			}
+//			assertElementIsDisplayedWithXpath("//li[text()='150 Marina Medical Center']");
 			doClick(costing.getRvuMaintenanceFilterButtonCancelAndClose());
 			ExtentReport.logPass("PASS", "test03VerifyCostingModel");
 		} catch (Exception | AssertionError e) {

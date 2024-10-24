@@ -549,6 +549,7 @@ public class CalculationHelper extends GoHelper {
 				//        driver.findElement(By.xpath("//button/span[text()='Refresh']")).click();
 				driver.findElement(By.xpath("//button[text()='Refresh']")).click();
 				waitForSpinnerToEnd();
+				driverDelay();
 				percent = driver.findElement(By.xpath("(//tr[@class='GJT013UBCG']//td//a)[1]")).getText();
 				System.out.println("Percent complete: " + percent);
 				assertTrue(percent.contains("COMPLETED"));
@@ -588,7 +589,10 @@ public class CalculationHelper extends GoHelper {
 			}
 		}
 	}catch (Exception e) {
-		ContractModelsHelper.scrollToView("//*[contains(text(),'"+text+"')]");
+		for(int i=0;i<=5;i++) {
+			ContractModelsHelper.scrollToView("//*[contains(text(),'"+text+"')]");
+		}
+		
 	}
 	}
 	//number of checks is 10 - total run time can be controlled by setting refresh interval - longer interval, longer run time
@@ -689,5 +693,16 @@ public class CalculationHelper extends GoHelper {
 		Thread.sleep(1000);
 		doSearchForAndSelectContractModelFromContractModelLibrary(modelName);
 	}
+	//Shilpa: added method for 11.2 : 10.21.2024
 
+	public  void doFilterCalculationPage(String[] filter) throws Exception {
+		
+		try {
+			doClick(ContractingMap.getCalculationStatusButtonFilter());
+			doFilterCreate(filter);
+		} catch (InterruptedException e) {
+			waitForAjaxExtJs();
+		}
+	
+	}
 }

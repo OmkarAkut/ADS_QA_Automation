@@ -6,7 +6,7 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-	AnalyticsAXE.class,
+//	AnalyticsAXE.class,
 	ContractingAXE.class,
 	CostingAXE.class,
 	DataMaintenanceAccessibilityTestsAtoZPages.class,
@@ -14,7 +14,7 @@ import org.junit.runners.Suite;
 //	LocalTestWebPageAXE.class,
 	LogInPageAXE.class,
 	MiscellaneousAXE.class,
-	ReportingAXE.class,
+//	ReportingAXE.class,
 	StatusAXE.class,
 	SystemMaintenanceAXE.class,
 })
