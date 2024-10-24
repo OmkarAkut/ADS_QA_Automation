@@ -53,7 +53,7 @@ public class EpisodesCreateAssignRemoval extends CalculationHelper {
 			fail(e.getMessage());
 		}
 	}
-//ADS-6296 all steps
+//ADS-6296 all stepss
 	@Test
 	public void test01EpisodeCreation_6296() throws Throwable {
 		try {
