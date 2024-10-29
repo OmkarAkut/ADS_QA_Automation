@@ -36,6 +36,7 @@ public class CostingRunStatisticDataCalculationScenarioAds2339 extends Calculati
 	static String updateStatisticDataCalculationScenari = "Updated v11.2 REGRESSION Stat Data Calc";// Update as per
 																										// version
 																										// number
+	static String[] filterScenario= {"Senario Name","Is","Equal To",updateStatisticDataCalculationScenari};
 	static String[] filterCalcScenario = { "Name", "Is", "Equal To", statisticDataCalculationScenario };
 	static String[] updatedfilterCalcScenario = { "Name", "Is", "Equal To", updateStatisticDataCalculationScenari };
 
@@ -210,7 +211,8 @@ public class CostingRunStatisticDataCalculationScenarioAds2339 extends Calculati
 			}
 			doClick(costingMap.statisticDataCalcScenarionSaveBtn());
 			doClick(costingMap.statisticDataCalcScenarionCalculateBtn());
-			waitForSpinnerToEnd();
+			waitForSpinnerToEnd();;
+			doFilterCalculationPage(filterScenario);
 			waitForFirstRowCalculationBarToReach100Percent();
 			doClosePageOnLowerBar("Calculation Status");
 			doClick(costingMap.statisticDataCalcScenarioSaveCloseBtn());
