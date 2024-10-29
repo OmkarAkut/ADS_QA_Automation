@@ -89,9 +89,10 @@ public class TestAbilityToCreateNewStandardCostingReport extends GoHelper {
 			action.moveToElement(reportMap.reportLibraryPageDeptGrp()).click().build().perform();
 			// doClick(reportMap.reportLibraryPageDeptGrp());
 			driverDelay(1000);
-			doClick("//div[text()='" + deptGroup + "']");
-			doClick("//div[text()='" + deptGroup + "']");
+			doClick("(//div[text()='Department or Department Group']//following::td/div/a)[1]");
+//			doClick("//div[text()='" + deptGroup + "']");
 			driverDelay(1000);
+			doClick("//div[text()='2010  NURSING ADMIN']");//Shilpa updated for 11.2 on 10.24.2024
 			doClick(reportMap.reportLibraryPageEntityOkButton());
 			driverDelay(1000);
 			doClick(reportMap.reportLibraryPageEntitySaveAsButton());

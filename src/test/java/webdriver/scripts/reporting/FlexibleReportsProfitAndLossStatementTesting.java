@@ -262,7 +262,8 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 	@Test
 	public void test07OpenCompletedReportAndVerifyReportNames_5660() throws Throwable {
 		try {
-			driver.findElement(By.xpath("(//span[text()='" + orgName + "']//following::td[5]/div)")).click();
+			 doDoubleClick("(//span[text()='" + orgName + "']//following::td[5]/div/a)");//Shilpa updated xpath for 11.2 on 10.24.2024
+//			driver.findElement(By.xpath("(//span[text()='" + orgName + "']//following::td[5]/div)")).click();
 			driverDelay(1500);
 			waitForElementPresence("//iframe[contains(@src,'QueryCrystalReportInstance.jsp')]");
 			driver.switchTo()

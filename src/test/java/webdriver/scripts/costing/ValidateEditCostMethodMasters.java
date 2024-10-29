@@ -66,9 +66,10 @@ public class ValidateEditCostMethodMasters extends GoHelper{
 					driverDelay();
 				}
 			} catch (Exception e2) {
-
+				driverDelay();
 				assertElementIsDisplayed(CostingMap.getOverheadCancelClose());
-				doClick(CostingMap.getOverheadCancelClose());
+//				assertElementIsDisplayedWithXpath("(//span[text()='Cancel & Close']/../../..)[2]");
+				doClick(CostingMap.getOverheadCancelClose());//Shilpa updated xpath for 11.2 on 10.23.2024
 				driverDelay();
 			}
 //			doClick("//div[text()='Cost Method Master']//following::span[text()='Cancel & Close']");
