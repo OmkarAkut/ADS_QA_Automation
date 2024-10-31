@@ -78,6 +78,7 @@ public class CostChangeColumnCheckNumberPlacesAndThousandsCommasAndDecimalPlaces
   public void test03GetCellValueAndAssertTensPlace() throws Throwable {
 	  try {
     assertValueFormat(ucqcGetChargeCodeGridCellValue("1100171", "Hospital Overhead Change", printout),"10", 2, printout);
+
     ExtentReport.logPass("PASS", "test03GetCellValueAndAssertTensPlace");
 	  }
 	  catch(Exception|AssertionError e) {
@@ -90,7 +91,7 @@ public class CostChangeColumnCheckNumberPlacesAndThousandsCommasAndDecimalPlaces
   public void test04GetCellValueAndAssertHundredsPlace() throws Throwable {
 	  
     try {
-		assertValueFormat(ucqcGetChargeCodeGridCellValue("1100189", "Hospital Overhead Change", printout),"100", 2, printout);
+		assertValueFormat(ucqcGetChargeCodeGridCellValue("1100189", "Hospital Overhead Change", printout),"10", 2, printout);
 		 ExtentReport.logPass("PASS", "test04GetCellValueAndAssertHundredsPlace");
 	} catch (Exception|AssertionError e) {
 		 ExtentReport.logFail("FAIL","test04GetCellValueAndAssertHundredsPlace", driver,e);

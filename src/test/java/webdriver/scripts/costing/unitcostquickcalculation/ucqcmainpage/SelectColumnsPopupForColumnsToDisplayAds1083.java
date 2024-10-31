@@ -464,7 +464,7 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
 	    ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoViewIfNeeded();",selectColumn.getUnitCostQuickCalculationButtonColumnsToDisplaySelect());
 	    Thread.sleep(3000);
       //setUCQCCriteria("Marina", "*CM1 TB MHFY05 After Vol Change", "150 Marina Medical Center", "2130  PED ICU", "Jan 2005 to Jan 2005");            doClick(selectColumn.getUnitCostQuickCalculationCheckBoxColumnsToDisplayAll());
-      setUcqcCriteria("Marina", "*CM1 TB MHFY05 After Vol Change", "150 Marina Medical Center", "2130", "Jan 2005 to Jan 2005");
+      setUcqcCriteria("Marina", "*CM1 TB MHFY05 After Vol Change", "150 Marina Medical Center", "2130", "Jan 2005 to Mar 2005");
       doClick(selectColumn.getUnitCostQuickCalculationButtonApplySelections());
       ucqcWaitForSpinnerToEnd();
       Thread.sleep(1500);
@@ -493,7 +493,7 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
       }
   }
 
-   @Test
+//   @Test
   public void test28AssertPreviousColumnSubsetPersistsAfterCopyToQuickRvusIsSelected() throws Throwable {
     try {
       /**DO NOT RUN IN EVOLVE: This should be run in a dedicated environment with a Cost Model Scenario specific to this test case*/

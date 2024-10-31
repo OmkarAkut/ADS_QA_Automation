@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
 import webdriver.maps.mapbuilder.MapConfig;
 
 public class ContractingMap extends MapConfig {
@@ -271,6 +272,16 @@ public class ContractingMap extends MapConfig {
 	private  WebElement ContractModelSaveCopy;
 	public  WebElement getContractModelSaveCopy() {return ContractModelSaveCopy;}
 
+	//Shilpa 10/31/2024 : added xpath for warning message 
+	@FindBy(xpath = "//span[text()='Continue']")
+	private  WebElement ContractModelContinue;
+	public  WebElement getContractModelContinue() {return ContractModelContinue;}
+	
+	//Shilpa 10/31/2024 : added xpath for Delete button for PAtient responsibility pane
+		@FindBy(xpath = "//div[contains(@id,'patientfinancialresponsibilitymaingrid')]//following::div[contains(@class,'acommonDelBtn ')]")
+		private  WebElement ContractModelDeletebtnPatient;
+		public  WebElement getContractModelDeletebtnPatient() {return ContractModelDeletebtnPatient;}
+	
 //	Omkar 26/6/2023 : xpath changes for 11.2
 //	@FindBy(xpath = "//div[contains(@class,'horzOverflow')]/div//span[text()='Delete']//parent::button")
 	@FindBy(xpath = "//div[contains(@class,'horzOverflow')]/div//span[text()='Delete']")
@@ -402,7 +413,7 @@ public class ContractingMap extends MapConfig {
 	private WebElement ContractModelRiskLimiterContinueCloseBtn;
 	public WebElement getContractModelRiskLimiterContinueCloseBtn() {return ContractModelRiskLimiterContinueCloseBtn;}
 
-//	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//span[text()='Cancel & Close']")
+	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//span[text()='Cancel & Close']")
 	//Shilpa update xpath for 11.2 on 11.27.2023
 	//Shilpa update xpath for 11.2 on 3.1.2024
 	private static WebElement ContractModelRiskLimiterCancelCloseBtn;
@@ -436,7 +447,10 @@ public class ContractingMap extends MapConfig {
 	//	@FindBy(xpath = "//div[contains(@class,'x-toolbar-item')]//span[text()='Cancel & Close']")
 //	@FindBy(xpath = "//span[contains(@class,'x-btn-button-center ')]//span[text()='Cancel & Close']")
 //	Shilpa 1/3/2024 : xpath changes for 11.2
-	@FindBy(xpath = "//div[contains(@id,'messagebox')]//button[contains(@class,'x-btn-center')]//span[text()='Cancel & Close']")
+//	@FindBy(xpath = "//div[contains(@id,'messagebox')]//button[contains(@class,'x-btn-center')]//span[text()='Cancel & Close']")
+	//Shilpa xpath update for 11.2 on 10.31.2024 
+	@FindBy(xpath = "//div[contains(@id,'messagebox')]//span[contains(@class,'x-btn-button')]//span[text()='Cancel & Close']")
+
 	private WebElement ContractModelRiskLimiterMessageBox;
 	public WebElement getContractModelRiskLimiterMessageBox() {return ContractModelRiskLimiterMessageBox;}
 

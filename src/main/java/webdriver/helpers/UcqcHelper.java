@@ -277,7 +277,7 @@ public class UcqcHelper extends GoHelper {
     return columnValue;
   }
 
-  public void getCellValueAndAssertDecimalPlace (String chargeCode, String headerName) throws InterruptedException {
+  public void getCellValueAndAssertDecimalPlace (String chargeCode, String headerName) throws Throwable {
     String columnID;
     System.out.println(chargeCode);
     System.out.println(headerName);
@@ -285,7 +285,7 @@ public class UcqcHelper extends GoHelper {
     waitForAjaxExtJs();
     String row = driver.findElement(By.xpath("//*[text()='" + chargeCode + "']/../../descendant::div[1]")).getText();
     System.out.println("Row Number: " + row);
-
+    scrollToView("//*[contains(@class,'column-header-text')][text()='" + headerName + "']");
     columnID = driver.findElement(By.xpath("//*[contains(@class,'column-header-text')][text()='" + headerName + "']")).getAttribute("id");
     int columnIDDigits = Integer.parseInt(getNumbersFromStringWithRegex(columnID));
     String columnXpath = "//tr[contains(@class,'x-grid-row')][" + row + "]/descendant::*[contains(@class,'x-grid-cell-numbercolumn-" + columnIDDigits + "')]";
@@ -295,7 +295,8 @@ public class UcqcHelper extends GoHelper {
     String[] decimalPlaces = columnValue.split("\\.");
     if(decimalPlaces[1].length() == 2){
       System.out.println("The value in this column, " + columnValue + ", has two decimal places.");
-    } else {
+    }
+    else {
       fail("The value in this column, " + columnValue + ", has more than two decimal places.");
     }
   }

@@ -63,12 +63,15 @@ public class EditRiskLimiterScreen extends GoHelper{
 			DoHelper.scrollToView("(//div[contains(text(),'Edit Risk Limiter')]//following::div[contains(@class,'glAccountsGrid')]//td/div[text()='"+availableService+"'])[3]");
 			assertElementText(driver.findElement(By.xpath("(//div[contains(text(),'Edit Risk Limiter')]//following::div[contains(@class,'glAccountsGrid')]//td/div[text()='"+availableService+"'])[3]")), availableService, printout);
 			doClick("//a[contains(@class,'x-btn windowbtn')]//span[text()='Continue & Close']");//has issue  ADS-12487
-			assertElementIsDisplayed(driver.findElement(By.xpath("//span[contains(@class,'x-panel-header-text')][text()='Risk Limiter Model']/../following-sibling::div")));
+//			assertElementIsDisplayed(driver.findElement(By.xpath("//span[contains(@class,'x-panel-header-text')][text()='Risk Limiter Model']/../following-sibling::div")));
+			assertElementIsDisplayed(driver.findElement(By.xpath("//div[text()='Risk Limiter Model']/../following-sibling::div")));//Shilpa update xpath for 11.2 on 10.31.2024
 			doClick(ContractingMap.getContractModelRiskLimiterCancelCloseBtn());
 			waitForElementToBeVisible(modelMap.getContractModelRiskLimiterMessageBox());
 			doClick(ContractingMap.getContractModelRiskLimiterMessageBoxCancelCloseBtn());
-			doClick("//span[text()='ADS2371 Test...']//following::a");
-			doClosePageOnLowerBar("Costing Models");
+//			doClick("//span[text()='ADS2371 Test...']//following::a");
+			doClick("//span[@class='x-tab-close-btn'][contains(text(),'removable')]");//Shilpa xpath update for 11.2 on 10.31.2024
+//			doClosePageOnLowerBar("Costing Models");
+			doClosePageOnLowerBar("Contract Models");//Shilpa  update for 11.2 on 10.31.2024
 			ExtentReport.logPass("PASS", "setupScript");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "setupScript", driver, e);
