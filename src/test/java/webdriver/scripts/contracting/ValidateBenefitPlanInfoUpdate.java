@@ -91,13 +91,21 @@ public class ValidateBenefitPlanInfoUpdate extends CalculationHelper {
 //			Omkar 5/7/2023 : xpath changes for 11.2
 //			doClick("(//span[contains(text(),'Benefit Plans')]//following::img)[1]");
 //			doClick("//div[contains(text(),'Benefit Plans')]/../following-sibling::div");
-			ContractModelsHelper.toggleBetweenTheDockBar("//span[text()='Model Library']");
+			//Shilpa update for 11.2 on 11.4.2024
+//			doClick("//div[contains(@id,'messagebox')]//following::span[text()='Cancel & Close']");
+//			ContractModelsHelper.toggleBetweenTheDockBar("//span[text()='Model Library']");
 			waitForElementToBeVisible(modelMap.getContractModelRiskLimiterMessageBox());// tc fails here becoz of defect ADS-12488
 			ContractModelsHelper.toggleBetweenTheDockBar("//span[text()='"+ContractModelA+"']");
 			doClick("//div[contains(@id,'messagebox')]//span[text()='Return']/../../..");
 			ContractModelsHelper.CompareListToArray(ContractingMap.getBenefitPlans(), columnsToCompare);
 			doClick(ContractingMap.getDefinitionElementAddBtn());
-			doClick("//span[text()='ADS 1321 FY2020 Test D']//following::span[@class='x-tab-close-btn']");
+			//Shilpa update for 11.2 on 11.4.2024
+			doClick(ContractingMap.getSelectAllBenefitPlans());
+			doClick(ContractingMap.getContractModelApplyInExportPopUp());
+//			doClick("//span[text()='ADS 1321 FY2020 Test D']//following::span[@class='x-tab-close-btn']");
+			//Shilpa update for 11.2 on 11.4.2024
+			doClick("//span[@class='x-tab-close-btn'][text()=' removable']");
+			doClick(modelMap.getContractModelRiskLimiterMessageBox());
 			doClosePageOnLowerBar("Contract Models");
 			ExtentReport.logPass("PASS", "test01AddMultipleBenefitPlan");
 		} catch (Exception | AssertionError e) {

@@ -595,6 +595,11 @@ public class ContractingMap extends MapConfig {
 	@FindBy(xpath = "//span[text()='Calculate']")
 	private static WebElement ContractCalculateButton;
 	public static WebElement getContractCalculateButton() {return ContractCalculateButton;}
+	
+	//Shilpa :11.2 Xpath addition
+	@FindBy(name = "shareLog")
+	private static WebElement ContractCalculateshareLog;
+	public static WebElement getContractCalculateshareLog() {return ContractCalculateshareLog;}
 
 //	Omkar 26/6/2023 : xpath changes for 11.2
 //	@FindBy(xpath = "//span[text()='Save & Close']//parent::button")
@@ -1048,7 +1053,9 @@ public class ContractingMap extends MapConfig {
 //	private static WebElement ContractingBubble;
 //	public static WebElement getContractingBubble() {return ContractingBubble;}
 	
-	@FindBy(xpath = "//div[@class='bubble bubble3 medium contracting']")
+//	@FindBy(xpath = "//div[@class='bubble bubble3 medium contracting']")
+	//shilpa update for 11.2 on 11.4.2024
+	@FindBy(xpath = "//div[@class='bubble bubble2 large contracting']")
 	private static WebElement ContractingBubble;
 	public static WebElement getContractingBubble() {return ContractingBubble;}
 

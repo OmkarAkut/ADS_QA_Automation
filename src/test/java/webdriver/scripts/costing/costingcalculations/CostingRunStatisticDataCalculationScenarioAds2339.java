@@ -253,7 +253,8 @@ public class CostingRunStatisticDataCalculationScenarioAds2339 extends Calculati
 			waitForDisplayedSavingSpinnerToEnd();
 			doClick(costingMap.statisticDataFilterBtn());
 			waitForElementPresence("//span[text()='Filter Statistic Data']");
-			assertElementIsDisplayedWithXpath("//label[text()='Filter to Match These Criteria 1237/1237']");
+//			assertElementIsDisplayedWithXpath("//label[text()='Filter to Match These Criteria 1237/1237']");//Shilpa commented, as the counte may vary not valid to assert the count
+			assertElementIsDisplayedWithXpath("//label[contains(text(),'Filter to Match These Criteria')]");
 			doClick(costingMap.statisticDataFilterCancelClose());
 			doClick(costingMap.getCancelCloseStatisticScenario());
 			doClickTreeItem("Statistic Data Calculation Scenarios");

@@ -33,7 +33,8 @@ public class UcqcIncludeInGridOnlyChargeCodesWithResultsInSelectedCmsAds1115
     "Marina", "*CM1 TB MHFY05 After Vol Change", "150 Marina Medical Center",
    // "2130  PED ICU", 
     "2130", //venkat update text data 15.09.2022
-    "Jan 2005 to Jan 2005"
+//    "Jan 2005 to Jan 2005"
+    "Jan 2005 to Mar 2005"
   };
   private static String sqlQuery =
       "SELECT ac.actdscrcode"
@@ -85,6 +86,8 @@ public class UcqcIncludeInGridOnlyChargeCodesWithResultsInSelectedCmsAds1115
 //      chargeCodesStrings = javaListConvertListOfWebElementsToStrings(chargeCodes, printout);
       chargeCodesStrings=javaMakeListOfStrings(driver.findElements(By.xpath("(//div[@id='ucqcgrid-body']//div[@class='x-grid-item-container']/table//tr//td[contains(@class,'x-grid-cell-gridcolumn')][1]/div)")));
       System.out.println("chargeCodesStrings:"+chargeCodesStrings);
+      System.out.println(chargeCodesStrings.size());
+      System.out.println(UcqcData.ucqcChargeCodesExpectedList.size());
       assertThat(chargeCodesStrings.size(), equalTo(UcqcData.ucqcChargeCodesExpectedList.size()));
       ExtentReport.logPass("PASS", "test01AssertUcqcGridDisplaysExpectedNumberOfChargeCodes");
     } catch (Exception|AssertionError e) {

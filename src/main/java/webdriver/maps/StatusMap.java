@@ -57,6 +57,11 @@ public class StatusMap extends MapConfig {
     private WebElement calculationStatusPageButtonFilter;
     public WebElement getCalculationStatusPageButtonFilter() {return calculationStatusPageButtonFilter;}
 
+    //Shilpa added xpath for 11.2 om 11.4.2024
+    @FindBy(xpath = "//a[contains(@class,'removeAllBtn ')]")
+    private WebElement calculationStatusPageRemoveAllBtn;
+    public WebElement getcalculationStatusPageRemoveAllBtn() {return calculationStatusPageRemoveAllBtn;}
+    
     @FindBy(xpath = "//*[contains(@id,'calculationstatus') and contains(@id,'header')]/../descendant::*[contains(text(),'Clear Filter')]")
     private WebElement calculationStatusPageButtonClearFilter;
     public WebElement getCalculationStatusPageButtonClearFilter() {return calculationStatusPageButtonClearFilter;}

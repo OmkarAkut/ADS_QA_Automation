@@ -26,6 +26,7 @@ import webdriver.maps.mapbuilder.BuildMap;
 public class EncounterCost extends CalculationHelper {
 	static GeneralElementsMap generalMap;
 	static CostingMap costing;
+	static ContractingMap contracting;
 	static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
 	static String costModel = "BC COST MODEL";
 	static String costModelName = "Model" + currentDateTime;
@@ -35,12 +36,14 @@ public class EncounterCost extends CalculationHelper {
 	static String postingDateFrom = "04/01/2012";
 	static String postingDateTo = "03/31/2013";
 	String[] columnsToSelect = { "1S1 Office ", "1S2 Clinic " ,"1S3 Hospital "};
+	String[] filter= {"Scenario Name","Is","Equal To",costModelName };
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
 		ExtentReport.reportCreate("EncounterCost", "webdriver.scripts.costing.costingmodels", "EncounterCost");
 
 		try {
 			costing = BuildMap.getInstance(driver, CostingMap.class);
+			contracting=BuildMap.getInstance(driver, ContractingMap.class);
 			System.out.println("Test Class: " + EncounterCost.class.getSimpleName());
 			Login.loginUser("AutomationTesterAdmin");
 //			waitForDisplayedSpinnerToEnd();
@@ -157,6 +160,8 @@ public class EncounterCost extends CalculationHelper {
 			doClick(CostingMap.getEncounterCalculateBtn());
 //			doClick("//span[text()='Save & Continue']");
 			waitForSpinnerToEnd();
+			//Shilpa update for 11.2 on 11.4.2024
+			doFilterCalculationPage(filter);
 			CalculationHelper.waitForFirstRowCalculationBarToReach100Percent();
 			ExtentReport.logPass("PASS", "test02EnterEncounterCostModelScenarioDetails");
 		} catch (Exception | AssertionError e) {

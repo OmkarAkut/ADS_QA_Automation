@@ -33,7 +33,8 @@ public class UcqcColumnsToDisplaySectionAppearsAds1154 extends UcqcHelper {
     String[] setRequiredFields = {"Marina", "*CM1 TB MHFY05 After Vol Change", "150 Marina Medical Center",
     	//	"2130  PED ICU",
     		"2130", //venkata update Text data 13.09.2022
-    		"Jan 2005 to Jan 2005"};
+//    		"Jan 2005 to Jan 2005"};
+    		"Jan 2005 to Mar 2005"};//Shilpa updated test data for 11.2 on 11.4.2024
 
     @BeforeClass
     public static void setupScript() throws Throwable {
