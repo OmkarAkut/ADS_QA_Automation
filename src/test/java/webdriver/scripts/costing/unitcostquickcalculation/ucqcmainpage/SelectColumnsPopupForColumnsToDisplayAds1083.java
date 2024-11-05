@@ -566,8 +566,10 @@ public class SelectColumnsPopupForColumnsToDisplayAds1083 extends UcqcHelper {
       doClosePageOnLowerBar("Unit Cost Quick Calculation");
       goToPage("Unit Cost Quick Calculation");
      // setUcqcCriteria("Marina", "*CM1 TB MHFY05 After Vol Change", "150 Marina Medical Center", "2130  PED ICU", "Jan 2005 to Jan 2005");
-      setUcqcCriteria("Marina", "*CM1 TB MHFY05 After Vol Change", "150 Marina Medical Center", "2130", "Jan 2005 to Jan 2005");
-      
+//      setUcqcCriteria("Marina", "*CM1 TB MHFY05 After Vol Change", "150 Marina Medical Center", "2130", "Jan 2005 to Jan 2005");
+      //Shilpa update for 11.2 on 11.5.2024
+      setUcqcCriteria("Marina", "*CM1 TB MHFY05 After Vol Change", "150 Marina Medical Center", "2130", "Jan 2005 to Mar 2005");
+
       Thread.sleep(2000);
 	    ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoViewIfNeeded();",selectColumn.getUnitCostQuickCalculationButtonColumnsToDisplaySelect());
 	    Thread.sleep(3000);
