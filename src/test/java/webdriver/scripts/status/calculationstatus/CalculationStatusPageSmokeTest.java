@@ -73,7 +73,10 @@ public class CalculationStatusPageSmokeTest extends CalculationHelper {
   static String logStatusXpath =      "(//span[text()='Scenario Name']//following::div[@class='x-grid-item-container']//td[8]/div)[1]";
   static String sharedLocationXpath =      "(//span[text()='Scenario Name']//following::div[@class='x-grid-item-container']//td[9]/div)[1]";
   static String viewXpath =               "(//span[text()='Scenario Name']//following::div[@class='x-grid-item-container']//td[10]/div/span)[1]";
-  static String downloadXpath =           "(//span[text()='Scenario Name']//following::div[@class='x-grid-item-container']//td[11]//div/a)[2]";
+//  static String downloadXpath =           "(//span[text()='Scenario Name']//following::div[@class='x-grid-item-container']//td[11]//div/a)[2]";
+  //Shilpa: update for 11.2 on 11.5.2024
+  static String downloadXpath =           "(//span[text()='Scenario Name']//following::div[@class='x-grid-item-container']//td[11]/div/a)";
+
   static String recordsProcessedXpath =   "(//span[text()='Scenario Name']//following::div[@class='x-grid-item-container']//td[12]//div)[1]";
   static String recordsPendingXpath =     "(//span[text()='Scenario Name']//following::div[@class='x-grid-item-container']//td[13]//div)[1]";
   static String totalRecordsXpath =            "(//span[text()='Scenario Name']//following::div[@class='x-grid-item-container']//td[14]//div)[1]";

@@ -36,6 +36,7 @@ public class CostingRunStatisticDataCalculationScenarioAds2339 extends Calculati
 	static String updateStatisticDataCalculationScenari = "Updated v11.2 REGRESSION Stat Data Calc";// Update as per
 																										// version
 																										// number
+	static String[] filterScenario= {"Senario Name","Is","Equal To",updateStatisticDataCalculationScenari};
 	static String[] filterCalcScenario = { "Name", "Is", "Equal To", statisticDataCalculationScenario };
 	static String[] updatedfilterCalcScenario = { "Name", "Is", "Equal To", updateStatisticDataCalculationScenari };
 
@@ -210,7 +211,8 @@ public class CostingRunStatisticDataCalculationScenarioAds2339 extends Calculati
 			}
 			doClick(costingMap.statisticDataCalcScenarionSaveBtn());
 			doClick(costingMap.statisticDataCalcScenarionCalculateBtn());
-			waitForSpinnerToEnd();
+			waitForSpinnerToEnd();;
+			doFilterCalculationPage(filterScenario);
 			waitForFirstRowCalculationBarToReach100Percent();
 			doClosePageOnLowerBar("Calculation Status");
 			doClick(costingMap.statisticDataCalcScenarioSaveCloseBtn());
@@ -251,7 +253,8 @@ public class CostingRunStatisticDataCalculationScenarioAds2339 extends Calculati
 			waitForDisplayedSavingSpinnerToEnd();
 			doClick(costingMap.statisticDataFilterBtn());
 			waitForElementPresence("//span[text()='Filter Statistic Data']");
-			assertElementIsDisplayedWithXpath("//label[text()='Filter to Match These Criteria 1237/1237']");
+//			assertElementIsDisplayedWithXpath("//label[text()='Filter to Match These Criteria 1237/1237']");//Shilpa commented, as the counte may vary not valid to assert the count
+			assertElementIsDisplayedWithXpath("//label[contains(text(),'Filter to Match These Criteria')]");
 			doClick(costingMap.statisticDataFilterCancelClose());
 			doClick(costingMap.getCancelCloseStatisticScenario());
 			doClickTreeItem("Statistic Data Calculation Scenarios");

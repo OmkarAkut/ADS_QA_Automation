@@ -47,7 +47,8 @@ public class ValidateOverheadTaskListscreensAreAvailableforCost extends GoHelper
 	@Test
 	public void test01VerifyCostingScreensUnderCustomizeTaskList_5799() throws Throwable {
 		try {
-			doClick(systemMap.getCustomTaskListClearFilterButton());
+			doClick(systemMap.getCustomTaskListFilterButton());
+			driverDelay();
 			waitForAjaxExtJs();
 //			Omkar 24/4/2023 : xpath changes for 11.2
 //			assertElementIsDisplayedWithXpath(

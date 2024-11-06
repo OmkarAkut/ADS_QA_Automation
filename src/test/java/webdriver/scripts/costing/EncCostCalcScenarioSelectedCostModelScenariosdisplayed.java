@@ -221,6 +221,8 @@ import webdriver.maps.mapbuilder.BuildMap;
 	@Test
 	public void test07DeleteCreatedEncCostScenario_5982() throws Throwable {
 		try {
+			doClick(costing.getEncCostModelFilterButton());
+			doFilterCreate(filterNewCostScenario);
 			doClick(costing.getEncCostModelDeleteButton());
 			waitForElementToBeVisible(costing.getWarningDeleteButton());
 			doClick(costing.getWarningDeleteButton());

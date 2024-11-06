@@ -2,14 +2,14 @@ package webdriver.users;
 
 public enum Users {
 
-//Add login test users for test framework - test users are called in the test scripts
-	
-    AppSupportUser("eoadmin", "password"),
+//Add login test users for test framework - test users are called in the test scripts   
     
     /*Omkar 18/10/2024 : This user is not working in QAAPP so updating it based on other files 
      * such as UsersEvolve etc which has same roles
+     *  AppSupportUser("eoadmin", "password"),
      * AutomationTester1("eolheiser", "password"),
 	ApplicationAdministrator1("eolheiser", "password"), */
+	 AppSupportUser("aadmin", "password"),
     AutomationTester1("automationappadmin1", "password"),
     ApplicationAdministrator1("automationappadmin1", "password"),
     SystemAdministrator1("automationsysadmin1", "password"),
@@ -18,7 +18,7 @@ public enum Users {
     Omkar 22/2/2024 : Someone seems to have changed the role while testing so adding back the 
                       role and changing the password as system does not allow with old password
     DataAdministrator1("automationdataadmin1", "password"), */
-    DataAdministrator1("automationdataadmin1", "Pa$$w0rd"),
+    DataAdministrator1("automationdataadmin1", "password"),
     CostAnalyst1("automationcostanalyst1", "password"),    
     /*Omkar 18/10/2024 : This user is not working in QAAPP so updating it based on other files 
      * such as UsersEvolve etc which has same roles

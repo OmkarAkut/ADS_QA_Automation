@@ -97,7 +97,7 @@ public class ConfirmFY2023MedicareYearisAvailableForMedIPPS extends CalculationH
 		}
 
 	}
-
+//Fail in 11.2 due to ADS-20010
 	@Test
 	public void ConfirmMedicareYearForMedIPPS() throws Throwable {
 		try {
@@ -167,7 +167,9 @@ public class ConfirmFY2023MedicareYearisAvailableForMedIPPS extends CalculationH
 				doClick(modelMap.getContractEditPricePopUpDischargeStatusSelectAll());
 				driverDelay(1000);
 			} catch (Exception | AssertionError e1) {
-				assertTextIsDisplayed("159 Item(s) Selected");
+//				assertTextIsDisplayed("159 Item(s) Selected");
+				assertTextIsDisplayed("189 Item(s) Selected");
+
 
 			}
 			doClick(modelMap.getContractEditPricePopUpDischargeStatusApply());
