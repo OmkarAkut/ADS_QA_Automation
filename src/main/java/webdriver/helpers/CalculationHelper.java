@@ -550,7 +550,9 @@ public class CalculationHelper extends GoHelper {
 				driver.findElement(By.xpath("//button[text()='Refresh']")).click();
 				waitForSpinnerToEnd();
 				driverDelay();
-				percent = driver.findElement(By.xpath("(//tr[@class='GJT013UBCG']//td//a)[1]")).getText();
+//				percent = driver.findElement(By.xpath("(//tr[@class='GJT013UBCG']//td//a)[1]")).getText();
+				//Shilpa: update for 11.2 on 11.6.2024
+				percent = driver.findElement(By.xpath("(//tr[@class='GJT013UBCG']//following::span[@title='Overhead Received']//following::td/div/a)[1]")).getText();
 				System.out.println("Percent complete: " + percent);
 				assertTrue(percent.contains("COMPLETED"));
 				break;

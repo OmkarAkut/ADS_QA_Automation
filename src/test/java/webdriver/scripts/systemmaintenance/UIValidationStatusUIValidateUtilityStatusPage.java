@@ -32,8 +32,8 @@ public class UIValidationStatusUIValidateUtilityStatusPage extends CalculationHe
 			static String[] filter= {"Scenario Name","Is","Equal To",searchText};
 			@BeforeClass
 			public static void setupScript() throws Exception, Throwable {
-				ExtentReport.reportCreate("ValidateCalculationStatusAllStatus", "webdriver.scripts.systemmaintenance",
-						"ValidateCalculationStatusAllStatus");
+				ExtentReport.reportCreate("UIValidationStatusUIValidateUtilityStatusPage", "webdriver.scripts.systemmaintenance",
+						"UIValidationStatusUIValidateUtilityStatusPage");
 				try {
 					costing = BuildMap.getInstance(driver, CostingMap.class);
 					contractMap = BuildMap.getInstance(driver, ContractingMap.class);
