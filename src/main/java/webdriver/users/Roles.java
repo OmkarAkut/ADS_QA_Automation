@@ -13,7 +13,7 @@ public enum Roles {
     Omkar 22/2/2024 : Someone seems to have changed the role while testing so adding back the 
                       role and changing the password as system does not allow with old password
    Data_Administrator("automationdataadmin1", "password"), */
-    Data_Administrator("automationdataadmin1", "Pa$$w0rd"),
+    Data_Administrator("automationdataadmin1", "password"),
     Cost_Analyst("automationcostanalyst1", "password"),
     Costing_Department_Manager("automationcostdeptmanag1", "password"),
     Contract_Analyst("automationcontranalyst1", "password"),
