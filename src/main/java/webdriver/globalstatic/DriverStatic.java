@@ -4,6 +4,7 @@ package webdriver.globalstatic;
 import static org.junit.Assert.fail;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchSessionException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -117,8 +118,12 @@ public class DriverStatic extends SetupStatic {
 
 	/** Quits/Shuts Down all existing Driver objects (driver). */
 	public static void closesDriverObject() {
-		driver.quit();
-		driver = null;
+		try {
+			driver.quit();
+			driver = null;
+		} catch (NoSuchSessionException e) {
+			
+		}
 	}
 
 	/**
