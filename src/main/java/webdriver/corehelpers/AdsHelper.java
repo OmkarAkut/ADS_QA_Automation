@@ -142,9 +142,10 @@ public class AdsHelper extends GetHelper {
 	public void doFilterCreate(String[] filterParameters) throws InterruptedException {
 		System.out.println(filterParameters[0]);
 		doFilterSetFilterParameters(filterParameters[0], filterParameters[1], filterParameters[2], filterParameters[3]);
-		waitForAjaxExtJs();
+//		waitForAjaxExtJs();
 //		Omkar 21/4/2023 : Commenting below method call as the method is not computing the xpath correctly
 //		waitUntilElementIsClickable(dialog.getFilterDialogButtonAdd());
+		driverDelay();
 		waitUntilElementIsClickable(dialog.getFilterDialogButtonAdd());
 		doClick(dialog.getFilterDialogButtonAdd());
 		waitForAjaxExtJs();

@@ -316,7 +316,7 @@ public class CalculationHelper extends GoHelper {
 		waitForPresenceOfElement("(//*[contains(@id,'calculationstatus') and contains(@id,'header')]/..//span[text()='View'])[2]");
 		driver.findElement(By.xpath("(//*[contains(@id,'calculationstatus') and contains(@id,'header')]/..//span[text()='View'])[2]")).click();
 		waitForDisplayedSpinnerToEnd();
-		driverDelay(2000);
+		driverDelay(4000);
 	}
 
 	/* calculation status page */
