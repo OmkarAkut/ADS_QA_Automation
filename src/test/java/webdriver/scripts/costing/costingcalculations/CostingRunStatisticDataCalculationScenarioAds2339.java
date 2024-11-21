@@ -69,7 +69,8 @@ public class CostingRunStatisticDataCalculationScenarioAds2339 extends Calculati
 			fail(e.getMessage());
 		}
 	}
-
+	//Shilpa : commented for 11.2 on 11.12.2024 , teardown handled globally
+/*
 	@AfterClass
 	public static void teardownScript() throws InterruptedException, Throwable {
 		try {
@@ -80,7 +81,7 @@ public class CostingRunStatisticDataCalculationScenarioAds2339 extends Calculati
 		}
 		ExtentReport.report.flush();
 	}
-
+*/
 //ADS-5989 all steps
 	@Test
 	public void test01VerifyStaticDataScenarioPageConfiguration_ADS_5989() throws Throwable {
@@ -285,7 +286,7 @@ public class CostingRunStatisticDataCalculationScenarioAds2339 extends Calculati
 	}
 	@AfterClass
 	public static void endtest() throws Exception {
-
+		doClosePageOnLowerBar("QA Marina");
 		ExtentReport.report.flush();
 
 	}

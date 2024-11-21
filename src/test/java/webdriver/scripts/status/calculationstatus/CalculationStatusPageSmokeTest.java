@@ -391,7 +391,7 @@ public class CalculationStatusPageSmokeTest extends CalculationHelper {
     try {
 		status.getCalculationStatusPageFormFieldSearch().sendKeys(currentDate);
 		status.getCalculationStatusPageButtonSearchGlass().click();
-		waitForSpinnerToEnd();
+		driverDelay();
 		String searchStartTime = getWebElement(calcStartTimeXpath).getText();
 		assertThat(searchStartTime, containsString(currentDate));
 		ExtentReport.logPass("PASS", "test18VerifyCalculationStatusPageSearch");
