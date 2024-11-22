@@ -82,11 +82,14 @@ public class RVUCalculationScenario extends CalculationHelper {
 			ExtentReport.logFail("FAIL", "test02CalculateRVUScenario_ADS_5987", driver, e);
 			fail(e.getMessage());
 		}
+		finally {
+			doClosePageOnLowerBar("Costing Models");
+		}
 	}
 
 	@AfterClass
 	public static void endtest() throws Exception {
-		doClosePageOnLowerBar("Costing Models");
+		
 		ExtentReport.report.flush();
 
 	}

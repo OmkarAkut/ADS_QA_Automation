@@ -74,6 +74,7 @@ public class ActualCostingMethodPatientChgsDoesNotMatch extends CalculationHelpe
 	public void test02VerifyCalculationStatusForCostModelCalcScenarioEntity() throws Throwable {
 		try {
 			doClick(costing.getCostModelCalcFilterButton());
+			driverDelay();
 			doFilterCreate(filterCostModelScenarioEntity);
 			tableClickCellFirstColumn(costModelCalcScenarioEntity);
 			doClick(costing.getCostModelScenarioCalculationButtonCalculate());

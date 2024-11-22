@@ -11,6 +11,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchSessionException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -162,7 +163,9 @@ public class Driver {
     else if(testEnvironment.equals("qastage")) {
 //    	url = "http://qaapp-dev.harrispaas.com/alliance-webCont/login/index.jsp";  
     	//Shilpa updated to SSL url 10.10.2024
-   	 url = "https://qaapp-dev.harrispaas.com:8443/alliance-webCont/alliance/index.jsp";
+//   	 url = "https://qaapp-dev.harrispaas.com:8443/alliance-webCont/alliance/index.jsp";
+   //Shilpa updated to SSL url 11.21.2024
+   	 url = "https://qaapp.harrispaas.com/alliance-webCont/login/index.jsp";
       }
      else {
       url = "https://qaautomation.mdasdss.com/alliance-webCont/login/index.jsp";
@@ -254,9 +257,42 @@ public class Driver {
 			}else {
 		  fail("ERROR: Driver object not set.");
 		}
-	} catch (Exception e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
+	} catch (NoSuchSessionException e) {
+		//Shilpa added for 11.2 to create new session , if current session terminated
+		browser = browser.toLowerCase();
+		if (browser.contains("headless")) {
+		  System.out.println("Chrome is running in headless mode");
+		  WebDriverManager.chromedriver().setup();
+		  ChromeOptions options = new ChromeOptions();
+		  options.addArguments("--window-size=1920,1080", "--ignore-certificate-errors", "--headless");
+		  driver = new ChromeDriver(options);
+		} else if (browser.equals("chrome")) {
+		
+			 WebDriverManager.chromedriver().setup();
+		  ChromeOptions options = new ChromeOptions();
+		  options.addArguments("--ignore-certificate-errors", "start-maximized");
+		  options.addArguments("--remote-allow-origins=*");
+		 driver = new ChromeDriver(options);
+		 //Clear browser cache
+		 driver.manage().deleteAllCookies();
+		    driver.get("chrome://settings/clearBrowserData");
+		    driver.findElement(By.xpath("//settings-ui")).sendKeys(Keys.ENTER);
+		} else if (browser.equals("firefox")) {
+		  driver = new FirefoxDriver();
+		} else if (browser.equals("ie")) {
+		  driver = new InternetExplorerDriver();
+		} 
+		//Shilpa added below line for 11.2 on 12.12.2023
+		else if (browser.equals("edge")) {
+			 WebDriverManager.edgedriver().setup();
+			  EdgeOptions options =new EdgeOptions();
+			  options.addArguments("--remote-allow-origins=*");
+			  options.addArguments("--ignore-certificate-errors", "start-maximized");
+			  driver = new EdgeDriver(options);
+			  
+			}else {
+		  fail("ERROR: Driver object not set.");
+		}
 	}
     return driver;
   }

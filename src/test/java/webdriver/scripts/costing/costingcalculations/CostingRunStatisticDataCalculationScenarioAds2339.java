@@ -1,5 +1,6 @@
 package webdriver.scripts.costing.costingcalculations;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.text.SimpleDateFormat;
@@ -68,7 +69,8 @@ public class CostingRunStatisticDataCalculationScenarioAds2339 extends Calculati
 			fail(e.getMessage());
 		}
 	}
-
+	//Shilpa : commented for 11.2 on 11.12.2024 , teardown handled globally
+/*
 	@AfterClass
 	public static void teardownScript() throws InterruptedException, Throwable {
 		try {
@@ -79,7 +81,7 @@ public class CostingRunStatisticDataCalculationScenarioAds2339 extends Calculati
 		}
 		ExtentReport.report.flush();
 	}
-
+*/
 //ADS-5989 all steps
 	@Test
 	public void test01VerifyStaticDataScenarioPageConfiguration_ADS_5989() throws Throwable {
@@ -148,6 +150,18 @@ public class CostingRunStatisticDataCalculationScenarioAds2339 extends Calculati
 			// Shilpa updated steps as per ADS-5989 on 2.5.2024
 			doClickTreeItem("Statistic Data Calculation Scenarios");
 			waitForDisplayedSpinnerToEnd();
+			//Shilpa added for 11.2 on 11.7.2024 to filter the data
+			doClick(costingMap.statisticDataCalcScenarionFilterBtn());
+			doFilterCreate(updatedfilterCalcScenario);
+			try {
+				if(driver.findElement(By.xpath("//div[text()='"+updateStatisticDataCalculationScenari+"']")).isDisplayed()) {
+					doClick(costingMap.statisticDataCalcScenarionDeleteBtn());
+					doClick(costingMap.warningMessageDeleteBtn());
+				}
+			}catch(Exception e) {
+			assertTrue(printout);
+			}
+			doClick(costingMap.statisticDataCalcScenarionClearFilterBtn());
 			doClick(costingMap.statisticDataCalcScenarionFilterBtn());
 			doFilterCreate(filterCalcScenario);
 			tableDoubleClickCellFirstColumn(statisticDataCalculationScenario);
@@ -272,7 +286,7 @@ public class CostingRunStatisticDataCalculationScenarioAds2339 extends Calculati
 	}
 	@AfterClass
 	public static void endtest() throws Exception {
-
+		doClosePageOnLowerBar("QA Marina");
 		ExtentReport.report.flush();
 
 	}
