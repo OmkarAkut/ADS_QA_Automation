@@ -202,6 +202,7 @@ public static List dbCredentials;
 //    	 url = "https://qaapp-dev.harrispaas.com:8443/alliance-webCont/alliance/index.jsp";
     	//Shilpa updated to SSL url 21.11.2024
     	 url = "https://qaapp.harrispaas.com/alliance-webCont/login/index.jsp";
+//    	url = "https://qaprod.harrispaas.com/alliance-webCont/alliance/index.jsp";
   } 
     else {
       url = "https://qaautomation.mdasdss.com/alliance-webCont/login/index.jsp";
@@ -233,7 +234,9 @@ public static List<String> setupDb(String testEnvironment) {
     else if (testEnvironment.equals("qastage")) {
 //    	 dbUrl = "jdbc:oracle:thin:@10.204.20.120:1522:qadb01"; //"jdbc:oracle:thin:@192.168.210.100:1540:qav8";
     	 //Shilpa update dburl for 11.2 on 30.4.2024
-    	dbUrl = "jdbc:oracle:thin:@10.204.20.101:1529:qareborn"; 
+//    	dbUrl = "jdbc:oracle:thin:@10.204.20.101:1529:qareborn"; 
+    	 //Shilpa update dburl for 11.2 on 2.1.2025
+    	dbUrl = "jdbc:oracle:thin:@172.20.3.16:1750:qareborn";
     	System.out.println(dbUrl);
 
     }
