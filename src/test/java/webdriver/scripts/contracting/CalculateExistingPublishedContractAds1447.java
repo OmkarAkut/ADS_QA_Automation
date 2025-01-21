@@ -116,7 +116,7 @@ public class CalculateExistingPublishedContractAds1447 extends CalculationHelper
 		waitForSpinnerToEnd();
 		waitForAjaxExtJs();
 		modelMap.getModelLibraryContractingButtonCalculate().click();
-		waitForCalculationToEnd(1000);
+//		waitForCalculationToEnd(1000);//Shilpa Commented on 1.21.2025
 		/*
 //		driver.findElement(By.xpath("//button/span[text()='Refresh']")).click();
 		driver.findElement(By.xpath("//span/span[text()='Refresh']")).click();//Shilpa: update xpath 11.2
