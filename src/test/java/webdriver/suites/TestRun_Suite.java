@@ -34,6 +34,8 @@ import webdriver.scripts.systemmaintenance.SystemMaintenanceTestSuite;
 @Suite.SuiteClasses({
 	CostingTestSuite.class,
 	ContractingSuite.class,
+	MaintaindataTestSuite.class,
+	GeneralCalculationsTestSuite.class,
 	SystemMaintenanceTestSuite.class,
 	EpisodesTestSuite.class,
 	ReportingTestSuite.class,

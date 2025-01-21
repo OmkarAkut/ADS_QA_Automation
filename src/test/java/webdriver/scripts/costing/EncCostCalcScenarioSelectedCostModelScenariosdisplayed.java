@@ -122,6 +122,8 @@ import webdriver.maps.mapbuilder.BuildMap;
 			doClick(costing.getCostModelEvaluationOrderSelect());
 			waitForMainPageTitle("Add Cost Model Scenarios");
 			ContractModelsHelper.assertColumnsToDisplayColumnIsSelected(encCostScenario);
+			//Shilpa update xapth 1.21.2025
+			doClick("(//h1[text()='Add Cost Model Scenarios']//following::a//span[contains(@class,'next-button')])[1]");
 			ContractModelsHelper.highlightColumnsToDisplayColumn(costModelScenEvaluationOrderTest);
 		    doClick(contractMap.getSelectItem());
 
@@ -161,6 +163,9 @@ import webdriver.maps.mapbuilder.BuildMap;
 			ContractModelsHelper.keyInValues(ContractingMap.getInputName(), encCostModelName);
 			doClick(costing.getEncCostModelEvaluationSelectButton());
 			Thread.sleep(500);
+			//Shilpa update xapth 1.21.2025
+			doClick("(//h1[text()='Add Cost Model Scenarios']//following::a//span[contains(@class,'next-button')])[1]");
+
 			ContractModelsHelper.selectMultipleColumnsToDisplay(columnHeaderSubset);
 			doClick("//h1[text()='Add Cost Model Scenarios']//following::span[text()='Apply']");
 //			doClick("//label[text()='Include Acquisition Costs']//preceding-sibling::*[1]/input");

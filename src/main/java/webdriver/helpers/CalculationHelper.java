@@ -534,6 +534,7 @@ public class CalculationHelper extends GoHelper {
 				}
 				counter++;
 			}
+			System.out.println(counter);
 		}
 		Thread.sleep(500);
 	}
