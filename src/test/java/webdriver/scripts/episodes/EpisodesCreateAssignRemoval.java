@@ -30,7 +30,9 @@ public class EpisodesCreateAssignRemoval extends CalculationHelper {
 	static String enterPostDischargePhase = "60";
 	private static String[] trigerrFilter = { "Name", "Is", "Equal To", "CMS CJR Trigger" };
 //	private static String populationName = "# Episodes of Care Population CJR 2016";
-	private static String populationName = "# EpisodesE01A - One EFR";
+//	private static String populationName = "# EpisodesE01A - One EFR";
+	//Shilpa updated test data 1.22.2025
+	private static String populationName = "# ASESC-2338 no space pop";
 	static ContractingMap contractingMap;
 	static ModelLibraryMap modelMap;
 	private String serviceName = "CMS CJR Trigger";

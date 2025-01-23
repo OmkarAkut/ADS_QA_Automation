@@ -18,6 +18,8 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.interactions.ClickAndHoldAction;
 
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
@@ -221,6 +223,9 @@ public class UpdateUCQCParmsRvuCalcScenario extends UcqcHelper {
 			assertElementIsDisplayedWithXpath("//li[contains(@class,'x-boundlist-selected')][text()='ASESC2060 CC Var Master']");
 			selectOptions(CostingMap.getOverheadDrpDwn(), "TB OVHD Calc Scen Exp Vol for Rpt");
 			CostingMap.getOverheadDrpDwn().click();
+			//Shilpa updated below lines 1.23.2025
+			Actions act=new Actions(driver);
+			act.moveToElement(driver.findElement(By.xpath("//li[contains(@class,'x-boundlist-selected')][text()='TB OVHD Calc Scen Exp Vol for Rpt']"))).build().perform();
 			assertElementIsDisplayedWithXpath("//li[contains(@class,'x-boundlist-selected')][text()='TB OVHD Calc Scen Exp Vol for Rpt']");
 			assertElementIsDisplayedWithXpath("//div[text()='Entities']//following::li[text()='150 Marina Medical Center']");
 			assertElementIsDisplayedWithXpath("//div[text()='Departments / Groups']//following::li[text()='3520 MAMMOGRAPHY UNIT']");
