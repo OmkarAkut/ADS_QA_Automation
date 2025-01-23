@@ -102,6 +102,8 @@ public class EncounterCost extends CalculationHelper {
 			doClick(costing.getSelctCostModelScenariosInEvaluationOrder());
 //			highlightColumnsToDisplayColumn("BC REGRESSION CMS");
 			//Shilpa update test data
+			//Shilpa add xpath 1.23.2025
+			doClick("(//h1[text()='Add Cost Model Scenarios']//following::span[contains(@class,'next-button-multiselect')])[1]");
 			highlightColumnsToDisplayColumn("*USE MHC FY05 Total Cost Scenario");
 
 			doClick(costing.getcostModelButtonColumnsToDisplayModalSelect());

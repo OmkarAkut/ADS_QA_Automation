@@ -123,9 +123,13 @@ public class OverWriteRVUValues5919 extends UcqcHelper {
 			doDropdownSelectUsingOptionText(
 					costing.getUnitCostQuickCalculationOverwriteRVUMaintenanceModalDropdownMonth(),
 					costing.unitCostQuickCalculationOverwriteRVUMaintenanceModalDropdownMonthOptions(), "Apr");
+//			doDropdownSelectUsingOptionText(
+//					costing.getUnitCostQuickCalculationOverwriteRVUMaintenanceModalDropdownYear(),
+//					costing.unitCostQuickCalculationOverwriteRVUMaintenanceModalDropdownYearOptions(), "2004");
+			//Shilpa updated 1.23.2025 year 2004 is not available now
 			doDropdownSelectUsingOptionText(
 					costing.getUnitCostQuickCalculationOverwriteRVUMaintenanceModalDropdownYear(),
-					costing.unitCostQuickCalculationOverwriteRVUMaintenanceModalDropdownYearOptions(), "2004");
+					costing.unitCostQuickCalculationOverwriteRVUMaintenanceModalDropdownYearOptions(), "2005");
 			selectCostComponent("Salaries and Wages", printout);
 			doClick(costing.getUnitCostQuickCalculationOverwriteRVUMaintenanceModalButtonOverwriteRVUs());
 			waitForElementToBeVisible(
@@ -158,9 +162,11 @@ public class OverWriteRVUValues5919 extends UcqcHelper {
 			updateDepartment("3120");
 			doDropdownSelectUsingOptionText(costing.getRvuMaintenanceDropdownEffectiveMonthStartMonthDropdown(),
 					costing.getRvuMaintenanceDropdownEffectiveMonthStartMonthOptions(), "Apr");
+//			doDropdownSelectUsingOptionText(costing.getRvuMaintenanceDropdownEffectiveMonthStartYearDropdown(),
+//					costing.getRvuMaintenanceDropdownEffectiveMonthStartYearOptions(), "2004");
+			//Shilpa updated 1.23.2025 year 2004 is not available now
 			doDropdownSelectUsingOptionText(costing.getRvuMaintenanceDropdownEffectiveMonthStartYearDropdown(),
-					costing.getRvuMaintenanceDropdownEffectiveMonthStartYearOptions(), "2004");
-
+					costing.getRvuMaintenanceDropdownEffectiveMonthStartYearOptions(), "2005");
 			ExtentReport.logPass("PASS", "test04NavigateToRvuMaintenance");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test04NavigateToRvuMaintenance", driver, e);
@@ -173,7 +179,9 @@ public class OverWriteRVUValues5919 extends UcqcHelper {
 		try {
 			doClick(costing.getRvuApplySelections());
 			waitForDisplayedSpinnerToEnd();
-			assertElementIsDisplayedWithXpath("//*[text()='Salaries and Wages'][text()='Apr 2004']");
+//			assertElementIsDisplayedWithXpath("//*[text()='Salaries and Wages'][text()='Apr 2004']");
+			//Shilpa updated 1.23.2025 year 2004 is not available now
+			assertElementIsDisplayedWithXpath("//*[text()='Salaries and Wages'][text()='Apr 2005']");
 			ucqcHelper.VerifyCellValue("1804582", "0.000000",costing.SalariesAndWagesXpath);
 			ucqcHelper.VerifyCellValue("1805373", "0.000000",costing.SalariesAndWagesXpath);
 			ucqcHelper.VerifyCellValue("1805381", "0.000000",costing.SalariesAndWagesXpath);

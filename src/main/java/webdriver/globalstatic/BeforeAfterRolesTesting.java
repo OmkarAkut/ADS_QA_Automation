@@ -46,7 +46,9 @@ public class BeforeAfterRolesTesting extends AssertStatic {
 //            waitForElementToBeVisible(driver.findElement(By.id("component-1022")));
 //            WebElement logOut = driver.findElement(By.id("component-1022"));
 //            logOut.click();
-        	wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[contains(@class, 'logout') and text() = 'Log Out']")));
+        	waitForElementToBeVisible(driver.findElement(By.xpath("//*[contains(@class, 'logout') and text() = 'Log Out']")));
+        	//Shilpa updated 1.22.2025
+//        	wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[contains(@class, 'logout') and text() = 'Log Out']")));
             driver.findElement(By.xpath("//*[contains(@class, 'logout') and text() = 'Log Out']")).click();
             Thread.sleep(1000);
             wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id='username-inputEl']")));
