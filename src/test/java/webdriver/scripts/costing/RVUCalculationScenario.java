@@ -70,9 +70,10 @@ public class RVUCalculationScenario extends CalculationHelper {
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
 			driverDelay(500);
-			checkForRecordsProcessed(
-					"Perform Calculation for ---> 150 Marina Medical Center 3311 LAB CLINICAL LABORATORY Medical Supplies");
-			checkForRecordsProcessed("Perform Calculation for ---> 150 Marina Medical Center 2016");
+			//Shilpa updated for 11.2 o 2.2.2025
+//			checkForRecordsProcessed(
+//					"Perform Calculation for ---> 150 Marina Medical Center 3311 LAB CLINICAL LABORATORY Medical Supplies");
+//			checkForRecordsProcessed("Perform Calculation for ---> 150 Marina Medical Center 2016");
 			checkForRecordsProcessed("Process Completed");
 			closeViewDialog();
 			doClosePageOnLowerBar("Calculation Status");

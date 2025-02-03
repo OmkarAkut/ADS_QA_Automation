@@ -1008,7 +1008,7 @@ public class ContractModelsHelper extends GoHelper {
 					  Actions act=new Actions(driver);
 					  System.out.println(set.getValue().toString());
 					  //Shilpa updated for 11.2 on 24.2.2024
-					  act.moveToElement(driver.findElement(By.xpath("(//div[text()='"+set.getKey().toString() +"']//following::td/div)[1]"))).click().sendKeys(Keys.BACK_SPACE).sendKeys(set.getValue().toString()).sendKeys(Keys.ENTER).perform();
+					  act.moveToElement(driver.findElement(By.xpath("(//div[text()='"+set.getKey().toString() +"']//following::td/div)[1]"))).doubleClick().sendKeys(Keys.chord("A")).keyUp(Keys.CONTROL).sendKeys(set.getValue().toString()).sendKeys(Keys.ENTER).perform();
 //					  keyInValues(driver.findElement(By.xpath("(//div[text()='"+set.getKey().toString() +"']//following::td/div)[1]")), 
 //								set.getValue().toString());
 				  }

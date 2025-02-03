@@ -172,7 +172,9 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 					break;
 				}
 				try {
-					if (driver.findElement(By.xpath("(//div[@class='GJT013UBLJB']//tbody//td/div)[7]/a")).getText()
+					if (driver.findElement(By.xpath("(//span[text()='"+orgName+"']//following::a)[1]")).getText()
+							//Shilpa updated for 1.2 on 2.2.2025
+//					if (driver.findElement(By.xpath("(//div[@class='GJT013UBLJB']//tbody//td/div)[7]/a")).getText()
 							.equals("COMPLETED")) {
 						assertElementTextWithXpath("(//div[@class='GJT013UBLJB']//tbody//td/div)[7]/a", "COMPLETED",
 								printout);
@@ -181,8 +183,12 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 
 					}
 					//iF STATUS IS FAILED EXIT
-					if (driver.findElement(By.xpath("(//div[@class='GJT013UBLJB']//tbody//td/div)[7]/a")).getText()
-							.contains("FAILED")) {
+					//Shilpa updated for 1.2 on 2.2.2025
+//					if (driver.findElement(By.xpath("(//div[@class='GJT013UBLJB']//tbody//td/div)[7]/a")).getText()
+//							.contains("FAILED"))
+					if (driver.findElement(By.xpath("(//span[text()='"+orgName+"']//following::a)[1]")).getText()
+							.contains("FAILED")) 
+					{
 						fail();
 //						ExtentReport.logFail("FAIL", "test02OpenCostingReport", driver, e1);
 					}

@@ -28,6 +28,7 @@ public class CreateNewEditDeleteTimePeriod extends GoHelper {
 	static SystemMaintenanceMap systemMap;
 	static String month = "Feb";
 	static String year = "2024";
+	
 	static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
 	static String costTimePeriod = "Time Period" + currentDateTime;
 	static String[] filter = { "Name", "Is", "Equal", costTimePeriod };
@@ -139,6 +140,9 @@ public class CreateNewEditDeleteTimePeriod extends GoHelper {
 
 	@AfterClass
 	public static void endtest() {
+		//Shilpa added for 11.2 to refresh the page becoz of issue ADS-20083
+		driver.navigate().refresh();
+		waitForDisplayedSpinnerToEnd();
 		settings.revertCustomSettings();
 		ExtentReport.report.flush();
 	}
