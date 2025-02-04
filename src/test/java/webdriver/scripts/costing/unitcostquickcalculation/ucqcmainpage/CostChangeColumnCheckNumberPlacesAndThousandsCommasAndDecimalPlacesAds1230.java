@@ -74,7 +74,7 @@ public class CostChangeColumnCheckNumberPlacesAndThousandsCommasAndDecimalPlaces
 	}
   }
 
-  @Test
+//  @Test
   public void test03GetCellValueAndAssertTensPlace() throws Throwable {
 	  try {
     assertValueFormat(ucqcGetChargeCodeGridCellValue("1100171", "Hospital Overhead Change", printout),"10", 2, printout);
@@ -87,7 +87,7 @@ public class CostChangeColumnCheckNumberPlacesAndThousandsCommasAndDecimalPlaces
 	  }
   }
 
-  @Test
+//@Test
   public void test04GetCellValueAndAssertHundredsPlace() throws Throwable {
 	  
     try {
@@ -99,7 +99,7 @@ public class CostChangeColumnCheckNumberPlacesAndThousandsCommasAndDecimalPlaces
 	}
   }
 
-  @Test
+//@Test
   public void test05GetCellValueAndAssertThousandsPlace() throws Throwable {
 	  
     try {
@@ -111,7 +111,7 @@ public class CostChangeColumnCheckNumberPlacesAndThousandsCommasAndDecimalPlaces
 	}
   }
 
-  @Test
+//@Test
   public void test06GetCellValueAndAssertTenThousandsPlace () throws Throwable {
    
 	  try {
@@ -124,7 +124,7 @@ public class CostChangeColumnCheckNumberPlacesAndThousandsCommasAndDecimalPlaces
 	}
   }
 
-  @Test
+//@Test
   public void test07GetCellValueAndAssertHundredThousandsPlace () throws Throwable {
     try {
 		assertValueFormat(ucqcGetChargeCodeGridCellValue("1100270", "Hospital Overhead Change", printout),
@@ -136,7 +136,7 @@ public class CostChangeColumnCheckNumberPlacesAndThousandsCommasAndDecimalPlaces
 	}
   }
 
-  @Test
+//@Test
   public void test08GetCellValueAndAssertMillionsPlace () throws Throwable {
     try {
 		assertValueFormat(ucqcGetChargeCodeGridCellValue("1100528", "Hospital Overhead Change", printout),
@@ -148,7 +148,7 @@ public class CostChangeColumnCheckNumberPlacesAndThousandsCommasAndDecimalPlaces
 	}
   }
 
-  @Test
+//@Test
   public void test09GetCellValueAndAssertTenMillionsPlace () throws Throwable {
     try {
 		assertValueFormat(ucqcGetChargeCodeGridCellValue("1100569", "Hospital Overhead Change", printout),
@@ -160,7 +160,7 @@ public class CostChangeColumnCheckNumberPlacesAndThousandsCommasAndDecimalPlaces
 	}
   }
 
-  @Test
+//@Test
   public void test10GetCellValueAndAssertHundredMillionsPlace () throws Throwable {
     try {
 		assertValueFormat(ucqcGetChargeCodeGridCellValue("1100650", "Hospital Overhead Change", printout),

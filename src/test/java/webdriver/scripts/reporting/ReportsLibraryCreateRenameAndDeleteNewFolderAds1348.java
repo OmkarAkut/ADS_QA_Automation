@@ -2,6 +2,8 @@ package webdriver.scripts.reporting;
 
 import static org.junit.Assert.fail;
 
+import java.util.List;
+
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -12,6 +14,7 @@ import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 
 import ExtentReport.ExtentReport;
 import webdriver.globalstatic.LoginStatic;
@@ -55,10 +58,18 @@ public class ReportsLibraryCreateRenameAndDeleteNewFolderAds1348 extends LoginSt
   public void test01aCreateNewReportsFolderAndConfirmRenameAndDeleteButtonsAreEnabled_5661() throws Exception,Throwable {
 		driverDelay(5000);;//Shilpa 16.09.2022 
      try {
+    	 driver.findElement(By.xpath("//div[@role='treeitem']/div[contains(text(),'Folders')]")).click();
+    	 driver.findElement(By.xpath("(//div[text()=' Automation Folder '])")).click();
+    	 driverPause();
+    	 driver.findElement(By.xpath("//div/button[text()='New Folder']")).click();
+    	 //Shilpa updated for 11.2 on 2.4.2025
+    	 /*
 		driver.findElement(By.xpath("//div[@role='treeitem']/div[contains(text(),'Folders')]")).click();
 		driver.findElement(By.xpath("//div/button[text()='New Folder']")).click();
-		driver.findElement(By.xpath("//td[@style='vertical-align: middle;']//div[@class='gwt-TreeItem']//div[@class='gwtQuery-droppable']//img")).click();
-		Boolean isEnabled = driver.findElement(By.xpath("//div/button[text()='Rename Folder']")).isEnabled();
+		
+		driver.findElement(By.xpath("(//div[@class='gwt-Tree']//div[@class='gwt-TreeItem']//div[@class='gwtQuery-droppable'][contains(text(),'New Folder')]/img)[1]")).click();
+		
+		*/Boolean isEnabled = driver.findElement(By.xpath("//div/button[text()='Rename Folder']")).isEnabled();
 		Assert.assertTrue("Rename button is enabled", isEnabled);
 		ExtentReport.logPass("PASS", "test01aCreateNewReportsFolderAndConfirmRenameAndDeleteButtonsAreEnabled");
 
@@ -75,7 +86,7 @@ public class ReportsLibraryCreateRenameAndDeleteNewFolderAds1348 extends LoginSt
   public void test02RenameNewReportsFolder_5661() throws Throwable {
     try {
     	driverDelay(5000);;//venkat 03.10.2022 
-      driver.findElement(By.xpath("//div[contains(@class,'droppable')][contains(text(),'New Folder')]")).click();
+      driver.findElement(By.xpath("(//div[text()=' Automation Folder ']//following::div/img)[1]")).click();
       driverPause();//shilpa 16.09.2022
       driver.findElement(By.xpath("//div/button[text()='Rename Folder']")).click();
       driverPause();//shilpa 16.09.2022
