@@ -280,8 +280,8 @@ public class UtilitiesReportCheck
     	deleteUtilityStatusPageMyStatusFirstRow();
 		assertElementIsDisplayed(status.getUtilityStatusPageFormFieldSearch());
 		ExtentReport.logPass("PASS", "test06DeleteUtilityStatusFirstRowAndConfirm : PASS");
-		driver.findElements(By.xpath("//table/tbody/tr/td[11]/div[contains(@class, 'grid-cell')]"));
-		ExtentReport.logPass("PASS", "test06DeleteUtilityStatusFirstRowAndConfirm");
+//		driver.findElements(By.xpath("//table/tbody/tr/td[11]/div[contains(@class, 'grid-cell')]"));
+//		ExtentReport.logPass("PASS", "test06DeleteUtilityStatusFirstRowAndConfirm");
     } catch (Exception|AssertionError e) {
 		ExtentReport.logFail("FAIL", "test06DeleteUtilityStatusFirstRowAndConfirm : FAIL",driver,e);
 		fail(e.getMessage());

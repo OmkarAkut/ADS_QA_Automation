@@ -83,7 +83,7 @@ public class SecurityRolesTestMainPageLevelStatic extends LoginRolesTesting {
             {Roles.valueOf("System_Administrator")},
             {Roles.valueOf("Security_Administrator")},
 
-//            {Roles.valueOf("Data_Administrator")},//Uncomment once login issue for this user is fixed 
+            {Roles.valueOf("Data_Administrator")},//Uncomment once login issue for this user is fixed 
             {Roles.valueOf("Cost_Analyst")},
             {Roles.valueOf("Costing_Department_Manager")},
             {Roles.valueOf("Contract_Analyst")},
@@ -95,8 +95,8 @@ public class SecurityRolesTestMainPageLevelStatic extends LoginRolesTesting {
 
             {Roles.valueOf("AdHoc_Report_Designer")},
             {Roles.valueOf("Report_User")},
-//            {Roles.valueOf("Web_Intelligence_Designer")},//Uncomment once login issue for this user is fixed
-//            {Roles.valueOf("Web_Intelligence_User")},//Uncomment once login issue for this user is fixed
+            {Roles.valueOf("Web_Intelligence_Designer")},//Uncomment once login issue for this user is fixed
+            {Roles.valueOf("Web_Intelligence_User")},//Uncomment once login issue for this user is fixed
 
             {Roles.valueOf("Budgeting_User")},
             {Roles.valueOf("Analytics_Administrator")},

@@ -59,7 +59,7 @@ public class ReportsLibraryCreateRenameAndDeleteNewFolderAds1348 extends LoginSt
 		driverDelay(5000);;//Shilpa 16.09.2022 
      try {
     	 driver.findElement(By.xpath("//div[@role='treeitem']/div[contains(text(),'Folders')]")).click();
-    	 driver.findElement(By.xpath("(//div[text()=' Automation Folder '])")).click();
+    	 driver.findElement(By.xpath("(//div[contains(text(),'Automation Folder')])")).click();
     	 driverPause();
     	 driver.findElement(By.xpath("//div/button[text()='New Folder']")).click();
     	 //Shilpa updated for 11.2 on 2.4.2025
@@ -86,7 +86,7 @@ public class ReportsLibraryCreateRenameAndDeleteNewFolderAds1348 extends LoginSt
   public void test02RenameNewReportsFolder_5661() throws Throwable {
     try {
     	driverDelay(5000);;//venkat 03.10.2022 
-      driver.findElement(By.xpath("(//div[text()=' Automation Folder ']//following::div/img)[1]")).click();
+      driver.findElement(By.xpath("(//div[contains(text(),'Automation Folder')]//following::div/img)[1]")).click();
       driverPause();//shilpa 16.09.2022
       driver.findElement(By.xpath("//div/button[text()='Rename Folder']")).click();
       driverPause();//shilpa 16.09.2022

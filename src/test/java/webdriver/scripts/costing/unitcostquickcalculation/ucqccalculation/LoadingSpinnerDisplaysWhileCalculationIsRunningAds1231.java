@@ -88,7 +88,9 @@ public class LoadingSpinnerDisplaysWhileCalculationIsRunningAds1231
               driver.findElement(By.xpath("//*[contains(text(),'Loading...')]")), printout
       );
       assertElementIsDisabled(totalQuickCost.getUnitCostQuickCalculationButtonCalculate(),printout);
-      waitForSpinnerToEnd();
+//      waitForSpinnerToEnd();
+      //Shilpa updated for 11.2 on 2.6.2025
+      waitForDisplayedSpinnerToEnd();
       final long finalTiming = System.currentTimeMillis();
       double totalRunTime = (finalTiming - startTiming) / 1000;
       System.out.println("Total Time for UCQC Calculation: " + totalRunTime + " seconds");
@@ -133,7 +135,9 @@ public class LoadingSpinnerDisplaysWhileCalculationIsRunningAds1231
 		        driver.findElement(By.xpath("//*[contains(text(),'Loading...')]")), printout
 		);
 		assertElementIsDisabled(totalQuickCost.getUnitCostQuickCalculationButtonCalculate(),printout);
-		waitForSpinnerToEnd();
+//		waitForSpinnerToEnd();
+		 //Shilpa updated for 11.2 on 2.6.2025
+	      waitForDisplayedSpinnerToEnd();
 		final long finalTiming = System.currentTimeMillis();
 		double totalRunTime = (finalTiming - startTiming) / 1000;
 		System.out.println("Total Time for UCQC Calculation: " + totalRunTime + " seconds");

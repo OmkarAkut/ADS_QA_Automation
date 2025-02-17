@@ -134,20 +134,26 @@ public class UtilitiesPageHelper extends LoginStatic {
 						.getAttribute("class")
 						;
 							*/
+//				download = driver.findElement(
+//						By.xpath("(//table/tbody/tr[1]/td)[5]/div"))
+//						.getAttribute("class")
+//						;
+				
 				download = driver.findElement(
-						By.xpath("(//table/tbody/tr[1]/td)[5]/div"))
+						By.xpath("(//table/tbody/tr[1]/td)[5]/div/a"))
 						.getAttribute("class")
 						;
-				
 				System.out.println("Download: " + download);
 				try {
 					assertTrue(download.contains("stLinks"));
+					//Shilpa update for 11.2 on 2.12.2025
+					break;
 				} catch (AssertionError e) {
 					ExtentReport.extenttest.log(Status.FAIL, e.getMessage());
 
 					ExtentReport.extenttest.log(Status.INFO, e);
 				}
-				break;
+			
 			} catch (Throwable e) {
 				System.out.println("Utility not complete");
 			//	ExtentReport.extenttest.log(Status.INFO, e);
