@@ -9,6 +9,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 
 import ExtentReport.ExtentReport;
+import webdriver.core.Driver;
 import webdriver.core.Login;
 import webdriver.corehelpers.AdsHelper;
 import webdriver.helpers.CalculationHelper;
@@ -61,36 +62,49 @@ public class GeneratePsychCombinedComorbidityFactor extends CalculationHelper {
 			ContractModelsHelper.scrollToView("//div[contains(@id,'psychdatefiles')]/div/div[contains(text(),'Dates & Files')]");
 			driverDelay(500);
 //			doClick(ContractingMap.getContractFileSelect());
-			Actions action=new Actions(driver);
-			action.moveToElement(ContractingMap.getContractFileSelect()).click().build().perform();
+		
 //			ContractingMap.getContractFileSelect().sendKeys(Keys.ENTER);;
 			driverDelay(600);
-			ContractModelsHelper.uploadTheFileusingAutoIT(driver,
-					System.getProperty("user.dir") + "\\AutoIT\\UploadFile.exe",
-					System.getProperty("user.dir") + "\\AutoIT\\IPFC22WDICD10.txt");
-			driverDelay(7000);
-			doClick(ContractingMap.getContractResetButton());
-			doClick(costingMap.getCostModelScenariosinEvaluationOrderSave());
-			doFilterCalculationPage(filter);
-			waitForFirstRowCalculationBarToReach100Percent();
-			calculationStatusPageOpenViewDialog();
-			driverDelay();
-			assertViewLogTitle(viewLogTitleApply);
-//			checkForRecordsProcessed("Process Completed");
-//			doClick(ContractingMap.getContractCalculationCloseViewDialog());
-//			deleteMyCalculationStatusFirstRow();
-//			doClosePageOnLowerBar("Calculation Status");
-//			driverDelay(1000);
-//			doClick(ContractingMap.getContractCalculateButton());
-//			waitForFirstRowCalculationBarToReach100Percent();
-//			calculationStatusPageOpenViewDialog();
-//			assertViewLogTitle(viewLogTitleApply);
-//			confirmCalculationStatusDetailsContains("Processed 8 Distinct Encounters");
-			//Shilpa: Fails due to scroll issue 11.2 11.4.2024
-			checkForRecordsProcessed("Processed 0 Distinct Encounters");
+			if (Driver.getBrowser().equals("chrome")) {
+				Actions action=new Actions(driver);
+				action.moveToElement(ContractingMap.getContractFileSelect()).click().build().perform();
+				driverDelay();
+				ContractModelsHelper.uploadTheFileusingAutoIT(driver,
+						System.getProperty("user.dir") + "\\AutoIT\\GeneratePsychCombinedComorbidityFactorChrome.exe"
+						);
+				driverDelay(2000);
+				doClick(ContractingMap.getContractResetButton());
+				doClick(costingMap.getCostModelScenariosinEvaluationOrderSave());
+				doFilterCalculationPage(filter);
+				waitForFirstRowCalculationBarToReach100Percent();
+				calculationStatusPageOpenViewDialog();
+				driverDelay();
+				assertViewLogTitle(viewLogTitleApply);
+				checkForRecordsProcessed("Processed 0 Distinct Encounters");
 
-			confirmCalculationStatusDetailsContains("Process Completed");
-			doClick(ContractingMap.getContractCalculationCloseViewDialog());
+				confirmCalculationStatusDetailsContains("Process Completed");
+				doClick(ContractingMap.getContractCalculationCloseViewDialog());
+			}
+			if (Driver.getBrowser().equals("edge")) {
+				Actions action=new Actions(driver);
+				action.moveToElement(ContractingMap.getContractFileSelect()).click().build().perform();
+				driverDelay();
+				ContractModelsHelper.uploadTheFileusingAutoIT(driver,
+						System.getProperty("user.dir") + "\\AutoIT\\GeneratePsychCombinedComorbidityFactorEdge.exe");		
+				driverDelay(2000);
+				doClick(ContractingMap.getContractResetButton());
+				doClick(costingMap.getCostModelScenariosinEvaluationOrderSave());
+				doFilterCalculationPage(filter);
+				waitForFirstRowCalculationBarToReach100Percent();
+				calculationStatusPageOpenViewDialog();
+				driverDelay();
+				assertViewLogTitle(viewLogTitleApply);
+				checkForRecordsProcessed("Processed 0 Distinct Encounters");
+
+				confirmCalculationStatusDetailsContains("Process Completed");
+				doClick(ContractingMap.getContractCalculationCloseViewDialog());
+			}
+			
 			ExtentReport.logPass("PASS", "test01AssertResetCalculate");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01AssertResetCalculate", driver, e);

@@ -70,6 +70,8 @@ public class DriverStatic extends SetupStatic {
 			}  else if (browser.equals("edge")) {	
 				 WebDriverManager.edgedriver().setup();
 				EdgeOptions options =new EdgeOptions();
+				  options.addArguments("--disable-mobile-upload");
+
 				options.addArguments("--remote-allow-origins=*");
 				options.addArguments("--ignore-certificate-errors", "start-maximized");
 				driver = new EdgeDriver(options);

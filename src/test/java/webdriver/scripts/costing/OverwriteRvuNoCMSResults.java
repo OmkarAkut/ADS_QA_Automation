@@ -11,7 +11,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+
 import ExtentReport.ExtentReport;
+import webdriver.core.Driver;
 import webdriver.core.Login;
 import webdriver.corehelpers.GoHelper;
 import webdriver.helpers.ContractModelsHelper;
@@ -24,7 +27,7 @@ import webdriver.maps.ModelLibraryMap;
 import webdriver.maps.mapbuilder.BuildMap;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-/**Regression Test ADS-5920 **/
+/** Regression Test ADS-5920 **/
 public class OverwriteRvuNoCMSResults extends GoHelper {
 	static CostingMap costing;
 	static ModelLibraryMap modelMap;
@@ -58,6 +61,7 @@ public class OverwriteRvuNoCMSResults extends GoHelper {
 			fail(e.getMessage());
 		}
 	}
+
 //ADS-5920
 	@Test
 	public void test01OpenCostModel_5920() throws Throwable {
@@ -65,32 +69,49 @@ public class OverwriteRvuNoCMSResults extends GoHelper {
 			doClick(costing.getRvuMaintenanceButtonFilter());
 			doFilterCreate(filterByCostModel);
 			doClick(costing.getRvuMaintenanceButtonImport());
-			assertTextIsDisplayed("Import Data");
-			JavascriptExecutor executor = (JavascriptExecutor)driver;
-			executor.executeScript("arguments[0].click();", driver.findElement(By.xpath("//div[contains(@id,'filefield')]//following::input[@name='importdata']")));
-//			doClick("//div[contains(@id,'filefield')]//following::input[@name='importdata']");
-//			costing.getImportSelectButton().sendKeys(Keys.ENTER);
-//			;
-			driverDelay(500);
-			ContractModelsHelper.uploadTheFileusingAutoIT(driver,
-					System.getProperty("user.dir") + "\\AutoIT\\UploadFile.exe",
-					System.getProperty("user.dir") + "\\AutoIT\\ADS1309PreConditionsRVUImport.txt");
-			doClick(costing.getRvuSharedLocDropdown());
-			driverDelay(300);
-			doClick(contractMap.getContractModelExportFileSharedLocOption());
-			ContractModelsHelper.keyInValues(costing.getRvuFileNameInput(), "Test");
-			doClick(costing.getImportButton());
-			waitForSpinnerToEnd();
 			driverDelay();
-			assertElementIsDisplayed(contractMap.getContractModelImportExportstatusPage());
-			ContractModelsHelper.waitForFirstRowCalculationBarToReach100Percent();
-			doClosePageOnLowerBar("Import/Export Status");
+			assertTextIsDisplayed("Import Data");
+			if (Driver.getBrowser().equals("chrome")) {
+				JavascriptExecutor executor = (JavascriptExecutor) driver;
+				executor.executeScript("arguments[0].click();", driver.findElement(
+						By.xpath("//div[contains(@id,'filefield')]//following::input[@name='importdata']")));
+				driverDelay(500);
+				ContractModelsHelper.uploadTheFileusingAutoIT(driver,
+						System.getProperty("user.dir") + "\\AutoIT\\OverWriteRVUValues5919Chrome.exe");
+				driverDelay(300);
+				selectFileLocAndaddFileName(costing.getRvuImportButton());
+
+			}
+			if (Driver.getBrowser().equals("edge")) {
+				doactionClick(driver
+						.findElement(By.xpath("(//div[contains(@id,'importwindow')]//span[text()='Select'])[2]")));
+				driverDelay();
+
+				driverDelay(500);
+				ContractModelsHelper.uploadTheFileusingAutoIT(driver,
+						System.getProperty("user.dir") + "\\AutoIT\\OverWriteRVUValues5919Edge.exe");
+				driverDelay(300);
+				selectFileLocAndaddFileName(costing.getRvuImportButton());
+			}
+
 			ExtentReport.logPass("PASS", "test01OpenCostModel");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01OpenCostModel", driver, e);
 			fail(e.getMessage());
 		}
 
+	}
+
+	public void selectFileLocAndaddFileName(WebElement button) throws Throwable {
+		doClick(costing.getRvuSharedLocDropdown());
+		driverDelay(300);
+		doClick(contractMap.getContractModelExportFileSharedLocOption());
+		ContractModelsHelper.keyInValues(costing.getRvuFileNameInput(), "Test");
+		doClick(button);
+		waitForSpinnerToEnd();
+		assertElementIsDisplayed(contractMap.getContractModelImportExportstatusPage());
+		ContractModelsHelper.waitForFirstRowCalculationBarToReach100Percent();
+		doClosePageOnLowerBar("Import/Export Status");
 	}
 
 	@Test
@@ -108,7 +129,7 @@ public class OverwriteRvuNoCMSResults extends GoHelper {
 					costing.getRvuMaintenanceDropdownEffectiveMonthStartYearOptions(), "2005");
 			doClick(costing.getRvuMaintenanceButtonApplySelections());
 			waitForDisplayedSpinnerToEnd();
-		
+
 			assertElementIsDisplayedWithXpath("//*[text()='Salaries and Wages'][text()='Apr 2004']");
 			assertElementIsDisplayedWithXpath("//*[text()='Employee Benefits'][text()='Apr 2004']");
 			assertElementIsDisplayedWithXpath("//*[text()='Medical Supplies'][text()='Apr 2004']");
@@ -121,8 +142,7 @@ public class OverwriteRvuNoCMSResults extends GoHelper {
 			assertElementIsDisplayedWithXpath("//*[text()='Hospital Overhead'][text()='Apr 2004']");
 			assertElementIsDisplayedWithXpath("//*[text()='Depreciation'][text()='Apr 2004']");
 			assertElementIsDisplayedWithXpath("//*[text()='Tech'][text()='Apr 2004']");
-		
-			
+
 			ExtentReport.logPass("PASS", "test02ApplyRvuFiltersAndVerifyHeaders");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test02ApplyRvuFiltersAndVerifyHeaders", driver, e);
@@ -206,13 +226,14 @@ public class OverwriteRvuNoCMSResults extends GoHelper {
 	public void test05FilterByDepartmentInRvuContainerList_5920() throws Throwable {
 		try {
 			doClick(costing.getRvuMaintenanceButtonRvuContainerList());
-			waitForElementPresence("//*[text()='RVU Container List']/ancestor::div/following-sibling::div//span[text()='Filter']");
+			waitForElementPresence(
+					"//*[text()='RVU Container List']/ancestor::div/following-sibling::div//span[text()='Filter']");
 			doClick("//*[text()='RVU Container List']/ancestor::div/following-sibling::div//span[text()='Filter']");
 			doFilterSetFilterParameters("Department Code", "Is", "Equal To", "3110");
 			addFilter();
 //			assertElementIsDisplayedWithXpath("//label[text()='Filter to Match These Criteria 14/68']");
-			//Shilpa updated the data for 11.2 on 10.21.2024
-			//Shilpa updated becoz the filter count may keep changing
+			// Shilpa updated the data for 11.2 on 10.21.2024
+			// Shilpa updated becoz the filter count may keep changing
 //			assertElementIsDisplayedWithXpath("//label[text()='Filter to Match These Criteria 14/69']");
 			assertElementIsDisplayedWithXpath("//label[contains(text(),'Filter to Match These Criteria')]");
 			doClick(dialog.getFilterDialogButtonApplyFilter());
@@ -230,8 +251,8 @@ public class OverwriteRvuNoCMSResults extends GoHelper {
 		try {
 			for (WebElement element : costing.getRvuContainerListStartMonth()) {
 //				if (element.getText().equals("Apr 2004")) {
-				//Shilpa updated the month as the month is not available in dropdown 1.21.2025
-					if (element.getText().equals("Apr 2005")) {
+				// Shilpa updated the month as the month is not available in dropdown 1.21.2025
+				if (element.getText().equals("Apr 2005")) {
 					assertTrue(printout);
 				}
 			}
@@ -305,7 +326,7 @@ public class OverwriteRvuNoCMSResults extends GoHelper {
 			UcqcHelper.updateDepartment("3110");
 			doDropdownSelectUsingOptionText(costing.getRvuMaintenanceDropdownEffectiveMonthStartMonthDropdown(),
 					costing.getRvuMaintenanceDropdownEffectiveMonthStartMonthOptions(), "Apr");
-					//Shilpa updated the month as the month is not available in dropdown 1.21.2025
+			// Shilpa updated the month as the month is not available in dropdown 1.21.2025
 //			doDropdownSelectUsingOptionText(costing.getRvuMaintenanceDropdownEffectiveMonthStartYearDropdown(),
 //					costing.getRvuMaintenanceDropdownEffectiveMonthStartYearOptions(), "2004");
 			doDropdownSelectUsingOptionText(costing.getRvuMaintenanceDropdownEffectiveMonthStartYearDropdown(),

@@ -777,13 +777,13 @@ public class ContractModelsHelper extends GoHelper {
 		  }
 	  
 	  //File upload
-	  public static void uploadTheFileusingAutoIT(WebDriver driver, String exeFile, String uploadFile) {
+	
+	  public static void uploadTheFileusingAutoIT(WebDriver driver, String exeFile) {
 			try {
-				Runtime.getRuntime().exec(exeFile + " " + uploadFile);
+				Runtime.getRuntime().exec(exeFile);
 			} catch (Exception e) {
 			}
 		}
-	  
 	  public static void getContractElementList(String contractModel) {
 		  List<WebElement> elementList=ContractingMap.getCostingModelElementList();
 		  for (WebElement costingElement : elementList) {

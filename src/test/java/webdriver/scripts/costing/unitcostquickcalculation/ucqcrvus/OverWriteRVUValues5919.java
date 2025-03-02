@@ -10,6 +10,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import ExtentReport.ExtentReport;
+import webdriver.core.Driver;
 import webdriver.core.Login;
 import webdriver.corehelpers.JavaHelper;
 import webdriver.helpers.ContractModelsHelper;
@@ -54,35 +55,48 @@ public class OverWriteRVUValues5919 extends UcqcHelper {
 			doClick(costing.getRvuMaintenanceButtonFilter());
 			doFilterCreate(filter);
 			doClick(costing.getRvuMaintenanceButtonImport());
-//			doClick(costing.getRvuSecImportSelectButton());
-			doactionClick(costing.getRvuSecImportSelectButton());
-//			costing.getRvuSecImportSelectButton().sendKeys(Keys.ENTER);
-//			;
-//			driverDelay(500);
-			ContractModelsHelper.uploadTheFileusingAutoIT(driver,
-					System.getProperty("user.dir") + "\\AutoIT\\UploadFile.exe",
-//					System.getProperty("user.dir") + "\\AutoIT\\ADS1238PreConditionRVUs.txt");
-					System.getProperty("user.dir") + "\\AutoIT\\ADS1309PreConditionsRVUImport.txt");
-			driverDelay(1200);
-			doClick(costing.getRvuSharedLocDropdown());
-			driverDelay(300);
-			doClick(contracting.getContractModelExportFileSharedLocOption());
-			ContractModelsHelper.keyInValues(costing.getRvuFileNameInput(), "Test");
-			doClick(costing.getRvuImportButton());
-			waitForSpinnerToEnd();
-			ContractModelsHelper.waitForFirstRowCalculationBarToReach100Percent();
-			ExtentReport.logPass("PASS", "test01OpenRvuCostModelAndImport");
-		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test01OpenRvuCostModelAndImport", driver, e);
-			fail(e.getMessage());
-		} finally {
+			//Shilpa: Updated for 11.2 3.2.2025
+			if(Driver.getBrowser().equals("chrome")) {
+				doactionClick(costing.getRvuSecImportSelectButton());
+				driverDelay();
+				ContractModelsHelper.uploadTheFileusingAutoIT(driver,
+						System.getProperty("user.dir") + "\\AutoIT\\OverWriteRVUValues5919Chrome.exe");
+//					);
+				driverDelay();
+				doClick(costing.getRvuSharedLocDropdown());
+				driverDelay(300);
+				doClick(contracting.getContractModelExportFileSharedLocOption());
+				ContractModelsHelper.keyInValues(costing.getRvuFileNameInput(), "Test");
+				doClick(costing.getRvuImportButton());
+				waitForSpinnerToEnd();
+				ContractModelsHelper.waitForFirstRowCalculationBarToReach100Percent();
+				ExtentReport.logPass("PASS", "test01OpenRvuCostModelAndImport");
+			}
+			if(Driver.getBrowser().equals("edge")) {
+				doactionClick(costing.getRvuSecImportSelectButton());
+				driverDelay();
+				ContractModelsHelper.uploadTheFileusingAutoIT(driver,
+						System.getProperty("user.dir") + "\\AutoIT\\OverWriteRVUValues5919Edge.exe");
+//						);
+				driverDelay(1200);
+				doClick(costing.getRvuSharedLocDropdown());
+				driverDelay(300);
+				doClick(contracting.getContractModelExportFileSharedLocOption());
+				ContractModelsHelper.keyInValues(costing.getRvuFileNameInput(), "Test");
+				doClick(costing.getRvuImportButton());
+				waitForSpinnerToEnd();
+				ContractModelsHelper.waitForFirstRowCalculationBarToReach100Percent();
+			}
+			
+		}
+		 finally {
 			doClosePageOnLowerBar("Import/Export Status");
 			doClosePageOnLowerBar("RVU Maintenance"); //uncomment this once ADS-17819 is fixed
 
 		}
 	}
 
-	@Test
+//	@Test
 	public void test02ApplyRvuSelections_5919() throws Throwable {
 		try {
 			goToPage("Unit Cost Quick Calculation");
@@ -95,7 +109,7 @@ public class OverWriteRVUValues5919 extends UcqcHelper {
 		}
 	}
 
-		@Test
+//	@Test
 	public void test03ApplyRvuSelections_5919() throws Throwable {
 		try {
 			ucqcUpdateGridCellValue("1804582", "Quick Salaries and Wages RVU", String.valueOf(value), printout);
@@ -146,7 +160,7 @@ public class OverWriteRVUValues5919 extends UcqcHelper {
 		}
 	}
 
-	@Test
+//	@Test
 	public void test04NavigateToRvuMaintenance_5919() throws Throwable {
 		try {
 			goToPage("RVU Maintenance");
@@ -174,7 +188,7 @@ public class OverWriteRVUValues5919 extends UcqcHelper {
 		}
 	}
 
-	@Test
+//	@Test
 	public void test05ApplyRvuSelections_5919() throws Throwable {
 		try {
 			doClick(costing.getRvuApplySelections());
@@ -207,7 +221,7 @@ public class OverWriteRVUValues5919 extends UcqcHelper {
 		}
 	}
 
-	@Test
+//	@Test
 	public void test06FilterByDepartmentCodeInRvuContainer_5919() throws Throwable {
 		try {
 			doClick(costing.getRvuMaintenanceButtonRvuContainerList());

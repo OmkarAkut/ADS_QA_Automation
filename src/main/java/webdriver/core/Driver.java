@@ -99,6 +99,29 @@ public class Driver {
     }
   }
 
+  public static String getBrowser() {
+	  FileInputStream str = null;
+	    System.out.println(projectPath+ " this is path");
+	    try {
+	      str = new FileInputStream(PROPS);
+	    } catch (Exception e) {
+	      fail("Cannot locate properties file");
+	    }
+	    Properties props = new Properties();
+	    try {
+			props.load(str);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    if (props.getProperty("BROWSER") != null) {
+	        browser = props.getProperty("BROWSER").toLowerCase();
+	      } else {
+	        fail("ERROR: Browser property not available.");
+	      }
+	return browser;
+	  
+  }
   private static void getPropertiesFromFile() throws IOException {
     FileInputStream str = null;
     System.out.println(projectPath+ " this is path");
@@ -251,10 +274,11 @@ public class Driver {
 		else if (browser.equals("edge")) {
 			 WebDriverManager.edgedriver().setup();
 			  EdgeOptions options =new EdgeOptions();
+//			  options.addArguments("--disable-mobile-upload");
 			  options.addArguments("--remote-allow-origins=*");
 			  options.addArguments("--ignore-certificate-errors", "start-maximized");
 			  driver = new EdgeDriver(options);
-			  
+			  options.addArguments("--disable-mobile-upload");
 			}else {
 		  fail("ERROR: Driver object not set.");
 		}
@@ -287,10 +311,12 @@ public class Driver {
 		else if (browser.equals("edge")) {
 			 WebDriverManager.edgedriver().setup();
 			  EdgeOptions options =new EdgeOptions();
+			    options.addArguments("--disable-features=msEdgeUploadFromMobile"); 
+
 			  options.addArguments("--remote-allow-origins=*");
 			  options.addArguments("--ignore-certificate-errors", "start-maximized");
 			  driver = new EdgeDriver(options);
-			  
+//			  options.addArguments("--disable-mobile-upload");
 			}else {
 		  fail("ERROR: Driver object not set.");
 		}

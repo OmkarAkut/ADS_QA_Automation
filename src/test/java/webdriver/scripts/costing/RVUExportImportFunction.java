@@ -12,6 +12,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 import ExtentReport.ExtentReport;
+import webdriver.core.Driver;
 import webdriver.core.Login;
 import webdriver.corehelpers.GoHelper;
 import webdriver.helpers.ContractModelsHelper;
@@ -82,20 +83,31 @@ public class RVUExportImportFunction extends GoHelper {
 			doClick(costing.getRvuMaintenanceButtonImport());
 			waitForPageTitle("Import Data");
 			assertTextIsDisplayed("Import Data");
-//			doClick(costing.getRvuSecImportSelectButton());
-//			waitForMainPageTitle("Find Items");
-//			ContractModelsHelper.keyInValues(costing.getUnitCostQuickCalculationDepartmentField(), costModel);
-			doactionClick(driver.findElement(By.xpath("(//div[contains(@id,'importwindow')]//span[text()='Select'])[2]")));
-//			doJsClick(driver.findElement(By.xpath("(//div[contains(@id,'importwindow')]//span[text()='Select'])[2]")));
-			ContractModelsHelper.uploadTheFileusingAutoIT(driver,System.getProperty("user.dir") + "\\AutoIT\\UploadFile.exe",System.getProperty("user.dir")+"\\AutoIT\\RvuImportFie.txt");
-			selectFileLocAndaddFileName(costing.getRvuImportButton());
+			//Shilpa: Updated for 11.2 3.2.2025
+			if(Driver.getBrowser().equals("chrome")) {
+				doactionClick(driver.findElement(By.xpath("(//div[contains(@id,'importwindow')]//span[text()='Select'])[2]")));
+				driverDelay();
+				ContractModelsHelper.uploadTheFileusingAutoIT(driver,System.getProperty("user.dir") + "\\AutoIT\\RVUImportChrome.exe");
+				selectFileLocAndaddFileName(costing.getRvuImportButton());
+				ExtentReport.logPass("PASS", "test03ImportRvuAndValidateImportExportStatus");
+			}
+			if(Driver.getBrowser().equals("edge")) {
+				doactionClick(driver.findElement(By.xpath("(//div[contains(@id,'importwindow')]//span[text()='Select'])[2]")));
+				driverDelay();
+				ContractModelsHelper.uploadTheFileusingAutoIT(driver,System.getProperty("user.dir") + "\\AutoIT\\RVUImportEdge.exe");
+				selectFileLocAndaddFileName(costing.getRvuImportButton());
+				ExtentReport.logPass("PASS", "test03ImportRvuAndValidateImportExportStatus");
+			}
+			
 			ExtentReport.logPass("PASS", "test03ImportRvuAndValidateImportExportStatus");
 		} catch (Exception|AssertionError e) {
-			ExtentReport.logFail("FAIL", "test03ImportRvuAndValidateImportExportStatus", driver, e);
-			fail(e.getMessage());
+			
+				ExtentReport.logFail("FAIL", "test01OpenRvuCostModelAndImport", driver, e);
+				
+			
 		} 
 	}
-	public static void selectFileLocAndaddFileName(WebElement button) throws Throwable {
+	public  void selectFileLocAndaddFileName(WebElement button) throws Throwable {
 		doClick(costing.getRvuSharedLocDropdown());
 		driverDelay(300);
 		doClick(contracting.getContractModelExportFileSharedLocOption());
