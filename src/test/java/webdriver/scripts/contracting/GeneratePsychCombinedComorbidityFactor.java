@@ -65,6 +65,7 @@ public class GeneratePsychCombinedComorbidityFactor extends CalculationHelper {
 		
 //			ContractingMap.getContractFileSelect().sendKeys(Keys.ENTER);;
 			driverDelay(600);
+			//Shilpa update for 11.2 on 3.2.2025
 			if (Driver.getBrowser().equals("chrome")) {
 				Actions action=new Actions(driver);
 				action.moveToElement(ContractingMap.getContractFileSelect()).click().build().perform();

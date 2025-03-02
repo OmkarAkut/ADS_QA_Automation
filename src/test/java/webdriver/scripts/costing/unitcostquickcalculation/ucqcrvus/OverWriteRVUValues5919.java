@@ -96,7 +96,7 @@ public class OverWriteRVUValues5919 extends UcqcHelper {
 		}
 	}
 
-//	@Test
+	@Test
 	public void test02ApplyRvuSelections_5919() throws Throwable {
 		try {
 			goToPage("Unit Cost Quick Calculation");
@@ -109,7 +109,7 @@ public class OverWriteRVUValues5919 extends UcqcHelper {
 		}
 	}
 
-//	@Test
+	@Test
 	public void test03ApplyRvuSelections_5919() throws Throwable {
 		try {
 			ucqcUpdateGridCellValue("1804582", "Quick Salaries and Wages RVU", String.valueOf(value), printout);
@@ -160,7 +160,7 @@ public class OverWriteRVUValues5919 extends UcqcHelper {
 		}
 	}
 
-//	@Test
+	@Test
 	public void test04NavigateToRvuMaintenance_5919() throws Throwable {
 		try {
 			goToPage("RVU Maintenance");
@@ -188,7 +188,7 @@ public class OverWriteRVUValues5919 extends UcqcHelper {
 		}
 	}
 
-//	@Test
+	@Test
 	public void test05ApplyRvuSelections_5919() throws Throwable {
 		try {
 			doClick(costing.getRvuApplySelections());
@@ -221,7 +221,7 @@ public class OverWriteRVUValues5919 extends UcqcHelper {
 		}
 	}
 
-//	@Test
+	@Test
 	public void test06FilterByDepartmentCodeInRvuContainer_5919() throws Throwable {
 		try {
 			doClick(costing.getRvuMaintenanceButtonRvuContainerList());
