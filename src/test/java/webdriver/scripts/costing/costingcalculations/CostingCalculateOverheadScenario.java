@@ -16,6 +16,7 @@ import webdriver.core.Login;
 import webdriver.helpers.CalculationHelper;
 import webdriver.helpers.ContractModelsHelper;
 import webdriver.maps.ContractingMap;
+import webdriver.maps.CostingMap;
 import webdriver.maps.mapbuilder.BuildMap;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class CostingCalculateOverheadScenario extends CalculationHelper {
@@ -24,7 +25,8 @@ public class CostingCalculateOverheadScenario extends CalculationHelper {
 	static String CalculationScenario = "v11.2 REGRESSION OH Scenario";
 	static String currentDateTime = new SimpleDateFormat("HH.mm.ss").format(new java.util.Date());
 	static ContractingMap modelMap;
-
+	static String scenarioName;
+	static String[] filterCalcScenario ;
 	/** Regression: Test script for ADS-5991 */
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
@@ -46,9 +48,7 @@ public class CostingCalculateOverheadScenario extends CalculationHelper {
 	@Test
 	public void test01AdsLoginLogout_ADS_5991() throws Throwable {
 		try {
-//      doSearchForModel("v102 REGRESSION Overhead Model");
 			doSearchForModel("2005 Overhead Allocation-Test2023");
-//      tableDoubleClickCellFirstColumn("v102 REGRESSION Overhead Model");
 			tableDoubleClickCellFirstColumn("2005 Overhead Allocation-Test2023");
 			driverDelay(4000);
 			doClickTreeItem("Allocate Overhead");
@@ -66,6 +66,7 @@ public class CostingCalculateOverheadScenario extends CalculationHelper {
 			// Omkar (19/7/2022) : The below xpath is no more valid
 			// doClick(driver.findElement(By.xpath("//button/span[text()='Calculate']")));
 			// SHILPA update xpath for 11.2 on 12.01.2023
+			scenarioName=CalculationScenario + currentDateTime;
 			ContractModelsHelper.keyInValues(driver.findElement(By.name("name")),
 					CalculationScenario + currentDateTime);
 			doClick(modelMap.getContractModelButtonSaveAs());
@@ -76,17 +77,8 @@ public class CostingCalculateOverheadScenario extends CalculationHelper {
 			calculationStatusPageOpenViewDialog();
 			assertViewLogTitle(viewLogTitle);
 			checkForRecordsProcessed("Inserting 1 OH Received records");
-//      doClick(driver.findElement(By.xpath("(//div[contains(@id,'window')]//span[contains(@id,'btnInnerEl')]//parent::button)[6]")));
-//      driverDelay();
 			confirmCalculationStatusDetailsContains("Process Completed");
 			closeViewDialog();
-
-//      waitForCalculationToEndAndVerifySummaryDetailsStringOnDialogAndCloseDialog(
-//              "Number of batches to process: 1"
-//      );
-
-			// click last page icon
-//      driver.findElement(By.xpath("//*[@class='x-btn-icon pagging-tbar-last-button']")).click();
 			waitForSpinnerToEnd();
 
 			deleteMyCalculationStatusFirstRow();
@@ -95,8 +87,12 @@ public class CostingCalculateOverheadScenario extends CalculationHelper {
 			Thread.sleep(500);
 			doClick(driver.findElement(By.xpath(
 					"//div[contains(@id,'overheadmodelscenarioform')]//following::span[contains(@id,'button')][text()='Save & Close']")));
-//      doClick(driver.findElement(By.xpath("//button/span[text()='Save & Close']")));
-//      doClosePageOnLowerBar("v102 REGRESSION...");
+			//Shilpa: Update for 11.2 : deleting created records, to avoid pile up of records 17.03.2025
+			doClick(CostingMap.getOverheadModelFilterButton());
+			String[] filterCalcScenario = { "Name", "Is", "Equal To", scenarioName };
+			doFilterCreate(filterCalcScenario);
+			doClick(CostingMap.getOverheadModelDeleteButton());
+			doClick(CostingMap.getWarningDeleteButton());
 			doClosePageOnLowerBar("2005 Overhead...");
 			doClosePageOnLowerBar("Costing Models");
 

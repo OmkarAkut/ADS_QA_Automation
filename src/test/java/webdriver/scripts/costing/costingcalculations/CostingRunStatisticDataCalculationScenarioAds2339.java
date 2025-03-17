@@ -37,7 +37,7 @@ public class CostingRunStatisticDataCalculationScenarioAds2339 extends Calculati
 	static String updateStatisticDataCalculationScenari = "Updated v11.2 REGRESSION Stat Data Calc";// Update as per
 																										// version
 																										// number
-	static String[] filterScenario= {"Senario Name","Is","Equal To",updateStatisticDataCalculationScenari};
+	static String[] filterScenario= {"Scenario Name","Is","Equal To",updateStatisticDataCalculationScenari};//Shilpa updated name 17.03.2025
 	static String[] filterCalcScenario = { "Name", "Is", "Equal To", statisticDataCalculationScenario };
 	static String[] updatedfilterCalcScenario = { "Name", "Is", "Equal To", updateStatisticDataCalculationScenari };
 

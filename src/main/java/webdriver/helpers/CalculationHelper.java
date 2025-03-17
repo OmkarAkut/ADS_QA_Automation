@@ -313,8 +313,11 @@ public class CalculationHelper extends GoHelper {
 //		waitForPresenceOfElement("(//div[not(contains(@class,'disabled'))]//td[contains(@class,'x-grid-cell x-grid-td x-grid-cell-gridcolumn-1490 x-unselectable')]/div/span)[1]");
 //		driver.findElement(By.xpath("(//div[not(contains(@class,'disabled'))]//td[contains(@class,'x-grid-cell x-grid-td x-grid-cell-gridcolumn-1490 x-unselectable')]/div/span)[1]")).click();
 		Thread.sleep(1000);
-		waitForPresenceOfElement("(//*[contains(@id,'calculationstatus') and contains(@id,'header')]/..//span[text()='View'])[2]");
-		driver.findElement(By.xpath("(//*[contains(@id,'calculationstatus') and contains(@id,'header')]/..//span[text()='View'])[2]")).click();
+//		waitForPresenceOfElement("(//*[contains(@id,'calculationstatus') and contains(@id,'header')]/..//span[text()='View'])[2]");
+//		driver.findElement(By.xpath("(//*[contains(@id,'calculationstatus') and contains(@id,'header')]/..//span[text()='View'])[2]")).click();
+		//Shilpa: Xpath update : 11.2 : 17.03.2025
+		waitForPresenceOfElement("(//*[contains(@id,'calculationstatus') and contains(@id,'header')]/..//a[text()='View'])[2]");
+		driver.findElement(By.xpath("(//*[contains(@id,'calculationstatus') and contains(@id,'header')]/..//a[text()='View'])[2]")).click();
 		waitForDisplayedSpinnerToEnd();
 		driverDelay(4000);
 	}
@@ -578,6 +581,7 @@ public class CalculationHelper extends GoHelper {
 				ContractModelsHelper.scrollToView("//*[contains(text(),'"+text+"')]");
 				if(driver.findElement(By.xpath("//*[contains(text(),'"+text+"')]")).isDisplayed()) {
 					assertTrue(printout);
+					break;
 				}
 				
 			} catch (Exception  e) {
@@ -585,7 +589,7 @@ public class CalculationHelper extends GoHelper {
 					ContractModelsHelper.scrollToView("//*[contains(text(),'"+text+"')]");
 				} catch (Exception e1) {
 					ModelLibraryMap.getGoToNextPage().click();
-					Thread.sleep(1200);
+					driverDelay();
 					continue;
 				}
 				

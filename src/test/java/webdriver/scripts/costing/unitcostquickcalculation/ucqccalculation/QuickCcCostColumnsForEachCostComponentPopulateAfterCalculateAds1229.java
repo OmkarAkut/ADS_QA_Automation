@@ -29,7 +29,7 @@ public class QuickCcCostColumnsForEachCostComponentPopulateAfterCalculateAds1229
   private static ModelLibraryMap modelMap;
   private static ContractingMap contractMap;
 	String[] filter = { "Scenario Name", "Is", "Equal To", "*CM1 TB MHFY05 After Vol Change_UCQC" };
-
+	
  
   /** ADS-1229: Quick CC Cost columns for each cost component populate after Calculate (dev story ADS-672).
   This script confirms that quick cost component cost columns populate for each cost component after Calculate.
@@ -89,8 +89,9 @@ public class QuickCcCostColumnsForEachCostComponentPopulateAfterCalculateAds1229
 		WebElement calculationStatusRow1ScenarioName = driver.findElement(By.xpath("//*[contains(@class,'x-grid-row')][1]/descendant::*[contains(@class,'x-grid-cell-inner')][2]"));
 		System.out.println(calculationStatusRow1ScenarioName.getText());
 		assertElementText(calculationStatusRow1ScenarioName, "*CM1 TB MHFY05 After Vol Change_UCQC", printout);
-		waitForPresenceOfElement("(//*[contains(@id,'calculationstatus') and contains(@id,'header')]/..//span[text()='View'])[2]");
-		driver.findElement(By.xpath("(//*[contains(@id,'calculationstatus') and contains(@id,'header')]/..//span[text()='View'])[2]")).click();
+		doClick("(//*[contains(@id,'calculationstatus') and contains(@id,'header')]/..//a[text()='View'])[2]");
+//		waitForPresenceOfElement("(//*[contains(@id,'calculationstatus') and contains(@id,'header')]/..//span[text()='View'])[2]");
+//		driver.findElement(By.xpath("(//*[contains(@id,'calculationstatus') and contains(@id,'header')]/..//span[text()='View'])[2]")).click();
 		waitForDisplayedSpinnerToEnd();
 		driverDelay(2000);
 		assertElementIsDisplayedWithXpath("//*[contains(text(),'*CM1 TB MHFY05 After Vol Change')]");

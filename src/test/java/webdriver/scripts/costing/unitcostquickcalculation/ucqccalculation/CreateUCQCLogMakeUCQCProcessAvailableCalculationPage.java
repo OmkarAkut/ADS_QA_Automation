@@ -82,6 +82,8 @@ public class CreateUCQCLogMakeUCQCProcessAvailableCalculationPage extends UcqcHe
 			doClick("(//span[text()='Continue']/../../..)");
 			waitForDisplayedSpinnerToEnd();
 			driverDelay();
+//			calculationHelper.calculationStatusPageOpenViewDialog();
+			//Shilpa: Update for 11.2 : 17.03.2025
 			calculationHelper.calculationStatusPageOpenViewDialog();
 			calculationHelper.closeViewDialog();
 		}catch(Exception e) {

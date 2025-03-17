@@ -1897,8 +1897,8 @@ public class CostingMap extends MapConfig {
 		return getEncCostModelCancelCloseButton;
 	}
 	@FindBy(xpath = "//div[contains(@id,'messagebox')]//span[text()='Delete']")
-	private  WebElement getWarningDeleteButton;
-	public   WebElement getWarningDeleteButton() {
+	private static WebElement getWarningDeleteButton;
+	public static   WebElement getWarningDeleteButton() {
 		return getWarningDeleteButton;
 	}
 	@FindBy(xpath = "(//div[@class='x-boundlist-list-ct'])[1]//li")
@@ -2496,4 +2496,12 @@ public class CostingMap extends MapConfig {
 	@FindBy(xpath = "//span[contains(@class,'next-button-multiselect')]")
 	private static WebElement getEntitiesNextButton;
 	public static WebElement getEntitiesNextButton() {return getEntitiesNextButton;}
+	
+	@FindBy(xpath = "//div[text()='Overhead Model Calculation Scenarios']//following::span[text()='Filter']")
+	private static WebElement getOverheadModelFilterButton;
+	public static WebElement getOverheadModelFilterButton() {return getOverheadModelFilterButton;}
+	
+	@FindBy(xpath = "//div[text()='Overhead Model Calculation Scenarios']//following::span[text()='Delete']")
+	private static WebElement getOverheadModelDeleteButton;
+	public static WebElement getOverheadModelDeleteButton() {return getOverheadModelDeleteButton;}
 }
