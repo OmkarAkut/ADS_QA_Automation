@@ -70,7 +70,6 @@ public class CostingCalculateOverheadScenario extends CalculationHelper {
 			ContractModelsHelper.keyInValues(driver.findElement(By.name("name")),
 					CalculationScenario + currentDateTime);
 			doClick(modelMap.getContractModelButtonSaveAs());
-
 			doClick(driver.findElement(By.xpath(
 					"//div[contains(@id,'overheadmodelscenarioform')]//following::span[contains(@id,'button')][text()='Calculate']")));
 			waitForFirstRowCalculationBarToReach100Percent();
@@ -80,7 +79,6 @@ public class CostingCalculateOverheadScenario extends CalculationHelper {
 			confirmCalculationStatusDetailsContains("Process Completed");
 			closeViewDialog();
 			waitForSpinnerToEnd();
-
 			deleteMyCalculationStatusFirstRow();
 			doClosePageOnLowerBar("Calculation Status");
 			waitForAjaxExtJs();
@@ -95,7 +93,6 @@ public class CostingCalculateOverheadScenario extends CalculationHelper {
 			doClick(CostingMap.getWarningDeleteButton());
 			doClosePageOnLowerBar("2005 Overhead...");
 			doClosePageOnLowerBar("Costing Models");
-
 			waitForAjaxExtJs();
 			ExtentReport.logPass("PASS", "testAdsLoginLogout");
 		} catch (Exception | AssertionError e) {

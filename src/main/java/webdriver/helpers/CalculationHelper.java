@@ -315,9 +315,9 @@ public class CalculationHelper extends GoHelper {
 		Thread.sleep(1000);
 //		waitForPresenceOfElement("(//*[contains(@id,'calculationstatus') and contains(@id,'header')]/..//span[text()='View'])[2]");
 //		driver.findElement(By.xpath("(//*[contains(@id,'calculationstatus') and contains(@id,'header')]/..//span[text()='View'])[2]")).click();
-		//Shilpa: Xpath update : 11.2 : 17.03.2025
-		waitForPresenceOfElement("(//*[contains(@id,'calculationstatus') and contains(@id,'header')]/..//a[text()='View'])[2]");
-		driver.findElement(By.xpath("(//*[contains(@id,'calculationstatus') and contains(@id,'header')]/..//a[text()='View'])[2]")).click();
+		//Shilpa: Xpath update : 11.2 : 18.03.2025
+		waitForPresenceOfElement("((//*[contains(@id,'calculationstatus') and contains(@id,'header')]/..//a[text()='View']))[1]");
+		driver.findElement(By.xpath("((//*[contains(@id,'calculationstatus') and contains(@id,'header')]/..//a[text()='View']))[1]")).click();
 		waitForDisplayedSpinnerToEnd();
 		driverDelay(4000);
 	}
