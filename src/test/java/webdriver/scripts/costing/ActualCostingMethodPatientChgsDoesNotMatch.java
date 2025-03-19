@@ -80,6 +80,8 @@ public class ActualCostingMethodPatientChgsDoesNotMatch extends CalculationHelpe
 			doClick(costing.getCostModelScenarioCalculationButtonCalculate());
 			//Shilpa :Update for 11.2 : 19.10.2024
 			doFilterCalculationPage(filterCostModelCalcScenarioEntity);
+			//Shilpa: added forr 11.2 : 19.03.2025
+			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
 //			confirmCalculationStatusDetailsContains("  Department: D3120 DEPT D3120");
 //			confirmCalculationStatusDetailsContains("  Sum Actual Costs = ");
