@@ -80,7 +80,10 @@ public class DialogsMap extends MapConfig {
 
 //    Omkar 30/3/2023 : Changes in xpath fpr ADS 11.2
 //    @FindBy(xpath = "//div[@class='x-btn x-box-item x-toolbar-item x-btn-default-toolbar-small x-noicon x-btn-noicon x-btn-default-toolbar-small-noicon']//*[text()='Cancel & Close']")
-    @FindBy(xpath = "//div[@class='x-btn x-unselectable x-box-item x-toolbar-item x-btn-default-toolbar-small']//*[text()='Cancel & Close']")
+//    @FindBy(xpath = "//div[@class='x-btn x-unselectable x-box-item x-toolbar-item x-btn-default-toolbar-small']//*[text()='Cancel & Close']")
+    //Shilpa : xpath : update : 18.03.2025
+    @FindBy(xpath = "//a[@class='x-btn x-unselectable x-box-item x-toolbar-item x-btn-default-toolbar-small']//*[text()='Cancel & Close']")
+
     private WebElement statusFilterDialogButtonCancelAndClose;
     public WebElement getFilterDialogButtonCancelAndClose() {return statusFilterDialogButtonCancelAndClose;}
 

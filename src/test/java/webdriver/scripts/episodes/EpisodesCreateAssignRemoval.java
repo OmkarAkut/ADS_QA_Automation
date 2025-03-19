@@ -59,6 +59,7 @@ public class EpisodesCreateAssignRemoval extends CalculationHelper {
 	@Test
 	public void test01EpisodeCreation_6296() throws Throwable {
 		try {
+			System.out.println(episodeModelName);
 			doClick(contractingMap.getNewContractModelButton());
 			waitForElementToBeVisible(modelMap.getNewEpisodeModelPopUp());
 			contractingMap.getNewFolderNameInput().sendKeys(episodeModelName);

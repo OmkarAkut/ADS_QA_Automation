@@ -5,11 +5,11 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 
-//	DataMaintenanceAtoZTabPageLoads.class,
-//	DataMaintenanceTreePageLoads.class,
+	DataMaintenanceAtoZTabPageLoads.class,
+	DataMaintenanceTreePageLoads.class,
 	RunEncounterServiceClassificationScheme.class,
-//	CreateEditDeleteNewStructurePopulations.class,
-//	CreateDeleteCostMethodDeptMasterDischargeStatus.class,
+	CreateEditDeleteNewStructurePopulations.class,
+	CreateDeleteCostMethodDeptMasterDischargeStatus.class,
 	
 })
 

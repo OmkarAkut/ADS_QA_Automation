@@ -291,9 +291,11 @@ public class UcqcNavigateOnLineHelpAds1428
 		driver.switchTo().parentFrame();
 		doClick(getWebElement(getHelpTocXpath("Field Descriptions")));
 		driverDelay(2000);
-		doClick(getWebElement("//li[28]/div/span/a[text()='Unit Cost Quick Calculation']"));
+//		doClick(getWebElement("//li[28]/div/span/a[text()='Unit Cost Quick Calculation']"));
+		//Shilpa:Xpath Update: 11.2 :18.03.2025
+		doClick(getWebElement("//a[text()='Field Descriptions']//following::ul[@class='tree inner']//following-sibling::li/div/span/a[text()='Unit Cost Quick Calculation']"));
 		driverDelay(3000);
-		doClick(getWebElement("//li[28]/ul/li[1]/div/span/a[text()='Unit Cost Quick Calculation']"));
+		doClick(getWebElement("//a[text()='Field Descriptions']//following::ul[@class='tree inner']//following-sibling::li/div/span/a[text()='Unit Cost Quick Calculation']//following::li/div/span/a[text()='Unit Cost Quick Calculation']"));
 		driverDelay(2000);
 		assertHelpPageHeader("Unit Cost Quick Calculation",printout);
 		ExtentReport.logPass("PASS", "test08aVerifyOnlineHelpPagesForUcqcSectionFieldDescriptionsUcqc");
@@ -308,7 +310,9 @@ public class UcqcNavigateOnLineHelpAds1428
 	  
     try {
 		driver.switchTo().parentFrame();
-		doClick(getWebElement("//li[28]/ul/li[2]/div/span/a[text()='Copy To Quick RVUs']"));
+//		doClick(getWebElement("//li[28]/ul/li[2]/div/span/a[text()='Copy To Quick RVUs']"));
+		//Shilpa:Xpath update: 11.2 :18.03.2025
+				doClick(getWebElement("//a[text()='Unit Cost Quick Calculation']//following::ul[@class='tree inner']/li/div/span/a[text()='Copy To Quick RVUs']"));
 		assertHelpPageHeader("Copy To Quick RVUs",printout);
 		ExtentReport.logPass("PASS", "test08bVerifyOnlineHelpPagesForUcqcSectionFieldDescriptionsCopyToQuickRvus");
 	} catch (Exception|AssertionError e) {
@@ -325,7 +329,9 @@ public class UcqcNavigateOnLineHelpAds1428
 	  
     try {
 		driver.switchTo().parentFrame();
-		doClick(getWebElement("//li[28]/ul/li[3]/div/span/a[text()='Overwrite RVU Maintenance']"));
+//		doClick(getWebElement("//li[28]/ul/li[3]/div/span/a[text()='Overwrite RVU Maintenance']"));
+		//Shilpa:Xpath update: 11.2 :18.03.2025
+		doClick(getWebElement("//a[text()='Unit Cost Quick Calculation']//following::ul[@class='tree inner']/li/div/span/a[text()='Overwrite RVU Maintenance']"));
 		assertHelpPageHeader("Overwrite RVU Maintenance",printout);
 		ExtentReport.logPass("PASS", "test08cVerifyOnlineHelpPagesForUcqcSectionFieldDescriptionsOverwriteRvuMaintenance");
 	} catch (Exception|AssertionError e) {
