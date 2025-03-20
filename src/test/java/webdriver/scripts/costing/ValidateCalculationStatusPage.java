@@ -143,6 +143,7 @@ public class ValidateCalculationStatusPage extends CalculationHelper {
 	public void test04SelectPriceListStartEndMonth_5771() throws Throwable {
 		try {
 			driverDelay();
+			CostingMap.getCostModelPriceListDrpdown().click();
 			doDropdownSelectUsingOptionText(
 					CostingMap.getCostModelPriceListDrpdown(),
 					CostingMap.getCostModelPriceListScenarioOptions(),
@@ -188,28 +189,18 @@ public class ValidateCalculationStatusPage extends CalculationHelper {
 			driverDelay();
 			Actions act=new Actions(driver);
 			act.moveToElement(modelMap.getContractModelCalcFilename()).click().sendKeys("Testing"+currentDateTime).perform();
-//			ContractModelsHelper.keyInValues(modelMap.getContractModelCalcFilename(), "Testing"+currentDateTime);
-//			doClick(modelMap.getContractModelCalcContinueBtn());
 			act.moveToElement(modelMap.getContractModelCalcContinueBtn()).click().perform();
-//			doJsClick(modelMap.getContractModelCalcContinueBtn());
-//			JavascriptExecutor executor = (JavascriptExecutor)driver;
-//			executor.executeScript("arguments[0].click();", modelMap.getContractModelCalcContinueBtn());
 			waitForDisplayedSpinnerToEnd();
 			driverDelay();
-			/*
-			String shared = costModel.concat(".zip");
-			assertElementIsDisplayed(driver.findElement(By.xpath("(//div[text()='"+costModel+"']//following::sftp_server[contains(text(),'"+shared+"')])[1]")), printout);
-			*/
-//			driver.findElement(By.xpath("(//div[text()='"+costModel+"']//following::span[text()='View'])[1]")).sendKeys(Keys.ARROW_LEFT);
-//			driver.findElement(By.xpath("(//div[text()='"+costModel+"']//following::span[text()='View'])[1]")).sendKeys(Keys.ENTER);
-
-			
-			driver.findElement(By.xpath("(//div[text()='"+costModel+"']//following::div[text()='Completed'])[1]/..")).click();
-			act.moveToElement(driver.findElement(By.xpath("(//div[text()='"+costModel+"']//following::span[text()='View'])[1]/.."))).sendKeys(Keys.ARROW_RIGHT).sendKeys(Keys.ARROW_RIGHT).sendKeys(Keys.ARROW_DOWN).build().perform();
-			act.moveToElement(driver.findElement(By.xpath("(//div[text()='"+costModel+"']//following::span[text()='View'])[1]/.."))).sendKeys(Keys.ARROW_UP).sendKeys(Keys.RIGHT).sendKeys(Keys.ENTER).perform();
+					driver.findElement(By.xpath("(//div[text()='"+costModel+"']//following::div[text()='Completed'])[1]/..")).click();
+//			act.moveToElement(driver.findElement(By.xpath("(//div[text()='"+costModel+"']//following::span[text()='View'])[1]/.."))).sendKeys(Keys.ARROW_RIGHT).sendKeys(Keys.ARROW_RIGHT).sendKeys(Keys.ARROW_DOWN).build().perform();
+//			act.moveToElement(driver.findElement(By.xpath("(//div[text()='"+costModel+"']//following::span[text()='View'])[1]/.."))).sendKeys(Keys.ARROW_UP).sendKeys(Keys.RIGHT).sendKeys(Keys.ENTER).perform();
+			act.moveToElement(driver.findElement(By.xpath("(//div[text()='"+costModel+"']//following::a[text()='View'])[1]/.."))).sendKeys(Keys.ARROW_RIGHT).sendKeys(Keys.ARROW_RIGHT).sendKeys(Keys.ARROW_DOWN).build().perform();
+			act.moveToElement(driver.findElement(By.xpath("(//div[text()='"+costModel+"']//following::a[text()='View'])[1]/.."))).sendKeys(Keys.ARROW_UP).sendKeys(Keys.RIGHT).sendKeys(Keys.ENTER).perform();
 			//Keyboard access not working ADS-11287
 			assertTextIsDisplayed("View Log");
-			doClick("(//div[text()='View Log']//following::span[text()='Cancel'])[1]");
+			driverDelay();
+			act.moveToElement(driver.findElement(By.xpath("(//div[text()='View Log']//following::span[text()='Cancel'])[1]/../../.."))).click().click().perform();
 			deleteCalculationStatusMyStatusPageFirstRow();
 			ExtentReport.logPass("PASS", "test05SaveAndCalculate");
 		}catch (Exception | AssertionError e) {

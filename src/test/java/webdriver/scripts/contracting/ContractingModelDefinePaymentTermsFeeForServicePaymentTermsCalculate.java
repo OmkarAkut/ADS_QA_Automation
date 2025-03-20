@@ -34,7 +34,7 @@ public class ContractingModelDefinePaymentTermsFeeForServicePaymentTermsCalculat
 
 	final static String[] columnsToSelect = { "ASESC-2836 IPPS KCentra A1", "ASESC-2836 IPPS KCentra A2",
 			"ASESC-2836 IPPS KCentra A3" };
-
+	 String[] filterCalc= {"Scenario Name","Is","Equal To",contractModelName};
 //	private static final String serviceModel = "MCR IPPS 2021";
 	private static final String serviceModel = "MCR IPPS 2020";// Shilpa updated 24.4.2024
 	private static final String priceMethodOption = "Medicare Inpatient PPS";
@@ -235,6 +235,7 @@ public class ContractingModelDefinePaymentTermsFeeForServicePaymentTermsCalculat
 			 * Thread.sleep(200); doFilterCreate(filterContractModel);
 			 */
 			doClick(ContractingMap.getContractFeeForServicePaymentCalculateButton());
+			doFilterCalculationPage(filterCalc);
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
 			assertViewLogTitle(contractModelName);
