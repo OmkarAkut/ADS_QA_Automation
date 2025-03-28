@@ -38,7 +38,8 @@ public class ValidateWarningForRvuMaintenancePopUpAds1249 extends UcqcHelper {
 		doMaximizeWindow();
 		ucqcDisplayChargeCodeGrid(
 		        "Marina",
-		        "*CM1 TB MHFY05 After Vol Change_UCQC",
+//		        "*CM1 TB MHFY05 After Vol Change_UCQC",ADS-21467
+		        "*CM2 TB MHFY05 No Price List - 2",
 		        "150 Marina Medical Center",
 		       // "3145  ENDOSCOPY",
 		        "3145", //venkat updated department filed data 21.09.2022

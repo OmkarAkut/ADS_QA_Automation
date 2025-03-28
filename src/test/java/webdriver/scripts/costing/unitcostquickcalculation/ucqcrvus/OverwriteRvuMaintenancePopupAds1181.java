@@ -74,8 +74,8 @@ public class OverwriteRvuMaintenancePopupAds1181 extends UcqcHelper {
       //Shilpa 19.09.2022 updated below line
 //      setUcqcCriteria("Marina", "*CM1 TB MHFY05 After Vol Change_UCQC", "150 Marina Medical Center", "3145  ENDOSCOPY", "Jan 2005 to Jan 2005");
 //      setUcqcCriteria("Marina", "*CM1 TB MHFY05 After Vol Change_UCQC", "150 Marina Medical Center", "3145", "Jan 2005 to Jan 2005");
-      setUcqcCriteria("Marina", "*CM1 TB MHFY05 After Vol Change_UCQC", "150 Marina Medical Center", "3145", "Apr 2004 to Mar 2005");
-
+//      setUcqcCriteria("Marina", "*CM1 TB MHFY05 After Vol Change_UCQC", "150 Marina Medical Center", "3145", "Apr 2004 to Mar 2005"); Issue ADS-21467
+      setUcqcCriteria("Marina", "*CM2 TB MHFY05 No Price List - 2", "150 Marina Medical Center", "3145", "Apr 2004 to Mar 2005");
       doClick(overwriteRvuMaint.getUnitCostQuickCalculationButtonApplySelections());
       ucqcWaitForSpinnerToEnd();
       Thread.sleep(1100);

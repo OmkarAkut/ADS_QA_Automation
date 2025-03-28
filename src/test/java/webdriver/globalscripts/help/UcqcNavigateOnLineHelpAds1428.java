@@ -27,7 +27,8 @@ public class UcqcNavigateOnLineHelpAds1428
   static CostingMap ucqcMap;
   static String[] ucqcRequiredFields = {
       "Marina",
-      "*CM1 TB MHFY05 After Vol Change_UCQC",
+//      "*CM1 TB MHFY05 After Vol Change_UCQC",ADS-21467
+      "*CM2 TB MHFY05 No Price List - 2",
       "150 Marina Medical Center",
      // "3145  ENDOSCOPY", 
         "3145",           //Venkat Exact value not taking in search field
