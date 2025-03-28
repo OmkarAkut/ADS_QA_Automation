@@ -45,7 +45,9 @@ public enum Users {
     //dbadminUser1("automationdbadmin1", "password"),
     //Custom Roles
     CustomRoleWithUcqcAdded("autotest-customwithucqc", "password"),
-    CustomRoleAllStandardRolesExceptUcqc("autotest-customallexceptucqc", "password"),
+//    CustomRoleAllStandardRolesExceptUcqc("autotest-customallexceptucqc", "password"),
+    CustomRoleAllStandardRolesExceptUcqc("autotestcustomallexceptucqc", "password"),
+
     AutoTestCostMgrXCostAnalyst("autotest-customwithucqc", "password"),
 	
 //****************added by Omkar*****************

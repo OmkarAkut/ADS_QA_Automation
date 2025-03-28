@@ -35,7 +35,7 @@ public enum Usersqa3 {
 
     //Custom Roles
     CustomRoleWithUcqcAdded("autotest-customwithucqc", "password"),
-    CustomRoleAllStandardRolesExceptUcqc("autotest-customallexceptucqc", "password"),
+    CustomRoleAllStandardRolesExceptUcqc("autotestcustomallexceptucqc", "password"),
     AutoTestCostMgrXCostAnalyst("autotest-customwithucqc", "password");
 
     // ===== Note: Do not alter below this line ===== //
