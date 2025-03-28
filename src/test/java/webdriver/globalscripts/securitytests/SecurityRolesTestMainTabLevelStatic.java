@@ -115,8 +115,8 @@ public class SecurityRolesTestMainTabLevelStatic extends LoginRolesTesting {
 
       {Roles.valueOf("AdHoc_Report_Designer")},
       {Roles.valueOf("Report_User")},
-//      {Roles.valueOf("Web_Intelligence_Designer")},//Uncomment once login issue for this user is fixed
-//      {Roles.valueOf("Web_Intelligence_User")},//Uncomment once login issue for this user is fixed
+      {Roles.valueOf("Web_Intelligence_Designer")},//Uncomment once login issue for this user is fixed
+      {Roles.valueOf("Web_Intelligence_User")},//Uncomment once login issue for this user is fixed
 
       {Roles.valueOf("Budgeting_User")},
       {Roles.valueOf("Analytics_Administrator")},

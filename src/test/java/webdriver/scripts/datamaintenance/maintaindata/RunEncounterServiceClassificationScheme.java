@@ -54,8 +54,9 @@ public class RunEncounterServiceClassificationScheme extends CalculationHelper {
 			tableDoubleClickCellFirstColumn(batch);
 			ExtentReport.logPass("PASS", "setupScript");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "Failure in setupScript", driver, e);
 			fail(e.getMessage());
+			ExtentReport.logFail("FAIL", "Failure in setupScript", driver, e);
+			
 		}
 	}
 
