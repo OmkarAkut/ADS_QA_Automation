@@ -438,7 +438,7 @@ public class GeneralElementsMap extends MapConfig {
     @FindBy(xpath = "//*[contains(@class,'bubbleContent')][contains(@id,'costing')]")
     private WebElement landingPageBubbleCostingContent;
     public WebElement getLandingPageBubbleCostingContent() {return landingPageBubbleCostingContent;}
-    @FindBy(xpath = "//*[contains(text(),'Define contract terms between buyers and sellers of services.')]")
+    @FindBy(xpath = "//*[contains(text(),'Determine the detailed cost of a procedure or charge item by building cost and overhead models.')]")
     private WebElement landingPageBubbleCostingContentText;
     public WebElement getLandingPageBubbleCostingContentText() {return landingPageBubbleCostingContentText;}
     @FindBy(xpath = "//*[contains(@src,'M-costing.png')]")
