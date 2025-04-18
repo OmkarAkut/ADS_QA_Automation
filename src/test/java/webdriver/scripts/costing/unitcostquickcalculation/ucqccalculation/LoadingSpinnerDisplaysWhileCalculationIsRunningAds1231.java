@@ -25,8 +25,8 @@ public class LoadingSpinnerDisplaysWhileCalculationIsRunningAds1231
   static CostingMap totalQuickCost;
   static String[] ucqcRequiredFields = {
           "Marina",
-          "*CM1 TB MHFY05 After Vol Change_UCQC",
-//          "*CM2 TB MHFY05 No Price List - 2",
+//          "*CM1 TB MHFY05 After Vol Change_UCQC",
+          "*CM2 TB MHFY05 No Price List - 2_UCQC",
           "150 Marina Medical Center",
         // "3145  ENDOSCOPY",
           "3145", //venkat updated Department filed data 21.09.2022

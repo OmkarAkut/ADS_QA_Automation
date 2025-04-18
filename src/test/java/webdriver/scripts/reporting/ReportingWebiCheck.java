@@ -62,7 +62,7 @@ public class ReportingWebiCheck extends GoHelper {
 			Thread.sleep(3000);
 			*/
 			//shilpa 12.12.2022
-			driverDelay();
+			driverDelay(4000);
 			waitForElementPresence("//span[contains(@id,'pageApplicationSection-anchor-content')]");
 			assertThatElementIsDisplayed(driver.findElement(By.xpath(("//span[@id='Folders-title-inner']"))));
 			assertThatElementIsDisplayed(driver.findElement(By.xpath(("//span[@id='Categories-title-inner']"))));

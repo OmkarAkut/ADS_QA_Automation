@@ -63,8 +63,8 @@ public class CostComponentColumnsDisplayTwoDecimalPlacesAds1185 extends UcqcHelp
 //    		  "2016",//venkat added text data 15.09.2022
 //    			// "2016  CHILDREN'S DIABETES UNIT12345678901234567890123456789646596846516544351686565454",
 //    		  "Apr 2004 to Mar 2005");
-    	//Shilpa updated test data for 11.2 0n 10.31.2024
-    	 setUcqcCriteria("Marina","*DM ADS-673 B","150 Marina Medical Center",
+    	//Shilpa updated test data for 11.2 0n 10.31.2024 , on 4.17.2025
+    	 setUcqcCriteria("Marina","*DM ADS-696 CMS","150 Marina Medical Center",
         		 // "2016  CHILDREN",
         		  "2016",//venkat added text data 15.09.2022
         			// "2016  CHILDREN'S DIABETES UNIT12345678901234567890123456789646596846516544351686565454",

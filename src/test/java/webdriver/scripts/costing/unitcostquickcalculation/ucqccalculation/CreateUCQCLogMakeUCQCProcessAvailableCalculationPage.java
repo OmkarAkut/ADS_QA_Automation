@@ -23,7 +23,7 @@ public class CreateUCQCLogMakeUCQCProcessAvailableCalculationPage extends UcqcHe
 	private static CostingMap costingMap;
 	static ContractingMap contractingMap;
 	static final String[] requiredFields = { "Marina", "*CM1 TB MHFY05 After Vol Change", "150 Marina Medical Center",
-			"2130", "Apr 2004 to Apr 2004" };
+			"2130", "Jan 2005 to Mar 2005" };
 	CalculationHelper calculationHelper = new CalculationHelper();
 	static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
 	static String costModel = "Testing" + currentDateTime;

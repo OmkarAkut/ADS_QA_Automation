@@ -149,6 +149,7 @@ public class ClearFilterbuttonModels extends GoHelper {
 		try {
 			doSearchForContractModel(model);
 			waitForDisplayedSpinnerToEnd();
+			driverDelay();
 			ContractModelsHelper.getContractElementList(model);
 			driver.findElement(By.name("searchText")).clear();
 			driver.findElement(By.name("searchText")).sendKeys(Keys.ENTER);

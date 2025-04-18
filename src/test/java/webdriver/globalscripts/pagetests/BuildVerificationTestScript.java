@@ -132,19 +132,22 @@ public class BuildVerificationTestScript extends UcqcHelper {
 			waitForSpinnerToEnd();
 			waitForJsWindowOnload();
 			isLoggedIn();
+			driverDelay();
 			System.out.println(driver.findElement(By.xpath("//div[@class='footerText']/span")).getText());
 //			assertTrue(driver.findElement(By.xpath("//div[@class='footerText']/span")).getText()
 //					.contains("Contents Copyright © 2023 Picis Clinical Solutions, Inc. All rights reserved."));
 			// Shilpa updated text for 11.2 on 1.2.2024
 			System.out.println(driver.findElement(By.xpath("//div[@class='footerText']/span")).getText());
-			String copyright="Contents Copyright © 2024 Picis Clinical Solutions, Inc. All rights reserved.";
+//			String copyright="Contents Copyright © 2025 Picis Clinical Solutions, Inc. All rights reserved.";
+			String copyright="Contents Copyright © 2025 Picis Clinical Solutions, Inc.  All rights reserved. ";
 //			ContractModelsHelper.scrollToView("//div[@class='footerText']/span");
+			String remove_spaces_copyright=copyright.replaceAll(" ", "");
 			assertTrue(driver.findElement(By.xpath("//div[@class='footerText']/span")).getText().replaceAll(" ", "")
 //					 Omkar 20/2/2024 : Extra spaces added in 11.2
 //					.contains("Contents Copyright © 2024 Picis Clinical Solutions, Inc. All rights reserved."));
 //					.contains("Contents Copyright © 2024 Picis Clinical Solutions, Inc.  All rights reserved. "));
 					//Shilpa 2.5.2024 : Updated the script 
-					.contains(copyright.replaceAll(" ", "")));
+					.contains(remove_spaces_copyright));
 			System.out.println("Testing Global Pages");
 			WebElement[] landingPageSystemMaintenanceElements = {
 					generalElement.getLandingPageBubbleSystemMaintenance(),

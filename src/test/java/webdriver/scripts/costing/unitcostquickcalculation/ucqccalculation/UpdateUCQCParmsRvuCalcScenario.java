@@ -311,10 +311,10 @@ public class UpdateUCQCParmsRvuCalcScenario extends UcqcHelper {
 			CostingMap.getVolScenario().click();
 			assertElementIsDisplayedWithXpath("//li[contains(@class,'x-boundlist-selected')][text()='MHFY05']");
 			selectOptions(CostingMap.getVariablilityMaster(), "MHS");
-			CostingMap.getVariablilityMaster().click();
+			driver.findElement(By.name("variabilityMasterId")).click();
 			assertElementIsDisplayedWithXpath("//li[contains(@class,'x-boundlist-selected')][text()='MHS']");
 			selectOptions(CostingMap.getOverheadDrpDwn(), "MH FY05 Overhead");
-			CostingMap.getOverheadDrpDwn().click();
+			driver.findElement(By.name("overHeadScenarioId")).click();
 			assertElementIsDisplayedWithXpath("//li[contains(@class,'x-boundlist-selected')][text()='MH FY05 Overhead']");
 			assertElementIsDisplayedWithXpath("//div[text()='Entities']//following::li[text()='150 Marina Medical Center']");
 			assertElementIsDisplayedWithXpath("//div[text()='Departments / Groups']//following::li[text()='3520 MAMMOGRAPHY UNIT']");
@@ -373,18 +373,18 @@ public class UpdateUCQCParmsRvuCalcScenario extends UcqcHelper {
 //			CostingMap.getOverheadDrpDwn().click();
 			driver.findElement(By.name("overHeadScenarioId")).click();
 			selectOptions(CostingMap.getOverheadDrpDwn(), "MH FY05 Overhead");
-			driver.findElement(By.name("overHeadScenarioId")).click();
-			driverDelay();
+//			driver.findElement(By.name("overHeadScenarioId")).click();
+//			driverDelay();
 			assertElementIsDisplayedWithXpath("//li[contains(@class,'x-boundlist-selected')][text()='MH FY05 Overhead']");
 			assertElementIsDisplayedWithXpath("//div[text()='Entities']//following::li[text()='150 Marina Medical Center']");
 			assertElementIsDisplayedWithXpath("//div[text()='Departments / Groups']//following::li[text()='3520 MAMMOGRAPHY UNIT']");
 			assertElementIsDisplayedWithXpath("//div[text()='Departments / Groups']//following::li[text()='2140 NICU']");
 			assertElementIsDisplayedWithXpath("//div[text()='Departments / Groups']//following::li[text()='2110 ICU']");
 			scrollToView("//div[text()='Price Lists by Entity']");
-			driver.findElement(By.xpath("//div[text()='150  Marina Medical Center']//following::input[@name='priceList']")).click();
+			driver.findElement(By.xpath("(//div[text()='150  Marina Medical Center']//following::input[@name='priceList'])[1]")).click();
 			selectOptions(CostingMap.getCostModelPriceListDrpdown(), "150FY05  Marina Hosp Price List FY05");
-			driver.findElement(By.xpath("//div[text()='150  Marina Medical Center']//following::input[@name='priceList']")).click();
-//			selectOptions(CostingMap.getCostModelPriceListDrpdown(), "150FY05  Marina Hosp Price List FY05");
+//			driver.findElement(By.xpath("//div[text()='150  Marina Medical Center']//following::input[@name='priceList']")).click();
+			selectOptions(CostingMap.getCostModelPriceListDrpdown(), "150FY05  Marina Hosp Price List FY05");
 			assertElementIsDisplayedWithXpath("//li[contains(@class,'x-boundlist-selected')][text()='150FY05  Marina Hosp Price List FY05']");
 //			driver.findElement(By.xpath("//div[text()='200  Southgate']//following::input[@name='priceList']")).click();
 //			selectOptions(driver.findElement(By.xpath("//div[text()='200  Southgate']//following::input[@name='priceList']")), "200FY05  Southgate Price List FY05");
@@ -395,7 +395,7 @@ public class UpdateUCQCParmsRvuCalcScenario extends UcqcHelper {
 			selectOptions(driver.findElement(By.xpath("//input[@name='hostLocation']")), "<SFTP_SERVER>/PATH/TO/CALC_LOGS_SHARED_DIRECTORY2/");
 			doClick("//input[@name='hostLocation']");
 			assertElementIsDisplayedWithXpath("//li[contains(@class,'x-boundlist-selected x-boundlist')][text()='<SFTP_SERVER>/PATH/TO/CALC_LOGS_SHARED_DIRECTORY2/']");
-			doClick(costingMap.getRvuMaintenanceFilterButtonCancelAndClose());
+		    costingMap.getRvuMaintenanceFilterButtonCancelAndClose().click();
 			ExtentReport.logPass("PASS", "test10VerifyUpdatedCostScenarioForUpdatedEntity_5925");
 		} catch (Exception|AssertionError e) {
 			ExtentReport.logFail("FAIL", "test10VerifyUpdatedCostScenarioForUpdatedEntity_5925", driver, e);

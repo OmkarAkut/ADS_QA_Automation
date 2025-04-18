@@ -115,6 +115,7 @@ public class CreateEditDeleteNewStructurePopulations extends GoHelper{
 			doClick(DataMaintenanceMap.getLoadDataDeleteButton());
 			waitForElementToBeVisible(contractMap.getContractModelDeleteButtonInPopUp());
 			doClick(contractMap.getContractModelDeleteButtonInPopUp());
+			driverDelay();
 			assertTextIsDisplayed("There is no data available to display.");
 			ExtentReport.logPass("PASS", "test03DeleteCreatedPopulation");
 		} catch (Exception | AssertionError e) {

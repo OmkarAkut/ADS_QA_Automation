@@ -31,9 +31,9 @@ public class UcqcNavigateOnLineHelpAds1428
 //      "*CM2 TB MHFY05 No Price List - 2",
       "150 Marina Medical Center",
      // "3145  ENDOSCOPY", 
-        "3145",           //Venkat Exact value not taking in search field
+        "2130",           //Venkat Exact value not taking in search field
 //      "Jan 2005 to Jan 2005" //Shilp updated test data 28.5.2024
-        "Apr 2004 to Mar 2005"
+        "Apr 2004 to Apr 2004"
   };
 
   

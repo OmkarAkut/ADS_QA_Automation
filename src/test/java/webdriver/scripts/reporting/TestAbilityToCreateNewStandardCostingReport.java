@@ -80,7 +80,7 @@ public class TestAbilityToCreateNewStandardCostingReport extends GoHelper {
 			executor.executeScript("arguments[0].click();",
 					driver.findElement(By.xpath("//div[text()='PRIVATE PAY']//parent::td")));
 			doClick("//div[text()='PRIVATE PAY']");
-			driverDelay(1000);
+			driverDelay(2000);
 			ContractModelsHelper.scrollToView(reportMap.reportLibraryPageEntityOkButton());
 			driverDelay(1000);
 			executor.executeScript("arguments[0].click();", reportMap.reportLibraryPageEntityOkButton());

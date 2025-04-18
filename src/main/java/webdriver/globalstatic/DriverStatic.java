@@ -3,6 +3,9 @@ package webdriver.globalstatic;
 
 import static org.junit.Assert.fail;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchSessionException;
 import org.openqa.selenium.WebDriver;
@@ -57,7 +60,14 @@ public class DriverStatic extends SetupStatic {
 			} else if (browser.equals("chrome")) {
 				//Shilpa added below line for 11.2 on 12.12.2023
 				 WebDriverManager.chromedriver().setup();
-				ChromeOptions options = new ChromeOptions();
+				 ChromeOptions options = new ChromeOptions();
+					final Map<String, Object> chromePrefs = new HashMap<>();
+					// Shilpa : Below lines to disable password pop up 4.14.2025
+					chromePrefs.put("credentials_enable_service", false);
+					chromePrefs.put("profile.password_manager_enabled", false);
+					chromePrefs.put("profile.password_manager_leak_detection", false);
+					options.setExperimentalOption("prefs", chromePrefs);
+//				ChromeOptions options = new ChromeOptions();
 				options.addArguments("--ignore-certificate-errors", "start-maximized");
 				options.addArguments("--remote-allow-origins=*");
 				driver = new ChromeDriver(options);

@@ -197,6 +197,7 @@ public class Login extends Driver {
 			action.sendKeys(Keys.ENTER).perform();
 			waitForSpinnerToEnd();
 			Thread.sleep(500);
+			
 			WebElement iAgree;
 			if (driver.findElement(By.xpath("//*[normalize-space()='I Agree']"
 					+ "[@class='x-btn btnCls x-box-item x-toolbar-item x-btn-default-small x-noicon x-btn-noicon x-btn-default-small-noicon']"))

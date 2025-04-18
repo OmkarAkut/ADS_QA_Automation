@@ -21,7 +21,7 @@ public class UcqcCalculateButtonDisabledIfAttemptToCalculateWithUnsavedQuickRvus
   static final String[] requiredFields = {
     "Marina",
 //    "*CM1 TB MHFY05 After Vol Change_UCQC", ADS-21467
-    "*CM2 TB MHFY05 No Price List - 2",
+    "*CM2 TB MHFY05 No Price List - 2_UCQC",
     "150 Marina Medical Center",
    // "3145  ENDOSCOPY",
     "3145",  //venkat updated department field data 21.09.2022
