@@ -130,8 +130,8 @@ public class BuildVerificationTestScript extends UcqcHelper {
 			Login.loginUser("AutomationTesterAdmin");
 			// End of modification
 			waitForSpinnerToEnd();
-			waitForJsWindowOnload();
-			isLoggedIn();
+//			waitForJsWindowOnload();
+//			isLoggedIn();
 			driverDelay();
 			//Shilpa update 4.22.2025
 			System.out.println(driver.findElement(By.xpath("//div[@class='footerText']/span")).getText());

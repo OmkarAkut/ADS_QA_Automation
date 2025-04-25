@@ -237,7 +237,7 @@ public class Login extends Driver {
 			waitForSpinnerToEnd();
 			// wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@class='footerText']")));
 			assertTrue(driver.findElement(By.className("footerText")).isDisplayed());
-			assertTrue(driver.findElement(By.className("footerText")).getText()
+			assertTrue(driver.findElement(By.xpath("//div[@class='footerText']/span")).getText()
 					.contains("Picis Clinical Solutions, Inc. All rights reserved."));
 		} catch (Throwable e) {
 			fail("isLoggedIn Failed");
