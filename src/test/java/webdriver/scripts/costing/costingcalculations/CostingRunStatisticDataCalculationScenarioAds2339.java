@@ -18,12 +18,14 @@ import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.helpers.CalculationHelper;
 import webdriver.helpers.ContractModelsHelper;
+import webdriver.maps.ContractingMap;
 import webdriver.maps.CostingMap;
 import webdriver.maps.mapbuilder.BuildMap;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class CostingRunStatisticDataCalculationScenarioAds2339 extends CalculationHelper {
 	private static CostingMap costingMap;
+	private static ContractingMap contractMap;
 	static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
 	static String statDataScenario = "Scenario " + currentDateTime;
 	static String fiscalYear = "FY05";
@@ -56,6 +58,7 @@ public class CostingRunStatisticDataCalculationScenarioAds2339 extends Calculati
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
 		costingMap = BuildMap.getInstance(driver, CostingMap.class);
+		contractMap=BuildMap.getInstance(driver, ContractingMap.class);
 		ExtentReport.reportCreate("CostingRunStatisticDataCalculationScenarioAds2339",
 				"webdriver.scripts.costing.costingcalculations", "CostingRunStatisticDataCalculationScenarioAds2339");
 		try {
@@ -121,9 +124,9 @@ public class CostingRunStatisticDataCalculationScenarioAds2339 extends Calculati
 			doDropdownSelectUsingOptionText(costingMap.statisticDataFiscalYear(), CostingMap.getFiscalYearList(),
 					fiscalYear);
 			doClick(costingMap.getSaveStatisticScenario());
-			ExtentReport.logPass("PASS", "test01VerifyStaticDataScenarioPageConfiguration");
+			ExtentReport.logPass("PASS", "test01VerifyStaticDataScenarioPageConfiguration_ADS_5989");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test01VerifyStaticDataScenarioPageConfiguration", driver, e);
+			ExtentReport.logFail("FAIL", "test01VerifyStaticDataScenarioPageConfiguration_ADS_5989", driver, e);
 			fail(e.getMessage());
 		}
 	}
@@ -194,10 +197,10 @@ public class CostingRunStatisticDataCalculationScenarioAds2339 extends Calculati
 			doClick(costingMap.statisticDataCalcScenarionSaveAsBtn());
 			waitForDisplayedSpinnerToEnd();
 			
-			ExtentReport.logPass("PASS", "test02VerifyStaticDataCalculationScenarioPageConfigurationAndSave");
+			ExtentReport.logPass("PASS", "test02VerifyStaticDataCalculationScenarioPageConfigurationAndSave_ADS_5989");
 
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test02VerifyStaticDataCalculationScenarioPageConfigurationAndSave", driver,
+			ExtentReport.logFail("FAIL", "test02VerifyStaticDataCalculationScenarioPageConfigurationAndSave_ADS_5989", driver,
 					e);
 			fail(e.getMessage());
 
@@ -225,15 +228,17 @@ public class CostingRunStatisticDataCalculationScenarioAds2339 extends Calculati
 			}
 			doClick(costingMap.statisticDataCalcScenarionSaveBtn());
 			doClick(costingMap.statisticDataCalcScenarionCalculateBtn());
-			waitForSpinnerToEnd();;
+			//Shilpa : Updated 4.28.2025
+//			waitForSpinnerToEnd();;
+			waitForDisplayedSpinnerToEnd();
 			doFilterCalculationPage(filterScenario);
 			waitForFirstRowCalculationBarToReach100Percent();
 			doClosePageOnLowerBar("Calculation Status");
 			doClick(costingMap.statisticDataCalcScenarioSaveCloseBtn());
-			ExtentReport.logPass("PASS", "test03RunCalculationAndAssertResultsMatchExpected");
+			ExtentReport.logPass("PASS", "test03RunCalculationAndAssertResultsMatchExpected_ADS_5989");
 
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test03RunCalculationAndAssertResultsMatchExpected", driver, e);
+			ExtentReport.logFail("FAIL", "test03RunCalculationAndAssertResultsMatchExpected_ADS_5989", driver, e);
 			fail(e.getMessage());
 
 		}
@@ -277,9 +282,9 @@ public class CostingRunStatisticDataCalculationScenarioAds2339 extends Calculati
 			doFilterCreate(updatedfilterCalcScenario);
 			doClick(costingMap.statisticDataCalcScenarionDeleteBtn());
 			doClick(costingMap.warningMessageDeleteBtn());
-			ExtentReport.logPass("PASS", "test04AssertActivityVolumeDataScenarioFilterResultsMatchExpected");
+			ExtentReport.logPass("PASS", "test04AssertActivityVolumeDataScenarioFilterResultsMatchExpected_ADS_5989");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test04AssertActivityVolumeDataScenarioFilterResultsMatchExpected", driver, e);
+			ExtentReport.logFail("FAIL", "test04AssertActivityVolumeDataScenarioFilterResultsMatchExpected_ADS_5989", driver, e);
 			fail(e.getMessage());
 
 		}
