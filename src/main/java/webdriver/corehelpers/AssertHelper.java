@@ -24,6 +24,25 @@ public class AssertHelper extends AdsHelper {
 
 	Java java = new Java();
 
+	//CIM
+	
+	public void assertElementIfDisplayIsNone(String element) {
+		if(driver.findElement(By.xpath(element)).getAttribute("style").contains("display: none;")) {
+			assertTrue("The element is not Displayed",printout);
+		}
+		else {
+			fail();
+		}
+	}
+	public void assertTheElementIsEnabled(WebElement element) {
+		if(!element.getAttribute("class").contains("disabled")) {
+			assertTrue(printout);
+		}
+		else {
+			fail();
+		}
+	}
+	//CIM
 	public void assertGridTableLoads() {
 		String rowNumber;
 		try {
@@ -45,7 +64,8 @@ public class AssertHelper extends AdsHelper {
 		assertThat(filterGetFilterMatchesTheseCriteriaText(), containsString(expectedTotal));
 		doClick(getWebElement("//div[3]/em/button/span[text()='Cancel & Close']"));
 	}
-
+	
+	
 	public void assertGridElementsOnSearch(WebElement nextBtn, WebElement pageNumber, List<WebElement> elements,
 			String searchText) throws Throwable {
 		try {

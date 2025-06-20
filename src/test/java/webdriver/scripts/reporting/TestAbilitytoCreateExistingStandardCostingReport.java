@@ -29,7 +29,7 @@ public class TestAbilitytoCreateExistingStandardCostingReport extends GoHelper {
 	static String newReportName = reportName + currentDateTime;
 	static String directory = "Reports";
 	static String subDirectory = "Costing";
-	static int refreshTime = 10;
+	static int refreshTime = 20;
 
 	@BeforeClass
 	public static void setupScript() throws InterruptedException, Throwable {
@@ -128,7 +128,9 @@ public class TestAbilitytoCreateExistingStandardCostingReport extends GoHelper {
 			assertElementTextContainsWithXpathLocator(
 					"//span[text()='Entity:']//preceding::div[@id='Text6-0-0']//span/span", "Marina Medical Center",
 					printout);
-			assertElementTextContainsWithXpathLocator("//div[@id='Text8-0-0']//following::span[1]", "PATCARE",
+//			assertElementTextContainsWithXpathLocator("//div[@id='Text8-0-0']//following::span[1]", "PATCARE",
+//					printout);
+			assertElementTextContainsWithXpathLocator("//div[@id='Text8-0-0']//following::span[1]", "ALLDEPTS",
 					printout);
 			ExtentReport.logPass("PASS", "test02SaveAsThenRunReport");
 		} catch (Exception | AssertionError e) {

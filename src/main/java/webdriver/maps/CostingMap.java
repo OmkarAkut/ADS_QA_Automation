@@ -2262,22 +2262,22 @@ public class CostingMap extends MapConfig {
 	public static WebElement getActivityVolDataCalcScenarioCalculate() {
 		return getActivityVolDataCalcScenarioCalculate;
 	}
-	@FindBy(xpath = "//div[contains(@id,'activityvolumecalcdataform')]//input[@name='startDate']")
+	@FindBy(xpath = "//div[contains(@id,'activityvolumecalcdataform')]//input[@name='startDate']//following::div[1]")
 	private static WebElement getActivityVolDataCalcScenarioCalculateStart;
 	public static WebElement getActivityVolDataCalcScenarioCalculateStart() {
 		return getActivityVolDataCalcScenarioCalculateStart;
 	}
-	@FindBy(xpath = "//div[contains(@id,'activityvolumecalcdataform')]//input[@name='endDate']")
+	@FindBy(xpath = "//div[contains(@id,'activityvolumecalcdataform')]//input[@name='endDate']//following::div[1]")
 	private static WebElement getActivityVolDataCalcScenarioCalculateEnd;
 	public static WebElement getActivityVolDataCalcScenarioCalculateEnd() {
 		return getActivityVolDataCalcScenarioCalculateEnd;
 	}
-	@FindBy(xpath = "//span[contains(text(),'Start Month')]/ancestor::div/following-sibling::div[contains(@class,'boundlist')]/div/ul")
+	@FindBy(xpath = "(//div[contains(@class,'boundlist')]/ul/li[text()='Mar 2016']/..)[1]")
 	private static WebElement getActivityVolDataCalcScenarioCalculateStartList;
 	public static WebElement getActivityVolDataCalcScenarioCalculateStartList() {
 		return getActivityVolDataCalcScenarioCalculateStartList;
 	}
-	@FindBy(xpath = "//span[contains(text(),'End Month')]/ancestor::div/following-sibling::div[contains(@class,'boundlist')]/div/ul")
+	@FindBy(xpath = "(//div[contains(@class,'boundlist')]/ul/li[text()='Feb 2017']/..)[2]")
 	private static WebElement getActivityVolDataCalcScenarioCalculateEndList;
 	public static WebElement getActivityVolDataCalcScenarioCalculateEndList() {
 		return getActivityVolDataCalcScenarioCalculateEndList;

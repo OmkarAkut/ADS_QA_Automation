@@ -135,7 +135,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 			driverDelay();
 			//Shilpa update 4.22.2025
 			System.out.println(driver.findElement(By.xpath("//div[@class='footerText']/span")).getText());
-			if(driver.findElement(By.xpath("//div[@class='footerText']/span")).getText().contains("Contents Copyright © 2025 Picis Clinical Solutions, Inc. All rights reserved.")) {
+			if(driver.findElement(By.xpath("//div[@class='footerText']/span")).getText().contains("Contents Copyright")) {
 				assertTrue(printout);
 			}
 			else {

@@ -117,7 +117,7 @@ public class EncounterCost extends CalculationHelper {
 //			doDropdownSelectUsingOptionText(selectColumn.getCostModelScenariosinEvaluationOrderTo(),
 //					selectColumn.getCostModelScenariosinEvaluationOrderToList(), "Mar 2013");
 			doDropdownSelectUsingOptionText(costing.getCostModelScenariosinEvaluationOrderTo(),
-					costing.getCostModelScenariosinEvaluationOrderToList(), "Mar 2005");
+					costing.getCostModelScenariosinEvaluationOrderToList(), "May 2004");//Updated from 2005 to 2004 for 11.2.1
 //			doDropdownSelectUsingOptionText(selectColumn.getCostModelScenariosinEvaluationOrderAssignedCost(),
 //					selectColumn.getCostModelScenariosinEvaluationOrderAssignedCostList(), "10 : BC Destination");
 			doDropdownSelectUsingOptionText(costing.getCostModelScenariosinEvaluationOrderAssignedCost(),

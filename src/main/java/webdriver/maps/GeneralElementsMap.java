@@ -121,6 +121,11 @@ public class GeneralElementsMap extends MapConfig {
     private WebElement contractingTab;
     public WebElement getContractingTab() {return contractingTab;}
 
+    //Costing >Cost Integration Manager
+    @FindBy(id = "costintegrationmanager")
+    private WebElement cimSubTab;
+    public WebElement getcimSubTab(){return cimSubTab;}
+    
     //Episodes Tab
     @FindBy(id = "episode")
     private WebElement episodesTab;

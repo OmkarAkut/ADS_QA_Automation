@@ -74,9 +74,9 @@ public class CreateDeleteCostMethodDeptMasterDischargeStatus extends Calculation
 			assertThatString(CostingMap.getCostMaintenanceCosting(), "Costing", printout);
 			assertThatString(CostingMap.getCostMaintenanceEpisode(), "Episode", printout);
 			assertThatString(CostingMap.getCostMaintenanceGeneral(), "General", printout);
-			ExtentReport.logPass("PASS", "test03AssertTreeTabMaintainData");
+			ExtentReport.logPass("PASS", "test01AssertTreeTabMaintainData");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test03AssertTreeTabMaintainData", driver, e);
+			ExtentReport.logFail("FAIL", "test01AssertTreeTabMaintainData", driver, e);
 			fail(e.getMessage());
 		}
 	}
@@ -92,9 +92,9 @@ public class CreateDeleteCostMethodDeptMasterDischargeStatus extends Calculation
 //			Omkar 8/8/2023 : xpath changes for 11.2
 //			doClick("//div[@id='treepanelId-body']//following::div[text()='Department Masters']/img[@class='x-tree-elbow-end']");
 			doClick("//div[@id='treepanelId-body']//following::span[text()='Department Masters']/../div[5]");
-			ExtentReport.logPass("PASS", "test04GotoDepartmentMasters");
+			ExtentReport.logPass("PASS", "test02GotoDepartmentMasters");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test04GotoDepartmentMasters", driver, e);
+			ExtentReport.logFail("FAIL", "test02GotoDepartmentMasters", driver, e);
 			fail(e.getMessage());
 		}
 	}
@@ -110,9 +110,9 @@ public class CreateDeleteCostMethodDeptMasterDischargeStatus extends Calculation
 			doClick(CostingMap.getCostDeptMasterFilterButton());
 			doFilterCreate(filterDeptMaster);
 			assertTextIsDisplayed(costDeptModel);
-			ExtentReport.logPass("PASS", "test03CreateDepartmentMaster");
+			ExtentReport.logPass("PASS", "test03CreateDepartmentMaster_ADS_6656");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test03CreateDepartmentMaster", driver, e);
+			ExtentReport.logFail("FAIL", "test03CreateDepartmentMaster_ADS_6656", driver, e);
 			fail(e.getMessage());
 		}
 	}
@@ -156,9 +156,9 @@ public class CreateDeleteCostMethodDeptMasterDischargeStatus extends Calculation
 			if(!encounterShortNameBeforeEdit.equals(CostingMap.getEncounterShortNameinGrid().getText())) {
 				assertTrue(printout);
 			}
-			ExtentReport.logPass("PASS", "test05EditEncounterType");
+			ExtentReport.logPass("PASS", "test05EditEncounterType_ADS_6657");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test05EditEncounterType", driver, e);
+			ExtentReport.logFail("FAIL", "test05EditEncounterType_ADS_6657", driver, e);
 			fail(e.getMessage());
 		}
 	}
@@ -177,9 +177,9 @@ public class CreateDeleteCostMethodDeptMasterDischargeStatus extends Calculation
 			doClick(CostingMap.getCostDischargeStatusFilterButton());
 			doFilterCreate(filterDichargeStatus);
 			assertTextIsDisplayed(dischargeStatusName);
-			ExtentReport.logPass("PASS", "test06CreateNewDischargeStatus");
+			ExtentReport.logPass("PASS", "test06CreateNewDischargeStatus_ADS_6658");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test06CreateNewDischargeStatus", driver, e);
+			ExtentReport.logFail("FAIL", "test06CreateNewDischargeStatus_ADS_6658", driver, e);
 			fail(e.getMessage());
 		}
 	}
@@ -214,9 +214,9 @@ public class CreateDeleteCostMethodDeptMasterDischargeStatus extends Calculation
 			doClick(CostingMap.getCostMethodMasterFilterButton());
 			doFilterCreate(filter);
 			assertTextIsDisplayed(costModel);
-			ExtentReport.logPass("PASS", "test07CreateCostMethodMaster");
+			ExtentReport.logPass("PASS", "test07CreateCostMethodMaster_ADS_6655");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test07CreateCostMethodMaster", driver, e);
+			ExtentReport.logFail("FAIL", "test07CreateCostMethodMaster_ADS_6655", driver, e);
 			fail(e.getMessage());
 		}
 	}
@@ -231,6 +231,7 @@ public class CreateDeleteCostMethodDeptMasterDischargeStatus extends Calculation
 		doClick(ContractingMap.getWarningPopUpDeleteButton());
 		waitForDisplayedSpinnerToEnd();
 		assertTextIsDisplayed("There is no data available to display.");
+		doClosePageOnLowerBar("Maintain Data");
 		ExtentReport.logPass("PASS", "test08DeleteCostMethodMaster");
 	} catch (Exception | AssertionError e) {
 		ExtentReport.logFail("FAIL", "test08DeleteCostMethodMaster", driver, e);
@@ -239,7 +240,7 @@ public class CreateDeleteCostMethodDeptMasterDischargeStatus extends Calculation
 	}
 	@AfterClass
 	public static void endtest() throws Exception {
-		doClosePageOnLowerBar("Maintain Data");
+		
 		ExtentReport.report.flush();
 	}
 	

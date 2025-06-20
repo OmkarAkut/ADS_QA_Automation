@@ -72,10 +72,12 @@ public class OverwriteRvuNoCMSResults extends GoHelper {
 			driverDelay();
 			assertTextIsDisplayed("Import Data");
 			if (Driver.getBrowser().equals("chrome")) {
-				JavascriptExecutor executor = (JavascriptExecutor) driver;
-				executor.executeScript("arguments[0].click();", driver.findElement(
-						By.xpath("//div[contains(@id,'filefield')]//following::input[@name='importdata']")));
-				driverDelay(500);
+//				JavascriptExecutor executor = (JavascriptExecutor) driver;
+//				executor.executeScript("arguments[0].click();", driver.findElement(
+//						By.xpath("//div[contains(@id,'filefield')]//following::input[@name='importdata']")));
+				doactionClick(driver
+						.findElement(By.xpath("(//div[contains(@id,'importwindow')]//span[text()='Select'])[2]")));
+				driverDelay(800);
 				ContractModelsHelper.uploadTheFileusingAutoIT(driver,
 						System.getProperty("user.dir") + "\\AutoIT\\OverWriteRVUValues5919Chrome.exe");
 				driverDelay(300);
@@ -86,8 +88,6 @@ public class OverwriteRvuNoCMSResults extends GoHelper {
 				doactionClick(driver
 						.findElement(By.xpath("(//div[contains(@id,'importwindow')]//span[text()='Select'])[2]")));
 				driverDelay();
-
-				driverDelay(500);
 				ContractModelsHelper.uploadTheFileusingAutoIT(driver,
 						System.getProperty("user.dir") + "\\AutoIT\\OverWriteRVUValues5919Edge.exe");
 				driverDelay(300);

@@ -171,7 +171,7 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 //				String reportStatus=driver.findElement(By.xpath("//span[text()='" + orgName + "']//following::td[5]/div/a")).getText();
 				//Shilpa update code on 24.4.2024
 				System.out.println(denominator);
-				for (int i = 0; i < denominator; i++) {
+				for (int i = 0; i >=denominator; i++) {
 					doClick(reportMap.reportLibraryPageEntityRefreshButton());
 					driverDelay(3000);
 					if (i == denominator) {

@@ -222,14 +222,18 @@ public class ValidateCalculationStatusAllStatus extends CalculationHelper{
 		try {
 			doClick(statusMap.getCalculationStatusPageButtonDeleteFiltered());
 			waitForElementToBeVisible(statusMap.calcStatusDeleteFilteredButton());
-			assertElementTextContains(driver.findElement(By.xpath("//div[contains(@class,'errorMsg')]//div[@class='x-autocontainer-innerCt']")),"Click Delete Filtered to remove the rows; or, click Cancel to return to the previous screen without deleting the rows.",printout);
+			//Shilpa: update for 11.2.1 
+//			assertElementTextContains(driver.findElement(By.xpath("//div[contains(@class,'errorMsg')]//div[@class='x-autocontainer-innerCt']")),"Click Delete Filtered to remove the rows; or, click Cancel to return to the previous screen without deleting the rows.",printout);
+			assertElementIsDisplayedWithXpath("//div[contains(@class,'errorMsg')]//div[@class='x-autocontainer-innerCt'][text()='Click Delete Filtered to proceed with deleting the eligible rows; or, click Cancel to return to the previous screen without deleting any rows.']");
+//			assertElementTextContains(driver.findElement(By.xpath("//div[contains(@class,'errorMsg')]//div[@class='x-autocontainer-innerCt']")),"Click Delete Filtered to proceed with deleting the eligible rows; or, click Cancel to return to the previous screen without deleting any rows.",printout);
 			assertElementIsDisplayed(statusMap.calcStatusDeleteFilteredCancelButton());
 			assertElementIsDisplayed(statusMap.calcStatusDeleteFilteredButton());
 			doClick(statusMap.calcStatusDeleteFilteredButton());
 			waitForAjaxExtJs();
-			ExtentReport.logPass("PASS", "test12ValidateDeleteFiltered");
+			
+			ExtentReport.logPass("PASS", "test12ValidateDeleteFiltered_6610");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test12ValidateDeleteFiltered", driver, e);
+			ExtentReport.logFail("FAIL", "test12ValidateDeleteFiltered_6610", driver, e);
 			fail(e.getMessage());
 		}
 	}

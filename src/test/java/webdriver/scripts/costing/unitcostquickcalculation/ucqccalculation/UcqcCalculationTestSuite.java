@@ -4,7 +4,7 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-//		CostChangeColumnsPopulateAfterCalculateAds1230.class,
+//	//	CostChangeColumnsPopulateAfterCalculateAds1230.class,
 		CreateUCQCLogMakeUCQCProcessAvailableCalculationPage.class,
 		LoadingSpinnerDisplaysWhileCalculationIsRunningAds1231.class,
 		QuickCcCostColumnsForEachCostComponentPopulateAfterCalculateAds1229.class,

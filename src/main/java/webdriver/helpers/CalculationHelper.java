@@ -596,7 +596,7 @@ public class CalculationHelper extends GoHelper {
 			}
 		}
 	}catch (Exception e) {
-		for(int i=0;i<=5;i++) {
+		for(int i=0;i<=25;i++) {
 			ContractModelsHelper.scrollToView("//*[contains(text(),'"+text+"')]");
 		}
 		

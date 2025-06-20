@@ -9,6 +9,7 @@ import webdriver.globalscripts.checktests.ChecktestsSuite;
 import webdriver.globalscripts.help.HelpSuite;
 import webdriver.globalscripts.pagetests.PagetestsSuite;
 import webdriver.globalscripts.securitytests.SecurityTestsSuite;
+import webdriver.scripts.cim.TestSuiteForCIM;
 import webdriver.scripts.contracting.ContractingSuite;
 import webdriver.scripts.contracting.GeneratePsychCombinedComorbidityFactor;
 import webdriver.scripts.contracting.ValidateContractingModeExportImportButton;
@@ -37,6 +38,7 @@ import webdriver.scripts.systemmaintenance.SystemMaintenanceTestSuite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
+	TestSuiteForCIM.class,
 	CostingTestSuite.class,
 	ContractingSuite.class,
 	MaintaindataTestSuite.class,

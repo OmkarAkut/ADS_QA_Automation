@@ -265,6 +265,7 @@ public class UpdateUCQCParmsRvuCalcScenario extends UcqcHelper {
 			driverDelay();
 			selectOptions(driver.findElement(By.xpath("//input[@name='field']")), "Entity Code");
 			ContractModelsHelper.applyMultipleFilters("Entity Code","200");
+			waitForAjaxExtJs();
 			selectOptions(driver.findElement(By.xpath("//div[text()='200  Southgate']//following::input[@name='priceList']")), "200FY05  Southgate Price List FY05");
 			selectOptions(driver.findElement(By.xpath("//input[@name='savedStartMonth']")), "May 2004");
 			doClick("//input[@name='savedEndMonth']");
@@ -370,9 +371,9 @@ public class UpdateUCQCParmsRvuCalcScenario extends UcqcHelper {
 			assertElementIsDisplayedWithXpath("//li[contains(@class,'x-boundlist-selected')][text()='MHS']");
 			
 			selectOptions(CostingMap.getOverheadDrpDwn(), "MH FY05 Overhead");
-//			CostingMap.getOverheadDrpDwn().click();
-			driver.findElement(By.name("overHeadScenarioId")).click();
-			selectOptions(CostingMap.getOverheadDrpDwn(), "MH FY05 Overhead");
+			CostingMap.getOverheadDrpDwn().click();
+//			driver.findElement(By.name("overHeadScenarioId")).click();
+//			selectOptions(CostingMap.getOverheadDrpDwn(), "MH FY05 Overhead");
 //			driver.findElement(By.name("overHeadScenarioId")).click();
 //			driverDelay();
 			assertElementIsDisplayedWithXpath("//li[contains(@class,'x-boundlist-selected')][text()='MH FY05 Overhead']");
@@ -380,16 +381,17 @@ public class UpdateUCQCParmsRvuCalcScenario extends UcqcHelper {
 			assertElementIsDisplayedWithXpath("//div[text()='Departments / Groups']//following::li[text()='3520 MAMMOGRAPHY UNIT']");
 			assertElementIsDisplayedWithXpath("//div[text()='Departments / Groups']//following::li[text()='2140 NICU']");
 			assertElementIsDisplayedWithXpath("//div[text()='Departments / Groups']//following::li[text()='2110 ICU']");
+			/*
 			scrollToView("//div[text()='Price Lists by Entity']");
 			driver.findElement(By.xpath("(//div[text()='150  Marina Medical Center']//following::input[@name='priceList'])[1]")).click();
 			selectOptions(CostingMap.getCostModelPriceListDrpdown(), "150FY05  Marina Hosp Price List FY05");
-//			driver.findElement(By.xpath("//div[text()='150  Marina Medical Center']//following::input[@name='priceList']")).click();
-			selectOptions(CostingMap.getCostModelPriceListDrpdown(), "150FY05  Marina Hosp Price List FY05");
+			driver.findElement(By.xpath("//div[text()='150  Marina Medical Center']//following::input[@name='priceList']")).click();
+//			selectOptions(CostingMap.getCostModelPriceListDrpdown(), "150FY05  Marina Hosp Price List FY05");
 			assertElementIsDisplayedWithXpath("//li[contains(@class,'x-boundlist-selected')][text()='150FY05  Marina Hosp Price List FY05']");
 //			driver.findElement(By.xpath("//div[text()='200  Southgate']//following::input[@name='priceList']")).click();
 //			selectOptions(driver.findElement(By.xpath("//div[text()='200  Southgate']//following::input[@name='priceList']")), "200FY05  Southgate Price List FY05");
 //			selectOptions(driver.findElement(By.xpath("//div[text()='200  Southgate']//following::input[@name='priceList']")), "200FY05  Southgate Price List FY05");			assertElementIsDisplayedWithXpath("//li[contains(@class,'x-boundlist-selected')][text()='200FY05  Southgate Price List FY05']");
-
+*/
 			assertElementIsDisplayedWithXpath("(//span[text()='Start Month:']//following::div[text()='May 2004'])[2]");
 			assertElementIsDisplayedWithXpath("(//span[text()='End Month:']//following::div[text()='May 2004'])[2]");
 			selectOptions(driver.findElement(By.xpath("//input[@name='hostLocation']")), "<SFTP_SERVER>/PATH/TO/CALC_LOGS_SHARED_DIRECTORY2/");

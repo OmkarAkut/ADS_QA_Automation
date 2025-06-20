@@ -11,6 +11,7 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
@@ -29,7 +30,7 @@ public class TestAbilityToCreateNewStandardCostingReport extends GoHelper {
 	static String entity = "150 PRIVATE PAY";
 	static String deptHierarchy = "Marina Department Hierarchy";
 	static String deptGroup = "TBDEPTGRP  TB Dept Group";
-	static String directory = "Templates";
+	static String directory = "Reports";
 	static String subDirectory = "Costing";
 	static String newReportName = "CM1 Cost";
 	static int refreshTime = 10;
@@ -71,21 +72,27 @@ public class TestAbilityToCreateNewStandardCostingReport extends GoHelper {
 	@Test
 	public void test02OpenCostingReport() throws Throwable {
 		try {
-			JavascriptExecutor executor = (JavascriptExecutor) driver;
-
-			doClick("//*[text()='" + reportName + "']");
-			doClick(reportMap.reportLibraryPageEntityRange());
-			// Actions act=new Actions(driver);
-			driverDelay(1000);
-			executor.executeScript("arguments[0].click();",
-					driver.findElement(By.xpath("//div[text()='PRIVATE PAY']//parent::td")));
-			doClick("//div[text()='PRIVATE PAY']");
-			driverDelay(2000);
-			ContractModelsHelper.scrollToView(reportMap.reportLibraryPageEntityOkButton());
-			driverDelay(1000);
-			executor.executeScript("arguments[0].click();", reportMap.reportLibraryPageEntityOkButton());
-			Actions action = new Actions(driver);
-			driverDelay(500);
+//			JavascriptExecutor executor = (JavascriptExecutor) driver;
+			driver.findElement(By.xpath("//a[text()='" + reportName + "']")).click();
+//			doClick("//a[text()='" + reportName + "']");
+			for(int i=0;i<=1;i++) {
+				doClick(reportMap.reportLibraryPageEntityRange());
+				driverDelay(1000);
+				Actions action=new Actions(driver);
+				action.moveToElement(driver.findElement(By.xpath("(//div[text()='PRIVATE PAY']/..//preceding-sibling::td)[1]"))).doubleClick().perform();
+				driverDelay(2000);
+				ContractModelsHelper.scrollToView(reportMap.reportLibraryPageEntityOkButton());
+				driverDelay(1000);
+				doJsClick(reportMap.reportLibraryPageEntityOkButton());
+			}
+			
+		
+			Actions action=new Actions(driver);
+//			action.moveToElement(driver.findElement(By.xpath("(//div[text()='PRIVATE PAY']/..//preceding-sibling::td)[1]"))).doubleClick().perform();
+//
+//			action.moveToElement(reportMap.reportLibraryPageEntityOkButton()).click().build().perform();
+//		
+//			driverDelay(500);
 			action.moveToElement(reportMap.reportLibraryPageDeptGrp()).click().build().perform();
 			// doClick(reportMap.reportLibraryPageDeptGrp());
 			driverDelay(1000);

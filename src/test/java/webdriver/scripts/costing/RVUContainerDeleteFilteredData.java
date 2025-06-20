@@ -260,14 +260,15 @@ doClickTreeItem("Assign Unit Costs");
 			}
 //			driverDelay(4000);
 //			test08ClearFilterInRvuContainer_5983();
-//			doClick(costing.getRvuContainerClearFilterButton());
-//			waitForDisplayedSpinnerToEnd();
-//			driverDelay();
+			doClick(costing.getRvuContainerClearFilterButton());
+			waitForDisplayedSpinnerToEnd();
+			driverDelay();
 			ExtentReport.logPass("PASS", "test11DeleteFilteredForOPEN");
 		} catch (Exception|AssertionError e) {
 			ExtentReport.logFail("FAIL", "test11DeleteFilteredForOPEN", driver, e);
 			fail(e.getMessage());
 		}
+		
 		finally {
 			/*
 			Actions act=new Actions(driver);
@@ -278,12 +279,12 @@ doClickTreeItem("Assign Unit Costs");
 			*/
 			//Remove below lines once ADS-17843 and ADS-18038    are fixed
 
-			doClick("//*[text()='RVU Container List']/ancestor::div/following-sibling::div//span[text()='Filter']");
-			driverDelay();
-			doClick("//span[text()='Remove All']");
-			doClick(dialog.getFilterDialogButtonApplyFilter());
-			waitForDisplayedSpinnerToEnd();
-			driverDelay(15000);
+//			doClick("//*[text()='RVU Container List']/ancestor::div/following-sibling::div//span[text()='Filter']");
+//			driverDelay();
+//			doClick("//span[text()='Remove All']");
+//			doClick(dialog.getFilterDialogButtonApplyFilter());
+//			waitForDisplayedSpinnerToEnd();
+//			driverDelay(15000);
 		}
 		
 	}
@@ -466,6 +467,7 @@ doClickTreeItem("Assign Unit Costs");
 			ExtentReport.logFail("FAIL", "test17ApplyCostComponentIsOverheadInRvuContainer", driver, e);
 			fail(e.getMessage());
 		}
+		//Not needed 11.2.1 the issues are fixed
 		/*
 		finally {
 			try {

@@ -158,7 +158,11 @@ public class GoHelper extends AssertHelper {
 			tab.getReportingTab().click();
 			tab.getCostingReportsSubTab().click();
 		}
-
+		//Costing > CIM
+				if (page.equals("cost integration manager")) {
+					tab.getCostingTab().click();
+					tab.getcimSubTab().click();
+				}
 		//Costing > Costing Models
 		if (page.equals("costing models")) {
 			tab.getCostingTab().click();

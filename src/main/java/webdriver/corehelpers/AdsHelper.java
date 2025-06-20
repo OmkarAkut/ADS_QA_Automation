@@ -15,6 +15,22 @@ public class AdsHelper extends GetHelper {
 	private DialogsMap dialog = BuildMap.getInstance(driver, DialogsMap.class);
 	public final static String setStandardDateFormat = "yyyy-MM-dd:HH:mm:ss";
 
+	//CIM
+	public static String  getFontColor(WebElement element) throws InterruptedException{
+		String color=element.getCssValue("color");
+		System.out.println(color);
+		return color;
+		
+	}
+	public static void keyboardNavig(int times) throws InterruptedException {
+		Actions action=new Actions(driver);
+		for(int i=0;i<=times;i++) {
+			action.sendKeys(Keys.TAB).perform();
+			driverDelay(200);
+		}
+		action.sendKeys(Keys.ENTER).perform();
+	}
+	//CIM
 	public static String getPageHeaderPath(String headerText) {
 //		String xpath = "//*[contains(@class, 'areaTitle') and text() = '"+headerText+"']";
 		String xpath = "//*[contains(@id, 'container') and text() = '"+headerText+"']";

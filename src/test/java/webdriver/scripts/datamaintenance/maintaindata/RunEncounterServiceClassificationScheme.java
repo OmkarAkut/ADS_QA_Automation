@@ -16,6 +16,7 @@ import webdriver.helpers.CalculationHelper;
 import webdriver.helpers.ContractModelsHelper;
 import webdriver.maps.ContractingMap;
 import webdriver.maps.DataMaintenanceMap;
+import webdriver.maps.DialogsMap;
 import webdriver.maps.StatusMap;
 import webdriver.maps.mapbuilder.BuildMap;
 
@@ -34,7 +35,8 @@ public class RunEncounterServiceClassificationScheme extends CalculationHelper {
 	static DataMaintenanceMap dmMap;
 	static ContractingMap contractMap;
 	static StatusMap statusMap;
-	static AdsHelper adsHelper = new AdsHelper();
+	public static DialogsMap dialog;
+	
 	/** Regression: Automated test script for ADS-6406 */
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
@@ -44,14 +46,13 @@ public class RunEncounterServiceClassificationScheme extends CalculationHelper {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);
 			contractMap = BuildMap.getInstance(driver, ContractingMap.class);
 			statusMap = BuildMap.getInstance(driver, StatusMap.class);
+			 dialog = BuildMap.getInstance(driver, DialogsMap.class);
 			Login.loginUser("AutomationTesterAdmin");
 			goToPage("Maintain Data");
 			waitForSpinnerToEnd();
 			waitForAjaxExtJs();
 			selectMaintainDataAtoZ(aTozPage);
-			doClick(ContractingMap.getContractModelButtonFilter());
-			adsHelper.doFilterCreate(filter);
-			tableDoubleClickCellFirstColumn(batch);
+			
 			ExtentReport.logPass("PASS", "setupScript");
 		} catch (Exception | AssertionError e) {
 			fail(e.getMessage());
@@ -62,6 +63,9 @@ public class RunEncounterServiceClassificationScheme extends CalculationHelper {
 
 	@Test
 	public void test01AssertPopulationAndServiceModelsForEncounterClassificationScheme_ADS_6102() throws Throwable {
+		doClick(ContractingMap.getContractModelButtonFilter());
+		applyFilter(filter);
+		tableDoubleClickCellFirstColumn(batch);
 		try {
 			assertThatString(DataMaintenanceMap.getPopulationValue(), population, printout);
 			ContractModelsHelper.CompareListToArray(dmMap.getServiceModelList(), serviceModels);
@@ -105,7 +109,7 @@ public class RunEncounterServiceClassificationScheme extends CalculationHelper {
 			waitForDisplayedSpinnerToEnd();
 			waitForElementToBeVisible(dmMap.getencounterButtonFilter());
 			doClick(dmMap.getencounterButtonFilter());
-			adsHelper.doFilterCreate(filterByEncounterID);
+			applyFilter(filterByEncounterID);
 			doClick(dmMap.getencounterButtonEdit());
 			driverDelay(300);
 			doClick(DataMaintenanceMap.getServicesTabEncounter());
@@ -123,7 +127,7 @@ public class RunEncounterServiceClassificationScheme extends CalculationHelper {
 		try {
 			selectMaintainDataAtoZ(aTozPage);
 			doClick(ContractingMap.getContractModelButtonFilter());
-			adsHelper.doFilterCreate(filter);
+			applyFilter(filter);
 			tableDoubleClickCellFirstColumn(batch);
 			doClick(DataMaintenanceMap.getAssignButtonEncounter());
 			waitForPageTitle("Calculation Status");
@@ -151,7 +155,7 @@ public class RunEncounterServiceClassificationScheme extends CalculationHelper {
 			selectMaintainDataAtoZ(aToZPage2);
 			waitForDisplayedSpinnerToEnd();
 			doClick(dmMap.getencounterButtonFilter());
-			adsHelper.doFilterCreate(filterByEncounterID);
+			applyFilter(filterByEncounterID);
 			doClick(dmMap.getencounterButtonEdit());
 			driverDelay(300);
 			doClick(DataMaintenanceMap.getServicesTabEncounter());
@@ -168,7 +172,19 @@ public class RunEncounterServiceClassificationScheme extends CalculationHelper {
 		}
 
 	}
-
+	public void applyFilter(String[] filterParameters) throws Throwable {
+		doDropdownSelectUsingOptionTextServices(dialog.getFilterNameField(),dialog.getFilterDialogDropdownField(), filterParameters[0]);
+		doDropdownSelectUsingOptionTextServices(dialog.getFilterNameOperator(),dialog.getFilterDialogDropdownOperator(), filterParameters[1]);
+		doDropdownSelectUsingOptionTextServices(dialog.getFilterNameCondition(),dialog.getFilterDialogDropdownCondition(), filterParameters[2]);
+		doClick(dialog.getFilterDialogFormFieldValue());
+		dialog.getFilterDialogFormFieldValue().sendKeys(filterParameters[3]);
+		
+		waitUntilElementIsClickable(dialog.getFilterDialogButtonAdd());
+		doClick(dialog.getFilterDialogButtonAdd());
+		waitForAjaxExtJs();
+		doClick(dialog.getFilterDialogButtonApplyFilter());
+		waitForSpinnerToEnd();
+	}
 	@AfterClass
 	public static void endtest() throws Exception {
 

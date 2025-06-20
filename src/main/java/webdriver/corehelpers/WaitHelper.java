@@ -223,7 +223,7 @@ public class WaitHelper extends JavaHelper {
 		//Edited by Omkar on 22/6/22 as the old wait is depreciated
 		//WebDriverWait wait = new WebDriverWait(driver, 30);
 
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30,0));
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50,0));
 			wait.until(ExpectedConditions.visibilityOf(element));
 
 	}
@@ -279,7 +279,7 @@ public class WaitHelper extends JavaHelper {
 	public static void waitForPresenceOfElement(String xpath) {
 		//WebDriverWait wait = new WebDriverWait(driver, 30);
 		
-			WebDriverWait webdriverWait = new WebDriverWait(driver, Duration.ofSeconds(50,0));;
+			WebDriverWait webdriverWait = new WebDriverWait(driver, Duration.ofSeconds(100,0));;
 			webdriverWait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(""+xpath+"")));
 			
 

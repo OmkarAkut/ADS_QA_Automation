@@ -246,14 +246,15 @@ public class ContractingModelDefinePaymentTermsFeeForServicePaymentTermsCalculat
 //			closeViewDialog();
 			doClick("(//div[contains(@class,'x-toolbar x-docked')]//span[text()='Cancel'])[3]");
 			deleteMyCalculationStatusFirstRow();
-			ExtentReport.logPass("PASS", "FeeForServicePaymentTermsCalculate");
+			doClosePageOnLowerBar("Calculation Status");
+			ExtentReport.logPass("PASS", "FeeForServicePaymentTermsCalculate_ADS_6775_ADS_6782");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "FeeForServicePaymentTermsCalculate", driver, e);
+			ExtentReport.logFail("FAIL", "FeeForServicePaymentTermsCalculate_ADS_6775_ADS_6782", driver, e);
 			fail(e.getMessage());
 		}
-		finally {
-			doClosePageOnLowerBar("Calculation Status");
-		}
+//		finally {
+//			doClosePageOnLowerBar("Calculation Status");
+//		}
 	}
 
 	@AfterClass

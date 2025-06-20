@@ -114,6 +114,8 @@ public class CostingRunActivityVolumeCalculationScenarioAds2338 extends Calculat
 			ContractModelsHelper.keyInValues(CostingMap.getActivityVolDataCalcScenarioName(), activityVolumeSaveDataScenario);
 			doDropdownSelectUsingOptionText(CostingMap.getActivityVolCalcDestScenBtn(),CostingMap.getActivityVolDataSCenarioList(), Code+" "+scenarioName);
 			// verify configuration on this page
+//			CostingMap.getActivityVolDataCalcScenarioCalculateStart().sendKeys(startMonth);
+//			CostingMap.getActivityVolDataCalcScenarioCalculateStart().sendKeys(endMonth);
 			doDropdownSelectUsingOptionText(CostingMap.getActivityVolDataCalcScenarioCalculateStart(),CostingMap.getActivityVolDataCalcScenarioCalculateStartList(), startMonth);
 			doDropdownSelectUsingOptionText(CostingMap.getActivityVolDataCalcScenarioCalculateEnd(),CostingMap.getActivityVolDataCalcScenarioCalculateEndList(), endMonth);
 			
