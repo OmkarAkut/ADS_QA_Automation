@@ -18,7 +18,7 @@ import webdriver.maps.CimMap;
 import webdriver.maps.mapbuilder.BuildMap;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-/** Regression test case ADS-20406 **/
+/** Regression test case ADS-20406**/
 public class CalculateNowFunctionality extends CimHelper {
 	private static CimMap cimMap;
 	private static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
@@ -37,7 +37,7 @@ public class CalculateNowFunctionality extends CimHelper {
 				"CalculateNowFunctionality");
 		try {
 			cimMap = BuildMap.getInstance(driver, CimMap.class);
-			Login.loginUser("ContractAnalyst1");
+			Login.loginUser("CostAnalyst1");
 			goToPage("Cost Integration Manager");
 			waitForDisplayedSpinnerToEnd();
 			ExtentReport.logPass("PASS", "setupScript");

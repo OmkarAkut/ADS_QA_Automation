@@ -1,9 +1,11 @@
 package webdriver.scripts.cim;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -11,6 +13,7 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
@@ -145,7 +148,30 @@ public class SCHEDULECalculationfunctionality  extends CimHelper{
 			fail(e.getMessage());
 		}
 	}
-	//Still steps pending to be automated 
+	@Test
+	public void test05Validate_CustomDateTime_20409() throws Throwable {
+		try {
+			createCIM(cimScenarioCreate,calcType);
+			doFilterCreateCIM(filterCim);
+			doClick(cimMap.getcimCalculateBtn());
+			String element = checkElements(driver.findElements(By.xpath("//div[text()='Calculate " + cimScenarioCreate + "']//following::span[text()='Custom Date & Time']")));
+			if(driver.findElement(By.xpath(element)).isDisplayed()) {
+				assertTrue(printout);
+			}
+			else {
+				fail();
+			}
+			doClick("//div[text()='Calculate "+cimScenarioCreate+"']//following::span[text()='Cancel & Close']");
+			validateCalcStatus("PENDING", cimScenarioCreate);
+			doClick(cimMap.scheduledPopUpCancelCloseBtn());
+			deleteCim();
+			ExtentReport.logPass("PASS", "test05Validate_CustomDateTime_20409");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test05Validate_CustomDateTime_20409", driver, e);
+			fail(e.getMessage());
+		}
+	}
+
 	@AfterClass
 	public static void endtest() throws Exception {
 		ExtentReport.report.flush();

@@ -12,6 +12,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.time.format.TextStyle;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -554,13 +555,7 @@ public class CimHelper extends CalculationHelper {
 		action.sendKeys(Keys.ENTER).perform();
 	}
 
-	public static String KeyInValues(String name, WebElement element) {
-
-		String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
-		String value = name + currentDateTime;
-		return value;
-
-	}
+	
 
 	public void assertThatFieldValueContainsString(WebElement element, String expectedValue, String attribute) {
 		String defaultValue = element.getAttribute(attribute);
@@ -892,16 +887,22 @@ public class CimHelper extends CalculationHelper {
 		}
 		Thread.sleep(500);
 	}
-
+public static boolean dateTimeCheck(String dateTimeStr) {
+	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss a");
+	try {
+        LocalDateTime.parse(dateTimeStr, formatter);
+        return true; // valid format and valid values
+    } catch (DateTimeParseException e) {
+        return false;
+    }
+	
+}
 	public void setRecurrence(String recurrence, String scenario) throws Throwable {
 		String date;
 		String time;
 		String startTime;
 		String nextStartTime;
 		String currentTime = getSystemTimeFormatted();
-		doClick(cimMap.getcimCalculateBtn());
-		driverDelay();
-		
 		checkElements(driver.findElements(
 				By.xpath("//div[text()='Calculate " + scenario + "']//following::span[text()='Custom Date & Time']")));
 		date = checkElements(driver.findElements(By.xpath("//input[@name='customDate']")));
@@ -926,9 +927,9 @@ public class CimHelper extends CalculationHelper {
 				By.xpath("//div[text()='Calculate " + scenario + "']//following::span[text()='Save & Close']")));
 		driverDelay(200);
 		if(recurrence.equals("Does not repeat")) {
-			assertElementIsDisplayedWithXpath("//div[contains(@id,'cimmasterlist')]//div[text()='" + scenario + "']//following::td[4]/div//span[@class='icon']");
+			assertElementIsNotDisplayed("//div[contains(@id,'cimmasterlist')]//div[text()='" + scenario + "']//following::td[4]/div//span[@class='icon']");
 
-			String cimNextStartTime = driver.findElement(By.xpath("//div[contains(@id,'cimmasterlist')]//div[text()='"+cimScenarioCreate+"']//following::td[4]/div")).getText().split(" ")[0];
+			String cimNextStartTime = driver.findElement(By.xpath("//div[contains(@id,'cimmasterlist')]//div[text()='"+scenario+"']//following::td[4]/div")).getText().split(" ")[0];
 			String nextStrtTime = getSystemDate();
 			assertTextEquals(cimNextStartTime,nextStrtTime);
 			doClick("//div[text()='" + scenario + "']");
@@ -940,6 +941,7 @@ public class CimHelper extends CalculationHelper {
 				fail();
 			}
 		}
+		
 		else {
 		nextStartTime = driver
 				.findElement(By.xpath(
@@ -968,6 +970,8 @@ public class CimHelper extends CalculationHelper {
 			}
 		}
 		if (recurrence == "Monthly") {
+			startTime = extractTime(nextStartTime);
+			System.out.println(cimMap.getrepeatsText().getText());
 			if (cimMap.getrepeatsText().getText().contains("Every month")
 					&& cimMap.getrepeatsText().getText().contains(startTime)) {
 				assertTrue(printout);
@@ -994,7 +998,165 @@ public class CimHelper extends CalculationHelper {
 		}
 		}
 	}
-
+public void setNoRecurrence(String recurrence,String scenario,String interval,String repeat) throws Throwable {
+	String date;
+	String time;
+	String startTime;
+	String nextStartTime;
+	String currentTime = getSystemTimeFormatted();
+	checkElements(driver.findElements(
+			By.xpath("//div[text()='Calculate " + scenario + "']//following::span[text()='Custom Date & Time']")));
+	date = checkElements(driver.findElements(By.xpath("//input[@name='customDate']")));
+	driver.findElement(By.xpath(date));
+	selectDate("next", driver.findElement(By.xpath(date)));
+	checkElements(driver.findElements(By.xpath("//input[@name='customTime']")));
+	time = checkElements(driver.findElements(By.xpath("//input[@name='customTime']")));
+	driver.findElement(By.xpath(time)).click();
+	driver.findElement(By.xpath(time)).sendKeys(currentTime);
+	// Select recurrence
+	checkElements(cimMap.getrepeatCalcDropdown());
+	List<WebElement> elementsRecurrence = driver.findElements(By.xpath("//li[text()='" + recurrence + "']"));
+	if (elementsRecurrence.size() > 1) {
+		WebElement lastElement = elementsRecurrence.get(elementsRecurrence.size() - 1);
+		lastElement.click();
+	}
+	if (elementsRecurrence.size() == 1) {
+		elementsRecurrence.get(0).click();
+	}
+	checkElements(cimMap.getRepeatEveryInput());
+	List<WebElement> elementsRepeat = cimMap.getRepeatEveryInput();
+	if (elementsRepeat.size() > 1) {
+		WebElement lastElement = elementsRepeat.get(elementsRepeat.size() - 1);
+		lastElement.click();
+		lastElement.clear();
+		lastElement.sendKeys(interval);
+	}
+	if (elementsRepeat.size() == 1) {
+		elementsRepeat.get(0).click();
+		elementsRepeat.get(0).clear();
+		elementsRepeat.get(0).sendKeys(interval);
+	}
+	checkElements(cimMap.getrepeatInterval());
+	List<WebElement> elements = driver.findElements(By.xpath("//li[text()='" + repeat + "']"));
+	if (elements.size() > 1) {
+		WebElement lastElement = elements.get(elements.size() - 1);
+		lastElement.click();
+	}
+	if (elements.size() == 1) {
+		elements.get(0).click();
+	}
+	date = checkElements(cimMap.getrepeatEnds());
+	driver.findElement(By.xpath(date));
+	selectDate("next", driver.findElement(By.xpath(date)));
+	checkElements(driver.findElements(
+			By.xpath("//div[text()='Calculate " + scenario + "']//following::span[text()='Save & Close']")));
+	driverDelay(200);
+	nextStartTime = driver
+			.findElement(By.xpath(
+					"//div[contains(@id,'cimmasterlist')]//div[text()='" + scenario + "']//following::td[4]/div"))
+			.getText();
+	assertElementIsNotDisplayed("//div[contains(@id,'cimmasterlist')]//div[text()='" + scenario + "']//following::td[4]/div//span[@class='icon']");
+	startTime = extractTime(nextStartTime);
+	doClick("//div[text()='" + scenario + "']");
+	doClick(cimMap.getcimCalculateBtn());
+	waitForElementToBeVisible(cimMap.getschedulePopUp());
+	System.out.println(cimMap.getrepeatsText().getText());
+	if(repeat.equals("Days")) {
+		
+		if (cimMap.getrepeatsText().getText().contains("Every "+interval+" days")&& cimMap.getrepeatsText().getText().contains(startTime)) {
+			assertTrue(printout);
+		} else {
+			fail();
+		}
+	}
+}
+public  void setRecurrenceForCustom(String recurrence,String scenario,String interval,String repeat) throws Throwable {
+	String date;
+	String time;
+	String startTime;
+	String nextStartTime;
+	String currentTime = getSystemTimeFormatted();
+	checkElements(driver.findElements(
+			By.xpath("//div[text()='Calculate " + scenario + "']//following::span[text()='Custom Date & Time']")));
+	date = checkElements(driver.findElements(By.xpath("//input[@name='customDate']")));
+	driver.findElement(By.xpath(date));
+	selectDate("next", driver.findElement(By.xpath(date)));
+	checkElements(driver.findElements(By.xpath("//input[@name='customTime']")));
+	time = checkElements(driver.findElements(By.xpath("//input[@name='customTime']")));
+	driver.findElement(By.xpath(time)).click();
+	driver.findElement(By.xpath(time)).sendKeys(currentTime);
+	// Select recurrence
+	checkElements(cimMap.getrepeatCalcDropdown());
+	List<WebElement> elementsRecurrence = driver.findElements(By.xpath("//li[text()='" + recurrence + "']"));
+	if (elementsRecurrence.size() > 1) {
+		WebElement lastElement = elementsRecurrence.get(elementsRecurrence.size() - 1);
+		lastElement.click();
+	}
+	if (elementsRecurrence.size() == 1) {
+		elementsRecurrence.get(0).click();
+	}
+	checkElements(cimMap.getRepeatEveryInput());
+	List<WebElement> elementsRepeat = cimMap.getRepeatEveryInput();
+	if (elementsRepeat.size() > 1) {
+		WebElement lastElement = elementsRepeat.get(elementsRepeat.size() - 1);
+		lastElement.click();
+		lastElement.clear();
+		lastElement.sendKeys(interval);
+	}
+	if (elementsRepeat.size() == 1) {
+		elementsRepeat.get(0).click();
+		elementsRepeat.get(0).clear();
+		elementsRepeat.get(0).sendKeys(interval);
+	}
+	checkElements(cimMap.getrepeatInterval());
+	List<WebElement> elements = driver.findElements(By.xpath("//li[text()='" + repeat + "']"));
+	if (elements.size() > 1) {
+		WebElement lastElement = elements.get(elements.size() - 1);
+		lastElement.click();
+	}
+	if (elements.size() == 1) {
+		elements.get(0).click();
+	}
+	
+	checkElements(driver.findElements(
+			By.xpath("//div[text()='Calculate " + scenario + "']//following::span[text()='Save & Close']")));
+	driverDelay(200);
+	nextStartTime = driver
+			.findElement(By.xpath(
+					"//div[contains(@id,'cimmasterlist')]//div[text()='" + scenario + "']//following::td[4]/div"))
+			.getText();
+	assertElementIsDisplayedWithXpath("//div[contains(@id,'cimmasterlist')]//div[text()='" + scenario + "']//following::td[4]/div//span[@class='icon']");
+	startTime = extractTime(nextStartTime);
+	doClick("//div[text()='" + scenario + "']");
+	doClick(cimMap.getcimCalculateBtn());
+	waitForElementToBeVisible(cimMap.getschedulePopUp());
+	System.out.println(cimMap.getrepeatsText().getText());
+	if(repeat.equals("Days")) {
+		
+		if (cimMap.getrepeatsText().getText().contains("Every "+interval+" days")&& cimMap.getrepeatsText().getText().contains(startTime)) {
+			assertTrue(printout);
+		} else {
+			fail();
+		}
+	}
+if(repeat.equals("Weeks")) {
+		
+		if (cimMap.getrepeatsText().getText().contains("Every "+interval+" weeks")&& cimMap.getrepeatsText().getText().contains(startTime)) {
+			assertTrue(printout);
+		} else {
+			fail();
+		}
+	}
+if(repeat.equals("Months")) {
+	
+	if (cimMap.getrepeatsText().getText().contains("Every "+interval+" months")&& cimMap.getrepeatsText().getText().contains(startTime)) {
+		assertTrue(printout);
+	} else {
+		fail();
+	}
+}
+	
+}
 	public static String currentDay() {
 		LocalDate tomorrow = LocalDate.now().plusDays(1);
 		;

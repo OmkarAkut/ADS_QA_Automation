@@ -29,7 +29,7 @@ public class RECURRINGCalculationfunctionality extends CimHelper {
 				"RECURRINGCalculationfunctionality");
 		try {
 			cimMap = BuildMap.getInstance(driver, CimMap.class);
-			Login.loginUser("AutomationTesterAdmin");
+			Login.loginUser("CostAnalyst1");
 			goToPage("Cost Integration Manager");
 			waitForDisplayedSpinnerToEnd();
 			ExtentReport.logPass("PASS", "setupScript");
@@ -44,6 +44,8 @@ public class RECURRINGCalculationfunctionality extends CimHelper {
 		try {
 			createCIM(cimScenarioCreate,calcType);
 			doFilterCreateCIM(filterCim);
+			doClick(cimMap.getcimCalculateBtn());
+			driverDelay();
 			setRecurrence("Daily", cimScenarioCreate);
 			doClick(cimMap.scheduledPopUpCancelCloseBtn());
 			deleteCim();
@@ -59,6 +61,8 @@ public class RECURRINGCalculationfunctionality extends CimHelper {
 		try {
 			createCIM(cimScenarioCreate,calcType);
 			doFilterCreateCIM(filterCim);
+			doClick(cimMap.getcimCalculateBtn());
+			driverDelay();
 			setRecurrence("Monthly", cimScenarioCreate);
 			doClick(cimMap.scheduledPopUpCancelCloseBtn());
 			deleteCim();
@@ -73,6 +77,8 @@ public class RECURRINGCalculationfunctionality extends CimHelper {
 		try {
 			createCIM(cimScenarioCreate,calcType);
 			doFilterCreateCIM(filterCim);
+			doClick(cimMap.getcimCalculateBtn());
+			driverDelay();
 			setRecurrence("Weekly", cimScenarioCreate);
 			doClick(cimMap.scheduledPopUpCancelCloseBtn());
 			deleteCim();
@@ -87,6 +93,8 @@ public class RECURRINGCalculationfunctionality extends CimHelper {
 		try {
 			createCIM(cimScenarioCreate,calcType);
 			doFilterCreateCIM(filterCim);
+			doClick(cimMap.getcimCalculateBtn());
+			driverDelay();
 			setRecurrence("Annually", cimScenarioCreate);
 			doClick(cimMap.scheduledPopUpCancelCloseBtn());
 			deleteCim();
@@ -101,6 +109,8 @@ public class RECURRINGCalculationfunctionality extends CimHelper {
 		try {
 			createCIM(cimScenarioCreate,calcType);
 			doFilterCreateCIM(filterCim);
+			doClick(cimMap.getcimCalculateBtn());
+			driverDelay();
 			setRecurrence("Quarterly", cimScenarioCreate);
 			doClick(cimMap.scheduledPopUpCancelCloseBtn());
 			deleteCim();
@@ -116,12 +126,80 @@ public class RECURRINGCalculationfunctionality extends CimHelper {
 		try {
 			createCIM(cimScenarioCreate,calcType);
 			doFilterCreateCIM(filterCim);
+			doClick(cimMap.getcimCalculateBtn());
+			driverDelay();
 			setRecurrence("Does not repeat", cimScenarioCreate);
 			doClick(cimMap.scheduledPopUpCancelCloseBtn());
 			deleteCim();
 			ExtentReport.logPass("PASS", "test05Validate_QuarterlyRecurrence_20410");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test05Validate_QuarterlyRecurrence_20410", driver, e);
+			fail(e.getMessage());
+		}
+	}
+
+	@Test
+	public void test07Validate_Custom_Days_Recurrence_20410() throws Throwable {
+		try {
+			createCIM(cimScenarioCreate,calcType);
+			doFilterCreateCIM(filterCim);
+			doClick(cimMap.getcimCalculateBtn());
+			driverDelay();
+			setRecurrenceForCustom("Custom", cimScenarioCreate,"2","Days");//Repeat every 2 days
+			doClick(cimMap.scheduledPopUpCancelCloseBtn());
+			deleteCim();
+			ExtentReport.logPass("PASS", "test07Validate_Custom_Recurrence_20410");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test07Validate_Custom_Recurrence_20410", driver, e);
+			fail(e.getMessage());
+		}
+	}
+	@Test
+	public void test08Validate_Custom_Weeks_Recurrence_20410() throws Throwable {
+		try {
+			createCIM(cimScenarioCreate,calcType);
+			doFilterCreateCIM(filterCim);
+			doClick(cimMap.getcimCalculateBtn());
+			driverDelay();
+			setRecurrenceForCustom("Custom", cimScenarioCreate,"2","Weeks");//Repeat every 2 weeks
+			doClick(cimMap.scheduledPopUpCancelCloseBtn());
+			deleteCim();
+			ExtentReport.logPass("PASS", "test08Validate_Custom_Weeks_Recurrence_20410");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test08Validate_Custom_Weeks_Recurrence_20410", driver, e);
+			fail(e.getMessage());
+		}
+	}
+	@Test
+	public void test09Validate_Custom_Months_Recurrence_20410() throws Throwable {
+		try {
+			createCIM(cimScenarioCreate,calcType);
+			doFilterCreateCIM(filterCim);
+			doClick(cimMap.getcimCalculateBtn());
+			driverDelay();
+			setRecurrenceForCustom("Custom", cimScenarioCreate,"2","Months");//Repeat every 2 weeks
+			doClick(cimMap.scheduledPopUpCancelCloseBtn());
+			deleteCim();
+			ExtentReport.logPass("PASS", "test09Validate_Custom_Months_Recurrence_20410");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test09Validate_Custom_Months_Recurrence_20410", driver, e);
+			fail(e.getMessage());
+		}
+	}
+	
+	@Test
+	public void test10Validate_NoRecurrenceSymbol_20410() throws Throwable {
+		try {
+			createCIM(cimScenarioCreate,calcType);
+			doFilterCreateCIM(filterCim);
+			doClick(cimMap.getcimCalculateBtn());
+			driverDelay();
+			setNoRecurrence("Custom", cimScenarioCreate,"2","Months");//Check for no recurrence
+			doClick(cimMap.scheduledPopUpCancelCloseBtn());
+			deleteCim();
+			ExtentReport.logPass("PASS", "test10Validate_NoRecurrenceSymbol_20410");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test10Validate_NoRecurrenceSymbol_20410", driver, e);
 			fail(e.getMessage());
 		}
 	}

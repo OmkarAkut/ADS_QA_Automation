@@ -32,7 +32,7 @@ public class AddCostIntegrationManagerCIMtoCostingModulelist extends UcqcHelper 
 			generalElement = BuildMap.getInstance(driver, GeneralElementsMap.class);
 			CimMap = BuildMap.getInstance(driver, CimMap.class);
 			tab = BuildMap.getInstance(driver, GeneralElementsMap.class);
-			Login.loginUser("AutomationTesterAdmin");
+			Login.loginUser("CostAnalyst1");
 			ExtentReport.logPass("PASS", "setupScript");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "Failure in setupScript", driver, e);

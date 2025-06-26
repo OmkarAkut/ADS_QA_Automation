@@ -511,5 +511,37 @@ public class CimMap extends MapConfig {
 	@FindBy(xpath = "(//div[text()='Scheduled']/following::span[text()='Cancel & Close'])")
 	private WebElement scheduledPopUpCancelCloseBtn;
 	public WebElement scheduledPopUpCancelCloseBtn() {return scheduledPopUpCancelCloseBtn;}
+	
+	@FindBy(xpath = "//input[@name='repeatFrequency']")
+	private List<WebElement> repeatEveryInput;
+	public List<WebElement> getRepeatEveryInput() {return repeatEveryInput;}
+	
+	@FindBy(xpath = "//input[@name='customRepeatInterval']")
+	private List<WebElement> repeatInterval;
+	public List<WebElement> getrepeatInterval() {return repeatInterval;}
+	
+	@FindBy(xpath = "//input[@name='endDate']")
+	private List<WebElement> repeatEnds;
+	public List<WebElement> getrepeatEnds() {return repeatEnds;}
+	
+	@FindBy(xpath = "//div[text()='Scheduled']//following::span[text()='Edit']")
+	private WebElement scheduledEditBtn;
+	public WebElement getScheduledEditBtn() {return scheduledEditBtn;}
+	
+	@FindBy(xpath = "//a[contains(@class,'windowbtn ')]//span[text()='Delete']")
+	private WebElement calcDeletewarningBtn;
+	public WebElement getcalcDeletewarningBtn() {return calcDeletewarningBtn;}
+	
+	@FindBy(xpath = "//a[text()='Calculation Status Screen >>']")
+	private WebElement calcStatusPgeLink;
+	public WebElement getcalcStatusPgeLink() {return calcStatusPgeLink;}
+	
+	@FindBy(name = "searchText")
+	private WebElement calcStatusSearch;
+	public WebElement getcalcStatusSearch() {return calcStatusSearch;}
+	
+	@FindBy(xpath = "//span[contains(@class,'consEnconSearch ')]")
+	private WebElement calcStatusSearchIcon;
+	public WebElement getcalcStatusSearchIcon() {return calcStatusSearchIcon;}
 }
 
