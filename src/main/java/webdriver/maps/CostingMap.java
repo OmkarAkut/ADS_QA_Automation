@@ -1073,6 +1073,12 @@ public class CostingMap extends MapConfig {
 	public WebElement getcostModelButtonColumnsToDisplayModalSelect() {
 		return costModelButtonColumnsToDisplayModalSelect;
 	}
+	
+	@FindBy(xpath = "//div[contains(@id,'custommultiselector')]//span[contains(@id,'button')][text()='Remove']")
+	private WebElement costModelButtonColumnsToDisplayModalRemove;
+	public WebElement getcostModelButtonColumnsToDisplayModalRemove() {
+		return costModelButtonColumnsToDisplayModalRemove;
+	}
 
 	@FindBy(xpath = "//input[@name='utCstStartDate']")
 	private WebElement getCostModelScenariosinEvaluationOrderFrom;
@@ -1886,6 +1892,16 @@ public class CostingMap extends MapConfig {
 	public   WebElement getEncCostModelDeleteButton() {
 		return getEncCostModelDeleteButton;
 	}
+	@FindBy(xpath = "//div[contains(@id,'encountercostcalculationmaingrid')]//following::span[text()='Edit']")
+	private  WebElement getEncCostModelEditButton;
+	public   WebElement getEncCostModelEditButton() {
+		return getEncCostModelEditButton;
+	}
+	@FindBy(xpath = "//div[contains(@id,'encountercostcalculationmaingrid')]//following::span[text()='New']")
+	private  WebElement getEncCostModelNewButton;
+	public   WebElement getEncCostModelNewButton() {
+		return getEncCostModelNewButton;
+	}
 	@FindBy(xpath = "(//label[text()='Cost Model Scenarios in Evaluation Order']//following::span[text()='Select'])[1]")
 	private  WebElement getEncCostModelEvaluationSelectButton;
 	public   WebElement getEncCostModelEvaluationSelectButton() {
@@ -2459,6 +2475,8 @@ public class CostingMap extends MapConfig {
 	private static WebElement getCostScenarioFilterButton;
 	public static WebElement getCostScenarioFilterButton() {return getCostScenarioFilterButton;}
 	
+	
+	
 	//Shilpa Xpath update for 11.2 on 21.5.2024
 	@FindBy(xpath = "//h1[text()='Cost Model Calculation Scenarios']//following::span[text()='Save As']")
 	private static WebElement getCostScenarioSaveButton;
@@ -2467,6 +2485,10 @@ public class CostingMap extends MapConfig {
 	@FindBy(xpath = "//h1[text()='Cost Model Calculation Scenarios']//following::span[text()='Save']")
 	private static WebElement getCostScenarioSaveBtn;
 	public static WebElement getCostScenarioSaveBtn() {return getCostScenarioSaveBtn;}
+	
+	@FindBy(xpath = "//h1[text()='Cost Model Calculation Scenarios']//following::span[text()='Save & Close']")
+	private static WebElement getCostScenarioSaveCloseBtn;
+	public static WebElement getCostScenarioSaveCloseBtn() {return getCostScenarioSaveCloseBtn;}
 	
 	@FindBy(xpath = "(//h1[text()='Cost Model Calculation Scenarios']//following::span[text()='Calculate'])[2]")
 	private static WebElement getCostScenarioCalculateButton;
@@ -2488,6 +2510,10 @@ public class CostingMap extends MapConfig {
 	private static WebElement getCostScenarioClearFilterButton;
 	public static WebElement getCostScenarioClearFilterButton() {return getCostScenarioClearFilterButton;}
 	
+	@FindBy(xpath = "//h1[text()='Cost Model Calculation Scenarios']//following::span[text()='New']")
+	private static WebElement getCostScenarioNewButton;
+	public static WebElement getCostScenarioNewButton() {return getCostScenarioNewButton;}
+	
 	//Shilpa added xpath for 11.2 on 10.21.2024
 	@FindBy(xpath = "//span[text()='Continue']")
 	private static WebElement getCostScenarioContinueButton;
@@ -2504,4 +2530,8 @@ public class CostingMap extends MapConfig {
 	@FindBy(xpath = "//div[text()='Overhead Model Calculation Scenarios']//following::span[text()='Delete']")
 	private static WebElement getOverheadModelDeleteButton;
 	public static WebElement getOverheadModelDeleteButton() {return getOverheadModelDeleteButton;}
+	
+	@FindBy(name = "gLDataDescription")
+	private static WebElement getGLDataDescDrp;
+	public static WebElement getGLDataDesc() {return getGLDataDescDrp;}
 }

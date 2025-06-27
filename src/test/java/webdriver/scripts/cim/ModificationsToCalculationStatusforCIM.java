@@ -1,9 +1,6 @@
 package webdriver.scripts.cim;
-
 import static org.junit.Assert.fail;
-
 import java.text.SimpleDateFormat;
-
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -31,6 +28,8 @@ public class ModificationsToCalculationStatusforCIM extends CimHelper {
 	static String totalRecords;
 	static String calcEndtime;
 	static String calcStartTime;
+	static String duration;
+	static String sharedLoc;
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
 		
@@ -48,7 +47,7 @@ public class ModificationsToCalculationStatusforCIM extends CimHelper {
 			fail(e.getMessage());
 		}
 	}
-	/*
+	
 	@Test
 	public void test01Validate_CalculationStatusPageFor_Pending_21963() throws Throwable {
 		try {
@@ -63,6 +62,10 @@ public class ModificationsToCalculationStatusforCIM extends CimHelper {
 			assertElementIsDisplayedWithXpath("//div[contains(@id,'calculationstatus')]//div[text()='"+cimScenarioCreate+"']//following::td[6]/div[text()='Pending']");
 			assertElementIsDisplayedWithXpath("//div[contains(@id,'calculationstatus')]//div[text()='"+cimScenarioCreate+"']//following::td[16]//following::a//span[text()='Cancel']");
 			assertElementIsNotDisplayed("//div[contains(@id,'calculationstatus')]//div[text()='"+cimScenarioCreate+"']//following::td[15]//following::a//span[text()='Delete']");
+			calcStartTime=driver.findElement(By.xpath("//div[contains(@id,'calculationstatus')]//div[text()='"+cimScenarioCreate+"']//following::td[13]/div")).getText();
+			duration=driver.findElement(By.xpath("//div[contains(@id,'calculationstatus')]//div[text()='"+cimScenarioCreate+"']//following::td[15]/div")).getText();
+			assertTextEquals(duration," ");
+			assertTextEquals(calcStartTime," ");
 			doClosePageOnLowerBar("Calculation Status");
 			deleteCim();
 			ExtentReport.logPass("PASS", "test01Validate_CalculationStatus_Pending_21963");
@@ -121,6 +124,10 @@ public class ModificationsToCalculationStatusforCIM extends CimHelper {
 			totalRecords=driver.findElement(By.xpath("//div[text()='Calculation Status']//following::div[text()='"+cimScenarioCreate+"']//following::div[17]")).getText();
 			assert recordsProcessed.equals("0")&&recordsPending.equals("N/A")&&totalRecords.equals("0");
 			assertElementIsDisplayedWithXpath("//div[contains(@id,'calculationstatus')]//div[text()='"+cimScenarioCreate+"']//following::td[6]/div[text()='Pending']");
+			calcEndtime=driver.findElement(By.xpath("//div[contains(@id,'calculationstatus')]//div[text()='"+cimScenarioCreate+"']//following::td[14]/div")).getText();
+			duration=driver.findElement(By.xpath("//div[contains(@id,'calculationstatus')]//div[text()='"+cimScenarioCreate+"']//following::td[15]/div")).getText();
+			assertTextEquals(duration," ");
+			assertTextEquals(calcEndtime," ");
 			calculationStatusPageOpenViewDialog();
 			assertElementIsDisplayedWithXpath("//div[text()='View Log']//following::div[contains(@id,'displayfield')]//div[contains(text(),'"+cimScenarioCreate+"\\Costing\\Cost Integration Manager (CIM)\\"+calcStartTime+"')]");
 			checkForRecordsProcessed("There is no data available to display");
@@ -155,13 +162,16 @@ public class ModificationsToCalculationStatusforCIM extends CimHelper {
 			doClick("//div[text()='" + cimScenarioCreate + "']//following::a[contains(@id,'cimStatusLink')]");
 			calcStartTime=driver.findElement(By.xpath("//div[contains(@id,'calculationstatus')]//div[text()='"+cimScenarioCreate+"']//following::td[13]/div")).getText();
 			calcEndtime=driver.findElement(By.xpath("//div[contains(@id,'calculationstatus')]//div[text()='"+cimScenarioCreate+"']//following::td[14]/div")).getText();
-
+			duration=driver.findElement(By.xpath("//div[contains(@id,'calculationstatus')]//div[text()='"+cimScenarioCreate+"']//following::td[15]/div")).getText();
+			assertTextEquals(duration," ");
 			recordsProcessed=driver.findElement(By.xpath("//div[text()='Calculation Status']//following::div[text()='"+cimScenarioCreate+"']//following::div[15]")).getText();
 			recordsPending=driver.findElement(By.xpath("//div[text()='Calculation Status']//following::div[text()='"+cimScenarioCreate+"']//following::div[16]")).getText();
 			totalRecords=driver.findElement(By.xpath("//div[text()='Calculation Status']//following::div[text()='"+cimScenarioCreate+"']//following::div[17]")).getText();
 			assert recordsProcessed.equals("0")&&recordsPending.equals("N/A")&&totalRecords.equals("0");
 			assertElementIsDisplayedWithXpath("//div[contains(@id,'calculationstatus')]//div[text()='"+cimScenarioCreate+"']//following::td[6]/div[text()='Completed']");
 			assertElementIsNotDisplayed("//div[contains(@id,'calculationstatus')]//div[text()='"+cimScenarioCreate+"']//following::td[15]//following::a//span[text()='Delete']");
+			calcStartTime=driver.findElement(By.xpath("//div[contains(@id,'calculationstatus')]//div[text()='"+cimScenarioCreate+"']//following::td[13]/div")).getText();
+			assertTextEquals(calcEndtime," ");
 			calculationStatusPageOpenViewDialog();
 			assertElementIsDisplayedWithXpath("//div[text()='View Log']//following::div[contains(@id,'displayfield')]//div[contains(text(),'"+cimScenarioCreate+"\\Costing\\Cost Integration Manager (CIM)\\"+calcStartTime+"')]");
 			checkForRecordsProcessed(""+calcEndtime+"CIM BATCh Name: "+cimScenarioCreate+", Calculating Scenario: Encounter Cost Calc Scenario: *Practitioner Costing Enc Failed, error: java.lang.RuntimeException:");
@@ -197,6 +207,10 @@ public class ModificationsToCalculationStatusforCIM extends CimHelper {
 			assertElementIsDisplayedWithXpath("//div[contains(@id,'calculationstatus')]//div[text()='"+cimScenarioCreate+"']//following::td[6]/div[text()='Pending']");
 			assertElementIsNotDisplayed("(//div[contains(@id,'calculationstatus')]//div[text()='"+cimScenarioCreate+"']//following::td[16]//following::a//span[text()='Cancel'])[3]");
 			assertElementIsNotDisplayed("//div[contains(@id,'calculationstatus')]//div[text()='"+cimScenarioCreate+"']//following::td[15]//following::a//span[text()='Delete']");
+			calcEndtime=driver.findElement(By.xpath("//div[contains(@id,'calculationstatus')]//div[text()='"+cimScenarioCreate+"']//following::td[14]/div")).getText();
+			duration=driver.findElement(By.xpath("//div[contains(@id,'calculationstatus')]//div[text()='"+cimScenarioCreate+"']//following::td[15]/div")).getText();
+			assertTextEquals(duration," ");
+			assertTextEquals(calcEndtime," ");
 			calculationStatusPageOpenViewDialog();
 			assertElementIsDisplayedWithXpath("//div[text()='View Log']//following::div[contains(@id,'displayfield')]//div[contains(text(),'"+cimScenarioCreate+"\\Costing\\Cost Integration Manager (CIM)\\"+calcStartTime+"')]");
 			checkForRecordsProcessed("There is no data available to display");
@@ -215,7 +229,7 @@ public class ModificationsToCalculationStatusforCIM extends CimHelper {
 			fail(e.getMessage());
 		}
 	}
-		*/
+		
 	@Test
 	public void test06Search_CalculationStatusPage_21963() throws Throwable {
 		try {
@@ -253,6 +267,43 @@ public class ModificationsToCalculationStatusforCIM extends CimHelper {
 			ExtentReport.logPass("PASS", "test05Validate_CalculationStatusPageFor_Running_21963");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test05Validate_CalculationStatusPageFor_Running_21963", driver, e);
+			fail(e.getMessage());
+		}
+	}
+
+	@Test
+	public void test08Validate_Duration_21963() throws Throwable {
+		try {
+			createCIM(cimScenarioCreate,calcType);
+			doFilterCreateCIM(filterCim);
+			validateCalcStatus("COMPLETED", cimScenarioCreate);
+			doClick("//div[text()='" + cimScenarioCreate + "']//following::a[contains(@id,'cimStatusLink')]");
+			calcStartTime=driver.findElement(By.xpath("//div[contains(@id,'calculationstatus')]//div[text()='"+cimScenarioCreate+"']//following::td[13]/div")).getText();
+			calcEndtime=driver.findElement(By.xpath("//div[contains(@id,'calculationstatus')]//div[text()='"+cimScenarioCreate+"']//following::td[14]/div")).getText();
+			duration=differenceTime(calcStartTime, calcEndtime);
+			assertTextEquals(driver.findElement(By.xpath("//div[contains(@id,'calculationstatus')]//div[text()='"+cimScenarioCreate+"']//following::td[15]/div")).getText(),duration);
+			doClosePageOnLowerBar("Calculation Status");
+			deleteCim();
+			ExtentReport.logPass("PASS", "test08Validate_CalcStartTime_21963");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test08Validate_CalcStartTime_21963", driver, e);
+			fail(e.getMessage());
+		}
+	}
+	
+	@Test
+	public void test09Validate_SharedLoc_21963() throws Throwable {
+		try {
+			createCIM(cimScenarioCreate,calcType);
+			doFilterCreateCIM(filterCim);
+			validateCalcStatus("COMPLETED", cimScenarioCreate);
+			doClick("//div[text()='" + cimScenarioCreate + "']//following::a[contains(@id,'cimStatusLink')]");
+			assertElementIsDisplayedWithXpath("//div[contains(@id,'calculationstatus')]//div[text()='"+cimScenarioCreate+"']//following::td/div//*[contains(text(),'/PATH/TO/CALC_LOGS_SHARED_DIRECTORY1/')]");//directly validating shared loc as this is used during cim group create 
+			doClosePageOnLowerBar("Calculation Status");
+			deleteCim();
+			ExtentReport.logPass("PASS", "test09Validate_SharedLoc_21963");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test09Validate_SharedLoc_21963", driver, e);
 			fail(e.getMessage());
 		}
 	}

@@ -8,6 +8,7 @@ import static org.junit.Assert.fail;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -679,6 +680,13 @@ public class CimHelper extends CalculationHelper {
 		cimMap.getcimLocation().sendKeys("ADS-20031");
 	}
 
+	public static String differenceTime(String startTime,String endTime) {
+		DateTimeFormatter f = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss a");
+		LocalDateTime s = LocalDateTime.parse(startTime, f), e = LocalDateTime.parse(endTime, f);
+		String diff = String.format("%02d:%02d:%02d", Duration.between(s, e).getSeconds()/3600, (Duration.between(s, e).getSeconds()%3600)/60, Duration.between(s, e).getSeconds()%60);
+		return diff;
+		
+	}
 	public static void validateSort(WebElement element, WebElement elementValdiate) {
 		doClick(element);
 		waitForDisplayedSpinnerToEnd();
