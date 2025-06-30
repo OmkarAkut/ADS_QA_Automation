@@ -24,7 +24,7 @@ public class AdsHelper extends GetHelper {
 	}
 	public static void keyboardNavig(int times) throws InterruptedException {
 		Actions action=new Actions(driver);
-		for(int i=0;i<=times;i++) {
+		for(int i=1;i<=times;i++) {
 			action.sendKeys(Keys.TAB).perform();
 			driverDelay(200);
 		}

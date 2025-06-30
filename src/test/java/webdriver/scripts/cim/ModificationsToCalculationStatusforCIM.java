@@ -38,7 +38,7 @@ public class ModificationsToCalculationStatusforCIM extends CimHelper {
 		try {
 			cimMap = BuildMap.getInstance(driver, CimMap.class);
 			modelMap = BuildMap.getInstance(driver, ContractingMap.class);
-			Login.loginUser("AutomationTesterAdmin");
+			Login.loginUser("CostAnalyst1");
 			goToPage("Cost Integration Manager");
 			waitForDisplayedSpinnerToEnd();
 			ExtentReport.logPass("PASS", "setupScript");

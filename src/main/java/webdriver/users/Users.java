@@ -10,45 +10,45 @@ public enum Users {
      * AutomationTester1("eolheiser", "password"),
 	ApplicationAdministrator1("eolheiser", "password"), */
 	 AppSupportUser("aadmin", "password"),
-    AutomationTester1("automationappadmin1", "password"),
-    ApplicationAdministrator1("automationappadmin1", "password"),
-    SystemAdministrator1("automationsysadmin1", "password"),
-    SecurityAdministrator1("automationsecuradmin1", "password"),
+    AutomationTester1("autoappadmin1", "P@$$w0rd123"),
+    ApplicationAdministrator1("autoappadmin1", "P@$$w0rd123"),
+    SystemAdministrator1("autosysadmin1", "P@$$w0rd123"),
+    SecurityAdministrator1("autosecuradmin1", "P@$$w0rd123"),
     /*
     Omkar 22/2/2024 : Someone seems to have changed the role while testing so adding back the 
                       role and changing the password as system does not allow with old password
     DataAdministrator1("automationdataadmin1", "password"), */
-    DataAdministrator1("automationdataadmin1", "password"),
-    CostAnalyst1("automationcostanalyst1", "password"),    
+    DataAdministrator1("autodataadmin1", "P@$$w0rd123"),
+    CostAnalyst1("autocostanalyst1", "P@$$w0rd123"),    
     /*Omkar 18/10/2024 : This user is not working in QAAPP so updating it based on other files 
      * such as UsersEvolve etc which has same roles
      * CostingDepartmentManager1("eolheiser", "password"),
 	ContractAnalyst1("eolheiser", "password"), */
-    CostingDepartmentManager1("automationcostdeptmanag1", "password"),
-    ContractAnalyst1("automationcontraanalyst1", "password"),
-    ContractAdministrator1("automationcontradmin1", "password"),
-    ContractReviewer1("automationcontrreviewer1", "password"),
-    EpisodeAnalyst1("automationepisanalyst1", "password"),
-    ReportAdministrator1("automationrepadmin1", "password"),
-    AdHocReportDesigner1("automationadhocrepdes1", "password"),
-    ReportUser1("automationrepuser1", "password"),
-    WebIntelligenceDesigner1("automationwebInteldesigner1", "password"),
-    WebIntelligenceUser1("automationwebInteluser1", "password"),
-    BudgetingUser1("automationbudgetuser1", "password"),
-    AnalyticsAdministrator1("automationanalyticsadmin1", "password"),
-    AnalyticsAnalyst1("automationanalyticsanalyst1", "password"),
-    AnalyticsDesigner1("automationanalyticsdesign1", "password"),
-    AnalyticsExecutive1("automationanalyticsexec1", "password"),
+    CostingDepartmentManager1("autocostdeptmanag1", "P@$$w0rd123"),
+    ContractAnalyst1("autocontraanalyst1", "P@$$w0rd123"),
+    ContractAdministrator1("autocontradmin1", "P@$$w0rd123"),
+    ContractReviewer1("autocontrreviewer1", "P@$$w0rd123"),
+    EpisodeAnalyst1("autoepisanalyst1", "P@$$w0rd123"),
+    ReportAdministrator1("automationrepadmin1", "P@$$w0rd123"),
+    AdHocReportDesigner1("autoadhocrepdes1", "P@$$w0rd123"),
+    ReportUser1("autorepuser1", "P@$$w0rd123"),
+    WebIntelligenceDesigner1("autowebIdesigner1", "P@$$w0rd123"),
+    WebIntelligenceUser1("autowebIuser1", "P@$$w0rd123"),
+    BudgetingUser1("autobudgetuser1", "P@$$w0rd123"),
+    AnalyticsAdministrator1("autoanalyadmin1", "P@$$w0rd123"),
+    AnalyticsAnalyst1("autoanalyanalyst1", "P@$$w0rd123"),
+    AnalyticsDesigner1("automationanalyticsdesign1", "P@$$w0rd123"),
+    AnalyticsExecutive1("autoanalyticsexec1", "P@$$w0rd123"),
     //RestrictedEntities("newuser1", "password"),
     //RestrictedDepartments("newuser2", "password"),
-    RestrictedEntityAndDept1("autorestrictedentityanddept1", "password"),  //this login added to qaauto only
+    RestrictedEntityAndDept1("autorestdentanddept1", "P@$$w0rd123"),  //this login added to qaauto only
     //dbadminUser1("automationdbadmin1", "password"),
     //Custom Roles
-    CustomRoleWithUcqcAdded("autotest-customwithucqc", "password"),
+    CustomRoleWithUcqcAdded("auto-custwithucqc", "P@$$w0rd123"),
 //    CustomRoleAllStandardRolesExceptUcqc("autotest-customallexceptucqc", "password"),
-    CustomRoleAllStandardRolesExceptUcqc("autotestcustomallexceptucqc", "password"),
+    CustomRoleAllStandardRolesExceptUcqc("auto-custallexcucqc", "P@$$w0rd123"),
 
-    AutoTestCostMgrXCostAnalyst("autotest-customwithucqc", "password"),
+    AutoTestCostMgrXCostAnalyst("auto-custwithucqc", "P@$$w0rd123"),
 	
 //****************added by Omkar*****************
 	AutomationTesterAdmin("aadmin", "password");

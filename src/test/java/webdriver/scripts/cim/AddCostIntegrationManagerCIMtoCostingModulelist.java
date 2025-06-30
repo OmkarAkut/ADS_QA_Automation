@@ -48,11 +48,11 @@ public class AddCostIntegrationManagerCIMtoCostingModulelist extends UcqcHelper 
 			validateBackgroundColor(BackgroundColorCosting, generalElement.getlandingPageBubbleCostingBgColor());
 			String cimFontColor=getFontColor(CimMap.getcimQuickLink());
 			assertEquals(cimFontColor,FontColorCim);
-			keyboardNavig(5);////tab TO CIM dropdown
+			keyboardNavig(3);////tab TO CIM dropdown
 			waitForDisplayedSpinnerToEnd();
 			assertElementIsDisplayed(CimMap.getcimHeader());
 			assertElementIsDisplayed(CimMap.getcimDockItem());
-			keyboardNavig(17);//tab TO CLOSE ICON OF CIM DOCK ITEM
+			keyboardNavig(20);//tab TO CLOSE ICON OF CIM DOCK ITEM
 			ExtentReport.logPass("PASS", "test01ValidateCimInCostingDropdown_20028");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01ValidateCimInCostingDropdown_20028", driver, e);

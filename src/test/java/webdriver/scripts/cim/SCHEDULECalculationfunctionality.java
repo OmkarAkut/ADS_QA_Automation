@@ -39,7 +39,7 @@ public class SCHEDULECalculationfunctionality  extends CimHelper{
 				"SCHEDULECalculationfunctionality");
 		try {
 			cimMap = BuildMap.getInstance(driver, CimMap.class);
-			Login.loginUser("AutomationTesterAdmin");
+			Login.loginUser("CostAnalyst1");
 			goToPage("Cost Integration Manager");
 			waitForDisplayedSpinnerToEnd();
 			ExtentReport.logPass("PASS", "setupScript");
@@ -148,6 +148,7 @@ public class SCHEDULECalculationfunctionality  extends CimHelper{
 			fail(e.getMessage());
 		}
 	}
+	
 	@Test
 	public void test05Validate_CustomDateTime_20409() throws Throwable {
 		try {
@@ -161,9 +162,8 @@ public class SCHEDULECalculationfunctionality  extends CimHelper{
 			else {
 				fail();
 			}
-			doClick("//div[text()='Calculate "+cimScenarioCreate+"']//following::span[text()='Cancel & Close']");
+			checkElements(driver.findElements(By.xpath("//div[text()='Calculate "+cimScenarioCreate+"']//following::span[text()='Cancel & Close']")));
 			validateCalcStatus("PENDING", cimScenarioCreate);
-			doClick(cimMap.scheduledPopUpCancelCloseBtn());
 			deleteCim();
 			ExtentReport.logPass("PASS", "test05Validate_CustomDateTime_20409");
 		} catch (Exception | AssertionError e) {

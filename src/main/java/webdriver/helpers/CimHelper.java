@@ -845,21 +845,23 @@ public class CimHelper extends CalculationHelper {
 //		 boolean spanVal=true;
 		if (elementList.size() == 1) {
 			elementList.get(0).click();
+			String tagName = elementList.get(0).getTagName();
 			String id = elementList.get(0).getAttribute("id");
-			clickableElement = "//input[@id='" + id + "']";
+			clickableElement = "//"+tagName+"[@id='" + id + "']";
 			System.out.println(clickableElement);
 		}
 		if (elementList.size() > 1) {
 			for (WebElement element : elementList) {
 //					System.out.println(list.size());
+				String tagName = element.getTagName();
 				String id = element.getAttribute("id");
 //					while(spanVal)
 				try {
-					clickableElement = "//span[@id='" + id + "']";
-					doClick("//span[@id='" + id + "']");
+					clickableElement = "//"+tagName+"[@id='" + id + "']";
+					doClick("//"+tagName+"[@id='" + id + "']");
 				} catch (Exception e) {
-					clickableElement = "//input[@id='" + id + "']";
-					doClick("//input[@id='" + id + "']");
+//					clickableElement = "//"+tagName+"[@id='" + id + "']";
+//					doClick("//input[@id='" + id + "']");
 				}
 
 			}

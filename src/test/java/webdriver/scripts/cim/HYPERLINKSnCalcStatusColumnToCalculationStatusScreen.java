@@ -33,7 +33,7 @@ public class HYPERLINKSnCalcStatusColumnToCalculationStatusScreen extends CimHel
 				"HYPERLINKSnCalcStatusColumnToCalculationStatusScreen");
 		try {
 			cimMap = BuildMap.getInstance(driver, CimMap.class);
-			Login.loginUser("AutomationTesterAdmin");
+			Login.loginUser("CostAnalyst1");
 			goToPage("Cost Integration Manager");
 			waitForDisplayedSpinnerToEnd();
 			ExtentReport.logPass("PASS", "setupScript");

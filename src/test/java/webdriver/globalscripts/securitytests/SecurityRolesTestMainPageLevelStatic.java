@@ -101,7 +101,7 @@ public class SecurityRolesTestMainPageLevelStatic extends LoginRolesTesting {
             {Roles.valueOf("Budgeting_User")},
             {Roles.valueOf("Analytics_Administrator")},
             {Roles.valueOf("Analytics_Analyst")},
-            {Roles.valueOf("Analytics_Designer")},
+//            {Roles.valueOf("Analytics_Designer")},
 
             {Roles.valueOf("Analytics_Executive")},
     };

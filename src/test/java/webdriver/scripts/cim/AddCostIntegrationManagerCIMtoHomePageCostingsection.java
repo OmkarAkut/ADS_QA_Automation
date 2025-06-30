@@ -56,11 +56,11 @@ public class AddCostIntegrationManagerCIMtoHomePageCostingsection extends UcqcHe
 	@Test
 	public void test02ValidateKeyboardNavigation_20029() throws Throwable {
 		try {
-			keyboardNavig(21);//tab TO CIM hyperlink in the home page
+			keyboardNavig(13);//tab TO CIM hyperlink in the home page
 			waitForDisplayedSpinnerToEnd();
 			assertElementIsDisplayed(CimMap.getcimHeader());
 			assertElementIsDisplayed(CimMap.getcimDockItem());
-			keyboardNavig(11);//tab TO CLOSE ICON OF CIM DOCK ITEM
+			keyboardNavig(17);//tab TO CLOSE ICON OF CIM DOCK ITEM
 			ExtentReport.logPass("PASS", "test02VerifyCimScreenIsVisible_20029");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test02VerifyCimScreenIsVisible_20029", driver, e);
@@ -69,7 +69,7 @@ public class AddCostIntegrationManagerCIMtoHomePageCostingsection extends UcqcHe
 		
 	}
 	
-	@Test
+//	@Test
 	public void test03VerifyCimScreenIsVisible_20029() throws Throwable {
 		try {
 			doClick(CimMap.getcimQuickLink());

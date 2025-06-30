@@ -427,6 +427,12 @@ public class CostingMap extends MapConfig {
 	public WebElement getCostModelScenarioCalculationButtonFilter() {
 		return costModelScenarioCalculationButtonFilter;
 	}
+	
+	@FindBy(xpath = "//div[contains(@id,'costmodelscenariolist')]//*[./text()='Clear Filter']")
+	private WebElement costModelScenarioCalcButtonClearFilter;
+	public WebElement getcostModelScenarioCalcButtonClearFilter() {
+		return costModelScenarioCalcButtonClearFilter;
+	}
 
 	@FindBy(xpath = "//*[contains(@id,'costing_costingmodelscenario_tabId-body')]/descendant::span[text()='Clear Filter']")
 	private WebElement costModelScenarioCalculationButtonClearFilter;
@@ -453,7 +459,20 @@ public class CostingMap extends MapConfig {
 	public WebElement getCostModelScenarioCalculationButtonResults() {
 		return costModelScenarioCalculationButtonResults;
 	}
+	@FindBy(xpath = "//div[contains(@id,'costmodelscenariolist')]//*[./text()='Delete']")
 
+	private WebElement costModelScenarioCalculationButtonDelete;
+
+	public WebElement getcostModelScenarioCalculationButtonDelete() {
+		return costModelScenarioCalculationButtonDelete;
+	}
+	@FindBy(xpath = "//div[contains(@id,'messagebox')]//following::span[text()='Delete']")
+
+	private WebElement costModelScenarioCalculationButtonWarningDelete;
+
+	public WebElement getcostModelScenarioCalculationButtonWarningDelete() {
+		return costModelScenarioCalculationButtonWarningDelete;
+	}
 	/****** End Cost Model Scenario Calculation ******/
 
 	/****** Costing > Cost Model Scenario Calculation > Filter ******/
@@ -1912,6 +1931,11 @@ public class CostingMap extends MapConfig {
 	public   WebElement getEncCostModelCancelCloseButton() {
 		return getEncCostModelCancelCloseButton;
 	}
+	@FindBy(xpath = "//div[text()='Warning']//following::span[text()='Cancel & Close']")
+	private  WebElement getEncCostModelWarningCancelCloseButton;
+	public   WebElement getEncCostModelWarningCancelCloseButton() {
+		return getEncCostModelWarningCancelCloseButton;
+	}
 	@FindBy(xpath = "//div[contains(@id,'messagebox')]//span[text()='Delete']")
 	private static WebElement getWarningDeleteButton;
 	public static   WebElement getWarningDeleteButton() {
@@ -2534,4 +2558,37 @@ public class CostingMap extends MapConfig {
 	@FindBy(name = "gLDataDescription")
 	private static WebElement getGLDataDescDrp;
 	public static WebElement getGLDataDesc() {return getGLDataDescDrp;}
+	
+	@FindBy(xpath = "//h1[text()='Add Cost Model Scenarios']//following::span[text()='Filter']")
+	private  WebElement getAddCostScenarioFilterButton;
+	public   WebElement getAddCostScenarioFilterButton() {
+		return getAddCostScenarioFilterButton;
+	}
+	@FindBy(xpath = "//h1[text()='Add Cost Model Scenarios']//following::span[text()='Add']")
+	private  WebElement getAddCostScenarioFilterAddButton;
+	public   WebElement getAddCostScenarioFilterAddButton() {
+		return getAddCostScenarioFilterAddButton;
+	}
+	@FindBy(xpath = "//h1[text()='Add Cost Model Scenarios']//following::span[text()='Apply Filter']")
+	private  WebElement getAddCostScenarioApplyFilterButton;
+	public   WebElement getAddCostScenarioApplyFilterButton() {
+		return getAddCostScenarioApplyFilterButton;
+	}
+	@FindBy(xpath = "//h1[text()='Add Cost Model Scenarios']//following::span[text()='Apply']")
+	private  WebElement getAddCostScenarioApplyButton;
+	public   WebElement getAddCostScenarioApplyButton() {
+		return getAddCostScenarioApplyButton;
+	}
+	
+	@FindBy(xpath = "(//ul[contains(@id,'dynamiccombo')])[2]/li")
+	private  List<WebElement> getCostScenarioFromDrp;
+	public   List<WebElement> getCostScenarioFromDrp() {
+		return getCostScenarioFromDrp;
+	}
+	
+	@FindBy(xpath = "(//ul[contains(@id,'dynamiccombo')])[3]/li")
+	private  List<WebElement> getCostScenarioToDrp;
+	public   List<WebElement> getCostScenarioToDrp() {
+		return getCostScenarioToDrp;
+	}
 }
