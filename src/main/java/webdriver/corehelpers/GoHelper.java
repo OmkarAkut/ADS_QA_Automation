@@ -284,6 +284,10 @@ public class GoHelper extends AssertHelper {
 			tab.getTerminalServerDesktopSubTab().click();
 		}
 
+		if(page.equals("automation engine job manager")) {
+			tab.getSystemMaintenanceTab().click();;
+			tab.getautomationEngineJobManagerSubTabSubTab().click();
+		}
 		// ===== Status > Calculation Status ===== //
 		if (page.equals("calculation status")) {
 			tab.getStatusTab().click();

@@ -143,11 +143,11 @@ public class SmokeTest extends UcqcHelper {
 			}
 			if(actualReleaseVersion.equals(expectedReleaseVersion)) {
 				System.out.println("Version number not changed");
-				assertFalse(printout);
+				assertTrue(printout);
 				ExtentReport.logFail("FAIL", "test0000cLoginPageVerifyReleaseVersion",driver,null);
 			}else {
 				System.out.println("Version got changed");
-				assertTrue(printout);
+				assertFalse(printout);
 				ExtentReport.logPass("PASS", "test0000cLoginPageVerifyReleaseVersion");
 			}
 		} catch (Exception|AssertionError e) {

@@ -364,6 +364,12 @@ public class GeneralElementsMap extends MapConfig {
     @FindBy(id = "terminalserverdesktop")
     private WebElement terminalServerDesktopSubTab;
     public WebElement getTerminalServerDesktopSubTab(){return terminalServerDesktopSubTab;}
+    
+    //System Maintenance > Automation Engine Job Manager
+    
+    @FindBy(id = "aesequence")
+    private WebElement automationEngineJobManagerSubTab;
+    public WebElement getautomationEngineJobManagerSubTabSubTab(){return automationEngineJobManagerSubTab;}
 
     //Status > Calculation Status
     @FindBy(id = "statuscalculationstatus")
