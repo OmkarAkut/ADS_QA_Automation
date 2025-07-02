@@ -114,4 +114,20 @@ public class AeMap extends MapConfig {
 	    @FindBy(xpath = "//*[text()='Job Created Successfully.']//following::div/button[contains(text(),'Close')]")
 	    private WebElement jobCloseBtn;
 	    public WebElement getjobCloseBtn() {return jobCloseBtn;}
+	    
+	    @FindBy(xpath = "//button[contains(text(),'Save & Close')]")
+	    private WebElement executeJobSaveCloseBtn;
+	    public WebElement getexecuteJobSaveCloseBtn() {return executeJobSaveCloseBtn;}
+	    
+	    @FindBy(id = "sjBtnCustomDateTime")
+	    private WebElement customDateTimeBtn;
+	    public WebElement getcustomDateTimeBtn() {return customDateTimeBtn;}
+	    
+	    @FindBy(id = "sjCustomDateTime")
+	    private WebElement customDateTimeInput;
+	    public WebElement getcustomDateTimeInput() {return customDateTimeInput;}
+	    
+	    @FindBy(id = "sjScheduleRecurrence")
+	    private WebElement recurrenceDropdown;
+	    public WebElement getrecurrenceDropdown() {return recurrenceDropdown;}
 }

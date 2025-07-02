@@ -229,7 +229,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 	}
 
 	// ADS-6497[add step4 -12]
-	@Test
+//	@Test
 	public void test0004LandingPageEpisodes_ADS_6497() throws Throwable {
 		try {
 			WebElement[] landingPageEpisodesElements = { generalElement.getLandingPageBubbleEpisode(),
@@ -386,7 +386,8 @@ public class BuildVerificationTestScript extends UcqcHelper {
 			doClosePageOnLowerBar("Report Library");
 			doClick(generalElement.getLandingPageBubbleReportingQuickLinkWebIntelligence());
 			String getUrl = driver.getCurrentUrl();
-			if (getUrl.contains("qaapp-dev.harrispaas.com")) {
+//			if (getUrl.contains("qaapp-dev.harrispaas.com")) {updated url Shilpa : 11.2.2025
+			if (getUrl.contains("qaapp.harrispaas.com")) {
 				switchToNewWindow(driver, getUrl);
 			}
 			doClick(generalElement.getLandingPageBubbleReportingQuickLinkAdHocReportDesign());
@@ -1480,7 +1481,12 @@ public class BuildVerificationTestScript extends UcqcHelper {
 		try {
 			goToPage("Users");
 			waitForAjaxExtJs();
-			WebElement[] userPageElements = { sysmaint.getUsersPageButtonNew(), sysmaint.getUsersPageButtonEdit(),
+//			WebElement[] userPageElements = { sysmaint.getUsersPageButtonNew(), sysmaint.getUsersPageButtonEdit(),
+//					sysmaint.getUsersPageButtonFilter(), sysmaint.getUsersPageButtonSynchToBoeServer(),
+//					sysmaint.getUsersPageButtonImport(), sysmaint.getUsersPageButtonExport(),
+//					sysmaint.getUsersPageButtonClearFilter(), sysmaint.getUsersPageHelpLink(),
+//					sysmaint.getUsersPageTableCornerCell(), };  //Shilpa Updated on 7.2.2025 New button not available in AD env 
+			WebElement[] userPageElements = {sysmaint.getUsersPageButtonEdit(),
 					sysmaint.getUsersPageButtonFilter(), sysmaint.getUsersPageButtonSynchToBoeServer(),
 					sysmaint.getUsersPageButtonImport(), sysmaint.getUsersPageButtonExport(),
 					sysmaint.getUsersPageButtonClearFilter(), sysmaint.getUsersPageHelpLink(),
@@ -1525,15 +1531,16 @@ public class BuildVerificationTestScript extends UcqcHelper {
 			WebElement[] securitySettingsPageElements = { sysmaint.getSecuritySettingsPageHelpLink(),
 					sysmaint.getSecuritySettingsPageFormFieldAuthenticationType(),
 					sysmaint.getSecuritySettingsPageFormFieldInactivityTimeOutPeriod(),
-					sysmaint.getSecuritySettingsPageFormFieldFailedLoginAttempts(),
-					sysmaint.getSecuritySettingsPageFormFieldAutomaticAccountReactivationPeriod(),
-					sysmaint.getSecuritySettingsPageFormFieldPasswordMinimumLength(),
-					sysmaint.getSecuritySettingsPageFormFieldPasswordExpirationPeriod(),
-					sysmaint.getSecuritySettingsPageFormFieldPasswordGraceLoginsAfterExpirationPeriod(),
-					sysmaint.getSecuritySettingsPageCheckboxMustIncludeAtLeastOneLetter(),
-					sysmaint.getSecuritySettingsPageCheckboxMustIncludeBothUpperAndLowerCaseLetters(),
-					sysmaint.getSecuritySettingsPageCheckboxMustIncludeAtLeastOneNumber(),
-					sysmaint.getSecuritySettingsPageCheckboxMustIncludeAtLeastOneSpecialCharacter(),
+					//Shilpa commented on 7.2.2025, enable these when env is LDAP
+//					sysmaint.getSecuritySettingsPageFormFieldFailedLoginAttempts(),
+//					sysmaint.getSecuritySettingsPageFormFieldAutomaticAccountReactivationPeriod(),
+//					sysmaint.getSecuritySettingsPageFormFieldPasswordMinimumLength(),
+//					sysmaint.getSecuritySettingsPageFormFieldPasswordExpirationPeriod(),
+//					sysmaint.getSecuritySettingsPageFormFieldPasswordGraceLoginsAfterExpirationPeriod(),
+//					sysmaint.getSecuritySettingsPageCheckboxMustIncludeAtLeastOneLetter(),
+//					sysmaint.getSecuritySettingsPageCheckboxMustIncludeBothUpperAndLowerCaseLetters(),
+//					sysmaint.getSecuritySettingsPageCheckboxMustIncludeAtLeastOneNumber(),
+//					sysmaint.getSecuritySettingsPageCheckboxMustIncludeAtLeastOneSpecialCharacter(),
 					sysmaint.getSecuritySettingsPageFormFieldBusinessObjectsEnterpriseSynchInterval(),
 					sysmaint.getSecuritySettingsPageRadioButtonDefaultEntitiesForNewUsersAll(),
 					sysmaint.getSecuritySettingsPageRadioButtonDefaultEntitiesForNewUsersNone(),

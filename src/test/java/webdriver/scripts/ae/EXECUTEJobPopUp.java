@@ -108,8 +108,8 @@ public class EXECUTEJobPopUp extends AeHelper{
 				doClick(aeMap.getjobCloseBtn());
 				doClick(aeMap.getScheduledBtn());
 				waitForElementToBeVisible(aeMap.getscheduleDetailsPopUp());	
-				scrollToView("//th[contains(text(),'"+aeJobCreate+"')]");
-				assertElementIsDisplayedWithXpath("//th[contains(text(),'"+aeJobCreate+"')]");
+				scrollToView("//div[@id='scheduledContainer']//th[contains(text(),'"+aeJobCreate+"')]");
+				assertElementIsDisplayedWithXpath("//div[@id='scheduledContainer']//th[contains(text(),'"+aeJobCreate+"')]");
 				doClick(aeMap.getschedulePopUpCloseBtn());
 				closeNewTabAndReturn(driver, originalHandle);
 				ExtentReport.logPass("PASS", "test04Validate_SaveClose_Popup_20271");

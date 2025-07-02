@@ -24,7 +24,7 @@ public class CALCULATEPopUp extends CimHelper{
 	private static String cimScenarioCreate = "CIM" + currentDateTime;
 	static String[] filterCim = { "Name", "Is", "Equal To", cimScenarioCreate };
 	List<String> recurringOptions= Arrays.asList("Does not repeat","Daily","Weekly","Monthly","Quarterly","Annually","Custom");
-	static String calcType="Activity Volume Calc Scenario: ADS-262 Vol Calc";
+	static String calcType=getProperty().replaceAll("^\"|\"$", "");
 	private static DialogsMap dialog = BuildMap.getInstance(driver, DialogsMap.class);
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {

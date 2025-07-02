@@ -27,7 +27,7 @@ public class EMAILNotificationsofCostIntegrationManagerCalculations extends CimH
 	 private static String cimScenarioCreate = "CIM" + currentDateTime;
 	 static String[] filterCim = { "Name", "Is", "Equal To", cimScenarioCreate };
 	 static String[] filterUser = { "ID", "Is", "Equal To", "automationtestuser" };
-	 static String calcType="Activity Volume Calc Scenario: **fz ASESC-2624 - Test";
+	 static String calcType=getProperty().replaceAll("^\"|\"$", "");
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
 		

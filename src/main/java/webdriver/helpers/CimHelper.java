@@ -6,6 +6,7 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import java.io.FileInputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
@@ -21,6 +22,7 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Properties;
 import java.util.Random;
 
 import org.junit.BeforeClass;
@@ -63,6 +65,21 @@ public class CimHelper extends CalculationHelper {
 		builder = new Actions(driver);
 	}
 
+	public static String getProperty() {
+		String PROPS =System.getProperty("user.dir") + "/src/selenium/webdriver.properties";
+		Properties props=new Properties();
+		String calctype = null;
+		try {
+			FileInputStream input=new FileInputStream(PROPS);
+			props.load(input);
+			calctype=props.getProperty("CALCTYPE");
+		}catch(Exception e ) {
+			
+		}
+		System.out.println(calctype);
+		return calctype;
+		
+	}
 	public static String getPageHeaderPath(String headerText) {
 //		String xpath = "//*[contains(@class, 'areaTitle') and text() = '"+headerText+"']";
 		String xpath = "//*[contains(@id, 'container') and text() = '" + headerText + "']";

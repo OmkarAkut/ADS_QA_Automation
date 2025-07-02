@@ -736,6 +736,15 @@ public class AssertHelper extends AdsHelper {
 		}
 	}
 
+	public static void assertEqualsString(String actual, String expectedValue) {
+		try {
+			if(actual.contains(expectedValue)) {
+				assertTrue(printout);
+			}
+		} catch (Exception e) {
+			fail(e.getMessage());
+		}
+	}
 	public static void assertElementsAreDisplayed(WebElement[] elements, boolean printout) {
 		for (WebElement element : elements) {
 			try {

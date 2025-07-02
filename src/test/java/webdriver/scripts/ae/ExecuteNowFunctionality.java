@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -24,7 +25,7 @@ import webdriver.maps.mapbuilder.BuildMap;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 /** Regression test case ADS-20273 **/
 public class ExecuteNowFunctionality extends AeHelper{
-	static String currentDateTime = new SimpleDateFormat("yyyyMMddHHmmss").format(new java.util.Date());
+	 static String currentDateTime = new SimpleDateFormat("yyyyMMddHHmmss").format(new java.util.Date());
 	 static String aeJobCreate = "AE" + currentDateTime;
 	 static ModelLibraryMap modelMap;
 	 private static AeMap aeMap;
@@ -86,8 +87,8 @@ public class ExecuteNowFunctionality extends AeHelper{
 				doClick(aeMap.getScheduledBtn());
 				//Validate under Scheduled Details
 				waitForElementToBeVisible(aeMap.getscheduleDetailsPopUp());	
-				scrollToView("//th[contains(text(),'"+aeJobCreate+"')]");
-				assertElementIsDisplayedWithXpath("//th[contains(text(),'"+aeJobCreate+"')]");
+				scrollToView("//div[@id='scheduledContainer']//th[contains(text(),'"+aeJobCreate+"')]");
+				assertElementIsDisplayedWithXpath("//div[@id='scheduledContainer']//th[contains(text(),'"+aeJobCreate+"')]");
 				doClick(aeMap.getschedulePopUpCloseBtn());
 				ExtentReport.logPass("PASS", "test03Validate_ExecuteNow_20273");
 			} catch (Exception | AssertionError e) {
@@ -101,13 +102,8 @@ public class ExecuteNowFunctionality extends AeHelper{
 				driverDelay(240000);
 				doClick(aeMap.getexecDetailsBtn());
 				waitForElementToBeVisible(aeMap.getexecDetailsPopUp());
-				assertElementIsDisplayedWithXpath("(//h1[contains(text(),'Execution Details')]//following::th[contains(text(),'"+aeJobCreate+"')])[1]");
-				if(driver.findElement(By.xpath("(//h1[contains(text(),'Execution Details')]//following::th[contains(text(),'"+aeJobCreate+"')])[1]/span")).getText().contains("COMPLETED")) {
-					assertTrue(printout);
-				}
-				else {
-					fail();
-				}
+				assertElementIsDisplayedWithXpath("(//div[@id='executionDetailsModal']//following::th[contains(text(),'"+aeJobCreate+"')])[1]");
+				assertElementTextContains(driver.findElement(By.xpath("(//div[@id='executionDetailsModal']//following::th[contains(text(),'"+aeJobCreate+"')])/span")), "COMPLETED", printout);
 				doClick(aeMap.getcloseBtn());
 				closeNewTabAndReturn(driver, originalHandle);
 				ExtentReport.logPass("PASS", "test03Validate_ExecuteNow_20273");
@@ -115,5 +111,10 @@ public class ExecuteNowFunctionality extends AeHelper{
 				ExtentReport.logFail("FAIL", "test03Validate_ExecuteNow_20273", driver, e);
 				fail(e.getMessage());
 			}
+		}
+	 @AfterClass
+		public static void endtest() throws Exception {
+			ExtentReport.report.flush();
+
 		}
 }

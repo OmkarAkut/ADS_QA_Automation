@@ -66,7 +66,8 @@ public class GeneralElementsMap extends MapConfig {
     private WebElement userDropdown;
     public WebElement getUserDropdown() {return userDropdown;}
 
-    @FindBy(id = "changePassword")
+//    @FindBy(id = "changePassword")
+    @FindBy(id = "resetPassword")//Shilpa update xpath for 11.3 on 7.2.2025
     private WebElement userDropdownChangePassword;
     public WebElement getUserDropdownChangePassword() {return userDropdownChangePassword;}
 

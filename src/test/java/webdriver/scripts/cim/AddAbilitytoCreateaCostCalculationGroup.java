@@ -36,7 +36,7 @@ public class AddAbilitytoCreateaCostCalculationGroup extends CimHelper{
 																"Price List Calc Scenario",
 																"RVU Calc Scenario",
 																"Statistic Data Calc Scenario");
-	static String calcType="Activity Volume Calc Scenario: ADS-262 Vol Calc";
+	static String calcType=getProperty().replaceAll("^\"|\"$", "");
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
 		

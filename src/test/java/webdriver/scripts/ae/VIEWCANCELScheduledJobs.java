@@ -65,8 +65,8 @@ public class VIEWCANCELScheduledJobs extends AeHelper{
 					getHeaderList.add(header.getText());
 				}
 				assertListOfStringsContainsExpectedStrings(getHeaderList, expHeaderList);
-				scrollToView("//th[contains(text(),'"+aeJobCreate+"')]");
-				assertElementIsDisplayedWithXpath("//th[contains(text(),'"+aeJobCreate+"')]");
+				scrollToView("//div[@id='scheduledContainer']//th[contains(text(),'"+aeJobCreate+"')]");
+				assertElementIsDisplayedWithXpath("//div[@id='scheduledContainer']//th[contains(text(),'"+aeJobCreate+"')]");
 				
 				ExtentReport.logPass("PASS", "test01Validate_Scheduled_Popup_20272");
 			} catch (Exception | AssertionError e) {

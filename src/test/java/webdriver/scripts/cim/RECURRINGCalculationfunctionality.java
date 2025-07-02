@@ -22,7 +22,7 @@ public class RECURRINGCalculationfunctionality extends CimHelper {
 	private static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
 	private static String cimScenarioCreate = "CIM" + currentDateTime;
 	static String[] filterCim = { "Name", "Is", "Equal To", cimScenarioCreate };
-	static String calcType="Activity Volume Calc Scenario: ADS-262 Vol Calc";
+	static String calcType=getProperty().replaceAll("^\"|\"$", "");
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
 		ExtentReport.reportCreate("RECURRINGCalculationfunctionality", "webdriver.scripts.cim",

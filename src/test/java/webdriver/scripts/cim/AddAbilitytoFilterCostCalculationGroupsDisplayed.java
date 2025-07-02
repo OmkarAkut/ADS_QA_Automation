@@ -30,7 +30,7 @@ public class AddAbilitytoFilterCostCalculationGroupsDisplayed extends CimHelper{
 	List<String> expectedOperatorOptions=Arrays.asList("Is","Is not");
 	List<String> expectedConditionOptions=Arrays.asList("Equal To","Contains","Starts With","Ends With","One Of");
 	List<String> expectedLastCalcOptions=Arrays.asList("Equal To","Less Than","Between","Greater Than");
-	static String calcType="Activity Volume Calc Scenario: ADS-262 Vol Calc";
+	static String calcType=getProperty().replaceAll("^\"|\"$", "");
 	private static DialogsMap dialog = BuildMap.getInstance(driver, DialogsMap.class);
 	
 	@BeforeClass
