@@ -20,7 +20,7 @@ import webdriver.maps.AeMap;
 import webdriver.maps.ModelLibraryMap;
 import webdriver.maps.mapbuilder.BuildMap;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-/** Regression test case ADS-20271 **/
+/** Regression test case ADS-20271 ,ADS-20204**/
 public class EXECUTEJobPopUp extends AeHelper{
 	 static String currentDateTime = new SimpleDateFormat("yyyyMMddHHmmss").format(new java.util.Date());
 	 static String aeJobCreateValidate = "AE ..." + currentDateTime;
@@ -46,16 +46,14 @@ public class EXECUTEJobPopUp extends AeHelper{
 			}
 		}
 	 @Test
-		public void test01Validate_NoTaskSelectedMessage_Popup_20271() throws Throwable {
+		public void test01Validate_NoTaskSelectedMessage_Popup_20204() throws Throwable {
 			try {
-				
-				
 				doClick(aeMap.getexecuteJobBtn());
 				assertElementIsDisplayed(aeMap.getexecuteNoTaskSelectMessage());
 				doClick(aeMap.getexecuteNoTaskCloseBtn());
-				ExtentReport.logPass("PASS", "test01Validate_NoTaskSelectedMessage_Popup_20271");
+				ExtentReport.logPass("PASS", "test01Validate_NoTaskSelectedMessage_Popup_20204");
 			} catch (Exception | AssertionError e) {
-				ExtentReport.logFail("FAIL", "test01Validate_NoTaskSelectedMessage_Popup_20271", driver, e);
+				ExtentReport.logFail("FAIL", "test01Validate_NoTaskSelectedMessage_Popup_20204", driver, e);
 				fail(e.getMessage());
 			}
 		}
@@ -111,7 +109,6 @@ public class EXECUTEJobPopUp extends AeHelper{
 				scrollToView("//div[@id='scheduledContainer']//th[contains(text(),'"+aeJobCreate+"')]");
 				assertElementIsDisplayedWithXpath("//div[@id='scheduledContainer']//th[contains(text(),'"+aeJobCreate+"')]");
 				doClick(aeMap.getschedulePopUpCloseBtn());
-				closeNewTabAndReturn(driver, originalHandle);
 				ExtentReport.logPass("PASS", "test04Validate_SaveClose_Popup_20271");
 			} catch (Exception | AssertionError e) {
 				ExtentReport.logFail("FAIL", "test04Validate_SaveClose_Popup_20271", driver, e);
@@ -120,6 +117,7 @@ public class EXECUTEJobPopUp extends AeHelper{
 		}
 	 @AfterClass
 		public static void endtest() throws Exception {
+			closeNewTabAndReturn(driver, originalHandle);
 			ExtentReport.report.flush();
 
 		}

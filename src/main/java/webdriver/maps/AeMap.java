@@ -130,4 +130,8 @@ public class AeMap extends MapConfig {
 	    @FindBy(id = "sjScheduleRecurrence")
 	    private WebElement recurrenceDropdown;
 	    public WebElement getrecurrenceDropdown() {return recurrenceDropdown;}
+	    
+	    @FindBy(xpath = "//table[contains(@class,'processContainerTable')]//tr/th")
+	    private List<WebElement> jobMgrHeaders;
+	    public List<WebElement> getjobMgrHeaders() {return jobMgrHeaders;}
 }

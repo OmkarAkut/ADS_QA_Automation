@@ -66,7 +66,6 @@ public class VIEWJobExecutionDetails extends AeHelper{
 				doClick(aeMap.getexecDetailsBtn());
 				waitForElementToBeVisible(aeMap.getexecDetailsPopUp());
 				doClick(aeMap.getcloseIcon());
-				closeNewTabAndReturn(driver, originalHandle);
 				ExtentReport.logPass("PASS", "test02Validate_CloseBtn_20251");
 			} catch (Exception | AssertionError e) {
 				ExtentReport.logFail("FAIL", "test02Validate_CloseBtn_20251", driver, e);
@@ -75,6 +74,7 @@ public class VIEWJobExecutionDetails extends AeHelper{
 		}
 	 @AfterClass
 		public static void endtest() throws Exception {
+			closeNewTabAndReturn(driver, originalHandle);
 			ExtentReport.report.flush();
 
 		}

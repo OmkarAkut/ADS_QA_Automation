@@ -1,23 +1,15 @@
 package webdriver.scripts.ae;
 
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
-
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
-import webdriver.corehelpers.GoHelper;
 import webdriver.helpers.AeHelper;
 import webdriver.maps.AeMap;
 import webdriver.maps.ModelLibraryMap;
@@ -29,9 +21,7 @@ public class ExecuteNowFunctionality extends AeHelper{
 	 static String aeJobCreate = "AE" + currentDateTime;
 	 static ModelLibraryMap modelMap;
 	 private static AeMap aeMap;
-	 static List<String> getHeaderList = new ArrayList<>();
 	 static String originalHandle = driver.getWindowHandle();
-	 List<String> expHeaderList = Arrays.asList("Task","Status","Last Execution","Next Execution");
 	 @BeforeClass
 		public static void setupScript() throws Exception, Throwable {
 
@@ -105,7 +95,6 @@ public class ExecuteNowFunctionality extends AeHelper{
 				assertElementIsDisplayedWithXpath("(//div[@id='executionDetailsModal']//following::th[contains(text(),'"+aeJobCreate+"')])[1]");
 				assertElementTextContains(driver.findElement(By.xpath("(//div[@id='executionDetailsModal']//following::th[contains(text(),'"+aeJobCreate+"')])/span")), "COMPLETED", printout);
 				doClick(aeMap.getcloseBtn());
-				closeNewTabAndReturn(driver, originalHandle);
 				ExtentReport.logPass("PASS", "test03Validate_ExecuteNow_20273");
 			} catch (Exception | AssertionError e) {
 				ExtentReport.logFail("FAIL", "test03Validate_ExecuteNow_20273", driver, e);
@@ -114,6 +103,7 @@ public class ExecuteNowFunctionality extends AeHelper{
 		}
 	 @AfterClass
 		public static void endtest() throws Exception {
+		 	closeNewTabAndReturn(driver, originalHandle);
 			ExtentReport.report.flush();
 
 		}

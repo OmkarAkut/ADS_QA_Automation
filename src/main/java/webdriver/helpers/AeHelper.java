@@ -28,7 +28,7 @@ public class AeHelper extends GoHelper {
 	        }
 	    }
 	}
-	public void closeNewTabAndReturn(WebDriver driver, String originalWindowHandle) {
+	public static void closeNewTabAndReturn(WebDriver driver, String originalWindowHandle) {
 	    // Close the current (new) tab
 	    driver.close();
 

@@ -286,6 +286,7 @@ public class GoHelper extends AssertHelper {
 
 		if(page.equals("automation engine job manager")) {
 			tab.getSystemMaintenanceTab().click();;
+			assertElementIsDisplayed(tab.getautomationEngineJobManagerSubTabSubTab());
 			tab.getautomationEngineJobManagerSubTabSubTab().click();
 		}
 		// ===== Status > Calculation Status ===== //

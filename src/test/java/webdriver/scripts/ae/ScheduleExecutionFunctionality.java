@@ -25,7 +25,7 @@ import webdriver.maps.mapbuilder.BuildMap;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 /** Regression test case ADS-20274 **/
 public class ScheduleExecutionFunctionality extends AeHelper{
-	static String currentDateTime = new SimpleDateFormat("yyyyMMddHHmmss").format(new java.util.Date());
+	 static String currentDateTime = new SimpleDateFormat("yyyyMMddHHmmss").format(new java.util.Date());
 	 static String aeJobCreate = "AE" + currentDateTime;
 	 static ModelLibraryMap modelMap;
 	 private static AeMap aeMap;
@@ -173,8 +173,21 @@ public class ScheduleExecutionFunctionality extends AeHelper{
 				fail(e.getMessage());
 			}
 		}
+	 @Test
+		public void test06Validate_DefaultRecurrence_20274() throws Throwable {
+			try {
+				openExecuteJob();
+				assertElementIsDisplayed(driver.findElement(By.xpath("//label[text()='Recurrence']//following::option[@value='NONE']")));
+				doClick(aeMap.getschedulePopUpCloseBtn());
+				ExtentReport.logPass("PASS", "test05Validate_WeeklyRecurrence_20274");
+			} catch (Exception | AssertionError e) {
+				ExtentReport.logFail("FAIL", "test05Validate_WeeklyRecurrence_20274", driver, e);
+				fail(e.getMessage());
+			}
+		}
 	 @AfterClass
 		public static void endtest() throws Exception {
+			closeNewTabAndReturn(driver, originalHandle);
 			ExtentReport.report.flush();
 
 		}

@@ -81,7 +81,6 @@ public class VIEWCANCELScheduledJobs extends AeHelper{
 				doClick(aeMap.getScheduledBtn());
 				waitForElementToBeVisible(aeMap.getscheduleDetailsPopUp());	
 				doClick(aeMap.getschedulePopUpCloseIcon());
-				closeNewTabAndReturn(driver, originalHandle);
 				ExtentReport.logPass("PASS", "test02Validate_CloseScheduled_Popup_20272");
 			} catch (Exception | AssertionError e) {
 				ExtentReport.logFail("FAIL", "test02Validate_CloseScheduled_Popup_20272", driver, e);
@@ -90,6 +89,7 @@ public class VIEWCANCELScheduledJobs extends AeHelper{
 		}
 	 @AfterClass
 		public static void endtest() throws Exception {
+			closeNewTabAndReturn(driver, originalHandle);
 			ExtentReport.report.flush();
 
 		}
