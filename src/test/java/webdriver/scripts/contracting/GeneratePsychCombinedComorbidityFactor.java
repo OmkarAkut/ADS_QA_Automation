@@ -65,7 +65,25 @@ public class GeneratePsychCombinedComorbidityFactor extends CalculationHelper {
 		
 //			ContractingMap.getContractFileSelect().sendKeys(Keys.ENTER);;
 			driverDelay(600);
+			Actions action=new Actions(driver);
+			action.moveToElement(ContractingMap.getContractFileSelect()).click().build().perform();
+			driverDelay();
+			//Shilpa: updated 7.3.2025 added robot class for file import , due to security issues with Autoit
+			fileImport(System.getProperty("user.dir")+"\\TestFiles\\IPFC22WDICD10.txt");
+			driverDelay(2000);
+			doClick(ContractingMap.getContractResetButton());
+			doClick(costingMap.getCostModelScenariosinEvaluationOrderSave());
+			doFilterCalculationPage(filter);
+			waitForFirstRowCalculationBarToReach100Percent();
+			calculationStatusPageOpenViewDialog();
+			driverDelay();
+			assertViewLogTitle(viewLogTitleApply);
+			checkForRecordsProcessed("Processed 0 Distinct Encounters");
+
+			confirmCalculationStatusDetailsContains("Process Completed");
+			doClick(ContractingMap.getContractCalculationCloseViewDialog());
 			//Shilpa update for 11.2 on 3.2.2025
+			/*
 			if (Driver.getBrowser().equals("chrome")) {
 				Actions action=new Actions(driver);
 				action.moveToElement(ContractingMap.getContractFileSelect()).click().build().perform();
@@ -105,7 +123,7 @@ public class GeneratePsychCombinedComorbidityFactor extends CalculationHelper {
 				confirmCalculationStatusDetailsContains("Process Completed");
 				doClick(ContractingMap.getContractCalculationCloseViewDialog());
 			}
-			
+			*/
 			ExtentReport.logPass("PASS", "test01AssertResetCalculate");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01AssertResetCalculate", driver, e);

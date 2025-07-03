@@ -83,7 +83,13 @@ public class RVUExportImportFunction extends GoHelper {
 			doClick(costing.getRvuMaintenanceButtonImport());
 			waitForPageTitle("Import Data");
 			assertTextIsDisplayed("Import Data");
+			doactionClick(driver.findElement(By.xpath("(//div[contains(@id,'importwindow')]//span[text()='Select'])[2]")));
+			driverDelay();
+//Shilpa: updated file import using Robot class, due to security issues with Autoit
+			fileImport(System.getProperty("user.dir") + "\\TestFiles\\RVUImportFile.txt");
+			selectFileLocAndaddFileName(costing.getRvuImportButton());
 			//Shilpa: Updated for 11.2 3.2.2025
+			/*
 			if(Driver.getBrowser().equals("chrome")) {
 				doactionClick(driver.findElement(By.xpath("(//div[contains(@id,'importwindow')]//span[text()='Select'])[2]")));
 				driverDelay();
@@ -98,12 +104,11 @@ public class RVUExportImportFunction extends GoHelper {
 				selectFileLocAndaddFileName(costing.getRvuImportButton());
 				ExtentReport.logPass("PASS", "test03ImportRvuAndValidateImportExportStatus");
 			}
-			
+			*/
 			ExtentReport.logPass("PASS", "test03ImportRvuAndValidateImportExportStatus");
 		} catch (Exception|AssertionError e) {
 			
 				ExtentReport.logFail("FAIL", "test01OpenRvuCostModelAndImport", driver, e);
-				
 			
 		} 
 	}

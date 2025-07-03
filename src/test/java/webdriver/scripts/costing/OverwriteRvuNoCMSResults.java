@@ -71,6 +71,20 @@ public class OverwriteRvuNoCMSResults extends GoHelper {
 			doClick(costing.getRvuMaintenanceButtonImport());
 			driverDelay();
 			assertTextIsDisplayed("Import Data");
+			//Shilpa update file import using Robot instead of auto it due to security issues 7.3.2025
+			doactionClick(costing.getRvuSecImportSelectButton());
+			driverDelay();
+			fileImport(System.getProperty("user.dir")+"\\TestFiles\\ADS1309PreConditionsRVUImport.txt");
+			driverDelay();
+			doClick(costing.getRvuSharedLocDropdown());
+			driverDelay(300);
+			doClick(contractMap.getContractModelExportFileSharedLocOption());
+			ContractModelsHelper.keyInValues(costing.getRvuFileNameInput(), "Test");
+			doClick(costing.getRvuImportButton());
+			waitForSpinnerToEnd();
+			ContractModelsHelper.waitForFirstRowCalculationBarToReach100Percent();
+			doClosePageOnLowerBar("Import/Export Status");
+			/*
 			if (Driver.getBrowser().equals("chrome")) {
 //				JavascriptExecutor executor = (JavascriptExecutor) driver;
 //				executor.executeScript("arguments[0].click();", driver.findElement(
@@ -93,7 +107,7 @@ public class OverwriteRvuNoCMSResults extends GoHelper {
 				driverDelay(300);
 				selectFileLocAndaddFileName(costing.getRvuImportButton());
 			}
-
+*/
 			ExtentReport.logPass("PASS", "test01OpenCostModel");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01OpenCostModel", driver, e);

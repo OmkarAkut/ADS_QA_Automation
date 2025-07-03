@@ -39,7 +39,7 @@ public class ValidateContractingModeExportImportButton extends GoHelper{
 		}
 	}
 	/*Test - UI Validation [Contracting] Validate Contracting Model � �Export� button; ADS-6437*/
-//	@Test
+	@Test
 	public void test01FileExportContractModel_6437() throws Throwable {
 		try {
 			doClick(modelMap.getContractModelExportButton());
@@ -72,12 +72,31 @@ public class ValidateContractingModeExportImportButton extends GoHelper{
 			doClick(modelMap.getContractModelImportButton());
 			waitForElementToBeVisible(modelMap.getContractModelImportSelectFileButton());
 			Thread.sleep(2000);
+			doactionClick(modelMap.getContractModelImportSelectFileButton());//Shilpa added this line for 11.2 update 
+			driverDelay(2000);
+			//Shilpa update file import using Robot instead of auto it due to security issues 7.3.2025
+			fileImport(System.getProperty("user.dir")+"\\TestFiles\\fzMedIPPSTesting.xml");
+			driverDelay(5000);
 //			Omkar 22/6/2023 : Select button not getting clicked
 //			modelMap.getContractModelImportSelectFileButton().sendKeys(Keys.ENTER);
 //			modelMap.getContractModelImportSelectFileButton().sendKeys(Keys.RETURN);
 //			JavascriptExecutor executor = (JavascriptExecutor) driver;
 //		    executor.executeScript("arguments[0].scrollIntoView(true);", modelMap.getContractModelImportSelectFileButton());
+			driver.findElement(By.name("sharedHostLocation")).click();
+			driverDelay(500);
+			doClick(modelMap.getContractModelExportFileSharedLocOption());
+			driver.findElement(By.name("logFileName")).sendKeys(logFileName);
+			driverDelay(2300);
+			
+			doClick(modelMap.getContractModelImportButtonInExportPopUp());
+			waitForSpinnerToEnd();
+			assertElementIsDisplayed(modelMap.getContractModelImportExportstatusPage());
+			ContractModelsHelper.waitForFirstRowCalculationBarToReach100Percent();
+			doClosePageOnLowerBar("Import/Export Status");
+			doClosePageOnLowerBar("Contract Models");
+			ExtentReport.logPass("PASS", "test02ImportContractModel");
 			//Shilpa: Updated for 11.2 3.2.2025
+			/*
 			if(Driver.getBrowser().equals("chrome")) {
 				driver.findElement(By.name("sharedHostLocation")).click();
 				driverDelay(500);
@@ -114,7 +133,7 @@ public class ValidateContractingModeExportImportButton extends GoHelper{
 				doClosePageOnLowerBar("Contract Models");
 				ExtentReport.logPass("PASS", "test02ImportContractModel");
 			}
-			
+			*/
 		} catch (Exception | AssertionError e) {
 			
 			ExtentReport.logFail("FAIL", "test02ImportContractModel", driver, e);

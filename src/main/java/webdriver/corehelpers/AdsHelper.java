@@ -2,12 +2,19 @@ package webdriver.corehelpers;
 
 import static org.junit.Assert.assertEquals;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+
 import webdriver.maps.DialogsMap;
 import webdriver.maps.mapbuilder.BuildMap;
 
@@ -430,6 +437,23 @@ public class AdsHelper extends GetHelper {
 			dateField.sendKeys(Keys.BACK_SPACE);
 		}
 		dateField.sendKeys(date);
+	}
+	public void fileImport(String filepath) throws Throwable {
+		 StringSelection selection = new StringSelection(filepath);
+	        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(selection, null);
+
+	        // Create Robot instance
+	        Robot robot = new Robot();
+
+	        // Paste (Ctrl + V)
+	        robot.keyPress(KeyEvent.VK_CONTROL);
+	        robot.keyPress(KeyEvent.VK_V);
+	        robot.keyRelease(KeyEvent.VK_V);
+	        robot.keyRelease(KeyEvent.VK_CONTROL);
+
+	        // Press Enter
+	        robot.keyPress(KeyEvent.VK_ENTER);
+	        robot.keyRelease(KeyEvent.VK_ENTER);
 	}
 }
 

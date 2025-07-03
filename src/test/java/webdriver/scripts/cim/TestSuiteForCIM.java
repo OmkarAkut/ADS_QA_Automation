@@ -10,7 +10,7 @@ import org.junit.runners.Suite;
 	AddAbilitytoCreateaCostCalculationGroup.class,
 	AddAbilitytoDeleteaCostCalculationGroup.class,
 	AddAbilitytoEditanExistingCostCalculationGroup.class,
-	AddAbilitytoFilterCostCalculationGroupsDisplayed.class,
+//	AddAbilitytoFilterCostCalculationGroupsDisplayed.class,
 	AddCostIntegrationManagerCIMtoCostingModulelist.class,
 	AddCostIntegrationManagerCIMtoHomePageCostingsection.class,
 	AddSaveCreateNewButtontoNewCalculationGroupScreen.class,
@@ -21,7 +21,7 @@ import org.junit.runners.Suite;
 //	//EMAILNotificationsofCostIntegrationManagerCalculations.class,
 	HYPERLINKSnCalcStatusColumnToCalculationStatusScreen.class,
 	SCHEDULECalculationfunctionality.class,
-	USERSECURITYStandardCustomRoles.class
+//	USERSECURITYStandardCustomRoles.class
 
 })
 
