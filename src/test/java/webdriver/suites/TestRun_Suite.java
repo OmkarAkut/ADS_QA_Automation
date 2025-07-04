@@ -9,6 +9,7 @@ import webdriver.globalscripts.checktests.ChecktestsSuite;
 import webdriver.globalscripts.help.HelpSuite;
 import webdriver.globalscripts.pagetests.PagetestsSuite;
 import webdriver.globalscripts.securitytests.SecurityTestsSuite;
+import webdriver.scripts.ae.TestSuiteForAE;
 import webdriver.scripts.cim.TestSuiteForCIM;
 import webdriver.scripts.contracting.ContractingSuite;
 import webdriver.scripts.contracting.GeneratePsychCombinedComorbidityFactor;
@@ -39,6 +40,7 @@ import webdriver.scripts.systemmaintenance.SystemMaintenanceTestSuite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 	TestSuiteForCIM.class,
+	TestSuiteForAE.class,
 //	CostingTestSuite.class,
 //	ContractingSuite.class,
 //	MaintaindataTestSuite.class,
@@ -61,11 +63,7 @@ import webdriver.scripts.systemmaintenance.SystemMaintenanceTestSuite;
 //	UcqcRvusSuite.class,
 //	UcqcRoleBasedTestSuite.class,
 //	UcqcCalculationTestSuite.class,
-//	OverwriteRvuNoCMSResults.class,
-//	OverWriteRVUValues5919.class,
-//	GeneratePsychCombinedComorbidityFactor.class,
-//	RVUExportImportFunction.class,
-//	ValidateContractingModeExportImportButton.class,
+
 	
 })
 

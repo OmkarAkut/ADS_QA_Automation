@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 import webdriver.helpers.ContractModelsHelper;
+import webdriver.maps.AeMap;
 import webdriver.maps.CostingMap;
 import webdriver.maps.DataMaintenanceMap;
 import webdriver.maps.ModelLibraryMap;
@@ -55,6 +56,7 @@ public class DoHelper extends DriverHelper {
 	 * @throws InterruptedException
 	 */
 	public String webSwitchToNewWindow(WebElement elementToClick, boolean printout) throws InterruptedException {
+		AeMap aeMap=BuildMap.getInstance(driver, AeMap.class);
 		String firstHandle = driver.getWindowHandle();
 		doClick(elementToClick);
 		if (browser.toLowerCase().equals("ie") || browser.toLowerCase().equals("internetexplorer")) {

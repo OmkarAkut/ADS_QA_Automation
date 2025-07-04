@@ -42,6 +42,7 @@ public class VIEWCANCELScheduledJobs extends AeHelper{
 				goToPage("Automation Engine Job Manager");
 				switchToNewTab(driver);
 				waitForElementToBeVisible(aeMap.getexecuteJobBtn());
+				cancelScheduleJobs();
 				ExtentReport.logPass("PASS", "setupScript");
 			} catch (Exception | AssertionError e) {
 				ExtentReport.logFail("FAIL", "Failure in setupScript", driver, e);
@@ -52,13 +53,7 @@ public class VIEWCANCELScheduledJobs extends AeHelper{
 		public void test01Validate_Scheduled_Popup_20272() throws Throwable {
 			try {
 				
-				openScheduleWindow();
-				aeMap.getexecuteJobName().sendKeys(aeJobCreate);
-				doClick(aeMap.getexecuteNowBtn());
-				assertElementIsDisplayed(aeMap.getexecuteJobWarning());
-				doClick(aeMap.getexecuteJobNowBtn());
-				driverDelay(200);
-				doClick(aeMap.getjobCloseBtn());
+				createAeJob(aeJobCreate);
 				doClick(aeMap.getScheduledBtn());
 				waitForElementToBeVisible(aeMap.getscheduleDetailsPopUp());	
 				for(WebElement header: aeMap.getexecDetailsHeader()) {

@@ -2,12 +2,16 @@ package webdriver.scripts.ae;
 
 import static org.junit.Assert.fail;
 import java.text.SimpleDateFormat;
+import java.util.List;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.helpers.AeHelper;
@@ -19,7 +23,6 @@ import webdriver.maps.mapbuilder.BuildMap;
 public class ExecuteNowFunctionality extends AeHelper{
 	 static String currentDateTime = new SimpleDateFormat("yyyyMMddHHmmss").format(new java.util.Date());
 	 static String aeJobCreate = "AE" + currentDateTime;
-	 static ModelLibraryMap modelMap;
 	 private static AeMap aeMap;
 	 static String originalHandle = driver.getWindowHandle();
 	 @BeforeClass
@@ -33,6 +36,7 @@ public class ExecuteNowFunctionality extends AeHelper{
 				goToPage("Automation Engine Job Manager");
 				switchToNewTab(driver);
 				waitForElementToBeVisible(aeMap.getexecuteJobBtn());
+				cancelScheduleJobs();
 				ExtentReport.logPass("PASS", "setupScript");
 			} catch (Exception | AssertionError e) {
 				ExtentReport.logFail("FAIL", "Failure in setupScript", driver, e);
@@ -67,16 +71,12 @@ public class ExecuteNowFunctionality extends AeHelper{
 	 @Test
 		public void test03Validate_ExecuteNow_20273() throws Throwable {
 			try {
-				doClick(aeMap.getexecuteJobBtn());
-				waitForElementToBeVisible(aeMap.getexecuteJobPopUp());
-				aeMap.getexecuteJobName().sendKeys(aeJobCreate);
-				doClick(aeMap.getexecuteNowBtn());
-				doClick(aeMap.getexecuteJobNowBtn());
-				assertTextIsDisplayed("Job Created Successfully.");//Validate job created
-				doClick(aeMap.getjobCloseBtn());
+				
+				createAeJob(aeJobCreate);
 				doClick(aeMap.getScheduledBtn());
 				//Validate under Scheduled Details
 				waitForElementToBeVisible(aeMap.getscheduleDetailsPopUp());	
+				System.out.println(aeJobCreate);
 				scrollToView("//div[@id='scheduledContainer']//th[contains(text(),'"+aeJobCreate+"')]");
 				assertElementIsDisplayedWithXpath("//div[@id='scheduledContainer']//th[contains(text(),'"+aeJobCreate+"')]");
 				doClick(aeMap.getschedulePopUpCloseBtn());
@@ -87,11 +87,14 @@ public class ExecuteNowFunctionality extends AeHelper{
 			}
 		}
 	 @Test
-		public void test04Validate_ExecuteNow_20273() throws Throwable {
+		public void test04Validate_ExecutionDetails_20273() throws Throwable {
 			try {
 				driverDelay(240000);
 				doClick(aeMap.getexecDetailsBtn());
 				waitForElementToBeVisible(aeMap.getexecDetailsPopUp());
+				for(WebElement element:driver.findElements(By.xpath("//div[@id='executionDetailsModal']//following::tr[2]/th"))) {
+					System.out.println(element.getText());
+				}
 				assertElementIsDisplayedWithXpath("(//div[@id='executionDetailsModal']//following::th[contains(text(),'"+aeJobCreate+"')])[1]");
 				assertElementTextContains(driver.findElement(By.xpath("(//div[@id='executionDetailsModal']//following::th[contains(text(),'"+aeJobCreate+"')])/span")), "COMPLETED", printout);
 				doClick(aeMap.getcloseBtn());

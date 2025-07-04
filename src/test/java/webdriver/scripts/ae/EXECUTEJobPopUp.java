@@ -39,6 +39,7 @@ public class EXECUTEJobPopUp extends AeHelper{
 				goToPage("Automation Engine Job Manager");
 				switchToNewTab(driver);
 				waitForElementToBeVisible(aeMap.getexecuteJobBtn());
+				cancelScheduleJobs();
 				ExtentReport.logPass("PASS", "setupScript");
 			} catch (Exception | AssertionError e) {
 				ExtentReport.logFail("FAIL", "Failure in setupScript", driver, e);

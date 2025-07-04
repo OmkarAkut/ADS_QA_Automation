@@ -1,6 +1,8 @@
 package webdriver.scripts.ae;
 
 import static org.junit.Assert.fail;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -19,6 +21,8 @@ import webdriver.maps.mapbuilder.BuildMap;
 /** Regression test case ADS-20250,ADS-20249 **/
 public class UpdateAutomationEngineSequenceScreen extends AeHelper{
 	 private static AeMap aeMap;
+	 static String currentDateTime = new SimpleDateFormat("yyyyMMddHHmmss").format(new java.util.Date());
+	 static String aeJobCreate = "AE" + currentDateTime;
 	 static List<String> getHeaderList = new ArrayList<>();
 	 static String originalHandle = driver.getWindowHandle();
 	 List<String> expHeaderList = Arrays.asList("Task","Sequence #","Status","Last Execution","Next Execution");
@@ -33,6 +37,7 @@ public class UpdateAutomationEngineSequenceScreen extends AeHelper{
 				goToPage("Automation Engine Job Manager"); //Validates ADS-20249
 				switchToNewTab(driver);
 				waitForElementToBeVisible(aeMap.getexecuteJobBtn());
+				cancelScheduleJobs();
 				ExtentReport.logPass("PASS", "setupScript");
 			} catch (Exception | AssertionError e) {
 				ExtentReport.logFail("FAIL", "Failure in setupScript", driver, e);
@@ -69,6 +74,8 @@ public class UpdateAutomationEngineSequenceScreen extends AeHelper{
 	 @Test
 		public void test03Validate_ScheduledPopUp_20250() throws Throwable {
 			try {
+				openScheduleWindow();
+				createAeJob(aeJobCreate);
 				doClick(aeMap.getScheduledBtn());
 				waitForElementToBeVisible(aeMap.getscheduleDetailsPopUp());
 				assertThatElementIsDisplayed(aeMap.getscheduleDetailsPopUp());

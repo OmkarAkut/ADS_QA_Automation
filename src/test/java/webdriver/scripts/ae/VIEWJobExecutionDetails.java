@@ -44,15 +44,12 @@ public class VIEWJobExecutionDetails extends AeHelper{
 	 @Test
 		public void test01Validate_ExecutionDetails_Popup_20251() throws Throwable {
 			try {
-				
-				
 				doClick(aeMap.getexecDetailsBtn());
 				waitForElementToBeVisible(aeMap.getexecDetailsPopUp());
 				for(WebElement header: aeMap.getexecDetailsHeader()) {
 					getHeaderList.add(header.getText());
 				}
 				assertListOfStringsContainsExpectedStrings(getHeaderList, expHeaderList);
-				
 				ExtentReport.logPass("PASS", "test01Validate_ExecutionDetails_Popup_20251");
 			} catch (Exception | AssertionError e) {
 				ExtentReport.logFail("FAIL", "test01Validate_ExecutionDetails_Popup_20251", driver, e);

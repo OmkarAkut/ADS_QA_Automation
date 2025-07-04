@@ -131,7 +131,15 @@ public class AeMap extends MapConfig {
 	    private WebElement recurrenceDropdown;
 	    public WebElement getrecurrenceDropdown() {return recurrenceDropdown;}
 	    
+	    @FindBy(xpath = "//*[text()='No jobs are currently scheduled.']")
+	    private List<WebElement> noJobSchedule;
+	    public List<WebElement> getnoJobSchedule() {return noJobSchedule;}
+	    
 	    @FindBy(xpath = "//table[contains(@class,'processContainerTable')]//tr/th")
 	    private List<WebElement> jobMgrHeaders;
 	    public List<WebElement> getjobMgrHeaders() {return jobMgrHeaders;}
+	    
+	    @FindBy(xpath = "//h1[@id='scheduledModalLabel']//following::table//tbody//tr//th//button[1]")
+	    private List<WebElement> cancelScheduleBtn;
+	    public List<WebElement> getcancelScheduleBtn() {return cancelScheduleBtn;}
 }
