@@ -63,6 +63,7 @@ public class AeHelper extends GoHelper {
 		
 			if(!aeMap.getnoJobSchedule().isEmpty()&&aeMap.getnoJobSchedule().get(0).isDisplayed()) {
 				assertTextIsDisplayed("No jobs are currently scheduled.");
+				doClick("(//*[text()='No jobs are currently scheduled.']//following::button)[1]");
 //				doClick(aeMap.getschedulePopUpCloseBtn());
 				
 			}
@@ -76,9 +77,9 @@ public class AeHelper extends GoHelper {
 				deleteRow.click();
 				driverDelay(100);
 			}
-			
+			doClick("(//*[text()='Job successfully cancelled.']//following::button)[1]");
 			}
-			doClick("(//*[text()='No jobs are currently scheduled.']//following::button)[1]");
+			
 		
 	}
 	public static void createAeJob(String jobName) {

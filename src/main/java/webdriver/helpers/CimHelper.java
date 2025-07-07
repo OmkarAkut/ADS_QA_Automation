@@ -30,6 +30,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 
 import webdriver.corehelpers.GoHelper;
@@ -51,7 +52,7 @@ public class CimHelper extends CalculationHelper {
 	private static CostingMap costing;
 	private static String cimGroupName;
 	private static Random random = new Random();
-	public static List<String> cimGroupList = new ArrayList<>();
+	
 	public static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
 	public static String cimScenarioCreate = "CIM" + currentDateTime;
 	static String[] filterCim = { "Name", "Is", "Equal To", cimScenarioCreate };
@@ -690,7 +691,10 @@ public class CimHelper extends CalculationHelper {
 		cimMap.getcimName().sendKeys(Keys.BACK_SPACE);
 		cimMap.getcimName().sendKeys(scenarioName);
 		driverDelay();
-		doClick("((//div[contains(@class,'hierarchyGrid ')])[1]//div/table//div[text()='" + CalcType + "'])[1]");
+		cimMap.getcimScenarioSearchInput().sendKeys(CalcType);
+		cimMap.getsearchIcon().click();
+		driverDelay();
+		doClick("(//div[contains(@class,'hierarchyGrid ')])[1]//div/table//div[contains(text(),'"+CalcType+"')]");
 		doClick(cimMap.getcalcTypeSelectBtn());
 		doClick(cimMap.gethostLocation());
 		doClick(cimMap.getcimSharedLoc());
@@ -800,32 +804,44 @@ public class CimHelper extends CalculationHelper {
 
 	}
 
-	public List<String> createMultipleCIM(String scenarioName, int numberOfRecords, String calcType) throws Throwable {
+	public List<String> createMultipleCIM(String scenarioName, int numberOfRecords, String calcType,List<String> groupList) throws Throwable {
 
 		for (int i = 0; i <= numberOfRecords; i++) { // Add 6 new Cim groups
 			cimGroupName = random.nextInt(1000) + scenarioName;
-			cimGroupList.add(cimGroupName);
+			groupList.add(cimGroupName);
 			createNewScenario(cimGroupName, calcType);
 			driverDelay();
 			doClick(cimMap.getcimSaveCloseBtn());
 		}
 		doClick(cimMap.getcimFilterButton());
 		for (int j = 0; j <= numberOfRecords; j++) {
-			System.out.println(cimGroupList.get(j));
+			System.out.println(groupList.get(j));
 			String[] doFilterCreateIsOneOf = { "Name", "Is", "One Of" };// Apply filter to 6 new Cim groups
 
 			doFilterCreateIsOneOf(doFilterCreateIsOneOf);
 			doClick(dialog.getFilterDialogFormFieldValueOneOf());
-			dialog.getFilterDialogFormFieldValueOneOf().sendKeys(cimGroupList.get(j));
+			dialog.getFilterDialogFormFieldValueOneOf().sendKeys(groupList.get(j));
 			doClick(costing.getRvuContainerAddValueButton());
 		}
 		addFilter();
 		doClick(dialog.getFilterDialogButtonApplyFilter());
 		waitForSpinnerToEnd();
-		return cimGroupList;
+		return groupList;
 
 	}
 
+	public static void dragAndDrop(WebElement source,WebElement target) {
+		Actions builder = new Actions(driver);
+		 source.click();
+        Action dragAndDrop = builder.clickAndHold(source)
+        		.moveToElement(target)
+        		.release(target)
+        		.build();
+
+        		//Performing the drag and drop action
+        		dragAndDrop.perform();
+
+	}
 	public static void checkElement(List<WebElement> elementList, WebElement validateElement) {
 //		 List<WebElement> list = driver.findElements(By.xpath("(//div[contains(@class,'x-closable ')]//following::span[text()='Calculate Now'])"));
 

@@ -3,6 +3,7 @@ package webdriver.scripts.cim;
 import static org.junit.Assert.fail;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -31,8 +32,9 @@ public class AddAbilitytoFilterCostCalculationGroupsDisplayed extends CimHelper{
 	List<String> expectedConditionOptions=Arrays.asList("Equal To","Contains","Starts With","Ends With","One Of");
 	List<String> expectedLastCalcOptions=Arrays.asList("Equal To","Less Than","Between","Greater Than");
 	static String calcType=getProperty().replaceAll("^\"|\"$", "");
+	public static List<String> cimList = new ArrayList<>();
 	private static DialogsMap dialog = BuildMap.getInstance(driver, DialogsMap.class);
-	
+	public static List<String> cimGroupList = new ArrayList<>();
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
 		
@@ -67,7 +69,7 @@ public class AddAbilitytoFilterCostCalculationGroupsDisplayed extends CimHelper{
 			compareList(cimMap.getcalcFilterOperator(), expectedOperatorOptions);
 			doClick(cimMap.getcalcConditionBtn());
 			compareList(cimMap.getcalcFilterCondition(), expectedConditionOptions);
-			doFilterSetFilterParametersForDate("Last Calculation Date","Is","Equal To","");
+			doFilterSetFilterParametersForDate("Next Start Time","Is","Equal To","");
 			driverDelay();
 			doClick(cimMap.getcalcConditionBtn());
 			compareList(cimMap.getcalcFilterCondition(), expectedLastCalcOptions);
@@ -81,7 +83,7 @@ public class AddAbilitytoFilterCostCalculationGroupsDisplayed extends CimHelper{
 	public void test02Validate_Filter_ValueField_20054() throws Throwable {
 		try {
 			try {
-				doFilterSetFilterParametersForDate("Last Calculation Date","Is","Between","");
+				doFilterSetFilterParametersForDate("Last Start Time","Is","Between","");
 			} catch (Exception e) {
 				
 			}
@@ -96,7 +98,7 @@ public class AddAbilitytoFilterCostCalculationGroupsDisplayed extends CimHelper{
 	@Test
 	public void test03Validate_Filter_Buttons_20054() throws Throwable {
 		try {
-			doFilterSetFilterParametersForDate("Last Calculation Date","Is","Equal To","");
+			doFilterSetFilterParametersForDate("Last Start Time","Is","Equal To","");
 			selectDate("current",cimMap.getcalcFilterValDate() );
 			doClick("(//div[contains(@class,'x-docked x-toolbar-footer')])[2]");
 			assertTheElementIsEnabled(dialog.getFilterDialogButtonAdd());
@@ -112,12 +114,12 @@ public class AddAbilitytoFilterCostCalculationGroupsDisplayed extends CimHelper{
 			doClick(dialog.getFilterDialogButtonAdd());
 			driverDelay();
 			String dateCurrent=getCurrentDate("current");
-			assertElementIsDisplayedWithXpath("//div[text()='Last Calculation Date Is Equal To "+dateCurrent+"']");
+			assertElementIsDisplayedWithXpath("//div[text()='Next Start Time Is Equal To "+dateCurrent+"']");
 			doClick(cimMap.getFilterDialogFieldValueEdit());
 			selectDate("next",cimMap.getcalcFilterValDate() );
 			doClick(cimMap.getstatusFilterDialogFieldValueUpdate());
 			String dateNext=getCurrentDate("next");
-			assertElementIsDisplayedWithXpath("//div[text()='Last Calculation Date Is Equal To "+dateNext+"']");
+			assertElementIsDisplayedWithXpath("//div[text()='Next Start Time Is Equal To "+dateNext+"']");
 			ExtentReport.logPass("PASS", "test04Validate_Apply_Buttons_20054");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test04Validate_Apply_Buttons_20054", driver, e);
@@ -129,7 +131,7 @@ public class AddAbilitytoFilterCostCalculationGroupsDisplayed extends CimHelper{
 		try {
 			doClick(cimMap.getstatusstatusFilterRemoveAllBtn());//Validate Remove All
 			assertElementIsNotDisplayed("//td[contains(@class,'x-grid-cell-selected')]");
-			doFilterSetFilterParametersForDate("Last Calculation Date","Is","Equal To","");
+			doFilterSetFilterParametersForDate("Next Start Time","Is","Equal To","");
 			selectDate("current",cimMap.getcalcFilterValDate() );
 			doClick("(//div[contains(@class,'x-docked x-toolbar-footer')])[2]");
 			assertElementIsDisplayed("//td[contains(@class,'x-grid-cell-selected')]");
@@ -169,7 +171,7 @@ public class AddAbilitytoFilterCostCalculationGroupsDisplayed extends CimHelper{
 	@Test
 	public void test08Validate_IsOneOfCondition_20054() throws Throwable {
 		try {
-			cimGroupList=createMultipleCIM(cimScenarioCreate,2,calcType);
+			cimGroupList=createMultipleCIM(cimScenarioCreate,2,calcType,cimList);
 			List<WebElement> cimRows = cimMap.getcimGrid();
 			compareList(cimRows, cimGroupList);
 			//Delete the newely created groups

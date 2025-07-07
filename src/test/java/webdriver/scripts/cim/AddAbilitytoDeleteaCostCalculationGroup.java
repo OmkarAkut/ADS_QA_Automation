@@ -3,6 +3,7 @@ package webdriver.scripts.cim;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -27,6 +28,7 @@ public class AddAbilitytoDeleteaCostCalculationGroup extends CimHelper {
 	private static String cimScenarioCreate = "CIM" + currentDateTime;
 	static String[] filterCim = { "Name", "Is", "Equal To", cimScenarioCreate };
 	static String calcType=getProperty().replaceAll("^\"|\"$", "");
+	public static List<String> cimList = new ArrayList<>();
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
 
@@ -66,7 +68,7 @@ public class AddAbilitytoDeleteaCostCalculationGroup extends CimHelper {
 	@Test
 	public void test02ValidateDeleteRandomSelection_20040() throws Throwable {
 		try {
-			createMultipleCIM(cimScenarioCreate, 5,calcType);
+			createMultipleCIM(cimScenarioCreate, 5,calcType,cimList);
 			List<WebElement> cimRows = cimMap.getcimGrid();
 			builder.click(cimRows.get(1)).keyDown(Keys.CONTROL).click(cimRows.get(3)).keyDown(Keys.CONTROL)
 					.click(cimRows.get(5)).keyDown(Keys.CONTROL).build().perform();

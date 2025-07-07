@@ -10,7 +10,7 @@ import org.junit.runners.Suite;
 	AddAbilitytoCreateaCostCalculationGroup.class,
 	AddAbilitytoDeleteaCostCalculationGroup.class,
 	AddAbilitytoEditanExistingCostCalculationGroup.class,
-//	AddAbilitytoFilterCostCalculationGroupsDisplayed.class,
+	AddAbilitytoFilterCostCalculationGroupsDisplayed.class,
 	AddCostIntegrationManagerCIMtoCostingModulelist.class,
 	AddCostIntegrationManagerCIMtoHomePageCostingsection.class,
 	AddSaveCreateNewButtontoNewCalculationGroupScreen.class,
