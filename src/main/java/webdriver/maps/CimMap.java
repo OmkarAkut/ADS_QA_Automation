@@ -543,5 +543,13 @@ public class CimMap extends MapConfig {
 	@FindBy(xpath = "//span[contains(@class,'consEnconSearch ')]")
 	private WebElement calcStatusSearchIcon;
 	public WebElement getcalcStatusSearchIcon() {return calcStatusSearchIcon;}
+	
+	@FindBy(xpath = "(//div[contains(@class,'hierarchyGrid ')])[2]")
+	private WebElement selectedItemGrid;
+	public WebElement getselectedItemGrid() {return selectedItemGrid;}
+	
+	@FindBy(xpath = "(//div[contains(@class,'hierarchyGrid ')])[2]//div/table//div")
+	private List<WebElement> selectedCalcList;
+	public List<WebElement> getselectedCalcList() {return selectedCalcList;}
 }
 
