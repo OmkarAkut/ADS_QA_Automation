@@ -63,7 +63,8 @@ public class EnableDragAndDropFunctionalityForCalculationsInCIMGroup extends Cim
 			cimMap.getcimName().sendKeys(Keys.BACK_SPACE);
 			cimMap.getcimName().sendKeys(cimScenarioCreate);
 			driverDelay();
-			cimMap.getcimScenarioSearchInput().sendKeys(calcType);
+			String[] input=calcType.split(": ");
+			cimMap.getcimScenarioSearchInput().sendKeys(input[1]);
 			cimMap.getsearchIcon().click();
 			driverDelay();
 			WebElement source = driver.findElement(By.xpath(
@@ -108,7 +109,6 @@ public class EnableDragAndDropFunctionalityForCalculationsInCIMGroup extends Cim
 				cimMap.getcimScenarioSearchInput().sendKeys(Keys.DELETE);
 				
 			}
-			
 			ExtentReport.logPass("PASS", "test02Validate_Edit_DragDrop_21955");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test02Validate_Edit_DragDrop_21955", driver, e);

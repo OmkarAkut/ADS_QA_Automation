@@ -41,6 +41,10 @@ public class CimMap extends MapConfig {
 	private WebElement cimCalculateBtn;
 	public WebElement getcimCalculateBtn() {return cimCalculateBtn;}
 	
+	@FindBy(xpath = "//div[contains(@id,'costintegrationmanagerform')]//span[text()='Calculation Options']")
+	private List<WebElement> cimCalculateBtnEditMode;
+	public List<WebElement> getcimCalculateBtnEditMode() {return cimCalculateBtnEditMode;}
+	
 	@FindBy(xpath = "//span[text()='Calculate Now']/ancestor::a")
 	private WebElement cimCalculateNowButton;
 	public WebElement getcimCalculateNowButton() {return cimCalculateNowButton;}
@@ -532,7 +536,7 @@ public class CimMap extends MapConfig {
 	private WebElement calcDeletewarningBtn;
 	public WebElement getcalcDeletewarningBtn() {return calcDeletewarningBtn;}
 	
-	@FindBy(xpath = "//a[text()='Calculation Status Screen >>']")
+	@FindBy(xpath = "//a[@class='listhelpLnk'][text()='Calculation Status Screen >>']")
 	private WebElement calcStatusPgeLink;
 	public WebElement getcalcStatusPgeLink() {return calcStatusPgeLink;}
 	
@@ -548,8 +552,26 @@ public class CimMap extends MapConfig {
 	private WebElement selectedItemGrid;
 	public WebElement getselectedItemGrid() {return selectedItemGrid;}
 	
+		
+	@FindBy(xpath = "//div[contains(@id,'calculationstatus')]//following::div[text()='Calculation Status']")
+	private WebElement calcStatusPage;
+	public WebElement getcalcStatusPage() {return calcStatusPage;}
+	
+	
 	@FindBy(xpath = "(//div[contains(@class,'hierarchyGrid ')])[2]//div/table//div")
 	private List<WebElement> selectedCalcList;
 	public List<WebElement> getselectedCalcList() {return selectedCalcList;}
+	
+	@FindBy(xpath = "//a[text()='View']")
+	private List<WebElement> calcPageView;
+	public List<WebElement> getcalcPageView() {return calcPageView;}
+	
+	@FindBy(xpath = "//a[text()='Download']")
+	private List<WebElement> calcPageDownload;
+	public List<WebElement> getcalcPageDownload() {return calcPageDownload;}
+	
+	@FindBy(xpath = "//span[contains(@class,'delBtn ')]")
+	private List<WebElement> calcPageDelete;
+	public List<WebElement> getcalcPageDelete() {return calcPageDelete;}
 }
 

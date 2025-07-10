@@ -74,14 +74,13 @@ public class AddSaveCreateNewButtontoNewCalculationGroupScreen extends CimHelper
 			ExtentReport.logFail("FAIL", "test02Validate_SaveAndCreateNew_21326", driver, e);
 			fail(e.getMessage());
 		}
-		finally {
-			deleteCim();
-			doClosePageOnLowerBar("Cost Integration Manager (CIM)");
-		}
+		
 	}
 	
 	@AfterClass
 	public static void endtest() throws Exception {
+		deleteCim();
+		doClosePageOnLowerBar("Cost Integration Manager (CIM)");
 		ExtentReport.report.flush();
 	}
 }

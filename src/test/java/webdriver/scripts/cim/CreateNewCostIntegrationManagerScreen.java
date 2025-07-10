@@ -160,12 +160,14 @@ public class CreateNewCostIntegrationManagerScreen extends CimHelper {
 			fail(e.getMessage());
 		}
 	}
+	
 	@Test
 	public void test09Validate_CalculationStatus_CANCELLED_20030() throws Throwable {
 		try {
 			createCIM(cimScenarioCreate,calcType);
 			doFilterCreateCIM(filterCim);
 			validateCalcStatus("CANCELLED", cimScenarioCreate);
+			doClosePageOnLowerBar("Calculation Status");
 			deleteCim();
 			ExtentReport.logPass("PASS", "test09Validate_CalculationStatus_CANCELLED_20030");
 		} catch (Exception | AssertionError e) {

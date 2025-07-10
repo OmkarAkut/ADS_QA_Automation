@@ -47,7 +47,7 @@ public class CalculateNowFunctionality extends CimHelper {
 		}
 	}
 	
-//	@Test
+	@Test
 	public void test01Validate_CalculateNow_20406() throws Throwable {
 		try {
 			createCIM(cimScenarioCreate,calcType);
@@ -69,7 +69,7 @@ public class CalculateNowFunctionality extends CimHelper {
 			fail(e.getMessage());
 		}
 	}
-//	@Test
+	@Test
 	public void test02Validate_LastStartTime_20406() throws Throwable {
 		try {
 			doClick("(//div[contains(@class,'x-closable ')]//following::span[text()='Calculate Now'])");
@@ -84,7 +84,7 @@ public class CalculateNowFunctionality extends CimHelper {
 			fail(e.getMessage());
 		}
 	}
-//	@Test
+	@Test
 	public void test03Validate_LastEndTime_20406() throws Throwable {
 		try {
 			doClick("//div[contains(@id,'cimmasterlist')]//div[text()='"+cimScenarioCreate+"']//following::td[5]/div/a");

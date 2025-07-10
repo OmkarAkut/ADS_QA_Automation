@@ -691,7 +691,8 @@ public class CimHelper extends CalculationHelper {
 		cimMap.getcimName().sendKeys(Keys.BACK_SPACE);
 		cimMap.getcimName().sendKeys(scenarioName);
 		driverDelay();
-		cimMap.getcimScenarioSearchInput().sendKeys(CalcType);
+		String[] input=CalcType.split(": ");
+		cimMap.getcimScenarioSearchInput().sendKeys(input[1]);
 		cimMap.getsearchIcon().click();
 		driverDelay();
 		doClick("(//div[contains(@class,'hierarchyGrid ')])[1]//div/table//div[contains(text(),'"+CalcType+"')]");
@@ -877,11 +878,12 @@ public class CimHelper extends CalculationHelper {
 		String clickableElement = null;
 //		 boolean spanVal=true;
 		if (elementList.size() == 1) {
-			elementList.get(0).click();
 			String tagName = elementList.get(0).getTagName();
 			String id = elementList.get(0).getAttribute("id");
 			clickableElement = "//"+tagName+"[@id='" + id + "']";
 			System.out.println(clickableElement);
+			elementList.get(0).click();
+			
 		}
 		if (elementList.size() > 1) {
 			for (WebElement element : elementList) {
@@ -968,7 +970,7 @@ public static boolean dateTimeCheck(String dateTimeStr) {
 //		doDropdownSelectUsingOptionTextOnly(driver.findElement(By.xpath("(//div[contains(@class,'x-boundlist-floating x-layer')])[3]//ul")), recurrence);
 		checkElements(driver.findElements(
 				By.xpath("//div[text()='Calculate " + scenario + "']//following::span[text()='Save & Close']")));
-		driverDelay(200);
+		driverDelay(300);
 		if(recurrence.equals("Does not repeat")) {
 			assertElementIsNotDisplayed("//div[contains(@id,'cimmasterlist')]//div[text()='" + scenario + "']//following::td[4]/div//span[@class='icon']");
 
@@ -996,6 +998,7 @@ public static boolean dateTimeCheck(String dateTimeStr) {
 		doClick(cimMap.getcimCalculateBtn());
 		waitForElementToBeVisible(cimMap.getschedulePopUp());
 		System.out.println(cimMap.getrepeatsText().getText());
+		
 		if (recurrence == "Daily") {
 			if (cimMap.getrepeatsText().getText().contains(recurrence)
 					&& cimMap.getrepeatsText().getText().contains(startTime)) {
@@ -1262,7 +1265,11 @@ if(repeat.equals("Months")) {
 
 		}
 		if (status == "CANCELLED") {
-			doClick(cimMap.getcimCalculateBtn());
+//			doClick(cimMap.getcimCalculateBtn());
+//			checkElements(cimMap.getcimCalculateNowBtn());
+			//Calculate from CIM group in Edit mode
+			doClick(cimMap.getcimEditBtn());
+			checkElements(cimMap.getcimCalculateBtnEditMode());
 			checkElements(cimMap.getcimCalculateNowBtn());
 			doClick(cimMap.getcimCalculateNowConfirmBtn());
 			driverDelay(300);
@@ -1270,6 +1277,7 @@ if(repeat.equals("Months")) {
 			driverDelay(2000);
 			doClick(cimMap.getcancelWarning());
 			doClosePageOnLowerBar("Calculation Status");
+			doClick(cimMap.getcimSaveCloseBtn());
 			doClick(cimMap.getcimRefreshBtn());
 			assertElementIsDisplayed("//div[text()='" + scenario
 					+ "']//following::a[contains(@id,'cimStatusLink')][text()='" + status + "']");
@@ -1322,6 +1330,7 @@ if(repeat.equals("Months")) {
 		calendar.add(Calendar.SECOND, 10);
 		Date updatedTime = calendar.getTime();
 		String formattedTime = sdf.format(updatedTime).toLowerCase();
+		System.out.println(formattedTime);
 		return formattedTime;
 
 	}
