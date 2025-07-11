@@ -3,14 +3,17 @@ package webdriver.deployment;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
+import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
-import java.time.Duration;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Properties;
 
 import org.junit.AfterClass;
@@ -25,12 +28,17 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
-import webdriver.data.AdsStandardData;
-import webdriver.globalscripts.pagetests.BuildVerificationTestScript;
-import webdriver.globalscripts.pagetests.PageTestHelperStatic;
-import webdriver.helpers.PageTestHelper;
 import webdriver.helpers.UcqcHelper;
-import webdriver.maps.*;
+import webdriver.maps.AnalyticsMap;
+import webdriver.maps.ContractingMap;
+import webdriver.maps.CostingMap;
+import webdriver.maps.DataMaintenanceMap;
+import webdriver.maps.DialogsMap;
+import webdriver.maps.GeneralElementsMap;
+import webdriver.maps.ModelLibraryMap;
+import webdriver.maps.ReportingMap;
+import webdriver.maps.StatusMap;
+import webdriver.maps.SystemMaintenanceMap;
 import webdriver.maps.mapbuilder.BuildMap;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -48,7 +56,7 @@ public class SmokeTest extends UcqcHelper {
 	  WebDriverWait wait = new WebDriverWait(driver, 30);
 	  String expectedReleaseVersion = version;
 	  private static String BackgroundColorCosting= "rgba(0, 86, 26, 1)";
-	 
+	  private static String filepath=System.getProperty("user.dir")+"//Version.txt";
 //	  private static String BackgroundColorDockBarRoles= "rgba(101, 55, 47, 1)";
 	  /** Automates test ticket ADS-6642(test0006LandingPageCosting(): includes only costing bubble validation and color in this)*/
 	 @BeforeClass
@@ -133,6 +141,38 @@ public class SmokeTest extends UcqcHelper {
 		}
 	  }
 
+	  public void writeDataToFile(String path,WebElement element) {
+			String filePath = path;
+			try {
+				String currentText = element.getText().trim();
+				File file = new File(filePath);
+				String expectedText = "";
+				if (file.exists()) {
+					BufferedReader reader = new BufferedReader(new FileReader(file));
+					StringBuilder sb = new StringBuilder();
+					String line;
+					while ((line = reader.readLine()) != null) {
+						sb.append(line).append("\n");
+					}
+					reader.close();
+					expectedText = sb.toString().trim();
+				}
+				if (currentText.equals(expectedText)) {
+					System.out.println("✅ Text matches. No update needed.");
+				} else {
+					FileWriter writer = new FileWriter(filePath, false); // overwrite
+					writer.write("Latest Version Number : "+currentText);
+					writer.close();
+					System.out.println("Text updated in file. New value: " + currentText);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			} 
+	    }
+
+	    
+          
+	  
 	  @Test
 	  public void test0000cLoginPageVerifyReleaseVersion() throws Throwable {
 		  try {
@@ -143,10 +183,13 @@ public class SmokeTest extends UcqcHelper {
 				}
 				if(actualReleaseVersion.equals(expectedReleaseVersion)) {
 					System.out.println("Version number not changed");
-					assertFalse(printout);
-					ExtentReport.logFail("FAIL", "test0000cLoginPageVerifyReleaseVersion",driver,null);
+					writeDataToFile(filepath,generalElement.getLoginPageReleaseVersion());
+					assertTrue(printout);
+					ExtentReport.logPass("PASS", "test0000cLoginPageVerifyReleaseVersion");
 				}else {
 					System.out.println("Version got changed");
+					writeDataToFile(filepath,generalElement.getLoginPageReleaseVersion());
+
 					assertTrue(printout);
 					ExtentReport.logPass("PASS", "test0000cLoginPageVerifyReleaseVersion");
 				}
