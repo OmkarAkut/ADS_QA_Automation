@@ -189,7 +189,6 @@ public class SmokeTest extends UcqcHelper {
 				}else {
 					System.out.println("Version got changed");
 					writeDataToFile(filepath,generalElement.getLoginPageReleaseVersion());
-
 					assertTrue(printout);
 					ExtentReport.logPass("PASS", "test0000cLoginPageVerifyReleaseVersion");
 				}
