@@ -1,0 +1,143 @@
+package webdriver.helpers;
+
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+import com.aventstack.extentreports.Status;
+
+import ExtentReport.ExtentReport;
+import org.junit.BeforeClass;
+import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebElement;
+import webdriver.corehelpers.GoHelper;
+import webdriver.maps.EditContractingModelMap;
+import webdriver.maps.ModelLibraryMap;
+import webdriver.maps.mapbuilder.BuildMap;
+
+public class UtilitiesHelper extends GoHelper {
+
+	private static ModelLibraryMap modelMap;
+	private static EditContractingModelMap editModelMap;
+
+	/** Helper Class for Contract Models pages - individual test scripts should extend this one to use it.
+	 */
+	@BeforeClass
+	public static void setupHelper() {
+		modelMap = BuildMap.getInstance(driver, ModelLibraryMap.class);
+		editModelMap = BuildMap.getInstance(driver, EditContractingModelMap.class);
+	}
+
+	public void runReport(String startDate, String endDate, String[] codes) throws InterruptedException {
+		waitForAjaxExtJs();
+		waitForElementToBeVisible(driver.findElement(By.name("startDate1")));
+		driver.findElement(By.name("startDate1")).clear();
+		driver.findElement(By.name("startDate1")).sendKeys(startDate);
+		driver.findElement(By.name("endDate1")).clear();
+		driver.findElement(By.name("endDate1")).sendKeys(endDate);
+		driver.findElement(By.xpath("//button/span[text()='Select']")).click();
+		selectItemsOnSelector(codes);
+		driver.findElement(By.xpath("//button/span[text()='Apply']")).click();
+		waitForAjaxExtJs();
+		waitForElementToBeVisible(driver.findElement(By.xpath("//button/span[text()='Run']")));
+		driver.findElement(By.xpath("//button/span[text()='Run']")).click();
+		waitForSpinnerToEnd();
+		waitForUtilityFirstRowDownloadLinkToBecomeActive();
+		driver.findElement(
+				By.xpath("//tbody/tr[2]/td/div/a[@class='stLinks' and text()='Download']"))
+		.click();
+		Thread.sleep(5000);
+		deleteUtilityStatusPageMyStatusFirstRow();
+	}
+
+	public static void failIfHeadless(String browser) {
+		if (browser.toLowerCase().contains("headless")) {
+			fail("Headless browser does not currently support file downloading - run test in regular mode");
+		}
+	}
+
+	public void selectItemsOnSelector(String[] items) throws InterruptedException {
+		waitForSpinnerToEnd();
+		try {
+			for (String item : items) {
+				driver.findElement(By.xpath("//tr/td/div[text()='" + item +"']")).click();
+				Thread.sleep(500);
+				//		  Omkar 7/8/2023 : xpath changes for 11.2
+				//		  driver.findElement(By.xpath("//button[not(@disabled)]/span[text()='Select']")).click();
+				driver.findElement(By.xpath("//div[(@class='x-container x-box-item x-container-default x-box-layout-ct')]//span[text()='Select']")).click();
+				waitForSpinnerToEnd();
+			}
+		} catch (Exception e) {
+			ExtentReport.extenttest.log(Status.FAIL, e.getMessage());
+			ExtentReport.extenttest.log(Status.INFO, e);
+		}
+
+	}
+
+	public static void waitForUtilityFirstRowDownloadLinkToBecomeActive() throws InterruptedException {
+		boolean calculate = true;
+		String download;
+		byte counter = 0;
+		while (calculate) {
+			try {
+				//    	  Omkar 21/6/2023 : xpath changes for 11.2
+				//        driver.findElement(By.xpath("//button/span[text()='Refresh']")).click();
+				driver.findElement(By.xpath("//span[text()='Refresh']")).click();
+				waitForSpinnerToEnd();
+				//        Omkar 7/8/2023 : xpath changes for 11.2
+				//        download = driver.findElement(
+				//                By.xpath("//tbody/tr[2]/td/div/a[@class='stLinks' and text()='Download']"))
+				//                .getAttribute("class")
+				//        ;
+				Thread.sleep(1000);
+				//below x path is checking if the download link is available or not
+				download = driver.findElement(
+						By.xpath("(//table/tbody/tr[1]/td)[5]/div/a"))
+						.getAttribute("class")
+						;
+				System.out.println("Download: " + download);
+				assertTrue(download.contains("stLinks"));
+				break;
+			} catch (Exception|AssertionError e) {
+				System.out.println("Utility not complete");
+				Thread.sleep(5000);
+				//Shilpa updated below lines on 10.17.2024
+					if (counter == 30) {
+						ExtentReport.extenttest.log(Status.FAIL, "Utility did not finish in allotted time");
+
+						ExtentReport.extenttest.log(Status.INFO, e);
+						fail();
+						break;
+					}
+						
+				
+			
+					
+			
+				
+			}
+			counter++;
+			System.out.println(counter);
+		}
+		Thread.sleep(1000);
+	}
+
+	public void deleteUtilityStatusPageMyStatusFirstRow() throws InterruptedException {
+		waitForSpinnerToEnd();
+		waitForAjaxExtJs();
+		//    Omkar 8/8/2023 : xpath changes for 11.2
+		//    waitForPresenceOfElement("//div[contains(@class, 'delBtn')]/descendant::button/span[contains(@class, 'x-btn-icon')]");
+		//    WebElement firstRowDeleteIcon = driver.findElement(By.xpath("//div[contains(@class, 'delBtn')]/descendant::button/span[contains(@class, 'x-btn-icon')]"));
+		waitForPresenceOfElement("(//table/tbody/tr[1]/td)[9]//span[contains(@class, 'delBtn')]");
+		WebElement firstRowDeleteIcon = driver.findElement(By.xpath("(//table/tbody/tr[1]/td)[9]//span[contains(@class, 'delBtn')]"));
+		firstRowDeleteIcon.click();
+		//    Omkar 8/8/2023 : xpath changes for 11.2
+		//    waitForPresenceOfElement("//div[contains(@class,'windowbtn')]/descendant::button/span[text()='Delete']");
+		//    driver.findElement(By.xpath("//div[contains(@class,'windowbtn')]/descendant::button/span[text()='Delete']")).click();
+		waitForPresenceOfElement("//div[@role='dialog']//span[text()='Delete']");
+		driver.findElement(By.xpath("//div[@role='dialog']//span[text()='Delete']")).click();
+		waitForSpinnerToEnd();
+		waitForAjaxExtJs();
+	}
+
+
+}

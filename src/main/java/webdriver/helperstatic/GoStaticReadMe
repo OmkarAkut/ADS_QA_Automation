@@ -1,0 +1,12 @@
+Go Static Read Me
+The Go (static) class is designed to navigate the test user to the proper page under test.
+This is accomplished through two "paths": goTo and navigateTo.
+goTo should be used to go to tab and main page level navigation, should as Status (tab) > Calculation Status (page)
+
+Once on the main page level, navigateTo methods can be created and used to navigate to more remote pages from
+the given starting main page.  Many times, these remote pages will require additional navigation data.
+
+Thus, the Go class will contain the main page goTos and the remote page navigateTos.  Reaching remote pages
+will require first navigating to the main page and then to the remote page:
+    goTo("main page";
+    navigateTo("remote page";

@@ -1,0 +1,61 @@
+ADS Functional Automation Code Review (07-19-19)
+
+Overview:
+
+In general, functional test code should be readable, reusable, and reliable.  Since it is designed to test,
+it should be easy to identify the reason for a failure.  Most of the time, this will be revealed in a report,
+so the precision of @Test method names is very important (see item #6 below).
+
+Definitions:
+
+"global" = test scripts that apply to the application as a whole and not a particular functional area.
+
+"local" = test scripts that are specific to a functional area, such as "ucqc".  Each functional area should have a
+    functional area helper class that contains items specific to that functional area.  This functional area helper
+    class should extend BeforeAfterStatic and should be extended by the test script.  They can be found in
+    src > main > java > webdriver > local.  In addition, each functional area should have a test suite that resides
+    with the script and contains all the test scripts for that functional area (see #11 below).
+
+Checks:
+
+1- Verify Java standard naming conventions and formatting.  Avoid duplicated code through the use of helper classes and
+    methods to the extent possible.  Run a static analysis tool (such as Checkstyle) on your local changes prior to any
+    code reviews.
+
+2- Test scripts/classes should extend the static test framework.  Use the StaticScriptTemplate (in templates) as a model
+    for setting up a test script (or copy and rename the template).
+
+3- Add a single comment/description outlining the test purpose and include JIRA ticket numbers (if applicable) at the
+    top of the test script.
+
+4- Ideally, each item or bullet point in the development story Acceptance Criteria should have a corresponding @Test
+    method in the test script.
+
+5- Each @Test method should contain at least one (or sometimes more) assert statements that are directly related to the
+    acceptance criteria under test.  It may be necessary to cover a single item in the acceptance criteria with several
+    @Test methods.  In this case, these can be tied together using letters in the method number (e.g., 1a, 1b, 1c, 1d).
+
+6- Each @Test method name should reflect the assert or verification that was run and should avoid abbreviations.
+    However, ideally, method names would reflect the action performed and the assert statement, such as "Click Help
+    button and assert Help dialog displays".  The primary function of the method name is to facilitate identifying the
+    reason for a test failure, especially from a report.
+
+7- Test code should use existing helper classes and page map elements to the extent possible.  Ideally, limit use of
+    hard-coded values and webelements in the test script - use the framework or add to the framework.
+
+8- At the local (functional area) level, move helper methods that could be used in more than one script to the
+    respective local helper class.  If in doubt, move it to the helper class rather than making it private in the test
+    script.  Helper methods that could be used anywhere can be moved to a global helper class.
+
+9- At the test script level, use private methods to group lines of code that have a common purpose, rather than having
+    all these lines directly in the test script (e.g., dismissHelpDialog).  Give the method a meaningful name.  Also,
+    consider moving the method to the local helper class (or possibly a global helper class).
+
+10- Put comments that will print to the console in an 'if(printout)' block, so that they print only if
+    printout = true, to ensure that comments are printed only when requested.  These comments should reflect
+    useful information that the method can produce, such as actual values from a page.  Use non-printable comments
+    and "indicator" comments (such as 'Start Test' and 'Test Passed') very sparingly (if at all).
+    Instead, make the method names more meaningful (see #6 above).
+
+11- Add new test script(s) to a test suite, starting with the test suite for the functional area.
+
