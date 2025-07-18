@@ -279,6 +279,8 @@ public class Driver {
 			}
 			// Shilpa added below line for 11.2 on 12.12.2023
 			else if (browser.equals("edge")) {
+				//Shilpa: Updated on 07.18.2025 , because of webdriver for edge url has been changed
+				System.setProperty("wdm.edgeDriverUrl", "https://msedgedriver.microsoft.com/");
 				WebDriverManager.edgedriver().setup();
 				EdgeOptions options = new EdgeOptions();
 //			  options.addArguments("--disable-mobile-upload");
