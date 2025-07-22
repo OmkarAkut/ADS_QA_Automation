@@ -23,7 +23,7 @@ import webdriver.maps.mapbuilder.BuildMap;
 public class CostingRunActivityVolumeCalculationScenarioAds2338 extends CalculationHelper {
 
 	private final String costModel = "QA Marina";
-	String activityVolumeSaveDataScenario = "v11.2 REGRESSION Act Vol Calc Scenario";
+	static String activityVolumeSaveDataScenario = "v11.2 REGRESSION Act Vol Calc Scenario";
 //  String activityVolumeDataScenario = "041720140";
 	String activityVolumeDataCalculationScenario = "v105 REGRESSION Act Vol Calc Scenario";
 	String[] filterVolScenario = { "Name", "Is", "Equal To", activityVolumeDataCalculationScenario };
@@ -40,6 +40,8 @@ public class CostingRunActivityVolumeCalculationScenarioAds2338 extends Calculat
 	private static String endMonth="Feb 2017";
 	private static int activityVolDeptCount=17;
 	private static String chargeCodes="<ALL>";
+	
+	static String[] calcfilter= {"Scenario Name","Is","Equal To",activityVolumeSaveDataScenario};
 //  private final String expectedFilterTotal = "74";
 	/** Regression: Test script for ADS-5990, incomplete steps need to be added  */
 	@BeforeClass
@@ -121,6 +123,8 @@ public class CostingRunActivityVolumeCalculationScenarioAds2338 extends Calculat
 			
 			doClick(CostingMap.getActivityVolDataCalcScenarioSaveAS());
 			doClick(CostingMap.getActivityVolDataCalcScenarioCalculate());
+			//Shilpa : updated for 11.3 7.22.2025
+			doFilterCalculationPage(calcfilter);
 			waitForFirstRowCalculationBarToReach100Percent();
 			doClosePageOnLowerBar("Calculation Status");
 			doClick(CostingMap.getActivityVolDataSCenarioSaveClose());
