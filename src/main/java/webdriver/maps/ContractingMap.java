@@ -773,6 +773,10 @@ public class ContractingMap extends MapConfig {
 	private static WebElement InputName;
 	public static WebElement getInputName() {return InputName;}
 	
+	@FindBy(xpath = "(//span[text()='Field']//following::div[contains(@id,'combo')])[4]")
+	private static WebElement fieldDropdown;
+	public static WebElement getfieldDropdown() {return fieldDropdown;}
+	
 	@FindBy(xpath = "//span[contains(@class,'label-inner-default')]//span[text()='Code']")
 	private static WebElement CodeFieldLabel;
 	public static WebElement CodeFieldLabel() {return CodeFieldLabel;}

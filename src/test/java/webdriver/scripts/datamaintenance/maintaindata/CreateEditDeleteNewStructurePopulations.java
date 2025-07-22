@@ -64,7 +64,9 @@ public class CreateEditDeleteNewStructurePopulations extends GoHelper{
 			doMaintainDataPageSelectAtoZOption(aTozPage);
 			doClick(DataMaintenanceMap.getLoadDataNewButton());
 			ContractModelsHelper.keyInValues(ContractingMap.getInputName(), population);
-			ContractModelsHelper.keyInValues(ContractingMap.getFieldDropdown(), "Age In Years");
+//			ContractModelsHelper.keyInValues(ContractingMap.getFieldDropdown(), "Age In Years");
+		//Shilpa: updated on 22.7.2025 for adding the field
+			doDropdownSelectUsingOptionText(ContractingMap.getfieldDropdown(), "Age In Years");
 			ContractModelsHelper.keyInValues(ContractingMap.getValueInput(), value);
 			doClick(DataMaintenanceMap.getPopulationAddButton());
 			doClick(DataMaintenanceMap.getPopulationShowSizeButton());
