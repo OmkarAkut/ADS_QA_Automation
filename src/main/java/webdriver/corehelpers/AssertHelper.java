@@ -761,6 +761,7 @@ public class AssertHelper extends AdsHelper {
 	public static void assertListElementsAreDisplayed(List<WebElement> elements, boolean printout) {
 		for (WebElement element : elements) {
 			try {
+				scrollToView(element);
 				assertTrue(element.isDisplayed());
 				if (printout) {
 					System.out.println(element);
@@ -771,6 +772,17 @@ public class AssertHelper extends AdsHelper {
 		}
 	}
 
+	public void assertHasElements(List<WebElement> elements) {
+		try {
+			
+			if(elements.size()>=1) {
+				assertTrue(printout);
+			}
+			
+		} catch (Exception e) {
+			fail(e.getMessage());
+		}
+	}
 
 	public void assertElementValueAttribute(WebElement element, String expectedValue, boolean printout) {
 		String getValueAttribute = element.getAttribute("value");

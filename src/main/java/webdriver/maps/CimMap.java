@@ -566,11 +566,11 @@ public class CimMap extends MapConfig {
 	private List<WebElement> calcPageView;
 	public List<WebElement> getcalcPageView() {return calcPageView;}
 	
-	@FindBy(xpath = "//a[text()='Download']")
+	@FindBy(xpath = "//span[text()='Download']")
 	private List<WebElement> calcPageDownload;
 	public List<WebElement> getcalcPageDownload() {return calcPageDownload;}
 	
-	@FindBy(xpath = "//span[contains(@class,'delBtn ')]")
+	@FindBy(xpath = "//a[contains(@class,'x-btn') and (@aria-disabled='false')]//span[contains(@class,'delBtn')]")
 	private List<WebElement> calcPageDelete;
 	public List<WebElement> getcalcPageDelete() {return calcPageDelete;}
 }

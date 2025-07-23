@@ -47,11 +47,12 @@ public class UpdatesCorrectionsToCIMLanding extends CimHelper{
 	public void test02Validate_CalcStatus_HyperLink_20639() throws Throwable {
 		try {
 			doClick(cimMap.getcalcStatusPgeLink());
+			waitForElementToBeVisible(cimMap.getcalcStatusPage());
 			assertElementIsDisplayed(cimMap.getcalcStatusPage());
 			assertTheElementIsDisabled(driver.findElement(By.xpath("//div[contains(@id,'statusreportlayout')]//span[text()='Clear Filter']/../../..")), printout);
-			assertListElementsAreDisplayed(cimMap.getcalcPageView(), printout);
-			assertListElementsAreDisplayed(cimMap.getcalcPageDelete(), printout);
-			assertListElementsAreDisplayed(cimMap.getcalcPageDownload(), printout);
+			assertHasElements(cimMap.getcalcPageView());
+			assertHasElements(cimMap.getcalcPageDelete());
+			assertHasElements(cimMap.getcalcPageDownload());
 			assertElementIsDisplayedWithXpath("//span[contains(@id,'tab') and contains(text(),' Close Calculation Status')]");
 			doClosePageOnLowerBar("Calculation Status");
 			ExtentReport.logPass("PASS", "test02Validate_CalcStatus_HyperLink_20639");

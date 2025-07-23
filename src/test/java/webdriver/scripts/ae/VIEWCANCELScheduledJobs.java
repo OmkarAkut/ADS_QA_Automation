@@ -52,7 +52,7 @@ public class VIEWCANCELScheduledJobs extends AeHelper{
 	 @Test
 		public void test01Validate_Scheduled_Popup_20272() throws Throwable {
 			try {
-				
+				openScheduleWindow();
 				createAeJob(aeJobCreate);
 				doClick(aeMap.getScheduledBtn());
 				waitForElementToBeVisible(aeMap.getscheduleDetailsPopUp());	

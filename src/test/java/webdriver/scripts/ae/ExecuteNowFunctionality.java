@@ -71,7 +71,7 @@ public class ExecuteNowFunctionality extends AeHelper{
 	 @Test
 		public void test03Validate_ExecuteNow_20273() throws Throwable {
 			try {
-				openScheduleWindow();
+				openExecuteJob();
 				createAeJob(aeJobCreate);
 				doClick(aeMap.getScheduledBtn());
 				//Validate under Scheduled Details

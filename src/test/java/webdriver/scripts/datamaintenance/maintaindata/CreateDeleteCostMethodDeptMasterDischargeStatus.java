@@ -146,6 +146,7 @@ public class CreateDeleteCostMethodDeptMasterDischargeStatus extends Calculation
 			doClick(CostingMap.getEncounterTypeEditButton());
 			ContractModelsHelper.keyInValues(ContractingMap.getInputName(), encounterName);
 			ContractModelsHelper.keyInValues(CostingMap.getEncounterShortName(), encounterShortName);
+			//Issue here ADS-22565
 			doClick(ContractingMap.getNewFolderNameSave());
 			waitForAjaxExtJs();
 			assertElementTextContains(CostingMap.getEncounterNameinGrid(), encounterName, printout);

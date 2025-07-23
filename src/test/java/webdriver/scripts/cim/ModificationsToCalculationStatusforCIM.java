@@ -1,6 +1,8 @@
 package webdriver.scripts.cim;
 import static org.junit.Assert.fail;
 import java.text.SimpleDateFormat;
+
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -307,4 +309,12 @@ public class ModificationsToCalculationStatusforCIM extends CimHelper {
 			fail(e.getMessage());
 		}
 	}
+	@AfterClass
+	public static void endtest() throws Exception {
+
+		ExtentReport.report.flush();
+
+	}
+
 }
+
