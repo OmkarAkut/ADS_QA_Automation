@@ -1290,6 +1290,7 @@ if(repeat.equals("Months")) {
 		if (status == "FAILED") {
 			doClick(cimMap.getcimEditBtn());
 			doClick(cimMap.getcalcTypeRemoveAllBtn());
+			driverDelay(200);
 			cimMap.getcimScenarioSearchInput().sendKeys("*Practitioner Costing Enc");
 			cimMap.getsearchIcon().click();
 			driverDelay(300);
