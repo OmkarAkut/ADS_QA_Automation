@@ -573,5 +573,13 @@ public class CimMap extends MapConfig {
 	@FindBy(xpath = "//a[contains(@class,'x-btn') and (@aria-disabled='false')]//span[contains(@class,'delBtn')]")
 	private List<WebElement> calcPageDelete;
 	public List<WebElement> getcalcPageDelete() {return calcPageDelete;}
+	
+	@FindBy(xpath = "//span[text()='Last End Time']//following::td[contains(@class,'x-grid-cell-rownumberer')]/div//following::td[4]/div")
+	private List<WebElement> cimLastEndTimeElements;
+	public List<WebElement> getcimLastEndTimeElements() {return cimLastEndTimeElements;}
+	
+	@FindBy(xpath = "//span[text()='Next Start Time']//following::td[contains(@class,'x-grid-cell-rownumberer')]/div//following::td[2]/div")
+	private List<WebElement> cimNextStartTimeElements;
+	public List<WebElement> getcimNextStartTimeElements() {return cimNextStartTimeElements;}
 }
 

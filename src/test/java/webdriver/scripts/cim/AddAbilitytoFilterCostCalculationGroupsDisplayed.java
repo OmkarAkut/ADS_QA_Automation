@@ -27,7 +27,7 @@ public class AddAbilitytoFilterCostCalculationGroupsDisplayed extends CimHelper{
 	private static String cimScenarioCreate = "CIM" + currentDateTime;
 	static String[] filterCim = { "Name", "Is", "Equal To", cimScenarioCreate };
 	static String[] filter = { "Name", "Is", "Equal To", "" };
-	List<String> expectedFieldOptions=Arrays.asList("Name","Description","Next Start Time","Calc Status");
+	List<String> expectedFieldOptions=Arrays.asList("Name","Description","Last Start Time","Last End Time","Next Start Time","Calc Status");
 	List<String> expectedOperatorOptions=Arrays.asList("Is","Is not");
 	List<String> expectedConditionOptions=Arrays.asList("Equal To","Contains","Starts With","Ends With","One Of");
 	List<String> expectedLastCalcOptions=Arrays.asList("Equal To","Less Than","Between","Greater Than");
@@ -98,7 +98,7 @@ public class AddAbilitytoFilterCostCalculationGroupsDisplayed extends CimHelper{
 	@Test
 	public void test03Validate_Filter_Buttons_20054() throws Throwable {
 		try {
-			doFilterSetFilterParametersForDate("Last Start Time","Is","Equal To","");
+			doFilterSetFilterParametersForDate("Next Start Time","Is","Equal To","");
 			selectDate("current",cimMap.getcalcFilterValDate() );
 			doClick("(//div[contains(@class,'x-docked x-toolbar-footer')])[2]");
 			assertTheElementIsEnabled(dialog.getFilterDialogButtonAdd());
@@ -108,6 +108,8 @@ public class AddAbilitytoFilterCostCalculationGroupsDisplayed extends CimHelper{
 			fail(e.getMessage());
 		}
 	}
+	
+	
 	@Test
 	public void test04Validate_Apply_Buttons_20054() throws Throwable {
 		try {
@@ -124,6 +126,9 @@ public class AddAbilitytoFilterCostCalculationGroupsDisplayed extends CimHelper{
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test04Validate_Apply_Buttons_20054", driver, e);
 			fail(e.getMessage());
+		}
+		finally {
+			
 		}
 	}
 	@Test
@@ -183,6 +188,91 @@ public class AddAbilitytoFilterCostCalculationGroupsDisplayed extends CimHelper{
 		}
 	}
 	
+	@Test
+	public void test09Validate_FieldDescription_20054() throws Throwable {
+		try {
+			createCIM(cimScenarioCreate,calcType);
+			doFilterCreateCIM(filterCim);
+			doClick(cimMap.getcimEditBtn());
+			cimMap.getcimDesc().sendKeys(cimScenarioCreate);
+			driverDelay();
+			doClick(cimMap.getcimSaveCloseBtn());
+			assertElementIsDisplayedWithXpath("//div[contains(@id,'cimmasterlist')]//div[text()='1']//following::td[2]/div[contains(text(),'"+cimScenarioCreate+"')]");
+			deleteCim();
+			ExtentReport.logPass("PASS", "test09Validate_FieldName_20054");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test09Validate_FieldName_20054", driver, e);
+			fail(e.getMessage());
+		}
+	}
+
+	@Test
+	public void test10Validate_Field_LastEndTime_20054() throws Throwable {
+		try {
+			createCIM(cimScenarioCreate,calcType);
+			doFilterCreateCIM(filterCim);
+			validateCalcStatus("COMPLETED", cimScenarioCreate);
+			doClick(cimMap.getcimClearFilterButton());
+			waitForDisplayedSpinnerToEnd();
+			doClick(cimMap.getcimFilterButton());
+			waitForElementPresence("//*[text()='Calculation Groups']");
+			doFilterSetFilterParametersForDate("Last End Time","Is","Equal To","");
+			selectDate("current",cimMap.getcalcFilterValDate() );
+			 String expectedLastEndTime = getCurrentDate("current");
+			validateFilter(expectedLastEndTime,cimMap.getcimLastEndTimeElements());
+			ExtentReport.logPass("PASS", "test10Validate_Field_LastEndTime_20054");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test10Validate_Field_LastEndTime_20054", driver, e);
+			fail(e.getMessage());
+		}
+	}
+		
+	@Test
+	public void test11Validate_Field_NextStartTime_20054() throws Throwable {
+		try {
+			createCIM(cimScenarioCreate,calcType);
+			doFilterCreateCIM(filterCim);
+			validateCalcStatus("PENDING", cimScenarioCreate);
+			doClick(cimMap.getcimClearFilterButton());
+			waitForDisplayedSpinnerToEnd();
+			doClick(cimMap.getcimFilterButton());
+			waitForElementPresence("//*[text()='Calculation Groups']");
+			doFilterSetFilterParametersForDate("Next Start Time","Is","Equal To","");
+			selectDate("next",cimMap.getcalcFilterValDate() );
+			 String expectedLastEndTime = getCurrentDate("next");
+			validateFilter(expectedLastEndTime,cimMap.getcimNextStartTimeElements());
+			ExtentReport.logPass("PASS", "test11Validate_Field_NextStartTime_20054");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test11Validate_Field_NextStartTime_20054", driver, e);
+			fail(e.getMessage());
+		}
+	}
+	@Test
+	public void test12Validate_Field_LastStartTime_20054() throws Throwable {
+		//Implement after ADS-22574 is fixed
+	}
+	public void validateFilter(String validateDate,List<WebElement> elements) throws Throwable {
+		doClick("(//div[contains(@class,'x-docked x-toolbar-footer')])[2]");
+		assertTheElementIsEnabled(dialog.getFilterDialogButtonAdd());
+		doClick(dialog.getFilterDialogButtonAdd());
+		waitForAjaxExtJs();
+		doClick(dialog.getFilterDialogButtonApplyFilter());
+		waitForSpinnerToEnd();
+		
+		try {
+			for(int i=0;i>=elements.size();i++) {
+				assertElementTextContains(cimMap.getcimLastEndTimeElements().get(i), validateDate, printout);
+				
+			}
+		} catch (Exception e) {
+			
+		}
+		doClick(cimMap.getcimClearFilterButton());
+		waitForDisplayedSpinnerToEnd();
+		doClick(cimMap.getcimFilterButton());
+		doFilterCreateCIM(filterCim);
+		deleteCim();
+	}
 	@AfterClass
 	public static void endtest() throws Exception {
 

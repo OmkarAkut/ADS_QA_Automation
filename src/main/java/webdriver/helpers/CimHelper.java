@@ -751,7 +751,13 @@ public class CimHelper extends CalculationHelper {
 			System.out.println("Formatted Date: " + formattedDate);
 			keyInDates(formattedDate, element);
 		}
-
+		if (day == "previous") {
+			LocalDate today = LocalDate.now();
+	        LocalDate yesterday = today.minusDays(1);
+			String formattedDate = yesterday.format(formatter);
+			System.out.println("Formatted Date: " + formattedDate);
+			keyInDates(formattedDate, element);
+		}
 	}
 
 	public static String getCurrentDate(String day) throws Exception {
