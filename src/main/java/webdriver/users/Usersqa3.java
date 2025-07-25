@@ -26,7 +26,7 @@ public enum Usersqa3 {
     BudgetingUser1("autobudgetuser1", "P@$$w0rd123"),
     AnalyticsAdministrator1("autoanalyadmin1", "P@$$w0rd123"),
     AnalyticsAnalyst1("autoanalyanalyst1", "P@$$w0rd123"),
-    AnalyticsDesigner1("automationanalyticsdesign1", "password"),
+    AnalyticsDesigner1("automationanalyticsdesign1", "P@$$w0rd123"),
     AnalyticsExecutive1("autoanalyticsexec1", "P@$$w0rd123"),
     //RestrictedEntities("newuser1", "password"),
     //RestrictedDepartments("newuser2", "password"),

@@ -101,7 +101,7 @@ public class SecurityRolesTestMainPageLevelStatic extends LoginRolesTesting {
             {Roles.valueOf("Budgeting_User")},
             {Roles.valueOf("Analytics_Administrator")},
             {Roles.valueOf("Analytics_Analyst")},
-//            {Roles.valueOf("Analytics_Designer")},
+            {Roles.valueOf("Analytics_Designer")},
 
             {Roles.valueOf("Analytics_Executive")},
     };
@@ -140,12 +140,13 @@ public class SecurityRolesTestMainPageLevelStatic extends LoginRolesTesting {
     try {
       assertTrue(generalElement.getStatusTab().isDisplayed());
       doClick(generalElement.getStatusTab());
-      waitForAjaxExtJs();
+//     waitForDisplayedSpinnerToEnd();
+      waitForDisplayedSpinnerToEnd();
       actualList = getPagesRolesTestActualResults(statusTabPages, printout);
     } catch (Throwable e) {
       actualList = new ArrayList<>(Arrays.asList(0, 0, 0));
     }
-    waitForAjaxExtJs();
+   waitForDisplayedSpinnerToEnd();
     assertExpectedListEqualsActualArrayList(roleExpectedPages, actualList, userRole, "Status Tab", printout);
   }
 
@@ -166,12 +167,12 @@ public class SecurityRolesTestMainPageLevelStatic extends LoginRolesTesting {
     try {
       assertTrue(generalElement.getSystemMaintenanceTab().isDisplayed());
       doClick(generalElement.getSystemMaintenanceTab());
-      waitForAjaxExtJs();
+     waitForDisplayedSpinnerToEnd();
       actualList = getPagesRolesTestActualResults(systemMaintenanceTabPages, printout);
     } catch (Throwable e) {
       actualList = new ArrayList<>(Arrays.asList(0, 0, 0, 0, 0, 0, 0, 0));
     }
-    waitForAjaxExtJs();
+   waitForDisplayedSpinnerToEnd();
     assertExpectedListEqualsActualArrayList(roleExpectedPages, actualList, userRole, "System Maintenance Tab", printout);
   }
 
@@ -187,12 +188,12 @@ public class SecurityRolesTestMainPageLevelStatic extends LoginRolesTesting {
     try {
       assertTrue(generalElement.getDataMaintenanceTab().isDisplayed());
       doClick(generalElement.getDataMaintenanceTab());
-      waitForAjaxExtJs();
+     waitForDisplayedSpinnerToEnd();
       actualList = getPagesRolesTestActualResults(dataMaintenanceTabPages, printout);
     } catch (Throwable e) {
       actualList = new ArrayList<>(Arrays.asList(0, 0, 0));
     }
-    waitForAjaxExtJs();
+   waitForDisplayedSpinnerToEnd();
     assertExpectedListEqualsActualArrayList(roleExpectedPages, actualList, userRole, "Data Maintenance Tab", printout);
   }
 
@@ -206,12 +207,12 @@ public class SecurityRolesTestMainPageLevelStatic extends LoginRolesTesting {
     try {
       assertTrue(generalElement.getBudgetingTab().isDisplayed());
       doClick(generalElement.getBudgetingTab());
-      waitForAjaxExtJs();
+     waitForDisplayedSpinnerToEnd();
       actualList = getPagesRolesTestActualResults(budgetingTabPages, printout);
     } catch (Throwable e) {
       actualList = new ArrayList<>(Arrays.asList(0));
     }
-    waitForAjaxExtJs();
+   waitForDisplayedSpinnerToEnd();
     assertExpectedListEqualsActualArrayList(roleExpectedPages, actualList, userRole, "Budgeting Tab", printout);
   }
 
@@ -226,13 +227,13 @@ public class SecurityRolesTestMainPageLevelStatic extends LoginRolesTesting {
     try {
       assertTrue(generalElement.getEpisodesTab().isDisplayed());
       doClick(generalElement.getEpisodesTab());
-      waitForAjaxExtJs();
+     waitForDisplayedSpinnerToEnd();
       actualList = getPagesRolesTestActualResults(episodesTabPages, printout);
 
     } catch (Throwable e) {
       actualList = new ArrayList<>(Arrays.asList(0, 0));
     }
-    waitForAjaxExtJs();
+   waitForDisplayedSpinnerToEnd();
     assertExpectedListEqualsActualArrayList(roleExpectedPages, actualList, userRole, "Episodes Tab", printout);
   }
 
@@ -249,12 +250,12 @@ public class SecurityRolesTestMainPageLevelStatic extends LoginRolesTesting {
     try {
       assertTrue(generalElement.getContractingTab().isDisplayed());
       doClick(generalElement.getContractingTab());
-      waitForAjaxExtJs();
+     waitForDisplayedSpinnerToEnd();
       actualList = getPagesRolesTestActualResults(contractingTabPages, printout);
     } catch (Throwable e) {
       actualList = new ArrayList<>(Arrays.asList(0, 0, 0, 0));
     }
-    waitForAjaxExtJs();
+   waitForDisplayedSpinnerToEnd();
     assertExpectedListEqualsActualArrayList(roleExpectedPages, actualList, userRole, "Contracting Tab", printout);
   }
 
@@ -272,12 +273,12 @@ public class SecurityRolesTestMainPageLevelStatic extends LoginRolesTesting {
     try {
       assertTrue(generalElement.getCostingTab().isDisplayed());
       doClick(generalElement.getCostingTab());
-      waitForAjaxExtJs();
+     waitForDisplayedSpinnerToEnd();
       actualList = getPagesRolesTestActualResults(costingTabPages, printout);
     } catch (Throwable e) {
       actualList = new ArrayList<>(Arrays.asList(0, 0, 0, 0, 0));
     }
-    waitForAjaxExtJs();
+   waitForDisplayedSpinnerToEnd();
     assertExpectedListEqualsActualArrayList(roleExpectedPages, actualList, userRole, "Costing Tab", printout);
   }
 
@@ -302,12 +303,12 @@ public class SecurityRolesTestMainPageLevelStatic extends LoginRolesTesting {
     try {
       assertTrue(generalElement.getReportingTab().isDisplayed());
       doClick(generalElement.getReportingTab());
-      waitForAjaxExtJs();
+     waitForDisplayedSpinnerToEnd();
       actualList = getPagesRolesTestActualResults(reportingTabPages, printout);
     } catch (Throwable e) {
       actualList = new ArrayList<>(Arrays.asList(0, 0, 0, 0, 0, 0, 0, 0, 0, 0));
     }
-    waitForAjaxExtJs();
+   waitForDisplayedSpinnerToEnd();
     assertExpectedListEqualsActualArrayList(roleExpectedPages, actualList, userRole, "Reporting Tab", printout);
   }
 
@@ -328,18 +329,18 @@ public class SecurityRolesTestMainPageLevelStatic extends LoginRolesTesting {
     try {
       assertTrue(generalElement.getAnalyticsTab().isDisplayed());
       doClick(generalElement.getAnalyticsTab());
-      waitForAjaxExtJs();
+     waitForDisplayedSpinnerToEnd();
       actualList = getPagesRolesTestActualResults(analyticsTabPages, printout);
     } catch (Throwable e) {
       actualList = new ArrayList<>(Arrays.asList(0, 0, 0, 0, 0, 0, 0, 0));
     }
-    waitForAjaxExtJs();
+   waitForDisplayedSpinnerToEnd();
     assertExpectedListEqualsActualArrayList(roleExpectedPages, actualList, userRole, "Analytics Tab", printout);
   }
 
   public void assertPagesRolesTest(List expectedList, WebElement[] elements, String userRole, String mainTab, boolean printout) throws InterruptedException {
     ArrayList<Integer> actualList = new ArrayList<>();  //create actual list object
-    waitForAjaxExtJs();
+   waitForDisplayedSpinnerToEnd();
     waitForElementDoWhileLoop(generalElement.getUserDropdown(), printout);
     for (WebElement element : elements) {  //populate list if viewable (1) or not viewable (0)
       try {
@@ -367,7 +368,7 @@ public class SecurityRolesTestMainPageLevelStatic extends LoginRolesTesting {
 
   public List getPagesRolesTestActualResults(WebElement[] elements, boolean printout) throws InterruptedException {
     ArrayList<Integer> actualList = new ArrayList<>();  //create actual list object
-    waitForAjaxExtJs();
+   waitForDisplayedSpinnerToEnd();
     waitForElementDoWhileLoop(generalElement.getUserDropdown(), printout);
     for (WebElement element : elements) {  //populate list if viewable (1) or not viewable (0)
       try {
@@ -407,7 +408,7 @@ public class SecurityRolesTestMainPageLevelStatic extends LoginRolesTesting {
 	}
 //  public void assertPagesRolesTest(List expectedList, WebElement[] elements, String userRole, boolean printout) throws InterruptedException {
 //    ArrayList<Integer> actualList = new ArrayList<>();  //create actual list object
-//    waitForAjaxExtJs();
+//   waitForDisplayedSpinnerToEnd();
 //    waitForElementDoWhileLoop(generalElement.getUserDropdown(), printout);
 //    for (WebElement element : elements) {  //populate list if viewable (1) or not viewable (0)
 //      try {
