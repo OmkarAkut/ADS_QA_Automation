@@ -304,6 +304,7 @@ doClickTreeItem("Assign Unit Costs");
 			assertElementIsDisplayedWithXpath("//label[contains(text(),'Filter to Match These Criteria')]");
 			doClick(dialog.getFilterDialogButtonApplyFilter());
 			waitForSpinnerToEnd();
+			driverDelay();
 			doClick(ContractingMap.getCloseBtn());
 			/*
 			assertListElementsAreDisplayed(costing.getRvuContainerList(), printout);
@@ -439,7 +440,10 @@ doClickTreeItem("Assign Unit Costs");
 	{
 		try {
 //			driverDelay(2000);
-			doClick("//*[text()='RVU Container List']/ancestor::div/following-sibling::div//span[text()='Filter']");
+//			doClick("//*[text()='RVU Container List']/ancestor::div/following-sibling::div//span[text()='Filter']");
+			//Shilpa: 11.3 : 29.07.2025
+			doClick("//*[text()='RVU Container List']/ancestor::div/following-sibling::div//span[text()='Filter']/../../..");
+			driverDelay();
 //			modelHelper.doFilterCreateAndAddFilter(filterByCostComponentIsOverhead,dialog.getFilterDialogFormFieldValue());
 			doDropdownSelectUsingOptionTextServices(dialog.getFilterNameField(),dialog.getFilterDialogDropdownField(), "Cost Component Is Overhead");
 			
