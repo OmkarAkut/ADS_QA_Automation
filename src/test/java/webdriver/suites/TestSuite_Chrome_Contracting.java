@@ -40,21 +40,20 @@ import webdriver.scripts.systemmaintenance.SystemMaintenanceTestSuite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 
-	TestSuiteForCIM.class,
-	CostingTestSuite.class,
-	CostingCalculationsTestSuite.class,
-	CostingModelsTestSuite.class,
-	UnitCostQuickCalculationSuite.class,
-	UcqcMainpageTestSuite.class,
-	UcqcRvusSuite.class,
-	UcqcRoleBasedTestSuite.class,
-	UcqcCalculationTestSuite.class,
+	ContractingSuite.class,
+	GeneralCalculationsTestSuite.class,
+	CalculationStatusSuite.class,
+	MaintaindataTestSuite.class,
+	EpisodesTestSuite.class,
+	TestSuiteAXE.class,
+	UtilitiesTestSuite.class,
+
 
 
 	
 })
 
-public class TestSuite_Costing {
+public class TestSuite_Chrome_Contracting {
 
 }
 
