@@ -444,7 +444,7 @@ public class AdsHelper extends GetHelper {
 
 	        // Create Robot instance
 	        Robot robot = new Robot();
-
+	        driverDelay();// wait for the file dialog to appear
 	        // Paste (Ctrl + V)
 	        robot.keyPress(KeyEvent.VK_CONTROL);
 	        robot.keyPress(KeyEvent.VK_V);

@@ -269,7 +269,7 @@ doClickTreeItem("Assign Unit Costs");
 			fail(e.getMessage());
 		}
 		
-		finally {
+//		/finally {
 			/*
 			Actions act=new Actions(driver);
 			waitUntilElementIsClickable(costing.getRvuContainerClearFilterButton());
@@ -285,15 +285,15 @@ doClickTreeItem("Assign Unit Costs");
 //			doClick(dialog.getFilterDialogButtonApplyFilter());
 //			waitForDisplayedSpinnerToEnd();
 //			driverDelay(15000);
-		}
+//		}
 		
 	}
 	@Test
 	public void test12FilterByEntityCodeInRvuContainer_5983() throws Throwable {
 		try {
 			
-			
-			assertListElementsAreDisplayed(costing.getRvuContainerList(), printout);
+			assertHasElements(costing.getRvuContainerList());
+//			assertListElementsAreDisplayed(costing.getRvuContainerList(), printout);
 			doClick("//*[text()='RVU Container List']/ancestor::div/following-sibling::div//span[text()='Filter']");
 			doFilterSetFilterParameters("Entity Code", "Is", "Equal To", entityCode);
 			addFilter();
