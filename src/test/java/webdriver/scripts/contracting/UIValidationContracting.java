@@ -118,15 +118,13 @@ public class UIValidationContracting extends CalculationHelper{
 			//shilpa updated xpath for 11.2
 //			driverDelay(500);
 			doClick("//span[text()='ADS-1320 Contract...']//following::span[@class='x-tab-close-btn']");
+			doClosePageOnLowerBar("Contract Models");
 			ExtentReport.logPass("PASS", "AssertContractModelPage");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "AssertContractModelPage", driver, e);
 			fail(e.getMessage());
 		} 
-		finally{
-			doClosePageOnLowerBar("Contract Models");
-
-		}
+		
 	}
 	
 	@AfterClass

@@ -779,11 +779,12 @@ public class CimHelper extends CalculationHelper {
 		return formattedDate;
 	}
 
-	public static void deleteCim() {
+	public static void deleteCim() throws Throwable {
 		doClick(cimMap.getcimDeleteButton());
 		assertTextIsDisplayed(
 				"Decision Support will delete the data you selected. Click Delete to remove the data from the database, or click Cancel to return to the previous screen without deleting the data.");
 		doClick(cimMap.getcimWarningDeleteButton());
+		driverDelay(1000);
 		doClick(cimMap.getcimClearFilterButton());
 		waitForDisplayedSpinnerToEnd();
 	}

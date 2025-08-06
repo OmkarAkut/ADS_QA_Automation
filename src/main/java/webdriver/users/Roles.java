@@ -31,7 +31,7 @@ public enum Roles {
     Budgeting_User("autobudgetuser1", "P@$$w0rd123"),
     Analytics_Administrator("autoanalyadmin1", "P@$$w0rd123"),
     Analytics_Analyst("autoanalyanalyst1", "P@$$w0rd123"),
-    Analytics_Designer("automationanalyticsdesign1", "P@$$w0rd123"),
+    Analytics_Designer("automationanalyticsd", "P@$$w0rd123"),
 
     Analytics_Executive("autoanalyticsexec1", "P@$$w0rd123");
     //dbadminUser1("automationdbadmin1", "password")

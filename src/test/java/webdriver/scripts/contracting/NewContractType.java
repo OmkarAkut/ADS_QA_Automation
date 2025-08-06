@@ -59,16 +59,14 @@ public class NewContractType extends CalculationHelper{
 			driverDelay(100);
 			doFilterCreate(filter);
 			assertElementIsDisplayedWithXpath("//div[text()='"+contractCode+"']");
-			 doClick("//span[text()='ADS-1320 Contract...']//following::span[@class='x-tab-close-btn']");
+			doClick("//span[text()='ADS-1320 Contract...']//following::span[@class='x-tab-close-btn']");
+			doClosePageOnLowerBar("Contract Models");
 			ExtentReport.logPass("PASS", "test01CreateNewContractType");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01CreateNewContractType", driver, e);
 			fail(e.getMessage());
 		} 
-		finally{
-			doClosePageOnLowerBar("Contract Models");
-
-		}
+		
 	}
 	@AfterClass
 	public static void endtest() throws Exception {

@@ -67,17 +67,14 @@ public class VerifyFilterAscSchemes extends CalculationHelper{
 		    assertElementIsDisplayedWithXpath("//div[text()='"+ascScheme+"']");
 //		    doClosePageOnLowerBar("ADS-1320 Contract...");
 			doClick("//span[text()='ADS-1320 Contract...']//following::span[@class='x-tab-close-btn']");
-
+			doClosePageOnLowerBar("Contract Models");
 //		    doClosePageOnLowerBar("Model Library");
 			ExtentReport.logPass("PASS", "test01VerifyFilterByAscSchemes");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01VerifyFilterByAscSchemes", driver, e);
 			fail(e.getMessage());
 		} 
-		finally{
-			doClosePageOnLowerBar("Contract Models");
-
-		}
+		
 	}
 	@AfterClass
 	public static void endtest() throws Exception {

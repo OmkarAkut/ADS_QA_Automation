@@ -78,7 +78,7 @@ public class AddSaveCreateNewButtontoNewCalculationGroupScreen extends CimHelper
 	}
 	
 	@AfterClass
-	public static void endtest() throws Exception {
+	public static void endtest() throws Throwable {
 		deleteCim();
 		doClosePageOnLowerBar("Cost Integration Manager (CIM)");
 		ExtentReport.report.flush();

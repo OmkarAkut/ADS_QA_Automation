@@ -97,14 +97,18 @@ public class ModelContractLumpSumPaymentAllocation extends CalculationHelper {
 			driverDelay(200);
 			doClick(ContractingMap.getContractFeeForServicePaymentSave());
 			doClick(ContractingMap.getSaveButton());
-			doClick("//span[text()='ADS-1320 Contract...']//following::span[@class='x-tab-close-btn']");
-			doClosePageOnLowerBar("Contract Models");
+//			doClick("//span[text()='ADS-1320 Contract...']//following::span[@class='x-tab-close-btn']");
+//			doClosePageOnLowerBar("Contract Models");
 			ExtentReport.logPass("PASS", "test01NewLumpSumPaymentAllocation");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01NewLumpSumPaymentAllocation", driver, e);
 			fail(e.getMessage());
 		} 
-	
+		finally {
+			
+			doClick("//span[text()='ADS-1320 Contract...']//following::span[@class='x-tab-close-btn']");
+			doClosePageOnLowerBar("Contract Models");
+		}
 	}
 	
 	@AfterClass

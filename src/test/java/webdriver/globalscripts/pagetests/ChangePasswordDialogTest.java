@@ -53,7 +53,9 @@ public class ChangePasswordDialogTest extends GoHelper {
 		try {
 			assertElementIsDisplayed(generalElement.getUserDropdown(), printout);
 			generalElement.getUserDropdown().click();
-			waitForPresenceOfElement("//*[@id = 'changePassword']");
+//			waitForPresenceOfElement("//*[@id = 'changePassword']");
+			//Shilpa: 11.3 , 31/07/2025
+			waitForPresenceOfElement("//*[@id = 'resetPassword']");
 			generalElement.getUserDropdownChangePassword().click();
 			assertTextIsDisplayed(resetText);
 			ExtentReport.logPass("PASS", "test01OpenChangePasswordDialogAndAssert");

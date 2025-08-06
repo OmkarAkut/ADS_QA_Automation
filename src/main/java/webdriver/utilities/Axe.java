@@ -22,7 +22,7 @@ public class Axe {
   //static final String wcagStandard = "'wcag2a', 'wcag2aa', 'wcag2aaa', 'section508', 'best-practice'";
   //static final String wcagStandard = "'wcag2a', 'wcag2aa', 'best-practice'";
 //  static final String wcagStandard = "'wcag2a', 'wcag2aa'";//Shilpa commented on request 11.2 5.15.2024
-  	String wcagStandard ="'section508'";
+  	String wcagStandard ="'wcag2a'";
   @Rule
   private static final URL scriptUrl = Axe.class.getResource("/axe.min.js");
 

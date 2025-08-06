@@ -88,16 +88,13 @@ public class ModelContractPatientFinancialResponsibility extends CalculationHelp
 			doClick(ContractingMap.getDeleteButtonMesaageBox());
 //			doClick("//span[text()='ADS-1320 Contract...']//following::span[@class='x-tab-close-btn']");
 			doClick("//span[@class='x-tab-close-btn'][contains(text(),'removable')]");//Shilpa xpath update for 11.2 on 10.31.2024
+			doClosePageOnLowerBar("Contract Models");
 			ExtentReport.logPass("PASS", "test01VerifyNewPatientFinancialResponsibility");
 		} catch (Exception|AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01VerifyNewPatientFinancialResponsibility", driver, e);
 			fail(e.getMessage());
 		}
-		finally {
-//			doClosePageOnLowerBar("Contract Models");
-			doClosePageOnLowerBar("Contract Models");//Shilpa  update for 11.2 on 10.31.2024
-
-		}
+		
 	}
 	@AfterClass
 	public static void endtest() throws Exception {
