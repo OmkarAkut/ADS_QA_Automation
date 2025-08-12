@@ -4,6 +4,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 import webdriver.deployment.SmokeTest;
+import webdriver.globalscripts.accessibilitytests.ContractingAXE;
 import webdriver.globalscripts.accessibilitytests.TestSuiteAXE;
 import webdriver.globalscripts.checktests.ChecktestsSuite;
 import webdriver.globalscripts.help.HelpSuite;
@@ -40,30 +41,31 @@ import webdriver.scripts.systemmaintenance.SystemMaintenanceTestSuite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 
-	TestSuiteForCIM.class,
-	TestSuiteForAE.class,
-	CostingTestSuite.class,
-	ContractingSuite.class,
-	MaintaindataTestSuite.class,
-	GeneralCalculationsTestSuite.class,
-	SystemMaintenanceTestSuite.class,
-	EpisodesTestSuite.class,
-	ReportingTestSuite.class,
-	UtilitiesTestSuite.class,
-	MaintaindataTestSuite.class,
-	TestSuiteAXE.class,
-	PagetestsSuite.class,
-	HelpSuite.class,
-	SecurityTestsSuite.class,
-	ChecktestsSuite.class,
-	CostingCalculationsTestSuite.class,
-	CostingModelsTestSuite.class,
-	CalculationStatusSuite.class,
-	UnitCostQuickCalculationSuite.class,
-	UcqcMainpageTestSuite.class,
-	UcqcRvusSuite.class,
-	UcqcRoleBasedTestSuite.class,
-	UcqcCalculationTestSuite.class,
+//	TestSuiteForCIM.class,
+//	TestSuiteForAE.class,
+//	CostingTestSuite.class,
+	ContractingAXE.class,
+//	ContractingSuite.class,
+//	MaintaindataTestSuite.class,
+//	GeneralCalculationsTestSuite.class,
+//	SystemMaintenanceTestSuite.class,
+//	EpisodesTestSuite.class,
+//	ReportingTestSuite.class,
+//	UtilitiesTestSuite.class,
+//	MaintaindataTestSuite.class,
+//	TestSuiteAXE.class,
+//	PagetestsSuite.class,
+//	HelpSuite.class,
+//	SecurityTestsSuite.class,
+//	ChecktestsSuite.class,
+//	CostingCalculationsTestSuite.class,
+//	CostingModelsTestSuite.class,
+//	CalculationStatusSuite.class,
+//	UnitCostQuickCalculationSuite.class,
+//	UcqcMainpageTestSuite.class,
+//	UcqcRvusSuite.class,
+//	UcqcRoleBasedTestSuite.class,
+//	UcqcCalculationTestSuite.class,
 
 	
 })

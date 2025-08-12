@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchSessionException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -77,7 +78,8 @@ public class DriverStatic extends SetupStatic {
 				driver = new InternetExplorerDriver();
 				//			  Omkar 15/12/2023 : Code addition for edge browser execution
 				//Shilpa added below line for 11.2 on 12.12.2023
-			}  else if (browser.equals("edge")) {	
+			}  else if (browser.equals("edge")) {
+				/*
 				 WebDriverManager.edgedriver().setup();
 				EdgeOptions options =new EdgeOptions();
 				  options.addArguments("--disable-mobile-upload");
@@ -85,6 +87,16 @@ public class DriverStatic extends SetupStatic {
 				options.addArguments("--remote-allow-origins=*");
 				options.addArguments("--ignore-certificate-errors", "start-maximized");
 				driver = new EdgeDriver(options);
+				*/
+				//Shilpa updated the auto nstall of edge driver 8.12.2025
+				System.setProperty("wdm.edgeDriverUrl", "https://msedgedriver.microsoft.com/");
+				WebDriverManager.edgedriver().setup();
+				EdgeOptions options = new EdgeOptions();
+//			  options.addArguments("--disable-mobile-upload");
+				options.addArguments("--remote-allow-origins=*");
+				options.addArguments("--ignore-certificate-errors", "start-maximized");
+				driver = new EdgeDriver(options);
+				options.addArguments("--disable-mobile-upload");
 			} else {
 				fail("ERROR: Driver object not set.");
 			}
@@ -101,7 +113,7 @@ public class DriverStatic extends SetupStatic {
 	 *  recommended.
 	 */
 	public static String setsBrowserDriver(String browser) {
-		String browserDriver;
+		String browserDriver = null;
 		if (browser.equals("firefox")) {
 			System.setProperty("webdriver.firefox.driver",
 					"C:/ads/apps/Selenium/" + geckoDriver + ".exe");
@@ -113,17 +125,44 @@ public class DriverStatic extends SetupStatic {
 		}
 //		Omkar 15/12/2023 : addition of edge driver
 		else if (browser.equals("edge")) {
+			/*
 			 WebDriverManager.edgedriver().setup();
 			System.setProperty("webdriver.edge.driver", "src/main/resources/drivers/" + edgeDriver + ".exe");
 			browserDriver = System.getProperty("webdriver.edge.driver");
+			*/
+			browserDriver=System.setProperty("wdm.edgeDriverUrl", "https://msedgedriver.microsoft.com/");
+			WebDriverManager.edgedriver().setup();
+			EdgeOptions options = new EdgeOptions();
+//		  options.addArguments("--disable-mobile-upload");
+			options.addArguments("--remote-allow-origins=*");
+			options.addArguments("--ignore-certificate-errors", "start-maximized");
+			driver = new EdgeDriver(options);
+			options.addArguments("--disable-mobile-upload");
 		} else {
 			//      System.setProperty("webdriver.chrome.driver",
 			//              "src/main/resources/drivers/" + chromeDriver + ".exe");
+			/*
 			 WebDriverManager.chromedriver().setup();
 			System.setProperty("webdriver.chrome.driver",
 					"src/main/resources/drivers/" + chromeDriver + ".exe");
 			browserDriver = System.getProperty("webdriver.chrome.driver");
-			System.setProperty("webdriver.chrome.silentOutput", "true");  //turns off chromedriver logging to console
+			System.setProperty("webdriver.chrome.silentOutput", "true");
+			*/  //turns off chromedriver logging to console
+			WebDriverManager.chromedriver().setup();
+			ChromeOptions options = new ChromeOptions();
+			final Map<String, Object> chromePrefs = new HashMap<>();
+			// Shilpa : Below lines to disable password pop up 4.14.2025
+			chromePrefs.put("credentials_enable_service", false);
+			chromePrefs.put("profile.password_manager_enabled", false);
+			chromePrefs.put("profile.password_manager_leak_detection", false);
+			options.setExperimentalOption("prefs", chromePrefs);
+			options.addArguments("--ignore-certificate-errors", "start-maximized");
+			options.addArguments("--remote-allow-origins=*");
+			driver = new ChromeDriver(options);
+			// Clear browser cache
+			driver.manage().deleteAllCookies();
+			driver.get("chrome://settings/clearBrowserData");
+			driver.findElement(By.xpath("//settings-ui")).sendKeys(Keys.ENTER);
 		}
 		return browserDriver;
 	}

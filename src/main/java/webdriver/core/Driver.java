@@ -221,8 +221,14 @@ public class Driver {
 			}
 			// Shilpa added below line for 11.2 on 12.02.2024
 			else if (browser.equals("edge")) {
-				WebDriverManager.edgedriver().setup();
-				System.setProperty("webdriver.edge.driver", drivers + edgeDriver + ".exe");
+				System.setProperty("wdm.edgeDriverUrl", "https://msedgedriver.microsoft.com/");
+			WebDriverManager.edgedriver().setup();
+			EdgeOptions options = new EdgeOptions();
+//		  options.addArguments("--disable-mobile-upload");
+			options.addArguments("--remote-allow-origins=*");
+			options.addArguments("--ignore-certificate-errors", "start-maximized");
+			driver = new EdgeDriver(options);
+			options.addArguments("--disable-mobile-upload");
 			} else {
 				fail("ERROR: Driver object not set.");
 			}
@@ -239,8 +245,14 @@ public class Driver {
 			}
 			// Shilpa added below line for 11.2 on 12.02.2023
 			else if (browser.equals("edge")) {
+				System.setProperty("wdm.edgeDriverUrl", "https://msedgedriver.microsoft.com/");
 				WebDriverManager.edgedriver().setup();
-				System.setProperty("webdriver.edge.driver", drivers + edgeDriver);
+				EdgeOptions options = new EdgeOptions();
+//			  options.addArguments("--disable-mobile-upload");
+				options.addArguments("--remote-allow-origins=*");
+				options.addArguments("--ignore-certificate-errors", "start-maximized");
+				driver = new EdgeDriver(options);
+				options.addArguments("--disable-mobile-upload");
 			} else {
 				fail("ERROR: Browser driver not set.");
 			}
@@ -332,13 +344,14 @@ public class Driver {
 			}
 			// Shilpa added below line for 11.2 on 12.12.2023
 			else if (browser.equals("edge")) {
+				System.setProperty("wdm.edgeDriverUrl", "https://msedgedriver.microsoft.com/");
 				WebDriverManager.edgedriver().setup();
 				EdgeOptions options = new EdgeOptions();
-				options.addArguments("--disable-features=msEdgeUploadFromMobile");
-
+//			  options.addArguments("--disable-mobile-upload");
 				options.addArguments("--remote-allow-origins=*");
 				options.addArguments("--ignore-certificate-errors", "start-maximized");
 				driver = new EdgeDriver(options);
+				options.addArguments("--disable-mobile-upload");
 //			  options.addArguments("--disable-mobile-upload");
 			} else {
 				fail("ERROR: Driver object not set.");
