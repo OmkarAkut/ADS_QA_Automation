@@ -174,7 +174,8 @@ public class SecurityRolesTestMainTabLevelStatic extends LoginRolesTesting {
     //set of outputs to compare to the expected results.  The "elements" is a set of WebElements to test for, such
     //as tabs, but could be any set.
     ArrayList<Integer> resultsList = new ArrayList<>();
-    waitForAjaxExtJs();
+//    waitForAjaxExtJs();//Shilpa : on 8.13.2025 for 11.3 
+    waitForJsWindowOnload();
     waitForElementDoWhileLoop(generalElement.getUserDropdown(), printout);
     for (WebElement element : elements) {
       try {
