@@ -130,14 +130,9 @@ public class DriverStatic extends SetupStatic {
 			System.setProperty("webdriver.edge.driver", "src/main/resources/drivers/" + edgeDriver + ".exe");
 			browserDriver = System.getProperty("webdriver.edge.driver");
 			*/
-			browserDriver=System.setProperty("wdm.edgeDriverUrl", "https://msedgedriver.microsoft.com/");
 			WebDriverManager.edgedriver().setup();
-			EdgeOptions options = new EdgeOptions();
-//		  options.addArguments("--disable-mobile-upload");
-			options.addArguments("--remote-allow-origins=*");
-			options.addArguments("--ignore-certificate-errors", "start-maximized");
-			driver = new EdgeDriver(options);
-			options.addArguments("--disable-mobile-upload");
+			browserDriver=System.setProperty("wdm.edgeDriverUrl", "https://msedgedriver.microsoft.com/");
+
 		} else {
 			//      System.setProperty("webdriver.chrome.driver",
 			//              "src/main/resources/drivers/" + chromeDriver + ".exe");
@@ -149,20 +144,8 @@ public class DriverStatic extends SetupStatic {
 			System.setProperty("webdriver.chrome.silentOutput", "true");
 			*/  //turns off chromedriver logging to console
 			WebDriverManager.chromedriver().setup();
-			ChromeOptions options = new ChromeOptions();
-			final Map<String, Object> chromePrefs = new HashMap<>();
-			// Shilpa : Below lines to disable password pop up 4.14.2025
-			chromePrefs.put("credentials_enable_service", false);
-			chromePrefs.put("profile.password_manager_enabled", false);
-			chromePrefs.put("profile.password_manager_leak_detection", false);
-			options.setExperimentalOption("prefs", chromePrefs);
-			options.addArguments("--ignore-certificate-errors", "start-maximized");
-			options.addArguments("--remote-allow-origins=*");
-			driver = new ChromeDriver(options);
-			// Clear browser cache
-			driver.manage().deleteAllCookies();
-			driver.get("chrome://settings/clearBrowserData");
-			driver.findElement(By.xpath("//settings-ui")).sendKeys(Keys.ENTER);
+			browserDriver = System.getProperty("webdriver.chrome.driver");
+
 		}
 		return browserDriver;
 	}

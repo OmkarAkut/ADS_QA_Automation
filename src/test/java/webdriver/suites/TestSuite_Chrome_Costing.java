@@ -42,13 +42,7 @@ import webdriver.scripts.systemmaintenance.SystemMaintenanceTestSuite;
 
 	TestSuiteForCIM.class,
 	CostingTestSuite.class,
-	CostingCalculationsTestSuite.class,
-	CostingModelsTestSuite.class,
-	UnitCostQuickCalculationSuite.class,
-	UcqcMainpageTestSuite.class,
-	UcqcRvusSuite.class,
-	UcqcRoleBasedTestSuite.class,
-	UcqcCalculationTestSuite.class,
+	
 
 
 	

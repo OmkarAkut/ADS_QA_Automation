@@ -39,14 +39,29 @@ import webdriver.scripts.systemmaintenance.SystemMaintenanceTestSuite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-
 	ContractingSuite.class,
-	GeneralCalculationsTestSuite.class,
-	CalculationStatusSuite.class,
 	MaintaindataTestSuite.class,
+	GeneralCalculationsTestSuite.class,
+	SystemMaintenanceTestSuite.class,
 	EpisodesTestSuite.class,
-	TestSuiteAXE.class,
+	ReportingTestSuite.class,
 	UtilitiesTestSuite.class,
+	MaintaindataTestSuite.class,
+	TestSuiteAXE.class,
+	PagetestsSuite.class,
+	HelpSuite.class,
+	SecurityTestsSuite.class,
+	ChecktestsSuite.class,
+	CostingCalculationsTestSuite.class,
+	CostingModelsTestSuite.class,
+	CalculationStatusSuite.class,
+	TestSuiteForAE.class,
+	UnitCostQuickCalculationSuite.class,
+	UcqcMainpageTestSuite.class,
+	UcqcRvusSuite.class,
+	UcqcRoleBasedTestSuite.class,
+	UcqcCalculationTestSuite.class,
+
 
 
 
