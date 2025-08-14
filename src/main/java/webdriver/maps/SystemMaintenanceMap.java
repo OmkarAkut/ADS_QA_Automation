@@ -585,7 +585,8 @@ public class SystemMaintenanceMap extends MapConfig {
 
 	// ===== System Maintenance Tab > Terminal Server Sessions Page ===== //
 
-	@FindBy(xpath = "//*[contains(@onclick,'stsccnfd.htm') and @class='listhelpLnk']")
+//	@FindBy(xpath = "//*[contains(@onclick,'stsccnfd.htm') and @class='listhelpLnk']")
+	@FindBy(xpath = "(//*[contains(@onclick,'alliance-help') and @class='listhelpLnk'])[2]")//Shilpa: xpath update 11.3 8.14.2025
 	private WebElement terminalServerSessionsPageLinkHelp;
 	public WebElement getTerminalServerSessionsPageLinkHelp() {return terminalServerSessionsPageLinkHelp;}
 

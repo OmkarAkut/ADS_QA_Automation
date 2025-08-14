@@ -51,7 +51,6 @@ import webdriver.scripts.systemmaintenance.SystemMaintenanceTestSuite;
 	EpisodesTestSuite.class,
 	ReportingTestSuite.class,
 	UtilitiesTestSuite.class,
-	MaintaindataTestSuite.class,
 	TestSuiteAXE.class,
 	PagetestsSuite.class,
 	HelpSuite.class,

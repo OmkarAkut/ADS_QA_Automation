@@ -75,7 +75,8 @@ public class CostingCalculateOverheadScenario extends CalculationHelper {
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
 			assertViewLogTitle(viewLogTitle);
-			checkForRecordsProcessed("Inserting 1 OH Received records");
+//			checkForRecordsProcessed("Inserting 1 OH Received records");
+			checkForRecordsProcessed("Inserting 12 OH Received records");// Shilpa : 14.8.2025 updated data for 11.3
 			confirmCalculationStatusDetailsContains("Process Completed");
 			closeViewDialog();
 			waitForSpinnerToEnd();

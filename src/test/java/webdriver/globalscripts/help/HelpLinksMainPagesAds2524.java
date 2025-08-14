@@ -395,7 +395,8 @@ public class HelpLinksMainPagesAds2524 extends PageTestHelper {
       waitForAjaxExtJs();
       waitForPresenceOfElement(getPageHeaderPath("Terminal Server Sessions"));
       doClick(getPageHeaderPath("Terminal Server Sessions"));
-      testHelpLink(sysmaint.getTerminalServerSessionsPageLinkHelp(), "Sessions", printout);
+//      testHelpLink(sysmaint.getTerminalServerSessionsPageLinkHelp(), "Sessions", printout);
+      testHelpLink(sysmaint.getTerminalServerSessionsPageLinkHelp(), "Managing Terminal Server Sessions", printout);
       doClosePageOnLowerBar("Terminal Server Sessions");
       ExtentReport.logPass("PASS", "testSystemMaintenanceTabTerminalServerSessionsPageTest");
     } catch (Exception|AssertionError e) {

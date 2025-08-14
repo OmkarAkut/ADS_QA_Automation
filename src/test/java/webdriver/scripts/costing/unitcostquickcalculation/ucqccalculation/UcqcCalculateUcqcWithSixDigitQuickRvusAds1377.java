@@ -56,13 +56,7 @@ public class UcqcCalculateUcqcWithSixDigitQuickRvusAds1377 extends UnitCostQuick
 
   @AfterClass
   public static void teardownScript() throws Throwable {
-    try {
-		doClosePageOnLowerBar("Calculation Status");
-		doClosePageOnLowerBar("Unit Cost Quick...");
-	} catch (Exception|AssertionError e) {
-		ExtentReport.logFail("FAIL","setupScript", driver,e);
-
-	}
+   
     ExtentReport.report.flush();
   }
 
@@ -150,7 +144,8 @@ public class UcqcCalculateUcqcWithSixDigitQuickRvusAds1377 extends UnitCostQuick
 		 // assertThat(statusPercentage, equalTo("100"));
 		  assertThat(statusPercentage, equalTo("100%")); //venkat update 100% from 100 07-09-2022
 		  ExtentReport.logPass("PASS", "test03GoToCalculationStatusPageAndAssertCalculationCompletedToOneHundredPercent");
-		  
+		  doClosePageOnLowerBar("Calculation Status");
+			doClosePageOnLowerBar("Unit Cost Quick...");
 		} catch (Exception |AssertionError e) {
 		 
 		  ExtentReport.logFail("FAIL","test03GoToCalculationStatusPageAndAssertCalculationCompletedToOneHundredPercent", driver,e);

@@ -244,14 +244,14 @@ public class OverWriteRVUValues5919 extends UcqcHelper {
 			doFilterCreate(filterByDeptCode);
 			assertElementIsDisplayedWithXpath("//div[contains(@id,'rvucontainerlist')]//following::div[text()='Salaries and Wages']//following::div[text()='Apr 2004']");
 			doClick(costing.getRvuContainerCloseDisplayButton());
+			doClosePageOnLowerBar("RVU Maintenance");
 			ExtentReport.logPass("PASS", "test06FilterByDepartmentCodeInRvuContainer");
 		} catch (Exception | AssertionError e) {
+			doClosePageOnLowerBar("RVU Maintenance");
 			ExtentReport.logFail("FAIL", "test06FilterByDepartmentCodeInRvuContainer", driver, e);
 			fail(e.getMessage());
 		}
-		finally {
-			doClosePageOnLowerBar("RVU Maintenance");
-		}
+		
 	}
 	public static void updateDepartment(String departmentText) throws InterruptedException {
 	     doClick("((//label[contains(@id,'singleselectorform')])[1]//following::span[text()='Select'])[1]");
