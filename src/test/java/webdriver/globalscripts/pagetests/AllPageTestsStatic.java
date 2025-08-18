@@ -456,7 +456,8 @@ public class AllPageTestsStatic extends PageTestHelperStatic {
 		try {
 			goToPage("Terminal Server Sessions");
 			waitForAjaxExtJs();
-			testHelpLink(sysmaint.getTerminalServerSessionsPageLinkHelp(), "Sessions", printout);
+//			testHelpLink(sysmaint.getTerminalServerSessionsPageLinkHelp(), "Sessions", printout);
+			testHelpLink(sysmaint.getTerminalServerSessionsPageLinkHelp(), "Managing Terminal Server Sessions", printout);//Shilpa: updated for 11.3 ,8.18.2025
 			doClosePageOnLowerBar("Terminal Server...");
 			ExtentReport.logPass("PASS", "testSystemMaintenanceTabTerminalServerSessionsPageTest");
 
