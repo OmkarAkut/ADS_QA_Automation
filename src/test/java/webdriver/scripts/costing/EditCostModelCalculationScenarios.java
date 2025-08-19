@@ -27,7 +27,7 @@ public class EditCostModelCalculationScenarios extends CalculationHelper {
 	static String[] filterCalcScenario = { "Scenario Name", "Is", "Equal To", "*CM1 TB MHFY05 After Vol Change" };
 	static String entity="150 Marina Medical Center";
 	static String department="2110 ICU";
-	static String results="Jan 2005 to Mar 2005";
+	static String results="Apr 2004 to Mar 2005";
 	static String resultAfterApply="1100023 ADULT CARE LVL 2 IP DLY";
 	/** Regression: Automated test script for ADS-6645,ADS-6662,ADS-6664,ADS-6663*/
 

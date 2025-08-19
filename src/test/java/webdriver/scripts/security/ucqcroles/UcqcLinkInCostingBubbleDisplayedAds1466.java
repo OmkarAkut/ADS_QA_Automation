@@ -58,7 +58,8 @@ public class UcqcLinkInCostingBubbleDisplayedAds1466 extends LoginRolesTesting {
 	
     try {
     	GeneralElementsMap geMap = BuildMap.getInstance(driver, GeneralElementsMap.class);
-      waitForAjaxExtJs();
+//      waitForAjaxExtJs();
+      waitForSpinnerToEnd();
       Thread.sleep(2500);
       assertThatElementIsDisplayed(geMap.getLandingPageBubbleCostingQuickLinkUnitCostQuickCalculation());
 //      String[] expectedLinks = {"Unit Cost Quick Calculation"};
@@ -72,7 +73,8 @@ public class UcqcLinkInCostingBubbleDisplayedAds1466 extends LoginRolesTesting {
 //        index++;
 //      }
       doClick(geMap.getLandingPageBubbleCostingQuickLinkUnitCostQuickCalculation());
-      waitForAjaxExtJs();
+      waitForSpinnerToEnd();
+//      waitForAjaxExtJs();
       assertPageInformation("Unit Cost Quick Calculation");
       doClosePageOnLowerBar("Unit Cost Quick...");
       ExtentReport.logPass("PASS", "testAssertUcqcLinkInCostingBubbleIsDisplayed");

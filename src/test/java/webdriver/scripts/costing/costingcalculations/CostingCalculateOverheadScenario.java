@@ -22,7 +22,9 @@ import webdriver.maps.mapbuilder.BuildMap;
 public class CostingCalculateOverheadScenario extends CalculationHelper {
 	JavascriptExecutor executor = (JavascriptExecutor) driver;
 	static String viewLogTitle = "Overhead Model Scenario Calculation";
-	static String CalculationScenario = "v11.2 REGRESSION OH Scenario";
+//	static String CalculationScenario = "v11.2 REGRESSION OH Scenario";
+	static String CalculationScenario = "V11.2 Overhead Scenario";
+	
 	static String currentDateTime = new SimpleDateFormat("HH.mm.ss").format(new java.util.Date());
 	static ContractingMap modelMap;
 	static String scenarioName;
@@ -75,8 +77,8 @@ public class CostingCalculateOverheadScenario extends CalculationHelper {
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
 			assertViewLogTitle(viewLogTitle);
-//			checkForRecordsProcessed("Inserting 1 OH Received records");
-			checkForRecordsProcessed("Inserting 12 OH Received records");// Shilpa : 14.8.2025 updated data for 11.3
+			checkForRecordsProcessed("Inserting 1 OH Received records");
+//			checkForRecordsProcessed("Inserting 12 OH Received records");// Shilpa : 14.8.2025 updated data for 11.3
 			confirmCalculationStatusDetailsContains("Process Completed");
 			closeViewDialog();
 			waitForSpinnerToEnd();

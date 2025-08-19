@@ -20,8 +20,8 @@ import webdriver.maps.mapbuilder.BuildMap;
 
 public class GeneratePsychCombinedComorbidityFactor extends CalculationHelper {
 	final static String aTozPage = "Psych Combined Comorbidity Assignments";
-	final static String batch = "v104 REGRESSION Comorbidity Code 1st";
-	static String viewLogTitleApply = "v104 REGRESSION Comorbidity Code 1st";
+	final static String batch = "Psych Comorbidity2025";
+	static String viewLogTitleApply = "Psych Comorbidity2025";
 	private static CostingMap costingMap;
 	private static ContractingMap contractingMap;
 	String[] filter = {"Scenario Name","Is","Equal To",batch};
@@ -69,10 +69,13 @@ public class GeneratePsychCombinedComorbidityFactor extends CalculationHelper {
 			action.moveToElement(ContractingMap.getContractFileSelect()).click().build().perform();
 			driverDelay();
 			//Shilpa: updated 7.3.2025 added robot class for file import , due to security issues with Autoit
-			fileImport(System.getProperty("user.dir")+"\\TestFiles\\IPFC22WDICD10.txt");
+//			fileImport(System.getProperty("user.dir")+"\\TestFiles\\IPFC22WDICD10.txt");
+			fileImport(System.getProperty("user.dir")+"\\TestFiles\\IPFC25WD_ICD10.txt");
+
 			driverDelay(2000);
 			doClick(ContractingMap.getContractResetButton());
 			doClick(costingMap.getCostModelScenariosinEvaluationOrderSave());
+			waitForDisplayedSpinnerToEnd();
 			doFilterCalculationPage(filter);
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();

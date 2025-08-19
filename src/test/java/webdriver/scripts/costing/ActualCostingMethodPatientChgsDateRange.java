@@ -101,15 +101,13 @@ public class ActualCostingMethodPatientChgsDateRange extends CalculationHelper {
 			checkForRecordsProcessed("  Sum Actual Costs = ");
 			checkForRecordsProcessed("  Department: D2115 DEPT D2115");
 			closeViewDialog();
-			
+			doClosePageOnLowerBar("Calculation Status");
 			ExtentReport.logPass("PASS", "test02VerifyCalculationStatusForCostModelCalcScenarioApr");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test02VerifyCalculationStatusForCostModelCalcScenarioApr", driver, e);
 			fail(e.getMessage());
 		} 
-		finally {
-			doClosePageOnLowerBar("Calculation Status");
-		}
+		
 	}
 
 	@Test
@@ -137,12 +135,11 @@ public class ActualCostingMethodPatientChgsDateRange extends CalculationHelper {
 			checkForRecordsProcessed("  Sum Actual Costs = ");
 			checkForRecordsProcessed("  Department: D2115 DEPT D2115");
 			closeViewDialog();
+			doClosePageOnLowerBar("Calculation Status");
 			ExtentReport.logPass("PASS", "test03VerifyCalculationStatusForCostModelCalcScenarioMay");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test03VerifyCalculationStatusForCostModelCalcScenarioMay", driver, e);
 			fail(e.getMessage());
-		} finally {
-			doClosePageOnLowerBar("Calculation Status");
 		}
 	}
 
@@ -175,19 +172,19 @@ public class ActualCostingMethodPatientChgsDateRange extends CalculationHelper {
 //			checkForRecordsProcessed("  Department: D2115 DEPT D2115");
 //			checkForRecordsProcessed("  Sum Actual Costs =        1444.000");
 			closeViewDialog();
+			doClosePageOnLowerBar("Calculation Status");
+			doClosePageOnLowerBar("v1024 REGRESSION...");
+			doClosePageOnLowerBar("Costing Models");
 			ExtentReport.logPass("PASS", "test04VerifyCalculationStatusForCostModelCalcScenarioJune");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test04VerifyCalculationStatusForCostModelCalcScenarioJune", driver, e);
 			fail(e.getMessage());
-		} finally {
-			doClosePageOnLowerBar("Calculation Status");
 		}
 	}
 
 	@AfterClass
 	public static void endtest() throws Exception {
-		doClosePageOnLowerBar("v1024 REGRESSION...");
-		doClosePageOnLowerBar("Costing Models");
+		
 		ExtentReport.report.flush();
 
 	}
