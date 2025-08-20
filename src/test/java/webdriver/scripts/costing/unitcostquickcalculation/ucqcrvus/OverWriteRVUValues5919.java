@@ -164,14 +164,13 @@ public class OverWriteRVUValues5919 extends UcqcHelper {
 					costing.getUnitCostQuickCalculationOverwriteRVUMaintenanceModalWarningButtonOverwrite());
 			doClick(costing.getUnitCostQuickCalculationOverwriteRVUMaintenanceModalWarningButtonOverwrite());
 			waitForDisplayedSpinnerToEnd();
+			doClosePageOnLowerBar("Unit Cost Quick Calculation");
 			ExtentReport.logPass("PASS", "test02ApplyRvuSelections");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test02ApplyRvuSelections", driver, e);
 			fail(e.getMessage());
 		}
-		finally {
-			doClosePageOnLowerBar("Unit Cost Quick Calculation");
-		}
+		
 	}
 
 	@Test

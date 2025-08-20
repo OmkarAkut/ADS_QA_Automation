@@ -52,7 +52,8 @@ public class UcqcLinkInCostingBubbleNotDisplayedStaticAds1466 extends LoginRoles
 	   
     try {
     	
-      waitForAjaxExtJs();
+//      waitForAjaxExtJs();
+    	waitForDisplayedSpinnerToEnd();
       //Shilpa updated xpath 24.08.2022 
 //      assertElementIsNotDisplayed(By.xpath("//*[@class='bubbleContent' and @id='costing']"
 //              + "/following-sibling::div/descendant::ul/li/a[text()='Unit Cost Quick Calculation']"
