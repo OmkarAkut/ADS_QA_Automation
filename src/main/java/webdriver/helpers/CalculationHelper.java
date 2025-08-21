@@ -332,7 +332,7 @@ public class CalculationHelper extends GoHelper {
 	public void closeViewDialog() {
 //		Omkar 18/8/2023 : xpath changes for 11.2
 //		driver.findElement(By.xpath("//button/span[text()='Cancel']")).click();
-		driver.findElement(By.xpath("//span[contains(@id,'button')]//span[text()='Cancel']")).click();
+		driver.findElement(By.xpath("//div[text()='View Log']//following::span[contains(@id,'button')]//span[text()='Cancel']")).click();
 		waitForSpinnerToEnd();
 	}
 

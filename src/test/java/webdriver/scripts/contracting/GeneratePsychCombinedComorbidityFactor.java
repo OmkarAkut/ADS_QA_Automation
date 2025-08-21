@@ -127,17 +127,14 @@ public class GeneratePsychCombinedComorbidityFactor extends CalculationHelper {
 				doClick(ContractingMap.getContractCalculationCloseViewDialog());
 			}
 			*/
+			doClosePageOnLowerBar("Calculation Status");
+			doClick(ContractingMap.getContractSaveCloseButton());
+			doClosePageOnLowerBar("Maintain Data");
 			ExtentReport.logPass("PASS", "test01AssertResetCalculate");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01AssertResetCalculate", driver, e);
 			fail(e.getMessage());
-		} finally {
-			doClosePageOnLowerBar("Calculation Status");
-			doClick(ContractingMap.getContractSaveCloseButton());
-			doClosePageOnLowerBar("Maintain Data");
-
-		}
-
+		} 
 	}
 	@AfterClass
 	public static void endtest() throws Exception {

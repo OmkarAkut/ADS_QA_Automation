@@ -102,12 +102,12 @@ public class OverWriteRVUValues5919 extends UcqcHelper {
 				ContractModelsHelper.waitForFirstRowCalculationBarToReach100Percent();
 			}
 			*/
-		}
-		 finally {
 			doClosePageOnLowerBar("Import/Export Status");
-			doClosePageOnLowerBar("RVU Maintenance"); //uncomment this once ADS-17819 is fixed
-
 		}
+		 catch (Exception | AssertionError e) {
+				ExtentReport.logFail("FAIL", "test07OpenRvuCostModelAndImport_5919", driver, e);
+				fail(e.getMessage());
+			}
 	}
 
 	@Test

@@ -71,7 +71,7 @@ public class ValidateContractingModeExportImportButton extends GoHelper{
 		try {
 			doClick(modelMap.getContractModelImportButton());
 			waitForElementToBeVisible(modelMap.getContractModelImportSelectFileButton());
-			driverDelay();
+			driverDelay(2500);
 			doactionClick(modelMap.getContractModelImportSelectFileButton());//Shilpa added this line for 11.2 update 
 			driverDelay(2300);
 			//Shilpa update file import using Robot instead of auto it due to security issues 7.3.2025
