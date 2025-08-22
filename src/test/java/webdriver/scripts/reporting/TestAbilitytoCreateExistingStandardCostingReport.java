@@ -77,7 +77,7 @@ public class TestAbilitytoCreateExistingStandardCostingReport extends GoHelper {
 			waitForElementToBeVisible(reportMap.reportLibraryPageEntityRefreshButton());
 			driverDelay(2000);
 			//Shilpaa updated script for 11.2 on 22.4.2024
-			for (int i = 0; i <=refreshTime; i++) {
+			for (int i = 0; i<=refreshTime; i++) {
 				doClick(reportMap.reportLibraryPageEntityRefreshButton());
 				driverDelay(3000);
 				if (i == refreshTime) {

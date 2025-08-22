@@ -524,7 +524,7 @@ public class DoHelper extends DriverHelper {
 	public static void doactionClick(WebElement element) {
 		try {
 			Actions act=new Actions(driver);
-			act.moveToElement(element).click().build().perform();
+			act.moveToElement(element).pause(500).click().build().perform();
 		} catch (Exception e) {
 			
 		}

@@ -73,7 +73,7 @@ public class OverwriteRvuNoCMSResults extends GoHelper {
 			assertTextIsDisplayed("Import Data");
 			//Shilpa update file import using Robot instead of auto it due to security issues 7.3.2025
 			doactionClick(costing.getRvuSecImportSelectButton());
-			driverDelay();
+			driverDelay(4000);
 			fileImport(System.getProperty("user.dir")+"\\TestFiles\\ADS1309PreConditionsRVUImport.txt");
 			driverDelay();
 			doClick(costing.getRvuSharedLocDropdown());

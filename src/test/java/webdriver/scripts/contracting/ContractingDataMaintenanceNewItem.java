@@ -67,14 +67,13 @@ public class ContractingDataMaintenanceNewItem extends CalculationHelper {
 			assertThatAttributeValue(ContractingMap.getInputName(), timePeriod, printout);
 			doClick("//div[text()='"+timePeriod+"']//following::span[text()='Cancel & Close']");
 			assertElementIsDisplayedWithXpath("//div[text()='"+timePeriod+"']");
-			ExtentReport.logPass("PASS", "test01ContractingDataMaintenanceNewItem");
+			doClosePageOnLowerBar("Maintain Data");
+			ExtentReport.logPass("PASS", "test01ContractingDataMaintenanceNewItem_ADS_6443");
 		} catch (Exception|AssertionError e) {
-			ExtentReport.logFail("FAIL", "test01ContractingDataMaintenanceNewItem", driver, e);
+			ExtentReport.logFail("FAIL", "test01ContractingDataMaintenanceNewItem_ADS_6443", driver, e);
 			fail(e.getMessage());
 		} 
-		finally {
-			doClosePageOnLowerBar("Maintain Data");
-		}
+		
 	}
 	@AfterClass
 	public static void endtest() throws Exception {

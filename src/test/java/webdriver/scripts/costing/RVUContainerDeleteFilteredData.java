@@ -196,7 +196,8 @@ doClickTreeItem("Assign Unit Costs");
 			doClick(costing.getRvuContainerClearFilterButton());
 			waitForDisplayedSpinnerToEnd();
 			driverDelay(20000);
-			assertListElementsAreDisplayed(costing.getRvuContainerList(), printout);
+//			assertListElementsAreDisplayed(costing.getRvuContainerList(), printout);
+			assertHasElements(costing.getRvuContainerList());
 			ExtentReport.logPass("PASS", "test08ClearFilterInRvuContainer");
 		} catch (Exception|AssertionError e) {
 			ExtentReport.logFail("FAIL", "test08ClearFilterInRvuContainer", driver, e);

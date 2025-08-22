@@ -153,8 +153,11 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 			doClick(reportMap.reportLibraryPageEntityRunButton());
 			waitForElementToBeVisible(reportMap.reportLibraryPageEntityRefreshButton());
 			waitForPresenceOfElement(("//span[text()='" + orgName + "']"));
-			Thread.sleep(4000);
-			doClick(reportMap.reportLibraryPageEntityRefreshButton());
+//			Thread.sleep(4000);
+			for(int i=0;i<=5;i++) {
+				doClick(reportMap.reportLibraryPageEntityRefreshButton());
+			}
+			
 			waitForPresenceOfElement("//span[text()='" + orgName + "']//following::td[5]/div");
 			try {
 				if (driver.findElement(By.xpath("(//span[text()='"+orgName+"']//following::a)[1]")).getText()
@@ -214,60 +217,6 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 				}
 			}
 		
-			/* Shilpa commented below lines, not required on 24.4.2024
-			for (int i = 0; i <= denominator; i++) {
-				try {
-					
-					doClick(reportMap.reportLibraryPageEntityRefreshButton());
-					Thread.sleep(2000);
-					waitForPresenceOfElement(("//span[text()='" + orgName + "']"));
-					String[] staNumber=status.replaceAll("Step ", "").split("/");
-					int numeratorNum=Integer.parseInt(staNumber[0]);
-//					String reportStatus=driver.findElement(By.xpath("//span[text()='" + orgName + "']//following::td[5]/div/a")).getText();
-					if(reportStatus.equals("FAILED")) {
-						assertFalse(printout);
-						break;
-					}
-					if (numeratorNum==denominator) {
-						doClick(reportMap.reportLibraryPageEntityRefreshButton());
-						waitForPresenceOfElement(("//span[text()='" + orgName + "']"));
-
-						try {
-							if(reportStatus.equals("COMPLETED")) {
-								assertTrue(printout);
-								break;
-							}
-							else if(reportStatus.equals("FAILED")) {
-								assertFalse(printout);
-								break;
-							}
-							else {
-								continue;
-							}
-						} catch (Exception e) {
-							continue;
-						}
-
-					}
-					else {
-						continue;
-					}
-//					if(reportStatus.equals("COMPLETED")) {
-//						assertTrue(printout);
-//						break;
-//					}
-//					else if(reportStatus.equals("FAILED")) {
-//						assertFalse(printout);
-//						break;
-//					}
-					
-
-				} catch (Exception | AssertionError e) {
-					continue;
-				}
-				
-//				ExtentReport.logPass("PASS", "test06SaveReportAndAssertStatus");
-			}	*/
 			ExtentReport.logPass("PASS", "test06SaveReportAndAssertStatus");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test06SaveReportAndAssertStatus", driver, e);

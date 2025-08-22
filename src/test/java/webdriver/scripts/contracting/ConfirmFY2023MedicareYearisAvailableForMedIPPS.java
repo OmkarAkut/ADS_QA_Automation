@@ -261,6 +261,7 @@ public class ConfirmFY2023MedicareYearisAvailableForMedIPPS extends CalculationH
 			waitForElementToBeVisible(ContractingMap.getContractFeeForServicePaymentWarningPopUpContinueButton());
 			doClick(ContractingMap.getContractFeeForServicePaymentWarningPopUpContinueButton());
 			driverDelay();
+			ContractingMap.services.clear();
 			doClickTreeItem("Fee For Service Payment Terms");
 //			doClick(ContractingMap.getfeeForServicePayementTerms());
 			driverDelay(1000);
@@ -272,14 +273,13 @@ public class ConfirmFY2023MedicareYearisAvailableForMedIPPS extends CalculationH
 //			driver.findElement(By.xpath("(//div[text()='" + serviceModel + "'])[2]")).click();
 			doClick("(//span[text()='MCR IPPS 2023'])[2]");
 			assertElementIsDisplayed(ContractingMap.getCriteriaBox());
+			doClick("(//span[@class='x-tab-close-btn'])[2]");
+			doClosePageOnLowerBar("Contract Models");
 			ExtentReport.logPass("PASS", "ConfirmMedicareYearForMedIPPS");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "ConfirmMedicareYearForMedIPPS", driver, e);
 			fail(e.getMessage());
-		} finally {
-			doClick("(//span[@class='x-tab-close-btn'])[2]");
-			doClosePageOnLowerBar("Contract Models");
-		}
+		} 
 	}
 
 	@AfterClass

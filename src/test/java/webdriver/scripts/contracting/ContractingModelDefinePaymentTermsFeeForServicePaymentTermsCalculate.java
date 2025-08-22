@@ -243,8 +243,8 @@ public class ContractingModelDefinePaymentTermsFeeForServicePaymentTermsCalculat
 //			confirmCalculationStatusDetailsContains("Process Completed");
 			checkForRecordsProcessed("Total Items Processed: 7");
 			checkForRecordsProcessed("Process Completed");
-//			closeViewDialog();
-			doClick("(//div[contains(@class,'x-toolbar x-docked')]//span[text()='Cancel'])[3]");
+			closeViewDialog();
+//			doClick("(//div[contains(@class,'x-toolbar x-docked')]//span[text()='Cancel'])[3]");
 			deleteMyCalculationStatusFirstRow();
 			doClosePageOnLowerBar("Calculation Status");
 			ExtentReport.logPass("PASS", "FeeForServicePaymentTermsCalculate_ADS_6775_ADS_6782");
