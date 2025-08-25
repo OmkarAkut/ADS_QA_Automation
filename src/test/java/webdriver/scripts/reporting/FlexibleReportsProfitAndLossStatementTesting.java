@@ -154,11 +154,63 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 			waitForElementToBeVisible(reportMap.reportLibraryPageEntityRefreshButton());
 			waitForPresenceOfElement(("//span[text()='" + orgName + "']"));
 //			Thread.sleep(4000);
-			for(int i=0;i<=5;i++) {
-				doClick(reportMap.reportLibraryPageEntityRefreshButton());
-			}
+//			for(int i=0;i<=5;i++) {
+//				doClick(reportMap.reportLibraryPageEntityRefreshButton());
+//			}
 			
 			waitForPresenceOfElement("//span[text()='" + orgName + "']//following::td[5]/div");
+			
+			if (driver.findElement(By.xpath("//span[text()='" + orgName + "']//following::td[5]/div")).getText()
+					.contains("Step")) {
+				String status=driver.findElement(By.xpath("//span[text()='" + orgName + "']//following::td[5]/div")).getText();
+				String[] staNum=status.replaceAll("Step ", "").split("/");
+				int numerator=Integer.parseInt(staNum[0]);
+				int denominator=Integer.parseInt(staNum[1]);
+				System.out.println(denominator);
+				for (int i = 0; i <=denominator; i++) {
+					doClick(reportMap.reportLibraryPageEntityRefreshButton());
+					driverDelay(3000);
+					if (i == denominator) {
+						System.out.println("Status is not updated to COMPLETED");
+						fail();
+						break;
+					}
+					try {
+						if (driver.findElement(By.xpath("(//span[text()='"+orgName+"']//following::a)[1]")).getText()
+								//Shilpa updated for 1.2 on 2.2.2025
+//						if (driver.findElement(By.xpath("(//div[@class='GJT013UBLJB']//tbody//td/div)[7]/a")).getText()
+								.equals("COMPLETED")) {
+							assertElementTextWithXpath("(//div[@class='GJT013UBLJB']//tbody//td/div)[7]/a", "COMPLETED",
+									printout);
+							ExtentReport.logPass("PASS", "test02OpenCostingReport");
+							break;
+
+						}
+						//iF STATUS IS FAILED EXIT
+						//Shilpa updated for 1.2 on 2.2.2025
+//						if (driver.findElement(By.xpath("(//div[@class='GJT013UBLJB']//tbody//td/div)[7]/a")).getText()
+//								.contains("FAILED"))
+						if (driver.findElement(By.xpath("(//span[text()='"+orgName+"']//following::a)[1]")).getText()
+								.contains("FAILED")) 
+						{
+							fail();
+//							ExtentReport.logFail("FAIL", "test02OpenCostingReport", driver, e1);
+						}
+					} catch (Exception e1) {
+						if (driver.findElement(By.xpath("(//div[@class='GJT013UBH']//tbody//td/div)[7]")).isDisplayed()) {
+							System.out.println(i);
+							doClick(reportMap.reportLibraryPageEntityRefreshButton());
+							driverDelay(3000);						
+							continue;
+						}
+						
+
+					}
+					
+				}
+			}
+			
+			
 			try {
 				if (driver.findElement(By.xpath("(//span[text()='"+orgName+"']//following::a)[1]")).getText()
 						.contains("FAILED")) 
@@ -167,6 +219,7 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 //					ExtentReport.logFail("FAIL", "test02OpenCostingReport", driver, e1);
 				}
 			}catch(Exception e) {
+				/*
 				String status=driver.findElement(By.xpath("//span[text()='" + orgName + "']//following::td[5]/div")).getText();
 				String[] staNum=status.replaceAll("Step ", "").split("/");
 				int numerator=Integer.parseInt(staNum[0]);
@@ -215,6 +268,7 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 					}
 					
 				}
+				*/
 			}
 		
 			ExtentReport.logPass("PASS", "test06SaveReportAndAssertStatus");
