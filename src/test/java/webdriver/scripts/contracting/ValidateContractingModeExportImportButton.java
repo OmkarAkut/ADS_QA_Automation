@@ -72,7 +72,8 @@ public class ValidateContractingModeExportImportButton extends GoHelper{
 			doClick(modelMap.getContractModelImportButton());
 			waitForElementToBeVisible(modelMap.getContractModelImportSelectFileButton());
 			driverDelay(2500);
-			doactionClick(modelMap.getContractModelImportSelectFileButton());//Shilpa added this line for 11.2 update 
+//			doactionClick(modelMap.getContractModelImportSelectFileButton());//Shilpa added this line for 11.2 update 
+			doactionClick(driver.findElement(By.xpath("//input[@name='importdata']")));
 			driverDelay(2300);
 			//Shilpa update file import using Robot instead of auto it due to security issues 7.3.2025
 			fileImport(System.getProperty("user.dir")+"\\TestFiles\\fzMedIPPSTesting.xml");

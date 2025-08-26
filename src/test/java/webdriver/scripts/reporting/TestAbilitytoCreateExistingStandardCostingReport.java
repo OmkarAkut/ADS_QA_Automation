@@ -98,13 +98,19 @@ public class TestAbilitytoCreateExistingStandardCostingReport extends GoHelper {
 							.contains("FAILED")) {
 						fail();
 					}
-				} catch (Exception e1) {
-					if (driver.findElement(By.xpath("(//div[@class='GJT013UBH']//tbody//td/div)[7]")).isDisplayed()) {
-						System.out.println(i);
-						doClick(reportMap.reportLibraryPageEntityRefreshButton());
-						driverDelay(3000);
+					
+					if (driver.findElement(By.xpath("(//div[@class='GJT013UBH']//tbody//td/div)[7]/a")).getText()
+							.equals("RUNNING")) {
 						continue;
+
 					}
+				} catch (Exception e1) {
+//					if (driver.findElement(By.xpath("(//div[@class='GJT013UBH']//tbody//td/div)[7]")).isDisplayed()) {
+//						System.out.println(i);
+//						doClick(reportMap.reportLibraryPageEntityRefreshButton());
+//						driverDelay(3000);
+//						continue;
+//					}
 					
 
 				}
