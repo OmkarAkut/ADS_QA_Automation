@@ -104,7 +104,9 @@ public class RVUExportImportFunction extends GoHelper {
 				selectFileLocAndaddFileName(costing.getRvuImportButton());
 				ExtentReport.logPass("PASS", "test03ImportRvuAndValidateImportExportStatus");
 			}
+			*
 			*/
+			doClosePageOnLowerBar("RVU Maintenance");
 			ExtentReport.logPass("PASS", "test03ImportRvuAndValidateImportExportStatus");
 		} catch (Exception|AssertionError e) {
 			
@@ -125,7 +127,7 @@ public class RVUExportImportFunction extends GoHelper {
 	}
 	@AfterClass
 	public static void endtest() throws Exception {
-		doClosePageOnLowerBar("RVU Maintenance");
+		
 		ExtentReport.report.flush();
 
 	}

@@ -165,15 +165,14 @@ public class EncounterCost extends CalculationHelper {
 			//Shilpa update for 11.2 on 11.4.2024
 			doFilterCalculationPage(filter);
 			CalculationHelper.waitForFirstRowCalculationBarToReach100Percent();
+			doClosePageOnLowerBar("Calculation Status");
+			doClosePageOnLowerBar(costModel);
 			ExtentReport.logPass("PASS", "test02EnterEncounterCostModelScenarioDetails");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test02EnterEncounterCostModelScenarioDetails", driver, e);
 			fail(e.getMessage());
 		}
-		finally {
-			doClosePageOnLowerBar("Calculation Status");
-			doClosePageOnLowerBar(costModel);
-		}
+		
 	}
 
 	public  void highlightColumnsToDisplayColumn(String column) throws InterruptedException, Throwable {
