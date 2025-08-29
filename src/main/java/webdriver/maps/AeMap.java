@@ -49,7 +49,7 @@ public class AeMap extends MapConfig {
 	    private WebElement executeNoTaskCloseBtn;
 	    public WebElement getexecuteNoTaskCloseBtn() {return executeNoTaskCloseBtn;}
 	    
-	    @FindBy(xpath = "(//input[@name='cbServiceName'])[2]")
+	    @FindBy(xpath = "(//input[@name='cbServiceName'])[1]")
 	    private WebElement taskSelect;
 	    public WebElement gettaskSelect() {return taskSelect;}
 	    

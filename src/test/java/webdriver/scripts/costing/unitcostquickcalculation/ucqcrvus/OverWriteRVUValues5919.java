@@ -56,8 +56,8 @@ public class OverWriteRVUValues5919 extends UcqcHelper {
 			doFilterCreate(filter);
 			doClick(costing.getRvuMaintenanceButtonImport());
 //			doactionClick(costing.getRvuSecImportSelectButton());
-			doactionClick(driver.findElement(By.xpath("//input[@name='importdata']")));
-
+//			doactionClick(driver.findElement(By.xpath("//input[@name='importdata']")));
+			doJsClick(driver.findElement(By.xpath("//input[@name='importdata']")));
 			driverDelay(4000);
 			//Shilpa update file import using Robot instead of auto it due to security issues 7.3.2025
 			fileImport(System.getProperty("user.dir")+"\\TestFiles\\ADS1309PreConditionsRVUImport.txt");

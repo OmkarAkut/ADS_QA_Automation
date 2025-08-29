@@ -131,10 +131,14 @@ public class EditCostModelCalculationScenarios extends CalculationHelper {
 			//Scroll issue 
 			 try {
 				checkForRecordsProcessed("    Studied Allocation Percent = 4.1948");
+				closeViewDialog();
+				
 			} catch (Exception e) {
 				driverDelay(3000);
 				closeViewDialog();
 			}
+				doClosePageOnLowerBar("Calculation Status");
+
 //			confirmCalculationStatusDetailsContains("Studied Allocation Percent = 100");
 			
 			ExtentReport.logPass("PASS", "test05CalculateCostCalcultionScenario_6663");
@@ -142,10 +146,7 @@ public class EditCostModelCalculationScenarios extends CalculationHelper {
 			ExtentReport.logFail("FAIL", "test05CalculateCostCalcultionScenario_6663", driver, e);
 			fail(e.getMessage());
 		}
-		finally {
-			doClosePageOnLowerBar("Calculation Status");
-
-		}
+		
 	}
 	//ADS-6664
 	@Test
