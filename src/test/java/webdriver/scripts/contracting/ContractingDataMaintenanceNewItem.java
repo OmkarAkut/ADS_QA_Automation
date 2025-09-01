@@ -67,6 +67,9 @@ public class ContractingDataMaintenanceNewItem extends CalculationHelper {
 			assertThatAttributeValue(ContractingMap.getInputName(), timePeriod, printout);
 			doClick("//div[text()='"+timePeriod+"']//following::span[text()='Cancel & Close']");
 			assertElementIsDisplayedWithXpath("//div[text()='"+timePeriod+"']");
+			//Shilpa: for 11.3  Delete functionality
+			doClick(ContractingMap.getTimePeriodsDeleteButton());
+			doClick(ContractingMap.getWarningPopUpDeleteButton());
 			doClosePageOnLowerBar("Maintain Data");
 			ExtentReport.logPass("PASS", "test01ContractingDataMaintenanceNewItem_ADS_6443");
 		} catch (Exception|AssertionError e) {

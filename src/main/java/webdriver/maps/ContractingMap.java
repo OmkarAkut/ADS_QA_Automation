@@ -1017,6 +1017,10 @@ public class ContractingMap extends MapConfig {
 	@FindBy(xpath = "//h1[text()='Time Periods']//following::span[text()='New']")
 	private static WebElement ContractDataMaintenanceNewButton;
 	public static WebElement getContractDataMaintenanceNewButton() {return ContractDataMaintenanceNewButton;}
+	
+	@FindBy(xpath = "(//h1[text()='Time Periods']//following::span[text()='Delete'])[1]")
+	private static WebElement TimePeriodsDeleteButton;
+	public static WebElement getTimePeriodsDeleteButton() {return TimePeriodsDeleteButton;}
 
 //	Omkar 5/7/2023 : xpath changes for 11.2
 //	@FindBy(xpath = "//h1[text()='Time Periods']//following::span[text()='Edit']//parent::button")
