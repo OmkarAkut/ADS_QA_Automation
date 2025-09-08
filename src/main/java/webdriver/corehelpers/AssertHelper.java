@@ -1023,7 +1023,7 @@ public class AssertHelper extends AdsHelper {
 		try {
 			assertElementIsDisplayed(driver.findElement(By.xpath("//div[contains(@id,'taskfolder')]//following::span[text()='"+itemName+"']")));
 		} catch (Exception e) {
-			
+		
 		}
 	}
 }

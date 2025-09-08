@@ -843,7 +843,7 @@ public class CimHelper extends CalculationHelper {
 		 source.click();
         Action dragAndDrop = builder.clickAndHold(source)
         		.moveToElement(target)
-        		.release(target)
+        		.release(target).pause(500)
         		.build();
 
         		//Performing the drag and drop action

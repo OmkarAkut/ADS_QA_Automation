@@ -3,6 +3,9 @@ package webdriver.scripts.costing;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
+import webdriver.scripts.contracting.ValidateDragDropAddNewServiceUnderPricing;
+
+
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
@@ -34,7 +37,7 @@ import org.junit.runners.Suite;
 	ValidateHelpLinkHideTabRvuMaintenance.class,
 	ValidateOpenTaskList.class,
 	ValidatePaginationOnTheCostingRVUMaintenancepage.class,
-
+	
 })
 
 public class CostingTestSuite {

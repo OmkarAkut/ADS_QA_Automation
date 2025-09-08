@@ -59,7 +59,7 @@ public class CreateANewContractModel extends CalculationHelper {
 	@Test
 	public void test01CreateNewContractModel_6413() throws Throwable {
 		try {
-			doClick(modelMap.getNewContractModelButton());
+			doClick(ContractingMap.getNewContractModelButton());
 			waitForElementToBeVisible(ContractingMap.getNewContractModelPopUp());
 			assertElementIsDisplayed(ContractingMap.getNewContractModelPopUp());// assert contract model pop up
 			doClick(ContractingMap.getContractModelNameInput());
@@ -68,12 +68,12 @@ public class CreateANewContractModel extends CalculationHelper {
 			waitForElementToBeVisible(ContractingMap.getContractModelAddProviderPopup());
 			ContractModelsHelper.selectMultipleColumnsToDisplay(columnsToSelect);
 			contractModelsHelper.removeMultipleColumnsToDisplay(columnsToRemove);
-			doClick(modelMap.getApplySelections());
+			doClick(ContractingMap.getApplySelections());
 			waitForElementToBeVisible(ContractingMap.getNewContractModelPopUp());
 			// Validate model name and providers
 			assertElementIsDisplayedWithXpath("//div[contains(@class,'contractFrmCls')]//ul/li[contains(text(),'"+addProvider+"')]");
 //			assertElementTextContains(ContractingMap.getProviderText(), addProvider, printout);
-			doClick(modelMap.getSaveContractModel());
+			doClick(ContractingMap.getSaveContractModel());
 			goToPage("Contract Models");
 			doSearchForContractModel(contractModelName);
 			driverDelay(2000);
@@ -111,15 +111,15 @@ public class CreateANewContractModel extends CalculationHelper {
 	public void test02DeleteContractModel_ADS6435_ADS6412() throws Throwable {
 	
 		try {
-			doClick(modelMap.getContractModelDeleteButton());
-			waitForElementToBeVisible(modelMap.getContractModelDeletePopUp());
-			assertElementIsDisplayed(modelMap.getContractModelDeletePopUp());
-			doClick(modelMap.getContractModelCancelButtonInPopUp());
-			doClick(modelMap.getContractModelDeleteButton());
-			waitForElementToBeVisible(modelMap.getContractModelDeletePopUp());
-			assertElementIsDisplayed(modelMap.getContractModelDeleteButtonInPopUp());
-			assertElementIsDisplayed(modelMap.getContractModelCancelButtonInPopUp());
-			doClick(modelMap.getContractModelDeleteButtonInPopUp());
+			doClick(ContractingMap.getContractModelDeleteButton());
+			waitForElementToBeVisible(ContractingMap.getContractModelDeletePopUp());
+			assertElementIsDisplayed(ContractingMap.getContractModelDeletePopUp());
+			doClick(ContractingMap.getContractModelCancelButtonInPopUp());
+			doClick(ContractingMap.getContractModelDeleteButton());
+			waitForElementToBeVisible(ContractingMap.getContractModelDeletePopUp());
+			assertElementIsDisplayed(ContractingMap.getContractModelDeleteButtonInPopUp());
+			assertElementIsDisplayed(ContractingMap.getContractModelCancelButtonInPopUp());
+			doClick(ContractingMap.getContractModelDeleteButtonInPopUp());
 			waitForElementToBeVisible(driver.findElement(By.xpath("//*[text()='There is no data available to display.']")));
 			assertTextIsDisplayed("There is no data available to display.");
 			doClosePageOnLowerBar("Contract Models");

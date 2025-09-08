@@ -455,5 +455,10 @@ public class AdsHelper extends GetHelper {
 	        robot.keyPress(KeyEvent.VK_ENTER);
 	        robot.keyRelease(KeyEvent.VK_ENTER);
 	}
+	public static void keyInInputText(String text,WebElement input) throws InterruptedException {
+		input.click();
+		input.sendKeys(text);
+		
+	}
 }
 

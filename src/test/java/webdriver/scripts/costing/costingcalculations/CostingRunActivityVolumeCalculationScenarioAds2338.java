@@ -190,5 +190,9 @@ public class CostingRunActivityVolumeCalculationScenarioAds2338 extends Calculat
 
 		}
 	}
+	 @AfterClass
+		public static void endtest() throws Exception {
+			ExtentReport.report.flush();
 
+		}
 }

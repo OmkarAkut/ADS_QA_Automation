@@ -43,7 +43,7 @@ public class ClearFilterbuttonModels extends GoHelper {
 		try {
 			modelMap = BuildMap.getInstance(driver, ContractingMap.class);
 			modelLibMap=BuildMap.getInstance(driver, ModelLibraryMap.class);
-			Login.loginUser("AutomationTesterAdmin");
+			Login.loginUser("ContractAnalyst1");
 			goToPage("Contract Models");
 			waitForDisplayedSpinnerToEnd();
 			assertThatString(modelMap.getContractModelHeader(), "Contracting Model Library", printout);

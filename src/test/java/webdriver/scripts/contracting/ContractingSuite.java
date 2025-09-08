@@ -30,7 +30,8 @@ import org.junit.runners.Suite;
 	ValidateContractingModeExportImportButton.class,
 	ValidateContractingTreeTab.class,
 	VerifyFilterAscSchemes.class,
-
+	ValidateDragDropAddNewServiceUnderPricing.class,
+	ValidateExpandCollapseFeeForServicePaymentTermsPanel.class,
 })
 public class ContractingSuite {
 
