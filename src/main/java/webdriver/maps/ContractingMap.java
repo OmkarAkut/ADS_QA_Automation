@@ -1199,4 +1199,24 @@ public class ContractingMap extends MapConfig {
 	@FindBy(xpath = "//div[contains(@class,'x-title-text')][text()='Pricing Method']/../following-sibling::div")
 	private static WebElement ContractFeeForServicePaymentPricingMethodExpandBtn;
 	public static WebElement getContractFeeForServicePaymentPricingMethodExpandBtn() {return ContractFeeForServicePaymentPricingMethodExpandBtn;}
+	
+	@FindBy(xpath = "((//div[@class='x-grid-item-container'])[5]//span)[1]")
+	private static List<WebElement> serviceModel;
+	public static List<WebElement> getserviceModel() {return serviceModel;}
+	
+	@FindBy(xpath = "((//div[contains(@class,'x-tree-view')])[4]//span[contains(@class,'x-tree-node-text ')])[2]")
+	private static WebElement pricingMethodServiceModel;
+	public static WebElement getpricingMethodServiceModel() {return pricingMethodServiceModel;}
+	
+	@FindBy(xpath = "//div[contains(text(),'Edit Price for')]//following::span[text()='Cancel & Close']")
+	private static WebElement editPriceCancelCloseBtn;
+	public static WebElement geteditPriceCancelCloseBtn() {return editPriceCancelCloseBtn;}
+	
+	@FindBy(xpath = "//div[contains(text(),'Price for')]//following::div[contains(@class,'x-tool-img x-tool-close')]")
+	private static WebElement editPriceCloseIcon;
+	public static WebElement geteditPriceCloseIcon() {return editPriceCloseIcon;}
+	
+	@FindBy(xpath = "//div[contains(@id,'messagebox')]//span[text()='Cancel & Close']")
+	private static List<WebElement> editPriceWarningCancelCloseButton;
+	public static List<WebElement> geteditPriceWarningCancelCloseButton() {return editPriceWarningCancelCloseButton;}
 }
