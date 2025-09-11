@@ -457,6 +457,7 @@ public class AdsHelper extends GetHelper {
 	}
 	public static void keyInInputText(String text,WebElement input) throws InterruptedException {
 		input.click();
+		input.clear();
 		input.sendKeys(text);
 		
 	}

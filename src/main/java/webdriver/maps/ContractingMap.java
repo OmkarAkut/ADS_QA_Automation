@@ -1219,4 +1219,12 @@ public class ContractingMap extends MapConfig {
 	@FindBy(xpath = "//div[contains(@id,'messagebox')]//span[text()='Cancel & Close']")
 	private static List<WebElement> editPriceWarningCancelCloseButton;
 	public static List<WebElement> geteditPriceWarningCancelCloseButton() {return editPriceWarningCancelCloseButton;}
+	
+	@FindBy(xpath = "//span[text()='Open Task List']")
+	private static WebElement openTaskList;
+	public static WebElement getopenTaskList() {return openTaskList;}
+	
+	@FindBy(xpath = "//div[contains(@id,'feeForServicePaymentPanel')]//div[contains(@class,'toolbar')]//span[text()='Clear Filter']")
+	private static WebElement ContractFeeForServicePaymentClearFilter;
+	public static WebElement getContractFeeForServicePaymentClearFilter() {return ContractFeeForServicePaymentClearFilter;}
 }

@@ -23,7 +23,7 @@ import webdriver.maps.mapbuilder.BuildMap;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ValidateDragDropAddNewServiceUnderPricing extends CalculationHelper{
 	private static ContractingMap modelMap;
-	ContractModelsHelper contractModelsHelper = new ContractModelsHelper();
+	static ContractModelsHelper contractModelsHelper = new ContractModelsHelper();
 	static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
 	static String contractModelName;
 	static String serviceName = "SERVICE " + currentDateTime;
@@ -34,7 +34,7 @@ public class ValidateDragDropAddNewServiceUnderPricing extends CalculationHelper
 	static CostingMap costing;
 	CreateANewContractModel model=new CreateANewContractModel();
 			;
-	/** Regression: Automated test script for ADS-12496,ADS-12497 */
+	/** Support Issues: Automated test script for ADS-12496,ADS-12497 */
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
 		ExtentReport.reportCreate("ValidateDragDropAddNewServiceUnderPricing",
@@ -56,24 +56,31 @@ public class ValidateDragDropAddNewServiceUnderPricing extends CalculationHelper
 			fail(e.getMessage());
 		}
 	}
-	//ADS-12497
 	
+	//drag and drop the service to Service Model pane
+	public static void dragAndDropServiceForNewContractModel() {
+		WebElement sourceBefore = driver.findElement(By.xpath(
+				"(//label[contains(text(),'Services ')]//following::div[contains(@class,'x-grid-cell-inner ')])[1]"));
+		WebElement targetBefore = driver.findElement(By.xpath("(//div[@class='x-grid-item-container'])[5]"));
+		CimHelper.dragAndDrop(sourceBefore, targetBefore);
+	}
+	//Search Contract Model and Open Task List then Open Fee For Payment Terms
+	public static void searchContractModelOpenTaskList(String modelName) throws Throwable {
+		doSearchForContractModel(modelName);
+		driverDelay(200);
+		tableDoubleClickCellFirstColumn(modelName);
+		contractModelsHelper.navigateFeeForServicePaymentTerms();
+		doClick(ContractingMap.getContractFeeForServicePaymentFilterServiceModel());
+		waitForAjaxExtJs();
+	}
 	@Test
 	public void test01dragBackService_12496() throws Throwable {
 		try {
 			model.test01CreateNewContractModel_6413();
 			contractModelName=CreateANewContractModel.contractModelName;
-			doSearchForContractModel(contractModelName);
-			driverDelay(200);
-			tableDoubleClickCellFirstColumn(contractModelName);
-			contractModelsHelper.navigateFeeForServicePaymentTerms();
-			doClick(ContractingMap.getContractFeeForServicePaymentFilterServiceModel());
-			waitForAjaxExtJs();
+			searchContractModelOpenTaskList(contractModelName);
 			String existServiceName=driver.findElement(By.xpath("(//label[contains(text(),'Services ')]//following::div[contains(@class,'x-grid-cell-inner ')])[1]")).getText();
-			WebElement sourceBefore = driver.findElement(By.xpath(
-					"(//label[contains(text(),'Services ')]//following::div[contains(@class,'x-grid-cell-inner ')])[1]"));
-			WebElement targetBefore = driver.findElement(By.xpath("(//div[@class='x-grid-item-container'])[5]"));
-			CimHelper.dragAndDrop(sourceBefore, targetBefore);
+			dragAndDropServiceForNewContractModel();
 			WebElement sourceAfter = driver.findElement(By.xpath(
 					"(//span[text()='"+existServiceName+"'])[1]"));
 			WebElement targetAfter = driver.findElement(By.xpath("(//div[@class='x-grid-item-container'])[4]"));
