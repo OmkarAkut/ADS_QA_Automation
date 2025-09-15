@@ -2,13 +2,13 @@ package webdriver.corehelpers;
 
 import static org.junit.Assert.assertEquals;
 
-import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -459,6 +459,13 @@ public class AdsHelper extends GetHelper {
 		input.click();
 		input.clear();
 		input.sendKeys(text);
+		
+	}
+	public static String generateRandomNumber() throws InterruptedException {
+		 Random rand = new Random();
+		 int number = rand.nextInt(90) + 10;
+		 String num=String.valueOf(number);
+		return num;
 		
 	}
 }

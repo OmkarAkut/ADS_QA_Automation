@@ -858,7 +858,7 @@ public class ContractModelsHelper extends GoHelper {
 	 }
 	 public void navigateFeeForServicePaymentTerms() {
 		 try {
-			doClickTreeItem("Model Contract");
+			 	doClickTreeItem("Model Contract");
 				waitUntilTreeOptionIsClickable("Define Payment Terms");
 				doClickTreeItem("Define Payment Terms");
 				waitForMainPageTitle("Fee For Service Payment Terms");

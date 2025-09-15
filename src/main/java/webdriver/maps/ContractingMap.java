@@ -793,6 +793,25 @@ public class ContractingMap extends MapConfig {
 	private static WebElement SchedulesTab;
 	public static WebElement SchedulesTab() {return SchedulesTab;}
 	
+	@FindBy(name = "stopLossType")
+	private static WebElement stopLossType;
+	public static WebElement getstopLossType() {return stopLossType;}
+	
+	@FindBy(xpath = "(//div[text()='Stop Loss']//following::span[text()='Advanced'])[1]")
+	private static WebElement stopLossAdvBtn1;
+	public static WebElement getstopLossAdvBtn1() {return stopLossAdvBtn1;}
+	
+	@FindBy(xpath = "(//div[text()='Stop Loss']//following::span[text()='Advanced'])[2]")
+	private static WebElement stopLossAdvBtn2;
+	public static WebElement getstopLossAdvBtn2() {return stopLossAdvBtn2;}
+	
+	@FindBy(xpath = "(//div[text()='Stop Loss']//following::span[text()='Simple'])[1]")
+	private static WebElement stopLossSimpleBtn1;
+	public static WebElement getstopLossSimpleBtn1() {return stopLossSimpleBtn1;}
+	
+	@FindBy(xpath = "(//div[text()='Stop Loss']//following::span[text()='Simple'])[2]")
+	private static WebElement stopLossSimpleBtn2;
+	public static WebElement getstopLossSimpleBtn2() {return stopLossSimpleBtn2;}
 
 	@FindBy(name = "description")
 	private static WebElement FieldDropdown;
@@ -1216,6 +1235,10 @@ public class ContractingMap extends MapConfig {
 	private static WebElement editPriceCloseIcon;
 	public static WebElement geteditPriceCloseIcon() {return editPriceCloseIcon;}
 	
+	@FindBy(name = "levelOfCareTableId")
+	private static WebElement levelOfCareDropdown;
+	public static WebElement getlevelOfCareDropdown() {return levelOfCareDropdown;}
+	
 	@FindBy(xpath = "//div[contains(@id,'messagebox')]//span[text()='Cancel & Close']")
 	private static List<WebElement> editPriceWarningCancelCloseButton;
 	public static List<WebElement> geteditPriceWarningCancelCloseButton() {return editPriceWarningCancelCloseButton;}
@@ -1227,4 +1250,138 @@ public class ContractingMap extends MapConfig {
 	@FindBy(xpath = "//div[contains(@id,'feeForServicePaymentPanel')]//div[contains(@class,'toolbar')]//span[text()='Clear Filter']")
 	private static WebElement ContractFeeForServicePaymentClearFilter;
 	public static WebElement getContractFeeForServicePaymentClearFilter() {return ContractFeeForServicePaymentClearFilter;}
+	
+	@FindBy(name = "rate")
+	private static WebElement baseRate;
+	public static WebElement getbaseRate() {return baseRate;}
+	
+	@FindBy(xpath = "//textarea")
+	private static WebElement pricingCriteria;
+	public static WebElement getpricingCriteria() {return pricingCriteria;}
+	
+	@FindBy(name = "calcFfs")
+	private static WebElement calculateFeeCheckbox;
+	public static WebElement calculateFeeCheckbox() {return calculateFeeCheckbox;}
+	
+	@FindBy(name = "reimbursementScenario")
+	private static WebElement reimburseScenario;
+	public static WebElement getreimburseScenario() {return reimburseScenario;}
+	
+	@FindBy(xpath = "(//div[text()='Calculate Contract Model']//following::ul)")
+	private static WebElement calculateContractList;
+	public static WebElement getcalculateContractList() {return calculateContractList;}
+	
+	@FindBy(xpath = "(//div[contains(@id,'contractmodelunpublished')]//following::span[text()='Save'])[1]")
+	private static WebElement saveContractList;
+	public static WebElement getsaveContractList() {return saveContractList;}
+	
+	@FindBy(xpath = "(//div[contains(@id,'contractmodelunpublished')]//following::span[text()='Save & Continue'])[1]")
+	private static WebElement saveContinueBtn;
+	public static WebElement getsaveContinueBtn() {return saveContinueBtn;}
+	
+	@FindBy(xpath = "(//div[contains(@id,'contractmodelunpublished')]//following::span[text()='Cancel'])[1]")
+	private static WebElement CancelBtn;
+	public static WebElement getCancelBtn() {return CancelBtn;}
+	
+	@FindBy(xpath = "(//div[contains(@class,'riskLimit ')]//following::div/table//div)[2]")
+	private static WebElement riskLimitRecord;
+	public static WebElement getriskLimitRecord() {return riskLimitRecord;}
+	
+	@FindBy(xpath = "//div[contains(@class,'riskLimit ')]//span[text()='Edit']")
+	private static WebElement riskLimitEditBtn;
+	public static WebElement getriskLimitEditBtn() {return riskLimitEditBtn;}
+	
+	@FindBy(xpath = "((//label[text()='Threshold']//following::input[contains(@name,'textfield')]))[1]")
+	private static WebElement riskLimitThresholdField;
+	public static WebElement getriskLimitThresholdField() {return riskLimitThresholdField;}
+	
+	@FindBy(xpath = "((//label[text()='Add On Payment']//following::input[contains(@name,'textfield')]))[1]")
+	private static WebElement riskLimitAddOnPaymentField;
+	public static WebElement getriskLimitAddOnPaymentField() {return riskLimitAddOnPaymentField;}
+	
+	@FindBy(xpath = "(//ul[contains(@id,'boundlist')])[3]")
+	private static WebElement riskLimitThresholdParameters;
+	public static WebElement getriskLimitThresholdParameters() {return riskLimitThresholdParameters;}
+	
+	@FindBy(xpath = "(//ul[contains(@id,'boundlist')])[4]")
+	private static WebElement riskLimitThresholdOperators;
+	public static WebElement getriskLimitThresholdOperators() {return riskLimitThresholdOperators;}
+	
+	@FindBy(xpath = "(//ul[contains(@id,'boundlist')])[5]")
+	private static WebElement riskLimitAddOnPayParameters;
+	public static WebElement getriskLimitAddOnPayParameters() {return riskLimitAddOnPayParameters;}
+	
+	@FindBy(xpath = "(//ul[contains(@id,'boundlist')])[6]")
+	private static WebElement riskLimitAddOnPayOperators;
+	public static WebElement getriskLimitAddOnPayOperators() {return riskLimitAddOnPayOperators;}
+	
+	@FindBy(xpath = "//div[contains(text(),'Edit Risk Limiter')]//following::span[text()='Cancel & Close']")
+	private static WebElement riskLimitCancelCloseBtn;
+	public static WebElement getriskLimitCancelCloseBtn() {return riskLimitCancelCloseBtn;}
+	
+	@FindBy(xpath = "(//span[text()='Level of Care Table']//following::ul)")
+	private static WebElement levelOfCareDropDwn;
+	public static WebElement getlevelOfCareDropDwn() {return levelOfCareDropDwn;}
+	
+	@FindBy(xpath = "(//div[text()='Level of Care']//following::div[@class='x-grid-item-container']//table)")
+	private static List<WebElement> levelOfCareServices;
+	public static List<WebElement> getlevelOfCareServices() {return levelOfCareServices;}
+	
+	@FindBy(xpath = "//div[text()='Risk Limiter Model']//following::span[text()='New']")
+	private static WebElement riskLimiterNew;
+	public static WebElement getriskLimiterNew() {return riskLimiterNew;}
+	
+	@FindBy(xpath = "//div[text()='Risk Limiter Model']//following::span[text()='Edit']")
+	private static WebElement riskLimiterEdit;
+	public static WebElement getriskLimiterEdit() {return riskLimiterEdit;}
+	
+	@FindBy(xpath = "//div[text()='Risk Limiter Model']//following::span[text()='Delete']")
+	private static WebElement riskLimiterDelete;
+	public static WebElement getriskLimiterDelete() {return riskLimiterDelete;}
+	
+	@FindBy(xpath = "//div[text()='New Risk Limiter']")
+	private static WebElement riskLimiterWindow;
+	public static WebElement getriskLimiterWindow() {return riskLimiterWindow;}
+	
+	@FindBy(xpath = "//div[contains(text(),'Edit Risk Limiter')]")
+	private static WebElement editRiskLimiterWindow;
+	public static WebElement geteditRiskLimiterWindow() {return editRiskLimiterWindow;}
+	
+	@FindBy(xpath = "(//div[text()='Case Rate']//following::div[@class='x-grid-item-container']//table//div)[3]")
+	private static WebElement caseRate;
+	public static WebElement getcaseRate() {return caseRate;}
+	
+	@FindBy(xpath = "//li[text()='Care Setting Code']")
+	private static WebElement careSettingCode;
+	public static WebElement getcareSettingCode() {return careSettingCode;}
+	
+	@FindBy(xpath = "(//li[text()='Base Payment'])[2]")
+	private static WebElement basePayment;
+	public static WebElement getbasePayment() {return basePayment;}
+	
+	@FindBy(name = "stopLossPaymentCritFormula")
+	private static WebElement addOnCriteria;
+	public static WebElement getaddOnCriteria() {return addOnCriteria;}
+	
+	@FindBy(name = "stopLossThresholdCritFormula")
+	private static WebElement thresholdCriteria;
+	public static WebElement getthresholdCriteria() {return thresholdCriteria;}
+	
+	@FindBy(xpath = "//input[@name='stopLossType']//following::ul[9]")
+	private static WebElement stopLossTypes;
+	public static WebElement getstopLossTypes() {return stopLossTypes;}
+	
+	@FindBy(xpath = "//div[contains(text(),'Edit Risk Limiter')]//following::span[text()='Continue & Close']")
+	private static WebElement editRiskContinueCloseBtn;
+	public static WebElement getEditRiskContinueCloseBtn() {return editRiskContinueCloseBtn;}
+	
+	@FindBy(xpath = "//div[contains(text(),'New Risk Limiter')]//following::span[text()='Continue & Close']")
+	private static WebElement getnewRiskContinueCloseBtn;
+	public static WebElement getnewRiskContinueCloseBtn() {return getnewRiskContinueCloseBtn;}
+	
+	@FindBy(xpath = "//div[contains(@id,'messagebox')]//span[text()='Delete']")
+	private static WebElement warningDeleteBtn;
+	public static WebElement getwarningDeleteBtn() {return warningDeleteBtn;}
+	
+	
 }

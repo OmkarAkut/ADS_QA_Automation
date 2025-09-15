@@ -143,23 +143,6 @@ public class ValidateDialogBoxForPricingMethods extends GoHelper{
 					validateEditPriceDialogBox(option, serviceModelExist, "Encounter");
 				}
 			}
-//			if (!ContractingMap.getserviceModel().isEmpty() && ContractingMap.getserviceModel().get(0).isDisplayed()) {
-//				doClick(ContractingMap.getContractFeeForServicePaymentPricingMethodHeaderText());
-//				doClick("(//div[contains(@class,'x-tree-view')])[4]//span[text()='" + serviceModelExist + "']");
-//				System.out.println("Element is displayed");
-//				for (String option : priceMethodOption) {
-//					validateEditPriceDialogBox(option, serviceModelExist, "Encounter");
-//				}
-//			} else {
-//				System.out.println("Element is not displayed or not present");
-//				serviceModelNew = driver
-//						.findElement(By.xpath("(//div[contains(@class,'glAccountsGrid ')]//table//div)[1]")).getText();
-//				ValidateDragDropAddNewServiceUnderPricing.dragAndDropServiceForNewContractModel();
-//				
-//				for (String option : priceMethodOption) {
-//					validateEditPriceDialogBox(option, serviceModelNew, "Encounter");
-//				}
-//			}
 			doClick(ContractingMap.getCloseContractBtn());
 			doClick(ContractingMap.getContractModelRiskLimiterMessageBoxCancelCloseBtn());
 			ExtentReport.logPass("PASS", "test01ValidatePricingMethodDialogforExistingContractModel_ADS_12500");

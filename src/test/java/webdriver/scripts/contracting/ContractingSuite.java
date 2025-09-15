@@ -31,7 +31,12 @@ import org.junit.runners.Suite;
 	ValidateContractingTreeTab.class,
 	VerifyFilterAscSchemes.class,
 	ValidateDragDropAddNewServiceUnderPricing.class,
+	ValidateCopyPasteSearchFunctionForContractModel.class,
+	ValidateStopLossCriteriaAdvancedOptions.class,
+	ValidateEditOptionForEapgFeeSchedulePricingMethod.class,
 	ValidateExpandCollapseFeeForServicePaymentTermsPanel.class,
+	ValidatePayForPricingMethod.class,
+	ValidateDialogBoxForPricingMethods.class,
 })
 public class ContractingSuite {
 

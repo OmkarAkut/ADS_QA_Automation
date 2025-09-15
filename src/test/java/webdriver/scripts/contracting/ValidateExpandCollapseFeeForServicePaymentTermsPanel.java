@@ -24,7 +24,7 @@ public class ValidateExpandCollapseFeeForServicePaymentTermsPanel extends GoHelp
 	String[] columnsToSelect = {"150  Marina Medical Center" };
 	CreateANewContractModel model=new CreateANewContractModel();
 	ContractModelsHelper contractModelsHelper = new ContractModelsHelper();
-	/** Support Issues: Automated test script for ADS-12498,ADS-12499 */
+	/** Support Issues: Automated test script for ADS-12498,ADS-12499 ,ADS-12504,ADS-12571*/
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
 		ExtentReport.reportCreate("ValidateExpandCollapseFeeForServicePaymentTermsPanel",
@@ -45,7 +45,7 @@ public class ValidateExpandCollapseFeeForServicePaymentTermsPanel extends GoHelp
 		}
 	}
 	@Test
-	public void test01expandPanelsWithHeaderText_12498_12499() throws Throwable {
+	public void test01expandPanelsWithHeaderText_12498_12499_12504_12571() throws Throwable {
 		try {
 			model.test01CreateNewContractModel_6413();
 			contractModelName=CreateANewContractModel.contractModelName;

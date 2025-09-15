@@ -530,7 +530,15 @@ public class DoHelper extends DriverHelper {
 			
 		}
 	}
-	
+	public static void doubleActionClick(WebElement element) {
+		try {
+			Actions act=new Actions(driver);
+			act.moveToElement(element).pause(1000).doubleClick().build().perform();
+			driverDelay();
+		} catch (Exception e) {
+			
+		}
+	}
 }
 
 
