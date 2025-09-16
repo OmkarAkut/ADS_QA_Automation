@@ -13,6 +13,7 @@ import org.junit.runners.Suite;
 	VerifyIsRebillUnderBillTypes.class,
 	NewEditASCSchemes.class,
 	EditConsumerHistoryRecord.class,
+	PsychCombinedComorbidityDiagnosisOptionsValidation.class,
 })
 
 
