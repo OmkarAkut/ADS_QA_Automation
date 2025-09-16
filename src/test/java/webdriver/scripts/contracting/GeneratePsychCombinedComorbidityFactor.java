@@ -16,6 +16,7 @@ import webdriver.helpers.CalculationHelper;
 import webdriver.helpers.ContractModelsHelper;
 import webdriver.maps.ContractingMap;
 import webdriver.maps.CostingMap;
+import webdriver.maps.DataMaintenanceMap;
 import webdriver.maps.mapbuilder.BuildMap;
 
 public class GeneratePsychCombinedComorbidityFactor extends CalculationHelper {
@@ -25,7 +26,7 @@ public class GeneratePsychCombinedComorbidityFactor extends CalculationHelper {
 	private static CostingMap costingMap;
 	private static ContractingMap contractingMap;
 	String[] filter = {"Scenario Name","Is","Equal To",batch};
-	/** Regression: Automated test script for ADS-5943 */
+	/** Regression: Automated test script for ADS-5943 , support issue ADS - 12613*/
 
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
@@ -57,7 +58,7 @@ public class GeneratePsychCombinedComorbidityFactor extends CalculationHelper {
 	}
 
 	@Test
-	public void test01AssertResetCalculate() throws Throwable {
+	public void test01AssertResetCalculate_ADS_12613() throws Throwable {
 		try {
 			ContractModelsHelper.scrollToView("//div[contains(@id,'psychdatefiles')]/div/div[contains(text(),'Dates & Files')]");
 			driverDelay(500);
@@ -73,6 +74,9 @@ public class GeneratePsychCombinedComorbidityFactor extends CalculationHelper {
 			fileImport(System.getProperty("user.dir")+"\\TestFiles\\IPFC25WD_ICD10.txt");
 
 			driverDelay(2000);
+			doClick(DataMaintenanceMap.getpsychSaveBtn());
+			waitForDisplayedSpinnerToEnd();
+			driverDelay(5000);
 			doClick(ContractingMap.getContractResetButton());
 			doClick(costingMap.getCostModelScenariosinEvaluationOrderSave());
 			waitForDisplayedSpinnerToEnd();

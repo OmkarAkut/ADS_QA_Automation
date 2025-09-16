@@ -10,7 +10,9 @@ import org.junit.runners.Suite;
 	RunEncounterServiceClassificationScheme.class,
 	CreateEditDeleteNewStructurePopulations.class,
 	CreateDeleteCostMethodDeptMasterDischargeStatus.class,
-	
+	VerifyIsRebillUnderBillTypes.class,
+	NewEditASCSchemes.class,
+	EditConsumerHistoryRecord.class,
 })
 
 

@@ -232,4 +232,145 @@ public class DataMaintenanceMap extends MapConfig {
 	private static WebElement getPopulationShowSizeButton;
 	public static WebElement getPopulationShowSizeButton() {return getPopulationShowSizeButton;}
 	
+	//********09.16.2025 ************************//
+	@FindBy(xpath = "//h1[text()='Bill Types']//following::span[text()='Filter']")
+	private static WebElement billTypeFilterBtn;
+	public static WebElement getbillTypeFilterBtn() {return billTypeFilterBtn;}
+	
+	@FindBy(xpath = "//h1[text()='Bill Types']//following::span[text()='Edit']")
+	private static WebElement billTypeEditBtn;
+	public static WebElement getbillTypeEditBtn() {return billTypeEditBtn;}
+	
+	@FindBy(xpath = "//div[contains(@id,'dynamicform')][text()='Bill Type']")
+	private static WebElement billTypeWindow;
+	public static WebElement getbillTypeWindow() {return billTypeWindow;}
+	
+	@FindBy(xpath = "//div[@class='x-grid-checkheader x-grid-checkheader-checked']")
+	private static List<WebElement> billTypeCheckbox;
+	public static List<WebElement> getbillTypeCheckbox() {return billTypeCheckbox;}
+	
+	@FindBy(xpath = "//input[@name='isRebill']/../../../..")
+	private static WebElement isRebill;
+	public static WebElement getisRebill() {return isRebill;}
+	
+	@FindBy(xpath = "//div[contains(@id,'dynamicform')][text()='Bill Type']//following::span[text()='Cancel & Close']")
+	private static WebElement isRebillCancelCloseBtn;
+	public static WebElement getisRebillCancelCloseBtn() {return isRebillCancelCloseBtn;}
+	
+	@FindBy(xpath = "(//h1[text()='ASC Schemes']//following::span[text()='New'])[1]")
+	private static WebElement ascSchemeNewBtn;
+	public static WebElement getascSchemeNewBtn() {return ascSchemeNewBtn;}
+	
+	@FindBy(xpath = "(//h1[text()='ASC Schemes']//following::span[text()='Edit'])[1]")
+	private static WebElement ascSchemeEditBtn;
+	public static WebElement getascSchemeEditBtn() {return ascSchemeEditBtn;}
+	
+	@FindBy(xpath = "(//h1[text()='ASC Schemes']//following::span[text()='Filter'])[1]")
+	private static WebElement ascSchemeFilterBtn;
+	public static WebElement getascSchemeFilterBtn() {return ascSchemeFilterBtn;}
+	
+	@FindBy(xpath = "(//h1[text()='ASC Schemes']//following::span[text()='Delete'])[1]")
+	private static WebElement ascSchemeDeleteBtn;
+	public static WebElement getascSchemeDeleteBtn() {return ascSchemeDeleteBtn;}
+	
+	@FindBy(name = "name")
+	private static WebElement ascSchemeName;
+	public static WebElement getascSchemeName() {return ascSchemeName;}
+	
+	@FindBy(name = "hcpcscdmastcd")
+	private static WebElement hcpcsCodeMaster;
+	public static WebElement gethcpcsCodeMaster() {return hcpcsCodeMaster;}
+	
+	@FindBy(xpath = "//span[text()='HCPCS Code Master']//following::ul")
+	private static WebElement hcpcsCodeMasterDrpdwn;
+	public static WebElement gethcpcsCodeMasterDrpdwn() {return hcpcsCodeMasterDrpdwn;}
+	
+	@FindBy(xpath = "//span[text()='HCPCS Code Master']//following::span[text()='Save & Close']")
+	private static WebElement hcpcsCodeMasterSaveClose;
+	public static WebElement gethcpcsCodeMasterSaveClose() {return hcpcsCodeMasterSaveClose;}
+	
+	@FindBy(xpath = "//span[text()='HCPCS Code Master']//following::span[text()='Cancel & Close']")
+	private static WebElement ascSchemeCancelClose;
+	public static WebElement getascSchemeCancelClose() {return ascSchemeCancelClose;}
+	
+	@FindBy(xpath = "//div[contains(@id,'warningwindow')]//following::span[text()='Delete']")
+	private static WebElement warningDeleteBtn;
+	public static WebElement getwarningDeleteBtn() {return warningDeleteBtn;}
+	
+	@FindBy(xpath = "//h1[text()='Consumers']//following::span[text()='Filter']")
+	private static WebElement consumerFilterBtn;
+	public static WebElement getConsumerFilterBtn() {return consumerFilterBtn;}
+	
+	@FindBy(xpath = "//h1[text()='Consumers']//following::span[text()='Edit']")
+	private static WebElement consumerEditBtn;
+	public static WebElement getconsumerEditBtn() {return consumerEditBtn;}
+	
+	@FindBy(xpath = "//div[contains(@id,'consumerstabpanel')]//span[text()='Consumer History']")
+	private static WebElement consumerPanel;
+	public static WebElement getconsumerPanel() {return consumerPanel;}
+	
+	@FindBy(xpath = "(//h1[text()='Consumer History Effective Periods']//following::span[text()='Edit'])[1]")
+	private static WebElement consumerHistoryEditBtn;
+	public static WebElement getconsumerHistoryEditBtn() {return consumerHistoryEditBtn;}
+	
+	@FindBy(xpath = "//div[contains(@id,'consumershistoryform')]//following::div[text()='Consumer History Effective Period']")
+	private static WebElement consumerHistoryForm;
+	public static WebElement getconsumerHistoryForm() {return consumerHistoryForm;}
+	
+	@FindBy(xpath = "//div[contains(@id,'consumershistoryform')]//following::span[text()='Continue']")
+	private static WebElement consumerHistoryContinueBtn;
+	public static WebElement getconsumerHistoryContinueBtn() {return consumerHistoryContinueBtn;}
+	
+	@FindBy(xpath = "//div[contains(@id,'consumerscontainer')]//span[text()='Save & Close']")
+	private static WebElement consumerPanelSaveClose;
+	public static WebElement getconsumerPanelSaveClose() {return consumerPanelSaveClose;}
+	
+	@FindBy(xpath = "//h1[text()='Psych Combined Comorbidity Assignments']//following::span[text()='Filter']")
+	private static WebElement psychFilterButton;
+	public static WebElement getpsychFilterButton() {return psychFilterButton;}
+	
+	@FindBy(xpath = "//div[contains(@id,'filterwindow')]//following::h1[text()='Psych Combined Comorbidity Assignments']")
+	private static WebElement psychFilterWindow;
+	public static WebElement getpsychFilterWindow() {return psychFilterWindow;}
+	
+	@FindBy(xpath = "//label[text()='ICD9']//preceding::input[1]")
+	private static WebElement icd9DiagnosisBtn;
+	public static WebElement geticd9DiagnosisBtn() {return icd9DiagnosisBtn;}
+	
+	@FindBy(xpath = "//label[text()='ICD10']//preceding::input[1]")
+	private static WebElement icd10DiagnosisBtn;
+	public static WebElement geticd10DiagnosisBtn() {return icd10DiagnosisBtn;}
+	
+	@FindBy(xpath = "//span[text()='ICD9 Code First Secondary Diagnosis Codes']//following::div[contains(@class,'selectBtnCustomMulti ')]//span[text()='Select']/../../..")
+	private static WebElement icd9SelectBtn;
+	public static WebElement geticd9SelectBtn() {return icd9SelectBtn;}
+	
+	@FindBy(xpath = "//span[text()='ICD9 Code First Secondary Diagnosis Codes']//following::div[contains(@class,'x-autocontainer-outerCt')]//span[text()='View Selected Criteria']/../../..")
+	private static WebElement icd9ViewCriteriaBtn;
+	public static WebElement geticd9ViewCriteriaBtn() {return icd9ViewCriteriaBtn;}
+	
+	@FindBy(xpath = "//span[text()='ICD10 Code First Secondary Diagnosis Codes']//following::div[contains(@class,'selectBtnCustomMulti ')]//span[text()='Select']/../../..")
+	private static WebElement icd10SelectBtn;
+	public static WebElement geticd10SelectBtn() {return icd10SelectBtn;}
+	
+	@FindBy(xpath = "//span[text()='ICD10 Code First Secondary Diagnosis Codes']//following::div[contains(@class,'x-autocontainer-outerCt')]//span[text()='View Selected Criteria']/../../..")
+	private static WebElement icd10ViewCriteriaBtn;
+	public static WebElement geticd10ViewCriteriaBtn() {return icd10ViewCriteriaBtn;}
+	
+	@FindBy(xpath = "//div[text()='Psych Combined Comorbidity Assignments']//following::span[text()='Cancel & Close']")
+	private static WebElement psychCancelCloseBtn;
+	public static WebElement getpsychCancelCloseBtn() {return psychCancelCloseBtn;}
+	
+	@FindBy(xpath = "//div[text()='Psych Combined Comorbidity Assignments']//following::span[text()='Save']")
+	private static WebElement psychSaveBtn;
+	public static WebElement getpsychSaveBtn() {return psychSaveBtn;}
+	
+	@FindBy(xpath = "//div[text()='Psych Combined Comorbidity Assignments']//following::span[text()='Save & Close']")
+	private static WebElement psychSaveCloseBtn;
+	public static WebElement getpsychSaveCloseBtn() {return psychSaveCloseBtn;}
+	
+	@FindBy(xpath = "//div[contains(@id,'messagebox')]//following::span[text()='Cancel & Close']")
+	private static WebElement psychWarningCancelCloseBtn;
+	public static WebElement getpsychWarningCancelCloseBtn() {return psychWarningCancelCloseBtn;}
+	
 }
