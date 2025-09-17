@@ -14,6 +14,11 @@ import org.junit.runners.Suite;
 	NewEditASCSchemes.class,
 	EditConsumerHistoryRecord.class,
 	PsychCombinedComorbidityDiagnosisOptionsValidation.class,
+	ValidateSaveForContractBatch.class,
+	ValidateIcdDiagnosisGroupsSelectorScreenAfterSave.class,
+	ValidateChangesToTheDepartmentHierarchy.class,
+	ValidateFindMoveToFunctionalityUnderDeptHierarchy.class,
+	
 })
 
 

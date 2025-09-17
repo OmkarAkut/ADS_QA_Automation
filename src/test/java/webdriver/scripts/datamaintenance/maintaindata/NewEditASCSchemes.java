@@ -45,8 +45,8 @@ public class NewEditASCSchemes extends CalculationHelper{
 	public void test01ValidateNewButton_12593() throws Throwable {
 		try {
 			doClick(DataMaintenanceMap.getascSchemeNewBtn());
-			waitForElementToBeVisible(DataMaintenanceMap.getascSchemeName());
-			keyInInputText(ascScheme,DataMaintenanceMap.getascSchemeName());
+			waitForElementToBeVisible(DataMaintenanceMap.getaddName());
+			keyInInputText(ascScheme,DataMaintenanceMap.getaddName());
 			doClick(DataMaintenanceMap.gethcpcsCodeMaster());
 			driverDelay(100);
 			doDropdownSelectUsingOptionTextWithelement(DataMaintenanceMap.gethcpcsCodeMasterDrpdwn(),
@@ -65,7 +65,7 @@ public class NewEditASCSchemes extends CalculationHelper{
 	public void test02ValidateEditButton_12593() throws Throwable {
 		try {
 			doClick(DataMaintenanceMap.getascSchemeEditBtn());
-			waitForElementToBeVisible(DataMaintenanceMap.getascSchemeName());
+			waitForElementToBeVisible(DataMaintenanceMap.getaddName());
 			assertElementIsDisplayedWithXpath("//span[text()='"+ascScheme+"']");
 			doClick(DataMaintenanceMap.getascSchemeCancelClose());
 			driverDelay(100);

@@ -274,8 +274,8 @@ public class DataMaintenanceMap extends MapConfig {
 	public static WebElement getascSchemeDeleteBtn() {return ascSchemeDeleteBtn;}
 	
 	@FindBy(name = "name")
-	private static WebElement ascSchemeName;
-	public static WebElement getascSchemeName() {return ascSchemeName;}
+	private static WebElement addName;
+	public static WebElement getaddName() {return addName;}
 	
 	@FindBy(name = "hcpcscdmastcd")
 	private static WebElement hcpcsCodeMaster;
@@ -373,4 +373,175 @@ public class DataMaintenanceMap extends MapConfig {
 	private static WebElement psychWarningCancelCloseBtn;
 	public static WebElement getpsychWarningCancelCloseBtn() {return psychWarningCancelCloseBtn;}
 	
+	@FindBy(xpath = "//h1[text()='Contract Batches']//following::span[text()='Edit']")
+	private static WebElement contractBatchEditBtn;
+	public static WebElement getcontractBatchEditBtn() {return contractBatchEditBtn;}
+	
+	@FindBy(xpath = "//h1[text()='Contract Batches']//following::span[text()='Filter']")
+	private static WebElement contractBatchFilterBtn;
+	public static WebElement getcontractBatchFilterBtn() {return contractBatchFilterBtn;}
+	
+	@FindBy(xpath = "(//span[text()='Contracts']//following::span[text()='Select'])[1]")
+	private static WebElement contractBatchSelectBtn;
+	public static WebElement getcontractBatchSelectBtn() {return contractBatchSelectBtn;}
+	
+	@FindBy(xpath = "(//div[text()='Add Contracts']//following::div[@class='x-grid-item-container']//following::div)[1]")
+	private static WebElement contractBatchEle;
+	public static WebElement getcontractBatchEle() {return contractBatchEle;}
+	
+	@FindBy(xpath = "//div[contains(@id,'dynamicwindow')][text()='Add Contracts']//following::span[text()='Select']")
+	private static WebElement addContractSelectBtn;
+	public static WebElement getaddContractSelectBtn() {return addContractSelectBtn;}
+	
+	@FindBy(xpath = "//div[contains(@id,'dynamicwindow')][text()='Add Contracts']//following::span[text()='Remove']")
+	private static WebElement addContractRemoveBtn;
+	public static WebElement getaddContractRemoveBtn() {return addContractRemoveBtn;}
+	
+	@FindBy(xpath = "//div[contains(@id,'dynamicwindow')][text()='Add Contracts']//following::span[text()='Apply']")
+	private static WebElement addContractApplyBtn;
+	public static WebElement getaddContractApplyBtn() {return addContractApplyBtn;}
+	
+	@FindBy(xpath = "//div[contains(@id,'contractbatchpanel')][text()='Contract Batch']//following::span[text()='Save']")
+	private static WebElement addContractSaveBtn;
+	public static WebElement getaddContractSaveBtn() {return addContractSaveBtn;}
+	
+	@FindBy(xpath = "//div[contains(@id,'contractbatchpanel')][text()='Contract Batch']//following::span[text()='Save & Close']")
+	private static WebElement addContractSaveCloseBtn;
+	public static WebElement getaddContractSaveCloseBtn() {return addContractSaveCloseBtn;}
+
+	@FindBy(xpath = "//div[contains(@id,'contractbatchpanel')][text()='Contract Batch']//following::span[text()='Cancel & Close']")
+	private static WebElement addContractCancelCloseBtn;
+	public static WebElement getaddContractCancelCloseBtn() {return addContractCancelCloseBtn;}
+	
+	@FindBy(xpath = "//h1[text()='Contract Batches']//following::span[text()='Clear Filter']")
+	private static WebElement addContractClearFilterBtn;
+	public static WebElement getaddContractClearFilterBtn() {return addContractClearFilterBtn;}
+	
+	@FindBy(xpath = "//h1[text()='Contract Batches']//following::span[text()='Delete']")
+	private static WebElement addContractDeleteBtn;
+	public static WebElement getaddContractDeleteBtn() {return addContractDeleteBtn;}
+	
+	@FindBy(xpath = "//div[contains(@id,'contractbatchpanel')][text()='Contract Batch']//following::span[text()='Save As']")
+	private static WebElement addContractSaveAsBtn;
+	public static WebElement getaddContractSaveAsBtn() {return addContractSaveAsBtn;}
+	
+	@FindBy(xpath = "//div[contains(@id,'dynamicwindow')][text()='Save As']")
+	private static WebElement dynamicSaveAsWindow;
+	public static WebElement getdynamicSaveAsWindow() {return dynamicSaveAsWindow;}
+	
+	@FindBy(xpath = "//div[contains(@id,'dynamicwindow')]//input")
+	private static WebElement dynamicWindowNameInput;
+	public static WebElement getdynamicWindowNameInput() {return dynamicWindowNameInput;}
+	
+	@FindBy(xpath = "//div[contains(@id,'dynamicwindow')]//span[text()='Save & Close']")
+	private static WebElement dynamicWindowSaveClose;
+	public static WebElement getdynamicWindowSaveClose() {return dynamicWindowSaveClose;}
+	
+	@FindBy(xpath = "//h1[text()='Department Hierarchies']//following::span[text()='Clear Filter']")
+	private static WebElement depthierarchyClearFilterBtn;
+	public static WebElement getdepthierarchyClearFilterBtn() {return depthierarchyClearFilterBtn;}
+	
+	@FindBy(xpath = "//h1[text()='Department Hierarchies']//following::span[text()='Filter']")
+	private static WebElement depthierarchyFilterBtn;
+	public static WebElement getdepthierarchyFilterBtn() {return depthierarchyFilterBtn;}
+	
+	@FindBy(xpath = "//h1[text()='Department Hierarchies']//following::span[text()='Edit']")
+	private static WebElement depthierarchyEditBtn;
+	public static WebElement getdepthierarchyEditBtn() {return depthierarchyEditBtn;}
+	
+	@FindBy(xpath = "//div[text()='Department Hierarchy']//following::span[text()='Save']")
+	private static WebElement depthierarchySaveBtn;
+	public static WebElement getdepthierarchySaveBtn() {return depthierarchySaveBtn;}
+	
+	@FindBy(xpath = "//div[text()='Department Hierarchy']//following::span[text()='Save & Close']")
+	private static WebElement depthierarchySaveCloseBtn;
+	public static WebElement getdepthierarchySaveCloseBtn() {return depthierarchySaveCloseBtn;}
+	
+	@FindBy(xpath = "//div[contains(@id,'accounthierarchyform')][text()='Department Hierarchy']")
+	private static WebElement depthierarchyForm;
+	public static WebElement getdepthierarchyForm() {return depthierarchyForm;}
+	
+	@FindBy(xpath = "(//label[contains(text(),'Hierarchy ')]//following::span[@class='x-tree-node-text '])[2]")
+	private static WebElement deptNode;
+	public static WebElement getdeptNode() {return deptNode;}
+	
+	@FindBy(xpath = "//a[contains(@class,'btnContainerMarginCls ')]//following::span[text()='Find']")
+	private static WebElement deptHierarchyFindBtn;
+	public static WebElement getdeptHierarchyFindBtn() {return deptHierarchyFindBtn;}
+	
+	@FindBy(xpath = "//a[contains(@class,'btnContainerMarginCls ')]//following::span[text()='Move To']")
+	private static WebElement deptHierarchyMoveToBtn;
+	public static WebElement getdeptHierarchyMoveToBtn() {return deptHierarchyMoveToBtn;}
+	
+	@FindBy(xpath = "//div[text()='Find  Department Code or Department Group']")
+	private static WebElement deptHierarchyFindWindow;
+	public static WebElement getdeptHierarchyFindWindow() {return deptHierarchyFindWindow;}
+	
+	@FindBy(xpath = "//div[text()='Find  Department Code or Department Group']//following::div[text()='120 EMERGENCY DEPARTMENT']")
+	private static WebElement deptHierarchyFindDept;
+	public static WebElement getdeptHierarchyFindDept() {return deptHierarchyFindDept;}
+	
+	@FindBy(xpath = "//div[text()='Find  Department Code or Department Group']//following::span[text()='Apply']")
+	private static WebElement deptHierarchyFindWinddApplyBtn;
+	public static WebElement getdeptHierarchyFindWinddApplyBtn() {return deptHierarchyFindWinddApplyBtn;}
+	
+	@FindBy(xpath = "//div[text()='Move To']")
+	private static WebElement deptHierarchyMovetoWindow;
+	public static WebElement getdeptHierarchyMovetoWindow() {return deptHierarchyMovetoWindow;}
+	
+	@FindBy(name = "groupNames")
+	private static WebElement deptHierarchyGroupNameDrpDwn;
+	public static WebElement getdeptHierarchyGroupNameDrpDwn() {return deptHierarchyGroupNameDrpDwn;}
+	
+	@FindBy(xpath = "//div[text()='Move To']//following::span[text()='Move']")
+	private static WebElement deptMoveBtn;
+	public static WebElement getdeptMoveBtn() {return deptMoveBtn;}
+	
+	@FindBy(xpath = "//span[text()='Select ICD10 Dx']")
+	private static WebElement selectICD10Btn;
+	public static WebElement getselectICD10Btn() {return selectICD10Btn;}
+	
+	@FindBy(xpath = "//div[contains(@id,'dynamicwindow')][text()='Add ICD10 Diagnosis Group Members']")
+	private static WebElement selectICD10Window;
+	public static WebElement getselectICD10Window() {return selectICD10Window;}
+	
+	@FindBy(xpath = "//div[contains(@id,'dynamicwindow')][text()='Add ICD10 Diagnosis Group Members']//following::span[text()='Select']")
+	private static WebElement selectICD10WindowSelectBtn;
+	public static WebElement getselectICD10WindowSelectBtn() {return selectICD10WindowSelectBtn;}
+	
+	@FindBy(xpath = "(//div[contains(@id,'dynamicwindow')][text()='Add ICD10 Diagnosis Group Members']//following::span[text()='All'])[2]")
+	private static WebElement selectICD10WindowSelectAllBtn;
+	public static WebElement getselectICD10WindowSelectAllBtn() {return selectICD10WindowSelectAllBtn;}
+	
+	@FindBy(xpath = "//div[contains(@id,'dynamicwindow')][text()='Add ICD10 Diagnosis Group Members']//following::span[text()='Apply']")
+	private static WebElement selectICD10WindowApplyBtn;
+	public static WebElement getselectICD10WindowApplyBtn() {return selectICD10WindowApplyBtn;}
+	
+	@FindBy(xpath = "//div[contains(@id,'dynamicwindow')][text()='Add ICD10 Diagnosis Group Members']//following::span[text()='Remove']")
+	private static WebElement selectICD10WindowRemoveBtn;
+	public static WebElement getselectICD10WindowRemoveBtn() {return selectICD10WindowRemoveBtn;}
+	
+	@FindBy(xpath = "((//div[contains(@class,'x-grid-view nowrapRow')])[1]//div[@class='x-grid-item-container']//div)[1]")
+	private static WebElement selectICDgroupFirstItem;
+	public static WebElement getselectICDgroupFirstItem() {return selectICDgroupFirstItem;}
+	
+	@FindBy(xpath = "//div[text()='ICD Diagnosis Group']//following::span[text()='Save']")
+	private static WebElement selectICDgroupSaveBtn;
+	public static WebElement getselectICDgroupSaveBtn() {return selectICDgroupSaveBtn;}
+	
+	@FindBy(xpath = "//div[text()='ICD Diagnosis Group']//following::span[text()='Save & Close']")
+	private static WebElement selectICDgroupSaveCloseBtn;
+	public static WebElement getselectICDgroupSaveCloseBtn() {return selectICDgroupSaveCloseBtn;}
+	
+	@FindBy(xpath = "//h1[text()='ICD Diagnosis Groups']//following::span[text()='Filter']")
+	private static WebElement selectICDgroupFilterBtn;
+	public static WebElement getselectICDgroupFilterBtn() {return selectICDgroupFilterBtn;}
+	
+	@FindBy(xpath = "//h1[text()='ICD Diagnosis Groups']//following::span[text()='Edit']")
+	private static WebElement selectICDgroupEditBtn;
+	public static WebElement getselectICDgroupEditBtn() {return selectICDgroupEditBtn;}
+	
+	@FindBy(xpath = "(//div[text()='ICD Diagnosis Group']//following::div[@class='x-grid-item-container']//table//td/div)[3]")
+	private static WebElement diagnosisCode;
+	public static WebElement getdiagnosisCode() {return diagnosisCode;}
 }
