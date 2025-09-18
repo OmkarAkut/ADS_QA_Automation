@@ -544,4 +544,68 @@ public class DataMaintenanceMap extends MapConfig {
 	@FindBy(xpath = "(//div[text()='ICD Diagnosis Group']//following::div[@class='x-grid-item-container']//table//td/div)[3]")
 	private static WebElement diagnosisCode;
 	public static WebElement getdiagnosisCode() {return diagnosisCode;}
+	
+	@FindBy(xpath = "//h1[text()='Age In Days Groups']//following::span[text()='New']")
+	private static WebElement ageGroupNewBtn;
+	public static WebElement getageGroupNewBtn() {return ageGroupNewBtn;}
+	
+	@FindBy(xpath = "//h1[text()='Age In Days Groups']//following::span[text()='Filter']")
+	private static WebElement ageGroupFilterBtn;
+	public static WebElement getageGroupFilterBtn() {return ageGroupFilterBtn;}
+	
+	@FindBy(xpath = "//h1[text()='Age In Days Groups']//following::span[text()='Delete']")
+	private static WebElement ageGroupDeleteBtn;
+	public static WebElement getageGroupDeleteBtn() {return ageGroupDeleteBtn;}
+	
+	@FindBy(xpath = "//div[contains(@id,'groupsdetailpanel')]//div[text()='Age In Days Groups']//following::span[text()='Select']")
+	private static WebElement ageGroupSelectBtn;
+	public static WebElement getageGroupSelectBtn() {return ageGroupSelectBtn;}
+	
+	@FindBy(xpath = "//div[contains(@id,'dynamicwindow')][text()='Add Age In Days Group Members']")
+	private static WebElement ageGroupSelectWindow;
+	public static WebElement getageGroupSelectWindow() {return ageGroupSelectWindow;}
+	
+	@FindBy(xpath = "//a[contains(@class,'x-box-item x-toolbar-item')]//following::span[text()='Save']")
+	private static WebElement saveButton;
+	public static WebElement getsaveButton() {return saveButton;}
+	
+	@FindBy(xpath = "//a[contains(@class,'x-box-item x-toolbar-item')]//following::span[text()='Save & Close']")
+	private static WebElement saveCloseButton;
+	public static WebElement getsaveCloseButton() {return saveCloseButton;}
+	
+	@FindBy(xpath = "//div[contains(@class,'x-closable')]//div[contains(@id,'dynamicwindow')]//span[text()='Apply']")
+	private static WebElement applyBtnInPopUp;
+	public static WebElement getapplyBtnInPopUp() {return applyBtnInPopUp;}
+	
+	@FindBy(xpath = "(//div[text()='Encounter Service Classification Scheme']//following::span[text()='Save'])[1]")
+	private static WebElement encounterSaveBtn;
+	public static WebElement getencounterSaveBtn() {return encounterSaveBtn;}
+	
+	@FindBy(xpath = "(//div[text()='Encounter Service Classification Scheme']//following::span[text()='Save & Close'])[1]")
+	private static WebElement encounterSaveCloseBtn;
+	public static WebElement getencounterSaveCloseBtn() {return encounterSaveCloseBtn;}
+	
+	@FindBy(xpath = "(//span[text()='Clear Filter']//parent::span)[1]")
+    private static WebElement encounterButtonClearFilter;
+    public static WebElement getencounterButtonClearFilter() {return encounterButtonClearFilter;}
+    
+    @FindBy(xpath = "(//span[text()='New']//parent::span)[1]")
+    private static WebElement encounterButtonNewBtn;
+    public static WebElement getencounterButtonNewBtn() {return encounterButtonNewBtn;}
+    
+    @FindBy(xpath = "//span[text()='Encounter Population for Assign/Remove']//following::span[text()='Select']")
+    private static WebElement encounterPopSelectBtn;
+    public static WebElement getencounterPopSelectBtn() {return encounterPopSelectBtn;}
+    
+    @FindBy(xpath = "(//div[contains(@id,'dynamicwindow')][text()='Add Population']//following::table//div)[2]")
+    private static WebElement encounterAddPopl;
+    public static WebElement getencounterAddPopl() {return encounterAddPopl;}
+    
+    @FindBy(xpath = "(//span[text()='Delete']//parent::span)[1]")
+    private static WebElement encounterButtonDeleteBtn;
+    public static WebElement getencounterButtonDeleteBtn() {return encounterButtonDeleteBtn;}
+    
+    @FindBy(xpath = "//div[contains(@id,'messagebox')]//following::span[text()='Delete']")
+    private static WebElement messageboxDeleteBtn;
+    public static WebElement getmessageboxDeleteBtn() {return messageboxDeleteBtn;}
 }
