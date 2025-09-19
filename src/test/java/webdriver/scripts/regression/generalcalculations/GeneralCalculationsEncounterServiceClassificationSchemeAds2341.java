@@ -46,7 +46,7 @@ public class GeneralCalculationsEncounterServiceClassificationSchemeAds2341 exte
   final static String batch = "v10.4 REGRESSION Enc Serv Class Scheme";//updated 11.25.2022
   private static List<WebElement> encountersTable;
   String[] filterCostModel = { "Name", "Is", "Equal To", batch };
-  /** Regression: Test script for ADS-2341. Updated: 7-7-21.,ADS-6102 */
+  /** Regression: Test script for ADS-2341. Updated: 7-7-21.,ADS-6102, support case - ADS-21577 */
   @BeforeClass
   public static void setupScript() throws Exception,Throwable {
 	 ExtentReport.reportCreate("GeneralCalculationsEncounterServiceClassificationSchemeAds2341", "webdriver.scripts.regression.generalcalculations", "GeneralCalculationsEncounterServiceClassificationSchemeAds2341");
@@ -71,7 +71,7 @@ public class GeneralCalculationsEncounterServiceClassificationSchemeAds2341 exte
   }
 //ADS-6102 all steps
   @Test
-  public void test01ClickRemoveButtonAndVerifyRemoveProcessRanSuccessfully()
+  public void test01ClickRemoveButtonAndVerifyRemoveProcessRanSuccessfully_6102_21577()
           throws InterruptedException,Throwable {
     try {
     	doClick(DataMaintenanceMap.getLoadDataFilterButton());
@@ -126,7 +126,7 @@ public class GeneralCalculationsEncounterServiceClassificationSchemeAds2341 exte
 //  }
 
   @Test
-  public void test03VerifyNoServicesAppearOnEncountersPage()
+  public void test03VerifyNoServicesAppearOnEncountersPage_6102_21577()
           throws InterruptedException,Throwable {
     try {
 		doMaintainDataPageSelectAtoZOption("Encounters");
@@ -154,7 +154,7 @@ public class GeneralCalculationsEncounterServiceClassificationSchemeAds2341 exte
   }
 
   @Test
-  public void test04ClickAssignButtonAndAssertCalculationSummaryDetailsMatchExpected()
+  public void test04ClickAssignButtonAndAssertCalculationSummaryDetailsMatchExpected_6102_21577()
           throws InterruptedException,Throwable {
     try {
       //goToPage("Maintain Data");
@@ -194,7 +194,7 @@ public class GeneralCalculationsEncounterServiceClassificationSchemeAds2341 exte
   }
 
   @Test
-  public void test05AssertServicesCountOnEncountersPage() throws InterruptedException,Throwable{
+  public void test05AssertServicesCountOnEncountersPage_6102_21577() throws InterruptedException,Throwable{
       try {
 		goToPage("Maintain Data");
 		  doMaintainDataPageSelectAtoZOption("Encounters");
@@ -231,7 +231,7 @@ public class GeneralCalculationsEncounterServiceClassificationSchemeAds2341 exte
   }
 
   @Test
-  public void test06VerifyServicesNowAppearOnEncountersPage() throws Throwable {
+  public void test06VerifyServicesNowAppearOnEncountersPage_6102_21577() throws Throwable {
     try {
 //		  List<WebElement> ele=driver.findElements(By.xpath("//*[text()='Service Scheme']/ancestor::div[contains(@class,'x-grid-header')]//following-sibling::div/descendant::table//tbody/tr"));
     	System.out.println();

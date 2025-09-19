@@ -2591,4 +2591,22 @@ public class CostingMap extends MapConfig {
 	public   List<WebElement> getCostScenarioToDrp() {
 		return getCostScenarioToDrp;
 	}
+	
+	@FindBy(xpath = "//input[@name='costModelScenarioId']/../../..")
+	private WebElement getRvuMaintenanceCostScenarioDropdownBorder;
+	public WebElement getRvuMaintenanceCostScenarioDropdownBorder() {
+		return getRvuMaintenanceCostScenarioDropdownBorder;
+	}
+	
+	@FindBy(xpath = "//input[@name='activityVolumeScenarioId']/../../..")
+	private WebElement getRvuMaintenanceActDropdownBorder;
+	public WebElement getRvuMaintenanceActDropdownBorder() {
+		return getRvuMaintenanceActDropdownBorder;
+	}
+	
+	@FindBy(xpath = "//input[@name='priceListId']/../../..")
+	private WebElement getRvuMaintenancePriceDropdownBorder;
+	public WebElement getRvuMaintenancePriceDropdownBorder() {
+		return getRvuMaintenancePriceDropdownBorder;
+	}
 }

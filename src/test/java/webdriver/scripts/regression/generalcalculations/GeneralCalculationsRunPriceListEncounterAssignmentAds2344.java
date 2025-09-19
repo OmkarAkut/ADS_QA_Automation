@@ -34,7 +34,7 @@ public class GeneralCalculationsRunPriceListEncounterAssignmentAds2344 extends C
 	String[] filterEncounterData = { "Name", "Is", "Equal To", batch };
 	private static List<WebElement> encountersTable;
 
-	/** Regression: Test script for ADS-2343. Updated: 7-7-21. */
+	/** Regression: Test script for ADS-2343. Updated: 7-7-21. support case- ADS-18298 */
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
 		ExtentReport.reportCreate("GeneralCalculationsRunPriceListEncounterAssignmentAds2344",
@@ -63,7 +63,7 @@ public class GeneralCalculationsRunPriceListEncounterAssignmentAds2344 extends C
 	}
 //ADS-6099
 	@Test
-	public void test01ClickClearResultsButtonAndVerifyCalculationStatusPageDetails_6099()
+	public void test01ClickClearResultsButtonAndVerifyCalculationStatusPageDetails_6099_18298()
 			throws InterruptedException, Throwable {
 		try {
 			doClick(DataMaintenanceMap.getLoadDataFilterButton());
@@ -115,7 +115,7 @@ public class GeneralCalculationsRunPriceListEncounterAssignmentAds2344 extends C
 	}
 
 	@Test
-	public void test02ClickAssignButtonAndAssertCalculationStatusPageDetails_6099() throws InterruptedException, Throwable {
+	public void test02ClickAssignButtonAndAssertCalculationStatusPageDetails_6099_18298() throws InterruptedException, Throwable {
 		try {
 			waitForAjaxExtJs();
 //      waitForPresenceOfElement("(//span[text()='Assign'])");

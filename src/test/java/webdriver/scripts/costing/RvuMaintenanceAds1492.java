@@ -32,8 +32,8 @@ public class RvuMaintenanceAds1492 extends GoHelper {
 	static String newCellValue = formatStringWithCommaGrouping(
 			Integer.toString(javaGetRandomNumber(99,true))
 			);
-
-	/** Automates test ticket ADS-1492. ADS-6646,ADS-5993*/
+	private static String borderValidationColor="2px solid rgb(255, 0, 0)";//Validation color for dropdown
+	/** Automates test ticket ADS-1492. ADS-6646,ADS-5993, support case -ADS-12594*/
 	
 	@BeforeClass
 	public static void setupScript() throws Exception,Throwable {
@@ -182,8 +182,40 @@ public class RvuMaintenanceAds1492 extends GoHelper {
 	}
 
 	@Test
-	public void test05VerifyBasedOnDropdownMenusDefaultAccordingly_5993() throws Throwable {
+	public void test05VerifyBasedOnDropdownMenusDefaultAccordingly_5993_12594() throws Throwable {
 		try {
+			
+			if(((costing.getRvuMaintenanceCostScenarioDropdownBorder().getCssValue("border").contains(borderValidationColor)) && (costing.getRvuMaintenanceActDropdownBorder().getCssValue("border").contains(borderValidationColor)) && costing.getRvuMaintenancePriceDropdownBorder().getCssValue("border").contains(borderValidationColor))) {
+				assertTrue(printout);
+			}
+			else {
+				fail();
+			}
+			driver.findElement(By.xpath("//span[text()='Columns to Display']//following::input[@type='checkbox']")).click();
+			setDropdownValue(
+					costing.getRvuMaintenanceDropdownBasedOnVolumes(),
+					costing.getRvuMaintenanceDropdownBasedOnVolumesOptions(),
+					"Volumes Exist",
+					printout
+					);
+			if((costing.getRvuMaintenanceActDropdownBorder().getCssValue("border").contains(borderValidationColor))) {
+				assertTrue(printout);
+			}
+			else {
+				fail();
+			}
+			setDropdownValue(
+					costing.getRvuMaintenanceDropdownBasedOnPrices(),
+					costing.getRvuMaintenanceDropdownBasedOnPricesOptions(),
+					"Prices Exist",
+					printout
+					);
+			if(((costing.getRvuMaintenanceActDropdownBorder().getCssValue("border").contains(borderValidationColor)) && costing.getRvuMaintenancePriceDropdownBorder().getCssValue("border").contains(borderValidationColor))) {
+				assertTrue(printout);
+			}
+			else {
+				fail();
+			}
 			setDropdownValue(
 					costing.getRvuMaintenanceDropdownBasedOn(),
 					costing.getRvuMaintenanceDropdownBasedOnOptions(),

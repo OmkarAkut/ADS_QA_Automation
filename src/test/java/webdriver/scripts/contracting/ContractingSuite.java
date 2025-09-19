@@ -2,6 +2,8 @@ package webdriver.scripts.contracting;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
+import webdriver.scripts.datamaintenance.maintaindata.ValidateEncounterTabs;
+
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 	CalculateExistingPublishedContractAds1447.class,
@@ -37,6 +39,7 @@ import org.junit.runners.Suite;
 	ValidateExpandCollapseFeeForServicePaymentTermsPanel.class,
 	ValidatePayForPricingMethod.class,
 	ValidateDialogBoxForPricingMethods.class,
+	ValidateEncounterTabs.class,
 })
 public class ContractingSuite {
 

@@ -449,6 +449,50 @@ public class DataMaintenanceMap extends MapConfig {
 	private static WebElement depthierarchyEditBtn;
 	public static WebElement getdepthierarchyEditBtn() {return depthierarchyEditBtn;}
 	
+	@FindBy(xpath = "//h1[text()='Department Hierarchies']//following::span[text()='New']")
+	private static WebElement depthierarchyNewBtn;
+	public static WebElement getdepthierarchyNewBtn() {return depthierarchyNewBtn;}
+	
+	@FindBy(xpath = "//h1[text()='Department Hierarchies']//following::span[text()='Delete']")
+	private static WebElement depthierarchyDeleteBtn;
+	public static WebElement getdepthierarchyDeleteBtn() {return depthierarchyDeleteBtn;}
+	
+	@FindBy(name = "masterCode")
+	private static WebElement deptMasterDrpdwn;
+	public static WebElement getdeptMasterDrpdwn() {return deptMasterDrpdwn;}
+	
+	@FindBy(name = "deptCode")
+	private static WebElement deptMasterCode;
+	public static WebElement getdeptMasterCode() {return deptMasterCode;}
+	
+	@FindBy(name = "description")
+	private static WebElement deptMasterDesc;
+	public static WebElement getdeptMasterDesc() {return deptMasterDesc;}
+	
+	@FindBy(xpath = "//span[text()='Save & Create New']")
+	private static WebElement deptMasterSaveCreateNew;
+	public static WebElement getdeptMasterSaveCreateNew() {return deptMasterSaveCreateNew;}
+	
+	@FindBy(xpath = "//div[text()='New Department Group']//following::span[text()='Cancel & Close']")
+	private static WebElement deptMasterCancelClose;
+	public static WebElement getdeptMasterCancelClose() {return deptMasterCancelClose;}
+	
+	@FindBy(xpath = "//span[text()='Department Master']//following::ul")
+	private static WebElement deptMasterDrpdwnOptions;
+	public static WebElement getdeptMasterDrpdwnOptions() {return deptMasterDrpdwnOptions;}
+	
+	@FindBy(xpath = "//div[text()='Department Hierarchy']//following::span[text()='Filter']")
+	private static WebElement deptMasterFilterOption;
+	public static WebElement getdeptMasterFilterOption() {return deptMasterFilterOption;}
+	
+	@FindBy(xpath = "//span[text()='New Group']")
+	private static WebElement deptMasterNewGroup;
+	public static WebElement getdeptMasterNewGroup() {return deptMasterNewGroup;}
+	
+	@FindBy(xpath = "//span[text()='Delete Group']")
+	private static WebElement deptMasterDeleteGroup;
+	public static WebElement getdeptMasterDeleteGroup() {return deptMasterDeleteGroup;}
+	
 	@FindBy(xpath = "//div[text()='Department Hierarchy']//following::span[text()='Save']")
 	private static WebElement depthierarchySaveBtn;
 	public static WebElement getdepthierarchySaveBtn() {return depthierarchySaveBtn;}

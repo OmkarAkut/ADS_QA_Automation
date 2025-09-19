@@ -45,7 +45,7 @@ public class RVUContainerDeleteFilteredData extends GoHelper {
 	static List<String> list =Arrays.asList("150", "200", "300", "350", "600", "800");
 	ContractModelsHelper modelHelper=new ContractModelsHelper();
 	static int RvuContainerList;
-/** Automates test ticket ADS-5983*/
+/** Automates test ticket ADS-5983, ADS-12597*/
 	
 	@BeforeClass
 	public static void setupScript() throws Exception,Throwable {
