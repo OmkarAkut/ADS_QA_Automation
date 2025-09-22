@@ -652,4 +652,288 @@ public class DataMaintenanceMap extends MapConfig {
     @FindBy(xpath = "//div[contains(@id,'messagebox')]//following::span[text()='Delete']")
     private static WebElement messageboxDeleteBtn;
     public static WebElement getmessageboxDeleteBtn() {return messageboxDeleteBtn;}
+    
+    @FindBy(xpath = "//span[text()='Totals']/../../..")
+    private static WebElement totalsTabs;
+    public static WebElement gettotalsTabs() {return totalsTabs;}
+    
+    @FindBy(xpath = "(//span[text()='Total Actual Charges']//following::div/div)[1]")
+    private static WebElement totalActualCharges;
+    public static WebElement gettotalActualCharges() {return totalActualCharges;}
+    
+    @FindBy(xpath = "(//span[text()='Total Actual Cash Payments']//following::div/div)[1]")
+    private static WebElement totalActualCashPay;
+    public static WebElement gettotalActualCashPay() {return totalActualCashPay;}
+    
+    @FindBy(xpath = "(//span[text()='Total Actual Adjustments']//following::div/div)[1]")
+    private static WebElement totalActualAdjust;
+    public static WebElement gettotalActualAdjust() {return totalActualAdjust;}
+    
+    @FindBy(xpath = "(//span[text()='Balance Amount']//following::div/div)[1]")
+    private static WebElement balanceAmount;
+    public static WebElement getbalanceAmount() {return balanceAmount;}
+    
+    @FindBy(xpath = "(//span[text()='Balance Status']//following::div/div)[1]")
+    private static WebElement balanceStatus;
+    public static WebElement getbalanceStatus() {return balanceStatus;}
+    
+    @FindBy(xpath = "(//span[text()='Total Non-Covered Charges']//following::div/div)[1]")
+    private static WebElement totalnonCoveredCharges;
+    public static WebElement gettotalnonCoveredCharges() {return totalnonCoveredCharges;}
+    
+    @FindBy(xpath = "(//span[text()='Expected Payment']//following::div/div)[1]")
+    private static WebElement expPayment;
+    public static WebElement getexpPayment() {return expPayment;}
+    
+    @FindBy(xpath = "(//span[text()='Direct Fixed Cost']//following::div/div)[1]")
+    private static WebElement directFixedCost;
+    public static WebElement getdirectFixedCost() {return directFixedCost;}
+    
+    @FindBy(xpath = "(//span[text()='Direct Variable Cost']//following::div/div)[1]")
+    private static WebElement directVarialeCost;
+    public static WebElement getdirectVarialeCost() {return directVarialeCost;}
+    
+    @FindBy(xpath = "(//span[text()='Indirect Fixed Cost']//following::div/div)[1]")
+    private static WebElement indirectFixedCost;
+    public static WebElement getindirectFixedCost() {return indirectFixedCost;}
+    
+    @FindBy(xpath = "(//span[text()='Indirect Variable Cost']//following::div/div)[1]")
+    private static WebElement indirectVariableCost;
+    public static WebElement getindirectVariableCost() {return indirectVariableCost;}
+    
+    @FindBy(xpath = "(//span[text()='Total Costs']//following::div/div)[1]")
+    private static WebElement totalCosts;
+    public static WebElement gettotalCosts() {return totalCosts;}
+    
+    @FindBy(xpath = "//span[text()='Procedures']/../../..")
+    private static WebElement proceduresTab;
+    public static WebElement getproceduresTab() {return proceduresTab;}
+    
+    @FindBy(xpath = "(((//div[contains(@id,'dynamicGrid')]//div[@class='x-grid-item-container']))[4]//table[1]//td/div)[9]")
+    private static WebElement udf;
+    public static WebElement getudf() {return udf;}
+    
+    @FindBy(xpath = "(((//div[contains(@id,'dynamicGrid')]//div[@class='x-grid-item-container']))[4]//table[1]//td/div)[5]")
+    private static WebElement icdProcedure;
+    public static WebElement geticdProcedure() {return icdProcedure;}
+    
+    @FindBy(xpath = "(((//div[contains(@id,'dynamicGrid')]//div[@class='x-grid-item-container']))[4]//table[1]//td/div)[7]")
+    private static WebElement hcpcsProcedure;
+    public static WebElement gethcpcsProcedure() {return hcpcsProcedure;}
+    
+    @FindBy(xpath = "//div[contains(@id,'encounterProcedures')]//following::span[text()='Edit']")
+    private static WebElement procEditBtn;
+    public static WebElement getprocEditBtn() {return procEditBtn;}
+    
+    @FindBy(xpath = "//div[text()='Procedure']")
+    private static WebElement procEditWindow;
+    public static WebElement getprocEditWindow() {return procEditWindow;}
+    
+    @FindBy(xpath = "(//div[contains(@id,'proceduresformpanel')]//following::span[text()='ICD']//following::div[@data-ref='inputEl'])[1]")
+    private static WebElement icdProcedureInput;
+    public static WebElement geticdProcedureInput() {return icdProcedureInput;}
+    
+    @FindBy(xpath = "(//div[contains(@id,'proceduresformpanel')]//following::span[text()='ICD']//following::div[@data-ref='inputEl'])[2]")
+    private static WebElement hcpcsProcedureInput;
+    public static WebElement gethcpcsProcedureInput() {return hcpcsProcedureInput;}
+    
+    @FindBy(xpath = "(//div[contains(@id,'proceduresformpanel')]//following::span[text()='ICD']//following::div[@data-ref='inputEl'])[3]")
+    private static WebElement udfInput;
+    public static WebElement getudfInput() {return udfInput;}
+    
+    @FindBy(xpath = "//a[contains(@class,'cancelCloseBtn ')]")
+    private static WebElement cancelCloseBtn;
+    public static WebElement getcancelCloseBtn() {return cancelCloseBtn;}
+    
+    @FindBy(xpath = "//span[text()='Diagnoses']/../../..")
+    private static WebElement diagnosisTab;
+    public static WebElement getdiagnosisTab() {return diagnosisTab;}
+    
+    @FindBy(xpath = "(//span[text()='ICD10 Principal Diagnosis']//following::span[text()='Select'])[1]")
+    private static WebElement icd10ProcDiagnosisSelectBtn;
+    public static WebElement geticd10ProcDiagnosisSelectBtn() {return icd10ProcDiagnosisSelectBtn;}
+    
+    @FindBy(xpath = "//div[contains(@id,'dynamicwindow')][text()='Add ICD10 Principal Diagnosis']")
+    private static WebElement icd10ProcDiagnosisWindow;
+    public static WebElement geticd10ProcDiagnosisWindow() {return icd10ProcDiagnosisWindow;}
+    
+    @FindBy(xpath = "(//span[text()='ICD10 Admitting Diagnosis']//following::span[text()='Select'])[1]")
+    private static WebElement icd10ProcAdmitDiagnosisSelectBtn;
+    public static WebElement geticd10ProcAdmitDiagnosisSelectBtn() {return icd10ProcAdmitDiagnosisSelectBtn;}
+    
+    @FindBy(xpath = "//div[contains(@id,'dynamicwindow')][text()='Add ICD10 Admitting Diagnosis']")
+    private static WebElement icd10ProcAdmitDiagnosisWindow;
+    public static WebElement geticd10ProcAdmitDiagnosisWindow() {return icd10ProcAdmitDiagnosisWindow;}
+    
+    @FindBy(xpath = "//span[text()='APCs & APGs']/../../..")
+    private static WebElement apcapgTab;
+    public static WebElement getapcapgTab() {return apcapgTab;}
+    
+    @FindBy(xpath = "((//span[text()='EAPG Scheme']//following::div[contains(@id,'dynamicGrid')]//following::table)[1]//div)[2]")
+    private static WebElement eapgScheme;
+    public static WebElement geteapgScheme() {return eapgScheme;}
+    
+    @FindBy(xpath = "((//span[text()='EAPG Scheme']//following::div[contains(@id,'dynamicGrid')]//following::table)[1]//div)[3]")
+    private static WebElement eapg;
+    public static WebElement geteapg() {return eapg;}
+    
+    @FindBy(xpath = "//div[text()='Enhanced Ambulatory Patient Groups (EAPGs)']//following::span[text()='Edit']")
+    private static WebElement eapgEditBtn;
+    public static WebElement geteapgEditBtn() {return eapgEditBtn;}
+    
+    @FindBy(xpath = "//div[text()='EAPG']")
+    private static WebElement eapgWindow;
+    public static WebElement geteapgWindow() {return eapgWindow;}
+    
+    @FindBy(name = "eapgClassSchemeCode")
+    private static WebElement eapgSchemeField;
+    public static WebElement geteapgSchemeField() {return eapgSchemeField;}
+    
+    @FindBy(xpath = "(//span[contains(@id,'singleselectorform')][text()='EAPG']//following::div[contains(@id,'displayfield')])[1]//div/div")
+    private static WebElement eapgSchemeText;
+    public static WebElement geteapgSchemeText() {return eapgSchemeText;}
+    
+    @FindBy(xpath = "//span[text()='Charges']/../../..")
+    private static WebElement chargesTab;
+    public static WebElement getchargesTab() {return chargesTab;}
+    
+    @FindBy(xpath = "(//div[contains(@id,'encounterActualCharges')]//following::span[text()='Edit'])[1]")
+    private static WebElement chargesTabEditBtn;
+    public static WebElement getchargesTabEditBtn() {return chargesTabEditBtn;}
+    
+    @FindBy(xpath = "//div[text()='Actual Charge']//following::div[text()='Practitioners']//following::div[1]")
+    private static WebElement practitionersAccordian;
+    public static WebElement getpractitionersAccordian() {return practitionersAccordian;}
+    
+    @FindBy(xpath = "//div[text()='Actual Charge']//following::div[text()='Mappings']//following::div[1]")
+    private static WebElement mappingsAccordian;
+    public static WebElement getmappingsAccordian() {return mappingsAccordian;}
+    
+    @FindBy(xpath = "//div[text()='Actual Charge']//following::div[text()='Diagnosis']//following::div[1]")
+    private static WebElement diagnosisAccordian;
+    public static WebElement getdiagnosisAccordian() {return diagnosisAccordian;}
+    
+    @FindBy(xpath = "//div[text()='Actual Charge']//following::div[text()='RBRVS RVUs']//following::div[1]")
+    private static WebElement rbrvsAccordian;
+    public static WebElement getrbrvsAccordian() {return rbrvsAccordian;}
+    
+    @FindBy(xpath = "//div[text()='Actual Charge']//following::div[text()='Charge UDFs & UDRs']//following::div[1]")
+    private static WebElement chargeUDfAccordian;
+    public static WebElement getchargeUDfAccordianAccordian() {return chargeUDfAccordian;}
+    
+    @FindBy(xpath = "//div[text()='Actual Charge']//following::div[text()='General']//following::div[1]")
+    private static WebElement generalAccordian;
+    public static WebElement getgeneralAccordianAccordian() {return generalAccordian;}
+    
+    @FindBy(xpath = "(//div[contains(@id,'encounterActualCharges')]//following::span[text()='New'])[1]")
+    private static WebElement chargesTabNewBtn;
+    public static WebElement getchargesTabNewBtn() {return chargesTabNewBtn;}
+    
+    @FindBy(xpath = "(//div[text()='General']//following::span[text()='Department']//following::span[text()='Select'])[1]")
+    private static WebElement newChargeDeptSelectBtn;
+    public static WebElement getnewChargeDeptSelectBtn() {return newChargeDeptSelectBtn;}
+    
+    @FindBy(xpath = "(//div[text()='General']//following::span[text()='Charge Code']//following::span[text()='Select'])[1]")
+    private static WebElement newChargeCodeSelectBtn;
+    public static WebElement getnewChargeCodeSelectBtn() {return newChargeCodeSelectBtn;}
+    
+    @FindBy(xpath = "//span[text()='Financial Records']/../../..")
+    private static WebElement financialRecordsTab;
+    public static WebElement getfinancialRecordsTab() {return financialRecordsTab;}
+    
+    @FindBy(xpath = "(//div[contains(@class,'extNativeToolbar ')])[2]//span[text()='Edit']")
+    private static WebElement financialRecordsEditBtn;
+    public static WebElement getfinancialRecordsEditBtn() {return financialRecordsEditBtn;}
+    
+    @FindBy(name = "efrCategoryCode")
+    private static WebElement financialRecordsEFR;
+    public static WebElement getfinancialRecordsEFR() {return financialRecordsEFR;}
+    
+    @FindBy(xpath = "//span[text()='Current Allowance Benefit Plan']//following::span[text()='Select']")
+    private static WebElement contractualSelectBtn;
+    public static WebElement getcontractualSelectBtn() {return contractualSelectBtn;}
+    
+    @FindBy(xpath = "(//input[@name='carrierfield']//following::span[text()='Cancel & Close'])[2]")
+    private static WebElement dialogFormCancelCloseBtn;
+    public static WebElement getdialogFormCancelCloseBtn() {return dialogFormCancelCloseBtn;}
+    
+    @FindBy(name = "billTypeCode")
+    private static WebElement billTypeComboBox;
+    public static WebElement getbillTypeComboBox() {return billTypeComboBox;}
+    
+    @FindBy(xpath = "//span[text()='Payments']/../../..")
+    private static WebElement patmentsTab;
+    public static WebElement getpatmentsTab() {return patmentsTab;}
+    
+    @FindBy(xpath = "//div[contains(@id,'encounterPayments')]//following::span[text()='New']")
+    private static WebElement paymentsNewBtn;
+    public static WebElement getpaymentsNewBtn() {return paymentsNewBtn;}
+    
+    @FindBy(xpath = "//div[contains(@id,'encounterPayments')]//following::span[text()='Delete']")
+    private static WebElement paymentsDeleteBtn;
+    public static WebElement getpaymentsDeleteBtn() {return paymentsDeleteBtn;}
+    
+    @FindBy(name = "payorEntityCode")
+    private static WebElement payorEntityCode;
+    public static WebElement getpayorEntityCode() {return payorEntityCode;}
+    
+    @FindBy(name = "paymentAmount")
+    private static WebElement paymentAmount;
+    public static WebElement getpaymentAmount() {return paymentAmount;}
+    
+    @FindBy(name = "payeeEntityCode")
+    private static WebElement payeeEntityCode;
+    public static WebElement getpayeeEntityCode() {return payeeEntityCode;}
+    
+    @FindBy(name = "transTypeCode")
+    private static WebElement transTypeCode;
+    public static WebElement gettransTypeCode() {return transTypeCode;}
+    
+    @FindBy(xpath = "//div[contains(@id,'dynamicwindow')]//following::span[text()='Continue']")
+    private static WebElement dynamicWinContinueBtn;
+    public static WebElement getdynamicWinContinueBtn() {return dynamicWinContinueBtn;}
+    
+    @FindBy(xpath = "//div[contains(@id, 'apcsapgspanel')]//div[text()='Enhanced Ambulatory Patient Groups (EAPGs)']")
+    private static WebElement eapgSection;
+    public static WebElement geteapgSection() {return eapgSection;}
+    
+    @FindBy(xpath = "//*[contains(@id, 'chargesactualpanel')]//following::div[text()='General']")
+    private static WebElement generalSection;
+    public static WebElement getgeneralSection() {return generalSection;}
+    
+    @FindBy(xpath = "//*[contains(@id, 'chargesactualpanel')]//following::div[text()='Practitioners']")
+    private static WebElement practSection;
+    public static WebElement getpractSection() {return practSection;}
+    
+    @FindBy(xpath = "//*[contains(@id, 'chargesactualpanel')]//following::div[text()='Mappings']")
+    private static WebElement mappingsSection;
+    public static WebElement getmappingsSection() {return mappingsSection;}
+    
+    @FindBy(xpath = "//*[contains(@id, 'chargesactualpanel')]//following::div[text()='Diagnoses']")
+    private static WebElement diagnosesSection;
+    public static WebElement getdiagnosesSection() {return diagnosesSection;}
+    
+    @FindBy(xpath = "//*[contains(@id, 'chargesactualpanel')]//following::div[text()='RBRVS RVUs']")
+    private static WebElement rbrvsSection;
+    public static WebElement getrbrvsSection() {return rbrvsSection;}
+    
+    @FindBy(xpath = "//*[contains(@id, 'financialrecordsformpanel')]//following::div[text()='Contractual Allowance']")
+    private static WebElement contractAllowanceSection;
+    public static WebElement getcontractAllowanceSection() {return contractAllowanceSection;}
+    
+    @FindBy(xpath = "//*[contains(@id, 'financialrecordsformpanel')]//following::div[text()='Billing']")
+    private static WebElement billingSection;
+    public static WebElement getbillingSectionSection() {return billingSection;}
+    
+    @FindBy(xpath = "//*[contains(@id, 'chargesactualpanel')]//following::div[text()='Charge UDFs & UDRs']")
+    private static WebElement chargeudfSection;
+    public static WebElement getchargeudfSection() {return chargeudfSection;}
+    
+    @FindBy(xpath = "(//div[text()='Encounter']//following::div[contains(@class,'extNativeToolbar ')]//following::span[text()='Cancel & Close'])[1]")
+    private static WebElement encounterCancelCloseBtn;
+    public static WebElement getencounterCancelCloseBtn() {return encounterCancelCloseBtn;}
+    
+    @FindBy(xpath = "//div[text()='New Actual Charge']//following::div[contains(@id,'toolbar')]//span[text()='Continue']/../../..")
+    private static WebElement actualChargeContinue;
+    public static WebElement getactualChargeContinue() {return actualChargeContinue;}
 }

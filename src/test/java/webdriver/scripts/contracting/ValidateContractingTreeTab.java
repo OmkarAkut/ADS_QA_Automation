@@ -42,7 +42,7 @@ public class ValidateContractingTreeTab extends CalculationHelper{
 			doClickTreeSubItem(ContractType);
 			ContractTypeName=ContractingMap.getContractTypeColName().getText();
 			doClick(ContractingMap.ContractTypeEditButton());
-			assertThatAttributeValueIsEqual(ContractingMap.getInputName(), ContractTypeName, printout);
+			assertThatAttributeValue(ContractingMap.getInputName(), ContractTypeName, printout);
 			doClick("//div[text()='"+ContractTypeName+"']//following::span[text()='Cancel & Close']");
 			ExtentReport.logPass("PASS", "test01VerifyEditContractingTreeTab");
 		} catch (Exception|AssertionError e) {

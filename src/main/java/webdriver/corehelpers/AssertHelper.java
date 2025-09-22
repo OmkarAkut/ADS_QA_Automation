@@ -990,15 +990,15 @@ public class AssertHelper extends AdsHelper {
 
 		}
 	}
-	public static void assertThatAttributeValueIsEqual(WebElement element,String expectedValue,boolean printout) {
+	public static void assertThatAttributeValueIsEqual(WebElement element,String expectedValue,String attributeValue,boolean printout) {
 
 		try {
-			String elementText = element.getAttribute("value");
+			String elementText = element.getAttribute(attributeValue);
 			if (printout) {
 				System.out.println("Expected Value: " + expectedValue);
 				System.out.println("Actual   Value: " + elementText);
 			}
-			if(elementText.toLowerCase().equals(expectedValue.toLowerCase())) {
+			if(elementText.equals(expectedValue)) {
 				assertTrue(true);
 			}
 		} catch (Throwable e) {
