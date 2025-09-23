@@ -178,6 +178,10 @@ public class DataMaintenanceMap extends MapConfig {
 	private static WebElement getSaveandCreateNewButton;
 	public static WebElement getSaveandCreateNewButton() {return getSaveandCreateNewButton;}
 	
+	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//span[text()='Cancel & Close']")
+	private static WebElement getCancelCloseButton;
+	public static WebElement getCancelCloseButton() {return getCancelCloseButton;}
+	
 //	Omkar 16/8/2023 : xpath changes for 11.2
 //	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//span[text()='Calculate']//parent::button")
 //	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//span[text()='Calculate']//parent::span")
@@ -948,4 +952,38 @@ public class DataMaintenanceMap extends MapConfig {
     @FindBy(xpath = "(//div[contains(@id,'paymentformpanel')]//following::ul[contains(@id,'dynamiccombo')])[3]")
     private static WebElement transTypeList;
     public static WebElement gettransTypeList() {return transTypeList;}
+    
+    @FindBy(xpath = "//span[text()='Edit']")
+    private static WebElement azPageEditBtn;
+    public static WebElement getazPageEditBtn() {return azPageEditBtn;}
+    
+    @FindBy(xpath = "//input[@name='code']")
+    private static WebElement inputCode;
+    public static WebElement getinputCode() {return inputCode;}
+    
+    @FindBy(xpath = "(//div[contains(@id,'industryclasschemepanel')]//following::div[text()='Groups'])[2]")
+    private static WebElement groupsPanel;
+    public static WebElement getgroupsPanel() {return groupsPanel;}
+    
+    @FindBy(xpath = "((//div[@class='x-grid-item-container'])[3]//table)[1]")
+    private static WebElement groupsRow1;
+    public static WebElement getgroupsRow1() {return groupsRow1;}
+    
+    @FindBy(xpath = "(//div[text()='Groups']//following::span[text()='Edit'])[2]")
+	private static WebElement getGroupsEditBtn;
+	public static WebElement getGroupsEditBtn() {return getGroupsEditBtn;}
+	
+	@FindBy(xpath = "//input[@name='minCopayStatus']/../../../..")
+	private static WebElement miniCopyStatusCheck;
+	public static WebElement getminiCopyStatusCheck() {return miniCopyStatusCheck;}
+	
+	@FindBy(xpath = "//div[text()='Group']//following::span[text()='Cancel & Close']")
+	private static WebElement groupCancelClose;
+	public static WebElement getgroupCancelClose() {return groupCancelClose;}
+	
+	@FindBy(xpath = "((//div[@class='x-grid-item-container'])[3]//table)[1]//div/div")
+	private static WebElement groupGridMiniCopayCheck;
+	public static WebElement getgroupGridMiniCopayCheck() {return groupGridMiniCopayCheck;}
+    
+    
 }
