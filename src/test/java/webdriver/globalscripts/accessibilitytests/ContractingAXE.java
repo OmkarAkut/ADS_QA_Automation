@@ -54,7 +54,7 @@ public class ContractingAXE extends LoginStatic {
   try {
 	  goToPage("APC Allocation");
 	    waitForAjaxExtJs();
-	    ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName());
+	    ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName(), this.getClass().getSimpleName());
 	    doClosePageOnLowerBar("APC Allocation");
 	    ExtentReport.logPass("PASS", "testContractingTabApcAllocationPage");
 	}
@@ -70,7 +70,8 @@ public class ContractingAXE extends LoginStatic {
   try {
 	  goToPage("Contractual Allowance Export");
 	    waitForAjaxExtJs();
-	    ax.runAxeAccessibilityTestOfPage(driver,name.getMethodName());
+	    System.out.println(name.getMethodName());
+	    ax.runAxeAccessibilityTestOfPage(driver,name.getMethodName(), this.getClass().getSimpleName());
 	    doClosePageOnLowerBar("Contractual...");
 	    ExtentReport.logPass("PASS", "testContractingTabContractualAllowanceExportPage");
 	}
@@ -86,7 +87,7 @@ public class ContractingAXE extends LoginStatic {
   try {
 	  goToPage("contract models");
 	    waitForAjaxExtJs();
-	    ax.runAxeAccessibilityTestOfPage(driver,name.getMethodName());
+	    ax.runAxeAccessibilityTestOfPage(driver,name.getMethodName(), this.getClass().getSimpleName());
 	    doClosePageOnLowerBar("Model Library");
 	    ExtentReport.logPass("PASS", "testContractingTabContractModelPage");
 	}
@@ -102,7 +103,7 @@ public class ContractingAXE extends LoginStatic {
   try {
 	  goToPage("contracting data maintenance");
 	    waitForAjaxExtJs();
-	    ax.runAxeAccessibilityTestOfPage(driver,name.getMethodName());
+	    ax.runAxeAccessibilityTestOfPage(driver,name.getMethodName(), this.getClass().getSimpleName());
 	    doClosePageOnLowerBar("Maintain Data");
 	    ExtentReport.logPass("PASS", "testContractingTabContractingDataMaintenancePage");
 	}

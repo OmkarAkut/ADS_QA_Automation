@@ -57,7 +57,7 @@ public class CostingAXE extends LoginStatic {
 		try {
 			goToPage("Costing Models");
 			waitForAjaxExtJs();
-			ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName());
+			ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName(), this.getClass().getSimpleName());
 			doClosePageOnLowerBar("Model Library");
 			ExtentReport.logPass("PASS", "testCostingModel");
 		} catch (Exception|AssertionError e) {
@@ -75,7 +75,7 @@ public class CostingAXE extends LoginStatic {
 
 			waitForAjaxExtJs();
 			Thread.sleep(5000);
-			ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName());
+			ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName(), this.getClass().getSimpleName());
 			doClosePageOnLowerBar("Cost Model...");
 			ExtentReport.logPass("PASS", "testCostingxCostModelScenarioCalculation");
 		} catch (Exception|AssertionError e) {
@@ -90,7 +90,7 @@ public class CostingAXE extends LoginStatic {
 			goToPage("RVU Maintenance");
 
 			waitForAjaxExtJs();
-			ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName());
+			ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName(), this.getClass().getSimpleName());
 			doClosePageOnLowerBar("RVU Maintenance");
 
 
@@ -106,7 +106,7 @@ public class CostingAXE extends LoginStatic {
 		try {
 			goToPage("Unit Cost Quick Calculation");
 			waitForAjaxExtJs();
-			ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName());
+			ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName(), this.getClass().getSimpleName());
 			doClosePageOnLowerBar("Unit Cost Quick...");
 			ExtentReport.logPass("PASS", "testCostingxUnitCostQuickCalculation");
 		} catch (Exception|AssertionError e) {

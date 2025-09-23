@@ -56,7 +56,7 @@ public class ReportingAXE extends LoginStatic {
 		try {
 			goToPage("Gems Analysis");
 			waitForAjaxExtJs();
-			ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName());
+			ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName(), this.getClass().getSimpleName());
 			doClosePageOnLowerBar("ICD9/ICD10 GEMs...");
 			ExtentReport.logPass("PASS", "testReportingTabIcd9Icd10GemsAnalysisPage");
 		}
@@ -72,7 +72,7 @@ public class ReportingAXE extends LoginStatic {
 		try {
 			goToPage("Gems Inquiry");
 			waitForAjaxExtJs();
-			ax.runAxeAccessibilityTestOfPage(driver,name.getMethodName());
+			ax.runAxeAccessibilityTestOfPage(driver,name.getMethodName(), this.getClass().getSimpleName());
 			doClosePageOnLowerBar("ICD9/ICD10 GEMs...");
 			ExtentReport.logPass("PASS", "testReportingTabIcd9Icd10GemsInquiryPage");
 		}
@@ -88,7 +88,7 @@ public class ReportingAXE extends LoginStatic {
 		try {
 			goToPage("Report Date Maintenance");
 			waitForAjaxExtJs();
-			ax.runAxeAccessibilityTestOfPage(driver,name.getMethodName());
+			ax.runAxeAccessibilityTestOfPage(driver,name.getMethodName(), this.getClass().getSimpleName());
 			doClosePageOnLowerBar("Report Date...");
 			ExtentReport.logPass("PASS", "testReportingTabReportDateMaintenancePage");
 		}
@@ -103,7 +103,7 @@ public class ReportingAXE extends LoginStatic {
 		try {
 			goToPage("Report Menu Maintenance");
 			waitForAjaxExtJs();
-			ax.runAxeAccessibilityTestOfPage(driver,name.getMethodName());
+			ax.runAxeAccessibilityTestOfPage(driver,name.getMethodName(), this.getClass().getSimpleName());
 			doClosePageOnLowerBar("Report Menu...");
 			ExtentReport.logPass("PASS", "testReportingTabReportMenuMaintenancePage");
 		}
@@ -118,7 +118,7 @@ public class ReportingAXE extends LoginStatic {
 		try {
 			goToPage("Report Library");
 			waitForAjaxExtJs();
-			ax.runAxeAccessibilityTestOfPage(driver,name.getMethodName());
+			ax.runAxeAccessibilityTestOfPage(driver,name.getMethodName(), this.getClass().getSimpleName());
 			doClosePageOnLowerBar("Report Library");
 			ExtentReport.logPass("PASS", "testReportingTabReportLibraryPage");
 		}

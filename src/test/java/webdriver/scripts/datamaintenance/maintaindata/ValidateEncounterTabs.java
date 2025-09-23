@@ -2,16 +2,12 @@ package webdriver.scripts.datamaintenance.maintaindata;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-
-import java.util.List;
-
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.helpers.CalculationHelper;
@@ -41,6 +37,12 @@ public class ValidateEncounterTabs extends CalculationHelper{
 	static String expUdf="PRIV Private Room";
 	static String eapgScheme="ASESC2918EAPG";
 	static String eapg="0002 SUPERFICIAL NEEDLE BIOPSY AND ASPIRATION";
+	static String transacTypeCode="100 FGr";
+	static String transacTypeCodeText="100  FGr";
+	static String payor="0000 PRIVATE PAY";
+	static String payorText="0000  PRIVATE PAY";
+	static String payee="0000 PRIVATE PAY";
+	static String payeeText="0000  PRIVATE PAY";
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
 		ExtentReport.reportCreate("ValidateEncounterTabs", "webdriver.scripts.datamaintenance.maintaindata",
@@ -72,6 +74,7 @@ public class ValidateEncounterTabs extends CalculationHelper{
 			fail(e.getMessage());
 		}
 	}
+
 	@Test
 	public void test02ValidateTotalTab_12929() throws Throwable {
 		try {
@@ -235,19 +238,22 @@ public class ValidateEncounterTabs extends CalculationHelper{
 				doClick(DataMaintenanceMap.getapplyBtnInPopUp());
 				
 			}
+			doClick(DataMaintenanceMap.getcancelCloseBtn());
 			ExtentReport.logPass("PASS", "test08ValidateDiagnosisTabSelectBtn_12929");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test08ValidateDiagnosisTabSelectBtn_12929", driver, e);
 			fail(e.getMessage());
 		}
 	}
+	
 	@Test
 	public void test09ValidateFinancialRecordsEFR_Contractual_12929() throws Throwable {
 		try {
 			doClick(DataMaintenanceMap.getfinancialRecordsTab());
 			doClick(DataMaintenanceMap.getfinancialRecordsEditBtn());
 			waitForElementToBeVisible(DataMaintenanceMap.getfinancialRecordsEFR());
-			if(DataMaintenanceMap.getfinancialRecordsEFR().getAttribute("readonly").contains("readonly")) {
+			System.out.println(DataMaintenanceMap.getfinancialRecordsEFR().getAttribute("readonly"));
+			if(DataMaintenanceMap.getfinancialRecordsEFR().getAttribute("readonly").contains("true")) {
 				assertTrue(printout);
 			}else {fail();}
 			navigateOpenNewSection(DataMaintenanceMap.getcontractAllowanceSection());
@@ -265,6 +271,7 @@ public class ValidateEncounterTabs extends CalculationHelper{
 			fail(e.getMessage());
 		}
 	}
+
 	@Test
 	public void test10ValidatePaymentsTab_12929() throws Throwable {
 		try {
@@ -273,23 +280,19 @@ public class ValidateEncounterTabs extends CalculationHelper{
 			assertTextIsDisplayed("New Payment");
 			doClick(DataMaintenanceMap.getpayorEntityCode());
 			driverDelay();
-			doDropdownSelectUsingOptionTextWithelement(
-					driver.findElement(By.xpath("(//input[@name='payorEntityCode']//following::ul[contains(@id,'dynamiccombo')]/li)[1]")),
-					"0000  PRIVATE PAY");
+			doDropdownSelectUsingOptionTextWithelement(DataMaintenanceMap.getpayorList(),payor);
 			keyInInputText("20",DataMaintenanceMap.getpaymentAmount());
 			doClick(DataMaintenanceMap.getpayeeEntityCode());
 			driverDelay();
-			doDropdownSelectUsingOptionTextWithelement(
-					driver.findElement(By.xpath("(//input[@name='payeeEntityCode']//following::ul[contains(@id,'dynamiccombo')]/li)[1]")),
-					"0000  PRIVATE PAY");
+			doDropdownSelectUsingOptionTextWithelement(DataMaintenanceMap.getpayeeList(),payee);
 			doClick(DataMaintenanceMap.gettransTypeCode());
 			driverDelay();
-			doDropdownSelectUsingOptionTextWithelement(
-					driver.findElement(By.xpath("(//input[@name='transTypeCode']//following::ul[contains(@id,'dynamiccombo')]/li)[1]")),
-					"100  FGr");
+			doDropdownSelectUsingOptionTextWithelement(DataMaintenanceMap.gettransTypeList(),"100 FGr");
 			doClick(DataMaintenanceMap.getdynamicWinContinueBtn());
-			assertTextIsDisplayed("100  FGr");
-			doClick("//*[text()='100  FGr']");
+			assertElementIsDisplayedWithXpath("//*[contains(text(),'"+transacTypeCodeText+"')]");
+			assertElementTextContainsWithXpathLocator("//div[text()='"+transacTypeCodeText+"']//following::div[5]", payorText, printout);
+			assertElementTextContainsWithXpathLocator("//div[text()='"+transacTypeCodeText+"']//following::div[6]", payeeText, printout);
+			doClick("//*[contains(text(),'"+transacTypeCodeText+"')]");
 			doClick(DataMaintenanceMap.getpaymentsDeleteBtn());
 			doClick(DataMaintenanceMap.getwarningDeleteBtn());
 			doClick(DataMaintenanceMap.getencounterCancelCloseBtn());
@@ -299,5 +302,9 @@ public class ValidateEncounterTabs extends CalculationHelper{
 			ExtentReport.logFail("FAIL", "test09ValidateFinancialRecordsEFR_Contractual_12929", driver, e);
 			fail(e.getMessage());
 		}
+	}
+	@AfterClass
+	public static void endtest() throws Exception {
+		ExtentReport.report.flush();
 	}
 }

@@ -1,11 +1,13 @@
 package webdriver.utilities;
 
-import com.deque.axe.AXE;
-
-import java.net.URL;
-
 import static org.junit.Assert.fail;
 import static webdriver.globalstatic.SetupStatic.releaseVersion;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.net.URL;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -13,6 +15,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.Rule;
 import org.openqa.selenium.WebDriver;
+
+import com.deque.axe.AXE;
 
 public class Axe {
 
@@ -83,15 +87,44 @@ public class Axe {
         logger.info("No Violations Found");
       } else {
         logger.info("Test Page: " + methodName);
-        logger.info(AXE.report(violations));  //prints filtered results to console (i.e., violations)
+        logger.info(AXE.report(violations));  
+        String report = AXE.report(violations);
+//        writeReportToFile("axe-report.txt", report);
+        //prints filtered results to console (i.e., violations)
       }
     } catch (Exception e) {
     	 fail("Failed in runAxeTestOfPageLog4jReport");
     }
   }
+  //Shilpa 23.09.2025 axe report
+  public static void appendReportToFile(String filename, String reportContent) {
+	    try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename, true))) { // 'true' for append mode
+	    	
+	        writer.write(reportContent);
+	        writer.newLine();
+	        System.out.println("Appended report to " + filename);
+	    } catch (IOException e) {
+	        System.err.println("Error appending report to file.");
+	        e.printStackTrace();
+	    }
+	}
+  //Shilpa 23.09.2025 axe report
+  public static void createReportsFolder(String folderName) {
+	    File folder = new File(folderName);
+	    if (!folder.exists()) {
+	        boolean created = folder.mkdirs();
+	        if (created) {
+	            System.out.println("Created folder: " + folderName);
+	        } else {
+	            System.err.println("Failed to create folder: " + folderName);
+	        }
+	    } else {
+	        System.out.println("Folder already exists: " + folderName);
+	    }
+	}
 
   /** Method to run Axe core on the page under test - this one does not require passing a logger object. */
-  public void runAxeAccessibilityTestOfPage(WebDriver driver, String methodName) {
+  public void runAxeAccessibilityTestOfPage(WebDriver driver, String methodName,String className) {
     try {
     	
       JSONObject responseJson = new AXE.Builder(driver, scriptUrl).options("{runOnly: [" + wcagStandard + "]}") //sets wcag standard
@@ -104,6 +137,16 @@ public class Axe {
       } else {
         logger.info("Test Page: " + methodName);
         logger.info(AXE.report(violations));  //prints filtered results to console (i.e., violations)
+        //Shilpa 23.09.2025 axe report
+        String report = AXE.report(violations);
+        
+        String reportsDir = "Axe Reports";
+        createReportsFolder(reportsDir);
+
+        String fileName = reportsDir + File.separator + className + "-report.txt";
+        System.out.println(fileName);
+//        clearReportFile(fileName);
+        appendReportToFile(fileName, AXE.report(violations));
       }
     } catch (Exception e) {
     	

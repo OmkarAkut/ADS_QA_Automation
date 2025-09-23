@@ -27,7 +27,7 @@ public class LogInPageAXE extends BeforeAfterStatic {
   public void testLogInPageAccessibilityCheck() throws Throwable {
 	  ExtentReport.reportCreate("LogInPageAXE", "webdriver.globalscripts.accessibilitytests", "LogInPageAXE");
     try {
-		ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName());
+		ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName(), this.getClass().getSimpleName());
 		ExtentReport.logPass("PASS", "testLocalAccessibilityScript");
 	} catch (Exception|AssertionError e) {
 	ExtentReport.logFail("FAIL", "testLocalAccessibilityScript", driver, e);

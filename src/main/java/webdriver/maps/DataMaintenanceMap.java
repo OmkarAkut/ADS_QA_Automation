@@ -845,7 +845,7 @@ public class DataMaintenanceMap extends MapConfig {
     private static WebElement financialRecordsEditBtn;
     public static WebElement getfinancialRecordsEditBtn() {return financialRecordsEditBtn;}
     
-    @FindBy(name = "efrCategoryCode")
+    @FindBy(xpath = "//input[@name='efrCategoryCode']")
     private static WebElement financialRecordsEFR;
     public static WebElement getfinancialRecordsEFR() {return financialRecordsEFR;}
     
@@ -936,4 +936,16 @@ public class DataMaintenanceMap extends MapConfig {
     @FindBy(xpath = "//div[text()='New Actual Charge']//following::div[contains(@id,'toolbar')]//span[text()='Continue']/../../..")
     private static WebElement actualChargeContinue;
     public static WebElement getactualChargeContinue() {return actualChargeContinue;}
+    
+    @FindBy(xpath = "//div[contains(@id,'paymentformpanel')]//following::ul[contains(@id,'dynamiccombo')]")
+    private static WebElement payorList;
+    public static WebElement getpayorList() {return payorList;}
+    
+    @FindBy(xpath = "(//div[contains(@id,'paymentformpanel')]//following::ul[contains(@id,'dynamiccombo')])[2]")
+    private static WebElement payeeList;
+    public static WebElement getpayeeList() {return payeeList;}
+    
+    @FindBy(xpath = "(//div[contains(@id,'paymentformpanel')]//following::ul[contains(@id,'dynamiccombo')])[3]")
+    private static WebElement transTypeList;
+    public static WebElement gettransTypeList() {return transTypeList;}
 }

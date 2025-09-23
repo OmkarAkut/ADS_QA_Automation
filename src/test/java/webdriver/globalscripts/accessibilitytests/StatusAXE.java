@@ -50,7 +50,7 @@ public class StatusAXE extends LoginStatic{
 		try {
 			goToPage("Calculation Status");
 			waitForAjaxExtJs();
-			ax.runAxeAccessibilityTestOfPage(driver,name.getMethodName());
+			ax.runAxeAccessibilityTestOfPage(driver,name.getMethodName(), this.getClass().getSimpleName());
 			doClosePageOnLowerBar("Calculation Status");
 			ExtentReport.logPass("PASS", "testStatusTabCalculationStatusPage");
 		}
@@ -65,7 +65,7 @@ public class StatusAXE extends LoginStatic{
 		try {
 			goToPage("Import/Export Status");
 			waitForAjaxExtJs();
-			ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName());
+			ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName(), this.getClass().getSimpleName());
 			doClosePageOnLowerBar("Import/Export Status");
 			ExtentReport.logPass("PASS", "testStatusTabImportExportStatusPage");  
 		}
@@ -81,7 +81,7 @@ public class StatusAXE extends LoginStatic{
 		try {
 			goToPage("Utility Status");
 			waitForAjaxExtJs();
-			ax.runAxeAccessibilityTestOfPage(driver,name.getMethodName());
+			ax.runAxeAccessibilityTestOfPage(driver,name.getMethodName(), this.getClass().getSimpleName());
 			doClosePageOnLowerBar("Utility Status");
 			ExtentReport.logPass("PASS", "testStatusTabUtilityStatusPage");  
 		}

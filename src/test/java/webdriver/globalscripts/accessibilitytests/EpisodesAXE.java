@@ -58,7 +58,7 @@ public class EpisodesAXE extends LoginStatic {
 		try {
 			goToPage("Episode Models");
 			waitForAjaxExtJs();
-			ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName());
+			ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName(), this.getClass().getSimpleName());
 			doClosePageOnLowerBar("Model Library");
 			ExtentReport.logPass("PASS", "testEpisodeModels");
 		} catch (Exception|AssertionError e) {

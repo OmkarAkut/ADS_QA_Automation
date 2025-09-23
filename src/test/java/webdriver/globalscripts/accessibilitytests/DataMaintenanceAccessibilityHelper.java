@@ -96,7 +96,7 @@ public class DataMaintenanceAccessibilityHelper extends LoginStatic {
           actualText = getElementText(driver.findElement(By.xpath("//div[contains(@class,'areaTitle')]")), false);
         }
         assertThat(actualText, CoreMatchers.equalTo(expectedText));
-        ax.runAxeAccessibilityTestOfPage(driver, expectedText);
+        ax.runAxeAccessibilityTestOfPage(driver, expectedText, this.getClass().getSimpleName());
         //assertFirstRowNumberFromResultsTable(printout);
       } catch (Throwable e) {
         System.out.println("<< FAILED >> on item: " + expectedText);

@@ -54,7 +54,7 @@ public class SystemMaintenanceAXE extends LoginStatic{
 		try {
 			goToPage("Terminal Server Sessions");
 			waitForAjaxExtJs();
-			ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName());
+			ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName(), this.getClass().getSimpleName());
 			doClosePageOnLowerBar("Terminal Server...");
 			ExtentReport.logPass("PASS", "testSystemMaintenanceTabTerminalServerSessionsPage");
 		} catch (Exception|AssertionError e) {
@@ -68,7 +68,7 @@ public class SystemMaintenanceAXE extends LoginStatic{
 		try {
 			goToPage("Customize Task Lists");
 			waitForAjaxExtJs();
-			ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName());
+			ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName(), this.getClass().getSimpleName());
 			doClosePageOnLowerBar("Customize Task Lists");
 			ExtentReport.logPass("PASS", "testSystemMaintenanceTabCustomizeTaskListsPage");
 		} catch (Exception|AssertionError e) {
@@ -83,7 +83,7 @@ public class SystemMaintenanceAXE extends LoginStatic{
 			goToPage("Customize Maintain Data");
 			waitForSpinnerToEnd();
 			waitForAjaxExtJs();
-			ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName());
+			ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName(), this.getClass().getSimpleName());
 			doClosePageOnLowerBar("Customize Maintain Data");
 			ExtentReport.logPass("PASS", "testSystemMaintenanceTabCustomizeMaintainDataPage");
 		} catch (Exception|AssertionError e) {
@@ -97,7 +97,7 @@ public class SystemMaintenanceAXE extends LoginStatic{
 		try {
 			goToPage("General Settings");
 			waitForAjaxExtJs();
-			ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName());
+			ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName(), this.getClass().getSimpleName());
 			doClosePageOnLowerBar("General Settings");
 			ExtentReport.logPass("PASS", "testSystemMaintenanceTabGeneralSettingsPage");
 		} catch (Exception|AssertionError e) {
@@ -111,7 +111,7 @@ public class SystemMaintenanceAXE extends LoginStatic{
 		try {
 			goToPage("Security Settings");
 			waitForAjaxExtJs();
-			ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName());
+			ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName(), this.getClass().getSimpleName());
 			doClosePageOnLowerBar("Security Settings");
 			ExtentReport.logPass("PASS", "testSystemMaintenanceTabSecuritySettingsPage");
 		} catch (Exception|AssertionError e) {
@@ -125,7 +125,7 @@ public class SystemMaintenanceAXE extends LoginStatic{
 		try {
 			goToPage("Roles");
 			waitForAjaxExtJs();
-			ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName());
+			ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName(), this.getClass().getSimpleName());
 			doClosePageOnLowerBar("Roles");
 			ExtentReport.logPass("PASS", "testSystemMaintenanceTabRolesPage");
 		} catch (Exception|AssertionError e) {
@@ -139,7 +139,7 @@ public class SystemMaintenanceAXE extends LoginStatic{
 		try {
 			goToPage("Users");
 			waitForAjaxExtJs();
-			ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName());
+			ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName(), this.getClass().getSimpleName());
 			doClosePageOnLowerBar("Users");
 			ExtentReport.logPass("PASS", "testSystemMaintenanceTabUsersPage");
 		} catch (Exception|AssertionError e) {

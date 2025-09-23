@@ -52,7 +52,7 @@ public class MiscellaneousAXE extends LoginStatic {
 			Thread.sleep(1000);
 			waitForSpinnerToEnd();
 			waitForAjaxExtJs();
-			ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName());
+			ax.runAxeAccessibilityTestOfPage(driver, name.getMethodName(), this.getClass().getSimpleName());
 			ExtentReport.logPass("PASS", "test01LandingPageAccessibilityTest");
 		} catch (Exception|AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01LandingPageAccessibilityTest", driver, e);

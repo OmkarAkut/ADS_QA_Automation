@@ -56,7 +56,7 @@ public class AnalyticsAXE extends LoginStatic{
 		try {
 			goToPage("Analytic Refresh Scenarios");
 			waitForAjaxExtJs();
-			ax.runAxeAccessibilityTestOfPage(driver,name.getMethodName());
+			ax.runAxeAccessibilityTestOfPage(driver,name.getMethodName(), this.getClass().getSimpleName());
 			doClosePageOnLowerBar("Analytic Refresh...");
 			ExtentReport.logPass("PASS", "testAnalyticsTabAnalyticRefreshScenariosPage");
 		}
@@ -73,7 +73,7 @@ public class AnalyticsAXE extends LoginStatic{
 			goToPage("analytic dashboards");
 			waitForAjaxExtJs();
 			String firstHandle = webdriverSwitchToNewWindow(printout);
-			ax.runAxeAccessibilityTestOfPage(driver,name.getMethodName());
+			ax.runAxeAccessibilityTestOfPage(driver,name.getMethodName(), this.getClass().getSimpleName());
 			driver.close();
 			driver.switchTo().window(firstHandle);
 			ExtentReport.logPass("PASS", "analytic dashboards");

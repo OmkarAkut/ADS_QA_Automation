@@ -2,13 +2,15 @@ package webdriver.globalstatic;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
+
+import java.io.File;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.decorators.WebDriverDecorator;
 
 import webdriver.users.Roles;
 import webdriver.users.Users;
@@ -50,6 +52,7 @@ public class LoginStatic extends BeforeAfterStatic {
   }
 
   private static void loginStatic(String username, String password) {
+	 
     try {
       if (printout) {
         System.out.println("Login Username: " + username);
@@ -102,6 +105,7 @@ public class LoginStatic extends BeforeAfterStatic {
       fail("isLoggedIn Failed");
     }
   }
+  
 }
 
 
