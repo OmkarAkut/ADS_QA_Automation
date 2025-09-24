@@ -39,7 +39,7 @@ import webdriver.scripts.datamaintenance.maintaindata.ValidateEncounterTabs;
 	ValidateExpandCollapseFeeForServicePaymentTermsPanel.class,
 	ValidatePayForPricingMethod.class,
 	ValidateDialogBoxForPricingMethods.class,
-	ValidateEncounterTabs.class,
+	
 })
 public class ContractingSuite {
 

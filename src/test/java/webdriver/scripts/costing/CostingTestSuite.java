@@ -4,6 +4,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 import webdriver.scripts.contracting.ValidateDragDropAddNewServiceUnderPricing;
+import webdriver.scripts.datamaintenance.maintaindata.ValidateCodeIsReadonlyUnderAZItems;
 
 
 
@@ -37,6 +38,9 @@ import webdriver.scripts.contracting.ValidateDragDropAddNewServiceUnderPricing;
 	ValidateHelpLinkHideTabRvuMaintenance.class,
 	ValidateOpenTaskList.class,
 	ValidatePaginationOnTheCostingRVUMaintenancepage.class,
+	VerifyStartEndMonthForOHScenario.class,
+	ActivityStatisticMasterEditStatsSave.class,
+	
 	
 })
 

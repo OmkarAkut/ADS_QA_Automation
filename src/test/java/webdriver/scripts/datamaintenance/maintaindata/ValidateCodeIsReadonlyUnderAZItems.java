@@ -91,7 +91,7 @@ public class ValidateCodeIsReadonlyUnderAZItems extends CalculationHelper{
 						System.out.println("Failed at azPage" + aZPages[i]);
 					}
 				}
-				doClick(DataMaintenanceMap.getCancelCloseButton());
+				doClick(DataMaintenanceMap.getpsychCancelCloseBtn());
 			}
 			ExtentReport.logPass("PASS", "test01ValidateCodeIsReadOnly_12918");
 		} catch (Exception | AssertionError e) {

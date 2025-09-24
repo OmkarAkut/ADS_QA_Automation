@@ -583,7 +583,6 @@ public class CostingMap extends MapConfig {
 
 	@FindBy(xpath = "//div[contains(@class,'x-box')]/descendant::*[contains(text(),'Select')][2]")
 	private WebElement unitCostQuickCalculationButtonColumnsToDisplaySelect;
-
 	public WebElement getUnitCostQuickCalculationButtonColumnsToDisplaySelect() {
 		return unitCostQuickCalculationButtonColumnsToDisplaySelect;
 	}
@@ -2609,4 +2608,76 @@ public class CostingMap extends MapConfig {
 	public WebElement getRvuMaintenancePriceDropdownBorder() {
 		return getRvuMaintenancePriceDropdownBorder;
 	}
+	
+	@FindBy(xpath = "//span[text()='Costing']//preceding::div[contains(@class,'x-tree-elbow-img')][1]")
+	private static WebElement costingTreeExpand;
+	public static WebElement getcostingTreeExpand() {return costingTreeExpand;}
+	
+	@FindBy(xpath = "//span[text()='Codes and Hierarchies']//preceding::div[contains(@class,'x-tree-elbow-img')][1]")
+	private static WebElement codesHierarchiesExpand;
+	public static WebElement getcodesHierarchiesExpand() {return codesHierarchiesExpand;}
+	
+	@FindBy(xpath = "//span[text()='Statistics']//preceding::div[contains(@class,'x-tree-elbow-img')][1]")
+	private static WebElement statisticsExpand;
+	public static WebElement getstatisticsExpand() {return statisticsExpand;}
+	
+	@FindBy(xpath = "//span[text()='Statistics']//preceding::div[contains(@class,'x-tree-elbow-img')][1]")
+	private static WebElement statisticsTreeExpand;
+	public static WebElement getstatisticsTreeExpand() {return statisticsTreeExpand;}
+	
+	@FindBy(xpath = "//span[text()='Activity Statistic Masters']")
+	private static WebElement statisticsActivityMaster;
+	public static WebElement getstatisticsActivityMaster() {return statisticsActivityMaster;}
+	
+	@FindBy(xpath = "(//h1[text()='Activity Statistic Masters']//following::span[text()='Filter'])[1]")
+	private static WebElement statisticsActivityMasterFilterBtn;
+	public static WebElement getstatisticsActivityMasterFilterBtn() {return statisticsActivityMasterFilterBtn;}
+	
+	@FindBy(xpath = "(//h1[text()='Activity Statistics']//following::span[text()='Edit'])")
+	private static WebElement activityStatisticsEditBtn;
+	public static WebElement getactivityStatisticsEditBtn() {return activityStatisticsEditBtn;}
+	
+	@FindBy(xpath = "//div[text()='Mappings']//following::span[text()='New']")
+	private static WebElement mappingsNewBtn;
+	public static WebElement getmappingsNewBtn() {return mappingsNewBtn;}
+	
+	@FindBy(xpath = "//div[text()='Mappings']//following::span[text()='Edit']")
+	private static WebElement mappingsEditBtn;
+	public static WebElement getmappingsEditBtn() {return mappingsEditBtn;}
+	
+	@FindBy(xpath = "//div[text()='Mappings']//following::span[text()='Delete']")
+	private static WebElement mappingsDeleteBtn;
+	public static WebElement getmappingsDeleteBtn() {return mappingsDeleteBtn;}
+	
+	@FindBy(xpath = "(//div[text()='Mapping']//following::span[text()='Select'])[1]")
+	private static WebElement deptGroupSelectBtn;
+	public static WebElement getdeptGroupSelectBtn() {return deptGroupSelectBtn;}
+	
+	@FindBy(xpath = "(//div[text()='Mapping']//following::span[text()='Select'])[2]")
+	private static WebElement modifierSelectBtn;
+	public static WebElement getmodifierSelectBtn() {return modifierSelectBtn;}
+	
+	@FindBy(xpath = "//div[text()='New Mapping']//following::span[text()='Save & Close']")
+	private static WebElement newMappingSaveCloseBtn;
+	public static WebElement getnewMappingSaveCloseBtn() {return newMappingSaveCloseBtn;}
+	
+	@FindBy(xpath = "//div[text()='Mapping']//following::span[text()='Save']")
+	private static WebElement mappingSaveBtn;
+	public static WebElement getmappingSaveBtn() {return mappingSaveBtn;}
+	
+	@FindBy(xpath = "//div[text()='Mapping']//following::span[text()='Save & Close']")
+	private static WebElement mappingSaveCloseBtn;
+	public static WebElement getmappingSaveCloseBtn() {return mappingSaveCloseBtn;}
+	
+	@FindBy(xpath = "//div[contains(@id,'activitystatisticspanel')]//following::span[text()='Cancel & Close']")
+	private static WebElement activityStatsCancelClose;
+	public static WebElement getactivityStatsCancelClose() {return activityStatsCancelClose;}
+	
+	@FindBy(xpath = "//div[contains(@id,'masterdetaillist')]//following::span[text()='Cancel & Close']")
+	private static WebElement activityStatsMasterCancelClose;
+	public static WebElement getactivityStatsMasterCancelClose() {return activityStatsMasterCancelClose;}
+	
+	@FindBy(xpath = "//div[text()='Mapping']//following::ul")
+	private static WebElement deptGroupDropdownOptions;
+	public static WebElement getdeptGroupDropdownOptions() {return deptGroupDropdownOptions;}
 }

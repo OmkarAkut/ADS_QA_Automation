@@ -18,6 +18,13 @@ import org.junit.runners.Suite;
 	ValidateIcdDiagnosisGroupsSelectorScreenAfterSave.class,
 	ValidateChangesToTheDepartmentHierarchy.class,
 	ValidateFindMoveToFunctionalityUnderDeptHierarchy.class,
+	ValidateEncounterTabs.class,
+	ValidateIcdDiagnosisGroupsSelectorScreenAfterSave.class,
+	ValidateSaveAgeInDaysGroup.class,
+	ValidateSaveForContractBatch.class,
+	VerifyIsRebillUnderBillTypes.class,
+	AddServiceToEncounterServiceClassificationScheme.class,
+	ValidateCodeIsReadonlyUnderAZItems.class,
 	
 })
 

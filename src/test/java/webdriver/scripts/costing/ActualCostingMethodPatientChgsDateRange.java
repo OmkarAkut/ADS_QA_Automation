@@ -43,7 +43,7 @@ public class ActualCostingMethodPatientChgsDateRange extends CalculationHelper {
 			costing = BuildMap.getInstance(driver, CostingMap.class);
 			contractMap = BuildMap.getInstance(driver, ContractingMap.class);
 			modelMap = BuildMap.getInstance(driver, ModelLibraryMap.class);
-			Login.loginUser("AutomationTesterAdmin");
+			Login.loginUser("CostAnalyst1");
 			goToPage("Costing Models");
 			ExtentReport.logPass("PASS", "setupScript");
 		} catch (Exception | AssertionError e) {

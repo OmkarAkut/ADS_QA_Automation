@@ -24,7 +24,7 @@ public class CostingCalculateOverheadScenario extends CalculationHelper {
 	static String viewLogTitle = "Overhead Model Scenario Calculation";
 //	static String CalculationScenario = "v11.2 REGRESSION OH Scenario";
 	static String CalculationScenario = "V11.2 Overhead Scenario";
-	
+	static String[] filter = { "Name", "Is", "Equal To", CalculationScenario };
 	static String currentDateTime = new SimpleDateFormat("HH.mm.ss").format(new java.util.Date());
 	static ContractingMap modelMap;
 	static String scenarioName;
@@ -62,9 +62,8 @@ public class CostingCalculateOverheadScenario extends CalculationHelper {
 //      tableDoubleClickCellFirstColumn("v102 REGRESSION OH Calc Scenario");
 //      tableDoubleClickCellFirstColumn("OH calculation June 2004");
 
-			tableDoubleClickCellFirstColumn(CalculationScenario);
-			waitForAjaxExtJs();
-			Thread.sleep(1000);
+			doClick(CostingMap.getOverheadModelFilterButton());
+			doFilterCreate(filter);
 			// Omkar (19/7/2022) : The below xpath is no more valid
 			// doClick(driver.findElement(By.xpath("//button/span[text()='Calculate']")));
 			// SHILPA update xpath for 11.2 on 12.01.2023

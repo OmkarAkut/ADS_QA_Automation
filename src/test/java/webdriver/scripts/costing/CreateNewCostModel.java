@@ -314,15 +314,15 @@ public class CreateNewCostModel extends GoHelper {
 	public void test04DeleteNewelyCreatedCostModel_ADS_6633() throws Throwable {
 		try {
 			driverDelay();
-			doClick(modelMap.getContractModelDeleteButton());
-			waitForElementToBeVisible(modelMap.getContractModelDeletePopUp());
-			assertElementIsDisplayed(modelMap.getContractModelDeletePopUp());
-			doClick(modelMap.getContractModelCancelButtonInPopUp());
-			doClick(modelMap.getContractModelDeleteButton());
-			waitForElementToBeVisible(modelMap.getContractModelDeletePopUp());
-			assertElementIsDisplayed(modelMap.getContractModelDeleteButtonInPopUp());
-			assertElementIsDisplayed(modelMap.getContractModelCancelButtonInPopUp());
-			doClick(modelMap.getContractModelDeleteButtonInPopUp());
+			doClick(ContractingMap.getContractModelDeleteButton());
+			waitForElementToBeVisible(ContractingMap.getContractModelDeletePopUp());
+			assertElementIsDisplayed(ContractingMap.getContractModelDeletePopUp());
+			doClick(ContractingMap.getContractModelCancelButtonInPopUp());
+			doClick(ContractingMap.getContractModelDeleteButton());
+			waitForElementToBeVisible(ContractingMap.getContractModelDeletePopUp());
+			assertElementIsDisplayed(ContractingMap.getContractModelDeleteButtonInPopUp());
+			assertElementIsDisplayed(ContractingMap.getContractModelCancelButtonInPopUp());
+			doClick(ContractingMap.getContractModelDeleteButtonInPopUp());
 			driverDelay(200);
 			waitForElementToBeVisible(
 					driver.findElement(By.xpath("//*[text()='There is no data available to display.']")));
@@ -338,7 +338,7 @@ public class CreateNewCostModel extends GoHelper {
 	@Test
 	public void test05CancelButtonInCostModelPopUp_ADS_6633() throws Throwable {
 		try {
-			doClick(modelMap.getNewContractModelButton());
+			doClick(ContractingMap.getNewContractModelButton());
 			waitUntilElementIsVisible(CostingMap.getNewCostModelPopUp());
 			doClick(costing.getCancelCostModel());
 			ExtentReport.logPass("PASS", "test04CancelButtonInCostModelPopUp");
@@ -353,7 +353,7 @@ public class CreateNewCostModel extends GoHelper {
 	@Test
 	public void test06CreateOverheadCostModel_ADS_6641() throws Throwable {
 		try {
-			doClick(modelMap.getNewContractModelButton());
+			doClick(ContractingMap.getNewContractModelButton());
 			waitUntilElementIsVisible(CostingMap.getNewCostModelPopUp());
 			doDropdownSelectUsingOptionText(costing.getModelTypedropdown(), "Overhead");
 			doClick("//div[contains(@id,'dynamicwindow')]//input[@name='name']");
@@ -398,15 +398,15 @@ public class CreateNewCostModel extends GoHelper {
 	@Test
 	public void test08DeleteNewelyCreatedOverheadModel() throws Throwable {
 		try {
-			doClick(modelMap.getContractModelDeleteButton());
-			waitForElementToBeVisible(modelMap.getContractModelDeletePopUp());
-			assertElementIsDisplayed(modelMap.getContractModelDeletePopUp());
-			doClick(modelMap.getContractModelCancelButtonInPopUp());
-			doClick(modelMap.getContractModelDeleteButton());
-			waitForElementToBeVisible(modelMap.getContractModelDeletePopUp());
-			assertElementIsDisplayed(modelMap.getContractModelDeleteButtonInPopUp());
-			assertElementIsDisplayed(modelMap.getContractModelCancelButtonInPopUp());
-			doClick(modelMap.getContractModelDeleteButtonInPopUp());
+			doClick(ContractingMap.getContractModelDeleteButton());
+			waitForElementToBeVisible(ContractingMap.getContractModelDeletePopUp());
+			assertElementIsDisplayed(ContractingMap.getContractModelDeletePopUp());
+			doClick(ContractingMap.getContractModelCancelButtonInPopUp());
+			doClick(ContractingMap.getContractModelDeleteButton());
+			waitForElementToBeVisible(ContractingMap.getContractModelDeletePopUp());
+			assertElementIsDisplayed(ContractingMap.getContractModelDeleteButtonInPopUp());
+			assertElementIsDisplayed(ContractingMap.getContractModelCancelButtonInPopUp());
+			doClick(ContractingMap.getContractModelDeleteButtonInPopUp());
 			driverDelay(200);
 			waitForElementToBeVisible(
 					driver.findElement(By.xpath("//*[text()='There is no data available to display.']")));
