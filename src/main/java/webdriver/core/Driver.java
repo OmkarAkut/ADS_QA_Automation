@@ -227,6 +227,7 @@ public class Driver {
 //		  options.addArguments("--disable-mobile-upload");
 			options.addArguments("--remote-allow-origins=*");
 			options.addArguments("--ignore-certificate-errors", "start-maximized");
+			  options.addArguments("--disable-features=ClipboardRead,ClipboardWrite");
 			driver = new EdgeDriver(options);
 			options.addArguments("--disable-mobile-upload");
 			} else {
@@ -279,6 +280,7 @@ public class Driver {
 				options.setExperimentalOption("prefs", chromePrefs);
 				options.addArguments("--ignore-certificate-errors", "start-maximized");
 				options.addArguments("--remote-allow-origins=*");
+				  options.addArguments("--disable-features=ClipboardRead,ClipboardWrite");
 				driver = new ChromeDriver(options);
 				// Clear browser cache
 				driver.manage().deleteAllCookies();
@@ -298,6 +300,7 @@ public class Driver {
 //			  options.addArguments("--disable-mobile-upload");
 				options.addArguments("--remote-allow-origins=*");
 				options.addArguments("--ignore-certificate-errors", "start-maximized");
+				  options.addArguments("--disable-features=ClipboardRead,ClipboardWrite");
 				driver = new EdgeDriver(options);
 				options.addArguments("--disable-mobile-upload");
 			} else {
@@ -332,6 +335,7 @@ public class Driver {
 				options.setExperimentalOption("prefs", chromePrefs);
 				options.addArguments("--ignore-certificate-errors", "start-maximized");
 				options.addArguments("--remote-allow-origins=*");
+				  options.addArguments("--disable-features=ClipboardRead,ClipboardWrite");
 				driver = new ChromeDriver(options);
 				// Clear browser cache
 				driver.manage().deleteAllCookies();

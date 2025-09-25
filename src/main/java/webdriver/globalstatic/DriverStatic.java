@@ -71,6 +71,7 @@ public class DriverStatic extends SetupStatic {
 //				ChromeOptions options = new ChromeOptions();
 				options.addArguments("--ignore-certificate-errors", "start-maximized");
 				options.addArguments("--remote-allow-origins=*");
+				  options.addArguments("--disable-features=ClipboardRead,ClipboardWrite");
 				driver = new ChromeDriver(options);
 			} else if (browser.equals("firefox")) {
 				driver = new FirefoxDriver();
@@ -95,6 +96,7 @@ public class DriverStatic extends SetupStatic {
 //			  options.addArguments("--disable-mobile-upload");
 				options.addArguments("--remote-allow-origins=*");
 				options.addArguments("--ignore-certificate-errors", "start-maximized");
+				  options.addArguments("--disable-features=ClipboardRead,ClipboardWrite");
 				driver = new EdgeDriver(options);
 				options.addArguments("--disable-mobile-upload");
 			} else {

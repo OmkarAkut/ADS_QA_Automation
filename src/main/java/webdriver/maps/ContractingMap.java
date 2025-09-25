@@ -1383,5 +1383,19 @@ public class ContractingMap extends MapConfig {
 	private static WebElement warningDeleteBtn;
 	public static WebElement getwarningDeleteBtn() {return warningDeleteBtn;}
 	
+	@FindBy(xpath = "//div[contains(@id,'alliancecopypastepanel')]//following::div[@class='x-grid-item-container']//table//tr//td[3]//div")
+	private static List<WebElement> pricingTableList;
+	public static List<WebElement> getpricingTableList() {return pricingTableList;}
 	
+	@FindBy(xpath = "(//div[contains(@id,'alliancecopypastepanel')]//following::div[@class='x-grid-item-container']//table)//tr//td[1]//div")
+	private static List<WebElement> pricingTableCopyRowList;
+	public static List<WebElement> getpricingTableCopyRowList() {return pricingTableCopyRowList;}
+	
+	@FindBy(xpath = "//div[contains(@class,'x-boundlist-list-ct')]/ul/li[text()='Case Rate']")
+	private static WebElement pricingMethodCaseRate;
+	public static WebElement getpricingMethodCaseRate() {return pricingMethodCaseRate;}
+	
+	@FindBy(xpath = "//div[contains(@class,'x-boundlist-list-ct')]/ul/li[text()='Case Rate Based on Length of Stay']")
+	private static WebElement pricingMethodCaseRateLengthStay;
+	public static WebElement getpricingMethodCaseRateLengthStay() {return pricingMethodCaseRateLengthStay;}
 }
