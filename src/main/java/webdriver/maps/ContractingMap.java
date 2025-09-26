@@ -1398,4 +1398,60 @@ public class ContractingMap extends MapConfig {
 	@FindBy(xpath = "//div[contains(@class,'x-boundlist-list-ct')]/ul/li[text()='Case Rate Based on Length of Stay']")
 	private static WebElement pricingMethodCaseRateLengthStay;
 	public static WebElement getpricingMethodCaseRateLengthStay() {return pricingMethodCaseRateLengthStay;}
+	
+	@FindBy(name = "levelOfCareTableId")
+	private static WebElement levelOfCareBtn;
+	public static WebElement getlevelOfCareBtn() {return levelOfCareBtn;}
+	
+	@FindBy(xpath = "//div[contains(@class,'x-boundlist-list-ct')]/ul/li[text()='Level of Care']")
+	private static WebElement pricingMethodLevelOfCare;
+	public static WebElement getpricingMethodLevelOfCare() {return pricingMethodLevelOfCare;}
+	
+	@FindBy(xpath = "//div[contains(@class,'x-boundlist-list-ct')]/ul/li[text()='Medicare/Commercial ASC']")
+	private static WebElement pricingMethodMediCommAsc;
+	public static WebElement getpricingMethodMediCommAsc() {return pricingMethodMediCommAsc;}
+	
+	@FindBy(name = "ascSchemeId")
+	private static WebElement ascSchemeBtn;
+	public static WebElement getascSchemeBtn() {return ascSchemeBtn;}
+	
+	@FindBy(xpath = "(//span[text()='ASC Scheme']//following::ul)")
+	private static WebElement ascSchemeDrpdwn;
+	public static WebElement getascSchemeDrpdwn() {return ascSchemeDrpdwn;}
+	
+	@FindBy(xpath = "(//div[contains(@id,'alliancecopypastepanel')]//following::div[@class='x-grid-item-container'])[1]//table//td[1]//div")
+	private static List<WebElement> ascSchemeList;
+	public static List<WebElement> getascSchemeList() {return ascSchemeList;}
+	
+	@FindBy(xpath = "//div[contains(@id,'alliancecopypastepanel')]//following::div[@class='x-grid-item-container']//table//tr//td[4]//div")
+	private static List<WebElement> ascRateTableList;
+	public static List<WebElement> getascRateTableList() {return ascRateTableList;}
+	
+	@FindBy(xpath = "//div[contains(@class,'x-boundlist-list-ct')]/ul/li[text()='Percent of Charge']")
+	private static WebElement pricingMethodPercentOfCharge;
+	public static WebElement getpricingMethodPercentOfCharge() {return pricingMethodPercentOfCharge;}
+	
+	@FindBy(xpath = "//div[contains(@class,'x-boundlist-list-ct')]/ul/li[text()='Departmental Per Diem']")
+	private static WebElement pricingMethodDeptPerDiem;
+	public static WebElement getpricingMethodDeptPerDiem() {return pricingMethodDeptPerDiem;}
+	
+	@FindBy(xpath = "//div[contains(@class,'x-boundlist-list-ct')]/ul/li[text()='Departmental Per Diem By Day of Stay']")
+	private static WebElement pricingMethodDeptPerDiemDayStay;
+	public static WebElement getpricingMethodDeptPerDiemDayStay() {return pricingMethodDeptPerDiemDayStay;}
+	
+	@FindBy(xpath = "//div[contains(@class,'x-boundlist-list-ct')]/ul/li[text()='Per Diem']")
+	private static WebElement pricingMethodPerDiem;
+	public static WebElement getpricingMethodPerDiem() {return pricingMethodPerDiem;}
+	
+	@FindBy(xpath = "//div[contains(@id,'alliancecopypastepanel')]//following::div[@class='x-grid-item-container']//table//tr//td[3]//div")
+	private static List<WebElement> deptPerDiemRateTableList;
+	public static List<WebElement> getdeptPerDiemRateTableList() {return deptPerDiemRateTableList;}
+	
+	@FindBy(xpath = "//div[contains(@class,'x-boundlist-list-ct')]/ul/li[text()='Rate Per Procedure']")
+	private static WebElement pricingMethodRatePerProc;
+	public static WebElement getpricingMethodRatePerProc() {return pricingMethodRatePerProc;}
+	
+	@FindBy(xpath = "(//label[contains(text(),'Services ')]//following::div[contains(@class,'x-grid-cell-inner ')])[1]")
+	private static WebElement selectService;
+	public static WebElement getselectServiceForContractModel() {return selectService;}
 }

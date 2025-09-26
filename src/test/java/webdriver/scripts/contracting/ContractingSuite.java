@@ -2,7 +2,6 @@ package webdriver.scripts.contracting;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
-import webdriver.scripts.datamaintenance.maintaindata.ValidateEncounterTabs;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
