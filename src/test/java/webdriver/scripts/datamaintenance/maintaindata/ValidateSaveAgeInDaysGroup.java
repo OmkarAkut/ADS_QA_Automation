@@ -14,6 +14,7 @@ import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.helpers.CalculationHelper;
 import webdriver.helpers.ContractModelsHelper;
+import webdriver.maps.ContractingMap;
 import webdriver.maps.DataMaintenanceMap;
 import webdriver.maps.mapbuilder.BuildMap;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -24,6 +25,7 @@ public class ValidateSaveAgeInDaysGroup extends CalculationHelper{
 	static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
 	static String ageInDaysGroups = "Group " + currentDateTime;
 	static String[] filter = { "Name", "Is", "Equal To", ageInDaysGroups };
+	static ContractingMap contract;
 
 	String[] columns = { "1", "2"};
 	@BeforeClass
@@ -32,6 +34,7 @@ public class ValidateSaveAgeInDaysGroup extends CalculationHelper{
 				"ValidateSaveAgeInDaysGroup");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);
+			contract=BuildMap.getInstance(driver,ContractingMap.class);
 			Login.loginUser("ContractAnalyst1");
 			goToPage("Maintain Data");
 			selectMaintainDataAtoZ(aTozPageAgeGroup);

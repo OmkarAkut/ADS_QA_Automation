@@ -2680,4 +2680,24 @@ public class CostingMap extends MapConfig {
 	@FindBy(xpath = "//div[text()='Mapping']//following::ul")
 	private static WebElement deptGroupDropdownOptions;
 	public static WebElement getdeptGroupDropdownOptions() {return deptGroupDropdownOptions;}
+	
+	@FindBy(xpath = "(//div[(text()='Activity Volume Data Scenarios')]//following::Span[text()='Delete'])[1]")
+	private static WebElement activityVolDataDeleteBtn;
+	public static WebElement getactivityVolDataDeleteBtn() {return activityVolDataDeleteBtn;}
+	
+	@FindBy(xpath = "(//div[contains(@id,'activityvolumedatagrid')]//following::table//tr[1]//td[1]/div)[1]")
+	private static WebElement activityVolDataGrid;
+	public static WebElement getactivityVolDataGrid() {return activityVolDataGrid;}
+	
+	@FindBy(xpath = "//div[contains(@id,'activityvolumedatagrid')]//following::span[text()='Delete']")
+	private static WebElement activityVolDataGridDeleteBtn;
+	public static WebElement getactivityVolDataGridDeleteBtn() {return activityVolDataGridDeleteBtn;}
+	
+	@FindBy(xpath = "(//*[text()='There is no data available to display'])[1]")
+	private static List<WebElement> noDataText;
+	public static List<WebElement> getnoDataText() {return noDataText;}
+	
+	@FindBy(xpath = "(//label[text()='Include Acquisition Costs']//following::ul)[8]")
+	private static WebElement acquisitionCostDrp;
+	public static WebElement getacquisitionCostDrp() {return acquisitionCostDrp;}
 }

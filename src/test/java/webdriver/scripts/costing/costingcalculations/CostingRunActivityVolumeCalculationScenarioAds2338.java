@@ -10,6 +10,7 @@ import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
+import org.openqa.selenium.By;
 
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
@@ -17,6 +18,7 @@ import webdriver.helpers.CalculationHelper;
 import webdriver.helpers.ContractModelsHelper;
 import webdriver.maps.ContractingMap;
 import webdriver.maps.CostingMap;
+import webdriver.maps.DataMaintenanceMap;
 import webdriver.maps.mapbuilder.BuildMap;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -28,7 +30,6 @@ public class CostingRunActivityVolumeCalculationScenarioAds2338 extends Calculat
 	String activityVolumeDataCalculationScenario = "v105 REGRESSION Act Vol Calc Scenario";
 	String[] filterVolScenario = { "Name", "Is", "Equal To", activityVolumeDataCalculationScenario };
 	String[] filterCheckVolScenario = { "Name", "Is", "Equal To", activityVolumeSaveDataScenario };
-	private final String expectedFilterTotal = "232";
 	static String currentDateTime = new SimpleDateFormat("MM.HH.ss").format(new java.util.Date());
 	static String Code = currentDateTime.replaceAll("\\W", "");
 	String[] filterScenario = { "Name", "Is", "Equal To", scenarioName };
@@ -40,9 +41,10 @@ public class CostingRunActivityVolumeCalculationScenarioAds2338 extends Calculat
 	private static String endMonth="Feb 2017";
 	private static int activityVolDeptCount=17;
 	private static String chargeCodes="<ALL>";
+	int maxCount=140;
 	static String[] calcfilter= {"Scenario Name","Is","Equal To",activityVolumeSaveDataScenario};
 //  private final String expectedFilterTotal = "74";
-	/** Regression: Test script for ADS-5990, incomplete steps need to be added  */
+	/** Regression: Test script for ADS-5990, customer issue ADS-21360 */
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
 		ExtentReport.reportCreate("CostingRunActivityVolumeCalculationScenarioAds2338",
@@ -147,8 +149,15 @@ public class CostingRunActivityVolumeCalculationScenarioAds2338 extends Calculat
 			waitForAjaxExtJs();
 			assertTextIsDisplayed("Filter to Match These Criteria 68/68");
 			doClick(CostingMap.getActivityVolDataCloseFilter());
+			for(int i=1;i<=maxCount;i++) {
+				scrollToView(CostingMap.getactivityVolDataGrid());
+				doClick(CostingMap.getactivityVolDataGridDeleteBtn());
+				doClick(costMap.getcostModelScenarioCalculationButtonWarningDelete());
+				if(CostingMap.getnoDataText().size()==1) {
+					break;
+				}
+			}
 			doClick(CostingMap.getActivityVolDataCancelClose());
-			
 			ExtentReport.logPass("PASS", "test03AssertActivityVolumeDataScenarioFilterResultsMatchExpected");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test03AssertActivityVolumeDataScenarioFilterResultsMatchExpected",
@@ -187,7 +196,22 @@ public class CostingRunActivityVolumeCalculationScenarioAds2338 extends Calculat
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test04AssertActivityVolumeDataCalculationScenario", driver, e);
 			fail(e.getMessage());
-
+		}
+	}
+	@Test
+	public void test05DeleteActivityVolumeDataScenario_ADS_21360()
+			throws InterruptedException, Throwable {
+		try {
+			doClick("(//div[contains(@class,'x-grid-cell-inner')]//span[text()='Activity Volume Data Scenarios'])[2]");
+			doClick(CostingMap.getActivityVolFilter());
+			doFilterCreate(filterScenario);
+			doClick(CostingMap.getactivityVolDataDeleteBtn());
+			doClick(costMap.getcostModelScenarioCalculationButtonWarningDelete());
+			doClosePageOnLowerBar(costModel);
+			ExtentReport.logPass("PASS", "test05DeleteActivityVolumeDataScenario_ADS_21360");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test05DeleteActivityVolumeDataScenario_ADS_21360", driver, e);
+			fail(e.getMessage());
 		}
 	}
 	 @AfterClass

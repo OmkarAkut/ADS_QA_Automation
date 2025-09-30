@@ -23,7 +23,7 @@ public class CreateANewContractModel extends CalculationHelper {
 
 	private static ContractingMap modelMap;
 	static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
-	static String contractModelName = "Contract Model" + currentDateTime;
+	 static String contractModelName = "Contract Model" + currentDateTime;
 	ContractModelsHelper contractModelsHelper = new ContractModelsHelper();
 	private static final String serviceName = "CM IPPS 2021";
 	private static final String serviceModel = "CM IPPS 2021";
@@ -55,29 +55,46 @@ public class CreateANewContractModel extends CalculationHelper {
 		}
 	}
 
+	public void createContractModel(String contractModelName) throws Throwable, Throwable {
+		doClick(ContractingMap.getNewContractModelButton());
+		waitForElementToBeVisible(ContractingMap.getNewContractModelPopUp());
+		assertElementIsDisplayed(ContractingMap.getNewContractModelPopUp());// assert contract model pop up
+		doClick(ContractingMap.getContractModelNameInput());
+		ContractingMap.getContractModelNameInput().sendKeys(contractModelName);
+		doClick(ContractingMap.getContractModelAddProviderBtn());
+		waitForElementToBeVisible(ContractingMap.getContractModelAddProviderPopup());
+		ContractModelsHelper.selectMultipleColumnsToDisplay(columnsToSelect);
+		contractModelsHelper.removeMultipleColumnsToDisplay(columnsToRemove);
+		doClick(ContractingMap.getApplySelections());
+		waitForElementToBeVisible(ContractingMap.getNewContractModelPopUp());
+		// Validate model name and providers
+		assertElementIsDisplayedWithXpath("//div[contains(@class,'contractFrmCls')]//ul/li[contains(text(),'"+addProvider+"')]");
+//		assertElementTextContains(ContractingMap.getProviderText(), addProvider, printout);
+		doClick(ContractingMap.getSaveContractModel());
+		goToPage("Contract Models");
+		doSearchForContractModel(contractModelName);
+		driverDelay(2000);
+		assertTextIsDisplayed(contractModelName);
+	}
+	public void deleteContractmodel() throws Throwable {
+		doClick(ContractingMap.getContractModelDeleteButton());
+		waitForElementToBeVisible(ContractingMap.getContractModelDeletePopUp());
+		assertElementIsDisplayed(ContractingMap.getContractModelDeletePopUp());
+		doClick(ContractingMap.getContractModelCancelButtonInPopUp());
+		doClick(ContractingMap.getContractModelDeleteButton());
+		waitForElementToBeVisible(ContractingMap.getContractModelDeletePopUp());
+		assertElementIsDisplayed(ContractingMap.getContractModelDeleteButtonInPopUp());
+		assertElementIsDisplayed(ContractingMap.getContractModelCancelButtonInPopUp());
+		doClick(ContractingMap.getContractModelDeleteButtonInPopUp());
+		waitForElementToBeVisible(driver.findElement(By.xpath("//*[text()='There is no data available to display.']")));
+		assertTextIsDisplayed("There is no data available to display.");
+		
+	}
 	/**Test - UI Validation [Contracting] â€œCreate a New Contract Model ADS-6413 **/
 	@Test
 	public void test01CreateNewContractModel_6413() throws Throwable {
 		try {
-			doClick(ContractingMap.getNewContractModelButton());
-			waitForElementToBeVisible(ContractingMap.getNewContractModelPopUp());
-			assertElementIsDisplayed(ContractingMap.getNewContractModelPopUp());// assert contract model pop up
-			doClick(ContractingMap.getContractModelNameInput());
-			ContractingMap.getContractModelNameInput().sendKeys(contractModelName);
-			doClick(ContractingMap.getContractModelAddProviderBtn());
-			waitForElementToBeVisible(ContractingMap.getContractModelAddProviderPopup());
-			ContractModelsHelper.selectMultipleColumnsToDisplay(columnsToSelect);
-			contractModelsHelper.removeMultipleColumnsToDisplay(columnsToRemove);
-			doClick(ContractingMap.getApplySelections());
-			waitForElementToBeVisible(ContractingMap.getNewContractModelPopUp());
-			// Validate model name and providers
-			assertElementIsDisplayedWithXpath("//div[contains(@class,'contractFrmCls')]//ul/li[contains(text(),'"+addProvider+"')]");
-//			assertElementTextContains(ContractingMap.getProviderText(), addProvider, printout);
-			doClick(ContractingMap.getSaveContractModel());
-			goToPage("Contract Models");
-			doSearchForContractModel(contractModelName);
-			driverDelay(2000);
-			assertTextIsDisplayed(contractModelName);
+			createContractModel(contractModelName);
 			ExtentReport.logPass("PASS", "test01CreateNewContractModel");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01CreateNewContractModel", driver, e);
@@ -111,17 +128,7 @@ public class CreateANewContractModel extends CalculationHelper {
 	public void test02DeleteContractModel_ADS6435_ADS6412() throws Throwable {
 	
 		try {
-			doClick(ContractingMap.getContractModelDeleteButton());
-			waitForElementToBeVisible(ContractingMap.getContractModelDeletePopUp());
-			assertElementIsDisplayed(ContractingMap.getContractModelDeletePopUp());
-			doClick(ContractingMap.getContractModelCancelButtonInPopUp());
-			doClick(ContractingMap.getContractModelDeleteButton());
-			waitForElementToBeVisible(ContractingMap.getContractModelDeletePopUp());
-			assertElementIsDisplayed(ContractingMap.getContractModelDeleteButtonInPopUp());
-			assertElementIsDisplayed(ContractingMap.getContractModelCancelButtonInPopUp());
-			doClick(ContractingMap.getContractModelDeleteButtonInPopUp());
-			waitForElementToBeVisible(driver.findElement(By.xpath("//*[text()='There is no data available to display.']")));
-			assertTextIsDisplayed("There is no data available to display.");
+			deleteContractmodel();
 			doClosePageOnLowerBar("Contract Models");
 			ExtentReport.logPass("PASS", "test02DeleteContractModel");
 		} catch (Exception | AssertionError e) {

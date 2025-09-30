@@ -212,9 +212,7 @@ public class Driver {
 		if (System.getProperty("os.name").toLowerCase().contains("windows")) {
 			if (browser.equals("chrome") || browser.contains("headless")) {
 				WebDriverManager.chromedriver().setup();
-				System.setProperty("webdriver.chrome.driver", drivers + chromeDriver + ".exe");
-				System.setProperty("webdriver.chrome.silentOutput", "true"); // chromedriver logging to console
-			} else if (browser.equals("ie")) {
+				} else if (browser.equals("ie")) {
 				System.setProperty("webdriver.ie.driver", drivers + ieDriverServer + ".exe");
 			} else if (browser.equals("firefox")) {
 				System.setProperty("webdriver.firefox.driver", drivers + geckoDriver + ".exe");
@@ -224,7 +222,6 @@ public class Driver {
 				System.setProperty("wdm.edgeDriverUrl", "https://msedgedriver.microsoft.com/");
 			WebDriverManager.edgedriver().setup();
 			EdgeOptions options = new EdgeOptions();
-//		  options.addArguments("--disable-mobile-upload");
 			options.addArguments("--remote-allow-origins=*");
 			options.addArguments("--ignore-certificate-errors", "start-maximized");
 			  options.addArguments("--disable-features=ClipboardRead,ClipboardWrite");
@@ -235,9 +232,13 @@ public class Driver {
 			}
 		} else {
 			if (browser.equals("chrome") || browser.contains("headless")) {
-				WebDriverManager.chromedriver().setup();
-				System.out.println(drivers + " " + chromeDriver);
-				System.setProperty("webdriver.chrome.driver", drivers + chromeDriver);
+				 WebDriverManager.chromedriver().setup();
+
+			        ChromeOptions options = new ChromeOptions();
+			        options.addArguments("--remote-allow-origins=*");
+
+			        driver = new ChromeDriver(options);
+				
 				System.setProperty("webdriver.chrome.silentOutput", "true"); // chromedriver logging to console
 			} else if (browser.equals("ie")) {
 				System.setProperty("webdriver.ie.driver", drivers + ieDriverServer);
@@ -268,6 +269,7 @@ public class Driver {
 				WebDriverManager.chromedriver().setup();
 				ChromeOptions options = new ChromeOptions();
 				options.addArguments("--window-size=1920,1080", "--ignore-certificate-errors", "--headless");
+				 options.addArguments("--remote-allow-origins=*");
 				driver = new ChromeDriver(options);
 			} else if (browser.equals("chrome")) {
 				WebDriverManager.chromedriver().setup();
@@ -314,15 +316,9 @@ public class Driver {
 				WebDriverManager.chromedriver().setup();
 				ChromeOptions options = new ChromeOptions();
 			
-				final Map<String, Object> chromePrefs = new HashMap<>();
-				// Shilpa : Below lines to disable password pop up 4.14.2025
-				chromePrefs.put("credentials_enable_service", false);
-				chromePrefs.put("profile.password_manager_enabled", false);
-				chromePrefs.put("profile.password_manager_leak_detection", false);
-				options.setExperimentalOption("prefs", chromePrefs);
-				options.addArguments("--ignore-certificate-errors", "start-maximized");
 				options.addArguments("--remote-allow-origins=*");
 				options.addArguments("--window-size=1920,1080", "--ignore-certificate-errors", "--headless");
+				
 				driver = new ChromeDriver(options);
 			} else if (browser.equals("chrome")) {
 				WebDriverManager.chromedriver().setup();

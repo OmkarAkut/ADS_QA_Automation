@@ -27,8 +27,8 @@ import webdriver.maps.mapbuilder.BuildMap;
 public class CopyPricingTables extends GoHelper {
 	private static ContractingMap modelMap;
 	static String modelName;
-	static String contractModelName;
-	static String currentDateTime = new SimpleDateFormat("HH.mm.ss").format(new java.util.Date());
+	static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
+	static String contractModelName = "Contract Model" + currentDateTime;
 	static ContractModelsHelper contractModelsHelper = new ContractModelsHelper();
 	CreateANewContractModel model = new CreateANewContractModel();
 	static String existServiceName;
@@ -64,13 +64,12 @@ public class CopyPricingTables extends GoHelper {
 	@Test
 	public void test01AddService_12496() throws Throwable {
 		try {
-			model.test01CreateNewContractModel_6413();
-			contractModelName = CreateANewContractModel.contractModelName;
+			model.createContractModel(contractModelName);
 			ValidateDragDropAddNewServiceUnderPricing.searchContractModelOpenTaskList(contractModelName);
 			existServiceName = ContractingMap.getselectServiceForContractModel().getText();
 			ValidateDragDropAddNewServiceUnderPricing.dragAndDropServiceForNewContractModel();
 			WebElement sourceAfter = driver.findElement(By.xpath("(//span[text()='" + existServiceName + "'])[1]"));
-			WebElement targetAfter = driver.findElement(By.xpath("(//div[@class='x-grid-item-container'])[4]"));
+			WebElement targetAfter = ContractingMap.getserviceModelNode();
 			CimHelper.dragAndDrop(sourceAfter, targetAfter);
 
 			ExtentReport.logPass("PASS", "test01AddService_12496");

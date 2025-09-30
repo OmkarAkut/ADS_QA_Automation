@@ -38,7 +38,7 @@ import org.junit.runners.Suite;
 	ValidateExpandCollapseFeeForServicePaymentTermsPanel.class,
 	ValidatePayForPricingMethod.class,
 	ValidateDialogBoxForPricingMethods.class,
-	
+	CopyPricingTables.class,
 })
 public class ContractingSuite {
 

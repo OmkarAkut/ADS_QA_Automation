@@ -838,9 +838,10 @@ public class CimHelper extends CalculationHelper {
 
 	}
 
-	public static void dragAndDrop(WebElement source,WebElement target) {
+	public static void dragAndDrop(WebElement source,WebElement target) throws Throwable {
 		Actions builder = new Actions(driver);
-		 source.click();
+		source.click();
+		driverDelay();
         Action dragAndDrop = builder.clickAndHold(source)
         		.moveToElement(target)
         		.release(target).pause(500)

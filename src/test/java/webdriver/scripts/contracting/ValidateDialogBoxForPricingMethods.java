@@ -19,7 +19,7 @@ import webdriver.maps.mapbuilder.BuildMap;
 public class ValidateDialogBoxForPricingMethods extends GoHelper{
 	private static ContractingMap modelMap;
 	static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
-	static String contractModelName;
+	static String contractModelName = "Contract Model" + currentDateTime;
 	static String serviceName = "SERVICE " + currentDateTime;
 	static String serviceModelExist;
 	static String serviceModelNew;
@@ -156,8 +156,7 @@ public class ValidateDialogBoxForPricingMethods extends GoHelper{
 	@Test
 	public void test02ValidatePricingMetodDialogBoxForNewContractModel_ADS_12500() throws Throwable {
 		try {
-			model.test01CreateNewContractModel_6413();
-			contractModelName=CreateANewContractModel.contractModelName;
+			model.createContractModel(contractModelName);
 			ValidateDragDropAddNewServiceUnderPricing.searchContractModelOpenTaskList(contractModelName);
 			 serviceModelNew=driver.findElement(By.xpath("(//div[contains(@class,'glAccountsGrid ')]//table//div)[1]")).getText();
 			 ValidateDragDropAddNewServiceUnderPricing.dragAndDropServiceForNewContractModel();

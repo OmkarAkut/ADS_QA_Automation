@@ -86,6 +86,43 @@ public class UtilitiesPageHelper extends LoginStatic {
 		Thread.sleep(1000);
 		deleteUtilityStatusPageMyStatusFirstRow();
 	}
+	public void deleteReport(String startDate, String endDate) throws InterruptedException {
+		waitForAjaxExtJs();
+		waitForElementToBeVisible(driver.findElement(By.name("startDate1")));
+		try {
+			driver.findElement(By.name("startDate1")).click();
+			Thread.sleep(200);
+			driver.findElement(By.name("startDate1")).clear();
+			Thread.sleep(200);
+			driver.findElement(By.name("startDate1")).sendKeys(Keys.chord(Keys.CONTROL, "a"));
+			driver.findElement(By.name("startDate1")).sendKeys(startDate);
+			Thread.sleep(200);
+			driver.findElement(By.name("endDate1")).click();
+			driver.findElement(By.name("endDate1")).clear();
+			driver.findElement(By.name("endDate1")).sendKeys(endDate);
+		} catch (Exception e) {
+			ExtentReport.extenttest.log(Status.FAIL, "Element not Found");
+
+			ExtentReport.extenttest.log(Status.INFO, e);
+		}
+		waitForAjaxExtJs();
+
+		waitForElementToBeVisible(driver.findElement(By.xpath("//span[text()='Delete']")));
+		try {
+			driver.findElement(By.xpath("//span[text()='Delete']")).click();
+			doClick("//div[contains(@id,'messagebox')]//span[text()='Delete']");
+		}catch (Exception e) {
+			ExtentReport.extenttest.log(Status.FAIL, "Element not Found");
+
+			ExtentReport.extenttest.log(Status.INFO, e);
+		}
+		waitForSpinnerToEnd();
+		waitForUtilityFirstRowDownloadLinkToBecomeActive();
+		driverDelay(1200);
+		driver.findElement(By.xpath("(//table/tbody/tr[1]/td)[5]/div")).click();
+		Thread.sleep(1000);
+		deleteUtilityStatusPageMyStatusFirstRow();
+	}
 
 	public static void failIfHeadless(String browser) {
 		if (browser.toLowerCase().contains("headless")) {

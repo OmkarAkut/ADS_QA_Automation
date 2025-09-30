@@ -21,7 +21,7 @@ public class ValidatePayForPricingMethod extends GoHelper {
 	private static ContractingMap modelMap;
 	CreateANewContractModel model = new CreateANewContractModel();
 	static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
-	static String contractModelName;
+	 static String contractModelName = "Contract Model" + currentDateTime;
 	static String serviceModelNew;
 	static String priceMethodOption = "AP DRG Fee Schedule";
 	static String pay = "30";
@@ -47,8 +47,7 @@ public class ValidatePayForPricingMethod extends GoHelper {
 	@Test
 	public void test01ValidatePaySavedForPricingMethod_ADS_12536() throws Throwable {
 		try {
-			model.test01CreateNewContractModel_6413();
-			contractModelName = CreateANewContractModel.contractModelName;
+			model.createContractModel(contractModelName);
 			ValidateDragDropAddNewServiceUnderPricing.searchContractModelOpenTaskList(contractModelName);
 			serviceModelNew = driver.findElement(By.xpath("(//div[contains(@class,'glAccountsGrid ')]//table//div)[1]"))
 					.getText();
@@ -68,7 +67,7 @@ public class ValidatePayForPricingMethod extends GoHelper {
 			doClick(ContractingMap.SaveOption());
 			doClick(modelMap.getContractModelContinue());
 			doClick("(//div[contains(@class,'x-tree-view')])[4]//span[text()='" + serviceModelNew + "']");
-			assertElementValueAttributeContains(driver.findElement(By.name("pay")), pay, printout);
+			assertElementValueAttributeContains(driver.findElement(By.name("pay")), pay, printout);//fails becoz of ADS-23305
 
 			ExtentReport.logPass("PASS", "test01ValidatePaySavedForPricingMethod_ADS_12536");
 		} catch (Exception | AssertionError e) {

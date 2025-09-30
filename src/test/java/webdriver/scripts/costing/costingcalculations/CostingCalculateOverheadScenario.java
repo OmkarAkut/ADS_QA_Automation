@@ -27,6 +27,7 @@ public class CostingCalculateOverheadScenario extends CalculationHelper {
 	static String[] filter = { "Name", "Is", "Equal To", CalculationScenario };
 	static String currentDateTime = new SimpleDateFormat("HH.mm.ss").format(new java.util.Date());
 	static ContractingMap modelMap;
+	static CostingMap costing;
 	static String scenarioName;
 	static String[] filterCalcScenario ;
 	/** Regression: Test script for ADS-5991 */
@@ -36,6 +37,7 @@ public class CostingCalculateOverheadScenario extends CalculationHelper {
 				"CostingCalculateOverheadScenario");
 		try {
 			modelMap = BuildMap.getInstance(driver, ContractingMap.class);
+			costing=BuildMap.getInstance(driver, CostingMap.class);
 			System.out.println("Test Class: " + CostingCalculateOverheadScenario.class.getSimpleName());
 			Login.loginUser("AutomationTester1");
 			goToPage("Costing Models");

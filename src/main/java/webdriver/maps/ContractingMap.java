@@ -1454,4 +1454,8 @@ public class ContractingMap extends MapConfig {
 	@FindBy(xpath = "(//label[contains(text(),'Services ')]//following::div[contains(@class,'x-grid-cell-inner ')])[1]")
 	private static WebElement selectService;
 	public static WebElement getselectServiceForContractModel() {return selectService;}
+	
+	@FindBy(xpath = "(//div[contains(@class,'glAccountsHierarchyGrid ')]//div[@class='x-grid-item-container'])[1]")
+	private static WebElement serviceModelNode;
+	public static WebElement getserviceModelNode() {return serviceModelNode;}
 }

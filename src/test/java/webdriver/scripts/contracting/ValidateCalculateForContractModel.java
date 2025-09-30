@@ -1,6 +1,8 @@
 package webdriver.scripts.contracting;
 import static org.junit.Assert.fail;
 
+import java.text.SimpleDateFormat;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
@@ -18,8 +20,8 @@ public class ValidateCalculateForContractModel extends CalculationHelper{
 	private static ContractingMap modelMap;
 	static ContractModelsHelper contractModelsHelper = new ContractModelsHelper();
 	CreateANewContractModel model=new CreateANewContractModel();
+	static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
 	static String contractModelName;
-	
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
 		
@@ -40,7 +42,7 @@ public class ValidateCalculateForContractModel extends CalculationHelper{
 	@Test
 	public void test01ValidateWarningMessageForCalculate_12494() throws Throwable {
 		try {
-			model.test01CreateNewContractModel_6413();
+			model.createContractModel(contractModelName);;
 			contractModelName=CreateANewContractModel.contractModelName;
 			ValidateDragDropAddNewServiceUnderPricing.searchContractModelOpenTaskList(contractModelName);
 			ValidateDragDropAddNewServiceUnderPricing.dragAndDropServiceForNewContractModel();

@@ -22,7 +22,7 @@ import webdriver.maps.ModelLibraryMap;
 import webdriver.maps.mapbuilder.BuildMap;
 
 	@FixMethodOrder(MethodSorters.NAME_ASCENDING)
-	/** Regression test case ADS-5982 **/
+	/** Regression test case ADS-5982, Customer issue ADS-20866 **/
 	public class EncCostCalcScenarioSelectedCostModelScenariosdisplayed extends CalculationHelper {
 		static String costModel = "0-MarinaCostModel";
 //		static String encCostScenario="#ADS-5982 Enc Cost performance issue";
@@ -87,6 +87,7 @@ import webdriver.maps.mapbuilder.BuildMap;
 			fail(e.getMessage());
 		}
 	}
+
 	@Test
 	public void test02OpenEncounterCostScenario_5982() throws Throwable {
 		try {
@@ -117,7 +118,7 @@ import webdriver.maps.mapbuilder.BuildMap;
 		}
 	}
 	@Test
-	public void test04VerifyCancelAndCloseCostScenario_5982() throws Throwable {
+	public void test04VerifyCancelAndCloseCostScenario_5982_20866() throws Throwable {
 		try {
 			doClick(costing.getCostModelEvaluationOrderSelect());
 			waitForMainPageTitle("Add Cost Model Scenarios");
@@ -146,20 +147,12 @@ import webdriver.maps.mapbuilder.BuildMap;
 		
 		
 	}
+	
 	@Test
 	public void test05CreateNewEncCostScenario_5982() throws Throwable {
 		
 		try {
 			doClick(CostingMap.getEncounterNewBtn());
-			try {
-				waitForElementToBeVisible(driver.findElement(By.xpath("(//span[text()='Cancel & Close'])[2]")));
-				if(driver.findElement(By.xpath("(//span[text()='Cancel & Close'])[2]")).isDisplayed()) {
-					doClick("(//span[text()='Cancel & Close'])[2]");
-				}
-			}
-			catch(Exception e) {
-				
-			}
 			ContractModelsHelper.keyInValues(ContractingMap.getInputName(), encCostModelName);
 			doClick(costing.getEncCostModelEvaluationSelectButton());
 			Thread.sleep(500);
@@ -168,7 +161,6 @@ import webdriver.maps.mapbuilder.BuildMap;
 
 			ContractModelsHelper.selectMultipleColumnsToDisplay(columnHeaderSubset);
 			doClick("//h1[text()='Add Cost Model Scenarios']//following::span[text()='Apply']");
-//			doClick("//label[text()='Include Acquisition Costs']//preceding-sibling::*[1]/input");
 			doDropdownSelectUsingOptionText(costing.getCostModelScenariosinEvaluationOrderFrom(),
 					costing.getCostModelScenarioFromOptions(), "Apr 2004");
 
@@ -178,8 +170,10 @@ import webdriver.maps.mapbuilder.BuildMap;
 					costing.getCostModelScenarioOptions(), "4.2 CMS 3520 & 3522 with OH by month");
 			doDropdownSelectUsingOptionText(costing.getCostModelScenarioMonthToUse(),
 					costing.getCostModelScenarioMonthToUseOptions(), "Aug 2004");
-//			doDropdownSelectUsingOptionText(costing.getCostModelScenariosinEvaluationOrderAssignedCost(),
-//					costing.getCostModelScenariosinEvaluationOrderAssignedCostList(), "6 : Multiple CC Masters");
+			driver.findElement(By.name("includeAcquisitionCosts")).click();
+			driver.findElement(By.name("acquisitionCostComponentId")).click();
+			doDropdownSelectUsingOptionTextOnly(CostingMap.getacquisitionCostDrp(), "Marina Health System: Salaries and Wages");
+			scrollToView(costing.getCostModelScenariosinEvaluationOrderAssignedCost());
 			doDropdownSelectUsingOptionText(costing.getCostModelScenariosinEvaluationOrderAssignedCost(),
 					costing.getCostModelScenariosinEvaluationOrderAssignedCostList(), "6 : Multiple CC Masters4567");
 			doClick(CostingMap.getCostScenarioContinueButton());
@@ -213,21 +207,17 @@ import webdriver.maps.mapbuilder.BuildMap;
 			ContractModelsHelper.CompareListToArray(driver.findElements(By.xpath("(//div[@class='x-boundlist-list-ct'])[1]//div")), columnHeaderSubset);
 			ContractModelsHelper.CompareListToArray(driver.findElements(By.xpath("(//div[@class='x-boundlist-list-ct'])[2]//div")), columns);
 			ContractModelsHelper.CompareListToArray(driver.findElements(By.xpath("(//div[@class='x-boundlist-list-ct'])[3]//div")), filterEntities);
+			doClick(costing.getEncCostModelCancelCloseButton());
 			ExtentReport.logPass("PASS", "test06VerifyCreatedEncCostScenario");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test06VerifyCreatedEncCostScenario", driver, e);
 			fail(e.getMessage());
 		}
-		finally {
-			doClick(costing.getEncCostModelCancelCloseButton());
-
-		}
+	
 	}
 	@Test
 	public void test07DeleteCreatedEncCostScenario_5982() throws Throwable {
 		try {
-			doClick(costing.getEncCostModelFilterButton());
-			doFilterCreate(filterNewCostScenario);
 			doClick(costing.getEncCostModelDeleteButton());
 			waitForElementToBeVisible(costing.getWarningDeleteButton());
 			doClick(costing.getWarningDeleteButton());

@@ -87,6 +87,10 @@ public class DataMaintenanceMap extends MapConfig {
     @FindBy(xpath = "//*[contains(@class,'itemWrap') and text()='Encounters With Zero Charge Balance Report']")
     private WebElement getUtilitiesPageEncountersWithZeroChargeBalanceReport;
     public WebElement getUtilitiesPageEncountersWithZeroChargeBalanceReport() {return getUtilitiesPageEncountersWithZeroChargeBalanceReport;}
+    
+    @FindBy(xpath = "//*[contains(@class,'itemWrap') and text()='Delete Encounters With Zero Charge Balances']")
+    private WebElement getUtilitiesPageDeleteEncountersWithZeroChargeBalanceReport;
+    public WebElement getgetUtilitiesPageDeleteEncountersWithZeroChargeBalanceReport() {return getUtilitiesPageDeleteEncountersWithZeroChargeBalanceReport;}
 
     @FindBy(xpath = "//*[contains(@class,'itemWrap') and text()='Encounters With No Charges Report']")
     private WebElement getUtilitiesPageEncountersWithNoChargesReport;
@@ -985,5 +989,51 @@ public class DataMaintenanceMap extends MapConfig {
 	private static WebElement groupGridMiniCopayCheck;
 	public static WebElement getgroupGridMiniCopayCheck() {return groupGridMiniCopayCheck;}
     
-    
+	@FindBy(xpath = "//h1[text()='Cost Components']//following::span[text()='New']")
+	private static WebElement costComponentNewBtn;
+	public static WebElement getcostComponentNewBtn() {return costComponentNewBtn;}
+	
+	@FindBy(xpath = "//h1[text()='Cost Components']//following::span[text()='Delete']")
+	private static WebElement costComponentDeleteBtn;
+	public static WebElement getcostComponentDeleteBtn() {return costComponentDeleteBtn;}
+	
+	@FindBy(xpath = "//div[text()='Warning']//following::span[text()='Continue']")
+	private static WebElement costComponentContinueBtn;
+	public static WebElement getcostComponentContinueBtn() {return costComponentContinueBtn;}
+	
+	@FindBy(name = "typeExpensesource")
+	private static WebElement componentTypeBtn;
+	public static WebElement getcomponentTypeBtn() {return componentTypeBtn;}
+	
+	@FindBy(xpath = "//div[contains(@id,'costcomponentpanel')]//following::ul")
+	private static WebElement componentTypeOptions;
+	public static WebElement getcomponentTypeOptions() {return componentTypeOptions;}
+	
+	@FindBy(name = "rvuOrderIndex")
+	private static WebElement orderRVUIndex;
+	public static WebElement getorderRVUIndex() {return orderRVUIndex;}
+	
+	@FindBy(xpath = "//div[contains(@id,'costcomponentpanel')]//following::span[text()='Save']")
+	private static WebElement componentSave;
+	public static WebElement getcomponentSave() {return componentSave;}
+	
+	@FindBy(xpath = "//div[contains(@id,'costcomponentpanel')]//following::span[text()='Save & Close']")
+	private static WebElement componentSaveClose;
+	public static WebElement getcomponentSaveClose() {return componentSaveClose;
+	}
+	@FindBy(xpath = "//div[text()='Cost Component Master']//following::span[text()='Save & Close']")
+	private static WebElement componentMasterSaveClose;
+	public static WebElement getcomponentMasterSaveClose() {return componentMasterSaveClose;}
+	
+	@FindBy(xpath = "//h1[text()='Cost Component Masters']//following::span[text()='Filter']")
+	private static WebElement CostComponentFilterButton;
+	public static WebElement getCostComponentFilterButton() {return CostComponentFilterButton;}
+	
+	@FindBy(xpath = "//div[contains(@id,'filterwindow')]//following::div[text()='Filter Cost Component Masters']")
+	private static WebElement costComponentFilterWindow;
+	public static WebElement getcostComponentFilterWindow() {return costComponentFilterWindow;}
+	
+	@FindBy(xpath = "//div[text()='Cost Components']//following::input[@name='name']")
+	private static WebElement costCompInputName;
+	public static WebElement getcostCompInputName() {return costCompInputName;}
 }

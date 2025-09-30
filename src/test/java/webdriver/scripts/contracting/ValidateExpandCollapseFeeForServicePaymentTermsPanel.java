@@ -2,6 +2,8 @@ package webdriver.scripts.contracting;
 
 import static org.junit.Assert.fail;
 
+import java.text.SimpleDateFormat;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
@@ -20,9 +22,10 @@ import webdriver.maps.mapbuilder.BuildMap;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ValidateExpandCollapseFeeForServicePaymentTermsPanel extends GoHelper{
 	private static ContractingMap modelMap;
-	static String contractModelName;
 	String[] columnsToSelect = {"150  Marina Medical Center" };
 	CreateANewContractModel model=new CreateANewContractModel();
+	static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
+	static String contractModelName = "Contract Model" + currentDateTime;
 	ContractModelsHelper contractModelsHelper = new ContractModelsHelper();
 	/** Support Issues: Automated test script for ADS-12498,ADS-12499 ,ADS-12504,ADS-12571*/
 	@BeforeClass
@@ -47,8 +50,7 @@ public class ValidateExpandCollapseFeeForServicePaymentTermsPanel extends GoHelp
 	@Test
 	public void test01expandPanelsWithHeaderText_12498_12499_12504_12571() throws Throwable {
 		try {
-			model.test01CreateNewContractModel_6413();
-			contractModelName=CreateANewContractModel.contractModelName;
+			model.createContractModel(contractModelName);
 			doSearchForContractModel(contractModelName);
 			driverDelay(200);
 			tableDoubleClickCellFirstColumn(contractModelName);
