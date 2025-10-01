@@ -16,6 +16,7 @@ import org.openqa.selenium.WebElement;
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.corehelpers.GoHelper;
+import webdriver.helpers.CimHelper;
 import webdriver.helpers.ContractModelsHelper;
 import webdriver.maps.ContractingMap;
 import webdriver.maps.CostingMap;
@@ -23,13 +24,12 @@ import webdriver.maps.DataMaintenanceMap;
 import webdriver.maps.DialogsMap;
 import webdriver.maps.mapbuilder.BuildMap;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-/** Regression: Automated test script for ADS-6396 */
+/** Regression: Automated test script for ADS-6396 ,Customer Issue ADS_19094*/
 public class CreateEditDeleteNewStructurePopulations extends GoHelper{
 	final static String aTozPage="Populations";
 	static DataMaintenanceMap dmMap;
 	static ContractingMap contractMap;
-	 private DialogsMap dialog = BuildMap.getInstance(driver, DialogsMap.class);
-
+	private DialogsMap dialog = BuildMap.getInstance(driver, DialogsMap.class);
 	static CostingMap costing;
 	static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
 	static String population = "Model " + currentDateTime;
@@ -112,11 +112,43 @@ public class CreateEditDeleteNewStructurePopulations extends GoHelper{
 		}
 	}
 	@Test
-	public void test03DeleteCreatedPopulation_ADS_6396() throws Throwable {
+	public void test03EvaluateSimpleCriteria_ADS_19094() throws Throwable {
+		try {
+			doClick(DataMaintenanceMap.getLoadDataEditButton());
+			String[] values= {"Inpatient","Outpatient"};
+			keyInInputText("Encounter Type Name",driver.findElement(By.name("description")));
+			driver.findElement(By.name("operator")).click();
+			doDropdownSelectUsingOptionTextOnly(CostingMap.getfieldDropdown(), "is");
+			driver.findElement(By.name("condition")).click();
+			doDropdownSelectUsingOptionTextOnly(CostingMap.getconditionDropdown(), "one of");
+			for (int j = 0; j < values.length; j++) {
+				
+				driver.findElement(By.name("otherValue")).click();
+				doDropdownSelectUsingOptionTextOnly(CostingMap.getValueDropdown(), values[j]);
+				doClick(costing.getRvuContainerAddValueButton());
+				
+			}
+			
+			doClick(CostingMap.getcriteriaAddBtn());
+		    doClick(costing.getSavePopulation());
+			waitForDisplayedSpinnerToEnd();
+			doClick(DataMaintenanceMap.getLoadDataEditButton());
+			String assertText=CostingMap.getcriteriaText().getText();
+			assertEqualsString(assertText, "[Encounter Type Name] is one of 'Inpatient', 'Outpatient'");
+			doClick(costing.getSavePopulation());
+			waitForDisplayedSpinnerToEnd();
+			ExtentReport.logPass("PASS", "test03EvaluateSimpleCriteria_ADS_19094");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test03EvaluateSimpleCriteria_ADS_19094", driver, e);
+			fail(e.getMessage());
+		}
+	}
+	@Test
+	public void test04DeleteCreatedPopulation_ADS_6396() throws Throwable {
 		try {
 			doClick(DataMaintenanceMap.getLoadDataDeleteButton());
-			waitForElementToBeVisible(contractMap.getContractModelDeleteButtonInPopUp());
-			doClick(contractMap.getContractModelDeleteButtonInPopUp());
+			waitForElementToBeVisible(ContractingMap.getContractModelDeleteButtonInPopUp());
+			doClick(ContractingMap.getContractModelDeleteButtonInPopUp());
 			driverDelay();
 			assertTextIsDisplayed("There is no data available to display.");
 			ExtentReport.logPass("PASS", "test03DeleteCreatedPopulation");

@@ -1036,4 +1036,52 @@ public class DataMaintenanceMap extends MapConfig {
 	@FindBy(xpath = "//div[text()='Cost Components']//following::input[@name='name']")
 	private static WebElement costCompInputName;
 	public static WebElement getcostCompInputName() {return costCompInputName;}
+	
+	@FindBy(xpath = "//h1[text()='Cost Components']//following::span[text()='Edit']")
+	private static WebElement costCompEditBtn;
+	public static WebElement getcostCompEditBtn() {return costCompEditBtn;}
+	
+	@FindBy(xpath = "//h1[text()='Cost Component Assignments']//following::span[text()='New']")
+	private static WebElement costCompAssignNewBtn;
+	public static WebElement getcostCompAssignNewBtn() {return costCompAssignNewBtn;}
+	
+	@FindBy(xpath = "//h1[text()='Cost Component Assignments']//following::span[text()='Delete']")
+	private static WebElement costCompAssignDeleteBtn;
+	public static WebElement getcostCompAssignDeleteBtn() {return costCompAssignDeleteBtn;}
+	
+	@FindBy(name = "entityCode")
+	private static WebElement costCompAssignEntityBtn;
+	public static WebElement getcostCompAssignEntityBtn() {return costCompAssignEntityBtn;}
+	
+	@FindBy(xpath = "//h1[text()='Cost Component Assignments']//following::ul")
+	private static WebElement costCompAssignEntityOptions;
+	public static WebElement getcostCompAssignEntityOptions() {return costCompAssignEntityOptions;}
+	
+	@FindBy(xpath = "(//span[text()='Department / Group']//following::span[text()='Select'])[1]")
+	private static WebElement costCompAssignDeptGroupSelectBtn;
+	public static WebElement getcostCompAssignDeptGroupSelectBtn() {return costCompAssignDeptGroupSelectBtn;}
+	
+	@FindBy(xpath = "(//span[text()='GL Account / Group']//following::span[text()='Select'])[2]")
+	private static WebElement costCompAssignGLAccountGrpSelectBtn;
+	public static WebElement getcostCompAssignGLAccountGrpSelectBtn() {return costCompAssignGLAccountGrpSelectBtn;}
+	
+	@FindBy(xpath = "//div[text()='*FIRSTDEPTGROUP FIRSTDEPTGROUP']")
+	private static WebElement costCompAssignDeptGroup;
+	public static WebElement getcostCompAssignDeptGroup() {return costCompAssignDeptGroup;}
+	
+	@FindBy(xpath = "//div[text()='JKSUPPLIES MS JKSUPPLIES']")
+	private static WebElement costCompAssignGLGroup;
+	public static WebElement getcostCompAssignGLGroup() {return costCompAssignGLGroup;}
+	
+	@FindBy(xpath = "//div[text()='Cost Component Assignment']//following::span[text()='Save']")
+	private static WebElement costCompAssignSaveBtn;
+	public static WebElement getcostCompAssignSaveBtn() {return costCompAssignSaveBtn;}
+	
+	@FindBy(xpath = "//div[text()='Cost Component Assignment']//following::span[text()='Save & Close']")
+	private static WebElement costCompAssignSaveCloseBtn;
+	public static WebElement getcostCompAssignSaveCloseBtn() {return costCompAssignSaveCloseBtn;}
+	
+	@FindBy(xpath = "//div[text()='Cost Component']//following::div[text()='JKENTITY3 JKENTITY3']")
+	private static WebElement costCompAssignAssert;
+	public static WebElement getcostCompAssignAssert() {return costCompAssignAssert;}
 }

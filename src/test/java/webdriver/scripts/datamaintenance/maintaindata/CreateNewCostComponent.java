@@ -23,7 +23,8 @@ public class CreateNewCostComponent extends CalculationHelper{
 	static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
 	static String costComponent="Component" +currentDateTime;
 	static String costComponentType="Direct Expense";
-	/** Regression: Automated test script for ADS-8879*/
+	static String entity="JKENTITY3 JKENTITY3";
+	/** Regression: Automated test script for ADS-8879 , Customer ISsue ADS-4871*/
 
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
@@ -61,6 +62,43 @@ public class CreateNewCostComponent extends CalculationHelper{
 			ExtentReport.logPass("PASS", "test01AddNewCostComponent_ADS_8879");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01AddNewCostComponent_ADS_8879", driver, e);
+			fail(e.getMessage());
+		}
+	}
+	@Test
+	public void test02AddNewCostComponentAssignment_ADS_4871() throws Throwable {
+		try {
+			doClick("//*[text()='"+costComponent+"']");
+			doClick(DataMaintenanceMap.getcostCompEditBtn());
+			doClick(DataMaintenanceMap.getcostCompAssignNewBtn());
+			//Select Entity
+			doClick(DataMaintenanceMap.getcostCompAssignEntityBtn());
+			doDropdownSelectUsingOptionTextOnly(DataMaintenanceMap.getcostCompAssignEntityOptions(), entity);
+			//Select Dept Group
+			doClick(DataMaintenanceMap.getcostCompAssignDeptGroupSelectBtn());
+			doClick(DataMaintenanceMap.getcostCompAssignDeptGroup());
+			doClick(DataMaintenanceMap.getapplyBtnInPopUp());
+			//Select GL Group
+			doClick(DataMaintenanceMap.getcostCompAssignGLAccountGrpSelectBtn());
+			doClick(DataMaintenanceMap.getcostCompAssignGLGroup());
+			doClick(DataMaintenanceMap.getapplyBtnInPopUp());
+			//Save Cost component Assignment Save
+			doClick(DataMaintenanceMap.getcostCompAssignSaveBtn());
+			doClick(DataMaintenanceMap.getcostCompAssignSaveCloseBtn());
+			assertElementIsDisplayed(DataMaintenanceMap.getcostCompAssignAssert());
+			//Save Cost component  Save
+			doClick(DataMaintenanceMap.getcomponentSave());
+			doClick(DataMaintenanceMap.getcomponentSaveClose());
+			doClick("//*[text()='"+costComponent+"']");
+			doClick(DataMaintenanceMap.getcostCompEditBtn());
+			assertElementIsDisplayed(DataMaintenanceMap.getcostCompAssignAssert());
+			doClick(DataMaintenanceMap.getcostCompAssignDeleteBtn());
+			doClick(DataMaintenanceMap.getwarningDeleteBtn());
+			doClick(DataMaintenanceMap.getcomponentSave());
+			doClick(DataMaintenanceMap.getcomponentSaveClose());
+			ExtentReport.logPass("PASS", "test02AddNewCostComponentAssignment_ADS_8879");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test02AddNewCostComponentAssignment_ADS_8879", driver, e);
 			fail(e.getMessage());
 		}
 	}

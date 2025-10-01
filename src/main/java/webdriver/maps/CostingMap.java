@@ -2700,4 +2700,25 @@ public class CostingMap extends MapConfig {
 	@FindBy(xpath = "(//label[text()='Include Acquisition Costs']//following::ul)[8]")
 	private static WebElement acquisitionCostDrp;
 	public static WebElement getacquisitionCostDrp() {return acquisitionCostDrp;}
+	
+	@FindBy(xpath = "(//div[contains(@id,'combo')]//ul)[2]")
+	private static WebElement fieldDropdown;
+	public static WebElement getfieldDropdown() {return fieldDropdown;}
+	
+	@FindBy(xpath = "(//div[contains(@id,'combo')]//ul)[3]")
+	private static WebElement conditionDropdown;
+	public static WebElement getconditionDropdown() {return conditionDropdown;}
+	
+	@FindBy(xpath = "//div[contains(@id,'filtercombo')]//ul")
+	private static WebElement ValueDropdown;
+	public static WebElement getValueDropdown() {return ValueDropdown;}
+	
+	@FindBy(xpath = "(//div[@class='x-grid-item-container']//table//td[2]/div)[3]")
+	private static WebElement criteriaText;
+	public static WebElement getcriteriaText() {return criteriaText;}
+	
+	@FindBy(xpath = "//span[text()='Add']")
+	private static WebElement criteriaAddBtn;
+	public static WebElement getcriteriaAddBtn() {return criteriaAddBtn;}
+	
 }
