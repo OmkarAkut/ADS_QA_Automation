@@ -344,6 +344,7 @@ public class DoHelper extends DriverHelper {
 		List<WebElement> menu = elementList.findElements(By.tagName("li"));
 		for(WebElement option : menu) {
 			ContractModelsHelper.scrollToView(option);
+			System.out.println("Option"+option.getText());
 			if(option.getText().equals(optionText)) {
 				option.click();
 				break;

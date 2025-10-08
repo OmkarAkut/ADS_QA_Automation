@@ -1084,4 +1084,112 @@ public class DataMaintenanceMap extends MapConfig {
 	@FindBy(xpath = "//div[text()='Cost Component']//following::div[text()='JKENTITY3 JKENTITY3']")
 	private static WebElement costCompAssignAssert;
 	public static WebElement getcostCompAssignAssert() {return costCompAssignAssert;}
+	
+	@FindBy(xpath = "(//h1[text()='GL Account Masters']//following::span[text()='New'])[1]")
+	private static WebElement glAcctMasterNewBtn;
+	public static WebElement getGlAcctMasterNewBtn() {return glAcctMasterNewBtn;}
+	
+	@FindBy(xpath = "(//h1[text()='GL Account Masters']//following::span[text()='Filter'])[1]")
+	private static WebElement glAcctMasterFilterBtn;
+	public static WebElement getGlAcctMasterFilterBtn() {return glAcctMasterFilterBtn;}
+	
+	@FindBy(xpath = "(//h1[text()='GL Account Masters']//following::span[text()='Edit'])[1]")
+	private static WebElement glAcctMasterEditBtn;
+	public static WebElement getGlAcctMasterEditBtn() {return glAcctMasterEditBtn;}
+	
+	@FindBy(xpath = "(//div[text()='GL Account Master']//following::span[text()='Save'])")
+	private static WebElement glAcctMasterSaveBtn;
+	public static WebElement getGlAcctMasterSaveBtn() {return glAcctMasterSaveBtn;}
+	
+	@FindBy(xpath = "(//div[text()='GL Account Master']//following::span[text()='Cancel & Close'])")
+	private static WebElement glAcctMasterCancelCloseBtn;
+	public static WebElement getGlAcctMasterCancelCloseBtn() {return glAcctMasterCancelCloseBtn;}
+	
+	@FindBy(xpath = "(//div[text()='GL Account Master']//following::span[text()='Delete'])")
+	private static WebElement glAcctMasterDeleteBtn;
+	public static WebElement getGlAcctMasterDeleteBtn() {return glAcctMasterDeleteBtn;}
+	
+	@FindBy(xpath = "(//h1[text()='GL Account Codes']//following::span[text()='New'])")
+	private static WebElement glAcctCodesNewBtn;
+	public static WebElement getGlAcctCodesNewBtn() {return glAcctCodesNewBtn;}
+	
+	@FindBy(xpath = "(//h1[text()='GL Account Codes']//following::span[text()='Filter'])")
+	private static WebElement glAcctCodesFilterBtn;
+	public static WebElement getGlAcctCodesFilterBtn() {return glAcctCodesFilterBtn;}
+	
+	@FindBy(xpath = "(//h1[text()='GL Account Codes']//following::span[text()='Clear Filter'])")
+	private static WebElement glAcctCodesClearFilterBtn;
+	public static WebElement getGlAcctCodesClearFilterBtn() {return glAcctCodesClearFilterBtn;}
+	
+	@FindBy(xpath = "(//h1[text()='GL Account Codes']//following::span[text()='Delete'])")
+	private static WebElement glAcctCodesDeleteBtn;
+	public static WebElement getGlAcctCodesDeleteBtn() {return glAcctCodesDeleteBtn;}
+	
+	@FindBy(xpath = "(//h1[text()='GL Account Codes']//following::div[contains(@id,'dynamicGrid')])[3]//table")
+	private static List<WebElement> glAcctCodesGridList;
+	public static List<WebElement> getGlAcctCodesGridList() {return glAcctCodesGridList;}
+	
+	@FindBy(xpath = "(//div[text()='GL Account Code']//following::input[@name='code'])")
+	private static WebElement glAcctCode;
+	public static WebElement getGlAcctCode() {return glAcctCode;}
+	
+	@FindBy(xpath = "(//div[text()='GL Account Code']//following::input[@name='name'])")
+	private static WebElement glAcctName;
+	public static WebElement getGlAcctName() {return glAcctName;}
+	
+	@FindBy(name = "accountType")
+	private static WebElement glAccType;
+	public static WebElement getGlAccType() {return glAccType;}
+	
+	@FindBy(xpath = "//div[contains(@class,'x-boundlist-floating')]//div[contains(@id,'listWrap')]/ul")
+	private static WebElement glAccTypeOptions;
+	public static WebElement getGlAccTypeOptions() {return glAccTypeOptions;}
+	
+	@FindBy(xpath = "//div[text()='GL Account Code']//following::span[text()='Save & Create New']")
+	private static WebElement glAccTypeSaveCreateNewBtn;
+	public static WebElement getGlAccTypeSaveCreateNewBtn() {return glAccTypeSaveCreateNewBtn;}
+	
+	@FindBy(xpath = "//div[text()='GL Account Code']//following::span[text()='Cancel & Close']")
+	private static WebElement glAccTypeCancelCloseBtn;
+	public static WebElement getGlAccTypeCancelCloseBtn() {return glAccTypeCancelCloseBtn;}
+	
+	@FindBy(xpath = "//input[@name='field']")
+	private static WebElement glAccCodefieldDrp;
+	public static WebElement getGlAccCodefieldDrp() {return glAccCodefieldDrp;}
+	
+	@FindBy(xpath = "//div[contains(@id,'specialtagcombo')]//ul")
+	private static WebElement glAccCodefieldDrpList;
+	public static WebElement getGlAccCodefieldDrpList() {return glAccCodefieldDrpList;}
+	
+	@FindBy(xpath = "//input[@name='operator']")
+	private static WebElement glAccOpfieldDrp;
+	public static WebElement getGlAccOpfieldDrp() {return glAccOpfieldDrp;}
+	
+	@FindBy(xpath = "(//div[contains(@id,'specialtagcombo')]//ul)[2]")
+	private static WebElement glAccCodeOpDrpList;
+	public static WebElement getGlAccCodeOpDrpList() {return glAccCodeOpDrpList;}
+	
+	@FindBy(xpath = "//input[@name='condition']")
+	private static WebElement glAccConditionDrp;
+	public static WebElement getGlAccConditionDrp() {return glAccConditionDrp;}
+	
+	@FindBy(xpath = "(//div[contains(@id,'specialtagcombo')]//ul)[3]")
+	private static WebElement glAccCodeCondDrpList;
+	public static WebElement getGlAccCodeCondDrpList() {return glAccCodeCondDrpList;}
+	
+	@FindBy(xpath = "//input[@name='valuelist']")
+	private static WebElement glAccValueList;
+	public static WebElement getGlAccValueList() {return glAccValueList;}
+	
+	@FindBy(xpath = "(//div[contains(@id,'dynamiccombo')]//ul)")
+	private static WebElement glAccValueListOptions;
+	public static WebElement getGlAccValueListOptions() {return glAccValueListOptions;}
+	
+	@FindBy(xpath = "//div[text()='Filter GL Account Codes']//following::span[text()='Add']")
+	private static WebElement glAccCodeAddBtn;
+	public static WebElement getGlAccCodeAddBtn() {return glAccCodeAddBtn;}
+	
+	@FindBy(xpath = "//div[text()='Filter GL Account Codes']//following::span[text()='Apply Filter']")
+	private static WebElement glAccCodeApplyFilterBtn;
+	public static WebElement getGlAccCodeApplyFilterBtn() {return glAccCodeApplyFilterBtn;}
 }

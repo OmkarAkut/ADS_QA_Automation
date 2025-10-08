@@ -44,7 +44,7 @@ public class AddAbilitytoCreateaCostCalculationGroup extends CimHelper{
 				"AddAbilitytoCreateaCostCalculationGroup");
 		try {
 			cimMap = BuildMap.getInstance(driver, CimMap.class);
-			Login.loginUser("CostAnalyst1");
+			Login.loginUser("AutomationTesterAdmin");
 			goToPage("Cost Integration Manager");
 			ExtentReport.logPass("PASS", "setupScript");
 		} catch (Exception | AssertionError e) {
