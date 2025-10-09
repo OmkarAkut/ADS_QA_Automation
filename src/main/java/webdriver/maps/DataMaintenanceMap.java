@@ -1105,7 +1105,11 @@ public class DataMaintenanceMap extends MapConfig {
 	private static WebElement glAcctMasterCancelCloseBtn;
 	public static WebElement getGlAcctMasterCancelCloseBtn() {return glAcctMasterCancelCloseBtn;}
 	
-	@FindBy(xpath = "(//div[text()='GL Account Master']//following::span[text()='Delete'])")
+	@FindBy(xpath = "(//div[text()='GL Account Master']//following::span[text()='Save & Close'])")
+	private static WebElement glAcctMasterSaveCloseBtn;
+	public static WebElement getGlAcctMasterSaveCloseBtn() {return glAcctMasterSaveCloseBtn;}
+	
+	@FindBy(xpath = "(//div[text()='GL Account Masters']//following::span[text()='Delete'])[1]")
 	private static WebElement glAcctMasterDeleteBtn;
 	public static WebElement getGlAcctMasterDeleteBtn() {return glAcctMasterDeleteBtn;}
 	
@@ -1120,6 +1124,18 @@ public class DataMaintenanceMap extends MapConfig {
 	@FindBy(xpath = "(//h1[text()='GL Account Codes']//following::span[text()='Clear Filter'])")
 	private static WebElement glAcctCodesClearFilterBtn;
 	public static WebElement getGlAcctCodesClearFilterBtn() {return glAcctCodesClearFilterBtn;}
+	
+	@FindBy(xpath = "(//h1[text()='GL Account Codes']//following::span[text()='Edit'])")
+	private static WebElement glAcctCodesEditBtn;
+	public static WebElement getGlAcctCodesEditBtn() {return glAcctCodesEditBtn;}
+	
+	@FindBy(xpath = "//div[contains(@id,'errorwindow')][text()='Reminder']")
+	private static WebElement glAcctUpdateWarning;
+	public static WebElement getGlAcctUpdateWarning() {return glAcctUpdateWarning;}
+	
+	@FindBy(xpath = "//div[contains(@id,'errorwindow')][text()='Reminder']//following::span[text()='OK']")
+	private static WebElement glAcctUpdateWarningOkBtn;
+	public static WebElement getGlAcctUpdateWarningOkBtn() {return glAcctUpdateWarningOkBtn;}
 	
 	@FindBy(xpath = "(//h1[text()='GL Account Codes']//following::span[text()='Delete'])")
 	private static WebElement glAcctCodesDeleteBtn;
@@ -1152,6 +1168,10 @@ public class DataMaintenanceMap extends MapConfig {
 	@FindBy(xpath = "//div[text()='GL Account Code']//following::span[text()='Cancel & Close']")
 	private static WebElement glAccTypeCancelCloseBtn;
 	public static WebElement getGlAccTypeCancelCloseBtn() {return glAccTypeCancelCloseBtn;}
+	
+	@FindBy(xpath = "//div[text()='GL Account Code']//following::span[text()='Save & Close']")
+	private static WebElement glAccTypeSaveCloseBtn;
+	public static WebElement getGlAccTypeSaveCloseBtn() {return glAccTypeSaveCloseBtn;}
 	
 	@FindBy(xpath = "//input[@name='field']")
 	private static WebElement glAccCodefieldDrp;

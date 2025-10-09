@@ -13,6 +13,7 @@ import org.junit.runners.Suite;
 	ReportsLibraryCreateRenameAndDeleteNewFolderAds1348.class,
 	ReportsLibraryRunCostingReportFromTemplate.class,
 	ReportsLibraryTestScript.class,
+	RunFlexStandardHCPCReports.class,
 	RunReportLoop.class,
 	SearchTheReportLibrary.class,
 	TestAbilitytoCreateExistingStandardCostingReport.class,

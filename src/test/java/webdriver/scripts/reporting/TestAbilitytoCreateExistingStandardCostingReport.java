@@ -76,45 +76,30 @@ public class TestAbilitytoCreateExistingStandardCostingReport extends GoHelper {
 			doClick(reportMap.reportLibraryPageEntityRunButton());
 			waitForElementToBeVisible(reportMap.reportLibraryPageEntityRefreshButton());
 			driverDelay(2000);
+			String reportTime=driver.findElement(By.xpath("//div[@class='GJT013UBNJB']")).getText().replaceFirst("^\\s+", "");;
+			int retry=0;
 			//Shilpaa updated script for 11.2 on 22.4.2024
-			for (int i = 0; i<=refreshTime; i++) {
+			while (retry <= refreshTime) {
 				doClick(reportMap.reportLibraryPageEntityRefreshButton());
 				driverDelay(3000);
-				if (i == refreshTime) {
-					System.out.println("Status is not updated to COMPLETED");
-					fail();
-					break;
-				}
+				
 				try {
-					if (driver.findElement(By.xpath("(//div[@class='GJT013UBH']//tbody//td/div)[7]/a")).getText()
-							.equals("COMPLETED")) {
-						assertElementTextWithXpath("(//div[@class='GJT013UBH']//tbody//td/div)[7]/a", "COMPLETED",
+					if(driver.findElement(By.xpath("//div[text()='"+reportTime+"']//following::div[4]")).getText().contains("COMPLETED")){
+						assertElementTextWithXpath("//div[text()='"+reportTime+"']//following::div[4]", "COMPLETED",
 								printout);
 						ExtentReport.logPass("PASS", "test02OpenCostingReport");
 						break;
 
 					}
-					if (driver.findElement(By.xpath("(//div[@class='GJT013UBH']//tbody//td/div)[7]/a")).getText()
-							.contains("FAILED")) {
-						fail();
-					}
 					
-					if (driver.findElement(By.xpath("(//div[@class='GJT013UBH']//tbody//td/div)[7]/a")).getText()
-							.equals("RUNNING")) {
-						continue;
-
-					}
 				} catch (Exception e1) {
-//					if (driver.findElement(By.xpath("(//div[@class='GJT013UBH']//tbody//td/div)[7]")).isDisplayed()) {
-//						System.out.println(i);
-//						doClick(reportMap.reportLibraryPageEntityRefreshButton());
-//						driverDelay(3000);
-//						continue;
-//					}
-					
-
+					doClick(reportMap.reportLibraryPageEntityRefreshButton());
+					retry++;
 				}
-
+				if (retry == refreshTime) {
+					System.out.println("❌ Status did not become 'Completed' after retries.");
+					fail();
+				}
 			}
 
 		

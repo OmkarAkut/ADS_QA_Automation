@@ -34,7 +34,7 @@ public class TestAbilityToCreateNewStandardCostingReport extends GoHelper {
 	static String subDirectory = "Costing";
 	static String newReportName = "CM1 Cost";
 	static int refreshTime = 10;
-
+	static int retry=0;
 	@BeforeClass
 	public static void setupScript() throws InterruptedException, Throwable {
 
@@ -111,42 +111,29 @@ public class TestAbilityToCreateNewStandardCostingReport extends GoHelper {
 			doClick(reportMap.reportLibraryPageEntityOkButton());
 			doClick(reportMap.reportLibraryPageEntityRunButton());
 			driverDelay(2000);
-
+			String reportTime=driver.findElement(By.xpath("//div[@class='GJT013UBNJB']")).getText().replaceFirst("^\\s+", "");;
 			// Shilpa updated script for 11.2 on 22.4.2024
-			for (int i = 0; i<=refreshTime; i++) {
+			while (retry <= refreshTime) {
 				doClick(reportMap.reportLibraryPageEntityRefreshButton());
 				driverDelay(2500);
-				if (i == refreshTime) {
-					System.out.println("Status is not updated to COMPLETED");
-					fail();
-					break;
-				}
+
 				try {
-					if (driver.findElement(By.xpath("(//div[@class='GJT013UBH']//tbody//td/div)[7]/a")).getText()
-							.equals("COMPLETED")) {
-						assertElementTextWithXpath("(//div[@class='GJT013UBH']//tbody//td/div)[7]/a", "COMPLETED",
+					if(driver.findElement(By.xpath("//div[text()='"+reportTime+"']//following::div[4]")).getText().contains("COMPLETED")){
+						assertElementTextWithXpath("//div[text()='"+reportTime+"']//following::div[4]", "COMPLETED",
 								printout);
 						ExtentReport.logPass("PASS", "test02OpenCostingReport");
 						break;
 
 					}
-					if (driver.findElement(By.xpath("(//div[@class='GJT013UBH']//tbody//td/div)[7]/a")).getText()
-							.contains("FAILED")) {
-						fail();
-					}
-					if (driver.findElement(By.xpath("(//div[@class='GJT013UBH']//tbody//td/div)[7]/a")).getText()
-							.contains("RUNNING")) {
-						continue;
-					}
-				} catch (Exception e1) {
-//					if (driver.findElement(By.xpath("(//div[@class='GJT013UBH']//tbody//td/div)[7]")).isDisplayed()) {
-//						System.out.println(i);
-//						doClick(reportMap.reportLibraryPageEntityRefreshButton());
-//						driverDelay(2500);
-//						continue;
-//					}
 					
+				} catch (Exception e1) {
+					doClick(reportMap.reportLibraryPageEntityRefreshButton());
+					retry++;
 
+				}
+				if (retry == refreshTime) {
+					System.out.println("❌ Status did not become 'Completed' after retries.");
+					fail();
 				}
 
 			}
