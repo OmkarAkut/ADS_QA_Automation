@@ -161,6 +161,7 @@ import webdriver.maps.mapbuilder.BuildMap;
 
 			ContractModelsHelper.selectMultipleColumnsToDisplay(columnHeaderSubset);
 			doClick("//h1[text()='Add Cost Model Scenarios']//following::span[text()='Apply']");
+			doClick(costing.getCostModelScenariosinEvaluationOrderFrom());
 			doDropdownSelectUsingOptionText(costing.getCostModelScenariosinEvaluationOrderFrom(),
 					costing.getCostModelScenarioFromOptions(), "Apr 2004");
 
@@ -219,8 +220,8 @@ import webdriver.maps.mapbuilder.BuildMap;
 	public void test07DeleteCreatedEncCostScenario_5982() throws Throwable {
 		try {
 			doClick(costing.getEncCostModelDeleteButton());
-			waitForElementToBeVisible(costing.getWarningDeleteButton());
-			doClick(costing.getWarningDeleteButton());
+			waitForElementToBeVisible(CostingMap.getWarningDeleteButton());
+			doClick(CostingMap.getWarningDeleteButton());
 			waitForDisplayedSpinnerToEnd();
 			assertTextIsDisplayed("There is no data available to display.");
 			ExtentReport.logPass("PASS", "test07DeleteCreatedEncCostScenario");

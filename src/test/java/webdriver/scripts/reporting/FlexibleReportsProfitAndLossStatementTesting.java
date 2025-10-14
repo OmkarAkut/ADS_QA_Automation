@@ -21,7 +21,7 @@ import webdriver.helpers.ContractModelsHelper;
 import webdriver.maps.ReportingMap;
 import webdriver.maps.mapbuilder.BuildMap;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-/** Regression Test for Test Ticket ADS-5660. **/
+/** Regression Test for Test Ticket ADS-5660. ADS-5110**/
 public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 	static String directory="Templates";
 	static String subDirectory="Flexible Reports";
@@ -35,6 +35,8 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 	static String endDate="01/30/2004";
 	static String code1="0400";
 	static String code2="0402";
+	static String code3="1SM1";
+	static String code4="1SM4";
 	static int refreshTime = 5;
 	@BeforeClass
 	public static void setupScript() throws InterruptedException, Throwable {
@@ -71,9 +73,16 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 		}
 	}
 	@Test
-	public void test02GoToSelectionsTab_5660() throws Throwable {
+	public void test02GoToSelectionsTab_5660_5110() throws Throwable {
 		try {
 			doClick(reportMap.reportSelectionTab());
+			doClick(reportMap.reportBenifitPlanCode());
+			doDoubleClick("(//div[text()='Benefit Plan']//following::div[text()='Primary Group'])[1]");
+			doClick("(//div[@class='GJT013UBFGC']//td[1]/div)[4]");
+			doClick(reportMap.reportSelectCodesFromSelectionTab());
+			doClick("//div[contains(text(),'AND Primary Benefit Plan Group ')]");
+			doClick(reportMap.reportRemoveCodesFromSelectionTab());
+			doClick(reportMap.reportreportReturnButton());
 			doClick(reportMap.reportSelectionDate());
 			doClick(reportMap.reportDischargeDate());
 			doClick(reportMap.reportMatchButton());
@@ -92,7 +101,7 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 
 	}
 	@Test
-	public void test03GoToDetailsTab_5660() throws Throwable {
+	public void test03GoToDetailsTab_5660_5112() throws Throwable {
 		try {
 			doClick(reportMap.reportDetailsButton());
 
@@ -104,6 +113,14 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 			act.keyDown(Keys.CONTROL).click(driver.findElement(By.xpath("//div[text()='"+code1+"']//parent::td"))).click(driver.findElement(By.xpath("//div[text()='"+code2+"']//parent::td"))).perform();
 			doClick(reportMap.reportSelectCodes());
 			assertElementIsDisplayedWithXpath("//div[text()='AND Primary Benefit Plan Code ']");
+			doClick(reportMap.reportreportReturnButton());
+			doClick(reportMap.reportDetailsButton1());
+			doClick(reportMap.reportreportAdmissionCode());
+			doDoubleClick("(//div[text()='Admission']//following::div[text()='Source'])[1]");
+			driverDelay();
+			act.click(driver.findElement(By.xpath("//div[text()='"+code3+"']//parent::td"))).perform();
+			act.keyDown(Keys.SHIFT).click(driver.findElement(By.xpath("//div[text()='"+code4+"']//parent::td"))).keyUp(Keys.SHIFT).perform();
+			doClick(reportMap.reportSelectCodes());
 			ExtentReport.logPass("PASS", "test03GoToDetailsTab");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test03GoToDetailsTab", driver, e);
@@ -112,7 +129,7 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 	}
 
 	@Test
-	public void test04GoToSortsTab_5660() throws Throwable {
+	public void test04GoToSortsTab_5660_5110() throws Throwable {
 		try {
 			doClick(reportMap.reportSortTab());
 			doClick(reportMap.reportCareDeliveryFacility());
@@ -123,6 +140,11 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 			doClick(reportMap.reportChargeItemCode());
 			doClick(reportMap.reportSelectCodesFromSortTab());
 			assertElementIsDisplayedWithXpath("//div[text()='Sort by: Charge Item Department Code']");
+			doClick(reportMap.reportBenifitPlanCode());
+			doClick(reportMap.reportBenifitCode());
+			doClick(reportMap.reportSelectCodesFromSortTab());
+			doClick("//div[text()='Sort by: Primary Benefit Plan Code']");
+			doClick(reportMap.reportRemoveCodesFromSortTab());
 			ExtentReport.logPass("PASS", "test04GoToSortsTab");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test04GoToSortsTab", driver, e);
@@ -153,11 +175,6 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 			doClick(reportMap.reportLibraryPageEntityRunButton());
 			waitForElementToBeVisible(reportMap.reportLibraryPageEntityRefreshButton());
 			waitForPresenceOfElement(("//span[text()='" + orgName + "']"));
-//			Thread.sleep(4000);
-//			for(int i=0;i<=5;i++) {
-//				doClick(reportMap.reportLibraryPageEntityRefreshButton());
-//			}
-			
 			waitForPresenceOfElement("//span[text()='" + orgName + "']//following::td[5]/div");
 			
 			if (driver.findElement(By.xpath("//span[text()='" + orgName + "']//following::td[5]/div")).getText()
@@ -170,15 +187,14 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 				for (int i = 0; i <=denominator; i++) {
 					doClick(reportMap.reportLibraryPageEntityRefreshButton());
 					driverDelay(3000);
-					if (i == denominator) {
-						System.out.println("Status is not updated to COMPLETED");
-						fail();
-						break;
-					}
 					try {
 						if (driver.findElement(By.xpath("(//span[text()='"+orgName+"']//following::a)[1]")).getText()
-								//Shilpa updated for 1.2 on 2.2.2025
-//						if (driver.findElement(By.xpath("(//div[@class='GJT013UBLJB']//tbody//td/div)[7]/a")).getText()
+								.contains("FAILED")) 
+						{
+							fail();
+//						ExtentReport.logFail("FAIL", "test02OpenCostingReport", driver, e1);
+						}
+						if (driver.findElement(By.xpath("(//span[text()='"+orgName+"']//following::a)[1]")).getText()
 								.equals("COMPLETED")) {
 							assertElementTextWithXpath("(//span[text()='"+orgName+"']//following::a)[1]", "COMPLETED",
 									printout);
@@ -186,27 +202,32 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 							break;
 
 						}
-						if (driver.findElement(By.xpath("(//span[text()='"+orgName+"']//following::a)[1]")).getText()
-								//Shilpa updated for 1.2 on 2.2.2025
-//						if (driver.findElement(By.xpath("(//div[@class='GJT013UBLJB']//tbody//td/div)[7]/a")).getText()
-								.equals("RUNNING")) {
-							continue;
+						
+						if (i == denominator) {
+							if (driver.findElement(By.xpath("(//span[text()='"+orgName+"']//following::a)[1]")).getText()
+									.equals("COMPLETED")) {
+								assertElementTextWithXpath("(//span[text()='"+orgName+"']//following::a)[1]", "COMPLETED",
+										printout);
+								ExtentReport.logPass("PASS", "test02OpenCostingReport");
+								break;
 
-						}
-						//iF STATUS IS FAILED EXIT
-						//Shilpa updated for 1.2 on 2.2.2025
-//						if (driver.findElement(By.xpath("(//div[@class='GJT013UBLJB']//tbody//td/div)[7]/a")).getText()
-//								.contains("FAILED"))
-						if (driver.findElement(By.xpath("(//span[text()='"+orgName+"']//following::a)[1]")).getText()
-								.contains("FAILED")) 
-						{
-							fail();
+							}
+							if (driver.findElement(By.xpath("(//span[text()='"+orgName+"']//following::a)[1]")).getText()
+									.contains("FAILED")) 
+							{
+								fail();
 //							ExtentReport.logFail("FAIL", "test02OpenCostingReport", driver, e1);
+							}
+							else {
+								System.out.println("Status is not updated to COMPLETED");
+								fail();
+								break;
+							}
+							continue;
+							
 						}
-					} catch (Exception e1) {
-						
-						
-
+					} catch (Exception e) {
+						continue;
 					}
 					
 				}

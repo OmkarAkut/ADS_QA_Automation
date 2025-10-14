@@ -1,5 +1,6 @@
 package webdriver.scripts.contracting;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import java.io.File;
 import java.io.IOException;
@@ -38,11 +39,12 @@ public class CopyPricingTables extends GoHelper {
 	static String ascScheme = "ASESC2255 C";
 	static String perDiemServiceModel = "000 OP Per Diem RC 0921 (PD)";
 	static String perChargeServiceModel = "ASESC-1633 Charge Default";
+	static String ServiceModel = " ASESC-2455 Service name with blank front";
 	static String[] filterPerDiemService = { "Name", "Is", "Equal To", perDiemServiceModel };
 	static String[] filterChargeLevelService = { "Name", "Is", "Equal To", perChargeServiceModel };
 	static String serviceModelNew;
 
-	/** Support Cases: Automated test script for ADS-5094 */
+	/** Support Cases: Automated test script for ADS-5094 , Customer Issue ADS-5017*/
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
 		ExtentReport.reportCreate("CopyPricingTables", "webdriver.scripts.contracting", "CopyPricingTables");
@@ -300,9 +302,60 @@ public class CopyPricingTables extends GoHelper {
 
 		}
 	}
-
+	
 	@Test
-	public void test11_DeleteContractModel_ADS_12496() throws Throwable {
+	public void test11_APGFeeScheduleRate_ADS_5017() throws Throwable {
+		try {
+			doClick("(//div[contains(@class,'x-tree-view')])[4]//span[text()='" + ServiceModel + "']");
+			selectPricingMethod(ContractingMap.getpricingMethodAPGFeeSchedule());
+			doClick(ContractingMap.getpaymentRateRadioBtn());
+			List<String> columnValues = copyPasteFromExcelToRates("ASCPayment",
+					ContractingMap.getascPaymentRateList(), ContractingMap.getascPaymentList(), 1);
+			openEditDialog();
+			for (int i = 0; i < ContractingMap.getascPaymentList().size(); i++) {
+				WebElement input = ContractingMap.getascPaymentList().get(i);
+				System.out.println(input);
+				String value = columnValues.get(i);
+				System.out.println(value);
+				if(input.getText().contains(value)) {
+					assertTrue(printout);
+				}
+				else {
+					fail();
+				}
+			}
+			closeEditDialog();
+			columnValues.clear();
+			ExtentReport.logPass("PASS", "test11_APGFeeScheduleRate_ADS_5017");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test11_APGFeeScheduleRate_ADS_5017", driver, e);
+			fail(e.getMessage());
+
+		}
+	}
+	@Test
+	public void test12_MediCareCommRate_ADS_5017() throws Throwable {
+		try {
+			selectPricingMethod(ContractingMap.getpricingMethodmedicareComAsc());
+			doClick(ContractingMap.getascSchemeBtn());
+			doDropdownSelectUsingOptionTextOnly(ContractingMap.getascSchemeDrpdwn(), ascScheme);
+			navigateCloseGeneralSectionOpenNewSection("ASC Payment");
+			doClick(ContractingMap.getpaymentRateRadioBtn());
+			List<String> columnValues = copyPasteFromExcelToRates("MedicareComPayment",
+					ContractingMap.getmedicarePaymentRateList(), ContractingMap.getmedicarePaymentList(), 1);
+			openEditDialog();
+			assertPastedPricingValue(ContractingMap.getmedicarePaymentList(), columnValues);
+			closeEditDialog();
+			columnValues.clear();
+			ExtentReport.logPass("PASS", "test12_MediCareCommRate_ADS_5017");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test12_MediCareCommRate_ADS_5017", driver, e);
+			fail(e.getMessage());
+
+		}
+	}
+	@Test
+	public void test13_DeleteContractModel_ADS_12496() throws Throwable {
 		try {
 			doClick(ContractingMap.getContractModelRiskLimiterCancelCloseBtn());
 			doClick(ContractingMap.getContractModelRiskLimiterMessageBoxCancelCloseBtn());

@@ -162,15 +162,20 @@ public class EnableEncounterCostCalcFromToDatesforUncalculatedCostModelScenarios
 			doClick(costing.getcostModelButtonColumnsToDisplayModalSelect());
 			Thread.sleep(500);
 			doClick(costing.getAddCostScenarioApplyButton());
+			
 			doClick(costing.getCostModelScenariosinEvaluationOrderFrom());
+			doClick(costing.getCostModelScenariosinEvaluationOrderFrom());//un-comment once ADS-23510 is fixed
 			getFromList = getFromDateList();
 			assertListOfStringsContainsExpectedStrings(getFromList, expDateList);
-			System.out.println(getFromList);
+			
 			doClick(costing.getCostModelScenariosinEvaluationOrderTo());
+			doClick(costing.getCostModelScenariosinEvaluationOrderTo());//un-comment once ADS-23510 is fixed
 			getToList = getToDateList();
 			assertListOfStringsContainsExpectedStrings(getToList, expDateList);
 			doClick(costing.getEncCostModelCancelCloseButton());
 			doClick(costing.getEncCostModelWarningCancelCloseButton());
+			getFromDateList().clear();
+			getToDateList().clear();
 			ExtentReport.logPass("PASS", "test03Validate_CostScenarioWithCalc_Under_NewEncounterCostCalc_22123");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test03Validate_CostScenarioWithCalc_Under_NewEncounterCostCalc_22123", driver,
@@ -195,16 +200,20 @@ public class EnableEncounterCostCalcFromToDatesforUncalculatedCostModelScenarios
 			Thread.sleep(500);
 			doClick(costing.getAddCostScenarioApplyButton());
 			scrollToView("//h1[text()='Encounter Cost Calculation Scenario']");
+			doClick(costing.getCostModelScenariosinEvaluationOrderFrom());//un-comment once ADS-23510 is fixed
 			doClick(costing.getCostModelScenariosinEvaluationOrderFrom());
 			driverDelay(300);
 			getFromList = getFromDateList();
 			assertListOfStringsContainsExpectedStrings(getFromList, expDateList);
 			System.out.println(getFromList);
+			doClick(costing.getCostModelScenariosinEvaluationOrderTo());//un-comment once ADS-23510 is fixed
 			doClick(costing.getCostModelScenariosinEvaluationOrderTo());
 			getToList = getToDateList();
 			assertListOfStringsContainsExpectedStrings(getToList, expDateList);
 			doClick(costing.getEncCostModelCancelCloseButton());
 			doClick(costing.getEncCostModelWarningCancelCloseButton());
+			getFromDateList().clear();
+			getToDateList().clear();
 			ExtentReport.logPass("PASS", "test04Validate_CostScenarioWithCalc_Under_EditEncounterCostCalc_22123");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test04Validate_CostScenarioWithCalc_Under_EditEncounterCostCalc_22123",
@@ -227,14 +236,18 @@ public class EnableEncounterCostCalcFromToDatesforUncalculatedCostModelScenarios
 			Thread.sleep(500);
 			doClick(costing.getAddCostScenarioApplyButton());
 			doClick(costing.getCostModelScenariosinEvaluationOrderFrom());
+			doClick(costing.getCostModelScenariosinEvaluationOrderFrom());//Remove once ADS-23510 is fixed
 			getFromList = getFromDateList();
 			assertListOfStringsContainsExpectedStrings(getFromList, expDateList);
 			System.out.println(getFromList);
 			doClick(costing.getCostModelScenariosinEvaluationOrderTo());
+			doClick(costing.getCostModelScenariosinEvaluationOrderTo());//Remove once ADS-23510 is fixed
 			getToList = getToDateList();
 			assertListOfStringsContainsExpectedStrings(getToList, expDateList);
 			doClick(costing.getEncCostModelCancelCloseButton());
 			doClick(costing.getEncCostModelWarningCancelCloseButton());
+			getFromDateList().clear();
+			getToDateList().clear();
 			ExtentReport.logPass("PASS", "test05Validate_CostScenario_WithoutCalc_NewEncounterCostCalc_22123");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test05Validate_CostScenario_WithoutCalc_NewEncounterCostCalc_22123", driver,
@@ -260,15 +273,19 @@ public class EnableEncounterCostCalcFromToDatesforUncalculatedCostModelScenarios
 			doClick(costing.getAddCostScenarioApplyButton());
 			scrollToView("//h1[text()='Encounter Cost Calculation Scenario']");
 			doClick(costing.getCostModelScenariosinEvaluationOrderFrom());
+			doClick(costing.getCostModelScenariosinEvaluationOrderFrom());//Remove once ADS-23510 is fixed
 			driverDelay(300);
 			getFromList = getFromDateList();
 			assertListOfStringsContainsExpectedStrings(getFromList, expDateList);
 			System.out.println(getFromList);
 			doClick(costing.getCostModelScenariosinEvaluationOrderTo());
+			doClick(costing.getCostModelScenariosinEvaluationOrderTo());//Remove once ADS-23510 is fixed
 			getToList = getToDateList();
 			assertListOfStringsContainsExpectedStrings(getToList, expDateList);
 			doClick(costing.getEncCostModelCancelCloseButton());
 			doClick(costing.getEncCostModelWarningCancelCloseButton());
+			getFromDateList().clear();
+			getToDateList().clear();
 			ExtentReport.logPass("PASS", "test06Validate_CostScenario_WithoutCalc_EditEncounterCostCalc_22123");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test06Validate_CostScenario_WithoutCalc_EditEncounterCostCalc_22123", driver,

@@ -1383,13 +1383,34 @@ public class ContractingMap extends MapConfig {
 	private static WebElement warningDeleteBtn;
 	public static WebElement getwarningDeleteBtn() {return warningDeleteBtn;}
 	
+	@FindBy(xpath = "//label[text()='Enter a payment rate for each tier']//preceding::input[1]")
+	private static WebElement paymentRateRadioBtn;
+	public static WebElement getpaymentRateRadioBtn() {return paymentRateRadioBtn;}
+	
+	
 	@FindBy(xpath = "//div[contains(@id,'alliancecopypastepanel')]//following::div[@class='x-grid-item-container']//table//tr//td[3]//div")
 	private static List<WebElement> pricingTableList;
 	public static List<WebElement> getpricingTableList() {return pricingTableList;}
 	
+	@FindBy(xpath = "//div[contains(@id,'fieldcontainer')]//following::div[@class='x-grid-item-container']//table//tr//td[2]//div")
+	private static List<WebElement> ascPaymentList;
+	public static List<WebElement> getascPaymentList() {return ascPaymentList;}
+	
+	@FindBy(xpath = "//div[contains(@id,'radiogroup')]//following::div[@class='x-grid-item-container']//table//tr//td[3]//div")
+	private static List<WebElement> medicarePaymentList;
+	public static List<WebElement> getmedicarePaymentList() {return medicarePaymentList;}
+	
 	@FindBy(xpath = "(//div[contains(@id,'alliancecopypastepanel')]//following::div[@class='x-grid-item-container']//table)//tr//td[1]//div")
 	private static List<WebElement> pricingTableCopyRowList;
 	public static List<WebElement> getpricingTableCopyRowList() {return pricingTableCopyRowList;}
+	
+	@FindBy(xpath = "(//div[contains(@id,'fieldcontainer')]//following::div[@class='x-grid-item-container']//table)//tr//td[1]//div")
+	private static List<WebElement> ascPaymentRateList;
+	public static List<WebElement> getascPaymentRateList() {return ascPaymentRateList;}
+	
+	@FindBy(xpath = "(//div[contains(@id,'radiogroup')]//following::div[@class='x-grid-item-container']//table)//tr//td[1]//div")
+	private static List<WebElement> medicarePaymentRateList;
+	public static List<WebElement> getmedicarePaymentRateList() {return medicarePaymentRateList;}
 	
 	@FindBy(xpath = "//div[contains(@class,'x-boundlist-list-ct')]/ul/li[text()='Case Rate']")
 	private static WebElement pricingMethodCaseRate;
@@ -1450,6 +1471,14 @@ public class ContractingMap extends MapConfig {
 	@FindBy(xpath = "//div[contains(@class,'x-boundlist-list-ct')]/ul/li[text()='Rate Per Procedure']")
 	private static WebElement pricingMethodRatePerProc;
 	public static WebElement getpricingMethodRatePerProc() {return pricingMethodRatePerProc;}
+	
+	@FindBy(xpath = "//div[contains(@class,'x-boundlist-list-ct')]/ul/li[text()='APG Fee Schedule']")
+	private static WebElement pricingMethodAPGFeeSchedule;
+	public static WebElement getpricingMethodAPGFeeSchedule() {return pricingMethodAPGFeeSchedule;}
+	
+	@FindBy(xpath = "//div[contains(@class,'x-boundlist-list-ct')]/ul/li[text()='Medicare/Commercial ASC']")
+	private static WebElement pricingMethodmedicareComAsc;
+	public static WebElement getpricingMethodmedicareComAsc() {return pricingMethodmedicareComAsc;}
 	
 	@FindBy(xpath = "(//label[contains(text(),'Services ')]//following::div[contains(@class,'x-grid-cell-inner ')])[1]")
 	private static WebElement selectService;

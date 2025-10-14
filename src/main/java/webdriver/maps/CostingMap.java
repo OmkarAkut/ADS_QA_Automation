@@ -1098,13 +1098,13 @@ public class CostingMap extends MapConfig {
 		return costModelButtonColumnsToDisplayModalRemove;
 	}
 
-	@FindBy(xpath = "//input[@name='utCstStartDate']")
+	@FindBy(xpath = "(//input[@name='utCstStartDate'])[2]")
 	private WebElement getCostModelScenariosinEvaluationOrderFrom;
 	public WebElement getCostModelScenariosinEvaluationOrderFrom() {
 		return getCostModelScenariosinEvaluationOrderFrom;
 	}
 
-	@FindBy(xpath = "//input[@name='utCstEndDate']")
+	@FindBy(xpath = "(//input[@name='utCstEndDate'])[2]")
 	private WebElement getCostModelScenariosinEvaluationOrderTo;
 	public WebElement getCostModelScenariosinEvaluationOrderTo() {
 		return getCostModelScenariosinEvaluationOrderTo;

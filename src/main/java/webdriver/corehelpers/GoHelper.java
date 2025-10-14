@@ -374,7 +374,7 @@ public class GoHelper extends AssertHelper {
 			waitForAjaxExtJs();
 			driver.findElement(By.xpath("//div[text()='Pricing Method']//following::span[text()='Edit'][1]")).click();
 			waitForAjaxExtJs();
-			Thread.sleep(1000);
+			Thread.sleep(1500);
 			//assertElementTextWithXpath("//span[contains(@id, 'medicareinpatientpps')]", "Edit Price for " + serviceModel + " [Encounter]", printout);
 		} catch (Throwable e) {
 			e.getMessage();

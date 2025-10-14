@@ -178,6 +178,22 @@ public class ReportingMap extends MapConfig {
     private WebElement reportCareDeliveryFacilityCode;
     public WebElement reportCareDeliveryFacilityCode() {return reportCareDeliveryFacilityCode;}
     
+    @FindBy(xpath = "(//div[text()='Benefit Plan']//following::div[text()='Primary Group'])[1]")
+    private WebElement reportBenifitGroup;
+    public WebElement reportBenifitGroup() {return reportBenifitGroup;}
+    
+    @FindBy(xpath = "(//div[text()='Benefit Plan']//following::div[text()='Primary Code'])[1]")
+    private WebElement reportBenifitCode;
+    public WebElement reportBenifitCode() {return reportBenifitCode;}
+    
+    @FindBy(xpath = "(//div[text()='Benefit Plan']//preceding::img[1])[1]")
+    private WebElement reportBenifitPlanCode;
+    public WebElement reportBenifitPlanCode() {return reportBenifitPlanCode;}
+    
+    @FindBy(xpath = "(//div[text()='Admission']//preceding::img[1])[1]")
+    private WebElement reportAdmissionCode;
+    public WebElement reportreportAdmissionCode() {return reportAdmissionCode;}
+    
     @FindBy(xpath = "(//div[text()='Discharge Date'])[1]")
     private WebElement reportDischargeDate;
     public WebElement reportDischargeDate() {return reportDischargeDate;}
@@ -203,6 +219,10 @@ public class ReportingMap extends MapConfig {
     private WebElement reportDetailsButton;
     public WebElement reportDetailsButton() {return reportDetailsButton;}
     
+    @FindBy(xpath = "(//img[@class='GJT013UBHGC'])[1]")
+    private WebElement reportDetailsButton1;
+    public WebElement reportDetailsButton1() {return reportDetailsButton1;}
+    
     @FindBy(xpath = "//select[@class='GJT013UBN2']")
     private WebElement reportSelectOption;
     public WebElement reportSelectOption() {return reportSelectOption;}
@@ -214,6 +234,23 @@ public class ReportingMap extends MapConfig {
     @FindBy(xpath = "(//button[@class='GJT013UBPGC'])[2]")
     private WebElement reportSelectCodesFromSortTab;
     public WebElement reportSelectCodesFromSortTab() {return reportSelectCodesFromSortTab;}
+    
+    @FindBy(xpath = "(//button[@class='GJT013UBBGC'])[2]")
+    private WebElement reportSelectCodesFromSelectionTab;
+    public WebElement reportSelectCodesFromSelectionTab() {return reportSelectCodesFromSelectionTab;}
+    
+    @FindBy(xpath = "(//button[@class='GJT013UBBGC'])[3]")
+    private WebElement reportRemoveCodesFromSelectionTab;
+    public WebElement reportRemoveCodesFromSelectionTab() {return reportRemoveCodesFromSelectionTab;}
+    
+    @FindBy(xpath = "//button[text()='Return']")
+    private WebElement reportReturnButton;
+    public WebElement reportreportReturnButton() {return reportReturnButton;}
+    
+    @FindBy(xpath = "(//button[@class='GJT013UBPGC'])[3]")
+    private WebElement reportRemoveCodesFromSortTab;
+    public WebElement reportRemoveCodesFromSortTab() {return reportRemoveCodesFromSortTab;}
+    
     
     @FindBy(xpath = "//div[text()='Organization Name']//following::input[1]")
     private WebElement reportOrganisationName;
