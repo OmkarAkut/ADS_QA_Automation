@@ -135,6 +135,17 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 			doClick(reportMap.reportCareDeliveryFacility());
 			doClick(reportMap.reportCareDeliveryFacilityCode());
 			doClick(reportMap.reportSelectCodesFromSortTab());
+			doClick("//div[text()='Sort by: Care Delivery Facility Code']");
+			doClick("//button[text()='Edit']");
+			doClick(reportMap.reportSortDesc());
+			doClick("//button[text()='OK']");
+			String text=driver.findElement(By.xpath("//div[@class='gwtQuery-draggable gwtQuery-droppable']")).getText();
+			if(text.contains("Sort by: Care Delivery Facility Code\r\n"
+					+ "      Order by Code\r\n"
+					+ "      in Ascending order\r\n"
+					+ "      Show Code and Name")) {
+				assertTrue(printout);
+			}
 			assertElementIsDisplayedWithXpath("//div[text()='Sort by: Care Delivery Facility Code']");
 			doClick(reportMap.reportChargeItem());
 			doClick(reportMap.reportChargeItemCode());
@@ -143,6 +154,8 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 			doClick(reportMap.reportBenifitPlanCode());
 			doClick(reportMap.reportBenifitCode());
 			doClick(reportMap.reportSelectCodesFromSortTab());
+//			doClick("//div[text()='Sort by: Primary Benefit Plan Code']");
+			
 			doClick("//div[text()='Sort by: Primary Benefit Plan Code']");
 			doClick(reportMap.reportRemoveCodesFromSortTab());
 			ExtentReport.logPass("PASS", "test04GoToSortsTab");
@@ -203,7 +216,7 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 
 						}
 						
-						if (i == denominator) {
+						else if (i == denominator) {
 							if (driver.findElement(By.xpath("(//span[text()='"+orgName+"']//following::a)[1]")).getText()
 									.equals("COMPLETED")) {
 								assertElementTextWithXpath("(//span[text()='"+orgName+"']//following::a)[1]", "COMPLETED",
@@ -223,9 +236,10 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 								fail();
 								break;
 							}
+						}
 							continue;
 							
-						}
+						
 					} catch (Exception e) {
 						continue;
 					}

@@ -35,7 +35,7 @@ public class ValidateHelpSectionOnDashboard extends PageTestHelper{
 	@Test
 	public void test01AssertHelpSectionOnDashboard() throws Throwable {
 	      try {
-	    	   firsthandle = webSwitchToNewWindow(generalElement.getGlobalHeaderButtonHelp(),printout);
+	    	 firsthandle = webSwitchToNewWindow(generalElement.getGlobalHeaderButtonHelp(),printout);
 			assertTextIsDisplayed("TOC");
 			doClick(CostingMap.getHelpModelLibraryLink());
 			assertTextIsDisplayed("Model Library");

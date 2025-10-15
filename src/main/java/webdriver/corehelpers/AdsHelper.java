@@ -468,5 +468,6 @@ public class AdsHelper extends GetHelper {
 		return num;
 		
 	}
+	
 }
 

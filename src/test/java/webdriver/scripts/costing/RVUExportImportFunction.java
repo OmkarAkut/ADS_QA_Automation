@@ -114,14 +114,14 @@ public class RVUExportImportFunction extends GoHelper {
 			
 		} 
 	}
-	public  void selectFileLocAndaddFileName(WebElement button) throws Throwable {
-		doClick(costing.getRvuSharedLocDropdown());
+	public static   void selectFileLocAndaddFileName(WebElement button) throws Throwable {
+		doClick(CostingMap.getRvuSharedLocDropdown());
 		driverDelay(300);
-		doClick(contracting.getContractModelExportFileSharedLocOption());
-		ContractModelsHelper.keyInValues(costing.getRvuFileNameInput(), "Test");
+		doClick(ContractingMap.getContractModelExportFileSharedLocOption());
+		ContractModelsHelper.keyInValues(CostingMap.getRvuFileNameInput(), "Test");
 		doClick(button);
 		waitForSpinnerToEnd();
-		assertElementIsDisplayed(contracting.getContractModelImportExportstatusPage());
+		assertElementIsDisplayed(ContractingMap.getContractModelImportExportstatusPage());
 		ContractModelsHelper.waitForFirstRowCalculationBarToReach100Percent();
 		doClosePageOnLowerBar("Import/Export Status");
 	}

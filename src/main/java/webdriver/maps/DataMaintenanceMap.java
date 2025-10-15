@@ -1212,4 +1212,48 @@ public class DataMaintenanceMap extends MapConfig {
 	@FindBy(xpath = "//div[text()='Filter GL Account Codes']//following::span[text()='Apply Filter']")
 	private static WebElement glAccCodeApplyFilterBtn;
 	public static WebElement getGlAccCodeApplyFilterBtn() {return glAccCodeApplyFilterBtn;}
+	
+	@FindBy(xpath = "(//div[contains(@class,'commonTBar ')]//following::span[text()='New'])[1]")
+	private static WebElement azNewBtn;
+	public static WebElement getazNewBtn() {return azNewBtn;}
+	
+	@FindBy(xpath = "(//div[contains(@class,'commonTBar ')]//following::span[text()='Filter'])[1]")
+	private static WebElement azFilterBtn;
+	public static WebElement getazFilterBtn() {return azFilterBtn;}
+	
+	@FindBy(xpath = "(//div[contains(@class,'commonTBar ')]//following::span[text()='Edit'])[1]")
+	private static WebElement getazEditBtn;
+	public static WebElement getazEditBtn() {return getazEditBtn;}
+	
+	@FindBy(xpath = "(//div[contains(@class,'commonTBar ')]//following::span[text()='Delete'])[1]")
+	private static WebElement azDeleteBtn;
+	public static WebElement getazDeleteBtn() {return azDeleteBtn;}
+	
+	@FindBy(xpath = "//div[contains(@id,'toolbar')]//following::span[text()='Save']")
+	private static WebElement azSaveBtn;
+	public static WebElement getazSaveBtn() {return azSaveBtn;}
+	
+	@FindBy(xpath = "//div[contains(@id,'toolbar')]//following::span[text()='Save & Close']")
+	private static WebElement azSaveCloseBtn;
+	public static WebElement getazSaveCloseBtn() {return azSaveCloseBtn;}
+	
+	@FindBy(xpath = "//div[contains(@id,'toolbar')]//following::span[text()='Cancel & Close']")
+	private static WebElement azCancelCloseBtn;
+	public static WebElement getazCancelCloseBtn() {return azCancelCloseBtn;}
+	
+	@FindBy(xpath = "//div[contains(@class,'fixDisableOpacityGL ')]//following::span[text()='Import']")
+	private static WebElement adHocImportBtn;
+	public static WebElement getadHocImportBtn() {return adHocImportBtn;}
+	
+	@FindBy(xpath = "(//div[text()='GL Data']//following::span[text()='Filter'])[1]")
+	private static WebElement glDataFilterBtn;
+	public static WebElement getglDataFilterBtn() {return glDataFilterBtn;}
+	
+	@FindBy(xpath = "(//div[text()='GL Data']//following::span[text()='Export'])[1]")
+	private static WebElement glDataExportBtn;
+	public static WebElement getglDataExportBtn() {return glDataExportBtn;}
+	
+	@FindBy(xpath = "//div[contains(@id,'exportwindow')]//following::span[text()='Export']")
+	private static WebElement glDataWindowExportBtn;
+	public static WebElement getglDataWindowExportBtn() {return glDataWindowExportBtn;}
 }

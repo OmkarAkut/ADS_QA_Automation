@@ -251,6 +251,13 @@ public class ReportingMap extends MapConfig {
     private WebElement reportRemoveCodesFromSortTab;
     public WebElement reportRemoveCodesFromSortTab() {return reportRemoveCodesFromSortTab;}
     
+    @FindBy(xpath = "(//input[@name='ascendingOrDescending'])[2]")
+    private WebElement reportSortDesc;
+    public WebElement reportSortDesc() {return reportSortDesc;}
+    
+    @FindBy(xpath = "(//input[@name='ascendingOrDescending'])[1]")
+    private WebElement reportSortAsc;
+    public WebElement reportSortAsc() {return reportSortAsc;}
     
     @FindBy(xpath = "//div[text()='Organization Name']//following::input[1]")
     private WebElement reportOrganisationName;

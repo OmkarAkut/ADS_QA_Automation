@@ -1678,13 +1678,13 @@ public class CostingMap extends MapConfig {
 		return getImportSelectButton;
 	}
 	@FindBy(name = "sharedHostLocation")
-	private  WebElement getRvuSharedLocDropdown;
-	public  WebElement getRvuSharedLocDropdown() {
+	private static WebElement getRvuSharedLocDropdown;
+	public  static WebElement getRvuSharedLocDropdown() {
 		return getRvuSharedLocDropdown;
 	}
 	@FindBy(name = "logFileName")
-	private  WebElement getRvuFileNameInput;
-	public  WebElement getRvuFileNameInput() {
+	private  static WebElement getRvuFileNameInput;
+	public  static WebElement getRvuFileNameInput() {
 		return getRvuFileNameInput;
 	}
 //	Omkar 11/8/2023 : xpath changes for 11.2
@@ -2720,5 +2720,25 @@ public class CostingMap extends MapConfig {
 	@FindBy(xpath = "//span[text()='Add']")
 	private static WebElement criteriaAddBtn;
 	public static WebElement getcriteriaAddBtn() {return criteriaAddBtn;}
+	
+	@FindBy(xpath = "//a[text()='Costing']")
+	private static WebElement getCostingHelpIndexLink;
+	public static WebElement getCostingHelpIndexLink() {return getCostingHelpIndexLink;}
+	
+	@FindBy(xpath = "//a[text()='Field Descriptions']")
+	private static WebElement getFieldDesc;
+	public static WebElement getFieldDesc() {return getFieldDesc;}
+	
+	@FindBy(xpath = "//a[text()='Field Descriptions']//following::ul[1]/li")
+	private static List<WebElement> getCostingDocList;
+	public static List<WebElement> getCostingDocList() {return getCostingDocList;}
+	
+	@FindBy(xpath = "//a[contains(@class,'dropDownHotspot ')]")
+	private static List<WebElement> getCostingDocDrpDwn;
+	public static List<WebElement> getCostingDocDrpDwn() {return getCostingDocDrpDwn;}
+	
+	@FindBy(xpath = "//a[text()='Field Descriptions']//following::ul[1]/li//ul/li")
+	private static List<WebElement> getSubCostingDocList;
+	public static List<WebElement> getSubCostingDocList() {return getSubCostingDocList;}
 	
 }

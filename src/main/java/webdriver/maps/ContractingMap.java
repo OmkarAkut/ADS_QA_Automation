@@ -384,8 +384,8 @@ public class ContractingMap extends MapConfig {
 	public WebElement getContractModelCalcContinueBtn() {return ContractModelCalcContinueBtn;}
 	
 	@FindBy(xpath = "//li[text()='<SFTP_SERVER>/PATH/TO/EXPORT_LOGS_SHARED_DIRECTORY/']")
-	private WebElement ContractModelExportFileSharedLocOption;
-	public WebElement getContractModelExportFileSharedLocOption() {return ContractModelExportFileSharedLocOption;}
+	private static WebElement ContractModelExportFileSharedLocOption;
+	public static WebElement getContractModelExportFileSharedLocOption() {return ContractModelExportFileSharedLocOption;}
 
 	//	Omkar 25/4/2023 : xpath changes for 11.2
 	//	@FindBy(xpath = "//div[contains(@class,'x-toolbar-footer')]//div[contains(@class,'x-toolbar-item')]//span[text()='Export']//parent::button")
@@ -402,8 +402,8 @@ public class ContractingMap extends MapConfig {
 //	Omkar 21/6/2023 : xpath changes for 11.2
 //	@FindBy(xpath = "//span[contains(@id,'importexportstat;us')][text()='Import/Export Status']")
 	@FindBy(xpath = "//div[contains(@id,'importexportstatus')][text()='Import/Export Status']")
-	private WebElement ContractModelImportExportstatusPage;
-	public WebElement getContractModelImportExportstatusPage() {return ContractModelImportExportstatusPage;}
+	private static WebElement ContractModelImportExportstatusPage;
+	public static WebElement getContractModelImportExportstatusPage() {return ContractModelImportExportstatusPage;}
 
 	@FindBy(xpath = "//span[contains(@id,'importexportstatus')][text()='Import/Export Status']")
 	private WebElement ContractModelRiskLimiterEditAvailableService;
