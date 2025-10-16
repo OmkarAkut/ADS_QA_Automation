@@ -1256,4 +1256,36 @@ public class DataMaintenanceMap extends MapConfig {
 	@FindBy(xpath = "//div[contains(@id,'exportwindow')]//following::span[text()='Export']")
 	private static WebElement glDataWindowExportBtn;
 	public static WebElement getglDataWindowExportBtn() {return glDataWindowExportBtn;}
+	
+	@FindBy(xpath = "(//table[contains(@id,'gridview')])[1]")
+	private static WebElement azGirdFirstElement;
+	public static WebElement getazGirdFirstElement() {return azGirdFirstElement;}
+	
+	@FindBy(xpath = "(//div[text()='Templates']//following::span[text()='New'])[1]")
+	private static WebElement azTemplatesNewBtn;
+	public static WebElement getazTemplatesNewBtn() {return azTemplatesNewBtn;}
+	
+	@FindBy(xpath = "(//div[text()='Templates']//following::span[text()='Delete'])[1]")
+	private static WebElement azTemplatesDeleteBtn;
+	public static WebElement getazTemplatesDeleteBtn() {return azTemplatesDeleteBtn;}
+	
+	@FindBy(xpath = "//input[@name='drgClassCode']")
+	private static WebElement azMasterClassificationDrpDwn;
+	public static WebElement getazMasterClassificationDrpDwn() {return azMasterClassificationDrpDwn;}
+	
+	@FindBy(xpath = "//ul[contains(@id,'dynamiccombo')]")
+	private static WebElement azMasterDropdownOptions;
+	public static WebElement getazMasterDropdownOptions() {return azMasterDropdownOptions;}
+	
+	@FindBy(xpath = "//div[text()='New Template']//following::span[text()='Save & Close']")
+	private static WebElement azMasterDropdownSaveClose;
+	public static WebElement getazMasterDropdownSaveClose() {return azMasterDropdownSaveClose;}
+	
+	@FindBy(xpath = "//div[text()='New Template']//following::input[@name='name']")
+	private static WebElement azMasterName;
+	public static WebElement getazMasterName() {return azMasterName;}
+	
+	@FindBy(xpath = "//div[text()='Templates']")
+	private static WebElement azTemplatesPanel;
+	public static WebElement getazTemplatesPanel() {return azTemplatesPanel;}
 }

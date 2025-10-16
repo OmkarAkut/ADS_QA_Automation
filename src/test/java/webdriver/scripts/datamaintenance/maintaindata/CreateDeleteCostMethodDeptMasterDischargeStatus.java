@@ -241,7 +241,6 @@ public class CreateDeleteCostMethodDeptMasterDischargeStatus extends Calculation
 	}
 	@AfterClass
 	public static void endtest() throws Exception {
-		
 		ExtentReport.report.flush();
 	}
 	

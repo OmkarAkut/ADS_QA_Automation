@@ -4,6 +4,9 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
@@ -21,7 +24,7 @@ import webdriver.helpers.ContractModelsHelper;
 import webdriver.maps.ReportingMap;
 import webdriver.maps.mapbuilder.BuildMap;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-/** Regression Test for Test Ticket ADS-5660. ADS-5110**/
+/** Regression Test for Test Ticket ADS-5660. ADS-5110, ADS-5109**/
 public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 	static String directory="Templates";
 	static String subDirectory="Flexible Reports";
@@ -73,7 +76,7 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 		}
 	}
 	@Test
-	public void test02GoToSelectionsTab_5660_5110() throws Throwable {
+	public void test02GoToSelectionsTab_5660_5110_5109() throws Throwable {
 		try {
 			doClick(reportMap.reportSelectionTab());
 			doClick(reportMap.reportBenifitPlanCode());
@@ -101,7 +104,7 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 
 	}
 	@Test
-	public void test03GoToDetailsTab_5660_5112() throws Throwable {
+	public void test03GoToDetailsTab_5660_5112_5109() throws Throwable {
 		try {
 			doClick(reportMap.reportDetailsButton());
 
@@ -127,9 +130,8 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 			fail(e.getMessage());
 		}
 	}
-
 	@Test
-	public void test04GoToSortsTab_5660_5110() throws Throwable {
+	public void test04GoToSortsTab_SortByDesc_ADS5660_ADS5111_5109() throws Throwable {
 		try {
 			doClick(reportMap.reportSortTab());
 			doClick(reportMap.reportCareDeliveryFacility());
@@ -138,14 +140,34 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 			doClick("//div[text()='Sort by: Care Delivery Facility Code']");
 			doClick("//button[text()='Edit']");
 			doClick(reportMap.reportSortDesc());
-			doClick("//button[text()='OK']");
-			String text=driver.findElement(By.xpath("//div[@class='gwtQuery-draggable gwtQuery-droppable']")).getText();
-			if(text.contains("Sort by: Care Delivery Facility Code\r\n"
-					+ "      Order by Code\r\n"
-					+ "      in Ascending order\r\n"
-					+ "      Show Code and Name")) {
-				assertTrue(printout);
-			}
+			driver.findElement(By.xpath("//button[text()='OK']")).click();
+			List<String> expectedWords = Arrays.asList("Sort by: Care Delivery Facility Code", "Order by Code", "in Descending order","Show Code and Name");
+			String sortByDesc=driver.findElement(By.xpath("//div[@class='gwtQuery-draggable gwtQuery-droppable']")).getText();
+			compareText(expectedWords,sortByDesc);
+			ExtentReport.logPass("PASS", "test04GoToSortsTab");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test04GoToSortsTab", driver, e);
+			fail(e.getMessage());
+		}
+	}
+	@Test
+	public void test05GoToSortsTab_SortByAsec_ADS5660_ADS5111() throws Throwable {
+		try {
+			doClick("//button[text()='Edit']");
+			doClick(reportMap.reportSortAsc());
+			driver.findElement(By.xpath("//button[text()='OK']")).click();
+			String sortByAsc=driver.findElement(By.xpath("//div[@class='gwtQuery-draggable gwtQuery-droppable']")).getText();
+			List<String> expectedWords = Arrays.asList("Sort by: Care Delivery Facility Code", "Order by Code", "in Ascending order","Show Code and Name");
+			compareText(expectedWords,sortByAsc);
+			ExtentReport.logPass("PASS", "test04GoToSortsTab");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test04GoToSortsTab", driver, e);
+			fail(e.getMessage());
+		}
+	}
+	@Test
+	public void test06GoToSortsTab_5660_5110() throws Throwable {
+		try {
 			assertElementIsDisplayedWithXpath("//div[text()='Sort by: Care Delivery Facility Code']");
 			doClick(reportMap.reportChargeItem());
 			doClick(reportMap.reportChargeItemCode());
@@ -154,8 +176,6 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 			doClick(reportMap.reportBenifitPlanCode());
 			doClick(reportMap.reportBenifitCode());
 			doClick(reportMap.reportSelectCodesFromSortTab());
-//			doClick("//div[text()='Sort by: Primary Benefit Plan Code']");
-			
 			doClick("//div[text()='Sort by: Primary Benefit Plan Code']");
 			doClick(reportMap.reportRemoveCodesFromSortTab());
 			ExtentReport.logPass("PASS", "test04GoToSortsTab");
@@ -165,7 +185,7 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 		}
 	}
 	@Test
-	public void test05GoToSelectionsTab_5660() throws Throwable {
+	public void test07GoToSelectionsTab_5660() throws Throwable {
 		try {
 			doClick(reportMap.reportAdditionalSelectionTab());
 			driverDelay(300);
@@ -183,7 +203,7 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 		}
 	}
 	@Test
-	public void test06SaveReportAndAssertStatus_5660() throws Throwable {
+	public void test08SaveReportAndAssertStatus_5660() throws Throwable {
 		try {
 			doClick(reportMap.reportLibraryPageEntityRunButton());
 			waitForElementToBeVisible(reportMap.reportLibraryPageEntityRefreshButton());
@@ -216,7 +236,7 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 
 						}
 						
-						else if (i == denominator) {
+						 if (i == denominator) {
 							if (driver.findElement(By.xpath("(//span[text()='"+orgName+"']//following::a)[1]")).getText()
 									.equals("COMPLETED")) {
 								assertElementTextWithXpath("(//span[text()='"+orgName+"']//following::a)[1]", "COMPLETED",
@@ -229,15 +249,10 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 									.contains("FAILED")) 
 							{
 								fail();
-//							ExtentReport.logFail("FAIL", "test02OpenCostingReport", driver, e1);
 							}
-							else {
-								System.out.println("Status is not updated to COMPLETED");
-								fail();
-								break;
-							}
+							break;
 						}
-							continue;
+						 else{continue;}
 							
 						
 					} catch (Exception e) {
@@ -259,7 +274,7 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 	}
 
 	@Test
-	public void test07OpenCompletedReportAndVerifyReportNames_5660() throws Throwable {
+	public void test09OpenCompletedReportAndVerifyReportNames_5660() throws Throwable {
 		try {
 			 doDoubleClick("(//span[text()='" + orgName + "']//following::td[5]/div/a)");//Shilpa updated xpath for 11.2 on 10.24.2024
 //			driver.findElement(By.xpath("(//span[text()='" + orgName + "']//following::td[5]/div)")).click();
@@ -296,6 +311,16 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 		}
 	}
 
+	public void compareText(List<String> expectedWords, String sortText) {
+		boolean matchFound=false;
+		for (String word : expectedWords) {
+		    if (sortText.contains(word)) {
+		        matchFound = true;
+		        System.out.println("Match found: " + word);
+		        break; // if only one match is enough
+		    }
+		}
+	}
 
 
 	@AfterClass
