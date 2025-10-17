@@ -901,7 +901,8 @@ public class CimHelper extends CalculationHelper {
 //					while(spanVal)
 				try {
 					clickableElement = "//" + tagName + "[@id='" + id + "']";
-					doClick("//" + tagName + "[@id='" + id + "']");
+					driver.findElement(By.xpath("//" + tagName + "[@id='" + id + "']")).click();
+//					doClick("//" + tagName + "[@id='" + id + "']");
 				} catch (Exception e) {
 //					clickableElement = "//"+tagName+"[@id='" + id + "']";
 //					doClick("//input[@id='" + id + "']");

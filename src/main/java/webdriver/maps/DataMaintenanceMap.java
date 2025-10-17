@@ -1221,6 +1221,10 @@ public class DataMaintenanceMap extends MapConfig {
 	private static WebElement azFilterBtn;
 	public static WebElement getazFilterBtn() {return azFilterBtn;}
 	
+	@FindBy(xpath = "(//div[contains(@class,'commonTBar ')]//following::span[text()='Clear Filter'])[1]")
+	private static WebElement azClearFilterBtn;
+	public static WebElement getazClearFilterBtn() {return azClearFilterBtn;}
+	
 	@FindBy(xpath = "(//div[contains(@class,'commonTBar ')]//following::span[text()='Edit'])[1]")
 	private static WebElement getazEditBtn;
 	public static WebElement getazEditBtn() {return getazEditBtn;}
@@ -1288,4 +1292,77 @@ public class DataMaintenanceMap extends MapConfig {
 	@FindBy(xpath = "//div[text()='Templates']")
 	private static WebElement azTemplatesPanel;
 	public static WebElement getazTemplatesPanel() {return azTemplatesPanel;}
+	
+	@FindBy(xpath = "//span[text()='Select Zip Codes']/../../..")
+	private static WebElement selectZipCodeBtn;
+	public static WebElement getselectZipCodeBtn() {return selectZipCodeBtn;}
+	
+	@FindBy(xpath = "//span[text()='Apply']/../../..")
+	private static WebElement applyZipCodeBtn;
+	public static WebElement getapplyZipCodeBtn() {return applyZipCodeBtn;}
+	
+	@FindBy(xpath = "//div[contains(@id,'window')][text()='Select Zip Codes']")
+	private static WebElement selectZipCodeWindow;
+	public static WebElement getselectZipCodeWindow() {return selectZipCodeWindow;}
+	
+	@FindBy(xpath = "//div[text()='Select Zip Codes']//following::span[text()='Apply']")
+	private static WebElement selectZipCodeApplyBtn;
+	public static WebElement getselectZipCodeApplyBtn() {
+		return selectZipCodeApplyBtn;
+	}
+	@FindBy(xpath = "//div[text()='Select Zip Codes']//following::span[text()='Cancel']")
+	private static WebElement selectZipCodeCancelBtn;
+	public static WebElement getselectZipCodeCancelBtn() {
+		return selectZipCodeCancelBtn;
+	}
+	@FindBy(xpath = "//*[contains(@id,'buttonsContainer')]/descendant::span[text()='Select']")
+	private static WebElement selectZipCodeSelectBtn;
+	public static WebElement getSelectZipCodeSelectBtn() {
+		return selectZipCodeSelectBtn;
+	}
+	@FindBy(xpath = "//span[text()='Zip Code']//following::table//td[2]/div")
+	private static List<WebElement> lowZipCodeGrid;
+	public static List<WebElement> getlowZipCodeGrid() {
+		return lowZipCodeGrid;
+	}
+	@FindBy(xpath = "//span[text()='High Zip Code']//following::table//td[4]/div")
+	private static List<WebElement> highZipCodeGrid;
+	public static List<WebElement> gethighZipCodeGrid() {
+		return highZipCodeGrid;
+	}
+	@FindBy(xpath = "(//label[text()='Show Ranges']//following::input[@name='type'])")
+	private static WebElement selectShowCodesBtn;
+	public static WebElement getselectShowCodesBtn() {
+		return selectShowCodesBtn;
+	}
+	@FindBy(xpath = "//label[text()='Show Ranges']//preceding::input[@name='type']")
+	private static WebElement selectShowRangesBtn;
+	public static WebElement getselectShowRangesBtn() {
+		return selectShowRangesBtn;
+	}
+	@FindBy(xpath = "//div[text()='Zip Code Group']//following::span[text()='Save']")
+	private static WebElement selectZipCodeSaveBtn;
+	public static WebElement getselectZipCodeSaveBtn() {
+		return selectZipCodeSaveBtn;
+	}
+	@FindBy(xpath = "//div[text()='Zip Code Group']//following::span[text()='Save & Close']")
+	private static WebElement selectZipCodeSaveCloseBtn;
+	public static WebElement getselectZipCodeSaveCloseBtn() {
+		return selectZipCodeSaveCloseBtn;
+	}
+	@FindBy(xpath = "//div[text()='Zip Code Group']//following::span[text()='Cancel & Close']")
+	private static WebElement selectZipCodeCancelCloseBtn;
+	public static WebElement getselectZipCodeCancelCloseBtn() {
+		return selectZipCodeCancelCloseBtn;
+	}
+	@FindBy(xpath = "//div[text()='Zip Code Group']//following::span[text()='Save & Create New']")
+	private static WebElement selectZipCodeSaveNewBtn;
+	public static WebElement getselectZipCodeSaveNewBtn() {
+		return selectZipCodeSaveNewBtn;
+	}
+	@FindBy(xpath = "//div[contains(text(),'Item(s) Selected')]//following::ul/li")
+	private static List<WebElement> selectedZipCodes;
+	public static List<WebElement> getselectedZipCodes() {
+		return selectedZipCodes;
+	}
 }

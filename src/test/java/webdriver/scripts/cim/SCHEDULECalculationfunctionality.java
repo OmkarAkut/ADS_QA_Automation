@@ -89,6 +89,7 @@ public class SCHEDULECalculationfunctionality  extends CimHelper{
 			presetOption1=driver.findElement(By.xpath("(//div[text()='"+cimScenarioCreate+"']//following::a[contains(@class,'CIMButtonOptions')]//child::span//span/span[2])[1]")).getText();
 			if(presetOption1.contains("Today")) {
 				driver.findElement(By.xpath("(//div[text()='"+cimScenarioCreate+"']//following::a[contains(@class,'CIMButtonOptions')]//child::span//span/span[2])[1]")).click();
+				driverDelay(300);
 				checkElements(driver.findElements(By.xpath("(//div[text()='"+cimScenarioCreate+"']//following::span[text()='Save & Close'])")));
 				cimNextStartTime=driver.findElement(By.xpath("//div[contains(@id,'cimmasterlist')]//div[text()='"+cimScenarioCreate+"']//following::td[4]/div")).getText();
 				String nextStartTime=getSystemTimeToday(cimNextStartTime);
