@@ -34,7 +34,7 @@ public class ValidationOfZipCodeGroups extends CalculationHelper{
 	static String zipCodeGroup="Zip code "+currentDateTime;
 	static String zipCodeGroup1="Zip code1 "+currentDateTime;
 	static String zipCodeGroup2="Zip code2"+currentDateTime;
-	
+	static String[] zipCodeGroups= {zipCodeGroup1,zipCodeGroup2};
 	static String[] filterNew = { "Name", "Is", "Equal To", zipCodeGroup };
 	static String[] filterContains = { "Name", "Is", "Contains", zipCodeGroup };
 	static String[] filterStartsWith = { "Name", "Is", "Starts With", zipCodeGroup };
@@ -206,31 +206,72 @@ public class ValidationOfZipCodeGroups extends CalculationHelper{
 		}
 	}
 	*/
+	
 	@Test
-	public void test09ValidateFilterZipCodes_ADS_23379() throws Throwable {
+	public void test09ValidateStartsWithFilterZipCodes_ADS_23379() throws Throwable {
 		try {
-			
-				test01AddZipCodeGroup_ADS_23379();
-				DataMaintenanceMap.getselectZipCodeSaveNewBtn().click();;
+			test01AddZipCodeGroup_ADS_23379();
+			doClick(DataMaintenanceMap.getselectZipCodeSaveNewBtn());
+			doClick(DataMaintenanceMap.getselectZipCodeCancelCloseBtn());
+			doClick(DataMaintenanceMap.getazFilterBtn());
+			doFilterCreate(filterStartsWith);
+			assertTextIsDisplayed(zipCodeGroup);
+			doClick(DataMaintenanceMap.getazClearFilterBtn());
+			waitForDisplayedSpinnerToEnd();
+			ExtentReport.logPass("PASS", "test09ValidateStartsWithFilterZipCodes_ADS_23379");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test09ValidateStartsWithFilterZipCodes_ADS_23379", driver, e);
+			fail(e.getMessage());
+		}
+	}
+	@Test
+	public void test10ValidateEndsWithWithFilterZipCodes_ADS_23379() throws Throwable {
+		try {
+			doClick(DataMaintenanceMap.getazFilterBtn());
+			doFilterCreate(filterEndsWith);
+			assertTextIsDisplayed(zipCodeGroup);
+			doClick(DataMaintenanceMap.getazClearFilterBtn());
+			waitForDisplayedSpinnerToEnd();
+			ExtentReport.logPass("PASS", "test10ValidateEndsWithWithFilterZipCodes_ADS_23379");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test10ValidateEndsWithWithFilterZipCodes_ADS_23379", driver, e);
+			fail(e.getMessage());
+		}
+	}
+	@Test
+	public void test11ValidateContainsFilterZipCodes_ADS_23379() throws Throwable {
+		try {
+			doClick(DataMaintenanceMap.getazFilterBtn());
+			doFilterCreate(filterContains);
+			assertTextIsDisplayed(zipCodeGroup);
+			doClick(DataMaintenanceMap.getazClearFilterBtn());
+			waitForDisplayedSpinnerToEnd();
+			ExtentReport.logPass("PASS", "test11ValidateContainsFilterZipCodes_ADS_23379");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test11ValidateContainsFilterZipCodes_ADS_23379", driver, e);
+			fail(e.getMessage());
+		}
+	}
+	@Test
+	public void test11ValidateIsOneOfFilterZipCodes_ADS_23379() throws Throwable {
+		try {
+			doClick(DataMaintenanceMap.getazFilterBtn());
+			for(String codeGroup:zipCodeGroups) {
+				doClick(DataMaintenanceMap.getazNewBtn());
+				keyInInputText(codeGroup, DataMaintenanceMap.getaddName());
+				doClick(DataMaintenanceMap.getselectZipCodeBtn());
+				waitForElementToBeVisible(DataMaintenanceMap.getselectZipCodeWindow());
+				for(String code:zipCodes) {
+					doClick("//li[text()='"+code+"']");
+					doClick(DataMaintenanceMap.getSelectZipCodeSelectBtn());
+				}
+				doClick(DataMaintenanceMap.getselectZipCodeApplyBtn());
+				doClick(DataMaintenanceMap.getselectZipCodeSaveNewBtn());
 				doClick(DataMaintenanceMap.getselectZipCodeCancelCloseBtn());
-				doClick(DataMaintenanceMap.getazFilterBtn());
-				driverDelay(300);
-				doFilterCreate(filterStartsWith);
-				assertTextIsDisplayed(zipCodeGroup);
-				doClick(DataMaintenanceMap.getazClearFilterBtn());
-				doClick(DataMaintenanceMap.getazFilterBtn());
-				driverDelay(300);
-				doFilterCreate(filterEndsWith);
-				assertTextIsDisplayed(zipCodeGroup);
-				doClick(DataMaintenanceMap.getazClearFilterBtn());
-				doClick(DataMaintenanceMap.getazFilterBtn());
-				driverDelay(300);
-				doFilterCreate(filterContains);
-				assertTextIsDisplayed(zipCodeGroup);
-				doClick(DataMaintenanceMap.getazClearFilterBtn());
-				driverDelay(300);
-				doClick(DataMaintenanceMap.getazFilterBtn());
-				driverDelay(300);
+			}
+			doClick(DataMaintenanceMap.getazFilterBtn());
+			driverDelay(300);
+			for(String filter:zipCodeGroups) {
 				doDropdownSelectUsingOptionTextServices(dialog.getFilterNameField(), dialog.getFilterDialogDropdownField(),
 						"Name");
 				doDropdownSelectUsingOptionTextServices(dialog.getFilterNameOperator(),
@@ -238,14 +279,22 @@ public class ValidationOfZipCodeGroups extends CalculationHelper{
 				doDropdownSelectUsingOptionTextServices(dialog.getFilterNameCondition(),
 						dialog.getFilterDialogDropdownCondition(), "One Of");
 				doClick(dialog.getFilterDialogFormFieldValueOneOf());
-				dialog.getFilterDialogFormFieldValueOneOf().sendKeys(zipCodeGroup1);
+				dialog.getFilterDialogFormFieldValueOneOf().sendKeys(filter);
 				doClick(costing.getRvuContainerAddValueButton());
+			}
+			
+			doClick(dialog.getFilterDialogButtonAdd());
+			waitForAjaxExtJs();
+			driverDelay(300);
+			doClick(dialog.getFilterDialogButtonApplyFilter());
+			waitForSpinnerToEnd();
 			ExtentReport.logPass("PASS", "test07EditZipCodes_ADS_23379");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test07EditZipCodes_ADS_23379", driver, e);
 			fail(e.getMessage());
 		}
 	}
+	
 	@AfterClass
 	public static void endtest() throws Exception {
 		ExtentReport.report.flush();
