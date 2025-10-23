@@ -14,7 +14,9 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
@@ -119,7 +121,7 @@ public class ValidationOfZipCodeGroups extends CalculationHelper{
 				zipLowCodeList.add(code.getText());
 				
 			}
-			compareZipCodes(zipCodeRangeLowZipCode,zipHighCodeList);
+			compareZipCodes(zipCodeRangeLowZipCode,zipLowCodeList);
 			ExtentReport.logPass("PASS", "test01AssertZipCodes_ADS_23379");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01AssertZipCodes_ADS_23379", driver, e);
@@ -208,6 +210,8 @@ public class ValidationOfZipCodeGroups extends CalculationHelper{
 			compareZipCodes(addZipCodes,zipCodeList);
 			doClick(DataMaintenanceMap.getselectZipCodeCancelBtn());
 			doClick(DataMaintenanceMap.getselectZipCodeSaveCloseBtn());
+			doClick(DataMaintenanceMap.getazDeleteBtn());
+			doClick(DataMaintenanceMap.getwarningDeleteBtn());
 			ExtentReport.logPass("PASS", "test07EditZipCodes_ADS_23379");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test07EditZipCodes_ADS_23379", driver, e);
@@ -309,12 +313,17 @@ public class ValidationOfZipCodeGroups extends CalculationHelper{
 	@Test
 	public void test13DeleteZipCodes_ADS_23379() throws Throwable {
 		try {
-			for(WebElement code:DataMaintenanceMap.getzipCodeGroups()) {
-				code.click();
+				Actions actions=new Actions(driver);
+				 actions
+		            .click(DataMaintenanceMap.getzipCodeGroups())
+		            .keyDown(Keys.CONTROL)
+		            .sendKeys("a")
+		            .keyUp(Keys.CONTROL)
+		            .perform();
 				doClick(DataMaintenanceMap.getazDeleteBtn());
 				doClick(DataMaintenanceMap.getwarningDeleteBtn());
-			}
 			
+			doClosePageOnLowerBar("Maintain Data");
 			ExtentReport.logPass("PASS", "test13DeleteZipCodes_ADS_23379");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test13DeleteZipCodes_ADS_23379", driver, e);

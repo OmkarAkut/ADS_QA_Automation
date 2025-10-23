@@ -1367,8 +1367,8 @@ public class DataMaintenanceMap extends MapConfig {
 		return selectedZipCodes;
 	}
 	@FindBy(xpath = "//table[contains(@id,'gridview')]//td[2]/div")
-	private static List<WebElement> zipCodeGroups;
-	public static List<WebElement> getzipCodeGroups() {
+	private static WebElement zipCodeGroups;
+	public static WebElement getzipCodeGroups() {
 		return zipCodeGroups;
 	}
 }
