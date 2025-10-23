@@ -41,7 +41,11 @@ public class ValidationOfZipCodeGroups extends CalculationHelper{
 	static String[] filterEndsWith = { "Name", "Is", "Ends With", zipCodeGroup };
 	static String[] zipCodes = {"01081","01247","01581","01602"};
 	static String[] addZipCodes = {"01081","01247","01581","01602","02126"};
+	static String[] zipCodeRangeLowZipCode= {"01081","01247","01581"};
+	static String[] zipCodeRangeHighZipCode= {"01081","01247","01602"};
 	static List<String> zipCodeList=new ArrayList<>();
+	static List<String> zipLowCodeList=new ArrayList<>();
+	static List<String> zipHighCodeList=new ArrayList<>();
 	static String enterZipcode;
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
@@ -61,12 +65,12 @@ public class ValidationOfZipCodeGroups extends CalculationHelper{
 		}
 	}
 	public void compareZipCodes(String[] codes,List<String> codeList) {
-		if(codeList.equals(Arrays.asList(codes))) {assertTrue(printout);}
-		else {fail();}
-		codeList.clear();
+		if(codeList.equals(Arrays.asList(codes))) {assertTrue(printout);codeList.clear();}
+		else {codeList.clear();fail();}
+		
 	}
 	
-//	@Test
+	@Test
 	public void test01AddZipCodeGroup_ADS_23379() throws Throwable {
 		try {
 			doClick(DataMaintenanceMap.getazNewBtn());
@@ -84,7 +88,7 @@ public class ValidationOfZipCodeGroups extends CalculationHelper{
 			fail(e.getMessage());
 		}
 	}
-	/*
+	
 	@Test
 	public void test02AssertZipCodes_ADS_23379() throws Throwable {
 		try {
@@ -94,7 +98,7 @@ public class ValidationOfZipCodeGroups extends CalculationHelper{
 				zipCodeList.add(code.getText());
 				
 			}
-			compareZipCodes(zipCodes);
+			compareZipCodes(zipCodes,zipCodeList);
 			ExtentReport.logPass("PASS", "test01AssertZipCodes_ADS_23379");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01AssertZipCodes_ADS_23379", driver, e);
@@ -107,10 +111,15 @@ public class ValidationOfZipCodeGroups extends CalculationHelper{
 			doClick(DataMaintenanceMap.getselectShowRangesBtn());
 			driverDelay(300);
 			for(WebElement code:DataMaintenanceMap.gethighZipCodeGrid()) {
-				zipCodeList.add(code.getText());
+				zipHighCodeList.add(code.getText());
 				
 			}
-			compareZipCodes(zipCodes);
+			compareZipCodes(zipCodeRangeHighZipCode,zipHighCodeList);
+			for(WebElement code:DataMaintenanceMap.getlowZipCodeGrid()) {
+				zipLowCodeList.add(code.getText());
+				
+			}
+			compareZipCodes(zipCodeRangeLowZipCode,zipHighCodeList);
 			ExtentReport.logPass("PASS", "test01AssertZipCodes_ADS_23379");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01AssertZipCodes_ADS_23379", driver, e);
@@ -205,7 +214,7 @@ public class ValidationOfZipCodeGroups extends CalculationHelper{
 			fail(e.getMessage());
 		}
 	}
-	*/
+	
 	
 	@Test
 	public void test09ValidateStartsWithFilterZipCodes_ADS_23379() throws Throwable {
@@ -244,6 +253,8 @@ public class ValidationOfZipCodeGroups extends CalculationHelper{
 			doClick(DataMaintenanceMap.getazFilterBtn());
 			doFilterCreate(filterContains);
 			assertTextIsDisplayed(zipCodeGroup);
+			doClick(DataMaintenanceMap.getazDeleteBtn());
+			doClick(DataMaintenanceMap.getwarningDeleteBtn());
 			doClick(DataMaintenanceMap.getazClearFilterBtn());
 			waitForDisplayedSpinnerToEnd();
 			ExtentReport.logPass("PASS", "test11ValidateContainsFilterZipCodes_ADS_23379");
@@ -253,9 +264,8 @@ public class ValidationOfZipCodeGroups extends CalculationHelper{
 		}
 	}
 	@Test
-	public void test11ValidateIsOneOfFilterZipCodes_ADS_23379() throws Throwable {
+	public void test12ValidateIsOneOfFilterZipCodes_ADS_23379() throws Throwable {
 		try {
-			doClick(DataMaintenanceMap.getazFilterBtn());
 			for(String codeGroup:zipCodeGroups) {
 				doClick(DataMaintenanceMap.getazNewBtn());
 				keyInInputText(codeGroup, DataMaintenanceMap.getaddName());
@@ -288,13 +298,29 @@ public class ValidationOfZipCodeGroups extends CalculationHelper{
 			driverDelay(300);
 			doClick(dialog.getFilterDialogButtonApplyFilter());
 			waitForSpinnerToEnd();
+			assertTextIsDisplayed(zipCodeGroup1);
+			assertTextIsDisplayed(zipCodeGroup2);
 			ExtentReport.logPass("PASS", "test07EditZipCodes_ADS_23379");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test07EditZipCodes_ADS_23379", driver, e);
 			fail(e.getMessage());
 		}
 	}
-	
+	@Test
+	public void test13DeleteZipCodes_ADS_23379() throws Throwable {
+		try {
+			for(WebElement code:DataMaintenanceMap.getzipCodeGroups()) {
+				code.click();
+				doClick(DataMaintenanceMap.getazDeleteBtn());
+				doClick(DataMaintenanceMap.getwarningDeleteBtn());
+			}
+			
+			ExtentReport.logPass("PASS", "test13DeleteZipCodes_ADS_23379");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test13DeleteZipCodes_ADS_23379", driver, e);
+			fail(e.getMessage());
+		}
+	}
 	@AfterClass
 	public static void endtest() throws Exception {
 		ExtentReport.report.flush();

@@ -1330,6 +1330,7 @@ public class DataMaintenanceMap extends MapConfig {
 	public static List<WebElement> gethighZipCodeGrid() {
 		return highZipCodeGrid;
 	}
+	
 	@FindBy(xpath = "(//label[text()='Show Ranges']//following::input[@name='type'])")
 	private static WebElement selectShowCodesBtn;
 	public static WebElement getselectShowCodesBtn() {
@@ -1364,5 +1365,10 @@ public class DataMaintenanceMap extends MapConfig {
 	private static List<WebElement> selectedZipCodes;
 	public static List<WebElement> getselectedZipCodes() {
 		return selectedZipCodes;
+	}
+	@FindBy(xpath = "//table[contains(@id,'gridview')]//td[2]/div")
+	private static List<WebElement> zipCodeGroups;
+	public static List<WebElement> getzipCodeGroups() {
+		return zipCodeGroups;
 	}
 }
