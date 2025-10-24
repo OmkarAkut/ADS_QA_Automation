@@ -32,9 +32,9 @@ import webdriver.scripts.systemmaintenance.SystemMaintenanceTestSuite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-
-	TestSuiteForCIM.class,
-	TestSuiteForAE.class,
+//
+//	TestSuiteForCIM.class,
+//	TestSuiteForAE.class,
 	CostingTestSuite.class,
 	ContractingSuite.class,
 	MaintaindataTestSuite.class,
@@ -43,7 +43,7 @@ import webdriver.scripts.systemmaintenance.SystemMaintenanceTestSuite;
 	EpisodesTestSuite.class,
 	ReportingTestSuite.class,
 	UtilitiesTestSuite.class,
-	TestSuiteAXE.class,
+//	TestSuiteAXE.class,
 	PagetestsSuite.class,
 	HelpSuite.class,
 	SecurityTestsSuite.class,

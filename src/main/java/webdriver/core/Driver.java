@@ -190,7 +190,8 @@ public class Driver {
 			// Shilpa updated to SSL url 10.10.2024
 //   	 url = "https://qaapp-dev.harrispaas.com:8443/alliance-webCont/alliance/index.jsp";
 			// Shilpa updated to SSL url 11.21.2024
-			url = "https://qaapp.harrispaas.com/alliance-webCont/login/index.jsp";
+//			url = "https://qaapp.harrispaas.com/alliance-webCont/login/index.jsp";
+			url="http://stgrhl-dev.harrispaas.com/alliance-webCont/alliance/index.jsp";
 //    	url = "https://support-dev.harrispaas.com/alliance-webCont/alliance/index.jsp";
 		} else {
 			url = "https://qaautomation.mdasdss.com/alliance-webCont/login/index.jsp";
