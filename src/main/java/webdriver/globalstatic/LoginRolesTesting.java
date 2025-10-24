@@ -1,5 +1,7 @@
 package webdriver.globalstatic;
 
+import static org.junit.Assert.fail;
+
 import org.junit.Before;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -34,8 +36,13 @@ public class LoginRolesTesting extends BeforeAfterRolesTesting {
 
   // ===== Login Section ===== //
   public void evolveLogin(String username, String password) {
-    try {
-      Thread.sleep(3000); //figure out a way to wait on the initial application load without thread sleep
+   
+      try {
+		Thread.sleep(3000);
+	} catch (InterruptedException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	} //figure out a way to wait on the initial application load without thread sleep
       waitUntilElementIsVisible(driver.findElement(By.id("username-inputEl")));
       WebElement harrisUsername = driver.findElement(By.id("username-inputEl"));
       harrisUsername.sendKeys(username);
@@ -46,10 +53,16 @@ public class LoginRolesTesting extends BeforeAfterRolesTesting {
       action.sendKeys(Keys.ENTER);
       action.perform();
       waitForSpinnerToEnd();
-      Thread.sleep(1000);
-      WebElement iAgree = driver.findElement(By.xpath("//*[normalize-space()='I Agree'][@class='x-btn btnCls x-box-item x-toolbar-item x-btn-default-small x-noicon x-btn-noicon x-btn-default-small-noicon']"));
-        if(iAgree.isDisplayed()) 
-      	  iAgree.click();
+      try {
+		Thread.sleep(1000);
+	} catch (InterruptedException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	}
+      try {
+      int iAgree = driver.findElements(By.xpath("//*[normalize-space()='I Agree'][@class='x-btn btnCls x-box-item x-toolbar-item x-btn-default-small x-noicon x-btn-noicon x-btn-default-small-noicon']")).size();
+        if(iAgree>0) 
+        	driver.findElement(By.xpath("//*[normalize-space()='I Agree'][@class='x-btn btnCls x-box-item x-toolbar-item x-btn-default-small x-noicon x-btn-noicon x-btn-default-small-noicon']")).click();
         else {
       	  System.out.println("This is else");
         }
@@ -66,6 +79,8 @@ public class LoginRolesTesting extends BeforeAfterRolesTesting {
       //verifyLogin();
     } catch (Exception e) {
       System.out.println("WARNING: Login Attempt Failed");
+      fail();
+    
     }
   }
 
@@ -80,6 +95,7 @@ public class LoginRolesTesting extends BeforeAfterRolesTesting {
       //String footer = driver.findElement(By.className("footerText")).getText();
     } catch (Throwable e) {
       System.out.println("isLoggedIn Failed");
+    fail();
     }
   }
 }

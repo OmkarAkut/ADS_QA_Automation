@@ -54,7 +54,7 @@ public class CalculationHelper extends GoHelper {
 
 	public static String getVersion() {
 		String version = null;
-		if (testEnvironment.toLowerCase().contains("evolve") || testEnvironment.toLowerCase().contains("edge")|| testEnvironment.toLowerCase().contains("qa3")||testEnvironment.toLowerCase().contains("ads11")||testEnvironment.toLowerCase().contains("qastage")) {
+		if (testEnvironment.toLowerCase().contains("evolve") || testEnvironment.toLowerCase().contains("edge")|| testEnvironment.toLowerCase().contains("qa3")||testEnvironment.toLowerCase().contains("ads11")||testEnvironment.toLowerCase().contains("qaapp")) {
 			version = "v104";
 		} else {
 			version = "v103";

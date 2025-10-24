@@ -182,16 +182,16 @@ public class Driver {
 			url = "https://qa3-dev-ap1.dev.harrispaas.com/alliance-webCont/alliance/index.jsp";
 
 		} else if (testEnvironment.equals("devstage")) {
-			url = "http://stgrhl-dev.harrispaas.com/alliance-webCont/alliance/index.jsp";
+			url = "https://stgrhl-dev.harrispaas.com/alliance-webCont/alliance/index.jsp";
 		} else if (testEnvironment.equals("qa3prod")) {
 			url = "http://qaprod-dev.harrispaas.com/alliance-webCont/login/index.jsp";
-		} else if (testEnvironment.equals("qastage")) {
+		} else if (testEnvironment.equals("qaapp")) {
 //    	url = "http://qaapp-dev.harrispaas.com/alliance-webCont/login/index.jsp";  
 			// Shilpa updated to SSL url 10.10.2024
 //   	 url = "https://qaapp-dev.harrispaas.com:8443/alliance-webCont/alliance/index.jsp";
 			// Shilpa updated to SSL url 11.21.2024
-//			url = "https://qaapp.harrispaas.com/alliance-webCont/login/index.jsp";
-			url="http://stgrhl-dev.harrispaas.com/alliance-webCont/alliance/index.jsp";
+			url = "https://qaapp.harrispaas.com/alliance-webCont/login/index.jsp";
+//			url="http://stgrhl-dev.harrispaas.com/alliance-webCont/alliance/index.jsp";
 //    	url = "https://support-dev.harrispaas.com/alliance-webCont/alliance/index.jsp";
 		} else {
 			url = "https://qaautomation.mdasdss.com/alliance-webCont/login/index.jsp";
@@ -211,12 +211,30 @@ public class Driver {
 		System.out.println("Browser drivers path: " + drivers + chromeDriver + ".exe");
 		browser = browser.toLowerCase();
 		if (System.getProperty("os.name").toLowerCase().contains("windows")) {
-			if (browser.equals("chrome") || browser.contains("headless")) {
+			if (browser.contains("headless")) {
+				System.out.println("Chrome is running in headless mode");
 				WebDriverManager.chromedriver().setup();
-				} else if (browser.equals("ie")) {
-				System.setProperty("webdriver.ie.driver", drivers + ieDriverServer + ".exe");
-			} else if (browser.equals("firefox")) {
-				System.setProperty("webdriver.firefox.driver", drivers + geckoDriver + ".exe");
+				ChromeOptions options = new ChromeOptions();
+				options.addArguments("--window-size=1920,1080", "--ignore-certificate-errors", "--headless ");
+				 options.addArguments("--remote-allow-origins=*");
+				driver = new ChromeDriver(options);
+			} else if (browser.equals("chrome")) {
+				WebDriverManager.chromedriver().setup();
+				ChromeOptions options = new ChromeOptions();
+				final Map<String, Object> chromePrefs = new HashMap<>();
+				// Shilpa : Below lines to disable password pop up 4.14.2025
+				chromePrefs.put("credentials_enable_service", false);
+				chromePrefs.put("profile.password_manager_enabled", false);
+				chromePrefs.put("profile.password_manager_leak_detection", false);
+				options.setExperimentalOption("prefs", chromePrefs);
+				options.addArguments("--ignore-certificate-errors", "start-maximized");
+				options.addArguments("--remote-allow-origins=*");
+				  options.addArguments("--disable-features=ClipboardRead,ClipboardWrite");
+				driver = new ChromeDriver(options);
+				// Clear browser cache
+				driver.manage().deleteAllCookies();
+				driver.get("chrome://settings/clearBrowserData");
+				driver.findElement(By.xpath("//settings-ui")).sendKeys(Keys.ENTER);
 			}
 			// Shilpa added below line for 11.2 on 12.02.2024
 			else if (browser.equals("edge")) {
@@ -231,35 +249,36 @@ public class Driver {
 			} else {
 				fail("ERROR: Driver object not set.");
 			}
-		} else {
-			if (browser.equals("chrome") || browser.contains("headless")) {
-				 WebDriverManager.chromedriver().setup();
-
-			        ChromeOptions options = new ChromeOptions();
-			        options.addArguments("--remote-allow-origins=*");
-
-			        driver = new ChromeDriver(options);
-				
-				System.setProperty("webdriver.chrome.silentOutput", "true"); // chromedriver logging to console
-			} else if (browser.equals("ie")) {
-				System.setProperty("webdriver.ie.driver", drivers + ieDriverServer);
-			} else if (browser.equals("firefox")) {
-				System.setProperty("webdriver.firefox.driver", drivers + geckoDriver);
-			}
-			// Shilpa added below line for 11.2 on 12.02.2023
-			else if (browser.equals("edge")) {
-				System.setProperty("wdm.edgeDriverUrl", "https://msedgedriver.microsoft.com/");
-				WebDriverManager.edgedriver().setup();
-				EdgeOptions options = new EdgeOptions();
-//			  options.addArguments("--disable-mobile-upload");
-				options.addArguments("--remote-allow-origins=*");
-				options.addArguments("--ignore-certificate-errors", "start-maximized");
-				driver = new EdgeDriver(options);
-				options.addArguments("--disable-mobile-upload");
-			} else {
-				fail("ERROR: Browser driver not set.");
-			}
 		}
+//		} else {
+//			if (browser.equals("chrome") || browser.contains("headless")) {
+//				 WebDriverManager.chromedriver().setup();
+//
+//			        ChromeOptions options = new ChromeOptions();
+//			        options.addArguments("--remote-allow-origins=*");
+//d
+//			        driver = new ChromeDriver(options);
+//				
+//				System.setProperty("webdriver.chrome.silentOutput", "true"); // chromedriver logging to console
+//			} else if (browser.equals("ie")) {
+//				System.setProperty("webdriver.ie.driver", drivers + ieDriverServer);
+//			} else if (browser.equals("firefox")) {
+//				System.setProperty("webdriver.firefox.driver", drivers + geckoDriver);
+//			}
+//			// Shilpa added below line for 11.2 on 12.02.2023
+//			else if (browser.equals("edge")) {
+//				System.setProperty("wdm.edgeDriverUrl", "https://msedgedriver.microsoft.com/");
+//				WebDriverManager.edgedriver().setup();
+//				EdgeOptions options = new EdgeOptions();
+////			  options.addArguments("--disable-mobile-upload");
+//				options.addArguments("--remote-allow-origins=*");
+//				options.addArguments("--ignore-certificate-errors", "start-maximized");
+//				driver = new EdgeDriver(options);
+//				options.addArguments("--disable-mobile-upload");
+//			} else {
+//				fail("ERROR: Browser driver not set.");
+//			}
+//		}
 	}
 
 	public static WebDriver setDriver(String browser) {

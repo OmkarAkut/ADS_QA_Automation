@@ -21,7 +21,7 @@ public class BeforeAfterRolesTesting extends AssertStatic {
         System.out.println("START FRAMEWORK");
 
         //sets browser driver
-        setsBrowserDriver(setBrowser());
+//        setsBrowserDriver(setBrowser());
 
         //creates driver object
         driver = setDriver(setBrowser());

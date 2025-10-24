@@ -194,17 +194,18 @@ public static List dbCredentials;
           url = "https://qa3-dev-ap1.dev.harrispaas.com/alliance-webCont/login/index.jsp";
     } 
     else if (testEnvironment.equals("devstage")) {
-        url = "http://stgrhl-dev.harrispaas.com/alliance-webCont/alliance/index.jsp";
+        url = "https://stgrhl-dev.harrispaas.com/alliance-webCont/alliance/index.jsp";
   } 
-    else if (testEnvironment.equals("qastage")) {
+    else if (testEnvironment.equals("qaapp")) {
 //        url = "http://qaapp-dev.harrispaas.com/alliance-webCont/login/index.jsp";
     	//Shilpa updated to SSL url 10.10.2024
 //    	 url = "https://qaapp-dev.harrispaas.com:8443/alliance-webCont/alliance/index.jsp";
     	//Shilpa updated to SSL url 21.11.2024
-//    	 url = "https://qaapp.harrispaas.com/alliance-webCont/login/index.jsp";
-    	 url="http://stgrhl-dev.harrispaas.com/alliance-webCont/alliance/index.jsp";
+    	 url = "https://qaapp.harrispaas.com/alliance-webCont/login/index.jsp";
+//    	 url="http://stgrhl-dev.harrispaas.com/alliance-webCont/alliance/index.jsp";
 //    	url = "https://qaprod.harrispaas.com/alliance-webCont/alliance/index.jsp";
   } 
+   
     else {
       url = "https://qaautomation.mdasdss.com/alliance-webCont/login/index.jsp";
     }
@@ -232,7 +233,7 @@ public static List<String> setupDb(String testEnvironment) {
       	System.out.println(dbUrl);
 
     }
-    else if (testEnvironment.equals("qastage")) {
+    else if (testEnvironment.equals("qaapp")) {
 //    	 dbUrl = "jdbc:oracle:thin:@10.204.20.120:1522:qadb01"; //"jdbc:oracle:thin:@192.168.210.100:1540:qav8";
     	 //Shilpa update dburl for 11.2 on 30.4.2024
 //    	dbUrl = "jdbc:oracle:thin:@10.204.20.101:1529:qareborn"; 
