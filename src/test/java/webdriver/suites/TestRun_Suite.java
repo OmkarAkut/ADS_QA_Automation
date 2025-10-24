@@ -43,7 +43,7 @@ import webdriver.scripts.systemmaintenance.SystemMaintenanceTestSuite;
 	EpisodesTestSuite.class,
 	ReportingTestSuite.class,
 	UtilitiesTestSuite.class,
-//	TestSuiteAXE.class,
+	TestSuiteAXE.class,
 	PagetestsSuite.class,
 	HelpSuite.class,
 	SecurityTestsSuite.class,

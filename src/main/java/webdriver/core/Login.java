@@ -214,9 +214,9 @@ public class Login extends Driver {
 				assertTrue(driver.findElement(By.xpath("//div[contains(@class,'reporting')]/h1")).getText()
 						.contains("Reporting"));
 				System.out.println("Login Time: " + setupFinalTimerResult(timerStart, false));
-				driver.quit();
+			
 			} catch (Exception e1) {
-
+//				driver.close();
 			}
 
 		}

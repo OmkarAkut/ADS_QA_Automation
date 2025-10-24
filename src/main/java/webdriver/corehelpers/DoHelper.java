@@ -517,6 +517,7 @@ public class DoHelper extends DriverHelper {
 	public static void doJsClick(WebElement element) {
 		try {
 			JavascriptExecutor executor = (JavascriptExecutor)driver;
+			scrollToView(element);
 			executor.executeScript("arguments[0].click();", element);
 		} catch (Exception e) {
 			

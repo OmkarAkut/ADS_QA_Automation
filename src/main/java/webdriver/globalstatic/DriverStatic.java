@@ -36,7 +36,9 @@ public class DriverStatic extends SetupStatic {
 				WebDriverManager.chromedriver().setup();
 
 				ChromeOptions options = new ChromeOptions();
-				options.addArguments("--remote-allow-origins=*");
+				options.addArguments("--window-size=1920,1080", "--ignore-certificate-errors", "--headless");
+				 options.addArguments("--remote-allow-origins=*");
+				 options.addArguments("--headless"); 
 				driver = new ChromeDriver(options);
 			} else if (browser.equals("chrome")) {
 				// Shilpa added below line for 11.2 on 12.12.2023
@@ -94,7 +96,19 @@ public class DriverStatic extends SetupStatic {
 	 * overridden for local configurations, but this isn't recommended.
 	 */
 	public static String setsBrowserDriver(String browser) {
-		String browserDriver = null;
+		String browserDriver = null;//10.24.2025
+	
+		if (browser.contains("headless")) {
+			System.out.println("Chrome is running in headless mode");
+			// Shilpa added below line for 11.2 on 12.12.2023
+			WebDriverManager.chromedriver().setup();
+
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments("--window-size=1920,1080", "--ignore-certificate-errors", "--headless");
+			 options.addArguments("--remote-allow-origins=*");
+			 options.addArguments("--headless"); 
+			driver = new ChromeDriver(options);
+		}
 		if (browser.equals("firefox")) {
 			System.setProperty("webdriver.firefox.driver", "C:/ads/apps/Selenium/" + geckoDriver + ".exe");
 			browserDriver = System.getProperty("webdriver.firefox.driver");
@@ -113,7 +127,8 @@ public class DriverStatic extends SetupStatic {
 			WebDriverManager.edgedriver().setup();
 			browserDriver = System.setProperty("wdm.edgeDriverUrl", "https://msedgedriver.microsoft.com/");
 
-		} else {
+		}
+//		else {
 			// System.setProperty("webdriver.chrome.driver",
 			// "src/main/resources/drivers/" + chromeDriver + ".exe");
 			/*
@@ -123,9 +138,24 @@ public class DriverStatic extends SetupStatic {
 			 * System.getProperty("webdriver.chrome.driver");
 			 * System.setProperty("webdriver.chrome.silentOutput", "true");
 			 */ // turns off chromedriver logging to console
-			WebDriverManager.chromedriver().setup();
-			browserDriver = System.getProperty("webdriver.chrome.driver");
+//			WebDriverManager.chromedriver().setup();
+//			browserDriver = System.getProperty("webdriver.chrome.driver");
 
+//		}
+		else if (browser.equals("chrome")) {
+			// Shilpa added below line for 11.2 on 12.12.2023
+			WebDriverManager.chromedriver().setup();
+			ChromeOptions options = new ChromeOptions();
+			final Map<String, Object> chromePrefs = new HashMap<>();
+			// Shilpa : Below lines to disable password pop up 4.14.2025
+			chromePrefs.put("credentials_enable_service", false);
+			chromePrefs.put("profile.password_manager_enabled", false);
+			chromePrefs.put("profile.password_manager_leak_detection", false);
+			options.setExperimentalOption("prefs", chromePrefs);
+			options.addArguments("--ignore-certificate-errors", "start-maximized");
+			options.addArguments("--remote-allow-origins=*");
+			options.addArguments("--disable-features=ClipboardRead,ClipboardWrite");
+			driver = new ChromeDriver(options);
 		}
 		return browserDriver;
 	}
