@@ -69,6 +69,7 @@ public class CostingCalculateOverheadScenario extends CalculationHelper {
 			// Omkar (19/7/2022) : The below xpath is no more valid
 			// doClick(driver.findElement(By.xpath("//button/span[text()='Calculate']")));
 			// SHILPA update xpath for 11.2 on 12.01.2023
+			tableDoubleClickCellFirstColumn(CalculationScenario);
 			scenarioName=CalculationScenario + currentDateTime;
 			ContractModelsHelper.keyInValues(driver.findElement(By.name("name")),
 					CalculationScenario + currentDateTime);

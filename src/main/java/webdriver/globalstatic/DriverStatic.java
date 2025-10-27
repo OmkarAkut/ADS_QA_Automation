@@ -37,8 +37,8 @@ public class DriverStatic extends SetupStatic {
 
 				ChromeOptions options = new ChromeOptions();
 				options.addArguments("--window-size=1920,1080", "--ignore-certificate-errors", "--headless");
-				 options.addArguments("--remote-allow-origins=*");
-				 options.addArguments("--headless"); 
+				options.addArguments("--remote-allow-origins=*");
+				options.addArguments("--headless");
 				driver = new ChromeDriver(options);
 			} else if (browser.equals("chrome")) {
 				// Shilpa added below line for 11.2 on 12.12.2023
@@ -105,8 +105,8 @@ public class DriverStatic extends SetupStatic {
 
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("--window-size=1920,1080", "--ignore-certificate-errors", "--headless");
-			 options.addArguments("--remote-allow-origins=*");
-			 options.addArguments("--headless"); 
+			options.addArguments("--remote-allow-origins=*");
+			options.addArguments("--headless");
 			driver = new ChromeDriver(options);
 		}
 		if (browser.equals("firefox")) {

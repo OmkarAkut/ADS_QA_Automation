@@ -216,9 +216,10 @@ public class Driver {
 				WebDriverManager.chromedriver().setup();
 				ChromeOptions options = new ChromeOptions();
 				options.addArguments("--window-size=1920,1080", "--ignore-certificate-errors", "--headless ");
-				 options.addArguments("--remote-allow-origins=*");
+				options.addArguments("--remote-allow-origins=*");
 				driver = new ChromeDriver(options);
-			} else if (browser.equals("chrome")) {
+			}
+			else if (browser.equals("chrome")) {
 				WebDriverManager.chromedriver().setup();
 				ChromeOptions options = new ChromeOptions();
 				final Map<String, Object> chromePrefs = new HashMap<>();
@@ -229,7 +230,7 @@ public class Driver {
 				options.setExperimentalOption("prefs", chromePrefs);
 				options.addArguments("--ignore-certificate-errors", "start-maximized");
 				options.addArguments("--remote-allow-origins=*");
-				  options.addArguments("--disable-features=ClipboardRead,ClipboardWrite");
+				options.addArguments("--disable-features=ClipboardRead,ClipboardWrite");
 				driver = new ChromeDriver(options);
 				// Clear browser cache
 				driver.manage().deleteAllCookies();
@@ -239,46 +240,18 @@ public class Driver {
 			// Shilpa added below line for 11.2 on 12.02.2024
 			else if (browser.equals("edge")) {
 				System.setProperty("wdm.edgeDriverUrl", "https://msedgedriver.microsoft.com/");
-			WebDriverManager.edgedriver().setup();
-			EdgeOptions options = new EdgeOptions();
-			options.addArguments("--remote-allow-origins=*");
-			options.addArguments("--ignore-certificate-errors", "start-maximized");
-			  options.addArguments("--disable-features=ClipboardRead,ClipboardWrite");
-			driver = new EdgeDriver(options);
-			options.addArguments("--disable-mobile-upload");
+				WebDriverManager.edgedriver().setup();
+				EdgeOptions options = new EdgeOptions();
+				options.addArguments("--remote-allow-origins=*");
+				options.addArguments("--ignore-certificate-errors", "start-maximized");
+				options.addArguments("--disable-features=ClipboardRead,ClipboardWrite");
+				driver = new EdgeDriver(options);
+				options.addArguments("--disable-mobile-upload");
 			} else {
 				fail("ERROR: Driver object not set.");
 			}
 		}
-//		} else {
-//			if (browser.equals("chrome") || browser.contains("headless")) {
-//				 WebDriverManager.chromedriver().setup();
-//
-//			        ChromeOptions options = new ChromeOptions();
-//			        options.addArguments("--remote-allow-origins=*");
-//d
-//			        driver = new ChromeDriver(options);
-//				
-//				System.setProperty("webdriver.chrome.silentOutput", "true"); // chromedriver logging to console
-//			} else if (browser.equals("ie")) {
-//				System.setProperty("webdriver.ie.driver", drivers + ieDriverServer);
-//			} else if (browser.equals("firefox")) {
-//				System.setProperty("webdriver.firefox.driver", drivers + geckoDriver);
-//			}
-//			// Shilpa added below line for 11.2 on 12.02.2023
-//			else if (browser.equals("edge")) {
-//				System.setProperty("wdm.edgeDriverUrl", "https://msedgedriver.microsoft.com/");
-//				WebDriverManager.edgedriver().setup();
-//				EdgeOptions options = new EdgeOptions();
-////			  options.addArguments("--disable-mobile-upload");
-//				options.addArguments("--remote-allow-origins=*");
-//				options.addArguments("--ignore-certificate-errors", "start-maximized");
-//				driver = new EdgeDriver(options);
-//				options.addArguments("--disable-mobile-upload");
-//			} else {
-//				fail("ERROR: Browser driver not set.");
-//			}
-//		}
+
 	}
 
 	public static WebDriver setDriver(String browser) {
@@ -289,9 +262,10 @@ public class Driver {
 				WebDriverManager.chromedriver().setup();
 				ChromeOptions options = new ChromeOptions();
 				options.addArguments("--window-size=1920,1080", "--ignore-certificate-errors", "--headless");
-				 options.addArguments("--remote-allow-origins=*");
+				options.addArguments("--remote-allow-origins=*");
 				driver = new ChromeDriver(options);
-			} else if (browser.equals("chrome")) {
+			} 
+			else if (browser.equals("chrome")) {
 				WebDriverManager.chromedriver().setup();
 				ChromeOptions options = new ChromeOptions();
 				final Map<String, Object> chromePrefs = new HashMap<>();
@@ -302,7 +276,7 @@ public class Driver {
 				options.setExperimentalOption("prefs", chromePrefs);
 				options.addArguments("--ignore-certificate-errors", "start-maximized");
 				options.addArguments("--remote-allow-origins=*");
-				  options.addArguments("--disable-features=ClipboardRead,ClipboardWrite");
+				options.addArguments("--disable-features=ClipboardRead,ClipboardWrite");
 				driver = new ChromeDriver(options);
 				// Clear browser cache
 				driver.manage().deleteAllCookies();
@@ -315,14 +289,15 @@ public class Driver {
 			}
 			// Shilpa added below line for 11.2 on 12.12.2023
 			else if (browser.equals("edge")) {
-				//Shilpa: Updated on 07.18.2025 , because of webdriver for edge url has been changed
+				// Shilpa: Updated on 07.18.2025 , because of webdriver for edge url has been
+				// changed
 				System.setProperty("wdm.edgeDriverUrl", "https://msedgedriver.microsoft.com/");
 				WebDriverManager.edgedriver().setup();
 				EdgeOptions options = new EdgeOptions();
 //			  options.addArguments("--disable-mobile-upload");
 				options.addArguments("--remote-allow-origins=*");
 				options.addArguments("--ignore-certificate-errors", "start-maximized");
-				  options.addArguments("--disable-features=ClipboardRead,ClipboardWrite");
+				options.addArguments("--disable-features=ClipboardRead,ClipboardWrite");
 				driver = new EdgeDriver(options);
 				options.addArguments("--disable-mobile-upload");
 			} else {
@@ -451,7 +426,16 @@ public class Driver {
 			dbUrl = "jdbc:oracle:thin:@172.20.3.16:1750:qareborn";
 			System.out.println(dbUrl);
 
-		} else if (testEnvironment.equals("devstage")) {
+		}else if (testEnvironment.equals("qaapp")) {
+//	    	dbUrl = "jdbc:oracle:thin:@10.204.20.120:1522:qadb01"; //"jdbc:oracle:thin:@192.168.210.100:1540:qav8";
+				// Shilpa update dburl for 11.2 on 30.4.2024
+//	    	dbUrl = "jdbc:oracle:thin:@10.204.20.101:1529:qareborn";
+				// Shilpa update dburl for 11.2 on 2.1.2025
+				dbUrl = "jdbc:oracle:thin:@172.20.3.16:1750:qareborn";
+				System.out.println(dbUrl);
+
+			} 
+		else if (testEnvironment.equals("devstage")) {
 			dbUrl = "jdbc:oracle:thin:@10.204.20.101:1528:STAGING"; // "jdbc:oracle:thin:@192.168.210.100:1540:qav8";
 			System.out.println(dbUrl);
 
