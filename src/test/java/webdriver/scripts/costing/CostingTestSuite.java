@@ -40,6 +40,7 @@ import webdriver.scripts.datamaintenance.maintaindata.ValidateCodeIsReadonlyUnde
 	ValidatePaginationOnTheCostingRVUMaintenancepage.class,
 	VerifyStartEndMonthForOHScenario.class,
 	ActivityStatisticMasterEditStatsSave.class,
+	ExpandHelpSectionHeadersCosting.class,
 	
 	
 })

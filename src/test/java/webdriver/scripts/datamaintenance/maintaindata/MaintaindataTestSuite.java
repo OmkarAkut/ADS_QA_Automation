@@ -4,27 +4,30 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-
+	AddServiceToEncounterServiceClassificationScheme.class,
+	AdHocstatisticMasterImportCodes.class,
+	CreateDeleteCostMethodDeptMasterDischargeStatus.class,
+	CreateEditDeleteNewStructurePopulations.class,
+	CreateNewCostComponent.class,
 	DataMaintenanceAtoZTabPageLoads.class,
 	DataMaintenanceTreePageLoads.class,
-	RunEncounterServiceClassificationScheme.class,
-	CreateEditDeleteNewStructurePopulations.class,
-	CreateDeleteCostMethodDeptMasterDischargeStatus.class,
-	VerifyIsRebillUnderBillTypes.class,
-	NewEditASCSchemes.class,
 	EditConsumerHistoryRecord.class,
+	ExportGLDataFilterByAccountName.class,
+	FilterGLAccountTypeCodes.class,
+	NewEditASCSchemes.class,
 	PsychCombinedComorbidityDiagnosisOptionsValidation.class,
-	ValidateSaveForContractBatch.class,
-	ValidateIcdDiagnosisGroupsSelectorScreenAfterSave.class,
+	RunEncounterServiceClassificationScheme.class,
 	ValidateChangesToTheDepartmentHierarchy.class,
-	ValidateFindMoveToFunctionalityUnderDeptHierarchy.class,
+	ValidateCodeIsReadonlyUnderAZItems.class,
 	ValidateEncounterTabs.class,
+	ValidateFindMoveToFunctionalityUnderDeptHierarchy.class,
 	ValidateIcdDiagnosisGroupsSelectorScreenAfterSave.class,
 	ValidateSaveAgeInDaysGroup.class,
 	ValidateSaveForContractBatch.class,
+	ValidateSelectionFromMasterDropdownInTemplatesSection.class,
+	ValidationOfZipCodeGroups.class,
 	VerifyIsRebillUnderBillTypes.class,
-	AddServiceToEncounterServiceClassificationScheme.class,
-	ValidateCodeIsReadonlyUnderAZItems.class,
+	
 	
 })
 

@@ -9,6 +9,7 @@ import org.junit.runners.Suite;
 	UtilitiesEncountersWithNoEfrsReportAds2429.class,
 	UtilitiesEncountersWithZeroChargeBalanceReportAds2428.class,
 	UtilitiesReportCheck.class,
+	ZeroChargeBalanceUtility.class,
 
 })
 
