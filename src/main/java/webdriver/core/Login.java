@@ -6,6 +6,7 @@ import static webdriver.helperstatic.WaitStatic.waitForSpinnerToEnd;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.NoSuchElementException;
 import java.util.Properties;
 
@@ -100,7 +101,7 @@ public class Login extends Driver {
 
 	private static void login(String username, String password) throws NoSuchSessionException, SessionNotCreatedException {
 		Actions action = new Actions(driver);
-		WebDriverWait wait = new WebDriverWait(driver, 30);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		try {
 			if (printout) {
 				System.out.println("Login Username: " + username);
@@ -137,7 +138,7 @@ public class Login extends Driver {
 				driver.navigate().refresh();
 				Thread.sleep(5000);
 				driver.navigate().to(url);
-				Thread.sleep(5000);
+//				Thread.sleep(5000);
 				/*
 				driver.close();
 				System.out.println("DRIVER CLOSED!!!!");

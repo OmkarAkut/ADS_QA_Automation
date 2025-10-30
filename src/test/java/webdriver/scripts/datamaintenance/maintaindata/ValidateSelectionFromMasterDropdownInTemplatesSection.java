@@ -50,8 +50,6 @@ public class ValidateSelectionFromMasterDropdownInTemplatesSection extends Calcu
 	}
 	public void addMasterClassificationScheme(String masterName,String master) throws Throwable {
 		keyInInputText(masterName, DataMaintenanceMap.getazMasterName());
-		driver.findElement(By.name("drgClassCode")).click();
-		driverDelay();
 		doDropdownSelectUsingOptionText(driver.findElement(By.xpath("//input[@name='drgClassCode']")), DataMaintenanceMap.getazMasterDropdownOptions(), master);
 		doClick(DataMaintenanceMap.getazMasterDropdownSaveClose());
 		assertElementIsDisplayedWithXpath("//div[text()='"+masterName+"']");

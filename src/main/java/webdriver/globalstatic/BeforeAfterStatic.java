@@ -1,5 +1,7 @@
 package webdriver.globalstatic;
 
+import java.time.Duration;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.openqa.selenium.By;
@@ -58,8 +60,7 @@ public class BeforeAfterStatic extends CalculationsHelper {
    */
   @AfterClass
   public static void teardown() {
-	  @SuppressWarnings("deprecation")
-	WebDriverWait wait = new WebDriverWait(driver, 10);
+	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     try {
 //      waitForElementToBeVisible(driver.findElement(By.id("component-1022")));
 //      WebElement logOut = driver.findElement(By.id("component-1022"));

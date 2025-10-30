@@ -4,6 +4,7 @@ import static java.lang.Boolean.parseBoolean;
 import static org.junit.Assert.fail;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -85,7 +86,7 @@ public class Driver {
 	 */
 	@AfterClass
 	public static void teardown() {
-		WebDriverWait wait = new WebDriverWait(driver, 10);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		try {
 			wait.until(ExpectedConditions
 					.presenceOfElementLocated(By.xpath("//*[contains(@class, 'logout') and text() = 'Log Out']")));

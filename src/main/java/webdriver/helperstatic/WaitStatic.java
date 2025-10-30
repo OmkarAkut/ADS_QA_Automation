@@ -62,7 +62,7 @@ public class WaitStatic extends JavaListStatic {
 
   public static void waitUntilElementIsVisible(WebElement element) {
     try {
-		WebDriverWait webdriverWait = new WebDriverWait(driver,30);
+		WebDriverWait webdriverWait = new WebDriverWait(driver,Duration.ofSeconds(30));
 		webdriverWait.until(ExpectedConditions.visibilityOf(element));
 	} catch (TimeoutException|NoSuchElementException|ElementNotInteractableException e) {
 		ExtentReport.extenttest.log(Status.INFO, e);
@@ -218,14 +218,14 @@ public class WaitStatic extends JavaListStatic {
   }
 
   public static void waitForJsReadyState() throws InterruptedException {
-    WebDriverWait wait = new WebDriverWait(driver, 10);
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     wait.until((ExpectedCondition<Boolean>) wd -> ((JavascriptExecutor) wd)
             .executeScript("return document.readyState").equals("complete"));
     }
 
   /** Uses the WebDriver Javascript Executor to run window.onload, which waits for all page elements to be loaded */
   public static void waitForElementPresence(String byLocator) {
-    WebDriverWait wait = new WebDriverWait(driver, 10);
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     try {
       //WebElement we = wait.until(ExpectedConditions.presenceOfElementLocated(by));
     } catch (Throwable e) {
@@ -236,7 +236,7 @@ public class WaitStatic extends JavaListStatic {
   /**  */
   public static void waitForPresenceOfElement(String xpath) {
    
-		WebDriverWait webdriverWait = new WebDriverWait(driver,30);
+		WebDriverWait webdriverWait = new WebDriverWait(driver,Duration.ofSeconds(30));
 		webdriverWait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(""+xpath+"")));
 	
   }

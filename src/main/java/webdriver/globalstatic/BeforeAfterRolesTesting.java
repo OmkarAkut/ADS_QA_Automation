@@ -1,5 +1,7 @@
 package webdriver.globalstatic;
 
+import java.time.Duration;
+
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.By;
@@ -39,8 +41,8 @@ public class BeforeAfterRolesTesting extends AssertStatic {
 
     @After
     public void teardown(){
-    	 @SuppressWarnings("deprecation")
-		WebDriverWait wait = new WebDriverWait(driver, 10);
+    	
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         try {
             //Log Out
 //            waitForElementToBeVisible(driver.findElement(By.id("component-1022")));

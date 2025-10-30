@@ -54,7 +54,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 	private static ReportingMap reportingMap;
 	private static StatusMap statusMap;
 	private static SystemMaintenanceMap sysmaint;
-	WebDriverWait wait = new WebDriverWait(driver, 30);
+	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 	private static String systemMaintenanceSubTabsBackgroundColor1 = "rgba(165, 165, 165, 1)";
 	private static String systemMaintenanceSubTabsBackgroundColor2 = "rgba(204, 204, 204, 1)";
 	private static String BackgroundColorStatusTab = "rgba(158, 105, 0, 1)";

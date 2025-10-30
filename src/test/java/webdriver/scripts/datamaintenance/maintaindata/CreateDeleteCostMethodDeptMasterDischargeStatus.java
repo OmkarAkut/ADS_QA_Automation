@@ -55,7 +55,6 @@ public class CreateDeleteCostMethodDeptMasterDischargeStatus extends Calculation
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);
 			contractMap = BuildMap.getInstance(driver, ContractingMap.class);
 			costing=BuildMap.getInstance(driver, CostingMap.class);
-
 			Login.loginUser("AutomationTesterAdmin");
 			goToPage("Costing Data Maintenance");
 			waitForSpinnerToEnd();
@@ -89,8 +88,6 @@ public class CreateDeleteCostMethodDeptMasterDischargeStatus extends Calculation
 			waitForMainPageTitle("Departments");
 			doClickTreeData("Departments");
 			driverDelay(200);
-//			Omkar 8/8/2023 : xpath changes for 11.2
-//			doClick("//div[@id='treepanelId-body']//following::div[text()='Department Masters']/img[@class='x-tree-elbow-end']");
 			doClick("//div[@id='treepanelId-body']//following::span[text()='Department Masters']/../div[5]");
 			ExtentReport.logPass("PASS", "test02GotoDepartmentMasters");
 		} catch (Exception | AssertionError e) {
@@ -138,8 +135,6 @@ public class CreateDeleteCostMethodDeptMasterDischargeStatus extends Calculation
 		try {
 			doClickTreeData("Encounters");
 			driverDelay(200);
-//			Omkar 11/8/2023 : xpath changes for 11.2
-//			doClick("//div[@id='treepanelId-body']//following::div[text()='Encounter Types']/img[contains(@class,'x-tree-icon')]");
 			doClick("//div[@id='treepanelId-body']//following::span[text()='Encounter Types']/../div[5]");
 			encounterNameBeforeEdit=CostingMap.getEncounterNameinGrid().getText();
 			encounterShortNameBeforeEdit=CostingMap.getEncounterShortNameinGrid().getText();
@@ -167,8 +162,6 @@ public class CreateDeleteCostMethodDeptMasterDischargeStatus extends Calculation
 	@Test
 	public void test06CreateNewDischargeStatus_ADS_6658() throws Throwable {
 		try {
-//			Omkar 16/8/2023 : xpath changes for 11.2
-//			doClick("//div[@id='treepanelId-body']//following::div[text()='Discharge Statuses']/img[contains(@class,'x-tree-icon')]");
 			doClick("//div[@id='treepanelId-body']//following::span[text()='Discharge Statuses']/../div[5]");
 			doClick(CostingMap.getCostDischargeStatusNewButton());
 			ContractModelsHelper.keyInValues(ContractingMap.getMedicareCode(),deptCode);

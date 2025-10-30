@@ -1221,6 +1221,10 @@ public class DataMaintenanceMap extends MapConfig {
 	private static WebElement azFilterBtn;
 	public static WebElement getazFilterBtn() {return azFilterBtn;}
 	
+	@FindBy(xpath = "//span[text()='Remove All']/ancestor::a")
+	private static WebElement calcTypeRemoveAllBtn;
+	public static WebElement getcalcTypeRemoveAllBtn() {return calcTypeRemoveAllBtn;}
+	
 	@FindBy(xpath = "(//div[contains(@class,'commonTBar ')]//following::span[text()='Clear Filter'])[1]")
 	private static WebElement azClearFilterBtn;
 	public static WebElement getazClearFilterBtn() {return azClearFilterBtn;}

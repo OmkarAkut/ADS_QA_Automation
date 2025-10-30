@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Properties;
@@ -53,7 +54,7 @@ public class SmokeTest extends UcqcHelper {
 	  private static ReportingMap reportingMap;
 	  private static StatusMap statusMap;
 	  private static SystemMaintenanceMap sysmaint;
-	  WebDriverWait wait = new WebDriverWait(driver, 30);
+	  WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 	  String expectedReleaseVersion = version;
 	  private static String BackgroundColorCosting= "rgba(0, 86, 26, 1)";
 	  private static String filepath=System.getProperty("user.dir")+"//Version.txt";
@@ -504,8 +505,7 @@ public class SmokeTest extends UcqcHelper {
 		  }
 	  @AfterClass
 	  public static void teardown() {
-		    @SuppressWarnings("deprecation")
-			WebDriverWait wait = new WebDriverWait(driver, 10);
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		    try {
 		      wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[contains(@class, 'logout') and text() = 'Log Out']")));
 		      driver.findElement(By.xpath("//*[contains(@class, 'logout') and text() = 'Log Out']")).click();

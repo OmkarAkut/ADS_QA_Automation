@@ -122,9 +122,9 @@ public class ValidationOfZipCodeGroups extends CalculationHelper{
 				
 			}
 			compareZipCodes(zipCodeRangeLowZipCode,zipLowCodeList);
-			ExtentReport.logPass("PASS", "test01AssertZipCodes_ADS_23379");
+			ExtentReport.logPass("PASS", "test03AssertZipCodesRanges_ADS_23379");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test01AssertZipCodes_ADS_23379", driver, e);
+			ExtentReport.logFail("FAIL", "test03AssertZipCodesRanges_ADS_23379", driver, e);
 			fail(e.getMessage());
 		}
 	}
@@ -136,9 +136,9 @@ public class ValidationOfZipCodeGroups extends CalculationHelper{
 			doClick(DataMaintenanceMap.getazFilterBtn());
 			doFilterCreate(filterNew);
 			assertTextIsDisplayed(zipCodeGroup);
-			ExtentReport.logPass("PASS", "test01AssertZipCodes_ADS_23379");
+			ExtentReport.logPass("PASS", "test04SaveZipCodes_ADS_23379");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test01AssertZipCodes_ADS_23379", driver, e);
+			ExtentReport.logFail("FAIL", "test04SaveZipCodes_ADS_23379", driver, e);
 			fail(e.getMessage());
 		}
 	}
@@ -147,9 +147,9 @@ public class ValidationOfZipCodeGroups extends CalculationHelper{
 		try {
 			doClick(DataMaintenanceMap.getazDeleteBtn());
 			doClick(DataMaintenanceMap.getwarningDeleteBtn());
-			ExtentReport.logPass("PASS", "test01AssertZipCodes_ADS_23379");
+			ExtentReport.logPass("PASS", "test05DeleteZipCodes_ADS_23379");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test01AssertZipCodes_ADS_23379", driver, e);
+			ExtentReport.logFail("FAIL", "test05DeleteZipCodes_ADS_23379", driver, e);
 			fail(e.getMessage());
 		}
 	}
@@ -160,7 +160,9 @@ public class ValidationOfZipCodeGroups extends CalculationHelper{
 			test01AddZipCodeGroup_ADS_23379();
 			doClick(DataMaintenanceMap.getselectZipCodeSaveNewBtn());
 			doClick(DataMaintenanceMap.getselectZipCodeCancelCloseBtn());
+			
 			doClick(DataMaintenanceMap.getazFilterBtn());
+			doClick(DataMaintenanceMap.getcalcTypeRemoveAllBtn());
 			doFilterCreate(filterNew);
 			assertTextIsDisplayed(zipCodeGroup);
 			ExtentReport.logPass("PASS", "test06SaveCreateNewZipCodes_ADS_23379");
@@ -212,9 +214,9 @@ public class ValidationOfZipCodeGroups extends CalculationHelper{
 			doClick(DataMaintenanceMap.getselectZipCodeSaveCloseBtn());
 			doClick(DataMaintenanceMap.getazDeleteBtn());
 			doClick(DataMaintenanceMap.getwarningDeleteBtn());
-			ExtentReport.logPass("PASS", "test07EditZipCodes_ADS_23379");
+			ExtentReport.logPass("PASS", "test08ValidateEditedZipCodes_ADS_23379");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test07EditZipCodes_ADS_23379", driver, e);
+			ExtentReport.logFail("FAIL", "test08ValidateEditedZipCodes_ADS_23379", driver, e);
 			fail(e.getMessage());
 		}
 	}
@@ -227,6 +229,7 @@ public class ValidationOfZipCodeGroups extends CalculationHelper{
 			doClick(DataMaintenanceMap.getselectZipCodeSaveNewBtn());
 			doClick(DataMaintenanceMap.getselectZipCodeCancelCloseBtn());
 			doClick(DataMaintenanceMap.getazFilterBtn());
+			doClick(DataMaintenanceMap.getcalcTypeRemoveAllBtn());
 			doFilterCreate(filterStartsWith);
 			assertTextIsDisplayed(zipCodeGroup);
 			doClick(DataMaintenanceMap.getazClearFilterBtn());
@@ -304,9 +307,9 @@ public class ValidationOfZipCodeGroups extends CalculationHelper{
 			waitForSpinnerToEnd();
 			assertTextIsDisplayed(zipCodeGroup1);
 			assertTextIsDisplayed(zipCodeGroup2);
-			ExtentReport.logPass("PASS", "test07EditZipCodes_ADS_23379");
+			ExtentReport.logPass("PASS", "test12ValidateIsOneOfFilterZipCodes_ADS_23379");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test07EditZipCodes_ADS_23379", driver, e);
+			ExtentReport.logFail("FAIL", "test12ValidateIsOneOfFilterZipCodes_ADS_23379", driver, e);
 			fail(e.getMessage());
 		}
 	}
