@@ -98,7 +98,11 @@ public class AeHelper extends GoHelper {
 		String Time=CimHelper.getSystemTimeFormatted();
 		System.out.println(Time);
 		String[] time=Time.toUpperCase().replace(":", " ").split(" ");
-		action.moveToElement(aeMap.getcustomDateTimeInput()).sendKeys(Keys.ARROW_RIGHT).sendKeys(time[0]).sendKeys(time[1]).sendKeys(time[2]).perform();
+		System.out.println(time[0]);
+		System.out.println(time[1]);
+		System.out.println(time[2]);
+		System.out.println(time[3]);
+		action.moveToElement(aeMap.getcustomDateTimeInput()).sendKeys(time[0]).sendKeys(time[1]).sendKeys(time[3]).perform();
 		return Time;
 	}
 	public static void selectRecurrence(String recurrence) {

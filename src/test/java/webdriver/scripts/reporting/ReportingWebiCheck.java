@@ -71,7 +71,7 @@ public class ReportingWebiCheck extends GoHelper {
 			driver.findElement(By.xpath("//span[contains(@id,'pageApplicationSection-anchor-content')]")).click();
 			driverDelay();
 			driver.findElement(By.xpath("//span[@id='Web_Intelligence-title']")).click();
-			driverDelay(10000);
+			driverDelay(15000);
 			waitUntilElementIsClickable(driver.findElement(By.xpath("//div[contains(@class,'sapMDialogScrollCont ')]//button[contains(@class,'wingTestDataSourcePickerCancel')]//child::span[@class='sapMBtnContent']")));
 			driver.findElement(By.xpath("//div[contains(@class,'sapMDialogScrollCont ')]//button[contains(@class,'wingTestDataSourcePickerCancel')]//child::span[@class='sapMBtnContent']")).click();
 			driverDelay(1000);

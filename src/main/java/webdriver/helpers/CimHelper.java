@@ -1350,9 +1350,10 @@ public class CimHelper extends CalculationHelper {
 	}
 
 	public static String getSystemTimeFormatted() {
-		SimpleDateFormat sdf = new SimpleDateFormat("hh:mm a");
+		SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss a");
 		Calendar calendar = Calendar.getInstance();
-		calendar.add(Calendar.SECOND, 10);
+		calendar.add(Calendar.MINUTE, 1);
+		 SimpleDateFormat sdfTime= new SimpleDateFormat("hh:ss");
 		Date updatedTime = calendar.getTime();
 		String formattedTime = sdf.format(updatedTime).toLowerCase();
 		System.out.println(formattedTime);

@@ -199,9 +199,9 @@ public static List dbCredentials;
     else if (testEnvironment.equals("qaapp")) {
 //        url = "http://qaapp-dev.harrispaas.com/alliance-webCont/login/index.jsp";
     	//Shilpa updated to SSL url 10.10.2024
-//    	 url = "https://qaapp-dev.harrispaas.com:8443/alliance-webCont/alliance/index.jsp";
+    	 url = "https://qaapp.harrispaas.com/alliance-webCont/alliance/index.jsp";
     	//Shilpa updated to SSL url 21.11.2024
-    	 url = "https://qaapp.harrispaas.com/alliance-webCont/login/index.jsp";
+//    	 url = "https://qaauto.harrispaas.com/alliance-webCont/alliance/index.jsp";
 //    	 url="http://stgrhl-dev.harrispaas.com/alliance-webCont/alliance/index.jsp";
 //    	url = "https://qaprod.harrispaas.com/alliance-webCont/alliance/index.jsp";
   } 

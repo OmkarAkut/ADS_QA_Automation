@@ -213,7 +213,7 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 //				int numerator=Integer.parseInt(staNum[0]);
 				int denominator=Integer.parseInt(staNum[1]);
 				System.out.println(denominator);
-				for (int i = 0; i <=denominator; i++) {
+				for (int i = 1; i <=denominator; i++) {
 					doClick(reportMap.reportLibraryPageEntityRefreshButton());
 					driverDelay(3000);
 					try {
@@ -246,7 +246,7 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 							{
 								fail();
 							}
-							break;
+//							break;
 						}
 						 else{continue;}
 							
@@ -254,7 +254,7 @@ public class FlexibleReportsProfitAndLossStatementTesting extends GoHelper{
 					} catch (Exception e) {
 						continue;
 					}
-					
+					continue;
 				}
 			}
 			
