@@ -1375,4 +1375,53 @@ public class DataMaintenanceMap extends MapConfig {
 	public static WebElement getzipCodeGroups() {
 		return zipCodeGroups;
 	}
+	@FindBy(name = "departmentHierarchy")
+	private static WebElement activityStatsMasterDropdown;
+	public static WebElement getactivityStatsMasterDropdown() {
+		return activityStatsMasterDropdown;
+	}
+	@FindBy(xpath = "//div[text()='Activity Statistic Master']//following::ul")
+	private static WebElement activityStatsMasterDropdownList;
+	public static WebElement getactivityStatsMasterDropdownList() {
+		return activityStatsMasterDropdownList;
+	}
+	@FindBy(xpath = "//h1//following::a//span[text()='New']")
+	private static List<WebElement> azInnerPageNewBtn;
+	public static List<WebElement> getazInnerPageNewBtn() {return azInnerPageNewBtn;}
+	
+	@FindBy(xpath = "//h1//following::a//span[text()='Edit']")
+	private static List<WebElement> azInnerPageEditBtn;
+	public static List<WebElement> getazInnerPageEditBtn() {return azInnerPageEditBtn;}
+	
+	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//span[text()='Save & Create New']")
+	private static List<WebElement> azInnerPageSaveCreateNewBtn;
+	public static List<WebElement> getazInnerPageSaveCreateNewBtn() {return azInnerPageSaveCreateNewBtn;}
+	
+	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//span[text()='Save']")
+	private static List<WebElement> azInnerPageSaveBtn;
+	public static List<WebElement> getazInnerPageSaveBtn() {return azInnerPageSaveBtn;}
+	
+	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//span[text()='Save & Close']")
+	private static List<WebElement> azInnerPageSaveCloseBtn;
+	public static List<WebElement> getazInnerPageSaveCloseBtn() {return azInnerPageSaveCloseBtn;}
+	
+	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//span[text()='Cancel & Close']")
+	private static List<WebElement> azInnerPageCancelCloseBtn;
+	public static List<WebElement> getazInnerPageCancelCloseBtn() {return azInnerPageCancelCloseBtn;}
+	
+	@FindBy(xpath = "//div[text()='New Mapping']//following::ul")
+	private static WebElement entityDropdownList;
+	public static WebElement getentityDropdownList() {
+		return entityDropdownList;
+	}
+	@FindBy(xpath = "(//span[text()='Department / Group']//following::span[text()='Select'])[1]")
+	private static WebElement deptGroupSelectBtn;
+	public static WebElement getdeptGroupSelectBtn() {
+		return deptGroupSelectBtn;
+	}
+	@FindBy(xpath = "(//span[text()='Department / Group']//following::span[text()='Select'])[2]")
+	private static WebElement ModifierSelectBtn;
+	public static WebElement getModifierSelectBtn() {
+		return ModifierSelectBtn;
+	}
 }
