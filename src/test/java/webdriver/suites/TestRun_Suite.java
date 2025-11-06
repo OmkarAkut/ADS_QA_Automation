@@ -35,7 +35,7 @@ import webdriver.scripts.systemmaintenance.SystemMaintenanceTestSuite;
 //
 //	TestSuiteForCIM.class,
 	TestSuiteForAE.class,
-//	CostingTestSuite.class,
+	CostingTestSuite.class,
 //	ContractingSuite.class,
 	MaintaindataTestSuite.class,
 	GeneralCalculationsTestSuite.class,

@@ -1,7 +1,10 @@
 package webdriver.helpers;
 
+import java.util.List;
+
 import org.junit.BeforeClass;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
@@ -23,7 +26,7 @@ public class AzHelper extends CalculationHelper{
 		builder = new Actions(driver);
 	}
 	public void addNewScenario(String code,String name,String dropdown,WebElement codeEle,WebElement nameEle,String dropdownValue,
-			WebElement dropdownBtn,WebElement dropdownTriggerList,String action) throws Throwable {
+			List<WebElement> dropdownBtn,WebElement dropdownTriggerList,String action) throws Throwable {
 		if(code!=null) {
 			keyInInputText(code, codeEle);
 			
@@ -33,28 +36,47 @@ public class AzHelper extends CalculationHelper{
 			keyInInputText(name, nameEle);
 		}
 		if(dropdown!=null) {
-			doClick(dropdownBtn);
+//			doClick(dropdownBtn);
+			CimHelper.checkElements(dropdownBtn);
 			doDropdownSelectUsingOptionTextOnly(dropdownTriggerList, dropdownValue);
 		}
 		switch (action) {
 		case "Save & Create New":
-			doClick(DataMaintenanceMap.getSaveandCreateNewButton());
+			CimHelper.checkElements(driver.findElements(By.xpath("//span[text()='Save & Create New']")));
 			break;
 		case "Save":
-			doClick(DataMaintenanceMap.getazSaveBtn());
+			CimHelper.checkElements(driver.findElements(By.xpath("//span[text()='Save']")));
 			break;
 		case "Save & Close":
-			doClick(DataMaintenanceMap.getazSaveCloseBtn());
+			CimHelper.checkElements(driver.findElements(By.xpath("//span[text()='Save & Close']")));
+
 			break;
 		default:
 			break;
 		}
 	}
-	public void deleteScenario() {
-		doClick(DataMaintenanceMap.getazDeleteBtn());
-		waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
-		doClick(DataMaintenanceMap.getwarningDeleteBtn());
+	public void deleteScenario(WebElement button,WebElement waitForElement) {
+		doClick(button);
+		waitForElementToBeVisible(waitForElement);
+		doClick(waitForElement);
 		assertTextIsDisplayed("There is no data available to display.");
+	}
+	public void doClickButtons(String scenarioName,String buttonName) throws Throwable {
+		doClick("//div[text()='"+scenarioName+"']//following::div[contains(@class,'x-toolbar')]//span[text()='"+buttonName+"']");
+	}
+	public void waitForFormDialog(String windowName) {
+		waitForElementToBeVisible(driver.findElement(By.xpath("//div[contains(@id,'dynamicwindow')][text()='"+windowName+"']")));
+	}
+	public void doClickSelectButton(String title) throws Throwable {
+		doClick("(//div[contains(@class,'x-form-fieldcontainer')]//span[text()='"+title+"']//following::div//span[text()='Select'])[1]");
+	}
+	public void keyInInputWithActionClass(WebElement element,String input) {
+		Actions action=new Actions(driver);
+		action.moveToElement(element).click().sendKeys(Keys.CLEAR).sendKeys(input).sendKeys(Keys.ENTER).perform();
+	}
+	public void selectFormItem(String name) throws Throwable {
+		doClick("//div[text()='"+name+"']");
+		doClick(DataMaintenanceMap.getapplyBtnInPopUp());
 	}
 	public void addDetailsInnerPages(String code,String name,String action) throws Throwable {
 		if(code!=null) {

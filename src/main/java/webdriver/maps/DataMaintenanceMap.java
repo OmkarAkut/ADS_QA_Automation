@@ -1375,15 +1375,30 @@ public class DataMaintenanceMap extends MapConfig {
 	public static WebElement getzipCodeGroups() {
 		return zipCodeGroups;
 	}
+//	@FindBy(name = "departmentHierarchy")
+//	private static WebElement activityStatsMasterDropdown;
+//	public static WebElement getactivityStatsMasterDropdown() {
+//		return activityStatsMasterDropdown;
+//	}
 	@FindBy(name = "departmentHierarchy")
-	private static WebElement activityStatsMasterDropdown;
-	public static WebElement getactivityStatsMasterDropdown() {
+	private static List<WebElement> activityStatsMasterDropdown;
+	public static List<WebElement> getactivityStatsMasterDropdown() {
 		return activityStatsMasterDropdown;
+	}
+	@FindBy(name = "timePeriodName")
+	private static List<WebElement> timePeriodName;
+	public static List<WebElement> gettimePeriodName() {
+		return timePeriodName;
 	}
 	@FindBy(xpath = "//div[text()='Activity Statistic Master']//following::ul")
 	private static WebElement activityStatsMasterDropdownList;
 	public static WebElement getactivityStatsMasterDropdownList() {
 		return activityStatsMasterDropdownList;
+	}
+	@FindBy(xpath = "//div[text()='Activity Volume Data Scenario']//following::ul")
+	private static WebElement activityVolDataScenarioDropdownList;
+	public static WebElement getactivityVolDataScenarioDropdownList() {
+		return activityVolDataScenarioDropdownList;
 	}
 	@FindBy(xpath = "//h1//following::a//span[text()='New']")
 	private static List<WebElement> azInnerPageNewBtn;
@@ -1392,6 +1407,10 @@ public class DataMaintenanceMap extends MapConfig {
 	@FindBy(xpath = "//h1//following::a//span[text()='Edit']")
 	private static List<WebElement> azInnerPageEditBtn;
 	public static List<WebElement> getazInnerPageEditBtn() {return azInnerPageEditBtn;}
+	
+	@FindBy(xpath = "//h1//following::a//span[text()='Delete']")
+	private static List<WebElement> azInnerPageDeleteBtn;
+	public static List<WebElement> getazInnerPageDeleteBtn() {return azInnerPageDeleteBtn;}
 	
 	@FindBy(xpath = "//div[contains(@class,'x-toolbar x-docked x-toolbar-footer')]//span[text()='Save & Create New']")
 	private static List<WebElement> azInnerPageSaveCreateNewBtn;
@@ -1424,4 +1443,40 @@ public class DataMaintenanceMap extends MapConfig {
 	public static WebElement getModifierSelectBtn() {
 		return ModifierSelectBtn;
 	}
+	@FindBy(xpath = "//div[contains(@id,'dynamicwindow')]//following::span[text()='Cancel & Close']")
+	private static WebElement dynamicWindowCancelCloseButton ;
+	public static WebElement getdynamicWindowCancelCloseButton() {
+		return dynamicWindowCancelCloseButton;
+	}
+	@FindBy(xpath = "//div[contains(@id,'dynamicwindow')]//following::span[text()='New']")
+	private static WebElement dynamicWindowNewButton ;
+	public static WebElement getdynamicWindowNewButton() {
+		return dynamicWindowNewButton;
+	}
+	@FindBy(xpath = "//div[text()='Mappings']//following::span[text()='New']")
+	private static WebElement mappingNewButton ;
+	public static WebElement getmappingNewButton() {
+		return mappingNewButton;
+	}
+	@FindBy(xpath = "//div[text()='Mappings']//following::span[text()='Delete']")
+	private static WebElement mappingDeleteButton ;
+	public static WebElement getmappingDeleteButton() {
+		return mappingDeleteButton;
+	}
+	@FindBy(xpath = "//div[text()='Mappings']//following::span[text()='Cancel & Close']")
+	private static WebElement mappingCancelCloseButton ;
+	public static WebElement getmappingCancelCloseButton() {
+		return mappingCancelCloseButton;
+	}
+	@FindBy(xpath = "//div[text()='Activity Statistic']//following::input[@name='name']")
+	private static WebElement activityStatsInputName ;
+	public static WebElement getactivityStatsInputName() {
+		return activityStatsInputName;
+	}
+	@FindBy(xpath = "(//div[text()='Activity Volume Data']//following::div[@class='x-grid-item-container']//table)[2]//td[2]/div")
+	private static WebElement activityVolData ;
+	public static WebElement getactivityVolData() {
+		return activityVolData;
+	}
+	
 }
