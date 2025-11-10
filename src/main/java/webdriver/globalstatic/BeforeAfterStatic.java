@@ -22,7 +22,7 @@ public class BeforeAfterStatic extends CalculationsHelper {
   @BeforeClass
   public static void setup() throws Exception {
     //add synchronized here for parallel test execution?
-	  System.out.println("kjsncafldjflrsejg");
+//	  System.out.println("kjsncafldjflrsejg");
     System.out.println("START FRAMEWORK");
 
     printout = setPrintoutProperty();

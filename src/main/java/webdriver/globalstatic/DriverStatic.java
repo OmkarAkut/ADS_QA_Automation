@@ -107,7 +107,8 @@ public class DriverStatic extends SetupStatic {
 			options.addArguments("--window-size=1920,1080", "--ignore-certificate-errors", "--headless");
 			options.addArguments("--remote-allow-origins=*");
 			options.addArguments("--headless");
-			driver = new ChromeDriver(options);
+			browserDriver=System.getProperty("webdriver.chrome.driver");
+//			driver = new ChromeDriver(options);
 		}
 		if (browser.equals("firefox")) {
 			System.setProperty("webdriver.firefox.driver", "C:/ads/apps/Selenium/" + geckoDriver + ".exe");
@@ -155,7 +156,8 @@ public class DriverStatic extends SetupStatic {
 			options.addArguments("--ignore-certificate-errors", "start-maximized");
 			options.addArguments("--remote-allow-origins=*");
 			options.addArguments("--disable-features=ClipboardRead,ClipboardWrite");
-			driver = new ChromeDriver(options);
+			browserDriver=System.getProperty("webdriver.chrome.driver");
+//			driver = new ChromeDriver(options);
 		}
 		return browserDriver;
 	}

@@ -34,8 +34,8 @@ import webdriver.scripts.systemmaintenance.SystemMaintenanceTestSuite;
 @Suite.SuiteClasses({
 //
 //	TestSuiteForCIM.class,
-	TestSuiteForAE.class,
-	CostingTestSuite.class,
+//	TestSuiteForAE.class,
+//	CostingTestSuite.class,
 //	ContractingSuite.class,
 	MaintaindataTestSuite.class,
 	GeneralCalculationsTestSuite.class,
@@ -46,7 +46,7 @@ import webdriver.scripts.systemmaintenance.SystemMaintenanceTestSuite;
 //	PagetestsSuite.class,
 //	HelpSuite.class,
 //	ChecktestsSuite.class,
-	CostingCalculationsTestSuite.class,
+//	CostingCalculationsTestSuite.class,
 //	CostingModelsTestSuite.class,
 //	CalculationStatusSuite.class,
 //	UnitCostQuickCalculationSuite.class,

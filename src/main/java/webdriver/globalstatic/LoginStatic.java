@@ -73,7 +73,7 @@ public class LoginStatic extends BeforeAfterStatic {
 		  action.sendKeys(Keys.ENTER);
 		  action.perform();
 	}  catch (NoSuchElementException|ElementNotInteractableException e) {
-		driver.quit();
+		fail();
 	}
       driverDelay(3000);
       waitForSpinnerToEnd();
