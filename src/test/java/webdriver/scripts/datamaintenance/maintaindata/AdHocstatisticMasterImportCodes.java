@@ -35,8 +35,8 @@ public class AdHocstatisticMasterImportCodes extends CalculationHelper{
 
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("CreateDeleteCostMethodDeptMasterDischargeStatus",
-				"webdriver.scripts.datamaintenance.maintaindata", "CreateDeleteCostMethodDeptMasterDischargeStatus");
+		ExtentReport.reportCreate("AdHocstatisticMasterImportCodes",
+				"webdriver.scripts.datamaintenance.maintaindata", "AdHocstatisticMasterImportCodes");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);
 			costing = BuildMap.getInstance(driver, CostingMap.class);

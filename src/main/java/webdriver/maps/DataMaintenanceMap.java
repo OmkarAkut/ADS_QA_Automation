@@ -605,6 +605,10 @@ public class DataMaintenanceMap extends MapConfig {
 	private static WebElement ageGroupFilterBtn;
 	public static WebElement getageGroupFilterBtn() {return ageGroupFilterBtn;}
 	
+	@FindBy(xpath = "//h1[text()='Age In Days Groups']//following::span[text()='Clear Filter']")
+	private static WebElement ageGroupClearFilterBtn;
+	public static WebElement getageGroupClearFilterBtn() {return ageGroupClearFilterBtn;}
+	
 	@FindBy(xpath = "//h1[text()='Age In Days Groups']//following::span[text()='Delete']")
 	private static WebElement ageGroupDeleteBtn;
 	public static WebElement getageGroupDeleteBtn() {return ageGroupDeleteBtn;}
@@ -616,6 +620,10 @@ public class DataMaintenanceMap extends MapConfig {
 	@FindBy(xpath = "//div[contains(@id,'dynamicwindow')][text()='Add Age In Days Group Members']")
 	private static WebElement ageGroupSelectWindow;
 	public static WebElement getageGroupSelectWindow() {return ageGroupSelectWindow;}
+	
+	@FindBy(xpath = "//div[contains(@id,'dynamicwindow')][text()='Add Age In Years Group Members']")
+	private static WebElement ageYearsGroupSelectWindow;
+	public static WebElement getageYearsGroupSelectWindow() {return ageYearsGroupSelectWindow;}
 	
 	@FindBy(xpath = "//a[contains(@class,'x-box-item x-toolbar-item')]//following::span[text()='Save']")
 	private static WebElement saveButton;
@@ -1448,6 +1456,11 @@ public class DataMaintenanceMap extends MapConfig {
 	public static WebElement getdynamicWindowCancelCloseButton() {
 		return dynamicWindowCancelCloseButton;
 	}
+	@FindBy(xpath = "//div[contains(@id,'messagebox')]//following::span[text()='Cancel & Close']")
+	private static List<WebElement> dynamicWindowCancelCloseBtnlist ;
+	public static List<WebElement> getdynamicWindowCancelCloseBtnlist() {
+		return dynamicWindowCancelCloseBtnlist;
+	}
 	@FindBy(xpath = "//div[contains(@id,'dynamicwindow')]//following::span[text()='New']")
 	private static WebElement dynamicWindowNewButton ;
 	public static WebElement getdynamicWindowNewButton() {
@@ -1478,5 +1491,14 @@ public class DataMaintenanceMap extends MapConfig {
 	public static WebElement getactivityVolData() {
 		return activityVolData;
 	}
-	
+	@FindBy(xpath = "//span[text()='Age In Years']//following::div[@class='x-grid-cell-inner ']")
+	private static List<WebElement> ageGroupElements ;
+	public static List<WebElement> getageGroupElements() {
+		return ageGroupElements;
+	}
+	@FindBy(name = "shortName")
+	private static WebElement shortName ;
+	public static WebElement getshortName() {
+		return shortName;
+	}
 }

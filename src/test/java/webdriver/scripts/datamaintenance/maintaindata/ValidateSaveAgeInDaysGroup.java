@@ -45,7 +45,29 @@ public class ValidateSaveAgeInDaysGroup extends CalculationHelper{
 		}
 	}
 	@Test
-	public void test01ValidateSaveAgeGroup_12903() throws Throwable {
+	public void test01ValidateSaveAndCreateNewAgeGroup() throws Throwable {
+		try {
+			doClick(DataMaintenanceMap.getageGroupNewBtn());
+			keyInInputText(ageInDaysGroups, DataMaintenanceMap.getaddName());
+			doClick(DataMaintenanceMap.getageGroupSelectBtn());
+			waitForElementToBeVisible(DataMaintenanceMap.getageGroupSelectWindow());
+			ContractModelsHelper.selectMultipleColumnsToDisplay(columns);
+			doClick(DataMaintenanceMap.getapplyBtnInPopUp());
+			doClick(DataMaintenanceMap.getSaveandCreateNewButton());
+			doClick(DataMaintenanceMap.getCancelCloseButton());
+			doClick(DataMaintenanceMap.getageGroupFilterBtn());
+			doFilterCreate(filter);
+			assertTextIsDisplayed(ageInDaysGroups);
+			test03DeleteSaveAgeGroup_12903();
+			doClick(DataMaintenanceMap.getageGroupClearFilterBtn());
+			ExtentReport.logPass("PASS", "test01ValidateSaveAndCreateNewAgeGroup");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test01ValidateSaveAndCreateNewAgeGroup", driver, e);
+			fail(e.getMessage());
+		}
+	}
+	@Test
+	public void test02ValidateSaveAgeGroup_12903() throws Throwable {
 		try {
 			doClick(DataMaintenanceMap.getageGroupNewBtn());
 			keyInInputText(ageInDaysGroups, DataMaintenanceMap.getaddName());
@@ -59,22 +81,22 @@ public class ValidateSaveAgeInDaysGroup extends CalculationHelper{
 			doClick(DataMaintenanceMap.getageGroupFilterBtn());
 			doFilterCreate(filter);
 			assertTextIsDisplayed(ageInDaysGroups);
-			ExtentReport.logPass("PASS", "test01ValidateSaveAgeGroup_12903");
+			ExtentReport.logPass("PASS", "test02ValidateSaveAgeGroup_12903");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test01ValidateSaveAgeGroup_12903", driver, e);
+			ExtentReport.logFail("FAIL", "test02ValidateSaveAgeGroup_12903", driver, e);
 			fail(e.getMessage());
 		}
 	}
 	@Test
-	public void test02DeleteSaveAgeGroup_12903() throws Throwable {
+	public void test03DeleteSaveAgeGroup_12903() throws Throwable {
 		try {
 			doClick(DataMaintenanceMap.getageGroupDeleteBtn());
 			waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
 			doClick(DataMaintenanceMap.getwarningDeleteBtn());
 			assertTextIsDisplayed("There is no data available to display.");
-			ExtentReport.logPass("PASS", "test01ValidateSaveAgeGroup_12903");
+			ExtentReport.logPass("PASS", "test03DeleteSaveAgeGroup_12903");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test01ValidateSaveAgeGroup_12903", driver, e);
+			ExtentReport.logFail("FAIL", "test03DeleteSaveAgeGroup_12903", driver, e);
 			fail(e.getMessage());
 		}
 	}

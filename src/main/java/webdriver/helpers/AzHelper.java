@@ -1,10 +1,13 @@
 package webdriver.helpers;
 
+import static org.junit.Assert.assertTrue;
+
 import java.util.List;
 
 import org.junit.BeforeClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
@@ -62,7 +65,38 @@ public class AzHelper extends CalculationHelper{
 		assertTextIsDisplayed("There is no data available to display.");
 	}
 	public void doClickButtons(String scenarioName,String buttonName) throws Throwable {
-		doClick("//div[text()='"+scenarioName+"']//following::div[contains(@class,'x-toolbar')]//span[text()='"+buttonName+"']");
+		try {
+			doClick("//div[text()='"+scenarioName+"']//following::div[contains(@class,'x-toolbar')]//span[text()='"+buttonName+"']");
+		} catch (NoSuchElementException e) {
+			doClick("//div[text()='"+scenarioName+"']//following::div[contains(@class,'x-panel')]//span[text()='"+buttonName+"']");
+
+		}
+	}
+	public void addNewScenario(String[] ages,String name,String scenarioName,String[] columns) throws Throwable {
+		doClick(DataMaintenanceMap.getazNewBtn());
+		keyInInputText(name, DataMaintenanceMap.getaddName());
+		doClickButtons(scenarioName, "Select");
+		driverDelay();
+//		waitForPresenceOfElement("//div[contains(@class,'x-window-header-title')]");
+		ContractModelsHelper.selectMultipleColumnsToDisplay(columns);
+		CimHelper.checkElements(driver.findElements(By.xpath("//span[text()='Apply']")));
+//		doClick(DataMaintenanceMap.getapplyBtnInPopUp());
+		assertElements(ages,scenarioName);
+	}
+	public void assertElements(String[] ages,String azName) {
+			for(int i=0;i>=driver.findElements(By.xpath("//div[text()='"+azName+"']//following::table//tbody//tr//td[3]/div")).size();i++) {
+			if(DataMaintenanceMap.getageGroupElements().get(i+1).getText().equals(ages[i])) {
+				assertTrue(printout);
+			}
+			}
+		
+	}
+	public void clickButton(String name) throws Throwable {
+		doClick("//span[text()='"+name+"']");
+	}
+	public void keyInInputByName(String inputName,String inputText) throws Throwable {
+		driver.findElement(By.name(inputName)).sendKeys(inputText);
+		driverDelay(500);
 	}
 	public void waitForFormDialog(String windowName) {
 		waitForElementToBeVisible(driver.findElement(By.xpath("//div[contains(@id,'dynamicwindow')][text()='"+windowName+"']")));
@@ -78,13 +112,13 @@ public class AzHelper extends CalculationHelper{
 		doClick("//div[text()='"+name+"']");
 		doClick(DataMaintenanceMap.getapplyBtnInPopUp());
 	}
-	public void addDetailsInnerPages(String code,String name,String action) throws Throwable {
+	public void addDetailsInnerPages(String code,String name,String action,String webeleCode,String webeleName) throws Throwable {
 		if(code!=null) {
-			String codeelement = CimHelper.checkElements(driver.findElements(By.name("code")));
+			String codeelement = CimHelper.checkElements(driver.findElements(By.name(webeleCode)));
 			driver.findElement(By.xpath(codeelement)).sendKeys(code);
 		}
 		if(name!=null) {
-			String nameElement= CimHelper.checkElements(driver.findElements(By.name("name")));
+			String nameElement= CimHelper.checkElements(driver.findElements(By.name(webeleName)));
 			driver.findElement(By.xpath(nameElement)).clear();
 			driver.findElement(By.xpath(nameElement)).sendKeys(name);
 		}

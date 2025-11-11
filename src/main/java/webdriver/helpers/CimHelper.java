@@ -891,6 +891,7 @@ public class CimHelper extends CalculationHelper {
 			clickableElement = "//" + tagName + "[@id='" + id + "']";
 			System.out.println(clickableElement);
 			elementList.get(0).click();
+			driverDelay(300);
 
 		}
 		if (elementList.size() > 1) {
@@ -902,6 +903,7 @@ public class CimHelper extends CalculationHelper {
 				try {
 					clickableElement = "//" + tagName + "[@id='" + id + "']";
 					driver.findElement(By.xpath("//" + tagName + "[@id='" + id + "']")).click();
+					driverDelay(300);
 //					doClick("//" + tagName + "[@id='" + id + "']");
 				} catch (Exception e) {
 //					clickableElement = "//"+tagName+"[@id='" + id + "']";

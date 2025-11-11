@@ -459,6 +459,7 @@ public class AdsHelper extends GetHelper {
 		input.click();
 		input.clear();
 		input.sendKeys(text);
+		driverDelay(500);
 		
 	}
 	public static String generateRandomNumber() throws InterruptedException {
