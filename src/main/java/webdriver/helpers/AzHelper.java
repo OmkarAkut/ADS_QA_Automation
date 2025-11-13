@@ -95,6 +95,7 @@ public class AzHelper extends CalculationHelper{
 		doClick("//span[text()='"+name+"']");
 	}
 	public void keyInInputByName(String inputName,String inputText) throws Throwable {
+		driver.findElement(By.name(inputName)).clear();;
 		driver.findElement(By.name(inputName)).sendKeys(inputText);
 		driverDelay(500);
 	}

@@ -1501,4 +1501,24 @@ public class DataMaintenanceMap extends MapConfig {
 	public static WebElement getshortName() {
 		return shortName;
 	}
+	@FindBy(name = "supplyCost")
+	private static WebElement supplyCost ;
+	public static WebElement getsupplyCost() {
+		return supplyCost;
+	}
+	@FindBy(name = "transactionCategoryCode")
+	private static List<WebElement> categoryDropdown;
+	public static List<WebElement> getcategoryDropdown() {
+		return categoryDropdown;
+	}
+	@FindBy(xpath = "//div[text()='Transaction Type']//following::ul")
+	private static WebElement transactionTypeDrpdwnList;
+	public static WebElement gettransactionTypeDrpdwnList() {
+		return transactionTypeDrpdwnList;
+	}
+	@FindBy(xpath = "//h1[text()='Transaction Classification Code List']//following::span[text()='Delete']")
+	private static WebElement transactionCodeListDeleteBtn;
+	public static WebElement gettransactionCodeListDeleteBtn() {
+		return transactionCodeListDeleteBtn;
+	}
 }
