@@ -1476,6 +1476,11 @@ public class DataMaintenanceMap extends MapConfig {
 	public static WebElement getmappingDeleteButton() {
 		return mappingDeleteButton;
 	}
+	@FindBy(xpath = "//div[text()='Job Codes']//following::span[text()='Delete']")
+	private static WebElement jobCodeDeleteButton ;
+	public static WebElement getjobCodeDeleteButton() {
+		return jobCodeDeleteButton;
+	}
 	@FindBy(xpath = "//div[text()='Mappings']//following::span[text()='Cancel & Close']")
 	private static WebElement mappingCancelCloseButton ;
 	public static WebElement getmappingCancelCloseButton() {
@@ -1520,5 +1525,10 @@ public class DataMaintenanceMap extends MapConfig {
 	private static WebElement transactionCodeListDeleteBtn;
 	public static WebElement gettransactionCodeListDeleteBtn() {
 		return transactionCodeListDeleteBtn;
+	}
+	@FindBy(name = "rbrvsrvuMod")
+	private static WebElement checkboxrbrvs;
+	public static WebElement getcheckboxrbrvs() {
+		return checkboxrbrvs;
 	}
 }

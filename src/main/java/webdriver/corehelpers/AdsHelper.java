@@ -174,6 +174,7 @@ public class AdsHelper extends GetHelper {
 		waitForAjaxExtJs();
 		doClick(dialog.getFilterDialogButtonApplyFilter());
 		waitForSpinnerToEnd();
+		driverDelay(300);
 	}
 	public void doFilterCreateForDate(String[] filterParameters) throws InterruptedException {
 		System.out.println(filterParameters[0]);

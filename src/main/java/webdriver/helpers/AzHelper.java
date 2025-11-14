@@ -68,7 +68,7 @@ public class AzHelper extends CalculationHelper{
 		try {
 			doClick("//div[text()='"+scenarioName+"']//following::div[contains(@class,'x-toolbar')]//span[text()='"+buttonName+"']");
 		} catch (NoSuchElementException e) {
-			doClick("//div[text()='"+scenarioName+"']//following::div[contains(@class,'x-panel')]//span[text()='"+buttonName+"']");
+			doClick("(//div[text()='"+scenarioName+"']//following::div[contains(@class,'x-panel')]//span[text()='"+buttonName+"'])[1]");
 
 		}
 	}
@@ -109,9 +109,20 @@ public class AzHelper extends CalculationHelper{
 		Actions action=new Actions(driver);
 		action.moveToElement(element).click().sendKeys(Keys.CLEAR).sendKeys(input).sendKeys(Keys.ENTER).perform();
 	}
-	public void selectFormItem(String name) throws Throwable {
-		doClick("//div[text()='"+name+"']");
-		doClick(DataMaintenanceMap.getapplyBtnInPopUp());
+	public void selectFormItem(String name,String selectServices) throws Throwable {
+		
+		if(selectServices.equals("services")) {
+			doClick("//div[text()='"+name+"']");
+			doClick("//div[contains(@id,'dynamicwindow')]//following::span[text()='Select']");
+			doClick(DataMaintenanceMap.getapplyBtnInPopUp());
+		}
+		else {
+			doClick("//div[text()='"+name+"']");
+			doClick(DataMaintenanceMap.getapplyBtnInPopUp());
+		}
+	}
+	public void assertData(String azName, String text) {
+		assertElementIsDisplayedWithXpath("//*[text()='"+azName+"']//following::*[text()='"+text+"']");
 	}
 	public void addDetailsInnerPages(String code,String name,String action,String webeleCode,String webeleName) throws Throwable {
 		if(code!=null) {

@@ -1,0 +1,109 @@
+package webdriver.scripts.datamaintenance.maintaindata;
+
+import static org.junit.Assert.fail;
+import java.text.SimpleDateFormat;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.FixMethodOrder;
+import org.junit.Test;
+import org.junit.runners.MethodSorters;
+import org.openqa.selenium.By;
+
+import ExtentReport.ExtentReport;
+import webdriver.core.Login;
+import webdriver.helpers.AzHelper;
+import webdriver.helpers.CimHelper;
+import webdriver.maps.DataMaintenanceMap;
+import webdriver.maps.mapbuilder.BuildMap;
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+public class HCPCSModifiers extends AzHelper {
+	static DataMaintenanceMap dmMap;
+	final static String aTozHCPCSModifiers = "HCPCS Modifiers";
+	static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
+	static String currentDateCode = new SimpleDateFormat("MM.HH.ss").format(new java.util.Date());
+	static String code = currentDateCode.replaceAll("\\W", "");
+	static String name = "Name" + currentDateTime;
+	static String[] filter= {"Name","Is","Equal To",name};
+	static String azName = "HCPCS Modifier";
+	static String updatedName="Updated"+name;
+	static String[] filterAfterEdit= {"Name","Is","Equal To",updatedName};
+	@BeforeClass
+	public static void setupScript() throws Exception, Throwable {
+		ExtentReport.reportCreate("HCPCSModifiers", "webdriver.scripts.datamaintenance.maintaindata",
+				"HCPCSModifiers");
+		try {
+			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);
+			Login.loginUser("AutomationTesterAdmin");
+			goToPage("Maintain Data");
+			selectMaintainDataAtoZ(aTozHCPCSModifiers);
+			ExtentReport.logPass("PASS", "setupScript");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "Failure in setupScript", driver, e);
+			fail(e.getMessage());
+		}
+	}
+	@Test
+	public void test01ValidateNewButton() throws Throwable {
+		try {
+			doClick(DataMaintenanceMap.getazNewBtn());
+			doClick(DataMaintenanceMap.getcheckboxrbrvs());
+			assertTextIsDisplayed("You can check the RBRVS RVU Modifier box only if the Code is 26, 53, or TC.");
+			clickButton("OK");
+			keyInInputByName("code", code);
+			keyInInputByName("name", name);
+			doClickButtons(azName, "Save & Create New");
+			doClickButtons(azName, "Cancel & Close");
+			doClick(DataMaintenanceMap.getazFilterBtn());
+			doFilterCreate(filter);
+			assertTextIsDisplayed(name);
+			deleteScenario(DataMaintenanceMap.getazDeleteBtn(), DataMaintenanceMap.getwarningDeleteBtn());
+			doClick(DataMaintenanceMap.getazClearFilterBtn());
+			ExtentReport.logPass("PASS", "test01ValidateNewButton");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test01ValidateNewButton", driver, e);
+			fail(e.getMessage());
+		}
+	}
+	@Test
+	public void test02ValidateSaveAndEditButton() throws Throwable {
+		try {
+			doClick(DataMaintenanceMap.getazNewBtn());
+			doClick(DataMaintenanceMap.getcheckboxrbrvs());
+			assertTextIsDisplayed("You can check the RBRVS RVU Modifier box only if the Code is 26, 53, or TC.");
+			clickButton("OK");
+			keyInInputByName("code", code);
+			keyInInputByName("name", name);
+			doClickButtons(azName, "Save");
+			doClickButtons(azName, "Cancel & Close");
+			doClick(DataMaintenanceMap.getazFilterBtn());
+			doFilterCreate(filter);
+			assertTextIsDisplayed(name);
+			doClick(DataMaintenanceMap.getazEditBtn());
+			ExtentReport.logPass("PASS", "test02ValidateSaveAndEditButton");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test02ValidateSaveAndEditButton", driver, e);
+			fail(e.getMessage());
+		}
+	}
+	@Test
+	public void test03ValidateSaveAndCloseButton() throws Throwable {
+		try {
+			keyInInputByName("name", updatedName);
+			doClickButtons(azName, "Save & Close");
+			doClick(DataMaintenanceMap.getazClearFilterBtn());
+			doClick(DataMaintenanceMap.getazFilterBtn());
+			doFilterCreate(filterAfterEdit);
+			assertTextIsDisplayed(updatedName);
+			deleteScenario(DataMaintenanceMap.getazDeleteBtn(), DataMaintenanceMap.getwarningDeleteBtn());
+			doClick(DataMaintenanceMap.getazClearFilterBtn());
+			ExtentReport.logPass("PASS", "test03ValidateSaveAndCloseButton");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test03ValidateSaveAndCloseButton", driver, e);
+			fail(e.getMessage());
+		}
+	}
+	@AfterClass
+	public static void endtest() throws Exception {
+		ExtentReport.report.flush();
+	}	
+}
