@@ -120,9 +120,9 @@ public class SupplyCodeMasters extends AzHelper{
 			keyInInputText("SupplyCode",DataMaintenanceMap.getshortName());
 			keyInInputText("30",DataMaintenanceMap.getsupplyCost());
 			clickButton("User Defined Fields");
-			keyInInputByName("textField1","UserData");
-			keyInInputByName("floatField1","10");
-			keyInInputByName("date1",javaGetCurrentDate("MM/dd/yyyy"));
+			keyInInputByName("textField1","UserData","Supply Code");
+			keyInInputByName("floatField1","10","Supply Code");
+			keyInInputByName("date1",javaGetCurrentDate("MM/dd/yyyy"),"Supply Code");
 			addDetailsInnerPages(null, updatedName, "Save","deptCode","description");
 			addDetailsInnerPages(null, updatedName, "Save & Close","deptCode","description");
 			driverDelay();

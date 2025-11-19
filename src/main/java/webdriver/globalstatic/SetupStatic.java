@@ -196,6 +196,9 @@ public static List dbCredentials;
     else if (testEnvironment.equals("devstage")) {
         url = "https://stgrhl-dev.harrispaas.com/alliance-webCont/alliance/index.jsp";
   } 
+    else if (testEnvironment.equals("qaprod")) {
+        url = "https://qaprod.harrispaas.com/alliance-webCont/alliance/index.jsp";
+  } 
     else if (testEnvironment.equals("qaapp")) {
 //        url = "http://qaapp-dev.harrispaas.com/alliance-webCont/login/index.jsp";
     	//Shilpa updated to SSL url 10.10.2024

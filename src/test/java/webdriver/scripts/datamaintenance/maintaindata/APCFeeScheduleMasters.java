@@ -22,34 +22,34 @@ import webdriver.maps.DialogsMap;
 import webdriver.maps.mapbuilder.BuildMap;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class APDRGFeeScheduleMasters extends AzHelper{
+public class APCFeeScheduleMasters extends AzHelper{
 	static DataMaintenanceMap dmMap;
-	final static String aTozAPDRGFeeScheduleMasters = "AP DRG Fee Schedule Masters";
+	final static String aTozAPCFeeScheduleMasters = "APC Fee Schedule Masters";
 	public static DialogsMap dialog;
 	static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
 	static String currentDateCode = new SimpleDateFormat("MM.HH.ss").format(new java.util.Date());
 	static String code = currentDateCode.replaceAll("\\W", "");
 	static String name="Name"+currentDateTime;
-	static String masterClassificationScheme="000APDRG 000 AP DRG SCHEME";
-	static String[] aTozAPDRGFeeScheduleMastersFilter= {"Name","Is","Equal To",name};
+	static String masterClassificationScheme="APC042024 Medicare";
+	static String[] aTozAPCFeeScheduleMasterFilter= {"Name","Is","Equal To",name};
 	static String sellerOfServices="0000  PRIVATE PAY";
 	static String updatedName;
-	static String azName="AP DRG Fee Schedule Master";
+	static String azName="APC Fee Schedule Master";
 	static String templateName;
 	static String updatedTemplateName;
 	static String newTemplateSchedule;
 	static String newSchedule;
-	static String feeScheduleEntries[]= {code,"Test","10.5"};
+	static String feeScheduleEntries[]= {code,"Test","Status","10.5","12","1.2","2.3","2.4","2.5"};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("APDRGFeeScheduleMasters", "webdriver.scripts.datamaintenance.maintaindata",
-				"APDRGFeeScheduleMasters");
+		ExtentReport.reportCreate("APCFeeScheduleMasters", "webdriver.scripts.datamaintenance.maintaindata",
+				"APCFeeScheduleMasters");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);
 			dialog = BuildMap.getInstance(driver, DialogsMap.class);
 			Login.loginUser("AutomationTesterAdmin");
 			goToPage("Maintain Data");
-			selectMaintainDataAtoZ(aTozAPDRGFeeScheduleMasters);
+			selectMaintainDataAtoZ(aTozAPCFeeScheduleMasters);
 			ExtentReport.logPass("PASS", "setupScript");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "Failure in setupScript", driver, e);
@@ -61,8 +61,8 @@ public class APDRGFeeScheduleMasters extends AzHelper{
 	public void test01ValidateNewButton() throws Throwable {
 		try {
 			doClick(DataMaintenanceMap.getazNewBtn());
-			keyInInputByName("code", code,"AP DRG Fee Schedule Master");
-			keyInInputByName("name", name,"AP DRG Fee Schedule Master");
+			keyInInputByName("code", code,"APC Fee Schedule Master");
+			keyInInputByName("name", name,"APC Fee Schedule Master");
 			clickButton("Select");
 			waitForFormDialog("Select Sellers of Services");
 			
@@ -70,7 +70,7 @@ public class APDRGFeeScheduleMasters extends AzHelper{
 			CimHelper.checkElements(driver.findElements(By.xpath("//span[text()='Save & Create New']")));
 			doClick(DataMaintenanceMap.getCancelCloseButton());
 			doClick(DataMaintenanceMap.getazFilterBtn());
-			doFilterCreate(aTozAPDRGFeeScheduleMastersFilter);
+			doFilterCreate(aTozAPCFeeScheduleMasterFilter);
 			deleteScenario(DataMaintenanceMap.getazDeleteBtn(),DataMaintenanceMap.getwarningDeleteBtn());
 			doClick(DataMaintenanceMap.getazClearFilterBtn());
 			ExtentReport.logPass("PASS", "test01ValidateNewButton");
@@ -83,8 +83,8 @@ public class APDRGFeeScheduleMasters extends AzHelper{
 	public void test02ValidateSaveButton() throws Throwable {
 		try {
 			doClick(DataMaintenanceMap.getazNewBtn());
-			keyInInputByName("code", code,"AP DRG Fee Schedule Master");
-			keyInInputByName("name", name,"AP DRG Fee Schedule Master");
+			keyInInputByName("code", code,"APC Fee Schedule Master");
+			keyInInputByName("name", name,"APC Fee Schedule Master");
 			clickButton("Select");
 			waitForFormDialog("Select Sellers of Services");
 			
@@ -92,7 +92,7 @@ public class APDRGFeeScheduleMasters extends AzHelper{
 			CimHelper.checkElements(driver.findElements(By.xpath("//span[text()='Save']")));
 			doClick(DataMaintenanceMap.getCancelCloseButton());
 			doClick(DataMaintenanceMap.getazFilterBtn());
-			doFilterCreate(aTozAPDRGFeeScheduleMastersFilter);
+			doFilterCreate(aTozAPCFeeScheduleMasterFilter);
 			deleteScenario(DataMaintenanceMap.getazDeleteBtn(),DataMaintenanceMap.getwarningDeleteBtn());
 			doClick(DataMaintenanceMap.getazClearFilterBtn());
 			ExtentReport.logPass("PASS", "test02ValidateSaveButton");
@@ -105,15 +105,15 @@ public class APDRGFeeScheduleMasters extends AzHelper{
 	public void test03ValidateSaveCloseButton() throws Throwable {
 		try {
 			doClick(DataMaintenanceMap.getazNewBtn());
-			keyInInputByName("code", code,"AP DRG Fee Schedule Master");
-			keyInInputByName("name", name,"AP DRG Fee Schedule Master");
+			keyInInputByName("code", code,"APC Fee Schedule Master");
+			keyInInputByName("name", name,"APC Fee Schedule Master");
 			clickButton("Select");
 			waitForFormDialog("Select Sellers of Services");
 			
 			selectFormItem(sellerOfServices,"services");
 			CimHelper.checkElements(driver.findElements(By.xpath("//span[text()='Save & Close']")));
 			doClick(DataMaintenanceMap.getazFilterBtn());
-			doFilterCreate(aTozAPDRGFeeScheduleMastersFilter);
+			doFilterCreate(aTozAPCFeeScheduleMasterFilter);
 			doClick(DataMaintenanceMap.getazPageEditBtn());
 			ExtentReport.logPass("PASS", "test03ValidateSaveCloseButton");
 		} catch (Exception | AssertionError e) {
@@ -127,9 +127,9 @@ public class APDRGFeeScheduleMasters extends AzHelper{
 			doClick("//div[text()='Templates']");
 			doClickButtons("Templates", "New");
 			waitForFormDialog("New Template");
-			keyInInputByName("name", name,"AP DRG Fee Schedule Template");
+			keyInInputByName("name", name,"APC Fee Schedule Template");
 			doClick(DataMaintenanceMap.getazMasterClassificationDrpDwn());
-			doDropdownSelectUsingOptionTextOnly(DataMaintenanceMap.getmasterClassificationScheme(), masterClassificationScheme);
+			doDropdownSelectUsingOptionTextOnly(DataMaintenanceMap.getmasterAPCClassificationScheme(), masterClassificationScheme);
 			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageNewBtn());
 			templateName="Template"+name;
 			addDetailsInnerPages(null, templateName, "Save & Create New","code","name");
@@ -150,9 +150,9 @@ public class APDRGFeeScheduleMasters extends AzHelper{
 		try {
 			doClickButtons("Templates", "New");
 			waitForFormDialog("New Template");
-			keyInInputByName("name", name,"AP DRG Fee Schedule Template");
+			keyInInputByName("name", name,"APC Fee Schedule Template");
 			doClick(DataMaintenanceMap.getazMasterClassificationDrpDwn());
-			doDropdownSelectUsingOptionTextOnly(DataMaintenanceMap.getmasterClassificationScheme(), masterClassificationScheme);
+			doDropdownSelectUsingOptionTextOnly(DataMaintenanceMap.getmasterAPCClassificationScheme(), masterClassificationScheme);
 			templateName="Template"+name;
 			addDetailsInnerPages(null, templateName, "Save","code","name");
 			doClickButtons(templateName, "Cancel & Close");
@@ -184,10 +184,9 @@ public class APDRGFeeScheduleMasters extends AzHelper{
 			doClickButtons("Templates", "New");
 			waitForFormDialog("New Template");
 			newTemplateSchedule="New Schedule"+name;
-			keyInInputByName("name", newTemplateSchedule,"AP DRG Fee Schedule Template");
+			keyInInputByName("name", newTemplateSchedule,"APC Fee Schedule Template");
 			doClick(DataMaintenanceMap.getazMasterClassificationDrpDwn());
-			doDropdownSelectUsingOptionTextOnly(DataMaintenanceMap.getmasterClassificationScheme(), masterClassificationScheme);
-			doClick("//div[text()='Name']/preceding::div[@class='x-grid-checkheader']");
+			doDropdownSelectUsingOptionTextOnly(DataMaintenanceMap.getmasterAPCClassificationScheme(), masterClassificationScheme);
 			doClickButtons("New Template", "Save & Create New");
 			doClickButtons("New Template", "Cancel & Close");
 			doClickButtons("New Schedule", "Cancel & Close");

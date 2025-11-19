@@ -1289,6 +1289,18 @@ public class DataMaintenanceMap extends MapConfig {
 	private static WebElement azMasterClassificationDrpDwn;
 	public static WebElement getazMasterClassificationDrpDwn() {return azMasterClassificationDrpDwn;}
 	
+	@FindBy(xpath = "//input[@name='templateId']")
+	private static WebElement templateDropdown;
+	public static WebElement gettemplateDropdown() {return templateDropdown;}
+	
+	@FindBy(xpath = "//div[text()='AP DRG Fee Schedule Template']//following::ul")
+	private static WebElement masterClassificationScheme;
+	public static WebElement getmasterClassificationScheme() {return masterClassificationScheme;}
+	
+	@FindBy(xpath = "//div[text()='APC Fee Schedule Template']//following::ul")
+	private static WebElement masterAPCClassificationScheme;
+	public static WebElement getmasterAPCClassificationScheme() {return masterAPCClassificationScheme;}
+	
 	@FindBy(xpath = "//ul[contains(@id,'dynamiccombo')]")
 	private static WebElement azMasterDropdownOptions;
 	public static WebElement getazMasterDropdownOptions() {return azMasterDropdownOptions;}
@@ -1530,5 +1542,30 @@ public class DataMaintenanceMap extends MapConfig {
 	private static WebElement checkboxrbrvs;
 	public static WebElement getcheckboxrbrvs() {
 		return checkboxrbrvs;
+	}
+	@FindBy(xpath = "//h1[text()='Fee Schedule Entries']//following::span[text()='Save']")
+	private static WebElement feeScheduleEntriesSaveBtn;
+	public static WebElement getfeeScheduleEntriesSaveBtn() {
+		return feeScheduleEntriesSaveBtn;
+	}
+	@FindBy(xpath = "//h1[text()='Fee Schedule Entries']//following::span[text()='Save & Close']")
+	private static WebElement feeScheduleEntriesSaveCloseBtn;
+	public static WebElement getfeeScheduleEntriesSaveCloseBtn() {
+		return feeScheduleEntriesSaveCloseBtn;
+	}
+	@FindBy(xpath = "//h1[text()='Fee Schedule Entries']//following::span[text()='Delete']")
+	private static WebElement feeScheduleEntriesDeleteBtn;
+	public static WebElement getfeeScheduleEntriesDeleteBtn() {
+		return feeScheduleEntriesDeleteBtn;
+	}
+	@FindBy(xpath = "//input[@name='startDate']")
+	private static WebElement effectiveperiodStartDate;
+	public static WebElement geteffectiveperiodStartDate() {
+		return effectiveperiodStartDate;
+	}
+	@FindBy(xpath = "//input[@name='endDate']")
+	private static WebElement effectiveperiodEndDate;
+	public static WebElement geteffectiveperiodEndDate() {
+		return effectiveperiodEndDate;
 	}
 }

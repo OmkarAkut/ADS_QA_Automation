@@ -119,9 +119,9 @@ public class VendorMasters extends AzHelper{
 			updatedName="Updated"+name;
 			keyInInputText("VendorCode",DataMaintenanceMap.getshortName());
 			clickButton("User Defined Fields");
-			keyInInputByName("textField1","UserData");
-			keyInInputByName("floatField1","10");
-			keyInInputByName("date1",javaGetCurrentDate("MM/dd/yyyy"));
+			keyInInputByName("textField1","UserData","Vendor Master");
+			keyInInputByName("floatField1","10","Vendor Master");
+			keyInInputByName("date1",javaGetCurrentDate("MM/dd/yyyy"),"Vendor Master");
 			addDetailsInnerPages(null, updatedName, "Save","deptCode","description");
 			addDetailsInnerPages(null, updatedName, "Save & Close","deptCode","description");
 			driverDelay();

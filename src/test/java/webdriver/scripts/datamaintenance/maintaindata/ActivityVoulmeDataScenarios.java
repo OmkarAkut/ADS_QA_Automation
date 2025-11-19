@@ -106,13 +106,13 @@ public class ActivityVoulmeDataScenarios extends AzHelper {
 			waitForFormDialog("Add Activity Volume Data");
 			doClickSelectButton("Entity");
 			waitForFormDialog("Add Entity");
-			selectFormItem("0000 PRIVATE PAY");
+			selectFormItem("0000 PRIVATE PAY",null);
 			doClickSelectButton("Department");
 			waitForFormDialog("Add Department");
-			selectFormItem("0001 0001 Department");
+			selectFormItem("0001 0001 Department",null);
 			doClickSelectButton("Charge Code");
 			waitForFormDialog("Add Charge Code");
-			selectFormItem("0ALL  0ALL Charge associated with ALL Dept");
+			selectFormItem("0ALL  0ALL Charge associated with ALL Dept",null);
 			doClickButtons("Add Activity Volume Data", "Add");
 			assertTextIsDisplayed("0000  PRIVATE PAY");
 			assertTextIsDisplayed("ALL  ALL");

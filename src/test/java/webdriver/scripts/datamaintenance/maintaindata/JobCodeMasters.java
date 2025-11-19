@@ -113,7 +113,7 @@ public class JobCodeMasters extends AzHelper {
 			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageEditBtn());
 			updatedName="Updated"+name;
 			addDetailsInnerPages(null, updatedName, "Save","code","description");
-			keyInInputByName("columnLabel", "Job Code Short");
+			keyInInputByName("columnLabel", "Job Code Short","Job Code");
 			addDetailsInnerPages(null, updatedName, "Save & Close","code","description");
 			driverDelay();
 			assertData(azName, updatedName);

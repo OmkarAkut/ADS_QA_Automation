@@ -71,6 +71,7 @@ public class AzHelper extends CalculationHelper{
 			doClick("(//div[text()='"+scenarioName+"']//following::div[contains(@class,'x-panel')]//span[text()='"+buttonName+"'])[1]");
 
 		}
+		
 	}
 	public void addNewScenario(String[] ages,String name,String scenarioName,String[] columns) throws Throwable {
 		doClick(DataMaintenanceMap.getazNewBtn());
@@ -94,9 +95,9 @@ public class AzHelper extends CalculationHelper{
 	public void clickButton(String name) throws Throwable {
 		doClick("//span[text()='"+name+"']");
 	}
-	public void keyInInputByName(String inputName,String inputText) throws Throwable {
-		driver.findElement(By.name(inputName)).clear();;
-		driver.findElement(By.name(inputName)).sendKeys(inputText);
+	public void keyInInputByName(String inputName,String inputText,String dialogName) throws Throwable {
+		driver.findElement(By.xpath("//div[text()='"+dialogName+"']//following::input[@name='"+inputName+"']")).clear();;
+		driver.findElement(By.xpath("//div[text()='"+dialogName+"']//following::input[@name='"+inputName+"']")).sendKeys(inputText);
 		driverDelay(500);
 	}
 	public void waitForFormDialog(String windowName) {
@@ -152,5 +153,41 @@ public class AzHelper extends CalculationHelper{
 		default:
 			break;
 		}
+	}
+	public void addEntries(String panelName,String button,String[] entries) throws Throwable {
+		Actions action=new Actions(driver);
+		doClick("//h1[text()='"+panelName+"']//following::span[text()='New']");
+		int j=0;
+		List<WebElement> div=driver.findElements(By.xpath("//h1[text()='"+panelName+"']//following::table//td/div"));
+		for(int i=1;i<=div.size();i++) {
+			if(driver.findElement(By.xpath("//h1[text()='"+panelName+"']//following::table//td/div")).getAttribute("class").contains("x-grid-checkcolumn")) {
+				doClick("//h1[text()='"+panelName+"']//following::table//td["+(i+1)+"]/div");
+				continue;
+			}
+			
+			List<WebElement> nocheck=driver.findElements(By.xpath("//h1[text()='"+panelName+"']//following::table//td/div[contains(@class,'x-grid-cell-inner')]"));
+			if(!nocheck.isEmpty()&&j<entries.length) {
+				action.moveToElement(driver.findElement(By.xpath("//h1[text()='"+panelName+"']//following::table//td["+(j+2)+"]/div"))).sendKeys(Keys.ENTER).perform();
+				action.moveToElement(driver.findElement(By.xpath("//h1[text()='"+panelName+"']//following::table//td["+(j+2)+"]/div"))).doubleClick().sendKeys(entries[i]).sendKeys(Keys.ENTER).pause(200).perform();
+				j++;
+			}
+		}
+//		for(int i=1;i<=div.size();i++) {
+//			if(driver.findElement(By.xpath("//h1[text()='"+panelName+"']//following::table//td["+(i+1)+"]/div")).getAttribute("class").contains("x-grid-checkcolumn")) {
+//				System.out.println(i);
+//				doClick("//h1[text()='"+panelName+"']//following::table//td["+(i+1)+"]/div");
+//			}
+//			if(driver.findElement(By.xpath("//h1[text()='"+panelName+"']//following::table//td["+(i+1)+"]/div")).getAttribute("class").contains("x-grid-cell-inner")) {
+//				action.moveToElement(driver.findElement(By.xpath("//h1[text()='"+panelName+"']//following::table//td["+(i+1)+"]/div"))).sendKeys(Keys.ENTER).perform();
+//				action.moveToElement(driver.findElement(By.xpath("//h1[text()='"+panelName+"']//following::table//td["+(i+1)+"]/div"))).doubleClick().sendKeys(entries[i-1]).sendKeys(Keys.ENTER).pause(200).perform();
+//			}
+////			else {
+////			System.out.println(i);
+////			action.moveToElement(driver.findElement(By.xpath("//h1[text()='"+panelName+"']//following::table//td["+(i+1)+"]/div"))).sendKeys(Keys.ENTER).perform();
+////			action.moveToElement(driver.findElement(By.xpath("//h1[text()='"+panelName+"']//following::table//td["+(i+1)+"]/div"))).doubleClick().sendKeys(entries[i-1]).sendKeys(Keys.ENTER).pause(200).perform();
+////			}
+//			
+//		}
+		
 	}
 }

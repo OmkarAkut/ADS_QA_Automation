@@ -45,11 +45,11 @@ public class ServiceAreas extends AzHelper {
 	public void test01ValidateNewButton() throws Throwable {
 		try {
 			doClick(DataMaintenanceMap.getazNewBtn());
-			keyInInputByName("code", code);
-			keyInInputByName("name", name);	
+			keyInInputByName("code", code,"Service Area");
+			keyInInputByName("name", name,"Service Area");	
 			clickButton("Select");
 			waitForFormDialog("Add Entity Code");
-			selectFormItem("0001 PRIVATE PAY PENDING ");
+			selectFormItem("0001 PRIVATE PAY PENDING ","services");
 			doClickButtons(azName, "Save & Create New");
 			doClickButtons(azName, "Cancel & Close");
 			doClick(DataMaintenanceMap.getazFilterBtn());
@@ -68,11 +68,11 @@ public class ServiceAreas extends AzHelper {
 	public void test02ValidateSaveAndEditButton() throws Throwable {
 		try {
 			doClick(DataMaintenanceMap.getazNewBtn());
-			keyInInputByName("code", code);
-			keyInInputByName("name", name);	
+			keyInInputByName("code", code,"Service Area");
+			keyInInputByName("name", name,"Service Area");	
 			clickButton("Select");
 			waitForFormDialog("Add Entity Code");
-			selectFormItem("0001 PRIVATE PAY PENDING ");
+			selectFormItem("0001 PRIVATE PAY PENDING ","services");
 			doClickButtons(azName, "Save");
 			doClickButtons(azName, "Cancel & Close");
 			doClick(DataMaintenanceMap.getazFilterBtn());
@@ -89,7 +89,7 @@ public class ServiceAreas extends AzHelper {
 	@Test
 	public void test03ValidateSaveAndCloseButton() throws Throwable {
 		try {
-			keyInInputByName("name", updatedName);
+			keyInInputByName("name", updatedName,"Service Area");
 			doClickButtons(azName, "Save & Close");
 			doClick(DataMaintenanceMap.getazClearFilterBtn());
 			doClick(DataMaintenanceMap.getazFilterBtn());

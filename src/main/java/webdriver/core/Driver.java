@@ -184,8 +184,8 @@ public class Driver {
 
 		} else if (testEnvironment.equals("devstage")) {
 			url = "https://stgrhl-dev.harrispaas.com/alliance-webCont/alliance/index.jsp";
-		} else if (testEnvironment.equals("qa3prod")) {
-			url = "http://qaprod-dev.harrispaas.com/alliance-webCont/login/index.jsp";
+		} else if (testEnvironment.equals("qaprod")) {
+			url = "http://qaprod.harrispaas.com/alliance-webCont/login/index.jsp";
 		} else if (testEnvironment.equals("qaapp")) {
 //    	url = "http://qaapp-dev.harrispaas.com/alliance-webCont/login/index.jsp";  
 			// Shilpa updated to SSL url 10.10.2024
@@ -415,8 +415,8 @@ public class Driver {
 			dbUrl = "jdbc:oracle:thin:@10.204.20.101:1522:qacurr1"; // "jdbc:oracle:thin:@192.168.210.100:1540:qav8";
 			System.out.println(dbUrl);
 
-		} else if (testEnvironment.equals("qa3prod")) {
-			dbUrl = "jdbc:oracle:thin:@10.204.20.101:1522:qacurr1"; // "jdbc:oracle:thin:@192.168.210.100:1540:qav8";
+		} else if (testEnvironment.equals("qaprod")) {
+			dbUrl = "jdbc:oracle:thin:@172.20.3.16:1750:qareborn";// "jdbc:oracle:thin:@192.168.210.100:1540:qav8";
 			System.out.println(dbUrl);
 
 		} else if (testEnvironment.equals("qastage")) {

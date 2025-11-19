@@ -49,8 +49,8 @@ public class HCPCSModifiers extends AzHelper {
 			doClick(DataMaintenanceMap.getcheckboxrbrvs());
 			assertTextIsDisplayed("You can check the RBRVS RVU Modifier box only if the Code is 26, 53, or TC.");
 			clickButton("OK");
-			keyInInputByName("code", code);
-			keyInInputByName("name", name);
+			keyInInputByName("code", code,"HCPCS Modifier");
+			keyInInputByName("name", name,"HCPCS Modifier");
 			doClickButtons(azName, "Save & Create New");
 			doClickButtons(azName, "Cancel & Close");
 			doClick(DataMaintenanceMap.getazFilterBtn());
@@ -71,8 +71,8 @@ public class HCPCSModifiers extends AzHelper {
 			doClick(DataMaintenanceMap.getcheckboxrbrvs());
 			assertTextIsDisplayed("You can check the RBRVS RVU Modifier box only if the Code is 26, 53, or TC.");
 			clickButton("OK");
-			keyInInputByName("code", code);
-			keyInInputByName("name", name);
+			keyInInputByName("code", code,"HCPCS Modifier");
+			keyInInputByName("name", name,"HCPCS Modifier");
 			doClickButtons(azName, "Save");
 			doClickButtons(azName, "Cancel & Close");
 			doClick(DataMaintenanceMap.getazFilterBtn());
@@ -88,7 +88,7 @@ public class HCPCSModifiers extends AzHelper {
 	@Test
 	public void test03ValidateSaveAndCloseButton() throws Throwable {
 		try {
-			keyInInputByName("name", updatedName);
+			keyInInputByName("name", updatedName,"HCPCS Modifier");
 			doClickButtons(azName, "Save & Close");
 			doClick(DataMaintenanceMap.getazClearFilterBtn());
 			doClick(DataMaintenanceMap.getazFilterBtn());
