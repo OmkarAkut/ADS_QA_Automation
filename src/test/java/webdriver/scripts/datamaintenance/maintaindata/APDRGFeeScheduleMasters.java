@@ -39,7 +39,7 @@ public class APDRGFeeScheduleMasters extends AzHelper{
 	static String updatedTemplateName;
 	static String newTemplateSchedule;
 	static String newSchedule;
-	static String feeScheduleEntries[]= {code,"Test","10.5"};
+	static String feeScheduleEntries[]= {code,"10.5"};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
 		ExtentReport.reportCreate("APDRGFeeScheduleMasters", "webdriver.scripts.datamaintenance.maintaindata",
@@ -157,7 +157,7 @@ public class APDRGFeeScheduleMasters extends AzHelper{
 			addDetailsInnerPages(null, templateName, "Save","code","name");
 			doClickButtons(templateName, "Cancel & Close");
 			doClickButtons("Templates", "Edit");
-			updatedTemplateName="Updated Template"+name;
+			updatedTemplateName="APDRGTemplate"+name;
 			addDetailsInnerPages(null, updatedTemplateName, "Save & Close","code","name");
 			assertTextIsDisplayed(updatedTemplateName);
 			ExtentReport.logPass("PASS", "test05SaveCloseTemplates");
@@ -183,7 +183,7 @@ public class APDRGFeeScheduleMasters extends AzHelper{
 		try {
 			doClickButtons("Templates", "New");
 			waitForFormDialog("New Template");
-			newTemplateSchedule="New Schedule"+name;
+			newTemplateSchedule="APDRGSchedule"+name;
 			keyInInputByName("name", newTemplateSchedule,"AP DRG Fee Schedule Template");
 			doClick(DataMaintenanceMap.getazMasterClassificationDrpDwn());
 			doDropdownSelectUsingOptionTextOnly(DataMaintenanceMap.getmasterClassificationScheme(), masterClassificationScheme);

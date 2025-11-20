@@ -67,8 +67,10 @@ public class AzHelper extends CalculationHelper{
 	public void doClickButtons(String scenarioName,String buttonName) throws Throwable {
 		try {
 			doClick("//div[text()='"+scenarioName+"']//following::div[contains(@class,'x-toolbar')]//span[text()='"+buttonName+"']");
+			driverDelay(300);
 		} catch (NoSuchElementException e) {
 			doClick("(//div[text()='"+scenarioName+"']//following::div[contains(@class,'x-panel')]//span[text()='"+buttonName+"'])[1]");
+			driverDelay(300);
 
 		}
 		
@@ -113,11 +115,13 @@ public class AzHelper extends CalculationHelper{
 	public void selectFormItem(String name,String selectServices) throws Throwable {
 		
 		if(selectServices.equals("services")) {
+			scrollToView("//div[text()='"+name+"']");
 			doClick("//div[text()='"+name+"']");
 			doClick("//div[contains(@id,'dynamicwindow')]//following::span[text()='Select']");
 			doClick(DataMaintenanceMap.getapplyBtnInPopUp());
 		}
 		else {
+			scrollToView("//div[text()='"+name+"']");
 			doClick("//div[text()='"+name+"']");
 			doClick(DataMaintenanceMap.getapplyBtnInPopUp());
 		}
@@ -126,20 +130,16 @@ public class AzHelper extends CalculationHelper{
 		assertElementIsDisplayedWithXpath("//*[text()='"+azName+"']//following::*[text()='"+text+"']");
 	}
 	public void addDetailsInnerPages(String code,String name,String action,String webeleCode,String webeleName) throws Throwable {
-		if(code!=null) {
+		if (code != null) {
 			String codeelement = CimHelper.checkElements(driver.findElements(By.name(webeleCode)));
 			driver.findElement(By.xpath(codeelement)).sendKeys(code);
 		}
-		if(name!=null) {
-			String nameElement= CimHelper.checkElements(driver.findElements(By.name(webeleName)));
+		if (name != null) {
+			String nameElement = CimHelper.checkElements(driver.findElements(By.name(webeleName)));
 			driver.findElement(By.xpath(nameElement)).clear();
 			driver.findElement(By.xpath(nameElement)).sendKeys(name);
 		}
-	
-		
-		
-		
-		
+
 		switch (action) {
 		case "Save & Create New":
 			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageSaveCreateNewBtn());
@@ -155,39 +155,33 @@ public class AzHelper extends CalculationHelper{
 		}
 	}
 	public void addEntries(String panelName,String button,String[] entries) throws Throwable {
-		Actions action=new Actions(driver);
-		doClick("//h1[text()='"+panelName+"']//following::span[text()='New']");
-		int j=0;
-		List<WebElement> div=driver.findElements(By.xpath("//h1[text()='"+panelName+"']//following::table//td/div"));
-		for(int i=1;i<=div.size();i++) {
-			if(driver.findElement(By.xpath("//h1[text()='"+panelName+"']//following::table//td/div")).getAttribute("class").contains("x-grid-checkcolumn")) {
-				doClick("//h1[text()='"+panelName+"']//following::table//td["+(i+1)+"]/div");
-				continue;
-			}
-			
-			List<WebElement> nocheck=driver.findElements(By.xpath("//h1[text()='"+panelName+"']//following::table//td/div[contains(@class,'x-grid-cell-inner')]"));
-			if(!nocheck.isEmpty()&&j<entries.length) {
-				action.moveToElement(driver.findElement(By.xpath("//h1[text()='"+panelName+"']//following::table//td["+(j+2)+"]/div"))).sendKeys(Keys.ENTER).perform();
-				action.moveToElement(driver.findElement(By.xpath("//h1[text()='"+panelName+"']//following::table//td["+(j+2)+"]/div"))).doubleClick().sendKeys(entries[i]).sendKeys(Keys.ENTER).pause(200).perform();
-				j++;
-			}
+		Actions action = new Actions(driver);
+		doClick("//h1[text()='" + panelName + "']//following::span[text()='New']");
+		List<WebElement> inputText = driver.findElements(By
+				.xpath("//h1[text()='" + panelName + "']//following::table//td/div/div[@class='x-grid-checkheader']"));
+		System.out.println(inputText.size());
+
+		for (int i = 0; i < inputText.size(); i++) {
+			inputText.get(i).click();
+
 		}
-//		for(int i=1;i<=div.size();i++) {
-//			if(driver.findElement(By.xpath("//h1[text()='"+panelName+"']//following::table//td["+(i+1)+"]/div")).getAttribute("class").contains("x-grid-checkcolumn")) {
-//				System.out.println(i);
-//				doClick("//h1[text()='"+panelName+"']//following::table//td["+(i+1)+"]/div");
-//			}
-//			if(driver.findElement(By.xpath("//h1[text()='"+panelName+"']//following::table//td["+(i+1)+"]/div")).getAttribute("class").contains("x-grid-cell-inner")) {
-//				action.moveToElement(driver.findElement(By.xpath("//h1[text()='"+panelName+"']//following::table//td["+(i+1)+"]/div"))).sendKeys(Keys.ENTER).perform();
-//				action.moveToElement(driver.findElement(By.xpath("//h1[text()='"+panelName+"']//following::table//td["+(i+1)+"]/div"))).doubleClick().sendKeys(entries[i-1]).sendKeys(Keys.ENTER).pause(200).perform();
-//			}
-////			else {
-////			System.out.println(i);
-////			action.moveToElement(driver.findElement(By.xpath("//h1[text()='"+panelName+"']//following::table//td["+(i+1)+"]/div"))).sendKeys(Keys.ENTER).perform();
-////			action.moveToElement(driver.findElement(By.xpath("//h1[text()='"+panelName+"']//following::table//td["+(i+1)+"]/div"))).doubleClick().sendKeys(entries[i-1]).sendKeys(Keys.ENTER).pause(200).perform();
-////			}
-//			
-//		}
-		
+
+		int index = 0;
+		if (index < entries.length) {
+//	int target = i + 1;
+			List<WebElement> checkbox = driver.findElements(By
+					.xpath("//h1[text()='" + panelName + "']//following::table//td/div[@class='x-grid-cell-inner ']"));
+			System.out.println(checkbox.size());
+			for (int j = 1; j <= checkbox.size(); j++) {
+				action.moveToElement(driver.findElement(By.xpath("(//h1[text()='" + panelName
+						+ "']//following::table//td/div[@class='x-grid-cell-inner '])[" + j + "]"))).doubleClick()
+						.sendKeys(entries[index]).sendKeys(Keys.ENTER).pause(200).perform();
+				index++;
+			}
+
+		}
+
 	}
+
 }
+	

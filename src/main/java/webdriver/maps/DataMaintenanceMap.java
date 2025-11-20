@@ -1301,6 +1301,38 @@ public class DataMaintenanceMap extends MapConfig {
 	private static WebElement masterAPCClassificationScheme;
 	public static WebElement getmasterAPCClassificationScheme() {return masterAPCClassificationScheme;}
 	
+	@FindBy(xpath = "//div[text()='APG Fee Schedule Template']//following::ul")
+	private static WebElement masterAPGClassificationScheme;
+	public static WebElement getmasterAPGClassificationScheme() {return masterAPGClassificationScheme;}
+	
+	@FindBy(xpath = "//div[text()='APR DRG Fee Schedule Template']//following::ul")
+	private static WebElement masterAPRDRGClassificationScheme;
+	public static WebElement getmasterAPRDRGClassificationScheme() {return masterAPRDRGClassificationScheme;}
+	
+	@FindBy(xpath = "//div[text()='Chargeable Activity Fee Schedule Template']//following::ul")
+	private static WebElement masterChargeableActivityClassificationScheme;
+	public static WebElement getmasterChargeableActivityClassificationScheme() {return masterChargeableActivityClassificationScheme;}
+	
+	@FindBy(xpath = "//div[text()='EAPG Fee Schedule Template']//following::ul")
+	private static WebElement eapgFeeScheduleMasterScheme;
+	public static WebElement geteapgFeeScheduleMasterScheme() {return eapgFeeScheduleMasterScheme;}
+	
+	@FindBy(xpath = "//div[text()='ICD Procedure Fee Schedule Template']//following::ul")
+	private static WebElement icdFeeScheduleMasterScheme;
+	public static WebElement geticdFeeScheduleMasterScheme() {return icdFeeScheduleMasterScheme;}
+	
+	@FindBy(xpath = "//div[text()='MSDRG Fee Schedule Template']//following::ul")
+	private static WebElement msdrgFeeScheduleMasterScheme;
+	public static WebElement getmsdrgFeeScheduleMasterScheme() {return msdrgFeeScheduleMasterScheme;}
+	
+	@FindBy(xpath = "//div[text()='HCFA DRG Fee Schedule Template']//following::ul")
+	private static WebElement hcfaFeeScheduleMasterScheme;
+	public static WebElement gethcfaFeeScheduleMasterScheme() {return hcfaFeeScheduleMasterScheme;}
+	
+	@FindBy(xpath = "//div[text()='HCPCS Fee Schedule Template']//following::ul")
+	private static WebElement hcpcsFeeScheduleMasterScheme;
+	public static WebElement gethcpcsFeeScheduleMasterScheme() {return hcpcsFeeScheduleMasterScheme;}
+	
 	@FindBy(xpath = "//ul[contains(@id,'dynamiccombo')]")
 	private static WebElement azMasterDropdownOptions;
 	public static WebElement getazMasterDropdownOptions() {return azMasterDropdownOptions;}
@@ -1567,5 +1599,10 @@ public class DataMaintenanceMap extends MapConfig {
 	private static WebElement effectiveperiodEndDate;
 	public static WebElement geteffectiveperiodEndDate() {
 		return effectiveperiodEndDate;
+	}
+	@FindBy(xpath = "//label[text()='Charges that meet a certain service criteria']/preceding::input[1]")
+	private static WebElement chargesRadioBtn;
+	public static WebElement getchargesRadioBtn() {
+		return chargesRadioBtn;
 	}
 }
