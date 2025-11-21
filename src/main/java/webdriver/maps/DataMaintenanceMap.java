@@ -1325,6 +1325,10 @@ public class DataMaintenanceMap extends MapConfig {
 	private static WebElement msdrgFeeScheduleMasterScheme;
 	public static WebElement getmsdrgFeeScheduleMasterScheme() {return msdrgFeeScheduleMasterScheme;}
 	
+	@FindBy(xpath = "//div[text()='Revenue Code Fee Schedule Template']//following::ul")
+	private static WebElement revenueFeeScheduleMasterScheme;
+	public static WebElement getrevenueFeeScheduleMasterScheme() {return revenueFeeScheduleMasterScheme;}
+	
 	@FindBy(xpath = "//div[text()='HCFA DRG Fee Schedule Template']//following::ul")
 	private static WebElement hcfaFeeScheduleMasterScheme;
 	public static WebElement gethcfaFeeScheduleMasterScheme() {return hcfaFeeScheduleMasterScheme;}
@@ -1604,5 +1608,10 @@ public class DataMaintenanceMap extends MapConfig {
 	private static WebElement chargesRadioBtn;
 	public static WebElement getchargesRadioBtn() {
 		return chargesRadioBtn;
+	}
+	@FindBy(xpath = "//label[text()='Apply to only charges that meet certain criteria']/preceding::input[1]")
+	private static WebElement applyChargesRadioBtn;
+	public static WebElement getapplyChargesRadioBtn() {
+		return applyChargesRadioBtn;
 	}
 }

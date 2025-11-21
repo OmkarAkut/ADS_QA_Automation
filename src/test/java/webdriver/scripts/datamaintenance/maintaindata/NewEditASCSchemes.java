@@ -28,8 +28,8 @@ public class NewEditASCSchemes extends CalculationHelper{
 
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("VerifyIsRebillUnderBillTypes", "webdriver.scripts.datamaintenance.maintaindata",
-				"VerifyIsRebillUnderBillTypes");
+		ExtentReport.reportCreate("NewEditASCSchemes", "webdriver.scripts.datamaintenance.maintaindata",
+				"NewEditASCSchemes");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);
 			Login.loginUser("ContractAnalyst1");
