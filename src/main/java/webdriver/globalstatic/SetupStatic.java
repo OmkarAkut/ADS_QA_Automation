@@ -208,7 +208,11 @@ public static List dbCredentials;
 //    	 url="http://stgrhl-dev.harrispaas.com/alliance-webCont/alliance/index.jsp";
 //    	url = "https://qaprod.harrispaas.com/alliance-webCont/alliance/index.jsp";
   } 
-   
+    else if (testEnvironment.equals("qaauto")) {
+//    	url = "http://qaapp-dev.harrispaas.com/alliance-webCont/login/index.jsp";  
+			// Shilpa updated to SSL url 10.10.2024
+   	 url = "https://qaauto.harrispaas.com/alliance-webCont/alliance/index.jsp";
+	}
     else {
       url = "https://qaautomation.mdasdss.com/alliance-webCont/login/index.jsp";
     }

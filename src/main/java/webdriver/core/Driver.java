@@ -194,7 +194,13 @@ public class Driver {
 //			url = "https://qaauto.harrispaas.com/alliance-webCont/alliance/index.jsp";
 //			url="http://stgrhl-dev.harrispaas.com/alliance-webCont/alliance/index.jsp";
 //    	url = "https://support-dev.harrispaas.com/alliance-webCont/alliance/index.jsp";
-		} else {
+		} 
+		else if (testEnvironment.equals("qaauto")) {
+//	    	url = "http://qaapp-dev.harrispaas.com/alliance-webCont/login/index.jsp";  
+				// Shilpa updated to SSL url 10.10.2024
+	   	 url = "https://qaauto.harrispaas.com/alliance-webCont/alliance/index.jsp";
+		}
+		else {
 			url = "https://qaautomation.mdasdss.com/alliance-webCont/login/index.jsp";
 		}
 		return url;

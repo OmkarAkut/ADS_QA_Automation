@@ -1614,4 +1614,79 @@ public class DataMaintenanceMap extends MapConfig {
 	public static WebElement getapplyChargesRadioBtn() {
 		return applyChargesRadioBtn;
 	}
+	@FindBy(name = "productLineId")
+	private static WebElement productLine;
+	public static WebElement getProductLine() {
+		return productLine;
+	}
+	@FindBy(name = "lineOfBusinessId")
+	private static WebElement lineOfBusiness;
+	public static WebElement getlineOfBusiness() {
+		return lineOfBusiness;
+	}
+	@FindBy(xpath = "(//div[text()='Benefit Plan Code']//following::ul)[1]")
+	private static WebElement productLineList;
+	public static WebElement getproductLineList() {
+		return productLineList;
+	}
+	@FindBy(xpath = "(//div[text()='Benefit Plan Code']//following::ul)[2]")
+	private static WebElement lineOfBusinessList;
+	public static WebElement getlineOfBusinessList() {
+		return lineOfBusinessList;
+	}
+	@FindBy(xpath = "(//div[text()='New Benefit Plan']//following::span[text()='New'])[1]")
+	private static WebElement productLineNewBtn;
+	public static WebElement getproductLineNewBtn() {
+		return productLineNewBtn;
+	}
+	@FindBy(xpath = "(//div[text()='New Benefit Plan']//following::span[text()='New'])[2]")
+	private static WebElement BusinessLineNewBtn;
+	public static WebElement getBusinessLineNewBtn() {
+		return BusinessLineNewBtn;
+	}
+	@FindBy(xpath = "//*[text()='Effective Periods']//following::span[text()='New']")
+	private static WebElement effectivePeriodNewBtn;
+	public static WebElement geteffectivePeriodNewBtn() {
+		return effectivePeriodNewBtn;
+	}
+	@FindBy(xpath = "//*[text()='Effective Periods']//following::span[text()='Save & Close']")
+	private static WebElement effectivePeriodSaveCloseBtn;
+	public static WebElement geteffectivePeriodSaveCloseBtn() {
+		return effectivePeriodSaveCloseBtn;
+	}
+	@FindBy(xpath = "//*[text()='Effective Periods']//following::span[text()='Cancel & Close']")
+	private static WebElement effectivePeriodCancelCloseBtn;
+	public static WebElement geteffectivePeriodCancelCloseBtn() {
+		return effectivePeriodCancelCloseBtn;
+	}
+	@FindBy(xpath = "//*[text()='Effective Periods']//following::span[text()='Edit']")
+	private static WebElement effectivePeriodEditBtn;
+	public static WebElement geteffectivePeriodEditBtn() {
+		return effectivePeriodEditBtn;
+	}
+	@FindBy(xpath = "//*[text()='Effective Periods']//following::span[text()='Delete']")
+	private static WebElement effectivePeriodDeleteBtn;
+	public static WebElement geteffectivePeriodDeleteBtn() {
+		return effectivePeriodDeleteBtn;
+	}
+	@FindBy(xpath = "(//div[text()='New Contact']//following::ul)[1]")
+	private static WebElement contactTypeDrpdown;
+	public static WebElement getcontactTypeDrpdown() {
+		return contactTypeDrpdown;
+	}
+	@FindBy(xpath = "(//div[text()='New Contact']//following::ul)[2]")
+	private static WebElement genderDrpdown;
+	public static WebElement getgenderDrpdown() {
+		return genderDrpdown;
+	}
+	@FindBy(xpath = "//*[text()='Effective Periods']//following::span[text()='Save & Create New']")
+	private static WebElement effectivePeriodSaveCreateNewBtn;
+	public static WebElement geteffectivePeriodSaveCreateNewBtn() {
+		return effectivePeriodSaveCreateNewBtn;
+	}
+	@FindBy(xpath = "//*[text()='Effective Periods']//following::span[text()='Save']")
+	private static WebElement effectivePeriodSaveBtn;
+	public static WebElement geteffectivePeriodSaveBtn() {
+		return effectivePeriodSaveBtn;
+	}
 }
