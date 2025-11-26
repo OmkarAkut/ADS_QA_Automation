@@ -1689,4 +1689,114 @@ public class DataMaintenanceMap extends MapConfig {
 	public static WebElement geteffectivePeriodSaveBtn() {
 		return effectivePeriodSaveBtn;
 	}
+	@FindBy(xpath = "(//div[text()='Chargeable Activity-HCPCS Code Mapping Scheme']//following::ul)[1]")
+	private static WebElement chargeMasterDropdown;
+	public static WebElement getchargeMasterDropdown() {
+		return chargeMasterDropdown;
+	}
+	@FindBy(xpath = "(//div[text()='Chargeable Activity-HCPCS Code Mapping Scheme']//following::ul)[2]")
+	private static WebElement codechargeMasterHcpcsDropdown;
+	public static WebElement getcodechargeMasterHcpcsDropdown() {
+		return codechargeMasterHcpcsDropdown;
+	}
+	@FindBy(xpath = "(//div[text()='Chargeable Activity-Revenue Code Mapping Scheme']//following::ul)[1]")
+	private static WebElement revenueCodeMasterDropdown;
+	public static WebElement getrevenueCodeMasterDropdown() {
+		return revenueCodeMasterDropdown;
+	}
+	@FindBy(xpath = "(//div[text()='Chargeable Activity-Revenue Code Mapping Scheme']//following::ul)[2]")
+	private static WebElement revenuCodeDropdown;
+	public static WebElement getrevenuCodeDropdown() {
+		return revenuCodeDropdown;
+	}
+	@FindBy(xpath = "//span[text()='Save & Create New']")
+	private static List<WebElement> saveCreateNew;
+	public static List<WebElement> getsaveCreateNew() {
+		return saveCreateNew;
+	}
+	@FindBy(xpath = "//span[text()='Save']")
+	private static List<WebElement> saveBtn;
+	public static List<WebElement> getsaveBtn() {
+		return saveBtn;
+	}
+	@FindBy(xpath = "//span[text()='Save & Close']")
+	private static List<WebElement> saveCloseBtn;
+	public static List<WebElement> getsaveCloseBtn() {
+		return saveCloseBtn;
+	}
+	@FindBy(xpath = "(//div[text()='New Mapping']//following::div[contains(@class,'x-panel')]//span[text()='Select'])[1]")
+	private static WebElement chargeModifierSelectBtn;
+	public static WebElement getchargeModifierSelectBtn() {
+		return chargeModifierSelectBtn;
+	}
+	@FindBy(xpath = "(//div[text()='New Mapping']//following::div[contains(@class,'x-panel')]//span[text()='Select'])[2]")
+	private static WebElement hcpcsModifierSelectBtn;
+	public static WebElement gethcpcsModifierSelectBtn() {
+		return hcpcsModifierSelectBtn;
+	}
+	@FindBy(xpath = "//div[text()='Revenue Code']//following::span[text()='Select']")
+	private static WebElement revenueCodeSelectBtn;
+	public static WebElement getrevenueCodeSelectBtn() {
+		return revenueCodeSelectBtn;
+	}
+	@FindBy(name = "hcpcsModifierCode")
+	private static WebElement hcpcsModCode;
+	public static WebElement gethcpcsModCode() {
+		return hcpcsModCode;
+	}
+	@FindBy(xpath = "//span[text()='Modifier']//following::ul")
+	private static WebElement modifierDropdown;
+	public static WebElement getmodifierDropdown() {
+		return modifierDropdown;
+	}
+	@FindBy(xpath = "(//div[text()='Commission Broker Agencies']//following::input[@name='name'])")
+	private static WebElement commissionBrokerName;
+	public static WebElement getcommissionBrokerName() {
+		return commissionBrokerName;
+	}
+	@FindBy(name = "ethnicityCode")
+	private static WebElement ethnicityCode;
+	public static WebElement getethnicityCode() {
+		return ethnicityCode;
+	}
+	@FindBy(name = "sexCode")
+	private static WebElement genderCode;
+	public static WebElement getgenderCode() {
+		return genderCode;
+	}
+	@FindBy(name = "homePhoneNumber")
+	private static WebElement homePhoneNumber;
+	public static WebElement gethomePhoneNumber() {
+		return homePhoneNumber;
+	}
+	@FindBy(xpath = "//div[text()='Consumer']//following::ul")
+	private static WebElement ethnicityDropdown;
+	public static WebElement getethnicityDropdown() {
+		return ethnicityDropdown;
+	}
+	@FindBy(xpath = "//div[text()='New Consumer History Effective Period']//following::ul")
+	private static WebElement genderDropdown;
+	public static WebElement getgenderDropdown() {
+		return genderDropdown;
+	}
+	@FindBy(name = "birthDatechk")
+	private static WebElement birthDateCheckbox;
+	public static WebElement getbirthDateCheckbox() {
+		return birthDateCheckbox;
+	}
+	@FindBy(xpath = "(//h1[text()='Consumer History Effective Periods']//following::span[text()='New'])[1]")
+	private static WebElement cosumnerHistoryNewBtn;
+	public static WebElement getcosumnerHistoryNewBtn() {
+		return cosumnerHistoryNewBtn;
+	}
+	@FindBy(xpath = "(//h1[text()='Member History Effective Periods']//following::span[text()='New'])[1]")
+	private static WebElement memberHistoryNewBtn;
+	public static WebElement getmemberHistoryNewBtn() {
+		return memberHistoryNewBtn;
+	}
+	@FindBy(xpath = "(//h1[text()='Consumer History Effective Periods']//following::span[text()='Edit'])[1]")
+	private static WebElement cosumnerHistoryEditBtn;
+	public static WebElement getcosumnerHistoryEditBtn() {
+		return cosumnerHistoryEditBtn;
+	}
 }

@@ -182,6 +182,8 @@ public class AzHelper extends CalculationHelper{
 		}
 
 	}
-
+	public void navigateToTab(String tabName) throws Throwable {
+		doClick("//span[text()='"+tabName+"']");
+	}
 }
 	
