@@ -69,8 +69,18 @@ public class AzHelper extends CalculationHelper{
 			doClick("//div[text()='"+scenarioName+"']//following::div[contains(@class,'x-toolbar')]//span[text()='"+buttonName+"']");
 			driverDelay(300);
 		} catch (NoSuchElementException e) {
-			doClick("(//div[text()='"+scenarioName+"']//following::div[contains(@class,'x-panel')]//span[text()='"+buttonName+"'])[1]");
-			driverDelay(300);
+			try {
+				doClick("(//div[text()='"+scenarioName+"']//following::div[contains(@class,'x-panel')]//span[text()='"+buttonName+"'])[1]");
+				driverDelay(300);
+			} catch (NoSuchElementException e1) {
+				try {
+					doClick("(//div[text()='"+scenarioName+"']//following::div[contains(@class,'x-btn')]//span[text()='"+buttonName+"'])[1]");
+					driverDelay(300);
+				} catch (NoSuchElementException e2) {
+					doClick("(//div[text()='"+scenarioName+"']//following::a[contains(@class,'x-btn')]//span[text()='"+buttonName+"'])[1]");
+					driverDelay(300);
+				}
+			}
 
 		}
 		
@@ -96,6 +106,9 @@ public class AzHelper extends CalculationHelper{
 	}
 	public void clickButton(String name) throws Throwable {
 		doClick("//span[text()='"+name+"']");
+	}
+	public void clickCheckboxByName(String name) throws Throwable {
+		doClick("//input[@name='"+name+"']");
 	}
 	public void keyInInputByName(String inputName,String inputText,String dialogName) throws Throwable {
 		driver.findElement(By.xpath("//div[text()='"+dialogName+"']//following::input[@name='"+inputName+"']")).clear();;
@@ -183,7 +196,19 @@ public class AzHelper extends CalculationHelper{
 
 	}
 	public void navigateToTab(String tabName) throws Throwable {
+		driverDelay(3000);
 		doClick("//span[text()='"+tabName+"']");
+	}
+	public void expandPanel(String panel) throws Throwable {
+		CimHelper.checkElements(driver.findElements(By.xpath("//*[contains(@id, 'header-title')][text()='"+panel+"']/parent::div/following-sibling::div")));
+//		driver.findElement(By.xpath("//*[contains(@id, 'header-title')][text()='"+panel+"']/parent::div/following-sibling::div")).click();
+		waitForAjaxExtJs();
+		Thread.sleep(2000); 
+	}
+	public void collapsePanel(String panel) throws Throwable {
+		driver.findElement(By.xpath("//*[contains(@id, 'header-title')][text()='"+panel+"']/parent::div/following-sibling::div")).click();
+		waitForAjaxExtJs();
+		Thread.sleep(2000); 
 	}
 }
 	

@@ -669,6 +669,10 @@ public class DataMaintenanceMap extends MapConfig {
     private static WebElement messageboxDeleteBtn;
     public static WebElement getmessageboxDeleteBtn() {return messageboxDeleteBtn;}
     
+    @FindBy(xpath = "//div[contains(@id,'messagebox')]//following::span[text()='Ok']")
+    private static WebElement okDeleteBtn;
+    public static WebElement getokDeleteBtn() {return okDeleteBtn;}
+    
     @FindBy(xpath = "//span[text()='Totals']/../../..")
     private static WebElement totalsTabs;
     public static WebElement gettotalsTabs() {return totalsTabs;}
@@ -1249,6 +1253,10 @@ public class DataMaintenanceMap extends MapConfig {
 	private static WebElement azSaveBtn;
 	public static WebElement getazSaveBtn() {return azSaveBtn;}
 	
+	@FindBy(xpath = "//div[contains(@id,'toolbar')]//following::span[text()='Save As']")
+	private static WebElement azSaveAsBtn;
+	public static WebElement getazSaveAsBtn() {return azSaveAsBtn;}
+	
 	@FindBy(xpath = "//div[contains(@id,'toolbar')]//following::span[text()='Save & Close']")
 	private static WebElement azSaveCloseBtn;
 	public static WebElement getazSaveCloseBtn() {return azSaveCloseBtn;}
@@ -1789,14 +1797,59 @@ public class DataMaintenanceMap extends MapConfig {
 	public static WebElement getcosumnerHistoryNewBtn() {
 		return cosumnerHistoryNewBtn;
 	}
+	@FindBy(xpath = "(//h1[text()='Consumer History Effective Periods']//following::span[text()='Delete'])[1]")
+	private static WebElement cosumnerHistoryDeleteBtn;
+	public static WebElement getcosumnerHistoryDeleteBtn() {
+		return cosumnerHistoryDeleteBtn;
+	}
 	@FindBy(xpath = "(//h1[text()='Member History Effective Periods']//following::span[text()='New'])[1]")
 	private static WebElement memberHistoryNewBtn;
 	public static WebElement getmemberHistoryNewBtn() {
 		return memberHistoryNewBtn;
 	}
+	@FindBy(xpath = "(//h1[text()='Member History Effective Periods']//following::span[text()='Delete'])[1]")
+	private static WebElement memberHistoryDeleteBtn;
+	public static WebElement getmemberHistoryDeleteBtn() {
+		return memberHistoryDeleteBtn;
+	}
 	@FindBy(xpath = "(//h1[text()='Consumer History Effective Periods']//following::span[text()='Edit'])[1]")
 	private static WebElement cosumnerHistoryEditBtn;
 	public static WebElement getcosumnerHistoryEditBtn() {
 		return cosumnerHistoryEditBtn;
+	}
+	@FindBy(xpath = "(//span[text()='Employer Subgroup']//following::span[text()='Select'])[1]")
+	private static WebElement empSubgroupSelectBtn;
+	public static WebElement getempSubgroupSelectBtn() {
+		return empSubgroupSelectBtn;
+	}
+	@FindBy(xpath = "(//span[text()='Member Designation']//following::span[text()='Select'])[1]")
+	private static WebElement memberDesignation;
+	public static WebElement getmemberDesignation() {
+		return memberDesignation;
+	}
+	@FindBy(xpath = "(//h1[text()='Medical Records']//following::span[text()='New'])[1]")
+	private static WebElement medicalRecordsNewBtn;
+	public static WebElement getmedicalRecordsNewBtn1() {
+		return medicalRecordsNewBtn;
+	}
+	@FindBy(xpath = "(//h1[text()='Medical Records']//following::span[text()='Delete'])[1]")
+	private static WebElement medicalRecordsDeleteBtn;
+	public static WebElement getmedicalRecordsDeleteBtn() {
+		return medicalRecordsDeleteBtn;
+	}
+	@FindBy(xpath = "(//span[text()='Care Delivery Facility']//following::span[text()='Select'])[1]")
+	private static WebElement careDeliverySelectBtn;
+	public static WebElement getcareDeliverySelectBtn() {
+		return careDeliverySelectBtn;
+	}
+	@FindBy(xpath = "(//span[text()='Destination Reimbursement Scenario']//following::ul)[2]")
+	private static WebElement destReimburseScenario;
+	public static WebElement getdestReimburseScenario() {
+		return destReimburseScenario;
+	}
+	@FindBy(xpath = "//div[text()='Enter Lump Sum Amounts']//following::table//td[2]/div")
+	private static List<WebElement> lumpSumAmountTable;
+	public static List<WebElement> getlumpSumAmountTable() {
+		return lumpSumAmountTable;
 	}
 }

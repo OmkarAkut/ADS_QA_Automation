@@ -31,15 +31,15 @@ public class Consumers extends AzHelper{
 	static String code = currentDateCode.replaceAll("\\W", "");
 	static String name="Name"+currentDateTime;
 	static String entity="0001 PRIVATE PAY PENDING ";
-	static String[] commissionBrokerFilter= {"Name","Is","Equal To",name};
+	static String[] consumerFilter= {"Consumer Number","Is","Equal To",code};
 	static String date;
 	static String ssnCode="333"+code;
 	static String homePhoneNumber="44"+code;
 	static String workPhoneNumber="55"+code;
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("CommissionTypes", "webdriver.scripts.datamaintenance.maintaindata",
-				"CommissionTypes");
+		ExtentReport.reportCreate("Consumers", "webdriver.scripts.datamaintenance.maintaindata",
+				"Consumers");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);
 			dialog = BuildMap.getInstance(driver, DialogsMap.class);
@@ -65,16 +65,32 @@ public class Consumers extends AzHelper{
 		keyInInputByName("workPhoneNumber",workPhoneNumber, "Consumer");
 		
 	}
+	
 	@Test
 	public void test01GeneralTab() throws Throwable {
 		try {
 			doClick(DataMaintenanceMap.getazNewBtn());
 			addConsumer();
 			CimHelper.checkElements(DataMaintenanceMap.getsaveBtn());
-			waitForDisplayedSpinnerToEnd();
+		driverDelay(10000);
+			//Member History
+			
+			
+//			deleteScenario(DataMaintenanceMap.getazDeleteBtn(),DataMaintenanceMap.getwarningDeleteBtn());
+//			doClick(DataMaintenanceMap.getazClearFilterBtn());
+			ExtentReport.logPass("PASS", "test01GeneralTab");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test01GeneralTab", driver, e);
+			fail(e.getMessage());
+		}
+	}
+	@Test
+	public void test02ConsumerHistoryTab() throws Throwable {
+		try {
 			navigateToTab("Consumer History");
 			//Consumer History
 			doClick(DataMaintenanceMap.getcosumnerHistoryNewBtn());
+			waitForPresenceOfElement("//div[text()='New Consumer History Effective Period']");
 			keyInInputByName("firstName", "firstName", "New Consumer History Effective Period");
 			keyInInputByName("lastName", "lastName",  "New Consumer History Effective Period");
 			doClick(DataMaintenanceMap.getgenderCode());
@@ -87,10 +103,13 @@ public class Consumers extends AzHelper{
 			keyInInputByName("county", "county", "New Consumer History Effective Period");
 			keyInInputByName("country", "country", "New Consumer History Effective Period");
 			doClick("(//span[text()='Primary Care Practitioner']//following::span[text()='Select'])[1]");
+			waitForPresenceOfElement("//div[text()='00000  Goertz, Maggie']");
 			selectFormItem("00000  Goertz, Maggie", "");
 			doClick("(//span[text()='Primary Care Practitioner']//following::span[text()='Select'])[2]");
+			waitForPresenceOfElement("//div[text()='1SM1 QA PPO']");
 			selectFormItem("1SM1 QA PPO", "");
 			doClick("(//span[text()='Primary Care Practitioner']//following::span[text()='Select'])[3]");
+			waitForPresenceOfElement("//div[text()='0000 PRIVATE PAY']");
 			selectFormItem("0000 PRIVATE PAY", "");
 			doClick("//div[text()='Other Fields']");
 			keyInInputByName("textField1", "textField1", "New Consumer History Effective Period");
@@ -99,84 +118,144 @@ public class Consumers extends AzHelper{
 			keyInInputByName("numberField1", "123", "New Consumer History Effective Period");
 			doClickButtons("New Consumer History Effective Period", "Continue");
 			CimHelper.checkElements(DataMaintenanceMap.getsaveBtn());
-			waitForDisplayedSpinnerToEnd();
+		driverDelay(10000);
 			doClick(DataMaintenanceMap.getcosumnerHistoryEditBtn());
 			doClick("//input[@name='startDatechk']");
 			doClick("//input[@name='endDatechk']");
-			doClickButtons("<Open> - <Open>,lastName,firstName", "Continue");
+			doClickButtons("Consumer History Effective Period", "Continue");
 			CimHelper.checkElements(DataMaintenanceMap.getsaveBtn());
-			waitForDisplayedSpinnerToEnd();
-			deleteScenario(DataMaintenanceMap.getazDeleteBtn(),DataMaintenanceMap.getwarningDeleteBtn());
-			doClick(DataMaintenanceMap.getazClearFilterBtn());
-			ExtentReport.logPass("PASS", "test01GeneralTab");
-		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test01GeneralTab", driver, e);
-			fail(e.getMessage());
-		}
-	}
-	@Test
-	public void test02ConsumerHistoryTab() throws Throwable {
-		try {
-			
+			driverDelay(10000);
+			assertTextIsDisplayed(date);
 			ExtentReport.logPass("PASS", "test02ConsumerHistoryTab");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test02ConsumerHistoryTab", driver, e);
 			fail(e.getMessage());
 		}
 	}
-	/*
 	@Test
-	public void test02ValidateSaveButton() throws Throwable {
+	public void test03MemberHistoryTab() throws Throwable {
 		try {
-			doClick(DataMaintenanceMap.getazNewBtn());
-			keyInInputByName("name", name, "New Code");
-			keyInInputByName("code", code, "New Code");
-			doClickButtons("New Code", "Select");
-			selectFormItem(entity, "");
+			navigateToTab("Member History");
+			doClick(DataMaintenanceMap.getmemberHistoryNewBtn());
+			waitForElementToBeVisible(DataMaintenanceMap.getempSubgroupSelectBtn());
+			doClick(DataMaintenanceMap.getempSubgroupSelectBtn());
+			selectFormItem("0001 001 002 SD", "");
+			doClick(DataMaintenanceMap.getmemberDesignation());
+			selectFormItem("111 One the codess", "");
+			expandPanel("Providers");
+			assertElementIsDisplayedWithXpath("(//span[text()='Primary Care Practitioner']//following::span[text()='Select'])[1]");
+			assertElementIsDisplayedWithXpath("(//span[text()='Care Delivery Network']//following::span[text()='Select'])[1]");
+			assertElementIsDisplayedWithXpath("(//span[text()='Care Delivery Facility']//following::span[text()='Select'])[1]");
+			collapsePanel("Providers");
+			expandPanel("Medicare");
+			collapsePanel("Medicare");
+			expandPanel("Medicare");
+			collapsePanel("Medicare");
+			expandPanel("Medicare Part D");
+			collapsePanel("Medicare Part D");
+			expandPanel("Medicare Other");
+			collapsePanel("Medicare Other");
+			expandPanel("Selected Riders");
+			collapsePanel("Selected Riders");
+			expandPanel("Other Fields");
+			collapsePanel("Other Fields");
+			doClickButtons("New Member History", "Continue");
 			CimHelper.checkElements(DataMaintenanceMap.getsaveBtn());
-			doClick(DataMaintenanceMap.getCancelCloseButton());
-			doClick(DataMaintenanceMap.getazFilterBtn());
-			doFilterCreate(commissionBrokerFilter);
-			assertTextIsDisplayed("0001  PRIVATE PAY PENDING");
-			assertTextIsDisplayed(name);
+			driverDelay(10000);
 			assertTextIsDisplayed(code);
-			ExtentReport.logPass("PASS", "test02ValidateSaveButton");
+			assertTextIsDisplayed("0001 001 002 SD");
+			doClick(DataMaintenanceMap.getcosumnerHistoryEditBtn());
+			doClickButtons("Consumer History Effective Period", "Continue");
+			ExtentReport.logPass("PASS", "test03MemberHistoryTab");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test02ValidateSaveButton", driver, e);
+			ExtentReport.logFail("FAIL", "test03MemberHistoryTab", driver, e);
 			fail(e.getMessage());
 		}
 	}
 	@Test
-	public void test03ValidateEditSaveCloseButton() throws Throwable {
+	public void test04MedicalRecordsTab() throws Throwable {
 		try {
-			doClick(DataMaintenanceMap.getazEditBtn());
-			keyInInputText("Updated"+name, DataMaintenanceMap.getcommissionBrokerName());
+			navigateToTab("Medical Records");
+			doClick(DataMaintenanceMap.getmedicalRecordsNewBtn1());
+			waitForElementToBeVisible(DataMaintenanceMap.getmedicalRecordsNewBtn1());
+			doClick(DataMaintenanceMap.getcareDeliverySelectBtn());
+			selectFormItem("0000 PRIVATE PAY", "");
+			keyInInputByName("medicalRecordNumber", code, "New Medical Records");
+			doClickButtons("New Medical Records", "Continue");
+			CimHelper.checkElements(DataMaintenanceMap.getsaveBtn());
+		driverDelay(10000);
+		assertTextIsDisplayed("0000 PRIVATE PAY");
+			ExtentReport.logPass("PASS", "test04MedicalRecordsTab");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test04MedicalRecordsTab", driver, e);
+			fail(e.getMessage());
+		}
+	}
+	@Test
+	public void test05OtherFieldsTab() throws Throwable {
+		try {
+			navigateToTab("Other Fields");
+			keyInInputByName("textField1", "textField1", "Consumer");
+			CimHelper.checkElements(DataMaintenanceMap.getsaveBtn());
+		driverDelay(10000);
 			CimHelper.checkElements(DataMaintenanceMap.getsaveCloseBtn());
-			String[] commissionBrokerAgencyFilterUpdate= {"Name","Is","Equal To","Updated"+name};
-			doClick(DataMaintenanceMap.getazClearFilterBtn());
-			doClick(DataMaintenanceMap.getazFilterBtn());
-			doFilterCreate(commissionBrokerAgencyFilterUpdate);
-			assertTextIsDisplayed("0001  PRIVATE PAY PENDING");
-			assertTextIsDisplayed("Updated"+name);
-			assertTextIsDisplayed(code);
-			ExtentReport.logPass("PASS", "test03ValidateEditSaveCloseButton");
+			driverDelay(10000);
+			ExtentReport.logPass("PASS", "test05OtherFieldsTab");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test03ValidateEditSaveCloseButton", driver, e);
+			ExtentReport.logFail("FAIL", "test05OtherFieldsTab", driver, e);
 			fail(e.getMessage());
 		}
 	}
 	@Test
-	public void test04DeleteCommissionBroker() throws Throwable {
+	public void test06DeleteMedicalRecords() throws Throwable {
 		try {
-			deleteScenario(DataMaintenanceMap.getazDeleteBtn(),DataMaintenanceMap.getwarningDeleteBtn());
-
-			ExtentReport.logPass("PASS", "test04DeleteCommissionBroker");
+			doClick(DataMaintenanceMap.getazFilterBtn());
+			waitForPresenceOfElement("//div[contains(@id,'filterwindow')][text()='Filter ']");
+			doFilterCreate(consumerFilter);
+			doClick(DataMaintenanceMap.getazEditBtn());
+			driverDelay(10000);
+			navigateToTab("Medical Records");
+			driverDelay();
+			deleteScenario(DataMaintenanceMap.getmedicalRecordsDeleteBtn(),DataMaintenanceMap.getokDeleteBtn());
+			assertTextIsDisplayed("There is no data available to display.");
+			
+			
+			
+			ExtentReport.logPass("PASS", "test06DeleteMedicalRecords");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test04DeleteCommissionBroker", driver, e);
+			ExtentReport.logFail("FAIL", "test06DeleteMedicalRecords", driver, e);
 			fail(e.getMessage());
 		}
 	}
-	*/
+	@Test
+	public void test07DeleteMemberHistory() throws Throwable {
+		try {
+			navigateToTab("Member History");
+			driverDelay();
+			deleteScenario(DataMaintenanceMap.getmemberHistoryDeleteBtn(),DataMaintenanceMap.getokDeleteBtn());
+			navigateToTab("Consumer History");
+			driverDelay();
+			deleteScenario(DataMaintenanceMap.getcosumnerHistoryDeleteBtn(),DataMaintenanceMap.getokDeleteBtn());
+			assertTextIsDisplayed("There is no data available to display.");
+			ExtentReport.logPass("PASS", "test07DeleteMemberHistory");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test07DeleteMemberHistory", driver, e);
+			fail(e.getMessage());
+		}
+	}
+	@Test
+	public void test08DeleteConsumer() throws Throwable {
+		try {
+			CimHelper.checkElements(DataMaintenanceMap.getsaveCloseBtn());
+			driverDelay(10000);
+			deleteScenario(DataMaintenanceMap.getazDeleteBtn(),DataMaintenanceMap.getmessageboxDeleteBtn());
+			assertTextIsDisplayed("There is no data available to display.");
+			ExtentReport.logPass("PASS", "test08DeleteConsumer");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test08DeleteConsumer", driver, e);
+			fail(e.getMessage());
+		}
+	}
 	@AfterClass
 	public static void endtest() throws Exception {
 		ExtentReport.report.flush();
