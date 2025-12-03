@@ -1253,6 +1253,10 @@ public class DataMaintenanceMap extends MapConfig {
 	private static WebElement azSaveBtn;
 	public static WebElement getazSaveBtn() {return azSaveBtn;}
 	
+	@FindBy(xpath = "//div[contains(@id,'toolbar')]//following::span[text()='Save & Create New']")
+	private static WebElement azSaveCreateNewBtn;
+	public static WebElement getazSaveCreateNewBtn() {return azSaveCreateNewBtn;}
+	
 	@FindBy(xpath = "//div[contains(@id,'toolbar')]//following::span[text()='Save As']")
 	private static WebElement azSaveAsBtn;
 	public static WebElement getazSaveAsBtn() {return azSaveAsBtn;}
@@ -1851,5 +1855,120 @@ public class DataMaintenanceMap extends MapConfig {
 	private static List<WebElement> lumpSumAmountTable;
 	public static List<WebElement> getlumpSumAmountTable() {
 		return lumpSumAmountTable;
+	}
+	@FindBy(xpath = "(//label[text()='Benefit Plan Codes']//following::span[text()='Select'])[1]")
+	private static WebElement benifitPlanCodeSelect;
+	public static WebElement getbenifitPlanCodeSelect() {
+		return benifitPlanCodeSelect;
+	}
+	@FindBy(xpath = "(//label[text()='Bill Types']//following::span[text()='Select'])[1]")
+	private static WebElement billtypesSelect;
+	public static WebElement getbilltypesSelect() {
+		return billtypesSelect;
+	}
+	@FindBy(xpath = "(//label[text()='Care Delivery Facilities']//following::span[text()='Select'])[1]")
+	private static WebElement careDeliveryFacilitySelect;
+	public static WebElement getcareDeliveryFacilitySelect() {
+		return careDeliveryFacilitySelect;
+	}
+	@FindBy(xpath = "(//label[text()='Contract Types']//following::span[text()='Select'])[1]")
+	private static WebElement contractTypesSelect;
+	public static WebElement getcontractTypesSelect() {
+		return contractTypesSelect;
+	}
+	@FindBy(xpath = "(//label[text()='Contracts']//following::span[text()='Select'])[1]")
+	private static WebElement contractSelect;
+	public static WebElement getcontractSelect() {
+		return contractSelect;
+	}
+	@FindBy(xpath = "(//label[text()='EFR Categories']//following::span[text()='Select'])[1]")
+	private static WebElement efrCategorySelect;
+	public static WebElement getefrCategorySelect() {
+		return efrCategorySelect;
+	}
+	@FindBy(xpath = "(//label[text()='Encounter Types']//following::span[text()='Select'])[1]")
+	private static WebElement encounterTypeSelect;
+	public static WebElement getencounterTypeSelect() {
+		return encounterTypeSelect;
+	}
+	@FindBy(xpath = "(//label[text()='Benefit Plan Codes']//following::span[text()='View Selected Criteria'])[1]")
+	private static WebElement benifitPlanCodeView;
+	public static WebElement getbenifitPlanCodeView() {
+		return benifitPlanCodeView;
+	}
+	@FindBy(xpath = "(//label[text()='Bill Types']//following::span[text()='View Selected Criteria'])[1]")
+	private static WebElement billtypesView;
+	public static WebElement getbilltypesView() {
+		return billtypesView;
+	}
+	@FindBy(xpath = "(//label[text()='Care Delivery Facilities']//following::span[text()='View Selected Criteria'])[1]")
+	private static WebElement careDeliveryFacilityView;
+	public static WebElement getcareDeliveryFacilityView() {
+		return careDeliveryFacilityView;
+	}
+	@FindBy(xpath = "(//label[text()='Contract Types']//following::span[text()='View Selected Criteria'])[1]")
+	private static WebElement contractTypesView;
+	public static WebElement getcontractTypesView() {
+		return contractTypesView;
+	}
+	@FindBy(xpath = "(//label[text()='Contracts']//following::span[text()='View Selected Criteria'])[1]")
+	private static WebElement contractView;
+	public static WebElement getcontractView() {
+		return contractView;
+	}
+	@FindBy(xpath = "(//label[text()='EFR Categories']//following::span[text()='View Selected Criteria'])[1]")
+	private static WebElement efrCategoryView;
+	public static WebElement getefrCategoryView() {
+		return efrCategoryView;
+	}
+	@FindBy(xpath = "(//label[text()='Encounter Types']//following::span[text()='View Selected Criteria'])[1]")
+	private static WebElement encounterTypeView;
+	public static WebElement getencounterTypeView() {
+		return encounterTypeView;
+	}
+	@FindBy(xpath = "(//div[text()='Hierarchies']//following::ul)[2]")
+	private static WebElement deptDropdown;
+	public static WebElement getdeptDropdown() {
+		return deptDropdown;
+	}
+	@FindBy(xpath = "(//div[text()='Hierarchies']//following::ul)[3]")
+	private static WebElement glAccountDropdown;
+	public static WebElement getglAccountDropdown() {
+		return glAccountDropdown;
+	}
+	@FindBy(xpath = "//div[text()='Cost Component']//following::ul")
+	private static WebElement expenseType;
+	public static WebElement getexpenseType() {
+		return expenseType;
+	}
+	@FindBy(xpath = "//div[text()='Cost Component Assignment']//following::ul")
+	private static WebElement costComponentAssignmentEntity;
+	public static WebElement getcostComponentAssignmentEntity() {
+		return costComponentAssignmentEntity;
+	}
+	@FindBy(xpath = "(//span[text()='Department / Group']//following::span[text()='Select'])[1]")
+	private static WebElement deptGroup;
+	public static WebElement getdeptGroup() {
+		return deptGroup;
+	}
+	@FindBy(xpath = "(//span[text()='GL Account / Group']//following::span[text()='Select'])[2]")
+	private static WebElement glAcctGroup;
+	public static WebElement getglAcctGroup() {
+		return glAcctGroup;
+	}
+	@FindBy(xpath = "//div[text()='Cost Component Variability Master']//following::ul")
+	private static WebElement costComponentMasterDrpdwn;
+	public static WebElement getcostComponentMasterDrpdwn() {
+		return costComponentMasterDrpdwn;
+	}
+	@FindBy(xpath = "//div[text()='New Cost Component Variability Assignment']//following::ul")
+	private static WebElement costAssignEntityDrp;
+	public static WebElement getcostAssignEntityDrp() {
+		return costAssignEntityDrp;
+	}
+	@FindBy(xpath = "(//span[text()='Department / Group']//following::ul)[2]")
+	private static WebElement costComponentDrpdwn;
+	public static WebElement getcostComponentDrpdwn() {
+		return costComponentDrpdwn;
 	}
 }

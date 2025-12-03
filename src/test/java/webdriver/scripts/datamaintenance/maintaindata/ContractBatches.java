@@ -10,6 +10,8 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.interactions.Actions;
 
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
@@ -54,7 +56,7 @@ public class ContractBatches extends AzHelper{
 		}
 	}
 	
-//	@Test
+	@Test
 	public void test01ContractBatchWithNoLumpsumPayment() throws Throwable {
 		try {
 			doClick(DataMaintenanceMap.getazNewBtn());
@@ -64,7 +66,6 @@ public class ContractBatches extends AzHelper{
 			CimHelper.checkElements(driver.findElements(By.xpath("//span[text()='Apply']")));
 			clickCheckboxByName("calcFfs");
 			clickCheckboxByName("calcusingOverride");
-//			driver.findElement(By.name("reimbursementScenario")).click();
 			clickCheckboxByName("reimbursementScenario");
 			doDropdownSelectUsingOptionTextOnly(DataMaintenanceMap.getdestReimburseScenario(), "Contracted Payment 2");
 			expandPanel("Fee for Service/Lump Sum");
@@ -80,6 +81,7 @@ public class ContractBatches extends AzHelper{
 			doClick(DataMaintenanceMap.getCancelCloseButton());
 			doClick(DataMaintenanceMap.getazFilterBtn());
 			doFilterCreate(contractBatchFilter);
+			assertTextIsDisplayed(name);
 			deleteScenario(DataMaintenanceMap.getazDeleteBtn(),DataMaintenanceMap.getwarningDeleteBtn());
 			doClick(DataMaintenanceMap.getazClearFilterBtn());
 			ExtentReport.logPass("PASS", "test01ContractBatchWithNoLumpsumPayment");
@@ -99,7 +101,6 @@ public class ContractBatches extends AzHelper{
 			CimHelper.checkElements(driver.findElements(By.xpath("//span[text()='Apply']")));
 			clickCheckboxByName("calcFfs");
 			clickCheckboxByName("calcusingOverride");
-//			driver.findElement(By.name("reimbursementScenario")).click();
 			clickCheckboxByName("reimbursementScenario");
 			doDropdownSelectUsingOptionTextOnly(DataMaintenanceMap.getdestReimburseScenario(), "Contracted Payment 22");
 			clickCheckboxByName("calcLumpSum");
@@ -109,7 +110,13 @@ public class ContractBatches extends AzHelper{
 			driverDelay();
 			doClickButtons("Populations to Calculate", "Enter Lump Sum Amounts");
 			for(int i=1;i<=DataMaintenanceMap.getlumpSumAmountTable().size();i++) {
-				keyInInputWithActionClass(driver.findElement(By.xpath("(//div[text()='Enter Lump Sum Amounts']//following::table//td[2]/div)["+i+"]")), "10");
+				Actions actions = new Actions(driver);
+				actions.doubleClick(driver.findElement(By.xpath("(//div[text()='Enter Lump Sum Amounts']//following::table//td[2]/div)["+i+"]")))
+				       .keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL)  
+				       .sendKeys(Keys.DELETE)                                     
+				       .sendKeys("10")                                 
+				       .build()
+				       .perform();
 				
 			}
 			doClickButtons("Enter Lump Sum Amounts", "Save");
@@ -122,6 +129,17 @@ public class ContractBatches extends AzHelper{
 			CimHelper.checkElements(DataMaintenanceMap.getsaveCloseBtn());
 			doClick(DataMaintenanceMap.getazFilterBtn());
 			doFilterCreate(contractBatchFilter);
+			assertTextIsDisplayed(name);
+			
+			ExtentReport.logPass("PASS", "test02ContractBatchWithLumpsumPayment");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test02ContractBatchWithLumpsumPayment", driver, e);
+			fail(e.getMessage());
+		}
+	}
+	@Test
+	public void test03ValidateSaveAsFunction() throws Throwable {
+		try {
 			doClick(DataMaintenanceMap.getazEditBtn());
 			doClick(DataMaintenanceMap.getazSaveAsBtn());
 			String copyContract="Copy"+name;
@@ -133,10 +151,11 @@ public class ContractBatches extends AzHelper{
 			doClick(DataMaintenanceMap.getazClearFilterBtn());
 			doClick(DataMaintenanceMap.getazFilterBtn());
 			doFilterCreate(copyContractFilter);
+			assertTextIsDisplayed(copyContract);
 			deleteScenario(DataMaintenanceMap.getazDeleteBtn(),DataMaintenanceMap.getwarningDeleteBtn());
-			ExtentReport.logPass("PASS", "test02ContractBatchWithLumpsumPayment");
+			ExtentReport.logPass("PASS", "test03ValidateSaveAsFunction");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test02ContractBatchWithLumpsumPayment", driver, e);
+			ExtentReport.logFail("FAIL", "test03ValidateSaveAsFunction", driver, e);
 			fail(e.getMessage());
 		}
 	}

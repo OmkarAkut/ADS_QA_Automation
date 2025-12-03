@@ -111,9 +111,15 @@ public class AzHelper extends CalculationHelper{
 		doClick("//input[@name='"+name+"']");
 	}
 	public void keyInInputByName(String inputName,String inputText,String dialogName) throws Throwable {
-		driver.findElement(By.xpath("//div[text()='"+dialogName+"']//following::input[@name='"+inputName+"']")).clear();;
-		driver.findElement(By.xpath("//div[text()='"+dialogName+"']//following::input[@name='"+inputName+"']")).sendKeys(inputText);
-		driverDelay(500);
+		try {
+			driver.findElement(By.xpath("//div[text()='"+dialogName+"']//following::input[@name='"+inputName+"']")).clear();;
+			driver.findElement(By.xpath("//div[text()='"+dialogName+"']//following::input[@name='"+inputName+"']")).sendKeys(inputText);
+			driverDelay(500);
+		} catch (NoSuchElementException e) {
+			driver.findElement(By.xpath("//textarea[@name='"+inputName+"']")).clear();;
+			driver.findElement(By.xpath("//textarea[@name='"+inputName+"']")).sendKeys(inputText);
+			driverDelay(500);
+		}
 	}
 	public void waitForFormDialog(String windowName) {
 		waitForElementToBeVisible(driver.findElement(By.xpath("//div[contains(@id,'dynamicwindow')][text()='"+windowName+"']")));
