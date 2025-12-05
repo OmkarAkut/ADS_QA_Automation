@@ -29,7 +29,6 @@ public class CostComponentMasters extends AzHelper{
 	public static DialogsMap dialog;
 	static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
 	static String currentDateCode = new SimpleDateFormat("MM.HH.ss").format(new java.util.Date());
-	static String code = currentDateCode.replaceAll("\\W", "");
 	static String name="Name"+currentDateTime;
 	static String[] costComponentMasterFilter= {"Name","Is","Equal To",name};
 	static String updatedName;

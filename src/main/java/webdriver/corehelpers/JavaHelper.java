@@ -6,11 +6,15 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.TextStyle;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -149,7 +153,17 @@ public class JavaHelper extends Login {
         LocalDateTime now = LocalDateTime.now();
         return dtf.format(now);
     }
-
+    public static String javaGetCurrentMonth() {
+    	LocalDate today = LocalDate.now();
+        String month = today.getMonth()
+                            .getDisplayName(TextStyle.SHORT, Locale.getDefault());
+        return month;
+    }
+    public static String javaGetCurrentYear() {
+    	 int year = Calendar.getInstance().get(Calendar.YEAR);
+         System.out.println("Current year: " + year);
+        return Integer.toString(year);
+    }
     public void javaPrintList(List<String> list) {
         for (String item : list) {
             System.out.print(item + ", ");

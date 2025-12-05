@@ -1961,14 +1961,59 @@ public class DataMaintenanceMap extends MapConfig {
 	public static WebElement getcostComponentMasterDrpdwn() {
 		return costComponentMasterDrpdwn;
 	}
+	@FindBy(xpath = "//div[text()='Cost Method Master']//following::ul")
+	private static WebElement costMethodMasterDrpdwn;
+	public static WebElement getcostMethodMasterDrpdwn() {
+		return costMethodMasterDrpdwn;
+	}
 	@FindBy(xpath = "//div[text()='New Cost Component Variability Assignment']//following::ul")
 	private static WebElement costAssignEntityDrp;
 	public static WebElement getcostAssignEntityDrp() {
 		return costAssignEntityDrp;
 	}
+	@FindBy(xpath = "//div[text()='New Cost Method Assignment']//following::ul")
+	private static WebElement costMethodAssignEntityDrp;
+	public static WebElement getcostMethodAssignEntityDrp() {
+		return costMethodAssignEntityDrp;
+	}
 	@FindBy(xpath = "(//span[text()='Department / Group']//following::ul)[2]")
 	private static WebElement costComponentDrpdwn;
 	public static WebElement getcostComponentDrpdwn() {
 		return costComponentDrpdwn;
+	}
+	@FindBy(xpath = "(//div[text()='Cost Method Assignment']//following::ul/li[text()='RCC']/..)")
+	private static WebElement costMethodDrpdwn;
+	public static WebElement getcostMethodDrpdwn() {
+		return costMethodDrpdwn;
+	}
+	@FindBy(xpath = "(//div[text()='Cost Method Assignment']//following::ul/li[text()='Volume']/..)[2]")
+	private static WebElement costMethodDefaultDrpdwn;
+	public static WebElement getcostMethodDefaultDrpdwn() {
+		return costMethodDefaultDrpdwn;
+	}
+	@FindBy(xpath = "(//div[text()='Cost Method Assignment']//following::ul/li[text()='Exams General']/..)")
+	private static WebElement costMethodProducttypeDrpdwn;
+	public static WebElement getcostMethodProducttypeDrpdwn() {
+		return costMethodProducttypeDrpdwn;
+	}
+	@FindBy(xpath = "(//div[text()='Cost Method Assignment']//following::ul/li[text()='Act Cost End to End Chg Grp']/..)")
+	private static WebElement chargeableActivtyGroup;
+	public static WebElement getchargeableActivtyGroup() {
+		return chargeableActivtyGroup;
+	}
+	@FindBy(xpath = "(//span[text()='RCAC Cost Factor List']//following::table//td/div)")
+	private static List<WebElement> rcacCostFactorList;
+	public static List<WebElement> getrcacCostFactorList() {
+		return rcacCostFactorList;
+	}
+	@FindBy(xpath = "(//div[text()='RCAC Cost Assignment']//following::ul/li[text()='Jan']/..)")
+	private static WebElement rcacStartMonth;
+	public static WebElement getrcacStartMonth() {
+		return rcacStartMonth;
+	}
+	@FindBy(xpath = "(//div[text()='RCAC Cost Assignment']//following::ul)[2]")
+	private static WebElement rcacStartYear;
+	public static WebElement getrcacStartYear() {
+		return rcacStartYear;
 	}
 }
