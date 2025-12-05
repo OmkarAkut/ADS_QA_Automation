@@ -97,10 +97,15 @@ public class AzHelper extends CalculationHelper{
 		assertElements(ages,scenarioName);
 	}
 	public void assertElements(String[] ages,String azName) {
-			for(int i=0;i>=driver.findElements(By.xpath("//div[text()='"+azName+"']//following::table//tbody//tr//td[3]/div")).size();i++) {
-			if(DataMaintenanceMap.getageGroupElements().get(i+1).getText().equals(ages[i])) {
-				assertTrue(printout);
-			}
+			for(int i=2;i<driver.findElements(By.xpath("//div[contains(@id,'panel')][text()='"+azName+"']//following::table//tbody//tr//td[3]/div")).size();i++) {
+					if(driver.findElements(By.xpath("//div[contains(@id,'panel')][text()='"+azName+"']//following::table//tbody//tr//td[3]/div")).get(i).getText().equals(ages[i])) {
+						
+						
+						assertTrue(printout);
+						
+					}
+
+			
 			}
 		
 	}
