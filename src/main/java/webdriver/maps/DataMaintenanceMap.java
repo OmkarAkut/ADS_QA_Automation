@@ -1233,6 +1233,10 @@ public class DataMaintenanceMap extends MapConfig {
 	private static WebElement azFilterBtn;
 	public static WebElement getazFilterBtn() {return azFilterBtn;}
 	
+	@FindBy(xpath = "(//div[contains(@class,'commonTBar ')]//following::span[text()='View'])[1]")
+	private static WebElement azViewBtn;
+	public static WebElement getazViewBtn() {return azViewBtn;}
+	
 	@FindBy(xpath = "//span[text()='Remove All']/ancestor::a")
 	private static WebElement calcTypeRemoveAllBtn;
 	public static WebElement getcalcTypeRemoveAllBtn() {return calcTypeRemoveAllBtn;}
@@ -2015,5 +2019,55 @@ public class DataMaintenanceMap extends MapConfig {
 	private static WebElement rcacStartYear;
 	public static WebElement getrcacStartYear() {
 		return rcacStartYear;
+	}
+	@FindBy(xpath = "(//div[text()='Results']//following::ul/li[text()='150 Marina Medical Center']/..)")
+	private static WebElement costScenarioEntitycode;
+	public static WebElement getcostScenarioEntitycode() {
+		return costScenarioEntitycode;
+	}
+	@FindBy(xpath = "(//div[text()='Results']//following::ul/li[text()='2130  PED ICU']/..)")
+	private static WebElement costScenarioDept;
+	public static WebElement getcostScenarioDept() {
+		return costScenarioDept;
+	}
+	@FindBy(xpath = "(//div[text()='Results']//following::ul/li[text()='Jan 2005 to Jan 2005']/..)")
+	private static WebElement costScenarioResults;
+	public static WebElement getcostScenarioResults() {
+		return costScenarioResults;
+	}
+	@FindBy(xpath = "(//div[text()='Results']//following::ul/li[text()='Salaries and Wages']/..)")
+	private static WebElement costScenarioComponent;
+	public static WebElement getcostScenarioComponent() {
+		return costScenarioComponent;
+	}
+	@FindBy(xpath = "(//span[text()='Hide'])[1]")
+	private static WebElement hideButton;
+	public static WebElement gethideButton() {
+		return hideButton;
+	}
+	@FindBy(xpath = "(//span[text()='Show'])[1]")
+	private static WebElement showButton;
+	public static WebElement getshowButton() {
+		return showButton;
+	}
+	@FindBy(xpath = "(//span[text()='Show'])[2]")
+	private static WebElement showButton2;
+	public static WebElement getshowButton2() {
+		return showButton2;
+	}
+	@FindBy(xpath = "//span[text()='Department Master']//following::ul/li[text()='150 old master 150']/..")
+	private static WebElement deptMasterDrp;
+	public static WebElement getdeptMasterDrp() {
+		return deptMasterDrp;
+	}
+	@FindBy(xpath = "//span[text()='GL Account Master']//following::ul/li[text()='MARINA Marina Master']/..")
+	private static WebElement glAcctMasterDrp;
+	public static WebElement getglAcctMasterDrp() {
+		return glAcctMasterDrp;
+	}
+	@FindBy(xpath = "//div[text()='Department Code']//following::ul/li[text()='Patient Care Department']/..")
+	private static WebElement deptCodeDrp;
+	public static WebElement getdeptCodeDrp() {
+		return deptCodeDrp;
 	}
 }

@@ -39,7 +39,7 @@ public class APDRGFeeScheduleMasters extends AzHelper{
 	static String updatedTemplateName;
 	static String newTemplateSchedule;
 	static String newSchedule;
-	static String feeScheduleEntries[]= {code,"10.5"};
+	static String feeScheduleEntries[]= {code,name,"10.5"};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
 		ExtentReport.reportCreate("APDRGFeeScheduleMasters", "webdriver.scripts.datamaintenance.maintaindata",
