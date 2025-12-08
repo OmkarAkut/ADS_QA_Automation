@@ -13,27 +13,27 @@ import webdriver.helpers.AzHelper;
 import webdriver.maps.DataMaintenanceMap;
 import webdriver.maps.mapbuilder.BuildMap;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class EmployerGroupTypes extends AzHelper {
+public class EmployerSubGroupTypes extends AzHelper {
 
 	static DataMaintenanceMap dmMap;
-	final static String aTozEmployerGroupTypes = "Employer Group Types";
+	final static String aTozEmployerSubGroupTypes = "Employer Subgroup Types";
 	static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
 	static String currentDateCode = new SimpleDateFormat("MM.HH").format(new java.util.Date());
 	static String code = currentDateCode.replaceAll("\\W", "");
 	static String name = "Name" + currentDateTime;
 	static String[] filter= {"Name","Is","Equal To",name};
-	static String azName = "Employer Group Type";
+	static String azName = "Employer Subgroup Type";
 	static String updatedName="Updated"+name;
 	static String[] filterAfterEdit= {"Name","Is","Equal To",updatedName};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("EmployerGroupTypes", "webdriver.scripts.datamaintenance.maintaindata",
-				"EmployerGroupTypes");
+		ExtentReport.reportCreate("EmployerSubGroupTypes", "webdriver.scripts.datamaintenance.maintaindata",
+				"EmployerSubGroupTypes");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);
 			Login.loginUser("AutomationTesterAdmin");
 			goToPage("Maintain Data");
-			selectMaintainDataAtoZ(aTozEmployerGroupTypes);
+			selectMaintainDataAtoZ(aTozEmployerSubGroupTypes);
 			ExtentReport.logPass("PASS", "setupScript");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "Failure in setupScript", driver, e);

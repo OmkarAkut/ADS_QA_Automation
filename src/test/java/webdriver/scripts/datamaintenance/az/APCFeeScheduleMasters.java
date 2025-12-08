@@ -131,7 +131,7 @@ public class APCFeeScheduleMasters extends AzHelper{
 			doClick(DataMaintenanceMap.getazMasterClassificationDrpDwn());
 			doDropdownSelectUsingOptionTextOnly(DataMaintenanceMap.getmasterAPCClassificationScheme(), masterClassificationScheme);
 			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageNewBtn());
-			templateName="Template"+name;
+			templateName="APCTemplate"+name;
 			addDetailsInnerPages(null, templateName, "Save & Create New","code","name");
 			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageCancelCloseBtn());
 			assertTextIsDisplayed(templateName);

@@ -131,7 +131,7 @@ public class APDRGFeeScheduleMasters extends AzHelper{
 			doClick(DataMaintenanceMap.getazMasterClassificationDrpDwn());
 			doDropdownSelectUsingOptionTextOnly(DataMaintenanceMap.getmasterClassificationScheme(), masterClassificationScheme);
 			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageNewBtn());
-			templateName="Template"+name;
+			templateName="APDRGTemplate"+name;
 			addDetailsInnerPages(null, templateName, "Save & Create New","code","name");
 			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageCancelCloseBtn());
 			assertTextIsDisplayed(templateName);
@@ -153,7 +153,7 @@ public class APDRGFeeScheduleMasters extends AzHelper{
 			keyInInputByName("name", name,"AP DRG Fee Schedule Template");
 			doClick(DataMaintenanceMap.getazMasterClassificationDrpDwn());
 			doDropdownSelectUsingOptionTextOnly(DataMaintenanceMap.getmasterClassificationScheme(), masterClassificationScheme);
-			templateName="Template"+name;
+			templateName="APDRGTemplate"+name;
 			addDetailsInnerPages(null, templateName, "Save","code","name");
 			doClickButtons(templateName, "Cancel & Close");
 			doClickButtons("Templates", "Edit");
