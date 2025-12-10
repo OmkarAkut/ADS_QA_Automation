@@ -2070,4 +2070,9 @@ public class DataMaintenanceMap extends MapConfig {
 	public static WebElement getdeptCodeDrp() {
 		return deptCodeDrp;
 	}
+	@FindBy(xpath = "//div[text()='Encounter Type']//following::ul/li[text()='1']/..")
+	private static WebElement losType;
+	public static WebElement getlosType() {
+		return losType;
+	}
 }

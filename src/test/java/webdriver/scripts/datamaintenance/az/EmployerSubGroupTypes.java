@@ -78,6 +78,16 @@ public class EmployerSubGroupTypes extends AzHelper {
 			fail(e.getMessage());
 		}
 	}
+	@Test
+	public void test03DeleteEmployeeSubGroupType() throws Throwable {
+		try {
+			deleteScenario(DataMaintenanceMap.getazDeleteBtn(), DataMaintenanceMap.getwarningDeleteBtn());
+			ExtentReport.logPass("PASS", "test03DeleteEmployeeSubGroupType");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test03DeleteEmployeeSubGroupType", driver, e);
+			fail(e.getMessage());
+		}
+	}
 	@AfterClass
 	public static void endtest() throws Exception {
 		ExtentReport.report.flush();

@@ -13,27 +13,27 @@ import webdriver.helpers.AzHelper;
 import webdriver.maps.DataMaintenanceMap;
 import webdriver.maps.mapbuilder.BuildMap;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class EmployerGroupTypes extends AzHelper {
+public class EncounterType extends AzHelper {
 
 	static DataMaintenanceMap dmMap;
-	final static String aTozEmployerGroupTypes = "Employer Group Types";
+	final static String aTozEncounterTypes = "Encounter Types";
 	static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
 	static String currentDateCode = new SimpleDateFormat("MM.HH").format(new java.util.Date());
 	static String code = currentDateCode.replaceAll("\\W", "");
 	static String name = "Name" + currentDateTime;
 	static String[] filter= {"Name","Is","Equal To",name};
-	static String azName = "Employer Group Type";
+	static String azName = "Encounter Type";
 	static String updatedName="Updated"+name;
 	static String[] filterAfterEdit= {"Name","Is","Equal To",updatedName};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("EmployerGroupTypes", "webdriver.scripts.datamaintenance.maintaindata",
-				"EmployerGroupTypes");
+		ExtentReport.reportCreate("EncounterTypes", "webdriver.scripts.datamaintenance.maintaindata",
+				"EncounterTypes");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);
 			Login.loginUser("AutomationTesterAdmin");
 			goToPage("Maintain Data");
-			selectMaintainDataAtoZ(aTozEmployerGroupTypes);
+			selectMaintainDataAtoZ(aTozEncounterTypes);
 			ExtentReport.logPass("PASS", "setupScript");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "Failure in setupScript", driver, e);
@@ -46,14 +46,17 @@ public class EmployerGroupTypes extends AzHelper {
 			doClick(DataMaintenanceMap.getazNewBtn());
 			keyInInputByName("name", name, azName);
 			keyInInputByName("code", code, azName);
-			doClickSelectButton("Entity Code");
-			selectFormItem("0001 PRIVATE PAY PENDING ", "");
+			keyInInputByName("columnLabel", "TestShortName", azName);
+			clickCheckboxByName("type");
+			doDropdownSelectUsingOptionTextOnly(DataMaintenanceMap.getlosType(), "3");
 			doClick(DataMaintenanceMap.getazSaveCreateNewBtn());
 			doClickButtons(azName, "Cancel & Close");
 			doClick(DataMaintenanceMap.getazFilterBtn());
 			doFilterCreate(filter);
 			assertTextIsDisplayed(name);
 			assertTextIsDisplayed(code);
+			assertTextIsDisplayed("TestShortName");
+			assertElementIsDisplayedWithXpath("//div[text()='"+name+"']//following::div[2][text()='3']");
 			ExtentReport.logPass("PASS", "test01ValidateNewButton");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01ValidateNewButton", driver, e);
@@ -79,12 +82,12 @@ public class EmployerGroupTypes extends AzHelper {
 		}
 	}
 	@Test
-	public void test03DeleteEmployeeGroupType() throws Throwable {
+	public void test03DeleteEncounterType() throws Throwable {
 		try {
 			deleteScenario(DataMaintenanceMap.getazDeleteBtn(), DataMaintenanceMap.getwarningDeleteBtn());
-			ExtentReport.logPass("PASS", "test03DeleteEmployeeGroupType");
+			ExtentReport.logPass("PASS", "test03DeleteEncounterType");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test03DeleteEmployeeGroupType", driver, e);
+			ExtentReport.logFail("FAIL", "test03DeleteEncounterType", driver, e);
 			fail(e.getMessage());
 		}
 	}
