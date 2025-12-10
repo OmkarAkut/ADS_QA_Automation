@@ -2075,4 +2075,25 @@ public class DataMaintenanceMap extends MapConfig {
 	public static WebElement getlosType() {
 		return losType;
 	}
+	@FindBy(xpath = "//div[contains(@id,'messagebox')]//following::span[text()='Cancel & Close']")
+	private static List<WebElement> warningCancelClose;
+	public static List<WebElement> getwarningCancelClose() {
+		return warningCancelClose;
+	}
+	@FindBy(xpath = "//span[text()='Employer Group Type']//following::ul/li[text()='0001,WALMART  WalMart Northside']/..")
+	private static WebElement employerGroupTypeDrp;
+	public static WebElement getemployerGroupTypeDrp() {
+		return employerGroupTypeDrp;
+	}
+	@FindBy(xpath = "//span[text()='Financial Category']//following::ul/li[text()='2, F2  Financial Category 2']/..")
+	private static WebElement financialCategoryDrp;
+	public static WebElement getfinancialCategoryDrp() {
+		return financialCategoryDrp;
+	}
+	@FindBy(xpath = "//span[text()='Type']//following::ul/li[text()='IP']/..")
+	private static WebElement typeEntityDrp;
+	public static WebElement gettypeEntityDrp() {
+		return typeEntityDrp;
+	}
+	
 }

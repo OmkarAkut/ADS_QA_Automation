@@ -77,8 +77,13 @@ public class AzHelper extends CalculationHelper{
 					doClick("(//div[text()='"+scenarioName+"']//following::div[contains(@class,'x-btn')]//span[text()='"+buttonName+"'])[1]");
 					driverDelay(300);
 				} catch (NoSuchElementException e2) {
-					doClick("(//div[text()='"+scenarioName+"']//following::a[contains(@class,'x-btn')]//span[text()='"+buttonName+"'])[1]");
-					driverDelay(300);
+					try {
+						doClick("(//div[text()='"+scenarioName+"']//following::a[contains(@class,'x-btn')]//span[text()='"+buttonName+"'])[1]");
+						driverDelay(300);
+					} catch (NoSuchElementException e3) {
+						doClick("(//label[text()='"+scenarioName+"']//following::a[contains(@class,'x-btn')]//span[text()='"+buttonName+"'])[1]");
+						driverDelay(300);
+					}
 				}
 			}
 
@@ -128,6 +133,9 @@ public class AzHelper extends CalculationHelper{
 	}
 	public void waitForFormDialog(String windowName) {
 		waitForElementToBeVisible(driver.findElement(By.xpath("//div[contains(@id,'dynamicwindow')][text()='"+windowName+"']")));
+	}
+	public void closeWindowDialog(String windowName) {
+		doClick(driver.findElement(By.xpath("//div[contains(@id,'dynamicwindow')][text()='"+windowName+"']//following::span[text()='Cancel & Close']")));
 	}
 	public void doClickSelectButton(String title) throws Throwable {
 		doClick("(//div[contains(@class,'x-form-fieldcontainer')]//span[text()='"+title+"']//following::div//span[text()='Select'])[1]");
