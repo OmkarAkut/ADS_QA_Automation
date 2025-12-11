@@ -118,7 +118,7 @@ public class AzHelper extends CalculationHelper{
 		doClick("//span[text()='"+name+"']");
 	}
 	public void clickCheckboxByName(String name) throws Throwable {
-		doClick("//input[@name='"+name+"']");
+		doClick("//input[@name='"+name+"'][@type='text']");
 	}
 	public void keyInInputByName(String inputName,String inputText,String dialogName) throws Throwable {
 		try {

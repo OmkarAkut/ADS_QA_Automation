@@ -1476,6 +1476,10 @@ public class DataMaintenanceMap extends MapConfig {
 	private static List<WebElement> azInnerPageNewBtn;
 	public static List<WebElement> getazInnerPageNewBtn() {return azInnerPageNewBtn;}
 	
+	@FindBy(xpath = "//h1//following::a//span[text()='Add']")
+	private static List<WebElement> azInnerPageAddBtn;
+	public static List<WebElement> getazInnerPageAddBtn() {return azInnerPageAddBtn;}
+	
 	@FindBy(xpath = "//h1//following::a//span[text()='Edit']")
 	private static List<WebElement> azInnerPageEditBtn;
 	public static List<WebElement> getazInnerPageEditBtn() {return azInnerPageEditBtn;}
@@ -2095,5 +2099,23 @@ public class DataMaintenanceMap extends MapConfig {
 	public static WebElement gettypeEntityDrp() {
 		return typeEntityDrp;
 	}
+	@FindBy(xpath = "//span[text()='GL Account Type']//following::ul/li[text()='IR  Inpatient Revenue']/..")
+	private static WebElement glAccountTypeDrp;
+	public static WebElement getglAccountTypeDrp() {
+		return glAccountTypeDrp;
+	}
+	@FindBy(xpath = "//span[text()='Account Category']//following::ul/li[text()='Operating Expense']/..")
+	private static WebElement glAccountCategoryDrp;
+	public static WebElement getglAccountCategoryDrp() {
+		return glAccountCategoryDrp;
+	}
+	@FindBy(xpath = "//div[text()='TRICARE DRG Fee Schedule Template']//following::ul")
+	private static WebElement tricareFeeScheduleMasterScheme;
+	public static WebElement gettricareFeeScheduleMasterScheme() {return tricareFeeScheduleMasterScheme;}
 	
+	@FindBy(xpath = "//span[text()='HCPCS Master']//following::ul/li[text()='CPT4 Marina HCPCS Master']/..")
+	private static WebElement hcpcsMasterDrp;
+	public static WebElement gethcpcsMasterDrp() {
+		return hcpcsMasterDrp;
+	}
 }
