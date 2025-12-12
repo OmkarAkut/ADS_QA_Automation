@@ -1229,6 +1229,7 @@ public class DataMaintenanceMap extends MapConfig {
 	private static WebElement azNewBtn;
 	public static WebElement getazNewBtn() {return azNewBtn;}
 	
+		
 	@FindBy(xpath = "(//div[contains(@class,'commonTBar ')]//following::span[text()='Filter'])[1]")
 	private static WebElement azFilterBtn;
 	public static WebElement getazFilterBtn() {return azFilterBtn;}
@@ -2117,5 +2118,30 @@ public class DataMaintenanceMap extends MapConfig {
 	private static WebElement hcpcsMasterDrp;
 	public static WebElement gethcpcsMasterDrp() {
 		return hcpcsMasterDrp;
+	}
+	@FindBy(xpath = "(//span[text()='Employer Group']//following::div[contains(@class,'x-btn')]//span[text()='Select'])[1]")
+	private static WebElement employerGrpSelectBtn;
+	public static WebElement getemployerGrpSelectBtn() {
+		return employerGrpSelectBtn;
+	}
+	@FindBy(xpath = "(//span[text()='Employer Group']//following::div[contains(@class,'x-btn')]//span[text()='Select'])[3]")
+	private static WebElement memberDesignationSelectBtn;
+	public static WebElement getmemberDesignationSelectBtn() {
+		return memberDesignationSelectBtn;
+	}
+	@FindBy(xpath = "(//span[text()='Employer Group']//following::div[contains(@class,'x-btn')]//span[text()='Select'])[2]")
+	private static WebElement employerSubGrpSelectBtn;
+	public static WebElement getemployerSubGrpSelectBtn() {
+		return employerSubGrpSelectBtn;
+	}
+	@FindBy(xpath = "//div[contains(@class,'x-grid-cell-inner-action-col')][text()='Edit']")
+	private static WebElement fieldEditBtn;
+	public static WebElement getfieldEditBtn() {
+		return fieldEditBtn;
+	}
+	@FindBy(xpath = "//div[contains(@class,'x-grid-cell-inner-action-col')][text()='Remove']")
+	private static WebElement fieldRemoveBtn;
+	public static WebElement getfieldRemoveBtn() {
+		return fieldRemoveBtn;
 	}
 }

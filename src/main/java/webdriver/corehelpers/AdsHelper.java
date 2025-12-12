@@ -12,6 +12,7 @@ import java.util.Random;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
@@ -169,9 +170,14 @@ public class AdsHelper extends GetHelper {
 //		Omkar 21/4/2023 : Commenting below method call as the method is not computing the xpath correctly
 //		waitUntilElementIsClickable(dialog.getFilterDialogButtonAdd());
 		driverDelay();
-		waitUntilElementIsClickable(dialog.getFilterDialogButtonAdd());
-		doClick(dialog.getFilterDialogButtonAdd());
-		waitForAjaxExtJs();
+		
+		try {
+			waitUntilElementIsClickable(dialog.getFilterDialogButtonAdd());
+			doClick(dialog.getFilterDialogButtonAdd());
+			waitForAjaxExtJs();
+		} catch (NoSuchElementException|AssertionError e) {
+			doClick("//div[contains(@id,'filter')]//span[text() = 'Add']");
+		}
 		doClick(dialog.getFilterDialogButtonApplyFilter());
 		waitForSpinnerToEnd();
 		driverDelay(300);

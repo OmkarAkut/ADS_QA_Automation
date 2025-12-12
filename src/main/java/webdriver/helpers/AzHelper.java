@@ -124,6 +124,7 @@ public class AzHelper extends CalculationHelper{
 		try {
 			driver.findElement(By.xpath("//div[text()='"+dialogName+"']//following::input[@name='"+inputName+"']")).clear();;
 			driver.findElement(By.xpath("//div[text()='"+dialogName+"']//following::input[@name='"+inputName+"']")).sendKeys(inputText);
+			driver.findElement(By.xpath("//div[text()='"+dialogName+"']//following::input[@name='"+inputName+"']")).sendKeys(Keys.ENTER);
 			driverDelay(500);
 		} catch (NoSuchElementException e) {
 			driver.findElement(By.xpath("//textarea[@name='"+inputName+"']")).clear();;
@@ -157,6 +158,9 @@ public class AzHelper extends CalculationHelper{
 			doClick("//div[text()='"+name+"']");
 			doClick(DataMaintenanceMap.getapplyBtnInPopUp());
 		}
+	}
+	public void applyFilterInDialog() {
+		
 	}
 	public void assertData(String azName, String text) {
 		assertElementIsDisplayedWithXpath("//*[text()='"+azName+"']//following::*[text()='"+text+"']");
