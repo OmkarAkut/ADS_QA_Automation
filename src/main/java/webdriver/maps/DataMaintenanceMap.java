@@ -2144,4 +2144,29 @@ public class DataMaintenanceMap extends MapConfig {
 	public static WebElement getfieldRemoveBtn() {
 		return fieldRemoveBtn;
 	}
+	@FindBy(xpath = "//div[text()='Statistic Data Scenario']//following::ul")
+	private static WebElement fiscalYearDrp;
+	public static WebElement getfiscalYearDrp() {
+		return fiscalYearDrp;
+	}
+	@FindBy(xpath = "//div[text()='Staffing Data Scenario']//following::ul")
+	private static WebElement staffingFiscalYearDrp;
+	public static WebElement getstaffingFiscalYearDrp() {
+		return staffingFiscalYearDrp;
+	}
+	@FindBy(xpath = "//span[text()='Statistic Master']//following::ul")
+	private static WebElement statisticMasterDrp;
+	public static WebElement getstatisticMasterDrp() {
+		return statisticMasterDrp;
+	}
+	@FindBy(xpath = "(//div[text()='Statistic Data'])[1]//following::div[contains(@class,'x-grid-scrollbar-clipper-locked')]//table")
+	private static List<WebElement> statisticDataGrid;
+	public static List<WebElement> getstatisticDataGrid() {
+		return statisticDataGrid;
+	}
+	@FindBy(xpath = "//span[text()='Hours / Expenses']//following::ul")
+	private static WebElement hoursExpensesDrp;
+	public static WebElement gethoursExpensesDrp() {
+		return hoursExpensesDrp;
+	}
 }

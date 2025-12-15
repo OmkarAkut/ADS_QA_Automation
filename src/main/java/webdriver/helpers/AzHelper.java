@@ -81,8 +81,18 @@ public class AzHelper extends CalculationHelper{
 						doClick("(//div[text()='"+scenarioName+"']//following::a[contains(@class,'x-btn')]//span[text()='"+buttonName+"'])[1]");
 						driverDelay(300);
 					} catch (NoSuchElementException e3) {
-						doClick("(//label[text()='"+scenarioName+"']//following::a[contains(@class,'x-btn')]//span[text()='"+buttonName+"'])[1]");
-						driverDelay(300);
+						try {
+							doClick("(//label[text()='"+scenarioName+"']//following::a[contains(@class,'x-btn')]//span[text()='"+buttonName+"'])[1]");
+							driverDelay(300);
+						} catch (NoSuchElementException e4) {
+							try {
+								doClick("(//span[text()='"+scenarioName+"']//following::div[contains(@class,'x-btn')]//span[text()='"+buttonName+"'])[1]");
+								driverDelay(300);
+							} catch (NoSuchElementException e5) {
+								doClick("(//label[text()='"+scenarioName+"']//following::div[contains(@class,'x-btn')]//span[text()='"+buttonName+"'])[1]");
+								driverDelay(300);
+							}
+						}
 					}
 				}
 			}
@@ -141,9 +151,15 @@ public class AzHelper extends CalculationHelper{
 	public void doClickSelectButton(String title) throws Throwable {
 		doClick("(//div[contains(@class,'x-form-fieldcontainer')]//span[text()='"+title+"']//following::div//span[text()='Select'])[1]");
 	}
-	public void keyInInputWithActionClass(WebElement element,String input) {
+	public void keyInInputWithActionClass(WebElement element,String input) throws Throwable {
 		Actions action=new Actions(driver);
 		action.moveToElement(element).click().sendKeys(Keys.CLEAR).sendKeys(input).sendKeys(Keys.ENTER).perform();
+		driverDelay();
+	}
+	public void keyInInputWithDoubleClick(WebElement element,String input) throws Throwable {
+		Actions action=new Actions(driver);
+		action.moveToElement(element).doubleClick().sendKeys(Keys.CLEAR).sendKeys(input).sendKeys(Keys.ENTER).perform();
+		driverDelay();
 	}
 	public void selectFormItem(String name,String selectServices) throws Throwable {
 		
