@@ -20,6 +20,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import webdriver.helpers.ContractModelsHelper;
+import webdriver.maps.DataMaintenanceMap;
 import webdriver.utilities.Java;
 
 public class AssertHelper extends AdsHelper {
@@ -204,7 +205,15 @@ public class AssertHelper extends AdsHelper {
 			}
 		}
 	}
-
+	public void assertListOfElementsContainsExpectedStrings(List<WebElement> elementList, String[] name) {
+		for(String compareText:name) {
+			for(WebElement option:elementList) {
+				if(option.getText().equals(compareText)) {
+					System.out.println(option.getText());
+				}
+				
+			}}
+	}
 	public void assertElementContainsDisabledAttribute(WebElement element) {
 		String disabledAttributeText=null;
 		/*
@@ -510,7 +519,7 @@ public class AssertHelper extends AdsHelper {
 		boolean elementIsDisplayed;
 		try {
 			elementIsDisplayed = driver.findElement(By.xpath("" + elementXpath + "")).isDisplayed();
-		} catch (Throwable e) {
+		} catch (Exception e) {
 			elementIsDisplayed = false;
 		}
 		assertFalse("This element should not be displayed", elementIsDisplayed);

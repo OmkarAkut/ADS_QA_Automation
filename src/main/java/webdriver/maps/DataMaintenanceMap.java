@@ -1229,6 +1229,14 @@ public class DataMaintenanceMap extends MapConfig {
 	private static WebElement azNewBtn;
 	public static WebElement getazNewBtn() {return azNewBtn;}
 	
+	@FindBy(xpath = "(//div[contains(@class,'commonTBar ')]//following::span[text()='New Field'])[1]")
+	private static WebElement azNewFieldBtn;
+	public static WebElement getazNewFieldBtn() {return azNewFieldBtn;}
+	
+	@FindBy(xpath = "(//div[contains(@class,'commonTBar ')]//following::span[text()='New Relation'])[1]")
+	private static WebElement azNewRelationBtn;
+	public static WebElement getazNewRelationBtn() {return azNewRelationBtn;}
+	
 		
 	@FindBy(xpath = "(//div[contains(@class,'commonTBar ')]//following::span[text()='Filter'])[1]")
 	private static WebElement azFilterBtn;
@@ -1257,6 +1265,10 @@ public class DataMaintenanceMap extends MapConfig {
 	@FindBy(xpath = "//div[contains(@id,'toolbar')]//following::span[text()='Save']")
 	private static WebElement azSaveBtn;
 	public static WebElement getazSaveBtn() {return azSaveBtn;}
+	
+	@FindBy(xpath = "//div[contains(@id,'toolbar')]//following::span[text()='Assign']")
+	private static WebElement azAssignBtn;
+	public static WebElement getazAssignBtn() {return azAssignBtn;}
 	
 	@FindBy(xpath = "//div[contains(@id,'toolbar')]//following::span[text()='Save & Create New']")
 	private static WebElement azSaveCreateNewBtn;
@@ -2168,5 +2180,106 @@ public class DataMaintenanceMap extends MapConfig {
 	private static WebElement hoursExpensesDrp;
 	public static WebElement gethoursExpensesDrp() {
 		return hoursExpensesDrp;
+	}
+	@FindBy(xpath = "//div[text()='Assignment']//following::ul/li[text()='Contracted Payment 2']/..")
+	private static WebElement reimbursementDrp;
+	public static WebElement getreimbursementDrp() {
+		return reimbursementDrp;
+	}
+	@FindBy(xpath = "//div[text()='User Defined Field']//following::ul/li[text()='Encounter']/..")
+	private static WebElement userDefinedTable;
+	public static WebElement getuserDefinedTable() {
+		return userDefinedTable;
+	}
+	
+	@FindBy(xpath = "(//div[contains(@class,'x-form-spinner-up-default')])[2]")
+	private static WebElement userDefinedTableSpinnerUp;
+	public static WebElement getuserDefinedTableSpinnerUp() {
+		return userDefinedTableSpinnerUp;
+	}
+	@FindBy(xpath = "(//div[contains(@class,'x-form-spinner-down-default')])[2]")
+	private static WebElement userDefinedTableSpinnerDown;
+	public static WebElement getuserDefinedTableSpinnerDown() {
+		return userDefinedTableSpinnerDown;
+	}
+	@FindBy(xpath = "(//div[contains(@class,'x-form-spinner-up-default')])[3]")
+	private static WebElement userDefinedTableDecimalSpinnerUp;
+	public static WebElement getuserDefinedTableDecimalSpinnerUp() {
+		return userDefinedTableDecimalSpinnerUp;
+	}
+	@FindBy(xpath = "(//div[contains(@class,'x-form-spinner-down-default')])[3]")
+	private static WebElement userDefinedTableDecimalSpinnerdown;
+	public static WebElement getuserDefinedTableDecimalSpinnerdown() {
+		return userDefinedTableDecimalSpinnerdown;
+	}
+	@FindBy(xpath = "//span[text()='Stay Or Visit']//following::ul/li")
+	private static List<WebElement> stayVisitOptionsEnc;
+	public static List<WebElement> getstayVisitOptionsEnc() {
+		return stayVisitOptionsEnc;
+	}
+	@FindBy(xpath = "//div[text()='Service']//following::ul/li[text()='Encounter']/..")
+	private static WebElement unitTypeDrpOptions;
+	public static WebElement getunitTypeDrpOptions() {
+		return unitTypeDrpOptions;
+	}
+	@FindBy(xpath = "//div[text()='Service']//following::ul/li[text()='MSDRG']/..")
+	private static WebElement feeScheduleTypeOptions;
+	public static WebElement getfeeScheduleTypeOptions() {
+		return feeScheduleTypeOptions;
+	}
+	@FindBy(xpath = "//div[text()='Service']//following::ul/li[text()='MSDRG1CODE']/..")
+	private static WebElement msdrgOptions;
+	public static WebElement getmsdrgOptions() {
+		return msdrgOptions;
+	}
+	@FindBy(xpath = "//div[text()='Service']//following::ul/li[text()='ASESC2174']/..")
+	private static WebElement feeScheduleMasterOptions;
+	public static WebElement getfeeScheduleMasterOptions() {
+		return feeScheduleMasterOptions;
+	}
+	@FindBy(xpath = "//div[text()='Service']//following::ul/li[text()='ASESC-2174 txt']/..")
+	private static WebElement feeScheduleOptions;
+	public static WebElement getfeeScheduleOptions() {
+		return feeScheduleOptions;
+	}
+	@FindBy(xpath = "(//div[contains(@id,'filterwindow')]//following::ul/li[text()='Name']/..)")
+	private static WebElement fieldOptions;
+	public static WebElement getfieldOptions() {
+		return fieldOptions;
+	}
+	@FindBy(xpath = "(//div[contains(@id,'filterwindow')]//following::ul/li[text()='Is']/..)")
+	private static WebElement fieldOptionsIs;
+	public static WebElement getfieldOptionsIs() {
+		return fieldOptionsIs;
+	}
+	@FindBy(xpath = "//span[text()='Stay Or Visit']//following::ul[1]/li")
+	private static List<WebElement> stayVisitOptionsPatient;
+	public static List<WebElement> getstayVisitOptionsPatient() {
+		return stayVisitOptionsPatient;
+	}
+	@FindBy(xpath = "//div[contains(@id,'filterwindow')]//following::span[text()='Add']")
+	private static WebElement filterAddButton;
+	public static WebElement getfilterAddButton() {
+		return filterAddButton;
+	}
+	@FindBy(xpath = "//div[contains(@id,'filterwindow')]//following::span[text()='Apply Filter']")
+	private static WebElement filterApplyFilterButton;
+	public static WebElement getfilterApplyFilterButton() {
+		return filterApplyFilterButton;
+	}
+	@FindBy(xpath = "//label[text()='Encounters whose DRG is not in the fee schedule']//preceding::input[1]")
+	private static WebElement encountersDRGFeeSchedule;
+	public static WebElement getencountersDRGFeeSchedule() {
+		return encountersDRGFeeSchedule;
+	}
+	@FindBy(xpath = "//label[text()='Encounters whose DRG is in the fee schedule']//preceding::input[1]")
+	private static WebElement encountersDRGInFeeSchedule;
+	public static WebElement getencountersDRGInFeeSchedule() {
+		return encountersDRGInFeeSchedule;
+	}
+	@FindBy(xpath = "(//div[contains(@class,'x-form-arrow-trigger')])[7]")
+	private static WebElement criteriaFielldDrp;
+	public static WebElement getcriteriaFielldDrp() {
+		return criteriaFielldDrp;
 	}
 }
