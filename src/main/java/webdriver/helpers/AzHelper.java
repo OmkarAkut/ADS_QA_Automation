@@ -257,5 +257,9 @@ public class AzHelper extends CalculationHelper{
 		waitForAjaxExtJs();
 		Thread.sleep(2000); 
 	}
+	public void selectDropdownOption(String inputName,WebElement element,String option) throws Throwable {
+		clickCheckboxByName(inputName);
+		doDropdownSelectUsingOptionTextOnly(element,option);
+	}
 }
 	

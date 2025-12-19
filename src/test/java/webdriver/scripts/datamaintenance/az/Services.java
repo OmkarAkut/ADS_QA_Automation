@@ -155,6 +155,12 @@ public class Services extends AzHelper {
 			keyInInputByName("value", "20", "Service");
 			doClickButtons("Service", "Update");
 			assertElementIsDisplayedWithXpath("//div[text()='[Encounter Level Estimated Charges 14] is equal to 20']");
+			doClick(DataMaintenanceMap.getremoveBtn());
+			doClick(DataMaintenanceMap.getcriteriaFielldDrp());
+			doDropdownSelectUsingOptionTextOnly(driver.findElement(By.xpath("//div[text()='Service']//following::ul/li[text()='Encounter Level Estimated Charges 14']/..")), "Encounter Level Estimated Charges 14");
+			keyInInputByName("value", "10", "Service");
+			doClickButtons("Service", "Add");
+			doClick(DataMaintenanceMap.getremoveAllBtn());
 			doClick(DataMaintenanceMap.getazSaveBtn());
 			doClick(DataMaintenanceMap.getazSaveCloseBtn());
 			ExtentReport.logPass("PASS", "test05EditServices");
@@ -166,7 +172,7 @@ public class Services extends AzHelper {
 	@Test
 	public void test06DeleteServices() throws Throwable {
 		try {
-			deleteScenario(DataMaintenanceMap.getazDeleteBtn(),DataMaintenanceMap.getwarningDeleteBtn());
+			deleteScenario(DataMaintenanceMap.getazDeleteBtn(),DataMaintenanceMap.getmessageboxDeleteBtn());
 			assertTextIsDisplayed("There is no data available to display.");
 			ExtentReport.logPass("PASS", "test06DeleteServices");
 		} catch (Exception | AssertionError e) {

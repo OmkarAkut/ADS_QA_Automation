@@ -2282,4 +2282,74 @@ public class DataMaintenanceMap extends MapConfig {
 	public static WebElement getcriteriaFielldDrp() {
 		return criteriaFielldDrp;
 	}
+	@FindBy(xpath = "//div[text()='Remove']")
+	private static WebElement removeBtn;
+	public static WebElement getremoveBtn() {
+		return removeBtn;
+	}
+	@FindBy(xpath = "//div[text()='Remove']")
+	private static WebElement removeAllBtn;
+	public static WebElement getremoveAllBtn() {
+		return removeAllBtn;
+	}
+	@FindBy(xpath = "(//div[text()='HCPCS/CPT']//following::span[text()='Select'])[1]")
+	private static WebElement hcpcsCpt;
+	public static WebElement gethcpcsCpt() {
+		return hcpcsCpt;
+	}
+	@FindBy(xpath = "//span[text()='New RVU']//following::ul/li[text()='1SM1 hcpcs modifer1']/..")
+	private static WebElement hcpcsModifierDrp;
+	public static WebElement gethcpcsModifierDrp() {
+		return hcpcsModifierDrp;
+	}
+	@FindBy(xpath = "//span[text()='New RVU']//following::ul/li[text()='G Not valid for Medicare purposes']/..")
+	private static WebElement statusIndicatorDrp;
+	public static WebElement getstatusIndicatorDrp() {
+		return statusIndicatorDrp;
+	}
+	@FindBy(xpath = "//span[text()='New RVU']//following::ul/li[text()='CPT4']/..")
+	private static WebElement hcpcscodeMasterDrp;
+	public static WebElement gethcpcscodeMasterDrp() {
+		return hcpcscodeMasterDrp;
+	}
+	@FindBy(xpath = "//span[text()='New RVU']//following::ul/li[text()='77']/..")
+	private static WebElement physicianSupervisionDrp;
+	public static WebElement getphysicianSupervisionDrp() {
+		return physicianSupervisionDrp;
+	}
+	@FindBy(xpath = "//span[text()='New RVU']//following::ul/li[text()='N Other nonsurgical services']/..")
+	private static WebElement updateIndicatorDrp;
+	public static WebElement getupdateIndicatorDrp() {
+		return updateIndicatorDrp;
+	}
+	@FindBy(xpath = "(//span[text()='Endoscopic Base Code']//following::span[text()='Select'])[2]")
+	private static WebElement endoscoicBaseCode;
+	public static WebElement getendoscoicBaseCode() {
+		return endoscoicBaseCode;
+	}
+	@FindBy(xpath = "//span[text()='New RVU']//following::ul/li[text()='MMM Service furnished in maternity cases']/..")
+	private static WebElement globalPeriod;
+	public static WebElement getglobalPeriod() {
+		return globalPeriod;
+	}
+	@FindBy(xpath = "//span[text()='New RVU']//following::ul/li[text()='99']/..")
+	private static WebElement diagnosticImagingIndicator;
+	public static WebElement getdiagnosticImagingIndicator() {
+		return diagnosticImagingIndicator;
+	}
+	@FindBy(xpath = "//div[text()='New Items']//following::ul/li[text()='CPT4']/..")
+	private static WebElement hcpcsMasterCodeDrp;
+	public static WebElement gethcpcsMasterCodeDrp() {
+		return hcpcsMasterCodeDrp;
+	}
+	@FindBy(xpath = "(//div[text()='HCPCS Item']//following::span[text()='Select'])[1]")
+	private static WebElement hcpcCodeSelectBtn;
+	public static WebElement gethcpcCodeSelectBtn() {
+		return hcpcCodeSelectBtn;
+	}
+	@FindBy(xpath = "(//div[text()='HCPCS Item']//following::span[text()='Select'])[2]")
+	private static WebElement hcpcModifierSelectBtn;
+	public static WebElement gethcpcModifierSelectBtn() {
+		return hcpcModifierSelectBtn;
+	}
 }
