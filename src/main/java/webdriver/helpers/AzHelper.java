@@ -151,7 +151,12 @@ public class AzHelper extends CalculationHelper{
 		}
 	}
 	public void waitForFormDialog(String windowName) {
-		waitForElementToBeVisible(driver.findElement(By.xpath("//div[contains(@id,'dynamicwindow')][text()='"+windowName+"']")));
+		try {
+			waitForElementToBeVisible(driver.findElement(By.xpath("//div[contains(@id,'dynamicwindow')][text()='"+windowName+"']")));
+		} catch (Exception e) {
+			waitForElementToBeVisible(driver.findElement(By.xpath("//div[contains(@id,'window')][text()='"+windowName+"']")));
+
+		}
 	}
 	public void closeWindowDialog(String windowName) {
 		doClick(driver.findElement(By.xpath("//div[contains(@id,'dynamicwindow')][text()='"+windowName+"']//following::span[text()='Cancel & Close']")));

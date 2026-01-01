@@ -1470,6 +1470,13 @@ public class DataMaintenanceMap extends MapConfig {
 	public static List<WebElement> getactivityStatsMasterDropdown() {
 		return activityStatsMasterDropdown;
 	}
+	
+	@FindBy(name = "chargeMasterCode")
+	private static List<WebElement> chargeMasterPriceListDropdown;
+	public static List<WebElement> getchargeMasterPriceListDropdown() {
+		return chargeMasterPriceListDropdown;
+	}
+	
 	@FindBy(name = "timePeriodName")
 	private static List<WebElement> timePeriodName;
 	public static List<WebElement> gettimePeriodName() {
@@ -1480,6 +1487,12 @@ public class DataMaintenanceMap extends MapConfig {
 	public static WebElement getactivityStatsMasterDropdownList() {
 		return activityStatsMasterDropdownList;
 	}
+	@FindBy(xpath = "//div[text()='Price List']//following::ul")
+	private static WebElement chargeMasterMasterDropdownList;
+	public static WebElement getchargeMasterMasterDropdownList() {
+		return chargeMasterMasterDropdownList;
+	}
+	
 	@FindBy(xpath = "//div[text()='Activity Volume Data Scenario']//following::ul")
 	private static WebElement activityVolDataScenarioDropdownList;
 	public static WebElement getactivityVolDataScenarioDropdownList() {
@@ -2282,6 +2295,11 @@ public class DataMaintenanceMap extends MapConfig {
 	public static WebElement getcriteriaFielldDrp() {
 		return criteriaFielldDrp;
 	}
+	@FindBy(xpath = "(//div[contains(@class,'x-form-arrow-trigger')])[2]")
+	private static WebElement criteriaFielldDrpPopulation;
+	public static WebElement getcriteriaFielldDrpPopulation() {
+		return criteriaFielldDrpPopulation;
+	}
 	@FindBy(xpath = "//div[text()='Remove']")
 	private static WebElement removeBtn;
 	public static WebElement getremoveBtn() {
@@ -2352,4 +2370,50 @@ public class DataMaintenanceMap extends MapConfig {
 	public static WebElement gethcpcModifierSelectBtn() {
 		return hcpcModifierSelectBtn;
 	}
+	@FindBy(xpath = "//span[text()='Practitioners']//following::ul/li[text()='IG IMMUNOLOGY']/..")
+	private static WebElement specialityDrpdwn;
+	public static WebElement getspecialityDrpdwn() {
+		return specialityDrpdwn;
+	}
+	@FindBy(xpath = "(//span[text()='Practitioners']//following::ul/li[text()='168 Endo, Diabetes & Metabolism']/..)[2]")
+	private static WebElement primarySpecialityDrpdwn;
+	public static WebElement getprimarySpecialityDrpdwn() {
+		return primarySpecialityDrpdwn;
+	}
+	@FindBy(xpath = "//div[text()='Pay Type']//following::ul/li[text()='Overtime']/..")
+	private static WebElement typeOfHrDrpdwn;
+	public static WebElement gettypeOfHrDrpdwn() {
+		return typeOfHrDrpdwn;
+	}
+	@FindBy(xpath = "//div[text()='Pay Type']//following::ul/li[text()='Yes']/..")
+	private static WebElement accumHrDrpdwn;
+	public static WebElement getaccumHrDrpdwn() {
+		return accumHrDrpdwn;
+	}
+	@FindBy(xpath = "//div[text()='Overhead Model Scenario Information']//following::ul/li[text()='Apr 2004 to Mar 2005']/..")
+	private static WebElement resultsStoredDrp;
+	public static WebElement getresultsStoredDrp() {
+		return resultsStoredDrp;
+	}
+	@FindBy(xpath = "(//div[text()='Overhead Model Scenario Information']//following::ul/li[text()='150 Marina Medical Center']/..)")
+	private static WebElement overheadEntitycode;
+	public static WebElement getoverheadEntitycode() {
+		return overheadEntitycode;
+	}
+	@FindBy(xpath = "(//div[text()='Overhead Model Scenario Information']//following::ul/li[text()='2010 NURSING ADMIN']/..)")
+	private static WebElement overheadDept;
+	public static WebElement getoverheadDept() {
+		return overheadDept;
+	}
+	@FindBy(xpath = "(//div[text()='Overhead Model Scenario Information']//following::ul/li[text()='*TOTEXP Total Expense']/..)")
+	private static WebElement overheadReceivingGLEntity;
+	public static WebElement getoverheadReceivingGLEntity() {
+		return overheadReceivingGLEntity;
+	}
+	@FindBy(xpath = "(//div[text()='Overhead Model Scenario Information']//following::ul/li[text()='Apr 2004 to Mar 2005']/..)[2]")
+	private static WebElement overheadResult;
+	public static WebElement getoverheadResult() {
+		return overheadResult;
+	}
+	
 }
