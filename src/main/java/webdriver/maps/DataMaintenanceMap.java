@@ -2415,5 +2415,54 @@ public class DataMaintenanceMap extends MapConfig {
 	public static WebElement getoverheadResult() {
 		return overheadResult;
 	}
-	
+	@FindBy(xpath = "(//div[text()='Overhead Account Variability Master']//following::ul/li[text()='ASESC-2060']/..)")
+	private static WebElement overheadDetMasterDrp;
+	public static WebElement getoverheadDetMasterDrp() {
+		return overheadDetMasterDrp;
+	}
+	@FindBy(xpath = "(//div[text()='Overhead Account Variability Master']//following::ul/li[text()='BCACCTHIERARCHY']/..)")
+	private static WebElement overheadGlAcctDrp;
+	public static WebElement getoverheadGlAcctDrp() {
+		return overheadGlAcctDrp;
+	}
+	@FindBy(xpath = "(//div[text()='Overhead Account Variability Assignment']//following::ul/li[text()='0000 PRIVATE PAY']/..)")
+	private static WebElement overheadOvhassignDrp;
+	public static WebElement getoverheadOvhassignDrp() {
+		return overheadOvhassignDrp;
+	}
+	@FindBy(xpath = "(//div[text()='Overhead Account Variability Assignment']//following::span[text()='Select'])[1]")
+	private static WebElement overheadOvhassignDeptGrp;
+	public static WebElement getoverheadOvhassignDeptGrp() {
+		return overheadOvhassignDeptGrp;
+	}
+	@FindBy(xpath = "(//div[text()='Overhead Account Variability Assignment']//following::span[text()='Select'])[2]")
+	private static WebElement overheadOvhassignGlGrp;
+	public static WebElement getoverheadOvhassignGlGrp() {
+		return overheadOvhassignGlGrp;
+	}
+	@FindBy(xpath = "(//div[text()='GL Statistic Master']//following::ul/li[text()='BCACCTHIERARCHY']/..)")
+	private static WebElement glstatisticDrp;
+	public static WebElement getglstatisticDrp() {
+		return glstatisticDrp;
+	}
+	@FindBy(xpath = "(//div[text()='GL Statistic Master']//following::ul/li[text()='ASESC-1832 Hospital Hierarchy']/..)")
+	private static WebElement glstatisticDeptDrp;
+	public static WebElement getglstatisticDeptDrp() {
+		return glstatisticDeptDrp;
+	}
+	@FindBy(xpath = "(//div[text()='Mappings']//following::ul/li[text()='<ALL>']/..)")
+	private static WebElement glstatisticEntityDrp;
+	public static WebElement getglstatisticEntityDrp() {
+		return glstatisticEntityDrp;
+	}
+	@FindBy(xpath = "(//div[text()='Mappings']//following::span[text()='Select'])[1]")
+	private static WebElement glDeptGrp;
+	public static WebElement getglDeptGrp() {
+		return glDeptGrp;
+	}
+	@FindBy(xpath = "(//div[text()='Mappings']//following::span[text()='Select'])[2]")
+	private static WebElement glStatisticGlGrp;
+	public static WebElement getglStatisticGlGrp() {
+		return glStatisticGlGrp;
+	}
 }
