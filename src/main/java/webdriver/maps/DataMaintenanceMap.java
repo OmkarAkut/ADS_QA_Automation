@@ -2465,4 +2465,45 @@ public class DataMaintenanceMap extends MapConfig {
 	public static WebElement getglStatisticGlGrp() {
 		return glStatisticGlGrp;
 	}
+	@FindBy(xpath = "(//div[text()='Medicare Locality']//following::div[contains(@class,'x-form-spinner-up-default')])")
+	private static WebElement localityNumberUpBtn;
+	public static WebElement getlocalityNumberUpBtn() {
+		return localityNumberUpBtn;
+	}
+	@FindBy(xpath = "(//div[text()='Medicare Locality']//following::div[contains(@class,'x-form-spinner-down-default')])")
+	private static WebElement localityNumberDwnBtn;
+	public static WebElement getlocalityNumberDwnBtn() {
+		return localityNumberDwnBtn;
+	}
+	@FindBy(name = "localityNumber")
+	private static WebElement localityNumberInput;
+	public static WebElement getlocalityNumberInput() {
+		return localityNumberInput;
+	}
+	@FindBy(name = "formulaString")
+	private static WebElement citeriaZipCode;
+	public static WebElement getciteriaZipCode() {
+		return citeriaZipCode;
+	}
+	@FindBy(xpath = "(//div[text()='Add Group Data']//following::span[text()='Select'])[1]")
+	private static WebElement employerGroupBtn;
+	public static WebElement getemployerGroupBtn() {
+		return employerGroupBtn;
+	}
+	@FindBy(xpath = "(//div[text()='Add Group Data']//following::span[text()='Select'])[2]")
+	private static WebElement employerSubGroupBtn;
+	public static WebElement getemployerSubGroupBtn() {
+		return employerSubGroupBtn;
+	}
+	@FindBy(xpath = "(//div[text()='Add Group Data']//following::span[text()='Select'])[3]")
+	private static WebElement memberDesignationBtn;
+	public static WebElement getmemberDesignationBtn() {
+		return memberDesignationBtn;
+	}
+	@FindBy(xpath = "//div[text()='Group Data Scenario']//following::ul")
+	private static WebElement groupFiscalYearDrp;
+	public static WebElement getgroupFiscalYearDrp() {
+		return groupFiscalYearDrp;
+	}
+	
 }

@@ -261,12 +261,16 @@ public class DoHelper extends DriverHelper {
 	}
 
 	public static void doClickButton(String buttonText) throws InterruptedException {
-		Thread.sleep(2000);
+		Thread.sleep(600);
 		waitForAjaxExtJs();
 		//      Omkar 27/03/2023 : Xpath change for 11.2
 		//      doClick(driver.findElement(By.xpath("//button/span[text()='"+buttonText+"']")));
-		doClick(driver.findElement(By.xpath("//span[text()='"+buttonText+"']")));
-		Thread.sleep(3000);
+		try {
+			doClick(driver.findElement(By.xpath("//span[text()='"+buttonText+"']")));
+		} catch (Exception e) {
+			doClick(driver.findElement(By.xpath("//label[text()='"+buttonText+"']")));
+		}
+		Thread.sleep(300);
 	}
 
 	public static void doClick(WebElement element) {
