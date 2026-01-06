@@ -2189,6 +2189,11 @@ public class DataMaintenanceMap extends MapConfig {
 	public static List<WebElement> getstatisticDataGrid() {
 		return statisticDataGrid;
 	}
+	@FindBy(xpath = "(//div[text()='Group Data'])[1]//following::div[contains(@class,'x-grid-scrollbar-clipper-locked')]//table")
+	private static List<WebElement> groupDataGrid;
+	public static List<WebElement> getgroupDataGrid() {
+		return groupDataGrid;
+	}
 	@FindBy(xpath = "//span[text()='Hours / Expenses']//following::ul")
 	private static WebElement hoursExpensesDrp;
 	public static WebElement gethoursExpensesDrp() {

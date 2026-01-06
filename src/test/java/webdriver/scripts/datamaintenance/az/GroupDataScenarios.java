@@ -62,12 +62,12 @@ public class GroupDataScenarios extends AzHelper{
 		}
 	}
 	public void addGroupDataPoints() throws Throwable, Throwable {
-		keyInInputWithDoubleClick(driver.findElement(By.xpath("((//div[text()='Staffing Data'])[1]//following::div//table[1]//td[2]/div)[2]")), generateRandomNumber());
+		keyInInputWithDoubleClick(driver.findElement(By.xpath("((//div[text()='Group Data'])[1]//following::div//table[1]//td[2]/div)[2]")), generateRandomNumber());
 		driver.findElement(By.xpath("(//div[text()='Group Data'])[1]//following::div//table[1]//td[1]/div")).click();
 		doClickButtons("Group Data", "Undo");
-		assertElementText(driver.findElement(By.xpath("((//div[text()='Group Data'])[1]//following::div//table[1]//td[2]/div)[2]")), " ", printout);
-		for(int i=2;i<driver.findElements(By.xpath("(//div[text()='Group Data']//following::div[contains(@class,'x-grid-scrollbar-clipper ')])[2]//table[1]//td/div")).size();i++) {
-			keyInInputWithDoubleClick(driver.findElement(By.xpath("((//div[text()='Staffing Data']//following::div[contains(@class,'x-grid-scrollbar-clipper ')])[2]//table[1]//td/div)["+i+"]")),generateRandomNumber());
+		assertElementText(driver.findElement(By.xpath("((//div[text()='Group Data'])[1]//following::div//table[1]//td[2]/div)[2]")), "0.00", printout);
+		for(int i=2;i<=driver.findElements(By.xpath("(//div[text()='Group Data']//following::div[contains(@class,'x-grid-scrollbar-clipper ')])[2]//table[1]//td/div")).size();i++) {
+			keyInInputWithDoubleClick(driver.findElement(By.xpath("((//div[text()='Group Data']//following::div[contains(@class,'x-grid-scrollbar-clipper ')])[2]//table[1]//td/div)["+i+"]")),generateRandomNumber());
 		}
 		String total=driver.findElement(By.xpath("(//div[text()='Group Data'])[1]//following::div//table[1]//td[1]/div")).getText();
 		int tot=Integer.parseInt(total);
@@ -77,9 +77,9 @@ public class GroupDataScenarios extends AzHelper{
 		else {fail();}
 		doClickButtons("Group Data", "Save Data");
 		//Delete
-		for(WebElement data:DataMaintenanceMap.getstatisticDataGrid()) {
+		for(WebElement data:DataMaintenanceMap.getgroupDataGrid()) {
 			try {
-				if(DataMaintenanceMap.getstatisticDataGrid().size()>0) {
+				if(DataMaintenanceMap.getgroupDataGrid().size()>0) {
 					data.click();
 					doClickButtons("Group Data", "Delete");
 					doClickButtons("Delete", "Delete");
@@ -111,7 +111,7 @@ public class GroupDataScenarios extends AzHelper{
 	public void test02ValidateAddGroupData() throws Throwable {
 		try {
 			doClick(DataMaintenanceMap.getazEditBtn());
-		doClickButton("Add");
+			doClickButton("Add");
 			waitForFormDialog("Add Group Data");
 			doClick(DataMaintenanceMap.getemployerGrpSelectBtn());
 			waitForFormDialog("Add Employer Group");
@@ -131,10 +131,10 @@ public class GroupDataScenarios extends AzHelper{
 			clickCheckboxByName("groupStatisticMasterId");
 			doDropdownSelectUsingOptionTextOnly(driver.findElement(By.xpath("(//div[text()='Add Group Data']//following::ul/li[text()='"+master+"']/..)")), master);
 			clickCheckboxByName("groupStatisticId");
-			doDropdownSelectUsingOptionTextOnly(driver.findElement(By.xpath("(//div[text()='Add Group Data']//following::ul/li[text()='"+statistic+"']/..)")), statistic);
+			doClick("(//div[text()='Add Group Data']//following::ul/li[text()='"+statistic+"']/..)");
 			doClickButtons("Add Group Data", "Add");
 			addGroupDataPoints();
-			
+			doClick(DataMaintenanceMap.getazCancelCloseBtn());
 			ExtentReport.logPass("PASS", "test02ValidateAddGroupData");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test02ValidateAddGroupData", driver, e);
@@ -142,24 +142,10 @@ public class GroupDataScenarios extends AzHelper{
 		}
 	}
 	@Test
-	public void test03ValidateDeleteGroupData() throws Throwable {
-		try {
-			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageDeleteBtn());
-			doClick(DataMaintenanceMap.getwarningDeleteBtn());
-			assertTextIsDisplayed("There is no data available to display.");
-			doClick(DataMaintenanceMap.getazSaveBtn());
-			doClick(DataMaintenanceMap.getazSaveCloseBtn());
-			ExtentReport.logPass("PASS", "test03ValidateDeleteGroupData");
-		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test03ValidateDeleteGroupData", driver, e);
-			fail(e.getMessage());
-		}
-	}
-	@Test
-	public void test04ValidateDeleteGroupDataScenario() throws Throwable {
+	public void test03ValidateDeleteGroupDataScenario() throws Throwable {
 		try {
 			doClick(DataMaintenanceMap.getazDeleteBtn());
-			doClick(DataMaintenanceMap.getwarningDeleteBtn());
+			doClick(DataMaintenanceMap.getmessageboxDeleteBtn());
 			assertTextIsDisplayed("There is no data available to display.");
 			ExtentReport.logPass("PASS", "test04ValidateDeleteGroupDataScenario");
 		} catch (Exception | AssertionError e) {
