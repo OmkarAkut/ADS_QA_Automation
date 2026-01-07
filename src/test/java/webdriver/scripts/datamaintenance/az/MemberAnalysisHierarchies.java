@@ -1,9 +1,7 @@
 package webdriver.scripts.datamaintenance.az;
 
 import static org.junit.Assert.fail;
-
 import java.text.SimpleDateFormat;
-
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
@@ -16,8 +14,6 @@ import webdriver.core.Login;
 import webdriver.helpers.AzHelper;
 import webdriver.helpers.CimHelper;
 import webdriver.helpers.ContractModelsHelper;
-import webdriver.maps.CimMap;
-import webdriver.maps.CostingMap;
 import webdriver.maps.DataMaintenanceMap;
 import webdriver.maps.DialogsMap;
 import webdriver.maps.mapbuilder.BuildMap;
@@ -36,8 +32,9 @@ public class MemberAnalysisHierarchies extends AzHelper{
 	static String rollUpdatedName="Updated"+name;
 	static String[] filter= {"Name","Is","Equal To",name};
 	static String rollUpLabel="Label"+name;
+	static String summaryRollUpLabel="RollUpLabel"+name;
 	String[] entities = { "0003 PRIVATE PAY INSUFF "};
-	
+	static String rollupSummary="1SMOKE1S Memb Analysis Hier";
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
 		ExtentReport.reportCreate("MemberAnalysisHierarchies", "webdriver.scripts.datamaintenance.maintaindata",
@@ -136,7 +133,90 @@ public class MemberAnalysisHierarchies extends AzHelper{
 			fail(e.getMessage());
 		}
 	}
-	
+	@Test
+	public void test06ValidateAddHierarchyDetailSummary() throws Throwable {
+		try {
+			doClick(DataMaintenanceMap.getazNewBtn());
+			keyInInputByName("name", name, "Member Analysis Hierarchy");
+			keyInInputByName("code", code, "Member Analysis Hierarchy");
+			keyInInputByName("detailrollupLabel", rollUpLabel, "Member Analysis Hierarchy");
+			doClickButton("Detail and Summary");
+			keyInInputByName("summaryrollupLabel", summaryRollUpLabel, "Member Analysis Hierarchy");
+			doClickButtons("Member Analysis Hierarchy", "Select");
+			ContractModelsHelper.selectMultipleColumnsToDisplay(entities);
+			doClick(DataMaintenanceMap.getapplyBtnInPopUp());
+			clickCheckboxByName("sharedLog");
+			doClick(DataMaintenanceMap.getazSaveBtn());
+			doClick(DataMaintenanceMap.getazSaveCloseBtn());
+			doClick(DataMaintenanceMap.getazClearFilterBtn());
+			doClick(DataMaintenanceMap.getazFilterBtn());
+			doFilterCreate(filter);
+			assertTextIsDisplayed(name);
+			assertTextIsDisplayed(code);
+			assertTextIsDisplayed("Detail and Summary");
+			assertTextIsDisplayed(rollUpLabel);
+			assertTextIsDisplayed(summaryRollUpLabel);
+			ExtentReport.logPass("PASS", "test06ValidateAddHierarchyDetailSummary");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test06ValidateAddHierarchyDetailSummary", driver, e);
+			fail(e.getMessage());
+		}
+	}
+	@Test
+	public void test07ValidateAddDetailRollUp() throws Throwable {
+		try {
+			doClick(DataMaintenanceMap.getazEditBtn());
+			driverDelay();
+			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageNewBtn());
+			keyInInputByName("code", rollUpCode, "Detail Rollup");
+			keyInInputByName("name", rollUpName, "Detail Rollup");
+			clickCheckboxByName("summaryMappingObjectId");
+			doDropdownSelectUsingOptionTextOnly(driver.findElement(By.xpath("(//div[text()='Detail Rollup']//following::ul/li[text()='"+rollupSummary+"']/..)")), rollupSummary);
+			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageSaveCreateNewBtn());
+			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageCancelCloseBtn());
+			assertTextIsDisplayed(rollUpCode);
+			assertTextIsDisplayed(rollUpName);
+			doClick("(//div[text()='"+rollUpLabel+"']//following::a[contains(@class,'x-btn')]//span[text()='Delete'])[2]");
+			doClick(DataMaintenanceMap.getwarningDeleteBtn());
+			doClick("(//*[contains(@id, 'header-title')][text()='"+rollUpLabel+"']/parent::div/following-sibling::div)[2]");
+			ExtentReport.logPass("PASS", "test07ValidateAddDetailSummary");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test07ValidateAddDetailSummary", driver, e);
+			fail(e.getMessage());
+		}
+	}
+	@Test
+	public void test08ValidateAddSummaryRollUp() throws Throwable {
+		try {
+			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageNewBtn());
+			keyInInputByName("code", rollUpCode, "Summary Rollup");
+			keyInInputByName("name", rollUpName, "Summary Rollup");
+			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageSaveCreateNewBtn());
+			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageCancelCloseBtn());
+			assertTextIsDisplayed(rollUpCode);
+			assertTextIsDisplayed(rollUpName);
+			doClick("(//div[text()='"+summaryRollUpLabel+"']//following::a[contains(@class,'x-btn')]//span[text()='Delete'])[3]");
+			doClick(DataMaintenanceMap.getwarningDeleteBtn());
+			doClick(DataMaintenanceMap.getazSaveCloseBtn());
+
+			ExtentReport.logPass("PASS", "test08ValidateAddSummaryRollUp");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test08ValidateAddSummaryRollUp", driver, e);
+			fail(e.getMessage());
+		}
+	}
+	@Test
+	public void test09DeleteMemberDetailOnlyHierarchy() throws Throwable {
+		try {
+			doClick(DataMaintenanceMap.getazDeleteBtn());
+			doClick(DataMaintenanceMap.getwarningDeleteBtn());
+			assertTextIsDisplayed("There is no data available to display.");
+			ExtentReport.logPass("PASS", "test07DeleteMemberDetailOnlyHierarchy");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test07DeleteMemberDetailOnlyHierarchy", driver, e);
+			fail(e.getMessage());
+		}
+	}
 	@AfterClass
 	public static void endtest() throws Exception {
 		ExtentReport.report.flush();
