@@ -89,8 +89,18 @@ public class AzHelper extends CalculationHelper{
 								doClick("(//span[text()='"+scenarioName+"']//following::div[contains(@class,'x-btn')]//span[text()='"+buttonName+"'])[1]");
 								driverDelay(300);
 							} catch (NoSuchElementException e5) {
-								doClick("(//label[text()='"+scenarioName+"']//following::div[contains(@class,'x-btn')]//span[text()='"+buttonName+"'])[1]");
-								driverDelay(300);
+								try {
+									doClick("(//label[text()='"+scenarioName+"']//following::div[contains(@class,'x-btn')]//span[text()='"+buttonName+"'])[1]");
+									driverDelay(300);
+								} catch (NoSuchElementException e6) {
+									try {
+										doClick("(//h1[text()='"+scenarioName+"']//following::a[contains(@class,'x-btn')]//span[text()='"+buttonName+"'])[1]");
+										driverDelay(300);
+									} catch (NoSuchElementException e7) {
+										doClick("(//h1[text()='"+scenarioName+"']//following::div[contains(@class,'x-toolbar')]//span[text()='"+buttonName+"'])[1]");
+										driverDelay(300);
+									}
+								}
 							}
 						}
 					}
@@ -265,6 +275,10 @@ public class AzHelper extends CalculationHelper{
 	public void selectDropdownOption(String inputName,WebElement element,String option) throws Throwable {
 		clickCheckboxByName(inputName);
 		doDropdownSelectUsingOptionTextOnly(element,option);
+	}
+	public void selectDropdown(String option,String scenarioName) throws Throwable {
+		doDropdownSelectUsingOptionTextOnly(driver.findElement(By.xpath("(//div[text()='"+scenarioName+"']//following::ul/li[text()='"+option+"']/..)")), option);
+
 	}
 }
 	

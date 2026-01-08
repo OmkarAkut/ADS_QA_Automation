@@ -33,6 +33,7 @@ public class MedicalServiceAssignments extends AzHelper{
 	static String orderIndex="3";
 	static String updatedOrderIndex="6";
 	static String[] chargeCode={"000001  Charge Code 000001  <None>  TBCHGMSTRADLPT  2010  NURSING ADMIN  DM"};
+	static String[] calcFilter= {"Scenario Name","Is","Equal To",name};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
 		ExtentReport.reportCreate("MedicalServiceAssignments", "webdriver.scripts.datamaintenance.maintaindata",
@@ -79,6 +80,20 @@ public class MedicalServiceAssignments extends AzHelper{
 		try {
 			doClick(DataMaintenanceMap.getazEditBtn());
 			driverDelay();
+			doClickButton("Assign");
+			doFilterCalculationPage(calcFilter);
+			waitForFirstRowCalculationBarToReach100Percent();
+			calculationStatusPageOpenViewDialog();
+			confirmCalculationStatusDetailsContains("Process Completed");
+			closeViewDialog();
+			doClosePageOnLowerBar("Calculation Status");
+			doClickButton("Clear Results");
+			doFilterCalculationPage(calcFilter);
+			waitForFirstRowCalculationBarToReach100Percent();
+			calculationStatusPageOpenViewDialog();
+			confirmCalculationStatusDetailsContains("Process Completed");
+			closeViewDialog();
+			doClosePageOnLowerBar("Calculation Status");
 			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageNewBtn());
 			keyInInputByName("name", medService, "Medical Service");
 			doClickButtons("Medical Service", "Select");
@@ -99,6 +114,7 @@ public class MedicalServiceAssignments extends AzHelper{
 	public void test03ValidateEditMedicalServices() throws Throwable {
 		try {
 			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageEditBtn());
+			
 			keyInInputByName("orderIndex", updatedOrderIndex, "Medical Service");
 			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageSaveBtn());
 			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageSaveCloseBtn());
@@ -112,9 +128,10 @@ public class MedicalServiceAssignments extends AzHelper{
 	@Test
 	public void test04ValidateDeleteMedicalService() throws Throwable {
 		try {
-			doClickButton("Delete");
+			doClickButtons("Medical Services", "Delete");
 			doClick(DataMaintenanceMap.getwarningDeleteBtn());
 			assertTextIsDisplayed("There is no data available to display.");
+			doClick(DataMaintenanceMap.getazCancelCloseBtn());
 			ExtentReport.logPass("PASS", "test03ValidateEditMedicalServices");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test03ValidateEditMedicalServices", driver, e);
