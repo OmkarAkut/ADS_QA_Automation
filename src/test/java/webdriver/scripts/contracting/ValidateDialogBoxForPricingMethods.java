@@ -16,6 +16,7 @@ import webdriver.helpers.ContractModelsHelper;
 import webdriver.maps.ContractingMap;
 import webdriver.maps.mapbuilder.BuildMap;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
+//Issue ADS-23887
 public class ValidateDialogBoxForPricingMethods extends GoHelper{
 	private static ContractingMap modelMap;
 	static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
@@ -147,10 +148,8 @@ public class ValidateDialogBoxForPricingMethods extends GoHelper{
 			doClick(ContractingMap.getContractModelRiskLimiterMessageBoxCancelCloseBtn());
 			ExtentReport.logPass("PASS", "test01ValidatePricingMethodDialogforExistingContractModel_ADS_12500");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test01ValidatePricingMethodDialogforExistingContractModel_ADS_12500", driver,
-					e);
+			ExtentReport.logFail("FAIL", "test01ValidatePricingMethodDialogforExistingContractModel_ADS_12500", driver,e);
 			fail(e.getMessage());
-
 		}
 	}
 	@Test

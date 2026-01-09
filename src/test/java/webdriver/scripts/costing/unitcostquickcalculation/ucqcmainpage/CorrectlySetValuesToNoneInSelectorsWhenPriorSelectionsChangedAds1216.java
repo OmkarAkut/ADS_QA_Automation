@@ -59,7 +59,7 @@ public class CorrectlySetValuesToNoneInSelectorsWhenPriorSelectionsChangedAds121
       assertElementIsEnabled(costingMap.getUnitCostQuickCalculationButtonSelect(),printout);
       selectDepartment(dept);
       assertElementIsEnabled(costingMap.getUnitCostQuickCalculationFieldResultsStoredFor(),printout);
-      doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationFieldResultsStoredFor(),costingMap.getUnitCostQuickCalculationDropdownResultsStoredForMenuList(),"Jan 2005 to Mar 2005");
+      doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationFieldResultsStoredFor(),costingMap.getUnitCostQuickCalculationDropdownResultsStoredForMenuList(),"Jan 2005 to Jan 2005");
       assertElementIsEnabled(costingMap.getUnitCostQuickCalculationButtonApplySelections(),printout);
       ExtentReport.logPass("PASS", "test01setUcqcCriteriaAndAssertRelevantDropdownsAreEnabled");
     } catch (Exception|AssertionError e) {
@@ -97,7 +97,7 @@ public class CorrectlySetValuesToNoneInSelectorsWhenPriorSelectionsChangedAds121
       assertElementIsEnabled(costingMap.getUnitCostQuickCalculationButtonSelect(),printout);
       selectDepartment(dept);
       assertElementIsEnabled(costingMap.getUnitCostQuickCalculationFieldResultsStoredFor(),printout);
-      doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationFieldResultsStoredFor(),costingMap.getUnitCostQuickCalculationDropdownResultsStoredForMenuList(),"Jan 2005 to Mar 2005");
+      doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationFieldResultsStoredFor(),costingMap.getUnitCostQuickCalculationDropdownResultsStoredForMenuList(),"Jan 2005 to Jan 2005");
       assertElementIsEnabled(costingMap.getUnitCostQuickCalculationButtonApplySelections(),printout);
       ExtentReport.logPass("PASS", "test03ResetCriteriaAndAssertRelevantDropdownsAreEnabled");
     } catch (Exception|AssertionError e) {
@@ -131,7 +131,7 @@ public class CorrectlySetValuesToNoneInSelectorsWhenPriorSelectionsChangedAds121
       assertElementIsEnabled(costingMap.getUnitCostQuickCalculationButtonSelect(),printout);
       selectDepartment(dept);
       assertElementIsEnabled(costingMap.getUnitCostQuickCalculationFieldResultsStoredFor(),printout);
-      doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationFieldResultsStoredFor(),costingMap.getUnitCostQuickCalculationDropdownResultsStoredForMenuList(),"Jan 2005 to Mar 2005");
+      doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationFieldResultsStoredFor(),costingMap.getUnitCostQuickCalculationDropdownResultsStoredForMenuList(),"Jan 2005 to Jan 2005");
       assertElementIsEnabled(costingMap.getUnitCostQuickCalculationButtonApplySelections(),printout);
       ExtentReport.logPass("PASS", "test05ResetCriteriaAndAndAssertRelevantDropdownsAreEnabled");
     } catch (Exception|AssertionError e) {
@@ -163,7 +163,7 @@ public class CorrectlySetValuesToNoneInSelectorsWhenPriorSelectionsChangedAds121
       assertElementIsEnabled(costingMap.getUnitCostQuickCalculationButtonSelect(),printout);
       selectDepartment(dept);
       assertElementIsEnabled(costingMap.getUnitCostQuickCalculationFieldResultsStoredFor(),printout);
-      doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationFieldResultsStoredFor(),costingMap.getUnitCostQuickCalculationDropdownResultsStoredForMenuList(),"Jan 2005 to Mar 2005");
+      doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationFieldResultsStoredFor(),costingMap.getUnitCostQuickCalculationDropdownResultsStoredForMenuList(),"Jan 2005 to Jan 2005");
       assertElementIsEnabled(costingMap.getUnitCostQuickCalculationButtonApplySelections(),printout);
       ExtentReport.logPass("PASS", "test07ResetCriteriaAndAssertRelevantDropdownsAreEnabled");
     } catch (Exception|AssertionError e) {
@@ -193,7 +193,7 @@ public class CorrectlySetValuesToNoneInSelectorsWhenPriorSelectionsChangedAds121
     try {
       selectDepartment(dept);
       assertElementIsEnabled(costingMap.getUnitCostQuickCalculationFieldResultsStoredFor(),printout);
-      doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationFieldResultsStoredFor(),costingMap.getUnitCostQuickCalculationDropdownResultsStoredForMenuList(),"Jan 2005 to Mar 2005");
+      doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationFieldResultsStoredFor(),costingMap.getUnitCostQuickCalculationDropdownResultsStoredForMenuList(),"Jan 2005 to Jan 2005");
       assertElementIsEnabled(costingMap.getUnitCostQuickCalculationButtonApplySelections(),printout);
       ExtentReport.logPass("PASS", "test09ResetCriteriaAndAssertRelevantDropdownsAreEnabled");
     } catch (Exception|AssertionError e) {
@@ -222,7 +222,7 @@ public class CorrectlySetValuesToNoneInSelectorsWhenPriorSelectionsChangedAds121
   @Test
   public void test11ResetCriteriaAndAssertRelevantDropdownsAreEnabled() throws Throwable {
     try {
-      doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationFieldResultsStoredFor(),costingMap.getUnitCostQuickCalculationDropdownResultsStoredForMenuList(),"Jan 2005 to Mar 2005");
+      doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationFieldResultsStoredFor(),costingMap.getUnitCostQuickCalculationDropdownResultsStoredForMenuList(),"Jan 2005 to Jan 2005");
       assertElementIsEnabled(costingMap.getUnitCostQuickCalculationButtonApplySelections(),printout);
       ExtentReport.logPass("PASS", "test11ResetCriteriaAndAssertRelevantDropdownsAreEnabled");
     } catch (Exception|AssertionError e) {
@@ -259,7 +259,7 @@ public class CorrectlySetValuesToNoneInSelectorsWhenPriorSelectionsChangedAds121
       assertElementIsEnabled(costingMap.getUnitCostQuickCalculationButtonSelect(),printout);
       selectDepartment(dept);
       assertElementIsEnabled(costingMap.getUnitCostQuickCalculationFieldResultsStoredFor(),printout);
-      doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationFieldResultsStoredFor(),costingMap.getUnitCostQuickCalculationDropdownResultsStoredForMenuList(),"Jan 2005 to Mar 2005");
+      doDropdownSelectUsingOptionText(costingMap.getUnitCostQuickCalculationFieldResultsStoredFor(),costingMap.getUnitCostQuickCalculationDropdownResultsStoredForMenuList(),"Jan 2005 to Jan 2005");
       assertElementIsEnabled(costingMap.getUnitCostQuickCalculationButtonApplySelections(),printout);
       ExtentReport.logPass("PASS", "test13ResetCriteriaAndAssertRelevantDropdownsAreEnabled");
     } catch (Exception|AssertionError e) {

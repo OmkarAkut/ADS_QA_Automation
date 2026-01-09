@@ -19,9 +19,9 @@ import webdriver.maps.mapbuilder.BuildMap;
 public class ValidateCalculateForContractModel extends CalculationHelper{
 	private static ContractingMap modelMap;
 	static ContractModelsHelper contractModelsHelper = new ContractModelsHelper();
-	CreateANewContractModel model=new CreateANewContractModel();
+	static CreateANewContractModel model=new CreateANewContractModel();
 	static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
-	static String contractModelName;
+	static String contractModelName ="Contract Model" + currentDateTime;;
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
 		

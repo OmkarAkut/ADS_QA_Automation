@@ -25,35 +25,30 @@ import webdriver.scripts.reporting.ReportingTestSuite;
 import webdriver.scripts.security.ucqcroles.UcqcRoleBasedTestSuite;
 import webdriver.scripts.status.calculationstatus.CalculationStatusSuite;
 import webdriver.scripts.systemmaintenance.SystemMaintenanceTestSuite;
-
-
-
-
-
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-//
-//	TestSuiteForCIM.class,
-//	TestSuiteForAE.class,
-//	CostingTestSuite.class,
-//	ContractingSuite.class,
+
+	TestSuiteForCIM.class,
+	TestSuiteForAE.class,
+	CostingTestSuite.class,
+	ContractingSuite.class,
 	MaintaindataTestSuite.class,
 	GeneralCalculationsTestSuite.class,
-//	SystemMaintenanceTestSuite.class,
-//	EpisodesTestSuite.class,
-//	ReportingTestSuite.class,
-//	UtilitiesTestSuite.class,
-//	PagetestsSuite.class,
-//	HelpSuite.class,
-//	ChecktestsSuite.class,
-//	CostingCalculationsTestSuite.class,
-//	CostingModelsTestSuite.class,
-//	CalculationStatusSuite.class,
-//	UnitCostQuickCalculationSuite.class,
-//	UcqcMainpageTestSuite.class,
-//	UcqcRvusSuite.class,
-//	UcqcRoleBasedTestSuite.class,
-//	UcqcCalculationTestSuite.class,
+	SystemMaintenanceTestSuite.class,
+	EpisodesTestSuite.class,
+	ReportingTestSuite.class,
+	UtilitiesTestSuite.class,
+	PagetestsSuite.class,
+	HelpSuite.class,
+	ChecktestsSuite.class,
+	CostingCalculationsTestSuite.class,
+	CostingModelsTestSuite.class,
+	CalculationStatusSuite.class,
+	UnitCostQuickCalculationSuite.class,
+	UcqcMainpageTestSuite.class,
+	UcqcRvusSuite.class,
+	UcqcRoleBasedTestSuite.class,
+	UcqcCalculationTestSuite.class,
 
 	
 })
