@@ -37,8 +37,8 @@ public class Login extends Driver {
 
 	public static void loginUser(String user) throws Exception {
 		if (testEnvironment.contains("auto")) {
-			username = UsersQaAutomation.valueOf(user).getUsername();
-			password = UsersQaAutomation.valueOf(user).getPassword();
+			username = Usersqa3.valueOf(user).getUsername();
+			password = Usersqa3.valueOf(user).getPassword();
 		} else if (testEnvironment.contains("evolve")) {
 			username = UsersEvolve.valueOf(user).getUsername();
 			password = UsersEvolve.valueOf(user).getPassword();
@@ -66,7 +66,7 @@ public class Login extends Driver {
 		} else if (testEnvironment.contains("qaprod")) {
 			username = Usersqa3.valueOf(user).getUsername();
 			password = Usersqa3.valueOf(user).getPassword();
-		} else if (testEnvironment.contains("qastage")) {
+		} else if (testEnvironment.contains("qaauto")) {
 			username = Usersqa3.valueOf(user).getUsername();
 			password = Usersqa3.valueOf(user).getPassword();
 		}else if (testEnvironment.contains("qaapp")) {
