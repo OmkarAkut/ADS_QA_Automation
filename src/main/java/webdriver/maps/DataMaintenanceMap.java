@@ -1286,6 +1286,10 @@ public class DataMaintenanceMap extends MapConfig {
 	private static WebElement azCancelCloseBtn;
 	public static WebElement getazCancelCloseBtn() {return azCancelCloseBtn;}
 	
+	@FindBy(xpath = "//div[contains(@id,'toolbar')]//following::span[text()='Calculate']")
+	private static WebElement azCalculateBtn;
+	public static WebElement getazCalculateBtn() {return azCalculateBtn;}
+	
 	@FindBy(xpath = "//div[contains(@class,'fixDisableOpacityGL ')]//following::span[text()='Import']")
 	private static WebElement adHocImportBtn;
 	public static WebElement getadHocImportBtn() {return adHocImportBtn;}
@@ -1879,6 +1883,11 @@ public class DataMaintenanceMap extends MapConfig {
 	private static WebElement careDeliverySelectBtn;
 	public static WebElement getcareDeliverySelectBtn() {
 		return careDeliverySelectBtn;
+	}
+	@FindBy(xpath = "(//label[text()='Care Delivery Facilities']//following::span[text()='Select'])[1]")
+	private static WebElement careDeliveryFacilitySelectBtn;
+	public static WebElement getcareDeliveryFacilitySelectBtn() {
+		return careDeliveryFacilitySelectBtn;
 	}
 	@FindBy(xpath = "(//span[text()='Destination Reimbursement Scenario']//following::ul)[2]")
 	private static WebElement destReimburseScenario;
@@ -2510,5 +2519,79 @@ public class DataMaintenanceMap extends MapConfig {
 	public static WebElement getgroupFiscalYearDrp() {
 		return groupFiscalYearDrp;
 	}
-	
+	@FindBy(xpath = "//div[text()='GL Data Scenario']//following::ul")
+	private static WebElement glFiscalYearDrp;
+	public static WebElement getglFiscalYearDrp() {
+		return glFiscalYearDrp;
+	}
+	@FindBy(xpath = "(//div[text()='Price List Calculation Scenario']//following::ul/li[text()='150FY02  Marina Hosp Price List FY02']/..)")
+	private static WebElement priceListDrp;
+	public static WebElement getpriceListDrp() {
+		return priceListDrp;
+	}
+	@FindBy(xpath = "(//div[text()='Price List Calculation Scenario']//following::ul/li[text()='200FY03  Southgate Price List FY03']/..)")
+	private static WebElement priceListDrpdown;
+	public static WebElement getpriceListDrpdown() {
+		return priceListDrpdown;
+	}
+	@FindBy(xpath = "(//div[text()='Results Destination']//following::a[contains(@class,'x-btn')]//span[text()='New'])[1]")
+	private static WebElement priceItemNewBtn;
+	public static WebElement getpriceItemNewBtn() {
+		return priceItemNewBtn;
+	}
+	@FindBy(xpath = "(//div[text()='Results Destination']//following::a[contains(@class,'x-btn')]//span[text()='New'])[2]")
+	private static WebElement priceListNewBtn;
+	public static WebElement getpriceListNewBtn() {
+		return priceListNewBtn;
+	}
+	@FindBy(xpath = "(//div[text()='Price List']//following::div[contains(@class,'x-toolbar')]//span[text()='Save & Close'])[2]")
+	private static WebElement priceListSaveBtn;
+	public static WebElement getpriceListSaveBtn() {
+		return priceListSaveBtn;
+	}
+	@FindBy(xpath = "(//div[text()='Price Change']//following::span[text()='Select'])[1]")
+	private static WebElement priceChangeDeptGrp;
+	public static WebElement getpriceChangeDeptGrp() {
+		return priceChangeDeptGrp;
+	}
+	@FindBy(xpath = "(//div[text()='Price Change']//following::span[text()='Select'])[2]")
+	private static WebElement priceChangeChargeActivity;
+	public static WebElement getpriceChangeChargeActivity() {
+		return priceChangeChargeActivity;
+	}
+	@FindBy(xpath = "(//label[text()='Encounter Types']//following::span[text()='Select'])[1]")
+	private static WebElement encountertypeSelectBtn;
+	public static WebElement getencountertypeSelectBtn() {
+		return encountertypeSelectBtn;
+	}
+	@FindBy(xpath = "(//span[text()='Entities']//following::div[contains(@class,'x-btn')]//span[text()='Select'])[1]")
+	private static WebElement glEntitiesSelectBtn;
+	public static WebElement getglEntitiesSelectBtn() {
+		return glEntitiesSelectBtn;
+	}
+	@FindBy(xpath = "(//div[text()='Entities']//following::a[contains(@class,'x-btn')]//span[text()='Select'])[1]")
+	private static WebElement glDeptSelectBtn;
+	public static WebElement getglDeptSelectBtn() {
+		return glDeptSelectBtn;
+	}
+	@FindBy(xpath = "(//div[text()='Entities']//following::a[contains(@class,'x-btn')]//span[text()='Select'])[2]")
+	private static WebElement glGlAcctSelectBtn;
+	public static WebElement getglGlAcctSelectBtn() {
+		return glGlAcctSelectBtn;
+	}
+	@FindBy(xpath = "(//div[text()='General Ledger Adjustment']//following::span[text()='Select'])[1]")
+	private static WebElement glGlMasterDeptSelectBtn;
+	public static WebElement getglGlMasterDeptSelectBtn() {
+		return glGlMasterDeptSelectBtn;
+	}
+	@FindBy(xpath = "(//div[text()='General Ledger Adjustment']//following::span[text()='Select'])[2]")
+	private static WebElement glMasterGlAcctSelectBtn;
+	public static WebElement getglMasterGlAcctSelectBtn() {
+		return glMasterGlAcctSelectBtn;
+	}
+	@FindBy(xpath = "//div[text()='General Ledger Adjustment']//following::textarea[@name='comments']")
+	private static WebElement glMasterGlAcctCommentSec;
+	public static WebElement getglMasterGlAcctCommentSec() {
+		return glMasterGlAcctCommentSec;
+	}
 }

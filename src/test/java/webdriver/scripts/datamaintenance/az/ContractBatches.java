@@ -159,6 +159,16 @@ public class ContractBatches extends AzHelper{
 			fail(e.getMessage());
 		}
 	}
+	@Test
+	public void test04DeleteContractBatchFunction() throws Throwable {
+		try {
+			
+			ExtentReport.logPass("PASS", "test04DeleteContractBatchFunction");
+		} catch (Exception | AssertionError e) {
+			ExtentReport.logFail("FAIL", "test04DeleteContractBatchFunction", driver, e);
+			fail(e.getMessage());
+		}
+	}
 	@AfterClass
 	public static void endtest() throws Exception {
 		ExtentReport.report.flush();

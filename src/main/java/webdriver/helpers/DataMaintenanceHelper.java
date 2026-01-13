@@ -202,6 +202,7 @@ public class DataMaintenanceHelper extends GoHelper {
 		multimap.put("Charge Code", "99231");
 		multimap.put("Charge Code", "4034112");
 		multimap.put("Charge Code", "4059358");
+//		multimap.put("Charge Code", "4085833");
 		multimap.put("Charge Code", "2772325");
 		multimap.put("Charge Code", "2783728");
 		multimap.put("Charge Code", "4059234");
@@ -240,7 +241,7 @@ public class DataMaintenanceHelper extends GoHelper {
 					doFilterSetFilterParameters("Department Code", "Is", "Equal To", "2342");
 					doClick(dialog.getFilterDialogButtonAdd());
 					waitForAjaxExtJs();
-					doFilterSetFilterParameters("Charge Code", "Is", "Equal To", "4059358");
+					doFilterSetFilterParameters("Charge Code", "Is", "Equal To", "2772325");
 
 				} else if (entry.getValue().equals("2783728")) {
 					doFilterSetFilterParameters("Department Code", "Is", "Equal To", "3010");
@@ -322,9 +323,9 @@ public class DataMaintenanceHelper extends GoHelper {
 			doClick(dialog.getFilterDialogButtonAdd());
 			waitForAjaxExtJs();
 			doClick(dialog.getFilterDialogButtonApplyFilter());
-			waitForSpinnerToEnd();
+			driverDelay();
 			List<WebElement> listCode = DataMaintenanceMap.getPriceItemDeptCode();
-			for (int i = 2; i <= listCode.size(); i++) {
+			for (int i = 1; i <= listCode.size(); i++) {
 				String deptCode = "//span[text()='Department Code']//following::div[contains(@id,'dynamicGrid')]//table//tr["
 						+ i + "]/td[2]/div";
 				if (driver.findElement(By.xpath(deptCode)).getText().equals("1111")) {

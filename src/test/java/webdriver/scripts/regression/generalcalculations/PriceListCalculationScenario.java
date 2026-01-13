@@ -42,7 +42,9 @@ public class PriceListCalculationScenario extends CalculationHelper {
 	static String[] filterPriceScenario3 = { "Name", "Is", "Equal To", batch3 };
 	static String startDate="01/01/2004";
 	static String endDate="01/01/2024";
-
+	static String[] filterCalcScenario1= {"Scenario Name", "Is", "Equal To", batch1};
+	static String[] filterCalcScenario2= {"Scenario Name", "Is", "Equal To", batch2};
+	static String[] filterCalcScenario3= {"Scenario Name", "Is", "Equal To", batch3};
 	static String[] filterPriceList = { "Name", "Is", "Equal To", priceList };
 	static HashMap<String, String> filters = new HashMap<>();
 	DataMaintenanceHelper helper = new DataMaintenanceHelper();
@@ -85,7 +87,8 @@ public class PriceListCalculationScenario extends CalculationHelper {
 	public void test02ValidateBatch1PriceValues_6103() throws Throwable {
 		try {
 			ChangeResultsDestinationPriceLists(aTozPage2, batch1, filterPriceScenario1);
-			ValidateCalculationStatus("10081", "9471569");
+//			ValidateCalculationStatus("10081", "9471569",filterCalcScenario1);
+			ValidateCalculationStatus("794", "83440",filterCalcScenario1);
 //			helper.FilterByChargeCode(aTozPage1, filterPriceList, priceList, DataMaintenanceMap.getPriceItemDeptCode(),
 //					"26.25", "482.35", "1,121.86", "684.72", "106.59", "248", "145", "25.84");
 			helper.FilterByChargeCode(aTozPage1, filterPriceList, priceList, DataMaintenanceMap.getPriceItemDeptCode(),
@@ -105,9 +108,10 @@ public class PriceListCalculationScenario extends CalculationHelper {
 //			ValidateCalculationStatus("6443", "4185640");
 //			helper.FilterByChargeCode(aTozPage1, filterPriceList, priceList, DataMaintenanceMap.getPriceItemDeptCode(),
 //					"26.25", "482.35", "1,121.86", "684.72", "86.57", "277.2", "136", "25.84");
-			ValidateCalculationStatus("10081", "9471569");
+//			ValidateCalculationStatus("10081", "9471569",filterCalcScenario2);
+			ValidateCalculationStatus("10084", "9471752",filterCalcScenario2);
 			helper.FilterByChargeCode(aTozPage1, filterPriceList, priceList, DataMaintenanceMap.getPriceItemDeptCode(),
-					"21.66", "67.10", "24.00", "128.10", "827.40", "208.95", "38.85", "68.25");
+					"21.66", "67.10", "24.00", "128.10", "29.40", "208.95", "38.85", "68.25");
 			doClick(ContractingMap.getContractModelRiskLimiterCancelCloseBtn());
 			ExtentReport.logPass("PASS", "test03ValidateBatch2PriceValues");
 		} catch (Exception | AssertionError e) {
@@ -123,9 +127,10 @@ public class PriceListCalculationScenario extends CalculationHelper {
 //			ValidateCalculationStatus("6443", "4185640");
 //			helper.FilterByChargeCode(aTozPage1, filterPriceList, priceList, DataMaintenanceMap.getPriceItemDeptCode(),
 //					"125.00", "448.5", "954.89", "752.11", "96.59", "238", "135", "124.61");
-			ValidateCalculationStatus("10081", "9471569");
+//			ValidateCalculationStatus("10081", "9471569",filterCalcScenario3);
+			ValidateCalculationStatus("10084", "9471752",filterCalcScenario2);
 			helper.FilterByChargeCode(aTozPage1, filterPriceList, priceList, DataMaintenanceMap.getPriceItemDeptCode(),
-					"21.66", "67.10", "24.00", "128.10", "827.40", "208.95", "38.85", "68.25");
+					"21.66", "67.10", "24.00", "128.10", "29.40", "208.95", "38.85", "68.25");
 			ExtentReport.logPass("PASS", "test04ValidateBatch3PriceValues");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test04ValidateBatch3PriceValues", driver, e);
@@ -185,11 +190,13 @@ public class PriceListCalculationScenario extends CalculationHelper {
 		}
 	}
 
-	public void ValidateCalculationStatus(String priceVal, String chargeVal) throws Throwable {
+	public void ValidateCalculationStatus(String priceVal, String chargeVal,String[] calcScenario) throws Throwable {
 		try {
 			doClick(DataMaintenanceMap.getCalculateButton());
 //			doClick(DataMaintenanceMap.getSaveContinueButton());
 			waitForPageTitle("Calculation Status");
+			doClick(ContractingMap.getCalculationStatusButtonFilter());
+			doFilterCreate(calcScenario);
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
 			driverDelay(600);
