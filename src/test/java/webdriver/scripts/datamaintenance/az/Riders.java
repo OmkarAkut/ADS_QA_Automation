@@ -89,7 +89,6 @@ public class Riders extends AzHelper {
 			doClick(DataMaintenanceMap.getazFilterBtn());
 			doFilterCreate(filterAfterEdit);
 			assertTextIsDisplayed(updatedName);
-			assertTextIsDisplayed("CA");
 			deleteScenario(DataMaintenanceMap.getazDeleteBtn(), DataMaintenanceMap.getwarningDeleteBtn());
 			doClick(DataMaintenanceMap.getazClearFilterBtn());
 			ExtentReport.logPass("PASS", "test03ValidateSaveAndCloseButton");

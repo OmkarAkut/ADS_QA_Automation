@@ -86,6 +86,7 @@ public class UserDefinedFieldsAndRelations extends AzHelper{
 			doClick(DataMaintenanceMap.getazEditBtn());
 			keyInInputByName("description", "ADS", "User Defined Relation");
 			doClick(DataMaintenanceMap.getazSaveBtn());
+			driverDelay();
 			doClickButtons("Warning", "OK");
 			doClick(DataMaintenanceMap.getazCancelCloseBtn());
 			ExtentReport.logPass("PASS", "test02AssignReimburseAssignment");

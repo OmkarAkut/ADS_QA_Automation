@@ -71,6 +71,7 @@ public class PriceList extends AzHelper{
 			doClick(DataMaintenanceMap.getazEditBtn());
 			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageNewBtn());
 			doClickButtons("New Price Item", "Select");
+			driverDelay();
 			selectFormItem(chargeableActivity, "");
 			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageSaveCreateNewBtn());
 			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageCancelCloseBtn());

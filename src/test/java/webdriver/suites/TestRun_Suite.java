@@ -17,6 +17,7 @@ import webdriver.scripts.costing.unitcostquickcalculation.UnitCostQuickCalculati
 import webdriver.scripts.costing.unitcostquickcalculation.ucqccalculation.UcqcCalculationTestSuite;
 import webdriver.scripts.costing.unitcostquickcalculation.ucqcmainpage.UcqcMainpageTestSuite;
 import webdriver.scripts.costing.unitcostquickcalculation.ucqcrvus.UcqcRvusSuite;
+import webdriver.scripts.datamaintenance.az.AZSuite;
 import webdriver.scripts.datamaintenance.maintaindata.MaintaindataTestSuite;
 import webdriver.scripts.datamaintenance.utilities.UtilitiesTestSuite;
 import webdriver.scripts.episodes.EpisodesTestSuite;
@@ -49,7 +50,7 @@ import webdriver.scripts.systemmaintenance.SystemMaintenanceTestSuite;
 	UcqcRvusSuite.class,
 	UcqcRoleBasedTestSuite.class,
 	UcqcCalculationTestSuite.class,
-
+	AZSuite.class,
 	
 })
 

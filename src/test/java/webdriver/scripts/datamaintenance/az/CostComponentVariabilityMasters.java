@@ -33,12 +33,12 @@ public class CostComponentVariabilityMasters extends AzHelper{
 	static String[] costComponentVarMasterFilter= {"Name","Is","Equal To",name};
 	static String updatedName;
 	static String azName="Cost Component Variability Master";
-	static String entity="150 Marina Medical Center";
+	static String entity="200T TLC 200";
 	static String[]  entities= {"0000 PRIVATE PAY"};
-	static String compMaster="*FZ Small Hierarchy";
-	static String deptHierarchy="*FZ Small Hierarchy Test";
+	static String compMaster="Actual CCM";
+	static String deptHierarchy="Marina Department Hierarchy";
 	static String costComponentMaster="*FZ Small Hierarchy";
-	static String costComponent="SW";
+	static String costComponent="CHARLES";
 	static String varPercent="95";
 	static String updatedvarPercent="96";
 	@BeforeClass
@@ -65,15 +65,20 @@ public class CostComponentVariabilityMasters extends AzHelper{
 			keyInInputByName("name", name, azName);
 			clickCheckboxByName("cstCompObjectId");
 			doDropdownSelectUsingOptionTextOnly(DataMaintenanceMap.getcostComponentMasterDrpdwn(), compMaster);
-			assertElementIsDisplayedWithXpath("//span[text()='Department Hierarchy']//following::div[text()='*FZ Small Hierarchy Test']");
-			assertElementIsDisplayedWithXpath("//div[text()='Entities']//following::div[text()='150  Marina Medical Center']");
+			assertElementIsDisplayedWithXpath("//span[text()='Department Hierarchy']//following::div[text()='Marina Department Hierarchy']");
+			assertElementIsDisplayedWithXpath("//div[text()='Entities']//following::div[text()='150T  TLC 150']");
+			assertElementIsDisplayedWithXpath("//div[text()='Entities']//following::div[text()='200T  TLC 200']");
+//			assertElementIsDisplayedWithXpath("//div[text()='Entities']//following::div[text()='300  Ocean']");
+//			assertElementIsDisplayedWithXpath("//div[text()='Entities']//following::div[text()='350  Island Park']");
+//			assertElementIsDisplayedWithXpath("//div[text()='Entities']//following::div[text()='600  Orange Tree']");
+//			assertElementIsDisplayedWithXpath("//div[text()='Entities']//following::div[text()='350  Island Park']");
 			doClick(DataMaintenanceMap.getazSaveCreateNewBtn());
 			doClick(DataMaintenanceMap.getCancelCloseButton());
 			doClick(DataMaintenanceMap.getazFilterBtn());
 			doFilterCreate(costComponentVarMasterFilter);
 			assertTextIsDisplayed(name);
 			assertTextIsDisplayed(deptHierarchy);
-			assertTextIsDisplayed(costComponentMaster);
+			assertTextIsDisplayed(compMaster);
 			ExtentReport.logPass("PASS", "test01ValidateNewButton");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01ValidateNewButton", driver, e);
@@ -108,15 +113,15 @@ public class CostComponentVariabilityMasters extends AzHelper{
 			clickCheckboxByName("entityCode");
 			doDropdownSelectUsingOptionTextOnly(DataMaintenanceMap.getcostAssignEntityDrp(), entity);
 			doClick(DataMaintenanceMap.getdeptGroup());
-			selectFormItem("*CBDEPT CBDEPT", "");
+			selectFormItem("*RAD Radiology, MRI and Related", "");
 			doClick("(//input[@name='cstCompObjectId'])[2]");
 			doDropdownSelectUsingOptionTextOnly(DataMaintenanceMap.getcostComponentDrpdwn(), costComponent);
 			keyInInputByName("variablePercent", varPercent, "New Cost Component Variability Assignment");
 			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageSaveCreateNewBtn());
 			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageCancelCloseBtn());
-			assertElementIsDisplayedWithXpath("(//*[text()='150  Marina Medical Center'])[2]");
-			assertTextIsDisplayed("*CBDEPT  CBDEPT");
-			assertTextIsDisplayed("SW");
+			assertElementIsDisplayedWithXpath("(//*[text()='200T  TLC 200'])[2]");
+			assertTextIsDisplayed("*RAD  Radiology, MRI and Related");
+			assertTextIsDisplayed(costComponent);
 			assertTextIsDisplayed(varPercent);
 			ExtentReport.logPass("PASS", "test03AddCostComponentVarAssignment");
 		} catch (Exception | AssertionError e) {
@@ -131,9 +136,9 @@ public class CostComponentVariabilityMasters extends AzHelper{
 			keyInInputByName("variablePercent", updatedvarPercent, "Cost Component Variability Assignment");
 			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageSaveBtn());
 			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageSaveCloseBtn());
-			assertElementIsDisplayedWithXpath("(//*[text()='150  Marina Medical Center'])[2]");
-			assertTextIsDisplayed("*CBDEPT  CBDEPT");
-			assertTextIsDisplayed("SW");
+			assertElementIsDisplayedWithXpath("(//*[text()='200T  TLC 200'])[2]");
+			assertTextIsDisplayed("*RAD  Radiology, MRI and Related");
+			assertTextIsDisplayed(costComponent);
 			assertTextIsDisplayed(updatedvarPercent);
 			ExtentReport.logPass("PASS", "test04EditCostComponentVarAssignment");
 		} catch (Exception | AssertionError e) {

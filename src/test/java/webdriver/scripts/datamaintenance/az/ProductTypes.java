@@ -73,7 +73,8 @@ public class ProductTypes extends AzHelper {
 					null, "Save & Close");
 			assertTextIsDisplayed(updatedName);
 			doClick("//div[text()='"+updatedName+"']");
-			deleteScenario(DataMaintenanceMap.getazDeleteBtn(), DataMaintenanceMap.getwarningDeleteBtn());
+			doClick(DataMaintenanceMap.getazDeleteBtn());
+			doClick(DataMaintenanceMap.getwarningDeleteBtn());
 			ExtentReport.logPass("PASS", "test03ValidateSaveAndCloseButton");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test03ValidateSaveAndCloseButton", driver, e);

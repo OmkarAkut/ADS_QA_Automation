@@ -31,8 +31,11 @@ public class ReimbursementScenarioAssignments extends AzHelper{
 	static String[] reimbursementScenarioAssignmentsFilter= {"Name","Is","Equal To",name};
 	static String population="# ASESC-2471";
 	static String reimbursementOption="Contracted Payment 3";
+	static String scenario01;
+	static String scenario02;
 	static String assignName;
-	
+	static String[] reimburseFilter= {"Name","Is","Equal To",assignName};
+
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
 		ExtentReport.reportCreate("ReimbursementScenarioAssignments", "webdriver.scripts.datamaintenance.maintaindata",
@@ -50,13 +53,13 @@ public class ReimbursementScenarioAssignments extends AzHelper{
 		}
 	}
 	public void validateCalculationStatusPage(String[] filter) throws Throwable {
-		doClick(DataMaintenanceMap.getLoadDataFilterButton());
+		doClick("//div[text()='Calculation Status']//following::span[text()='Filter']");
 		doFilterCreate(filter);
-		driverDelay(4000);
+//		driverDelay(4000);
 		waitForFirstRowCalculationBarToReach100Percent();
 		driverDelay();
 		calculationStatusPageOpenViewDialog();
-		driverDelay(5000);
+		driverDelay(2000);
 		checkForRecordsProcessed("Complete Assigning Reimbursement.");
 		closeViewDialog();
 		doClosePageOnLowerBar("Calculation Status");
@@ -91,16 +94,28 @@ public class ReimbursementScenarioAssignments extends AzHelper{
 	}
 	@Test
 	public void test02AssignReimburseAssignment() throws Throwable {
+		scenario01=driver.findElement(By.xpath("((//h1[text()='Reimbursement Scenario Assignments']//following::div[contains(@id,'dynamicGrid')])[3]//table//td[2]/div)[1]")).getText();
+		scenario02=driver.findElement(By.xpath("((//h1[text()='Reimbursement Scenario Assignments']//following::div[contains(@id,'dynamicGrid')])[3]//table//td[2]/div)[3]")).getText();
 		doClick(DataMaintenanceMap.getazEditBtn());
+
 		try {
 			if(driver.findElements(By.xpath("//div[contains(@id,'domainlockerrorwindow')][text()='Error']")).size()>0) {
 				doClickButtons("Error", "Close");
 				doClick("((//h1[text()='Reimbursement Scenario Assignments']//following::div[contains(@id,'dynamicGrid')])[3]//table)[3]");
-				assignName=driver.findElement(By.xpath("((//h1[text()='Reimbursement Scenario Assignments']//following::div[contains(@id,'dynamicGrid')])[3]//table//td[2]/div)[3]")).getText();
+				doClick(DataMaintenanceMap.getazEditBtn());
+				assignName=scenario02;
 			}
-			doClick(DataMaintenanceMap.getazEditBtn());
+			
+			else {
+				
+
+				assignName=scenario01;
+
+			}
+//			doClick(DataMaintenanceMap.getazEditBtn());
 			doClickButtons("Reimbursement Scenario Assignment", "Assign");
-			 String[] calcFilter= {"Name","Is","Equal To",assignName};
+			System.out.println(assignName);
+			 String[] calcFilter= {"Scenario Name","Is","Equal To",assignName};
 			validateCalculationStatusPage(calcFilter);
 			
 			ExtentReport.logPass("PASS", "test02AssignReimburseAssignment");
@@ -113,10 +128,12 @@ public class ReimbursementScenarioAssignments extends AzHelper{
 	public void test03SaveCloseReimburseAssignment() throws Throwable {
 		try {
 			clickCheckboxByName("overwrite");
-			doClick(DataMaintenanceMap.getazSaveBtn());
+//			doClick(DataMaintenanceMap.getazSaveBtn());
 			doClick(DataMaintenanceMap.getazSaveCloseBtn());
+			doClick(DataMaintenanceMap.getazFilterBtn());
+			doFilterCreate(reimburseFilter);
 			doClick(DataMaintenanceMap.getazAssignBtn());
-			String[] calcFilter= {"Name","Is","Equal To",assignName};
+			String[] calcFilter= {"Scenario Name","Is","Equal To",assignName};
 			validateCalculationStatusPage(calcFilter);
 			ExtentReport.logPass("PASS", "test03SaveCloseReimburseAssignment");
 		} catch (Exception | AssertionError e) {

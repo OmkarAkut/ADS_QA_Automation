@@ -16,6 +16,7 @@ import webdriver.maps.DialogsMap;
 import webdriver.maps.mapbuilder.BuildMap;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
+//ADS-23747
 public class Practitioners extends AzHelper{
 	static DataMaintenanceMap dmMap;
 	final static String aTozPractitioners = "Practitioners";

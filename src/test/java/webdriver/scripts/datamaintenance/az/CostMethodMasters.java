@@ -34,12 +34,12 @@ public class CostMethodMasters extends AzHelper{
 	static String[] costMethodMasterFilter= {"Name of the Cost Method Master","Is","Equal To",name};
 	static String updatedName;
 	static String azName="Cost Method Master";
-	static String entity="150 Marina Medical Center";
+	static String entity="200T TLC 200";
 	static String[]  entities= {"0000 PRIVATE PAY"};
-	static String compMaster="*FZ Small Hierarchy";
-	static String deptHierarchy="*FZ Small Hierarchy Test";
+	static String compMaster="Actual CCM";
+	static String deptHierarchy="Marina Department Hierarchy";
 	static String costComponentMaster="*FZ Small Hierarchy";
-	static String costComponent="SW";
+	static String costComponent="CHARLES";
 	static String varPercent="95";
 	static String updatedvarPercent="96";
 	@BeforeClass
@@ -66,15 +66,16 @@ public class CostMethodMasters extends AzHelper{
 			keyInInputByName("name", name, azName);
 			clickCheckboxByName("cstCompObjectId");
 			doDropdownSelectUsingOptionTextOnly(DataMaintenanceMap.getcostMethodMasterDrpdwn(), compMaster);
-			assertElementIsDisplayedWithXpath("//span[text()='Department Hierarchy']//following::div[text()='*FZ Small Hierarchy Test']");
-			assertElementIsDisplayedWithXpath("//div[text()='Entities']//following::div[text()='150  Marina Medical Center']");
+			assertElementIsDisplayedWithXpath("//span[text()='Department Hierarchy']//following::div[text()='Marina Department Hierarchy']");
+			assertElementIsDisplayedWithXpath("//div[text()='Entities']//following::div[text()='150T  TLC 150']");
+			assertElementIsDisplayedWithXpath("//div[text()='Entities']//following::div[text()='200T  TLC 200']");
 			doClick(DataMaintenanceMap.getazSaveCreateNewBtn());
 			doClick(DataMaintenanceMap.getCancelCloseButton());
 			doClick(DataMaintenanceMap.getazFilterBtn());
 			doFilterCreate(costMethodMasterFilter);
 			assertTextIsDisplayed(name);
 			assertTextIsDisplayed(deptHierarchy);
-			assertTextIsDisplayed(costComponentMaster);
+			assertTextIsDisplayed(compMaster);
 			ExtentReport.logPass("PASS", "test01ValidateNewButton");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test01ValidateNewButton", driver, e);
@@ -109,7 +110,7 @@ public class CostMethodMasters extends AzHelper{
 			clickCheckboxByName("entityCode");
 			doDropdownSelectUsingOptionTextOnly(DataMaintenanceMap.getcostMethodAssignEntityDrp(), entity);
 			doClick(DataMaintenanceMap.getdeptGroup());
-			selectFormItem("*CBDEPT CBDEPT", "");
+			selectFormItem("027140 RADIOLOGY DIAGNOSTIC", "");
 			clickCheckboxByName("costCompObjectId");
 			doDropdownSelectUsingOptionTextOnly(DataMaintenanceMap.getcostComponentDrpdwn(), costComponent);
 			
@@ -126,14 +127,14 @@ public class CostMethodMasters extends AzHelper{
 			doDropdownSelectUsingOptionTextOnly(DataMaintenanceMap.getcostMethodDrpdwn(), "RCC");
 			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageSaveCreateNewBtn());
 			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageCancelCloseBtn());
-			assertTextIsDisplayed("150 Marina Medical Center");
-			assertTextIsDisplayed("*CBDEPT CBDEPT");
-			assertTextIsDisplayed("SW");
+			assertTextIsDisplayed("200T TLC 200");
+			assertTextIsDisplayed("027140 RADIOLOGY DIAGNOSTIC");
+			assertTextIsDisplayed("CHARLES");
 			assertTextIsDisplayed("RCC");
 			assertTextIsDisplayed("No");
-			ExtentReport.logPass("PASS", "test03SelectRCCCostMethod");
+			ExtentReport.logPass("PASS", "test04SelectRCCCostMethod");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test03SelectRCCCostMethod", driver, e);
+			ExtentReport.logFail("FAIL", "test04SelectRCCCostMethod", driver, e);
 			fail(e.getMessage());
 		}
 	}
@@ -147,13 +148,13 @@ public class CostMethodMasters extends AzHelper{
 			doDropdownSelectUsingOptionTextOnly(DataMaintenanceMap.getcostMethodProducttypeDrpdwn(), "Exams General");
 			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageSaveBtn());
 			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageSaveCloseBtn());
-			assertTextIsDisplayed("*CBDEPT CBDEPT");
-			assertTextIsDisplayed("SW");
-			assertTextIsDisplayed("Actual");
+			assertTextIsDisplayed("200T TLC 200");
+			assertTextIsDisplayed("027140 RADIOLOGY DIAGNOSTIC");
+			assertTextIsDisplayed("CHARLES");
 			assertTextIsDisplayed("No");
-			ExtentReport.logPass("PASS", "test04SelectActualCostMethod");
+			ExtentReport.logPass("PASS", "test05SelectActualCostMethod");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test04SelectActualCostMethod", driver, e);
+			ExtentReport.logFail("FAIL", "test05SelectActualCostMethod", driver, e);
 			fail(e.getMessage());
 		}
 	}
@@ -170,15 +171,15 @@ public class CostMethodMasters extends AzHelper{
 			keyInInputByName("studiedAllocPct", "6", "Cost Method Assignment");
 			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageSaveBtn());
 			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageSaveCloseBtn());
-			assertTextIsDisplayed("*CBDEPT CBDEPT");
-			assertTextIsDisplayed("SW");
+			assertTextIsDisplayed("027140 RADIOLOGY DIAGNOSTIC");
+			assertTextIsDisplayed("CHARLES");
 			assertTextIsDisplayed("RVU");
 			assertTextIsDisplayed("RCC");
 			assertTextIsDisplayed("6");
 			assertTextIsDisplayed("No");
-			ExtentReport.logPass("PASS", "test05SelectRVUCostMethod");
+			ExtentReport.logPass("PASS", "test06SelectRVUCostMethod");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test05SelectRVUCostMethod", driver, e);
+			ExtentReport.logFail("FAIL", "test06SelectRVUCostMethod", driver, e);
 			fail(e.getMessage());
 		}
 	}

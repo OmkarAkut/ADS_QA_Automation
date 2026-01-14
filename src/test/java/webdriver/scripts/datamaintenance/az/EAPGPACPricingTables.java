@@ -26,7 +26,7 @@ public class EAPGPACPricingTables extends AzHelper{
 	static DataMaintenanceMap dmMap;
 	final static String aTozEAPGPACPricingTables = "EAPG PAC Pricing Tables";
 	public static DialogsMap dialog;
-	static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
+	static String currentDateTime = new SimpleDateFormat("yyyyMMddHHmmss").format(new java.util.Date());
 	static String currentDateCode = new SimpleDateFormat("MM.HH.ss").format(new java.util.Date());
 	static String code = currentDateCode.replaceAll("\\W", "");
 	static String name="Name"+currentDateTime;
@@ -54,6 +54,8 @@ public class EAPGPACPricingTables extends AzHelper{
 	@Test
 	public void test01ValidateNewButton() throws Throwable {
 		try {
+//			String eapgName=name.replaceAll(".", "");
+			System.out.println(name);
 			doClick(DataMaintenanceMap.getazNewBtn());
 			keyInInputByName("name", name, "EAPG PAC Pricing Table");
 			doClick(DataMaintenanceMap.getazSaveCreateNewBtn());
@@ -70,6 +72,8 @@ public class EAPGPACPricingTables extends AzHelper{
 	public void test02ValidateEditButton_AddEAPGPACPrices() throws Throwable {
 		try {
 			doClick(DataMaintenanceMap.getazEditBtn());
+			driverDelay();
+			doClickButtons("EAPG PAC Prices", "New");
 			doClickSelectButton("Payment Action Code");
 			selectFormItem("01 Full payment", "");
 			keyInInputByName("paymentPercent", paymentPercent, "EAPG PAC Price");
@@ -105,6 +109,7 @@ public class EAPGPACPricingTables extends AzHelper{
 		try {
 			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageDeleteBtn());
 			doClick(DataMaintenanceMap.getwarningDeleteBtn());
+			doClick(DataMaintenanceMap.getazCancelCloseBtn());
 			ExtentReport.logPass("PASS", "test04DeleteEAPGPACPrices");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test04DeleteEAPGPACPrices", driver, e);

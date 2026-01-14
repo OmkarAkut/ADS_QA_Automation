@@ -132,23 +132,43 @@ public class GLReclassificationMasters extends AzHelper{
 			clickCheckboxByName("sourceEntityCode");
 			selectDropdown("0000 PRIVATE PAY", "GL Reclassification by Statistic");
 			doClick("(//div[text()='GL Reclassification by Statistic']//following::span[text()='Select'])[1]");
+			driverDelay();
 			selectFormItem("*ALLDEPTS ALLDEPTS", "");
 			doClick("(//div[text()='GL Reclassification by Statistic']//following::span[text()='Select'])[2]");
+			driverDelay();
 			selectFormItem("*BEN  Employee Benefits", "");
 			clickCheckboxByName("destinationEntityCode");
-			selectDropdown("0000 PRIVATE PAY", "GL Reclassification by Statistic");
+			doDropdownSelectUsingOptionTextOnly(driver.findElement(By.xpath("(//div[text()='GL Reclassification by Statistic']//following::ul/li[text()='0000 PRIVATE PAY']/..)[2]")), "0000 PRIVATE PAY");
 			doClick("(//div[text()='GL Reclassification by Statistic']//following::span[text()='Select'])[3]");
-			selectFormItem("*ALLDEPTS ALLDEPTS", "");
+			driverDelay();
+			scrollToView("(//div[text()='*ALLDEPTS ALLDEPTS'])[2]");
+			doClick("(//div[text()='*ALLDEPTS ALLDEPTS'])[2]");
+			doClick(DataMaintenanceMap.getapplyBtnInPopUp());
+//			selectFormItem("*ALLDEPTS ALLDEPTS", "");
 			doClick("(//div[text()='GL Reclassification by Statistic']//following::span[text()='Select'])[4]");
-			selectFormItem("*BEN  Employee Benefits", "");
+			driverDelay();
+			scrollToView("(//div[text()='*BEN  Employee Benefits'])[2]");
+			doClick("(//div[text()='*BEN  Employee Benefits'])[2]");
+			doClick(DataMaintenanceMap.getapplyBtnInPopUp());
+//			selectFormItem("*BEN  Employee Benefits", "");
 			clickCheckboxByName("effectiveBeginDate");
+			
 			selectDropdown("Apr 2005", "GL Reclassification by Statistic");
 			clickCheckboxByName("effectiveEndDate");
-			selectDropdown("Apr 2005", "GL Reclassification by Statistic");
+			doClick("(//div[text()='GL Reclassification by Statistic']//following::ul/li[text()='Apr 2005']/..)[2]");
+//			selectDropdown("Apr 2005", "GL Reclassification by Statistic");
 			clickCheckboxByName("statisticId");
 			selectDropdown("Activity: 1CSM1 Pediatric Ambulatory Rev", "GL Reclassification by Statistic");
 			doClickButtons("GL Reclassifications", "Save & Create New");
 			doClickButtons("GL Reclassifications", "Cancel & Close");
+			//WORKAROUND becoz of issue ADS-23696
+			doClickButtons("Warning", "Cancel & Close");
+			doClickButtons("Error", "OK");
+			doClick("(//div[text()='GL Reclassification Group']//following::span[text()='Cancel & Close'])[1]");
+			doClickButtons("GL Reclassification Master", "Delete");
+			doClick(DataMaintenanceMap.getmessageboxDeleteBtn());
+			doClick(DataMaintenanceMap.getazCancelCloseBtn());
+			deleteScenario(DataMaintenanceMap.getazDeleteBtn(), DataMaintenanceMap.getmessageboxDeleteBtn());
 			ExtentReport.logPass("PASS", "test03AddGLReclassifications");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test03AddGLReclassifications", driver, e);

@@ -172,9 +172,9 @@ public class ChargeableActivityFeeScheduleMasters extends AzHelper{
 			doClick("//div[text()='Schedules']");
 			doClickButtons("Schedules", "New");
 			waitForFormDialog("New Schedule");
-			ExtentReport.logPass("PASS", "test06AddSaveCreateNewSchedules");
+			ExtentReport.logPass("PASS", "test06AddNewTemplateUnderSchedules");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test06AddSaveCreateNewSchedules", driver, e);
+			ExtentReport.logFail("FAIL", "test06AddNewTemplateUnderSchedules", driver, e);
 			fail(e.getMessage());
 		}
 	}
@@ -195,9 +195,9 @@ public class ChargeableActivityFeeScheduleMasters extends AzHelper{
 			waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
 			doClick(DataMaintenanceMap.getwarningDeleteBtn());
 			doClick("//div[text()='Templates']/..");
-			ExtentReport.logPass("PASS", "test05SaveCloseTemplates");
+			ExtentReport.logPass("PASS", "test07SaveCloseTemplatesUnderSchedule");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test05SaveCloseTemplates", driver, e);
+			ExtentReport.logFail("FAIL", "test07SaveCloseTemplatesUnderSchedule", driver, e);
 			fail(e.getMessage());
 		}
 	}
@@ -260,23 +260,23 @@ public class ChargeableActivityFeeScheduleMasters extends AzHelper{
 			waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
 			doClick(DataMaintenanceMap.getwarningDeleteBtn());
 			assertTextIsDisplayed("There is no data available to display.");
-			ExtentReport.logPass("PASS", "test11DeleteAPDRGFeeScheduleMaster");
+			ExtentReport.logPass("PASS", "test11DeleteSchedule");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test11DeleteAPDRGFeeScheduleMaster", driver, e);
+			ExtentReport.logFail("FAIL", "test11DeleteSchedule", driver, e);
 			fail(e.getMessage());
 		}
 	}
 	@Test
-	public void test12APDRGFeeScheduleMaster() throws Throwable {
+	public void test12DeleteChargeableActivityFeeScheduleMaster() throws Throwable {
 		try {
 			doClick(DataMaintenanceMap.getazCancelCloseBtn());
 			doClick(DataMaintenanceMap.getazDeleteBtn());
 			waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
 			doClick(DataMaintenanceMap.getwarningDeleteBtn());
 			assertTextIsDisplayed("There is no data available to display.");
-			ExtentReport.logPass("PASS", "test12APDRGFeeScheduleMaster");
+			ExtentReport.logPass("PASS", "test12DeleteChargeableActivityFeeScheduleMaster");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test12APDRGFeeScheduleMaster", driver, e);
+			ExtentReport.logFail("FAIL", "test12DeleteChargeableActivityFeeScheduleMaster", driver, e);
 			fail(e.getMessage());
 		}
 	}

@@ -34,7 +34,7 @@ public class RBRVSRVUTables extends AzHelper{
 	static String[] RBRVSRVUTablesFilter= {"Name","Is","Equal To",name};
 	static String hcpcs ="00001A";
 	static String hcpcsModifier="1SM1";
-	static String statusIndicator="B";
+	static String statusIndicator="E";
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
 		ExtentReport.reportCreate("RBRVSRVUTables", "webdriver.scripts.datamaintenance.maintaindata",
@@ -79,7 +79,7 @@ public class RBRVSRVUTables extends AzHelper{
 			waitForFormDialog("Add HCPCS/CPT Code");
 			selectFormItem(hcpcs, "");
 			selectDropdownOption("hcpcsModifierCode", DataMaintenanceMap.gethcpcsModifierDrp(), "1SM1 hcpcs modifer1");
-			selectDropdownOption("statusIndIdObjectId", DataMaintenanceMap.getstatusIndicatorDrp(), "B Bundled");
+			selectDropdownOption("statusIndIdObjectId", DataMaintenanceMap.getstatusIndicatorDrp(), "E Excluded");
 			selectDropdownOption("physicianSuperVisionCode", DataMaintenanceMap.getphysicianSupervisionDrp(), "66");
 			selectDropdownOption("updateIndIdObjectId", DataMaintenanceMap.getupdateIndicatorDrp(), "P Primary care services");
 			doClick(DataMaintenanceMap.getendoscoicBaseCode());
