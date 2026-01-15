@@ -14,6 +14,7 @@ import webdriver.core.Login;
 import webdriver.helpers.AzHelper;
 import webdriver.helpers.CimHelper;
 import webdriver.helpers.ContractModelsHelper;
+import webdriver.maps.ContractingMap;
 import webdriver.maps.DataMaintenanceMap;
 import webdriver.maps.DialogsMap;
 import webdriver.maps.mapbuilder.BuildMap;
@@ -23,6 +24,7 @@ public class MedicalServiceAssignments extends AzHelper{
 	static DataMaintenanceMap dmMap;
 	final static String aTozMedicalServiceAssignments= "Medical Service Assignments";
 	public static DialogsMap dialog;
+	public static ContractingMap contractMap;
 	static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
 	static String currentDateCode = new SimpleDateFormat("MM.HH.ss").format(new java.util.Date());
 	static String code = currentDateCode.replaceAll("\\W", "");
@@ -41,6 +43,7 @@ public class MedicalServiceAssignments extends AzHelper{
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);
 			dialog = BuildMap.getInstance(driver, DialogsMap.class);
+			contractMap=BuildMap.getInstance(driver, ContractingMap.class);
 			Login.loginUser("AutomationTesterAdmin");
 			goToPage("Maintain Data");
 			selectMaintainDataAtoZ(aTozMedicalServiceAssignments);

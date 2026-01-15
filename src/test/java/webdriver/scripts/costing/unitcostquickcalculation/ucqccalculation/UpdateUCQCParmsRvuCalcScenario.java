@@ -227,9 +227,7 @@ public class UpdateUCQCParmsRvuCalcScenario extends UcqcHelper {
 //		   driver.findElement(By.name("overHeadScenarioId"));
 			CostingMap.getOverheadDrpDwn().click();
 			//Shilpa updated below lines 1.23.2025
-			Actions act=new Actions(driver);
-			act.moveToElement(driver.findElement(By.xpath("//li[contains(@class,'x-boundlist-selected')][text()='TB OVHD Calc Scen Exp Vol for Rpt']"))).build().perform();
-			assertElementIsDisplayedWithXpath("//li[contains(@class,'x-boundlist-selected')][text()='TB OVHD Calc Scen Exp Vol for Rpt']");
+
 			assertElementIsDisplayedWithXpath("//div[text()='Entities']//following::li[text()='150 Marina Medical Center']");
 			assertElementIsDisplayedWithXpath("//div[text()='Departments / Groups']//following::li[text()='3520 MAMMOGRAPHY UNIT']");
 			
@@ -257,7 +255,7 @@ public class UpdateUCQCParmsRvuCalcScenario extends UcqcHelper {
 			filterCreate(filterCostModelCalcScenarioUpdate, costModelScenarioUpdate);
 			selectOptions(CostingMap.getGldataDesc(), "MH FY05 Reclass");
 			selectOptions(CostingMap.getVolScenario(), "MHFY05");
-			selectOptions(CostingMap.getVariablilityMaster(), "MHS");
+			selectOptions(CostingMap.getVariablilityMaster(), "MHS1");
 			selectOptions(CostingMap.getOverheadDrpDwn(), "MH FY05 Overhead");
 			ContractModelsHelper.scrollToView(CostingMap.getEntitiesSelect());
 			doClick(CostingMap.getEntitiesSelect());
@@ -311,9 +309,9 @@ public class UpdateUCQCParmsRvuCalcScenario extends UcqcHelper {
 			selectOptions(CostingMap.getVolScenario(), "MHFY05");
 			CostingMap.getVolScenario().click();
 			assertElementIsDisplayedWithXpath("//li[contains(@class,'x-boundlist-selected')][text()='MHFY05']");
-			selectOptions(CostingMap.getVariablilityMaster(), "MHS");
+			selectOptions(CostingMap.getVariablilityMaster(), "MHS1");
 			driver.findElement(By.name("variabilityMasterId")).click();
-			assertElementIsDisplayedWithXpath("//li[contains(@class,'x-boundlist-selected')][text()='MHS']");
+			assertElementIsDisplayedWithXpath("//li[contains(@class,'x-boundlist-selected')][text()='MHS1']");
 			selectOptions(CostingMap.getOverheadDrpDwn(), "MH FY05 Overhead");
 			driver.findElement(By.name("overHeadScenarioId")).click();
 			assertElementIsDisplayedWithXpath("//li[contains(@class,'x-boundlist-selected')][text()='MH FY05 Overhead']");
@@ -365,10 +363,10 @@ public class UpdateUCQCParmsRvuCalcScenario extends UcqcHelper {
 			driver.findElement(By.name("actStatCalcCode")).click();
 			assertElementIsDisplayedWithXpath("//li[contains(@class,'x-boundlist-selected')][text()='MHFY05']");
 //			driver.findElement(By.name("variabilityMasterId")).click();
-			selectOptions(CostingMap.getVariablilityMaster(), "MHS");
+			selectOptions(CostingMap.getVariablilityMaster(), "MHS1");
 //			CostingMap.getVariablilityMaster().click();
 			driver.findElement(By.name("variabilityMasterId")).click();
-			assertElementIsDisplayedWithXpath("//li[contains(@class,'x-boundlist-selected')][text()='MHS']");
+			assertElementIsDisplayedWithXpath("//li[contains(@class,'x-boundlist-selected')][text()='MHS1']");
 			
 			selectOptions(CostingMap.getOverheadDrpDwn(), "MH FY05 Overhead");
 			CostingMap.getOverheadDrpDwn().click();

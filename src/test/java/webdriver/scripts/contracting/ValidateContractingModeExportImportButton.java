@@ -50,12 +50,12 @@ public class ValidateContractingModeExportImportButton extends GoHelper{
 			doClick(ContractingMap.getContractModelApplyInExportPopUp());
 			driver.findElement(By.name("sharedHostLocation")).click();
 			driverDelay(500);
-			doClick(modelMap.getContractModelExportFileSharedLocOption());
+			doClick(ContractingMap.getContractModelExportFileSharedLocOption());
 			driver.findElement(By.name("logFileName")).sendKeys(logFileName);
 			driverDelay(500);
 			doClick(modelMap.getContractModelExportButtonInExportPopUp());
 			waitForSpinnerToEnd();
-			assertElementIsDisplayed(modelMap.getContractModelImportExportstatusPage());
+			assertElementIsDisplayed(ContractingMap.getContractModelImportExportstatusPage());
 			ContractModelsHelper.waitForFirstRowCalculationBarToReach100Percent();
 			doClosePageOnLowerBar("Import/Export Status");
 			ExtentReport.logPass("PASS", "setupScript");

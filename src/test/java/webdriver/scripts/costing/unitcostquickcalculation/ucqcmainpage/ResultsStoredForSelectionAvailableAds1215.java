@@ -124,8 +124,10 @@ public class ResultsStoredForSelectionAvailableAds1215 extends UcqcHelper {
   @Test
   public void test06ConfirmResultsStoredForDisplayFormat() throws Throwable {
       try {
-          doDropdownSelectUsingOptionText(resultsStoredFor.getUnitCostQuickCalculationFieldResultsStoredFor(),resultsStoredFor.getUnitCostQuickCalculationDropdownResultsStoredForMenuList(),"Jan 2005 to Mar 2005");
-          validateResultsStoredForFormat(resultsStoredFor.getUnitCostQuickCalculationFieldResultsStoredFor(),printout);
+//          doDropdownSelectUsingOptionText(resultsStoredFor.getUnitCostQuickCalculationFieldResultsStoredFor(),resultsStoredFor.getUnitCostQuickCalculationDropdownResultsStoredForMenuList(),"Jan 2005 to Mar 2005");
+          //sHILPA: updated 01.15.2026
+    	  doDropdownSelectUsingOptionText(resultsStoredFor.getUnitCostQuickCalculationFieldResultsStoredFor(),resultsStoredFor.getUnitCostQuickCalculationDropdownResultsStoredForMenuList(),"Jan 2005 to Jan 2005");
+    	  validateResultsStoredForFormat(resultsStoredFor.getUnitCostQuickCalculationFieldResultsStoredFor(),printout);
           ExtentReport.logPass("PASS", "test06ConfirmResultsStoredForDisplayFormat");
       } catch (Exception|AssertionError e) {
     	  ExtentReport.logFail("FAIL","test06ConfirmResultsStoredForDisplayFormat", driver,e);

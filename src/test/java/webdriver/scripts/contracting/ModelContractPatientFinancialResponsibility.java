@@ -84,7 +84,7 @@ public class ModelContractPatientFinancialResponsibility extends CalculationHelp
 			assertElementIsDisplayed(driver.findElement(By.xpath("//div[contains(@id,'amasterlist')]//following::div[text()='"+patientFinRespName+"']")));
 
 			doClick(contractingMap.getContractModelDeletebtnPatient());
-			waitForElementToBeVisible(contractingMap.getContractModelDeleteButtonInPopUp());
+			waitForElementToBeVisible(ContractingMap.getDeleteButtonMesaageBox());
 			doClick(ContractingMap.getDeleteButtonMesaageBox());
 //			doClick("//span[text()='ADS-1320 Contract...']//following::span[@class='x-tab-close-btn']");
 			doClick("//span[@class='x-tab-close-btn'][contains(text(),'removable')]");//Shilpa xpath update for 11.2 on 10.31.2024

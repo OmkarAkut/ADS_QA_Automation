@@ -22,8 +22,11 @@ import webdriver.maps.mapbuilder.BuildMap;
 public class CreateUCQCLogMakeUCQCProcessAvailableCalculationPage extends UcqcHelper {
 	private static CostingMap costingMap;
 	static ContractingMap contractingMap;
+//	static final String[] requiredFields = { "Marina", "*CM1 TB MHFY05 After Vol Change", "150 Marina Medical Center",
+//			"2130", "Jan 2005 to Mar 2005" };
+	//Shilpa :Update 15.01.2026
 	static final String[] requiredFields = { "Marina", "*CM1 TB MHFY05 After Vol Change", "150 Marina Medical Center",
-			"2130", "Jan 2005 to Mar 2005" };
+			"2130", "Jan 2005 to Jan 2005" };
 	CalculationHelper calculationHelper = new CalculationHelper();
 	static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
 	static String costModel = "Testing" + currentDateTime;

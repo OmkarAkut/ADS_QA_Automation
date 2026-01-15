@@ -2550,6 +2550,10 @@ public class CostingMap extends MapConfig {
 	private static WebElement getOverheadModelFilterButton;
 	public static WebElement getOverheadModelFilterButton() {return getOverheadModelFilterButton;}
 	
+	@FindBy(xpath = "//div[text()='Overhead Model Calculation Scenarios']//following::span[text()='Clear Filter']")
+	private static WebElement getOverheadModelClearFilterButton;
+	public static WebElement getOverheadModelClearFilterButton() {return getOverheadModelClearFilterButton;}
+	
 	@FindBy(xpath = "//div[text()='Overhead Model Calculation Scenarios']//following::span[text()='Delete']")
 	private static WebElement getOverheadModelDeleteButton;
 	public static WebElement getOverheadModelDeleteButton() {return getOverheadModelDeleteButton;}

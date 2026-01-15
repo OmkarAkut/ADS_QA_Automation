@@ -1077,11 +1077,11 @@ public class DataMaintenanceMap extends MapConfig {
 	private static WebElement costCompAssignGLAccountGrpSelectBtn;
 	public static WebElement getcostCompAssignGLAccountGrpSelectBtn() {return costCompAssignGLAccountGrpSelectBtn;}
 	
-	@FindBy(xpath = "//div[text()='*FIRSTDEPTGROUP FIRSTDEPTGROUP']")
+	@FindBy(xpath = "//div[text()='*ALLDEPTS ALLDEPTS']")
 	private static WebElement costCompAssignDeptGroup;
 	public static WebElement getcostCompAssignDeptGroup() {return costCompAssignDeptGroup;}
 	
-	@FindBy(xpath = "//div[text()='JKSUPPLIES MS JKSUPPLIES']")
+	@FindBy(xpath = "//div[text()='*TOTREV Total Revenue']")
 	private static WebElement costCompAssignGLGroup;
 	public static WebElement getcostCompAssignGLGroup() {return costCompAssignGLGroup;}
 	
@@ -1093,7 +1093,7 @@ public class DataMaintenanceMap extends MapConfig {
 	private static WebElement costCompAssignSaveCloseBtn;
 	public static WebElement getcostCompAssignSaveCloseBtn() {return costCompAssignSaveCloseBtn;}
 	
-	@FindBy(xpath = "//div[text()='Cost Component']//following::div[text()='JKENTITY3 JKENTITY3']")
+	@FindBy(xpath = "//div[text()='Cost Component']//following::div[text()='*ALLDEPTS  ALLDEPTS']")
 	private static WebElement costCompAssignAssert;
 	public static WebElement getcostCompAssignAssert() {return costCompAssignAssert;}
 	

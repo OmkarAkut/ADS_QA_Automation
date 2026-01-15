@@ -7,6 +7,8 @@ import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
+import org.openqa.selenium.By;
+
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.helpers.CalculationHelper;
@@ -18,12 +20,12 @@ public class CreateNewCostComponent extends CalculationHelper{
 	static DataMaintenanceMap dmMap;
 	static ContractingMap contractMap;
 	final static String aTozPageCostCompMaster="Cost Component Masters";
-	static String costComponentMaster="00 Test CCM D";
+	static String costComponentMaster="ASESC-1832 Hospital CCM";
 	static String[] filter = { "Name", "Is", "Equal To", costComponentMaster };
 	static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
 	static String costComponent="Component" +currentDateTime;
 	static String costComponentType="Direct Expense";
-	static String entity="JKENTITY3 JKENTITY3";
+	static String entity="150 Marina Medical Center";
 	/** Regression: Automated test script for ADS-8879 , Customer ISsue ADS-4871*/
 
 	@BeforeClass
@@ -73,7 +75,7 @@ public class CreateNewCostComponent extends CalculationHelper{
 			doClick(DataMaintenanceMap.getcostCompAssignNewBtn());
 			//Select Entity
 			doClick(DataMaintenanceMap.getcostCompAssignEntityBtn());
-			doDropdownSelectUsingOptionTextOnly(DataMaintenanceMap.getcostCompAssignEntityOptions(), entity);
+			doDropdownSelectUsingOptionTextOnly(driver.findElement(By.xpath("//h1[text()='Cost Component Assignments']//following::ul/li[text()='"+entity+"']/..")), entity);
 			//Select Dept Group
 			doClick(DataMaintenanceMap.getcostCompAssignDeptGroupSelectBtn());
 			doClick(DataMaintenanceMap.getcostCompAssignDeptGroup());

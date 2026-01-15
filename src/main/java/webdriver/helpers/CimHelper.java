@@ -1357,7 +1357,7 @@ public class CimHelper extends CalculationHelper {
 		calendar.add(Calendar.MINUTE, 1);
 		 SimpleDateFormat sdfTime= new SimpleDateFormat("hh:ss");
 		Date updatedTime = calendar.getTime();
-		String formattedTime = sdfTime.format(updatedTime).toLowerCase();
+		String formattedTime = sdf.format(updatedTime).toLowerCase();
 		System.out.println(formattedTime);
 		return formattedTime;
 

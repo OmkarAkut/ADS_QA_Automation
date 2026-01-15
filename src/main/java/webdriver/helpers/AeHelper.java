@@ -102,7 +102,8 @@ public class AeHelper extends GoHelper {
 		System.out.println(time[1]);
 		System.out.println(time[2]);
 		System.out.println(time[3]);
-		action.moveToElement(aeMap.getcustomDateTimeInput()).sendKeys(time[0]).sendKeys(time[1]).sendKeys(time[3]).perform();
+		
+		action.moveToElement(aeMap.getcustomDateTimeInput()).sendKeys(Keys.TAB).sendKeys(time[0]).sendKeys(time[1]).sendKeys(time[3]).perform();
 		return Time;
 	}
 	public static void selectRecurrence(String recurrence) {

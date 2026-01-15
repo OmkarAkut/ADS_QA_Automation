@@ -42,7 +42,7 @@ public class Genders extends AzHelper {
 	public void test01ValidateNewButton() throws Throwable {
 		try {
 			doClick(DataMaintenanceMap.getazNewBtn());
-			code=generateRandomNumber();
+			code="Z"+generateRandomNumber();
 			addNewScenario(code, name, null, DataMaintenanceMap.getinputCode(),
 					DataMaintenanceMap.getaddName(), null, null,
 					null, "Save & Create New");

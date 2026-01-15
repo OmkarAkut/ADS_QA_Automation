@@ -205,6 +205,7 @@ public class APCFeeScheduleMasters extends AzHelper{
 	public void test08AddNewSchedule() throws Throwable {
 		try {
 			doClickButtons("Schedules", "New");
+			driverDelay();
 			waitForFormDialog("New Schedule");
 			doClick(DataMaintenanceMap.gettemplateDropdown());
 			doClick("//li[text()='"+newTemplateSchedule+"']");
@@ -225,6 +226,7 @@ public class APCFeeScheduleMasters extends AzHelper{
 	public void test09EditScheduleAddFeeScheduleEntries() throws Throwable {
 		try {
 			doClickButtons("Schedules", "Edit");
+			driverDelay();
 			addEntries("Fee Schedule Entries", "New", feeScheduleEntries);
 			doClick(DataMaintenanceMap.getfeeScheduleEntriesSaveBtn());
 			doClick(DataMaintenanceMap.getfeeScheduleEntriesSaveCloseBtn());
@@ -238,6 +240,7 @@ public class APCFeeScheduleMasters extends AzHelper{
 	public void test10DeleteFeeScheduleEntries() throws Throwable {
 		try {
 			doClickButtons("Schedules", "Edit");
+			driverDelay();
 			doClick(DataMaintenanceMap.getfeeScheduleEntriesDeleteBtn());
 			waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
 			doClick(DataMaintenanceMap.getwarningDeleteBtn());

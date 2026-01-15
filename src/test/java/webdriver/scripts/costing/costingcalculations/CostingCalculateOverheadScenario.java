@@ -26,10 +26,12 @@ public class CostingCalculateOverheadScenario extends CalculationHelper {
 	static String CalculationScenario = "V11.2 Overhead Scenario";
 	static String[] filter = { "Name", "Is", "Equal To", CalculationScenario };
 	static String currentDateTime = new SimpleDateFormat("HH.mm.ss").format(new java.util.Date());
+	static String ohScenario=CalculationScenario + currentDateTime;
 	static ContractingMap modelMap;
 	static CostingMap costing;
 	static String scenarioName;
 	static String[] filterCalcScenario ;
+	static String[] filterOHScenario= {"Name","Is","Equal To",ohScenario} ;
 	/** Regression: Test script for ADS-5991 */
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
@@ -91,9 +93,10 @@ public class CostingCalculateOverheadScenario extends CalculationHelper {
 			doClick(driver.findElement(By.xpath(
 					"//div[contains(@id,'overheadmodelscenarioform')]//following::span[contains(@id,'button')][text()='Save & Close']")));
 			//Shilpa: Update for 11.2 : deleting created records, to avoid pile up of records 17.03.2025
+			doClick(CostingMap.getOverheadModelClearFilterButton());
 			doClick(CostingMap.getOverheadModelFilterButton());
-			String[] filterCalcScenario = { "Name", "Is", "Equal To", scenarioName };
-			doFilterCreate(filterCalcScenario);
+//			String[] filterCalcScenario = { "Name", "Is", "Equal To", scenarioName };
+			doFilterCreate(filterOHScenario);
 			doClick(CostingMap.getOverheadModelDeleteButton());
 			doClick(CostingMap.getWarningDeleteButton());
 			doClosePageOnLowerBar("2005 Overhead...");

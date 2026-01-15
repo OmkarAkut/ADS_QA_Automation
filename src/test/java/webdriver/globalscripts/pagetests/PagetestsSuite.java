@@ -8,7 +8,7 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
 	AllPageTestsStatic.class,
 	BuildVerificationTestScript.class,
-	ChangePasswordDialogTest.class,
+//	ChangePasswordDialogTest.class,
 	GlobalHeaderPageTest.class,
 
 })

@@ -10,6 +10,7 @@ import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
+import org.openqa.selenium.By;
 
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
@@ -202,7 +203,10 @@ public class CreateDeleteCostMethodDeptMasterDischargeStatus extends Calculation
 
 			doClick(CostingMap.getCostMethodMasterNewButton());
 			ContractModelsHelper.keyInValues(ContractingMap.getInputName(), costModel);
-			doDropdownSelectUsingOptionText(CostingMap.getCostMethodMasterCostComponentMaster(), CostingMap.getCostMethodMasterCostComponentMasterScenarioOptions(), costComponentMaster);
+			//Shilpa: 01.15.2026
+			CostingMap.getCostMethodMasterCostComponentMaster().click();
+			doDropdownSelectUsingOptionTextOnly(driver.findElement(By.xpath("//div[contains(@id,'dynamiccombo')]/ul/li[text()='"+costComponentMaster+"']/..")), costComponentMaster);
+//			doDropdownSelectUsingOptionText(CostingMap.getCostMethodMasterCostComponentMaster(), CostingMap.getCostMethodMasterCostComponentMasterScenarioOptions(), costComponentMaster);
 			doClick(ContractingMap.getContractFeeForServicePaymentSave());
 			waitForDisplayedSpinnerToEnd();
 			doClick(CostingMap.getCostMethodMasterFilterButton());

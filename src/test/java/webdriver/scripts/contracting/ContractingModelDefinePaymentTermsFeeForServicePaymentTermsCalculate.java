@@ -235,6 +235,7 @@ public class ContractingModelDefinePaymentTermsFeeForServicePaymentTermsCalculat
 			 * Thread.sleep(200); doFilterCreate(filterContractModel);
 			 */
 			doClick(ContractingMap.getContractFeeForServicePaymentCalculateButton());
+			driverDelay();
 			doFilterCalculationPage(filterCalc);
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();
