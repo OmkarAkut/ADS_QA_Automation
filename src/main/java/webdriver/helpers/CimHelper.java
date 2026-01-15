@@ -960,7 +960,7 @@ public class CimHelper extends CalculationHelper {
 		String time;
 		String startTime;
 		String nextStartTime;
-		String currentTime = getSystemTimeFormatted();
+		String currentTime = getSystemTimeFormat();
 		checkElements(driver.findElements(
 				By.xpath("//div[text()='Calculate " + scenario + "']//following::span[text()='Custom Date & Time']")));
 		date = checkElements(driver.findElements(By.xpath("//input[@name='customDate']")));
@@ -1362,7 +1362,17 @@ public class CimHelper extends CalculationHelper {
 		return formattedTime;
 
 	}
+	public static String getSystemTimeFormat() {
+		SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss a");
+		Calendar calendar = Calendar.getInstance();
+		calendar.add(Calendar.MINUTE, 1);
+		 SimpleDateFormat sdfTime= new SimpleDateFormat("hh:ss");
+		Date updatedTime = calendar.getTime();
+		String formattedTime = sdfTime.format(updatedTime).toLowerCase();
+		System.out.println(formattedTime);
+		return formattedTime;
 
+	}
 	public static String getSystemTimeToday(String input) {
 		DateTimeFormatter inputFormat = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss a");
 		DateTimeFormatter outputFormat = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm a");
