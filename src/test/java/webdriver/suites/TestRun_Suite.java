@@ -51,6 +51,7 @@ import webdriver.scripts.systemmaintenance.SystemMaintenanceTestSuite;
 	UcqcRoleBasedTestSuite.class,
 	UcqcCalculationTestSuite.class,
 	AZSuite.class,
+	TestSuiteAXE.class,
 	
 })
 
