@@ -18,7 +18,6 @@ import org.junit.runners.Suite;
 	APRDRGFeeScheduleMasters.class,
 	AprDrgGroups.class,
 	ASCSchemes.class,
-	AZSuite.class,
 	BenefitPlanGroup.class,
 	BenefitPlanMasters.class,
 	BusinessOfficeContacts.class,

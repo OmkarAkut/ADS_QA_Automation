@@ -64,6 +64,7 @@ public class MSDRGFeeScheduleMasters extends AzHelper{
 			keyInInputByName("code", code,"MSDRG Fee Schedule Master");
 			keyInInputByName("name", name,"MSDRG Fee Schedule Master");
 			clickButton("Select");
+			driverDelay();
 			waitForFormDialog("Select Sellers of Services");
 			
 			selectFormItem(sellerOfServices,"services");
@@ -86,6 +87,7 @@ public class MSDRGFeeScheduleMasters extends AzHelper{
 			keyInInputByName("code", code,"MSDRG Fee Schedule Master");
 			keyInInputByName("name", name,"MSDRG Fee Schedule Master");
 			clickButton("Select");
+			driverDelay();
 			waitForFormDialog("Select Sellers of Services");
 			
 			selectFormItem(sellerOfServices,"services");
@@ -108,6 +110,7 @@ public class MSDRGFeeScheduleMasters extends AzHelper{
 			keyInInputByName("code", code,"MSDRG Fee Schedule Master");
 			keyInInputByName("name", name,"MSDRG Fee Schedule Master");
 			clickButton("Select");
+			driverDelay();
 			waitForFormDialog("Select Sellers of Services");
 			
 			selectFormItem(sellerOfServices,"services");
@@ -126,6 +129,7 @@ public class MSDRGFeeScheduleMasters extends AzHelper{
 		try {
 			doClick("//div[text()='Templates']");
 			doClickButtons("Templates", "New");
+			driverDelay();
 			waitForFormDialog("New Template");
 			keyInInputByName("name", name,"MSDRG Fee Schedule Template");
 			doClick(DataMaintenanceMap.getazMasterClassificationDrpDwn());
@@ -133,7 +137,8 @@ public class MSDRGFeeScheduleMasters extends AzHelper{
 			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageNewBtn());
 			templateName="New Template"+name;
 			addDetailsInnerPages(null, templateName, "Save & Create New","code","name");
-			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageCancelCloseBtn());
+			doClickButtons("MSDRG Fee Schedule Template", "Cancel & Close");
+//			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageCancelCloseBtn());
 			assertTextIsDisplayed(templateName);
 			doClickButtons("Templates", "Delete");
 			waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
@@ -149,6 +154,7 @@ public class MSDRGFeeScheduleMasters extends AzHelper{
 	public void test05SaveCloseTemplates() throws Throwable {
 		try {
 			doClickButtons("Templates", "New");
+			driverDelay();
 			waitForFormDialog("New Template");
 			keyInInputByName("name", name,"MSDRG Fee Schedule Template");
 			doClick(DataMaintenanceMap.getazMasterClassificationDrpDwn());
@@ -171,6 +177,7 @@ public class MSDRGFeeScheduleMasters extends AzHelper{
 		try {
 			doClick("//div[text()='Schedules']");
 			doClickButtons("Schedules", "New");
+			driverDelay();
 			waitForFormDialog("New Schedule");
 			ExtentReport.logPass("PASS", "test06AddSaveCreateNewSchedules");
 		} catch (Exception | AssertionError e) {
@@ -182,6 +189,7 @@ public class MSDRGFeeScheduleMasters extends AzHelper{
 	public void test07SaveCloseTemplatesUnderSchedule() throws Throwable {
 		try {
 			doClickButtons("Templates", "New");
+			driverDelay();
 			waitForFormDialog("New Template");
 			newTemplateSchedule="MSDRGTemplate"+name;
 			keyInInputByName("name", newTemplateSchedule,"MSDRG Fee Schedule Template");
@@ -205,6 +213,7 @@ public class MSDRGFeeScheduleMasters extends AzHelper{
 	public void test08AddNewSchedule() throws Throwable {
 		try {
 			doClickButtons("Schedules", "New");
+			driverDelay();
 			waitForFormDialog("New Schedule");
 			doClick(DataMaintenanceMap.gettemplateDropdown());
 			doClick("//li[text()='"+newTemplateSchedule+"']");
@@ -225,6 +234,7 @@ public class MSDRGFeeScheduleMasters extends AzHelper{
 	public void test09EditScheduleAddFeeScheduleEntries() throws Throwable {
 		try {
 			doClickButtons("Schedules", "Edit");
+			driverDelay();
 			addEntries("Fee Schedule Entries", "New", feeScheduleEntries);
 			doClick(DataMaintenanceMap.getfeeScheduleEntriesSaveBtn());
 			doClick(DataMaintenanceMap.getfeeScheduleEntriesSaveCloseBtn());
@@ -238,6 +248,7 @@ public class MSDRGFeeScheduleMasters extends AzHelper{
 	public void test10DeleteFeeScheduleEntries() throws Throwable {
 		try {
 			doClickButtons("Schedules", "Edit");
+			driverDelay();
 			doClick(DataMaintenanceMap.getfeeScheduleEntriesDeleteBtn());
 			waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
 			doClick(DataMaintenanceMap.getwarningDeleteBtn());

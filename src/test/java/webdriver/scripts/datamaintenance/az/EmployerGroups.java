@@ -63,6 +63,7 @@ public class EmployerGroups extends AzHelper{
 			clickCheckboxByName("financialCategoryId");
 			doDropdownSelectUsingOptionTextOnly(DataMaintenanceMap.getfinancialCategoryDrp(), "2, F2 Financial Category 2");
 			doClickButtons("Employer Group", "Select");
+			driverDelay();
 			selectFormItem("0001 PRIVATE PAY PENDING ", "");
 			doClick(DataMaintenanceMap.getazSaveCreateNewBtn());
 			doClick(DataMaintenanceMap.getCancelCloseButton());
@@ -105,6 +106,7 @@ public class EmployerGroups extends AzHelper{
 			driverDelay();
 			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageNewBtn());
 			doClickButtons("Health Plan Representative History", "Select");
+			driverDelay();
 			selectFormItem("1,4SM1  HealthPlanRep1", "");
 			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageSaveCreateNewBtn());
 			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageCancelCloseBtn());
@@ -149,10 +151,13 @@ public class EmployerGroups extends AzHelper{
 			driverDelay();
 			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageNewBtn());
 			doClickButtons("Commission Broker History", "Select");
+			driverDelay();
 			selectFormItem("1,1SMCBRAG1  CommissionBrokerAgency1", "");
 			doClick("(//div[text()='Commission Broker History']//following::div[contains(@class,'x-panel')]//span[text()='Select'])[2]");
+			driverDelay();
 			selectFormItem("1,1SMCMBR1  CommissionBroker1", "");
 			doClick("(//div[text()='Commission Broker History']//following::div[contains(@class,'x-panel')]//span[text()='Select'])[3]");
+			driverDelay();
 			selectFormItem("RLS150,RLSCT1  Commission Type RLS 150", "");
 			expandPanel("User Defined Fields");
 			keyInInputByName("textField1", "ADS", "Commission Broker History");

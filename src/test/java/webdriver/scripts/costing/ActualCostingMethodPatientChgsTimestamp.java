@@ -218,12 +218,13 @@ public class ActualCostingMethodPatientChgsTimestamp extends CalculationHelper {
 			doClick("(//span[text()='Delete'])[4]");
 			waitForDisplayedSpinnerToEnd();
 		}
-	}
-	@AfterClass
-	public static void endtest() throws Exception {
 		doClosePageOnLowerBar("v1024 REGRESSION...");
 //		doClosePageOnLowerBar("Model Library");
 		doClosePageOnLowerBar("Costing Models");
+	}
+	@AfterClass
+	public static void endtest() throws Exception {
+		
 		ExtentReport.report.flush();
 
 	}

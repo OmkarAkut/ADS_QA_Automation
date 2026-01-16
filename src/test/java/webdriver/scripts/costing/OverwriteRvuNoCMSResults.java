@@ -142,8 +142,9 @@ public class OverwriteRvuNoCMSResults extends GoHelper {
 					costing.getRvuMaintenanceDropdownEffectiveMonthStartMonthOptions(), "Apr");
 //			doDropdownSelectUsingOptionText(costing.getRvuMaintenanceDropdownEffectiveMonthStartYearDropdown(),
 //					costing.getRvuMaintenanceDropdownEffectiveMonthStartYearOptions(), "2004");
+			//Shilpa: Updated Date to Apr 2006 : 16.01.1987
 			doDropdownSelectUsingOptionText(costing.getRvuMaintenanceDropdownEffectiveMonthStartYearDropdown(),
-					costing.getRvuMaintenanceDropdownEffectiveMonthStartYearOptions(), "2005");
+					costing.getRvuMaintenanceDropdownEffectiveMonthStartYearOptions(), "2006");
 			doClick(costing.getRvuMaintenanceButtonApplySelections());
 			waitForDisplayedSpinnerToEnd();
 

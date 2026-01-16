@@ -99,10 +99,11 @@ public class EditAnExistingUserSetup extends GoHelper {
 			ContractModelsHelper.keyInValues(systemMap.getUserInitialsName(), initials);
 			ContractModelsHelper.keyInValues(systemMap.getUserEmailName(), email);
 			ContractModelsHelper.keyInValues(systemMap.getUserJobFunction(), jobFunction);
-			ContractModelsHelper.keyInValues(systemMap.getUserNewPassword(), newPassword);
-			ContractModelsHelper.keyInValues(systemMap.getUserConfirmNewPassword(), confirmNewPassword);
-			assertAsteriskIsDisplayed("New Password");
-			assertAsteriskIsDisplayed("Confirm New Password");
+			//Shilpa: commented 16.01.1987, AD env will not have these
+//			ContractModelsHelper.keyInValues(systemMap.getUserNewPassword(), newPassword);
+//			ContractModelsHelper.keyInValues(systemMap.getUserConfirmNewPassword(), confirmNewPassword);
+//			assertAsteriskIsDisplayed("New Password");
+//			assertAsteriskIsDisplayed("Confirm New Password");
 			assertAsteriskIsDisplayed("First Name");
 			assertAsteriskIsDisplayed("Last Name");
 			assertAsteriskIsDisplayed("Display Name");

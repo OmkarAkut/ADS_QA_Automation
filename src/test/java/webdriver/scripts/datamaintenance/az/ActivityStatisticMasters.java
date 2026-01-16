@@ -36,7 +36,7 @@ public class ActivityStatisticMasters extends AzHelper{
 	static String updatedName;
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("ActivityStatisticMasters", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("ActivityStatisticMasters", "webdriver.scripts.datamaintenance.az",
 				"ActivityStatisticMasters");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

@@ -64,6 +64,7 @@ public class EAPGFeeScheduleMasters extends AzHelper{
 			keyInInputByName("code", code,"EAPG Fee Schedule Master");
 			keyInInputByName("name", name,"EAPG Fee Schedule Master");
 			clickButton("Select");
+			driverDelay();
 			waitForFormDialog("Select Sellers of Services");
 			
 			selectFormItem(sellerOfServices,"services");
@@ -86,6 +87,7 @@ public class EAPGFeeScheduleMasters extends AzHelper{
 			keyInInputByName("code", code,"EAPG Fee Schedule Master");
 			keyInInputByName("name", name,"EAPG Fee Schedule Master");
 			clickButton("Select");
+			driverDelay();
 			waitForFormDialog("Select Sellers of Services");
 			
 			selectFormItem(sellerOfServices,"services");
@@ -108,6 +110,7 @@ public class EAPGFeeScheduleMasters extends AzHelper{
 			keyInInputByName("code", code,"EAPG Fee Schedule Master");
 			keyInInputByName("name", name,"EAPG Fee Schedule Master");
 			clickButton("Select");
+			driverDelay();
 			waitForFormDialog("Select Sellers of Services");
 			
 			selectFormItem(sellerOfServices,"services");
@@ -126,6 +129,7 @@ public class EAPGFeeScheduleMasters extends AzHelper{
 		try {
 			doClick("//div[text()='Templates']");
 			doClickButtons("Templates", "New");
+			driverDelay();
 			waitForFormDialog("New Template");
 			keyInInputByName("name", name,"EAPG Fee Schedule Template");
 			doClick(DataMaintenanceMap.getazMasterClassificationDrpDwn());
@@ -149,6 +153,7 @@ public class EAPGFeeScheduleMasters extends AzHelper{
 	public void test05SaveCloseTemplates() throws Throwable {
 		try {
 			doClickButtons("Templates", "New");
+			driverDelay();
 			waitForFormDialog("New Template");
 			keyInInputByName("name", name,"EAPG Fee Schedule Template");
 			doClick(DataMaintenanceMap.getazMasterClassificationDrpDwn());
@@ -171,6 +176,7 @@ public class EAPGFeeScheduleMasters extends AzHelper{
 		try {
 			doClick("//div[text()='Schedules']");
 			doClickButtons("Schedules", "New");
+			driverDelay();
 			waitForFormDialog("New Schedule");
 			ExtentReport.logPass("PASS", "test06AddSaveCreateNewSchedules");
 		} catch (Exception | AssertionError e) {
@@ -182,6 +188,7 @@ public class EAPGFeeScheduleMasters extends AzHelper{
 	public void test07SaveCloseTemplatesUnderSchedule() throws Throwable {
 		try {
 			doClickButtons("Templates", "New");
+			driverDelay();
 			waitForFormDialog("New Template");
 			newTemplateSchedule="EAPGTemplate"+name;
 			keyInInputByName("name", newTemplateSchedule,"EAPG Fee Schedule Template");
@@ -205,6 +212,7 @@ public class EAPGFeeScheduleMasters extends AzHelper{
 	public void test08AddNewSchedule() throws Throwable {
 		try {
 			doClickButtons("Schedules", "New");
+			driverDelay();
 			waitForFormDialog("New Schedule");
 			doClick(DataMaintenanceMap.gettemplateDropdown());
 			doClick("//li[text()='"+newTemplateSchedule+"']");
@@ -225,6 +233,7 @@ public class EAPGFeeScheduleMasters extends AzHelper{
 	public void test09EditScheduleAddFeeScheduleEntries() throws Throwable {
 		try {
 			doClickButtons("Schedules", "Edit");
+			driverDelay();
 			addEntries("Fee Schedule Entries", "New", feeScheduleEntries);
 			doClick(DataMaintenanceMap.getfeeScheduleEntriesSaveBtn());
 			doClick(DataMaintenanceMap.getfeeScheduleEntriesSaveCloseBtn());
@@ -238,6 +247,7 @@ public class EAPGFeeScheduleMasters extends AzHelper{
 	public void test10DeleteFeeScheduleEntries() throws Throwable {
 		try {
 			doClickButtons("Schedules", "Edit");
+			driverDelay();
 			doClick(DataMaintenanceMap.getfeeScheduleEntriesDeleteBtn());
 			waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
 			doClick(DataMaintenanceMap.getwarningDeleteBtn());

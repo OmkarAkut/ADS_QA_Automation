@@ -64,6 +64,7 @@ public class HCFADRGFeeScheduleMasters extends AzHelper{
 			keyInInputByName("code", code,"HCFA DRG Fee Schedule Master");
 			keyInInputByName("name", name,"HCFA DRG Fee Schedule Master");
 			clickButton("Select");
+			driverDelay();
 			waitForFormDialog("Select Sellers of Services");
 			
 			selectFormItem(sellerOfServices,"services");
@@ -86,6 +87,7 @@ public class HCFADRGFeeScheduleMasters extends AzHelper{
 			keyInInputByName("code", code,"HCFA DRG Fee Schedule Master");
 			keyInInputByName("name", name,"HCFA DRG Fee Schedule Master");
 			clickButton("Select");
+			driverDelay();
 			waitForFormDialog("Select Sellers of Services");
 			
 			selectFormItem(sellerOfServices,"services");
@@ -108,6 +110,7 @@ public class HCFADRGFeeScheduleMasters extends AzHelper{
 			keyInInputByName("code", code,"HCFA DRG Fee Schedule Master");
 			keyInInputByName("name", name,"HCFA DRG Fee Schedule Master");
 			clickButton("Select");
+			driverDelay();
 			waitForFormDialog("Select Sellers of Services");
 			
 			selectFormItem(sellerOfServices,"services");
@@ -126,6 +129,7 @@ public class HCFADRGFeeScheduleMasters extends AzHelper{
 		try {
 			doClick("//div[text()='Templates']");
 			doClickButtons("Templates", "New");
+			driverDelay();
 			waitForFormDialog("New Template");
 			keyInInputByName("name", name,"HCFA DRG Fee Schedule Template");
 			doClick(DataMaintenanceMap.getazMasterClassificationDrpDwn());
@@ -149,6 +153,7 @@ public class HCFADRGFeeScheduleMasters extends AzHelper{
 	public void test05SaveCloseTemplates() throws Throwable {
 		try {
 			doClickButtons("Templates", "New");
+			driverDelay();
 			waitForFormDialog("New Template");
 			keyInInputByName("name", name,"HCFA DRG Fee Schedule Template");
 			doClick(DataMaintenanceMap.getazMasterClassificationDrpDwn());
@@ -157,6 +162,7 @@ public class HCFADRGFeeScheduleMasters extends AzHelper{
 			addDetailsInnerPages(null, templateName, "Save","code","name");
 			doClickButtons(templateName, "Cancel & Close");
 			doClickButtons("Templates", "Edit");
+			driverDelay();
 			updatedTemplateName="UpdatedADSTemplate"+name;
 			addDetailsInnerPages(null, updatedTemplateName, "Save & Close","code","name");
 			assertTextIsDisplayed(updatedTemplateName);
@@ -205,6 +211,7 @@ public class HCFADRGFeeScheduleMasters extends AzHelper{
 	public void test08AddNewSchedule() throws Throwable {
 		try {
 			doClickButtons("Schedules", "New");
+			driverDelay();
 			waitForFormDialog("New Schedule");
 			doClick(DataMaintenanceMap.gettemplateDropdown());
 			doClick("//li[text()='"+newTemplateSchedule+"']");
@@ -225,6 +232,7 @@ public class HCFADRGFeeScheduleMasters extends AzHelper{
 	public void test09EditScheduleAddFeeScheduleEntries() throws Throwable {
 		try {
 			doClickButtons("Schedules", "Edit");
+			driverDelay();
 			addEntries("Fee Schedule Entries", "New", feeScheduleEntries);
 			doClick(DataMaintenanceMap.getfeeScheduleEntriesSaveBtn());
 			doClick(DataMaintenanceMap.getfeeScheduleEntriesSaveCloseBtn());
@@ -238,6 +246,7 @@ public class HCFADRGFeeScheduleMasters extends AzHelper{
 	public void test10DeleteFeeScheduleEntries() throws Throwable {
 		try {
 			doClickButtons("Schedules", "Edit");
+			driverDelay();
 			doClick(DataMaintenanceMap.getfeeScheduleEntriesDeleteBtn());
 			waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
 			doClick(DataMaintenanceMap.getwarningDeleteBtn());

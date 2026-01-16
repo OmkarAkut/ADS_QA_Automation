@@ -66,39 +66,53 @@ public class AzHelper extends CalculationHelper{
 	}
 	public void doClickButtons(String scenarioName,String buttonName) throws Throwable {
 		try {
-			doClick("//div[text()='"+scenarioName+"']//following::div[contains(@class,'x-toolbar')]//span[text()='"+buttonName+"']");
+			doClick("//div[text()='" + scenarioName + "']//following::div[contains(@class,'x-toolbar')]//span[text()='"
+					+ buttonName + "']");
 			driverDelay(300);
 		} catch (NoSuchElementException e) {
 			try {
-				doClick("(//div[text()='"+scenarioName+"']//following::div[contains(@class,'x-panel')]//span[text()='"+buttonName+"'])[1]");
-				driverDelay(300);
+				doClick("(//div[text()='" + scenarioName
+						+ "']//following::div[contains(@class,'x-panel')]//span[text()='" + buttonName + "'])[1]");
+				driverDelay(500);
 			} catch (NoSuchElementException e1) {
 				try {
-					doClick("(//div[text()='"+scenarioName+"']//following::div[contains(@class,'x-btn')]//span[text()='"+buttonName+"'])[1]");
-					driverDelay(300);
+					doClick("(//div[text()='" + scenarioName
+							+ "']//following::div[contains(@class,'x-btn')]//span[text()='" + buttonName + "'])[1]");
+					driverDelay(500);
 				} catch (NoSuchElementException e2) {
 					try {
-						doClick("(//div[text()='"+scenarioName+"']//following::a[contains(@class,'x-btn')]//span[text()='"+buttonName+"'])[1]");
-						driverDelay(300);
+						doClick("(//div[text()='" + scenarioName
+								+ "']//following::a[contains(@class,'x-btn')]//span[text()='" + buttonName + "'])[1]");
+						driverDelay(500);
 					} catch (NoSuchElementException e3) {
 						try {
-							doClick("(//label[text()='"+scenarioName+"']//following::a[contains(@class,'x-btn')]//span[text()='"+buttonName+"'])[1]");
-							driverDelay(300);
+							doClick("(//label[text()='" + scenarioName
+									+ "']//following::a[contains(@class,'x-btn')]//span[text()='" + buttonName
+									+ "'])[1]");
+							driverDelay(500);
 						} catch (NoSuchElementException e4) {
 							try {
-								doClick("(//span[text()='"+scenarioName+"']//following::div[contains(@class,'x-btn')]//span[text()='"+buttonName+"'])[1]");
-								driverDelay(300);
+								doClick("(//span[text()='" + scenarioName
+										+ "']//following::div[contains(@class,'x-btn')]//span[text()='" + buttonName
+										+ "'])[1]");
+								driverDelay(500);
 							} catch (NoSuchElementException e5) {
 								try {
-									doClick("(//label[text()='"+scenarioName+"']//following::div[contains(@class,'x-btn')]//span[text()='"+buttonName+"'])[1]");
-									driverDelay(300);
+									doClick("(//label[text()='" + scenarioName
+											+ "']//following::div[contains(@class,'x-btn')]//span[text()='" + buttonName
+											+ "'])[1]");
+									driverDelay(500);
 								} catch (NoSuchElementException e6) {
 									try {
-										doClick("(//h1[text()='"+scenarioName+"']//following::a[contains(@class,'x-btn')]//span[text()='"+buttonName+"'])[1]");
-										driverDelay(300);
+										doClick("(//h1[text()='" + scenarioName
+												+ "']//following::a[contains(@class,'x-btn')]//span[text()='"
+												+ buttonName + "'])[1]");
+										driverDelay(500);
 									} catch (NoSuchElementException e7) {
-										doClick("(//h1[text()='"+scenarioName+"']//following::div[contains(@class,'x-toolbar')]//span[text()='"+buttonName+"'])[1]");
-										driverDelay(300);
+										doClick("(//h1[text()='" + scenarioName
+												+ "']//following::div[contains(@class,'x-toolbar')]//span[text()='"
+												+ buttonName + "'])[1]");
+										driverDelay(500);
 									}
 								}
 							}

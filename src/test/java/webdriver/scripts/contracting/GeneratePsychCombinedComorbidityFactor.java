@@ -6,6 +6,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.interactions.Actions;
 
 import ExtentReport.ExtentReport;
@@ -76,10 +77,16 @@ public class GeneratePsychCombinedComorbidityFactor extends CalculationHelper {
 			driverDelay(2000);
 			doClick(DataMaintenanceMap.getpsychSaveBtn());
 			waitForDisplayedSpinnerToEnd();
-			driverDelay(5000);
+			driverDelay(15000);
 			doClick(ContractingMap.getContractResetButton());
 			doClick(costingMap.getCostModelScenariosinEvaluationOrderSave());
-			waitForDisplayedSpinnerToEnd();
+			driverDelay(15000);
+			try {
+				doClick(ContractingMap.getContractResetButton());
+			} catch (NoSuchElementException e) {
+			
+			}
+//			waitForDisplayedSpinnerToEnd();
 			doFilterCalculationPage(filter);
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();

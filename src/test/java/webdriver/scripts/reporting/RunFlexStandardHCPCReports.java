@@ -56,10 +56,11 @@ public class RunFlexStandardHCPCReports extends GoHelper{
 			String reportTime=driver.findElement(By.xpath("//div[@class='GJT013UBNJB']")).getText().replaceFirst("^\\s+", "");;
 			while(retry<=refreshTime) {
 				doClick(reportMap.reportLibraryPageEntityRefreshButton());
-				
+				driverDelay();
 				try {
-					if(driver.findElement(By.xpath("//div[text()='"+reportTime+"']//following::div[4]")).getText().contains("COMPLETED")){
-						doDoubleClick("//div[text()='"+reportTime+"']//following::div[4]");
+					String time=java.time.LocalDateTime.parse(""+reportTime+"", java.time.format.DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss a")).format(java.time.format.DateTimeFormatter.ofPattern("MM/dd/yy hh:mm:ss a"));
+					if(driver.findElement(By.xpath("//div[text()='"+time+"']//following::div[4]")).getText().contains("COMPLETED")){
+						doDoubleClick("//div[text()='"+time+"']//following::div[4]");
 						assertElementIsDisplayedWithXpath("//span[contains(text(),'HCPCS Modifiers')]");
 						break;
 					}

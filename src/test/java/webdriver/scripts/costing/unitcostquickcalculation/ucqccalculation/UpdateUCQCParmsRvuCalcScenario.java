@@ -75,7 +75,7 @@ public class UpdateUCQCParmsRvuCalcScenario extends UcqcHelper {
 	
 	@BeforeClass
 	  public static void setupScript() throws Throwable {
-		  ExtentReport.reportCreate("CreateUCQCLogMakeUCQCProcessAvailableCalculationPage","webdriver.scripts.costing.unitcostquickcalculation.ucqccalculation", "CreateUCQCLogMakeUCQCProcessAvailableCalculationPage");
+		  ExtentReport.reportCreate("UpdateUCQCParmsRvuCalcScenario","webdriver.scripts.costing.unitcostquickcalculation.ucqccalculation", "UpdateUCQCParmsRvuCalcScenario");
 		   
 		  
 	    try {
@@ -413,9 +413,10 @@ public class UpdateUCQCParmsRvuCalcScenario extends UcqcHelper {
 			doClick(CostingMap.getCostScenarioDeleteButton());
 			waitForElementToBeVisible(costingMap.getWarningDeleteButton());
 			doClick(costingMap.getWarningDeleteButton());
-			doClosePageOnLowerBar(costModel);
-			doClosePageOnLowerBar("Costing Models");
+			
 		}
+		doClosePageOnLowerBar(costModel);
+		doClosePageOnLowerBar("Costing Models");
 	}
 	public void selectOptions(WebElement dropdown,String elementName) throws Exception {
 		doClick(dropdown);

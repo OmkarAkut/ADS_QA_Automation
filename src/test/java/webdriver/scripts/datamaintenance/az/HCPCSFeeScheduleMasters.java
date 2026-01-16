@@ -64,6 +64,7 @@ public class HCPCSFeeScheduleMasters extends AzHelper{
 			keyInInputByName("code", code,"HCPCS Fee Schedule Master");
 			keyInInputByName("name", name,"HCPCS Fee Schedule Master");
 			clickButton("Select");
+			driverDelay();
 			waitForFormDialog("Select Sellers of Services");
 			
 			selectFormItem(sellerOfServices,"services");
@@ -86,6 +87,7 @@ public class HCPCSFeeScheduleMasters extends AzHelper{
 			keyInInputByName("code", code,"HCPCS Fee Schedule Master");
 			keyInInputByName("name", name,"HCPCS Fee Schedule Master");
 			clickButton("Select");
+			driverDelay();
 			waitForFormDialog("Select Sellers of Services");
 			
 			selectFormItem(sellerOfServices,"services");
@@ -108,6 +110,7 @@ public class HCPCSFeeScheduleMasters extends AzHelper{
 			keyInInputByName("code", code,"HCPCS Fee Schedule Master");
 			keyInInputByName("name", name,"HCPCS Fee Schedule Master");
 			clickButton("Select");
+			driverDelay();
 			waitForFormDialog("Select Sellers of Services");
 			
 			selectFormItem(sellerOfServices,"services");
@@ -126,14 +129,15 @@ public class HCPCSFeeScheduleMasters extends AzHelper{
 		try {
 			doClick("//div[text()='Templates']");
 			doClickButtons("Templates", "New");
+			driverDelay();
 			waitForFormDialog("New Template");
 			keyInInputByName("name", name,"HCPCS Fee Schedule Master");
 			doClick(DataMaintenanceMap.getazMasterClassificationDrpDwn());
 			doDropdownSelectUsingOptionTextOnly(DataMaintenanceMap.gethcpcsFeeScheduleMasterScheme(), masterClassificationScheme);
 			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageNewBtn());
-			templateName="Template"+name;
+			templateName="HCPCSTemplate"+name;
 			addDetailsInnerPages(null, templateName, "Save & Create New","code","name");
-			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageCancelCloseBtn());
+			doClickButtons("HCPCS Fee Schedule Template", "Cancel & Close");
 			assertTextIsDisplayed(templateName);
 			doClickButtons("Templates", "Delete");
 			waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
@@ -149,11 +153,12 @@ public class HCPCSFeeScheduleMasters extends AzHelper{
 	public void test05SaveCloseTemplates() throws Throwable {
 		try {
 			doClickButtons("Templates", "New");
+			driverDelay();
 			waitForFormDialog("New Template");
 			keyInInputByName("name", name,"HCPCS Fee Schedule Master");
 			doClick(DataMaintenanceMap.getazMasterClassificationDrpDwn());
 			doDropdownSelectUsingOptionTextOnly(DataMaintenanceMap.gethcpcsFeeScheduleMasterScheme(), masterClassificationScheme);
-			templateName="Template"+name;
+			templateName="HCPCSScheduleTemplate"+name;
 			addDetailsInnerPages(null, templateName, "Save","code","name");
 			doClickButtons(templateName, "Cancel & Close");
 			doClickButtons("Templates", "Edit");
@@ -171,6 +176,7 @@ public class HCPCSFeeScheduleMasters extends AzHelper{
 		try {
 			doClick("//div[text()='Schedules']");
 			doClickButtons("Schedules", "New");
+			driverDelay();
 			waitForFormDialog("New Schedule");
 			ExtentReport.logPass("PASS", "test06AddSaveCreateNewSchedules");
 		} catch (Exception | AssertionError e) {
@@ -182,6 +188,7 @@ public class HCPCSFeeScheduleMasters extends AzHelper{
 	public void test07SaveCloseTemplatesUnderSchedule() throws Throwable {
 		try {
 			doClickButtons("Templates", "New");
+			driverDelay();
 			waitForFormDialog("New Template");
 			newTemplateSchedule="HCPCSSchedule"+name;
 			keyInInputByName("name", newTemplateSchedule,"HCPCS Fee Schedule Template");
@@ -205,6 +212,7 @@ public class HCPCSFeeScheduleMasters extends AzHelper{
 	public void test08AddNewSchedule() throws Throwable {
 		try {
 			doClickButtons("Schedules", "New");
+			driverDelay();
 			waitForFormDialog("New Schedule");
 			doClick(DataMaintenanceMap.gettemplateDropdown());
 			doClick("//li[text()='"+newTemplateSchedule+"']");
@@ -228,6 +236,7 @@ public class HCPCSFeeScheduleMasters extends AzHelper{
 	public void test09EditScheduleAddFeeScheduleEntries() throws Throwable {
 		try {
 			doClickButtons("Schedules", "Edit");
+			driverDelay();
 			addEntries("Fee Schedule Entries", "New", feeScheduleEntries);
 			doClick(DataMaintenanceMap.getfeeScheduleEntriesSaveBtn());
 			doClick(DataMaintenanceMap.getfeeScheduleEntriesSaveCloseBtn());
@@ -241,6 +250,7 @@ public class HCPCSFeeScheduleMasters extends AzHelper{
 	public void test10DeleteFeeScheduleEntries() throws Throwable {
 		try {
 			doClickButtons("Schedules", "Edit");
+			driverDelay();
 			doClick(DataMaintenanceMap.getfeeScheduleEntriesDeleteBtn());
 			waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
 			doClick(DataMaintenanceMap.getwarningDeleteBtn());

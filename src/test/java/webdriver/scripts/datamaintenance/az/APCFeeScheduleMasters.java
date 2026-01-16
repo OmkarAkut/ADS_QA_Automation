@@ -133,6 +133,7 @@ public class APCFeeScheduleMasters extends AzHelper{
 			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageNewBtn());
 			templateName="APCTemplate"+name;
 			addDetailsInnerPages(null, templateName, "Save & Create New","code","name");
+			driverDelay(200);
 			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageCancelCloseBtn());
 			assertTextIsDisplayed(templateName);
 			doClickButtons("Templates", "Delete");

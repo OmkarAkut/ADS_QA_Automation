@@ -64,11 +64,12 @@ public class APRDRGFeeScheduleMasters extends AzHelper{
 			keyInInputByName("code", code,"APR DRG Fee Schedule Master");
 			keyInInputByName("name", name,"APR DRG Fee Schedule Master");
 			clickButton("Select");
+			driverDelay();
 			waitForFormDialog("Select Sellers of Services");
 			
 			selectFormItem(sellerOfServices,"services");
 			CimHelper.checkElements(driver.findElements(By.xpath("//span[text()='Save & Create New']")));
-			doClick(DataMaintenanceMap.getCancelCloseButton());
+			doClick(DataMaintenanceMap.getazCancelCloseBtn());
 			doClick(DataMaintenanceMap.getazFilterBtn());
 			doFilterCreate(aTozAPCFeeScheduleMasterFilter);
 			deleteScenario(DataMaintenanceMap.getazDeleteBtn(),DataMaintenanceMap.getwarningDeleteBtn());
@@ -86,6 +87,7 @@ public class APRDRGFeeScheduleMasters extends AzHelper{
 			keyInInputByName("code", code,"APR DRG Fee Schedule Master");
 			keyInInputByName("name", name,"APR DRG Fee Schedule Master");
 			clickButton("Select");
+			driverDelay();
 			waitForFormDialog("Select Sellers of Services");
 			
 			selectFormItem(sellerOfServices,"services");
@@ -108,10 +110,12 @@ public class APRDRGFeeScheduleMasters extends AzHelper{
 			keyInInputByName("code", code,"APR DRG Fee Schedule Master");
 			keyInInputByName("name", name,"APR DRG Fee Schedule Master");
 			clickButton("Select");
+			driverDelay();
 			waitForFormDialog("Select Sellers of Services");
 			
 			selectFormItem(sellerOfServices,"services");
 			CimHelper.checkElements(driver.findElements(By.xpath("//span[text()='Save & Close']")));
+			
 			doClick(DataMaintenanceMap.getazFilterBtn());
 			doFilterCreate(aTozAPCFeeScheduleMasterFilter);
 			doClick(DataMaintenanceMap.getazPageEditBtn());
@@ -126,14 +130,16 @@ public class APRDRGFeeScheduleMasters extends AzHelper{
 		try {
 			doClick("//div[text()='Templates']");
 			doClickButtons("Templates", "New");
+			driverDelay();
 			waitForFormDialog("New Template");
 			keyInInputByName("name", name,"APR DRG Fee Schedule Template");
 			doClick(DataMaintenanceMap.getazMasterClassificationDrpDwn());
 			doDropdownSelectUsingOptionTextOnly(DataMaintenanceMap.getmasterAPRDRGClassificationScheme(), masterClassificationScheme);
 			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageNewBtn());
-			templateName="Template"+name;
+			templateName="APDRGTemplate"+name;
 			addDetailsInnerPages(null, templateName, "Save & Create New","code","name");
-			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageCancelCloseBtn());
+			doClickButtons("APR DRG Fee Schedule Template", "Cancel & Close");
+//			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageCancelCloseBtn());
 			assertTextIsDisplayed(templateName);
 			doClickButtons("Templates", "Delete");
 			waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
@@ -149,11 +155,12 @@ public class APRDRGFeeScheduleMasters extends AzHelper{
 	public void test05SaveCloseTemplates() throws Throwable {
 		try {
 			doClickButtons("Templates", "New");
+			driverDelay();
 			waitForFormDialog("New Template");
 			keyInInputByName("name", name,"APR DRG Fee Schedule Template");
 			doClick(DataMaintenanceMap.getazMasterClassificationDrpDwn());
 			doDropdownSelectUsingOptionTextOnly(DataMaintenanceMap.getmasterAPRDRGClassificationScheme(), masterClassificationScheme);
-			templateName="Template"+name;
+			templateName="APDRGFeeTemplate"+name;
 			addDetailsInnerPages(null, templateName, "Save","code","name");
 			doClickButtons(templateName, "Cancel & Close");
 			doClickButtons("Templates", "Edit");
@@ -171,6 +178,7 @@ public class APRDRGFeeScheduleMasters extends AzHelper{
 		try {
 			doClick("//div[text()='Schedules']");
 			doClickButtons("Schedules", "New");
+			driverDelay();
 			waitForFormDialog("New Schedule");
 			ExtentReport.logPass("PASS", "test06AddSaveCreateNewSchedules");
 		} catch (Exception | AssertionError e) {
@@ -182,6 +190,7 @@ public class APRDRGFeeScheduleMasters extends AzHelper{
 	public void test07SaveCloseTemplatesUnderSchedule() throws Throwable {
 		try {
 			doClickButtons("Templates", "New");
+			driverDelay();
 			waitForFormDialog("New Template");
 			newTemplateSchedule="APRDRGSchedule"+name;
 			keyInInputByName("name", newTemplateSchedule,"APR DRG Fee Schedule Template");
@@ -205,6 +214,7 @@ public class APRDRGFeeScheduleMasters extends AzHelper{
 	public void test08AddNewSchedule() throws Throwable {
 		try {
 			doClickButtons("Schedules", "New");
+			driverDelay();
 			waitForFormDialog("New Schedule");
 			doClick(DataMaintenanceMap.gettemplateDropdown());
 			doClick("//li[text()='"+newTemplateSchedule+"']");
@@ -225,6 +235,7 @@ public class APRDRGFeeScheduleMasters extends AzHelper{
 	public void test09EditScheduleAddFeeScheduleEntries() throws Throwable {
 		try {
 			doClickButtons("Schedules", "Edit");
+			driverDelay();
 			addEntries("Fee Schedule Entries", "New", feeScheduleEntries);
 			doClick(DataMaintenanceMap.getfeeScheduleEntriesSaveBtn());
 			doClick(DataMaintenanceMap.getfeeScheduleEntriesSaveCloseBtn());
@@ -238,6 +249,7 @@ public class APRDRGFeeScheduleMasters extends AzHelper{
 	public void test10DeleteFeeScheduleEntries() throws Throwable {
 		try {
 			doClickButtons("Schedules", "Edit");
+			driverDelay();
 			doClick(DataMaintenanceMap.getfeeScheduleEntriesDeleteBtn());
 			waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
 			doClick(DataMaintenanceMap.getwarningDeleteBtn());

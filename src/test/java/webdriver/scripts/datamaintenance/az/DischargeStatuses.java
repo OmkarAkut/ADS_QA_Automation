@@ -26,8 +26,8 @@ public class DischargeStatuses extends AzHelper {
 	static String[] filterAfterEdit= {"Name","Is","Equal To",updatedName};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("EAPGPaymentActionCodes", "webdriver.scripts.datamaintenance.maintaindata",
-				"EAPGPaymentActionCodes");
+		ExtentReport.reportCreate("DischargeStatuses", "webdriver.scripts.datamaintenance.maintaindata",
+				"DischargeStatuses");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);
 			Login.loginUser("AutomationTesterAdmin");
