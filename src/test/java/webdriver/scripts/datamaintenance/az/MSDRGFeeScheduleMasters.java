@@ -129,17 +129,17 @@ public class MSDRGFeeScheduleMasters extends AzHelper{
 		try {
 			doClick("//div[text()='Templates']");
 			doClickButtons("Templates", "New");
-			driverDelay();
 			waitForFormDialog("New Template");
-			keyInInputByName("name", name,"MSDRG Fee Schedule Template");
+			templateName="MSDRGTemplate";
+			keyInInputByName("name", templateName,"MSDRG Fee Schedule Template");
 			doClick(DataMaintenanceMap.getazMasterClassificationDrpDwn());
 			doDropdownSelectUsingOptionTextOnly(DataMaintenanceMap.getmsdrgFeeScheduleMasterScheme(), masterClassificationScheme);
-			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageNewBtn());
-			templateName="New Template"+name;
-			addDetailsInnerPages(null, templateName, "Save & Create New","code","name");
-			doClickButtons("MSDRG Fee Schedule Template", "Cancel & Close");
-//			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageCancelCloseBtn());
+			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageSaveCreateNewBtn());
+			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageCancelCloseBtn());
 			assertTextIsDisplayed(templateName);
+			doClick(DataMaintenanceMap.getazCancelCloseBtn());
+			doClick(DataMaintenanceMap.getazEditBtn());
+			doClick("//div[text()='Templates']");
 			doClickButtons("Templates", "Delete");
 			waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
 			doClick(DataMaintenanceMap.getwarningDeleteBtn());
@@ -154,18 +154,23 @@ public class MSDRGFeeScheduleMasters extends AzHelper{
 	public void test05SaveCloseTemplates() throws Throwable {
 		try {
 			doClickButtons("Templates", "New");
-			driverDelay();
 			waitForFormDialog("New Template");
-			keyInInputByName("name", name,"MSDRG Fee Schedule Template");
 			doClick(DataMaintenanceMap.getazMasterClassificationDrpDwn());
 			doDropdownSelectUsingOptionTextOnly(DataMaintenanceMap.getmsdrgFeeScheduleMasterScheme(), masterClassificationScheme);
-			templateName="MSDRG"+name;
+			
+			templateName="MSDRGScheduleTemplate";
 			addDetailsInnerPages(null, templateName, "Save","code","name");
 			doClickButtons(templateName, "Cancel & Close");
 			doClickButtons("Templates", "Edit");
-			updatedTemplateName="UpdatedMSDRGTemplate"+name;
+			driverDelay();
+			updatedTemplateName="UpdatedMSDRGcheduleTemplate";
 			addDetailsInnerPages(null, updatedTemplateName, "Save & Close","code","name");
 			assertTextIsDisplayed(updatedTemplateName);
+			doClickButtons("Templates", "Delete");
+			waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
+			doClick(DataMaintenanceMap.getwarningDeleteBtn());
+			assertTextIsDisplayed("There is no data available to display.");
+		
 			ExtentReport.logPass("PASS", "test05SaveCloseTemplates");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test05SaveCloseTemplates", driver, e);
@@ -188,21 +193,17 @@ public class MSDRGFeeScheduleMasters extends AzHelper{
 	@Test
 	public void test07SaveCloseTemplatesUnderSchedule() throws Throwable {
 		try {
-			doClickButtons("Templates", "New");
-			driverDelay();
+			doClickButtons("MSDRG Fee Schedule", "New");
 			waitForFormDialog("New Template");
-			newTemplateSchedule="MSDRGTemplate"+name;
+			newTemplateSchedule="MSDRGSchedule";
 			keyInInputByName("name", newTemplateSchedule,"MSDRG Fee Schedule Template");
 			doClick(DataMaintenanceMap.getazMasterClassificationDrpDwn());
 			doDropdownSelectUsingOptionTextOnly(DataMaintenanceMap.getmsdrgFeeScheduleMasterScheme(), masterClassificationScheme);
 			doClickButtons("New Template", "Save & Create New");
 			doClickButtons("New Template", "Cancel & Close");
-			doClickButtons("New Schedule", "Cancel & Close");
-			doClick("//div[text()='"+updatedTemplateName+"']");
-			doClickButtons("Templates", "Delete");
-			waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
-			doClick(DataMaintenanceMap.getwarningDeleteBtn());
-			doClick("//div[text()='Templates']/..");
+			doClickButtons("Warning", "Cancel & Close");
+			doClickButtons("MSDRG Fee Schedule", "Cancel & Close");
+			
 			ExtentReport.logPass("PASS", "test05SaveCloseTemplates");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test05SaveCloseTemplates", driver, e);

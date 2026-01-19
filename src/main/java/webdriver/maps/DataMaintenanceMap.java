@@ -2529,6 +2529,11 @@ public class DataMaintenanceMap extends MapConfig {
 	public static WebElement getpriceListDrp() {
 		return priceListDrp;
 	}
+	@FindBy(xpath = "(//div[text()='Price List to Encounters Assignment']//following::ul/li[text()='150FY02  Marina Hosp Price List FY02']/..)")
+	private static WebElement priceListAssignDrp;
+	public static WebElement getpriceListAssignDrp() {
+		return priceListAssignDrp;
+	}
 	@FindBy(xpath = "(//div[text()='Price List Calculation Scenario']//following::ul/li[text()='200FY03  Southgate Price List FY03']/..)")
 	private static WebElement priceListDrpdown;
 	public static WebElement getpriceListDrpdown() {

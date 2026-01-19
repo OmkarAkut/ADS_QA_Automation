@@ -129,16 +129,19 @@ public class HCFADRGFeeScheduleMasters extends AzHelper{
 		try {
 			doClick("//div[text()='Templates']");
 			doClickButtons("Templates", "New");
-			driverDelay();
 			waitForFormDialog("New Template");
-			keyInInputByName("name", name,"HCFA DRG Fee Schedule Template");
+			templateName="HCFADRGTemplate";
+			keyInInputByName("name", templateName,"HCFA DRG Fee Schedule Template");
 			doClick(DataMaintenanceMap.getazMasterClassificationDrpDwn());
 			doDropdownSelectUsingOptionTextOnly(DataMaintenanceMap.gethcfaFeeScheduleMasterScheme(), masterClassificationScheme);
-			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageNewBtn());
-			templateName="New Template"+name;
-			addDetailsInnerPages(null, templateName, "Save & Create New","code","name");
+			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageSaveCreateNewBtn());
 			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageCancelCloseBtn());
 			assertTextIsDisplayed(templateName);
+			doClick(DataMaintenanceMap.getazCancelCloseBtn());
+			doClick(DataMaintenanceMap.getazEditBtn());
+//			doClick("//div[text()='Templates']");
+//			doClick("(//div[text()='"+templateName+"']//following::span[text()='Delete']//preceding::span[text()='Delete'])[2]");
+			doClick("//div[text()='Templates']");
 			doClickButtons("Templates", "Delete");
 			waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
 			doClick(DataMaintenanceMap.getwarningDeleteBtn());
@@ -153,19 +156,40 @@ public class HCFADRGFeeScheduleMasters extends AzHelper{
 	public void test05SaveCloseTemplates() throws Throwable {
 		try {
 			doClickButtons("Templates", "New");
-			driverDelay();
 			waitForFormDialog("New Template");
-			keyInInputByName("name", name,"HCFA DRG Fee Schedule Template");
 			doClick(DataMaintenanceMap.getazMasterClassificationDrpDwn());
 			doDropdownSelectUsingOptionTextOnly(DataMaintenanceMap.gethcfaFeeScheduleMasterScheme(), masterClassificationScheme);
-			templateName="ADS"+name;
+			
+			templateName="HCFADRGFeeTemplate";
 			addDetailsInnerPages(null, templateName, "Save","code","name");
 			doClickButtons(templateName, "Cancel & Close");
 			doClickButtons("Templates", "Edit");
-			driverDelay();
-			updatedTemplateName="UpdatedADSTemplate"+name;
+			updatedTemplateName="UpdatedHCFADRGTemplate"+name;
 			addDetailsInnerPages(null, updatedTemplateName, "Save & Close","code","name");
 			assertTextIsDisplayed(updatedTemplateName);
+//			doClick("//div[text()='"+updatedTemplateName+"']");
+//			doClick("(//div[text()='"+updatedTemplateName+"']//following::span[text()='Delete'])");
+
+			doClickButtons("Templates", "Delete");
+			waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
+			doClick(DataMaintenanceMap.getwarningDeleteBtn());
+			assertTextIsDisplayed("There is no data available to display.");
+//			
+			
+//			doClickButtons("Templates", "New");
+//			driverDelay();
+//			waitForFormDialog("New Template");
+//			keyInInputByName("name", name,"HCFA DRG Fee Schedule Template");
+//			doClick(DataMaintenanceMap.getazMasterClassificationDrpDwn());
+//			doDropdownSelectUsingOptionTextOnly(DataMaintenanceMap.gethcfaFeeScheduleMasterScheme(), masterClassificationScheme);
+//			templateName="ADS"+name;
+//			addDetailsInnerPages(null, templateName, "Save","code","name");
+//			doClickButtons(templateName, "Cancel & Close");
+//			doClickButtons("Templates", "Edit");
+//			driverDelay();
+//			updatedTemplateName="UpdatedADSTemplate"+name;
+//			addDetailsInnerPages(null, updatedTemplateName, "Save & Close","code","name");
+//			assertTextIsDisplayed(updatedTemplateName);
 			ExtentReport.logPass("PASS", "test05SaveCloseTemplates");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test05SaveCloseTemplates", driver, e);
@@ -187,20 +211,17 @@ public class HCFADRGFeeScheduleMasters extends AzHelper{
 	@Test
 	public void test07SaveCloseTemplatesUnderSchedule() throws Throwable {
 		try {
-			doClickButtons("Templates", "New");
+			doClickButtons("HCFA DRG Fee Schedule", "New");
 			waitForFormDialog("New Template");
-			newTemplateSchedule="HCFATemplate"+name;
+			newTemplateSchedule="HCFASchedule";
 			keyInInputByName("name", newTemplateSchedule,"HCFA DRG Fee Schedule Template");
 			doClick(DataMaintenanceMap.getazMasterClassificationDrpDwn());
 			doDropdownSelectUsingOptionTextOnly(DataMaintenanceMap.gethcfaFeeScheduleMasterScheme(), masterClassificationScheme);
 			doClickButtons("New Template", "Save & Create New");
 			doClickButtons("New Template", "Cancel & Close");
-			doClickButtons("New Schedule", "Cancel & Close");
-			doClick("//div[text()='"+updatedTemplateName+"']");
-			doClickButtons("Templates", "Delete");
-			waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
-			doClick(DataMaintenanceMap.getwarningDeleteBtn());
-			doClick("//div[text()='Templates']/..");
+			doClickButtons("Warning", "Cancel & Close");
+			doClickButtons("HCFA DRG Fee Schedule", "Cancel & Close");
+			
 			ExtentReport.logPass("PASS", "test05SaveCloseTemplates");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test05SaveCloseTemplates", driver, e);

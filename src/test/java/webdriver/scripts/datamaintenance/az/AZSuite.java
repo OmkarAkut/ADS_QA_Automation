@@ -162,7 +162,8 @@ import org.junit.runners.Suite;
 	UserDefinedMasters.class,
 	UserDefinedProcedureCodeGroups.class,
 	UserDefinedProcedureCodeMasters.class,
-	VendorMasters.class
+	VendorMasters.class,
+	PriceListToEncounterAssignment.class
 
 })
 

@@ -127,15 +127,16 @@ public class APCFeeScheduleMasters extends AzHelper{
 			doClick("//div[text()='Templates']");
 			doClickButtons("Templates", "New");
 			waitForFormDialog("New Template");
-			keyInInputByName("name", name,"APC Fee Schedule Template");
+			templateName="APCTemplate"+name;
+			keyInInputByName("name", templateName,"APC Fee Schedule Template");
 			doClick(DataMaintenanceMap.getazMasterClassificationDrpDwn());
 			doDropdownSelectUsingOptionTextOnly(DataMaintenanceMap.getmasterAPCClassificationScheme(), masterClassificationScheme);
-			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageNewBtn());
-			templateName="APCTemplate"+name;
-			addDetailsInnerPages(null, templateName, "Save & Create New","code","name");
-			driverDelay(200);
+			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageSaveCreateNewBtn());
 			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageCancelCloseBtn());
 			assertTextIsDisplayed(templateName);
+			doClick(DataMaintenanceMap.getazCancelCloseBtn());
+			doClick(DataMaintenanceMap.getazEditBtn());
+			doClick("//div[text()='Templates']");
 			doClickButtons("Templates", "Delete");
 			waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
 			doClick(DataMaintenanceMap.getwarningDeleteBtn());
@@ -151,16 +152,21 @@ public class APCFeeScheduleMasters extends AzHelper{
 		try {
 			doClickButtons("Templates", "New");
 			waitForFormDialog("New Template");
-			keyInInputByName("name", name,"APC Fee Schedule Template");
+//			keyInInputByName("name", name,"APC Fee Schedule Template");
 			doClick(DataMaintenanceMap.getazMasterClassificationDrpDwn());
 			doDropdownSelectUsingOptionTextOnly(DataMaintenanceMap.getmasterAPCClassificationScheme(), masterClassificationScheme);
+			
 			templateName="Template"+name;
 			addDetailsInnerPages(null, templateName, "Save","code","name");
 			doClickButtons(templateName, "Cancel & Close");
 			doClickButtons("Templates", "Edit");
-			updatedTemplateName="APCTemplate"+name;
+			updatedTemplateName="UpdatedAPCTemplate"+name;
 			addDetailsInnerPages(null, updatedTemplateName, "Save & Close","code","name");
 			assertTextIsDisplayed(updatedTemplateName);
+			doClickButtons("Templates", "Delete");
+			waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
+			doClick(DataMaintenanceMap.getwarningDeleteBtn());
+			assertTextIsDisplayed("There is no data available to display.");
 			ExtentReport.logPass("PASS", "test05SaveCloseTemplates");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test05SaveCloseTemplates", driver, e);
@@ -182,7 +188,7 @@ public class APCFeeScheduleMasters extends AzHelper{
 	@Test
 	public void test07SaveCloseTemplatesUnderSchedule() throws Throwable {
 		try {
-			doClickButtons("Templates", "New");
+			doClickButtons("APC Fee Schedule", "New");
 			waitForFormDialog("New Template");
 			newTemplateSchedule="APCSchedule"+name;
 			keyInInputByName("name", newTemplateSchedule,"APC Fee Schedule Template");
@@ -190,12 +196,8 @@ public class APCFeeScheduleMasters extends AzHelper{
 			doDropdownSelectUsingOptionTextOnly(DataMaintenanceMap.getmasterAPCClassificationScheme(), masterClassificationScheme);
 			doClickButtons("New Template", "Save & Create New");
 			doClickButtons("New Template", "Cancel & Close");
-			doClickButtons("New Schedule", "Cancel & Close");
-			doClick("//div[text()='"+updatedTemplateName+"']");
-			doClickButtons("Templates", "Delete");
-			waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
-			doClick(DataMaintenanceMap.getwarningDeleteBtn());
-			doClick("//div[text()='Templates']/..");
+			doClickButtons("Warning", "Cancel & Close");
+			doClickButtons("APC Fee Schedule", "Cancel & Close");
 			ExtentReport.logPass("PASS", "test05SaveCloseTemplates");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test05SaveCloseTemplates", driver, e);

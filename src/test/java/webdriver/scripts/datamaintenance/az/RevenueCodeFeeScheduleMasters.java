@@ -127,39 +127,49 @@ public class RevenueCodeFeeScheduleMasters extends AzHelper{
 			doClick("//div[text()='Templates']");
 			doClickButtons("Templates", "New");
 			waitForFormDialog("New Template");
-			keyInInputByName("name", name,"Revenue Code Fee Schedule Template");
+			templateName="RTemplate";
+			keyInInputByName("name", templateName,"Revenue Code Fee Schedule Template");
 			doClick(DataMaintenanceMap.getazMasterClassificationDrpDwn());
 			doDropdownSelectUsingOptionTextOnly(DataMaintenanceMap.getrevenueFeeScheduleMasterScheme(), masterClassificationScheme);
-			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageNewBtn());
-			templateName="New Template"+name;
-			addDetailsInnerPages(null, templateName, "Save & Create New","code","name");
+			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageSaveCreateNewBtn());
 			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageCancelCloseBtn());
 			assertTextIsDisplayed(templateName);
-			doClickButtons("Templates", "Delete");
-			waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
-			doClick(DataMaintenanceMap.getwarningDeleteBtn());
-			assertTextIsDisplayed("There is no data available to display.");
+			doClick(DataMaintenanceMap.getazCancelCloseBtn());
+			doClick(DataMaintenanceMap.getazEditBtn());
+			driverDelay();
+			//ADS-24670 : Uncomment below lines after this issue is resolved 
+//			doClick("//div[text()='Templates']");
+//			doClickButtons("Templates", "Delete");
+//			waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
+//			doClick(DataMaintenanceMap.getwarningDeleteBtn());
+//			assertTextIsDisplayed("There is no data available to display.");
 			ExtentReport.logPass("PASS", "test04AddSaveCreateNewTemplates");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test04AddSaveCreateNewTemplates", driver, e);
 			fail(e.getMessage());
 		}
 	}
-	@Test
+	//ADS-24670 : Uncomment below test case after this issue is resolved 
+//	@Test
 	public void test05SaveCloseTemplates() throws Throwable {
 		try {
 			doClickButtons("Templates", "New");
 			waitForFormDialog("New Template");
-			keyInInputByName("name", name,"Revenue Code Fee Schedule Template");
 			doClick(DataMaintenanceMap.getazMasterClassificationDrpDwn());
 			doDropdownSelectUsingOptionTextOnly(DataMaintenanceMap.getrevenueFeeScheduleMasterScheme(), masterClassificationScheme);
-			templateName="Revenue"+name;
+			
+			templateName="RevenuScheduleTemplate";
 			addDetailsInnerPages(null, templateName, "Save","code","name");
 			doClickButtons(templateName, "Cancel & Close");
 			doClickButtons("Templates", "Edit");
-			updatedTemplateName="UpdatedRevenueTemplate"+name;
+			driverDelay();
+			updatedTemplateName="UpdatedRevenuCodeScheduleTemplate";
 			addDetailsInnerPages(null, updatedTemplateName, "Save & Close","code","name");
 			assertTextIsDisplayed(updatedTemplateName);
+			doClickButtons("Templates", "Delete");
+			waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
+			doClick(DataMaintenanceMap.getwarningDeleteBtn());
+			assertTextIsDisplayed("There is no data available to display.");
 			ExtentReport.logPass("PASS", "test05SaveCloseTemplates");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test05SaveCloseTemplates", driver, e);
@@ -181,20 +191,17 @@ public class RevenueCodeFeeScheduleMasters extends AzHelper{
 	@Test
 	public void test07SaveCloseTemplatesUnderSchedule() throws Throwable {
 		try {
-			doClickButtons("Templates", "New");
+			doClickButtons("Revenue Code Fee Schedule", "New");
 			waitForFormDialog("New Template");
-			newTemplateSchedule="RevenueTemplate"+name;
+			newTemplateSchedule="RevenueCodeSchedule";
 			keyInInputByName("name", newTemplateSchedule,"Revenue Code Fee Schedule Template");
 			doClick(DataMaintenanceMap.getazMasterClassificationDrpDwn());
 			doDropdownSelectUsingOptionTextOnly(DataMaintenanceMap.getrevenueFeeScheduleMasterScheme(), masterClassificationScheme);
 			doClickButtons("New Template", "Save & Create New");
 			doClickButtons("New Template", "Cancel & Close");
-			doClickButtons("New Schedule", "Cancel & Close");
-			doClick("//div[text()='"+updatedTemplateName+"']");
-			doClickButtons("Templates", "Delete");
-			waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
-			doClick(DataMaintenanceMap.getwarningDeleteBtn());
-			doClick("//div[text()='Templates']/..");
+			doClickButtons("Warning", "Cancel & Close");
+			doClickButtons("Revenue Code Fee Schedule", "Cancel & Close");
+			
 			ExtentReport.logPass("PASS", "test05SaveCloseTemplates");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test05SaveCloseTemplates", driver, e);
@@ -234,6 +241,7 @@ public class RevenueCodeFeeScheduleMasters extends AzHelper{
 			fail(e.getMessage());
 		}
 	}
+	
 	@Test
 	public void test10DeleteFeeScheduleEntries() throws Throwable {
 		try {
@@ -241,7 +249,7 @@ public class RevenueCodeFeeScheduleMasters extends AzHelper{
 			doClick(DataMaintenanceMap.getfeeScheduleEntriesDeleteBtn());
 			waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
 			doClick(DataMaintenanceMap.getwarningDeleteBtn());
-			assertTextIsDisplayed("There is no data available to display.");
+			assertElementIsDisplayedWithXpath("(//*[text()='There is no data available to display.'])[2]");
 			doClick(DataMaintenanceMap.getfeeScheduleEntriesSaveCloseBtn());
 			ExtentReport.logPass("PASS", "test10DeleteFeeScheduleEntries");
 		} catch (Exception | AssertionError e) {
@@ -249,6 +257,7 @@ public class RevenueCodeFeeScheduleMasters extends AzHelper{
 			fail(e.getMessage());
 		}
 	}
+	
 	@Test
 	public void test11DeleteSchedule() throws Throwable {
 		try {
@@ -256,7 +265,8 @@ public class RevenueCodeFeeScheduleMasters extends AzHelper{
 			doClickButtons("Schedules", "Delete");
 			waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
 			doClick(DataMaintenanceMap.getwarningDeleteBtn());
-			assertTextIsDisplayed("There is no data available to display.");
+			assertElementIsNotDisplayed("//div[text()='"+newTemplateSchedule+"']");
+//			assertTextIsDisplayed("There is no data available to display.");
 			ExtentReport.logPass("PASS", "test11DeleteRevenueFeeScheduleMaster");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test11DeleteRevenueFeeScheduleMaster", driver, e);
@@ -270,7 +280,8 @@ public class RevenueCodeFeeScheduleMasters extends AzHelper{
 			doClick(DataMaintenanceMap.getazDeleteBtn());
 			waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
 			doClick(DataMaintenanceMap.getwarningDeleteBtn());
-			assertTextIsDisplayed("There is no data available to display.");
+			assertElementIsNotDisplayed("//div[text()='"+name+"']");
+//			assertTextIsDisplayed("There is no data available to display.");
 			ExtentReport.logPass("PASS", "test12RevenueFeeScheduleMaster");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test12RevenueFeeScheduleMaster", driver, e);

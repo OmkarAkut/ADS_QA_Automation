@@ -48,6 +48,7 @@ public class ChargeableActivityFeeScheduleMasters extends AzHelper{
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);
 			dialog = BuildMap.getInstance(driver, DialogsMap.class);
 			Login.loginUser("AutomationTesterAdmin");
+			waitForDisplayedSpinnerToEnd();
 			goToPage("Maintain Data");
 			selectMaintainDataAtoZ(aTozChargeableActivityFeeScheduleMasters);
 			ExtentReport.logPass("PASS", "setupScript");
@@ -127,14 +128,17 @@ public class ChargeableActivityFeeScheduleMasters extends AzHelper{
 			doClick("//div[text()='Templates']");
 			doClickButtons("Templates", "New");
 			waitForFormDialog("New Template");
-			keyInInputByName("name", name,"Chargeable Activity Fee Schedule Template");
+			templateName="ChargeableTemplate";
+			keyInInputByName("name", templateName,"Chargeable Activity Fee Schedule Template");
 			doClick(DataMaintenanceMap.getazMasterClassificationDrpDwn());
 			doDropdownSelectUsingOptionTextOnly(DataMaintenanceMap.getmasterChargeableActivityClassificationScheme(), masterClassificationScheme);
-			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageNewBtn());
-			templateName="Template"+name;
-			addDetailsInnerPages(null, templateName, "Save & Create New","code","name");
+			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageSaveCreateNewBtn());
 			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageCancelCloseBtn());
 			assertTextIsDisplayed(templateName);
+			doClick(DataMaintenanceMap.getazCancelCloseBtn());
+			doClick(DataMaintenanceMap.getazEditBtn());
+			driverDelay();
+			doClick("//div[text()='Templates']");
 			doClickButtons("Templates", "Delete");
 			waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
 			doClick(DataMaintenanceMap.getwarningDeleteBtn());
@@ -150,16 +154,20 @@ public class ChargeableActivityFeeScheduleMasters extends AzHelper{
 		try {
 			doClickButtons("Templates", "New");
 			waitForFormDialog("New Template");
-			keyInInputByName("name", name,"Chargeable Activity Fee Schedule Template");
 			doClick(DataMaintenanceMap.getazMasterClassificationDrpDwn());
 			doDropdownSelectUsingOptionTextOnly(DataMaintenanceMap.getmasterChargeableActivityClassificationScheme(), masterClassificationScheme);
-			templateName="ADSTemplate"+name;
+			templateName="ChargeableScheduleTemplate";
 			addDetailsInnerPages(null, templateName, "Save","code","name");
 			doClickButtons(templateName, "Cancel & Close");
 			doClickButtons("Templates", "Edit");
-			updatedTemplateName="ADSChargesTemplate"+name;
+			driverDelay();
+			updatedTemplateName="UpdatedChargeableScheduleTemplate";
 			addDetailsInnerPages(null, updatedTemplateName, "Save & Close","code","name");
 			assertTextIsDisplayed(updatedTemplateName);
+			doClickButtons("Templates", "Delete");
+			waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
+			doClick(DataMaintenanceMap.getwarningDeleteBtn());
+			assertTextIsDisplayed("There is no data available to display.");
 			ExtentReport.logPass("PASS", "test05SaveCloseTemplates");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test05SaveCloseTemplates", driver, e);
@@ -181,20 +189,16 @@ public class ChargeableActivityFeeScheduleMasters extends AzHelper{
 	@Test
 	public void test07SaveCloseTemplatesUnderSchedule() throws Throwable {
 		try {
-			doClickButtons("Templates", "New");
+			doClickButtons("Chargeable Activity Fee Schedule", "New");
 			waitForFormDialog("New Template");
-			newTemplateSchedule="ChargesSchedule"+name;
+			newTemplateSchedule="TricareSchedule";
 			keyInInputByName("name", newTemplateSchedule,"Chargeable Activity Fee Schedule Template");
 			doClick(DataMaintenanceMap.getazMasterClassificationDrpDwn());
 			doDropdownSelectUsingOptionTextOnly(DataMaintenanceMap.getmasterChargeableActivityClassificationScheme(), masterClassificationScheme);
 			doClickButtons("New Template", "Save & Create New");
 			doClickButtons("New Template", "Cancel & Close");
-			doClickButtons("New Schedule", "Cancel & Close");
-			doClick("//div[text()='"+updatedTemplateName+"']");
-			doClickButtons("Templates", "Delete");
-			waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
-			doClick(DataMaintenanceMap.getwarningDeleteBtn());
-			doClick("//div[text()='Templates']/..");
+			doClickButtons("Warning", "Cancel & Close");
+			doClickButtons("Chargeable Activity Fee Schedule", "Cancel & Close");
 			ExtentReport.logPass("PASS", "test07SaveCloseTemplatesUnderSchedule");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test07SaveCloseTemplatesUnderSchedule", driver, e);
@@ -212,6 +216,7 @@ public class ChargeableActivityFeeScheduleMasters extends AzHelper{
 			String endDate=DataMaintenanceMap.geteffectiveperiodEndDate().getAttribute("value");
 			doClick(DataMaintenanceMap.getchargesRadioBtn());
 			doClickButtons("New Schedule", "Select");
+			driverDelay();
 			selectFormItem("# 02 Charge Item Svc","");
 			doClickButtons("New Schedule", "Save & Create New");
 			doClickButtons("New Schedule", "Cancel & Close");
