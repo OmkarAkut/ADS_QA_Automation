@@ -58,14 +58,14 @@ public class OverWriteRVUValues5919 extends UcqcHelper {
 //			doactionClick(costing.getRvuSecImportSelectButton());
 //			doactionClick(driver.findElement(By.xpath("//input[@name='importdata']")));
 			doJsClick(driver.findElement(By.xpath("//input[@name='importdata']")));
-			driverDelay(4000);
+			driverDelay(8000);
 			//Shilpa update file import using Robot instead of auto it due to security issues 7.3.2025
 			fileImport(System.getProperty("user.dir")+"\\TestFiles\\ADS1309PreConditionsRVUImport.txt");
 			driverDelay();
-			doClick(costing.getRvuSharedLocDropdown());
+			doClick(CostingMap.getRvuSharedLocDropdown());
 			driverDelay(300);
-			doClick(contracting.getContractModelExportFileSharedLocOption());
-			ContractModelsHelper.keyInValues(costing.getRvuFileNameInput(), "Test");
+			doClick(ContractingMap.getContractModelExportFileSharedLocOption());
+			ContractModelsHelper.keyInValues(CostingMap.getRvuFileNameInput(), "Test");
 			doClick(costing.getRvuImportButton());
 			waitForSpinnerToEnd();
 			ContractModelsHelper.waitForFirstRowCalculationBarToReach100Percent();

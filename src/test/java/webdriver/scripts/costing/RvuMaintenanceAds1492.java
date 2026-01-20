@@ -191,7 +191,8 @@ public class RvuMaintenanceAds1492 extends GoHelper {
 			else {
 				fail();
 			}
-			driver.findElement(By.xpath("//span[text()='Columns to Display']//following::input[@type='checkbox']")).click();
+			//Shilpa: commented line on 01.20.2026
+//			driver.findElement(By.xpath("//span[text()='Columns to Display']//following::input[@type='checkbox']")).click();
 			setDropdownValue(
 					costing.getRvuMaintenanceDropdownBasedOnVolumes(),
 					costing.getRvuMaintenanceDropdownBasedOnVolumesOptions(),

@@ -1487,4 +1487,30 @@ public class ContractingMap extends MapConfig {
 	@FindBy(xpath = "(//div[contains(@class,'glAccountsHierarchyGrid ')]//div[@class='x-grid-item-container'])[1]")
 	private static WebElement serviceModelNode;
 	public static WebElement getserviceModelNode() {return serviceModelNode;}
+	
+	@FindBy(xpath = "//input[@name='field']")
+	private static WebElement filterServiceDrp;
+	public static WebElement getfilterServiceDrp() {return filterServiceDrp;}
+	
+	@FindBy(xpath = "//div[text()='Filter Services']//following::ul/li[text()='Name']/..")
+	private static WebElement filterServiceDrpOption;
+	public static WebElement getfilterServiceDrpOption() {return filterServiceDrpOption;}
+	
+	@FindBy(xpath = "//div[text()='Filter Services']//following::input[@name='operator']")
+	private static WebElement filterServiceOperatorDrp;
+	public static WebElement getfilterServiceOperatorDrp() {return filterServiceOperatorDrp;}
+	
+	@FindBy(xpath = "//div[text()='Filter Services']//following::ul/li[text()='Is']/..")
+	private static WebElement filterServiceOpDrpOption;
+	public static WebElement getfilterServiceOpDrpOption() {return filterServiceOpDrpOption;}
+	
+	@FindBy(xpath = "//div[text()='Filter Services']//following::input[@name='condition']")
+	private static WebElement filterServiceConditionDrp;
+	public static WebElement getfilterServiceConditionDrp() {return filterServiceConditionDrp;}
+	
+	@FindBy(xpath = "//div[text()='Filter Services']//following::ul/li[text()='Equal To']/..")
+	private static WebElement filterServiceConditionDrpOption;
+	public static WebElement getfilterServiceConditionDrpOption() {return filterServiceConditionDrpOption;}
+	
+	
 }

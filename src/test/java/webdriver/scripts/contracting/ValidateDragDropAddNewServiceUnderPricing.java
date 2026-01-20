@@ -108,7 +108,19 @@ public class ValidateDragDropAddNewServiceUnderPricing extends CalculationHelper
 				keyInInputText(serviceName,ContractingMap.getServiceNameImput());
 				doClick(ContractingMap.getServiceSaveCloseBtn());
 				doClick(ContractingMap.getReturnBtn());
-				contractModelsHelper.navigateFeeForServicePaymentTermsPageServiceModel(filterService);
+				doClick(ContractingMap.getContractFeeForServicePaymentFilter());	
+				doClick(ContractingMap.getfilterServiceDrp());
+				doDropdownSelectUsingOptionTextOnly(ContractingMap.getfilterServiceDrpOption(), "Name");
+				doClick(ContractingMap.getfilterServiceOperatorDrp());
+				doDropdownSelectUsingOptionTextOnly(ContractingMap.getfilterServiceOpDrpOption(), "Is");
+				
+				doClick(ContractingMap.getfilterServiceConditionDrp());
+				doDropdownSelectUsingOptionTextOnly(ContractingMap.getfilterServiceConditionDrpOption(), "Equal To");
+//				doFilterSetFilterParameters("Name", "Is", "Equal To", serviceName);
+				driver.findElement(By.name("valuefield")).sendKeys(serviceName);
+				doClick("//div[contains(@id,'filter')]//span[text() = 'Add']");
+				doClick(ContractingMap.getFilterDialogButtonApplyFilter());
+//				contractModelsHelper.navigateFeeForServicePaymentTermsPageServiceModel(filterService);
 				WebElement source = driver.findElement(By.xpath(
 						"(//div[text()='"+serviceName+"'])"));
 				WebElement target = ContractingMap.getserviceModelNode();
@@ -152,6 +164,8 @@ public class ValidateDragDropAddNewServiceUnderPricing extends CalculationHelper
 				waitForAjaxExtJs();
 				selectMaintainDataAtoZ(aTozPage);
 				doClick(ContractingMap.getServiceFilterBtn());
+				
+
 				doFilterCreate(filterService);
 				doClick(ContractingMap.getServiceDeleteBtn());
 				waitForElementToBeVisible(ContractingMap.getContractModelDeleteButtonInPopUp());
