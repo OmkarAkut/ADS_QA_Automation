@@ -32,7 +32,7 @@ public class PayTypeGroups extends AzHelper{
 	String[] validateAgesAfterEdit=  {"150" ,"DEPTMASTER","AKT1"};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("PayTypeGroups", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("PayTypeGroups", "webdriver.scripts.datamaintenance.az",
 				"PayTypeGroups");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

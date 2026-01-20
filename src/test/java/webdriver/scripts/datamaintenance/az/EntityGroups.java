@@ -36,7 +36,7 @@ public class EntityGroups extends AzHelper{
 	
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("EmployerGroups", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("EmployerGroups", "webdriver.scripts.datamaintenance.az",
 				"EmployerGroups");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

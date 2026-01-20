@@ -28,7 +28,7 @@ public class EncounterServiceClassificationSchemes extends AzHelper{
 
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("EncounterServiceClassificationSchemes", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("EncounterServiceClassificationSchemes", "webdriver.scripts.datamaintenance.az",
 				"EncounterServiceClassificationSchemes");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

@@ -32,7 +32,7 @@ public class HCFADRGGroups extends AzHelper{
 	String[] validateAgesAfterEdit=  {"HCFA05" ,"HCFA06","HCFA03"};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("HCFADRGGroups", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("HCFADRGGroups", "webdriver.scripts.datamaintenance.az",
 				"HCFADRGGroups");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

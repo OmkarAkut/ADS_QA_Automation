@@ -32,7 +32,7 @@ public class ApDrgGroups extends AzHelper{
 	String[] validateAgesAfterEdit=  {"005" ,"006","007"};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("ApDrgGroups", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("ApDrgGroups", "webdriver.scripts.datamaintenance.az",
 				"ApDrgGroups");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

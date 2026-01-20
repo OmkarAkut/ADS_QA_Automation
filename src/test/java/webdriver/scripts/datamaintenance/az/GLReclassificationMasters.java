@@ -47,7 +47,7 @@ public class GLReclassificationMasters extends AzHelper{
 	static String reclassType="Statistic";
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("GLReclassificationMasters", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("GLReclassificationMasters", "webdriver.scripts.datamaintenance.az",
 				"GLReclassificationMasters");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

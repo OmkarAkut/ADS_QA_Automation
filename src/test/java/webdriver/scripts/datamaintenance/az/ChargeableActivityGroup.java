@@ -34,7 +34,7 @@ public class ChargeableActivityGroup extends AzHelper{
 	String[] validateAgesAfterEdit=  {"0000117  ROOM CHARGE MED/SURG" ,"0001A  TB Test","0000TB  Quantity Field Expansion #2"};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("ChargeableActivityGroup", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("ChargeableActivityGroup", "webdriver.scripts.datamaintenance.az",
 				"ChargeableActivityGroup");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

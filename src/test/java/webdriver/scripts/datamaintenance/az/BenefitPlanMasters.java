@@ -42,7 +42,7 @@ public class BenefitPlanMasters extends AzHelper{
 	static String updatedBenifitName;
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("BenefitPlanMasters", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("BenefitPlanMasters", "webdriver.scripts.datamaintenance.az",
 				"BenefitPlanMasters");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

@@ -37,7 +37,7 @@ public class MemberSubgroupAggregates extends AzHelper{
 	static String[] memberSubGroupInnerFilter= {"Code","Is","Equal To","1SM1000"};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("MemberSubgroupAggregates", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("MemberSubgroupAggregates", "webdriver.scripts.datamaintenance.az",
 				"MemberSubgroupAggregates");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

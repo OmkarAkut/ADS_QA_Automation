@@ -27,7 +27,7 @@ public class Populations extends AzHelper{
 	static String source="Member History";
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("Populations", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("Populations", "webdriver.scripts.datamaintenance.az",
 				"Populations");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

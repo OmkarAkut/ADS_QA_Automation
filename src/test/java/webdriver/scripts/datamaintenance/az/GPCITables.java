@@ -38,7 +38,7 @@ public class GPCITables extends AzHelper{
 	static String updatedWork="5.8";
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("GPCITables", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("GPCITables", "webdriver.scripts.datamaintenance.az",
 				"GPCITables");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

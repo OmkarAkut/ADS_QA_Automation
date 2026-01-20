@@ -32,7 +32,7 @@ public class BenefitPlanGroup extends AzHelper{
 	String[] validateAgesAfterEdit=  {"0" ,"0001","0002"};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("BenefitPlanGroup", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("BenefitPlanGroup", "webdriver.scripts.datamaintenance.az",
 				"BenefitPlanGroup");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

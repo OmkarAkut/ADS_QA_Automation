@@ -43,7 +43,7 @@ public class StaffingDataScenarios extends AzHelper{
 	static String[] entityCode=entity.split(" ");
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("StatisticDataScenarios", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("StatisticDataScenarios", "webdriver.scripts.datamaintenance.az",
 				"StatisticDataScenarios");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

@@ -45,7 +45,7 @@ public class CostComponentMasters extends AzHelper{
 	
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("CostComponentMasters", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("CostComponentMasters", "webdriver.scripts.datamaintenance.az",
 				"CostComponentMasters");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

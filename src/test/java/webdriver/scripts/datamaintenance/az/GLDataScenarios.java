@@ -34,7 +34,7 @@ public class GLDataScenarios extends AzHelper{
 	static String[] glAccount= {"1510000  IP REVENUE  OO"};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("GLDataScenarios", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("GLDataScenarios", "webdriver.scripts.datamaintenance.az",
 				"GLDataScenarios");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

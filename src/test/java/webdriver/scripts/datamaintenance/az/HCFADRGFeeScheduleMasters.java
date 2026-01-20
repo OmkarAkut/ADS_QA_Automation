@@ -42,7 +42,7 @@ public class HCFADRGFeeScheduleMasters extends AzHelper{
 	static String feeScheduleEntries[]= {code,"12"};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("HCFADRGFeeScheduleMasters", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("HCFADRGFeeScheduleMasters", "webdriver.scripts.datamaintenance.az",
 				"HCFADRGFeeScheduleMasters");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

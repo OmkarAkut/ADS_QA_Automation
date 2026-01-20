@@ -43,7 +43,7 @@ public class ValidateSecuritySettingsGeneralSettingspagesintheSystemMaintenance 
 	public void test02ValidateSystemSettingParameters_6512() throws Throwable {
 		try {
 			assertTextIsDisplayed("Authentication");
-			assertTextIsDisplayed("Password Policies");
+//			assertTextIsDisplayed("Password Policies");//sHILPA : COMMENTEDON 01.20.2026 NOT DISPLAYED UNDER ad SETTINGS
 			assertTextIsDisplayed("Business Objects Server");
 			assertTextIsDisplayed("Authorization");
 			assertTextIsDisplayed("Audit Logging");

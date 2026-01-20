@@ -36,7 +36,7 @@ public class ICDDiagnosisGroups extends AzHelper{
 	String[] validateIcd10Icd9Codes= {"0021","0010","0022"};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("ICDProcedureCodeGroups", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("ICDProcedureCodeGroups", "webdriver.scripts.datamaintenance.az",
 				"ICDProcedureCodeGroups");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

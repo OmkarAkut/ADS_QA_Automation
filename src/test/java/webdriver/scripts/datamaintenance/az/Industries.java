@@ -37,7 +37,7 @@ public class Industries extends AzHelper{
 	//Issue ADS-23702
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("Industries", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("Industries", "webdriver.scripts.datamaintenance.az",
 				"Industries");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

@@ -35,7 +35,7 @@ public class RBRVSConversionFactorTables extends AzHelper{
 	static String[] RBRVSConversionFactorTableFilterAfterUpdate= {"Name","Is","Equal To",updatedName};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("RBRVSConversionFactorTables", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("RBRVSConversionFactorTables", "webdriver.scripts.datamaintenance.az",
 				"RBRVSConversionFactorTables");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

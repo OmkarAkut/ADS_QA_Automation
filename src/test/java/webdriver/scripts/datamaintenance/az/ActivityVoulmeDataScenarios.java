@@ -29,7 +29,7 @@ public class ActivityVoulmeDataScenarios extends AzHelper {
 
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("ActivityVoulmeDataScenarios", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("ActivityVoulmeDataScenarios", "webdriver.scripts.datamaintenance.az",
 				"ActivityVoulmeDataScenarios");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

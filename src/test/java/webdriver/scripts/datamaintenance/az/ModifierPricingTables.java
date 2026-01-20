@@ -36,7 +36,7 @@ public class ModifierPricingTables extends AzHelper{
 	
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("ModifierPricingTables", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("ModifierPricingTables", "webdriver.scripts.datamaintenance.az",
 				"ModifierPricingTables");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

@@ -41,7 +41,7 @@ public class RBRVSDRAOutpatientCapTables extends AzHelper{
 //	static String hcpcsName="ENDOMETRIAL CRYOABLATION";
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("RBRVSDRAOutpatientCapTables", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("RBRVSDRAOutpatientCapTables", "webdriver.scripts.datamaintenance.az",
 				"RBRVSDRAOutpatientCapTables");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

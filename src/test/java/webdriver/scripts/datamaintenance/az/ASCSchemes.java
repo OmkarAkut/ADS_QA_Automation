@@ -37,7 +37,7 @@ public class ASCSchemes extends AzHelper{
 	static String updatedName;
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("ASCSchemes", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("ASCSchemes", "webdriver.scripts.datamaintenance.az",
 				"ASCSchemes");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

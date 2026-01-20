@@ -35,7 +35,7 @@ public class TransactionClassificationMasters extends AzHelper{
 	static String azName="Transaction Classification Code List";
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("TransactionClassificationMasters", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("TransactionClassificationMasters", "webdriver.scripts.datamaintenance.az",
 				"TransactionClassificationMasters");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

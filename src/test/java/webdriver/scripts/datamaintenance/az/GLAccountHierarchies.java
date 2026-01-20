@@ -29,7 +29,7 @@ public class GLAccountHierarchies extends AzHelper{
 
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("GLAccountHierarchies", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("GLAccountHierarchies", "webdriver.scripts.datamaintenance.az",
 				"GLAccountHierarchies");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

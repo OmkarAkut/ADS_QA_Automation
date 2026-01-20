@@ -37,7 +37,7 @@ public class RBRVSRVUTables extends AzHelper{
 	static String statusIndicator="E";
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("RBRVSRVUTables", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("RBRVSRVUTables", "webdriver.scripts.datamaintenance.az",
 				"RBRVSRVUTables");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

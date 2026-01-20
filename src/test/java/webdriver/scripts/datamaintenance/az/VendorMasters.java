@@ -36,7 +36,7 @@ public class VendorMasters extends AzHelper{
 	static String vendorCodeName;
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("VendorMasters", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("VendorMasters", "webdriver.scripts.datamaintenance.az",
 				"VendorMasters");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

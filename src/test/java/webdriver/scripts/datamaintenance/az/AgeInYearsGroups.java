@@ -34,7 +34,7 @@ public class AgeInYearsGroups extends AzHelper{
 	String[] validateAgesAfterEdit= { "1","2","3"};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("AgeInYearsGroups", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("AgeInYearsGroups", "webdriver.scripts.datamaintenance.az",
 				"AgeInYearsGroups");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

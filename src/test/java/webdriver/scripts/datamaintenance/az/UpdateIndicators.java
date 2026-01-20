@@ -27,7 +27,7 @@ public class UpdateIndicators extends AzHelper {
 	static String[] filterAfterEdit= {"Name","Is","Equal To",updatedName};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("UpdateIndicators", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("UpdateIndicators", "webdriver.scripts.datamaintenance.az",
 				"UpdateIndicators");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

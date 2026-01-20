@@ -29,7 +29,7 @@ public class DepartmentHierarchies extends AzHelper{
 
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("DepartmentHierarchies", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("DepartmentHierarchies", "webdriver.scripts.datamaintenance.az",
 				"DepartmentHierarchies");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

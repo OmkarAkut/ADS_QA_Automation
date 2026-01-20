@@ -38,7 +38,7 @@ public class MedicalServiceAssignments extends AzHelper{
 	static String[] calcFilter= {"Scenario Name","Is","Equal To",name};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("MedicalServiceAssignments", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("MedicalServiceAssignments", "webdriver.scripts.datamaintenance.az",
 				"MedicalServiceAssignments");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

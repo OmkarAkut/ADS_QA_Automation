@@ -33,7 +33,7 @@ public class Markets extends AzHelper{
 	//Issue : ADS-23702
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("Markets", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("Markets", "webdriver.scripts.datamaintenance.az",
 				"Markets");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

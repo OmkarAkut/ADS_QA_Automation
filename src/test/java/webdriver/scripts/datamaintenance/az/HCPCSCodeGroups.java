@@ -32,7 +32,7 @@ public class HCPCSCodeGroups extends AzHelper{
 	String[] validateAgesAfterEdit=  {"0000CB" ,"0000TB","0001F"};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("HCPCSCodeGroups", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("HCPCSCodeGroups", "webdriver.scripts.datamaintenance.az",
 				"HCPCSCodeGroups");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

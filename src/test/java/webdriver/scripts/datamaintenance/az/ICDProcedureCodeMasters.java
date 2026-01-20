@@ -31,7 +31,7 @@ public class ICDProcedureCodeMasters extends AzHelper {
 	static String procNameEdit = "UpdatedName" + currentDateTime;
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("ICD10DiagnosisCodes", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("ICD10DiagnosisCodes", "webdriver.scripts.datamaintenance.az",
 				"ICD10DiagnosisCodes");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

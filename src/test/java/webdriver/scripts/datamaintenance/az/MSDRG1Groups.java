@@ -32,7 +32,7 @@ public class MSDRG1Groups extends AzHelper{
 	String[] validateAgesAfterEdit=  {"2014MSDRG1" ,"2025MSDRG","2015MSDRG1"};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("MSDRG1Groups", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("MSDRG1Groups", "webdriver.scripts.datamaintenance.az",
 				"MSDRG1Groups");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

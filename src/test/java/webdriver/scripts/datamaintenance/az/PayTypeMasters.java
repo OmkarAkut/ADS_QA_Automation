@@ -35,7 +35,7 @@ public class PayTypeMasters extends AzHelper{
 	static String accumHr="No";
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("PayTypeMasters", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("PayTypeMasters", "webdriver.scripts.datamaintenance.az",
 				"PayTypeMasters");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

@@ -27,7 +27,7 @@ public class PaymentOrganization extends AzHelper{
 	static String providerId="ID:"+code;
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("PaymentOrganization", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("PaymentOrganization", "webdriver.scripts.datamaintenance.az",
 				"PaymentOrganization");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

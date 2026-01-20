@@ -294,7 +294,7 @@ public class DoHelper extends DriverHelper {
 			WebElement element = driver.findElement(By.xpath("" + elementXpath + ""));
 			waitUntilElementIsClickable(element);
 			Actions act = new Actions(driver);
-			act.doubleClick(element).perform();
+			act.moveToElement(element).doubleClick().perform();
 
 		} catch (Exception e) {
 			JavascriptExecutor executor = (JavascriptExecutor)driver;

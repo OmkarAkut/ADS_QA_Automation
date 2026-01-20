@@ -27,7 +27,7 @@ public class StatusDependentStatuses extends AzHelper {
 	static String[] filterAfterEdit= {"Name","Is","Equal To",updatedName};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("SpecialDependentStatuses", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("SpecialDependentStatuses", "webdriver.scripts.datamaintenance.az",
 				"SpecialDependentStatuses");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

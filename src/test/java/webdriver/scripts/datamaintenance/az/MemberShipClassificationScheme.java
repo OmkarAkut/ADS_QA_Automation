@@ -36,7 +36,7 @@ public class MemberShipClassificationScheme extends AzHelper{
 	static String updatedOrderIndex="4";
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("MemberShipClassificationScheme", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("MemberShipClassificationScheme", "webdriver.scripts.datamaintenance.az",
 				"MemberShipClassificationScheme");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

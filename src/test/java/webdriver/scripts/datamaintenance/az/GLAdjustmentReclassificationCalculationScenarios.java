@@ -41,7 +41,7 @@ public class GLAdjustmentReclassificationCalculationScenarios extends AzHelper{
 	static ContractingMap contractMap;
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("GLAdjustmentReclassificationCalculationScenarios", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("GLAdjustmentReclassificationCalculationScenarios", "webdriver.scripts.datamaintenance.az",
 				"GLAdjustmentReclassificationCalculationScenarios");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

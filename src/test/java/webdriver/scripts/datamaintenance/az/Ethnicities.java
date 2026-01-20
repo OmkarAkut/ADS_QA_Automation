@@ -25,7 +25,7 @@ public class Ethnicities extends AzHelper {
 	static String[] filterAfterEdit= {"Name","Is","Equal To",updatedName};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("Genders", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("Genders", "webdriver.scripts.datamaintenance.az",
 				"Genders");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

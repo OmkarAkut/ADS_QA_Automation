@@ -28,7 +28,7 @@ public class ServiceAreas extends AzHelper {
 	static String transacType="Contractual Allowance";
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("ServiceAreas", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("ServiceAreas", "webdriver.scripts.datamaintenance.az",
 				"ServiceAreas");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

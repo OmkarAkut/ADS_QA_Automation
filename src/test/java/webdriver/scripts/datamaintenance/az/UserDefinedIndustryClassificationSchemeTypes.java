@@ -27,7 +27,7 @@ public class UserDefinedIndustryClassificationSchemeTypes extends AzHelper {
 	static String[] filterAfterEdit= {"Name","Is","Equal To",updatedName};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("UserDefinedIndustryClassificationSchemeTypes", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("UserDefinedIndustryClassificationSchemeTypes", "webdriver.scripts.datamaintenance.az",
 				"UserDefinedIndustryClassificationSchemeTypes");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

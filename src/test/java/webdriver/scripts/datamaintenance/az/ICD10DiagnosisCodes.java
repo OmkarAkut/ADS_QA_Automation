@@ -26,7 +26,7 @@ public class ICD10DiagnosisCodes extends AzHelper {
 	static String[] filterAfterEdit= {"Name","Is","Equal To",updatedName};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("ICD10DiagnosisCodes", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("ICD10DiagnosisCodes", "webdriver.scripts.datamaintenance.az",
 				"ICD10DiagnosisCodes");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

@@ -37,7 +37,7 @@ public class Entities extends AzHelper{
 	static String empName="Emp"+name;
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("Entities", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("Entities", "webdriver.scripts.datamaintenance.az",
 				"Entities");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

@@ -37,7 +37,7 @@ public class HealthPlanRepresentatives extends AzHelper{
 	//Issue ADS-23702
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("HealthPlanRepresentatives", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("HealthPlanRepresentatives", "webdriver.scripts.datamaintenance.az",
 				"HealthPlanRepresentatives");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

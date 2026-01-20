@@ -34,7 +34,7 @@ public class MemberDesignations extends AzHelper{
 	//Issue : ADS-23702
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("MemberDesignations", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("MemberDesignations", "webdriver.scripts.datamaintenance.az",
 				"MemberDesignations");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

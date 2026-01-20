@@ -33,7 +33,7 @@ public class Services extends AzHelper {
 	static String[] unitTypePatientDayOptions= {"Stay","Visit"};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("Services", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("Services", "webdriver.scripts.datamaintenance.az",
 				"Services");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

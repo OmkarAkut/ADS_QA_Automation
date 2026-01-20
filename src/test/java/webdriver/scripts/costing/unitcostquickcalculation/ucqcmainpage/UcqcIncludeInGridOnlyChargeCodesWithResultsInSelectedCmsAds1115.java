@@ -33,8 +33,8 @@ public class UcqcIncludeInGridOnlyChargeCodesWithResultsInSelectedCmsAds1115
     "Marina", "*CM1 TB MHFY05 After Vol Change", "150 Marina Medical Center",
    // "2130  PED ICU", 
     "2130", //venkat update text data 15.09.2022
-//    "Jan 2005 to Jan 2005"
-    "Jan 2005 to Mar 2005"
+    "Jan 2005 to Jan 2005"//Shilpa: update test data on 01.20.2026
+//    "Jan 2005 to Mar 2005"
   };
   private static String sqlQuery =
       "SELECT ac.actdscrcode"

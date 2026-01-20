@@ -30,7 +30,7 @@ public class OverheadModelScenarioResults extends AzHelper{
 	static String[] overheadModelScenarioResultFilter= {"Overhead Model Scenario Name","Is","Equal To","* TB MH FY05 Overhead"};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("OverheadModdeScenarioResults", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("OverheadModdeScenarioResults", "webdriver.scripts.datamaintenance.az",
 				"OverheadModdeScenarioResults");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

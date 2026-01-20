@@ -32,7 +32,7 @@ public class ICDProcedureCodeGroups extends AzHelper{
 	String[] validateAgesAfterEdit=  {"ICD10" ,"ICD","ICD10"};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("ICDProcedureCodeGroups", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("ICDProcedureCodeGroups", "webdriver.scripts.datamaintenance.az",
 				"ICDProcedureCodeGroups");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

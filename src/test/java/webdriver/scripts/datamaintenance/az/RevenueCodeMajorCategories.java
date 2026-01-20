@@ -26,7 +26,7 @@ public class RevenueCodeMajorCategories extends AzHelper {
 	static String[] filterAfterEdit= {"Name","Is","Equal To",updatedName};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("RevenueCodeMajorCategories", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("RevenueCodeMajorCategories", "webdriver.scripts.datamaintenance.az",
 				"RevenueCodeMajorCategories");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

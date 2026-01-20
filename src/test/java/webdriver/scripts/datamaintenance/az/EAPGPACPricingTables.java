@@ -36,7 +36,7 @@ public class EAPGPACPricingTables extends AzHelper{
 	static String updatedPaymentPercent="22";
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("EAPGPACPricingTables", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("EAPGPACPricingTables", "webdriver.scripts.datamaintenance.az",
 				"EAPGPACPricingTables");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

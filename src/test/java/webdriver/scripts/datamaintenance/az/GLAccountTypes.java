@@ -36,7 +36,7 @@ public class GLAccountTypes extends AzHelper{
 	static String[] updatedGlAccountTypeFilter= {"Name","Is","Equal To",updatedGlName};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("GLAccountTypes", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("GLAccountTypes", "webdriver.scripts.datamaintenance.az",
 				"GLAccountTypes");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

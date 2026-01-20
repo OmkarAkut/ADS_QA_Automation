@@ -44,7 +44,7 @@ public class ContractualAllowances extends AzHelper{
 	static String[] encounterType= {"1S1 Office"};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("ContractualAllowances", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("ContractualAllowances", "webdriver.scripts.datamaintenance.az",
 				"ContractualAllowances");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

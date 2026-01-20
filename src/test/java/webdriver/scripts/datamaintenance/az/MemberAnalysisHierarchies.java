@@ -39,7 +39,7 @@ public class MemberAnalysisHierarchies extends AzHelper{
 	static String rollupSummary="1SMOKE1S Memb Analysis Hier";
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("MemberAnalysisHierarchies", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("MemberAnalysisHierarchies", "webdriver.scripts.datamaintenance.az",
 				"MemberAnalysisHierarchies");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

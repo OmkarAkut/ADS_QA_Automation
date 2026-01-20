@@ -58,9 +58,10 @@ public class RunFlexStandardHCPCReports extends GoHelper{
 				doClick(reportMap.reportLibraryPageEntityRefreshButton());
 				driverDelay();
 				try {
+					//Shilpa:Update for 11.4 on 01.20.2026
 					String time=java.time.LocalDateTime.parse(""+reportTime+"", java.time.format.DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss a")).format(java.time.format.DateTimeFormatter.ofPattern("MM/dd/yy hh:mm:ss a"));
 					if(driver.findElement(By.xpath("//div[text()='"+time+"']//following::div[4]")).getText().contains("COMPLETED")){
-						doDoubleClick("//div[text()='"+time+"']//following::div[4]");
+						doClick("//div[text()='"+time+"']//following::div[4]/a");
 						assertElementIsDisplayedWithXpath("//span[contains(text(),'HCPCS Modifiers')]");
 						break;
 					}

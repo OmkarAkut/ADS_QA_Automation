@@ -42,7 +42,7 @@ public class EAPGFeeScheduleMasters extends AzHelper{
 	static String feeScheduleEntries[]= {code,"12"};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("EAPGFeeScheduleMasters", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("EAPGFeeScheduleMasters", "webdriver.scripts.datamaintenance.az",
 				"EAPGFeeScheduleMasters");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

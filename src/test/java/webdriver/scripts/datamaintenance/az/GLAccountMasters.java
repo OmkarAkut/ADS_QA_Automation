@@ -38,7 +38,7 @@ public class GLAccountMasters extends AzHelper{
 	static String updatedGlName="Updated"+name;
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("GLAccountMasters", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("GLAccountMasters", "webdriver.scripts.datamaintenance.az",
 				"GLAccountMasters");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

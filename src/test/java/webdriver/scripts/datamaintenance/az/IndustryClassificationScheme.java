@@ -45,7 +45,7 @@ public class IndustryClassificationScheme extends AzHelper{
 	//Cannot create scheme if its created for the effective date , so only edit scheme is automated
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("IndustryClassificationScheme", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("IndustryClassificationScheme", "webdriver.scripts.datamaintenance.az",
 				"IndustryClassificationScheme");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

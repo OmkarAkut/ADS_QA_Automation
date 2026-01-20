@@ -27,7 +27,7 @@ public class AdmissionSources extends AzHelper {
 	static String[] filterAfterEdit= {"Name","Is","Equal To",updatedName};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("AdmissionSources", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("AdmissionSources", "webdriver.scripts.datamaintenance.az",
 				"AdmissionSources");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

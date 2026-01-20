@@ -29,7 +29,7 @@ public class DepartmentMasters extends AzHelper{
 	static String deptName;
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("DepartmentMasters", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("DepartmentMasters", "webdriver.scripts.datamaintenance.az",
 				"DepartmentMasters");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

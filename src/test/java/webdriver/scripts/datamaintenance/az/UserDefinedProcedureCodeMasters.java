@@ -32,7 +32,7 @@ public class UserDefinedProcedureCodeMasters extends AzHelper{
 	static String masterCodeName;
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("UserDefinedProcedureCodeMasters", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("UserDefinedProcedureCodeMasters", "webdriver.scripts.datamaintenance.az",
 				"UserDefinedProcedureCodeMasters");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

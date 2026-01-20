@@ -41,7 +41,7 @@ public class MedicareLocalities extends AzHelper{
 	//Issue ADS-23702
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("MedicareLocalities", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("MedicareLocalities", "webdriver.scripts.datamaintenance.az",
 				"MedicareLocalities");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

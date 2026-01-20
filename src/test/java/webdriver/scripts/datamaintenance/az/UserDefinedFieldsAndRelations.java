@@ -34,7 +34,7 @@ public class UserDefinedFieldsAndRelations extends AzHelper{
 	
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("UserDefinedFieldsAndRelations", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("UserDefinedFieldsAndRelations", "webdriver.scripts.datamaintenance.az",
 				"UserDefinedFieldsAndRelations");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

@@ -34,7 +34,7 @@ public class OverheadAccountVariabilityMasters extends AzHelper{
 	static String upVarPercent="10.16";
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("OverheadAccountVariabilityMasters", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("OverheadAccountVariabilityMasters", "webdriver.scripts.datamaintenance.az",
 				"OverheadAccountVariabilityMasters");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

@@ -43,7 +43,7 @@ public class GLAdjustmentMasters extends AzHelper{
 	static String comments="GL Adjustment Test";
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("GLAdjustmentMasters", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("GLAdjustmentMasters", "webdriver.scripts.datamaintenance.az",
 				"GLAdjustmentMasters");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

@@ -35,7 +35,7 @@ public class CommissionBrokerAgencies extends AzHelper{
 	static String[] commisionDialog=entity.split(" ");
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("CommissionBrokerAgencies", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("CommissionBrokerAgencies", "webdriver.scripts.datamaintenance.az",
 				"CommissionBrokerAgencies");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

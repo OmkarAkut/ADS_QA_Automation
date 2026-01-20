@@ -31,7 +31,7 @@ public class PriceList extends AzHelper{
 	static String price="5.15";
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("PriceList", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("PriceList", "webdriver.scripts.datamaintenance.az",
 				"PriceList");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

@@ -26,7 +26,7 @@ public class MedicarePlans extends AzHelper {
 	static String[] filterAfterEdit= {"Name","Is","Equal To",updatedName};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("MedicarePlans", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("MedicarePlans", "webdriver.scripts.datamaintenance.az",
 				"MedicarePlans");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

@@ -36,7 +36,7 @@ public class GroupStatisticMasters extends AzHelper{
 	static String updatedGroupStaticName="UpdatedGroup"+name;
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("GroupStatisticMasters", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("GroupStatisticMasters", "webdriver.scripts.datamaintenance.az",
 				"GroupStatisticMasters");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

@@ -39,7 +39,7 @@ public class CostComponentGroupMasters extends AzHelper{
 	static String[]  groupMembers= {"A01 CC Master with GL Acct Hierarchy"};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("CostComponentGroupMasters", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("CostComponentGroupMasters", "webdriver.scripts.datamaintenance.az",
 				"CostComponentGroupMasters");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

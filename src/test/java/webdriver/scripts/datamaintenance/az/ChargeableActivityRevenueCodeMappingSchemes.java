@@ -39,7 +39,7 @@ public class ChargeableActivityRevenueCodeMappingSchemes extends AzHelper{
 	static String revenueCode="0100  ALL INCL R&B PLUS ANCIL";
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("ChargeableActivityRevenueCodeMappingSchemes", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("ChargeableActivityRevenueCodeMappingSchemes", "webdriver.scripts.datamaintenance.az",
 				"ChargeableActivityRevenueCodeMappingSchemes");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

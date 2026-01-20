@@ -95,7 +95,6 @@ import org.junit.runners.Suite;
 	JobCodeMasters.class,
 	LinesOfBusiness.class,
 	Locations.class,
-	MaintaindataTestSuite.class,
 	Markets.class,
 	MedicalServiceAssignments.class,
 	MedicareCarriers.class,

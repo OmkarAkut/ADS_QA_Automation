@@ -26,7 +26,7 @@ public class ProductTypes extends AzHelper {
 	static String[] filterAfterEdit= {"Name","Is","Equal To",updatedName};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("ProductTypes", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("ProductTypes", "webdriver.scripts.datamaintenance.az",
 				"ProductTypes");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

@@ -32,7 +32,7 @@ public class RevenueCodeGroups extends AzHelper{
 	String[] validateAgesAfterEdit=  {"003" ,"004","005"};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("PractitionerSpecialtyGroups", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("PractitionerSpecialtyGroups", "webdriver.scripts.datamaintenance.az",
 				"PractitionerSpecialtyGroups");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

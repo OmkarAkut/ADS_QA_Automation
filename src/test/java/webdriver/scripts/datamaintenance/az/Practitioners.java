@@ -34,7 +34,7 @@ public class Practitioners extends AzHelper{
 	static String primarySpeciality="005 Anesthesiology";
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("Practitioners", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("Practitioners", "webdriver.scripts.datamaintenance.az",
 				"Practitioners");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

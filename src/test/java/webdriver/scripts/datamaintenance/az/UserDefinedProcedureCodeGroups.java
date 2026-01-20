@@ -32,7 +32,7 @@ public class UserDefinedProcedureCodeGroups extends AzHelper{
 	String[] validateAgesAfterEdit=  {"0200" ,"0300","0400"};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("UserDefinedProcedureCodeGroups", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("UserDefinedProcedureCodeGroups", "webdriver.scripts.datamaintenance.az",
 				"UserDefinedProcedureCodeGroups");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

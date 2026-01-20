@@ -39,7 +39,7 @@ public class GLStatisticMasters extends AzHelper{
 	static String glStaticName="GL"+name;
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("GLStatisticMasters", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("GLStatisticMasters", "webdriver.scripts.datamaintenance.az",
 				"GLStatisticMasters");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

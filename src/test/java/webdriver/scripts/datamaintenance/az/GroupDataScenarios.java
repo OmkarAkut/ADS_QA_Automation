@@ -47,7 +47,7 @@ public class GroupDataScenarios extends AzHelper{
 	static String statistic="GRPSTAT  Group Stat Code";
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("GroupDataScenarios", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("GroupDataScenarios", "webdriver.scripts.datamaintenance.az",
 				"GroupDataScenarios");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

@@ -32,7 +32,7 @@ public class StatisticGroups extends AzHelper{
 	String[] validateAgesAfterEdit=  {"1CSM1" ,"1CSM2","1CSM3"};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("StatisticGroups", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("StatisticGroups", "webdriver.scripts.datamaintenance.az",
 				"StatisticGroups");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

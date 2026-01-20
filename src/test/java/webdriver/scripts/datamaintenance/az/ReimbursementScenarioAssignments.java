@@ -38,7 +38,7 @@ public class ReimbursementScenarioAssignments extends AzHelper{
 
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("ReimbursementScenarioAssignments", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("ReimbursementScenarioAssignments", "webdriver.scripts.datamaintenance.az",
 				"ReimbursementScenarioAssignments");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

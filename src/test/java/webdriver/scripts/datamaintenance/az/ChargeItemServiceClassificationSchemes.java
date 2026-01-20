@@ -28,7 +28,7 @@ public class ChargeItemServiceClassificationSchemes extends AzHelper{
 
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("ChargeItemServiceClassificationSchemes", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("ChargeItemServiceClassificationSchemes", "webdriver.scripts.datamaintenance.az",
 				"ChargeItemServiceClassificationSchemes");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

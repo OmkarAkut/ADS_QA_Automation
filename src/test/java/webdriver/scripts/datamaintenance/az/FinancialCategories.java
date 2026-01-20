@@ -36,7 +36,7 @@ public class FinancialCategories extends AzHelper{
 	static String[] updatedFinancialCategoryFilter= {"Name","Is","Equal To",updatedName};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("FinancialCategories", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("FinancialCategories", "webdriver.scripts.datamaintenance.az",
 				"FinancialCategories");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

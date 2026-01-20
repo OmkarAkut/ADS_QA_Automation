@@ -27,7 +27,7 @@ public class EFRCategories extends AzHelper {
 	static String[] filterAfterEdit= {"Name","Is","Equal To",updatedName};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("EFRCategories", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("EFRCategories", "webdriver.scripts.datamaintenance.az",
 				"EFRCategories");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

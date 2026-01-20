@@ -39,7 +39,7 @@ public class ChargeableActivityHCPCSCodeMappingSchemes extends AzHelper{
 	static String hcpcsActivity="99281 Emergency dept unit";
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("ChargeableActivityHCPCSCodeMappingSchemes", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("ChargeableActivityHCPCSCodeMappingSchemes", "webdriver.scripts.datamaintenance.az",
 				"ChargeableActivityHCPCSCodeMappingSchemes");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

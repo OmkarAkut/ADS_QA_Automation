@@ -26,7 +26,7 @@ public class EntityTypes extends AzHelper {
 	static String[] filterAfterEdit= {"Name","Is","Equal To",updatedName};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("EntityTypes", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("EntityTypes", "webdriver.scripts.datamaintenance.az",
 				"EntityTypes");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

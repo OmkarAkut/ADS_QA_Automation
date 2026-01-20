@@ -32,7 +32,7 @@ public class TRICAREDRGGroups extends AzHelper{
 	String[] validateAgesAfterEdit=  {"2016TRICARE" ,"2021TRICARE","2020TRICARE"};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("PractitionerSpecialtyGroups", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("PractitionerSpecialtyGroups", "webdriver.scripts.datamaintenance.az",
 				"PractitionerSpecialtyGroups");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

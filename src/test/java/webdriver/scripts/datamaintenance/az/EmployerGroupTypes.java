@@ -27,7 +27,7 @@ public class EmployerGroupTypes extends AzHelper {
 	static String[] filterAfterEdit= {"Name","Is","Equal To",updatedName};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("EmployerGroupTypes", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("EmployerGroupTypes", "webdriver.scripts.datamaintenance.az",
 				"EmployerGroupTypes");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

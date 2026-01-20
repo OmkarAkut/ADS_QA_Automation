@@ -39,7 +39,7 @@ public class SiteOfServiceTables extends AzHelper{
 	String[] validateNames= {"TOBACCO USE, SMOKING, ASSESS" ,"TOBACCO USE, NON-SMOKING"};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("SiteOfServiceTables", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("SiteOfServiceTables", "webdriver.scripts.datamaintenance.az",
 				"SiteOfServiceTables");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

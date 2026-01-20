@@ -133,8 +133,8 @@ public class EncounterCost extends CalculationHelper {
 			doClick(costing.getCostModelScenariosinEvaluationOrderEncounterSelectAll());
 
 			doClick(costing.getUnitCostQuickCalculationColumnsToDisplayModalApply());
-			doClick("//span[text()='Continue']");
-			driverDelay();
+//			doClick("//span[text()='Continue']");
+//			driverDelay();
 			doClick(costing.getCostModelScenariosinEvaluationOrderAdmissionCheck());
 
 			doClick(costing.getCostModelScenariosinEvaluationOrderDischargeCheck());
@@ -157,11 +157,11 @@ public class EncounterCost extends CalculationHelper {
 			Thread.sleep(300);
 			driver.findElement(By.name("logLocation")).sendKeys("Test");
 			doClick(CostingMap.getEncounterSave());
-			doClick("//span[text()='Continue']");
-			waitForDisplayedSpinnerToEnd();
+//			doClick("//span[text()='Continue']");
+//			waitForDisplayedSpinnerToEnd();
 			doClick(CostingMap.getEncounterCalculateBtn());
 //			doClick("//span[text()='Save & Continue']");
-			waitForSpinnerToEnd();
+//			waitForSpinnerToEnd();
 			//Shilpa update for 11.2 on 11.4.2024
 			doFilterCalculationPage(filter);
 			CalculationHelper.waitForFirstRowCalculationBarToReach100Percent();

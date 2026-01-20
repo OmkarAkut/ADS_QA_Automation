@@ -46,7 +46,7 @@ public class PriceListCalculationScenarios extends AzHelper{
 	static String[] encounter= {"1S1 Office "};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("PriceListCalculationScenarios", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("PriceListCalculationScenarios", "webdriver.scripts.datamaintenance.az",
 				"PriceListCalculationScenarios");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

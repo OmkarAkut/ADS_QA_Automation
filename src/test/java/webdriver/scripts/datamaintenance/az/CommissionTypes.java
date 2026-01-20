@@ -34,7 +34,7 @@ public class CommissionTypes extends AzHelper{
 	static String[] commissionBrokerFilter= {"Name","Is","Equal To",name};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("CommissionTypes", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("CommissionTypes", "webdriver.scripts.datamaintenance.az",
 				"CommissionTypes");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

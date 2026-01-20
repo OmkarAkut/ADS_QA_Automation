@@ -27,7 +27,7 @@ public class JobCodeMasters extends AzHelper {
 	static String[] filterAfterEdit= {"Name","Is","Equal To",updatedName};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("JobCodeMasters", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("JobCodeMasters", "webdriver.scripts.datamaintenance.az",
 				"JobCodeMasters");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

@@ -29,7 +29,7 @@ public class HCPCSModifiers extends AzHelper {
 	static String[] filterAfterEdit= {"Name","Is","Equal To",updatedName};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("HCPCSModifiers", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("HCPCSModifiers", "webdriver.scripts.datamaintenance.az",
 				"HCPCSModifiers");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

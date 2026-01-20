@@ -38,7 +38,7 @@ public class Consumers extends AzHelper{
 	static String workPhoneNumber="55"+code;
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("Consumers", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("Consumers", "webdriver.scripts.datamaintenance.az",
 				"Consumers");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

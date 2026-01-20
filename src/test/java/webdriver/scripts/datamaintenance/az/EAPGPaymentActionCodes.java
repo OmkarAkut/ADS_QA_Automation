@@ -27,7 +27,7 @@ public class EAPGPaymentActionCodes extends AzHelper {
 	static String[] filterAfterEdit= {"Name","Is","Equal To",updatedName};
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("EAPGPaymentActionCodes", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("EAPGPaymentActionCodes", "webdriver.scripts.datamaintenance.az",
 				"EAPGPaymentActionCodes");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

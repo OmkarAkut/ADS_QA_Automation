@@ -23,7 +23,7 @@ public class EditConsumerHistoryRecord extends CalculationHelper{
 
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("EditConsumerHistoryRecord", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("EditConsumerHistoryRecord", "webdriver.scripts.datamaintenance.az",
 				"EditConsumerHistoryRecord");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

@@ -31,7 +31,7 @@ public class BusinessOfficeContacts extends AzHelper{
 	static String updatedName;
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("BusinessOfficeContacts", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("BusinessOfficeContacts", "webdriver.scripts.datamaintenance.az",
 				"BusinessOfficeContacts");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);

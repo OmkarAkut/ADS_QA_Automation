@@ -43,7 +43,7 @@ public class CostComponentVariabilityMasters extends AzHelper{
 	static String updatedvarPercent="96";
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("CostComponentVariabilityMasters", "webdriver.scripts.datamaintenance.maintaindata",
+		ExtentReport.reportCreate("CostComponentVariabilityMasters", "webdriver.scripts.datamaintenance.az",
 				"CostComponentVariabilityMasters");
 		try {
 			dmMap = BuildMap.getInstance(driver, DataMaintenanceMap.class);
