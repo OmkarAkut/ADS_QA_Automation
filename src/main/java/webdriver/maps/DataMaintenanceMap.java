@@ -2599,4 +2599,82 @@ public class DataMaintenanceMap extends MapConfig {
 	public static WebElement getglMasterGlAcctCommentSec() {
 		return glMasterGlAcctCommentSec;
 	}
+	
+	@FindBy(xpath = "(//span[text()='Benefit Plans']//following::span[text()='Select'])[1]")
+	private static WebElement benefitPlanSelectBtn;
+	public static WebElement getbenefitPlanSelectBtn() {
+		return benefitPlanSelectBtn;
+	}
+	@FindBy(xpath = "(//span[text()='Encounter Types']//following::span[text()='Select'])[1]")
+	private static WebElement encounterSelectBtn;
+	public static WebElement getencounterSelectBtn() {
+		return encounterSelectBtn;
+	}
+	@FindBy(xpath = "(//span[text()='Benefit Plans']//following::span[text()='View Selected Criteria'])[1]")
+	private static WebElement benefitPlanViewSelectCriteriaBtn;
+	public static WebElement getbenefitPlanViewSelectCriteriaBtn() {
+		return benefitPlanViewSelectCriteriaBtn;
+	}
+	@FindBy(xpath = "(//span[text()='Care Delivery Facilities']//following::span[text()='View Selected Criteria'])[1]")
+	private static WebElement careDeliveryViewSelectCriteriaBtn;
+	public static WebElement getcareDeliveryViewSelectCriteriaBtn() {
+		return careDeliveryViewSelectCriteriaBtn;
+	}
+	@FindBy(xpath = "(//span[text()='Encounter Types']//following::span[text()='View Selected Criteria'])[1]")
+	private static WebElement encounterTypeViewSelectCriteriaBtn;
+	public static WebElement getencounterTypeViewSelectCriteriaBtn() {
+		return encounterTypeViewSelectCriteriaBtn;
+	}
+	@FindBy(xpath = "(//span[text()='ICD10 Code First Secondary Diagnosis Codes']//following::span[text()='Select'])[1]")
+	private static WebElement icd10CodesSelectBtn;
+	public static WebElement geticd10CodesSelectBtn() {
+		return icd10CodesSelectBtn;
+	}
+	@FindBy(xpath = "(//span[text()='ICD9 Code First Secondary Diagnosis Codes']//following::span[text()='Select'])[1]")
+	private static WebElement icd9CodesSelectBtn;
+	public static WebElement geticd9CodesSelectBtn() {
+		return icd9CodesSelectBtn;
+	}
+	
+	@FindBy(xpath = "(//span[text()='ICD10 Code First Secondary Diagnosis Codes']//following::span[text()='View Selected Criteria'])[1]")
+	private static WebElement icd10CodesViewSelectBtn;
+	public static WebElement geticd10CodesViewSelectBtn() {
+		return icd10CodesViewSelectBtn;
+	}
+	@FindBy(xpath = "(//span[text()='ICD9 Code First Secondary Diagnosis Codes']//following::span[text()='View Selected Criteria'])[1]")
+	private static WebElement icd9CodesViewSelectBtn;
+	public static WebElement geticd9CodesViewSelectBtn() {
+		return icd9CodesViewSelectBtn;
+	}
+	@FindBy(xpath = "(//span[text()='Care Delivery Facilities']//following::span[text()='Select'])[1]")
+	private static WebElement careDeliveryFacilitiesSelectBtn;
+	public static WebElement getcareDeliveryFacilitiesSelectBtn() {
+		return careDeliveryFacilitiesSelectBtn;
+	}
+	@FindBy(xpath = "(//span[text()='Consumer']//following::span[text()='Select'])[1]")
+	private static WebElement consumerSelectBtn;
+	public static WebElement getconsumerSelectBtn() {
+		return consumerSelectBtn;
+	}
+	@FindBy(xpath = "(//span[text()='Care Delivery Facility']//following::span[text()='Select'])[1]")
+	private static WebElement encounterCareDeliverySelectBtn;
+	public static WebElement getencounterCareDeliverySelectBtn() {
+		return encounterCareDeliverySelectBtn;
+	}
+	@FindBy(xpath = "//span[text()='Encounter Type']//following::ul/li[text()='1S1 Office']/..")
+	private static WebElement encounterTypeDrp;
+	public static WebElement getencounterTypeDrp() {
+		return encounterTypeDrp;
+	}
+	@FindBy(xpath = "//span[text()='Admission Source']//following::ul/li[text()='1SM1 Admin Source 100']/..")
+	private static WebElement admissionTypeDrp;
+	public static WebElement getadmissionTypeDrp() {
+		return admissionTypeDrp;
+	}
+	@FindBy(xpath = "//span[text()='Discharge Status']//following::ul/li[text()='01 DISCHARGED HOME OR SELF CARE (ROUTINE)']/..")
+	private static WebElement dischargeStatusTypeDrp;
+	public static WebElement getdischargeStatusTypeDrp() {
+		return dischargeStatusTypeDrp;
+	}
+	
 }
