@@ -729,6 +729,18 @@ public class DataMaintenanceMap extends MapConfig {
     private static WebElement proceduresTab;
     public static WebElement getproceduresTab() {return proceduresTab;}
     
+    @FindBy(xpath = "//span[text()='DRGs']/../../..")
+    private static WebElement drgsTab;
+    public static WebElement getdrgsTab() {return drgsTab;}
+    
+    @FindBy(xpath = "//span[text()='Services']/../../..")
+    private static WebElement servicesTab;
+    public static WebElement getservicesTab() {return servicesTab;}
+    
+    @FindBy(xpath = "//span[text()='APCs & APGs']/../../..")
+    private static WebElement apcsTab;
+    public static WebElement getapcsTab() {return apcsTab;}
+    
     @FindBy(xpath = "(((//div[contains(@id,'dynamicGrid')]//div[@class='x-grid-item-container']))[4]//table[1]//td/div)[9]")
     private static WebElement udf;
     public static WebElement getudf() {return udf;}
@@ -2656,7 +2668,7 @@ public class DataMaintenanceMap extends MapConfig {
 	public static WebElement getconsumerSelectBtn() {
 		return consumerSelectBtn;
 	}
-	@FindBy(xpath = "(//span[text()='Care Delivery Facility']//following::span[text()='Select'])[1]")
+	@FindBy(xpath = "(//span[text()='Care Delivery Facility']//following::span[text()='Select'])[2]")
 	private static WebElement encounterCareDeliverySelectBtn;
 	public static WebElement getencounterCareDeliverySelectBtn() {
 		return encounterCareDeliverySelectBtn;
@@ -2676,5 +2688,89 @@ public class DataMaintenanceMap extends MapConfig {
 	public static WebElement getdischargeStatusTypeDrp() {
 		return dischargeStatusTypeDrp;
 	}
-	
+	@FindBy(xpath = "//div[text()='ICD10 Secondary Diagnosis']//following::span[text()='Select']")
+	private static WebElement icd10DiagnosesSelectBtn;
+	public static WebElement geticd10DiagnosesSelectBtn() {
+		return icd10DiagnosesSelectBtn;
+	}
+	@FindBy(xpath = "//div[text()='ICD9 Secondary Diagnosis']//following::span[text()='Select']")
+	private static WebElement icd9DiagnosesSelectBtn;
+	public static WebElement geticd9DiagnosesSelectBtn() {
+		return icd9DiagnosesSelectBtn;
+	}
+	@FindBy(xpath = "(//span[text()='ICD']//following::span[text()='Select'])[1]")
+	private static WebElement icdSelectBtn;
+	public static WebElement geticdSelectBtn() {
+		return icdSelectBtn;
+	}
+	@FindBy(xpath = "(//div[text()='APC']//following::span[text()='Select'])[1]")
+	private static WebElement apcSelectBtn;
+	public static WebElement getapcSelectBtn() {
+		return apcSelectBtn;
+	}
+	@FindBy(xpath = "(//div[text()='EAPG']//following::span[text()='Select'])[1]")
+	private static WebElement eapgSelectBtn;
+	public static WebElement geteapgSelectBtn() {
+		return eapgSelectBtn;
+	}
+	@FindBy(xpath = "(//div[text()='EAPG']//following::span[text()='Select'])[2]")
+	private static WebElement revenueCodeEncSelectBtn;
+	public static WebElement getrevenueCodeEncSelectBtn() {
+		return revenueCodeEncSelectBtn;
+	}
+	@FindBy(xpath = "(//div[text()='EAPG']//following::span[text()='Select'])[3]")
+	private static WebElement apgSelectBtn;
+	public static WebElement getapgSelectBtn() {
+		return apgSelectBtn;
+	}
+	@FindBy(xpath = "//div[text()='Service']//following::span[text()='Select']")
+	private static WebElement serviceSelectBtn;
+	public static WebElement getserviceSelectBtn() {
+		return serviceSelectBtn;
+	}
+	@FindBy(xpath = "(//div[contains(@id,'singleselectorform')]//span[text()='Cost Accounting Entity']//following::span[text()='Select'])[1]")
+	private static WebElement costAccountingSelectBtn;
+	public static WebElement getcostAccountingSelectBtn() {
+		return costAccountingSelectBtn;
+	}
+	@FindBy(xpath = "(//div[contains(@id,'singleselectorform')]//span[text()='Seller Of Services']//following::span[text()='Select'])[1]")
+	private static WebElement sellerOfServicesSelectBtn;
+	public static WebElement getsellerOfServicesSelectBtn() {
+		return sellerOfServicesSelectBtn;
+	}
+	@FindBy(xpath = "(//div[contains(@id,'singleselectorform')]//span[text()='Primary Benefit Plan']//following::span[text()='Select'])[1]")
+	private static WebElement primaryBenefitPlanSelectBtn;
+	public static WebElement getprimaryBenefitPlanSelectBtn() {
+		return primaryBenefitPlanSelectBtn;
+	}
+	@FindBy(xpath = "(//div[contains(@id,'singleselectorform')]//span[text()='Current Allowance Benefit Plan']//following::span[text()='Select'])[1]")
+	private static WebElement contractualBenefitPlanSelectBtn;
+	public static WebElement getcontractualBenefitPlanSelectBtn() {
+		return contractualBenefitPlanSelectBtn;
+	}
+	@FindBy(xpath = "(//div[text()='Ambulatory Payment Classifications (APCs)']//following::span[text()='New'])[1]")
+	private static WebElement apcNewBtn;
+	public static WebElement getapcNewBtn() {
+		return apcNewBtn;
+	}
+	@FindBy(xpath = "(//div[text()='Ambulatory Payment Classifications (APCs)']//following::span[text()='Edit'])[1]")
+	private static WebElement apcEditBtn;
+	public static WebElement getapcEditBtn() {
+		return apcEditBtn;
+	}
+	@FindBy(xpath = "(//div[text()='Enhanced Ambulatory Patient Groups (EAPGs)']//following::span[text()='New'])[1]")
+	private static WebElement eapgNewBtn;
+	public static WebElement geteapgNewBtn() {
+		return eapgNewBtn;
+	}
+	@FindBy(xpath = "(//div[text()='Ambulatory Payment Classifications (APCs)']//following::span[text()='Delete'])[1]")
+	private static WebElement apcDeleteBtn;
+	public static WebElement getapcDeleteBtn() {
+		return apcDeleteBtn;
+	}
+	@FindBy(xpath = "(//div[text()='Enhanced Ambulatory Patient Groups (EAPGs)']//following::span[text()='Delete'])[1]")
+	private static WebElement apgDeleteBtn;
+	public static WebElement getapgDeleteBtn() {
+		return apgDeleteBtn;
+	}
 }

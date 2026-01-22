@@ -1,0 +1,2205 @@
+Found 4 accessibility violations:
+1) Buttons must have discernible text: https://dequeuniversity.com/rules/axe/3.1/button-name?application=axeAPI
+  a) ["#button-1093"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  b) ["#button-1061"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  c) ["#button-1062"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  d) ["#button-1063"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  e) ["#button-1068"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  f) ["#button-1069"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  g) ["#button-1071"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  h) ["#button-1221"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  i) ["#button-1222"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  j) ["#button-1223"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  k) ["#button-1224"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  l) ["#button-1225"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  m) ["#button-1226"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  n) ["#button-1227"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  o) ["#button-1228"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  p) ["#button-1229"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  q) ["#button-1230"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  r) ["#button-1231"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  s) ["#button-1232"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  t) ["#button-1233"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  u) ["#button-1108"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  v) ["#button-1177"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  w) ["#button-1234"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  x) ["#button-1110"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  y) ["#button-1178"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  z) ["#button-1235"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  aa) ["#button-1112"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  ab) ["#button-1179"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  ac) ["#button-1236"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  ad) ["#button-1114"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  ae) ["#button-1180"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  af) ["#button-1237"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  ag) ["#button-1181"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  ah) ["#button-1238"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  ai) ["#button-1182"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  aj) ["#button-1239"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  ak) ["#button-1183"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  al) ["#button-1240"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  am) ["#button-1184"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  an) ["#button-1241"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  ao) ["#button-1185"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  ap) ["#button-1242"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  aq) ["#button-1186"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  ar) ["#button-1243"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  as) ["#button-1187"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  at) ["#button-1244"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  au) ["#button-1188"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  av) ["#button-1245"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  aw) ["#button-1189"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  ax) ["#button-1246"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  ay) ["#button-1247"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  az) ["#button-1248"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  ba) ["#button-1249"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  bb) ["#button-1250"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  bc) ["#button-1251"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  bd) ["#button-1252"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  be) ["#button-1253"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  bf) ["#button-1254"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  bg) ["#button-1255"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  bh) ["#button-1256"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  bi) ["#button-1257"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  bj) ["#button-1258"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  bk) ["#button-1259"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  bl) ["#button-1260"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  bm) ["#button-1261"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  bn) ["#button-1262"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  bo) ["#button-1263"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  bp) ["#button-1264"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  bq) ["#button-1265"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  br) ["#button-1266"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  bs) ["#button-1267"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  bt) ["#button-1268"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  bu) ["#button-1269"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  bv) ["#button-1270"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  bw) ["#button-1271"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  bx) ["#button-1272"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  by) ["#button-1273"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  bz) ["#button-1274"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  ca) ["#button-1275"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  cb) ["#button-1276"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  cc) ["#button-1277"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  cd) ["#button-1032"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+2) id attribute value must be unique: https://dequeuniversity.com/rules/axe/3.1/duplicate-id?application=axeAPI
+  a) ["#reporting_subtab > .submenuBlock:nth-child(9)"]
+    Fix any of the following:
+      Document has multiple static elements with the same id attribute
+
+
+3) <html> element must have a lang attribute: https://dequeuniversity.com/rules/axe/3.1/html-has-lang?application=axeAPI
+  a) ["#menuHelperFrame","html"]
+    Fix any of the following:
+      The <html> element does not have a lang attribute
+
+
+4) Form elements must have labels: https://dequeuniversity.com/rules/axe/3.1/label?application=axeAPI
+  a) ["#textfield-1065-inputEl"]
+    Fix all of the following:
+      Form element has explicit <label> that is hidden
+      Form element has explicit <label> that is hidden
+      Form element has explicit <label> that is hidden
+
+
+Found 4 accessibility violations:
+1) Buttons must have discernible text: https://dequeuniversity.com/rules/axe/3.1/button-name?application=axeAPI
+  a) ["#button-1334"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  b) ["#button-1304"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  c) ["#button-1305"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  d) ["#button-1306"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  e) ["#button-1311"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  f) ["#button-1312"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  g) ["#button-1314"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  h) ["#button-1336"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  i) ["#button-1338"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  j) ["#button-1340"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  k) ["#button-1342"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  l) ["#button-1344"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  m) ["#button-1346"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  n) ["#button-1348"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  o) ["#button-1350"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  p) ["#button-1352"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  q) ["#button-1354"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  r) ["#button-1356"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  s) ["#button-1358"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  t) ["#button-1360"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  u) ["#button-1362"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  v) ["#button-1364"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  w) ["#button-1366"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  x) ["#button-1368"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  y) ["#button-1370"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  z) ["#button-1372"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  aa) ["#button-1374"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  ab) ["#button-1376"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  ac) ["#button-1378"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  ad) ["#button-1380"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  ae) ["#button-1382"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  af) ["#button-1384"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  ag) ["#button-1386"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  ah) ["#button-1388"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  ai) ["#button-1390"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  aj) ["#button-1392"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  ak) ["#button-1394"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  al) ["#button-1396"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  am) ["#button-1398"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  an) ["#button-1400"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  ao) ["#button-1402"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  ap) ["#button-1404"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  aq) ["#button-1406"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  ar) ["#button-1408"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  as) ["#button-1410"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  at) ["#button-1412"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  au) ["#button-1414"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  av) ["#button-1416"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  aw) ["#button-1418"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  ax) ["#button-1420"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  ay) ["#button-1422"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  az) ["#button-1424"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  ba) ["#button-1426"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  bb) ["#button-1428"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  bc) ["#button-1430"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  bd) ["#button-1432"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  be) ["#button-1434"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  bf) ["#button-1436"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  bg) ["#button-1438"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  bh) ["#button-1440"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  bi) ["#button-1442"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  bj) ["#button-1444"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  bk) ["#button-1446"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  bl) ["#button-1448"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  bm) ["#button-1450"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  bn) ["#button-1452"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  bo) ["#button-1032"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+2) id attribute value must be unique: https://dequeuniversity.com/rules/axe/3.1/duplicate-id?application=axeAPI
+  a) ["#reporting_subtab > .submenuBlock:nth-child(9)"]
+    Fix any of the following:
+      Document has multiple static elements with the same id attribute
+
+
+3) <html> element must have a lang attribute: https://dequeuniversity.com/rules/axe/3.1/html-has-lang?application=axeAPI
+  a) ["#menuHelperFrame","html"]
+    Fix any of the following:
+      The <html> element does not have a lang attribute
+
+
+4) Form elements must have labels: https://dequeuniversity.com/rules/axe/3.1/label?application=axeAPI
+  a) ["#textfield-1308-inputEl"]
+    Fix all of the following:
+      Form element has explicit <label> that is hidden
+      Form element has explicit <label> that is hidden
+      Form element has explicit <label> that is hidden
+
+
+Found 4 accessibility violations:
+1) Buttons must have discernible text: https://dequeuniversity.com/rules/axe/3.1/button-name?application=axeAPI
+  a) ["#button-1500"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  b) ["#button-1470"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  c) ["#button-1471"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  d) ["#button-1472"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  e) ["#button-1477"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  f) ["#button-1478"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  g) ["#button-1480"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+  h) ["#button-1032"]
+    Fix all of the following:
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+      Element is in tab order and does not have accessible text
+
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+2) id attribute value must be unique: https://dequeuniversity.com/rules/axe/3.1/duplicate-id?application=axeAPI
+  a) ["#reporting_subtab > .submenuBlock:nth-child(9)"]
+    Fix any of the following:
+      Document has multiple static elements with the same id attribute
+
+
+3) <html> element must have a lang attribute: https://dequeuniversity.com/rules/axe/3.1/html-has-lang?application=axeAPI
+  a) ["#menuHelperFrame","html"]
+    Fix any of the following:
+      The <html> element does not have a lang attribute
+
+
+4) Form elements must have labels: https://dequeuniversity.com/rules/axe/3.1/label?application=axeAPI
+  a) ["#textfield-1474-inputEl"]
+    Fix all of the following:
+      Form element has explicit <label> that is hidden
+      Form element has explicit <label> that is hidden
+      Form element has explicit <label> that is hidden
+
+

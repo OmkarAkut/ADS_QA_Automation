@@ -29,9 +29,9 @@ import webdriver.scripts.systemmaintenance.SystemMaintenanceTestSuite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 
-//	TestSuiteForCIM.class,
+	TestSuiteForCIM.class,
 //	TestSuiteForAE.class,
-//	CostingTestSuite.class,
+	CostingTestSuite.class,
 //	ContractingSuite.class,
 //	MaintaindataTestSuite.class,
 //	GeneralCalculationsTestSuite.class,
@@ -39,9 +39,9 @@ import webdriver.scripts.systemmaintenance.SystemMaintenanceTestSuite;
 //	EpisodesTestSuite.class,
 //	ReportingTestSuite.class,
 //	UtilitiesTestSuite.class,
-	PagetestsSuite.class,
-	HelpSuite.class,
-	ChecktestsSuite.class,
+//	PagetestsSuite.class,
+//	HelpSuite.class,
+//	ChecktestsSuite.class,
 //	CostingCalculationsTestSuite.class,
 //	CostingModelsTestSuite.class,
 //	CalculationStatusSuite.class,
@@ -50,7 +50,7 @@ import webdriver.scripts.systemmaintenance.SystemMaintenanceTestSuite;
 //	UcqcRvusSuite.class,
 //	UcqcRoleBasedTestSuite.class,
 //	UcqcCalculationTestSuite.class,
-	AZSuite.class,
+//	AZSuite.class,
 	TestSuiteAXE.class,
 	
 })

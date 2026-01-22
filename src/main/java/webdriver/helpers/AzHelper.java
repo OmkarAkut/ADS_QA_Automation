@@ -176,6 +176,7 @@ public class AzHelper extends CalculationHelper{
 	}
 	public void waitForFormDialog(String windowName) {
 		try {
+			driverDelay();
 			waitForElementToBeVisible(driver.findElement(By.xpath("//div[contains(@id,'dynamicwindow')][text()='"+windowName+"']")));
 		} catch (Exception e) {
 			waitForElementToBeVisible(driver.findElement(By.xpath("//div[contains(@id,'window')][text()='"+windowName+"']")));
@@ -201,12 +202,14 @@ public class AzHelper extends CalculationHelper{
 	public void selectFormItem(String name,String selectServices) throws Throwable {
 		
 		if(selectServices.equals("services")) {
+			driverDelay();
 			scrollToView("//div[text()='"+name+"']");
 			doClick("//div[text()='"+name+"']");
 			doClick("//div[contains(@id,'dynamicwindow')]//following::span[text()='Select']");
 			doClick(DataMaintenanceMap.getapplyBtnInPopUp());
 		}
 		else {
+			driverDelay();
 			scrollToView("//div[text()='"+name+"']");
 			doClick("//div[text()='"+name+"']");
 			doClick(DataMaintenanceMap.getapplyBtnInPopUp());

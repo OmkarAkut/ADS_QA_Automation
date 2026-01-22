@@ -6,6 +6,8 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
+import org.openqa.selenium.interactions.Actions;
+
 import ExtentReport.ExtentReport;
 import webdriver.core.Driver;
 import webdriver.core.Login;
@@ -73,7 +75,10 @@ public class ValidateContractingModeExportImportButton extends GoHelper{
 			waitForElementToBeVisible(modelMap.getContractModelImportSelectFileButton());
 			driverDelay(6000);
 //			doactionClick(modelMap.getContractModelImportSelectFileButton());//Shilpa added this line for 11.2 update 
-			doactionClick(driver.findElement(By.xpath("//input[@name='importdata']")));
+			//Shilpa: update on 01.23.2026
+			Actions action =new Actions(driver);
+			action.moveToElement(driver.findElement(By.xpath("(//span[text()='Import Into:']//following::span[text()='Select'])[2]"))).click().perform();
+//			doactionClick(driver.findElement(By.xpath("//input[@name='importdata']")));
 			driverDelay(2300);
 			//Shilpa update file import using Robot instead of auto it due to security issues 7.3.2025
 			fileImport(System.getProperty("user.dir")+"\\TestFiles\\fzMedIPPSTesting.xml");

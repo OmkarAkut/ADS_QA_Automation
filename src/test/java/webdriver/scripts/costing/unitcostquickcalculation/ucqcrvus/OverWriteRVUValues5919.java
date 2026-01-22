@@ -9,6 +9,8 @@ import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.interactions.Actions;
+
 import ExtentReport.ExtentReport;
 import webdriver.core.Driver;
 import webdriver.core.Login;
@@ -34,8 +36,8 @@ public class OverWriteRVUValues5919 extends UcqcHelper {
 
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
-		ExtentReport.reportCreate("OverwriteRvuMaintenancePopupAds1181",
-				"webdriver.scripts.costing.unitcostquickcalculation.ucqcrvus", "OverwriteRvuMaintenancePopupAds1181");
+		ExtentReport.reportCreate("OverWriteRVUValues5919",
+				"webdriver.scripts.costing.unitcostquickcalculation.ucqcrvus", "OverWriteRVUValues5919");
 		try {
 			costing = BuildMap.getInstance(driver, CostingMap.class);
 			contracting = BuildMap.getInstance(driver, ContractingMap.class);
@@ -55,10 +57,12 @@ public class OverWriteRVUValues5919 extends UcqcHelper {
 			doClick(costing.getRvuMaintenanceButtonFilter());
 			doFilterCreate(filter);
 			doClick(costing.getRvuMaintenanceButtonImport());
-//			doactionClick(costing.getRvuSecImportSelectButton());
-//			doactionClick(driver.findElement(By.xpath("//input[@name='importdata']")));
-			doJsClick(driver.findElement(By.xpath("//input[@name='importdata']")));
-			driverDelay(8000);
+			driverDelay(2000);
+			//Shilpa: update on 01.23.2026
+			Actions action =new Actions(driver);
+			action.moveToElement(driver.findElement(By.xpath("(//span[text()='Import Into:']//following::span[text()='Select'])[2]"))).click().perform();
+			driverDelay();
+//			driver.findElement(By.xpath("(//span[text()='Import Into:']//following::span[text()='Select'])[2]")).click();
 			//Shilpa update file import using Robot instead of auto it due to security issues 7.3.2025
 			fileImport(System.getProperty("user.dir")+"\\TestFiles\\ADS1309PreConditionsRVUImport.txt");
 			driverDelay();
