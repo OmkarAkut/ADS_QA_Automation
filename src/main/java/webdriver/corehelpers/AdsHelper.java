@@ -476,6 +476,13 @@ public class AdsHelper extends GetHelper {
 		return num;
 		
 	}
+	public static String generate3digitRandomNumber() throws InterruptedException {
+		 Random rand = new Random();
+		 int number = rand.nextInt(900) + 100;
+		 String num=String.valueOf(number);
+		return num;
+		
+	}
 	
 }
 

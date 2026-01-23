@@ -897,6 +897,14 @@ public class DataMaintenanceMap extends MapConfig {
     private static WebElement patmentsTab;
     public static WebElement getpatmentsTab() {return patmentsTab;}
     
+    @FindBy(xpath = "//span[text()='Practitioners']/../../..")
+    private static WebElement practitionersTab;
+    public static WebElement getpractitionersTab() {return practitionersTab;}
+    
+    @FindBy(xpath = "//span[text()='UDFs & UDRs']/../../..")
+    private static WebElement udfudrTab;
+    public static WebElement getudfudrTab() {return udfudrTab;}
+    
     @FindBy(xpath = "//div[contains(@id,'encounterPayments')]//following::span[text()='New']")
     private static WebElement paymentsNewBtn;
     public static WebElement getpaymentsNewBtn() {return paymentsNewBtn;}
@@ -2718,7 +2726,7 @@ public class DataMaintenanceMap extends MapConfig {
 	public static WebElement getrevenueCodeEncSelectBtn() {
 		return revenueCodeEncSelectBtn;
 	}
-	@FindBy(xpath = "(//div[text()='EAPG']//following::span[text()='Select'])[3]")
+	@FindBy(xpath = "(//div[text()='Ambulatory Patient Groups (APGs)']//following::span[text()='Select'])[1]")
 	private static WebElement apgSelectBtn;
 	public static WebElement getapgSelectBtn() {
 		return apgSelectBtn;
@@ -2772,5 +2780,20 @@ public class DataMaintenanceMap extends MapConfig {
 	private static WebElement apgDeleteBtn;
 	public static WebElement getapgDeleteBtn() {
 		return apgDeleteBtn;
+	}
+	@FindBy(xpath = "(//div[text()='New Actual Charge']//following::span[text()='Select'])[1]")
+	private static WebElement chargesDeptSelectBtn;
+	public static WebElement getchargesDeptSelectBtn() {
+		return chargesDeptSelectBtn;
+	}
+	@FindBy(xpath = "(//div[text()='New Actual Charge']//following::span[text()='Select'])[2]")
+	private static WebElement chargesCodeSelectBtn;
+	public static WebElement getchargesCodeSelectBtn() {
+		return chargesCodeSelectBtn;
+	}
+	@FindBy(xpath = "(//div[text()='New Other Practitioner Role']//following::span[text()='Select'])[1]")
+	private static WebElement practSelectBtn;
+	public static WebElement getpractSelectBtn() {
+		return practSelectBtn;
 	}
 }
