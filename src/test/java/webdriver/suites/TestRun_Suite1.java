@@ -28,8 +28,8 @@ import webdriver.scripts.status.calculationstatus.CalculationStatusSuite;
 import webdriver.scripts.systemmaintenance.SystemMaintenanceTestSuite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-
-	TestSuiteForCIM.class,
+	MaintaindataTestSuite.class,
+	
 //	TestSuiteForAE.class,
 	CostingTestSuite.class,
 //	ContractingSuite.class,
