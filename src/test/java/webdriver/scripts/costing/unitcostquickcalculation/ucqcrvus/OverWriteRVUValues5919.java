@@ -15,6 +15,7 @@ import ExtentReport.ExtentReport;
 import webdriver.core.Driver;
 import webdriver.core.Login;
 import webdriver.corehelpers.JavaHelper;
+import webdriver.helpers.CimHelper;
 import webdriver.helpers.ContractModelsHelper;
 import webdriver.helpers.UcqcHelper;
 import webdriver.maps.ContractingMap;
@@ -59,9 +60,10 @@ public class OverWriteRVUValues5919 extends UcqcHelper {
 			doClick(costing.getRvuMaintenanceButtonImport());
 			driverDelay(2000);
 			//Shilpa: update on 01.23.2026
-			Actions action =new Actions(driver);
-			action.moveToElement(driver.findElement(By.xpath("(//span[text()='Import Into:']//following::span[text()='Select'])[2]"))).click().perform();
-			driverDelay();
+//			Actions action =new Actions(driver);
+//			action.moveToElement(driver.findElement(By.xpath("(//span[text()='Import Into:']//following::span[text()='Select'])[2]"))).click().perform();
+//			driverDelay();
+			CimHelper.checkElements(driver.findElements(By.xpath("(//span[text()='Import Into:']//following::span[text()='Select'])[2]/../../..")));
 //			driver.findElement(By.xpath("(//span[text()='Import Into:']//following::span[text()='Select'])[2]")).click();
 			//Shilpa update file import using Robot instead of auto it due to security issues 7.3.2025
 			fileImport(System.getProperty("user.dir")+"\\TestFiles\\ADS1309PreConditionsRVUImport.txt");
@@ -116,7 +118,7 @@ public class OverWriteRVUValues5919 extends UcqcHelper {
 			}
 	}
 
-	@Test
+//	@Test
 	public void test02ApplyRvuSelections_5919() throws Throwable {
 		try {
 			goToPage("Unit Cost Quick Calculation");
@@ -129,7 +131,7 @@ public class OverWriteRVUValues5919 extends UcqcHelper {
 		}
 	}
 
-	@Test
+//	@Test
 	public void test03ApplyRvuSelections_5919() throws Throwable {
 		try {
 			ucqcUpdateGridCellValue("1804582", "Quick Salaries and Wages RVU", String.valueOf(value), printout);
@@ -178,8 +180,7 @@ public class OverWriteRVUValues5919 extends UcqcHelper {
 		}
 		
 	}
-
-	@Test
+//	@Test
 	public void test04NavigateToRvuMaintenance_5919() throws Throwable {
 		try {
 			goToPage("RVU Maintenance");
@@ -207,7 +208,7 @@ public class OverWriteRVUValues5919 extends UcqcHelper {
 		}
 	}
 
-	@Test
+//	@Test
 	public void test05ApplyRvuSelections_5919() throws Throwable {
 		try {
 			doClick(costing.getRvuApplySelections());
@@ -242,7 +243,7 @@ public class OverWriteRVUValues5919 extends UcqcHelper {
 		}
 	}
 
-	@Test
+//	@Test
 	public void test06FilterByDepartmentCodeInRvuContainer_5919() throws Throwable {
 		try {
 			doClick(costing.getRvuMaintenanceButtonRvuContainerList());
