@@ -14,6 +14,7 @@ import org.openqa.selenium.By;
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.helpers.CalculationHelper;
+import webdriver.helpers.CimHelper;
 import webdriver.helpers.ContractModelsHelper;
 import webdriver.maps.ContractingMap;
 import webdriver.maps.CostingMap;
@@ -73,7 +74,7 @@ public class AdHocstatisticMasterImportCodes extends CalculationHelper{
 			doClick(DataMaintenanceMap.getadHocImportBtn());
 			waitForPageTitle("Import Data");
 			assertTextIsDisplayed("Import Data");
-			doactionClick(driver.findElement(By.xpath("(//div[contains(@id,'importwindow')]//span[text()='Select'])[2]")));
+			CimHelper.checkElements(driver.findElements(By.xpath("(//div[contains(@id,'importwindow')]//span[text()='Select'])[2]")));
 			driverDelay();
 			//Shilpa: updated file import using Robot class, due to security issues with Autoit
 			fileImport(System.getProperty("user.dir") + "\\TestFiles\\AdHocCodes.txt");

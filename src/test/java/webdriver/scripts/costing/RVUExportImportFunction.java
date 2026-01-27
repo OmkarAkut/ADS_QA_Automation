@@ -15,6 +15,7 @@ import ExtentReport.ExtentReport;
 import webdriver.core.Driver;
 import webdriver.core.Login;
 import webdriver.corehelpers.GoHelper;
+import webdriver.helpers.CimHelper;
 import webdriver.helpers.ContractModelsHelper;
 import webdriver.maps.ContractingMap;
 import webdriver.maps.CostingMap;
@@ -83,7 +84,7 @@ public class RVUExportImportFunction extends GoHelper {
 			doClick(costing.getRvuMaintenanceButtonImport());
 			waitForPageTitle("Import Data");
 			assertTextIsDisplayed("Import Data");
-			doactionClick(driver.findElement(By.xpath("(//div[contains(@id,'importwindow')]//span[text()='Select'])[2]")));
+			CimHelper.checkElements(driver.findElements(By.xpath("(//div[contains(@id,'importwindow')]//span[text()='Select'])[2]")));
 			driverDelay();
 //Shilpa: updated file import using Robot class, due to security issues with Autoit
 			fileImport(System.getProperty("user.dir") + "\\TestFiles\\RVUImportFile.txt");

@@ -17,6 +17,7 @@ import ExtentReport.ExtentReport;
 import webdriver.core.Driver;
 import webdriver.core.Login;
 import webdriver.corehelpers.GoHelper;
+import webdriver.helpers.CimHelper;
 import webdriver.helpers.ContractModelsHelper;
 import webdriver.helpers.UcqcHelper;
 import webdriver.maps.ContractingMap;
@@ -74,7 +75,8 @@ public class OverwriteRvuNoCMSResults extends GoHelper {
 			//Shilpa update file import using Robot instead of auto it due to security issues 7.3.2025
 //			doactionClick(costing.getRvuSecImportSelectButton());
 //			doactionClick(driver.findElement(By.xpath("//input[@name='importdata']")));
-			doJsClick(driver.findElement(By.xpath("//input[@name='importdata']")));
+//		Shilpa updated script
+			CimHelper.checkElements(driver.findElements(By.xpath("(//span[text()='Import File']//following::*[contains(@id,'filefield')])[7]")));
 
 			driverDelay(4000);
 			fileImport(System.getProperty("user.dir")+"\\TestFiles\\ADS1309PreConditionsRVUImport.txt");
