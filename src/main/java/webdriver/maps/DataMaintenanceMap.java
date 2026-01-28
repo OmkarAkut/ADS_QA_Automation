@@ -2796,4 +2796,9 @@ public class DataMaintenanceMap extends MapConfig {
 	public static WebElement getpractSelectBtn() {
 		return practSelectBtn;
 	}
+	@FindBy(xpath = "//*[text()='There is no data available to display.']")
+	private static List<WebElement> assertTextForNoElement;
+	public static List<WebElement> getassertTextForNoElement() {
+		return assertTextForNoElement;
+	}
 }

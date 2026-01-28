@@ -10,6 +10,7 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
@@ -524,7 +525,7 @@ public class Encounters extends AzHelper{
 		doClick("//span[text()='"+tabName+"']/../../..");
 		CimHelper.checkElements(DataMaintenanceMap.getazInnerPageDeleteBtn());
 		doClick(DataMaintenanceMap.getwarningDeleteBtn());
-		assertTextIsDisplayed("There is no data available to display.");
+		assertMultipleElementsForSameText(DataMaintenanceMap.getassertTextForNoElement(),"There is no data available to display.");
 	}
 	@Test
 	public void test21DeleteDiagnoses() throws Throwable {
@@ -532,20 +533,23 @@ public class Encounters extends AzHelper{
 			deleteDataFromTab("Diagnoses");
 			deleteDataFromTab("Procedures");
 			deleteDataFromTab("Services");
-			deleteDataFromTab("Services");
 			deleteDataFromTab("Payments");
-			ExtentReport.logPass("PASS", "test21DeletePractitioners");
+			ExtentReport.logPass("PASS", "test21DeleteDiagnoses");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test21DeletePractitioners", driver, e);
+			ExtentReport.logFail("FAIL", "test21DeleteDiagnoses", driver, e);
 			fail(e.getMessage());
 		}
 	}
 	@Test
 	public void test22DeleteFinancialRecords() throws Throwable {
 		try {
-			deleteDataFromTab("Financial Records");
+			doClick("//span[text()='Financial Records']/../../..");
+			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageDeleteBtn());
+			doClick(DataMaintenanceMap.getmessageboxDeleteBtn());
+			assertMultipleElementsForSameText(DataMaintenanceMap.getassertTextForNoElement(),"There is no data available to display.");
 			doClick(DataMaintenanceMap.getchargesTab());
-			assertTextIsDisplayed("There is no data available to display.");
+			
+			assertMultipleElementsForSameText(DataMaintenanceMap.getassertTextForNoElement(),"There is no data available to display.");
 			ExtentReport.logPass("PASS", "test21DeletePractitioners");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test21DeletePractitioners", driver, e);

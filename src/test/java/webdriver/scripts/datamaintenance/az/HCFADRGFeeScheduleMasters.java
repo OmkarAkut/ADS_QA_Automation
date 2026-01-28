@@ -145,7 +145,7 @@ public class HCFADRGFeeScheduleMasters extends AzHelper{
 			doClickButtons("Templates", "Delete");
 			waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
 			doClick(DataMaintenanceMap.getwarningDeleteBtn());
-			assertTextIsDisplayed("There is no data available to display.");
+			assertMultipleElementsForSameText(DataMaintenanceMap.getassertTextForNoElement(), "There is no data available to display.");
 			ExtentReport.logPass("PASS", "test04AddSaveCreateNewTemplates");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test04AddSaveCreateNewTemplates", driver, e);
@@ -173,7 +173,7 @@ public class HCFADRGFeeScheduleMasters extends AzHelper{
 			doClickButtons("Templates", "Delete");
 			waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
 			doClick(DataMaintenanceMap.getwarningDeleteBtn());
-			assertTextIsDisplayed("There is no data available to display.");
+			assertMultipleElementsForSameText(DataMaintenanceMap.getassertTextForNoElement(), "There is no data available to display.");
 //			
 			
 //			doClickButtons("Templates", "New");
@@ -271,7 +271,7 @@ public class HCFADRGFeeScheduleMasters extends AzHelper{
 			doClick(DataMaintenanceMap.getfeeScheduleEntriesDeleteBtn());
 			waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
 			doClick(DataMaintenanceMap.getwarningDeleteBtn());
-			assertTextIsDisplayed("There is no data available to display.");
+			assertMultipleElementsForSameText(DataMaintenanceMap.getassertTextForNoElement(), "There is no data available to display.");
 			doClick(DataMaintenanceMap.getfeeScheduleEntriesSaveCloseBtn());
 			ExtentReport.logPass("PASS", "test10DeleteFeeScheduleEntries");
 		} catch (Exception | AssertionError e) {
@@ -286,7 +286,7 @@ public class HCFADRGFeeScheduleMasters extends AzHelper{
 			doClickButtons("Schedules", "Delete");
 			waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
 			doClick(DataMaintenanceMap.getwarningDeleteBtn());
-			assertTextIsDisplayed("There is no data available to display.");
+			assertMultipleElementsForSameText(DataMaintenanceMap.getassertTextForNoElement(), "There is no data available to display.");
 			ExtentReport.logPass("PASS", "test11DeleteHCFAFeeScheduleMaster");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test11DeleteHCFAFeeScheduleMaster", driver, e);
@@ -300,7 +300,7 @@ public class HCFADRGFeeScheduleMasters extends AzHelper{
 			doClick(DataMaintenanceMap.getazDeleteBtn());
 			waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
 			doClick(DataMaintenanceMap.getwarningDeleteBtn());
-			assertTextIsDisplayed("There is no data available to display.");
+			assertMultipleElementsForSameText(DataMaintenanceMap.getassertTextForNoElement(), "There is no data available to display.");
 			ExtentReport.logPass("PASS", "test12HCFAFeeScheduleMaster");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test12HCFAFeeScheduleMaster", driver, e);

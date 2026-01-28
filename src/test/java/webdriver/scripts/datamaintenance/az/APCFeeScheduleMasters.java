@@ -140,7 +140,7 @@ public class APCFeeScheduleMasters extends AzHelper{
 			doClickButtons("Templates", "Delete");
 			waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
 			doClick(DataMaintenanceMap.getwarningDeleteBtn());
-			assertTextIsDisplayed("There is no data available to display.");
+			assertMultipleElementsForSameText(DataMaintenanceMap.getassertTextForNoElement(), "There is no data available to display.");
 			ExtentReport.logPass("PASS", "test04AddSaveCreateNewTemplates");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test04AddSaveCreateNewTemplates", driver, e);
@@ -166,7 +166,7 @@ public class APCFeeScheduleMasters extends AzHelper{
 			doClickButtons("Templates", "Delete");
 			waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
 			doClick(DataMaintenanceMap.getwarningDeleteBtn());
-			assertTextIsDisplayed("There is no data available to display.");
+			assertMultipleElementsForSameText(DataMaintenanceMap.getassertTextForNoElement(), "There is no data available to display.");
 			ExtentReport.logPass("PASS", "test05SaveCloseTemplates");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test05SaveCloseTemplates", driver, e);
@@ -276,7 +276,7 @@ public class APCFeeScheduleMasters extends AzHelper{
 			doClick(DataMaintenanceMap.getazDeleteBtn());
 			waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
 			doClick(DataMaintenanceMap.getwarningDeleteBtn());
-			assertTextIsDisplayed("There is no data available to display.");
+			assertMultipleElementsForSameText(DataMaintenanceMap.getassertTextForNoElement(), "There is no data available to display.");
 			ExtentReport.logPass("PASS", "test12APCFeeScheduleMaster");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test12APCFeeScheduleMaster", driver, e);

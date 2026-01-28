@@ -76,7 +76,7 @@ public class OverwriteRvuNoCMSResults extends GoHelper {
 //			doactionClick(costing.getRvuSecImportSelectButton());
 //			doactionClick(driver.findElement(By.xpath("//input[@name='importdata']")));
 //		Shilpa updated script
-			CimHelper.checkElements(driver.findElements(By.xpath("(//span[text()='Import File']//following::*[contains(@id,'filefield')])[7]")));
+			CimHelper.checkElements(driver.findElements(By.xpath("(//span[text()='Import File']//following::*[contains(@id,'filefield')])[7]/..")));
 
 			driverDelay(4000);
 			fileImport(System.getProperty("user.dir")+"\\TestFiles\\ADS1309PreConditionsRVUImport.txt");

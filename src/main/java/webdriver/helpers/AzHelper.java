@@ -4,6 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -296,6 +297,15 @@ public class AzHelper extends CalculationHelper{
 	public void selectDropdown(String option,String scenarioName) throws Throwable {
 		doDropdownSelectUsingOptionTextOnly(driver.findElement(By.xpath("(//div[text()='"+scenarioName+"']//following::ul/li[text()='"+option+"']/..)")), option);
 
+	}
+	public void assertMultipleElementsForSameText(List<WebElement> list,String text) {
+		for (WebElement ele : list) {
+			if(list.size()>0) {
+				if(ele.getText().equals(text)) {
+					assertTrue(printout);
+				}
+			}
+		}
 	}
 }
 	

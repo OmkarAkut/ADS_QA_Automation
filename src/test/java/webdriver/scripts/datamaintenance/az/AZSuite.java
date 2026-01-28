@@ -63,6 +63,7 @@ import org.junit.runners.Suite;
 	EntityGroups.class,
 	EntityTypes.class,
 	Ethnicities.class,
+	Encounters.class,
 	FinancialCategories.class,
 	Genders.class,
 	GLAccountHierarchies.class,

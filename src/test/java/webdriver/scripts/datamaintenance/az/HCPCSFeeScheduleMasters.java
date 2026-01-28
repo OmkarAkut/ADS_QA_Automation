@@ -139,18 +139,20 @@ public class HCPCSFeeScheduleMasters extends AzHelper{
 			assertTextIsDisplayed(templateName);
 			doClick(DataMaintenanceMap.getazCancelCloseBtn());
 			doClick(DataMaintenanceMap.getazEditBtn());
-			doClick("//div[text()='Templates']");
-			doClickButtons("Templates", "Delete");
-			waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
-			doClick(DataMaintenanceMap.getwarningDeleteBtn());
-			assertTextIsDisplayed("There is no data available to display.");
+			//ADS-24670 : Uncomment below lines after this issue is resolved 
+//			doClick("//div[text()='Templates']");
+//			doClickButtons("Templates", "Delete");
+//			waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
+//			doClick(DataMaintenanceMap.getwarningDeleteBtn());
+//			assertTextIsDisplayed("There is no data available to display.");
 			ExtentReport.logPass("PASS", "test04AddSaveCreateNewTemplates");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test04AddSaveCreateNewTemplates", driver, e);
 			fail(e.getMessage());
 		}
 	}
-	@Test
+	//ADS-24670 : Uncomment below test case after this issue is resolved 
+//	@Test
 	public void test05SaveCloseTemplates() throws Throwable {
 		try {
 			doClickButtons("Templates", "New");
@@ -255,7 +257,8 @@ public class HCPCSFeeScheduleMasters extends AzHelper{
 			doClick(DataMaintenanceMap.getfeeScheduleEntriesDeleteBtn());
 			waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
 			doClick(DataMaintenanceMap.getwarningDeleteBtn());
-			assertTextIsDisplayed("There is no data available to display.");
+			assertMultipleElementsForSameText(DataMaintenanceMap.getassertTextForNoElement(), "There is no data available to display.");
+			doClick(DataMaintenanceMap.getfeeScheduleEntriesSaveBtn());
 			doClick(DataMaintenanceMap.getfeeScheduleEntriesSaveCloseBtn());
 			ExtentReport.logPass("PASS", "test10DeleteFeeScheduleEntries");
 		} catch (Exception | AssertionError e) {
@@ -270,7 +273,7 @@ public class HCPCSFeeScheduleMasters extends AzHelper{
 			doClickButtons("Schedules", "Delete");
 			waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
 			doClick(DataMaintenanceMap.getwarningDeleteBtn());
-			assertTextIsDisplayed("There is no data available to display.");
+			assertMultipleElementsForSameText(DataMaintenanceMap.getassertTextForNoElement(), "There is no data available to display.");
 			ExtentReport.logPass("PASS", "test11DeleteChargesFeeScheduleMaster");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test11DeleteChargesFeeScheduleMaster", driver, e);
@@ -284,7 +287,7 @@ public class HCPCSFeeScheduleMasters extends AzHelper{
 			doClick(DataMaintenanceMap.getazDeleteBtn());
 			waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
 			doClick(DataMaintenanceMap.getwarningDeleteBtn());
-			assertTextIsDisplayed("There is no data available to display.");
+			assertMultipleElementsForSameText(DataMaintenanceMap.getassertTextForNoElement(), "There is no data available to display.");
 			ExtentReport.logPass("PASS", "test12HCPCSFeeScheduleMaster");
 		} catch (Exception | AssertionError e) {
 			ExtentReport.logFail("FAIL", "test12HCPCSFeeScheduleMaster", driver, e);

@@ -114,3 +114,32 @@ Found 2 accessibility violations:
       Form element has explicit <label> that is hidden
 
 
+Found 2 accessibility violations:
+1) Buttons must have discernible text: https://dequeuniversity.com/rules/axe/3.1/button-name?application=axeAPI
+  a) ["#loginBtn"]
+    Fix any of the following:
+      Element has a value attribute and the value attribute is empty
+      Element has no value attribute or the value attribute is empty
+      Element does not have inner text that is visible to screen readers
+      aria-label attribute does not exist or is empty
+      aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+      Element's default semantics were not overridden with role="presentation"
+      Element's default semantics were not overridden with role="none"
+      Element has no title attribute or the title attribute is empty
+
+
+2) Form elements must have labels: https://dequeuniversity.com/rules/axe/3.1/label?application=axeAPI
+  a) ["#username-inputEl"]
+    Fix all of the following:
+      Form element has explicit <label> that is hidden
+      Form element has explicit <label> that is hidden
+      Form element has explicit <label> that is hidden
+
+
+  b) ["#password-inputEl"]
+    Fix all of the following:
+      Form element has explicit <label> that is hidden
+      Form element has explicit <label> that is hidden
+      Form element has explicit <label> that is hidden
+
+
