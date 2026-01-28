@@ -84,8 +84,10 @@ public class TestAbilitytoCreateExistingStandardCostingReport extends GoHelper {
 				driverDelay(3000);
 				
 				try {
-					if(driver.findElement(By.xpath("//div[text()='"+reportTime+"']//following::div[4]")).getText().contains("COMPLETED")){
-						assertElementTextWithXpath("//div[text()='"+reportTime+"']//following::div[4]", "COMPLETED",
+					//Shilpa:Update for 11.4 on 01.28.2026
+					String time=java.time.LocalDateTime.parse(""+reportTime+"", java.time.format.DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss a")).format(java.time.format.DateTimeFormatter.ofPattern("MM/dd/yy hh:mm:ss a"));
+					if(driver.findElement(By.xpath("//div[text()='"+time+"']//following::div[4]")).getText().contains("COMPLETED")){
+						assertElementTextWithXpath("//div[text()='"+time+"']//following::div[4]", "COMPLETED",
 								printout);
 						ExtentReport.logPass("PASS", "test02OpenCostingReport");
 						break;

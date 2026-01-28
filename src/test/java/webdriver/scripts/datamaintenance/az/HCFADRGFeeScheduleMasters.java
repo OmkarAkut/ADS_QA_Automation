@@ -58,7 +58,7 @@ public class HCFADRGFeeScheduleMasters extends AzHelper{
 	}
 	
 	@Test
-	public void test01ValidateNewButton() throws Throwable {
+	public void test01HCFADRGValidateNewButton() throws Throwable {
 		try {
 			doClick(DataMaintenanceMap.getazNewBtn());
 			keyInInputByName("code", code,"HCFA DRG Fee Schedule Master");
@@ -74,14 +74,14 @@ public class HCFADRGFeeScheduleMasters extends AzHelper{
 			doFilterCreate(aTozHCFAeeScheduleMasterFilter);
 			deleteScenario(DataMaintenanceMap.getazDeleteBtn(),DataMaintenanceMap.getwarningDeleteBtn());
 			doClick(DataMaintenanceMap.getazClearFilterBtn());
-			ExtentReport.logPass("PASS", "test01ValidateNewButton");
+			ExtentReport.logPass("PASS", "test01HCFADRGValidateNewButton");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test01ValidateNewButton", driver, e);
+			ExtentReport.logFail("FAIL", "test01HCFADRGValidateNewButton", driver, e);
 			fail(e.getMessage());
 		}
 	}
 	@Test
-	public void test02ValidateSaveButton() throws Throwable {
+	public void test02HCFADRGValidateSaveButton() throws Throwable {
 		try {
 			doClick(DataMaintenanceMap.getazNewBtn());
 			keyInInputByName("code", code,"HCFA DRG Fee Schedule Master");
@@ -97,14 +97,14 @@ public class HCFADRGFeeScheduleMasters extends AzHelper{
 			doFilterCreate(aTozHCFAeeScheduleMasterFilter);
 			deleteScenario(DataMaintenanceMap.getazDeleteBtn(),DataMaintenanceMap.getwarningDeleteBtn());
 			doClick(DataMaintenanceMap.getazClearFilterBtn());
-			ExtentReport.logPass("PASS", "test02ValidateSaveButton");
+			ExtentReport.logPass("PASS", "test02HCFADRGValidateSaveButton");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test02ValidateSaveButton", driver, e);
+			ExtentReport.logFail("FAIL", "test02HCFADRGValidateSaveButton", driver, e);
 			fail(e.getMessage());
 		}
 	}
 	@Test
-	public void test03ValidateSaveCloseButton() throws Throwable {
+	public void test03HCFADRGValidateSaveCloseButton() throws Throwable {
 		try {
 			doClick(DataMaintenanceMap.getazNewBtn());
 			keyInInputByName("code", code,"HCFA DRG Fee Schedule Master");
@@ -118,14 +118,14 @@ public class HCFADRGFeeScheduleMasters extends AzHelper{
 			doClick(DataMaintenanceMap.getazFilterBtn());
 			doFilterCreate(aTozHCFAeeScheduleMasterFilter);
 			doClick(DataMaintenanceMap.getazPageEditBtn());
-			ExtentReport.logPass("PASS", "test03ValidateSaveCloseButton");
+			ExtentReport.logPass("PASS", "test03HCFADRGValidateSaveCloseButton");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test03ValidateSaveCloseButton", driver, e);
+			ExtentReport.logFail("FAIL", "test03HCFADRGValidateSaveCloseButton", driver, e);
 			fail(e.getMessage());
 		}
 	}
 	@Test
-	public void test04AddSaveCreateNewTemplates() throws Throwable {
+	public void test04HCFADRGAddSaveCreateNewTemplates() throws Throwable {
 		try {
 			doClick("//div[text()='Templates']");
 			doClickButtons("Templates", "New");
@@ -146,14 +146,14 @@ public class HCFADRGFeeScheduleMasters extends AzHelper{
 			waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
 			doClick(DataMaintenanceMap.getwarningDeleteBtn());
 			assertMultipleElementsForSameText(DataMaintenanceMap.getassertTextForNoElement(), "There is no data available to display.");
-			ExtentReport.logPass("PASS", "test04AddSaveCreateNewTemplates");
+			ExtentReport.logPass("PASS", "test04HCFADRGAddSaveCreateNewTemplates");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test04AddSaveCreateNewTemplates", driver, e);
+			ExtentReport.logFail("FAIL", "test04HCFADRGAddSaveCreateNewTemplates", driver, e);
 			fail(e.getMessage());
 		}
 	}
 	@Test
-	public void test05SaveCloseTemplates() throws Throwable {
+	public void test05HCFADRGSaveCloseTemplates() throws Throwable {
 		try {
 			doClickButtons("Templates", "New");
 			waitForFormDialog("New Template");
@@ -174,42 +174,27 @@ public class HCFADRGFeeScheduleMasters extends AzHelper{
 			waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
 			doClick(DataMaintenanceMap.getwarningDeleteBtn());
 			assertMultipleElementsForSameText(DataMaintenanceMap.getassertTextForNoElement(), "There is no data available to display.");
-//			
-			
-//			doClickButtons("Templates", "New");
-//			driverDelay();
-//			waitForFormDialog("New Template");
-//			keyInInputByName("name", name,"HCFA DRG Fee Schedule Template");
-//			doClick(DataMaintenanceMap.getazMasterClassificationDrpDwn());
-//			doDropdownSelectUsingOptionTextOnly(DataMaintenanceMap.gethcfaFeeScheduleMasterScheme(), masterClassificationScheme);
-//			templateName="ADS"+name;
-//			addDetailsInnerPages(null, templateName, "Save","code","name");
-//			doClickButtons(templateName, "Cancel & Close");
-//			doClickButtons("Templates", "Edit");
-//			driverDelay();
-//			updatedTemplateName="UpdatedADSTemplate"+name;
-//			addDetailsInnerPages(null, updatedTemplateName, "Save & Close","code","name");
-//			assertTextIsDisplayed(updatedTemplateName);
-			ExtentReport.logPass("PASS", "test05SaveCloseTemplates");
+
+			ExtentReport.logPass("PASS", "test05HCFADRGSaveCloseTemplates");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test05SaveCloseTemplates", driver, e);
+			ExtentReport.logFail("FAIL", "test05HCFADRGSaveCloseTemplates", driver, e);
 			fail(e.getMessage());
 		}
 	}
 	@Test
-	public void test06AddNewTemplateUnderSchedules() throws Throwable {
+	public void test06HCFADRGAddNewTemplateUnderSchedules() throws Throwable {
 		try {
 			doClick("//div[text()='Schedules']");
 			doClickButtons("Schedules", "New");
 			waitForFormDialog("New Schedule");
-			ExtentReport.logPass("PASS", "test06AddSaveCreateNewSchedules");
+			ExtentReport.logPass("PASS", "test06HCFADRGAddNewTemplateUnderSchedules");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test06AddSaveCreateNewSchedules", driver, e);
+			ExtentReport.logFail("FAIL", "test06HCFADRGAddNewTemplateUnderSchedules", driver, e);
 			fail(e.getMessage());
 		}
 	}
 	@Test
-	public void test07SaveCloseTemplatesUnderSchedule() throws Throwable {
+	public void test07HCFADRGSaveCloseTemplatesUnderSchedule() throws Throwable {
 		try {
 			doClickButtons("HCFA DRG Fee Schedule", "New");
 			waitForFormDialog("New Template");
@@ -222,14 +207,14 @@ public class HCFADRGFeeScheduleMasters extends AzHelper{
 			doClickButtons("Warning", "Cancel & Close");
 			doClickButtons("HCFA DRG Fee Schedule", "Cancel & Close");
 			
-			ExtentReport.logPass("PASS", "test05SaveCloseTemplates");
+			ExtentReport.logPass("PASS", "test07HCFADRGSaveCloseTemplatesUnderSchedule");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test05SaveCloseTemplates", driver, e);
+			ExtentReport.logFail("FAIL", "test07HCFADRGSaveCloseTemplatesUnderSchedule", driver, e);
 			fail(e.getMessage());
 		}
 	}
 	@Test
-	public void test08AddNewSchedule() throws Throwable {
+	public void test08HCFADRGAddNewSchedule() throws Throwable {
 		try {
 			doClickButtons("Schedules", "New");
 			driverDelay();
@@ -243,28 +228,28 @@ public class HCFADRGFeeScheduleMasters extends AzHelper{
 			assertElementIsDisplayedWithXpath("//div[text()='"+startDate+"']");
 			assertElementIsDisplayedWithXpath("//div[text()='"+endDate+"']");
 			assertElementIsDisplayedWithXpath("//div[text()='Schedules']//following::div[text()='"+newTemplateSchedule+"']");
-			ExtentReport.logPass("PASS", "test08AddNewSchedule");
+			ExtentReport.logPass("PASS", "test08HCFADRGAddNewSchedule");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test08AddNewSchedule", driver, e);
+			ExtentReport.logFail("FAIL", "test08HCFADRGAddNewSchedule", driver, e);
 			fail(e.getMessage());
 		}
 	}
 	@Test
-	public void test09EditScheduleAddFeeScheduleEntries() throws Throwable {
+	public void test09HCFADRGEditScheduleAddFeeScheduleEntries() throws Throwable {
 		try {
 			doClickButtons("Schedules", "Edit");
 			driverDelay();
 			addEntries("Fee Schedule Entries", "New", feeScheduleEntries);
 			doClick(DataMaintenanceMap.getfeeScheduleEntriesSaveBtn());
 			doClick(DataMaintenanceMap.getfeeScheduleEntriesSaveCloseBtn());
-			ExtentReport.logPass("PASS", "test09EditScheduleAddFeeScheduleEntries");
+			ExtentReport.logPass("PASS", "test09HCFADRGEditScheduleAddFeeScheduleEntries");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test09EditScheduleAddFeeScheduleEntries", driver, e);
+			ExtentReport.logFail("FAIL", "test09HCFADRGEditScheduleAddFeeScheduleEntries", driver, e);
 			fail(e.getMessage());
 		}
 	}
 	@Test
-	public void test10DeleteFeeScheduleEntries() throws Throwable {
+	public void test10HCFADRGDeleteFeeScheduleEntries() throws Throwable {
 		try {
 			doClickButtons("Schedules", "Edit");
 			driverDelay();
@@ -273,37 +258,37 @@ public class HCFADRGFeeScheduleMasters extends AzHelper{
 			doClick(DataMaintenanceMap.getwarningDeleteBtn());
 			assertMultipleElementsForSameText(DataMaintenanceMap.getassertTextForNoElement(), "There is no data available to display.");
 			doClick(DataMaintenanceMap.getfeeScheduleEntriesSaveCloseBtn());
-			ExtentReport.logPass("PASS", "test10DeleteFeeScheduleEntries");
+			ExtentReport.logPass("PASS", "test10HCFADRGDeleteFeeScheduleEntries");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test10DeleteFeeScheduleEntries", driver, e);
+			ExtentReport.logFail("FAIL", "test10HCFADRGDeleteFeeScheduleEntries", driver, e);
 			fail(e.getMessage());
 		}
 	}
 	@Test
-	public void test11DeleteSchedule() throws Throwable {
+	public void test11HCFADRGDeleteSchedule() throws Throwable {
 		try {
 			doClick("//div[text()='"+newTemplateSchedule+"']");
 			doClickButtons("Schedules", "Delete");
 			waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
 			doClick(DataMaintenanceMap.getwarningDeleteBtn());
 			assertMultipleElementsForSameText(DataMaintenanceMap.getassertTextForNoElement(), "There is no data available to display.");
-			ExtentReport.logPass("PASS", "test11DeleteHCFAFeeScheduleMaster");
+			ExtentReport.logPass("PASS", "test11HCFADRGDeleteSchedule");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test11DeleteHCFAFeeScheduleMaster", driver, e);
+			ExtentReport.logFail("FAIL", "test11HCFADRGDeleteSchedule", driver, e);
 			fail(e.getMessage());
 		}
 	}
 	@Test
-	public void test12HCFAFeeScheduleMaster() throws Throwable {
+	public void test12HCFADRGFeeScheduleMaster() throws Throwable {
 		try {
 			doClick(DataMaintenanceMap.getazCancelCloseBtn());
 			doClick(DataMaintenanceMap.getazDeleteBtn());
 			waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
 			doClick(DataMaintenanceMap.getwarningDeleteBtn());
 			assertMultipleElementsForSameText(DataMaintenanceMap.getassertTextForNoElement(), "There is no data available to display.");
-			ExtentReport.logPass("PASS", "test12HCFAFeeScheduleMaster");
+			ExtentReport.logPass("PASS", "test12HCFADRGFeeScheduleMaster");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test12HCFAFeeScheduleMaster", driver, e);
+			ExtentReport.logFail("FAIL", "test12HCFADRGFeeScheduleMaster", driver, e);
 			fail(e.getMessage());
 		}
 	}

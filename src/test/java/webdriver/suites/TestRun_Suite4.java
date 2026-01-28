@@ -3,20 +3,23 @@ package webdriver.suites;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
-import webdriver.globalscripts.checktests.ChecktestsSuite;
 import webdriver.globalscripts.help.HelpSuite;
-import webdriver.globalscripts.pagetests.PagetestsSuite;
 import webdriver.scripts.contracting.ContractingSuite;
-import webdriver.scripts.datamaintenance.az.AZSuite;
+import webdriver.scripts.datamaintenance.utilities.UtilitiesTestSuite;
+import webdriver.scripts.security.ucqcroles.UcqcRoleBasedTestSuite;
+import webdriver.scripts.status.calculationstatus.CalculationStatusSuite;
+
+
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-
 	ContractingSuite.class,
-	PagetestsSuite.class,
+	UtilitiesTestSuite.class,
 	HelpSuite.class,
-	ChecktestsSuite.class,
-	AZSuite.class,
+	CalculationStatusSuite.class,
+	UcqcRoleBasedTestSuite.class,
+
+	
 	
 })
 

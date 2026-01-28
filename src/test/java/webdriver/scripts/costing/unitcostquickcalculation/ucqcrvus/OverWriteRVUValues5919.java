@@ -63,7 +63,7 @@ public class OverWriteRVUValues5919 extends UcqcHelper {
 //			Actions action =new Actions(driver);
 //			action.moveToElement(driver.findElement(By.xpath("(//span[text()='Import Into:']//following::span[text()='Select'])[2]"))).click().perform();
 //			driverDelay();
-			CimHelper.checkElements(driver.findElements(By.xpath("(//span[text()='Import Into:']//following::span[text()='Select'])[2]/../../..")));
+			CimHelper.checkElements(driver.findElements(By.xpath("(//span[text()='Import Into:']//following::input[@name='importdata'])/..")));
 //			driver.findElement(By.xpath("(//span[text()='Import Into:']//following::span[text()='Select'])[2]")).click();
 			//Shilpa update file import using Robot instead of auto it due to security issues 7.3.2025
 			fileImport(System.getProperty("user.dir")+"\\TestFiles\\ADS1309PreConditionsRVUImport.txt");

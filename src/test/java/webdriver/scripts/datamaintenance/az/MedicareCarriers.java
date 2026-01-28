@@ -19,6 +19,7 @@ public class MedicareCarriers extends AzHelper {
 	static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
 	static String currentDateCode = new SimpleDateFormat("MM.HH.ss").format(new java.util.Date());
 	static String code = currentDateCode.replaceAll("\\W", "");
+	static String mcode="M"+code;
 	static String name = "Name" + currentDateTime;
 	static String[] filter= {"Name","Is","Equal To",name};
 	static String azName = "Medicare Carriers";
@@ -43,7 +44,7 @@ public class MedicareCarriers extends AzHelper {
 	public void test01ValidateNewButton() throws Throwable {
 		try {
 			doClick(DataMaintenanceMap.getazNewBtn());
-			addNewScenario(code, name, null, DataMaintenanceMap.getinputCode(),
+			addNewScenario(mcode, name, null, DataMaintenanceMap.getinputCode(),
 					DataMaintenanceMap.getaddName(), null, null,
 					null, "Save & Create New");
 			doClickButtons(azName, "Cancel & Close");
@@ -62,7 +63,7 @@ public class MedicareCarriers extends AzHelper {
 	public void test02ValidateSaveAndEditButton() throws Throwable {
 		try {
 			doClick(DataMaintenanceMap.getazNewBtn());
-			addNewScenario(code, name, null, DataMaintenanceMap.getinputCode(),
+			addNewScenario(mcode, name, null, DataMaintenanceMap.getinputCode(),
 					DataMaintenanceMap.getaddName(), null, null,
 					null, "Save");
 			doClickButtons(azName, "Cancel & Close");
