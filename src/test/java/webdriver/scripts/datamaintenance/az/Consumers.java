@@ -249,6 +249,7 @@ public class Consumers extends AzHelper{
 			CimHelper.checkElements(DataMaintenanceMap.getsaveCloseBtn());
 			driverDelay(10000);
 			deleteScenario(DataMaintenanceMap.getazDeleteBtn(),DataMaintenanceMap.getmessageboxDeleteBtn());
+			driverDelay();
 			assertTextIsDisplayed("There is no data available to display.");
 			ExtentReport.logPass("PASS", "test08DeleteConsumer");
 		} catch (Exception | AssertionError e) {
