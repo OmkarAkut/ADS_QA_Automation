@@ -27,22 +27,18 @@ import java.util.Random;
 
 import org.junit.BeforeClass;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import webdriver.corehelpers.GoHelper;
-import webdriver.helpers.CalculationHelper;
 import webdriver.maps.CimMap;
 import webdriver.maps.CostingMap;
-import webdriver.maps.DataMaintenanceMap;
 import webdriver.maps.DialogsMap;
-import webdriver.maps.EditContractingModelMap;
-import webdriver.maps.ModelLibraryMap;
 import webdriver.maps.mapbuilder.BuildMap;
-import webdriver.utilities.JavaDataBaseConnectivity;
 
 public class CimHelper extends CalculationHelper {
 	private static DialogsMap dialog;
@@ -884,13 +880,19 @@ public class CimHelper extends CalculationHelper {
 	public static String checkElements(List<WebElement> elementList) throws Throwable {
 //		 List<WebElement> list = driver.findElements(By.xpath("(//div[contains(@class,'x-closable ')]//following::span[text()='Calculate Now'])"));
 		String clickableElement = null;
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 //		 boolean spanVal=true;
 		if (elementList.size() == 1) {
 			String tagName = elementList.get(0).getTagName();
 			String id = elementList.get(0).getAttribute("id");
 			clickableElement = "//" + tagName + "[@id='" + id + "']";
 			System.out.println(clickableElement);
-			elementList.get(0).click();
+			
+			WebElement button = wait.until(
+			    ExpectedConditions.elementToBeClickable(elementList.get(0))
+			);
+			button.click();
+//			elementList.get(0).click();
 			driverDelay(300);
 
 		}
@@ -902,7 +904,11 @@ public class CimHelper extends CalculationHelper {
 //					while(spanVal)
 				try {
 					clickableElement = "//" + tagName + "[@id='" + id + "']";
-					driver.findElement(By.xpath("//" + tagName + "[@id='" + id + "']")).click();
+					WebElement button = wait.until(
+						    ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//" + tagName + "[@id='" + id + "']")))
+						);
+					button.click();
+//					driver.findElement(By.xpath("//" + tagName + "[@id='" + id + "']")).click();
 					driverDelay(300);
 //					doClick("//" + tagName + "[@id='" + id + "']");
 				} catch (Exception e) {
