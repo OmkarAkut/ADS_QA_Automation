@@ -66,7 +66,7 @@ public class StatisticDataCalculations extends AzHelper {
 	}
   }
 
-//  @Test
+  @Test
   public void test01RunStatisticDataCalculation() throws Throwable, InterruptedException {
     try {
     	goToPage("Costing Models");
@@ -78,7 +78,7 @@ public class StatisticDataCalculations extends AzHelper {
 		doClickTreeItem("Statistic Data Calculation Scenarios");
 		doClick(costing.statisticDataCalcScenarionFilterBtn());
 		doFilterCreate(statsDatafilter);
-		doClick(costing.statisticDataCalcScenarionCalculateBtn());
+		doClick(costing.getstatisticDataCalcScenarionMainCalculateBtn());
 		doClick(ContractingMap.getCalculationStatusButtonFilter());
 		doFilterCreate(statsDataCalcFilter);
 		waitForFirstRowCalculationBarToReach100Percent();
@@ -103,87 +103,6 @@ public class StatisticDataCalculations extends AzHelper {
 				+ "')]");
 		ContractModelsHelper.keyInValues(reportMap.getReportLibraryPageFormFieldSearch(), reportName);
 		driver.findElement(By.linkText(reportName)).click();
-//		for(int i=1;i<=2;i++) {
-//			doClick("//div[text()='Entity Range']//following::a["+i+"]/parent::div");
-//			driverDelay();
-//			action.moveToElement(driver.findElement(By.xpath("//input[@class='GJT013UBGIC']"))).sendKeys("150").sendKeys(Keys.ENTER).perform();
-//			action.moveToElement(driver.findElement(By.xpath("(//div[text()='Marina Medical Center']/..//preceding-sibling::td)[1]"))).click().perform();
-//			driverDelay(2000);
-//			ContractModelsHelper.scrollToView(reportMap.reportLibraryPageEntityOkButton());
-//			driverDelay(1000);
-//			doJsClick(reportMap.reportLibraryPageEntityOkButton());
-//		}
-//		doClick("(//div[text()='Department Hierarchy']//following::td/div/a)[1]");
-//		action.moveToElement(driver.findElement(By.xpath("//input[@class='GJT013UBGIC']"))).click().sendKeys("Marina").sendKeys(Keys.ENTER).perform();
-//		action.moveToElement(driver.findElement(By.xpath("//div[text()='Marina Department Hierarchy']"))).click().perform();
-//		driverDelay(2000);
-////		ContractModelsHelper.scrollToView(reportMap.reportLibraryPageEntityOkButton());
-////		driverDelay(1000);
-//		doJsClick(reportMap.reportLibraryPageEntityOkButton());
-//		
-//		doClick("(//div[text()='Department or Department Group']//following::td/div/a)[1]");
-//		action.moveToElement(driver.findElement(By.xpath("//input[@class='GJT013UBGIC']"))).sendKeys("2015").sendKeys(Keys.ENTER).perform();
-//		action.moveToElement(driver.findElement(By.xpath("(//div[text()='2015  PEDIATRIC SUPPORT']/..//preceding-sibling::td)[1]"))).click().perform();
-//		driverDelay(2000);
-////		ContractModelsHelper.scrollToView(reportMap.reportLibraryPageEntityOkButton());
-////		driverDelay(1000);
-//		doJsClick(reportMap.reportLibraryPageEntityOkButton());
-//		
-//		doClick("(//div[text()='Account Hierarchy']//following::td/div/a)[1]");
-//		action.moveToElement(driver.findElement(By.xpath("//input[@class='GJT013UBGIC']"))).sendKeys("Marina").sendKeys(Keys.ENTER).perform();
-//		action.moveToElement(driver.findElement(By.xpath("//div[text()='Marina Account Hierarchy']"))).click().perform();
-//		driverDelay(2000);
-//		ContractModelsHelper.scrollToView(reportMap.reportLibraryPageEntityOkButton());
-//		driverDelay(1000);
-//		doJsClick(reportMap.reportLibraryPageEntityOkButton());
-//		
-//		doClick("(//div[text()='Account or Account Group']//following::td/div/a)[1]");
-//		action.moveToElement(driver.findElement(By.xpath("//input[@class='GJT013UBGIC']"))).click().sendKeys("TOT").sendKeys(Keys.ENTER).perform();
-//		action.moveToElement(driver.findElement(By.xpath("(//div[text()='TOTEXP GP Total Expense']/..//preceding-sibling::td)[1]"))).click().perform();
-//		driverDelay(2000);
-////		ContractModelsHelper.scrollToView(reportMap.reportLibraryPageEntityOkButton());
-////		driverDelay(1000);
-//		doJsClick(reportMap.reportLibraryPageEntityOkButton());
-//		
-//		doClick("(//div[text()='GL Data Scenario']//following::td/div/a)[1]");
-//		action.moveToElement(driver.findElement(By.xpath("//input[@class='GJT013UBGIC']"))).click().sendKeys("MH").sendKeys(Keys.ENTER).perform();
-//		action.moveToElement(driver.findElement(By.xpath("//div[text()='MH FY05Budget']"))).click().perform();
-//		driverDelay(2000);
-//		doJsClick(reportMap.reportLibraryPageEntityOkButton());
-//		keyInInputText("04/01/2004", driver.findElement(By.xpath("(//div[text()='GL Data Set Date Range']//following::input[@class='gwt-DateBox'])[1]")));
-//		keyInInputText("03/01/2005", driver.findElement(By.xpath("(//div[text()='GL Data Set Date Range']//following::input[@class='gwt-DateBox'])[2]")));
-////		ContractModelsHelper.scrollToView(reportMap.reportLibraryPageEntityOkButton());
-//		doClick(reportMap.reportLibraryPageEntityRunButton());
-//		driverDelay(2000);
-//		doClick("//div[text()='Run Report Without Saving']//following::button[text()='OK']");
-//		driverDelay(2000);
-//		String reportTime=driver.findElement(By.xpath("//div[@class='GJT013UBNJB']")).getText().replaceFirst("^\\s+", "");;
-//		while (retry <= refreshTime) {
-//			doClick(reportMap.reportLibraryPageEntityRefreshButton());
-//			driverDelay(2500);
-//
-//			try {
-//				//Shilpa:Update for 11.4 on 01.28.2026
-//				String time=java.time.LocalDateTime.parse(""+reportTime+"", java.time.format.DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss a")).format(java.time.format.DateTimeFormatter.ofPattern("MM/dd/yy hh:mm:ss a"));
-//				if(driver.findElement(By.xpath("//div[text()='"+time+"']//following::div[4]")).getText().contains("COMPLETED")){
-//					assertElementTextWithXpath("//div[text()='"+time+"']//following::div[4]", "COMPLETED",
-//							printout);
-//					ExtentReport.logPass("PASS", "test02OpenCostingReport");
-//					break;
-//
-//				}
-//				
-//			} catch (Exception e1) {
-//				doClick(reportMap.reportLibraryPageEntityRefreshButton());
-//				retry++;
-//
-//			}
-//			if (retry == refreshTime) {
-//				System.out.println("❌ Status did not become 'Completed' after retries.");
-//				fail();
-//			}
-//
-//		}
 
 	} catch (Exception | AssertionError e) {
 		ExtentReport.logFail("FAIL", "test02OpenCostingReport", driver, e);
@@ -345,7 +264,7 @@ ExtentReport.logFail("FAIL", "test10SelectEntityDateRangeRunReport", driver, e);
 		doClick(DataMaintenanceMap.getazEditBtn());
 		doClickButtons("GL Data", "Filter");
 		doFilterCreate(glDataFilter);
-		for(int i=1;i<=driver.findElements(By.xpath("(//div[contains(@id,'glspreadsheetgrid')]//div[@class='x-grid-item-container'])[1]/table")).size();i++) {
+		for(int i=1;i<=DataMaintenanceMap.getglDataScenarioElements().size();i++) {
 			ExcelUtility.copyFromDownload("Cost_Accounting_Income_Statement.xlsx");
 			String getGlAccount=driver.findElement(By.xpath("(//div[contains(@id,'glspreadsheetgrid')]//div[@class='x-grid-item-container'])[1]/table["+i+"]//td[4]")).getText();
 			String totalValue=driver.findElement(By.xpath("(//div[contains(@id,'glspreadsheetgrid')]//div[@class='x-grid-item-container'])[1]/table[1]//following::div[contains(@class,'x-grid-scrollbar-clipper ')]//table["+i+"]//td[1]/div")).getText();

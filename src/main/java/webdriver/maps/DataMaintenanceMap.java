@@ -2801,4 +2801,14 @@ public class DataMaintenanceMap extends MapConfig {
 	public static List<WebElement> getassertTextForNoElement() {
 		return assertTextForNoElement;
 	}
+	@FindBy(xpath = "//*[text()='There is no data available to display.']")
+	private static List<WebElement> glDataAccountTypeNames;
+	public static List<WebElement> getglDataAccountTypeNames() {
+		return glDataAccountTypeNames;
+	}
+	@FindBy(xpath = "(//div[contains(@id,'glspreadsheetgrid')]//div[@class='x-grid-item-container'])[1]/table")
+	private static List<WebElement> glDataScenarioElements;
+	public static List<WebElement> getglDataScenarioElements() {
+		return glDataScenarioElements;
+	}
 }

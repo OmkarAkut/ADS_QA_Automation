@@ -2475,6 +2475,11 @@ public class CostingMap extends MapConfig {
 	public WebElement statisticDataCalcScenarionCalculateBtn() {
 		return statisticDataCalcScenarionCalculateBtn;
 	}
+	@FindBy(xpath = "(//h1[text()='Statistic Data Calculation Scenarios']//following::span[text()='Calculate'])[1]")
+	private WebElement statisticDataCalcScenarionMainCalculateBtn;
+	public WebElement getstatisticDataCalcScenarionMainCalculateBtn() {
+		return statisticDataCalcScenarionMainCalculateBtn;
+	}
 	@FindBy(xpath = "//div[text()='Statistic Data Calculation Scenario']//following::span[text()='Save & Close']")
 	private WebElement statisticDataCalcScenarioSaveCloseBtn;
 	public WebElement statisticDataCalcScenarioSaveCloseBtn() {
