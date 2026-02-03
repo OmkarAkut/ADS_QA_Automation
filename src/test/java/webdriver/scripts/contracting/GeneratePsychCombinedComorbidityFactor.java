@@ -72,12 +72,12 @@ public class GeneratePsychCombinedComorbidityFactor extends CalculationHelper {
 			driverDelay();
 			//Shilpa: updated 7.3.2025 added robot class for file import , due to security issues with Autoit
 //			fileImport(System.getProperty("user.dir")+"\\TestFiles\\IPFC22WDICD10.txt");
-			fileImport(System.getProperty("user.dir")+"\\TestFiles\\IPFC25WD_ICD10.txt");
+			fileImport(System.getProperty("user.dir")+"\\TestFiles\\IPFC26WD_ICD10.txt");
 
 			driverDelay(2000);
 			doClick(DataMaintenanceMap.getpsychSaveBtn());
 			waitForDisplayedSpinnerToEnd();
-			driverDelay(15000);
+			driverDelay(25000);
 			doClick(ContractingMap.getContractResetButton());
 			doClick(costingMap.getCostModelScenariosinEvaluationOrderSave());
 			driverDelay(15000);
