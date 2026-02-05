@@ -43,7 +43,6 @@ public class ValidateCalculateForContractModel extends CalculationHelper{
 	public void test01ValidateWarningMessageForCalculate_12494() throws Throwable {
 		try {
 			model.createContractModel(contractModelName);;
-			contractModelName=CreateANewContractModel.contractModelName;
 			ValidateDragDropAddNewServiceUnderPricing.searchContractModelOpenTaskList(contractModelName);
 			ValidateDragDropAddNewServiceUnderPricing.dragAndDropServiceForNewContractModel();
 			doClick(ContractingMap.SaveOption());

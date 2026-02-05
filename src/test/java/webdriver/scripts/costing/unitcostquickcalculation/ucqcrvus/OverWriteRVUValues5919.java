@@ -9,13 +9,9 @@ import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.interactions.Actions;
-
 import ExtentReport.ExtentReport;
-import webdriver.core.Driver;
 import webdriver.core.Login;
 import webdriver.corehelpers.JavaHelper;
-import webdriver.helpers.CimHelper;
 import webdriver.helpers.ContractModelsHelper;
 import webdriver.helpers.UcqcHelper;
 import webdriver.maps.ContractingMap;
@@ -60,11 +56,7 @@ public class OverWriteRVUValues5919 extends UcqcHelper {
 			doClick(costing.getRvuMaintenanceButtonImport());
 			driverDelay(2000);
 			//Shilpa: update on 01.23.2026
-//			Actions action =new Actions(driver);
-//			action.moveToElement(driver.findElement(By.xpath("(//span[text()='Import Into:']//following::span[text()='Select'])[2]"))).click().perform();
-//			driverDelay();
-			CimHelper.checkElements(driver.findElements(By.xpath("(//span[text()='Import Into:']//following::input[@name='importdata'])/..")));
-//			driver.findElement(By.xpath("(//span[text()='Import Into:']//following::span[text()='Select'])[2]")).click();
+			keyboardNavig(3);
 			//Shilpa update file import using Robot instead of auto it due to security issues 7.3.2025
 			fileImport(System.getProperty("user.dir")+"\\TestFiles\\ADS1309PreConditionsRVUImport.txt");
 			driverDelay();
@@ -261,6 +253,7 @@ public class OverWriteRVUValues5919 extends UcqcHelper {
 		}
 		
 	}
+
 	public static void updateDepartment(String departmentText) throws InterruptedException {
 	     doClick("((//label[contains(@id,'singleselectorform')])[1]//following::span[text()='Select'])[1]");
 	   waitForDisplayedSpinnerToEnd();

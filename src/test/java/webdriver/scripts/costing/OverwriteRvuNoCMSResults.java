@@ -73,18 +73,17 @@ public class OverwriteRvuNoCMSResults extends GoHelper {
 			driverDelay();
 			assertTextIsDisplayed("Import Data");
 			//Shilpa update file import using Robot instead of auto it due to security issues 7.3.2025
-//			doactionClick(costing.getRvuSecImportSelectButton());
-//			doactionClick(driver.findElement(By.xpath("//input[@name='importdata']")));
-//		Shilpa updated script : 01.28.2026
-			CimHelper.checkElements(driver.findElements(By.xpath("(//div[text()='Import Data']//following::input[@name='importdata'])/..")));
+			//		Shilpa updated script : 01.28.2026
+			keyboardNavig(3);
+//			CimHelper.checkElements(driver.findElements(By.xpath("(//div[text()='Import Data']//following::input[@name='importdata'])/..")));
 
 			driverDelay(4000);
 			fileImport(System.getProperty("user.dir")+"\\TestFiles\\ADS1309PreConditionsRVUImport.txt");
 			driverDelay();
-			doClick(costing.getRvuSharedLocDropdown());
+			doClick(CostingMap.getRvuSharedLocDropdown());
 			driverDelay(300);
-			doClick(contractMap.getContractModelExportFileSharedLocOption());
-			ContractModelsHelper.keyInValues(costing.getRvuFileNameInput(), "Test");
+			doClick(ContractingMap.getContractModelExportFileSharedLocOption());
+			ContractModelsHelper.keyInValues(CostingMap.getRvuFileNameInput(), "Test");
 			doClick(costing.getRvuImportButton());
 			waitForSpinnerToEnd();
 			ContractModelsHelper.waitForFirstRowCalculationBarToReach100Percent();
@@ -122,13 +121,13 @@ public class OverwriteRvuNoCMSResults extends GoHelper {
 	}
 
 	public void selectFileLocAndaddFileName(WebElement button) throws Throwable {
-		doClick(costing.getRvuSharedLocDropdown());
+		doClick(CostingMap.getRvuSharedLocDropdown());
 		driverDelay(300);
-		doClick(contractMap.getContractModelExportFileSharedLocOption());
-		ContractModelsHelper.keyInValues(costing.getRvuFileNameInput(), "Test");
+		doClick(ContractingMap.getContractModelExportFileSharedLocOption());
+		ContractModelsHelper.keyInValues(CostingMap.getRvuFileNameInput(), "Test");
 		doClick(button);
 		waitForSpinnerToEnd();
-		assertElementIsDisplayed(contractMap.getContractModelImportExportstatusPage());
+		assertElementIsDisplayed(ContractingMap.getContractModelImportExportstatusPage());
 		ContractModelsHelper.waitForFirstRowCalculationBarToReach100Percent();
 		doClosePageOnLowerBar("Import/Export Status");
 	}

@@ -159,9 +159,9 @@ public class ExcelUtility extends Driver {
 
         if (Files.exists(source)) {
             Files.copy(source, destination, StandardCopyOption.REPLACE_EXISTING);
-            System.out.println("✅ File copied successfully");
+            System.out.println("File copied successfully");
         } else {
-            System.out.println("❌ File not found in Downloads folder");
+            System.out.println("File not found in Downloads folder");
         }
     }
 		 public static String searchFileAndFetchTheColValue(

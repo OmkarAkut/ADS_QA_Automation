@@ -511,4 +511,73 @@ public class ReportingMap extends MapConfig {
     public WebElement getAdHocReportDesignPageButtonClose() {return adHocReportDesignPageButtonClose;}
 
     // ===== End Ad Hoc Report Design Page ===== //
+    
+    @FindBy(xpath = "//input[@class='GJT013UBGIC']")
+    private WebElement reportDialogSerachbox;
+    public WebElement getreportDialogSerachbox() {return reportDialogSerachbox;}
+    
+    @FindBy(xpath = "(//div[text()='Marina Medical Center']/..//preceding-sibling::td)[1]")
+    private WebElement reportEntity;
+    public WebElement getreportEntity() {return reportEntity;}
+    
+    @FindBy(xpath = "(//div[text()='Department Hierarchy']//following::td/div/a)[1]")
+    private WebElement reportDeptHierarchy;
+    public WebElement getreportDeptHierarchy() {return reportDeptHierarchy;}
+    
+    @FindBy(xpath = "//div[text()='Marina Department Hierarchy']")
+    private WebElement reportHierarchy;
+    public WebElement getreportHierarchy() {return reportHierarchy;}
+    
+    @FindBy(xpath = "(//div[text()='Department or Department Group']//following::td/div/a)[1]")
+    private WebElement reportDeptGroup;
+    public WebElement getreportDeptGroup() {return reportDeptGroup;}
+    
+    @FindBy(xpath = "(//div[text()='2015  PEDIATRIC SUPPORT']/..//preceding-sibling::td)[1]")
+    private WebElement reportDeptGroupName;
+    public WebElement getreportDeptGroupName() {return reportDeptGroupName;}
+    
+    @FindBy(xpath = "(//div[text()='Account Hierarchy']//following::td/div/a)[1]")
+    private WebElement reportAcctHierarchy;
+    public WebElement getreportAcctHierarchy() {return reportAcctHierarchy;}
+    
+    @FindBy(xpath = "//div[text()='Marina Account Hierarchy']")
+    private WebElement reportAccountHierarchy;
+    public WebElement getreportAccountHierarchy() {return reportAccountHierarchy;}
+    
+    @FindBy(xpath = "(//div[text()='Account or Account Group']//following::td/div/a)[1]")
+    private WebElement reportAcctGroup;
+    public WebElement getreportAcctGroup() {return reportAcctGroup;}
+    
+    @FindBy(xpath = "(//div[text()='TOTEXP GP Total Expense']/..//preceding-sibling::td)[1]")
+    private WebElement reportAcctGroupName;
+    public WebElement getreportAcctGroupName() {return reportAcctGroupName;}
+    
+    @FindBy(xpath = "(//div[text()='GL Data Scenario']//following::td/div/a)[1]")
+    private WebElement reportglDataScenario;
+    public WebElement getreportglDataScenario() {return reportglDataScenario;}
+    
+    @FindBy(xpath = "//div[text()='MH FY05Budget']")
+    private WebElement reportglDataScenarioName;
+    public WebElement getreportglDataScenarioName() {return reportglDataScenarioName;}
+    
+    @FindBy(xpath = "(//div[text()='GL Data Set Date Range']//following::input[@class='gwt-DateBox'])[1]")
+    private WebElement reportglDataScenarioFrom;
+    public WebElement getreportglDataScenarioFrom() {return reportglDataScenarioFrom;}
+    
+    @FindBy(xpath = "(//div[text()='GL Data Set Date Range']//following::input[@class='gwt-DateBox'])[2]")
+    private WebElement reportglDataScenarioTo;
+    public WebElement getreportglDataScenarioTo() {return reportglDataScenarioTo;}
+    
+    @FindBy(xpath = "//div[text()='Run Report Without Saving']//following::button[text()='OK']")
+    private WebElement reportwarningPopUp;
+    public WebElement getreportwarningPopUp() {return reportwarningPopUp;}
+    
+    @FindBy(xpath = "//div[@class='GJT013UBNJB']")
+    private WebElement reportTime;
+    public WebElement getreportTime() {return reportTime;}
+    
+    @FindBy(xpath = "//iframe[@class='gwt-Frame']")
+    private WebElement reportFrame;
+    public WebElement getreportFrame() {return reportFrame;}
+    
 }

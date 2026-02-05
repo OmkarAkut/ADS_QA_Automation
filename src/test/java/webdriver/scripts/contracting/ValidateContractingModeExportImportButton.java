@@ -6,10 +6,7 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
-import org.openqa.selenium.interactions.Actions;
-
 import ExtentReport.ExtentReport;
-import webdriver.core.Driver;
 import webdriver.core.Login;
 import webdriver.corehelpers.GoHelper;
 import webdriver.helpers.ContractModelsHelper;
@@ -73,13 +70,16 @@ public class ValidateContractingModeExportImportButton extends GoHelper{
 		try {
 			doClick(modelMap.getContractModelImportButton());
 			waitForElementToBeVisible(modelMap.getContractModelImportSelectFileButton());
-			driverDelay(6000);
+//			driverDelay(6000);
 //			doactionClick(modelMap.getContractModelImportSelectFileButton());//Shilpa added this line for 11.2 update 
 			//Shilpa: update on 01.23.2026
-			Actions action =new Actions(driver);
-			action.moveToElement(driver.findElement(By.xpath("(//span[text()='Import Into:']//following::span[text()='Select'])[2]"))).click().perform();
+			
+//			Actions action =new Actions(driver);
+//			action.moveToElement(driver.findElement(By.xpath("(//span[text()='Import Into:']//following::span[text()='Select'])[2]"))).click().perform();
+			//Shilpa:updated to use action class tab to element 05:02:2026
 //			doactionClick(driver.findElement(By.xpath("//input[@name='importdata']")));
-			driverDelay(2300);
+			keyboardNavig(2);
+			driverDelay();
 			//Shilpa update file import using Robot instead of auto it due to security issues 7.3.2025
 			fileImport(System.getProperty("user.dir")+"\\TestFiles\\fzMedIPPSTesting.xml");
 			driverDelay(5000);
@@ -90,13 +90,13 @@ public class ValidateContractingModeExportImportButton extends GoHelper{
 //		    executor.executeScript("arguments[0].scrollIntoView(true);", modelMap.getContractModelImportSelectFileButton());
 			driver.findElement(By.name("sharedHostLocation")).click();
 			driverDelay(500);
-			doClick(modelMap.getContractModelExportFileSharedLocOption());
+			doClick(ContractingMap.getContractModelExportFileSharedLocOption());
 			driver.findElement(By.name("logFileName")).sendKeys(logFileName);
 			driverDelay(2300);
 			
 			doClick(modelMap.getContractModelImportButtonInExportPopUp());
 			waitForSpinnerToEnd();
-			assertElementIsDisplayed(modelMap.getContractModelImportExportstatusPage());
+			assertElementIsDisplayed(ContractingMap.getContractModelImportExportstatusPage());
 			ContractModelsHelper.waitForFirstRowCalculationBarToReach100Percent();
 			doClosePageOnLowerBar("Import/Export Status");
 			doClosePageOnLowerBar("Contract Models");

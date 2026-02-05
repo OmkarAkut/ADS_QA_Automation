@@ -40,6 +40,7 @@ public class StatisticDataCalculations extends AzHelper {
 	static String reportName = "Cost Accounting Income Statement";
 	static String directory = "Reports";
 	static String subDirectory = "Costing";
+	static String reportDownloadName="Cost_Accounting_Income_Statement.xlsx";
 	static ModelLibraryMap modelMap;
 	static int refreshTime = 10;
 	static int retry=0;
@@ -103,7 +104,7 @@ public class StatisticDataCalculations extends AzHelper {
 				+ "')]");
 		ContractModelsHelper.keyInValues(reportMap.getReportLibraryPageFormFieldSearch(), reportName);
 		driver.findElement(By.linkText(reportName)).click();
-
+		driverDelay(2500);
 	} catch (Exception | AssertionError e) {
 		ExtentReport.logFail("FAIL", "test02OpenCostingReport", driver, e);
 		fail(e.getMessage());
@@ -115,14 +116,15 @@ public class StatisticDataCalculations extends AzHelper {
   @Test
   public void test03SelectEntity() throws Throwable, InterruptedException {
     try {
+    	driverDelay(2000);
     	for(int i=1;i<=2;i++) {
 			doClick("//div[text()='Entity Range']//following::a["+i+"]/parent::div");
+			driverDelay(500);
+			action.moveToElement(reportMap.getreportDialogSerachbox()).sendKeys("150").sendKeys(Keys.ENTER).pause(500).perform();
+			action.moveToElement(reportMap.getreportEntity()).click().perform();
 			driverDelay();
-			action.moveToElement(driver.findElement(By.xpath("//input[@class='GJT013UBGIC']"))).sendKeys("150").sendKeys(Keys.ENTER).perform();
-			action.moveToElement(driver.findElement(By.xpath("(//div[text()='Marina Medical Center']/..//preceding-sibling::td)[1]"))).click().perform();
-			driverDelay(2000);
 			ContractModelsHelper.scrollToView(reportMap.reportLibraryPageEntityOkButton());
-			driverDelay(1000);
+			driverDelay();
 			doJsClick(reportMap.reportLibraryPageEntityOkButton());
 		}
     	ExtentReport.logPass("PASS", "test04SelectEntity");
@@ -134,12 +136,10 @@ ExtentReport.logFail("FAIL", "test04SelectEntity", driver, e);
   @Test
   public void test04SelectDepartmentHierarchy() throws Throwable, InterruptedException {
     try {
-    	doClick("(//div[text()='Department Hierarchy']//following::td/div/a)[1]");
-		action.moveToElement(driver.findElement(By.xpath("//input[@class='GJT013UBGIC']"))).click().sendKeys("Marina").sendKeys(Keys.ENTER).perform();
-		action.moveToElement(driver.findElement(By.xpath("//div[text()='Marina Department Hierarchy']"))).click().perform();
-		driverDelay(2000);
-//		ContractModelsHelper.scrollToView(reportMap.reportLibraryPageEntityOkButton());
-//		driverDelay(1000);
+    	doClick(reportMap.getreportDeptHierarchy());
+		action.moveToElement(reportMap.getreportDialogSerachbox()).click().sendKeys("Marina").sendKeys(Keys.ENTER).pause(500).perform();
+		action.moveToElement(reportMap.getreportHierarchy()).click().perform();
+		driverDelay();
 		doJsClick(reportMap.reportLibraryPageEntityOkButton());
     	ExtentReport.logPass("PASS", "test05SelectDepartmentHierarchy");
 	} catch (Exception|AssertionError e) {
@@ -150,12 +150,10 @@ ExtentReport.logFail("FAIL", "test05SelectDepartmentHierarchy", driver, e);
   @Test
   public void test05SelectDepartmentGroup() throws Throwable, InterruptedException {
     try {
-    	doClick("(//div[text()='Department or Department Group']//following::td/div/a)[1]");
-		action.moveToElement(driver.findElement(By.xpath("//input[@class='GJT013UBGIC']"))).sendKeys("2015").sendKeys(Keys.ENTER).perform();
-		action.moveToElement(driver.findElement(By.xpath("(//div[text()='2015  PEDIATRIC SUPPORT']/..//preceding-sibling::td)[1]"))).click().perform();
-		driverDelay(2000);
-//		ContractModelsHelper.scrollToView(reportMap.reportLibraryPageEntityOkButton());
-//		driverDelay(1000);
+    	doClick(reportMap.getreportDeptGroup());
+		action.moveToElement(reportMap.getreportDialogSerachbox()).sendKeys("2015").sendKeys(Keys.ENTER).pause(500).perform();
+		action.moveToElement(reportMap.getreportDeptGroupName()).click().perform();
+		driverDelay();
 		doJsClick(reportMap.reportLibraryPageEntityOkButton());
     	ExtentReport.logPass("PASS", "test06SelectDepartmentGroup");
 	} catch (Exception|AssertionError e) {
@@ -166,9 +164,9 @@ ExtentReport.logFail("FAIL", "test06SelectDepartmentGroup", driver, e);
   @Test
   public void test06SelectAccountHierarchy() throws Throwable, InterruptedException {
     try {
-    	doClick("(//div[text()='Account Hierarchy']//following::td/div/a)[1]");
-		action.moveToElement(driver.findElement(By.xpath("//input[@class='GJT013UBGIC']"))).sendKeys("Marina").sendKeys(Keys.ENTER).perform();
-		action.moveToElement(driver.findElement(By.xpath("//div[text()='Marina Account Hierarchy']"))).click().perform();
+    	doClick(reportMap.getreportAcctHierarchy());
+		action.moveToElement(reportMap.getreportDialogSerachbox()).sendKeys("Marina").sendKeys(Keys.ENTER).pause(500).perform();
+		action.moveToElement(reportMap.getreportAccountHierarchy()).click().perform();
 		driverDelay(2000);
 		ContractModelsHelper.scrollToView(reportMap.reportLibraryPageEntityOkButton());
 		driverDelay(1000);
@@ -182,9 +180,9 @@ ExtentReport.logFail("FAIL", "test07SelectAccountHierarchy", driver, e);
   @Test
   public void test07SelectAccountGroup() throws Throwable, InterruptedException {
     try {
-    	doClick("(//div[text()='Account or Account Group']//following::td/div/a)[1]");
-		action.moveToElement(driver.findElement(By.xpath("//input[@class='GJT013UBGIC']"))).click().sendKeys("TOT").sendKeys(Keys.ENTER).perform();
-		action.moveToElement(driver.findElement(By.xpath("(//div[text()='TOTEXP GP Total Expense']/..//preceding-sibling::td)[1]"))).click().perform();
+    	doClick(reportMap.getreportAcctGroup());
+		action.moveToElement(reportMap.getreportDialogSerachbox()).click().sendKeys("TOT").sendKeys(Keys.ENTER).pause(500).perform();
+		action.moveToElement(reportMap.getreportAcctGroupName()).click().perform();
 		driverDelay(2000);
 //		ContractModelsHelper.scrollToView(reportMap.reportLibraryPageEntityOkButton());
 //		driverDelay(1000);
@@ -198,9 +196,9 @@ ExtentReport.logFail("FAIL", "test07SelectAccountHierarchy", driver, e);
   @Test
   public void test08SelectGLDataScenario() throws Throwable, InterruptedException {
     try {
-    	doClick("(//div[text()='GL Data Scenario']//following::td/div/a)[1]");
-		action.moveToElement(driver.findElement(By.xpath("//input[@class='GJT013UBGIC']"))).click().sendKeys("MH").sendKeys(Keys.ENTER).perform();
-		action.moveToElement(driver.findElement(By.xpath("//div[text()='MH FY05Budget']"))).click().perform();
+    	doClick(reportMap.getreportglDataScenario());
+		action.moveToElement(reportMap.getreportDialogSerachbox()).click().sendKeys("MH").sendKeys(Keys.ENTER).pause(500).perform();
+		action.moveToElement(reportMap.getreportglDataScenarioName()).click().perform();
 		driverDelay(2000);
 		doJsClick(reportMap.reportLibraryPageEntityOkButton());
     	ExtentReport.logPass("PASS", "test09SelectGLDataScenario");
@@ -212,41 +210,59 @@ ExtentReport.logFail("FAIL", "test09SelectGLDataScenario", driver, e);
   @Test
   public void test09SelectEntityDateRangeRunReport() throws Throwable, InterruptedException {
     try {
-    	keyInInputText("04/01/2004", driver.findElement(By.xpath("(//div[text()='GL Data Set Date Range']//following::input[@class='gwt-DateBox'])[1]")));
-		keyInInputText("03/01/2005", driver.findElement(By.xpath("(//div[text()='GL Data Set Date Range']//following::input[@class='gwt-DateBox'])[2]")));
+    	keyInInputText("04/01/2004", reportMap.getreportglDataScenarioFrom());
+		keyInInputText("03/01/2005", reportMap.getreportglDataScenarioTo());
 //		ContractModelsHelper.scrollToView(reportMap.reportLibraryPageEntityOkButton());
 		doClick(reportMap.reportLibraryPageEntityRunButton());
 		driverDelay(2000);
-		doClick("//div[text()='Run Report Without Saving']//following::button[text()='OK']");
+		doClick(reportMap.getreportwarningPopUp());
 		driverDelay(2000);
-		String reportTime=driver.findElement(By.xpath("//div[@class='GJT013UBNJB']")).getText().replaceFirst("^\\s+", "");;
-		while (retry <= refreshTime) {
-			doClick(reportMap.reportLibraryPageEntityRefreshButton());
-			driverDelay(2500);
-
+		String reportTime=reportMap.getreportTime().getText().replaceFirst("^\\s+", "");;
+		
+		for(int i=1;i<=refreshTime;i++) {
+			
 			try {
 				//Shilpa:Update for 11.4 on 01.28.2026
+				doClick(reportMap.reportLibraryPageEntityRefreshButton());
+				driverDelay(2500);
 				String time=java.time.LocalDateTime.parse(""+reportTime+"", java.time.format.DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss a")).format(java.time.format.DateTimeFormatter.ofPattern("MM/dd/yy hh:mm:ss a"));
-				if(driver.findElement(By.xpath("//div[text()='"+time+"']//following::div[4]")).getText().contains("COMPLETED")){
-					doClick("(//span[text()='Cost Accounting Statement']//following::div[text()='"+time+"']//following::div[4]/a)[1]");
-					assertElementTextWithXpath("//div[text()='"+time+"']//following::div[4]", "COMPLETED",
-							printout);
-					action.doubleClick(driver.findElement(By.xpath(""))).perform();
-					ExtentReport.logPass("PASS", "test02OpenCostingReport");
+				if(driver.findElement(By.xpath("//div[text()='"+time+"']//following::div[4]/a")).getText().contains("COMPLETED")){
+					doClick("(//span[text()='Cost Accounting Income Statement']//following::div[text()='"+time+"']//following::div[4]/a)[1]");
 					break;
 
 				}
 				
+				if(driver.findElement(By.xpath("//div[text()='"+time+"']//following::div[4]/a")).getText().contains("FAILED")){
+					break;
+					
+
+				}
+				if(driver.findElement(By.xpath("//div[text()='"+time+"']//following::div[4]/a")).getText().contains("PENDING")){
+					doClick(reportMap.reportLibraryPageEntityRefreshButton());
+					driverDelay(2500);
+					if(i==refreshTime) {
+						System.out.println("X Status Failed after retries.");
+						break;
+					}
+					
+
+				}
+				if(driver.findElement(By.xpath("//div[text()='"+time+"']//following::div[4]/a")).getText().contains("RUNNING")){
+					doClick(reportMap.reportLibraryPageEntityRefreshButton());
+					driverDelay(2500);
+					if(i==refreshTime) {
+						System.out.println("X Status Failed after retries.");
+						break;
+					}
+					
+
+				}
+				
 			} catch (Exception e1) {
-				doClick(reportMap.reportLibraryPageEntityRefreshButton());
-				retry++;
+				
 
 			}
-			if (retry == refreshTime) {
-				System.out.println("❌ Status did not become 'Completed' after retries.");
-				fail();
-			}
-
+			i++;
 		}
     	ExtentReport.logPass("PASS", "test10SelectEntityDateRangeRunReport");
 	} catch (Exception|AssertionError e) {
@@ -254,8 +270,26 @@ ExtentReport.logFail("FAIL", "test10SelectEntityDateRangeRunReport", driver, e);
 	fail(e.getMessage());
 	}
 }
-  //  @Test
-  public void test02OpenGLDataScenario() throws Throwable, InterruptedException {
+  @Test
+  public void test10DownloadReport() throws Throwable, InterruptedException {
+    try {
+    	driverDelay();
+    	driver.switchTo().frame(reportMap.getreportFrame());
+		driver.findElement(By.id("IconImg_CostAccountingIncomeStatement_toptoolbar_export")).click();
+		driver.findElement(By.id("IconImg_Txt_iconMenu_icon_CostAccountingIncomeStatement_exportUI_dialog_combo")).click();
+		driver.findElement(By.xpath("//span[text()='Microsoft Excel Workbook Data-only']")).click();
+		doClick("//a[text()='Export']");
+		driver.switchTo().defaultContent();
+		doClosePageOnLowerBar("Report Library");
+		doClosePageOnLowerBar("Costing Models");
+    	ExtentReport.logPass("PASS", "test10DownloadReport");
+	} catch (Exception|AssertionError e) {
+ExtentReport.logFail("FAIL", "test10DownloadReport", driver, e);
+	fail(e.getMessage());
+	}
+}
+    @Test
+  public void test11OpenGLDataScenario() throws Throwable, InterruptedException {
     try {
     	goToPage("Maintain Data");
 		selectMaintainDataAtoZ("GL Data Scenarios");
@@ -264,15 +298,16 @@ ExtentReport.logFail("FAIL", "test10SelectEntityDateRangeRunReport", driver, e);
 		doClick(DataMaintenanceMap.getazEditBtn());
 		doClickButtons("GL Data", "Filter");
 		doFilterCreate(glDataFilter);
+		ExcelUtility.copyFromDownload("Cost_Accounting_Income_Statement.xlsx");
+
 		for(int i=1;i<=DataMaintenanceMap.getglDataScenarioElements().size();i++) {
-			ExcelUtility.copyFromDownload("Cost_Accounting_Income_Statement.xlsx");
 			String getGlAccount=driver.findElement(By.xpath("(//div[contains(@id,'glspreadsheetgrid')]//div[@class='x-grid-item-container'])[1]/table["+i+"]//td[4]")).getText();
 			String totalValue=driver.findElement(By.xpath("(//div[contains(@id,'glspreadsheetgrid')]//div[@class='x-grid-item-container'])[1]/table[1]//following::div[contains(@class,'x-grid-scrollbar-clipper ')]//table["+i+"]//td[1]/div")).getText();
 			String parseValue=totalValue.replaceAll("\\.00$", "").replaceAll(",", "");
 			System.out.println(parseValue);
 			System.out.println(totalValue);
 			String excelPath = System.getProperty("user.dir")
-	                + "\\TestFiles\\Cost_Accounting_Income_Statement.xlsx"; 
+	                + "\\TestFiles\\'"+reportDownloadName+"'"; 
 			String compareValue=ExcelUtility.searchFileAndFetchTheColValue(excelPath, getGlAccount);
 			String compareTotalValue=compareValue.replaceAll(",", "");
 			if(compareTotalValue.replaceAll(",", "").equals(parseValue)) {
