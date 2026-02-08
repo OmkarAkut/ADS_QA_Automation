@@ -57,9 +57,10 @@ public class OverWriteRVUValues5919 extends UcqcHelper {
 			driverDelay(2000);
 			//Shilpa: update on 01.23.2026
 			keyboardNavig(3);
+			driverDelay(2000);
 			//Shilpa update file import using Robot instead of auto it due to security issues 7.3.2025
 			fileImport(System.getProperty("user.dir")+"\\TestFiles\\ADS1309PreConditionsRVUImport.txt");
-			driverDelay();
+			driverDelay(2000);
 			doClick(CostingMap.getRvuSharedLocDropdown());
 			driverDelay(300);
 			doClick(ContractingMap.getContractModelExportFileSharedLocOption());

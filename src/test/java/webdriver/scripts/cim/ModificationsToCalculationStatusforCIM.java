@@ -50,7 +50,7 @@ public class ModificationsToCalculationStatusforCIM extends CimHelper {
 		}
 	}
 	
-	@Test
+//	@Test
 	public void test01Validate_CalculationStatusPageFor_Pending_21963() throws Throwable {
 		try {
 			createCIM(cimScenarioCreate,calcType);

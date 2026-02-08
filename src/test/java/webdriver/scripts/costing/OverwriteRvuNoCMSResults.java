@@ -70,16 +70,16 @@ public class OverwriteRvuNoCMSResults extends GoHelper {
 			doClick(costing.getRvuMaintenanceButtonFilter());
 			doFilterCreate(filterByCostModel);
 			doClick(costing.getRvuMaintenanceButtonImport());
-			driverDelay();
+			driverDelay(2000);
 			assertTextIsDisplayed("Import Data");
 			//Shilpa update file import using Robot instead of auto it due to security issues 7.3.2025
 			//		Shilpa updated script : 01.28.2026
 			keyboardNavig(3);
 //			CimHelper.checkElements(driver.findElements(By.xpath("(//div[text()='Import Data']//following::input[@name='importdata'])/..")));
 
-			driverDelay(4000);
+			driverDelay(2000);
 			fileImport(System.getProperty("user.dir")+"\\TestFiles\\ADS1309PreConditionsRVUImport.txt");
-			driverDelay();
+			driverDelay(700);
 			doClick(CostingMap.getRvuSharedLocDropdown());
 			driverDelay(300);
 			doClick(ContractingMap.getContractModelExportFileSharedLocOption());

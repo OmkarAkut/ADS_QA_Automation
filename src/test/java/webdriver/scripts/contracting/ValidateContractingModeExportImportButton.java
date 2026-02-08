@@ -79,10 +79,10 @@ public class ValidateContractingModeExportImportButton extends GoHelper{
 			//Shilpa:updated to use action class tab to element 05:02:2026
 //			doactionClick(driver.findElement(By.xpath("//input[@name='importdata']")));
 			keyboardNavig(2);
-			driverDelay();
+			driverDelay(2000);
 			//Shilpa update file import using Robot instead of auto it due to security issues 7.3.2025
 			fileImport(System.getProperty("user.dir")+"\\TestFiles\\fzMedIPPSTesting.xml");
-			driverDelay(5000);
+			driverDelay(2000);
 //			Omkar 22/6/2023 : Select button not getting clicked
 //			modelMap.getContractModelImportSelectFileButton().sendKeys(Keys.ENTER);
 //			modelMap.getContractModelImportSelectFileButton().sendKeys(Keys.RETURN);

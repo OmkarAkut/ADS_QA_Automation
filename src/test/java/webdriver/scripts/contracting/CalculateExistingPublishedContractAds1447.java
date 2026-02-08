@@ -133,6 +133,8 @@ public class CalculateExistingPublishedContractAds1447 extends CalculationHelper
 //		checkForRecordsProcessed(recordsPending);
 //		checkForRecordsProcessed(totalRecords);
 		driverDelay();
+		
+		
 		assertTrue(getCalculationStatusMyStatusFirstRowStatusCellText().contains(status));
 		assertTrue(getCalculationStatusMyStatusFirstRowLogStatusCellText().contains(logStatus));
 		assertTrue(getCalculationStatusMyStatusFirstRowRecordsProcessedCellText().contains(recordsProcessed));
@@ -195,6 +197,7 @@ public class CalculateExistingPublishedContractAds1447 extends CalculationHelper
     try {
     	assumeTrue(previousTestPassed);
 //    	closeViewDialog();//workaround till scroll works
+    	
     	doClick("(//*[contains(@id,'calculationstatus') and contains(@id,'header')]/..//span[contains(@class,'x-btn-icon-el x-btn-icon-el-default-small delBtn')])[1]");
     	driver.findElement(By.xpath("//div[contains(@id,'warningwindow')]//span[text()='Delete']")).click();
 //    	deleteCalculationStatusMyStatusPageFirstRow();

@@ -86,11 +86,13 @@ public class RVUExportImportFunction extends GoHelper {
 			assertTextIsDisplayed("Import Data");
 			//Shilpa: updated to action class 04.02.2026
 			keyboardNavig(3);
+			driverDelay(2000);
 			//Shilpa:01.27.2026
 //			CimHelper.checkElements(driver.findElements(By.xpath("(//div[contains(@id,'importwindow')]//span[text()='Select'])[2]/../../..")));
 //			driverDelay();
 //Shilpa: updated file import using Robot class, due to security issues with Autoit
 			fileImport(System.getProperty("user.dir") + "\\TestFiles\\RVUImportFile.txt");
+			driverDelay(2000);
 			selectFileLocAndaddFileName(costing.getRvuImportButton());
 			//Shilpa: Updated for 11.2 3.2.2025
 			/*

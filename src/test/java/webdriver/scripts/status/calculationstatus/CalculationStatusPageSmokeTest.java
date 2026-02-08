@@ -16,6 +16,7 @@ import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.helpers.CalculationHelper;
 import webdriver.maps.ContractingMap;
+import webdriver.maps.ModelLibraryMap;
 import webdriver.maps.StatusMap;
 import webdriver.maps.mapbuilder.BuildMap;
 
@@ -237,6 +238,7 @@ public class CalculationStatusPageSmokeTest extends CalculationHelper {
   @Test
   public void test08VerifyCalculationStatusPageTableValueForLogStatusColumn() throws Throwable {
     try {
+    	
 		String logStatusText = getWebElement(logStatusXpath).getText();
 		assertEquals(expectedLogStatus, logStatusText);
 		ExtentReport.logPass("PASS", "test08VerifyCalculationStatusPageTableValueForLogStatusColumn");

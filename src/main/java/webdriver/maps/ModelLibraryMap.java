@@ -1,5 +1,7 @@
 package webdriver.maps;
 
+import java.util.List;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import webdriver.maps.mapbuilder.MapConfig;
@@ -313,4 +315,12 @@ public class ModelLibraryMap extends MapConfig {
     @FindBy(xpath = "//div[text()='View Log']//following::span[contains(@class,'pagging-tbar-next-button')]/../../..")
     private  static WebElement getGoToNextPage;
     public static WebElement getGoToNextPage() {return getGoToNextPage;}
+    
+    @FindBy(xpath = "(//*[contains(@id,'calculationstatus') and contains(@id,'header')]/..//span[contains(@class,'x-btn-icon-el x-btn-icon-el-default-small delBtn')])[1]")
+    private  static List<WebElement> statusDeleteBtn;
+    public static List<WebElement> getstatusDeleteBtn() {return statusDeleteBtn;}
+    
+    @FindBy(xpath = "//span[text()='Refresh']")
+    private  static WebElement statusRefreshBtn;
+    public static WebElement getstatusRefreshBtn() {return statusRefreshBtn;}
 }
