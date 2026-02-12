@@ -86,6 +86,8 @@ public class GeneralCalculationsEncounterServiceClassificationSchemeAds2341 exte
       waitForSpinnerToEnd();
       waitForFirstRowCalculationBarToReach100Percent();
       driverDelay(5000);
+  	driver.findElement(By.xpath("//span[text()='Refresh']")).click();
+    driverDelay(2000);
       calculationStatusPageOpenViewDialog();
       assertViewLogTitle(viewLogTitleRemove);
       confirmCalculationStatusDetailsContains("Process Completed");

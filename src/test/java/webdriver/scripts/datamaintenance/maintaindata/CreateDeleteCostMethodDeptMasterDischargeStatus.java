@@ -28,8 +28,8 @@ public class CreateDeleteCostMethodDeptMasterDischargeStatus extends Calculation
 	final static String aTozPageCostMethodMaster="Cost Method Masters";
 	final static String aTozPageDeptMaster="Department Masters";
 	static String currentDateTime = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
-	static String currentDateCode = new SimpleDateFormat("MM.HH.ss").format(new java.util.Date());
-	static String deptCode = currentDateCode.replaceAll("\\W", "");
+	static String currentDateCode = new SimpleDateFormat("MM").format(new java.util.Date());
+	static String deptCode = currentDateCode.replaceAll("\\W", "")+"D";
 	static String costModel = "Model " + currentDateTime;
 	static String costDeptModel = "Model " + currentDateTime;
 	static String costComponentMaster="ASESC-1832 Hospital CCM";
