@@ -70,7 +70,7 @@ public class ValidateContractingModeExportImportButton extends GoHelper{
 		try {
 			doClick(modelMap.getContractModelImportButton());
 			waitForElementToBeVisible(modelMap.getContractModelImportSelectFileButton());
-//			driverDelay(6000);
+			driverDelay(2500);
 //			doactionClick(modelMap.getContractModelImportSelectFileButton());//Shilpa added this line for 11.2 update 
 			//Shilpa: update on 01.23.2026
 			

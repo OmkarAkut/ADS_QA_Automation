@@ -41,7 +41,7 @@ public class AdmissionSources extends AzHelper {
 		}
 	}
 	@Test
-	public void test01ValidateNewButton() throws Throwable {
+	public void test01_AdmissionSources_ValidateNewButton() throws Throwable {
 		try {
 			doClick(DataMaintenanceMap.getazNewBtn());
 			addNewScenario(code, name, null, DataMaintenanceMap.getinputCode(),
@@ -52,14 +52,14 @@ public class AdmissionSources extends AzHelper {
 			doFilterCreate(filter);
 			deleteScenario(DataMaintenanceMap.getazDeleteBtn(), DataMaintenanceMap.getwarningDeleteBtn());
 			doClick(DataMaintenanceMap.getazClearFilterBtn());
-			ExtentReport.logPass("PASS", "test01ValidateNewButton");
+			ExtentReport.logPass("PASS", "test01_AdmissionSources_ValidateNewButton");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test01ValidateNewButton", driver, e);
+			ExtentReport.logFail("FAIL", "test01_AdmissionSources_ValidateNewButton", driver, e);
 			fail(e.getMessage());
 		}
 	}
 	@Test
-	public void test02ValidateSaveAndEditButton() throws Throwable {
+	public void test02_AdmissionSources_ValidateSaveAndEditButton() throws Throwable {
 		try {
 			doClick(DataMaintenanceMap.getazNewBtn());
 			addNewScenario(code, name, null, DataMaintenanceMap.getinputCode(),
@@ -69,14 +69,14 @@ public class AdmissionSources extends AzHelper {
 			doClick(DataMaintenanceMap.getazFilterBtn());
 			doFilterCreate(filter);
 			doClick(DataMaintenanceMap.getazEditBtn());
-			ExtentReport.logPass("PASS", "test01ValidateNewButton");
+			ExtentReport.logPass("PASS", "test02_AdmissionSources_ValidateSaveAndEditButton");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test01ValidateNewButton", driver, e);
+			ExtentReport.logFail("FAIL", "test02_AdmissionSources_ValidateSaveAndEditButton", driver, e);
 			fail(e.getMessage());
 		}
 	}
 	@Test
-	public void test03ValidateSaveAndCloseButton() throws Throwable {
+	public void test03_AdmissionSources_ValidateSaveAndCloseButton() throws Throwable {
 		try {
 			addNewScenario(null, updatedName, null, DataMaintenanceMap.getinputCode(),
 					DataMaintenanceMap.getaddName(), null, null,
@@ -86,9 +86,9 @@ public class AdmissionSources extends AzHelper {
 			doFilterCreate(filterAfterEdit);
 			deleteScenario(DataMaintenanceMap.getazDeleteBtn(), DataMaintenanceMap.getwarningDeleteBtn());
 			doClick(DataMaintenanceMap.getazClearFilterBtn());
-			ExtentReport.logPass("PASS", "test03ValidateSaveAndCloseButton");
+			ExtentReport.logPass("PASS", "test03_AdmissionSources_ValidateSaveAndCloseButton");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test03ValidateSaveAndCloseButton", driver, e);
+			ExtentReport.logFail("FAIL", "test03_AdmissionSources_ValidateSaveAndCloseButton", driver, e);
 			fail(e.getMessage());
 		}
 	}

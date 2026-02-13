@@ -6,6 +6,7 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 	CalculateExistingPublishedContractAds1447.class,
+	ValidateContractingModeExportImportButton.class,
 	ClearFilterbuttonModels.class,
 	ConfirmAddNewDeleteAPCFeeScheduleMasters.class,
 	ConfirmFY2023MedicareYearisAvailableForMedIPPS.class,
@@ -31,7 +32,6 @@ import org.junit.runners.Suite;
 	ValidateBenifitPlansInfoForMultipleUnpublishedContracts.class,
 	ValidateCalculateForContractModel.class,
 	ValidateContracDataMaintenanceBubble.class,
-	ValidateContractingModeExportImportButton.class,
 	ValidateContractingTreeTab.class,
 	ValidateCopyPasteSearchFunctionForContractModel.class,
 	ValidateDialogBoxForPricingMethods.class,

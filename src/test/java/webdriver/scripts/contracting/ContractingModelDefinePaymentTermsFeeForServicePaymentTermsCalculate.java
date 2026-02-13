@@ -228,12 +228,14 @@ public class ContractingModelDefinePaymentTermsFeeForServicePaymentTermsCalculat
 			assertElementIsDisplayed(ContractingMap.getContractFeeForServicePaymentWarningPopUpContinueButton());
 			driverDelay(3000);
 			doClick(ContractingMap.getContractFeeForServicePaymentWarningPopUpContinueButton());
+			driverDelay();
 //			doClosePageOnLowerBar("v105 REGRESSION...");//Shilpa updated for 11.2 on 24.2.2024
 			doClick("(//span[@class='x-tab-close-btn'])[2]");
 			/*
 			 * doClick(ContractingMap.getContractModelButtonFilter()); waitForAjaxExtJs();
 			 * Thread.sleep(200); doFilterCreate(filterContractModel);
 			 */
+			
 			doClick(ContractingMap.getContractFeeForServicePaymentCalculateButton());
 			driverDelay();
 			doFilterCalculationPage(filterCalc);

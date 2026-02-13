@@ -1,12 +1,9 @@
 package webdriver.scripts.cim;
 
 import static org.junit.Assert.fail;
-
 import java.text.SimpleDateFormat;
-import java.time.Duration;
 import java.util.Arrays;
 import java.util.List;
-
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
@@ -15,11 +12,6 @@ import org.junit.runners.MethodSorters;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Action;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
 import ExtentReport.ExtentReport;
 import webdriver.core.Login;
 import webdriver.helpers.CimHelper;
@@ -35,10 +27,10 @@ public class EnableDragAndDropFunctionalityForCalculationsInCIMGroup extends Cim
 	static String[] filterCim = { "Name", "Is", "Equal To", cimScenarioCreate };
 	static String calcType=getProperty().replaceAll("^\"|\"$", "");
 	static String calcType1="*CM1 TB MHFY05 After Vol Change";
-	static String calcType2="10PLCALC";
-	static String[] calcTypes= {"*CM1 TB MHFY05 After Vol Change","10PLCALC","ADS-4383 RVU Calc Scenario"};
-	static String[] calcTypeForAssert= {"Cost Model Calc: *CM1 TB MHFY05 After Vol Change","Price List Calc Scenario: 10PLCALC","RVU Calc Scenario: ADS-4383 RVU Calc Scenario"};
-	static List<String> expSelectedItemsAfterDragDrop= Arrays.asList("RVU Calc Scenario: ADS-4383 RVU Calc Scenario","Price List Calc Scenario: 10PLCALC","Cost Model Calc: *CM1 TB MHFY05 After Vol Change","Activity Volume Calc Scenario: ADS-262 Vol Calc");
+	static String calcType2="15PLCALC";
+	static String[] calcTypes= {"*CM1 TB MHFY05 After Vol Change","15PLCALC","ADS-4383 RVU Calc Scenario"};
+	static String[] calcTypeForAssert= {"Cost Model Calc: *CM1 TB MHFY05 After Vol Change","Price List Calc Scenario: 15PLCALC","RVU Calc Scenario: ADS-4383 RVU Calc Scenario"};
+	static List<String> expSelectedItemsAfterDragDrop= Arrays.asList("RVU Calc Scenario: ADS-4383 RVU Calc Scenario","Price List Calc Scenario: 15PLCALC","Cost Model Calc: *CM1 TB MHFY05 After Vol Change","Activity Volume Calc Scenario: ADS-262 Vol Calc");
 	@BeforeClass
 	public static void setupScript() throws Exception, Throwable {
 		ExtentReport.reportCreate("EnableDragAndDropFunctionalityForCalculationsInCIMGroup", "webdriver.scripts.cim",

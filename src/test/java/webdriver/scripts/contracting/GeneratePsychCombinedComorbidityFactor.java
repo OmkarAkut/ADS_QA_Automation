@@ -22,7 +22,7 @@ import webdriver.maps.mapbuilder.BuildMap;
 
 public class GeneratePsychCombinedComorbidityFactor extends CalculationHelper {
 	final static String aTozPage = "Psych Combined Comorbidity Assignments";
-	final static String batch = "Psych Comorbidity2025";
+	final static String batch = "Psych Comorbidity 2026";
 	static String viewLogTitleApply = "Psych Comorbidity2025";
 	private static CostingMap costingMap;
 	private static ContractingMap contractingMap;
@@ -77,16 +77,7 @@ public class GeneratePsychCombinedComorbidityFactor extends CalculationHelper {
 			driverDelay(2000);
 			doClick(DataMaintenanceMap.getpsychSaveBtn());
 			waitForDisplayedSpinnerToEnd();
-			driverDelay(25000);
 			doClick(ContractingMap.getContractResetButton());
-			doClick(costingMap.getCostModelScenariosinEvaluationOrderSave());
-			driverDelay(15000);
-			try {
-				doClick(ContractingMap.getContractResetButton());
-			} catch (NoSuchElementException e) {
-			
-			}
-//			waitForDisplayedSpinnerToEnd();
 			doFilterCalculationPage(filter);
 			waitForFirstRowCalculationBarToReach100Percent();
 			calculationStatusPageOpenViewDialog();

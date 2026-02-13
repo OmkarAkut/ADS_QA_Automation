@@ -44,7 +44,7 @@ public class ActivityVoulmeDataScenarios extends AzHelper {
 	}
 
 	@Test
-	public void test01ValidateNewButton() throws Throwable {
+	public void test01_ActivityVoulme_ValidateNewButton() throws Throwable {
 		try {
 			doClick(DataMaintenanceMap.getazNewBtn());
 			addNewScenario(code, name, "Fiscal Year", DataMaintenanceMap.getinputCode(),
@@ -56,15 +56,15 @@ public class ActivityVoulmeDataScenarios extends AzHelper {
 			doFilterCreate(activityVolDataScenario);
 			deleteScenario(DataMaintenanceMap.getazDeleteBtn(), DataMaintenanceMap.getmessageboxDeleteBtn());
 			doClick(DataMaintenanceMap.getazClearFilterBtn());
-			ExtentReport.logPass("PASS", "test01ValidateNewButton");
+			ExtentReport.logPass("PASS", "test01_ActivityVoulme_ValidateNewButton");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test01ValidateNewButton", driver, e);
+			ExtentReport.logFail("FAIL", "test01_ActivityVoulme_ValidateNewButton", driver, e);
 			fail(e.getMessage());
 		}
 	}
 
 	@Test
-	public void test02ValidateSaveButton() throws Throwable {
+	public void test02_ActivityVoulme_ValidateSaveButton() throws Throwable {
 		try {
 			doClick(DataMaintenanceMap.getazNewBtn());
 			addNewScenario(code, name, "Fiscal Year", DataMaintenanceMap.getinputCode(),
@@ -75,15 +75,15 @@ public class ActivityVoulmeDataScenarios extends AzHelper {
 			doFilterCreate(activityVolDataScenario);
 			deleteScenario(DataMaintenanceMap.getazDeleteBtn(), DataMaintenanceMap.getmessageboxDeleteBtn());
 			doClick(DataMaintenanceMap.getazClearFilterBtn());
-			ExtentReport.logPass("PASS", "test02ValidateSaveButton");
+			ExtentReport.logPass("PASS", "test02_ActivityVoulme_ValidateSaveButton");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test02ValidateSaveButton", driver, e);
+			ExtentReport.logFail("FAIL", "test02_ActivityVoulme_ValidateSaveButton", driver, e);
 			fail(e.getMessage());
 		}
 	}
 
 	@Test
-	public void test03ValidateSaveCloseButton() throws Throwable {
+	public void test03_ActivityVoulme_ValidateSaveCloseButton() throws Throwable {
 		try {
 			doClick(DataMaintenanceMap.getazNewBtn());
 			addNewScenario(code, name, "Fiscal Year", DataMaintenanceMap.getinputCode(),
@@ -91,15 +91,15 @@ public class ActivityVoulmeDataScenarios extends AzHelper {
 					DataMaintenanceMap.getactivityVolDataScenarioDropdownList(), "Save & Close");
 			doClick(DataMaintenanceMap.getazFilterBtn());
 			doFilterCreate(activityVolDataScenario);
-			ExtentReport.logPass("PASS", "test02ValidateSaveButton");
+			ExtentReport.logPass("PASS", "test03_ActivityVoulme_ValidateSaveCloseButton");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test02ValidateSaveButton", driver, e);
+			ExtentReport.logFail("FAIL", "test03_ActivityVoulme_ValidateSaveCloseButton", driver, e);
 			fail(e.getMessage());
 		}
 	}
 
 	@Test
-	public void test04ddActivityVolumeData() throws Throwable {
+	public void test04_ActivityVoulme_AddActivityVolumeData() throws Throwable {
 		try {
 			doClick(DataMaintenanceMap.getazPageEditBtn());
 			doClickButtons(azName, "Add");
@@ -120,15 +120,15 @@ public class ActivityVoulmeDataScenarios extends AzHelper {
 			assertTextIsDisplayed("0ALL Charge associated with ALL Dept");
 			assertTextIsDisplayed("NONE");
 			assertTextIsDisplayed("U");
-			ExtentReport.logPass("PASS", "test02ValidateSaveButton");
+			ExtentReport.logPass("PASS", "test04_ActivityVoulme_AddActivityVolumeData");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test02ValidateSaveButton", driver, e);
+			ExtentReport.logFail("FAIL", "test04_ActivityVoulme_AddActivityVolumeData", driver, e);
 			fail(e.getMessage());
 		}
 	}
 
 	@Test
-	public void test05AddActivityVolumeTableData() throws Throwable {
+	public void test05_ActivityVoulme_AddActivityVolumeTableData() throws Throwable {
 		try {
 
 			keyInInputWithActionClass(DataMaintenanceMap.getactivityVolData(), "10");
@@ -136,38 +136,38 @@ public class ActivityVoulmeDataScenarios extends AzHelper {
 			keyInInputWithActionClass(DataMaintenanceMap.getactivityVolData(), volumeData);
 			doClickButtons("Activity Volume Data", "Save Data");
 			assertTextIsDisplayed(volumeData);
-			ExtentReport.logPass("PASS", "test04AddActivityVolumeTableData");
+			ExtentReport.logPass("PASS", "test05_ActivityVoulme_AddActivityVolumeTableData");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test04AddActivityVolumeTableData", driver, e);
+			ExtentReport.logFail("FAIL", "test05_ActivityVoulme_AddActivityVolumeTableData", driver, e);
 			fail(e.getMessage());
 		}
 	}
 
 	@Test
-	public void test06DeleteActivityVolumeTableData() throws Throwable {
+	public void test06_ActivityVoulme_DeleteActivityVolumeTableData() throws Throwable {
 		try {
 			doClickButtons("Activity Volume Data", "Delete");
 			doClick(DataMaintenanceMap.getmessageboxDeleteBtn());
 			assertTextIsDisplayed("There is no data available to display");
 			doClickButtons(azName, "Cancel & Close");
-			ExtentReport.logPass("PASS", "test05DeleteActivityVolumeTableData");
+			ExtentReport.logPass("PASS", "test06_ActivityVoulme_DeleteActivityVolumeTableData");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test05DeleteActivityVolumeTableData", driver, e);
+			ExtentReport.logFail("FAIL", "test06_ActivityVoulme_DeleteActivityVolumeTableData", driver, e);
 			fail(e.getMessage());
 		}
 	}
 
 	@Test
-	public void test07DeleteActivityVolumeScenario() throws Throwable {
+	public void test07_ActivityVoulme_DeleteActivityVolumeScenario() throws Throwable {
 		try {
 			doClick(DataMaintenanceMap.getazFilterBtn());
 			doFilterCreate(activityVolDataScenario);
 			doClick(DataMaintenanceMap.getazDeleteBtn());
 			doClick(DataMaintenanceMap.getmessageboxDeleteBtn());
 			assertTextIsDisplayed("There is no data available to display.");
-			ExtentReport.logPass("PASS", "test06DeleteActivityVolumeScenario");
+			ExtentReport.logPass("PASS", "test07_ActivityVoulme_DeleteActivityVolumeScenario");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test06DeleteActivityVolumeScenario", driver, e);
+			ExtentReport.logFail("FAIL", "test07_ActivityVoulme_DeleteActivityVolumeScenario", driver, e);
 			fail(e.getMessage());
 		}
 	}

@@ -52,7 +52,7 @@ public class ActivityStatisticMasters extends AzHelper{
 	}
 	
 	@Test
-	public void test01ValidateNewButton() throws Throwable {
+	public void test01_ActivityStatisticMasters_ValidateNewButton() throws Throwable {
 		try {
 			doClick(DataMaintenanceMap.getazNewBtn());
 			addNewScenario(code,name,"Department Hierarchy",DataMaintenanceMap.getinputCode(),
@@ -64,14 +64,14 @@ public class ActivityStatisticMasters extends AzHelper{
 			doFilterCreate(activityStatsMasterFilter);
 			deleteScenario(DataMaintenanceMap.getazDeleteBtn(),DataMaintenanceMap.getwarningDeleteBtn());
 			doClick(DataMaintenanceMap.getazClearFilterBtn());
-			ExtentReport.logPass("PASS", "test01ValidateNewButton");
+			ExtentReport.logPass("PASS", "test01_ActivityStatisticMasters_ValidateNewButton");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test01ValidateNewButton", driver, e);
+			ExtentReport.logFail("FAIL", "test01_ActivityStatisticMasters_ValidateNewButton", driver, e);
 			fail(e.getMessage());
 		}
 	}
 	@Test
-	public void test02ValidateSaveButton() throws Throwable {
+	public void test02_ActivityStatisticMasters_ValidateSaveButton() throws Throwable {
 		try {
 			doClick(DataMaintenanceMap.getazNewBtn());
 			addNewScenario(code,name,"Department Hierarchy",DataMaintenanceMap.getinputCode(),DataMaintenanceMap.getaddName(),deptHierarchy,DataMaintenanceMap.getactivityStatsMasterDropdown(),DataMaintenanceMap.getactivityStatsMasterDropdownList(),"Save");
@@ -80,14 +80,14 @@ public class ActivityStatisticMasters extends AzHelper{
 			doFilterCreate(activityStatsMasterFilter);
 			deleteScenario(DataMaintenanceMap.getazDeleteBtn(),DataMaintenanceMap.getwarningDeleteBtn());
 			doClick(DataMaintenanceMap.getazClearFilterBtn());
-			ExtentReport.logPass("PASS", "test02ValidateSaveButton");
+			ExtentReport.logPass("PASS", "test02_ActivityStatisticMasters_ValidateSaveButton");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test02ValidateSaveButton", driver, e);
+			ExtentReport.logFail("FAIL", "test02_ActivityStatisticMasters_ValidateSaveButton", driver, e);
 			fail(e.getMessage());
 		}
 	}
 	@Test
-	public void test03ValidateSaveCloseButton() throws Throwable {
+	public void test03_ActivityStatisticMasters_ValidateSaveCloseButton() throws Throwable {
 		try {
 			doClick(DataMaintenanceMap.getazNewBtn());
 			addNewScenario(code,name,"Department Hierarchy",DataMaintenanceMap.getinputCode(),DataMaintenanceMap.getaddName(),deptHierarchy,DataMaintenanceMap.getactivityStatsMasterDropdown(),DataMaintenanceMap.getactivityStatsMasterDropdownList(),"Save & Close");
@@ -95,26 +95,26 @@ public class ActivityStatisticMasters extends AzHelper{
 			doClick(DataMaintenanceMap.getazFilterBtn());
 			doFilterCreate(activityStatsMasterFilter);
 			doClick(DataMaintenanceMap.getazPageEditBtn());
-			ExtentReport.logPass("PASS", "test03ValidateSaveCloseButton");
+			ExtentReport.logPass("PASS", "test03_ActivityStatisticMasters_ValidateSaveCloseButton");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test03ValidateSaveCloseButton", driver, e);
+			ExtentReport.logFail("FAIL", "test03_ActivityStatisticMasters_ValidateSaveCloseButton", driver, e);
 			fail(e.getMessage());
 		}
 	}
 	@Test
-	public void test04AddActivityStatistics() throws Throwable {
+	public void test04_ActivityStatisticMasters_AddActivityStatistics() throws Throwable {
 		try {
 			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageNewBtn());
 			addDetailsInnerPages(code, name, "Save & Create New","code","name");
 			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageCancelCloseBtn());
-			ExtentReport.logPass("PASS", "test04AddActivityStatistics");
+			ExtentReport.logPass("PASS", "test04_ActivityStatisticMasters_AddActivityStatistics");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test04AddActivityStatistics", driver, e);
+			ExtentReport.logFail("FAIL", "test04_ActivityStatisticMasters_AddActivityStatistics", driver, e);
 			fail(e.getMessage());
 		}
 	}
 	@Test
-	public void test05EditActivityStatistics() throws Throwable {
+	public void test05_ActivityStatisticMasters_EditActivityStatistics() throws Throwable {
 		try {
 			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageEditBtn());
 			updatedName="Updated"+name;
@@ -122,14 +122,14 @@ public class ActivityStatisticMasters extends AzHelper{
 			addDetailsInnerPages(null, updatedName, "Save & Close","code","name");
 			driverDelay();
 			assertTextIsDisplayed(updatedName);
-			ExtentReport.logPass("PASS", "test05EditActivityStatistics");
+			ExtentReport.logPass("PASS", "test05_ActivityStatisticMasters_EditActivityStatistics");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test05EditActivityStatistics", driver, e);
+			ExtentReport.logFail("FAIL", "test05_ActivityStatisticMasters_EditActivityStatistics", driver, e);
 			fail(e.getMessage());
 		}
 	}
 	@Test
-	public void test06AddNewMappings() throws Throwable {
+	public void test06_ActivityStatisticMasters_AddNewMappings() throws Throwable {
 		try {
 			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageEditBtn());
 			assertElementValueAttribute(DataMaintenanceMap.getactivityStatsInputName(), updatedName, printout);
@@ -153,48 +153,48 @@ public class ActivityStatisticMasters extends AzHelper{
 			assertTextIsDisplayed("NONE");
 			assertTextIsDisplayed("U");
 			assertTextIsDisplayed("50.0000");
-			ExtentReport.logPass("PASS", "test06AddNewMappings");
+			ExtentReport.logPass("PASS", "test06_ActivityStatisticMasters_AddNewMappings");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test06AddNewMappings", driver, e);
+			ExtentReport.logFail("FAIL", "test06_ActivityStatisticMasters_AddNewMappings", driver, e);
 			fail(e.getMessage());
 		}
 	}
 	@Test
-	public void test07DeleteMappings() throws Throwable {
+	public void test07_ActivityStatisticMasters_DeleteMappings() throws Throwable {
 		try {
 			doClick(DataMaintenanceMap.getmappingDeleteButton());
 			waitForElementToBeVisible(DataMaintenanceMap.getwarningDeleteBtn());
 			doClick(DataMaintenanceMap.getwarningDeleteBtn());
 			assertTextIsDisplayed("There is no data available to display.");
 			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageCancelCloseBtn());
-			ExtentReport.logPass("PASS", "test07DeleteMappings");
+			ExtentReport.logPass("PASS", "test07_ActivityStatisticMasters_DeleteMappings");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test07DeleteMappings", driver, e);
+			ExtentReport.logFail("FAIL", "test07_ActivityStatisticMasters_DeleteMappings", driver, e);
 			fail(e.getMessage());
 		}
 	}
 	@Test
-	public void test08DeleteActivityStatistics() throws Throwable {
+	public void test08_ActivityStatisticMasters_DeleteActivityStatistics() throws Throwable {
 		try {
 			CimHelper.checkElements(DataMaintenanceMap.getazInnerPageDeleteBtn());
 			doClick(DataMaintenanceMap.getwarningDeleteBtn());
 			assertTextIsDisplayed("There is no data available to display.");
 			doClick(DataMaintenanceMap.getCancelCloseButton());
-			ExtentReport.logPass("PASS", "test08DeleteActivityStatistics");
+			ExtentReport.logPass("PASS", "test08_ActivityStatisticMasters_DeleteActivityStatistics");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test08DeleteActivityStatistics", driver, e);
+			ExtentReport.logFail("FAIL", "test08_ActivityStatisticMasters_DeleteActivityStatistics", driver, e);
 			fail(e.getMessage());
 		}
 	}
 	@Test
-	public void test09DeleteActivityStatisticsMaster() throws Throwable {
+	public void test09_ActivityStatisticMasters_DeleteActivityStatisticsMaster() throws Throwable {
 		try {
 			doClick(DataMaintenanceMap.getazDeleteBtn());
 			doClick(DataMaintenanceMap.getwarningDeleteBtn());
 			assertTextIsDisplayed("There is no data available to display.");
-			ExtentReport.logPass("PASS", "test09DeleteActivityStatisticsMaster");
+			ExtentReport.logPass("PASS", "test09_ActivityStatisticMasters_DeleteActivityStatisticsMaster");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test09DeleteActivityStatisticsMaster", driver, e);
+			ExtentReport.logFail("FAIL", "test09_ActivityStatisticMasters_DeleteActivityStatisticsMaster", driver, e);
 			fail(e.getMessage());
 		}
 	}

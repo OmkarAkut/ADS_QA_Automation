@@ -40,7 +40,7 @@ public class ContractTypes extends AzHelper {
 		}
 	}
 	@Test
-	public void test01ValidateNewButton() throws Throwable {
+	public void test01ValidateNewButton_ContractTypes() throws Throwable {
 		try {
 			doClick(DataMaintenanceMap.getazNewBtn());
 			addNewScenario(code, name, null, DataMaintenanceMap.getinputCode(),
@@ -52,14 +52,14 @@ public class ContractTypes extends AzHelper {
 			assertTextIsDisplayed(name);
 			deleteScenario(DataMaintenanceMap.getazDeleteBtn(), DataMaintenanceMap.getwarningDeleteBtn());
 			doClick(DataMaintenanceMap.getazClearFilterBtn());
-			ExtentReport.logPass("PASS", "test01ValidateNewButton");
+			ExtentReport.logPass("PASS", "test01ValidateNewButton_ContractTypes");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test01ValidateNewButton", driver, e);
+			ExtentReport.logFail("FAIL", "test01ValidateNewButton_ContractTypes", driver, e);
 			fail(e.getMessage());
 		}
 	}
 	@Test
-	public void test02ValidateSaveAndEditButton() throws Throwable {
+	public void test02ValidateSaveAndEditButton_ContractTypes() throws Throwable {
 		try {
 			doClick(DataMaintenanceMap.getazNewBtn());
 			addNewScenario(code, name, null, DataMaintenanceMap.getinputCode(),
@@ -70,14 +70,14 @@ public class ContractTypes extends AzHelper {
 			doFilterCreate(filter);
 			assertTextIsDisplayed(name);
 			doClick(DataMaintenanceMap.getazEditBtn());
-			ExtentReport.logPass("PASS", "test02ValidateSaveAndEditButton");
+			ExtentReport.logPass("PASS", "test02ValidateSaveAndEditButton_ContractTypes");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test02ValidateSaveAndEditButton", driver, e);
+			ExtentReport.logFail("FAIL", "test02ValidateSaveAndEditButton_ContractTypes", driver, e);
 			fail(e.getMessage());
 		}
 	}
 	@Test
-	public void test03ValidateSaveAndCloseButton() throws Throwable {
+	public void test03ValidateSaveAndCloseButton_ContractTypes() throws Throwable {
 		try {
 			addNewScenario(null, updatedName, null, DataMaintenanceMap.getinputCode(),
 					DataMaintenanceMap.getaddName(), null, null,
@@ -88,9 +88,9 @@ public class ContractTypes extends AzHelper {
 			assertTextIsDisplayed(updatedName);
 			deleteScenario(DataMaintenanceMap.getazDeleteBtn(), DataMaintenanceMap.getwarningDeleteBtn());
 			doClick(DataMaintenanceMap.getazClearFilterBtn());
-			ExtentReport.logPass("PASS", "test03ValidateSaveAndCloseButton");
+			ExtentReport.logPass("PASS", "test03ValidateSaveAndCloseButton_ContractTypes");
 		} catch (Exception | AssertionError e) {
-			ExtentReport.logFail("FAIL", "test03ValidateSaveAndCloseButton", driver, e);
+			ExtentReport.logFail("FAIL", "test03ValidateSaveAndCloseButton_ContractTypes", driver, e);
 			fail(e.getMessage());
 		}
 	}

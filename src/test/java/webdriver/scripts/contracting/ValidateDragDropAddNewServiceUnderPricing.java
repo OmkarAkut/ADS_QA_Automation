@@ -120,6 +120,7 @@ public class ValidateDragDropAddNewServiceUnderPricing extends CalculationHelper
 				driver.findElement(By.name("valuefield")).sendKeys(serviceName);
 				doClick("//div[contains(@id,'filter')]//span[text() = 'Add']");
 				doClick(ContractingMap.getFilterDialogButtonApplyFilter());
+				driverDelay();
 //				contractModelsHelper.navigateFeeForServicePaymentTermsPageServiceModel(filterService);
 				WebElement source = driver.findElement(By.xpath(
 						"(//div[text()='"+serviceName+"'])"));
