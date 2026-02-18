@@ -78,9 +78,9 @@ public class BuildVerificationTestScript extends UcqcHelper {
 	private static String BackgroundColorDockBarAdHoc = "rgba(0, 119, 171, 1)";
 	private static String BackgroundColorDockBarSystemMaintainenance = "rgba(101, 55, 47, 1)";
 	private static String BackgroundColorDockEisodes = "rgba(230, 230, 230, 1)";
-
 	String expectedReleaseVersion = version; // only checks version, not date
-
+	private static String buildUrl=setProperty("BUILDTESTURL");
+	private static String webiUrl=setProperty("WEBIURL");
 	/**
 	 * The local pages map test is a test of the elements on all of the individual
 	 * functional area (local) page maps - that the elements on the map display on
@@ -335,7 +335,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 				driver.switchTo().window(handle);
 
 				try {
-					if (element.contains("qaapp-dev.harrispaas.com")) {
+					if (element.contains(webiUrl)) {
 						driver.switchTo().frame("servletBridgeIframe");
 						assertElementIsDisplayed(driver.findElement(By.xpath("//img[@title='SAP']")));
 						driver.switchTo().defaultContent();
@@ -387,7 +387,10 @@ public class BuildVerificationTestScript extends UcqcHelper {
 			doClick(generalElement.getLandingPageBubbleReportingQuickLinkWebIntelligence());
 			String getUrl = driver.getCurrentUrl();
 //			if (getUrl.contains("qaapp-dev.harrispaas.com")) {updated url Shilpa : 11.2.2025
-			if (getUrl.contains("qaapp.harrispaas.com")) {
+//			if (getUrl.contains("qaapp.harrispaas.com")) {
+			//{updated url Shilpa : 18.2.2026
+			System.out.println(buildUrl);
+			if (getUrl.contains(buildUrl)) {
 				switchToNewWindow(driver, getUrl);
 			}
 			doClick(generalElement.getLandingPageBubbleReportingQuickLinkAdHocReportDesign());
@@ -670,6 +673,7 @@ public class BuildVerificationTestScript extends UcqcHelper {
 			assertElementsAreDisplayed(reportingTabElements, printout);
 			validateBackgroundColor(BackgroundColorReportingTab,
 					driver.findElement(By.xpath("//div[@class='bubble bubble2 medium reporting']")));
+			
 
 			ExtentReport.logPass("PASS", "test0013ReportingTab_6594");
 		} catch (Exception | AssertionError e) {

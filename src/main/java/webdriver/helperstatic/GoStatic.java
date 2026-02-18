@@ -57,6 +57,9 @@ public class GoStatic extends WebDriverStatic {
     if (page.equals("status")) {
       tab.getStatusTab().click();
     }
+    if (page.equals("menuOption.dataloader.title")) {
+        tab.getdataLoaderTab().click();
+      }
 
     /***********************Sub Tabs**********************************/
 
@@ -72,9 +75,13 @@ public class GoStatic extends WebDriverStatic {
     }
     //Analytics > Analytic Refresh Scenarios
     if (page.equals("analytic refresh scenarios")) {
-      tab.getAnalyticsTab().click();
+    	 tab.getdataLoaderTab().click();
       tab.getAnalyticRefreshScenariosSubTab().click();
     }
+    if (page.equals("data loader")) {
+        tab.getDataMaintenanceTab().click();
+        tab.getdataLoaderTab().click();
+      }
     //Analytics > Analytics Administration
     if (page.equals("analytics administration")) {
       tab.getAnalyticsTab().click();

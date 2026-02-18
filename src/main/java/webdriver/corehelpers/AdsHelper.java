@@ -6,8 +6,10 @@ import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 import java.util.Random;
 
 import org.openqa.selenium.By;
@@ -483,6 +485,21 @@ public class AdsHelper extends GetHelper {
 		return num;
 		
 	}
-	
+	public static String setProperty(String propName) {
+		String PROPS = System.getProperty("user.dir") + "/src/selenium/webdriver.properties";
+		Properties props = new Properties();
+		String prop = null;
+		try {
+			FileInputStream input = new FileInputStream(PROPS);
+			props.load(input);
+			prop = props.getProperty(propName);
+		} catch (Exception e) {
+
+		}
+		System.out.println(prop);
+		return prop;
+
+	}
+
 }
 

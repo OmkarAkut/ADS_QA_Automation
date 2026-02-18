@@ -151,6 +151,11 @@ public class GeneralElementsMap extends MapConfig {
     @FindBy(id = "status")
     private WebElement statusTab;
     public WebElement getStatusTab() {return statusTab;}
+    
+    //Data Loader
+    @FindBy(id = "dataloader")
+    private WebElement dataLoaderTab;
+    public WebElement getdataLoaderTab() {return dataLoaderTab;}
     /*************************End Main Tabs********************************/
 
     /***********************Sub Tabs**********************************/
