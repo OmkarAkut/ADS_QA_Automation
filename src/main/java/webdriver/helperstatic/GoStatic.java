@@ -81,6 +81,7 @@ public class GoStatic extends WebDriverStatic {
     if (page.equals("data loader")) {
         tab.getDataMaintenanceTab().click();
         tab.getdataLoaderTab().click();
+        
       }
     //Analytics > Analytics Administration
     if (page.equals("analytics administration")) {
