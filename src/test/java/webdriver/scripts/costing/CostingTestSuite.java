@@ -2,14 +2,10 @@ package webdriver.scripts.costing;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
-
-import webdriver.scripts.contracting.ValidateDragDropAddNewServiceUnderPricing;
-import webdriver.scripts.datamaintenance.maintaindata.ValidateCodeIsReadonlyUnderAZItems;
-
-
-
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
+	RVUExportImportFunction.class,
+	OverwriteRvuNoCMSResults.class,
 	ActualCostingMethodPatientChgsDateRange.class,
 	ActualCostingMethodPatientChgsDoesNotMatch.class,
 	ActualCostingMethodPatientChgsTimestamp.class,
@@ -20,12 +16,10 @@ import webdriver.scripts.datamaintenance.maintaindata.ValidateCodeIsReadonlyUnde
 	EditCostModelCalculationScenarios.class,
 	EncCostCalcScenarioSelectedCostModelScenariosdisplayed.class,
 	EntityLevelSecurityCosting.class,
-	OverwriteRvuNoCMSResults.class,
 	PaginationInCostingModels.class,
 	RunGLAdjustmentAndReclassifications.class,
 	RVUContainerDeleteFilteredData.class,
 	RVUCalculationScenario.class,
-	RVUExportImportFunction.class,
 	RvuMaintenanceAds1492.class,
 	TableColumnSorting.class,
 	TestGenericUIValidateCostingModelSearchTextbox.class,

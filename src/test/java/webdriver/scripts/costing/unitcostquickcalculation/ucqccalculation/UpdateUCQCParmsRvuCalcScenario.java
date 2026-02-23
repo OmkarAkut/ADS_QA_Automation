@@ -213,19 +213,29 @@ public class UpdateUCQCParmsRvuCalcScenario extends UcqcHelper {
 		try {
 			gotoCostingModel();
 			filterCreate(filterCostModelCalcUpdatedScenario, costModelScenarioUCQC);
-			selectOptions(CostingMap.getGldataDesc(), "* MHFY05 Reclass TB");
-			
 			CostingMap.getGldataDesc().click();
-			assertElementIsDisplayedWithXpath("//li[contains(@class,'x-boundlist-selected')][text()='* MHFY05 Reclass TB']");
-			selectOptions(CostingMap.getVolScenario(), "2TBMHFY05VOL");
+			doDropdownSelectUsingOptionTextOnly(driver.findElement(By.xpath("(//div[contains(@class,'x-boundlist-floating')]//ul)[1]")),  "* MHFY05 Reclass TB");
+//			
+			CostingMap.getGldataDesc().click();
+			assertElementIsDisplayedWithXpath("//li[contains(@class,'x-boundlist-item x-boundlist-selected')][text()='* MHFY05 Reclass TB']");
 			CostingMap.getVolScenario().click();
-			assertElementIsDisplayedWithXpath("//li[contains(@class,'x-boundlist-selected')][text()='2TBMHFY05VOL']");
-			selectOptions(CostingMap.getVariablilityMaster(), "ASESC2060 CC Var Master");
+			doDropdownSelectUsingOptionTextOnly(driver.findElement(By.xpath("(//div[contains(@class,'x-boundlist-floating')]//ul)[2]")), "2TBMHFY05VOL");
+//			selectOptions(CostingMap.getVolScenario(), "2TBMHFY05VOL");
+//			driver.findElement(By.n)
+			CostingMap.getVolScenario().click();
+		
+			assertElementIsDisplayedWithXpath("//li[contains(@class,'x-boundlist-item x-boundlist-selected')][text()='2TBMHFY05VOL']");
 			CostingMap.getVariablilityMaster().click();
-			assertElementIsDisplayedWithXpath("//li[contains(@class,'x-boundlist-selected')][text()='ASESC2060 CC Var Master']");
-			selectOptions(CostingMap.getOverheadDrpDwn(), "TB OVHD Calc Scen Exp Vol for Rpt");
-//		   driver.findElement(By.name("overHeadScenarioId"));
+			doDropdownSelectUsingOptionTextOnly(driver.findElement(By.xpath("(//div[contains(@class,'x-boundlist-floating')]//ul)[3]")), "ASESC2060 CC Var Master");
+//			selectOptions(CostingMap.getVariablilityMaster(), "ASESC2060 CC Var Master");
+			CostingMap.getVariablilityMaster().click();
+			assertElementIsDisplayedWithXpath("//li[contains(@class,'x-boundlist-item x-boundlist-selected')][text()='ASESC2060 CC Var Master']");
+			CostingMap.getVariablilityMaster().click();
 			CostingMap.getOverheadDrpDwn().click();
+			doDropdownSelectUsingOptionTextOnly(driver.findElement(By.xpath("(//div[contains(@class,'x-boundlist-floating')]//ul)[4]")), "TB OVHD Calc Scen Exp Vol for Rpt");
+//			selectOptions(CostingMap.getOverheadDrpDwn(), "TB OVHD Calc Scen Exp Vol for Rpt");
+//		   driver.findElement(By.name("overHeadScenarioId"));
+//			CostingMap.getOverheadDrpDwn().click();
 			//Shilpa updated below lines 1.23.2025
 
 			assertElementIsDisplayedWithXpath("//div[text()='Entities']//following::li[text()='150 Marina Medical Center']");
@@ -354,22 +364,22 @@ public class UpdateUCQCParmsRvuCalcScenario extends UcqcHelper {
 		try {
 			gotoCostingModel();
 			filterCreate(filterCostModelCalcUpdatedScenario, costModelScenarioUCQC);
-			selectOptions(CostingMap.getGldataDesc(), "MH FY05 Reclass");
-//			CostingMap.getGldataDesc().click();
+			CostingMap.getGldataDesc().click();
+			doDropdownSelectUsingOptionTextOnly(driver.findElement(By.xpath("(//div[contains(@class,'x-boundlist-floating')]//ul)[1]")),  "MH FY05 Reclass");
 			driver.findElement(By.name("gLDataDescription")).click();
 			assertElementIsDisplayedWithXpath("//li[contains(@class,'x-boundlist-selected')][text()='MH FY05 Reclass']");
-			selectOptions(CostingMap.getVolScenario(), "MHFY05");
-//			CostingMap.getVolScenario().click();
-			driver.findElement(By.name("actStatCalcCode")).click();
+			CostingMap.getVolScenario().click();
+			doDropdownSelectUsingOptionTextOnly(driver.findElement(By.xpath("(//div[contains(@class,'x-boundlist-floating')]//ul)[2]")), "MHFY05");
+			CostingMap.getVolScenario().click();
 			assertElementIsDisplayedWithXpath("//li[contains(@class,'x-boundlist-selected')][text()='MHFY05']");
-//			driver.findElement(By.name("variabilityMasterId")).click();
-			selectOptions(CostingMap.getVariablilityMaster(), "MHS1");
-//			CostingMap.getVariablilityMaster().click();
+			CostingMap.getVariablilityMaster().click();
+			doDropdownSelectUsingOptionTextOnly(driver.findElement(By.xpath("(//div[contains(@class,'x-boundlist-floating')]//ul)[3]")), "MHS1");
 			driver.findElement(By.name("variabilityMasterId")).click();
 			assertElementIsDisplayedWithXpath("//li[contains(@class,'x-boundlist-selected')][text()='MHS1']");
-			
-			selectOptions(CostingMap.getOverheadDrpDwn(), "MH FY05 Overhead");
+			CostingMap.getVariablilityMaster().click();
 			CostingMap.getOverheadDrpDwn().click();
+			doDropdownSelectUsingOptionTextOnly(driver.findElement(By.xpath("(//div[contains(@class,'x-boundlist-floating')]//ul)[4]")), "MH FY05 Overhead");
+			
 //			driver.findElement(By.name("overHeadScenarioId")).click();
 //			selectOptions(CostingMap.getOverheadDrpDwn(), "MH FY05 Overhead");
 //			driver.findElement(By.name("overHeadScenarioId")).click();
@@ -403,8 +413,8 @@ public class UpdateUCQCParmsRvuCalcScenario extends UcqcHelper {
 		}
 		finally {
 			doClick(CostingMap.getCostScenarioDeleteButton());
-			waitForElementToBeVisible(costingMap.getWarningDeleteButton());
-			doClick(costingMap.getWarningDeleteButton());
+			waitForElementToBeVisible(CostingMap.getWarningDeleteButton());
+			doClick(CostingMap.getWarningDeleteButton());
 			doClick(CostingMap.getCostScenarioClearFilterButton());
 			doClick(costingMap.getCostModelCalcFilterButton());
 			driverDelay();

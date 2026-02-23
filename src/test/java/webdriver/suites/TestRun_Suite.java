@@ -28,11 +28,11 @@ import webdriver.scripts.status.calculationstatus.CalculationStatusSuite;
 import webdriver.scripts.systemmaintenance.SystemMaintenanceTestSuite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-
+	CostingTestSuite.class,
+	UcqcRvusSuite.class,
+	ContractingSuite.class,
 	TestSuiteForCIM.class,
 	TestSuiteForAE.class,
-	CostingTestSuite.class,
-	ContractingSuite.class,
 	MaintaindataTestSuite.class,
 	GeneralCalculationsTestSuite.class,
 	SystemMaintenanceTestSuite.class,
@@ -47,7 +47,6 @@ import webdriver.scripts.systemmaintenance.SystemMaintenanceTestSuite;
 	CalculationStatusSuite.class,
 	UnitCostQuickCalculationSuite.class,
 	UcqcMainpageTestSuite.class,
-	UcqcRvusSuite.class,
 	UcqcRoleBasedTestSuite.class,
 	UcqcCalculationTestSuite.class,
 	AZSuite.class,
