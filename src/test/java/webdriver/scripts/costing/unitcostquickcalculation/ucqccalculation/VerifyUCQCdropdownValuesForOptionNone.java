@@ -25,11 +25,11 @@ public class VerifyUCQCdropdownValuesForOptionNone extends UcqcHelper {
 	static String costModelScenario = "*CM1 TB MHFY05 After Vol Change";
 	static String entity = "150 Marina Medical Center";
 	static String department="2130 PED ICU";
-//	static final String[] requiredFields = { "Marina", "*CM1 TB MHFY05 After Vol Change", "150 Marina Medical Center",
-//			"2130", "Jan 2005 to Mar 2005" };
-	//Shilpa:update 15.01.2026
 	static final String[] requiredFields = { "Marina", "*CM1 TB MHFY05 After Vol Change", "150 Marina Medical Center",
-			"2130", "Jan 2005 to Jan 2005" };
+			"2130", "Jan 2005 to Mar 2005" };
+	//Shilpa:update 15.01.2026
+//	static final String[] requiredFields = { "Marina", "*CM1 TB MHFY05 After Vol Change", "150 Marina Medical Center",
+//			"2130", "Jan 2005 to Jan 2005" };
 	
 	static final String[] requiredFieldsUpdate = { "Marina", "*CM2 TB MHFY05 No Price List - 2", "150 Marina Medical Center",
 			"2110", "Apr 2004 to Mar 2005" };

@@ -75,7 +75,7 @@ public class GoStatic extends WebDriverStatic {
     }
     //Analytics > Analytic Refresh Scenarios
     if (page.equals("analytic refresh scenarios")) {
-    	 tab.getdataLoaderTab().click();
+    	 tab.getAnalyticsTab().click();
       tab.getAnalyticRefreshScenariosSubTab().click();
     }
     if (page.equals("data loader")) {
