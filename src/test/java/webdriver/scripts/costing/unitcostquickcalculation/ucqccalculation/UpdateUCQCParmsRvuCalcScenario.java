@@ -379,7 +379,7 @@ public class UpdateUCQCParmsRvuCalcScenario extends UcqcHelper {
 			CostingMap.getVariablilityMaster().click();
 			CostingMap.getOverheadDrpDwn().click();
 			doDropdownSelectUsingOptionTextOnly(driver.findElement(By.xpath("(//div[contains(@class,'x-boundlist-floating')]//ul)[4]")), "MH FY05 Overhead");
-			
+			CostingMap.getOverheadDrpDwn().click();
 //			driver.findElement(By.name("overHeadScenarioId")).click();
 //			selectOptions(CostingMap.getOverheadDrpDwn(), "MH FY05 Overhead");
 //			driver.findElement(By.name("overHeadScenarioId")).click();
