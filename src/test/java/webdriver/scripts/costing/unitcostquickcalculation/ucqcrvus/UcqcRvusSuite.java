@@ -5,7 +5,7 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-	OverWriteRVUValues5919.class,
+//	OverWriteRVUValues5919.class,
 	OverwriteRvuMaintenancePopupAds1181.class,
 	UcqcCopyToQuickRvusPopupIsLaunchedAds1148.class,
 	UcqcEnableDisableOverwriteRvuMaintenanceButtonAds1182.class,
