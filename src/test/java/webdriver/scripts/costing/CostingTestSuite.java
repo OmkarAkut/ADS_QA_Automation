@@ -2,10 +2,15 @@ package webdriver.scripts.costing;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
+
+import webdriver.scripts.contracting.ValidateContractingModeExportImportButton;
+import webdriver.scripts.costing.unitcostquickcalculation.ucqcrvus.OverWriteRVUValues5919;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 	RVUExportImportFunction.class,
 	OverwriteRvuNoCMSResults.class,
+	OverWriteRVUValues5919.class,
+	ValidateContractingModeExportImportButton.class,
 	ActualCostingMethodPatientChgsDateRange.class,
 	ActualCostingMethodPatientChgsDoesNotMatch.class,
 	ActualCostingMethodPatientChgsTimestamp.class,

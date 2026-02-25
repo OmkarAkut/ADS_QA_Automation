@@ -5,7 +5,7 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-	ValidateContractingModeExportImportButton.class,
+//	ValidateContractingModeExportImportButton.class,
 	CalculateExistingPublishedContractAds1447.class,
 	ClearFilterbuttonModels.class,
 	ConfirmAddNewDeleteAPCFeeScheduleMasters.class,
